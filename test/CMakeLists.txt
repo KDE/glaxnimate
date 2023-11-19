@@ -6,7 +6,7 @@ include(ECMAddTests)
 
 include_directories(
     ${CMAKE_SOURCE_DIR}/src
-    # ${CMAKE_SOURCE_DIR}/external/QtAppSetup/src
+    ${CMAKE_SOURCE_DIR}/external/QtAppSetup/src
     ${CMAKE_SOURCE_DIR}/src/core
 )
 

@@ -121,7 +121,20 @@ find_package(ECM ${KF_DEP_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_MODULE_PATH})
 include(KDEInstallDirs)
 include(KDECMakeSettings)
+include(KDECompilerSettings)
 include(ECMCoverageOption)
+
+# Remove some definitions set by KDECompilerSettings again
+# to not need to change the code yet, we should however
+# re-enable them in the future and fix the code
+remove_definitions(-DQT_NO_KEYWORDS)
+remove_definitions(-DQT_USE_QSTRINGBUILDER) # ?
+remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
+remove_definitions(-DQT_NO_CAST_FROM_ASCII)
+remove_definitions(-DQT_NO_FOREACH)
+remove_definitions(-DQT_NO_URL_CAST_FROM_STRING)
+remove_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
+kde_enable_exceptions()
 
 if (NOT DEFINED KF_MAJOR)
   set(KF_MAJOR ${QT_MAJOR_VERSION})
