@@ -16,7 +16,7 @@ GLAXNIMATE_OBJECT_IMPL(glaxnimate::model::Composition)
 
 QIcon glaxnimate::model::Composition::tree_icon() const
 {
-    return QIcon::fromTheme("video-x-generic");
+    return QIcon::fromTheme("video-x-generic"_qs);
 }
 
 QString glaxnimate::model::Composition::type_name_human() const

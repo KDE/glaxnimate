@@ -38,7 +38,7 @@ void glaxnimate::model::Bitmap::refresh(bool rebuild_embedded)
             if ( !finfo.isFile() )
                 return;
             reader.setFileName(finfo.absoluteFilePath());
-            format.set(reader.format());
+            format.set(QString::fromLatin1(reader.format()));
             qimage = reader.read();
             if ( rebuild_embedded && embedded() )
                 data.set(build_embedded(qimage));
@@ -52,7 +52,7 @@ void glaxnimate::model::Bitmap::refresh(bool rebuild_embedded)
                 QBuffer buf(&response);
                 buf.open(QIODevice::ReadOnly);
                 reader.setDevice(&buf);
-                format.set(reader.format());
+                format.set(QString::fromLatin1(reader.format()));
                 qimage = reader.read();
                 if ( rebuild_embedded && embedded() )
                     data.set(build_embedded(qimage));
@@ -73,7 +73,7 @@ void glaxnimate::model::Bitmap::refresh(bool rebuild_embedded)
         QBuffer buf(const_cast<QByteArray*>(&data.get()));
         buf.open(QIODevice::ReadOnly);
         reader.setDevice(&buf);
-        format.set(reader.format());
+        format.set(QString::fromLatin1(reader.format()));
         qimage = reader.read();
     }
 
@@ -122,10 +122,10 @@ QIcon glaxnimate::model::Bitmap::instance_icon() const
 
 bool glaxnimate::model::Bitmap::from_url(const QUrl& url)
 {
-    if ( url.scheme().isEmpty() || url.scheme() == "file" )
+    if ( url.scheme().isEmpty() || url.scheme() == "file"_qs )
         return from_file(url.path());
 
-    if ( url.scheme() == "data" )
+    if ( url.scheme() == "data"_qs )
         return from_base64(url.path());
 
     this->url.set(url.toString());
@@ -141,11 +141,11 @@ bool glaxnimate::model::Bitmap::from_file(const QString& file)
 
 bool glaxnimate::model::Bitmap::from_base64(const QString& data)
 {
-    auto chunks = data.split(',');
+    auto chunks = data.split(','_qc);
     if ( chunks.size() != 2 )
         return false;
-    auto mime_settings = chunks[0].split(';');
-    if ( mime_settings.size() != 2 || mime_settings[1] != "base64" )
+    auto mime_settings = chunks[0].split(';'_qc);
+    if ( mime_settings.size() != 2 || mime_settings[1] != "base64"_qs )
         return false;
 
     auto formats = QImageReader::imageFormatsForMimeType(mime_settings[0].toLatin1());
@@ -153,7 +153,7 @@ bool glaxnimate::model::Bitmap::from_base64(const QString& data)
         return false;
 
     auto decoded = QByteArray::fromBase64(chunks[1].toLatin1());
-    format.set(formats[0]);
+    format.set(QString::fromLatin1(formats[0]));
     this->data.set(decoded);
     return !image.isNull();
 }
@@ -167,7 +167,7 @@ bool glaxnimate::model::Bitmap::from_raw_data(const QByteArray& data)
     if ( format.isEmpty() )
         return false;
 
-    this->format.set(format);
+    this->format.set(QString::fromLatin1(format));
     this->data.set(data);
     return !image.isNull();
 
@@ -192,10 +192,10 @@ QUrl glaxnimate::model::Bitmap::to_url() const
     if ( mime_type.isEmpty() )
         return {};
 
-    QString data_url = "data:";
-    data_url += mime_type;
-    data_url += ";base64,";
-    data_url += data.get().toBase64();
+    QString data_url = "data:"_qs;
+    data_url += QString::fromLatin1(mime_type);
+    data_url += ";base64,"_qs;
+    data_url += QString::fromLatin1(data.get().toBase64());
     return QUrl(data_url);
 }
 

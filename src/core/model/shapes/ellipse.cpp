@@ -11,7 +11,7 @@ GLAXNIMATE_OBJECT_IMPL(glaxnimate::model::Ellipse)
 
 QIcon glaxnimate::model::Ellipse::tree_icon() const
 {
-    return QIcon::fromTheme("draw-ellipse");
+    return QIcon::fromTheme("draw-ellipse"_qs);
 }
 
 QString glaxnimate::model::Ellipse::type_name_human() const

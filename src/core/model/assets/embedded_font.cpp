@@ -29,12 +29,12 @@ glaxnimate::model::EmbeddedFont::EmbeddedFont(model::Document* document, CustomF
 
 QIcon glaxnimate::model::EmbeddedFont::instance_icon() const
 {
-    return QIcon::fromTheme("font");
+    return QIcon::fromTheme("font"_qs);
 }
 
 QString glaxnimate::model::EmbeddedFont::object_name() const
 {
-    return custom_font_.family() + " " + custom_font_.style_name();
+    return custom_font_.family() + " "_qs + custom_font_.style_name();
 }
 
 QString glaxnimate::model::EmbeddedFont::type_name_human() const
@@ -58,6 +58,6 @@ bool glaxnimate::model::EmbeddedFont::remove_if_unused(bool clean_lists)
 
 void glaxnimate::model::EmbeddedFont::on_data_changed()
 {
-    custom_font_ = CustomFontDatabase::instance().add_font("", data.get());
+    custom_font_ = CustomFontDatabase::instance().add_font({}, data.get());
 }
 

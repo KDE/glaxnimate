@@ -203,16 +203,16 @@ private:
     QString to_string(Chunk chunk)
     {
         if ( !chunk )
-            return "";
+            return {};
         auto data = chunk->data().read();
         if ( data == placeholder )
-            return "";
+            return {};
 
         if ( chunk->header == "Utf8" )
             return QString::fromUtf8(data);
 
         warning(AepFormat::tr("Unknown encoding for %1").arg(chunk->header.to_string()));
-        return "";
+        return {};
     }
 
     void warning(const QString& msg) const
@@ -255,13 +255,13 @@ private:
         else
         {
             auto doc = QJsonDocument::fromJson(als2->child("alas")->data().read());
-            QString path = doc.object()["fullpath"].toString();
+            QString path = doc.object()["fullpath"_qs].toString();
             // Handle weird windows paths
-            if ( path.contains('\\') && QDir::separator() == '/' )
+            if ( path.contains('\\'_qc) && QDir::separator() == '/'_qc )
             {
-                path = path.replace('\\', '/');
-                if ( path.size() > 1 && path[1] == ':' )
-                    path = '/' + path;
+                path = path.replace('\\'_qc, '/'_qc);
+                if ( path.size() > 1 && path[1] == ':'_qc )
+                    path = '/'_qc + path;
             }
             auto file = folder.add<FileAsset>();
             file->path = QFileInfo(path);
@@ -720,7 +720,7 @@ private:
     {
         const auto& arr = *cos.get<CosValue::Index::Array>();
         if ( arr.size() < 4 )
-            throw CosError("Not enough components for color");
+            throw CosError("Not enough components for color"_qs);
 
         return QColor::fromRgbF(
             arr[1].get<CosValue::Index::Number>(),
@@ -774,7 +774,7 @@ private:
         try {
             auto val = CosParser(text_data->data().read()).parse();
             if ( val.type() != CosValue::Index::Object )
-                throw CosError("Expected Object");
+                throw CosError("Expected Object"_qs);
 
             auto property = std::make_unique<TextProperty>();
             for ( const auto& font : *get_as<CosValue::Index::Array>(val, 0, 1, 0) )

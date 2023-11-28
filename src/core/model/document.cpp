@@ -26,7 +26,7 @@ public:
 
     std::pair<QString, NameIndex> name_index(const QString& name) const
     {
-        static QRegularExpression detect_numbers("^(.*) ([0-9]+)$");
+        static QRegularExpression detect_numbers("^(.*) ([0-9]+)$"_qs);
         QRegularExpressionMatch match = detect_numbers.match(name);
         if ( match.hasMatch() )
         {
@@ -72,7 +72,7 @@ public:
         if ( iter == name_indices.end() )
             return base_name;
 
-        return QString("%1 %2").arg(iter->first).arg(iter->second + 1);
+        return QStringLiteral("%1 %2").arg(iter->first).arg(iter->second + 1);
     }
 
     int add_pending_asset(QUrl url, QByteArray data, const QString& name_alias)

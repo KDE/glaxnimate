@@ -19,34 +19,34 @@ public:
     {
         QString header = element.tagName();
 
-        if ( header == "ProjectXMPMetadata" )
+        if ( header == "ProjectXMPMetadata"_qs )
         {
-            return chunk("XMPM", text(element.text()));
+            return chunk("XMPM"_qs, text(element.text()));
         }
-        else if ( header == "string" )
+        else if ( header == "string"_qs )
         {
-            return chunk("Utf8", text(element.text()));
+            return chunk("Utf8"_qs, text(element.text()));
         }
-        else if ( header == "numS" )
+        else if ( header == "numS"_qs )
         {
             std::uint32_t val = element.firstChildElement().text().toUInt();
             auto data = buffer(Endianness::Big().write_uint(val));
             return chunk(header, data);
         }
-        else if ( header == "ppSn" )
+        else if ( header == "ppSn"_qs )
         {
             std::uint32_t val = element.firstChildElement().text().toDouble();
             auto data = buffer(Endianness::Big().write_float64(val));
             return chunk(header, data);
         }
-        else if ( element.hasAttribute("bdata") )
+        else if ( element.hasAttribute("bdata"_qs) )
         {
-            return chunk(header, hex(element.attribute("bdata")));
+            return chunk(header, hex(element.attribute("bdata"_qs)));
         }
 
         ChunkId riff_header = header.toLatin1();
         ChunkId subheader = {""};
-        if ( header == "AfterEffectsProject" )
+        if ( header == "AfterEffectsProject"_qs )
         {
             riff_header = {"RIFX"};
         }

@@ -488,7 +488,7 @@ struct AnchorMult
 
 bool load_position_component(io::ImportExport* io, const PropertyGroup& group, int suffix, model::AnimatedProperty<float>& out, bool force)
 {
-    auto pair =  group.get_pair(QString("ADBE Position_%1").arg(suffix));
+    auto pair =  group.get_pair(QStringLiteral("ADBE Position_%1").arg(suffix));
     if ( !pair )
         return false;
 
@@ -518,9 +518,9 @@ void load_transform(io::ImportExport* io, model::Transform* tf, const PropertyBa
 
     for ( const auto& p : g.properties )
     {
-        if ( p.match_name.endsWith("Anchor Point") || p.match_name.endsWith("Anchor") )
+        if ( p.match_name.endsWith("Anchor Point"_qs) || p.match_name.endsWith("Anchor"_qs) )
             load_property_check(io, tf->anchor_point, *p.value, p.match_name, AnchorMult{anchor_mult});
-        else if ( p.match_name.endsWith("Position") )
+        else if ( p.match_name.endsWith("Position"_qs) )
         {
             if ( p.value->class_type() == PropertyBase::Property )
             {
@@ -536,33 +536,33 @@ void load_transform(io::ImportExport* io, model::Transform* tf, const PropertyBa
                 }
             }
         }
-        else if ( p.match_name.endsWith("Scale") )
+        else if ( p.match_name.endsWith("Scale"_qs) )
             load_property_check(io, tf->scale, *p.value, p.match_name, divide_100 ? &convert_divide<100, QVector2D> : &convert_divide<1, QVector2D>);
-        else if ( p.match_name.endsWith("Rotation") || p.match_name.endsWith("Rotate Z") )
+        else if ( p.match_name.endsWith("Rotation"_qs) || p.match_name.endsWith("Rotate Z"_qs) )
             load_property_check(io, tf->rotation, *p.value, p.match_name);
-        else if ( opacity && p.match_name.endsWith("Opacity") )
+        else if ( opacity && p.match_name.endsWith("Opacity"_qs) )
             load_property_check(io, *opacity, *p.value, p.match_name, divide_100 ? &convert_divide<100> : &convert_divide<1>);
         else if (
-            p.match_name.endsWith("Rotate X") ||
-            p.match_name.endsWith("Rotate Y") ||
-            p.match_name.endsWith("Orientation") ||
-            p.match_name.endsWith("Position_2")
+            p.match_name.endsWith("Rotate X"_qs) ||
+            p.match_name.endsWith("Rotate Y"_qs) ||
+            p.match_name.endsWith("Orientation"_qs) ||
+            p.match_name.endsWith("Position_2"_qs)
         )
             is_3d = true;
-        else if ( !p.match_name.endsWith("Position_1") &&
-            !p.match_name.endsWith("Position_0") &&
-            !p.match_name.endsWith("Opacity") &&
-            !p.match_name.endsWith("Envir Appear in Reflect")
+        else if ( !p.match_name.endsWith("Position_1"_qs) &&
+            !p.match_name.endsWith("Position_0"_qs) &&
+            !p.match_name.endsWith("Opacity"_qs) &&
+            !p.match_name.endsWith("Envir Appear in Reflect"_qs)
         )
             io->information(AepFormat::tr("Unknown property \"%1\"").arg(p.match_name));
     }
 
     if ( split_position )
     {
-        model::Document dummydoc("");
+        model::Document dummydoc({});
         model::Object dummy(&dummydoc);
-        model::AnimatedProperty<float> ax(&dummy, "", 0);
-        model::AnimatedProperty<float> ay(&dummy, "", 0);
+        model::AnimatedProperty<float> ax(&dummy, {}, 0);
+        model::AnimatedProperty<float> ay(&dummy, {}, 0);
 
 
         bool force_split = split_position == 2;
@@ -768,9 +768,9 @@ struct ObjectFactory
     template<class Obj, class FuncT>
     void obj(const char* match_name, FuncT&& func)
     {
-        assert(converters.count(match_name) == 0);
+        assert(converters.count(QString::fromLatin1(match_name)) == 0);
         auto up = std::make_unique<ObjectConverterFunctor<Obj, Base, std::decay_t<FuncT>>>(std::forward<FuncT>(func));
-        converters.emplace(match_name, std::move(up));
+        converters.emplace(QString::fromLatin1(match_name), std::move(up));
     }
 
     template<class Obj>
@@ -779,7 +779,7 @@ struct ObjectFactory
         assert(converters.count(match_name) == 0);
         auto up = std::make_unique<ObjectConverter<Obj, Base>>();
         auto ptr = up.get();
-        converters.emplace(match_name, std::move(up));
+        converters.emplace(QString::fromLatin1(match_name), std::move(up));
         return *ptr;
     }
 
@@ -852,14 +852,14 @@ std::unique_ptr<model::ShapeElement> load_gradient(const ObjectConverter<T, mode
     auto f2 = gradient_converter().fallback(grad, &f1);
     base_converter->load_properties(shape.get(), io, document, prop, &f2);
 
-    auto* highlight_len = prop.value->get_pair("ADBE Vector Grad HiLite Length");
-    auto* highlight_angle = prop.value->get_pair("ADBE Vector Grad HiLite Angle");
+    auto* highlight_len = prop.value->get_pair("ADBE Vector Grad HiLite Length"_qs);
+    auto* highlight_angle = prop.value->get_pair("ADBE Vector Grad HiLite Angle"_qs);
     if ( highlight_len || highlight_angle )
     {
-        model::Document dummydoc("");
+        model::Document dummydoc({});
         model::Object dummy(&dummydoc);
-        model::AnimatedProperty<float> length(&dummy, "", 0);
-        model::AnimatedProperty<float> angle(&dummy, "", 0);
+        model::AnimatedProperty<float> length(&dummy, {}, 0);
+        model::AnimatedProperty<float> angle(&dummy, {}, 0);
         if ( highlight_len )
             load_property_check(io, length, *highlight_len->value, highlight_len->match_name);
         if ( highlight_angle )
@@ -920,10 +920,10 @@ bool is_merge_rect(const model::ShapeElement& shape)
 
 bool skip_merge(const PropertyPair& prop)
 {
-    if ( prop.match_name != "ADBE Vector Filter - Merge" )
+    if ( prop.match_name != "ADBE Vector Filter - Merge"_qs )
         return false;
 
-    auto type = prop.value->get("ADBE Vector Merge Type");
+    auto type = prop.value->get("ADBE Vector Merge Type"_qs);
     if ( !type || type->class_type() != PropertyBase::Property )
         return false;
 
@@ -970,9 +970,9 @@ const ObjectFactory<model::ShapeElement>& shape_factory()
         initialized = true;
         factory.obj<model::Group>("ADBE Vector Group", [](ImportExport* io, model::Document* document, const PropertyPair& prop) {
             auto gp = std::make_unique<model::Group>(document);
-            load_transform(io, gp->transform.get(), (*prop.value)["ADBE Vector Transform Group"], &gp->opacity, {1, 1}, true);
+            load_transform(io, gp->transform.get(), (*prop.value)["ADBE Vector Transform Group"_qs], &gp->opacity, {1, 1}, true);
 
-            load_shape_list(io, document, (*prop.value)["ADBE Vectors Group"], gp->shapes);
+            load_shape_list(io, document, (*prop.value)["ADBE Vectors Group"_qs], gp->shapes);
 
             return gp;
         });
@@ -1052,20 +1052,20 @@ const ObjectFactory<model::ShapeElement>& shape_factory()
         });
         factory.obj<model::Repeater>("ADBE Vector Filter - Repeater", [](ImportExport* io, model::Document* document, const PropertyPair& prop) {
             auto shape = std::make_unique<model::Repeater>(document);
-            if ( auto tf = prop.value->get("ADBE Vector Repeater Transform") )
+            if ( auto tf = prop.value->get("ADBE Vector Repeater Transform"_qs) )
             {
                 load_transform(io, shape->transform.get(), *tf, nullptr, {1, 1}, false);
-                const char* pmn = "ADBE Vector Repeater Start Opacity";
+                QString pmn = "ADBE Vector Repeater Start Opacity"_qs;
                 if ( auto o = tf->get(pmn) )
                     load_property_check(io, shape->start_opacity, *o, pmn, &convert_divide<100>);
-                pmn = "ADBE Vector Repeater End Opacity";
+                pmn = "ADBE Vector Repeater End Opacity"_qs;
                 if ( auto o = tf->get(pmn) )
                     load_property_check(io, shape->end_opacity, *o, pmn, &convert_divide<100>);
             }
 
-            if ( auto copies = prop.value->get("ADBE Vector Repeater Copies") )
+            if ( auto copies = prop.value->get("ADBE Vector Repeater Copies"_qs) )
             {
-                load_property_check(io, shape->copies, *copies, "ADBE Vector Repeater Copies");
+                load_property_check(io, shape->copies, *copies, "ADBE Vector Repeater Copies"_qs);
             }
 
             return shape;
@@ -1119,7 +1119,7 @@ void glaxnimate::io::aep::AepLoader::load_layer(const glaxnimate::io::aep::Layer
         anchor = it->second;
         layer->transform->anchor_point.set(anchor / 2);
     }
-    load_transform(io, layer->transform.get(), ae_layer.properties["ADBE Transform Group"], &layer->opacity, anchor, false);
+    load_transform(io, layer->transform.get(), ae_layer.properties["ADBE Transform Group"_qs], &layer->opacity, anchor, false);
     layer->auto_orient.set(ae_layer.auto_orient);
     /// \todo masks "ADBE Mask Parade"
 
@@ -1132,7 +1132,7 @@ void glaxnimate::io::aep::AepLoader::load_layer(const glaxnimate::io::aep::Layer
     else if ( ae_layer.type == LayerType::TextLayer )
         text_layer(layer, ae_layer, data);
 
-    auto mask_parade = ae_layer.properties.get("ADBE Mask Parade");
+    auto mask_parade = ae_layer.properties.get("ADBE Mask Parade"_qs);
     if ( mask_parade )
     {
         layer->mask->mask.set(model::MaskSettings::Alpha);
@@ -1144,7 +1144,7 @@ void glaxnimate::io::aep::AepLoader::load_layer(const glaxnimate::io::aep::Layer
 
         for ( const auto& mask : *mask_parade )
         {
-            if ( mask.match_name != "ADBE Mask Atom" )
+            if ( mask.match_name != "ADBE Mask Atom"_qs )
                 continue;
 
             auto group = std::make_unique<model::Group>(document);
@@ -1152,12 +1152,12 @@ void glaxnimate::io::aep::AepLoader::load_layer(const glaxnimate::io::aep::Layer
             auto fill = std::make_unique<model::Fill>(document);
             fill->color.set(QColor(255, 255, 255));
             document->set_best_name(fill.get());
-            auto mask_opacity = mask.value->get_pair("ADBE Mask Opacity");
+            auto mask_opacity = mask.value->get_pair("ADBE Mask Opacity"_qs);
             if ( mask_opacity )
                 load_property_check(io, fill->opacity, *mask_opacity->value, mask_opacity->match_name, &convert_divide<100>);
             group->shapes.insert(std::move(fill));
 
-            if ( auto expansion = mask.value->get_pair("ADBE Mask Offset") )
+            if ( auto expansion = mask.value->get_pair("ADBE Mask Offset"_qs) )
             {
                 auto offset = std::make_unique<model::OffsetPath>(document);
                 document->set_best_name(offset.get());
@@ -1165,7 +1165,7 @@ void glaxnimate::io::aep::AepLoader::load_layer(const glaxnimate::io::aep::Layer
                 group->shapes.insert(std::move(offset));
             }
 
-            if ( auto shape = mask.value->get_pair("ADBE Mask Shape") )
+            if ( auto shape = mask.value->get_pair("ADBE Mask Shape"_qs) )
             {
                 auto path = std::make_unique<model::Path>(document);
                 document->set_best_name(path.get());
@@ -1185,7 +1185,7 @@ void glaxnimate::io::aep::AepLoader::shape_layer(
     glaxnimate::io::aep::AepLoader::CompData&
 )
 {
-    load_shape_list(io, document, ae_layer.properties["ADBE Root Vectors Group"], layer->shapes);
+    load_shape_list(io, document, ae_layer.properties["ADBE Root Vectors Group"_qs], layer->shapes);
 }
 
 void glaxnimate::io::aep::AepLoader::asset_layer(
@@ -1245,7 +1245,7 @@ void glaxnimate::io::aep::AepLoader::asset_layer(
         return;
     }
 
-    warning(AepFormat::tr("Unknown asset type for %1").arg(ae_layer.name.isEmpty() ? "Layer" : ae_layer.name));
+    warning(AepFormat::tr("Unknown asset type for %1").arg(ae_layer.name.isEmpty() ? "Layer"_qs : ae_layer.name));
 }
 
 namespace {
@@ -1305,7 +1305,7 @@ std::unique_ptr<model::ShapeElement> text_to_shapes(
 
 void glaxnimate::io::aep::AepLoader::text_layer(model::Layer* layer, const Layer& ae_layer, CompData&)
 {
-    auto prop = ae_layer.properties["ADBE Text Properties"]["ADBE Text Document"];
+    auto prop = ae_layer.properties["ADBE Text Properties"_qs]["ADBE Text Document"_qs];
     if ( prop.class_type() != PropertyBase::TextProperty )
         return;
 

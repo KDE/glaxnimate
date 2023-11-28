@@ -370,15 +370,15 @@ struct LoadCotext
                 return std::make_tuple(QPointF(x, y) - anchor, anchor);
             }
         );*/
-        load_property<Float32>(rive, transform->rotation, animations, "rotation"_qs);
-        load_property<Float32, Float32>(rive, transform->scale, animations, {"scaleX"_qs, "scaleX"_qs}, 1, 1, [](Float32 x, Float32 y){
+        load_property<Float32>(rive, transform->rotation, animations, "rotation");
+        load_property<Float32, Float32>(rive, transform->scale, animations, {"scaleX", "scaleX"}, 1, 1, [](Float32 x, Float32 y){
             return QVector2D(x, y);
         });
     }
 
     void load_shape_group(Object* shape, model::Group* group, const detail::AnimatedProperties& animations)
     {
-        load_property<Float32>(shape, group->opacity, animations, "opacity"_qs, 1);
+        load_property<Float32>(shape, group->opacity, animations, "opacity", 1);
         group->name.set(shape->get<QString>("name"_qs));
         add_shapes(shape, group->shapes);
         auto box = group->local_bounding_rect(0);
