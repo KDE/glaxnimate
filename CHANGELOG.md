@@ -26,6 +26,7 @@
     * Fixed dropping file as object
     * Fixed closing compositions from the tab bar
     * Fixed loading colors from older lotties
+    * Shape modifiers marked as not visible are now correctly ignored
 
 ## 0.5.4
 

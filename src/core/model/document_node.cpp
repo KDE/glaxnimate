@@ -312,7 +312,7 @@ void glaxnimate::model::VisualNode::paint(QPainter* painter, FrameTime time, Pai
     for ( auto c : docnode_visual_children() )
     {
         c->paint(painter, time, mode, modifier);
-        if ( c->is_instance<glaxnimate::model::Modifier>() )
+        if ( c->is_instance<glaxnimate::model::Modifier>() && c->visible.get() )
             break;
     }
     painter->restore();
