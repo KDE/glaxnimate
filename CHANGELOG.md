@@ -25,6 +25,7 @@
     * Fixed LottieFiles import
     * Fixed dropping file as object
     * Fixed closing compositions from the tab bar
+    * Fixed loading colors from older lotties
 
 ## 0.5.4
 

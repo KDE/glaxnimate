@@ -753,18 +753,22 @@ private:
 
         if ( version[0] < 5 )
         {
-            if ( arr.size() == 3 )
-                out = QColor::fromRgb(
-                    arr[0].toInt(), arr[1].toInt(), arr[2].toInt()
-                );
-            else if ( arr.size() == 4 )
-                out = QColor::fromRgb(
-                    arr[0].toInt(), arr[1].toInt(), arr[2].toInt(), qMin(255, arr[3].toInt())
-                );
-            else
-                return false;
+            auto iter = std::find_if(arr.begin(), arr.end(), [](const QJsonValue& v){ return v.toDouble() > 1; });
+            if ( iter != arr.end() )
+            {
+                if ( arr.size() == 3 )
+                    out = QColor::fromRgb(
+                        arr[0].toInt(), arr[1].toInt(), arr[2].toInt()
+                    );
+                else if ( arr.size() == 4 )
+                    out = QColor::fromRgb(
+                        arr[0].toInt(), arr[1].toInt(), arr[2].toInt(), qMin(255, arr[3].toInt())
+                    );
+                else
+                    return false;
 
-            return true;
+                return true;
+            }
         }
 
         if ( arr.size() == 3 )
