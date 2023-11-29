@@ -8,6 +8,8 @@
 
 GLAXNIMATE_OBJECT_IMPL(glaxnimate::model::RoundCorners)
 
+using namespace glaxnimate::math;
+
 QIcon glaxnimate::model::RoundCorners::static_tree_icon()
 {
     return QIcon::fromTheme("transform-affect-rounded-corners");
@@ -44,7 +46,11 @@ static glaxnimate::math::bezier::Bezier round_corners(const glaxnimate::math::be
 
     for ( int i = 0; i < original.size(); i++ )
     {
-        if ( !original.closed() && (i == 0 || i == original.size() - 1) )
+        if (
+            (!original.closed() && (i == 0 || i == original.size() - 1)) ||
+            !fuzzy_compare(original[i].tan_in, original[i].pos) ||
+            !fuzzy_compare(original[i].tan_out, original[i].pos)
+        )
         {
             result.push_back(original[i]);
         }

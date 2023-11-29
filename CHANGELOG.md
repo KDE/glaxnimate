@@ -27,6 +27,7 @@
     * Fixed closing compositions from the tab bar
     * Fixed loading colors from older lotties
     * Shape modifiers marked as not visible are now correctly ignored
+    * Fixed rendering of round corners modifier
 
 ## 0.5.4
 
