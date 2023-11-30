@@ -229,11 +229,11 @@ public:
         auto last_frame = comp->animation->last_frame.get();
         ui.play_controls->set_range(first_frame, last_frame);
         ui.play_controls->set_record_enabled(current_document->record_to_keyframe());
-        QObject::connect(comp->animation.get(), &model::AnimationContainer::first_frame_changed, ui.play_controls, &gui::FrameControlsWidget::set_min);
-        QObject::connect(comp->animation.get(), &model::AnimationContainer::last_frame_changed, ui.play_controls, &gui::FrameControlsWidget::set_max);;
+        QObject::connect(comp->animation.get(), &model::AnimationContainer::first_frame_changed, ui.play_controls, [this](float frame){ui.play_controls->set_min(frame);});
+        QObject::connect(comp->animation.get(), &model::AnimationContainer::last_frame_changed, ui.play_controls, [this](float frame){ui.play_controls->set_max(frame);});
         QObject::connect(comp, &model::Composition::fps_changed, ui.play_controls, &gui::FrameControlsWidget::set_fps);
-        QObject::connect(ui.play_controls, &gui::FrameControlsWidget::frame_selected, current_document.get(), &model::Document::set_current_time);
-        QObject::connect(current_document.get(), &model::Document::current_time_changed, ui.play_controls, &gui::FrameControlsWidget::set_frame);
+        QObject::connect(ui.play_controls, &gui::FrameControlsWidget::frame_selected, current_document.get(), [this](int frame){current_document->set_current_time(frame);});
+        QObject::connect(current_document.get(), &model::Document::current_time_changed, ui.play_controls, [this](float frame){ui.play_controls->set_frame(frame);});
         QObject::connect(current_document.get(), &model::Document::record_to_keyframe_changed, ui.play_controls, &gui::FrameControlsWidget::set_record_enabled);
         QObject::connect(ui.play_controls, &gui::FrameControlsWidget::record_toggled, current_document.get(), &model::Document::set_record_to_keyframe);
 
@@ -241,8 +241,8 @@ public:
         timeline_slider->setMinimum(first_frame);
         timeline_slider->setMaximum(last_frame);
         timeline_slider->setValue(first_frame);
-        QObject::connect(timeline_slider, &QAbstractSlider::valueChanged, current_document.get(), &model::Document::set_current_time);
-        QObject::connect(current_document.get(), &model::Document::current_time_changed, timeline_slider, &QAbstractSlider::setValue);
+        QObject::connect(timeline_slider, &QAbstractSlider::valueChanged, current_document.get(), [this](int value){current_document->set_current_time(value);});
+        QObject::connect(current_document.get(), &model::Document::current_time_changed, timeline_slider, [timeline_slider](float frame){timeline_slider->setValue(frame);});
 
         // Views
         layer_view->set_composition(comp);
