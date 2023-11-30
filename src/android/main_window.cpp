@@ -242,7 +242,7 @@ public:
         timeline_slider->setMaximum(last_frame);
         timeline_slider->setValue(first_frame);
         QObject::connect(timeline_slider, &QAbstractSlider::valueChanged, current_document.get(), [this](int value){current_document->set_current_time(value);});
-        QObject::connect(current_document.get(), &model::Document::current_time_changed, timeline_slider, [timeline_slider](float frame){timeline_slider->setValue(frame);});
+        QObject::connect(current_document.get(), &model::Document::current_time_changed, timeline_slider, [this](float frame){timeline_slider->setValue(frame);});
 
         // Views
         layer_view->set_composition(comp);
