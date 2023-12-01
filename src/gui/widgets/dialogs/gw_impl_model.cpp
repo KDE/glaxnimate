@@ -453,6 +453,8 @@ void GlaxnimateWindow::Private::add_composition()
 
     auto lay = std::make_unique<model::Layer>(current_document.get());
     current_document->set_best_name(lay.get());
+    lay->animation->first_frame.set(old_comp->animation->first_frame.get());
+    lay->animation->last_frame.set(old_comp->animation->last_frame.get());
 
     comp->animation->first_frame.set(old_comp->animation->first_frame.get());
     comp->animation->last_frame.set(old_comp->animation->last_frame.get());
