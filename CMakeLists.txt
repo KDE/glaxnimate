@@ -153,6 +153,7 @@ find_package(KF${KF_MAJOR} ${KF_DEP_VERSION}
     XmlGui
     Archive
     Completion
+    IconThemes
 )
 if ( NOT ANDROID )
     find_package(KF${KF_MAJOR} ${KF_DEP_VERSION}

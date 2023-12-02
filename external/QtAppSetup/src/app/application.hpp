@@ -72,9 +72,6 @@ public:
 
     bool notify(QObject *receiver, QEvent *e) override;
 
-Q_SIGNALS:
-    void icon_theme_changed(const QString& theme_name);
-
 protected:
     /**
      * \brief Called after construction, before anything else

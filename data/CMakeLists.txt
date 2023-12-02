@@ -156,11 +156,6 @@ if ( ANDROID )
     #file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/images DESTINATION ${ASSETS_PATH})
     #file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/templates DESTINATION ${ASSETS_PATH})
 else()
-    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/icons/breeze-icons/icons DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/icons/)
-    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/icons/breeze-icons/icons-dark DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/icons/)
-    install(DIRECTORY icons/breeze-icons/icons DESTINATION ${DATA_INSTALL}/icons PATTERN *@* EXCLUDE)
-    install(DIRECTORY icons/breeze-icons/icons-dark DESTINATION ${DATA_INSTALL}/icons PATTERN *@* EXCLUDE)
-
     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/themes DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
     install(DIRECTORY themes DESTINATION ${DATA_INSTALL})
 

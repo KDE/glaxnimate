@@ -92,9 +92,9 @@ static QString default_icon_theme()
 {
     QPalette palette = QGuiApplication::palette();
     if ( palette.color(QPalette::Button).value() < 100 )
-        return "icons-dark";
+        return "breeze-dark";
     else
-        return "icons";
+        return "breeze";
 }
 
 static void set_icon_theme(const QVariant& v)
@@ -124,19 +124,17 @@ static void set_language(const QVariant& v)
     app::TranslationService::instance().change_lang_code(code);
 }
 
-
 static void icon_theme_fixup()
 {
     QString default_theme = default_icon_theme();
     QIcon::setFallbackThemeName(default_theme);
 
     QString old = QIcon::themeName();
-    if ( old == "icons" || old == "icons-dark" )
+    if ( old == "breeze" || old == "breeze-dark" )
         QIcon::setThemeName(default_theme);
     else
         set_icon_theme(old);
 }
-
 
 static void load_themes(GlaxnimateApp* app, app::settings::PaletteSettings* settings)
 {
@@ -150,7 +148,6 @@ static void load_themes(GlaxnimateApp* app, app::settings::PaletteSettings* sett
     }
 }
 
-
 void GlaxnimateApp::on_initialize()
 {
 
@@ -159,12 +156,6 @@ void GlaxnimateApp::on_initialize()
     store_logger = app::log::Logger::instance().add_listener<app::log::ListenerStore>();
 
     setWindowIcon(QIcon(data_file("images/logo.svg")));
-
-    QStringList search_paths = data_paths("icons");
-    search_paths += QIcon::themeSearchPaths();
-    QIcon::setThemeSearchPaths(search_paths);
-    QIcon::setFallbackSearchPaths(data_paths("images/icons"));
-
 
     QDir().mkpath(backup_path());
 }
@@ -179,7 +170,9 @@ void GlaxnimateApp::on_initialize_settings()
         Setting("language",
                 QT_TRANSLATE_NOOP("Settings", "Language"),
                 QT_TRANSLATE_NOOP("Settings", "Interface Language"),                        Setting::String,    curr_lang,  avail_languages(),  set_language),
+#if (!(defined(Q_OS_WIN) || defined(Q_OS_MAC)))
         Setting("icon_theme", QT_TRANSLATE_NOOP("Settings", "Icon Theme"),  {},             Setting::String,    "",         avail_icon_themes(), ::set_icon_theme),
+#endif
         Setting("startup_dialog",QT_TRANSLATE_NOOP("Settings", "Show startup dialog"), {},  Setting::Bool,      true),
         Setting("timeline_scroll_horizontal",
                 QT_TRANSLATE_NOOP("Settings", "Horizontal Timeline Scroll"),
