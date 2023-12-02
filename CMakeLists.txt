@@ -47,9 +47,8 @@ else()
 endif()
 
 # CMake modules
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake" "${CMAKE_CURRENT_SOURCE_DIR}/external/cmake-modules")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(misc)
-include(GetGitRevisionDescription)
 
 # C++
 set(CMAKE_CXX_STANDARD 17)
@@ -59,10 +58,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(VERSION_NAKED ${PROJECT_VERSION})
 set(VERSION_SUFFIX "-git-" CACHE STRING "")
 
-if (VERSION_SUFFIX STREQUAL "-git-")
-    git_describe(GIT_DESC --tags)
-    if ( NOT ${GIT_DESC} MATCHES ".*NOTFOUND" )
-        set(PROJECT_VERSION ${GIT_DESC})
+if (VERSION_SUFFIX STREQUAL "-git-" AND EXISTS ${CMAKE_SOURCE_DIR}/.git)
+    # Probably a Git workspace; determine the revision.
+    find_package(Git QUIET)
+    if(GIT_FOUND)
+        exec_program(${GIT_EXECUTABLE} ${CMAKE_SOURCE_DIR}
+                ARGS "log -n 1 --pretty=format:\"%h\""
+            OUTPUT_VARIABLE GIT_REVISION)
+        message(STATUS "Git revision: ${GIT_REVISION}")
+        set(PROJECT_VERSION "${PROJECT_VERSION}-git-${GIT_REVISION}")
+    else()
+        message(STATUS "Git revision could not be determined")
     endif()
 elseif(VERSION_SUFFIX MATCHES "^\\..*")
     set(PROJECT_VERSION "${PROJECT_VERSION}${VERSION_SUFFIX}")
