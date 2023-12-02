@@ -366,8 +366,13 @@ bool GlaxnimateWindow::Private::save_document(bool force_dialog, bool export_opt
     {
         auto promise = QtConcurrent::run(
             [opts, comp=comp]{
-                QFile file(opts.filename);
-                return opts.format->save(file, opts.filename, comp, opts.settings);
+                QSaveFile file(opts.filename);
+                bool result = opts.format->save(file, opts.filename, comp, opts.settings);
+
+                if ( result )
+                    file.commit();
+
+                return result;
             });
 
         process_events(promise);
@@ -377,11 +382,13 @@ bool GlaxnimateWindow::Private::save_document(bool force_dialog, bool export_opt
     }
     else
     {
-        QFile file(opts.filename);
+        QSaveFile file(opts.filename);
         bool result = opts.format->save(file, opts.filename, comp, opts.settings);
 
-        if ( result )
+        if ( !result )
             return false;
+
+        file.commit();
     }
 
     if ( export_opts )
