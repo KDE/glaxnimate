@@ -21,6 +21,8 @@
 
 #include <KRecentFilesAction>
 
+#include "glaxnimate_settings.hpp"
+
 #include "io/lottie/lottie_html_format.hpp"
 #include "io/svg/svg_renderer.hpp"
 #include "io/svg/svg_html_format.hpp"
@@ -570,7 +572,7 @@ void GlaxnimateWindow::Private::save_frame_bmp()
     fd.selectFile(i18n("Frame%1.png", frame));
     fd.setAcceptMode(QFileDialog::AcceptSave);
     fd.setFileMode(QFileDialog::AnyFile);
-    fd.setOption(QFileDialog::DontUseNativeDialog, !app::settings::get<bool>("open_save", "native_dialog"));
+    fd.setOption(QFileDialog::DontUseNativeDialog, !GlaxnimateSettings::use_native_io_dialog());
 
     QString formats;
     for ( const auto& fmt : QImageWriter::supportedImageFormats() )
@@ -598,7 +600,7 @@ void GlaxnimateWindow::Private::save_frame_svg()
     fd.setAcceptMode(QFileDialog::AcceptSave);
     fd.setFileMode(QFileDialog::AnyFile);
     fd.setNameFilter(i18n("Scalable Vector Graphics (*.svg)"));
-    fd.setOption(QFileDialog::DontUseNativeDialog, !app::settings::get<bool>("open_save", "native_dialog"));
+    fd.setOption(QFileDialog::DontUseNativeDialog, !GlaxnimateSettings::use_native_io_dialog());
 
     if ( fd.exec() == QDialog::Rejected )
         return;
@@ -640,7 +642,7 @@ void GlaxnimateWindow::Private::validate_tgs()
 void GlaxnimateWindow::Private::autosave_timer_start(int mins)
 {
     if ( mins == -1 )
-        mins = app::settings::get<int>("open_save", "backup_frequency");
+        mins = GlaxnimateSettings::backup_frequency();
     autosave_timer_mins = mins;
     if ( autosave_timer_mins )
         autosave_timer = parent->startTimer(autosave_timer_mins * 1000 * 60);
@@ -658,7 +660,7 @@ void GlaxnimateWindow::Private::autosave(bool force)
 
 void GlaxnimateWindow::Private::autosave_timer_load_settings()
 {
-    int mins = app::settings::get<int>("open_save", "backup_frequency");
+    int mins = GlaxnimateSettings::backup_frequency();
     if ( mins != autosave_timer_mins )
     {
         if ( autosave_timer )

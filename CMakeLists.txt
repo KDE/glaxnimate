@@ -173,6 +173,7 @@ find_package(KF${KF_MAJOR} ${KF_DEP_VERSION}
     Archive
     Completion
     IconThemes
+    Config
 )
 if ( NOT ANDROID )
     find_package(KF${KF_MAJOR} ${KF_DEP_VERSION}

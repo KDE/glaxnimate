@@ -14,6 +14,7 @@
 #include <QUrl>
 #include <QScrollBar>
 
+#include "glaxnimate_settings.hpp"
 #include "glaxnimate_app.hpp"
 #include "utils/trace.hpp"
 #include "utils/tar.hpp"

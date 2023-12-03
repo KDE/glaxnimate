@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+    SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<kcfg
+    xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+    http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+    <kcfgfile/>
+    <group name="ui">
+        <entry name="icon_theme" type="String"></entry>
+        <entry name="startup_dialog" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="timeline_scroll_horizontal" type="Bool">
+            <default>false</default>
+        </entry>
+    </group>
+    <group name="defaults">
+        <entry name="width" type="Int">
+            <min>0</min>
+            <default>512</default>
+        </entry>
+        <entry name="height" type="Int">
+            <min>0</min>
+            <default>512</default>
+        </entry>
+        <entry name="fps" type="Double">
+            <min>1</min>
+            <max>1000</max>
+            <default>60</default>
+        </entry>
+        <entry name="duration" type="Double">
+            <min>0</min>
+            <default>3</default>
+        </entry>
+    </group>
+    <group name="open_save">
+        <entry name="backup_frequency" type="Int">
+            <default>5</default>
+        </entry>
+        <entry name="use_native_io_dialog" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="path" type="Path">
+            <default></default>
+        </entry>
+        <entry name="recent_files" type="StringList">
+            <default></default>
+        </entry>
+        <entry name="render_path" type="Path">
+            <default></default>
+        </entry>
+        <entry name="import_path" type="Path">
+            <default></default>
+        </entry>
+    </group>
+    <group name="scripting">
+        <entry name="script_max_history" type="Int">
+            <default>100</default>
+        </entry>
+        <entry name="script_history" type="StringList"></entry>
+    </group>
+    <group name="tools">
+        <entry name="shape_group" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="shape_fill" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="shape_stroke" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="edit_mask" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="color_main" type="Color">
+            <default>#ffffff</default>
+        </entry>
+        <entry name="color_secondary" type="Color">
+            <default>#000000</default>
+        </entry>
+        <entry name="stroke_width" type="Double">
+            <default>1.</default>
+        </entry>
+        <entry name="stroke_cap" type="Enum">
+            <choices name="Qt::PenCapStyle"></choices>
+            <default>Qt::RoundCap</default>
+        </entry>
+        <entry name="stroke_join" type="Enum">
+            <choices name="Qt::PenJoinStyle"></choices>
+            <default>Qt::RoundJoin</default>
+        </entry>
+        <entry name="stroke_miter" type="Double">
+            <default>4.</default>
+        </entry>
+        <entry name="star_type" type="Int">
+            <default>1</default>
+        </entry>
+        <entry name="star_ratio" type="Double">
+            <default>0.5</default>
+        </entry>
+        <entry name="star_points" type="Int">
+            <default>5</default>
+        </entry>
+    </group>
+</kcfg>
