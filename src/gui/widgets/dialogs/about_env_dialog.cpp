@@ -53,8 +53,11 @@ AboutEnvironmentDialog::AboutEnvironmentDialog(QWidget* parent)
 {
     d->setupUi(this);
 
-    // Paths
-    d->line_settings->setText(app::Application::instance()->data_file("settings.ini"));
+    QString config_file = GlaxnimateSettings::self()->config()->name();
+    if ( !QDir::isAbsolutePath(config_file) )
+        config_file = QStandardPaths::locate(QStandardPaths::GenericConfigLocation, config_file, QStandardPaths::LocateFile);
+    d->line_settings->setText(config_file);
+
     d->line_user_data->setText(app::Application::instance()->writable_data_path(""));
     d->line_backup->setText(GlaxnimateApp::instance()->backup_path());
 
