@@ -34,6 +34,8 @@ set(PROJECT_MANINTAINER "${PROJECT_MANINTAINER_NAME} <${PROJECT_MANINTAINER_EMAI
 
 option(MOBILE_UI "Build the mobile user interface" OFF)
 
+add_definitions(-DTRANSLATION_DOMAIN=\"glaxnimate\")
+
 if (ANDROID)
     set(MOBILE_UI ON)
 endif()
@@ -153,6 +155,7 @@ endif()
 
 find_package(KF${KF_MAJOR} ${KF_DEP_VERSION}
     REQUIRED COMPONENTS
+    I18n
     CoreAddons
     WidgetsAddons
     XmlGui
@@ -246,6 +249,8 @@ if (ANDROID)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/android/android/version.gradle.in ${CMAKE_BINARY_DIR}/version.gradle)
 endif()
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/deploy/org.mattbas.Glaxnimate.metainfo.xml DESTINATION share/metainfo)
+
+ki18n_install(po)
 
 # Packaging
 # -- see https://gitlab.kitware.com/cmake/community/-/wikis/doc/cpack/PackageGenerators

@@ -25,7 +25,6 @@ item_models/gradient_list_model.cpp
 item_models/document_model_base.cpp
 item_models/comp_filter_model.cpp
 
-
 settings/clipboard_settings.cpp
 settings/toolbar_settings.cpp
 settings/document_templates.cpp
@@ -47,61 +46,41 @@ tools/text_tool.cpp
 tools/draw_tool_base.cpp
 
 widgets/dialogs/io_status_dialog.cpp
-widgets/dialogs/io_status_dialog.ui
 widgets/dialogs/selection_manager.cpp
 widgets/dialogs/shape_parent_dialog.cpp
-widgets/dialogs/shape_parent_dialog.ui
 widgets/dialogs/resize_dialog.cpp
-widgets/dialogs/resize_dialog.ui
 widgets/dialogs/timing_dialog.cpp
-widgets/dialogs/timing_dialog.ui
 widgets/dialogs/plugin_ui_dialog.cpp
 widgets/dialogs/document_metadata_dialog.cpp
-widgets/dialogs/document_metadata_dialog.ui
 widgets/dialogs/trace_dialog.cpp
-widgets/dialogs/trace_dialog.ui
 widgets/dialogs/clipboard_inspector.cpp
 widgets/dialogs/color_quantization_dialog.cpp
-widgets/dialogs/color_quantization_dialog.ui
 widgets/dialogs/startup_dialog.cpp
-widgets/dialogs/startup_dialog.ui
 widgets/dialogs/export_image_sequence_dialog.cpp
-widgets/dialogs/export_image_sequence_dialog.ui
 widgets/dialogs/select_shape_dialog.cpp
-widgets/dialogs/select_shape_dialog.ui
 widgets/dialogs/follow_path_dialog.cpp
-widgets/dialogs/follow_path_dialog.ui
 widgets/dialogs/stalefiles_dialog.cpp
-widgets/dialogs/stalefiles_dialog.ui
 
 widgets/lottiefiles/lottiefiles_search_dialog.cpp
-widgets/lottiefiles/lottiefiles_search_dialog.ui
 widgets/lottiefiles/search_result.cpp
 widgets/lottiefiles/graphql.cpp
 
 widgets/timeline/keyframe_transition_widget.cpp
 widgets/timeline/keyframe_editor_widget.cpp
-widgets/timeline/keyframe_editor_widget.ui
 widgets/timeline/frame_controls_widget.cpp
-widgets/timeline/frame_controls_widget.ui
 widgets/timeline/timeline_widget.cpp
 widgets/timeline/compound_timeline_widget.cpp
-widgets/timeline/compound_timeline_widget.ui
 widgets/timeline/timeline_items.cpp
 widgets/timeline/timeline_treeview.cpp
 
 widgets/tools/shape_tool_widget.cpp
-widgets/tools/shape_tool_widget.ui
 widgets/tools/star_tool_widget.cpp
 widgets/tools/color_picker_widget.cpp
-widgets/tools/color_picker_widget.ui
 widgets/tools/fill_tool_widget.cpp
-widgets/tools/fill_tool_widget.ui
 widgets/tools/text_tool_widget.cpp
 
 widgets/canvas.cpp
 widgets/view_transform_widget.cpp
-widgets/view_transform_widget.ui
 widgets/flow_layout.cpp
 widgets/spin2d.cpp
 widgets/enum_combo.cpp
@@ -112,38 +91,68 @@ widgets/tab_bar/composition_tab_bar.cpp
 widgets/docks/layer_view.cpp
 
 widgets/settings/plugin_settings_widget.cpp
-widgets/settings/plugin_settings_widget.ui
 widgets/settings/toolbar_settings_widget.cpp
-widgets/settings/toolbar_settings_widget.ui
 
 widgets/shape_style/color_selector.cpp
-widgets/shape_style/color_selector.ui
 widgets/shape_style/stroke_style_widget.cpp
-widgets/shape_style/stroke_style_widget.ui
 widgets/shape_style/fill_style_widget.cpp
 widgets/shape_style/document_swatch_widget.cpp
-widgets/shape_style/document_swatch_widget.ui
 widgets/shape_style/gradient_list_widget.cpp
-widgets/shape_style/gradient_list_widget.ui
 
 widgets/font/font_model.cpp
 widgets/font/font_delegate.cpp
 widgets/font/font_preview_widget.cpp
-widgets/font/font_preview_widget.ui
 widgets/font/font_style_dialog.cpp
-widgets/font/font_style_dialog.ui
 widgets/font/font_style_widget.cpp
-widgets/font/font_style_widget.ui
 widgets/font/google_fonts_model.cpp
 widgets/font/google_fonts_widget.cpp
-widgets/font/google_fonts_widget.ui
 widgets/font/font_size_widget.cpp
-widgets/font/font_size_widget.ui
 widgets/font/external_font_widget.cpp
-widgets/font/external_font_widget.ui
 widgets/font/font_loader.cpp
 
 widgets/menus/animated_property_menu.cpp
+)
+
+set(SOURCES_UIS
+    widgets/dialogs/io_status_dialog.ui
+    widgets/dialogs/shape_parent_dialog.ui
+    widgets/dialogs/resize_dialog.ui
+    widgets/dialogs/timing_dialog.ui
+    widgets/dialogs/document_metadata_dialog.ui
+    widgets/dialogs/trace_dialog.ui
+    widgets/dialogs/color_quantization_dialog.ui
+    widgets/dialogs/startup_dialog.ui
+    widgets/dialogs/export_image_sequence_dialog.ui
+    widgets/dialogs/select_shape_dialog.ui
+    widgets/dialogs/follow_path_dialog.ui
+    widgets/dialogs/stalefiles_dialog.ui
+
+    widgets/lottiefiles/lottiefiles_search_dialog.ui
+
+    widgets/timeline/keyframe_editor_widget.ui
+    widgets/timeline/frame_controls_widget.ui
+    widgets/timeline/compound_timeline_widget.ui
+
+    widgets/tools/shape_tool_widget.ui
+    widgets/tools/color_picker_widget.ui
+    widgets/tools/fill_tool_widget.ui
+
+    widgets/view_transform_widget.ui
+
+    widgets/settings/plugin_settings_widget.ui
+    widgets/settings/toolbar_settings_widget.ui
+
+    widgets/shape_style/color_selector.ui
+    widgets/shape_style/stroke_style_widget.ui
+    widgets/shape_style/document_swatch_widget.ui
+    widgets/shape_style/gradient_list_widget.ui
+
+    widgets/font/font_preview_widget.ui
+    widgets/font/font_style_dialog.ui
+    widgets/font/font_style_widget.ui
+    widgets/font/google_fonts_widget.ui
+    widgets/font/font_size_widget.ui
+    widgets/font/external_font_widget.ui
 )
 
 if ( NOT MOBILE_UI )
@@ -152,15 +161,12 @@ if ( NOT MOBILE_UI )
         cli.cpp
 
         emoji/emoji_set_dialog.cpp
-        emoji/emoji_set_dialog.ui
 
         tools/color_picker.cpp
         tools/fill_tool.cpp
 
         widgets/dialogs/about_dialog.cpp
-        widgets/dialogs/about_dialog.ui
         widgets/dialogs/glaxnimate_window.cpp
-        widgets/dialogs/glaxnimate_window.ui
         widgets/dialogs/gw_impl_document.cpp
         widgets/dialogs/gw_impl_model.cpp
         widgets/dialogs/gw_impl_ui.cpp
@@ -169,14 +175,24 @@ if ( NOT MOBILE_UI )
 
         widgets/menus/node_menu.cpp
     )
+
+    list(APPEND SOURCES_UIS
+        emoji/emoji_set_dialog.ui
+
+        widgets/dialogs/about_dialog.ui
+        widgets/dialogs/glaxnimate_window.ui
+    )
 endif()
 
 if ( PYTHON_SCRIPTING_ENABLED )
     list(APPEND SOURCES
         gui_python.cpp
         widgets/docks/script_console.cpp
-        widgets/docks/script_console.ui
         widgets/docks/snippet_list_widget.cpp
+    )
+
+    list(APPEND SOURCES_UIS
+        widgets/docks/script_console.ui
         widgets/docks/snippet_list_widget.ui
     )
 endif()
@@ -195,11 +211,11 @@ configure_file(
     ${CMAKE_CURRENT_BINARY_DIR}/api_keys.hpp
 )
 
-
+ki18n_wrap_ui(SOURCES_UIS ${SOURCES_UIS})
 
 include_directories(${CMAKE_SOURCE_DIR}/external/QtAppSetup/src)
 include_directories(${CMAKE_SOURCE_DIR}/src/core)
-add_library(${LIB_NAME_GUI} OBJECT ${SOURCES})
+add_library(${LIB_NAME_GUI} OBJECT ${SOURCES} ${SOURCES_UIS})
 kde_target_enable_exceptions(${LIB_NAME_GUI} PUBLIC)
 target_link_libraries(
     ${LIB_NAME_GUI} PUBLIC
@@ -210,6 +226,7 @@ target_link_libraries(
     Qt${QT_MAJOR_VERSION}::Concurrent
     Qt${QT_MAJOR_VERSION}::Network
     Qt${QT_MAJOR_VERSION}::Svg
+    KF${KF_MAJOR}::I18n
     KF${KF_MAJOR}::WidgetsAddons
     KF${KF_MAJOR}::XmlGui
     KF${KF_MAJOR}::Completion
