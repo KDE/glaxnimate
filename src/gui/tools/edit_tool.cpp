@@ -14,6 +14,8 @@
 
 #include <QtColorWidgets/ColorDialog>
 
+#include <KLocalizedString>
+
 #include "app/application.hpp"
 
 #include "math/bezier/operations.hpp"
@@ -364,7 +366,7 @@ public:
 
         menu.addAction(use_menu->menuAction());
 
-        menu.addAction(QIcon::fromTheme("color-management"), tr("Stop Color..."), gradient_colors, [gradient_colors, index, dialog_parent]{
+        menu.addAction(QIcon::fromTheme("color-management"), i18nc("@action:inmenu", "Stop Color..."), gradient_colors, [gradient_colors, index, dialog_parent]{
             color_widgets::ColorDialog dialog(dialog_parent);
             auto colors = gradient_colors->colors.get();
             dialog.setColor(colors[index].second);
@@ -376,11 +378,11 @@ public:
         });
 
 
-        menu.addAction(QIcon::fromTheme("list-add"), tr("Add Stop"), gradient_colors, [gradient_colors, index]{
+        menu.addAction(QIcon::fromTheme("list-add"), i18nc("@action:inmenu", "Add Stop"), gradient_colors, [gradient_colors, index]{
             gradient_colors->split_segment(index);
         });
 
-        menu.addAction(QIcon::fromTheme("list-remove"), tr("Remove Stop"), gradient_colors, [gradient_colors, index]{
+        menu.addAction(QIcon::fromTheme("list-remove"), i18nc("@action:inmenu", "Remove Stop"), gradient_colors, [gradient_colors, index]{
             gradient_colors->remove_stop(index);
         });
 

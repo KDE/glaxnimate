@@ -18,6 +18,8 @@
 #include <QGraphicsSimpleTextItem>
 #include <QtGlobal>
 
+#include <KLocalizedString>
+
 #include "emoji_data.hpp"
 #include "style/scroll_area_event_filter.hpp"
 #include "emoji_set.hpp"
@@ -27,7 +29,7 @@ class glaxnimate::emoji::EmojiDialog::Private
 public:
     Private(EmojiDialog* parent) : parent(parent)
     {
-        parent->setWindowTitle(tr("Select Emoji"));
+        parent->setWindowTitle(i18nc("@title:window", "Select Emoji"));
 
         QVBoxLayout* lay = new QVBoxLayout(parent);
         parent->setLayout(lay);

@@ -10,6 +10,8 @@
 #include <QInputDialog>
 #include <QActionGroup>
 
+#include <KLocalizedString>
+
 #include "model/shapes/group.hpp"
 #include "model/shapes/image.hpp"
 #include "model/shapes/precomp_layer.hpp"
@@ -423,17 +425,17 @@ NodeMenu::NodeMenu(model::DocumentNode* node, GlaxnimateWindow* window, QWidget*
 
     if ( auto visual = qobject_cast<model::VisualNode*>(node) )
     {
-        togglable_action(this, &visual->visible, "view-visible", tr("Visible"));
-        togglable_action(this, &visual->locked, "object-locked", tr("Locked"));
+        togglable_action(this, &visual->visible, "view-visible", i18nc("@option:check", "Visible"));
+        togglable_action(this, &visual->locked, "object-locked", i18nc("@option:check", "Locked"));
         addSeparator();
 
         if ( auto shape = qobject_cast<model::ShapeElement*>(node) )
         {
-            addAction(QIcon::fromTheme("edit-delete-remove"), tr("Delete"), this, [shape]{
+            addAction(QIcon::fromTheme("edit-delete-remove"), i18nc("@action:inmenu", "Delete"), this, [shape]{
                 shape->push_command(new command::RemoveShape(shape, shape->owner()));
             });
 
-            addAction(QIcon::fromTheme("edit-duplicate"), tr("Duplicate"), this, [shape, window]{
+            addAction(QIcon::fromTheme("edit-duplicate"), i18nc("@action:inmenu", "Duplicate"), this, [shape, window]{
                 auto cmd = command::duplicate_shape(shape);
                 shape->push_command(cmd);
                 window->set_current_document_node(cmd->object());
@@ -446,7 +448,7 @@ NodeMenu::NodeMenu(model::DocumentNode* node, GlaxnimateWindow* window, QWidget*
             move_action(this, shape, command::ReorderCommand::MoveDown);
             move_action(this, shape, command::ReorderCommand::MoveBottom);
 
-            addAction(QIcon::fromTheme("selection-move-to-layer-above"), tr("Move to..."), this, [shape, window]{
+            addAction(QIcon::fromTheme("selection-move-to-layer-above"), i18nc("@action:inmenu", "Move to..."), this, [shape, window]{
                 if ( auto parent = ShapeParentDialog(window->model(), window).get_shape_parent() )
                 {
                     if ( shape->owner() != parent )
@@ -474,7 +476,7 @@ NodeMenu::NodeMenu(model::DocumentNode* node, GlaxnimateWindow* window, QWidget*
                     actions_text(this, text);
 
                 addSeparator();
-                addAction(QIcon::fromTheme("object-to-path"), tr("Convert to Path"), this, [window, shape]{ window->convert_to_path(shape);});
+                addAction(QIcon::fromTheme("object-to-path"), i18nc("@action:inmenu", "Convert to Path"), this, [window, shape]{ window->convert_to_path(shape);});
             }
         }
         else if ( qobject_cast<model::Composition*>(node) )
@@ -491,5 +493,5 @@ NodeMenu::NodeMenu(model::DocumentNode* node, GlaxnimateWindow* window, QWidget*
 
 
     addSeparator();
-    addAction(QIcon::fromTheme("speedometer"), tr("Change speed"), this, [node, parent]{ time_stretch_dialog(node, parent); });
+    addAction(QIcon::fromTheme("speedometer"), i18nc("@action:inmenu", "Change speed"), this, [node, parent]{ time_stretch_dialog(node, parent); });
 }

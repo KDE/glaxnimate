@@ -62,6 +62,8 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
 #include <QPalette>
 #include <QClipboard>
 
+#include <KLocalizedString>
+
 #include "app/settings/settings.hpp"
 #include "app/settings/palette_settings.hpp"
 #include "app/settings/keyboard_shortcuts.hpp"
@@ -165,57 +167,55 @@ void GlaxnimateApp::on_initialize_settings()
     using namespace app::settings;
     QString curr_lang = app::TranslationService::instance().current_language_code();
 
-    Settings::instance().add_group("ui", QT_TRANSLATE_NOOP("Settings", "User Interface"), "preferences-desktop-theme", {
+    Settings::instance().add_group("ui", i18nc("@title settings group", "User Interface"), "preferences-desktop-theme", {
         //      slug            Label/Tooltip                                               Type                default     choices             side effects
         Setting("language",
-                QT_TRANSLATE_NOOP("Settings", "Language"),
-                QT_TRANSLATE_NOOP("Settings", "Interface Language"),                        Setting::String,    curr_lang,  avail_languages(),  set_language),
-#if (!(defined(Q_OS_WIN) || defined(Q_OS_MAC)))
-        Setting("icon_theme", QT_TRANSLATE_NOOP("Settings", "Icon Theme"),  {},             Setting::String,    "",         avail_icon_themes(), ::set_icon_theme),
-#endif
-        Setting("startup_dialog",QT_TRANSLATE_NOOP("Settings", "Show startup dialog"), {},  Setting::Bool,      true),
+                i18nc("@label:listbox", "Language"),
+                i18nc("@info:tooltip", "Interface Language"),                        Setting::String,    curr_lang,  avail_languages(),  set_language),
+        Setting("icon_theme", i18nc("@label:listbox", "Icon Theme"),  {},             Setting::String,    "",         avail_icon_themes(), ::set_icon_theme),
+        // Setting("startup_dialog", i18nc("@option:check", "Show startup dialog"), {},  Setting::Bool,      true),
         Setting("timeline_scroll_horizontal",
-                QT_TRANSLATE_NOOP("Settings", "Horizontal Timeline Scroll"),
-                QT_TRANSLATE_NOOP("Settings", "If enabled, the timeline will scroll horizontally by default and vertically with Shift or Alt"),
+                i18nc("@option:check", "Horizontal Timeline Scroll"),
+                i18nc("@info:tooltip", "If enabled, the timeline will scroll horizontally by default and vertically with Shift or Alt"),
                                                                                             Setting::Bool,      false),
         Setting("layout",            {}, {},                                                Setting::Internal,  0),
         Setting("window_state",      {}, {},                                                Setting::Internal,  QByteArray{}),
         Setting("window_geometry",   {}, {},                                                Setting::Internal,  QByteArray{}),
         Setting("timeline_splitter", {}, {},                                                Setting::Internal,  QByteArray{}),
     });
-    Settings::instance().add_group("defaults", QT_TRANSLATE_NOOP("Settings", "New Animation Defaults"), "video-webm", {
+    Settings::instance().add_group("defaults", i18nc("@title settings group", "New Animation Defaults"), "video-webm", {
         Setting("width",
-            QT_TRANSLATE_NOOP("Settings", "Width"),    "",
+            i18nc("@label:spinbox", "Width"),    "",
             512,   0, 1000000),
         Setting("height",
-            QT_TRANSLATE_NOOP("Settings", "Height"),   "",
+            i18nc("@label:spinbox", "Height"),   "",
             512,   0, 1000000),
         Setting("fps",
-            QT_TRANSLATE_NOOP("Settings", "FPS"),
-            QT_TRANSLATE_NOOP("Settings", "Frames per second"),
+            i18nc("@label:spinbox", "FPS"),
+            i18nc("@info:tooltip", "Frames per second"),
             60.f, 0.f, 1000.f),
         Setting("duration",
-            QT_TRANSLATE_NOOP("Settings", "Duration"),
-            QT_TRANSLATE_NOOP("Settings", "Duration in seconds"),
+            i18nc("@label:spinbox", "Duration"),
+            i18nc("@info:tooltip", "Duration in seconds"),
             3.f, 0.f, 90000.f),
     });
-    Settings::instance().add_group("open_save", tr("Open / Save"), "kfloppy", {
-        Setting("max_recent_files", QT_TRANSLATE_NOOP("Settings", "Max Recent Files"), {},      5, 0, 16),
+    Settings::instance().add_group("open_save", i18nc("@title settings group", "Open / Save"), "kfloppy", {
+        Setting("max_recent_files", i18nc("@label:spinbox", "Max Recent Files"), {},      5, 0, 16),
         Setting("path",             {},         {},                        Setting::Internal,  QString{}),
         Setting("recent_files",     {},         {},                        Setting::Internal,  QStringList{}),
         Setting("backup_frequency",
-                QT_TRANSLATE_NOOP("Settings", "Backup Frequency"),
-                QT_TRANSLATE_NOOP("Settings", "How often to save a backup copy (in minutes)"),  5, 0, 60),
+                i18nc("@label:spinbox", "Backup Frequency"),
+                i18nc("@info:tooltip", "How often to save a backup copy (in minutes)"),  5, 0, 60),
         Setting("render_path",      {},         {},                        Setting::Internal,  QString{}),
         Setting("import_path",      {},         {},                        Setting::Internal,  QString{}),
-        Setting("native_dialog",    QT_TRANSLATE_NOOP("Settings", "Use system file dialog"), {}, Setting::Bool, true),
+        Setting("native_dialog",    i18nc("@option:check", "Use system file dialog"), {}, Setting::Bool, true),
     });
-    Settings::instance().add_group("scripting", QT_TRANSLATE_NOOP("Settings", "Scripting"), "utilities-terminal", {
+    Settings::instance().add_group("scripting", i18nc("@title settings group", "Scripting"), "utilities-terminal", {
         //      slug                Label       Tooltip                    Type                default
         Setting("history",          {},         {},                        Setting::Internal,  QStringList{}),
         Setting("max_history",      {},         {},                        Setting::Internal,  100),
     });
-    Settings::instance().add_group("tools", QT_TRANSLATE_NOOP("Settings", "Tools"), "tools", {
+    Settings::instance().add_group("tools", i18nc("@title settings group", "Tools"), "tools", {
         //      slug                Label       Tooltip                    Type                default
         Setting("shape_group",      {},         {},                        Setting::Internal,  true),
         Setting("shape_fill",       {},         {},                        Setting::Internal,  true),
