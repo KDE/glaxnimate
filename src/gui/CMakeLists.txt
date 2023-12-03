@@ -93,6 +93,9 @@ widgets/tab_bar/composition_tab_bar.cpp
 
 widgets/settings/plugin_settings_widget.cpp
 
+widgets/settings/plugin_settings_widget.ui
+widgets/settings/settingsdialog.cpp
+widgets/settings/settings_open_save.ui
 
 widgets/shape_style/color_selector.cpp
 widgets/shape_style/stroke_style_widget.cpp
@@ -242,6 +245,9 @@ configure_file(
 
 ki18n_wrap_ui(SOURCES_UIS ${SOURCES_UIS})
 
+kconfig_add_kcfg_files(SOURCES glaxnimatesettings.kcfgc)
+install(FILES glaxnimatesettings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
+
 include_directories(${CMAKE_SOURCE_DIR}/external/QtAppSetup/src)
 include_directories(${CMAKE_SOURCE_DIR}/src/core)
 add_library(${LIB_NAME_GUI} OBJECT ${SOURCES} ${SOURCES_UIS})
@@ -260,6 +266,7 @@ target_link_libraries(
     KF${KF_MAJOR}::XmlGui
     KF${KF_MAJOR}::Completion
     KF${KF_MAJOR}::IconThemes
+    KF${KF_MAJOR}::ConfigCore
 )
 
 if(TARGET KF6::BreezeIcons)

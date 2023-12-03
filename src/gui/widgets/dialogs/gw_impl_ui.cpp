@@ -39,6 +39,9 @@
 #include <KStyleManager>
 #endif
 
+
+#include "glaxnimatesettings.h"
+
 #include "tools/base.hpp"
 #include "model/shapes/group.hpp"
 #include "model/shapes/image.hpp"
@@ -64,6 +67,7 @@
 #include "widgets/docks/script_console.hpp"
 #include "widgets/docks/timelinedock.h"
 #include "widgets/lottiefiles/lottiefiles_search_dialog.hpp"
+#include "widgets/settings/settingsdialog.h"
 
 #include "widgets/view_transform_widget.hpp"
 #include "widgets/flow_layout.hpp"
@@ -141,6 +145,15 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     parent->actionCollection()->addAction(QStringLiteral("about_env"), aboutEnv);
 
     KStandardAction::preferences(parent, &GlaxnimateWindow::preferences, parent->actionCollection());
+
+    /*connect(ui.action_settings, &QAction::triggered, parent, [this]{
+        if (KConfigDialog::showDialog(QStringLiteral("settings"))) {
+            return;
+        }
+
+        auto *dialog = new SettingsDialog(parent);
+        dialog->show();
+    });*/
 
     // Main Window
     parent->setupGUI();
