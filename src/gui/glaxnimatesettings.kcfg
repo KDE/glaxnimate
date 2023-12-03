@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile/>
+  <group name="open_save">
+    <entry name="max_recent_files" type="Int">
+      <label>Bin treeview headers state.</label>
+      <default>5</default>
+    </entry>
+    <entry name="backup_frequency" type="Int">
+      <label>Bin view mode.</label>
+      <default>5</default>
+    </entry>
+    <entry name="use_native_io_dialog" type="Bool">
+      <label>Bin sorting column.</label>
+      <default>false</default>
+    </entry>
+  </group>
+</kcfg>

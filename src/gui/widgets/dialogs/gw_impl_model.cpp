@@ -15,6 +15,8 @@
 #include <QMimeType>
 #include <QMimeDatabase>
 
+#include "glaxnimatesettings.h"
+
 #include "app/settings/widget_builder.hpp"
 
 #include "command/shape_commands.hpp"
@@ -210,7 +212,7 @@ QStringList GlaxnimateWindow::Private::get_open_image_files(const QString& title
     dialog.setNameFilters(filters);
 
     dialog.setAcceptMode(QFileDialog::AcceptOpen);
-    dialog.setOption(QFileDialog::DontUseNativeDialog, !app::settings::get<bool>("open_save", "native_dialog"));
+    dialog.setOption(QFileDialog::DontUseNativeDialog, !GlaxnimateSettings::use_native_io_dialog());
 
     if ( multiple )
         dialog.setFileMode(QFileDialog::ExistingFiles);

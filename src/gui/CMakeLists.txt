@@ -115,6 +115,8 @@ widgets/settings/plugin_settings_widget.cpp
 widgets/settings/plugin_settings_widget.ui
 widgets/settings/toolbar_settings_widget.cpp
 widgets/settings/toolbar_settings_widget.ui
+widgets/settings/settingsdialog.cpp
+widgets/settings/settings_open_save.ui
 
 widgets/shape_style/color_selector.cpp
 widgets/shape_style/color_selector.ui
@@ -195,7 +197,8 @@ configure_file(
     ${CMAKE_CURRENT_BINARY_DIR}/api_keys.hpp
 )
 
-
+kconfig_add_kcfg_files(SOURCES glaxnimatesettings.kcfgc)
+install(FILES glaxnimatesettings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
 
 include_directories(${CMAKE_SOURCE_DIR}/external/QtAppSetup/src)
 include_directories(${CMAKE_SOURCE_DIR}/src/core)
@@ -210,9 +213,11 @@ target_link_libraries(
     Qt${QT_MAJOR_VERSION}::Concurrent
     Qt${QT_MAJOR_VERSION}::Network
     Qt${QT_MAJOR_VERSION}::Svg
+    KF${KF_MAJOR}::I18n
     KF${KF_MAJOR}::WidgetsAddons
     KF${KF_MAJOR}::XmlGui
     KF${KF_MAJOR}::Completion
+    KF${KF_MAJOR}::ConfigCore
 )
 
 if ( NOT ANDROID )

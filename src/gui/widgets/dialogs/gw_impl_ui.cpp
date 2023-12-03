@@ -20,6 +20,8 @@
 #include <KActionCollection>
 #include <KShortcutsDialog>
 
+#include "glaxnimatesettings.h"
+
 #include "app/settings/keyboard_shortcuts.hpp"
 
 #include "tools/base.hpp"
@@ -41,6 +43,7 @@
 #include "widgets/dialogs/trace_dialog.hpp"
 #include "widgets/dialogs/startup_dialog.hpp"
 #include "widgets/lottiefiles/lottiefiles_search_dialog.hpp"
+#include "widgets/settings/settingsdialog.h"
 
 #include "widgets/view_transform_widget.hpp"
 #include "widgets/flow_layout.hpp"
@@ -305,6 +308,15 @@ void GlaxnimateWindow::Private::init_actions()
     connect(ui.action_open_lottiefiles, &QAction::triggered, parent, [this]{import_from_lottiefiles();});
     connect(ui.action_shortcuts, &QAction::triggered, parent, [this]{
         KShortcutsDialog::showDialog(parent->actionCollection(), KShortcutsEditor::LetterShortcutsAllowed, this->parent);
+    });
+
+    connect(ui.action_settings, &QAction::triggered, parent, [this]{
+        if (KConfigDialog::showDialog(QStringLiteral("settings"))) {
+            return;
+        }
+
+        auto *dialog = new SettingsDialog(parent);
+        dialog->show();
     });
 
     // Undo Redo
@@ -1026,7 +1038,7 @@ void GlaxnimateWindow::Private::most_recent_file(const QString& s)
     recent_files.push_front(s);
     ui.action_open_last->setEnabled(true);
 
-    int max = app::settings::get<int>("open_save", "max_recent_files");
+    int max = GlaxnimateSettings::max_recent_files();
     if ( recent_files.size() > max )
         recent_files.erase(recent_files.begin() + max, recent_files.end());
 

@@ -148,11 +148,13 @@ endif()
 
 find_package(KF${KF_MAJOR} ${KF_DEP_VERSION}
     REQUIRED COMPONENTS
+    I18n
     CoreAddons
     WidgetsAddons
     XmlGui
     Archive
     Completion
+    Config
 )
 if ( NOT ANDROID )
     find_package(KF${KF_MAJOR} ${KF_DEP_VERSION}
