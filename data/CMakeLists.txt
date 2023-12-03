@@ -176,27 +176,7 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/templates DESTINATION ${CMAKE_CURRENT_BINA
 install(DIRECTORY templates DESTINATION ${DATA_INSTALL})
 
 # Translation
-include(../cmake/qt.cmake)
 set(ALL_SOURCE_DIRECTORIES ${CMAKE_SOURCE_DIR}/src)
-create_qt_linguist_translations(
-    TARGET translations
-    TRANSLATIONS
-    translations/glaxnimate_en_US.ts
-    translations/glaxnimate_en_GB.ts
-    translations/glaxnimate_es.ts
-    translations/glaxnimate_it.ts
-    translations/glaxnimate_de.ts
-    translations/glaxnimate_fr.ts
-    translations/glaxnimate_zh_CN.ts
-    DESTINATION
-    ${CMAKE_CURRENT_BINARY_DIR}/translations/
-    SOURCES
-    ${CMAKE_SOURCE_DIR}/src
-    ${CMAKE_SOURCE_DIR}/external
-)
-if(INSTALL_TRANSLATIONS)
-    install(FILES ${LINGUIST_OUTPUT_FILES} DESTINATION ${DATA_INSTALL}/translations/)
-endif()
 
 # Desktop
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/glaxnimate.in.desktop ${CMAKE_CURRENT_BINARY_DIR}/glaxnimate.desktop)
