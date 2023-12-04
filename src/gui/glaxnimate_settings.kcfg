@@ -17,15 +17,17 @@
     <group name="defaults">
         <entry name="width" type="Int">
             <min>0</min>
+            <max>999999</max>
             <default>512</default>
         </entry>
         <entry name="height" type="Int">
             <min>0</min>
+            <max>999999</max>
             <default>512</default>
         </entry>
         <entry name="fps" type="Double">
             <min>1</min>
-            <max>1000</max>
+            <max>999</max>
             <default>60</default>
         </entry>
         <entry name="duration" type="Double">
