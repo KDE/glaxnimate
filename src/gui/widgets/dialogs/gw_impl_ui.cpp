@@ -20,7 +20,7 @@
 #include <KActionCollection>
 #include <KShortcutsDialog>
 
-#include "glaxnimatesettings.h"
+#include "glaxnimate_settings.hpp"
 
 #include "app/settings/keyboard_shortcuts.hpp"
 
@@ -43,7 +43,7 @@
 #include "widgets/dialogs/trace_dialog.hpp"
 #include "widgets/dialogs/startup_dialog.hpp"
 #include "widgets/lottiefiles/lottiefiles_search_dialog.hpp"
-#include "widgets/settings/settingsdialog.h"
+#include "widgets/settings/settings_dialog.hpp"
 
 #include "widgets/view_transform_widget.hpp"
 #include "widgets/flow_layout.hpp"
@@ -315,8 +315,8 @@ void GlaxnimateWindow::Private::init_actions()
             return;
         }
 
-        auto *dialog = new SettingsDialog(parent);
-        dialog->show();
+        SettingsDialog dialog(parent);
+        dialog.exec();
     });
 
     // Undo Redo

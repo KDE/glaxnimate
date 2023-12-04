@@ -19,7 +19,7 @@
 #include <QtGlobal>
 #include <QNetworkReply>
 
-#include "glaxnimatesettings.h"
+#include "glaxnimate_settings.hpp"
 
 #include "io/lottie/lottie_html_format.hpp"
 #include "io/svg/svg_renderer.hpp"

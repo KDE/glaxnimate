@@ -115,8 +115,7 @@ widgets/settings/plugin_settings_widget.cpp
 widgets/settings/plugin_settings_widget.ui
 widgets/settings/toolbar_settings_widget.cpp
 widgets/settings/toolbar_settings_widget.ui
-widgets/settings/settingsdialog.cpp
-widgets/settings/settings_open_save.ui
+widgets/settings/settings_dialog.cpp
 
 widgets/shape_style/color_selector.cpp
 widgets/shape_style/color_selector.ui
@@ -197,8 +196,8 @@ configure_file(
     ${CMAKE_CURRENT_BINARY_DIR}/api_keys.hpp
 )
 
-kconfig_add_kcfg_files(SOURCES glaxnimatesettings.kcfgc)
-install(FILES glaxnimatesettings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
+kconfig_add_kcfg_files(SOURCES glaxnimate_settings.kcfgc)
+install(FILES glaxnimate_settings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
 
 include_directories(${CMAKE_SOURCE_DIR}/external/QtAppSetup/src)
 include_directories(${CMAKE_SOURCE_DIR}/src/core)
