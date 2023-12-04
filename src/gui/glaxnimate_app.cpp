@@ -10,6 +10,7 @@
 
 #include <QDir>
 #include <QStandardPaths>
+#include "glaxnimate_settings.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
@@ -168,8 +169,6 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
 }
 
 #endif
-
-
 
 QString GlaxnimateApp::temp_path()
 {

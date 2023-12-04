@@ -1237,14 +1237,6 @@ void GlaxnimateWindow::Private::init_menus()
     parent->unplugActionList( "view_actionlist" );
     parent->plugActionList( "view_actionlist", view_actions );
 
-    // Menu Toolbars
-    /*for ( QToolBar* wid : parent->findChildren<QToolBar*>() )
-    {
-        QAction* act = wid->toggleViewAction();
-        ui.menu_toolbars->addAction(act);
-        wid->setStyle(&dock_style);
-    }*/
-
     // Menu Templates
     init_template_menu();
 

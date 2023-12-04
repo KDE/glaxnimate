@@ -244,7 +244,7 @@ configure_file(
 
 ki18n_wrap_ui(SOURCES_UIS ${SOURCES_UIS})
 
-kconfig_add_kcfg_files(SOURCES glaxnimate_settings.kcfgc)
+kconfig_add_kcfg_files(SOURCES GENERATE_MOC glaxnimate_settings.kcfgc)
 install(FILES glaxnimate_settings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
 
 include_directories(${CMAKE_SOURCE_DIR}/external/QtAppSetup/src)
