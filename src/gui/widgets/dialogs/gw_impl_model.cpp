@@ -15,7 +15,7 @@
 #include <QMimeType>
 #include <QMimeDatabase>
 
-#include "glaxnimatesettings.h"
+#include "glaxnimate_settings.hpp"
 
 #include "app/settings/widget_builder.hpp"
 

@@ -40,7 +40,7 @@
 #endif
 
 
-#include "glaxnimatesettings.h"
+#include "glaxnimate_settings.hpp"
 
 #include "tools/base.hpp"
 #include "model/shapes/group.hpp"
@@ -67,7 +67,7 @@
 #include "widgets/docks/script_console.hpp"
 #include "widgets/docks/timelinedock.h"
 #include "widgets/lottiefiles/lottiefiles_search_dialog.hpp"
-#include "widgets/settings/settingsdialog.h"
+#include "widgets/settings/settings_dialog.hpp"
 
 #include "widgets/view_transform_widget.hpp"
 #include "widgets/flow_layout.hpp"
@@ -151,8 +151,8 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
             return;
         }
 
-        auto *dialog = new SettingsDialog(parent);
-        dialog->show();
+        SettingsDialog dialog(parent);
+        dialog.exec();
     });*/
 
     // Main Window
