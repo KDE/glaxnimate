@@ -257,9 +257,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     connect(d->color_scheme_view->selectionModel(), &QItemSelectionModel::currentChanged, apply, [apply]{apply->setEnabled(true);});
 
     const QStringList dirPaths =
-        QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("color-schemes"), QStandardPaths::LocateDirectory);
+        QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
+                                  QStringLiteral("color-schemes"), QStandardPaths::LocateDirectory);
 
     qDebug() <<" ===============";
+    qDebug() << QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
     std::map<QString, QString> map;
     for (const QString &dirPath : dirPaths)
     {
