@@ -19,6 +19,7 @@
 #include <KConfigSkeleton>
 #include <KLazyLocalizedString>
 #include <KColorSchemeManager>
+#include <KColorSchemeModel>
 
 #include "QtColorWidgets/ColorSelector"
 
@@ -74,10 +75,14 @@ public:
 
     void add_item_widget(const KConfigSkeletonItem* item, QWidget* widget, const KLazyLocalizedString& label_text, const KLazyLocalizedString& tooltip)
     {
-        QLabel* label = new QLabel(this);
         widget->setObjectName(QStringLiteral("kcfg_%1").arg(item->name()));
+        add_widget(widget, label_text, tooltip);
+    }
+
+    void add_widget(QWidget* widget, const KLazyLocalizedString& label_text, const KLazyLocalizedString& tooltip)
+    {
+        QLabel* label = new QLabel(this);
         label->setBuddy(widget);
-        label->setObjectName(QStringLiteral("label_%1").arg(item->name()));
         layout->addRow(label, widget);
         entries.push_back({label_text, tooltip, label, widget});
         entries.back().retranslate();
@@ -161,41 +166,46 @@ public:
         return *this;
     }
 
-    void commit()
+    KPageWidgetItem* commit()
     {
         page->page = parent->addPage(page, page->title.toString(), icon);
+        return page->page;
+    }
+
+    AutoConfigBuilder& add_widget(QWidget* widget, const KLazyLocalizedString& label, const KLazyLocalizedString& tooltip = {})
+    {
+        page->add_widget(widget, label, tooltip);
+        return *this;
     }
 };
 
-QVariantMap avail_icon_themes()
+std::vector<std::pair<QString, QVariant>> avail_icon_themes()
 {
-    QVariantMap avail_icon_themes;
-    avail_icon_themes[ki18nc("Name of the default icon theme", "Glaxnimate Default").toString()] = QString();
+    std::map<QString, QVariant> found_themes;
     for ( QDir search : QIcon::themeSearchPaths() )
     {
         for ( const auto& avail : search.entryInfoList(QDir::Dirs|QDir::NoDotAndDotDot) )
         {
             QDir subdir(avail.filePath());
             if ( subdir.exists("index.theme") )
-                avail_icon_themes[avail.baseName()] = avail.baseName();
+                found_themes[avail.baseName()] = avail.baseName();
         }
     }
+
+    std::vector<std::pair<QString, QVariant>> avail_icon_themes;
+    avail_icon_themes.emplace_back(i18nc("Name of the default icon theme", "Glaxnimate Default"), QString());
+    avail_icon_themes.insert(avail_icon_themes.end(), found_themes.begin(), found_themes.end());
 
     return avail_icon_themes;
 }
 
-QComboBox* combo_from_choices(const QVariantMap& choices)
+QComboBox* combo_from_choices(const std::vector<std::pair<QString, QVariant>>& choices)
 {
     auto wid = new QComboBox();
-    // int index = 0;
-    // QVariant val = opt.get_variant(target);
-    for ( const QString& key : choices.keys() )
+    wid->setProperty("kcfg_property", QByteArray("currentText"));
+    for ( const auto& pair : choices )
     {
-        QVariant choice = choices[key];
-        wid->addItem(key, choice);
-        // if ( choice == val )
-            // wid->setCurrentIndex(index);
-        // index++;
+        wid->addItem(pair.first, pair.second);
     }
     return wid;
 }
@@ -206,8 +216,8 @@ class SettingsDialog::Private
 {
 public:
     KColorSchemeManager *color_scheme = nullptr;
-    KPageWidgetItem* color_scheme_page = nullptr;
-    QListView* color_scheme_view = nullptr;
+    KPageWidgetItem* ui_page = nullptr;
+    QComboBox* color_scheme_view = nullptr;
     app::widgets::NoCloseOnEnter ncoe;
 };
 
@@ -220,8 +230,26 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     KCoreConfigSkeleton* skeleton = GlaxnimateSettings::self();
 
-    AutoConfigBuilder(kli18nc("Settings", "User Interface"), "preferences-desktop-theme", skeleton, this)
+    d->color_scheme = new KColorSchemeManager(this);
+    d->color_scheme_view = new QComboBox();
+    d->color_scheme_view->setModel(d->color_scheme->model());
+    QString current_id = d->color_scheme->activeSchemeId();
+    for (int i = 1; i < d->color_scheme->model()->rowCount(); ++i)
+    {
+        QModelIndex index = d->color_scheme->model()->index(i, 0);
+        if ( index.data(KColorSchemeModel::IdRole).toString() == current_id )
+        {
+            d->color_scheme_view->setCurrentIndex(i);
+            break;
+        }
+    }
+
+    QPushButton *apply = buttonBox()->button(QDialogButtonBox::Apply);
+    connect(d->color_scheme_view, qOverload<int>(&QComboBox::activated), apply, [apply]{apply->setEnabled(true);});
+
+    d->ui_page = AutoConfigBuilder(kli18nc("Settings", "User Interface"), "preferences-desktop-theme", skeleton, this)
         .add_item_widget("icon_theme", combo_from_choices(avail_icon_themes()), kli18n("Icon Theme"))
+        .add_widget(d->color_scheme_view, kli18n("Color Scheme"))
         .add_item("startup_dialog", kli18n("Show startup dialog"))
         .add_item(
             "timeline_scroll_horizontal",
@@ -249,39 +277,17 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         .commit()
     ;
 
-    d->color_scheme = new KColorSchemeManager(this);
-    d->color_scheme_view = new QListView();
-    d->color_scheme_view->setModel(d->color_scheme->model());
-    d->color_scheme_page = addPage(d->color_scheme_view, i18nc("Settings", "Color Scheme"), "preferences-desktop-theme-global");
-    QPushButton *apply = buttonBox()->button(QDialogButtonBox::Apply);
-    connect(d->color_scheme_view->selectionModel(), &QItemSelectionModel::currentChanged, apply, [apply]{apply->setEnabled(true);});
-
-    const QStringList dirPaths =
-        QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
-                                  QStringLiteral("color-schemes"), QStandardPaths::LocateDirectory);
-
-    qDebug() <<" ===============";
-    qDebug() << QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
-    std::map<QString, QString> map;
-    for (const QString &dirPath : dirPaths)
-    {
-        qDebug() << dirPath;
-        const QDir dir(dirPath);
-        const QStringList fileNames = dir.entryList({QStringLiteral("*.colors")});
-        for (const auto &file : fileNames) {
-            qDebug() << file << dir.filePath(file);
-        }
-    }
-
 }
 
 SettingsDialog::~SettingsDialog() = default;
 
 void glaxnimate::gui::SettingsDialog::updateSettings()
 {
-    if ( currentPage() == d->color_scheme_page )
+    if ( currentPage() == d->ui_page )
     {
-        d->color_scheme->activateScheme(d->color_scheme_view->currentIndex());
+        d->color_scheme->activateScheme(
+            d->color_scheme->model()->index(d->color_scheme_view->currentIndex(), 0)
+        );
     }
     else
     {
