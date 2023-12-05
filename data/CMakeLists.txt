@@ -4,11 +4,9 @@
 set_directory_properties(PROPERTIES CLEAN_NO_CUSTOM 1)
 
 if ( ANDROID )
-
     # The breeze-icons package approach is inspired by https://invent.kde.org/frameworks/kirigami/-/blob/kf5/KF5Kirigami2Macros.cmake
     include(CMakeParseArguments)
     include(ExternalProject)
-
 
     function(android_package_breeze_icons)
         set(_multiValueArgs ICONS)
@@ -161,15 +159,17 @@ else()
     install(DIRECTORY icons/breeze-icons/icons DESTINATION ${DATA_INSTALL}/icons PATTERN *@* EXCLUDE)
     install(DIRECTORY icons/breeze-icons/icons-dark DESTINATION ${DATA_INSTALL}/icons PATTERN *@* EXCLUDE)
 
-    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/themes DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-    install(DIRECTORY themes DESTINATION ${DATA_INSTALL})
-
     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lib/python-lottie/lib/lottie DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/lib/)
     install(DIRECTORY lib/python-lottie/lib/lottie DESTINATION ${DATA_INSTALL}/lib/)
 
     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/emoji DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
     install(DIRECTORY emoji DESTINATION ${DATA_INSTALL})
+
+    add_subdirectory(themes)
 endif()
+
+
+
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/palettes DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 install(DIRECTORY palettes DESTINATION ${DATA_INSTALL})
