@@ -232,8 +232,6 @@ bool GlaxnimateApp::event(QEvent *event)
 
 #endif
 
-
-
 QString GlaxnimateApp::temp_path()
 {
     QDir tempdir = QDir::temp();

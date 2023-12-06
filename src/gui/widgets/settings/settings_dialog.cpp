@@ -21,6 +21,7 @@
 #include <KColorSchemeManager>
 #include <KColorSchemeModel>
 #include <KLanguageButton>
+#include <KShortcutsEditor>
 
 #include "QtColorWidgets/ColorSelector"
 
@@ -185,14 +186,16 @@ public:
 class SettingsDialog::Private
 {
 public:
-    KColorSchemeManager *color_scheme = nullptr;
+    KColorSchemeManager* color_scheme = nullptr;
     KPageWidgetItem* ui_page = nullptr;
     QComboBox* color_scheme_view = nullptr;
+    KShortcutsEditor* shortcut_editor = nullptr;
+    KPageWidgetItem* shortcuts_page = nullptr;
 
     app::widgets::NoCloseOnEnter ncoe;
 };
 
-SettingsDialog::SettingsDialog(QWidget *parent)
+SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
     : KConfigDialog(parent, QStringLiteral("settings"), GlaxnimateSettings::self()),
     d(std::make_unique<Private>())
 {
@@ -250,6 +253,16 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         .commit()
     ;
 
+    d->shortcut_editor = new KShortcutsEditor(
+        this,
+        KShortcutsEditor::AllActions,
+        KShortcutsEditor::LetterShortcutsAllowed
+    );
+    d->shortcut_editor->addCollection(parent->actionCollection());
+    connect(d->shortcut_editor, &KShortcutsEditor::keyChange, apply, [apply]{apply->setEnabled(true);});
+
+    d->shortcuts_page = addPage(d->shortcut_editor, i18n("Keyboard Shortcuts"), QStringLiteral("input-keyboard"));
+
 }
 
 SettingsDialog::~SettingsDialog() = default;
@@ -261,6 +274,13 @@ void glaxnimate::gui::SettingsDialog::updateSettings()
         d->color_scheme->activateScheme(
             d->color_scheme->model()->index(d->color_scheme_view->currentIndex(), 0)
         );
+        KConfigDialog::updateSettings();
+    }
+    else if ( currentPage() == d->shortcuts_page )
+    {
+        auto group = GlaxnimateSettings::self()->config()->group(QStringLiteral("Shortcuts"));
+        d->shortcut_editor->writeConfiguration(&group);
+        d->shortcut_editor->commit();
     }
     else
     {
