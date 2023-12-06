@@ -20,6 +20,7 @@
 #include <KLazyLocalizedString>
 #include <KColorSchemeManager>
 #include <KColorSchemeModel>
+#include <KLanguageButton>
 
 #include "QtColorWidgets/ColorSelector"
 
@@ -220,6 +221,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     d->ui_page = AutoConfigBuilder(kli18nc("Settings", "User Interface"), "preferences-desktop-theme", skeleton, this)
         .add_item_widget("icon_theme", new IconThemeCombo(), kli18n("Icon Theme"))
         .add_widget(d->color_scheme_view, kli18n("Color Scheme"))
+        // TODO check if it works once i18n transition is finished
+        .add_widget(new KLanguageButton(), kli18n("Language"))
         .add_item("startup_dialog", kli18n("Show startup dialog"))
         .add_item(
             "timeline_scroll_horizontal",
