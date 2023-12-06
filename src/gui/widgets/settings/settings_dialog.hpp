@@ -9,6 +9,7 @@
 
 #include <memory>
 #include <KConfigDialog>
+#include <KXmlGuiWindow>
 
 namespace glaxnimate::gui {
 
@@ -17,7 +18,7 @@ class SettingsDialog : public KConfigDialog
     Q_OBJECT
 
 public:
-    SettingsDialog(QWidget *parent);
+    SettingsDialog(KXmlGuiWindow *parent);
     ~SettingsDialog();
 
 protected:

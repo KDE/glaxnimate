@@ -204,9 +204,9 @@ void GlaxnimateApp::on_initialize_settings()
     load_themes(this, palette_settings.get());
     app::settings::Settings::instance().add_group(std::move(palette_settings));
 
-    auto sc_settings = std::make_unique<app::settings::ShortcutSettings>();
-    shortcut_settings = sc_settings.get();
-    app::settings::Settings::instance().add_group(std::move(sc_settings));
+    // auto sc_settings = std::make_unique<app::settings::ShortcutSettings>();
+    // shortcut_settings = sc_settings.get();
+    // app::settings::Settings::instance().add_group(std::move(sc_settings));
 
     app::settings::Settings::instance().add_group(std::make_unique<settings::ApiCredentials>());
 
@@ -244,8 +244,6 @@ bool GlaxnimateApp::event(QEvent *event)
 }
 
 #endif
-
-
 
 QString GlaxnimateApp::temp_path()
 {

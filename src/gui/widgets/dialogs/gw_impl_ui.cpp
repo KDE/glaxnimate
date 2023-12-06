@@ -146,6 +146,9 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     if ( restore_state )
         init_restore_state();
 
+    auto group = GlaxnimateSettings::self()->config()->group(QStringLiteral("Shortcuts"));
+    parent->actionCollection()->readSettings(&group);
+
 
     // Toolbar settings
     parent->setToolButtonStyle(settings::ToolbarSettingsGroup::button_style);
@@ -920,23 +923,6 @@ void GlaxnimateWindow::Private::init_menus()
         wid->setStyle(&dock_style);
     }
 
-    // Load keyboard shortcuts
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_file);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_edit);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_tools);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_view);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_views);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_document);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_render_single_frame);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_playback);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_layers);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_new_layer);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_object);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_path);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_text);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_plugins);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_help);
-
     // Menu Templates
     init_template_menu();
 
@@ -1199,17 +1185,12 @@ void GlaxnimateWindow::Private::init_plugins()
         }
         QAction* qaction = plugin::PluginActionRegistry::instance().make_qaction(action);
         ui.menu_plugins->insertAction(insert, qaction);
-
-        app::settings::ShortcutGroup* group = GlaxnimateApp::instance()->shortcuts()->find_group(ui.menu_plugins->menuAction()->iconText());
-        if (group)
-            group->actions.push_back(GlaxnimateApp::instance()->shortcuts()->add_action(qaction));
     });
 
-    connect(&par, &plugin::PluginActionRegistry::action_removed, parent, [](plugin::ActionService* action) {
-        QString slug = "action_plugin_" + action->plugin()->data().name.toLower() + "_" + action->label.toLower();
-        app::settings::ShortcutAction* act = GlaxnimateApp::instance()->shortcuts()->action(slug);
-        GlaxnimateApp::instance()->shortcuts()->remove_action(act);
-    });
+    // TODO check how to add/remove from KXmlGui
+    // connect(&par, &plugin::PluginActionRegistry::action_removed, parent, [](plugin::ActionService* action) {
+        // QString slug = "action_plugin_" + action->plugin()->data().name.toLower() + "_" + action->label.toLower();
+    // });
 
     connect(
         &plugin::PluginRegistry::instance(),
