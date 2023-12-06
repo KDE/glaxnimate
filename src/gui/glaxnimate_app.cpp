@@ -10,6 +10,7 @@
 
 #include <QDir>
 #include <QStandardPaths>
+#include "glaxnimate_settings.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
@@ -69,6 +70,7 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
 #include "settings/plugin_settings_group.hpp"
 #include "settings/clipboard_settings.hpp"
 #include "settings/api_credentials.hpp"
+#include "settings/icon_theme.hpp"
 
 static QVariantMap avail_icon_themes()
 {
@@ -205,6 +207,9 @@ void GlaxnimateApp::on_initialize_settings()
 
     app::settings::Settings::instance().add_group(std::make_unique<settings::ApiCredentials>());
 
+    IconThemeManager::instance().set_theme_and_fallback(GlaxnimateSettings::self()->icon_theme());
+    connect(GlaxnimateSettings::self(), &GlaxnimateSettings::icon_theme_changed, &IconThemeManager::instance(), &IconThemeManager::set_theme);
+
 }
 
 void GlaxnimateApp::set_clipboard_data(QMimeData *data)
@@ -220,7 +225,7 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
 bool GlaxnimateApp::event(QEvent *event)
 {
     if ( event->type() == QEvent::ApplicationPaletteChange )
-        icon_theme_fixup();
+        IconThemeManager::instance().update_from_application_palette();
 
     return app::Application::event(event);
 }

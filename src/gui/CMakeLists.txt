@@ -29,6 +29,7 @@ settings/clipboard_settings.cpp
 
 settings/document_templates.cpp
 settings/api_credentials.cpp
+settings/icon_theme.cpp
 
 style/property_delegate.cpp
 style/dock_widget_style.cpp
@@ -95,6 +96,7 @@ widgets/settings/plugin_settings_widget.cpp
 widgets/settings/plugin_settings_widget.ui
 
 widgets/settings/settings_dialog.cpp
+widgets/settings/icon_theme_combo.cpp
 
 widgets/shape_style/color_selector.cpp
 widgets/shape_style/stroke_style_widget.cpp
@@ -244,7 +246,7 @@ configure_file(
 
 ki18n_wrap_ui(SOURCES_UIS ${SOURCES_UIS})
 
-kconfig_add_kcfg_files(SOURCES glaxnimate_settings.kcfgc)
+kconfig_add_kcfg_files(SOURCES GENERATE_MOC glaxnimate_settings.kcfgc)
 install(FILES glaxnimate_settings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
 
 include_directories(${CMAKE_SOURCE_DIR}/external/QtAppSetup/src)

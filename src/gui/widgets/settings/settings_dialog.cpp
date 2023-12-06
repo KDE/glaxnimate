@@ -25,6 +25,8 @@
 
 #include "app/widgets/no_close_on_enter.hpp"
 #include "glaxnimate_settings.hpp"
+#include "settings/icon_theme.hpp"
+#include "widgets/settings/icon_theme_combo.hpp"
 
 using namespace glaxnimate::gui;
 
@@ -136,8 +138,6 @@ protected:
     }
 };
 
-
-
 class AutoConfigBuilder
 {
 public:
@@ -179,37 +179,6 @@ public:
     }
 };
 
-std::vector<std::pair<QString, QVariant>> avail_icon_themes()
-{
-    std::map<QString, QVariant> found_themes;
-    for ( QDir search : QIcon::themeSearchPaths() )
-    {
-        for ( const auto& avail : search.entryInfoList(QDir::Dirs|QDir::NoDotAndDotDot) )
-        {
-            QDir subdir(avail.filePath());
-            if ( subdir.exists("index.theme") )
-                found_themes[avail.baseName()] = avail.baseName();
-        }
-    }
-
-    std::vector<std::pair<QString, QVariant>> avail_icon_themes;
-    avail_icon_themes.emplace_back(i18nc("Name of the default icon theme", "Glaxnimate Default"), QString());
-    avail_icon_themes.insert(avail_icon_themes.end(), found_themes.begin(), found_themes.end());
-
-    return avail_icon_themes;
-}
-
-QComboBox* combo_from_choices(const std::vector<std::pair<QString, QVariant>>& choices)
-{
-    auto wid = new QComboBox();
-    wid->setProperty("kcfg_property", QByteArray("currentText"));
-    for ( const auto& pair : choices )
-    {
-        wid->addItem(pair.first, pair.second);
-    }
-    return wid;
-}
-
 } // namespace
 
 class SettingsDialog::Private
@@ -218,6 +187,7 @@ public:
     KColorSchemeManager *color_scheme = nullptr;
     KPageWidgetItem* ui_page = nullptr;
     QComboBox* color_scheme_view = nullptr;
+
     app::widgets::NoCloseOnEnter ncoe;
 };
 
@@ -248,7 +218,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     connect(d->color_scheme_view, qOverload<int>(&QComboBox::activated), apply, [apply]{apply->setEnabled(true);});
 
     d->ui_page = AutoConfigBuilder(kli18nc("Settings", "User Interface"), "preferences-desktop-theme", skeleton, this)
-        .add_item_widget("icon_theme", combo_from_choices(avail_icon_themes()), kli18n("Icon Theme"))
+        .add_item_widget("icon_theme", new IconThemeCombo(), kli18n("Icon Theme"))
         .add_widget(d->color_scheme_view, kli18n("Color Scheme"))
         .add_item("startup_dialog", kli18n("Show startup dialog"))
         .add_item(

@@ -5,8 +5,13 @@
     xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
     http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
     <kcfgfile/>
+    <signal name="icon_theme_changed">
+        <argument type="String">icon_theme</argument>
+    </signal>
     <group name="ui">
-        <entry name="icon_theme" type="String"></entry>
+        <entry name="icon_theme" type="String">
+            <emit signal="icon_theme_changed" />
+        </entry>
         <entry name="startup_dialog" type="Bool">
             <default>true</default>
         </entry>
