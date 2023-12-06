@@ -10,6 +10,7 @@
 
 #include <QDir>
 #include <QStandardPaths>
+#include "glaxnimate_settings.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
@@ -70,42 +71,8 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
 #include "settings/clipboard_settings.hpp"
 #include "settings/toolbar_settings.hpp"
 #include "settings/api_credentials.hpp"
+#include "settings/icon_theme.hpp"
 
-static QVariantMap avail_icon_themes()
-{
-    QVariantMap avail_icon_themes;
-    avail_icon_themes[app::settings::Settings::tr("Glaxnimate Default")] = "";
-    for ( QDir search : QIcon::themeSearchPaths() )
-    {
-        for ( const auto& avail : search.entryInfoList(QDir::Dirs|QDir::NoDotAndDotDot) )
-        {
-            QDir subdir(avail.filePath());
-            if ( subdir.exists("index.theme") )
-                avail_icon_themes[avail.baseName()] = avail.baseName();
-        }
-    }
-
-    return avail_icon_themes;
-}
-
-static QString default_icon_theme()
-{
-    QPalette palette = QGuiApplication::palette();
-    if ( palette.color(QPalette::Button).value() < 100 )
-        return "icons-dark";
-    else
-        return "icons";
-}
-
-static void set_icon_theme(const QVariant& v)
-{
-    QString theme_name = v.toString();
-
-    if ( theme_name.isEmpty() )
-        theme_name = default_icon_theme();
-
-    QIcon::setThemeName(theme_name);
-}
 
 static QVariantMap avail_languages()
 {
@@ -122,19 +89,6 @@ static void set_language(const QVariant& v)
 {
     QString code = v.toString();
     app::TranslationService::instance().change_lang_code(code);
-}
-
-
-static void icon_theme_fixup()
-{
-    QString default_theme = default_icon_theme();
-    QIcon::setFallbackThemeName(default_theme);
-
-    QString old = QIcon::themeName();
-    if ( old == "icons" || old == "icons-dark" )
-        QIcon::setThemeName(default_theme);
-    else
-        set_icon_theme(old);
 }
 
 
@@ -179,7 +133,6 @@ void GlaxnimateApp::on_initialize_settings()
         Setting("language",
                 QT_TRANSLATE_NOOP("Settings", "Language"),
                 QT_TRANSLATE_NOOP("Settings", "Interface Language"),                        Setting::String,    curr_lang,  avail_languages(),  set_language),
-        Setting("icon_theme", QT_TRANSLATE_NOOP("Settings", "Icon Theme"),  {},             Setting::String,    "",         avail_icon_themes(), ::set_icon_theme),
         Setting("startup_dialog",QT_TRANSLATE_NOOP("Settings", "Show startup dialog"), {},  Setting::Bool,      true),
         Setting("timeline_scroll_horizontal",
                 QT_TRANSLATE_NOOP("Settings", "Horizontal Timeline Scroll"),
@@ -257,6 +210,9 @@ void GlaxnimateApp::on_initialize_settings()
 
     app::settings::Settings::instance().add_group(std::make_unique<settings::ApiCredentials>());
 
+    IconThemeManager::instance().set_theme_and_fallback(GlaxnimateSettings::self()->icon_theme());
+    connect(GlaxnimateSettings::self(), &GlaxnimateSettings::icon_theme_changed, &IconThemeManager::instance(), &IconThemeManager::set_theme);
+
 }
 
 app::settings::ShortcutSettings * GlaxnimateApp::shortcuts() const
@@ -282,7 +238,7 @@ void glaxnimate::gui::GlaxnimateApp::on_initialize_translations()
 bool GlaxnimateApp::event(QEvent *event)
 {
     if ( event->type() == QEvent::ApplicationPaletteChange )
-        icon_theme_fixup();
+        IconThemeManager::instance().update_from_application_palette();
 
     return app::Application::event(event);
 }
