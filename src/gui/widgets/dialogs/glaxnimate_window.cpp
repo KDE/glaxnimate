@@ -15,7 +15,6 @@
 #include <QSharedMemory>
 #include <QMenu>
 
-#include "app/widgets/settings_dialog.hpp"
 #include "app_info.hpp"
 #include "settings/clipboard_settings.hpp"
 #include "export_image_sequence_dialog.hpp"
@@ -118,12 +117,6 @@ void GlaxnimateWindow::showEvent(QShowEvent * event)
         d->started = true;
         d->view_fit();
     }
-}
-
-void GlaxnimateWindow::preferences()
-{
-    app::SettingsDialog(this).exec();
-    d->autosave_timer_load_settings();
 }
 
 void GlaxnimateWindow::closeEvent ( QCloseEvent* event )
