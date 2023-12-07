@@ -11,6 +11,7 @@
     <kcfgfile/>
     <include>QFontInfo</include>
     <include>api_keys.hpp</include>
+    <include>settings/base.hpp</include>
     <group name="ui">
         <entry name="icon_theme" type="String"></entry>
         <entry name="startup_dialog" type="Bool">
@@ -124,14 +125,6 @@
         </entry>
         <entry name="text_size" type="Double">
             <default code="true">QFontInfo(QFont()).pointSizeF()</default>
-        </entry>
-    </group>
-    <group name="api">
-        <entry name="google_fonts_url" type="String">
-            <default>https://www.googleapis.com/webfonts/v1/webfonts</default>
-        </entry>
-        <entry name="google_fonts_key" type="String">
-            <default code="true">API_KEY_GOOGLE_FONTS</default>
         </entry>
     </group>
 </kcfg>

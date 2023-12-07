@@ -182,6 +182,8 @@ class SettingsDialog::Private
 public:
     KPageWidgetItem* ui_page = nullptr;
 
+    QComboBox* color_scheme_view = nullptr;
+    std::map<KPageWidgetItem*, settings::CustomSettingsGroup*> custom_pages;
     app::widgets::NoCloseOnEnter ncoe;
 };
 
@@ -221,11 +223,24 @@ SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
         .add_item("use_native_io_dialog", kli18n("Use system file dialog"))
         .commit()
     ;
+
+    for ( const auto& group : GlaxnimateSettings::self()->custom_groups() )
+    {
+        auto page = addPage(group->make_widget(this), group->label().toString(), group->icon());
+        d->custom_pages[page] = group.get();
+    }
 }
 
 SettingsDialog::~SettingsDialog() = default;
 
 void glaxnimate::gui::SettingsDialog::updateSettings()
 {
-        KConfigDialog::updateSettings();
+    auto iter = d->custom_pages.find(currentPage());
+    if ( iter != d->custom_pages.end() )
+    {
+        iter->second->save(*GlaxnimateSettings::self()->config());
+        return;
+    }
+
+    KConfigDialog::updateSettings();
 }

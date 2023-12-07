@@ -24,7 +24,8 @@ static QString slugify(const QString& str)
 
 glaxnimate::gui::settings::ApiCredentials::ApiCredentials()
     : apis_{
-        {"Google Fonts", {
+        {"google_fonts", {
+            kli18n("Google Fonts"),
             QUrl("https://console.cloud.google.com/apis/credentials"),
             {
                 {"Token", "", API_KEY_GOOGLE_FONTS},
@@ -34,21 +35,23 @@ glaxnimate::gui::settings::ApiCredentials::ApiCredentials()
     }
 {}
 
-void glaxnimate::gui::settings::ApiCredentials::load ( QSettings & settings )
+void glaxnimate::gui::settings::ApiCredentials::load ( KConfig & settings )
 {
+    auto group = settings.group(slug());
     for ( auto& p : apis_ )
     {
         QString base = slugify(p.first) + "_";
         for ( auto& cred : p.second.credentials )
         {
             QString key = base + slugify(cred.name);
-            cred.value = settings.value(key, cred.value).toString();
+            cred.value = group.readEntry(key, cred.value);
         }
     }
 }
 
-void glaxnimate::gui::settings::ApiCredentials::save ( QSettings & settings )
+void glaxnimate::gui::settings::ApiCredentials::save ( KConfig & settings )
 {
+    auto group = settings.group(slug());
     for ( const auto& p : apis_ )
     {
         QString base = slugify(p.first) + "_";
@@ -56,7 +59,7 @@ void glaxnimate::gui::settings::ApiCredentials::save ( QSettings & settings )
         {
             QString key = base + slugify(cred.name);
             if ( !cred.value.isEmpty() )
-                settings.setValue(key, cred.value);
+                group.writeEntry(key, cred.value);
         }
     }
 }
@@ -69,7 +72,7 @@ QWidget * glaxnimate::gui::settings::ApiCredentials::make_widget ( QWidget * par
     for ( auto & api : apis_ )
     {
         auto group = new QGroupBox;
-        group->setTitle(api.first);
+        group->setTitle(api.second.name.toString());
         auto group_lay = new QFormLayout();
         group->setLayout(group_lay);
         lay->addWidget(group);
@@ -96,12 +99,15 @@ QWidget * glaxnimate::gui::settings::ApiCredentials::make_widget ( QWidget * par
     return widget;
 }
 
-
-
 QVariant glaxnimate::gui::settings::ApiCredentials::get_variant(const QString& setting) const
 {
     auto split = setting.split("/");
     return apis_.at(split[0]).credential(split[1]);
+}
+
+QString glaxnimate::gui::settings::ApiCredentials::value(const QString& api, const QString credential) const
+{
+    return apis_.at(api).credential(credential);
 }
 
 QString glaxnimate::gui::settings::ApiCredentials::Api::credential(const QString& name) const

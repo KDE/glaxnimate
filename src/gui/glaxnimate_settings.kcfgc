@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 File=glaxnimate_settings.kcfg
 ClassName=GlaxnimateSettings
+Inherits=glaxnimate::gui::settings::GlaxnimateSettingsBase
 Singleton=true
 Mutators=true
 HeaderExtension=hpp
