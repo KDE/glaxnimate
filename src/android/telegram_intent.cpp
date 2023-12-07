@@ -14,6 +14,7 @@
 
 #include <QApplication>
 
+#include <KLocalizedString>
 
 
 glaxnimate::android::TelegramIntent::Result glaxnimate::android::TelegramIntent::send_stickers(const QStringList& filenames, const QStringList& emoji)
