@@ -78,7 +78,7 @@ public:
     VisualNode* docnode_group_child(int index) const override;
     QIcon tree_icon() const override;
     static QIcon static_tree_icon();
-    static QString static_type_name_human() { return tr("Layer"); }
+    static QString static_type_name_human() { return i18n("Layer"); }
     void set_time(FrameTime t) override;
 
     /**

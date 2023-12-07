@@ -35,7 +35,7 @@ public:
 
     QString type_name_human() const override
     {
-        return tr("Path");
+        return i18n("Path");
     }
 
     math::bezier::Bezier to_bezier(FrameTime t) const override

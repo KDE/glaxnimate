@@ -143,11 +143,11 @@ QVariant item_models::PropertyModelSingle::headerData(int section, Qt::Orientati
         {
             case ColumnName:
                 if ( role == Qt::DisplayRole )
-                    return tr("Name");
+                    return i18n("Name");
                 break;
             case ColumnValue:
                 if ( role == Qt::DisplayRole )
-                    return tr("Value");
+                    return i18n("Value");
                 break;
         }
     }

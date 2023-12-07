@@ -15,7 +15,7 @@ QIcon glaxnimate::model::InflateDeflate::static_tree_icon()
 
 QString glaxnimate::model::InflateDeflate::static_type_name_human()
 {
-    return tr("Inflate and Deflate");
+    return i18n("Inflate and Deflate");
 }
 
 bool glaxnimate::model::InflateDeflate::process_collected() const

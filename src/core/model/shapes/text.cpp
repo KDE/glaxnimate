@@ -235,7 +235,7 @@ const QFontMetricsF & glaxnimate::model::Font::metrics() const
 
 QString glaxnimate::model::Font::type_name_human() const
 {
-    return tr("Font");
+    return i18n("Font");
 }
 
 QPainterPath glaxnimate::model::Font::path_for_glyph(quint32 glyph, glaxnimate::model::Font::CharDataCache& cache, bool fix_paint) const
@@ -252,7 +252,7 @@ QPainterPath glaxnimate::model::Font::path_for_glyph(quint32 glyph, glaxnimate::
 
 void glaxnimate::model::Font::from_qfont(const QFont& f)
 {
-    command::UndoMacroGuard g(tr("Change Font"), document());
+    command::UndoMacroGuard g(i18n("Change Font"), document());
     QFontInfo finfo(f);
     family.set_undoable(finfo.family());
     style.set_undoable(finfo.styleName());
@@ -486,7 +486,7 @@ QRectF glaxnimate::model::TextShape::local_bounding_rect(glaxnimate::model::Fram
 
 QString glaxnimate::model::TextShape::type_name_human() const
 {
-    return tr("Text");
+    return i18n("Text");
 }
 
 std::unique_ptr<glaxnimate::model::ShapeElement> glaxnimate::model::TextShape::to_path() const

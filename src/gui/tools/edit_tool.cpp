@@ -349,7 +349,7 @@ public:
         auto gradient_colors = item->gradient()->colors.get();
         auto doc = gradient->document();
 
-        QMenu* use_menu = new QMenu(tr("Gradient Colors"), &menu);
+        QMenu* use_menu = new QMenu(i18n("Gradient Colors"), &menu);
         use_menu->setIcon(QIcon::fromTheme("color-gradient"));
 
         for ( const auto& colors : doc->assets()->gradient_colors->values )

@@ -21,7 +21,7 @@ QIcon glaxnimate::model::Composition::tree_icon() const
 
 QString glaxnimate::model::Composition::type_name_human() const
 {
-    return tr("Composition");
+    return i18n("Composition");
 }
 
 bool glaxnimate::model::Composition::remove_if_unused(bool clean_lists)

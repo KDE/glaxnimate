@@ -177,11 +177,11 @@ bool settings::DocumentTemplates::save_as_template(model::Document* document)
 
     QString name_base = comp ? comp->name.get() : "";
     if ( name_base.isEmpty() )
-        name_base = tr("Template");
+        name_base = i18n("Template");
 
     // Find a nice name, avoiding duplicates
     QString name_full_template = DocumentTemplate::name_template(comp);
-    QString name_template = tr("%1 %2").arg(name_base);
+    QString name_template = i18n("%1 %2").arg(name_base);
     QString name = name_base;
     QString name_full = name_full_template.arg(name);
     for ( int count = 1; names.count(name_full); count++ )

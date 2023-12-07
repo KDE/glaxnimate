@@ -68,7 +68,7 @@ void IoStatusDialog::_on_completed(bool success)
     {
         d->icon_label->setPixmap(QIcon::fromTheme("dialog-error").pixmap(64));
         d->group_box->show();
-        d->list_widget->addItem(new QListWidgetItem(QIcon::fromTheme("data-error"), tr("Operation Failed")));
+        d->list_widget->addItem(new QListWidgetItem(QIcon::fromTheme("data-error"), i18n("Operation Failed")));
     }
     else
     {

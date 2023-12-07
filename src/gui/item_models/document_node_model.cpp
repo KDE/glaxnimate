@@ -250,15 +250,15 @@ QVariant item_models::DocumentNodeModel::headerData(int section, Qt::Orientation
         switch ( section )
         {
             case ColumnColor:
-                return tr("Color");
+                return i18n("Color");
             case ColumnName:
-                return tr("Name");
+                return i18n("Name");
             case ColumnVisible:
-                return tr("Visible");
+                return i18n("Visible");
             case ColumnLocked:
-                return tr("Locked");
+                return i18n("Locked");
             case ColumnUsers:
-                return tr("#");
+                return i18n("#");
         }
     }
 

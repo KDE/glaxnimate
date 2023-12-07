@@ -139,7 +139,7 @@ void timeline::KeyframeSplitItem::mouseReleaseEvent(QGraphicsSceneMouseEvent * e
 
         if ( !items.empty() )
         {
-            command::UndoMacroGuard guard(tr("Drag Keyframes"), line()->object()->document());
+            command::UndoMacroGuard guard(i18n("Drag Keyframes"), line()->object()->document());
 
             for ( const auto& p : items )
                 p.first->keyframes_dragged(p.second);
@@ -534,7 +534,7 @@ void glaxnimate::gui::timeline::AnimatableItem::cycle_keyframe_transition(model:
     }
 
     {
-        command::UndoMacroGuard guard(tr("Update keyframe transition"), animatable->object()->document());
+        command::UndoMacroGuard guard(i18n("Update keyframe transition"), animatable->object()->document());
         if ( index > 0 )
         {
             auto kf_before = animatable->keyframe(index - 1);

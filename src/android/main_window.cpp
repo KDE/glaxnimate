@@ -408,17 +408,17 @@ public:
         layout_tools->addItem(toolbar_spacers.back());
 
         layout_tools->addWidget(action_button_exclusive_opt(view_action(
-            QIcon::fromTheme("player-time"), tr("Timeline"),
+            QIcon::fromTheme("player-time"), i18n("Timeline"),
             view_actions, ui.time_container, true
         )));
 
         layout_tools->addWidget(action_button_exclusive_opt(view_action(
-            QIcon::fromTheme("fill-color"), tr("Fill Style"),
+            QIcon::fromTheme("fill-color"), i18n("Fill Style"),
             view_actions, ui.fill_style_widget
         )));
 
         layout_tools->addWidget(action_button_exclusive_opt(view_action(
-            QIcon::fromTheme("object-stroke-style"), tr("Stroke Style"),
+            QIcon::fromTheme("object-stroke-style"), i18n("Stroke Style"),
             view_actions, ui.stroke_style_widget
         )));
     }
@@ -448,29 +448,29 @@ public:
 
     void selection_raise()
     {
-        selection_move(command::ReorderCommand::MoveUp, tr("Raise"));
+        selection_move(command::ReorderCommand::MoveUp, i18n("Raise"));
     }
 
     void selection_lower()
     {
-        selection_move(command::ReorderCommand::MoveDown, tr("Lower"));
+        selection_move(command::ReorderCommand::MoveDown, i18n("Lower"));
     }
 
     void init_toolbar_actions()
     {
         // Clipboard
         layout_actions->addWidget(action_button(
-            document_action_public(QIcon::fromTheme("edit-cut"), tr("Cut"), &MainWindow::cut)
+            document_action_public(QIcon::fromTheme("edit-cut"), i18n("Cut"), &MainWindow::cut)
         ));
         layout_actions->addWidget(action_button(
-            document_action_public(QIcon::fromTheme("edit-copy"), tr("Copy"), &MainWindow::copy)
+            document_action_public(QIcon::fromTheme("edit-copy"), i18n("Copy"), &MainWindow::copy)
         ));
         layout_actions->addWidget(action_button(
-            document_action_public(QIcon::fromTheme("edit-paste"), tr("Paste"), &MainWindow::paste)
+            document_action_public(QIcon::fromTheme("edit-paste"), i18n("Paste"), &MainWindow::paste)
         ));
 
         layout_actions->addWidget(action_button(
-            document_action_public(QIcon::fromTheme("edit-delete"), tr("Delete Selected"), &MainWindow::delete_selected)
+            document_action_public(QIcon::fromTheme("edit-delete"), i18n("Delete Selected"), &MainWindow::delete_selected)
         ));
 
         toolbar_spacers.push_back(new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum));
@@ -478,17 +478,17 @@ public:
 
         // Layer
         layout_actions->addWidget(action_button(
-            document_action(QIcon::fromTheme("layer-raise"), tr("Raise Above"), &Private::selection_raise)
+            document_action(QIcon::fromTheme("layer-raise"), i18n("Raise Above"), &Private::selection_raise)
         ));
 
         layout_actions->addWidget(action_button(
-            document_action(QIcon::fromTheme("layer-lower"), tr("Lower Below"), &Private::selection_lower)
+            document_action(QIcon::fromTheme("layer-lower"), i18n("Lower Below"), &Private::selection_lower)
         ));
 
         // Undo-redo
-        action_undo = new QAction(QIcon::fromTheme("edit-undo"), tr("Undo"), parent);
+        action_undo = new QAction(QIcon::fromTheme("edit-undo"), i18n("Undo"), parent);
         layout_actions->addWidget(action_button(action_undo));
-        action_redo = new QAction(QIcon::fromTheme("edit-redo"), tr("Redo"), parent);
+        action_redo = new QAction(QIcon::fromTheme("edit-redo"), i18n("Redo"), parent);
         layout_actions->addWidget(action_button(action_redo));
     }
 
@@ -502,33 +502,33 @@ public:
 
         // Document actions
         layout_edit_actions->addWidget(action_button(
-            document_action(QIcon::fromTheme("document-new"), tr("New"), &Private::document_new)
+            document_action(QIcon::fromTheme("document-new"), i18n("New"), &Private::document_new)
         ));
 
-        QMenu* menu_open = action_menu(QIcon::fromTheme("document-open"), tr("Open..."), layout_edit_actions);
+        QMenu* menu_open = action_menu(QIcon::fromTheme("document-open"), i18n("Open..."), layout_edit_actions);
         menu_open->addAction(
-            document_action(QIcon::fromTheme("document-open"), tr("Open"), &Private::document_open)
+            document_action(QIcon::fromTheme("document-open"), i18n("Open"), &Private::document_open)
         );
         menu_open->addAction(
-            document_action(QIcon::fromTheme("document-import"), tr("Import as Composition"), &Private::document_import)
+            document_action(QIcon::fromTheme("document-import"), i18n("Import as Composition"), &Private::document_import)
         );
 
-        QMenu* menu_save = action_menu(QIcon::fromTheme("document-save"), tr("Save..."), layout_edit_actions);
+        QMenu* menu_save = action_menu(QIcon::fromTheme("document-save"), i18n("Save..."), layout_edit_actions);
         menu_save->addAction(
-            document_action(QIcon::fromTheme("document-save"), tr("Save"), &Private::document_save)
+            document_action(QIcon::fromTheme("document-save"), i18n("Save"), &Private::document_save)
         );
         menu_save->addAction(
-            document_action(QIcon::fromTheme("document-save-as"), tr("Save As"), &Private::document_save_as)
+            document_action(QIcon::fromTheme("document-save-as"), i18n("Save As"), &Private::document_save_as)
         );
         menu_save->addAction(
-            document_action(QIcon::fromTheme("document-export"), tr("Export"), &Private::document_export)
+            document_action(QIcon::fromTheme("document-export"), i18n("Export"), &Private::document_export)
         );
         menu_save->addAction(
-            document_action(QIcon::fromTheme("view-preview"), tr("Save Frame as PNG"), &Private::document_frame_to_png)
+            document_action(QIcon::fromTheme("view-preview"), i18n("Save Frame as PNG"), &Private::document_frame_to_png)
         );
 
         layout_edit_actions->addWidget(action_button(
-            document_action(QIcon::fromTheme("telegram"), tr("Send to Telegram"), &Private::document_export_telegram)
+            document_action(QIcon::fromTheme("telegram"), i18n("Send to Telegram"), &Private::document_export_telegram)
         ));
 
         // Spacer
@@ -540,18 +540,18 @@ public:
         ui.gridLayout->addWidget(layer_view, 1, 2, 2, 1);
         layer_view->set_base_model(&document_node_model);
         layout_edit_actions->addWidget(action_button_exclusive_opt(view_action(
-            QIcon::fromTheme("dialog-layers"), tr("Layers"),
+            QIcon::fromTheme("dialog-layers"), i18n("Layers"),
             view_actions, layer_view
         )));
         gui::ScrollAreaEventFilter::setup_scroller(layer_view);
 
         layout_edit_actions->addWidget(action_button_exclusive_opt(view_action(
-            QIcon::fromTheme("document-properties"), tr("Advanced Properties"),
+            QIcon::fromTheme("document-properties"), i18n("Advanced Properties"),
             view_actions, ui.property_widget
         )));
         layer_view->setMinimumWidth(512);
 
-        auto help = new QAction(QIcon::fromTheme("question"), tr("Help"), parent);
+        auto help = new QAction(QIcon::fromTheme("question"), i18n("Help"), parent);
         layout_edit_actions->addWidget(action_button(help));
         connect(help, &QAction::triggered, parent, [this]{
             HelpDialog(parent).exec();
@@ -560,7 +560,7 @@ public:
         /*
         // Toggler
         layout_tools->addWidget(action_button(view_action(
-            QIcon::fromTheme("overflow-menu"), tr("More Tools"),
+            QIcon::fromTheme("overflow-menu"), i18n("More Tools"),
             nullptr, ui.widget_actions, true
         )));
         */
@@ -619,7 +619,7 @@ public:
             if ( !opts.filename.isEmpty() )
                 suggestion = opts.filename;
             else
-                suggestion = tr("Animation.%1").arg(opts.format ? opts.format->extensions()[0] : "rawr");
+                suggestion = i18n("Animation.%1").arg(opts.format ? opts.format->extensions()[0] : "rawr");
 
             if ( file_picker.select_save(suggestion, export_opts) )
             {
@@ -746,11 +746,11 @@ public:
 
                 if ( !ok )
                 {
-                    QMessageBox::warning(parent, tr("Import File"), tr("Could not import file"));
+                    QMessageBox::warning(parent, i18n("Import File"), i18n("Could not import file"));
                     return;
                 }
 
-                parent->paste_document(&imported, tr("Import File"), true);
+                parent->paste_document(&imported, i18n("Import File"), true);
 
             }
         }
@@ -785,7 +785,7 @@ public:
     void document_frame_to_png()
     {
         exporting_png = true;
-        if ( !file_picker.select_save(tr("Frame %1.png").arg(current_document->current_time()), true, "image/png") )
+        if ( !file_picker.select_save(i18n("Frame %1.png").arg(current_document->current_time()), true, "image/png") )
         {
             exporting_png = false;
         }
@@ -883,7 +883,7 @@ public:
         {
             auto imported = document_opener.open(url);
             if ( imported )
-                parent->paste_document(imported.get(), tr("Import File"), true);
+                parent->paste_document(imported.get(), i18n("Import File"), true);
             return;
         }
 
@@ -974,7 +974,7 @@ public:
 
                     auto btn_add_kf = new QToolButton();
                     btn_add_kf->setIcon(QIcon::fromTheme("keyframe-add"));
-                    btn_add_kf->setText(tr("Add keyframe"));
+                    btn_add_kf->setText(i18n("Add keyframe"));
                     connect(btn_add_kf, &QToolButton::clicked, node, [anim]{
                         anim->add_smooth_keyframe_undoable(anim->time(), anim->value());
                     });
@@ -983,7 +983,7 @@ public:
 
                     auto btn_rm_kf = new QToolButton();
                     btn_rm_kf->setIcon(QIcon::fromTheme("keyframe-remove"));
-                    btn_rm_kf->setText(tr("Remove keyframe"));
+                    btn_rm_kf->setText(i18n("Remove keyframe"));
                     connect(btn_rm_kf, &QToolButton::clicked, node, [anim]{
                         if ( anim->has_keyframe(anim->time()) )
                         {
@@ -998,7 +998,7 @@ public:
 
                     auto btn_rm_kf_all = new QToolButton();
                     btn_rm_kf_all->setIcon(QIcon::fromTheme("edit-clear-all"));
-                    btn_rm_kf_all->setText(tr("Clear Animations"));
+                    btn_rm_kf_all->setText(i18n("Clear Animations"));
                     connect(btn_rm_kf, &QToolButton::clicked, node, [anim]{
                         if ( anim->animated() )
                         {
@@ -1063,7 +1063,7 @@ public:
 
     QAction* emoji_tool_action()
     {
-        QAction* action = new QAction(QIcon::fromTheme("smiley-shape"), tr("Emoji"));
+        QAction* action = new QAction(QIcon::fromTheme("smiley-shape"), i18n("Emoji"));
         connect(action, &QAction::triggered, parent, [this]{ import_emoji(); });
         return action;
     }
@@ -1094,7 +1094,7 @@ public:
         if ( !options.format->open(file, options.filename, &imported, options.settings) )
             return;
 
-        parent->paste_document(&imported, tr("Import Emoji"), true);
+        parent->paste_document(&imported, i18n("Import Emoji"), true);
     }
 };
 

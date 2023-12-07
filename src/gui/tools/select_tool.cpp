@@ -130,7 +130,7 @@ private:
             scene_pos = best;
         }
 
-        auto cmd = new command::SetMultipleAnimated(tr("Drag"), commit);
+        auto cmd = new command::SetMultipleAnimated(i18n("Drag"), commit);
         model::Document* doc = drag_data[0].doc();
 
         for ( const auto& dragger : drag_data )

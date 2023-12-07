@@ -742,11 +742,11 @@ bool glaxnimate::io::video::VideoFormat::on_save(QIODevice& dev, const QString& 
 
         if ( !oc )
         {
-            warning(tr("Could not deduce output format from file extension: using MPEG."));
+            warning(i18n("Could not deduce output format from file extension: using MPEG."));
             avformat_alloc_output_context2(&oc, nullptr, "mpeg", filename.data());
             if ( !oc )
             {
-                error(tr("Could not find output format"));
+                error(i18n("Could not find output format"));
                 return false;
             }
         }
@@ -774,7 +774,7 @@ bool glaxnimate::io::video::VideoFormat::on_save(QIODevice& dev, const QString& 
         AVCodecID codec_id = oc->oformat->video_codec;
         if ( codec_id == AV_CODEC_ID_NONE )
         {
-            error(tr("No video codec"));
+            error(i18n("No video codec"));
             return false;
         }
 
@@ -819,7 +819,7 @@ bool glaxnimate::io::video::VideoFormat::on_save(QIODevice& dev, const QString& 
         int ret = avformat_write_header(oc, opt.dict());
         if ( ret < 0 )
         {
-            error(tr("Error occurred when opening output file: %1").arg(av::err2str(ret)));
+            error(i18n("Error occurred when opening output file: %1").arg(av::err2str(ret)));
             return false;
         }
 
@@ -854,10 +854,10 @@ std::unique_ptr<app::settings::SettingsGroup> glaxnimate::io::video::VideoFormat
 {
     return std::make_unique<app::settings::SettingsGroup>(app::settings::SettingList{
         //                      slug            label             description                                           default             min max
-        app::settings::Setting{"background",    tr("Background"), tr("Background color"),                               QColor(0, 0, 0, 0)},
-        app::settings::Setting{"width",         tr("Width"),      tr("If not 0, it will overwrite the size"),           comp->width.get(),  0, 99999},
-        app::settings::Setting{"height",        tr("Height"),     tr("If not 0, it will overwrite the size"),           comp->height.get(), 0, 99999},
-        app::settings::Setting{"verbose",       tr("Verbose"),    tr("Show verbose information on the conversion"),     false},
+        app::settings::Setting{"background",    i18n("Background"), i18n("Background color"),                               QColor(0, 0, 0, 0)},
+        app::settings::Setting{"width",         i18n("Width"),      i18n("If not 0, it will overwrite the size"),           comp->width.get(),  0, 99999},
+        app::settings::Setting{"height",        i18n("Height"),     i18n("If not 0, it will overwrite the size"),           comp->height.get(), 0, 99999},
+        app::settings::Setting{"verbose",       i18n("Verbose"),    i18n("Show verbose information on the conversion"),     false},
     });
 }
 

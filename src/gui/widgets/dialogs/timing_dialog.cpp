@@ -80,7 +80,7 @@ void TimingDialog::btn_clicked(QAbstractButton* button)
     {
 
         qreal last_frame = d->comp->animation->first_frame.get() + d->ui.spin_frames->value();
-        command::UndoMacroGuard guard(tr("Change Animation Properties"), d->comp->document());
+        command::UndoMacroGuard guard(i18n("Change Animation Properties"), d->comp->document());
 
         if ( d->ui.check_layer_scale->isChecked() )
         {

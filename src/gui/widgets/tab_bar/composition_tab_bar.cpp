@@ -63,10 +63,10 @@ void CompositionTabBar::on_menu(int index)
     {
         QMenu menu;
         menu.addSection(precomp->object_name());
-        menu.addAction(QIcon::fromTheme("edit-delete"), tr("Delete"), precomp, [this, index]{
+        menu.addAction(QIcon::fromTheme("edit-delete"), i18n("Delete"), precomp, [this, index]{
             on_close(index);
         });
-        menu.addAction(QIcon::fromTheme("edit-duplicate"), tr("Duplicate"), precomp, [this, precomp]{
+        menu.addAction(QIcon::fromTheme("edit-duplicate"), i18n("Duplicate"), precomp, [this, precomp]{
             std::unique_ptr<model::Composition> new_comp (
                 static_cast<model::Composition*>(precomp->clone().release())
             );
@@ -83,10 +83,10 @@ void CompositionTabBar::on_menu(int index)
                 )
             );
         });
-        menu.addAction(QIcon::fromTheme("edit-rename"), tr("Rename"), precomp, [this, precomp]{
+        menu.addAction(QIcon::fromTheme("edit-rename"), i18n("Rename"), precomp, [this, precomp]{
             bool ok = false;
             QString str = QInputDialog::getText(
-                this, tr("Rename Composition"), tr("Name"), QLineEdit::Normal,
+                this, i18n("Rename Composition"), i18n("Name"), QLineEdit::Normal,
                 precomp->object_name(), &ok
             );
             if ( ok )

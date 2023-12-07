@@ -39,7 +39,7 @@ QString glaxnimate::model::EmbeddedFont::object_name() const
 
 QString glaxnimate::model::EmbeddedFont::type_name_human() const
 {
-    return tr("Font");
+    return i18n("Font");
 }
 
 bool glaxnimate::model::EmbeddedFont::remove_if_unused(bool clean_lists)

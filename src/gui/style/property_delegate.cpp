@@ -301,7 +301,7 @@ QWidget *PropertyDelegate::create_editor_from_variant(const QVariant &data, int 
             if ( prop_flags & model::PropertyTraits::Percent )
             {
                 mult = 100;
-                box->setSuffix(tr("%"));
+                box->setSuffix(i18n("%"));
                 box->setDecimals(0);
             }
 

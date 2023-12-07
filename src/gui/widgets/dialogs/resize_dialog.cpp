@@ -25,7 +25,7 @@ public:
     void resize(model::Composition* comp)
     {
         comp->push_command(new command::SetMultipleProperties(
-            tr("Resize Document"),
+            i18n("Resize Document"),
             true,
             {&comp->width, &comp->height},
             ui.spin_width->value(),
@@ -85,11 +85,11 @@ void ResizeDialog::resize_composition(model::Composition* comp)
 
     if ( d->ui.check_scale_layers->isChecked() && !comp->shapes.empty() )
     {
-        command::UndoMacroGuard macro(tr("Resize Document"), doc);
+        command::UndoMacroGuard macro(i18n("Resize Document"), doc);
 
         auto nl = std::make_unique<model::Layer>(doc);
         model::Layer* layer = nl.get();
-        doc->set_best_name(layer, tr("Resize"));
+        doc->set_best_name(layer, i18n("Resize"));
         doc->push_command(new command::AddShape(&comp->shapes, std::move(nl), comp->shapes.size()));
         while ( comp->shapes[0] != layer )
             doc->push_command(new command::MoveShape(comp->shapes[0], &comp->shapes, &layer->shapes, layer->shapes.size()));

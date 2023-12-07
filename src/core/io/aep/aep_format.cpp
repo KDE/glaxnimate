@@ -33,7 +33,7 @@ bool glaxnimate::io::aep::AepFormat::on_open(QIODevice& file, const QString& fil
         RiffChunk chunk = riff_parser.parse(&file);
         return riff_to_document(chunk, document, filename);
     } catch ( const RiffError& r ) {
-        error(tr("Could not load file: %1").arg(r.message));
+        error(i18n("Could not load file: %1").arg(r.message));
         return false;
     }
 }

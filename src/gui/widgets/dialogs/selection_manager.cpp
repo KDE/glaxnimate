@@ -159,7 +159,7 @@ void glaxnimate::gui::SelectionManager::paste_impl(bool as_comp)
     }
     if ( raw_pasted.empty() )
     {
-//        status_message(tr("Nothing to paste"));
+//        status_message(i18n("Nothing to paste"));
         return;
     }
 

@@ -45,7 +45,7 @@ public:
 
     QString type_name_human() const override
     {
-        return tr("PolyStar");
+        return i18n("PolyStar");
     }
 
     math::bezier::Bezier to_bezier(FrameTime t) const override;

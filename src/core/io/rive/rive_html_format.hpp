@@ -17,7 +17,7 @@ class RiveHtmlFormat : public ImportExport
 
 public:
     QString slug() const override { return "rive_html"; }
-    QString name() const override { return tr("RIVE HTML Preview"); }
+    QString name() const override { return i18n("RIVE HTML Preview"); }
     QStringList extensions() const override { return {"html", "htm"}; }
     bool can_save() const override { return true; }
     bool can_open() const override { return false; }

@@ -14,6 +14,7 @@
 #include <QToolButton>
 #include <QDesktopServices>
 #include <QPainter>
+#include <KLocalizedString>
 
 glaxnimate::gui::LottieFilesResultItem::LottieFilesResultItem(LottieFilesResult res, QWidget* parent)
 : QWidget(parent), data(std::move(res))
@@ -29,7 +30,7 @@ glaxnimate::gui::LottieFilesResultItem::LottieFilesResultItem(LottieFilesResult 
     name->setFont(name_font);
     lay->addWidget(name);
 
-    QLabel* by = new QLabel(tr("by %1").arg(data.author_username), this);
+    QLabel* by = new QLabel(i18n("by %1").arg(data.author_username), this);
     by->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
     by->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Preferred);
     QFont by_font = by->font();
@@ -45,7 +46,7 @@ glaxnimate::gui::LottieFilesResultItem::LottieFilesResultItem(LottieFilesResult 
 
     auto likes_icon = new QLabel(this);
     likes_icon->setPixmap(QIcon::fromTheme("emblem-favorite-symbolic").pixmap(32));
-    likes_icon->setToolTip(tr("Likes"));
+    likes_icon->setToolTip(i18n("Likes"));
     stats->addWidget(likes_icon);
     auto likes_num = new QLabel(QString::number(data.likes), this);
     stats->addWidget(likes_num);
@@ -54,7 +55,7 @@ glaxnimate::gui::LottieFilesResultItem::LottieFilesResultItem(LottieFilesResult 
 
     auto comments_icon = new QLabel(this);
     comments_icon->setPixmap(QIcon::fromTheme("comment-symbolic").pixmap(32));
-    comments_icon->setToolTip(tr("Comments"));
+    comments_icon->setToolTip(i18n("Comments"));
     stats->addWidget(comments_icon);
     auto comments_num = new QLabel(QString::number(data.comments), this);
     stats->addWidget(comments_num);
@@ -63,21 +64,21 @@ glaxnimate::gui::LottieFilesResultItem::LottieFilesResultItem(LottieFilesResult 
     lay->addLayout(buttons);
 
     auto view = new QToolButton(this);
-    view->setText(tr("View on LottieFiles..."));
+    view->setText(i18n("View on LottieFiles..."));
     view->setToolTip(view->text());
     view->setIcon(QIcon::fromTheme("internet-web-browser"));
     buttons->addWidget(view);
     connect(view, &QToolButton::clicked, this, [this]{QDesktopServices::openUrl(data.url);});
 
     auto open = new QToolButton(this);
-    open->setText(tr("Open"));
+    open->setText(i18n("Open"));
     open->setToolTip(open->text());
     open->setIcon(QIcon::fromTheme("document-open"));
     buttons->addWidget(open);
     connect(open, &QToolButton::clicked, this, [this]{Q_EMIT selected_open(data.name, data.lottie);});
 
     auto import = new QToolButton(this);
-    import->setText(tr("Import"));
+    import->setText(i18n("Import"));
     import->setToolTip(import->text());
     import->setIcon(QIcon::fromTheme("document-import"));
     buttons->addWidget(import);

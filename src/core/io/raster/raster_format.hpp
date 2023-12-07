@@ -22,7 +22,7 @@ class RasterFormat : public ImportExport
 
 public:
     QString slug() const override { return "raster"; }
-    QString name() const override { return tr("Raster Image"); }
+    QString name() const override { return i18n("Raster Image"); }
     QStringList extensions() const override;
     bool can_save() const override { return false; }
     bool can_open() const override { return true; }

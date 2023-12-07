@@ -244,7 +244,7 @@ QVariant item_models::PropertyModelBase::Private::data_value(model::BaseProperty
     else
     {
         if ( role == Qt::DisplayRole && (prop->traits().flags & model::PropertyTraits::Percent) )
-            return QString(tr("%1%").arg(prop->value().toDouble() * 100));
+            return QString(i18n("%1%").arg(prop->value().toDouble() * 100));
         if ( role == Qt::DisplayRole || role == Qt::EditRole )
             return prop->value();
         return {};

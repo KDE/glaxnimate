@@ -53,9 +53,9 @@ std::pair<QString, const char*> EnumCombo::data_for(const QMetaEnum& meta_enum, 
         switch ( model::Fill::Rule(value) )
         {
             case model::Fill::NonZero:
-                return {tr("NonZero"), "fill-rule-nonzero"};
+                return {i18n("NonZero"), "fill-rule-nonzero"};
             case model::Fill::EvenOdd:
-                return {tr("Even Odd"), "fill-rule-even-odd"};
+                return {i18n("Even Odd"), "fill-rule-even-odd"};
         }
     }
     else if ( std::strcmp(meta_enum.name(), "Cap") == 0 )
@@ -63,11 +63,11 @@ std::pair<QString, const char*> EnumCombo::data_for(const QMetaEnum& meta_enum, 
         switch ( model::Stroke::Cap(value) )
         {
             case model::Stroke::ButtCap:
-                return {tr("Butt"), "stroke-cap-butt"};
+                return {i18n("Butt"), "stroke-cap-butt"};
             case model::Stroke::RoundCap:
-                return {tr("Round"), "stroke-cap-round"};
+                return {i18n("Round"), "stroke-cap-round"};
             case model::Stroke::SquareCap:
-                return {tr("Square"), "stroke-cap-square"};
+                return {i18n("Square"), "stroke-cap-square"};
         }
     }
     else if ( std::strcmp(meta_enum.name(), "Join") == 0 )
@@ -75,11 +75,11 @@ std::pair<QString, const char*> EnumCombo::data_for(const QMetaEnum& meta_enum, 
         switch ( model::Stroke::Join(value) )
         {
             case model::Stroke::MiterJoin:
-                return {tr("Miter"), "stroke-cap-miter"};
+                return {i18n("Miter"), "stroke-cap-miter"};
             case model::Stroke::RoundJoin:
-                return {tr("Round"), "stroke-join-round"};
+                return {i18n("Round"), "stroke-join-round"};
             case model::Stroke::BevelJoin:
-                return {tr("Bevel"), "stroke-cap-bevel"};
+                return {i18n("Bevel"), "stroke-cap-bevel"};
         }
     }
     else if ( std::strcmp(meta_enum.name(), "StarType") == 0 )
@@ -87,9 +87,9 @@ std::pair<QString, const char*> EnumCombo::data_for(const QMetaEnum& meta_enum, 
         switch ( model::PolyStar::StarType(value) )
         {
             case model::PolyStar::Star:
-                return {tr("Star"), "draw-star"};
+                return {i18n("Star"), "draw-star"};
             case model::PolyStar::Polygon:
-                return {tr("Polygon"), "draw-polygon"};
+                return {i18n("Polygon"), "draw-polygon"};
         }
     }
     else if ( std::strcmp(meta_enum.name(), "GradientType") == 0 )
@@ -97,11 +97,11 @@ std::pair<QString, const char*> EnumCombo::data_for(const QMetaEnum& meta_enum, 
         switch ( model::Gradient::GradientType(value) )
         {
             case model::Gradient::Linear:
-                return {tr("Linear"), "paint-gradient-linear"};
+                return {i18n("Linear"), "paint-gradient-linear"};
             case model::Gradient::Radial:
-                return {tr("Radial"), "paint-gradient-radial"};
+                return {i18n("Radial"), "paint-gradient-radial"};
             case model::Gradient::Conical:
-                return {tr("Conical"), "paint-gradient-conical"};
+                return {i18n("Conical"), "paint-gradient-conical"};
         }
     }
 

@@ -50,7 +50,7 @@ public:
         auto document = event.window->document();
         model::ShapeListProperty* prop = highlight->owner();
 
-        command::UndoMacroGuard guard(tr("Apply Style"), document);
+        command::UndoMacroGuard guard(i18n("Apply Style"), document);
 
         bool add_fill = widget()->fill();
         bool add_stroke = widget()->stroke();

@@ -168,17 +168,17 @@ QVariant item_models::GradientListModel::headerData(int section, Qt::Orientation
     {
         case Name:
             if ( role == Qt::DisplayRole || role == Qt::ToolTipRole )
-                return tr("Name");
+                return i18n("Name");
             break;
         case Gradient:
             if ( role == Qt::DisplayRole || role == Qt::ToolTipRole )
-                return tr("Gradient");
+                return i18n("Gradient");
             break;
         case Users:
             if ( role == Qt::DisplayRole )
-                return tr("#");
+                return i18n("#");
             if ( role == Qt::ToolTipRole )
-                return tr("Number of users");
+                return i18n("Number of users");
             break;
     }
     return {};

@@ -64,15 +64,15 @@ std::unique_ptr<app::settings::SettingsGroup> glaxnimate::io::svg::SvgFormat::sa
 
     QVariantMap choices;
     if ( max >= CssFontType::Link )
-        choices[tr("External Stylesheet")] = int(CssFontType::Link);
+        choices[i18n("External Stylesheet")] = int(CssFontType::Link);
     if ( max >= CssFontType::FontFace )
-        choices[tr("Font face with external url")] = int(CssFontType::FontFace);
+        choices[i18n("Font face with external url")] = int(CssFontType::FontFace);
     if ( max >= CssFontType::Embedded )
-        choices[tr("Embedded data")] = int(CssFontType::Embedded);
-    choices[tr("Ignore")] = int(CssFontType::None);
+        choices[i18n("Embedded data")] = int(CssFontType::Embedded);
+    choices[i18n("Ignore")] = int(CssFontType::None);
 
     return std::make_unique<app::settings::SettingsGroup>(app::settings::SettingList{
-        app::settings::Setting("font_type", tr("External Fonts"), tr("How to include external font"),
+        app::settings::Setting("font_type", i18n("External Fonts"), i18n("How to include external font"),
                                app::settings::Setting::Int, int(qMin(max, CssFontType::FontFace)), choices)
     });
 }
@@ -89,7 +89,7 @@ bool glaxnimate::io::svg::SvgFormat::on_save(QIODevice& file, const QString& fil
         compressed.close();
 
         if ( compressed.error() )
-            warning(tr("Could not write to file"));
+            warning(i18n("Could not write to file"));
     }
     else
     {

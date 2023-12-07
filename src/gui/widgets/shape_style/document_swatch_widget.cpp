@@ -46,7 +46,7 @@ public:
     private:
         void on_visit_document(model::Document * doc, model::Composition*) override
         {
-            macro = command::UndoMacroGuard(tr("Gather Document Swatch"), doc);
+            macro = command::UndoMacroGuard(i18n("Gather Document Swatch"), doc);
 
             defs = doc->assets();
             for ( const auto& color : defs->colors->values )
@@ -118,7 +118,7 @@ public:
     private:
         void on_visit_document(model::Document * doc, model::Composition*) override
         {
-            macro = command::UndoMacroGuard(tr("Link Shapes to Swatch"), doc);
+            macro = command::UndoMacroGuard(i18n("Link Shapes to Swatch"), doc);
         }
 
         void on_visit(model::DocumentNode * node) override
@@ -242,7 +242,7 @@ void DocumentSwatchWidget::swatch_palette_color_changed(int index)
         if ( !defs->colors->values.valid_index(index) )
             return;
 
-        command::UndoMacroGuard macro(tr("Modify Palette Color"), d->document);
+        command::UndoMacroGuard macro(i18n("Modify Palette Color"), d->document);
         auto color = defs->colors->values[index];
         color->name.set_undoable(palette->nameAt(index));
         color->color.set_undoable(palette->colorAt(index));
@@ -321,14 +321,14 @@ void DocumentSwatchWidget::open()
     {
         QMessageBox::information(
             this,
-            tr("Load from Palette"),
-            tr("No palettes are installed")
+            i18n("Load from Palette"),
+            i18n("No palettes are installed")
         );
         return;
     }
 
     QDialog dialog(this);
-    dialog.setWindowTitle(tr("Swatch from Palette"));
+    dialog.setWindowTitle(i18n("Swatch from Palette"));
     QVBoxLayout* lay = new QVBoxLayout(&dialog);
     dialog.setLayout(lay);
 
@@ -337,16 +337,16 @@ void DocumentSwatchWidget::open()
     lay->addWidget(&combo);
 
     QCheckBox check_overwrite;
-    check_overwrite.setText(tr("Overwrite on save"));
+    check_overwrite.setText(i18n("Overwrite on save"));
     lay->addWidget(&check_overwrite);
 
     QCheckBox check_link;
-    check_link.setText(tr("Link shapes with matching colors"));
+    check_link.setText(i18n("Link shapes with matching colors"));
     lay->addWidget(&check_link);
 
     QCheckBox check_clear;
     check_clear.setChecked(true);
-    check_clear.setText(tr("Remove existing colors"));
+    check_clear.setText(i18n("Remove existing colors"));
     lay->addWidget(&check_clear);
 
     QDialogButtonBox buttons(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
@@ -365,7 +365,7 @@ void DocumentSwatchWidget::open()
     else
         d->palette_index = QPersistentModelIndex();
 
-    command::UndoMacroGuard macro(tr("Load Palette"), d->document);
+    command::UndoMacroGuard macro(i18n("Load Palette"), d->document);
 
     if ( check_clear.isChecked() )
     {
@@ -387,7 +387,7 @@ void DocumentSwatchWidget::save()
 {
     if ( d->ui.swatch->palette().name().isEmpty() )
     {
-        QString default_name = tr("Palette");
+        QString default_name = i18n("Palette");
         for ( const auto& comp :  d->document->assets()->compositions->values )
         {
             if ( comp->name.get() != "" )
@@ -397,7 +397,7 @@ void DocumentSwatchWidget::save()
             }
         }
 
-        QString name = QInputDialog::getText(this, tr("Save Palette"), tr("Name"), QLineEdit::Normal, default_name);
+        QString name = QInputDialog::getText(this, i18n("Save Palette"), i18n("Name"), QLineEdit::Normal, default_name);
         if ( name.isEmpty() )
             return;
 
@@ -426,11 +426,11 @@ void DocumentSwatchWidget::swatch_menu ( int index )
 
     if ( index == -1 )
     {
-        menu.addSection(tr("Unlink Color"));
+        menu.addSection(i18n("Unlink Color"));
 
         menu.addAction(
             QIcon::fromTheme("format-fill-color"),
-            tr("Unlink fill"),
+            i18n("Unlink fill"),
             this,
             [this]{
                 Q_EMIT current_color_def(nullptr);
@@ -439,7 +439,7 @@ void DocumentSwatchWidget::swatch_menu ( int index )
 
         menu.addAction(
             QIcon::fromTheme("format-stroke-color"),
-            tr("Unlink stroke"),
+            i18n("Unlink stroke"),
             this,
             [this]{
                 Q_EMIT secondary_color_def(nullptr);
@@ -453,11 +453,11 @@ void DocumentSwatchWidget::swatch_menu ( int index )
 
         menu.addAction(
             QIcon::fromTheme("edit-rename"),
-            tr("Rename..."),
+            i18n("Rename..."),
             this,
             [item, this]{
                 bool ok = false;
-                QString name = QInputDialog::getText(this, tr("Rename Swatch Color"), tr("Name"), QLineEdit::Normal, item->type_name_human(), &ok);
+                QString name = QInputDialog::getText(this, i18n("Rename Swatch Color"), i18n("Name"), QLineEdit::Normal, item->type_name_human(), &ok);
                 if ( ok )
                     item->name.set_undoable(name);
             }
@@ -465,7 +465,7 @@ void DocumentSwatchWidget::swatch_menu ( int index )
 
         menu.addAction(
             QIcon::fromTheme("color-management"),
-            tr("Edit Color..."),
+            i18n("Edit Color..."),
             this,
             [item, this]{
                 color_widgets::ColorDialog dialog(this);
@@ -483,7 +483,7 @@ void DocumentSwatchWidget::swatch_menu ( int index )
 
         menu.addAction(
             QIcon::fromTheme("list-remove"),
-            tr("Remove"),
+            i18n("Remove"),
             this,
             [index, this]{
                 d->ui.swatch->palette().eraseColor(index);
@@ -492,7 +492,7 @@ void DocumentSwatchWidget::swatch_menu ( int index )
 
         menu.addAction(
             QIcon::fromTheme("edit-duplicate"),
-            tr("Duplicate"),
+            i18n("Duplicate"),
             this,
             [item, index, this]{
                 auto clone = item->clone_covariant();
@@ -508,7 +508,7 @@ void DocumentSwatchWidget::swatch_menu ( int index )
 
         menu.addAction(
             QIcon::fromTheme("format-fill-color"),
-            tr("Set as fill"),
+            i18n("Set as fill"),
             this,
             [item, this]{
                 Q_EMIT current_color_def(item);
@@ -517,7 +517,7 @@ void DocumentSwatchWidget::swatch_menu ( int index )
 
         menu.addAction(
             QIcon::fromTheme("format-stroke-color"),
-            tr("Set as stroke"),
+            i18n("Set as stroke"),
             this,
             [item, this]{
                 Q_EMIT secondary_color_def(item);
@@ -528,7 +528,7 @@ void DocumentSwatchWidget::swatch_menu ( int index )
         {
             menu.addAction(
                 QIcon::fromTheme("insert-link"),
-                tr("Link shapes with matching colors"),
+                i18n("Link shapes with matching colors"),
                 this,
                 [item, this]{
                     Private::ApplyColorVisitor({item}).visit(d->document, nullptr);

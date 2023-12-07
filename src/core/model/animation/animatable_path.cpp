@@ -27,7 +27,7 @@ void glaxnimate::model::detail::AnimatedPropertyBezier::set_closed(bool closed)
 
 void glaxnimate::model::detail::AnimatedPropertyBezier::split_segment(int index, qreal factor)
 {
-    command::UndoMacroGuard guard(tr("Split Segment"), object()->document());
+    command::UndoMacroGuard guard(i18n("Split Segment"), object()->document());
 
     QVariant before = QVariant::fromValue(value_);
     auto bez = value_;
@@ -57,7 +57,7 @@ void glaxnimate::model::detail::AnimatedPropertyBezier::remove_point(int index)
 
 void glaxnimate::model::detail::AnimatedPropertyBezier::remove_points(const std::set<int>& indices)
 {
-    command::UndoMacroGuard guard(tr("Remove Nodes"), object()->document());
+    command::UndoMacroGuard guard(i18n("Remove Nodes"), object()->document());
 
     QVariant before = QVariant::fromValue(value_);
     auto bez = value_;
@@ -136,7 +136,7 @@ static QVariant extend_impl(math::bezier::Bezier subject, const math::bezier::Be
 
 void glaxnimate::model::detail::AnimatedPropertyBezier::extend(const math::bezier::Bezier& target, bool at_end)
 {
-    command::UndoMacroGuard guard(tr("Extend Shape"), object()->document());
+    command::UndoMacroGuard guard(i18n("Extend Shape"), object()->document());
 
     auto bez = value_;
 

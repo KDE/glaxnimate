@@ -70,11 +70,11 @@ void PluginSettingsWidget::current_changed ( QListWidgetItem* item )
     int row = 0;
     for ( const auto& svc : current->data().services )
     {
-        QString type = tr("Unknown");
+        QString type = i18n("Unknown");
         if ( svc->type() == plugin::ServiceType::Action )
-            type = tr("Menu Action");
+            type = i18n("Menu Action");
         else if ( svc->type() == plugin::ServiceType::IoFormat )
-            type = tr("File Format");
+            type = i18n("File Format");
 
         QTableWidgetItem* it;
 

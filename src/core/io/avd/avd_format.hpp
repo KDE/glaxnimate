@@ -18,7 +18,7 @@ class AvdFormat : public ImportExport
 
 public:
     QString slug() const override { return "avd"; }
-    QString name() const override { return tr("Android Vector Drawable"); }
+    QString name() const override { return i18n("Android Vector Drawable"); }
     QStringList extensions() const override { return {"xml"}; }
     bool can_save() const override { return true; }
     bool can_open() const override { return true; }

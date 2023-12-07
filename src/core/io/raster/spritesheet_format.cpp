@@ -29,10 +29,10 @@ std::unique_ptr<app::settings::SettingsGroup> glaxnimate::io::raster::Spriteshee
     int last_frame = comp->animation->last_frame.get();
     int frames = last_frame - first_frame;
     return std::make_unique<app::settings::SettingsGroup>(app::settings::SettingList{
-        app::settings::Setting("frame_width", tr("Frame Width"), tr("Width of each frame"), comp->width.get(), 1, 999'999),
-        app::settings::Setting("frame_height", tr("Frame Height"), tr("Height of each frame"), comp->height.get(), 1, 999'999),
-        app::settings::Setting("columns", tr("Columns"), tr("Number of columns in the sheet"), std::ceil(math::sqrt(frames)), 1, 64),
-        app::settings::Setting("frame_step", tr("Time Step"), tr("By how much each rendered frame should increase time (in frames)"), 1, 1, 16),
+        app::settings::Setting("frame_width", i18n("Frame Width"), i18n("Width of each frame"), comp->width.get(), 1, 999'999),
+        app::settings::Setting("frame_height", i18n("Frame Height"), i18n("Height of each frame"), comp->height.get(), 1, 999'999),
+        app::settings::Setting("columns", i18n("Columns"), i18n("Number of columns in the sheet"), std::ceil(math::sqrt(frames)), 1, 64),
+        app::settings::Setting("frame_step", i18n("Time Step"), i18n("By how much each rendered frame should increase time (in frames)"), 1, 1, 16),
     });
 }
 

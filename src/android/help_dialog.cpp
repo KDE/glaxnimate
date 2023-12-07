@@ -51,159 +51,159 @@ glaxnimate::android::HelpDialog::HelpDialog(QWidget *parent)
     const std::vector<std::pair<QString, QString>> buttons = {
         {
             "document-new",
-            tr("Clears the current document and creates a new empty one")
+            i18n("Clears the current document and creates a new empty one")
         },
         {
             "document-open",
-            tr("Prompts the user to select a document to open.\nCurrently the following formats are supported:\n%1").arg(supported_formats_import)
+            i18n("Prompts the user to select a document to open.\nCurrently the following formats are supported:\n%1").arg(supported_formats_import)
         },
         {
             "document-import",
-            tr("Prompts the user to select a document to append as an object to the current one.")
+            i18n("Prompts the user to select a document to append as an object to the current one.")
         },
         {
             "document-save",
-            tr("Save the current document, prompting to select a file for new documents")
+            i18n("Save the current document, prompting to select a file for new documents")
         },
         {
             "document-save-as",
-            tr("Save the current document, always prompting to select a file.")
+            i18n("Save the current document, always prompting to select a file.")
         },
         {
             "document-export",
-            tr("Save a copy of current document, prompting to select a format and a file.\nCurrently the following formats are supported:\n%1").arg(supported_formats_export)
+            i18n("Save a copy of current document, prompting to select a format and a file.\nCurrently the following formats are supported:\n%1").arg(supported_formats_export)
         },
         {
             "view-preview",
-            tr("Saves the current frame as a still image")
+            i18n("Saves the current frame as a still image")
         },
         {
             "telegram",
-            tr("Creates a sticker pack to export to Telegram.\nNote that only recent version of Telegram support this.\nIf your Telegram version is too old, you can Export the file to TGS and upload that on Telegram.")
+            i18n("Creates a sticker pack to export to Telegram.\nNote that only recent version of Telegram support this.\nIf your Telegram version is too old, you can Export the file to TGS and upload that on Telegram.")
         },
         {
             "edit-cut",
-            tr("Cuts the selection into the clipboard.")
+            i18n("Cuts the selection into the clipboard.")
         },
         {
             "edit-copy",
-            tr("Copies the selection into the clipboard.")
+            i18n("Copies the selection into the clipboard.")
         },
         {
             "edit-paste",
-            tr("Pastes from the clipboard into the current document.")
+            i18n("Pastes from the clipboard into the current document.")
         },
         {
             "edit-delete",
-            tr("Removes the selected item.")
+            i18n("Removes the selected item.")
         },
         {
             "edit-undo",
-            tr("Undoes the last action.")
+            i18n("Undoes the last action.")
         },
         {
             "edit-redo",
-            tr("Redoes the last undone action.")
+            i18n("Redoes the last undone action.")
         },
         {
             "document-properties",
-            tr("Opens the side pane used to change the advanced properties for the selected object.")
+            i18n("Opens the side pane used to change the advanced properties for the selected object.")
         },
         {
             "player-time",
-            tr("Shows the timeline and playback controls.")
+            i18n("Shows the timeline and playback controls.")
         },
         {
             "fill-color",
-            tr("Opens the side pane used to select the fill color.")
+            i18n("Opens the side pane used to select the fill color.")
         },
         {
             "object-stroke-style",
-            tr("Opens the side pane used to select the stroke color and style.")
+            i18n("Opens the side pane used to select the stroke color and style.")
         },
         {
             "question",
-            tr("Shows this help.")
+            i18n("Shows this help.")
         },
         {
             "edit-select",
-            tr("Select tool, you can use it to select objects and change their transform.")
+            i18n("Select tool, you can use it to select objects and change their transform.")
         },
         {
             "edit-node",
-            tr("Edit tool, used to edit existing items (eg: moving, bezier nodes, setting rounded corners on a rectangle, etc.)")
+            i18n("Edit tool, used to edit existing items (eg: moving, bezier nodes, setting rounded corners on a rectangle, etc.)")
         },
         {
             "draw-brush",
-            tr("Shows a tray with the curve drawing tools.")
+            i18n("Shows a tray with the curve drawing tools.")
         },
         {
             "draw-bezier-curves",
-            tr("Create Bezier curves using nodes and handles.")
+            i18n("Create Bezier curves using nodes and handles.")
         },
         {
             "draw-freehand",
-            tr("Draw curves freehand.")
+            i18n("Draw curves freehand.")
         },
         {
             "shapes",
-            tr("Shows a tray with the shape drawing tools.")
+            i18n("Shows a tray with the shape drawing tools.")
         },
         {
             "draw-rectangle",
-            tr("Draws rectangles.")
+            i18n("Draws rectangles.")
         },
         {
             "draw-ellipse",
-            tr("Draws ellipses.")
+            i18n("Draws ellipses.")
         },
         {
             "draw-polygon-star",
-            tr("Draws a star, after it's been created you can change it into a regular polygon and change the number of sides from the properties pane.")
+            i18n("Draws a star, after it's been created you can change it into a regular polygon and change the number of sides from the properties pane.")
         },
         {
             "draw-text",
-            tr("Create and edit text shapes.")
+            i18n("Create and edit text shapes.")
         },
         {
             "overflow-menu",
-            tr("Toggles the menu showing non-drawing buttons.")
+            i18n("Toggles the menu showing non-drawing buttons.")
         },
         {
             "media-playback-start",
-            tr("Starts playback.")
+            i18n("Starts playback.")
         },
         {
             "media-playlist-repeat",
-            tr("Toggles looping for the playback (on by default).")
+            i18n("Toggles looping for the playback (on by default).")
         },
         {
             "go-first",
-            tr("Jumps to the first frame.")
+            i18n("Jumps to the first frame.")
         },
         {
             "go-previous",
-            tr("Goes to the previous frame.")
+            i18n("Goes to the previous frame.")
         },
         {
             "go-next",
-            tr("Goes to the next frame.")
+            i18n("Goes to the next frame.")
         },
         {
             "go-last",
-            tr("Jumps to the last frame.")
+            i18n("Jumps to the last frame.")
         },
         {
             "keyframe-record",
-            tr("When enabled (which is the default) whenever you change an object property, a new keyframe is added for that property.")
+            i18n("When enabled (which is the default) whenever you change an object property, a new keyframe is added for that property.")
         },
         {
             "layer-lower",
-            tr("Push the selection further back.")
+            i18n("Push the selection further back.")
         },
         {
             "layer-raise",
-            tr("Brings the selection further to the front.")
+            i18n("Brings the selection further to the front.")
         },
     };
 

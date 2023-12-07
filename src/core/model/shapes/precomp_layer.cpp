@@ -27,7 +27,7 @@ QIcon glaxnimate::model::PreCompLayer::tree_icon() const
 
 QString glaxnimate::model::PreCompLayer::type_name_human() const
 {
-    return tr("Composition Layer");
+    return i18n("Composition Layer");
 }
 
 glaxnimate::model::FrameTime glaxnimate::model::PreCompLayer::relative_time(glaxnimate::model::FrameTime time) const

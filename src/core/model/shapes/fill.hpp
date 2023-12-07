@@ -45,7 +45,7 @@ public:
 
     static QString static_type_name_human()
     {
-        return tr("Fill");
+        return i18n("Fill");
     }
 
 protected:

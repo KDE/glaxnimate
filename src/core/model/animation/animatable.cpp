@@ -168,7 +168,7 @@ bool glaxnimate::model::AnimatableBase::set_undoable(const QVariant& val, bool c
         return false;
 
     object()->push_command(new command::SetMultipleAnimated(
-        tr("Update %1").arg(name()),
+        i18n("Update %1").arg(name()),
         {this},
         {value()},
         {val},
@@ -268,7 +268,7 @@ void glaxnimate::model::detail::AnimatedPropertyPosition::split_segment(int inde
     auto after = before;
     after.split_segment(index, factor);
 
-    auto parent = std::make_unique<command::ReorderedUndoCommand>(tr("Split Segment"));
+    auto parent = std::make_unique<command::ReorderedUndoCommand>(i18n("Split Segment"));
 
     FrameTime time = 0;
     QVariant value;
@@ -337,7 +337,7 @@ bool glaxnimate::model::detail::AnimatedPropertyPosition::set_bezier(math::bezie
 
 void glaxnimate::model::detail::AnimatedPropertyPosition::remove_points(const std::set<int>& indices)
 {
-    auto parent = std::make_unique<command::ReorderedUndoCommand>(tr("Remove Nodes"));
+    auto parent = std::make_unique<command::ReorderedUndoCommand>(i18n("Remove Nodes"));
 
     auto before = bezier();
     auto after = before.removed_points(indices);
@@ -415,7 +415,7 @@ bool glaxnimate::model::detail::AnimatedPropertyPosition::valid_value(const QVar
 
 void glaxnimate::model::detail::AnimatedPropertyPosition::add_smooth_keyframe_undoable(FrameTime time, const QVariant& val)
 {
-    auto parent = std::make_unique<command::ReorderedUndoCommand>(tr("Add Keyframe"));
+    auto parent = std::make_unique<command::ReorderedUndoCommand>(i18n("Add Keyframe"));
 
     auto value = val.isNull() ? QVariant(value_) : val;
 

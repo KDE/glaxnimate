@@ -82,7 +82,7 @@ QIcon glaxnimate::model::Image::tree_icon() const
 
 QString glaxnimate::model::Image::type_name_human() const
 {
-    return tr("Image");
+    return i18n("Image");
 }
 
 QPainterPath glaxnimate::model::Image::to_painter_path_impl(FrameTime time) const

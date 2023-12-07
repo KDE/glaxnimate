@@ -133,8 +133,8 @@ void glaxnimate::gui::font::ExternalFontWidget::load_url()
 
 void glaxnimate::gui::font::ExternalFontWidget::url_from_file()
 {
-    QString path = QFileDialog::getOpenFileName(this, tr("Open File"), {},
-        tr("All supported files (*.ttf, *.otf, *.css); CSS files (*.css); Font files (*.ttf, *.otf); All files (*)")
+    QString path = QFileDialog::getOpenFileName(this, i18n("Open File"), {},
+        i18n("All supported files (*.ttf, *.otf, *.css); CSS files (*.css); Font files (*.ttf, *.otf); All files (*)")
     );
 
     if ( !path.isEmpty() )

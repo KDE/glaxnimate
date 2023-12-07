@@ -136,7 +136,7 @@ public:
         if ( updating )
             return;
 
-        ui.color_selector->apply_to_targets(tr("Update Stroke Color"), targets, stop, commit);
+        ui.color_selector->apply_to_targets(i18n("Update Stroke Color"), targets, stop, commit);
     }
 };
 
@@ -231,7 +231,7 @@ void StrokeStyleWidget::check_cap()
     else if ( d->ui.button_cap_square->isChecked() )
         d->cap = Qt::SquareCap;
 
-    d->set(tr("Set Line Cap"), &model::Stroke::cap, int(d->cap), true);
+    d->set(i18n("Set Line Cap"), &model::Stroke::cap, int(d->cap), true);
 
     Q_EMIT pen_style_changed();
     update();
@@ -246,7 +246,7 @@ void StrokeStyleWidget::check_join()
     else if ( d->ui.button_join_miter->isChecked() )
         d->join = Qt::MiterJoin;
 
-    d->set(tr("Set Line Join"), &model::Stroke::join, int(d->join), true);
+    d->set(i18n("Set Line Join"), &model::Stroke::join, int(d->join), true);
 
     Q_EMIT pen_style_changed();
     update();
@@ -338,7 +338,7 @@ void StrokeStyleWidget::property_changed(const model::BaseProperty* prop)
 
 void StrokeStyleWidget::check_miter(double w)
 {
-    d->set(tr("Set Miter Limit"), &model::Stroke::miter_limit, w, false);
+    d->set(i18n("Set Miter Limit"), &model::Stroke::miter_limit, w, false);
 
     Q_EMIT pen_style_changed();
     update();
@@ -346,7 +346,7 @@ void StrokeStyleWidget::check_miter(double w)
 
 void StrokeStyleWidget::check_width(double w)
 {
-    d->set(tr("Set Line Width"), &model::Stroke::width, w, false);
+    d->set(i18n("Set Line Width"), &model::Stroke::width, w, false);
 
     Q_EMIT pen_style_changed();
     update();
@@ -361,7 +361,7 @@ void StrokeStyleWidget::color_committed(const QColor& color)
 
 void StrokeStyleWidget::commit_width()
 {
-    d->set(tr("Set Line Width"), &model::Stroke::width, d->ui.spin_stroke_width->value(), true);
+    d->set(i18n("Set Line Width"), &model::Stroke::width, d->ui.spin_stroke_width->value(), true);
     Q_EMIT pen_style_changed();
 }
 
@@ -393,6 +393,6 @@ void StrokeStyleWidget::set_stroke_width(qreal w)
 
 void StrokeStyleWidget::clear_color()
 {
-    d->ui.color_selector->clear_targets(tr("Clear Line Color"), d->targets);
+    d->ui.color_selector->clear_targets(i18n("Clear Line Color"), d->targets);
     Q_EMIT pen_style_changed();
 }

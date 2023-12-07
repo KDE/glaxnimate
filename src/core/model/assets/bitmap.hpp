@@ -38,7 +38,7 @@ public:
 
     QString type_name_human() const override
     {
-        return tr("Bitmap");
+        return i18n("Bitmap");
     }
 
     bool from_url(const QUrl& url);

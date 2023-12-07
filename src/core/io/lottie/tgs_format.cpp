@@ -107,7 +107,7 @@ bool glaxnimate::io::lottie::TgsFormat::on_save(QIODevice& file, const QString&,
 
     qreal size_k = compressed_size / 1024.0;
     if ( size_k > 64 )
-        error(tr("File too large: %1k, should be under 64k").arg(size_k));
+        error(i18n("File too large: %1k, should be under 64k").arg(size_k));
 
     return true;
 }

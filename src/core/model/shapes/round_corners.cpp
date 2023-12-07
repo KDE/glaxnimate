@@ -17,7 +17,7 @@ QIcon glaxnimate::model::RoundCorners::static_tree_icon()
 
 QString glaxnimate::model::RoundCorners::static_type_name_human()
 {
-    return tr("Round Corners");
+    return i18n("Round Corners");
 }
 
 bool glaxnimate::model::RoundCorners::process_collected() const

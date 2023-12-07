@@ -24,7 +24,7 @@ GlaxnimateWindow::GlaxnimateWindow(bool restore_state, bool debug, QWidget *pare
     : KXmlGuiWindow(parent, flags), d(std::make_unique<Private>())
 {
     d->setupUi(restore_state, debug, this);
-    d->setup_document_new(tr("New Animation"));
+    d->setup_document_new(i18n("New Animation"));
     d->autosave_timer_start();
 }
 
@@ -46,39 +46,39 @@ void GlaxnimateWindow::changeEvent(QEvent *e)
 
 void GlaxnimateWindow::document_new()
 {
-    d->setup_document_new(tr("New Animation"));
+    d->setup_document_new(i18n("New Animation"));
 }
 
 void GlaxnimateWindow::document_save()
 {
     if ( d->save_document(false, false) )
-        d->status_message(tr("File saved"));
+        d->status_message(i18n("File saved"));
     else
-        d->status_message(tr("Could not save file"), 0);
+        d->status_message(i18n("Could not save file"), 0);
 }
 
 void GlaxnimateWindow::document_save_as()
 {
     if ( d->save_document(true, false) )
-        d->status_message(tr("File saved"));
+        d->status_message(i18n("File saved"));
     else
-        d->status_message(tr("Could not save file"), 0);
+        d->status_message(i18n("Could not save file"), 0);
 }
 
 void GlaxnimateWindow::document_export()
 {
     if ( d->save_document(false, true) )
-        d->status_message(tr("File exported"));
+        d->status_message(i18n("File exported"));
     else
-        d->status_message(tr("Could not export file"), 0);
+        d->status_message(i18n("Could not export file"), 0);
 }
 
 void GlaxnimateWindow::document_export_as()
 {
     if ( d->save_document(true, true) )
-        d->status_message(tr("File exported"));
+        d->status_message(i18n("File exported"));
     else
-        d->status_message(tr("Could not export file"), 0);
+        d->status_message(i18n("Could not export file"), 0);
 }
 
 void GlaxnimateWindow::document_export_sequence()
@@ -186,7 +186,7 @@ model::Document * GlaxnimateWindow::document() const
 
 void GlaxnimateWindow::warning ( const QString& message, const QString& title ) const
 {
-    d->show_warning(title.isEmpty() ? tr("Warning") : title, message);
+    d->show_warning(title.isEmpty() ? i18n("Warning") : title, message);
 }
 
 void GlaxnimateWindow::status ( const QString& message ) const

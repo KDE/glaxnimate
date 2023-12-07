@@ -14,7 +14,7 @@ GLAXNIMATE_OBJECT_IMPL(glaxnimate::model::NamedColor)
 
 QString glaxnimate::model::NamedColor::type_name_human() const
 {
-    return tr("Unnamed Color");
+    return i18n("Unnamed Color");
 }
 
 QBrush glaxnimate::model::NamedColor::brush_style(FrameTime t) const

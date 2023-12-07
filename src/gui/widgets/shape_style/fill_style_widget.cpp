@@ -99,7 +99,7 @@ void FillStyleWidget::set_color(const QColor&, bool commit)
     if ( updating )
         return;
 
-    apply_to_targets(tr("Update Fill Color"), targets, stop, commit);
+    apply_to_targets(i18n("Update Fill Color"), targets, stop, commit);
 }
 
 void FillStyleWidget::set_gradient_stop(model::Styler* styler, int index)
@@ -117,5 +117,5 @@ void FillStyleWidget::set_gradient_stop(model::Styler* styler, int index)
 
 void FillStyleWidget::clear_target_color()
 {
-    clear_targets(tr("Clear Fill Color"), targets);
+    clear_targets(i18n("Clear Fill Color"), targets);
 }

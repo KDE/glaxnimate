@@ -16,7 +16,7 @@ class TgsFormat : public LottieFormat
 
 public:
     QString slug() const override { return "tgs"; }
-    QString name() const override { return tr("Telegram Animated Sticker"); }
+    QString name() const override { return i18n("Telegram Animated Sticker"); }
     QStringList extensions() const override { return {"tgs"}; }
     bool can_save() const override { return true; }
     bool can_open() const override { return true; }

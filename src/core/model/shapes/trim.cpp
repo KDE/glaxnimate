@@ -21,7 +21,7 @@ QIcon glaxnimate::model::Trim::static_tree_icon()
 
 QString glaxnimate::model::Trim::static_type_name_human()
 {
-    return tr("Trim Path");
+    return i18n("Trim Path");
 }
 
 bool glaxnimate::model::Trim::process_collected() const

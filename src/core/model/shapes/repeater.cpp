@@ -22,7 +22,7 @@ QIcon glaxnimate::model::Repeater::static_tree_icon()
 
 QString glaxnimate::model::Repeater::static_type_name_human()
 {
-    return tr("Repeater");
+    return i18n("Repeater");
 }
 
 

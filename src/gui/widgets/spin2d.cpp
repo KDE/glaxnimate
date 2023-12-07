@@ -8,6 +8,7 @@
 
 #include <QHBoxLayout>
 #include <QStyleOptionSpinBox>
+#include <KLocalizedString>
 #include "glaxnimate_app.hpp"
 
 using namespace glaxnimate::gui;
@@ -89,7 +90,7 @@ void Spin2D::changeEvent(QEvent* e)
 void Spin2D::retranslate()
 {
     if ( lock )
-        lock->setToolTip(tr("Lock Ratio"));
+        lock->setToolTip(i18n("Lock Ratio"));
 }
 
 void Spin2D::lock_toggled(bool on)
@@ -125,8 +126,8 @@ void Spin2D::set_value(const QSizeF& v)
 
 void Spin2D::set_value(const QVector2D& v)
 {
-    spin_x->setSuffix(tr("%"));
-    spin_y->setSuffix(tr("%"));
+    spin_x->setSuffix(i18n("%"));
+    spin_y->setSuffix(i18n("%"));
     spin_x->setDecimals(0);
     spin_y->setDecimals(0);
     set_value(v.x() * 100, v.y() * 100);
