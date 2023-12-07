@@ -149,9 +149,9 @@ void GlaxnimateWindow::Private::init_debug()
     toggle_timeline_debug->setCheckable(true);
     connect(toggle_timeline_debug, &QAction::toggled, parent, [this](bool on){
         ui.timeline_widget->timeline()->toggle_debug(on);
-        app::settings::set("internal", "debug_timeline", on);
+        GlaxnimateSettings::setDebug_timeline(on);
     });
-    toggle_timeline_debug->setChecked(app::settings::define("internal", "debug_timeline", false));
+    toggle_timeline_debug->setChecked(GlaxnimateSettings::debug_timeline());
 
     // Timeline
     QMenu* menu_canvas = new QMenu("Canvas", menu_debug);

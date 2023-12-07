@@ -63,7 +63,7 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
 #include <QPalette>
 #include <QClipboard>
 
-#include "app/settings/settings.hpp"
+#include "glaxnimate_settings.hpp"
 #include "app/settings/palette_settings.hpp"
 #include "app/settings/keyboard_shortcuts.hpp"
 #include "app/log/listener_file.hpp"

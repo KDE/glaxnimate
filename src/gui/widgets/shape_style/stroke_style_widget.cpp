@@ -14,7 +14,7 @@
 #include <QPointer>
 
 #include "glaxnimate_app.hpp"
-#include "app/settings/settings.hpp"
+#include "glaxnimate_settings.hpp"
 #include "model/document.hpp"
 #include "command/animation_commands.hpp"
 #include "utils/pseudo_mutex.hpp"
@@ -163,15 +163,15 @@ StrokeStyleWidget::StrokeStyleWidget(QWidget* parent)
     d->group_join.addButton(d->ui.button_join_round);
     d->group_join.addButton(d->ui.button_join_miter);
 
-    d->ui.spin_stroke_width->setValue(app::settings::get<qreal>("tools", "stroke_width"));
-    d->ui.spin_miter->setValue(app::settings::get<qreal>("tools", "stroke_miter"));
-    d->set_cap_style(app::settings::get<model::Stroke::Cap>("tools", "stroke_cap"));
-    d->set_join_style(app::settings::get<model::Stroke::Join>("tools", "stroke_join"));
+    d->ui.spin_stroke_width->setValue(GlaxnimateSettings::stroke_width());
+    d->ui.spin_miter->setValue(GlaxnimateSettings::stroke_miter());
+    d->set_cap_style(model::Stroke::Cap(GlaxnimateSettings::stroke_cap()));
+    d->set_join_style(model::Stroke::Join(GlaxnimateSettings::stroke_join()));
 
 //    d->ui.tab_widget->setTabEnabled(2, false);
     d->ui.tab_widget->removeTab(2);
 
-    d->ui.color_selector->set_current_color(app::settings::get<QColor>("tools", "color_secondary"));
+    d->ui.color_selector->set_current_color(GlaxnimateSettings::color_secondary());
     d->ui.color_selector->hide_secondary();
 
     d->dark_theme = palette().window().color().valueF() < 0.5;
@@ -254,10 +254,10 @@ void StrokeStyleWidget::check_join()
 
 void StrokeStyleWidget::save_settings() const
 {
-    app::settings::set("tools", "stroke_width", d->ui.spin_stroke_width->value());
-    app::settings::set("tools", "stroke_miter", d->ui.spin_miter->value());
-    app::settings::set("tools", "stroke_cap", int(d->cap));
-    app::settings::set("tools", "stroke_join", int(d->join));
+    GlaxnimateSettings::setStroke_width(d->ui.spin_stroke_width->value());
+    GlaxnimateSettings::setStroke_miter(d->ui.spin_miter->value());
+    GlaxnimateSettings::setStroke_cap(int(d->cap));
+    GlaxnimateSettings::setStroke_join(int(d->join));
 }
 
 QPen StrokeStyleWidget::pen_style() const

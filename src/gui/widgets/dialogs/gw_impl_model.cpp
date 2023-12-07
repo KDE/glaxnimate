@@ -231,7 +231,7 @@ QStringList GlaxnimateWindow::Private::get_open_image_files(const QString& title
 
 void GlaxnimateWindow::Private::import_image()
 {
-    QString path = app::settings::get<QString>("open_save", "import_path");
+    QString path = GlaxnimateSettings::import_path();
     if ( path.isEmpty() )
         path = current_document->io_options().path.absolutePath();
 
@@ -239,7 +239,7 @@ void GlaxnimateWindow::Private::import_image()
     if ( image_files.isEmpty() )
         return;
 
-    app::settings::set("open_save", "import_path", path);
+    GlaxnimateSettings::setImport_path(path);
 
     /// \todo dialog asking whether to embed
     command::UndoMacroGuard macro(tr("Import Image"), current_document.get());

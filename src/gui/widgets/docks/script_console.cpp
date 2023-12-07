@@ -12,7 +12,7 @@
 
 #include <KCompletion>
 
-#include "app/settings/settings.hpp"
+#include "glaxnimate_settings.hpp"
 #include "app/scripting/script_engine.hpp"
 #include "plugin/plugin.hpp"
 #include "widgets/dialogs/plugin_ui_dialog.hpp"
@@ -206,7 +206,7 @@ ScriptConsole::ScriptConsole(QWidget* parent)
     d->ui.setupUi(this);
     d->parent = this;
 
-    d->ui.console_input->setHistoryItems(app::settings::get<QStringList>("scripting", "history"));
+    d->ui.console_input->setHistoryItems(GlaxnimateSettings::script_history());
     d->ui.console_input->completionObject()->setCompletionMode(KCompletion::CompletionPopup);
     d->ui.console_input->completionObject()->setOrder(KCompletion::Sorted);
     connect(d->ui.console_input, &KHistoryComboBox::completion, this, [this](const QString& text){ d->set_completions(text); });
@@ -280,10 +280,10 @@ PluginUiDialog* ScriptConsole::create_dialog(const QString& ui_file) const
 void ScriptConsole::save_settings()
 {
     QStringList history = d->ui.console_input->historyItems();
-    int max_history = app::settings::get<int>("scripting", "max_history");
+    int max_history = GlaxnimateSettings::script_max_history();
     if ( history.size() > max_history )
         history.erase(history.begin(), history.end() - max_history);
-    app::settings::set("scripting", "history", history);
+    GlaxnimateSettings::setScript_history(history);
 }
 
 void ScriptConsole::run_snippet(const QString& source)

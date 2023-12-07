@@ -9,7 +9,7 @@
 
 #include <QEvent>
 
-#include "app/settings/settings.hpp"
+#include "glaxnimate_settings.hpp"
 #include "settings/document_templates.hpp"
 #include <model/assets/assets.hpp>
 
@@ -82,15 +82,15 @@ StartupDialog::StartupDialog(QWidget* parent)
     d->ui.spin_size->enable_ratio_lock();
     d->ui.spin_size->set_decimals(0);
     d->ui.spin_size->set_value(
-        app::settings::get<int>("defaults", "width"),
-        app::settings::get<int>("defaults", "height")
+        GlaxnimateSettings::width(),
+        GlaxnimateSettings::height()
     );
-    float fps = app::settings::get<float>("defaults", "fps");
+    float fps = GlaxnimateSettings::fps();
     d->ui.spin_fps->setValue(fps);
     d->adjust_duration_spin();
-    d->ui.spin_duration->setValue(app::settings::get<float>("defaults", "duration"));
+    d->ui.spin_duration->setValue(GlaxnimateSettings::duration());
 
-    for ( const auto& recent : app::settings::get<QStringList>("open_save", "recent_files") )
+    for ( const auto& recent : GlaxnimateSettings::recent_files() )
     {
         QFileInfo finfo(recent);
         if ( !finfo.exists() || !finfo.isReadable() )
@@ -106,7 +106,7 @@ StartupDialog::StartupDialog(QWidget* parent)
         d->ui.view_presets->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
     }
 
-    d->ui.check_show_at_startup->setChecked(app::settings::get<bool>("ui", "startup_dialog"));
+    d->ui.check_show_at_startup->setChecked(GlaxnimateSettings::startup_dialog());
 }
 
 StartupDialog::~StartupDialog() = default;
@@ -220,5 +220,5 @@ void StartupDialog::update_time_units()
 
 void StartupDialog::update_startup_enabled(bool checked)
 {
-    app::settings::set("ui", "startup_dialog", checked);
+    GlaxnimateSettings::setStartup_dialog(checked);
 }

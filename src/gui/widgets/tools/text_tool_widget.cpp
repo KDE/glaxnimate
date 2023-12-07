@@ -18,6 +18,7 @@
 #include "widgets/font/font_model.hpp"
 #include "widgets/font/font_delegate.hpp"
 #include "widgets/font/font_style_dialog.hpp"
+#include "glaxnimate_settings.hpp"
 
 
 class glaxnimate::gui::TextToolWidget::Private : public ShapeToolWidget::Private
@@ -108,12 +109,12 @@ public:
         button = new QPushButton(parent);
         button->setIcon(QIcon::fromTheme("dialog-text-and-font"));
         connect(button, &QPushButton::clicked, parent, [this, parent]{
-            dialog->set_favourites(app::settings::get<QStringList>("tools", "favourite_font_families"));
+            dialog->set_favourites(GlaxnimateSettings::favourite_font_families());
             dialog->set_font(font_);
             bool ok = dialog->exec();
 
             auto faves = dialog->favourites();
-            app::settings::set("tools", "favourite_font_families", faves);
+            GlaxnimateSettings::setFavourite_font_families(faves);
             model.set_favourites(faves);
 
             if ( ok )
@@ -138,21 +139,21 @@ public:
     void on_load_settings() override
     {
         QFontInfo info(font_);
-        model.set_favourites(app::settings::define("tools", "favourite_font_families", QStringList()));
-        combo_font->setCurrentText(app::settings::define("tools", "text_family", info.family()));
+        model.set_favourites(GlaxnimateSettings::favourite_font_families());
+        combo_font->setCurrentText(GlaxnimateSettings::text_family());
         combo_font->setEditText(combo_font->currentText());
         font_.setFamily(combo_font->currentText());
-        combo_style->setCurrentText(app::settings::define("tools", "text_style", info.styleName()));
+        combo_style->setCurrentText(GlaxnimateSettings::text_style());
         font_.setStyleName(combo_style->currentText());
-        spin_size->setValue(app::settings::define("tools", "text_size", info.pointSizeF()));
+        spin_size->setValue(GlaxnimateSettings::text_size());
         font_.setPointSizeF(spin_size->value());
     }
 
     void on_save_settings() override
     {
-        app::settings::set("tools", "text_family", combo_font->currentText());
-        app::settings::set("tools", "text_style", combo_style->currentText());
-        app::settings::set("tools", "text_size", spin_size->value());
+        GlaxnimateSettings::setText_family(combo_font->currentText());
+        GlaxnimateSettings::setText_style(combo_style->currentText());
+        GlaxnimateSettings::setText_size(spin_size->value());
     }
 
     void on_retranslate() override

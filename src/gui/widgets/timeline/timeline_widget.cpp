@@ -14,6 +14,7 @@
 #include "timeline_items.hpp"
 #include "model/shapes/precomp_layer.hpp"
 #include "model/shapes/styler.hpp"
+#include "glaxnimate_settings.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
@@ -284,7 +285,7 @@ public:
     bool horizontal_scroll(Qt::KeyboardModifiers modifiers)
     {
         bool horizontal = modifiers & (Qt::ShiftModifier|Qt::AltModifier);
-        if ( app::settings::get<bool>("ui", "timeline_scroll_horizontal") )
+        if ( GlaxnimateSettings::timeline_scroll_horizontal() )
             return !horizontal;
         return horizontal;
     }
