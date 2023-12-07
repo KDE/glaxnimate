@@ -85,7 +85,7 @@ void GlaxnimateApp::on_initialize()
 
 void GlaxnimateApp::on_initialize_settings()
 {
-    app::settings::Settings::instance().add_group(std::make_unique<settings::PluginSettingsGroup>(QStringList{
+    GlaxnimateSettings::self()->add_group(std::make_unique<settings::PluginSettingsGroup>(QStringList{
         "AnimatedRaster", "ReplaceColor", "dotLottie", "FrameByFrame"
     }));
     GlaxnimateSettings::self()->add_group(std::make_unique<settings::ClipboardSettings>());
