@@ -21,8 +21,6 @@
 
 #include <KRecentFilesAction>
 
-#include "glaxnimate_settings.hpp"
-
 #include "io/lottie/lottie_html_format.hpp"
 #include "io/svg/svg_renderer.hpp"
 #include "io/svg/svg_html_format.hpp"
@@ -66,7 +64,7 @@ void GlaxnimateWindow::Private::setup_document_ptr(std::unique_ptr<model::Docume
 
     do_setup_document();
 
-    QDir path = app::settings::get<QString>("open_save", "path");
+    QDir path = GlaxnimateSettings::path();
     auto opts = current_document->io_options();
     opts.path = path;
     current_document->set_io_options(opts);
@@ -152,10 +150,10 @@ void GlaxnimateWindow::Private::setup_document_new(const QString& filename)
     QUrl url = QUrl::fromLocalFile(i18n("Unsaved Animation"));
     autosave_file.setManagedFile(url);
     comp->name.set(comp->type_name_human());
-    comp->width.set(app::settings::get<int>("defaults", "width"));
-    comp->height.set(app::settings::get<int>("defaults", "height"));
-    comp->fps.set(app::settings::get<float>("defaults", "fps"));
-    float duration = app::settings::get<float>("defaults", "duration");
+    comp->width.set(GlaxnimateSettings::width());
+    comp->height.set(GlaxnimateSettings::height());
+    comp->fps.set(GlaxnimateSettings::fps());
+    float duration = GlaxnimateSettings::duration();
     int out_point = comp->fps.get() * duration;
     comp->animation->last_frame.set(out_point);
 
@@ -172,7 +170,7 @@ void GlaxnimateWindow::Private::setup_document_new(const QString& filename)
     model::ShapeElement* ptr = layer.get();
     comp->shapes.insert(std::move(layer), 0);
 
-    QDir path = app::settings::get<QString>("open_save", "path");
+    QDir path = GlaxnimateSettings::path();
     auto opts = current_document->io_options();
     opts.path = path;
     current_document->set_io_options(opts);
@@ -567,7 +565,7 @@ void GlaxnimateWindow::Private::save_frame_bmp()
 {
     int frame = current_document->current_time();
     QFileDialog fd(parent, i18n("Save Frame Image"));
-    fd.setDirectory(app::settings::get<QString>("open_save", "render_path"));
+    fd.setDirectory(GlaxnimateSettings::render_path());
     fd.setDefaultSuffix("png");
     fd.selectFile(i18n("Frame%1.png", frame));
     fd.setAcceptMode(QFileDialog::AcceptSave);
@@ -582,7 +580,7 @@ void GlaxnimateWindow::Private::save_frame_bmp()
     if ( fd.exec() == QDialog::Rejected )
         return;
 
-    app::settings::set("open_save", "render_path", fd.directory().path());
+    GlaxnimateSettings::setRender_path(fd.directory().path());
 
     QImage image = io::raster::RasterMime().to_image({comp});
     if ( !image.save(fd.selectedFiles()[0]) )
@@ -594,7 +592,7 @@ void GlaxnimateWindow::Private::save_frame_svg()
 {
     int frame = current_document->current_time();
     QFileDialog fd(parent, i18n("Save Frame Image"));
-    fd.setDirectory(app::settings::get<QString>("open_save", "render_path"));
+    fd.setDirectory(GlaxnimateSettings::render_path());
     fd.setDefaultSuffix("svg");
     fd.selectFile(i18n("Frame%1.svg", frame));
     fd.setAcceptMode(QFileDialog::AcceptSave);
@@ -605,7 +603,7 @@ void GlaxnimateWindow::Private::save_frame_svg()
     if ( fd.exec() == QDialog::Rejected )
         return;
 
-    app::settings::set("open_save", "render_path", fd.directory().path());
+    GlaxnimateSettings::setRender_path(fd.directory().path());
 
     QFile file(fd.selectedFiles()[0]);
     if ( !file.open(QFile::WriteOnly) )
@@ -805,7 +803,7 @@ void GlaxnimateWindow::Private::style_change_event()
 void GlaxnimateWindow::Private::import_file()
 {
     io::Options options = current_document->io_options();
-    QString path = app::settings::get<QString>("open_save", "import_path");
+    QString path = GlaxnimateSettings::import_path();
     if ( !path.isEmpty() )
         options.path.setPath(path);
 
@@ -813,7 +811,7 @@ void GlaxnimateWindow::Private::import_file()
     if ( dialog.import_dialog() )
     {
         options = dialog.io_options();
-        app::settings::set("open_save", "import_path", options.path.path());
+        GlaxnimateSettings::setImport_path(options.path.path());
         import_file(options);
     }
 

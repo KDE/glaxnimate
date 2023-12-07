@@ -65,7 +65,7 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
 
 #include <KLocalizedString>
 
-#include "app/settings/settings.hpp"
+#include "glaxnimate_settings.hpp"
 #include "app/log/listener_file.hpp"
 #include "settings/plugin_settings_group.hpp"
 #include "settings/clipboard_settings.hpp"

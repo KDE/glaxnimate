@@ -13,6 +13,7 @@
 
 #include "shape_tool_widget_p.hpp"
 #include "widgets/enum_combo.hpp"
+#include "glaxnimate_settings.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
@@ -84,9 +85,9 @@ protected:
 
     void on_save_settings() override
     {
-        app::settings::set("tools", "star_type", combo->current_value());
-        app::settings::set("tools", "star_ratio", spin_ratio->value());
-        app::settings::set("tools", "star_points", spin_points->value());
+        GlaxnimateSettings::setStar_type(combo->current_value());
+        GlaxnimateSettings::setStar_ratio(spin_ratio->value());
+        GlaxnimateSettings::setStar_points(spin_points->value());
     }
 
     EnumCombo* combo;
