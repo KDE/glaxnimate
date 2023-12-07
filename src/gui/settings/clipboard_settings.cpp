@@ -33,18 +33,20 @@ const std::vector<settings::ClipboardSettings::MimeSettings>& settings::Clipboar
     return mutable_mime_types();
 }
 
-void settings::ClipboardSettings::load(QSettings & settings)
+void settings::ClipboardSettings::load(KConfig & settings)
 {
+    auto group = settings.group(slug());
     for ( auto& set : mutable_mime_types() )
         if ( set.serializer->slug() != "glaxnimate" )
-            set.enabled = settings.value(set.serializer->slug(), set.enabled).toBool();
+            set.enabled = group.readEntry(set.serializer->slug(), set.enabled);
 }
 
-void settings::ClipboardSettings::save(QSettings & settings)
+void settings::ClipboardSettings::save(KConfig & settings)
 {
+    auto group = settings.group(slug());
     for ( auto& set : mutable_mime_types() )
         if ( set.serializer->slug() != "glaxnimate" )
-            settings.setValue(set.serializer->slug(), set.enabled);
+            group.writeEntry(set.serializer->slug(), set.enabled);
 }
 
 QWidget * settings::ClipboardSettings::make_widget(QWidget* parent)

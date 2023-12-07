@@ -237,10 +237,7 @@ void glaxnimate::gui::SettingsDialog::updateSettings()
 {
     auto iter = d->custom_pages.find(currentPage());
     if ( iter != d->custom_pages.end() )
-    {
         iter->second->save(*GlaxnimateSettings::self()->config());
-        return;
-    }
 
     KConfigDialog::updateSettings();
 }
