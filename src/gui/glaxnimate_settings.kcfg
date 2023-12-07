@@ -6,7 +6,7 @@
     http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
     <kcfgfile/>
     <include>QFontInfo</include>
-    <include>api_keys.hpp</include>
+    <include>settings/base.hpp</include>
     <signal name="icon_theme_changed">
         <argument type="String">icon_theme</argument>
     </signal>
@@ -125,14 +125,6 @@
         </entry>
         <entry name="text_size" type="Double">
             <default code="true">QFontInfo(QFont()).pointSizeF()</default>
-        </entry>
-    </group>
-    <group name="api">
-        <entry name="google_fonts_url" type="String">
-            <default>https://www.googleapis.com/webfonts/v1/webfonts</default>
-        </entry>
-        <entry name="google_fonts_key" type="String">
-            <default code="true">API_KEY_GOOGLE_FONTS</default>
         </entry>
     </group>
 </kcfg>

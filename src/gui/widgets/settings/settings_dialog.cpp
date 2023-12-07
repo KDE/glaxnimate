@@ -191,6 +191,7 @@ public:
     QComboBox* color_scheme_view = nullptr;
     KShortcutsEditor* shortcut_editor = nullptr;
     KPageWidgetItem* shortcuts_page = nullptr;
+    std::map<KPageWidgetItem*, settings::CustomSettingsGroup*> custom_pages;
 
     app::widgets::NoCloseOnEnter ncoe;
 };
@@ -263,6 +264,12 @@ SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
 
     d->shortcuts_page = addPage(d->shortcut_editor, i18n("Keyboard Shortcuts"), QStringLiteral("input-keyboard"));
 
+    for ( const auto& group : GlaxnimateSettings::self()->custom_groups() )
+    {
+        auto page = addPage(group->make_widget(this), group->label().toString(), group->icon());
+        d->custom_pages[page] = group.get();
+    }
+
 }
 
 SettingsDialog::~SettingsDialog() = default;
@@ -284,6 +291,13 @@ void glaxnimate::gui::SettingsDialog::updateSettings()
     }
     else
     {
+        auto iter = d->custom_pages.find(currentPage());
+        if ( iter != d->custom_pages.end() )
+        {
+            iter->second->save(*GlaxnimateSettings::self()->config());
+            return;
+        }
+
         KConfigDialog::updateSettings();
     }
 }

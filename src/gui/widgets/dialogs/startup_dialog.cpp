@@ -211,4 +211,5 @@ void StartupDialog::update_time_units()
 void StartupDialog::update_startup_enabled(bool checked)
 {
     GlaxnimateSettings::setStartup_dialog(checked);
+    GlaxnimateSettings::self()->save();
 }
