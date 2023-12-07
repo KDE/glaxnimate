@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
-
-SPDX-License-Identifier: GPL-3.0-or-later
--->
-
 <ui version="4.0">
+  <author>
+    SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia &lt;dev@dragon.best&gt;
+    SPDX-License-Identifier: GPL-3.0-or-later
+  </author>
  <class>glaxnimate::gui::FollowPathDialog</class>
  <widget class="QDialog" name="glaxnimate::gui::FollowPathDialog">
   <property name="geometry">

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+ <author>
+    SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia &lt;dev@dragon.best&gt;
+    SPDX-License-Identifier: GPL-3.0-or-later
+  </author>
  <class>glaxnimate::gui::GlaxnimateWindow</class>
  <widget class="QMainWindow" name="glaxnimate::gui::GlaxnimateWindow">
   <property name="geometry">
@@ -42,7 +46,7 @@
      <x>0</x>
      <y>0</y>
      <width>1446</width>
-     <height>22</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_file">
@@ -64,7 +68,8 @@
       <string>New from Template</string>
      </property>
      <property name="icon">
-      <iconset theme="document-new-from-template"/>
+      <iconset theme="document-new-from-template">
+       <normaloff>.</normaloff>.</iconset>
      </property>
     </widget>
     <addaction name="action_new"/>
@@ -111,7 +116,8 @@
        <string>&amp;Composition</string>
       </property>
       <property name="icon">
-       <iconset theme="component"/>
+       <iconset theme="component">
+        <normaloff>.</normaloff>.</iconset>
       </property>
       <addaction name="separator"/>
      </widget>
@@ -243,7 +249,8 @@
       <string>&amp;Web Preview</string>
      </property>
      <property name="icon">
-      <iconset theme="internet-web-browser"/>
+      <iconset theme="internet-web-browser">
+       <normaloff>.</normaloff>.</iconset>
      </property>
      <addaction name="action_lottie_preview"/>
      <addaction name="action_lottie_canvas_preview"/>
@@ -283,7 +290,8 @@
       <string>&amp;Align and Distribute</string>
      </property>
      <property name="icon">
-      <iconset theme="dialog-align-and-distribute"/>
+      <iconset theme="dialog-align-and-distribute">
+       <normaloff>.</normaloff>.</iconset>
      </property>
      <addaction name="separator_align_relative_to"/>
      <addaction name="action_align_to_selection"/>
@@ -324,7 +332,6 @@
     <property name="title">
      <string>&amp;Settings</string>
     </property>
-    <addaction name="action_preferences"/>
     <addaction name="action_shortcuts"/>
     <addaction name="action_settings"/>
    </widget>
@@ -468,8 +475,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>68</width>
-          <height>298</height>
+          <width>92</width>
+          <height>261</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -775,7 +782,8 @@
   </widget>
   <widget class="QDockWidget" name="dock_logs">
    <property name="windowIcon">
-    <iconset theme="utilities-log-viewer"/>
+    <iconset theme="utilities-log-viewer">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="windowTitle">
     <string>Logs</string>
@@ -806,7 +814,8 @@
   </widget>
   <widget class="QDockWidget" name="dock_stroke">
    <property name="windowIcon">
-    <iconset theme="object-stroke-style"/>
+    <iconset theme="object-stroke-style">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="windowTitle">
     <string>Stroke</string>
@@ -839,7 +848,8 @@
   </widget>
   <widget class="QDockWidget" name="dock_undo">
    <property name="windowIcon">
-    <iconset theme="edit-undo-history"/>
+    <iconset theme="edit-undo-history">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="windowTitle">
     <string>Undo History</string>
@@ -852,7 +862,8 @@
      <item>
       <widget class="QUndoView" name="view_undo">
        <property name="cleanIcon">
-        <iconset theme="document-save"/>
+        <iconset theme="document-save">
+         <normaloff>.</normaloff>.</iconset>
        </property>
       </widget>
      </item>
@@ -861,7 +872,8 @@
   </widget>
   <widget class="QDockWidget" name="dock_swatches">
    <property name="windowIcon">
-    <iconset theme="paint-swatch"/>
+    <iconset theme="paint-swatch">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="windowTitle">
     <string>Swatch</string>
@@ -900,7 +912,8 @@
   </widget>
   <widget class="QDockWidget" name="dock_gradients">
    <property name="windowIcon">
-    <iconset theme="color-gradient"/>
+    <iconset theme="color-gradient">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="windowTitle">
     <string>Gradients</string>
@@ -930,7 +943,8 @@
   </widget>
   <widget class="QDockWidget" name="dock_align">
    <property name="windowIcon">
-    <iconset theme="dialog-align-and-distribute"/>
+    <iconset theme="dialog-align-and-distribute">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="windowTitle">
     <string>Align</string>
@@ -944,7 +958,8 @@
   </widget>
   <widget class="QDockWidget" name="dock_assets">
    <property name="windowIcon">
-    <iconset theme="folder-stash"/>
+    <iconset theme="folder-stash">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="windowTitle">
     <string>Assets</string>
@@ -1004,7 +1019,8 @@
   </widget>
   <widget class="QDockWidget" name="dock_snippets">
    <property name="windowIcon">
-    <iconset theme="dialog-scripts"/>
+    <iconset theme="dialog-scripts">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="windowTitle">
     <string>Snippets</string>
@@ -1034,7 +1050,8 @@
   </widget>
   <widget class="QDockWidget" name="dock_time_slider">
    <property name="windowIcon">
-    <iconset theme="player-time"/>
+    <iconset theme="player-time">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="windowTitle">
     <string>Compact Timelime</string>
@@ -1471,7 +1488,8 @@
   </action>
   <action name="action_raise_to_top">
    <property name="icon">
-    <iconset theme="layer-top"/>
+    <iconset theme="layer-top">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Raise to &amp;Top</string>
@@ -1482,7 +1500,8 @@
   </action>
   <action name="action_raise">
    <property name="icon">
-    <iconset theme="layer-raise"/>
+    <iconset theme="layer-raise">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Raise</string>
@@ -1493,7 +1512,8 @@
   </action>
   <action name="action_lower">
    <property name="icon">
-    <iconset theme="layer-lower"/>
+    <iconset theme="layer-lower">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Lower</string>
@@ -1504,7 +1524,8 @@
   </action>
   <action name="action_lower_to_bottom">
    <property name="icon">
-    <iconset theme="layer-bottom"/>
+    <iconset theme="layer-bottom">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Lower to &amp;Bottom</string>
@@ -1647,7 +1668,8 @@
   </action>
   <action name="action_online_manual">
    <property name="icon">
-    <iconset theme="help-browser"/>
+    <iconset theme="help-browser">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Online &amp;Manual...</string>
@@ -1655,7 +1677,8 @@
   </action>
   <action name="action_report_issue">
    <property name="icon">
-    <iconset theme="tools-report-bug"/>
+    <iconset theme="tools-report-bug">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Report &amp;Issue...</string>
@@ -1663,7 +1686,8 @@
   </action>
   <action name="action_group">
    <property name="icon">
-    <iconset theme="object-group"/>
+    <iconset theme="object-group">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Group</string>
@@ -1671,7 +1695,8 @@
   </action>
   <action name="action_ungroup">
    <property name="icon">
-    <iconset theme="object-ungroup"/>
+    <iconset theme="object-ungroup">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Ungroup</string>
@@ -1679,7 +1704,8 @@
   </action>
   <action name="action_move_to">
    <property name="icon">
-    <iconset theme="selection-move-to-layer-above"/>
+    <iconset theme="selection-move-to-layer-above">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Move to...</string>
@@ -1687,7 +1713,8 @@
   </action>
   <action name="action_validate_tgs">
    <property name="icon">
-    <iconset theme="telegram"/>
+    <iconset theme="telegram">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Validate &amp;Telegram Sticker</string>
@@ -1695,7 +1722,8 @@
   </action>
   <action name="action_resize">
    <property name="icon">
-    <iconset theme="transform-scale"/>
+    <iconset theme="transform-scale">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Re&amp;size...</string>
@@ -1703,7 +1731,8 @@
   </action>
   <action name="action_donate">
    <property name="icon">
-    <iconset theme="love"/>
+    <iconset theme="love">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Donate...</string>
@@ -1711,7 +1740,8 @@
   </action>
   <action name="action_new_fill">
    <property name="icon">
-    <iconset theme="format-fill-color"/>
+    <iconset theme="format-fill-color">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Fill</string>
@@ -1719,7 +1749,8 @@
   </action>
   <action name="action_new_stroke">
    <property name="icon">
-    <iconset theme="format-stroke-color"/>
+    <iconset theme="format-stroke-color">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Stroke</string>
@@ -1727,7 +1758,8 @@
   </action>
   <action name="action_new_layer">
    <property name="icon">
-    <iconset theme="folder"/>
+    <iconset theme="folder">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Layer</string>
@@ -1738,7 +1770,8 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset theme="document-open-recent"/>
+    <iconset theme="document-open-recent">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Open Most Recent</string>
@@ -1746,7 +1779,8 @@
   </action>
   <action name="action_import_image">
    <property name="icon">
-    <iconset theme="insert-image"/>
+    <iconset theme="insert-image">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Add &amp;Image...</string>
@@ -1754,7 +1788,8 @@
   </action>
   <action name="action_delete">
    <property name="icon">
-    <iconset theme="edit-delete"/>
+    <iconset theme="edit-delete">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Delete</string>
@@ -1765,7 +1800,8 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset theme="node-segment-line"/>
+    <iconset theme="node-segment-line">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Make segments straight</string>
@@ -1776,7 +1812,8 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset theme="node-segment-curve"/>
+    <iconset theme="node-segment-curve">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Make segments curved</string>
@@ -1784,7 +1821,8 @@
   </action>
   <action name="action_export">
    <property name="icon">
-    <iconset theme="document-export"/>
+    <iconset theme="document-export">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Export...</string>
@@ -1792,7 +1830,8 @@
   </action>
   <action name="action_export_as">
    <property name="icon">
-    <iconset theme="document-export"/>
+    <iconset theme="document-export">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>E&amp;xport As...</string>
@@ -1803,7 +1842,8 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset theme="format-node-curve"/>
+    <iconset theme="format-node-curve">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Dissolve Nodes</string>
@@ -1811,7 +1851,8 @@
   </action>
   <action name="action_document_cleanup">
    <property name="icon">
-    <iconset theme="document-cleanup"/>
+    <iconset theme="document-cleanup">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Cleanup</string>
@@ -1822,7 +1863,8 @@
   </action>
   <action name="action_timing">
    <property name="icon">
-    <iconset theme="player-time"/>
+    <iconset theme="player-time">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Timing...</string>
@@ -1830,7 +1872,8 @@
   </action>
   <action name="action_play">
    <property name="icon">
-    <iconset theme="media-playback-start"/>
+    <iconset theme="media-playback-start">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Play</string>
@@ -1844,7 +1887,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="media-playlist-repeat"/>
+    <iconset theme="media-playlist-repeat">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Loop</string>
@@ -1855,7 +1899,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="media-record"/>
+    <iconset theme="media-record">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Record Keyframes</string>
@@ -1863,7 +1908,8 @@
   </action>
   <action name="action_frame_first">
    <property name="icon">
-    <iconset theme="go-first"/>
+    <iconset theme="go-first">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Jump to &amp;Start</string>
@@ -1871,7 +1917,8 @@
   </action>
   <action name="action_frame_last">
    <property name="icon">
-    <iconset theme="go-last"/>
+    <iconset theme="go-last">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Jump to &amp;End</string>
@@ -1879,7 +1926,8 @@
   </action>
   <action name="action_frame_next">
    <property name="icon">
-    <iconset theme="go-next"/>
+    <iconset theme="go-next">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Next Frame</string>
@@ -1887,7 +1935,8 @@
   </action>
   <action name="action_frame_prev">
    <property name="icon">
-    <iconset theme="go-previous"/>
+    <iconset theme="go-previous">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Pre&amp;vious Frame</string>
@@ -1895,7 +1944,8 @@
   </action>
   <action name="action_metadata">
    <property name="icon">
-    <iconset theme="documentinfo"/>
+    <iconset theme="documentinfo">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Metadata...</string>
@@ -1903,7 +1953,8 @@
   </action>
   <action name="action_trace_bitmap">
    <property name="icon">
-    <iconset theme="bitmap-trace"/>
+    <iconset theme="bitmap-trace">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Trace Bitmap...</string>
@@ -1926,7 +1977,8 @@
   </action>
   <action name="action_duplicate">
    <property name="icon">
-    <iconset theme="edit-duplicate"/>
+    <iconset theme="edit-duplicate">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Duplicate</string>
@@ -1940,7 +1992,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="select-rectangular"/>
+    <iconset theme="select-rectangular">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Selection</string>
@@ -1951,7 +2004,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="snap-page"/>
+    <iconset theme="snap-page">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Canvas</string>
@@ -1959,7 +2013,8 @@
   </action>
   <action name="action_align_hor_left">
    <property name="icon">
-    <iconset theme="align-horizontal-left"/>
+    <iconset theme="align-horizontal-left">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Left</string>
@@ -1967,7 +2022,8 @@
   </action>
   <action name="action_align_hor_center">
    <property name="icon">
-    <iconset theme="align-horizontal-center"/>
+    <iconset theme="align-horizontal-center">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Center</string>
@@ -1975,7 +2031,8 @@
   </action>
   <action name="action_align_hor_right">
    <property name="icon">
-    <iconset theme="align-horizontal-right"/>
+    <iconset theme="align-horizontal-right">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Right</string>
@@ -1983,7 +2040,8 @@
   </action>
   <action name="action_align_vert_top">
    <property name="icon">
-    <iconset theme="align-vertical-top"/>
+    <iconset theme="align-vertical-top">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Top</string>
@@ -1991,7 +2049,8 @@
   </action>
   <action name="action_align_vert_center">
    <property name="icon">
-    <iconset theme="align-vertical-center"/>
+    <iconset theme="align-vertical-center">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Center</string>
@@ -1999,7 +2058,8 @@
   </action>
   <action name="action_align_vert_bottom">
    <property name="icon">
-    <iconset theme="align-vertical-bottom"/>
+    <iconset theme="align-vertical-bottom">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Bottom</string>
@@ -2010,7 +2070,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="object-group"/>
+    <iconset theme="object-group">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Canvas (as Group)</string>
@@ -2033,7 +2094,8 @@
   </action>
   <action name="action_align_hor_left_out">
    <property name="icon">
-    <iconset theme="align-horizontal-right-out"/>
+    <iconset theme="align-horizontal-right-out">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Outside Left</string>
@@ -2041,7 +2103,8 @@
   </action>
   <action name="action_align_hor_right_out">
    <property name="icon">
-    <iconset theme="align-horizontal-left-out"/>
+    <iconset theme="align-horizontal-left-out">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Outside Right</string>
@@ -2049,7 +2112,8 @@
   </action>
   <action name="action_align_vert_top_out">
    <property name="icon">
-    <iconset theme="align-vertical-bottom-out"/>
+    <iconset theme="align-vertical-bottom-out">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Outside Top</string>
@@ -2057,7 +2121,8 @@
   </action>
   <action name="action_align_vert_bottom_out">
    <property name="icon">
-    <iconset theme="align-vertical-top-out"/>
+    <iconset theme="align-vertical-top-out">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Outside Bottom</string>
@@ -2065,7 +2130,8 @@
   </action>
   <action name="action_import">
    <property name="icon">
-    <iconset theme="document-import"/>
+    <iconset theme="document-import">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Import...</string>
@@ -2073,7 +2139,8 @@
   </action>
   <action name="action_paste_as_composition">
    <property name="icon">
-    <iconset theme="special_paste"/>
+    <iconset theme="special_paste">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Paste as Composition</string>
@@ -2081,7 +2148,8 @@
   </action>
   <action name="action_flip_view">
    <property name="icon">
-    <iconset theme="object-flip-horizontal"/>
+    <iconset theme="object-flip-horizontal">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>F&amp;lip View</string>
@@ -2089,7 +2157,8 @@
   </action>
   <action name="action_save_as_template">
    <property name="icon">
-    <iconset theme="document-save-as-template"/>
+    <iconset theme="document-save-as-template">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Save as Template</string>
@@ -2097,7 +2166,8 @@
   </action>
   <action name="action_text_put_on_path">
    <property name="icon">
-    <iconset theme="text-put-on-path"/>
+    <iconset theme="text-put-on-path">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Put on Path</string>
@@ -2105,7 +2175,8 @@
   </action>
   <action name="action_text_remove_from_path">
    <property name="icon">
-    <iconset theme="text-remove-from-path"/>
+    <iconset theme="text-remove-from-path">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Remove from Path</string>
@@ -2113,7 +2184,8 @@
   </action>
   <action name="action_validate_discord">
    <property name="icon">
-    <iconset theme="discord"/>
+    <iconset theme="discord">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Validate Discord Sticker</string>
@@ -2121,7 +2193,8 @@
   </action>
   <action name="action_insert_emoji">
    <property name="icon">
-    <iconset theme="smiley-shape"/>
+    <iconset theme="smiley-shape">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Emo&amp;ji...</string>
@@ -2129,7 +2202,8 @@
   </action>
   <action name="action_open_lottiefiles">
    <property name="icon">
-    <iconset theme="lottiefiles"/>
+    <iconset theme="lottiefiles">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Import from LottieFiles...</string>
@@ -2137,7 +2211,8 @@
   </action>
   <action name="action_export_sequence">
    <property name="icon">
-    <iconset theme="folder-images"/>
+    <iconset theme="folder-images">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Export as Image Sequence...</string>
@@ -2210,7 +2285,8 @@
   </action>
   <action name="action_shortcuts">
    <property name="icon">
-    <iconset theme="configure-shortcuts"/>
+    <iconset theme="configure-shortcuts">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Configure &amp;Keyboard Shortcuts...</string>
@@ -2220,8 +2296,11 @@
    </property>
   </action>
   <action name="action_settings">
+   <property name="icon">
+    <iconset theme="settings-configure"/>
+   </property>
    <property name="text">
-    <string>KDE Settings</string>
+    <string>Configure Glaxnimate...</string>
    </property>
   </action>
  </widget>
@@ -2485,22 +2564,6 @@
     <hint type="destinationlabel">
      <x>656</x>
      <y>509</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>action_preferences</sender>
-   <signal>triggered()</signal>
-   <receiver>glaxnimate::gui::GlaxnimateWindow</receiver>
-   <slot>preferences()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>656</x>
-     <y>526</y>
     </hint>
    </hints>
   </connection>
