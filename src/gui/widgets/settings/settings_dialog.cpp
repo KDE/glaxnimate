@@ -281,7 +281,6 @@ void glaxnimate::gui::SettingsDialog::updateSettings()
         d->color_scheme->activateScheme(
             d->color_scheme->model()->index(d->color_scheme_view->currentIndex(), 0)
         );
-        KConfigDialog::updateSettings();
     }
     else if ( currentPage() == d->shortcuts_page )
     {
@@ -293,11 +292,9 @@ void glaxnimate::gui::SettingsDialog::updateSettings()
     {
         auto iter = d->custom_pages.find(currentPage());
         if ( iter != d->custom_pages.end() )
-        {
             iter->second->save(*GlaxnimateSettings::self()->config());
-            return;
-        }
 
-        KConfigDialog::updateSettings();
     }
+
+    KConfigDialog::updateSettings();
 }

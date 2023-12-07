@@ -8,8 +8,11 @@
 
 #include <memory>
 #include <QIcon>
+
 #include <KConfig>
 #include <KLazyLocalizedString>
+#include <KConfigGroup>
+
 
 namespace glaxnimate::gui::settings {
 
