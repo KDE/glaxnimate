@@ -70,6 +70,6 @@ command::ReorderCommand::ReorderCommand(model::ShapeElement* shape, int new_posi
 
 QString command::ReorderCommand::name(model::DocumentNode* node)
 {
-    return QObject::tr("Move %1").arg(node->object_name());
+    return i18n("Move %1").arg(node->object_name());
 }
 

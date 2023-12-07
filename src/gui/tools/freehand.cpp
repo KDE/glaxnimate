@@ -15,8 +15,8 @@ class FreehandTool : public DrawToolBase
 public:
     QString id() const override { return "draw-freehand"; }
     QIcon icon() const override { return QIcon::fromTheme("draw-freehand"); }
-    QString name() const override { return QObject::tr("Draw Freehand"); }
-    QKeySequence key_sequence() const override { return QKeySequence(QObject::tr("F6"), QKeySequence::PortableText); }
+    QString name() const override { return i18n("Draw Freehand"); }
+    QKeySequence key_sequence() const override { return QKeySequence(i18n("F6"), QKeySequence::PortableText); }
     static int static_group() noexcept { return Registry::Draw; }
     int group() const noexcept override { return static_group(); }
 
@@ -44,7 +44,7 @@ public:
             math::bezier::simplify(path, 128);
             shape->shape.set(path);
             path.clear();
-            create_shape(QObject::tr("Draw Freehand"), event, std::move(shape));
+            create_shape(i18n("Draw Freehand"), event, std::move(shape));
         }
         else
         {

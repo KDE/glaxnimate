@@ -15,6 +15,8 @@
 #include <QSysInfo>
 #include <QBuffer>
 
+#include <KLocalizedString>
+
 namespace glaxnimate::io::aep {
 
 template<int size> struct IntSize;
@@ -215,7 +217,7 @@ public:
     BinaryReader sub_reader(std::uint32_t length)
     {
         if ( length > length_left )
-            throw RiffError(QObject::tr("Not enough data"));
+            throw RiffError(i18n("Not enough data"));
         length_left -= length;
         BinaryReader reader{endian, file, length, file_pos};
         file_pos += length;
@@ -228,7 +230,7 @@ public:
     BinaryReader sub_reader(std::uint32_t length, std::uint32_t offset) const
     {
         if ( length + offset > length_left )
-            throw RiffError(QObject::tr("Not enough data"));
+            throw RiffError(i18n("Not enough data"));
 
         return {endian, file, length, file_pos + offset};
     }
@@ -249,7 +251,7 @@ public:
         file_pos += length;
         auto data = file->read(length);
         if ( std::uint32_t(data.size()) < length )
-            throw RiffError(QObject::tr("Not enough data"));
+            throw RiffError(i18n("Not enough data"));
         return data;
     }
 
@@ -287,7 +289,7 @@ public:
         length_left -= length;
         file_pos += length;
         if ( file->skip(length) < length )
-            throw RiffError(QObject::tr("Not enough data"));
+            throw RiffError(i18n("Not enough data"));
     }
 
     std::int64_t available() const
@@ -523,7 +525,7 @@ public:
         if ( header == "RIFF" )
             endian = Endianness::Little();
         else if ( header != "RIFX" )
-            throw RiffError(QObject::tr("Unknown format %1").arg(QString(headerraw)));
+            throw RiffError(i18n("Unknown format %1").arg(QString(headerraw)));
 
         auto length = endian.read_uint<4>(file->read(4));
 

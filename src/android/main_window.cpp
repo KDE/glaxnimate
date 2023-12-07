@@ -661,8 +661,8 @@ public:
         if ( current_document && !current_document->undo_stack().isClean() )
         {
             QMessageBox warning(parent);
-            warning.setWindowTitle(QObject::tr("Closing Animation"));
-            warning.setText(QObject::tr("The animation has unsaved changes.\nDo you want to save your changes?"));
+            warning.setWindowTitle(i18n("Closing Animation"));
+            warning.setText(i18n("The animation has unsaved changes.\nDo you want to save your changes?"));
             warning.setInformativeText(current_document->filename());
             warning.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
             warning.setDefaultButton(QMessageBox::Save);

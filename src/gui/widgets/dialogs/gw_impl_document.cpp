@@ -290,8 +290,8 @@ bool GlaxnimateWindow::Private::close_document()
         if ( !current_document->undo_stack().isClean() )
         {
             QMessageBox warning(parent);
-            warning.setWindowTitle(QObject::tr("Closing Animation"));
-            warning.setText(QObject::tr("The animation has unsaved changes.\nDo you want to save your changes?"));
+            warning.setWindowTitle(i18n("Closing Animation"));
+            warning.setText(i18n("The animation has unsaved changes.\nDo you want to save your changes?"));
             warning.setInformativeText(current_document->filename());
             warning.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
             warning.setDefaultButton(QMessageBox::Save);
@@ -865,7 +865,7 @@ static void on_font_loader_finished(glaxnimate::gui::font::FontLoader* loader)
         auto document = static_cast<glaxnimate::model::Document*>(loader->parent());
         bool clear = document->undo_stack().count() == 0;
 
-        glaxnimate::command::UndoMacroGuard guard(QObject::tr("Download fonts"), document);
+        glaxnimate::command::UndoMacroGuard guard(i18n("Download fonts"), document);
         for ( const auto& font : loader->fonts() )
             document->assets()->add_font(font);
         guard.finish();

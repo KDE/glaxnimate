@@ -22,7 +22,7 @@ class RasterMime : public io::mime::MimeSerializer
 {
 public:
     QString slug() const override { return "raster"; }
-    QString name() const override { return QObject::tr("Raster Image"); }
+    QString name() const override { return i18n("Raster Image"); }
     QStringList mime_types() const override { return {"image/png"}; }
 
     QByteArray serialize(const std::vector<model::DocumentNode*>& selection) const override

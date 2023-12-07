@@ -16,8 +16,8 @@ class StarTool : public DrawToolDrag
 public:
     QString id() const override { return "draw-star"; }
     QIcon icon() const override { return QIcon::fromTheme("draw-polygon-star"); }
-    QString name() const override { return QObject::tr("Star"); }
-    QKeySequence key_sequence() const override { return QKeySequence(QObject::tr("*"), QKeySequence::PortableText); }
+    QString name() const override { return i18n("Star"); }
+    QKeySequence key_sequence() const override { return QKeySequence(i18n("*"), QKeySequence::PortableText); }
     static int static_group() noexcept { return Registry::Shape; }
     int group() const noexcept override { return static_group(); }
 
@@ -44,7 +44,7 @@ protected:
         shape->inner_radius.set(widget()->spoke_ratio() * polar.length);
         shape->type.set(widget()->star_type());
         shape->points.set(widget()->points());
-        create_shape(QObject::tr("Draw Star"), event, std::move(shape));
+        create_shape(i18n("Draw Star"), event, std::move(shape));
         bez.clear();
     }
 

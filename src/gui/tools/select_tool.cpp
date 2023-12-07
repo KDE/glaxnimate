@@ -26,8 +26,8 @@ class SelectTool : public Tool
 public:
     QString id() const override { return "select"; }
     QIcon icon() const override { return QIcon::fromTheme("edit-select"); }
-    QString name() const override { return QObject::tr("Select"); }
-    QKeySequence key_sequence() const override { return QKeySequence(QObject::tr("F1"), QKeySequence::PortableText); }
+    QString name() const override { return i18n("Select"); }
+    QKeySequence key_sequence() const override { return QKeySequence(i18n("F1"), QKeySequence::PortableText); }
     static int static_group() noexcept { return Registry::Core; }
     int group() const noexcept override { return static_group(); }
 
@@ -395,37 +395,37 @@ private:
         auto undo_stack = &window->undo_group();
         menu.addAction(
             QIcon::fromTheme("edit-undo"),
-            GlaxnimateWindow::tr("Undo %1").arg(undo_stack->undoText()),
+            i18n("Undo %1").arg(undo_stack->undoText()),
             undo_stack, &QUndoGroup::undo
         )->setEnabled(undo_stack->canUndo());
         menu.addAction(
             QIcon::fromTheme("edit-redo"),
-            GlaxnimateWindow::tr("Redo %1").arg(undo_stack->redoText()),
+            i18n("Redo %1").arg(undo_stack->redoText()),
             undo_stack, &QUndoGroup::redo
         )->setEnabled(undo_stack->canRedo());
 
         menu.addSeparator();
-        menu.addAction(QIcon::fromTheme("edit-cut"), GlaxnimateWindow::tr("Cut"),
+        menu.addAction(QIcon::fromTheme("edit-cut"), i18n("Cut"),
                        window, &GlaxnimateWindow::cut);
-        menu.addAction(QIcon::fromTheme("edit-copy"), GlaxnimateWindow::tr("Copy"),
+        menu.addAction(QIcon::fromTheme("edit-copy"), i18n("Copy"),
                        window, &GlaxnimateWindow::copy);
-        menu.addAction(QIcon::fromTheme("edit-paste"), GlaxnimateWindow::tr("Paste"),
+        menu.addAction(QIcon::fromTheme("edit-paste"), i18n("Paste"),
                        window, &GlaxnimateWindow::paste);
 
         menu.addSeparator();
-        menu.addAction(QIcon::fromTheme("edit-delete-remove"), GlaxnimateWindow::tr("Delete"),
+        menu.addAction(QIcon::fromTheme("edit-delete-remove"), i18n("Delete"),
                        window, &GlaxnimateWindow::delete_selected);
 
 
         menu.addSeparator();
-        menu.addAction(QIcon::fromTheme("object-group"), GlaxnimateWindow::tr("Group Shapes"),
+        menu.addAction(QIcon::fromTheme("object-group"), i18n("Group Shapes"),
                        window, &GlaxnimateWindow::group_shapes);
 
-        menu.addAction(QIcon::fromTheme("object-ungroup"), GlaxnimateWindow::tr("Ungroup Shapes"),
+        menu.addAction(QIcon::fromTheme("object-ungroup"), i18n("Ungroup Shapes"),
                        window, &GlaxnimateWindow::ungroup_shapes);
 
         menu.addSeparator();
-        menu.addAction(QIcon::fromTheme("selection-move-to-layer-above"), GlaxnimateWindow::tr("Move to..."),
+        menu.addAction(QIcon::fromTheme("selection-move-to-layer-above"), i18n("Move to..."),
                        window, &GlaxnimateWindow::move_to);
 
 

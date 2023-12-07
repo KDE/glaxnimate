@@ -17,7 +17,7 @@ class SvgMime : public io::mime::MimeSerializer
 {
 public:
     QString slug() const override { return "svg"; }
-    QString name() const override { return QObject::tr("SVG"); }
+    QString name() const override { return i18n("SVG"); }
     QStringList mime_types() const override { return {"image/svg+xml"}; }
 
     QByteArray serialize(const std::vector<model::DocumentNode*>& selection) const override

@@ -13,6 +13,7 @@
 #include <QApplication>
 #include <QBuffer>
 #include <KCompressionDevice>
+#include <KLocalizedString>
 
 
 using namespace glaxnimate;
@@ -26,7 +27,7 @@ bool utils::gzip::decompress(QIODevice& input, QByteArray& output, const utils::
 
     if ( compressed.error() )
     {
-        on_error(QApplication::tr("Could not decompress data"));
+        on_error(i18n("Could not decompress data"));
         return false;
     }
 

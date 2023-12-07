@@ -46,7 +46,7 @@ public:
     Project parse(const RiffChunk& root)
     {
         if ( root.subheader != "Egg!" )
-            throw AepError(AepFormat::tr("Not an AEP file"));
+            throw AepError(i18n("Not an AEP file"));
 
         Project project;
         Chunk fold = nullptr, efdg = nullptr;
@@ -120,7 +120,7 @@ private:
                         current_item = parse_asset(id, child->child("Pin "), folder, project);
                         break;
                     default:
-                        warning(QObject::tr("Unknown Item type %s").arg(type));
+                        warning(i18n("Unknown Item type %s").arg(type));
                 }
 
                 if ( current_item )
@@ -134,7 +134,7 @@ private:
         auto cdta = chunk->child("cdta");
         if ( !cdta )
         {
-            warning(AepFormat::tr("Missing composition data"));
+            warning(i18n("Missing composition data"));
             return;
         }
 
@@ -211,7 +211,7 @@ private:
         if ( chunk->header == "Utf8" )
             return QString::fromUtf8(data);
 
-        warning(AepFormat::tr("Unknown encoding for %1").arg(chunk->header.to_string()));
+        warning(i18n("Unknown encoding for %1").arg(chunk->header.to_string()));
         return "";
     }
 
@@ -227,7 +227,7 @@ private:
         chunk->find_multiple({&sspc, &utf8, &als2, &opti}, {"sspc", "Utf8", "Als2", "opti"});
         if ( !sspc || !opti )
         {
-            warning(AepFormat::tr("Missing asset data"));
+            warning(i18n("Missing asset data"));
             return nullptr;
         }
 
@@ -285,7 +285,7 @@ private:
         chunk->find_multiple({&ldta, &utf8, &tdgp}, {"ldta", "Utf8", "tdgp"});
         if ( !ldta )
         {
-            warning(AepFormat::tr("Missing layer data"));
+            warning(i18n("Missing layer data"));
             return {};
         }
 
@@ -369,12 +369,12 @@ private:
                 ++it;
                 if ( it == chunk->children.end() )
                 {
-                    warning(AepFormat::tr("Missing mask properties"));
+                    warning(i18n("Missing mask properties"));
                     return;
                 }
                 if ( **it != "tdgp" )
                 {
-                    warning(AepFormat::tr("Missing mask properties"));
+                    warning(i18n("Missing mask properties"));
                     continue;
                 }
 
@@ -421,7 +421,7 @@ private:
         else if ( *chunk == "OvG2" || *chunk == "blsi" || *chunk == "blsv" )
             return {};
 
-        warning(AepFormat::tr("Unknown property type: %1").arg(chunk->name().to_string()));
+        warning(i18n("Unknown property type: %1").arg(chunk->name().to_string()));
         return {};
     }
 
@@ -642,7 +642,7 @@ private:
         list->find_multiple({&head, &vals}, {"lhd3", "ldat"});
         if ( !head || !vals )
         {
-            warning(AepFormat::tr("Missing list data"));
+            warning(i18n("Missing list data"));
             return {};
         }
 
@@ -654,7 +654,7 @@ private:
         std::uint32_t total_size = count * size;
         if ( vals->reader.size() < total_size )
         {
-            warning(AepFormat::tr("Not enough data in list"));
+            warning(i18n("Not enough data in list"));
             return {};
         }
 
@@ -788,7 +788,7 @@ private:
             return property;
 
         } catch ( const CosError& err ) {
-            warning(AepFormat::tr("Invalid text document: %1").arg(err.message));
+            warning(i18n("Invalid text document: %1").arg(err.message));
             return {};
         }
     }

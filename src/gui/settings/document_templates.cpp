@@ -49,7 +49,7 @@ QString settings::DocumentTemplate::name() const
 {
     if ( auto comp = main_comp() )
         return comp->name.get();
-    return QObject::tr("Unnamed");
+    return i18n("Unnamed");
 }
 
 QString settings::DocumentTemplate::long_name() const
@@ -122,7 +122,7 @@ QString settings::DocumentTemplate::name_template(model::Composition* comp)
     auto h = comp->height.get();
 
     //: %5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the frame rate
-    return DocumentTemplates::tr("%5 - %1x%2 %3 %4fps")
+    return i18n("%5 - %1x%2 %3 %4fps")
         .arg(w)
         .arg(h)
         .arg(aspect_ratio(QSize(w, h)))

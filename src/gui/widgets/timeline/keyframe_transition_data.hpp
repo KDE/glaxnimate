@@ -55,18 +55,18 @@ struct KeyframeTransitionData
         switch ( value )
         {
             case model::KeyframeTransition::Hold:
-                return {QObject::tr("Hold"), side, "hold", value};
+                return {i18n("Hold"), side, "hold", value};
             case model::KeyframeTransition::Linear:
-                return {QObject::tr("Linear"), side, "linear", value};
+                return {i18n("Linear"), side, "linear", value};
             case model::KeyframeTransition::Ease:
                 return {ease_name(side), side, "ease", value};
             case model::KeyframeTransition::Fast:
-                return {QObject::tr("Fast"), side, "fast", value};
+                return {i18n("Fast"), side, "fast", value};
             case model::KeyframeTransition::Overshoot:
                 return {overshoot_name(side), side, "overshoot", value};
             default:
             case model::KeyframeTransition::Custom:
-                return {QObject::tr("Custom"), side, "custom", value};
+                return {i18n("Custom"), side, "custom", value};
         }
     }
 
@@ -81,12 +81,12 @@ private:
         switch ( side )
         {
             case Start:
-                return QObject::tr("Ease In");
+                return i18n("Ease In");
             case Finish:
-                return QObject::tr("Ease Out");
+                return i18n("Ease Out");
             default:
             case Full:
-                return QObject::tr("Ease");
+                return i18n("Ease");
         }
     }
 
@@ -95,12 +95,12 @@ private:
         switch ( side )
         {
             case Start:
-                return QObject::tr("Anticipate");
+                return i18n("Anticipate");
             case Finish:
-                return QObject::tr("Overshoot");
+                return i18n("Overshoot");
             default:
             case Full:
-                return QObject::tr("Overshoot");
+                return i18n("Overshoot");
         }
     }
 };

@@ -83,7 +83,7 @@ QWidget * glaxnimate::gui::settings::ApiCredentials::make_widget ( QWidget * par
 
         if ( api.second.info_url.isValid() )
         {
-            auto link_button = new QPushButton(QIcon::fromTheme("internet-web-browser"), QObject::tr("Information"));
+            auto link_button = new QPushButton(QIcon::fromTheme("internet-web-browser"), i18n("Information"));
             QObject::connect(link_button, &QPushButton::clicked, link_button, [&api]{
                 QDesktopServices::openUrl(api.second.info_url);
             });

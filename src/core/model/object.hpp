@@ -11,6 +11,7 @@
 
 #include <QObject>
 #include <QVariant>
+#include <KLocalizedString>
 
 #include "model/animation/frame_time.hpp"
 #include "model/factory.hpp"

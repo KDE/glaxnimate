@@ -18,7 +18,6 @@
 #include "android_file_picker.hpp"
 #include "base_dialog.hpp"
 
-#include <QDebug>
 class glaxnimate::android::DocumentOpener::Private
 {
 public:
@@ -33,8 +32,8 @@ public:
     {
         auto btn = QMessageBox::information(
             widget_parent,
-            QObject::tr("Open File"),
-            QObject::tr("Raster images need to be traced into vectors"),
+            i18n("Open File"),
+            i18n("Raster images need to be traced into vectors"),
             QMessageBox::Ok|QMessageBox::Cancel
         );
         if ( btn == QMessageBox::Cancel )
@@ -104,7 +103,7 @@ bool glaxnimate::android::DocumentOpener::save(const QUrl &url, model::Compositi
         bool ok = d->do_save_document(composition, options, buf);
         if ( !ok || !AndroidFilePicker::write_content_uri(url, data) )
         {
-            QMessageBox::warning(d->widget_parent, QObject::tr("Save File"), QObject::tr("Could not save the file"));
+            QMessageBox::warning(d->widget_parent, i18n("Save File"), i18n("Could not save the file"));
             return false;
         }
         return true;
@@ -126,7 +125,7 @@ std::unique_ptr<glaxnimate::model::Document> glaxnimate::android::DocumentOpener
     {
         if ( !options.format )
         {
-            QMessageBox::warning(d->widget_parent, QObject::tr("Open File"), QObject::tr("Unknown file type"));
+            QMessageBox::warning(d->widget_parent, i18n("Open File"), i18n("Unknown file type"));
             return {};
         }
         options.filename = path;
@@ -152,7 +151,7 @@ std::unique_ptr<glaxnimate::model::Document> glaxnimate::android::DocumentOpener
             QByteArray out;
             if ( !utils::gzip::decompress(data, out, {}) )
             {
-                QMessageBox::warning(d->widget_parent, QObject::tr("Open File"), QObject::tr("Could not unzip the file"));
+                QMessageBox::warning(d->widget_parent, i18n("Open File"), i18n("Could not unzip the file"));
                 return {};
             }
             data = std::move(out);
@@ -191,7 +190,7 @@ std::unique_ptr<glaxnimate::model::Document> glaxnimate::android::DocumentOpener
         }
         supported_formats += ",\nPNG";
 
-        QMessageBox::warning(d->widget_parent, QObject::tr("Open File"), QObject::tr("Unknown file type. Supported files:\n%1").arg(supported_formats));
+        QMessageBox::warning(d->widget_parent, i18n("Open File"), i18n("Unknown file type. Supported files:\n%1").arg(supported_formats));
         return {};
     }
 
@@ -199,7 +198,7 @@ std::unique_ptr<glaxnimate::model::Document> glaxnimate::android::DocumentOpener
     auto current_document = std::make_unique<model::Document>(options.filename);
     if ( !options.format->open(file, options.filename, current_document.get(), options.settings) )
     {
-        QMessageBox::warning(d->widget_parent, QObject::tr("Open File"), QObject::tr("Error loading %1 file").arg(options.format->slug()));
+        QMessageBox::warning(d->widget_parent, i18n("Open File"), i18n("Error loading %1 file").arg(options.format->slug()));
         return {};
     }
 

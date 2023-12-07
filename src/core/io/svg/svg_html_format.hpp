@@ -15,7 +15,7 @@ class SvgHtmlFormat : public ImportExport
 {
 public:
     QString slug() const override { return "svg_html"; }
-    QString name() const override { return QObject::tr("SVG Preview"); }
+    QString name() const override { return i18n("SVG Preview"); }
     QStringList extensions() const override { return {"html", "htm"}; }
     bool can_save() const override { return true; }
     bool can_open() const override { return false; }

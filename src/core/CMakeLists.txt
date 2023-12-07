@@ -148,6 +148,7 @@ target_link_libraries(${LIB_NAME_CORE} PUBLIC
     ${Potrace_LIBRARIES}
     KF${KF_MAJOR}::CoreAddons
     KF${KF_MAJOR}::Archive
+    KF${KF_MAJOR}::I18n
 )
 set_property(TARGET ${LIB_NAME_CORE} APPEND PROPERTY AUTOMOC_MACRO_NAMES "GLAXNIMATE_OBJECT")
 target_include_directories(${LIB_NAME_CORE} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)

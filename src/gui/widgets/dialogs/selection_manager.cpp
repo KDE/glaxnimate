@@ -82,12 +82,12 @@ void glaxnimate::gui::SelectionManager::cut()
 {
     auto selection = copy();
 
-    delete_shapes_impl(QObject::tr("Cut"), selection);
+    delete_shapes_impl(i18n("Cut"), selection);
 }
 
 void glaxnimate::gui::SelectionManager::delete_selected()
 {
-    delete_shapes_impl(QObject::tr("Delete"), cleaned_selection());
+    delete_shapes_impl(i18n("Delete"), cleaned_selection());
 }
 
 void glaxnimate::gui::SelectionManager::delete_shapes_impl(const QString &undo_string, const std::vector<model::VisualNode *>& selection)
@@ -163,7 +163,7 @@ void glaxnimate::gui::SelectionManager::paste_impl(bool as_comp)
         return;
     }
 
-    paste_document(raw_pasted.document.get(), QObject::tr("Paste"), as_comp);
+    paste_document(raw_pasted.document.get(), i18n("Paste"), as_comp);
 }
 
 void glaxnimate::gui::SelectionManager::paste_document(model::Document* document, const QString& macro_name, bool as_comp)

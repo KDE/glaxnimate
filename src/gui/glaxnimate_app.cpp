@@ -76,7 +76,7 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
 static QVariantMap avail_icon_themes()
 {
     QVariantMap avail_icon_themes;
-    avail_icon_themes[app::settings::Settings::tr("Glaxnimate Default")] = "";
+    avail_icon_themes[i18n("Glaxnimate Default")] = "";
     for ( QDir search : QIcon::themeSearchPaths() )
     {
         for ( const auto& avail : search.entryInfoList(QDir::Dirs|QDir::NoDotAndDotDot) )

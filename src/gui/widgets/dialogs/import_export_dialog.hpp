@@ -36,7 +36,7 @@ public:
     bool export_dialog(model::Composition* comp)
     {
         QFileDialog dialog(parent);
-        dialog.setWindowTitle(QObject::tr("Save file"));
+        dialog.setWindowTitle(i18n("Save file"));
         dialog.setAcceptMode(QFileDialog::AcceptSave);
         dialog.setFileMode(QFileDialog::AnyFile);
         dialog.setOption(QFileDialog::DontUseNativeDialog, !app::settings::get<bool>("open_save", "native_dialog"));
@@ -56,8 +56,8 @@ public:
                 {
                     QMessageBox overwrite(
                         QMessageBox::Question,
-                        QObject::tr("Overwrite File?"),
-                        QObject::tr("The file \"%1\" already exists. Do you wish to overwrite it?")
+                        i18n("Overwrite File?"),
+                        i18n("The file \"%1\" already exists. Do you wish to overwrite it?")
                             .arg(finfo.baseName()),
                         QMessageBox::Yes|QMessageBox::No,
                         parent
@@ -79,7 +79,7 @@ public:
     bool import_dialog()
     {
         QFileDialog dialog(parent);
-        dialog.setWindowTitle(QObject::tr("Open file"));
+        dialog.setWindowTitle(i18n("Open file"));
         dialog.setAcceptMode(QFileDialog::AcceptOpen);
         dialog.setFileMode(QFileDialog::ExistingFile);
         dialog.setOption(QFileDialog::DontUseNativeDialog, !app::settings::get<bool>("open_save", "native_dialog"));
@@ -98,7 +98,7 @@ public:
             return true;
 
         app::settings::WidgetBuilder widget_builder;
-        QString title = QObject::tr("%1 Options").arg(io_options_.format->name());
+        QString title = i18n("%1 Options").arg(io_options_.format->name());
         return widget_builder.show_dialog(settings->settings(), io_options_.settings, title, parent);
     }
 
@@ -163,7 +163,7 @@ private:
         if ( add_all )
         {
             all.resize(all.size() - 1);
-            QString all_filter = QObject::tr("All files (%1)").arg(all);
+            QString all_filter = i18n("All files (%1)").arg(all);
             filters << all_filter;
             dialog.setNameFilters(filters);
             dialog.selectNameFilter(all_filter);

@@ -17,8 +17,8 @@ class RectangleTool : public DrawToolDrag
 public:
     QString id() const override { return "draw-rect"; }
     QIcon icon() const override { return QIcon::fromTheme("draw-rectangle"); }
-    QString name() const override { return QObject::tr("Rectangle"); }
-    QKeySequence key_sequence() const override { return QKeySequence(QObject::tr("F4"), QKeySequence::PortableText); }
+    QString name() const override { return i18n("Rectangle"); }
+    QKeySequence key_sequence() const override { return QKeySequence(i18n("F4"), QKeySequence::PortableText); }
     static int static_group() noexcept { return Registry::Shape; }
     int group() const noexcept override { return static_group(); }
 
@@ -39,7 +39,7 @@ protected:
         rect = rect.normalized();
         shape->position.set(rect.center());
         shape->size.set(rect.size());
-        create_shape(QObject::tr("Draw Rectangle"), event, std::move(shape));
+        create_shape(i18n("Draw Rectangle"), event, std::move(shape));
     }
 
     void mouse_double_click(const MouseEvent& event) override { Q_UNUSED(event); }

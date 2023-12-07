@@ -14,7 +14,7 @@ glaxnimate::command::SetKeyframe::SetKeyframe(
     const QVariant& value,
     bool commit,
     bool force_insert
-) : Parent(QObject::tr("Update %1 keyframe at %2").arg(prop->name()).arg(time), commit),
+) : Parent(i18n("Update %1 keyframe at %2").arg(prop->name()).arg(time), commit),
     prop(prop),
     time(time),
     before(prop->value(time)),
@@ -83,7 +83,7 @@ bool glaxnimate::command::SetKeyframe::merge_with(const SetKeyframe& other)
 glaxnimate::command::RemoveKeyframeTime::RemoveKeyframeTime(
     model::AnimatableBase* prop,
     model::FrameTime time
-) : QUndoCommand(QObject::tr("Remove %1 keyframe at %2").arg(prop->name()).arg(time)),
+) : QUndoCommand(i18n("Remove %1 keyframe at %2").arg(prop->name()).arg(time)),
     prop(prop),
     time(time),
     index(prop->keyframe_index(time)),
@@ -114,7 +114,7 @@ void glaxnimate::command::RemoveKeyframeTime::redo()
 glaxnimate::command::RemoveKeyframeIndex::RemoveKeyframeIndex(
     model::AnimatableBase* prop,
     int index
-) : QUndoCommand(QObject::tr("Remove %1 keyframe %2").arg(prop->name()).arg(index)),
+) : QUndoCommand(i18n("Remove %1 keyframe %2").arg(prop->name()).arg(index)),
     prop(prop),
     index(index),
     time(prop->keyframe(index)->time()),
@@ -286,12 +286,12 @@ QString glaxnimate::command::SetMultipleAnimated::auto_name(model::AnimatableBas
     bool key_after = prop->object()->document()->record_to_keyframe();
 
     if ( key_after && !key_before )
-        return QObject::tr("Add keyframe for %1 at %2").arg(prop->name()).arg(prop->time());
+        return i18n("Add keyframe for %1 at %2").arg(prop->name()).arg(prop->time());
 
     if ( key_before )
-        return QObject::tr("Update %1 at %2").arg(prop->name()).arg(prop->time());
+        return i18n("Update %1 at %2").arg(prop->name()).arg(prop->time());
 
-    return QObject::tr("Update %1").arg(prop->name());
+    return i18n("Update %1").arg(prop->name());
 }
 
 bool glaxnimate::command::SetMultipleAnimated::empty() const
@@ -304,7 +304,7 @@ glaxnimate::command::SetKeyframeTransition::SetKeyframeTransition(
         int keyframe_index,
         const model::KeyframeTransition& transition
     )
-: QUndoCommand(QObject::tr("Update keyframe transition")),
+: QUndoCommand(i18n("Update keyframe transition")),
     prop(prop),
     keyframe_index(keyframe_index),
     undo_value(keyframe()->transition()),
@@ -355,7 +355,7 @@ glaxnimate::command::MoveKeyframe::MoveKeyframe(
     model::AnimatableBase* prop,
     int keyframe_index,
     model::FrameTime time_after
-) : QUndoCommand(QObject::tr("Move keyframe")),
+) : QUndoCommand(i18n("Move keyframe")),
     prop(prop),
     keyframe_index_before(keyframe_index),
     time_before(prop->keyframe(keyframe_index)->time()),
@@ -378,7 +378,7 @@ int glaxnimate::command::MoveKeyframe::redo_index() const
 }
 
 glaxnimate::command::RemoveAllKeyframes::RemoveAllKeyframes(model::AnimatableBase* prop, QVariant after)
-    : QUndoCommand(QObject::tr("Remove animations from %1").arg(prop->name())),
+    : QUndoCommand(i18n("Remove animations from %1").arg(prop->name())),
       prop(prop),
       before(prop->value()),
       after(std::move(after))
@@ -429,7 +429,7 @@ glaxnimate::command::SetPositionBezier::SetPositionBezier(
     math::bezier::Bezier after,
     bool commit,
     const QString& name
-) : Parent(name.isEmpty() ? QObject::tr("Update animation path") : name, commit),
+) : Parent(name.isEmpty() ? i18n("Update animation path") : name, commit),
     property(prop),
     before(std::move(before)),
     after(std::move(after))

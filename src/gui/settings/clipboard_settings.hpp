@@ -7,6 +7,7 @@
 #pragma once
 #include "app/settings/custom_settings_group.hpp"
 #include "io/mime/mime_serializer.hpp"
+#include <KLocalizedString>
 
 namespace glaxnimate::gui::settings {
 
@@ -14,7 +15,7 @@ class ClipboardSettings : public app::settings::CustomSettingsGroupBase
 {
 public:
     QString slug() const override { return "clipboard"; }
-    QString label() const override { return QObject::tr("Clipboard"); }
+    QString label() const override { return i18n("Clipboard"); }
     QIcon icon() const override { return QIcon::fromTheme("klipper"); }
     void load(QSettings & settings) override;
     void save(QSettings & settings) override;

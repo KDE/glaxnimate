@@ -8,6 +8,7 @@
 
 #include <unordered_map>
 #include <QUrl>
+#include <KLocalizedString>
 
 #include "app/utils/qstring_hash.hpp"
 #include "app/settings/custom_settings_group.hpp"
@@ -37,7 +38,7 @@ public:
 
     QString slug() const override { return "api_credentials"; }
     QIcon icon() const override { return QIcon::fromTheme("dialog-password"); }
-    QString label() const override { return QObject::tr("API Credentials"); }
+    QString label() const override { return i18n("API Credentials"); }
     bool has_visible_settings() const override { return !apis_.empty(); }
 
     QVariant get_variant(const QString& setting) const override;

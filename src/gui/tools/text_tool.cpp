@@ -25,8 +25,8 @@ public:
     QCursor cursor() override { return Qt::IBeamCursor; }
     QString id() const override { return "text"; }
     QIcon icon() const override { return QIcon::fromTheme("draw-text"); }
-    QString name() const override { return QObject::tr("Draw Text"); }
-    QKeySequence key_sequence() const override { return QKeySequence(QObject::tr("F8"), QKeySequence::PortableText); }
+    QString name() const override { return i18n("Draw Text"); }
+    QKeySequence key_sequence() const override { return QKeySequence(i18n("F8"), QKeySequence::PortableText); }
     static int static_group() noexcept { return Registry::Shape; }
     int group() const noexcept override { return static_group(); }
 
@@ -154,7 +154,7 @@ public:
             shape->font->family.set(font.family());
             shape->font->style.set(font.styleName());
             shape->font->size.set(font.pointSizeF());
-            create_shape(QObject::tr("Draw Text"), event, std::move(shape));
+            create_shape(i18n("Draw Text"), event, std::move(shape));
         }
 
         clear();

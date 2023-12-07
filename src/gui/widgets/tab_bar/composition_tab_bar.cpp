@@ -79,7 +79,7 @@ void CompositionTabBar::on_menu(int index)
                     std::move(new_comp),
                     -1,
                     nullptr,
-                    QObject::tr("Duplicate %1").arg(precomp->object_name())
+                    i18n("Duplicate %1").arg(precomp->object_name())
                 )
             );
         });

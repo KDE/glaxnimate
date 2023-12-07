@@ -30,7 +30,7 @@ inline void add_property_menu_actions(QMenu* menu, QGraphicsItem* item, Selectio
 
         if ( !started )
         {
-            menu->addSection(QMenu::tr("Properties"));
+            menu->addSection(i18n("Properties"));
             started = true;
         }
 
