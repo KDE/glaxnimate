@@ -32,9 +32,9 @@
 #include "style/dock_widget_style.hpp"
 #include "style/property_delegate.hpp"
 
-#include "app/settings/settings.hpp"
 #include "app/scripting/script_engine.hpp"
 #include "app/log/log_model.hpp"
+#include "glaxnimate_settings.hpp"
 
 #include "plugin/plugin.hpp"
 #include "utils/pseudo_mutex.hpp"
@@ -57,6 +57,7 @@
 #include "widgets/window_message_widget.hpp"
 #include "widgets/tab_bar/composition_tab_bar.hpp"
 #include "widgets/canvas.hpp"
+
 
 
 using namespace glaxnimate::gui;

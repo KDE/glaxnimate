@@ -8,7 +8,7 @@
 #include "ui_color_selector.h"
 
 #include "app/application.hpp"
-#include "app/settings/settings.hpp"
+#include "glaxnimate_settings.hpp"
 
 #include "model/assets/named_color.hpp"
 #include "model/assets/gradient.hpp"
@@ -55,8 +55,8 @@ public:
         this->parent = parent;
         ui.setupUi(parent);
 
-        update_color(QColor(app::settings::get<QString>("tools", "color_main")), true, nullptr);
-        ui.color_preview_secondary->setColor(QColor(app::settings::get<QString>("tools", "color_secondary")));
+        update_color(QColor(GlaxnimateSettings::color_main()), true, nullptr);
+        ui.color_preview_secondary->setColor(QColor(GlaxnimateSettings::color_secondary()));
         connect(ui.color_preview_secondary, &color_widgets::ColorSelector::colorSelected, parent, &ColorSelector::secondary_color_changed);
 
         for ( auto slider : parent->findChildren<QSlider*>() )
@@ -269,8 +269,8 @@ ColorSelector::~ColorSelector() {}
 
 void ColorSelector::save_settings()
 {
-    app::settings::set("tools", "color_main", d->current_color().name());
-    app::settings::set("tools", "color_secondary", d->current_color_secondary().name());
+    GlaxnimateSettings::setColor_main(d->current_color().name());
+    GlaxnimateSettings::setColor_secondary(d->current_color_secondary().name());
 }
 
 

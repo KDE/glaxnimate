@@ -197,29 +197,29 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
 
     connect_playback_actions();
 
-    auto preset = LayoutPreset(app::settings::get<int>("ui", "layout"));
+    auto preset = LayoutPreset(GlaxnimateSettings::layout());
 
     switch ( preset )
     {
-    case LayoutPreset::Unknown:
-    case LayoutPreset::Auto:
-        layout_auto();
-        break;
-    case LayoutPreset::Wide:
-        layout_wide();
-        break;
-    case LayoutPreset::Compact:
-        layout_compact();
-        break;
-    case LayoutPreset::Medium:
-        layout_medium();
-        break;
-    case LayoutPreset::Custom:
-        layout_auto();
-        app::settings::set("ui", "layout", int(LayoutPreset::Custom));
-        QAction *layoutCustom = parent->actionCollection()->action(QStringLiteral("layout_custom"));
-        layoutCustom->setChecked(true);
-        break;
+        case LayoutPreset::Unknown:
+        case LayoutPreset::Auto:
+            layout_auto();
+            break;
+        case LayoutPreset::Wide:
+            layout_wide();
+            break;
+        case LayoutPreset::Compact:
+            layout_compact();
+            break;
+        case LayoutPreset::Medium:
+            layout_medium();
+            break;
+        case LayoutPreset::Custom:
+            layout_auto();
+            GlaxnimateSettings::setLayout(int(LayoutPreset::Custom));
+            QAction *layoutCustom = parent->actionCollection()->action(QStringLiteral("layout_custom"));
+            layoutCustom->setChecked(true);
+            break;
     }
 
     // Menus
@@ -1063,7 +1063,7 @@ void GlaxnimateWindow::Private::layout_medium()
     // Resize parent to have a reasonable default size
     parent->resize(1440, 900);
 
-    app::settings::set("ui", "layout", int(LayoutPreset::Medium));
+    GlaxnimateSettings::setLayout(int(LayoutPreset::Medium));
     QAction *layoutMedium = parent->actionCollection()->action(QStringLiteral("layout_medium"));
     layoutMedium->setChecked(true);
 }
@@ -1127,7 +1127,7 @@ void GlaxnimateWindow::Private::layout_wide()
     // Resize parent to have a reasonable default size
     parent->resize(1920, 1080);
 
-    app::settings::set("ui", "layout", int(LayoutPreset::Wide));
+    GlaxnimateSettings::setLayout(int(LayoutPreset::Wide));
     QAction *layoutWide = parent->actionCollection()->action(QStringLiteral("layout_wide"));
     layoutWide->setChecked(true);
 }
@@ -1185,7 +1185,7 @@ void GlaxnimateWindow::Private::layout_compact()
     // Resize parent to have a reasonable default size
     parent->resize(1366, 768);
 
-    app::settings::set("ui", "layout", int(LayoutPreset::Compact));
+    GlaxnimateSettings::setLayout(int(LayoutPreset::Compact));
     QAction *layoutCompact = parent->actionCollection()->action(QStringLiteral("layout_compact"));
     layoutCompact->setChecked(true);
 }
@@ -1200,6 +1200,7 @@ void GlaxnimateWindow::Private::layout_auto()
     else
         layout_compact();
 
+    GlaxnimateSettings::setLayout(int(LayoutPreset::Auto));
     QAction *layoutAuto = parent->actionCollection()->action(QStringLiteral("layout_automatic"));
     layoutAuto->setChecked(true);
 }
@@ -1207,6 +1208,8 @@ void GlaxnimateWindow::Private::layout_auto()
 void GlaxnimateWindow::Private::layout_custom()
 {
     init_restore_state();
+    GlaxnimateSettings::setLayout(int(LayoutPreset::Custom));
+
     QAction *layoutCustom = parent->actionCollection()->action(QStringLiteral("layout_custom"));
     layoutCustom->setChecked(true);
 }
@@ -1277,9 +1280,10 @@ void GlaxnimateWindow::Private::init_tools(tools::Tool* to_activate)
 
 void GlaxnimateWindow::Private::init_restore_state()
 {
-    parent->restoreState(app::settings::get<QByteArray>("ui", "window_state"));
-    timeline_dock->timelineWidget()->load_state(app::settings::get<QByteArray>("ui", "timeline_splitter"));
-    parent->restoreGeometry(app::settings::get<QByteArray>("ui", "window_geometry"));
+    // TODO check if they are properly restored once fully migrated to XmlGui
+    // parent->restoreState(GlaxnimateSettings::window_state());
+    // timeline_dock->timelineWidget()->load_state(GlaxnimateSettings::timeline_splitter());
+    // parent->restoreGeometry(GlaxnimateSettings::window_geometry());
 
     // Hide tool widgets, as they might get shown by restoreState
     KToolBar *toolbar_node = parent->toolBar(QStringLiteral("nodeToolBar"));
@@ -1350,10 +1354,11 @@ void GlaxnimateWindow::Private::copyDebugInfo()
 
 void GlaxnimateWindow::Private::shutdown()
 {
+    // TODO
+    // GlaxnimateSettings::setWindow_geometry(parent->saveGeometry());
+    // GlaxnimateSettings::setWindow_state(parent->saveState());
+    // GlaxnimateSettings::setTimeline_splitter(timeline_dock->timelineWidget()->save_state());
     KSharedConfigPtr config = KSharedConfig::openConfig();
-    app::settings::set("ui", "window_geometry", parent->saveGeometry());
-    app::settings::set("ui", "window_state", parent->saveState());
-    app::settings::set("ui", "timeline_splitter", timeline_dock->timelineWidget()->save_state());
     m_recentFilesAction->saveEntries(KConfigGroup(config, QString()));
 
     colors_dock->save_settings();
@@ -1521,7 +1526,7 @@ void GlaxnimateWindow::Private::mouse_moved(const QPointF& pos)
 
 void GlaxnimateWindow::Private::show_startup_dialog()
 {
-    if ( !app::settings::get<bool>("ui", "startup_dialog") )
+    if ( !GlaxnimateSettings::startup_dialog() )
         return;
 
     StartupDialog dialog(parent);

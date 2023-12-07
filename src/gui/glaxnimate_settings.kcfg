@@ -9,6 +9,8 @@
     xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
     http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
     <kcfgfile/>
+    <include>QFontInfo</include>
+    <include>api_keys.hpp</include>
     <group name="ui">
         <entry name="icon_theme" type="String"></entry>
         <entry name="startup_dialog" type="Bool">
@@ -16,6 +18,12 @@
         </entry>
         <entry name="timeline_scroll_horizontal" type="Bool">
             <default>false</default>
+        </entry>
+        <entry name="debug_timeline" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="layout" type="Int">
+            <default>2</default>
         </entry>
     </group>
     <group name="defaults">
@@ -106,6 +114,24 @@
         </entry>
         <entry name="star_points" type="Int">
             <default>5</default>
+        </entry>
+        <entry name="favourite_font_families" type="StringList"></entry>
+        <entry name="text_family" type="String">
+            <default code="true">QFontInfo(QFont()).family()</default>
+        </entry>
+        <entry name="text_style" type="String">
+            <default code="true">QFontInfo(QFont()).styleName()</default>
+        </entry>
+        <entry name="text_size" type="Double">
+            <default code="true">QFontInfo(QFont()).pointSizeF()</default>
+        </entry>
+    </group>
+    <group name="api">
+        <entry name="google_fonts_url" type="String">
+            <default>https://www.googleapis.com/webfonts/v1/webfonts</default>
+        </entry>
+        <entry name="google_fonts_key" type="String">
+            <default code="true">API_KEY_GOOGLE_FONTS</default>
         </entry>
     </group>
 </kcfg>

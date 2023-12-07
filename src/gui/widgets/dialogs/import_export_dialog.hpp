@@ -14,6 +14,7 @@
 #include "io/io_registry.hpp"
 #include "model/document.hpp"
 #include "app/settings/widget_builder.hpp"
+#include "glaxnimate_settings.hpp"
 
 namespace glaxnimate::gui {
 
@@ -39,7 +40,7 @@ public:
         dialog.setWindowTitle(i18n("Save file"));
         dialog.setAcceptMode(QFileDialog::AcceptSave);
         dialog.setFileMode(QFileDialog::AnyFile);
-        dialog.setOption(QFileDialog::DontUseNativeDialog, !app::settings::get<bool>("open_save", "native_dialog"));
+        dialog.setOption(QFileDialog::DontUseNativeDialog, !GlaxnimateSettings::use_native_io_dialog());
         setup_file_dialog(dialog, io::IoRegistry::instance().exporters(), io_options_.format, false);
         while ( true )
         {
@@ -82,7 +83,7 @@ public:
         dialog.setWindowTitle(i18n("Open file"));
         dialog.setAcceptMode(QFileDialog::AcceptOpen);
         dialog.setFileMode(QFileDialog::ExistingFile);
-        dialog.setOption(QFileDialog::DontUseNativeDialog, !app::settings::get<bool>("open_save", "native_dialog"));
+        dialog.setOption(QFileDialog::DontUseNativeDialog, !GlaxnimateSettings::use_native_io_dialog());
         setup_file_dialog(dialog, io::IoRegistry::instance().importers(), io_options_.format, true);
         if ( show_file_dialog(dialog, io::IoRegistry::instance().importers(), io::ImportExport::Import) )
             return options_dialog(io_options_.format->open_settings());
@@ -114,7 +115,7 @@ private:
         dialog.setFixedSize(dialog.parentWidget()->size());
         dialog.setWindowState(dialog.windowState() | Qt::WindowFullScreen);
 #else
-        dialog.setOption(QFileDialog::DontUseNativeDialog, !app::settings::get<bool>("open_save", "native_dialog"));
+        dialog.setOption(QFileDialog::DontUseNativeDialog, !GlaxnimateSettings::use_native_io_dialog());
 #endif
 
         if ( dialog.exec() == QDialog::Rejected )
