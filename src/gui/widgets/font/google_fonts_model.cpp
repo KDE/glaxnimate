@@ -14,7 +14,7 @@
 #include <QNetworkRequest>
 #include <QNetworkAccessManager>
 
-#include "glaxnimate_settings.hpp"
+#include "settings/api_credentials.hpp"
 
 
 QString glaxnimate::gui::font::GoogleFontsModel::GoogleFont::css_url(const Style& style) const
@@ -126,8 +126,8 @@ public:
 
     void update_settings()
     {
-        token = GlaxnimateSettings::google_fonts_key();
-        url_base = GlaxnimateSettings::google_fonts_url();
+        token = settings::ApiCredentials::instance().value("google_fonts", "Token");
+        url_base = settings::ApiCredentials::instance().value("google_fonts", "URL");
     }
 
     void font_changed(std::size_t font_index)

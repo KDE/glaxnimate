@@ -73,38 +73,6 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
 #include "settings/api_credentials.hpp"
 #include "settings/icon_theme.hpp"
 
-
-static QVariantMap avail_languages()
-{
-    QVariantMap avail_languages;
-    for ( const QString& name : app::TranslationService::instance().available_languages().keys() )
-    {
-        avail_languages[name] = app::TranslationService::instance().available_languages()[name];
-    }
-
-    return avail_languages;
-}
-
-static void set_language(const QVariant& v)
-{
-    QString code = v.toString();
-    app::TranslationService::instance().change_lang_code(code);
-}
-
-
-static void load_themes(GlaxnimateApp* app, app::settings::PaletteSettings* settings)
-{
-    for ( QDir themedir : app->data_paths("themes") )
-    {
-        for ( const auto& theme : themedir.entryList({"*.ini"}, QDir::Files|QDir::Readable, QDir::Name|QDir::IgnoreCase) )
-        {
-            QSettings ini_parser(themedir.absoluteFilePath(theme), QSettings::IniFormat);
-            settings->load_palette(ini_parser, true);
-        }
-    }
-}
-
-
 void GlaxnimateApp::on_initialize()
 {
 
@@ -125,90 +93,21 @@ void GlaxnimateApp::on_initialize()
 
 void GlaxnimateApp::on_initialize_settings()
 {
-    using namespace app::settings;
-    QString curr_lang = app::TranslationService::instance().current_language_code();
-
-    Settings::instance().add_group("ui", QT_TRANSLATE_NOOP("Settings", "User Interface"), "preferences-desktop-theme", {
-        //      slug            Label/Tooltip                                               Type                default     choices             side effects
-        Setting("language",
-                QT_TRANSLATE_NOOP("Settings", "Language"),
-                QT_TRANSLATE_NOOP("Settings", "Interface Language"),                        Setting::String,    curr_lang,  avail_languages(),  set_language),
-        Setting("startup_dialog",QT_TRANSLATE_NOOP("Settings", "Show startup dialog"), {},  Setting::Bool,      true),
-        Setting("timeline_scroll_horizontal",
-                QT_TRANSLATE_NOOP("Settings", "Horizontal Timeline Scroll"),
-                QT_TRANSLATE_NOOP("Settings", "If enabled, the timeline will scroll horizontally by default and vertically with Shift or Alt"),
-                                                                                            Setting::Bool,      false),
-        Setting("layout",            {}, {},                                                Setting::Internal,  0),
-        Setting("window_state",      {}, {},                                                Setting::Internal,  QByteArray{}),
-        Setting("window_geometry",   {}, {},                                                Setting::Internal,  QByteArray{}),
-        Setting("timeline_splitter", {}, {},                                                Setting::Internal,  QByteArray{}),
-    });
-    Settings::instance().add_group("defaults", QT_TRANSLATE_NOOP("Settings", "New Animation Defaults"), "video-webm", {
-        Setting("width",
-            QT_TRANSLATE_NOOP("Settings", "Width"),    "",
-            512,   0, 1000000),
-        Setting("height",
-            QT_TRANSLATE_NOOP("Settings", "Height"),   "",
-            512,   0, 1000000),
-        Setting("fps",
-            QT_TRANSLATE_NOOP("Settings", "FPS"),
-            QT_TRANSLATE_NOOP("Settings", "Frames per second"),
-            60.f, 0.f, 1000.f),
-        Setting("duration",
-            QT_TRANSLATE_NOOP("Settings", "Duration"),
-            QT_TRANSLATE_NOOP("Settings", "Duration in seconds"),
-            3.f, 0.f, 90000.f),
-    });
-    Settings::instance().add_group("open_save", tr("Open / Save"), "kfloppy", {
-        Setting("max_recent_files", QT_TRANSLATE_NOOP("Settings", "Max Recent Files"), {},      5, 0, 16),
-        Setting("path",             {},         {},                        Setting::Internal,  QString{}),
-        Setting("recent_files",     {},         {},                        Setting::Internal,  QStringList{}),
-        Setting("backup_frequency",
-                QT_TRANSLATE_NOOP("Settings", "Backup Frequency"),
-                QT_TRANSLATE_NOOP("Settings", "How often to save a backup copy (in minutes)"),  5, 0, 60),
-        Setting("render_path",      {},         {},                        Setting::Internal,  QString{}),
-        Setting("import_path",      {},         {},                        Setting::Internal,  QString{}),
-        Setting("native_dialog",    QT_TRANSLATE_NOOP("Settings", "Use system file dialog"), {}, Setting::Bool, true),
-    });
-    Settings::instance().add_group("scripting", QT_TRANSLATE_NOOP("Settings", "Scripting"), "utilities-terminal", {
-        //      slug                Label       Tooltip                    Type                default
-        Setting("history",          {},         {},                        Setting::Internal,  QStringList{}),
-        Setting("max_history",      {},         {},                        Setting::Internal,  100),
-    });
-    Settings::instance().add_group("tools", QT_TRANSLATE_NOOP("Settings", "Tools"), "tools", {
-        //      slug                Label       Tooltip                    Type                default
-        Setting("shape_group",      {},         {},                        Setting::Internal,  true),
-        Setting("shape_fill",       {},         {},                        Setting::Internal,  true),
-        Setting("shape_stroke",     {},         {},                        Setting::Internal,  true),
-        Setting("edit_mask",        {},         {},                        Setting::Internal,  false),
-        Setting("color_main",       {},         {},                        Setting::Internal,  "#ffffff"),
-        Setting("color_secondary",  {},         {},                        Setting::Internal,  "#000000"),
-        Setting("stroke_width",     {},         {},                        Setting::Internal,  1.),
-        Setting("stroke_cap",       {},         {},                        Setting::Internal,  int(Qt::RoundCap)),
-        Setting("stroke_join",      {},         {},                        Setting::Internal,  int(Qt::RoundJoin)),
-        Setting("stroke_miter",     {},         {},                        Setting::Internal,  4.),
-        Setting("star_type",        {},         {},                        Setting::Internal,  1),
-        Setting("star_ratio",       {},         {},                        Setting::Internal,  0.5),
-        Setting("star_points",      {},         {},                        Setting::Internal,  5),
-    });
-    // catch all
-    Settings::instance().add_group("internal", "", "", {});
-
     app::settings::Settings::instance().add_group(std::make_unique<settings::ToolbarSettingsGroup>());
     app::settings::Settings::instance().add_group(std::make_unique<settings::PluginSettingsGroup>(QStringList{
         "AnimatedRaster", "ReplaceColor", "dotLottie", "FrameByFrame"
     }));
     app::settings::Settings::instance().add_group(std::make_unique<settings::ClipboardSettings>());
 
-    auto palette_settings = std::make_unique<app::settings::PaletteSettings>();
-    load_themes(this, palette_settings.get());
-    app::settings::Settings::instance().add_group(std::move(palette_settings));
+    // auto palette_settings = std::make_unique<app::settings::PaletteSettings>();
+    // load_themes(this, palette_settings.get());
+    // app::settings::Settings::instance().add_group(std::move(palette_settings));
 
     // auto sc_settings = std::make_unique<app::settings::ShortcutSettings>();
     // shortcut_settings = sc_settings.get();
     // app::settings::Settings::instance().add_group(std::move(sc_settings));
 
-    app::settings::Settings::instance().add_group(std::make_unique<settings::ApiCredentials>());
+    GlaxnimateSettings::self()->add_group(std::make_unique<settings::ApiCredentials>());
 
     IconThemeManager::instance().set_theme_and_fallback(GlaxnimateSettings::self()->icon_theme());
     connect(GlaxnimateSettings::self(), &GlaxnimateSettings::icon_theme_changed, &IconThemeManager::instance(), &IconThemeManager::set_theme);

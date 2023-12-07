@@ -10,12 +10,12 @@
 #include <QUrl>
 
 #include "app/utils/qstring_hash.hpp"
-#include "app/settings/custom_settings_group.hpp"
+#include "settings/custom_settings_group.hpp"
 
 
 namespace glaxnimate::gui::settings {
 
-class ApiCredentials : public app::settings::CustomSettingsGroupBase
+class ApiCredentials : public SingletonSettingsGroup<ApiCredentials>
 {
 public:
     struct Credential
@@ -27,6 +27,7 @@ public:
 
     struct Api
     {
+        KLazyLocalizedString name;
         QUrl info_url;
         std::vector<Credential> credentials;
 
@@ -36,15 +37,17 @@ public:
     ApiCredentials();
 
     QString slug() const override { return "api_credentials"; }
-    QIcon icon() const override { return QIcon::fromTheme("dialog-password"); }
-    QString label() const override { return QObject::tr("API Credentials"); }
+    QString icon() const override { return QStringLiteral("dialog-password"); }
+    KLazyLocalizedString label() const override { return kli18n("API Credentials"); }
     bool has_visible_settings() const override { return !apis_.empty(); }
+
+    QString value(const QString& api, const QString credential) const;
 
     QVariant get_variant(const QString& setting) const override;
 
-    void load ( QSettings & settings ) override;
+    void load ( KConfig & settings ) override;
 
-    void save ( QSettings & settings ) override;
+    void save ( KConfig & settings ) override;
 
     const Api& api(const QString& name) const
     {
