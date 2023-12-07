@@ -5,19 +5,19 @@
  */
 
 #pragma once
-#include "app/settings/custom_settings_group.hpp"
+#include "settings/custom_settings_group.hpp"
 #include "io/mime/mime_serializer.hpp"
 
 namespace glaxnimate::gui::settings {
 
-class ClipboardSettings : public app::settings::CustomSettingsGroupBase
+class ClipboardSettings : public CustomSettingsGroup
 {
 public:
-    QString slug() const override { return "clipboard"; }
-    QString label() const override { return QObject::tr("Clipboard"); }
-    QIcon icon() const override { return QIcon::fromTheme("klipper"); }
-    void load(QSettings & settings) override;
-    void save(QSettings & settings) override;
+    QString slug() const override { return QStringLiteral("clipboard"); }
+    KLazyLocalizedString label() const override { return kli18n("Clipboard"); }
+    QString icon() const override { return QStringLiteral("klipper"); }
+    void load(KConfig & settings) override;
+    void save(KConfig & settings) override;
     QWidget * make_widget(QWidget * parent) override;
 
     struct MimeSettings

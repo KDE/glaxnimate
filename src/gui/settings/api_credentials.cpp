@@ -16,7 +16,6 @@
 #include <QDesktopServices>
 
 #include "api_keys.hpp"
-#include "glaxnimate_settings.hpp"
 
 static QString slugify(const QString& str)
 {
