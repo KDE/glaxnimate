@@ -25,7 +25,7 @@ private:                                                    \
 
 #define GLAXNIMATE_PROPERTY_LIST(type, name)                \
 public:                                                     \
-    ObjectListProperty<type> name{this, #name};             \
+    ObjectListProperty<type> name{this, kli18n(#name)};     \
     GLAXNIMATE_PROPERTY_LIST_IMPL(type, name)               \
     // macro end
 
@@ -35,7 +35,7 @@ namespace glaxnimate::model {
 class ObjectListPropertyBase : public BaseProperty
 {
 public:
-    ObjectListPropertyBase(Object* obj, const QString& name)
+    ObjectListPropertyBase(Object* obj, const KLazyLocalizedString& name)
         : BaseProperty(obj, name, {PropertyTraits::Object, PropertyTraits::List|PropertyTraits::Visual})
     {}
 
@@ -120,7 +120,7 @@ public:
 
     ObjectListProperty(
         Object* obj,
-        const QString& name,
+        const KLazyLocalizedString& name,
         PropertyCallback<void, Type*, int> callback_insert = &DocumentNode::docnode_child_add_end,
         PropertyCallback<void, Type*, int> callback_remove = &DocumentNode::docnode_child_remove_end,
         PropertyCallback<void, int> callback_insert_begin = &DocumentNode::docnode_child_add_begin,

@@ -561,8 +561,8 @@ void load_transform(io::ImportExport* io, model::Transform* tf, const PropertyBa
     {
         model::Document dummydoc("");
         model::Object dummy(&dummydoc);
-        model::AnimatedProperty<float> ax(&dummy, "", 0);
-        model::AnimatedProperty<float> ay(&dummy, "", 0);
+        model::AnimatedProperty<float> ax(&dummy, {}, 0);
+        model::AnimatedProperty<float> ay(&dummy, {}, 0);
 
 
         bool force_split = split_position == 2;
@@ -858,8 +858,8 @@ std::unique_ptr<model::ShapeElement> load_gradient(const ObjectConverter<T, mode
     {
         model::Document dummydoc("");
         model::Object dummy(&dummydoc);
-        model::AnimatedProperty<float> length(&dummy, "", 0);
-        model::AnimatedProperty<float> angle(&dummy, "", 0);
+        model::AnimatedProperty<float> length(&dummy, {}, 0);
+        model::AnimatedProperty<float> angle(&dummy, {}, 0);
         if ( highlight_len )
             load_property_check(io, length, *highlight_len->value, highlight_len->match_name);
         if ( highlight_angle )

@@ -31,7 +31,7 @@ protected:
     using Ctor = AssetListBase;
 
 public:
-    ObjectListProperty<T> values{this, "values",
+    ObjectListProperty<T> values{this, kli18n("values"),
         &AssetListBase::on_added,
         &AssetListBase::on_removed,
         &AssetListBase::docnode_child_add_begin,

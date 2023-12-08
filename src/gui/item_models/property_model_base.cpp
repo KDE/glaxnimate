@@ -95,7 +95,7 @@ QVariant item_models::PropertyModelBase::Private::data_name(Subtree* tree, int r
         if ( tree->object )
             return tree->object->object_name();
         else if ( tree->prop )
-            return tree->prop->name();
+            return tree->prop->localized_name();
     }
     else if ( role == Qt::FontRole )
     {

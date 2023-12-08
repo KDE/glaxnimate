@@ -546,8 +546,8 @@ private:
             {
                 model::Document dummydoc("");
                 model::Object dummy(&dummydoc);
-                model::AnimatedProperty<float> px(&dummy, "", 0);
-                model::AnimatedProperty<float> py(&dummy, "", 0);
+                model::AnimatedProperty<float> px(&dummy, {}, 0);
+                model::AnimatedProperty<float> py(&dummy, {}, 0);
                 load_animated(&px, pos["x"], {});
                 load_animated(&py, pos["y"], {});
 
@@ -591,8 +591,8 @@ private:
             {
                 model::Document dummydoc("");
                 model::Object dummy(&dummydoc);
-                model::AnimatedProperty<float> length(&dummy, "", 0);
-                model::AnimatedProperty<float> angle(&dummy, "", 0);
+                model::AnimatedProperty<float> length(&dummy, {}, 0);
+                model::AnimatedProperty<float> angle(&dummy, {}, 0);
                 if ( json_obj.contains("h") )
                     load_animated(&length, json_obj["h"], {});
                 if ( json_obj.contains("a") )

@@ -19,6 +19,8 @@
 #include <QVariant>
 #include <QGradient>
 
+#include <KLazyLocalizedString>
+
 #include "model/animation/frame_time.hpp"
 
 namespace glaxnimate::math::bezier { class Bezier; }
@@ -151,13 +153,13 @@ private:                                                    \
 
 #define GLAXNIMATE_PROPERTY(type, name, ...)                \
 public:                                                     \
-    Property<type> name{this, #name, __VA_ARGS__};          \
+    Property<type> name{this, kli18n(#name), __VA_ARGS__};  \
     GLAXNIMATE_PROPERTY_IMPL(type, name)                    \
     // macro end
 
 #define GLAXNIMATE_PROPERTY_RO(type, name, default_value)   \
 public:                                                     \
-    Property<type> name{this, #name, default_value, {}, {}, PropertyTraits::ReadOnly}; \
+    Property<type> name{this, kli18n(#name), default_value, {}, {}, PropertyTraits::ReadOnly}; \
     type get_##name() const { return name.get(); }          \
 private:                                                    \
     Q_PROPERTY(type name READ get_##name)                   \
@@ -169,7 +171,7 @@ class BaseProperty
     Q_GADGET
 
 public:
-    BaseProperty(Object* object, const QString& name, PropertyTraits traits);
+    BaseProperty(Object* object, const KLazyLocalizedString& name, PropertyTraits traits);
 
     virtual ~BaseProperty() = default;
 
@@ -190,9 +192,14 @@ public:
      */
     virtual void stretch_time(qreal multiplier) { Q_UNUSED(multiplier); }
 
-    const QString& name() const
+    QString localized_name() const
     {
-        return name_;
+        return name_.toString();
+    }
+
+    QString name() const
+    {
+        return QString::fromLatin1(name_.untranslatedText());
     }
 
     PropertyTraits traits() const
@@ -210,7 +217,7 @@ protected:
 
 private:
     Object* object_;
-    QString name_;
+    KLazyLocalizedString name_;
     PropertyTraits traits_;
 };
 
@@ -312,7 +319,7 @@ public:
     using reference = const Type&;
 
     PropertyTemplate(Object* obj,
-             const QString& name,
+             const KLazyLocalizedString& name,
              Type default_value = Type(),
              PropertyCallback<void, Type, Type> emitter = {},
              PropertyCallback<bool, Type> validator = {},
