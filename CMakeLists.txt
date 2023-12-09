@@ -251,6 +251,7 @@ endif()
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/deploy/org.mattbas.Glaxnimate.metainfo.xml DESTINATION share/metainfo)
 
 ki18n_install(po)
+file(CREATE_LINK ${CMAKE_CURRENT_BINARY_DIR}/locale ${CMAKE_CURRENT_BINARY_DIR}/share/locale SYMBOLIC)
 
 # Packaging
 # -- see https://gitlab.kitware.com/cmake/community/-/wikis/doc/cpack/PackageGenerators

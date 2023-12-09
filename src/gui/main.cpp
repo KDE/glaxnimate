@@ -35,7 +35,14 @@ int main(int argc, char *argv[])
     // workaround crash bug #408 in Qt/Windows
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
 #endif
+    QDir binpath(QCoreApplication::applicationDirPath());
+    binpath.cdUp();
+    KLocalizedString::addDomainLocaleDir("glaxnimate", binpath.absoluteFilePath(QStringLiteral("share/locale")));
+
+    KLocalizedString::setApplicationDomain("glaxnimate");
+
     gui::GlaxnimateApp app(argc, argv);
+
 
 #ifndef Q_OS_ANDROID
     KCrash::setDrKonqiEnabled(true);
@@ -64,8 +71,6 @@ int main(int argc, char *argv[])
     auto pyhome = app::Environment::Variable("PYTHONHOME");
     if ( pyhome.empty() )
     {
-        QDir binpath(QCoreApplication::applicationDirPath());
-        binpath.cdUp();
         pyhome = binpath.absolutePath();
         app::log::Log("Python").log("Setting PYTHONHOME to " + pyhome.get(), app::log::Info);
     }
