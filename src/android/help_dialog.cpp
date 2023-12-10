@@ -55,7 +55,7 @@ glaxnimate::android::HelpDialog::HelpDialog(QWidget *parent)
         },
         {
             "document-open",
-            i18n("Prompts the user to select a document to open.\nCurrently the following formats are supported:\n%1").arg(supported_formats_import)
+            i18n("Prompts the user to select a document to open.\nCurrently the following formats are supported:\n%1", supported_formats_import)
         },
         {
             "document-import",
@@ -71,7 +71,7 @@ glaxnimate::android::HelpDialog::HelpDialog(QWidget *parent)
         },
         {
             "document-export",
-            i18n("Save a copy of current document, prompting to select a format and a file.\nCurrently the following formats are supported:\n%1").arg(supported_formats_export)
+            i18n("Save a copy of current document, prompting to select a format and a file.\nCurrently the following formats are supported:\n%1", supported_formats_export)
         },
         {
             "view-preview",

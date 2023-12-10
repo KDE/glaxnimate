@@ -86,8 +86,6 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     this->parent = parent;
     parent->createGUI();
     ui.setupUi(parent);
-    redo_text = ui.action_redo->text();
-    undo_text = ui.action_undo->text();
 
     init_actions();
 
@@ -311,12 +309,12 @@ void GlaxnimateWindow::Private::init_actions()
     QObject::connect(ui.action_redo, &QAction::triggered, &parent->undo_group(), &QUndoGroup::redo);
     QObject::connect(&parent->undo_group(), &QUndoGroup::canRedoChanged, ui.action_redo, &QAction::setEnabled);
     QObject::connect(&parent->undo_group(), &QUndoGroup::redoTextChanged, ui.action_redo, [this](const QString& s){
-        ui.action_redo->setText(redo_text.arg(s));
+        ui.action_redo->setText(i18n("Redo %1", s));
     });
     QObject::connect(ui.action_undo, &QAction::triggered, &parent->undo_group(), &QUndoGroup::undo);
     QObject::connect(&parent->undo_group(), &QUndoGroup::canUndoChanged, ui.action_undo, &QAction::setEnabled);
     QObject::connect(&parent->undo_group(), &QUndoGroup::undoTextChanged, ui.action_undo, [this](const QString& s){
-        ui.action_undo->setText(undo_text.arg(s));
+        ui.action_undo->setText(i18n("Undo %1", s));
     });
     ui.view_undo->setGroup(&parent->undo_group());
 
@@ -992,10 +990,8 @@ void GlaxnimateWindow::Private::retranslateUi(QMainWindow* parent)
     ui.retranslateUi(parent);
     label_recording->setText(i18n("Recording Keyframes"));
 
-    redo_text = ui.action_redo->text();
-    undo_text = ui.action_undo->text();
-    ui.action_undo->setText(redo_text.arg(current_document->undo_stack().undoText()));
-    ui.action_redo->setText(redo_text.arg(current_document->undo_stack().redoText()));
+    ui.action_undo->setText(i18n("Undo %1", current_document->undo_stack().undoText()));
+    ui.action_redo->setText(i18n("Redo %1", current_document->undo_stack().redoText()));
 
     for ( const auto& grp : tools::Registry::instance() )
         for ( const auto& tool : grp.second )
@@ -1211,7 +1207,7 @@ void GlaxnimateWindow::Private::init_plugins()
 
 void GlaxnimateWindow::Private::mouse_moved(const QPointF& pos)
 {
-    label_mouse_pos->setText(i18n("X: %1 Y: %2").arg(pos.x(), 8, 'f', 3).arg(pos.y(), 8, 'f', 3));
+    label_mouse_pos->setText(ki18n("X: %1 Y: %2").subs(pos.x(), 8, 'f', 3).subs(pos.y(), 8, 'f', 3).toString());
 }
 
 void GlaxnimateWindow::Private::show_startup_dialog()

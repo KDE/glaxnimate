@@ -70,7 +70,7 @@ struct OutputStream
         // find the encoder
         codec = (AVCodec*)avcodec_find_encoder(codec_id);
         if ( !codec )
-            throw av::Error(i18n("Could not find encoder for '%1'").arg(avcodec_get_name(codec_id)));
+            throw av::Error(i18n("Could not find encoder for '%1'", avcodec_get_name(codec_id)));
 
         stream = avformat_new_stream(oc, nullptr);
         if (!stream)
@@ -107,7 +107,7 @@ struct OutputStream
             if ( ret == AVERROR(EAGAIN) || ret == AVERROR_EOF )
                 break;
             else if (ret < 0)
-                throw av::Error(i18n("Error encoding a frame: %1").arg(av::err2str(ret)));
+                throw av::Error(i18n("Error encoding a frame: %1", av::err2str(ret)));
 
             // rescale output packet timestamp values from codec to stream timebase
             av_packet_rescale_ts(&pkt, codec_context->time_base, stream->time_base);
@@ -117,7 +117,7 @@ struct OutputStream
             ret = av_interleaved_write_frame(format_context, &pkt);
             av_packet_unref(&pkt);
             if (ret < 0)
-                throw av::Error(i18n("Error while writing output packet: %1").arg(av::err2str(ret)));
+                throw av::Error(i18n("Error while writing output packet: %1", av::err2str(ret)));
         }
 
         return ret;
@@ -128,7 +128,7 @@ struct OutputStream
         // send the frame to the encoder
         int ret = avcodec_send_frame(codec_context, frame);
         if ( ret < 0 )
-            throw av::Error(i18n("Error sending a frame to the encoder: %1").arg(av::err2str(ret)));
+            throw av::Error(i18n("Error sending a frame to the encoder: %1", av::err2str(ret)));
 
         return read_packets();
     }
@@ -184,7 +184,7 @@ public:
             if ( ret >= 0 )
                 value = nullptr;
             else
-                throw Error(i18n("Could not set dict key `%1`: %2").arg(QString(key)).arg(err2str(ret)));
+                throw Error(i18n("Could not set dict key `%1`: %2", QString(key), err2str(ret)));
         }
 
         void set(const QString& s)
@@ -198,7 +198,7 @@ public:
             if ( ret >= 0 )
                 value = nullptr;
             else
-                throw Error(i18n("Could not set dict key `%1`: %2").arg(QString(key)).arg(err2str(ret)));
+                throw Error(i18n("Could not set dict key `%1`: %2", QString(key), err2str(ret)));
         }
 
         Item& operator=(const char* text)
@@ -243,7 +243,7 @@ public:
     {
         int ret = av_dict_set(av_dict, key.toUtf8().data(), nullptr, 0);
         if ( ret < 0 )
-            throw Error(i18n("Could not erase dict key `%1`: %2").arg(key).arg(err2str(ret)));
+            throw Error(i18n("Could not erase dict key `%1`: %2", key, err2str(ret)));
     }
 
 private:
@@ -264,7 +264,7 @@ public:
     {
         int ret = av_dict_copy(&local_dict, other.local_dict, 0);
         if ( ret < 0 )
-            throw Error(i18n("Could not copy dict: %1").arg(err2str(ret)));
+            throw Error(i18n("Could not copy dict: %1", err2str(ret)));
     }
 
     Dict& operator=(Dict&& other)
@@ -277,7 +277,7 @@ public:
     {
         int ret = av_dict_copy(&local_dict, other.local_dict, 0);
         if ( ret < 0 )
-            throw Error(i18n("Could not copy dict `%1`: %2").arg(err2str(ret)));
+            throw Error(i18n("Could not copy dict `%1`: %2", err2str(ret)));
         return *this;
     }
 
@@ -438,7 +438,7 @@ public:
         // open the codec
         ret = avcodec_open2(ost.codec_context, ost.codec, options.dict());
         if (ret < 0)
-            throw av::Error(i18n("Could not open video codec: %1").arg(av::err2str(ret)));
+            throw av::Error(i18n("Could not open video codec: %1", av::err2str(ret)));
 
         // allocate and init a re-usable frame
         ost.frame = alloc_picture(ost.codec_context->pix_fmt, ost.codec_context->width, ost.codec_context->height);
@@ -819,7 +819,7 @@ bool glaxnimate::io::video::VideoFormat::on_save(QIODevice& dev, const QString& 
         int ret = avformat_write_header(oc, opt.dict());
         if ( ret < 0 )
         {
-            error(i18n("Error occurred when opening output file: %1").arg(av::err2str(ret)));
+            error(i18n("Error occurred when opening output file: %1", av::err2str(ret)));
             return false;
         }
 

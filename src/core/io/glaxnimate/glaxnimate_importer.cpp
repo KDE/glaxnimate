@@ -18,7 +18,7 @@ bool io::glaxnimate::GlaxnimateFormat::on_open ( QIODevice& file, const QString&
     try {
         jdoc = QJsonDocument::fromJson(file.readAll());
     } catch ( const QJsonParseError& err ) {
-        error(i18n("Could not parse JSON: %1").arg(err.errorString()));
+        error(i18n("Could not parse JSON: %1", err.errorString()));
         return false;
     }
 

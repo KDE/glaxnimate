@@ -37,7 +37,7 @@ bool glaxnimate::io::rive::RiveFormat::on_open(QIODevice& file, const QString&, 
 
     if ( vmaj != RiveFormat::format_version )
     {
-        error(i18n("Loading unsupported rive file version %1.%2, the only supported version is %3").arg(vmaj).arg(vmin).arg(7));
+        error(i18n("Loading unsupported rive file version %1.%2, the only supported version is %3", vmaj, vmin, 7));
         return false;
     }
 

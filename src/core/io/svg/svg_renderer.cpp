@@ -819,7 +819,7 @@ public:
     {
         QDomElement g = element(parent, "g");
         g.setAttribute("id", id(descendant) + "_" + id(ancestor));
-        g.setAttribute("inkscape:label", i18n("%1 (%2)").arg(descendant->object_name()).arg(ancestor->object_name()));
+        g.setAttribute("inkscape:label", i18n("%1 (%2)", descendant->object_name(), ancestor->object_name()));
         g.setAttribute("inkscape:groupmode", "layer");
         transform_to_attr(g, ancestor->transform.get());
         return g;

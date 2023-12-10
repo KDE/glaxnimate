@@ -168,7 +168,7 @@ bool glaxnimate::model::AnimatableBase::set_undoable(const QVariant& val, bool c
         return false;
 
     object()->push_command(new command::SetMultipleAnimated(
-        i18n("Update %1").arg(name()),
+        i18n("Update %1", name()),
         {this},
         {value()},
         {val},

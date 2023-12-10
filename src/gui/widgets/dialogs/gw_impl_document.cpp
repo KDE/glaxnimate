@@ -394,7 +394,7 @@ bool GlaxnimateWindow::Private::save_document(bool force_dialog, bool export_opt
     if ( export_opts )
     {
         export_options = opts;
-        ui.action_export->setText(i18n("Export to %1").arg(QFileInfo(opts.filename).fileName()));
+        ui.action_export->setText(i18n("Export to %1", QFileInfo(opts.filename).fileName()));
     }
     else
     {
@@ -445,12 +445,12 @@ io::Options GlaxnimateWindow::Private::options_from_filename(const QString& file
         }
         else
         {
-            show_warning(i18n("Open File"), i18n("No importer found for %1").arg(filename));
+            show_warning(i18n("Open File"), i18n("No importer found for %1", filename));
         }
     }
     else
     {
-        show_warning(i18n("Open File"), i18n("The file might have been moved or deleted\n%1").arg(filename));
+        show_warning(i18n("Open File"), i18n("The file might have been moved or deleted\n%1", filename));
     }
 
     return {};
@@ -478,7 +478,7 @@ void GlaxnimateWindow::Private::drop_document(const QString& filename, bool as_c
     bool ok = options.format->open(file, options.filename, &imported, options.settings);
     if ( !ok )
     {
-        show_warning(i18n("Import File"), i18n("Could not import %1").arg(options.filename));
+        show_warning(i18n("Import File"), i18n("Could not import %1", options.filename));
         return;
     }
 
@@ -556,7 +556,7 @@ void GlaxnimateWindow::Private::save_frame_bmp()
     QFileDialog fd(parent, i18n("Save Frame Image"));
     fd.setDirectory(app::settings::get<QString>("open_save", "render_path"));
     fd.setDefaultSuffix("png");
-    fd.selectFile(i18n("Frame%1.png").arg(frame));
+    fd.selectFile(i18n("Frame%1.png", frame));
     fd.setAcceptMode(QFileDialog::AcceptSave);
     fd.setFileMode(QFileDialog::AnyFile);
     fd.setOption(QFileDialog::DontUseNativeDialog, !app::settings::get<bool>("open_save", "native_dialog"));
@@ -564,7 +564,7 @@ void GlaxnimateWindow::Private::save_frame_bmp()
     QString formats;
     for ( const auto& fmt : QImageWriter::supportedImageFormats() )
         formats += QString("*.%1 ").arg(QString::fromUtf8(fmt));
-    fd.setNameFilter(i18n("Image files (%1)").arg(formats));
+    fd.setNameFilter(i18n("Image files (%1)", formats));
 
     if ( fd.exec() == QDialog::Rejected )
         return;
@@ -583,7 +583,7 @@ void GlaxnimateWindow::Private::save_frame_svg()
     QFileDialog fd(parent, i18n("Save Frame Image"));
     fd.setDirectory(app::settings::get<QString>("open_save", "render_path"));
     fd.setDefaultSuffix("svg");
-    fd.selectFile(i18n("Frame%1.svg").arg(frame));
+    fd.selectFile(i18n("Frame%1.svg", frame));
     fd.setAcceptMode(QFileDialog::AcceptSave);
     fd.setFileMode(QFileDialog::AnyFile);
     fd.setNameFilter(i18n("Scalable Vector Graphics (*.svg)"));
@@ -743,7 +743,7 @@ void GlaxnimateWindow::Private::set_color_def(model::BrushStyle* def, bool secon
 
         if ( !def )
         {
-            command::UndoMacroGuard macro(i18n("Unlink %1 Color").arg(what), current_document.get());
+            command::UndoMacroGuard macro(i18n("Unlink %1 Color", what), current_document.get());
             if ( auto col = qobject_cast<model::NamedColor*>(target->use.get()) )
                 target->color.set_undoable(col->color.get());
             target->use.set_undoable(QVariant::fromValue(def));
@@ -753,7 +753,7 @@ void GlaxnimateWindow::Private::set_color_def(model::BrushStyle* def, bool secon
         }
         else
         {
-            command::UndoMacroGuard macro(i18n("Link %1 Color").arg(what), current_document.get());
+            command::UndoMacroGuard macro(i18n("Link %1 Color", what), current_document.get());
             target->use.set_undoable(QVariant::fromValue(def));
             target->visible.set_undoable(true);
             if ( old )
@@ -822,7 +822,7 @@ void GlaxnimateWindow::Private::import_file(QIODevice* file, const io::Options& 
     bool ok = options.format->open(*file, options.filename, &imported, settings);
     if ( !ok )
     {
-        show_warning(i18n("Import File"), i18n("Could not import %1").arg(options.filename));
+        show_warning(i18n("Import File"), i18n("Could not import %1", options.filename));
         return;
     }
 
@@ -839,7 +839,7 @@ void GlaxnimateWindow::Private::import_file(const QString& filename, const QVari
     opts.settings = settings;
     opts.format = io::IoRegistry::instance().from_extension(finfo.suffix(), io::ImportExport::Import);
     if ( !opts.format )
-        show_warning(i18n("Import File"), i18n("Could not import %1").arg(filename));
+        show_warning(i18n("Import File"), i18n("Could not import %1", filename));
     opts.filename = filename;
     opts.path = finfo.dir();
     import_file(opts);
@@ -903,14 +903,14 @@ void glaxnimate::gui::GlaxnimateWindow::Private::load_remote_document(const QUrl
             if ( code.isValid() )
             {
                 auto reason = reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
-                message = i18n("HTTP Error %1 %2").arg(code.toInt()).arg(reason);
+                message = i18n("HTTP Error %1 %2", code.toInt(), reason);
             }
             else
             {
                 message = i18n("Network Error");
             }
 
-            show_warning(i18n("Load URL"), i18n("Could not load %1: %2").arg(reply->url().toString()).arg(message));
+            show_warning(i18n("Load URL"), i18n("Could not load %1: %2", reply->url().toString(), message));
             return;
         }
 
@@ -928,7 +928,7 @@ void glaxnimate::gui::GlaxnimateWindow::Private::check_autosaves()
         return;
 
     WindowMessageWidget::Message msg{
-        i18n("There are %1 auto-save files that can be restored.").arg(stale.size()),
+        i18n("There are %1 auto-save files that can be restored.", stale.size()),
         KMessageWidget::Information
     };
 

@@ -204,7 +204,7 @@ public:
                 if ( code.isValid() )
                 {
                     auto reason = reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
-                    auto msg = i18n("HTTP Error %1: %2").arg(code.toInt()).arg(reason);
+                    auto msg = i18n("HTTP Error %1: %2", code.toInt(), reason);
                     app::log::Log("lottiefiles", "http").stream(app::log::Warning) << reply->url().toString() << msg;
                     on_error(msg);
                 }

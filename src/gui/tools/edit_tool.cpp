@@ -288,7 +288,7 @@ public:
             auto point = item->point();
             point.type = type;
             point.adjust_handles_from_type();
-            item->modify(point, i18n("Set %1 Node").arg(label));
+            item->modify(point, i18n("Set %1 Node", label));
         });
 
         action->setCheckable(true);

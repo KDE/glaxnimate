@@ -190,7 +190,7 @@ std::unique_ptr<glaxnimate::model::Document> glaxnimate::android::DocumentOpener
         }
         supported_formats += ",\nPNG";
 
-        QMessageBox::warning(d->widget_parent, i18n("Open File"), i18n("Unknown file type. Supported files:\n%1").arg(supported_formats));
+        QMessageBox::warning(d->widget_parent, i18n("Open File"), i18n("Unknown file type. Supported files:\n%1", supported_formats));
         return {};
     }
 
@@ -198,7 +198,7 @@ std::unique_ptr<glaxnimate::model::Document> glaxnimate::android::DocumentOpener
     auto current_document = std::make_unique<model::Document>(options.filename);
     if ( !options.format->open(file, options.filename, current_document.get(), options.settings) )
     {
-        QMessageBox::warning(d->widget_parent, i18n("Open File"), i18n("Error loading %1 file").arg(options.format->slug()));
+        QMessageBox::warning(d->widget_parent, i18n("Open File"), i18n("Error loading %1 file", options.format->slug()));
         return {};
     }
 

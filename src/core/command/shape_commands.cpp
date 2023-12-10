@@ -175,7 +175,7 @@ command::AddShape * command::duplicate_shape ( model::ShapeElement* shape )
         std::move(new_shape),
         shape->owner()->index_of(shape)+1,
         nullptr,
-        i18n("Duplicate %1").arg(shape->object_name())
+        i18n("Duplicate %1", shape->object_name())
     );
 }
 

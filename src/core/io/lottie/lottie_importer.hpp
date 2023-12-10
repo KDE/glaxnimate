@@ -159,7 +159,7 @@ private:
         int index = json["ind"].toInt();
         if ( !json.contains("ty") || !json["ty"].isDouble() )
         {
-            warning(i18n("Missing layer type for %1").arg(index), json);
+            warning(i18n("Missing layer type for %1", index), json);
             invalid_indices.insert(index);
             return;
         }
@@ -433,7 +433,7 @@ private:
                 auto it = unsupported_layers.find(json["ty"].toInt());
                 if ( it != unsupported_layers.end() )
                     type = *it;
-                warning(i18n("Unsupported layer of type %1").arg(type), json);
+                warning(i18n("Unsupported layer of type %1", type), json);
             }
         }
 
@@ -471,7 +471,7 @@ private:
             {
                 // "mm" is marked as unsupported by lottie and it appears in several animations so we ignore the warning
                 if ( base_type != "mm" )
-                    warning(i18n("Unsupported shape type %1").arg(json["ty"].toString()), json);
+                    warning(i18n("Unsupported shape type %1", json["ty"].toString()), json);
                 return;
             }
         }
@@ -481,7 +481,7 @@ private:
         );
         if ( !shape )
         {
-            warning(i18n("Unsupported shape type %1").arg(json["ty"].toString()), json);
+            warning(i18n("Unsupported shape type %1", json["ty"].toString()), json);
             return;
         }
 
@@ -876,7 +876,7 @@ private:
     {
         auto v = value_to_variant(prop, val);
         if ( !v || !prop->set_value(trans.from_lottie(*v, 0)) )
-            Q_EMIT format->warning(i18n("Invalid value for %1").arg(prop->name()));
+            Q_EMIT format->warning(i18n("Invalid value for %1", prop->name()));
     }
 
     void load_static(model::BaseProperty * prop, const QJsonValue& val, const TransformFunc& trans)
@@ -898,14 +898,14 @@ private:
     {
         if ( !val.isObject() )
         {
-            Q_EMIT format->warning(i18n("Invalid value for %1").arg(property_error_string(prop)));
+            Q_EMIT format->warning(i18n("Invalid value for %1", property_error_string(prop)));
             return;
         }
 
         QJsonObject obj = val.toObject();
         if ( !obj.contains("k") )
         {
-            Q_EMIT format->warning(i18n("Invalid value for %1").arg(property_error_string(prop)));
+            Q_EMIT format->warning(i18n("Invalid value for %1", property_error_string(prop)));
             return;
         }
 
@@ -913,7 +913,7 @@ private:
         {
             if ( !obj["k"].isArray() )
             {
-                Q_EMIT format->warning(i18n("Invalid keyframes for %1").arg(property_error_string(prop)));
+                Q_EMIT format->warning(i18n("Invalid keyframes for %1", property_error_string(prop)));
                 return;
             }
 
@@ -1029,7 +1029,7 @@ private:
 
         QString id = asset["id"].toString();
         if ( bitmap_ids.count(id) )
-            format->warning(i18n("Duplicate Bitmap ID: %1").arg(id));
+            format->warning(i18n("Duplicate Bitmap ID: %1", id));
         bitmap_ids[id] = bmp;
 
         if ( asset.contains("nm") )
@@ -1061,7 +1061,7 @@ private:
 
         QString id = asset["id"].toString();
         if ( precomp_ids.count(id) )
-            format->warning(i18n("Duplicate Composition ID: %1").arg(id));
+            format->warning(i18n("Duplicate Composition ID: %1", id));
         precomp_ids[id] = comp;
 
         comp->name.set(id);

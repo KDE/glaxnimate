@@ -130,7 +130,7 @@ public:
         }
 
         // Undo macro
-        command::UndoMacroGuard macro(i18n("Set %1 Gradient").arg(model::Gradient::gradient_type_name(gradient_type)), document);
+        command::UndoMacroGuard macro(i18n("Set %1 Gradient", model::Gradient::gradient_type_name(gradient_type)), document);
 
         // Gather bounding box
         auto shape_element = window->current_shape();

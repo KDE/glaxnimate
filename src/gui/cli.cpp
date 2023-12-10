@@ -312,7 +312,7 @@ void render_frame(
     QFile file(filename);
     if ( !file.open(QFile::WriteOnly) )
     {
-        app::cli::show_message(i18nc("@info:shell", "Could not save to %1").arg(filename), true);
+        app::cli::show_message(i18nc("@info:shell", "Could not save to %1", filename), true);
         return;
     }
 
@@ -332,7 +332,7 @@ void render_frame_img(glaxnimate::model::Composition* comp, glaxnimate::model::F
 {
     QImage image = glaxnimate::io::raster::RasterMime::frame_to_image(comp, time);
     if ( !image.save(&file, format) )
-        app::cli::show_message(i18nc("@info:shell", "Could not save to %1").arg(file.fileName()), true);
+        app::cli::show_message(i18nc("@info:shell", "Could not save to %1", file.fileName()), true);
 }
 
 bool cli_render(const app::cli::ParsedArguments& args)

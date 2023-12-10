@@ -98,7 +98,7 @@ public:
             return true;
 
         app::settings::WidgetBuilder widget_builder;
-        QString title = i18n("%1 Options").arg(io_options_.format->name());
+        QString title = i18n("%1 Options", io_options_.format->name());
         return widget_builder.show_dialog(settings->settings(), io_options_.settings, title, parent);
     }
 
@@ -163,7 +163,7 @@ private:
         if ( add_all )
         {
             all.resize(all.size() - 1);
-            QString all_filter = i18n("All files (%1)").arg(all);
+            QString all_filter = i18n("All files (%1)", all);
             filters << all_filter;
             dialog.setNameFilters(filters);
             dialog.selectNameFilter(all_filter);

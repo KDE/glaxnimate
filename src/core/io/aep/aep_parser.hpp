@@ -120,7 +120,7 @@ private:
                         current_item = parse_asset(id, child->child("Pin "), folder, project);
                         break;
                     default:
-                        warning(i18n("Unknown Item type %s").arg(type));
+                        warning(i18n("Unknown Item type %s", type));
                 }
 
                 if ( current_item )
@@ -211,7 +211,7 @@ private:
         if ( chunk->header == "Utf8" )
             return QString::fromUtf8(data);
 
-        warning(i18n("Unknown encoding for %1").arg(chunk->header.to_string()));
+        warning(i18n("Unknown encoding for %1", chunk->header.to_string()));
         return "";
     }
 
@@ -421,7 +421,7 @@ private:
         else if ( *chunk == "OvG2" || *chunk == "blsi" || *chunk == "blsv" )
             return {};
 
-        warning(i18n("Unknown property type: %1").arg(chunk->name().to_string()));
+        warning(i18n("Unknown property type: %1", chunk->name().to_string()));
         return {};
     }
 
@@ -788,7 +788,7 @@ private:
             return property;
 
         } catch ( const CosError& err ) {
-            warning(i18n("Invalid text document: %1").arg(err.message));
+            warning(i18n("Invalid text document: %1", err.message));
             return {};
         }
     }

@@ -184,7 +184,7 @@ struct LoadCotext
             keyed_property = nullptr;
             if ( !keyed_object )
             {
-                format->warning(i18n("Invalid Keyed Object id %1").arg(id));
+                format->warning(i18n("Invalid Keyed Object id %1", id));
                 return;
             }
         }
@@ -201,7 +201,7 @@ struct LoadCotext
 
             if ( !prop )
             {
-                format->warning(i18n("Unknown Keyed Property id %1").arg(id));
+                format->warning(i18n("Unknown Keyed Property id %1", id));
                 return;
             }
 
@@ -265,7 +265,7 @@ struct LoadCotext
             auto parent_id = object->get<Identifier>("parentId");
             auto parent = artboard_child(parent_id);
             if ( !parent )
-                format->warning(i18n("Could not find parent with id %1").arg(parent_id));
+                format->warning(i18n("Could not find parent with id %1", parent_id));
             else
                 parent->children().push_back(object);
         }
@@ -743,7 +743,7 @@ RiveLoader::RiveLoader(BinaryInputStream& stream, RiveFormat* format)
 {
     extra_props = read_property_table();
     QObject::connect(&types, &TypeSystem::type_not_found, [format](int type){
-        format->error(i18n("Unknown object of type %1").arg(int(type)));
+        format->error(i18n("Unknown object of type %1", int(type)));
     });
 
     if ( stream.has_error() )

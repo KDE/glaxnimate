@@ -72,7 +72,7 @@ void glaxnimate::io::aep::AepLoader::load_asset(const glaxnimate::io::aep::Folde
             // Handle collected assets
             QFileInfo path(asset_path.filePath(asset->path.fileName()));
             if ( !path.exists() )
-                warning(i18n("External asset not found: %1").arg(asset->path.filePath()));
+                warning(i18n("External asset not found: %1", asset->path.filePath()));
             else
                 image->filename.set(path.filePath());
         }
@@ -114,7 +114,7 @@ void glaxnimate::io::aep::AepLoader::info(const QString& msg)
 
 static bool unknown_mn(glaxnimate::io::ImportExport* io, const QString& context, const QString& mn)
 {
-    io->information(i18n("Unknown property \"%1\" of \"%2\"").arg(mn).arg(context));
+    io->information(i18n("Unknown property \"%1\" of \"%2\"", mn, context));
     return true;
 }
 
@@ -401,18 +401,18 @@ void load_property_check(
 {
     if ( ae_prop.class_type() != PropertyBase::Property )
     {
-        io->warning(i18n("Expected property for %1").arg(match_name));
+        io->warning(i18n("Expected property for %1", match_name));
         return;
     }
 
     try
     {
         if ( !load_property(prop, static_cast<const Property&>(ae_prop), conv) )
-            io->warning(i18n("Could convert %1").arg(match_name));
+            io->warning(i18n("Could convert %1", match_name));
     }
     catch ( const std::bad_variant_access& )
     {
-        io->error(i18n("Invalid value for %1").arg(match_name));
+        io->error(i18n("Invalid value for %1", match_name));
     }
 }
 
@@ -554,7 +554,7 @@ void load_transform(io::ImportExport* io, model::Transform* tf, const PropertyBa
             !p.match_name.endsWith("Opacity") &&
             !p.match_name.endsWith("Envir Appear in Reflect")
         )
-            io->information(i18n("Unknown property \"%1\"").arg(p.match_name));
+            io->information(i18n("Unknown property \"%1\"", p.match_name));
     }
 
     if ( split_position )
@@ -1081,7 +1081,7 @@ std::unique_ptr<model::ShapeElement> create_shape(ImportExport* io, model::Docum
     if ( auto shape = shape_factory().load(io, document, prop) )
         return shape;
 
-    io->information(i18n("Unknown shape %1").arg(prop.match_name));
+    io->information(i18n("Unknown shape %1", prop.match_name));
     return nullptr;
 }
 
@@ -1245,7 +1245,7 @@ void glaxnimate::io::aep::AepLoader::asset_layer(
         return;
     }
 
-    warning(i18n("Unknown asset type for %1").arg(ae_layer.name.isEmpty() ? "Layer" : ae_layer.name));
+    warning(i18n("Unknown asset type for %1", ae_layer.name.isEmpty() ? "Layer" : ae_layer.name));
 }
 
 namespace {

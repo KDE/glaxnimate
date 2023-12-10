@@ -157,7 +157,7 @@ glaxnimate::model::Group* glaxnimate::utils::trace::TraceWrapper::apply(
 {
     auto layer = std::make_unique<model::Group>(d->document);
     auto created = layer.get();
-    layer->name.set(i18n("Traced %1").arg(d->name));
+    layer->name.set(i18n("Traced %1", d->name));
 
     if ( trace.size() == 1 )
     {

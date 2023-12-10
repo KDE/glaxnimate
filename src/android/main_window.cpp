@@ -619,7 +619,7 @@ public:
             if ( !opts.filename.isEmpty() )
                 suggestion = opts.filename;
             else
-                suggestion = i18n("Animation.%1").arg(opts.format ? opts.format->extensions()[0] : "rawr");
+                suggestion = i18n("Animation.%1", opts.format ? opts.format->extensions()[0] : "rawr");
 
             if ( file_picker.select_save(suggestion, export_opts) )
             {
@@ -785,7 +785,7 @@ public:
     void document_frame_to_png()
     {
         exporting_png = true;
-        if ( !file_picker.select_save(i18n("Frame %1.png").arg(current_document->current_time()), true, "image/png") )
+        if ( !file_picker.select_save(i18n("Frame %1.png", current_document->current_time()), true, "image/png") )
         {
             exporting_png = false;
         }

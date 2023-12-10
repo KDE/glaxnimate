@@ -193,7 +193,7 @@ void glaxnimate::emoji::EmojiSetDialog::download_selected()
         {
             d->ui.progress_bar->setVisible(false);
             auto reason = reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
-            d->set_download_status(row, "package-broken", i18nc("Package install status, %1 reason", "Could not download: %1").arg(reason));
+            d->set_download_status(row, "package-broken", i18nc("Package install status, %1 reason", "Could not download: %1", reason));
             return;
         }
 

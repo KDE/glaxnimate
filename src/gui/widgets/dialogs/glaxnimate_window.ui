@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
-
-SPDX-License-Identifier: GPL-3.0-or-later
--->
-
 <ui version="4.0">
+ <author>
+    SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia &lt;dev@dragon.best&gt;
+    SPDX-License-Identifier: GPL-3.0-or-later
+  </author>
  <class>glaxnimate::gui::GlaxnimateWindow</class>
  <widget class="QMainWindow" name="glaxnimate::gui::GlaxnimateWindow">
   <property name="geometry">
@@ -479,7 +476,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
           <x>0</x>
           <y>0</y>
           <width>92</width>
-          <height>267</height>
+          <height>261</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1555,7 +1552,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
      <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
-    <string>&amp;Undo %1</string>
+    <string notr="true">&amp;Undo %1</string>
    </property>
   </action>
   <action name="action_redo">
@@ -1567,7 +1564,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
      <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
-    <string>&amp;Redo %1</string>
+    <string notr="true">&amp;Redo %1</string>
    </property>
   </action>
   <action name="action_view_fit">
@@ -2288,7 +2285,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
   </action>
   <action name="action_shortcuts">
    <property name="icon">
-    <iconset theme="configure-shortcuts"/>
+    <iconset theme="configure-shortcuts">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Configure &amp;Keyboard Shortcuts...</string>

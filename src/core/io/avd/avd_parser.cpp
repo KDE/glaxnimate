@@ -220,7 +220,7 @@ private:
         // @android:anim/bounce_interpolator
         // @android:anim/anticipate_overshoot_interpolator
         if ( interpolator != "" )
-            warning(i18n("Unknown interpolator %s").arg(interpolator));
+            warning(i18n("Unknown interpolator %s", interpolator));
 
         return model::KeyframeTransition(Type::Ease, Type::Ease);
     }
@@ -647,7 +647,7 @@ private:
 
         if ( resource_path.isRoot() || id.isEmpty() || id[0] != '@' || id.back() == '\0' )
         {
-            warning(i18n("Unkown resource id %1").arg(id));
+            warning(i18n("Unkown resource id %1", id));
             return {};
         }
 
@@ -655,8 +655,8 @@ private:
         QFile resource_file(path);
         if ( !resource_file.open(QIODevice::ReadOnly) )
         {
-            warning(i18n("Could not read file %1").arg(path));
-            warning(i18n("Could not load resource %1").arg(id));
+            warning(i18n("Could not read file %1", path));
+            warning(i18n("Could not load resource %1", id));
             return {};
         }
 
@@ -665,7 +665,7 @@ private:
         if ( !resource_dom.setContent(&resource_file, true, &err.message, &err.line, &err.column) )
         {
             warning(err.formatted(path));
-            warning(i18n("Could not load resource %1").arg(id));
+            warning(i18n("Could not load resource %1", id));
             return {};
         }
 

@@ -23,7 +23,7 @@ public:
         QUndoCommand* parent = nullptr,
         const QString& name = {}
     )
-        : QUndoCommand(name.isEmpty() ? i18n("Create %1").arg(object->object_name()) : name, parent),
+        : QUndoCommand(name.isEmpty() ? i18n("Create %1", object->object_name()) : name, parent),
           object_parent(object_parent),
           object_(std::move(object)),
           position(position == -1 ? object_parent->size() : position)
@@ -58,13 +58,13 @@ class RemoveObject : public QUndoCommand
 {
 public:
     RemoveObject(ItemT* object, PropT* object_parent, QUndoCommand* parent = nullptr)
-        : QUndoCommand(i18n("Remove %1").arg(object->object_name()), parent),
+        : QUndoCommand(i18n("Remove %1", object->object_name()), parent),
           object_parent(object_parent),
           position(object_parent->index_of(object, -1))
     {}
 
     RemoveObject(int index, PropT* object_parent, QUndoCommand* parent = nullptr)
-        : QUndoCommand(i18n("Remove %1").arg((*object_parent)[index]->object_name()), parent),
+        : QUndoCommand(i18n("Remove %1", (*object_parent)[index]->object_name()), parent),
           object_parent(object_parent),
           position(index)
     {}

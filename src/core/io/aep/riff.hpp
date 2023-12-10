@@ -525,7 +525,7 @@ public:
         if ( header == "RIFF" )
             endian = Endianness::Little();
         else if ( header != "RIFX" )
-            throw RiffError(i18n("Unknown format %1").arg(QString(headerraw)));
+            throw RiffError(i18n("Unknown format %1", QString(headerraw)));
 
         auto length = endian.read_uint<4>(file->read(4));
 

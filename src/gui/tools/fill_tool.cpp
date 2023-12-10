@@ -85,7 +85,7 @@ public:
         if ( add_fill )
         {
             auto fill = std::make_unique<model::Fill>(document);
-            document->set_best_name(fill.get(), i18n("%1 Fill").arg(highlight->name.get()));
+            document->set_best_name(fill.get(), i18n("%1 Fill", highlight->name.get()));
             fill->color.set(event.window->current_color());
 
             document->undo_stack().push(
@@ -96,7 +96,7 @@ public:
         if ( add_stroke )
         {
             auto stroke = std::make_unique<model::Stroke>(document);
-            document->set_best_name(stroke.get(), i18n("%1 Stroke").arg(highlight->name.get()));
+            document->set_best_name(stroke.get(), i18n("%1 Stroke", highlight->name.get()));
             stroke->set_pen_style(event.window->current_pen_style());
 
             document->undo_stack().push(

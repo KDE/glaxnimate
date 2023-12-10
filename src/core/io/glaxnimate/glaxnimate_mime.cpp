@@ -85,7 +85,7 @@ io::mime::DeserializedData io::glaxnimate::GlaxnimateMime::deserialize(const QBy
     try {
         jdoc = QJsonDocument::fromJson(data);
     } catch ( const QJsonParseError& err ) {
-        message(i18n("Could not parse JSON: %1").arg(err.errorString()));
+        message(i18n("Could not parse JSON: %1", err.errorString()));
         return {};
     }
 

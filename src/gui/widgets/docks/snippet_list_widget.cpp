@@ -63,7 +63,7 @@ void SnippetListWidget::snippet_edit()
 
     if ( !snippet.ensure_file_exists() )
     {
-        Q_EMIT warning(i18n("Could not create snippet: `%1`").arg(snippet.filename()), i18n("Snippets"));
+        Q_EMIT warning(i18n("Could not create snippet: `%1`", snippet.filename()), i18n("Snippets"));
     }
 
     QDesktopServices::openUrl(QUrl::fromLocalFile(snippet.filename()));

@@ -79,7 +79,7 @@ void glaxnimate::gui::ExportImageSequenceDialog::render()
         parent.cdUp();
         if ( !parent.mkpath(path.dirName()) )
         {
-            QMessageBox::critical(this, i18nc("@title:window", "Error"), i18nc("%1 path", "Could not create directory\n%1").arg(path.path()));
+            QMessageBox::critical(this, i18nc("@title:window", "Error"), i18nc("%1 path", "Could not create directory\n%1", path.path()));
             return;
         }
     }

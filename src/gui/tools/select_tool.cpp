@@ -395,12 +395,12 @@ private:
         auto undo_stack = &window->undo_group();
         menu.addAction(
             QIcon::fromTheme("edit-undo"),
-            i18n("Undo %1").arg(undo_stack->undoText()),
+            i18n("Undo %1", undo_stack->undoText()),
             undo_stack, &QUndoGroup::undo
         )->setEnabled(undo_stack->canUndo());
         menu.addAction(
             QIcon::fromTheme("edit-redo"),
-            i18n("Redo %1").arg(undo_stack->redoText()),
+            i18n("Redo %1", undo_stack->redoText()),
             undo_stack, &QUndoGroup::redo
         )->setEnabled(undo_stack->canRedo());
 

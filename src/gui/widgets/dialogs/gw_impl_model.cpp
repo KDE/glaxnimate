@@ -84,7 +84,7 @@ void GlaxnimateWindow::Private::layer_delete()
     auto current = parent->current_shape();
     if ( !current )
         return;
-    parent->delete_shapes_impl(i18n("Delete %1").arg(current->object_name()), {current});
+    parent->delete_shapes_impl(i18n("Delete %1", current->object_name()), {current});
 }
 
 void GlaxnimateWindow::Private::layer_duplicate()
@@ -206,7 +206,7 @@ QStringList GlaxnimateWindow::Private::get_open_image_files(const QString& title
             filters.push_back(mime.comment() + QLatin1String(" (") + patterns + QLatin1Char(')'));
         }
     }
-    filters.push_front(i18n("All Supported files (%1)").arg(all_ext.join(' ')));
+    filters.push_front(i18n("All Supported files (%1)", all_ext.join(' ')));
     dialog.setNameFilters(filters);
 
     dialog.setAcceptMode(QFileDialog::AcceptOpen);
@@ -295,7 +295,7 @@ void GlaxnimateWindow::Private::cleanup_document()
     remove_assets(current_document->assets()->colors->values, count);
     remove_assets(current_document->assets()->images->values, count);
 
-    status_message(i18n("Removed %1 assets").arg(count), 0);
+    status_message(i18n("Removed %1 assets", count), 0);
 }
 
 void GlaxnimateWindow::Private::convert_to_path(const std::vector<model::ShapeElement*>& shapes, std::vector<model::ShapeElement*>* out)
@@ -305,7 +305,7 @@ void GlaxnimateWindow::Private::convert_to_path(const std::vector<model::ShapeEl
 
     QString macro_name = i18n("Convert to path");
     if ( shapes.size() == 1 )
-        macro_name = i18n("Convert %1 to path").arg((*shapes.begin())->name.get());
+        macro_name = i18n("Convert %1 to path", (*shapes.begin())->name.get());
 
     std::unordered_map<model::Layer*, model::Layer*> converted_layers;
 

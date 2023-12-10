@@ -31,7 +31,7 @@ bool glaxnimate::io::lottie::LottieFormat::load_json(const QByteArray& data, mod
     try {
         jdoc = QJsonDocument::fromJson(data);
     } catch ( const QJsonParseError& err ) {
-        Q_EMIT error(i18n("Could not parse JSON: %1").arg(err.errorString()));
+        Q_EMIT error(i18n("Could not parse JSON: %1", err.errorString()));
         return false;
     }
 

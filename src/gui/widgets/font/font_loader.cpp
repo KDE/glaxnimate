@@ -44,7 +44,7 @@ public:
     {
         QFile file(item.url.toLocalFile());
         if ( !file.open(QFile::ReadOnly) )
-            parent->error(i18n("Could not open file %1").arg(file.fileName()), item.id);
+            parent->error(i18n("Could not open file %1", file.fileName()), item.id);
         else
             parse(item.name_alias, item.id, file.readAll(), item.parent_url, item.url);
 
@@ -135,7 +135,7 @@ public:
                 parse_css(id, data, reply_url);
                 break;
             default:
-                parent->error(i18n("Font format not supported for %1").arg(reply_url.toString()), id);
+                parent->error(i18n("Font format not supported for %1", reply_url.toString()), id);
         }
     }
 

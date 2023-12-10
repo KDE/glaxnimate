@@ -21,7 +21,7 @@ public:
     {}
 
     SetPropertyValue(model::BaseProperty* prop, const QVariant& before, const QVariant& after, bool commit = true, const QString& name = {})
-        : Parent(name.isEmpty() ? i18n("Update %1").arg(prop->name()) : name, commit),
+        : Parent(name.isEmpty() ? i18n("Update %1", prop->name()) : name, commit),
             prop(prop),
             before(before),
             after(after)

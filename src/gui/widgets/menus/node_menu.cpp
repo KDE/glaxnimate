@@ -196,7 +196,7 @@ public:
         if ( !from->is_instance<model::Layer>() )
             convert_group_apply_settings(to, from);
 
-        command::UndoMacroGuard guard(i18n("Convert %1 to %2").arg(from->name.get()).arg(to->type_name_human()), from->document());
+        command::UndoMacroGuard guard(i18n("Convert %1 to %2", from->name.get(), to->type_name_human()), from->document());
         from->push_command(new command::AddObject(owner, std::move(uto), owner->index_of(from)));
         std::vector<model::ShapeElement*> shapes;
         shapes.reserve(from->shapes.size());

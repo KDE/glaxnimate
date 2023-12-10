@@ -30,7 +30,7 @@ glaxnimate::gui::LottieFilesResultItem::LottieFilesResultItem(LottieFilesResult 
     name->setFont(name_font);
     lay->addWidget(name);
 
-    QLabel* by = new QLabel(i18n("by %1").arg(data.author_username), this);
+    QLabel* by = new QLabel(i18n("by %1", data.author_username), this);
     by->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
     by->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Preferred);
     QFont by_font = by->font();
