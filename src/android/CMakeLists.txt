@@ -28,6 +28,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/src/core
     ${CMAKE_SOURCE_DIR}/src/gui
     ${CMAKE_SOURCE_DIR}/external/Qt-Color-Widgets/include
+    ${CMAKE_CURRENT_BINARY_DIR}/../gui
 )
 
 if (ANDROID)
