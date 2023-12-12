@@ -22,6 +22,7 @@
 #include <KColorSchemeModel>
 #include <KLanguageButton>
 #include <KShortcutsEditor>
+#include <KActionCollection>
 
 #include "QtColorWidgets/ColorSelector"
 
@@ -192,6 +193,7 @@ public:
     KShortcutsEditor* shortcut_editor = nullptr;
     KPageWidgetItem* shortcuts_page = nullptr;
     std::map<KPageWidgetItem*, settings::CustomSettingsGroup*> custom_pages;
+    KActionCollection* action_collection = nullptr;
 
     app::widgets::NoCloseOnEnter ncoe;
 };
@@ -259,7 +261,8 @@ SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
         KShortcutsEditor::AllActions,
         KShortcutsEditor::LetterShortcutsAllowed
     );
-    d->shortcut_editor->addCollection(parent->actionCollection());
+    d->action_collection = parent->actionCollection();
+    d->shortcut_editor->addCollection(d->action_collection);
     connect(d->shortcut_editor, &KShortcutsEditor::keyChange, apply, [apply]{apply->setEnabled(true);});
 
     d->shortcuts_page = addPage(d->shortcut_editor, i18n("Keyboard Shortcuts"), QStringLiteral("input-keyboard"));
@@ -285,7 +288,7 @@ void glaxnimate::gui::SettingsDialog::updateSettings()
     else if ( currentPage() == d->shortcuts_page )
     {
         auto group = GlaxnimateSettings::self()->config()->group(QStringLiteral("Shortcuts"));
-        d->shortcut_editor->writeConfiguration(&group);
+        d->action_collection->writeSettings(&group);
         d->shortcut_editor->commit();
     }
     else
