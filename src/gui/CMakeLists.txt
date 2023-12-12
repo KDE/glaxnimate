@@ -251,6 +251,7 @@ install(FILES glaxnimate_settings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
 
 include_directories(${CMAKE_SOURCE_DIR}/external/QtAppSetup/src)
 include_directories(${CMAKE_SOURCE_DIR}/src/core)
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 add_library(${LIB_NAME_GUI} OBJECT ${SOURCES} ${SOURCES_UIS})
 kde_target_enable_exceptions(${LIB_NAME_GUI} PUBLIC)
 target_link_libraries(
