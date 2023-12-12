@@ -181,7 +181,7 @@ void glaxnimate::gui::tools::DrawTool::Private::create(const glaxnimate::gui::to
 
         if ( extend.property )
         {
-            command::UndoMacroGuard guard(tr("Extend Path"), event.window->document());
+            command::UndoMacroGuard guard(i18n("Extend Path"), event.window->document());
 
             if ( !extend.at_end )
                 bezier.reverse();
@@ -204,7 +204,7 @@ void glaxnimate::gui::tools::DrawTool::Private::create(const glaxnimate::gui::to
 
             add_extension_points(shape.get());
 
-            tool->create_shape(tr("Draw Shape"), event, std::move(shape));
+            tool->create_shape(i18n("Draw Shape"), event, std::move(shape));
         }
 
     }
@@ -315,7 +315,7 @@ void glaxnimate::gui::tools::DrawTool::remove_last(SelectionManager* window)
     {
         auto bezier = d->bezier;
         bezier.points().erase(bezier.points().end() - back);
-        d->push_command(tr("Delete curve point"), window, std::move(bezier));
+        d->push_command(i18n("Delete curve point"), window, std::move(bezier));
     }
 
 }
@@ -422,7 +422,7 @@ void glaxnimate::gui::tools::DrawTool::mouse_release(const glaxnimate::gui::tool
             auto bezier = d->bezier;
             QPointF pos = d->best_point(event);
             bezier.points().push_back(math::bezier::Point(pos, pos, pos, d->point_type));
-            d->push_command(tr("Add curve point"), event.window, std::move(bezier));
+            d->push_command(i18n("Add curve point"), event.window, std::move(bezier));
             event.repaint();
         }
 #endif

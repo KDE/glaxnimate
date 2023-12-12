@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+#include <KLocalizedString>
+
 #include "bezier_item.hpp"
 
 #include "math/geom.hpp"
@@ -234,7 +236,7 @@ void graphics::PointItem::remove_tangent(graphics::MoveHandle* handle)
         return;
 
     handle->setVisible(false);
-    on_modified(true, tr("Remove node tangent"));
+    on_modified(true, i18n("Remove node tangent"));
     update();
 }
 
@@ -346,7 +348,7 @@ void graphics::BezierItem::update_bezier(const math::bezier::Bezier& bez)
 void glaxnimate::gui::graphics::BezierItem::set_bezier(const math::bezier::Bezier& bez, bool commit)
 {
     update_bezier(bez);
-    do_update(commit, tr("Update path"));
+    do_update(commit, i18n("Update path"));
 }
 
 
@@ -363,7 +365,7 @@ void graphics::BezierItem::remove_point(int index)
         items.back()->set_has_tan_out(false);
 
 
-    do_update(true, tr("Remove Point"));
+    do_update(true, i18n("Remove Point"));
 }
 
 void graphics::BezierItem::make_first(int index)
@@ -387,7 +389,7 @@ void graphics::BezierItem::make_first(int index)
 
     std::swap(selected, selected_indices_);
 
-    do_update(true, tr("Set Start"));
+    do_update(true, i18n("Set Start"));
 }
 
 void graphics::BezierItem::do_update(bool commit, const QString& name)
@@ -416,7 +418,7 @@ void graphics::BezierItem::do_update(bool commit, const QString& name)
 void graphics::BezierItem::on_dragged(int index, const math::bezier::Point& point, bool commit, const QString& name)
 {
     bezier_.set_point(index, point);
-    do_update(commit, name.isEmpty() ? tr("Update shape") : name);
+    do_update(commit, name.isEmpty() ? i18n("Update shape") : name);
 }
 
 void graphics::BezierItem::do_add_point(int index)

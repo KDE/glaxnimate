@@ -98,7 +98,7 @@ bool item_models::DocumentModelBase::dropMimeData(const QMimeData* data, Qt::Dro
     if ( items.empty() )
         return false;
 
-    command::UndoMacroGuard guard(tr("Move Layers"), document());
+    command::UndoMacroGuard guard(i18n("Move Layers"), document());
 
     for ( auto shape : items )
     {

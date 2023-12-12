@@ -111,7 +111,7 @@ void glaxnimate::gui::tools::DrawToolBase::create_shape(
 
         // Fill
         auto fill = std::make_unique<model::Fill>(document);
-        fill->name.set(QObject::tr("Fill"));
+        fill->name.set(i18n("Fill"));
         fill->color.set(event.window->current_color());
         fill->use.set(event.window->linked_brush_style(false));
         fill->visible.set(options->create_fill());
@@ -123,7 +123,7 @@ void glaxnimate::gui::tools::DrawToolBase::create_shape(
 
         // Stroke
         auto stroke = std::make_unique<model::Stroke>(document);
-        stroke->name.set(QObject::tr("Stroke"));
+        stroke->name.set(i18n("Stroke"));
         stroke->set_pen_style(event.window->current_pen_style());
         stroke->use.set(event.window->linked_brush_style(true));
         stroke->visible.set(options->create_stroke());

@@ -339,7 +339,7 @@ QIcon glaxnimate::model::OffsetPath::static_tree_icon()
 
 QString glaxnimate::model::OffsetPath::static_type_name_human()
 {
-    return tr("Offset Path");
+    return i18n("Offset Path");
 }
 
 bool glaxnimate::model::OffsetPath::process_collected() const

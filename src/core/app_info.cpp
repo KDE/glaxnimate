@@ -8,12 +8,13 @@
 
 #include <QGuiApplication>
 #include <KAboutData>
+#include <KLocalizedString>
 
 #include "application_info_generated.hpp"
 
 QString glaxnimate::AppInfo::name() const
 {
-    return QObject::tr("Glaxnimate");
+    return i18n("Glaxnimate");
 }
 
 QString glaxnimate::AppInfo::slug() const
@@ -64,7 +65,7 @@ void glaxnimate::AppInfo::init_qapplication() const
         QStringLiteral(PROJECT_VERSION),
         QStringLiteral(PROJECT_DESCRIPTION),
         KAboutLicense::GPL,
-        QObject::tr("(c) 2019-2023"),
+        i18n("(c) 2019-2023"),
         // Optional text shown in the About box.
         QStringLiteral(""),
         QStringLiteral(URL_DOCS),

@@ -153,13 +153,13 @@ public:
     {
         if ( items.size() == 50 )
         {
-            QMessageBox::warning(parent, parent->windowTitle(), tr("Too many stickers"));
+            QMessageBox::warning(parent, parent->windowTitle(), i18n("Too many stickers"));
             return;
         }
 
         if ( !file_picker.select_open(false) )
         {
-            QMessageBox::warning(parent, parent->windowTitle(), tr("Could not open file"));
+            QMessageBox::warning(parent, parent->windowTitle(), i18n("Could not open file"));
         }
     }
 
@@ -168,7 +168,7 @@ public:
         auto doc = opener.open(url);
         if ( !doc )
         {
-            QMessageBox::warning(parent, parent->windowTitle(), tr("Could not open file"));
+            QMessageBox::warning(parent, parent->windowTitle(), i18n("Could not open file"));
             return;
         }
 
@@ -219,7 +219,7 @@ public:
             QFile file(filename);
             if ( !exporter.save(file, filename, item->document.get(), {}) )
             {
-                QMessageBox::warning(parent, parent->windowTitle(), tr("Cannot save as TGS"));
+                QMessageBox::warning(parent, parent->windowTitle(), i18n("Cannot save as TGS"));
                 continue;
             }
 
@@ -260,7 +260,7 @@ public:
 
     void clear()
     {
-        if ( QMessageBox::question(parent, parent->windowTitle(), tr("Are you sure you want to remove all stickers from the pack?")) == QMessageBox::Yes )
+        if ( QMessageBox::question(parent, parent->windowTitle(), i18n("Are you sure you want to remove all stickers from the pack?")) == QMessageBox::Yes )
         {
             items.clear();
             ui.button_export->setEnabled(false);

@@ -11,7 +11,7 @@
 
 #define GLAXNIMATE_PROPERTY_REFERENCE(type, name, ...)      \
 public:                                                     \
-    ReferenceProperty<type> name{this, #name, __VA_ARGS__}; \
+    ReferenceProperty<type> name{this, kli18n(#name), __VA_ARGS__}; \
     type* get_##name() const { return name.get(); }         \
     bool set_##name(type* v)                                \
     {                                                       \
@@ -31,7 +31,7 @@ class ReferencePropertyBase : public BaseProperty
 public:
     ReferencePropertyBase(
         Object* obj,
-        const QString& name,
+        const KLazyLocalizedString& name,
         PropertyCallback<std::vector<DocumentNode*>> valid_options,
         PropertyCallback<bool, DocumentNode*> is_valid_option,
         PropertyTraits::Flags flags = PropertyTraits::Visual)
@@ -88,7 +88,7 @@ public:
 
     ReferenceProperty(
         Object* obj,
-        const QString& name,
+        const KLazyLocalizedString& name,
         PropertyCallback<std::vector<DocumentNode*>> valid_options,
         PropertyCallback<bool, DocumentNode*> is_valid_option,
         PropertyCallback<void, Type*, Type*> on_changed = {},

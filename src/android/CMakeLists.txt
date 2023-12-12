@@ -48,6 +48,7 @@ target_link_libraries(${PROJECT_SLUG}_mobile PUBLIC
     Qt${QT_VERSION_MAJOR}::Widgets
     Qt${QT_VERSION_MAJOR}::UiTools
     Qt${QT_VERSION_MAJOR}::Concurrent
+    KF${KF_MAJOR}::I18n
 )
 
 if (ANDROID)

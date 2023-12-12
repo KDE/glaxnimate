@@ -18,7 +18,7 @@ class VideoFormat : public ImportExport
 
 public:
     QString slug() const override { return "video"; }
-    QString name() const override { return tr("Video"); }
+    QString name() const override { return i18n("Video"); }
     QStringList extensions() const override;
     bool can_save() const override { return true; }
     bool can_open() const override { return false; }

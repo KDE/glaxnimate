@@ -202,7 +202,7 @@ QUrl glaxnimate::model::Bitmap::to_url() const
 QString glaxnimate::model::Bitmap::object_name() const
 {
     if ( embedded() )
-        return tr("Embedded image");
+        return i18n("Embedded image");
     return QFileInfo(filename.get()).fileName();
 }
 

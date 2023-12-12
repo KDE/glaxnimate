@@ -22,8 +22,8 @@ class FillTool : public Tool
 public:
     QString id() const override { return "fill"; }
     QIcon icon() const override { return QIcon::fromTheme("fill-color"); }
-    QString name() const override { return QObject::tr("Fill"); }
-    QKeySequence key_sequence() const override { return QKeySequence(QObject::tr("F8"), QKeySequence::PortableText); }
+    QString name() const override { return i18n("Fill"); }
+    QKeySequence key_sequence() const override { return QKeySequence(i18n("F8"), QKeySequence::PortableText); }
     static int static_group() noexcept { return Registry::Style; }
     int group() const noexcept override { return static_group(); }
 
@@ -50,7 +50,7 @@ public:
         auto document = event.window->document();
         model::ShapeListProperty* prop = highlight->owner();
 
-        command::UndoMacroGuard guard(tr("Apply Style"), document);
+        command::UndoMacroGuard guard(i18n("Apply Style"), document);
 
         bool add_fill = widget()->fill();
         bool add_stroke = widget()->stroke();
@@ -85,7 +85,7 @@ public:
         if ( add_fill )
         {
             auto fill = std::make_unique<model::Fill>(document);
-            document->set_best_name(fill.get(), QObject::tr("%1 Fill").arg(highlight->name.get()));
+            document->set_best_name(fill.get(), i18n("%1 Fill", highlight->name.get()));
             fill->color.set(event.window->current_color());
 
             document->undo_stack().push(
@@ -96,7 +96,7 @@ public:
         if ( add_stroke )
         {
             auto stroke = std::make_unique<model::Stroke>(document);
-            document->set_best_name(stroke.get(), QObject::tr("%1 Stroke").arg(highlight->name.get()));
+            document->set_best_name(stroke.get(), i18n("%1 Stroke", highlight->name.get()));
             stroke->set_pen_style(event.window->current_pen_style());
 
             document->undo_stack().push(

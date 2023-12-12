@@ -156,11 +156,11 @@ public:
         }
         else if ( elm->is_instance<model::Shape>() )
         {
-            warning(QObject::tr("%s should be in a group").arg(elm->object_name()));
+            warning(i18n("%s should be in a group", elm->object_name()));
         }
         else if ( !elm->is_instance<model::Styler>() && !elm->is_instance<model::Trim>() )
         {
-            warning(QObject::tr("%s is not supported").arg(elm->type_name_human()));
+            warning(i18n("%s is not supported", elm->type_name_human()));
         }
     }
 
@@ -249,7 +249,7 @@ public:
             }
             else
             {
-                warning(QObject::tr("%s are not supported").arg(ch->type_name_human()));
+                warning(i18n("%s are not supported", ch->type_name_human()));
             }
         }
 
@@ -515,7 +515,7 @@ public:
         }
         else
         {
-            warning(QObject::tr("%s cannot be a clip path").arg(element->object_name()));
+            warning(i18n("%s cannot be a clip path", element->object_name()));
             return {};
         }
 

@@ -10,6 +10,8 @@
 #include <QGraphicsScene>
 #include <QStyleOptionGraphicsItem>
 
+#include <KLocalizedString>
+
 #include "model/document.hpp"
 #include "command/animation_commands.hpp"
 #include "math/math.hpp"
@@ -416,7 +418,7 @@ void graphics::TransformGraphicsItem::drag_a(const QPointF& p, Qt::KeyboardModif
     QPointF pos = d->transform->position.get() - p2 + p1;
     d->transform->anchor_point.set(anchor_old);
     d->target->document()->undo_stack().push(new command::SetMultipleAnimated(
-        tr("Drag anchor point"),
+        i18n("Drag anchor point"),
         false,
         {&d->transform->anchor_point, &d->transform->position},
         anchor,
@@ -475,7 +477,7 @@ QRectF graphics::TransformGraphicsItem::boundingRect() const
 void graphics::TransformGraphicsItem::commit_anchor()
 {
     d->target->document()->undo_stack().push(new command::SetMultipleAnimated(
-        tr("Drag anchor point"),
+        i18n("Drag anchor point"),
         true,
         {&d->transform->anchor_point, &d->transform->position},
         d->transform->anchor_point.get(),

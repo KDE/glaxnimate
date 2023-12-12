@@ -159,8 +159,6 @@ public:
     int autosave_timer = 0;
     int autosave_timer_mins = 0;
     utils::PseudoMutex autosave_load;
-    QString undo_text;
-    QString redo_text;
     style::PropertyDelegate property_delegate;
     style::DockWidgetStyle dock_style;
     ViewTransformWidget* view_trans_widget;

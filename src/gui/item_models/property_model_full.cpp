@@ -205,14 +205,14 @@ public:
             if ( role == Qt::DisplayRole || role == Qt::EditRole )
                 return tree->visual_node->docnode_group_color();
             if ( role == Qt::ToolTipRole )
-                return tr("Group Color");
+                return i18n("Group Color");
         }
         else if ( model::AnimatableBase* anprop = animatable(tree) )
         {
             if ( anprop->keyframe_count() > 1 )
             {
                 if ( role == Qt::ToolTipRole )
-                    return tr("Jump to previous keyframe");
+                    return i18n("Jump to previous keyframe");
                 else if ( role == Qt::DecorationRole )
                     return QIcon::fromTheme("go-previous");
             }
@@ -254,15 +254,15 @@ public:
             else if ( role == Qt::ToolTipRole )
             {
                 if ( tree->visual_node->visible.get() )
-                    return tr("Visible");
-                return tr("Hidden");
+                    return i18n("Visible");
+                return i18n("Hidden");
             }
         }
         else if ( model::AnimatableBase* anprop = animatable(tree) )
         {
             if ( role == Qt::ToolTipRole )
             {
-                return tr("Toggle Keyframe");
+                return i18n("Toggle Keyframe");
             }
             else if ( role == Qt::DecorationRole )
             {
@@ -288,8 +288,8 @@ public:
             else if ( role == Qt::ToolTipRole )
             {
                 if ( tree->visual_node->locked.get() )
-                    return tr("Locked");
-                return tr("Unlocked");
+                    return i18n("Locked");
+                return i18n("Unlocked");
             }
         }
         else if ( model::AnimatableBase* anprop = animatable(tree) )
@@ -297,7 +297,7 @@ public:
             if ( anprop->keyframe_count() > 1 )
             {
                 if ( role == Qt::ToolTipRole )
-                    return tr("Jump to next keyframe");
+                    return i18n("Jump to next keyframe");
                 else if ( role == Qt::DecorationRole )
                     return QIcon::fromTheme("go-next");
             }
@@ -391,13 +391,13 @@ QVariant item_models::PropertyModelFull::data(const QModelIndex& index, int role
                 if ( lay->is_top_level() )
                 {
                     if ( role == Qt::ToolTipRole )
-                        return tr("Parent Layer");
+                        return i18n("Parent Layer");
                     if ( !lay->parent.get() )
                     {
                         switch ( role )
                         {
                             case Qt::DisplayRole:
-                                return tr("(No Parent)");
+                                return i18n("(No Parent)");
                             case Qt::ForegroundRole:
                                 return qApp->palette().brush(QPalette::Disabled, QPalette::Text);
                         }
@@ -451,11 +451,11 @@ QVariant item_models::PropertyModelFull::headerData(int section, Qt::Orientation
         {
             case ColumnName:
                 if ( role == Qt::DisplayRole )
-                    return tr("Name");
+                    return i18n("Name");
                 break;
             case ColumnValue:
                 if ( role == Qt::DisplayRole )
-                    return tr("Value");
+                    return i18n("Value");
                 break;
             case ColumnColor:
             case ColumnLocked:

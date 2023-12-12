@@ -11,6 +11,7 @@
 
 #include <QObject>
 #include <QVariant>
+#include <KLocalizedString>
 
 #include "model/animation/frame_time.hpp"
 #include "model/factory.hpp"
@@ -86,7 +87,7 @@ public:
     BaseProperty* get_property(const QString& property);
 
     virtual QString object_name() const { return type_name_human(); }
-    virtual QString type_name_human() const { return tr("Unknown Object"); }
+    virtual QString type_name_human() const { return i18n("Unknown Object"); }
     virtual void set_time(FrameTime t);
     FrameTime time() const;
 

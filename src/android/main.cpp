@@ -74,14 +74,10 @@ QMenu::item:selected, QMenu::item:checked {
 
     app.initialize();
 
-#ifndef Q_OS_ANDROID
-    QDir d(__FILE__); d.cdUp(); d.cdUp(); d.cdUp();
-    QIcon::setThemeSearchPaths({d.filePath("data/icons/breeze-icons/")});
-#else
+#ifdef Q_OS_ANDROID
     QIcon::setThemeSearchPaths({"assets:/share/glaxnimate/glaxnimate/icons"});
 #endif
     QIcon::setThemeName("icons");
-//    QIcon::setFallbackSearchPaths({"assets:/icons/icons"});
 
 
 

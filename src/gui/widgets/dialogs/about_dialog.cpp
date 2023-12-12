@@ -122,7 +122,8 @@ void AboutDialog::populate_view(QListWidget* wid, const QStringList& paths)
         wid->addItem(str);
         h += wid->sizeHintForRow(c++);
     }
-    h += h/c/2;
+    if (c > 0)
+        h += h/c/2;
     wid->setMinimumHeight(h);
 }
 

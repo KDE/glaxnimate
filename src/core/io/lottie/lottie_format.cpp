@@ -31,13 +31,13 @@ bool glaxnimate::io::lottie::LottieFormat::load_json(const QByteArray& data, mod
     try {
         jdoc = QJsonDocument::fromJson(data);
     } catch ( const QJsonParseError& err ) {
-        Q_EMIT error(tr("Could not parse JSON: %1").arg(err.errorString()));
+        Q_EMIT error(i18n("Could not parse JSON: %1", err.errorString()));
         return false;
     }
 
     if ( !jdoc.isObject() )
     {
-        Q_EMIT error(tr("No JSON object found"));
+        Q_EMIT error(i18n("No JSON object found"));
         return false;
     }
 
@@ -56,9 +56,9 @@ bool glaxnimate::io::lottie::LottieFormat::on_open(QIODevice& file, const QStrin
 std::unique_ptr<app::settings::SettingsGroup> glaxnimate::io::lottie::LottieFormat::save_settings(model::Composition*) const
 {
     return std::make_unique<app::settings::SettingsGroup>(app::settings::SettingList{
-        app::settings::Setting("pretty", tr("Pretty"), tr("Pretty print the JSON"), false),
-        app::settings::Setting("strip", tr("Strip"), tr("Strip unused properties"), false),
-        app::settings::Setting("auto_embed", tr("Embed Images"), tr("Automatically embed non-embedded images"), false),
-        app::settings::Setting("old_kf", tr("Legacy Keyframes"), tr("Compatibility with lottie-web versions prior to 5.0.0"), false),
+        app::settings::Setting("pretty", i18n("Pretty"), i18n("Pretty print the JSON"), false),
+        app::settings::Setting("strip", i18n("Strip"), i18n("Strip unused properties"), false),
+        app::settings::Setting("auto_embed", i18n("Embed Images"), i18n("Automatically embed non-embedded images"), false),
+        app::settings::Setting("old_kf", i18n("Legacy Keyframes"), i18n("Compatibility with lottie-web versions prior to 5.0.0"), false),
     });
 }

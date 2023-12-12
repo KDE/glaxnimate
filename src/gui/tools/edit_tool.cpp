@@ -14,6 +14,8 @@
 
 #include <QtColorWidgets/ColorDialog>
 
+#include <KLocalizedString>
+
 #include "app/application.hpp"
 
 #include "math/bezier/operations.hpp"
@@ -164,7 +166,7 @@ public:
             }
 
             event.window->document()->push_command(new command::SetMultipleAnimated(
-                QObject::tr("Drag nodes"),
+                i18n("Drag nodes"),
                 props,
                 before,
                 after,
@@ -271,22 +273,22 @@ public:
         {
             case math::bezier::PointType::Corner:
                 icon = QIcon::fromTheme("node-type-cusp");
-                label = QObject::tr("Cusp");
+                label = i18n("Cusp");
                 break;
             case math::bezier::PointType::Smooth:
                 icon = QIcon::fromTheme("node-type-smooth");
-                label = QObject::tr("Smooth");
+                label = i18n("Smooth");
                 break;
             case math::bezier::PointType::Symmetrical:
                 icon = QIcon::fromTheme("node-type-auto-smooth");
-                label = QObject::tr("Symmetrical");
+                label = i18n("Symmetrical");
                 break;
         }
         QAction* action = menu->addAction(icon, label, item, [item, type, label]{
             auto point = item->point();
             point.type = type;
             point.adjust_handles_from_type();
-            item->modify(point, QObject::tr("Set %1 Node").arg(label));
+            item->modify(point, i18n("Set %1 Node", label));
         });
 
         action->setCheckable(true);
@@ -300,7 +302,7 @@ public:
     {
         auto grp = new QActionGroup(&menu);
 
-        menu.addSection(QObject::tr("Node"));
+        menu.addSection(i18n("Node"));
 
         node_type_action(&menu, grp, item, math::bezier::PointType::Corner);
         node_type_action(&menu, grp, item, math::bezier::PointType::Smooth);
@@ -310,18 +312,18 @@ public:
 
         if ( role == graphics::MoveHandle::Vertex )
         {
-            menu.addAction(QIcon::fromTheme("format-remove-node"), QObject::tr("Remove Node"), item, [item]{
+            menu.addAction(QIcon::fromTheme("format-remove-node"), i18n("Remove Node"), item, [item]{
                 item->parent_editor()->remove_point(item->index());
             });
 
-            menu.addAction(QIcon::fromTheme("show-node-handles"), QObject::tr("Show Tangents"), item, [item]{
+            menu.addAction(QIcon::fromTheme("show-node-handles"), i18n("Show Tangents"), item, [item]{
                 item->show_tan_in(true);
                 item->show_tan_out(true);
             });
 
             if ( item->index() > 0 && item->parent_editor()->bezier().closed() )
             {
-                menu.addAction(QIcon::fromTheme("edit-node"), QObject::tr("Make First Node"), item, [item]{
+                menu.addAction(QIcon::fromTheme("edit-node"), i18n("Make First Node"), item, [item]{
                     item->parent_editor()->make_first(item->index());
                 });
             }
@@ -329,7 +331,7 @@ public:
         }
         else
         {
-            menu.addAction(QIcon::fromTheme("show-node-handles"), QObject::tr("Remove Tangent"), item, [item, handle]{
+            menu.addAction(QIcon::fromTheme("show-node-handles"), i18n("Remove Tangent"), item, [item, handle]{
                 item->remove_tangent(handle);
             });
         }
@@ -347,7 +349,7 @@ public:
         auto gradient_colors = item->gradient()->colors.get();
         auto doc = gradient->document();
 
-        QMenu* use_menu = new QMenu(tr("Gradient Colors"), &menu);
+        QMenu* use_menu = new QMenu(i18n("Gradient Colors"), &menu);
         use_menu->setIcon(QIcon::fromTheme("color-gradient"));
 
         for ( const auto& colors : doc->assets()->gradient_colors->values )
@@ -364,7 +366,7 @@ public:
 
         menu.addAction(use_menu->menuAction());
 
-        menu.addAction(QIcon::fromTheme("color-management"), tr("Stop Color..."), gradient_colors, [gradient_colors, index, dialog_parent]{
+        menu.addAction(QIcon::fromTheme("color-management"), i18nc("@action:inmenu", "Stop Color..."), gradient_colors, [gradient_colors, index, dialog_parent]{
             color_widgets::ColorDialog dialog(dialog_parent);
             auto colors = gradient_colors->colors.get();
             dialog.setColor(colors[index].second);
@@ -376,11 +378,11 @@ public:
         });
 
 
-        menu.addAction(QIcon::fromTheme("list-add"), tr("Add Stop"), gradient_colors, [gradient_colors, index]{
+        menu.addAction(QIcon::fromTheme("list-add"), i18nc("@action:inmenu", "Add Stop"), gradient_colors, [gradient_colors, index]{
             gradient_colors->split_segment(index);
         });
 
-        menu.addAction(QIcon::fromTheme("list-remove"), tr("Remove Stop"), gradient_colors, [gradient_colors, index]{
+        menu.addAction(QIcon::fromTheme("list-remove"), i18nc("@action:inmenu", "Remove Stop"), gradient_colors, [gradient_colors, index]{
             gradient_colors->remove_stop(index);
         });
 
@@ -522,7 +524,7 @@ public:
             return;
 
         auto doc = selection.selected.begin()->first->target_object()->document();
-        command::UndoMacroGuard macro(dissolve ? QObject::tr("Dissolve Nodes") : QObject::tr("Delete Nodes"), doc);
+        command::UndoMacroGuard macro(dissolve ? i18n("Dissolve Nodes") : i18n("Delete Nodes"), doc);
 
         auto selected = std::move(selection.selected);
         selection.selected = {};
@@ -881,7 +883,7 @@ void tools::EditTool::selection_set_vertex_type(math::bezier::PointType t)
         return;
 
     auto doc = d->selection.selected.begin()->first->target_object()->document();
-    command::UndoMacroGuard macro(QObject::tr("Set node type"), doc);
+    command::UndoMacroGuard macro(i18n("Set node type"), doc);
     for ( const auto& p : d->selection.selected )
     {
         auto bez = p.first->bezier();
@@ -909,7 +911,7 @@ void tools::EditTool::selection_straighten()
 
     auto doc = d->selection.selected.begin()->first->target_object()->document();
 
-    command::UndoMacroGuard macro(QObject::tr("Straighten segments"), doc, false);
+    command::UndoMacroGuard macro(i18n("Straighten segments"), doc, false);
 
     for ( const auto& p : d->selection.selected )
     {
@@ -957,7 +959,7 @@ void tools::EditTool::selection_curve()
 
     auto doc = d->selection.selected.begin()->first->target_object()->document();
 
-    command::UndoMacroGuard macro(QObject::tr("Curve segments"), doc, false);
+    command::UndoMacroGuard macro(i18n("Curve segments"), doc, false);
 
     for ( const auto& p : d->selection.selected )
     {

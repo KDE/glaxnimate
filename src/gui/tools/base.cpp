@@ -190,7 +190,7 @@ void tools::Tool::retranslate()
     if ( button )
     {
         button->setText(name());
-        button->setToolTip(QObject::tr("%1 (%2)").arg(name()).arg(key_sequence().toString()));
+        button->setToolTip(i18n("%1 (%2)", name(), key_sequence().toString()));
     }
 
     on_translate();

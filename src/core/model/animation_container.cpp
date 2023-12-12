@@ -51,7 +51,7 @@ float glaxnimate::model::AnimationContainer::duration() const
 
 QString glaxnimate::model::AnimationContainer::type_name_human() const
 {
-    return tr("Animation Timing");
+    return i18n("Animation Timing");
 }
 
 void glaxnimate::model::AnimationContainer::stretch_time(qreal multiplier)

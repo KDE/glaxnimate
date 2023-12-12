@@ -82,12 +82,6 @@ void GlaxnimateApp::on_initialize()
 
     setWindowIcon(QIcon(data_file("images/logo.svg")));
 
-    QStringList search_paths = data_paths("icons");
-    search_paths += QIcon::themeSearchPaths();
-    QIcon::setThemeSearchPaths(search_paths);
-    QIcon::setFallbackSearchPaths(data_paths("images/icons"));
-
-
     QDir().mkpath(backup_path());
 }
 

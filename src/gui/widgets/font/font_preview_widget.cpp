@@ -22,7 +22,7 @@ public:
 
     QString default_text() const
     {
-        return tr("The quick brown fox jumps over the lazy dog");
+        return i18n("The quick brown fox jumps over the lazy dog");
     }
 
     void fit()

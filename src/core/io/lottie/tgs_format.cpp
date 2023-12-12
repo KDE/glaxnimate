@@ -44,37 +44,37 @@ private:
     {
         if ( qobject_cast<model::PolyStar*>(node) )
         {
-            show_error(node, TgsFormat::tr("Star Shapes are not officially supported"), app::log::Info);
+            show_error(node, i18n("Star Shapes are not officially supported"), app::log::Info);
         }
         else if ( qobject_cast<model::Image*>(node) || qobject_cast<model::Bitmap*>(node) )
         {
-            show_error(node, TgsFormat::tr("Images are not supported"), app::log::Error);
+            show_error(node, i18n("Images are not supported"), app::log::Error);
         }
         else if ( auto st = qobject_cast<model::Stroke*>(node) )
         {
             if ( qobject_cast<model::Gradient*>(st->use.get()) )
-                show_error(node, TgsFormat::tr("Gradient strokes are not officially supported"), app::log::Info);
+                show_error(node, i18n("Gradient strokes are not officially supported"), app::log::Info);
         }
         else if ( auto layer = qobject_cast<model::Layer*>(node) )
         {
             if ( layer->mask->has_mask() )
-                show_error(node, TgsFormat::tr("Masks are not supported"), app::log::Error);
+                show_error(node, i18n("Masks are not supported"), app::log::Error);
         }
         else if ( qobject_cast<model::Repeater*>(node) )
         {
-            show_error(node, TgsFormat::tr("Repeaters are not officially supported"), app::log::Info);
+            show_error(node, i18n("Repeaters are not officially supported"), app::log::Info);
         }
         else if ( qobject_cast<model::InflateDeflate*>(node) )
         {
-            show_error(node, TgsFormat::tr("Inflate/Deflate is not supported"), app::log::Warning);
+            show_error(node, i18n("Inflate/Deflate is not supported"), app::log::Warning);
         }
         else if ( qobject_cast<model::OffsetPath*>(node) )
         {
-            show_error(node, TgsFormat::tr("Offset Path is not supported"), app::log::Warning);
+            show_error(node, i18n("Offset Path is not supported"), app::log::Warning);
         }
         else if ( qobject_cast<model::ZigZag*>(node) )
         {
-            show_error(node, TgsFormat::tr("ZigZag is not supported"), app::log::Warning);
+            show_error(node, i18n("ZigZag is not supported"), app::log::Warning);
         }
     }
 };
@@ -107,7 +107,7 @@ bool glaxnimate::io::lottie::TgsFormat::on_save(QIODevice& file, const QString&,
 
     qreal size_k = compressed_size / 1024.0;
     if ( size_k > 64 )
-        error(tr("File too large: %1k, should be under 64k").arg(size_k));
+        error(i18n("File too large: %1k, should be under 64k", size_k));
 
     return true;
 }

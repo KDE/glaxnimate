@@ -177,7 +177,7 @@ public:
                 {
                     font->status = GoogleFont::Broken;
                     font_changed(font_index);
-                    Q_EMIT parent->error(tr("Could not add font"));
+                    Q_EMIT parent->error(i18n("Could not add font"));
                 }
                 else
                 {
@@ -271,13 +271,13 @@ QVariant glaxnimate::gui::font::GoogleFontsModel::headerData(int section, Qt::Or
     switch ( section )
     {
         case Column::Family:
-            return tr("Family");
+            return i18n("Family");
         case Column::Category:
-            return tr("Category");
+            return i18n("Category");
         case Column::Popularity:
-            return tr("Rank");
+            return i18n("Rank");
         case Column::Status:
-            return tr("Status");
+            return i18n("Status");
     }
 
     return {};
@@ -387,17 +387,17 @@ QString glaxnimate::gui::font::GoogleFontsModel::category_name(GoogleFont::Categ
     switch ( category )
     {
         default:
-            return tr("Any");
+            return i18n("Any");
         case GoogleFont::SansSerif:
-            return tr("Sans-Serif");
+            return i18n("Sans-Serif");
         case GoogleFont::Serif:
-            return tr("Serif");
+            return i18n("Serif");
         case GoogleFont::Monospace:
-            return tr("Monospace");
+            return i18n("Monospace");
         case GoogleFont::Display:
-            return tr("Display");
+            return i18n("Display");
         case GoogleFont::Handwriting:
-            return tr("Handwriting");
+            return i18n("Handwriting");
     }
 }
 

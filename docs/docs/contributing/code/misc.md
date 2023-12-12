@@ -117,3 +117,42 @@ You can use the script that adds all that
 * Aur [Stable](https://aur.archlinux.org/packages/glaxnimate) [Dev](https://aur.archlinux.org/packages/glaxnimate-git)
 * [PyPI](https://pypi.org/project/glaxnimate/)
 * [Snapcraft](https://snapcraft.io/glaxnimate)
+
+## Testing on Android
+
+```bash
+ANDROID_SDK="$HOME/Android/Sdk"
+PACKAGE_NAME="org.mattbas.glaxnimate"
+APK_NAME="glaxnimate_mobile-x86_64.apk"
+DEVICE="your_avd_name"
+export APK_KS_PASSWORD="android"
+
+## SIGNING ##
+# Check dedbug keys
+keytool -list -keystore ~/.android/debug.keystore
+
+# Sign with debug key
+cp "$APK_NAME" "${APK_NAME}_signed.apk"
+apksigner sign -verbose -ks ~/.android/debug.keystore --ks-pass env:APK_KS_PASSWORD "${APK_NAME}_signed.apk"
+
+## CREATE EMULATOR ##
+# List packages
+"$ANDROID_SDK/tools/bin/sdkmanager" --sdk_root="$ANDROID_SDK" --list
+# Install one of them
+"$ANDROID_SDK/tools/bin/sdkmanager" --sdk_root="$ANDROID_SDK" --install "system-images;android-34;google_apis;x86_64"
+# Create virtual device
+echo no | "$ANDROID_SDK/tools/bin/avdmanager" create avd --force --name "$DEVICE" --abi google_apis/x86_64 --package "system-images;android-34;google_apis;x86_64"
+
+## RUN EMULATOR ##
+# Lists virtual devices
+"${ANDROID_SDK}/emulator/emulator" -list-avds
+
+# Starts a virtual device
+"${ANDROID_SDK}/emulator/emulator" -avd "$DEVICE" &
+
+## RUN APK ##
+# Installs (and runs the apk)
+adb install -r "${APK_NAME}_signed.apk"
+adb shell am force-stop "$PACKAGE_NAME"
+adb shell am start -n "${PACKAGE_NAME}/.GlaxnimateActivity" -W
+```

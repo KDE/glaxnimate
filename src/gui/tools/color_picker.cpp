@@ -16,8 +16,8 @@ class ColorPickerTool : public Tool
 public:
     QString id() const override { return "color-picker"; }
     QIcon icon() const override { return QIcon::fromTheme("color-picker"); }
-    QString name() const override { return QObject::tr("Color Picker"); }
-    QKeySequence key_sequence() const override { return QKeySequence(QObject::tr("F7"), QKeySequence::PortableText); }
+    QString name() const override { return i18n("Color Picker"); }
+    QKeySequence key_sequence() const override { return QKeySequence(i18n("F7"), QKeySequence::PortableText); }
     static int static_group() noexcept { return Registry::Style;  }
     int group() const noexcept override { return static_group(); }
 

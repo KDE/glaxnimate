@@ -14,6 +14,7 @@
 
 #include <QApplication>
 
+#include <KLocalizedString>
 
 
 glaxnimate::android::TelegramIntent::Result glaxnimate::android::TelegramIntent::send_stickers(const QStringList& filenames, const QStringList& emoji)
@@ -43,7 +44,7 @@ glaxnimate::android::TelegramIntent::Result glaxnimate::android::TelegramIntent:
         {
             env->ExceptionDescribe();
             env->ExceptionClear();
-            return QObject::tr("Could not start activity, is Telegram installed?");
+            return i18n("Could not start activity, is Telegram installed?");
         }
     }
     return {};

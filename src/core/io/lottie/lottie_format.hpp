@@ -19,7 +19,7 @@ class LottieFormat : public ImportExport
 
 public:
     QString slug() const override { return "lottie"; }
-    QString name() const override { return tr("Lottie Animation"); }
+    QString name() const override { return i18n("Lottie Animation"); }
     QStringList extensions() const override { return {"json"}; }
     bool can_save() const override { return true; }
     bool can_open() const override { return true; }

@@ -10,6 +10,8 @@
 #include <QInputDialog>
 #include <QActionGroup>
 
+#include <KLocalizedString>
+
 #include "model/shapes/group.hpp"
 #include "model/shapes/image.hpp"
 #include "model/shapes/precomp_layer.hpp"
@@ -44,7 +46,7 @@ public:
     void operator()() const
     {
         doc->push_command(new command::SetMultipleAnimated(
-            NodeMenu::tr("Reset Transform"),
+            i18n("Reset Transform"),
             true,
             {
                 &trans->position,
@@ -72,7 +74,7 @@ QAction* action_for_node(model::DocumentNode* node, model::DocumentNode* selecte
     else
     {
         act->setIcon(QIcon::fromTheme("edit-none"));
-        act->setText(NodeMenu::tr("None"));
+        act->setText(i18n("None"));
     }
 
     act->setActionGroup(group);
@@ -96,19 +98,19 @@ void move_action(
     {
         case command::ReorderCommand::MoveTop:
             icon = QIcon::fromTheme("layer-top");
-            label = NodeMenu::tr("Move to Top");
+            label = i18n("Move to Top");
             break;
         case command::ReorderCommand::MoveUp:
             icon = QIcon::fromTheme("layer-raise");
-            label = NodeMenu::tr("Raise");
+            label = i18n("Raise");
             break;
         case command::ReorderCommand::MoveDown:
             icon = QIcon::fromTheme("layer-lower");
-            label = NodeMenu::tr("Lower");
+            label = i18n("Lower");
             break;
         case command::ReorderCommand::MoveBottom:
             icon = QIcon::fromTheme("layer-bottom");
-            label = NodeMenu::tr("Move to Bottom");
+            label = i18n("Move to Bottom");
             break;
     }
 
@@ -194,7 +196,7 @@ public:
         if ( !from->is_instance<model::Layer>() )
             convert_group_apply_settings(to, from);
 
-        command::UndoMacroGuard guard(NodeMenu::tr("Convert %1 to %2").arg(from->name.get()).arg(to->type_name_human()), from->document());
+        command::UndoMacroGuard guard(i18n("Convert %1 to %2", from->name.get(), to->type_name_human()), from->document());
         from->push_command(new command::AddObject(owner, std::move(uto), owner->index_of(from)));
         std::vector<model::ShapeElement*> shapes;
         shapes.reserve(from->shapes.size());
@@ -233,7 +235,7 @@ void add_child_action(QMenu* menu, model::Group* group)
 
 void actions_group(QMenu* menu, GlaxnimateWindow* window, model::Group* group)
 {
-    QMenu* menu_add = new QMenu(NodeMenu::tr("Add"), menu);
+    QMenu* menu_add = new QMenu(i18n("Add"), menu);
     menu_add->setIcon(QIcon::fromTheme("list-add"));
     menu->addAction(menu_add->menuAction());
     add_child_action<model::Fill>(menu_add, group);
@@ -248,11 +250,11 @@ void actions_group(QMenu* menu, GlaxnimateWindow* window, model::Group* group)
 
     menu->addSeparator();
 
-    menu->addAction(QIcon::fromTheme("transform-move"), NodeMenu::tr("Reset Transform"), menu,
+    menu->addAction(QIcon::fromTheme("transform-move"), i18n("Reset Transform"), menu,
         ResetTransform{group->document(), group->transform.get()}
     );
     /// \todo better icon
-    auto ao = menu->addAction(QIcon::fromTheme("path-reverse"), NodeMenu::tr("Auto Orient"), menu, [group](bool check) {
+    auto ao = menu->addAction(QIcon::fromTheme("path-reverse"), i18n("Auto Orient"), menu, [group](bool check) {
         group->auto_orient.set_undoable(check);
     });
     ao->setCheckable(true);
@@ -261,8 +263,8 @@ void actions_group(QMenu* menu, GlaxnimateWindow* window, model::Group* group)
     model::Layer* lay = qobject_cast<model::Layer*>(group);
     if ( lay )
     {
-        menu->addAction(QIcon::fromTheme("timeline-use-zone-on"), NodeMenu::tr("Span All Frames"), menu, [lay]{
-            command::UndoMacroGuard guard(NodeMenu::tr("Span All Frames"), lay->document());
+        menu->addAction(QIcon::fromTheme("timeline-use-zone-on"), i18n("Span All Frames"), menu, [lay]{
+            command::UndoMacroGuard guard(i18n("Span All Frames"), lay->document());
             lay->animation->first_frame.set_undoable(
                 lay->owner_composition()->animation->first_frame.get()
             );
@@ -272,21 +274,21 @@ void actions_group(QMenu* menu, GlaxnimateWindow* window, model::Group* group)
         });
 
         menu->addSeparator();
-        menu->addAction(menu_ref_property(QIcon::fromTheme("go-parent-folder"), NodeMenu::tr("Parent"), menu, &lay->parent)->menuAction());
-        menu->addAction(QIcon::fromTheme("object-group"), NodeMenu::tr("Convert to Group"), menu, ConvertGroupType<model::Group>(lay));
-        menu->addAction(QIcon::fromTheme("component"), NodeMenu::tr("Precompose"), menu, [window, lay]{
+        menu->addAction(menu_ref_property(QIcon::fromTheme("go-parent-folder"), i18n("Parent"), menu, &lay->parent)->menuAction());
+        menu->addAction(QIcon::fromTheme("object-group"), i18n("Convert to Group"), menu, ConvertGroupType<model::Group>(lay));
+        menu->addAction(QIcon::fromTheme("component"), i18n("Precompose"), menu, [window, lay]{
             window->shape_to_composition(lay);
         });
 
         if ( !lay->mask->has_mask() )
         {
-            menu->addAction(QIcon::fromTheme("path-mask-edit"), NodeMenu::tr("Convert to Mask"), menu, [lay]{
+            menu->addAction(QIcon::fromTheme("path-mask-edit"), i18n("Convert to Mask"), menu, [lay]{
                 lay->mask->mask.set_undoable(true);
             });
         }
         else
         {
-            menu->addAction(QIcon::fromTheme("path-mask-edit"), NodeMenu::tr("Remove Mask"), menu, [lay]{
+            menu->addAction(QIcon::fromTheme("path-mask-edit"), i18n("Remove Mask"), menu, [lay]{
                 lay->mask->mask.set_undoable(false);
             });
         }
@@ -295,36 +297,36 @@ void actions_group(QMenu* menu, GlaxnimateWindow* window, model::Group* group)
     {
         menu->addSeparator();
 
-        menu->addAction(QIcon::fromTheme("folder"), NodeMenu::tr("Convert to Layer"), menu, ConvertGroupType<model::Layer>(group));
+        menu->addAction(QIcon::fromTheme("folder"), i18n("Convert to Layer"), menu, ConvertGroupType<model::Layer>(group));
         auto callback = [](model::Layer* lay){
             lay->mask->mask.set_undoable(true);
         };
-        menu->addAction(QIcon::fromTheme("path-mask-edit"), NodeMenu::tr("Convert to Mask"), menu,
+        menu->addAction(QIcon::fromTheme("path-mask-edit"), i18n("Convert to Mask"), menu,
                         ConvertGroupType<model::Layer, decltype(callback)>(group, callback));
 
     }
 
-    menu->addAction(QIcon::fromTheme("object-to-path"), NodeMenu::tr("Convert to Path"), menu, [window, group]{ window->convert_to_path(group);});
+    menu->addAction(QIcon::fromTheme("object-to-path"), i18n("Convert to Path"), menu, [window, group]{ window->convert_to_path(group);});
 }
 
 void actions_bitmap(QMenu* menu, GlaxnimateWindow* window, model::Bitmap* bmp, model::Image* shape)
 {
-    menu->addAction(QIcon::fromTheme("mail-attachment-symbolic"), NodeMenu::tr("Embed"), menu, [bmp]{
+    menu->addAction(QIcon::fromTheme("mail-attachment-symbolic"), i18n("Embed"), menu, [bmp]{
             bmp->embed(true);
     })->setEnabled(bmp && !bmp->embedded());
 
-    menu->addAction(QIcon::fromTheme("editimage"), NodeMenu::tr("Open with External Application"), menu, [bmp, window]{
+    menu->addAction(QIcon::fromTheme("editimage"), i18n("Open with External Application"), menu, [bmp, window]{
         if ( !QDesktopServices::openUrl(bmp->to_url()) )
-            window->warning(NodeMenu::tr("Could not find suitable application, check your system settings."));
+            window->warning(i18n("Could not find suitable application, check your system settings."));
     })->setEnabled(bmp);
 
 
-    menu->addAction(QIcon::fromTheme("document-open"), NodeMenu::tr("From File..."), menu, [bmp, window, shape]{
-        QString filename = window->get_open_image_file(NodeMenu::tr("Update Image"), bmp ? bmp->file_info().absolutePath() : "");
+    menu->addAction(QIcon::fromTheme("document-open"), i18n("From File..."), menu, [bmp, window, shape]{
+        QString filename = window->get_open_image_file(i18n("Update Image"), bmp ? bmp->file_info().absolutePath() : "");
         if ( filename.isEmpty() )
             return;
 
-        command::UndoMacroGuard macro(NodeMenu::tr("Update Image"), window->document());
+        command::UndoMacroGuard macro(i18n("Update Image"), window->document());
         if ( bmp )
         {
             bmp->data.set_undoable(QByteArray());
@@ -341,33 +343,33 @@ void actions_bitmap(QMenu* menu, GlaxnimateWindow* window, model::Bitmap* bmp, m
 
 void actions_image(QMenu* menu, GlaxnimateWindow* window, model::Image* image)
 {
-    menu->addAction(QIcon::fromTheme("transform-move"), NodeMenu::tr("Reset Transform"), menu,
+    menu->addAction(QIcon::fromTheme("transform-move"), i18n("Reset Transform"), menu,
         ResetTransform{image->document(), image->transform.get()}
     );
 
     menu->addSeparator();
 
-    menu->addAction(menu_ref_property(QIcon::fromTheme("folder-pictures"), NodeMenu::tr("Image"), menu, &image->image)->menuAction());
+    menu->addAction(menu_ref_property(QIcon::fromTheme("folder-pictures"), i18n("Image"), menu, &image->image)->menuAction());
 
     actions_bitmap(menu, window, image->image.get(), image);
 
-    menu->addAction(QIcon::fromTheme("bitmap-trace"), NodeMenu::tr("Trace Bitmap..."), menu, [image, window]{
+    menu->addAction(QIcon::fromTheme("bitmap-trace"), i18n("Trace Bitmap..."), menu, [image, window]{
         window->trace_dialog(image);
     });
 }
 
 void actions_precomp(QMenu* menu, GlaxnimateWindow*, model::PreCompLayer* lay)
 {
-    menu->addAction(QIcon::fromTheme("transform-move"), NodeMenu::tr("Reset Transform"), menu,
+    menu->addAction(QIcon::fromTheme("transform-move"), i18n("Reset Transform"), menu,
         ResetTransform{lay->document(), lay->transform.get()}
     );
 
-    menu->addAction(QIcon::fromTheme("edit-rename"), NodeMenu::tr("Rename from Composition"), menu, [lay]{
+    menu->addAction(QIcon::fromTheme("edit-rename"), i18n("Rename from Composition"), menu, [lay]{
         if ( lay->composition.get() )
             lay->name.set_undoable(lay->composition->object_name());
     });
-    menu->addAction(QIcon::fromTheme("archive-extract"), NodeMenu::tr("Decompose"), menu, [lay]{
-        command::UndoMacroGuard guard(NodeMenu::tr("Decompose"), lay->document());
+    menu->addAction(QIcon::fromTheme("archive-extract"), i18n("Decompose"), menu, [lay]{
+        command::UndoMacroGuard guard(i18n("Decompose"), lay->document());
 
         auto comp = lay->composition.get();
 
@@ -391,7 +393,7 @@ void actions_precomp(QMenu* menu, GlaxnimateWindow*, model::PreCompLayer* lay)
 
 void actions_text(QMenu* menu, model::TextShape* text)
 {
-    menu->addAction(QIcon::fromTheme("text-remove-from-path"), NodeMenu::tr("Remove from Path"), text, [text]{
+    menu->addAction(QIcon::fromTheme("text-remove-from-path"), i18n("Remove from Path"), text, [text]{
         text->path.set_undoable(QVariant());
     })->setEnabled(text->path.get());
 }
@@ -405,8 +407,8 @@ void time_stretch_dialog(model::Object* object, QWidget* parent)
     dialog.setDoubleMaximum(999);
     dialog.setDoubleValue(1);
     dialog.setDoubleDecimals(3);
-    dialog.setWindowTitle(NodeMenu::tr("Stretch time"));
-    dialog.setLabelText(NodeMenu::tr("Speed Multiplier"));
+    dialog.setWindowTitle(i18n("Stretch time"));
+    dialog.setLabelText(i18n("Speed Multiplier"));
     if ( dialog.exec() )
         object->push_command(new command::StretchTimeCommand(object, 1/dialog.doubleValue()));
 }
@@ -423,17 +425,17 @@ NodeMenu::NodeMenu(model::DocumentNode* node, GlaxnimateWindow* window, QWidget*
 
     if ( auto visual = qobject_cast<model::VisualNode*>(node) )
     {
-        togglable_action(this, &visual->visible, "view-visible", tr("Visible"));
-        togglable_action(this, &visual->locked, "object-locked", tr("Locked"));
+        togglable_action(this, &visual->visible, "view-visible", i18nc("@option:check", "Visible"));
+        togglable_action(this, &visual->locked, "object-locked", i18nc("@option:check", "Locked"));
         addSeparator();
 
         if ( auto shape = qobject_cast<model::ShapeElement*>(node) )
         {
-            addAction(QIcon::fromTheme("edit-delete-remove"), tr("Delete"), this, [shape]{
+            addAction(QIcon::fromTheme("edit-delete-remove"), i18nc("@action:inmenu", "Delete"), this, [shape]{
                 shape->push_command(new command::RemoveShape(shape, shape->owner()));
             });
 
-            addAction(QIcon::fromTheme("edit-duplicate"), tr("Duplicate"), this, [shape, window]{
+            addAction(QIcon::fromTheme("edit-duplicate"), i18nc("@action:inmenu", "Duplicate"), this, [shape, window]{
                 auto cmd = command::duplicate_shape(shape);
                 shape->push_command(cmd);
                 window->set_current_document_node(cmd->object());
@@ -446,7 +448,7 @@ NodeMenu::NodeMenu(model::DocumentNode* node, GlaxnimateWindow* window, QWidget*
             move_action(this, shape, command::ReorderCommand::MoveDown);
             move_action(this, shape, command::ReorderCommand::MoveBottom);
 
-            addAction(QIcon::fromTheme("selection-move-to-layer-above"), tr("Move to..."), this, [shape, window]{
+            addAction(QIcon::fromTheme("selection-move-to-layer-above"), i18nc("@action:inmenu", "Move to..."), this, [shape, window]{
                 if ( auto parent = ShapeParentDialog(window->model(), window).get_shape_parent() )
                 {
                     if ( shape->owner() != parent )
@@ -474,7 +476,7 @@ NodeMenu::NodeMenu(model::DocumentNode* node, GlaxnimateWindow* window, QWidget*
                     actions_text(this, text);
 
                 addSeparator();
-                addAction(QIcon::fromTheme("object-to-path"), tr("Convert to Path"), this, [window, shape]{ window->convert_to_path(shape);});
+                addAction(QIcon::fromTheme("object-to-path"), i18nc("@action:inmenu", "Convert to Path"), this, [window, shape]{ window->convert_to_path(shape);});
             }
         }
         else if ( qobject_cast<model::Composition*>(node) )
@@ -491,5 +493,5 @@ NodeMenu::NodeMenu(model::DocumentNode* node, GlaxnimateWindow* window, QWidget*
 
 
     addSeparator();
-    addAction(QIcon::fromTheme("speedometer"), tr("Change speed"), this, [node, parent]{ time_stretch_dialog(node, parent); });
+    addAction(QIcon::fromTheme("speedometer"), i18nc("@action:inmenu", "Change speed"), this, [node, parent]{ time_stretch_dialog(node, parent); });
 }

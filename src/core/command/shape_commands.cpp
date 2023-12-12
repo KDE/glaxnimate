@@ -117,7 +117,7 @@ command::GroupShapes::Data command::GroupShapes::collect_shapes(const std::vecto
 }
 
 command::GroupShapes::GroupShapes(const command::GroupShapes::Data& data)
-    : detail::RedoInCtor(QObject::tr("Group Shapes"))
+    : detail::RedoInCtor(i18n("Group Shapes"))
 {
     if ( data.parent )
     {
@@ -150,7 +150,7 @@ void command::detail::RedoInCtor::undo()
 
 
 command::UngroupShapes::UngroupShapes(model::Group* group)
-    : detail::RedoInCtor(QObject::tr("Ungroup Shapes"))
+    : detail::RedoInCtor(i18n("Ungroup Shapes"))
 {
     int pos = group->owner()->index_of(group);
     (new RemoveShape(group, group->owner(), this))->redo();
@@ -175,7 +175,7 @@ command::AddShape * command::duplicate_shape ( model::ShapeElement* shape )
         std::move(new_shape),
         shape->owner()->index_of(shape)+1,
         nullptr,
-        QObject::tr("Duplicate %1").arg(shape->object_name())
+        i18n("Duplicate %1", shape->object_name())
     );
 }
 

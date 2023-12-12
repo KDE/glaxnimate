@@ -156,15 +156,15 @@ public:
 
     void retranslate_menu()
     {
-        action_enter->setText(tr("Transition From Previous"));
-        action_exit->setText(tr("Transition To Next"));
+        action_enter->setText(i18n("Transition From Previous"));
+        action_exit->setText(i18n("Transition To Next"));
 
 
         for ( int i = 0; i < KeyframeTransitionData::count; i++ )
         {
             if ( i == model::KeyframeTransition::Custom )
             {
-                actions_enter[i].setText(tr("Custom..."));
+                actions_enter[i].setText(i18n("Custom..."));
                 actions_leave[i].setText(actions_enter[i].text());
             }
             else
@@ -174,11 +174,11 @@ public:
             }
         }
 
-        action_kf_remove.setText(tr("Remove Keyframe"));
-        action_kf_remove_all.setText(tr("Clear Animations"));
+        action_kf_remove.setText(i18n("Remove Keyframe"));
+        action_kf_remove_all.setText(i18n("Clear Animations"));
 
-        action_kf_copy.setText(tr("Copy Keyframe"));
-        action_kf_paste.setText(tr("Paste Keyframe"));
+        action_kf_copy.setText(i18n("Copy Keyframe"));
+        action_kf_paste.setText(i18n("Paste Keyframe"));
     }
 
     void retranslateUi(CompoundTimelineWidget* parent)

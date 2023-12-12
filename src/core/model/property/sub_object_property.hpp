@@ -10,7 +10,7 @@
 
 #define GLAXNIMATE_SUBOBJECT(type, name)                    \
 public:                                                     \
-    SubObjectProperty<type> name{this, #name};              \
+    SubObjectProperty<type> name{this, kli18n(#name)};      \
     type* get_##name() { return name.get(); }               \
 private:                                                    \
     Q_PROPERTY(type* name READ get_##name)                  \
@@ -21,7 +21,7 @@ namespace glaxnimate::model {
 class SubObjectPropertyBase : public BaseProperty
 {
 public:
-    SubObjectPropertyBase(Object* obj, const QString& name)
+    SubObjectPropertyBase(Object* obj, const KLazyLocalizedString& name)
         : BaseProperty(obj, name, {PropertyTraits::Object})
     {}
 
@@ -33,7 +33,7 @@ template<class Type>
 class SubObjectProperty : public SubObjectPropertyBase
 {
 public:
-    SubObjectProperty(Object* obj, const QString& name)
+    SubObjectProperty(Object* obj, const KLazyLocalizedString& name)
         : SubObjectPropertyBase(obj, name),
         sub_obj(obj->document())
     {}

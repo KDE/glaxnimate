@@ -28,7 +28,7 @@ public:
 
     QString type_name_human() const override
     {
-        return tr("Rectangle");
+        return i18n("Rectangle");
     }
 
     math::bezier::Bezier to_bezier(FrameTime t) const override;

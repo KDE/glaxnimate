@@ -110,7 +110,7 @@ private:
         if ( w != animation->width.get() || h != animation->height.get() )
         {
             animation->push_command(new command::SetMultipleProperties(
-                QObject::tr("Resize Canvas"),
+                i18n("Resize Canvas"),
                 commit,
                 {&animation->width, &animation->height},
                 w, h

@@ -72,7 +72,7 @@ void glaxnimate::io::aep::AepLoader::load_asset(const glaxnimate::io::aep::Folde
             // Handle collected assets
             QFileInfo path(asset_path.filePath(asset->path.fileName()));
             if ( !path.exists() )
-                warning(AepFormat::tr("External asset not found: %1").arg(asset->path.filePath()));
+                warning(i18n("External asset not found: %1", asset->path.filePath()));
             else
                 image->filename.set(path.filePath());
         }
@@ -114,7 +114,7 @@ void glaxnimate::io::aep::AepLoader::info(const QString& msg)
 
 static bool unknown_mn(glaxnimate::io::ImportExport* io, const QString& context, const QString& mn)
 {
-    io->information(AepFormat::tr("Unknown property \"%1\" of \"%2\"").arg(mn).arg(context));
+    io->information(i18n("Unknown property \"%1\" of \"%2\"", mn, context));
     return true;
 }
 
@@ -401,18 +401,18 @@ void load_property_check(
 {
     if ( ae_prop.class_type() != PropertyBase::Property )
     {
-        io->warning(AepFormat::tr("Expected property for %1").arg(match_name));
+        io->warning(i18n("Expected property for %1", match_name));
         return;
     }
 
     try
     {
         if ( !load_property(prop, static_cast<const Property&>(ae_prop), conv) )
-            io->warning(AepFormat::tr("Could convert %1").arg(match_name));
+            io->warning(i18n("Could convert %1", match_name));
     }
     catch ( const std::bad_variant_access& )
     {
-        io->error(AepFormat::tr("Invalid value for %1").arg(match_name));
+        io->error(i18n("Invalid value for %1", match_name));
     }
 }
 
@@ -507,7 +507,7 @@ void load_transform(io::ImportExport* io, model::Transform* tf, const PropertyBa
 {
     if ( prop.class_type() != PropertyBase::PropertyGroup )
     {
-        io->warning(AepFormat::tr("Expected property group for transform"));
+        io->warning(i18n("Expected property group for transform"));
         return;
     }
 
@@ -554,15 +554,15 @@ void load_transform(io::ImportExport* io, model::Transform* tf, const PropertyBa
             !p.match_name.endsWith("Opacity") &&
             !p.match_name.endsWith("Envir Appear in Reflect")
         )
-            io->information(AepFormat::tr("Unknown property \"%1\"").arg(p.match_name));
+            io->information(i18n("Unknown property \"%1\"", p.match_name));
     }
 
     if ( split_position )
     {
         model::Document dummydoc("");
         model::Object dummy(&dummydoc);
-        model::AnimatedProperty<float> ax(&dummy, "", 0);
-        model::AnimatedProperty<float> ay(&dummy, "", 0);
+        model::AnimatedProperty<float> ax(&dummy, {}, 0);
+        model::AnimatedProperty<float> ay(&dummy, {}, 0);
 
 
         bool force_split = split_position == 2;
@@ -585,7 +585,7 @@ void load_transform(io::ImportExport* io, model::Transform* tf, const PropertyBa
         /// \todo figure a way of determining whether the transform is actually 3D
         /// as layer transfoms seem to often have the 3D properties
         (void)is_3d;
-//         warning(AepFormat::tr("3D transforms are not supported"));
+//         warning(i18n("3D transforms are not supported"));
     }
 }
 
@@ -858,8 +858,8 @@ std::unique_ptr<model::ShapeElement> load_gradient(const ObjectConverter<T, mode
     {
         model::Document dummydoc("");
         model::Object dummy(&dummydoc);
-        model::AnimatedProperty<float> length(&dummy, "", 0);
-        model::AnimatedProperty<float> angle(&dummy, "", 0);
+        model::AnimatedProperty<float> length(&dummy, {}, 0);
+        model::AnimatedProperty<float> angle(&dummy, {}, 0);
         if ( highlight_len )
             load_property_check(io, length, *highlight_len->value, highlight_len->match_name);
         if ( highlight_angle )
@@ -1081,7 +1081,7 @@ std::unique_ptr<model::ShapeElement> create_shape(ImportExport* io, model::Docum
     if ( auto shape = shape_factory().load(io, document, prop) )
         return shape;
 
-    io->information(AepFormat::tr("Unknown shape %1").arg(prop.match_name));
+    io->information(i18n("Unknown shape %1", prop.match_name));
     return nullptr;
 }
 
@@ -1140,7 +1140,7 @@ void glaxnimate::io::aep::AepLoader::load_layer(const glaxnimate::io::aep::Layer
         auto clip_p = std::make_unique<model::Group>(document);
         auto clip = clip_p.get();
         layer->shapes.insert(std::move(clip_p), 0);
-        document->set_best_name(clip, QObject::tr("Clip"));
+        document->set_best_name(clip, i18n("Clip"));
 
         for ( const auto& mask : *mask_parade )
         {
@@ -1245,7 +1245,7 @@ void glaxnimate::io::aep::AepLoader::asset_layer(
         return;
     }
 
-    warning(AepFormat::tr("Unknown asset type for %1").arg(ae_layer.name.isEmpty() ? "Layer" : ae_layer.name));
+    warning(i18n("Unknown asset type for %1", ae_layer.name.isEmpty() ? "Layer" : ae_layer.name));
 }
 
 namespace {

@@ -21,7 +21,7 @@ public:
     static constexpr const int format_version = 7;
 
     QString slug() const override { return "rive"; }
-    QString name() const override { return tr("Rive Animation"); }
+    QString name() const override { return i18n("Rive Animation"); }
     QStringList extensions() const override { return {"riv"}; }
     bool can_save() const override { return true; }
     bool can_open() const override { return true; }

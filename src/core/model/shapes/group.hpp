@@ -39,7 +39,7 @@ public:
 
     static QString static_type_name_human()
     {
-        return tr("Group");
+        return i18n("Group");
     }
 
     void add_shapes(model::FrameTime t, math::bezier::MultiBezier & bez, const QTransform& transform) const override;
@@ -66,4 +66,3 @@ private Q_SLOTS:
 };
 
 } // namespace glaxnimate::model
-

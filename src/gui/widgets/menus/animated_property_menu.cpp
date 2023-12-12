@@ -57,12 +57,12 @@ public:
 
     void retranslate_menu()
     {
-        action_remove_all_keyframes.setText(tr("Clear Animations"));
-        action_kf_paste.setText(tr("Paste Keyframe"));
-        action_kf_loop.setText(tr("Loop Animation"));
-        action_follow_path.setText(tr("Follow Path..."));
-        action_add_keyframe.setText(tr("Add Keyframe"));
-        action_remove_keyframe.setText(tr("Remove Keyframe"));
+        action_remove_all_keyframes.setText(i18n("Clear Animations"));
+        action_kf_paste.setText(i18n("Paste Keyframe"));
+        action_kf_loop.setText(i18n("Loop Animation"));
+        action_follow_path.setText(i18n("Follow Path..."));
+        action_add_keyframe.setText(i18n("Add Keyframe"));
+        action_remove_keyframe.setText(i18n("Remove Keyframe"));
     }
 
     model::Composition* comp()

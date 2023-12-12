@@ -26,7 +26,7 @@ class Transform : public Object
 public:
     using Object::Object;
 
-    virtual QString type_name_human() const override { return tr("Transform"); }
+    virtual QString type_name_human() const override { return i18n("Transform"); }
 
     QTransform transform_matrix(FrameTime f, bool auto_orient = false) const;
     void set_transform_matrix(const QTransform& t);

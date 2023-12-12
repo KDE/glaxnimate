@@ -15,7 +15,7 @@ class JsonMime : public io::mime::MimeSerializer
 {
 public:
     QString slug() const override { return "json"; }
-    QString name() const override { return QObject::tr("JSON"); }
+    QString name() const override { return i18n("JSON"); }
     QStringList mime_types() const override { return {"application/json", "text/plain"}; }
 
     QByteArray serialize(const std::vector<model::DocumentNode*>& selection) const override

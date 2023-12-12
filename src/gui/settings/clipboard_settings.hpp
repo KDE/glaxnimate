@@ -7,6 +7,7 @@
 #pragma once
 #include "settings/custom_settings_group.hpp"
 #include "io/mime/mime_serializer.hpp"
+#include <KLocalizedString>
 
 namespace glaxnimate::gui::settings {
 

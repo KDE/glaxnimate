@@ -33,7 +33,8 @@ set(PROJECT_MANINTAINER_EMAIL "glanimate@mattbas.org")
 set(PROJECT_MANINTAINER "${PROJECT_MANINTAINER_NAME} <${PROJECT_MANINTAINER_EMAIL}>")
 
 option(MOBILE_UI "Build the mobile user interface" OFF)
-option(INSTALL_TRANSLATIONS "Install translations" ON)
+
+add_definitions(-DTRANSLATION_DOMAIN=\"glaxnimate\")
 
 if (ANDROID)
     set(MOBILE_UI ON)
@@ -47,9 +48,8 @@ else()
 endif()
 
 # CMake modules
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake" "${CMAKE_CURRENT_SOURCE_DIR}/external/cmake-modules")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(misc)
-include(GetGitRevisionDescription)
 
 # C++
 set(CMAKE_CXX_STANDARD 17)
@@ -59,10 +59,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(VERSION_NAKED ${PROJECT_VERSION})
 set(VERSION_SUFFIX "-git-" CACHE STRING "")
 
-if (VERSION_SUFFIX STREQUAL "-git-")
-    git_describe(GIT_DESC --tags)
-    if ( NOT ${GIT_DESC} MATCHES ".*NOTFOUND" )
-        set(PROJECT_VERSION ${GIT_DESC})
+if (VERSION_SUFFIX STREQUAL "-git-" AND EXISTS ${CMAKE_SOURCE_DIR}/.git)
+    # Probably a Git workspace; determine the revision.
+    find_package(Git QUIET)
+    if(GIT_FOUND)
+        exec_program(${GIT_EXECUTABLE} ${CMAKE_SOURCE_DIR}
+                ARGS "log -n 1 --pretty=format:\"%h\""
+            OUTPUT_VARIABLE GIT_REVISION)
+        message(STATUS "Git revision: ${GIT_REVISION}")
+        set(PROJECT_VERSION "${PROJECT_VERSION}-git-${GIT_REVISION}")
+    else()
+        message(STATUS "Git revision could not be determined")
     endif()
 elseif(VERSION_SUFFIX MATCHES "^\\..*")
     set(PROJECT_VERSION "${PROJECT_VERSION}${VERSION_SUFFIX}")
@@ -155,6 +162,7 @@ find_package(KF${KF_MAJOR} ${KF_DEP_VERSION}
     Archive
     Completion
     Config
+    IconThemes
 )
 if ( NOT ANDROID )
     find_package(KF${KF_MAJOR} ${KF_DEP_VERSION}
@@ -242,6 +250,9 @@ if (ANDROID)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/android/android/version.gradle.in ${CMAKE_BINARY_DIR}/version.gradle)
 endif()
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/deploy/org.mattbas.Glaxnimate.metainfo.xml DESTINATION share/metainfo)
+
+ki18n_install(po)
+file(CREATE_LINK ${CMAKE_CURRENT_BINARY_DIR}/locale ${CMAKE_CURRENT_BINARY_DIR}/share/locale SYMBOLIC)
 
 # Packaging
 # -- see https://gitlab.kitware.com/cmake/community/-/wikis/doc/cpack/PackageGenerators

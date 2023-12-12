@@ -136,7 +136,7 @@ QIcon glaxnimate::model::ZigZag::static_tree_icon()
 
 QString glaxnimate::model::ZigZag::static_type_name_human()
 {
-    return tr("Zig Zag");
+    return i18n("Zig Zag");
 }
 
 bool glaxnimate::model::ZigZag::process_collected() const

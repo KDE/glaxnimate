@@ -31,7 +31,7 @@ protected:
     using Ctor = AssetListBase;
 
 public:
-    ObjectListProperty<T> values{this, "values",
+    ObjectListProperty<T> values{this, kli18n("values"),
         &AssetListBase::on_added,
         &AssetListBase::on_removed,
         &AssetListBase::docnode_child_add_begin,
@@ -95,7 +95,7 @@ class NamedColorList : public AssetListBase<NamedColor, NamedColorList>
 
 public:
     QIcon tree_icon() const override;
-    QString type_name_human() const override { return tr("Swatch"); }
+    QString type_name_human() const override { return i18n("Swatch"); }
 
 Q_SIGNALS:
     void color_changed(int position, model::NamedColor* color);
@@ -114,7 +114,7 @@ class BitmapList : public AssetListBase<Bitmap, BitmapList>
 
 public:
     QIcon tree_icon() const override;
-    QString type_name_human() const override { return tr("Images"); }
+    QString type_name_human() const override { return i18n("Images"); }
 };
 
 class GradientColorsList : public AssetListBase<GradientColors, GradientColorsList>
@@ -124,7 +124,7 @@ class GradientColorsList : public AssetListBase<GradientColors, GradientColorsLi
 
 public:
     QIcon tree_icon() const override;
-    QString type_name_human() const override { return tr("Gradient Colors"); }
+    QString type_name_human() const override { return i18n("Gradient Colors"); }
 };
 
 class GradientList : public AssetListBase<Gradient, GradientList>
@@ -134,7 +134,7 @@ class GradientList : public AssetListBase<Gradient, GradientList>
 
 public:
     QIcon tree_icon() const override;
-    QString type_name_human() const override { return tr("Gradients"); }
+    QString type_name_human() const override { return i18n("Gradients"); }
 };
 
 class CompositionList : public AssetListBase<Composition, CompositionList>
@@ -148,7 +148,7 @@ public:
 protected:
     void on_added(model::Composition* obj, int position) override;
     void on_removed(model::Composition* obj, int position) override;
-    QString type_name_human() const override { return tr("Compositions"); }
+    QString type_name_human() const override { return i18n("Compositions"); }
 
 Q_SIGNALS:
     void precomp_added(model::Composition* obj, int position);
@@ -170,7 +170,7 @@ Q_SIGNALS:
     void font_added(model::EmbeddedFont* font);
 
 protected:
-    QString type_name_human() const override { return tr("Fonts"); }
+    QString type_name_human() const override { return i18n("Fonts"); }
 };
 
 
@@ -204,7 +204,7 @@ public:
     int docnode_child_index(DocumentNode* dn) const override;
     QIcon tree_icon() const override;
     QIcon instance_icon() const override;
-    QString type_name_human() const override { return tr("Assets"); }
+    QString type_name_human() const override { return i18n("Assets"); }
 
     NetworkDownloader network_downloader;
 };

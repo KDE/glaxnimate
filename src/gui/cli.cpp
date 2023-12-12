@@ -8,6 +8,8 @@
 
 #include <QImageWriter>
 
+#include <KLocalizedString>
+
 #include "app/scripting/script_engine.hpp"
 
 #include "app_info.hpp"
@@ -22,26 +24,26 @@ app::cli::ParsedArguments glaxnimate::gui::parse_cli(const QStringList& args)
 {
     app::cli::Parser parser(AppInfo::instance().description());
 
-    parser.add_group(QApplication::tr("Informational Options"));
-    parser.add_argument({{"--help", "-h"}, QApplication::tr("Show this help and exit"), app::cli::Argument::ShowHelp});
-    parser.add_argument({{"--version", "-v"}, QApplication::tr("Show version information and exit"), app::cli::Argument::ShowVersion});
+    parser.add_group(i18nc("@info:shell", "Informational Options"));
+    parser.add_argument({{"--help", "-h"}, i18nc("@info:shell", "Show this help and exit"), app::cli::Argument::ShowHelp});
+    parser.add_argument({{"--version", "-v"}, i18nc("@info:shell", "Show version information and exit"), app::cli::Argument::ShowVersion});
 
-    parser.add_group(QApplication::tr("Options"));
-    parser.add_argument({{"file"}, QApplication::tr("File to open")});
-    parser.add_argument({{"--trace"}, QApplication::tr("When opening image files, trace them instead of embedding")});
+    parser.add_group(i18nc("@info:shell", "Options"));
+    parser.add_argument({{"file"}, i18nc("@info:shell", "File to open")});
+    parser.add_argument({{"--trace"}, i18nc("@info:shell", "When opening image files, trace them instead of embedding")});
 
-    parser.add_group(QApplication::tr("GUI Options"));
-    parser.add_argument({{"--default-ui"}, QApplication::tr("If present, doesn't restore the main window state")});
+    parser.add_group(i18nc("@info:shell", "GUI Options"));
+    parser.add_argument({{"--default-ui"}, i18nc("@info:shell", "If present, doesn't restore the main window state")});
     parser.add_argument({
         {"--ipc"},
-        QApplication::tr("Specify the name of the local socket/named pipe to connect to a host application."),
+        i18nc("@info:shell", "Specify the name of the local socket/named pipe to connect to a host application."),
         app::cli::Argument::String,
         {},
         "IPC-NAME"
     });
     parser.add_argument({
         {"--window-size"},
-        QApplication::tr("Use a specific size for the main window"),
+        i18nc("@info:shell", "Use a specific size for the main window"),
         app::cli::Argument::Size,
         {},
         "WIDTHxHEIGHT"
@@ -49,58 +51,58 @@ app::cli::ParsedArguments glaxnimate::gui::parse_cli(const QStringList& args)
 
     parser.add_argument({
         {"--window-id"},
-        QApplication::tr("Print the window id"),
+        i18nc("@info:shell", "Print the window id"),
     });
 
-    parser.add_argument({{"--debug"}, QApplication::tr("Enables the debug menu")});
+    parser.add_argument({{"--debug"}, i18nc("@info:shell", "Enables the debug menu")});
 
 
-    parser.add_group(QApplication::tr("Export Options"));
+    parser.add_group(i18nc("@info:shell", "Export Options"));
     parser.add_argument({
         {"--export", "-o"},
-        QApplication::tr("Export the input file to the given file instead of starting the GUI"),
+        i18nc("@info:shell", "Export the input file to the given file instead of starting the GUI"),
         app::cli::Argument::String,
         {},
         "EXPORT-FILENAME"
     });
     parser.add_argument({
         {"--export-format", "-f"},
-        QApplication::tr("Specify the format for --export. If omitted it's determined based on the file name. See --export-format-list for a list of supported formats."),
+        i18nc("@info:shell", "Specify the format for --export. If omitted it's determined based on the file name. See --export-format-list for a list of supported formats."),
         app::cli::Argument::String,
         {},
         "EXPORT-FORMAT"
     });
     parser.add_argument({
         {"--export-format-list"},
-        QApplication::tr("Shows possible values for --export-format"),
+        i18nc("@info:shell", "Shows possible values for --export-format"),
         app::cli::Argument::Flag
     });
 
-    parser.add_group(QApplication::tr("Render Frame Options"));
+    parser.add_group(i18nc("@info:shell", "Render Frame Options"));
     parser.add_argument({
         {"--render", "-r"},
-        QApplication::tr("Render frames the input file to the given file instead of starting the GUI"),
+        i18nc("@info:shell", "Render frames the input file to the given file instead of starting the GUI"),
         app::cli::Argument::String,
         {},
         "RENDER-FILENAME"
     });
     parser.add_argument({
         {"--render-format"},
-        QApplication::tr("Specify the format for --render. If omitted it's determined based on the file name. See --render-format-list for a list of supported formats."),
+        i18nc("@info:shell", "Specify the format for --render. If omitted it's determined based on the file name. See --render-format-list for a list of supported formats."),
         app::cli::Argument::String,
         {},
         "RENDER-FORMAT"
     });
     parser.add_argument({
         {"--frame"},
-        QApplication::tr("Frame number to render, use `all` to render all frames"),
+        i18nc("@info:shell", "Frame number to render, use `all` to render all frames"),
         app::cli::Argument::String,
         {"0"},
         "FRAME"
     });
     parser.add_argument({
         {"--render-format-list"},
-        QApplication::tr("Shows possible values for --render-format"),
+        i18nc("@info:shell", "Shows possible values for --render-format"),
         app::cli::Argument::Flag
     });
 
@@ -154,7 +156,7 @@ public:
                 try {
                     ok = ctx->run_from_module(plugin.data().dir, script.module, script.function, args);
                     if ( !ok )
-                        console_stderr(QApplication::tr("Could not run the plugin"));
+                        console_stderr(i18nc("@info:shell", "Could not run the plugin"));
                 } catch ( const app::scripting::ScriptError& err ) {
                     console_stderr(err.message());
                     ok = false;
@@ -163,7 +165,7 @@ public:
             }
         }
 
-        console_stderr(QApplication::tr("Could not find an interpreter"));
+        console_stderr(i18nc("@info:shell", "Could not find an interpreter"));
         return false;
     }
 
@@ -205,7 +207,7 @@ QVariantMap io_settings(std::unique_ptr<app::settings::SettingsGroup> group)
 void log_message(const QString& message, app::log::Severity severity)
 {
     app::cli::show_message(
-        QApplication::tr("%1: %2")
+        QStringLiteral("%1: %2")
         .arg(app::log::Logger::severity_name(severity))
         .arg(message)
     );
@@ -220,14 +222,14 @@ std::unique_ptr<glaxnimate::model::Document> cli_open(const app::cli::ParsedArgu
     auto importer = io::IoRegistry::instance().from_filename(input_filename, io::ImportExport::Import);
     if ( !importer || !importer->can_open() )
     {
-        app::cli::show_message(QApplication::tr("Unknown importer"), true);
+        app::cli::show_message(i18nc("@info:shell", "Unknown importer"), true);
         return {};
     }
 
     QFile input_file(input_filename);
     if ( !input_file.open(QIODevice::ReadOnly) )
     {
-        app::cli::show_message(QApplication::tr("Could not open input file for reading"), true);
+        app::cli::show_message(i18nc("@info:shell", "Could not open input file for reading"), true);
         return {};
     }
 
@@ -241,7 +243,7 @@ std::unique_ptr<glaxnimate::model::Document> cli_open(const app::cli::ParsedArgu
     QObject::connect(importer, &io::ImportExport::message, &log_message);
     if ( !importer->open(input_file, input_filename, document.get(), open_settings) )
     {
-        app::cli::show_message(QApplication::tr("Error loading input file"), true);
+        app::cli::show_message(i18nc("@info:shell", "Error loading input file"), true);
         return {};
     }
     input_file.close();
@@ -255,7 +257,7 @@ bool cli_export(const app::cli::ParsedArguments& args)
 
     if ( !args.is_defined("file") )
     {
-        app::cli::show_message(QApplication::tr("You need to specify a file to export"), true);
+        app::cli::show_message(i18nc("@info:shell", "You need to specify a file to export"), true);
         return false;
     }
 
@@ -270,7 +272,7 @@ bool cli_export(const app::cli::ParsedArguments& args)
 
     if ( !exporter || !exporter->can_save() )
     {
-        app::cli::show_message(QApplication::tr("Unknown exporter. use --export-format-list for a list of available formats"), true);
+        app::cli::show_message(i18nc("@info:shell", "Unknown exporter. use --export-format-list for a list of available formats"), true);
         return false;
     }
 
@@ -281,7 +283,7 @@ bool cli_export(const app::cli::ParsedArguments& args)
     QFile output_file(output_filename);
     if ( !output_file.open(QIODevice::WriteOnly) )
     {
-        app::cli::show_message(QApplication::tr("Could not open output file for writing"), true);
+        app::cli::show_message(i18nc("@info:shell", "Could not open output file for writing"), true);
         return false;
     }
 
@@ -290,7 +292,7 @@ bool cli_export(const app::cli::ParsedArguments& args)
     auto comp = document->assets()->compositions->values[0];
     if ( !exporter->save(output_file, output_filename, comp, io_settings(exporter->save_settings(comp))) )
     {
-        app::cli::show_message(QApplication::tr("Error converting to the output format"), true);
+        app::cli::show_message(i18nc("@info:shell", "Error converting to the output format"), true);
         return false;
     }
 
@@ -310,7 +312,7 @@ void render_frame(
     QFile file(filename);
     if ( !file.open(QFile::WriteOnly) )
     {
-        app::cli::show_message(QApplication::tr("Could not save to %1").arg(filename), true);
+        app::cli::show_message(i18nc("@info:shell", "Could not save to %1", filename), true);
         return;
     }
 
@@ -330,7 +332,7 @@ void render_frame_img(glaxnimate::model::Composition* comp, glaxnimate::model::F
 {
     QImage image = glaxnimate::io::raster::RasterMime::frame_to_image(comp, time);
     if ( !image.save(&file, format) )
-        app::cli::show_message(QApplication::tr("Could not save to %1").arg(file.fileName()), true);
+        app::cli::show_message(i18nc("@info:shell", "Could not save to %1", file.fileName()), true);
 }
 
 bool cli_render(const app::cli::ParsedArguments& args)
@@ -339,7 +341,7 @@ bool cli_render(const app::cli::ParsedArguments& args)
 
     if ( !args.is_defined("file") )
     {
-        app::cli::show_message(QApplication::tr("You need to specify a file to render"), true);
+        app::cli::show_message(i18nc("@info:shell", "You need to specify a file to render"), true);
         return false;
     }
 

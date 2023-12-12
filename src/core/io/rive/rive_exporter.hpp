@@ -356,7 +356,7 @@ private:
                 {
                     if ( int(pt_id) >= kf.get().size() )
                     {
-                        format->error(QObject::tr("Bezier has mismatching number of points"));
+                        format->error(i18n("Bezier has mismatching number of points"));
                         continue;
                     }
 
@@ -418,7 +418,7 @@ private:
         auto rive_prop = object.type().property(name);
         if ( !rive_prop )
         {
-            format->warning(QObject::tr("Unknown property %1 of %2 (%3, %4)")
+            format->warning(i18n("Unknown property %1 of %2 (%3, %4)")
                 .arg(name)
                 .arg(int(object.type().id))
                 .arg(types.type_name(object.type().id))
@@ -452,7 +452,7 @@ private:
 
         if ( !kf_type )
         {
-            format->warning(QObject::tr("Unknown keyframe type for property %1 of %2 (%3, %4)")
+            format->warning(i18n("Unknown keyframe type for property %1 of %2 (%3, %4)")
                 .arg(name)
                 .arg(int(object.type().id))
                 .arg(types.type_name(object.type().id))

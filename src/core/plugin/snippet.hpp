@@ -90,11 +90,11 @@ public:
         if ( !file.open(QFile::WriteOnly|QIODevice::Text) )
             return false;
 
-        file.write(QApplication::tr("# Glaxnimate snippet").toUtf8());
+        file.write(i18n("# Glaxnimate snippet").toUtf8());
         file.write("\n");
-        file.write(QApplication::tr("# You have access to the `window` and `document` global variables and the `glaxnimate` module").toUtf8());
+        file.write(i18n("# You have access to the `window` and `document` global variables and the `glaxnimate` module").toUtf8());
         file.write("\n");
-        file.write(QApplication::tr("# For documentation see https://glaxnimate.mattbas.org/contributing/scripting/").toUtf8());
+        file.write(i18n("# For documentation see https://glaxnimate.mattbas.org/contributing/scripting/").toUtf8());
         file.write("\n");
         file.write("\n");
         return true;

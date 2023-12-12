@@ -86,7 +86,7 @@ void GlaxnimateWindow::Private::layer_delete()
     auto current = parent->current_shape();
     if ( !current )
         return;
-    parent->delete_shapes_impl(tr("Delete %1").arg(current->object_name()), {current});
+    parent->delete_shapes_impl(i18n("Delete %1", current->object_name()), {current});
 }
 
 void GlaxnimateWindow::Private::layer_duplicate()
@@ -184,7 +184,7 @@ void GlaxnimateWindow::Private::move_to()
 
     if ( auto parent = ShapeParentDialog(&document_node_model, this->parent).get_shape_parent() )
     {
-        command::UndoMacroGuard macro(tr("Move Shapes"), current_document.get());
+        command::UndoMacroGuard macro(i18n("Move Shapes"), current_document.get());
         for ( auto shape : shapes )
             if ( shape->owner() != parent )
                 shape->push_command(new command::MoveShape(shape, shape->owner(), parent, parent->size()));
@@ -208,7 +208,7 @@ QStringList GlaxnimateWindow::Private::get_open_image_files(const QString& title
             filters.push_back(mime.comment() + QLatin1String(" (") + patterns + QLatin1Char(')'));
         }
     }
-    filters.push_front(tr("All Supported files (%1)").arg(all_ext.join(' ')));
+    filters.push_front(i18n("All Supported files (%1)", all_ext.join(' ')));
     dialog.setNameFilters(filters);
 
     dialog.setAcceptMode(QFileDialog::AcceptOpen);
@@ -235,14 +235,14 @@ void GlaxnimateWindow::Private::import_image()
     if ( path.isEmpty() )
         path = current_document->io_options().path.absolutePath();
 
-    QStringList image_files = get_open_image_files(tr("Import Image"), path, &path, true);
+    QStringList image_files = get_open_image_files(i18n("Import Image"), path, &path, true);
     if ( image_files.isEmpty() )
         return;
 
     GlaxnimateSettings::setImport_path(path);
 
     /// \todo dialog asking whether to embed
-    command::UndoMacroGuard macro(tr("Import Image"), current_document.get());
+    command::UndoMacroGuard macro(i18n("Import Image"), current_document.get());
 
     model::Image* select = nullptr;
 
@@ -252,7 +252,7 @@ void GlaxnimateWindow::Private::import_image()
         bitmap->filename.set(image_file);
         if ( bitmap->pixmap().isNull() )
         {
-            show_warning(tr("Import Image"), tr("Could not import image"));
+            show_warning(i18n("Import Image"), i18n("Could not import image"));
             continue;
         }
 
@@ -289,7 +289,7 @@ static void remove_assets(T& prop, int& count)
 
 void GlaxnimateWindow::Private::cleanup_document()
 {
-    command::UndoMacroGuard guard(tr("Cleanup Document"), current_document.get());
+    command::UndoMacroGuard guard(i18n("Cleanup Document"), current_document.get());
     int count = 0;
 
     remove_assets(current_document->assets()->gradients->values, count);
@@ -297,7 +297,7 @@ void GlaxnimateWindow::Private::cleanup_document()
     remove_assets(current_document->assets()->colors->values, count);
     remove_assets(current_document->assets()->images->values, count);
 
-    status_message(tr("Removed %1 assets").arg(count), 0);
+    status_message(i18n("Removed %1 assets", count), 0);
 }
 
 void GlaxnimateWindow::Private::convert_to_path(const std::vector<model::ShapeElement*>& shapes, std::vector<model::ShapeElement*>* out)
@@ -305,9 +305,9 @@ void GlaxnimateWindow::Private::convert_to_path(const std::vector<model::ShapeEl
     if ( shapes.empty() )
         return;
 
-    QString macro_name = tr("Convert to path");
+    QString macro_name = i18n("Convert to path");
     if ( shapes.size() == 1 )
-        macro_name = tr("Convert %1 to path").arg((*shapes.begin())->name.get());
+        macro_name = i18n("Convert %1 to path", (*shapes.begin())->name.get());
 
     std::unordered_map<model::Layer*, model::Layer*> converted_layers;
 
@@ -485,7 +485,7 @@ void GlaxnimateWindow::Private::objects_to_new_composition(
         return;
 
     int new_comp_index = current_document->assets()->compositions->values.size();
-    command::UndoMacroGuard guard(tr("New Composition from Selection"), current_document.get());
+    command::UndoMacroGuard guard(i18n("New Composition from Selection"), current_document.get());
 
     auto ucomp = std::make_unique<model::Composition>(current_document.get());
     model::Composition* new_comp = ucomp.get();
@@ -673,7 +673,7 @@ void GlaxnimateWindow::Private::align(AlignDirection direction, AlignPosition po
             item.bounds_point = bounds_point;
     }
 
-    command::UndoMacroGuard guard(tr("Align Selection"), current_document.get());
+    command::UndoMacroGuard guard(i18n("Align Selection"), current_document.get());
 
     for ( const auto& item : data )
     {
@@ -715,7 +715,7 @@ void GlaxnimateWindow::Private::dropped(const QMimeData* data)
 {
     if ( data->hasFormat("application/x.glaxnimate-asset-uuid") )
     {
-        command::UndoMacroGuard guard(tr("Drop"), current_document.get(), false);
+        command::UndoMacroGuard guard(i18n("Drop"), current_document.get(), false);
 
         item_models::DragDecoder<> decoder(data->data("application/x.glaxnimate-asset-uuid"), current_document.get());
 
@@ -811,7 +811,7 @@ void GlaxnimateWindow::Private::text_put_on_path()
     if ( shapes.empty() || !path )
         return;
 
-    command::UndoMacroGuard guard(tr("Put text on path"), current_document.get());
+    command::UndoMacroGuard guard(i18n("Put text on path"), current_document.get());
     for ( auto shape : shapes )
         shape->path.set_undoable(QVariant::fromValue(path));
 }
@@ -833,7 +833,7 @@ void GlaxnimateWindow::Private::text_remove_from_path()
     if ( shapes.empty() )
         return;
 
-    command::UndoMacroGuard guard(tr("Remove text from path"), current_document.get());
+    command::UndoMacroGuard guard(i18n("Remove text from path"), current_document.get());
     for ( auto shape : shapes )
         shape->path.set_undoable({});
 }

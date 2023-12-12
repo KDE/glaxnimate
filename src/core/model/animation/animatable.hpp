@@ -25,7 +25,7 @@
  */
 #define GLAXNIMATE_ANIMATABLE(type, name, ...)                                  \
 public:                                                                         \
-    glaxnimate::model::AnimatedProperty<type> name{this, #name, __VA_ARGS__};   \
+    glaxnimate::model::AnimatedProperty<type> name{this, kli18n(#name), __VA_ARGS__};   \
     glaxnimate::model::AnimatableBase* get_##name() { return &name; }           \
 private:                                                                        \
     Q_PROPERTY(glaxnimate::model::AnimatableBase* name READ get_##name)         \
@@ -621,7 +621,7 @@ public:
 
     AnimatedProperty(
         Object* object,
-        const QString& name,
+        const KLazyLocalizedString& name,
         reference default_value,
         PropertyCallback<void, Type> emitter = {},
         int flags = 0
@@ -968,7 +968,7 @@ class AnimatedPropertyPosition: public detail::AnimatedProperty<QPointF>
 public:
     AnimatedPropertyPosition(
         Object* object,
-        const QString& name,
+        const KLazyLocalizedString& name,
         reference default_value,
         PropertyCallback<void, QPointF> emitter = {},
         int flags = 0
@@ -1026,7 +1026,7 @@ class AnimatedProperty<float> : public detail::AnimatedProperty<float>
 public:
     AnimatedProperty(
         Object* object,
-        const QString& name,
+        const KLazyLocalizedString& name,
         reference default_value,
         PropertyCallback<void, float> emitter = {},
         float min = std::numeric_limits<float>::lowest(),

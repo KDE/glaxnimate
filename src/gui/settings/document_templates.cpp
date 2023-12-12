@@ -49,12 +49,12 @@ QString settings::DocumentTemplate::name() const
 {
     if ( auto comp = main_comp() )
         return comp->name.get();
-    return QObject::tr("Unnamed");
+    return i18n("Unnamed");
 }
 
 QString settings::DocumentTemplate::long_name() const
 {
-    return name_template(main_comp()).arg(name());
+    return name_template(main_comp()).subs(name()).toString();
 }
 
 float settings::DocumentTemplate::fps() const
@@ -112,21 +112,21 @@ QString settings::DocumentTemplate::aspect_ratio(const QSize& size)
     return {};
 }
 
-QString settings::DocumentTemplate::name_template(model::Composition* comp)
+KLocalizedString settings::DocumentTemplate::name_template(model::Composition* comp)
 {
     if ( !comp )
-        return "%1";
+        return ki18n("%1");
 
     QString aspect;
     auto w = comp->width.get();
     auto h = comp->height.get();
 
-    //: %5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the frame rate
-    return DocumentTemplates::tr("%5 - %1x%2 %3 %4fps")
-        .arg(w)
-        .arg(h)
-        .arg(aspect_ratio(QSize(w, h)))
-        .arg(comp->fps.get())
+    //:
+    return ki18nc("%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the frame rate", "%5 - %1x%2 %3 %4fps")
+        .subs(w)
+        .subs(h)
+        .subs(aspect_ratio(QSize(w, h)))
+        .subs(comp->fps.get())
     ;
 }
 
@@ -177,17 +177,17 @@ bool settings::DocumentTemplates::save_as_template(model::Document* document)
 
     QString name_base = comp ? comp->name.get() : "";
     if ( name_base.isEmpty() )
-        name_base = tr("Template");
+        name_base = i18n("Template");
 
     // Find a nice name, avoiding duplicates
-    QString name_full_template = DocumentTemplate::name_template(comp);
-    QString name_template = tr("%1 %2").arg(name_base);
+    auto name_full_template = DocumentTemplate::name_template(comp);
+    KLocalizedString name_template = ki18n("%1 %2").subs(name_base);
     QString name = name_base;
-    QString name_full = name_full_template.arg(name);
+    QString name_full = name_full_template.subs(name).toString();
     for ( int count = 1; names.count(name_full); count++ )
     {
-        name = name_template.arg(count);
-        name_full = name_full_template.arg(name);
+        name = name_template.subs(count).toString();
+        name_full = name_full_template.subs(name).toString();
     }
 
     // Generate a file name

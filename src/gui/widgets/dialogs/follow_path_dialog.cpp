@@ -37,7 +37,7 @@ public:
 
     void set_frames(QDoubleSpinBox* box)
     {
-        box->setSuffix(tr("f"));
+        box->setSuffix(i18n("f"));
         box->setDecimals(0);
         auto v = box->value();
         box->setMinimum(comp->animation->first_frame.get());
@@ -48,7 +48,7 @@ public:
     void set_seconds(QDoubleSpinBox* box)
     {
         auto fps = comp->fps.get();
-        box->setSuffix(tr("\""));
+        box->setSuffix(i18n("\""));
         box->setDecimals(2);
         auto v = box->value();
         box->setMinimum(comp->animation->first_frame.get() / fps);
@@ -125,7 +125,7 @@ void glaxnimate::gui::FollowPathDialog::apply()
         return;
     }
 
-    auto guard = command::UndoMacroGuard(tr("Follow Path"), d->property->object()->document());
+    auto guard = command::UndoMacroGuard(i18n("Follow Path"), d->property->object()->document());
     d->property->object()->push_command(new command::RemoveAllKeyframes(d->property, d->property->value()));
 
     for ( int i = 0; i < bezier.size(); i++ )

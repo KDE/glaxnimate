@@ -18,13 +18,13 @@ bool io::glaxnimate::GlaxnimateFormat::on_open ( QIODevice& file, const QString&
     try {
         jdoc = QJsonDocument::fromJson(file.readAll());
     } catch ( const QJsonParseError& err ) {
-        error(tr("Could not parse JSON: %1").arg(err.errorString()));
+        error(i18n("Could not parse JSON: %1", err.errorString()));
         return false;
     }
 
     if ( !jdoc.isObject() )
     {
-        error(tr("No JSON object found"));
+        error(i18n("No JSON object found"));
         return false;
     }
 
@@ -32,7 +32,7 @@ bool io::glaxnimate::GlaxnimateFormat::on_open ( QIODevice& file, const QString&
 
     int document_version = top_level["format"].toObject()["format_version"].toInt(0);
     if ( document_version > format_version )
-        warning(tr("Opening a file from a newer version of Glaxnimate"));
+        warning(i18n("Opening a file from a newer version of Glaxnimate"));
 
     detail::ImportState state(this, document, document_version);
     state.load_document(top_level);
@@ -40,7 +40,7 @@ bool io::glaxnimate::GlaxnimateFormat::on_open ( QIODevice& file, const QString&
     if ( document->assets()->compositions->values.empty() )
     {
         document->assets()->compositions->values.insert(std::make_unique<model::Composition>(document));
-        error(tr("Missing composition"));
+        error(i18n("Missing composition"));
         return false;
     }
 

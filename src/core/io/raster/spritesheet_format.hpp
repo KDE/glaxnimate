@@ -20,7 +20,7 @@ class SpritesheetFormat : public ImportExport
 
 public:
     QString slug() const override { return "spritesheet"; }
-    QString name() const override { return tr("Sprite Sheet"); }
+    QString name() const override { return i18n("Sprite Sheet"); }
     QStringList extensions() const override;
 
     std::unique_ptr<app::settings::SettingsGroup> save_settings(model::Composition* comp) const override;

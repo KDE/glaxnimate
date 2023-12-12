@@ -19,6 +19,8 @@
 #include <QNetworkRequest>
 #include <QDesktopServices>
 
+#include <KLocalizedContext>
+
 #include "utils/tar.hpp"
 #include "emoji/emoji_set.hpp"
 #include "glaxnimate_app.hpp"
@@ -159,9 +161,9 @@ void glaxnimate::emoji::EmojiSetDialog::reload_sets()
         }
 
         if ( p.path.exists() )
-            d->set_download_status(row, "package-installed-updated", tr("Installed"));
+            d->set_download_status(row, "package-installed-updated", i18nc("Package install status", "Installed"));
         else
-            d->set_download_status(row, "package-available", tr("Not Installed"));
+            d->set_download_status(row, "package-available", i18nc("Package install status", "Not Installed"));
 
         row++;
     }
@@ -180,7 +182,7 @@ void glaxnimate::emoji::EmojiSetDialog::download_selected()
     d->ui.progress_bar->setVisible(true);
     d->ui.progress_bar->setValue(0);
     d->ui.progress_bar->setMaximum(100);
-    d->set_download_status(row, "package-installed-outdated", tr("Downloading"));
+    d->set_download_status(row, "package-installed-outdated", i18nc("Package install status", "Downloading"));
     connect(reply, &QNetworkReply::downloadProgress, this, [this](qint64 received, qint64 total){
         d->ui.progress_bar->setValue(received);
         d->ui.progress_bar->setMaximum(total);
@@ -191,7 +193,7 @@ void glaxnimate::emoji::EmojiSetDialog::download_selected()
         {
             d->ui.progress_bar->setVisible(false);
             auto reason = reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
-            d->set_download_status(row, "package-broken", tr("Could not download: %1").arg(reason));
+            d->set_download_status(row, "package-broken", i18nc("Package install status, %1 reason", "Could not download: %1", reason));
             return;
         }
 
@@ -210,9 +212,9 @@ void glaxnimate::emoji::EmojiSetDialog::download_selected()
         if ( !tar.error().isEmpty() )
             d->set_download_status(row, "package-broken", tar.error());
         else if ( !output.exists() )
-            d->set_download_status(row, "package-broken", tr("Didn't download any files"));
+            d->set_download_status(row, "package-broken", i18nc("Package install status", "Didn't download any files"));
         else
-            d->set_download_status(row, "package-installed-updated", tr("Installed"));
+            d->set_download_status(row, "package-installed-updated", i18nc("Package install status", "Installed"));
 
         d->ui.button_add_emoji->setEnabled(d->sets[row].path.exists());
         d->ui.progress_bar->setVisible(false);

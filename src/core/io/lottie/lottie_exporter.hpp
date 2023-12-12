@@ -556,9 +556,9 @@ public:
         if ( auto gr = qobject_cast<model::Group*>(shape) )
         {
             if ( qobject_cast<model::Layer*>(gr) )
-                format->information(io::lottie::LottieFormat::tr("Lottie only supports layers in the top level"));
+                format->information(i18n("Lottie only supports layers in the top level"));
             else if ( gr->auto_orient.get() )
-                format->information(io::lottie::LottieFormat::tr("Lottie only supports auto-orient layers in the top level"));
+                format->information(i18n("Lottie only supports auto-orient layers in the top level"));
             auto shapes = convert_shapes(gr->shapes, force_hidden || !gr->visible.get());
             QCborMap transform;
             transform["ty"_l] = "tr";
@@ -607,9 +607,9 @@ public:
         for ( const auto& shape : shapes )
         {
             if ( shape->is_instance<model::Image>() )
-                format->warning(io::lottie::LottieFormat::tr("Images cannot be grouped with other shapes, they must be inside a layer"));
+                format->warning(i18n("Images cannot be grouped with other shapes, they must be inside a layer"));
             else if ( shape->is_instance<model::PreCompLayer>() )
-                format->warning(io::lottie::LottieFormat::tr("Composition layers cannot be grouped with other shapes, they must be inside a layer"));
+                format->warning(i18n("Composition layers cannot be grouped with other shapes, they must be inside a layer"));
             else if ( !strip || shape->visible.get() )
                 jshapes.push_front(convert_shape(shape.get(), force_hidden));
         }

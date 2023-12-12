@@ -9,6 +9,8 @@
 #include <QPainter>
 #include <QStyleOptionGraphicsItem>
 
+#include <KLocalizedString>
+
 #include "math/geom.hpp"
 #include "command/animation_commands.hpp"
 #include "item_data.hpp"
@@ -104,7 +106,7 @@ void graphics::GradientEditor::on_use_changed(model::BrushStyle* new_use)
 
 QString graphics::GradientEditor::command_name() const
 {
-    return tr("Drag Gradient");
+    return i18n("Drag Gradient");
 }
 
 void graphics::GradientEditor::start_dragged(QPointF p, Qt::KeyboardModifiers mods)

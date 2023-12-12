@@ -16,7 +16,7 @@ QIcon glaxnimate::model::Ellipse::tree_icon() const
 
 QString glaxnimate::model::Ellipse::type_name_human() const
 {
-    return tr("Ellipse");
+    return i18n("Ellipse");
 }
 
 glaxnimate::math::bezier::Bezier glaxnimate::model::Ellipse::to_bezier(FrameTime t) const

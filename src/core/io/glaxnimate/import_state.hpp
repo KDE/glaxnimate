@@ -105,19 +105,19 @@ public:
             model::DocumentNode* node = document->find_by_uuid(p.second);
             if ( !node )
             {
-                error(GlaxnimateFormat::tr("Property %1 of %2 refers to unexisting object %3")
-                    .arg(prop->name())
-                    .arg(prop->object()->object_name())
-                    .arg(p.second.toString())
-                );
+                error(i18n("Property %1 of %2 refers to unexisting object %3",
+                    prop->name(),
+                    prop->object()->object_name(),
+                    p.second.toString()
+                ));
             }
             else
             {
                 if ( !prop->set_value(QVariant::fromValue(node)) )
-                    error(GlaxnimateFormat::tr("Could not load %1 for %2: uuid refers to an unacceptable object")
-                        .arg(prop->name())
-                        .arg(prop->object()->object_name())
-                    );
+                    error(i18n("Could not load %1 for %2: uuid refers to an unacceptable object",
+                        prop->name(),
+                        prop->object()->object_name()
+                    ));
             }
         }
 
@@ -125,7 +125,7 @@ public:
         {
             if ( obj )
             {
-                error(GlaxnimateFormat::tr("Object %1 is invalid").arg(obj->object_name()));
+                error(i18n("Object %1 is invalid", obj->object_name()));
                 delete obj;
             }
         }
@@ -314,13 +314,13 @@ private:
         QString type = object["__type__"].toString();
 
         if ( type != target->type_name() )
-            error(GlaxnimateFormat::tr("Wrong object type: expected '%1' but got '%2'").arg(target->type_name()).arg(type));
+            error(i18n("Wrong object type: expected '%1' but got '%2'", target->type_name(), type));
 
         for ( model::BaseProperty* prop : target->properties() )
         {
             if ( object.contains(prop->name()) && !load_prop(prop, object[prop->name()], path.sub(prop)) )
             {
-                error(GlaxnimateFormat::tr("Could not load %1 for %2")
+                error(i18n("Could not load %1 for %2")
                     .arg(prop->name())
                     .arg(prop->object()->object_name())
                 );
@@ -332,7 +332,7 @@ private:
             if ( !target->has(it.key()) && it.key() != "__type__" )
             {
                 if ( !target->set(it.key(), it->toVariant()) )
-                    error(GlaxnimateFormat::tr("Could not set property %1").arg(it.key()));
+                    error(i18n("Could not set property %1", it.key()));
             }
         }
     }
@@ -358,7 +358,7 @@ private:
                     if ( !ptr )
                     {
                         error(
-                            GlaxnimateFormat::tr("Item %1 for %2 in %3 isn't an object")
+                            i18n("Item %1 for %2 in %3 isn't an object")
                             .arg(index)
                             .arg(target->name())
                             .arg(target->object()->object_name())
@@ -370,7 +370,7 @@ private:
                         if ( !inserted )
                         {
                             error(
-                                GlaxnimateFormat::tr("Item %1 for %2 in %3 is not acceptable")
+                                i18n("Item %1 for %2 in %3 is not acceptable")
                                 .arg(index)
                                 .arg(target->name())
                                 .arg(target->object()->object_name())
@@ -409,12 +409,12 @@ private:
                     QJsonObject kfobj = v.toObject();
                     if ( !kfobj.contains("time") )
                     {
-                        error(GlaxnimateFormat::tr("Keyframe must specify a time"));
+                        error(i18n("Keyframe must specify a time"));
                         continue;
                     }
                     if ( !kfobj.contains("value") )
                     {
-                        error(GlaxnimateFormat::tr("Keyframe must specify a value"));
+                        error(i18n("Keyframe must specify a value"));
                         continue;
                     }
 
@@ -424,7 +424,7 @@ private:
                     );
                     if ( !kf )
                     {
-                        error(GlaxnimateFormat::tr("Could not add keyframe"));
+                        error(i18n("Could not add keyframe"));
                         continue;
                     }
 
@@ -608,7 +608,7 @@ private:
             return obj;
         }
 
-        error(GlaxnimateFormat::tr("Unknown object of type '%1'").arg(type));
+        error(i18n("Unknown object of type '%1'", type));
         temporaries.emplace_back(new model::Object(document));
         return temporaries.back().get();
     }

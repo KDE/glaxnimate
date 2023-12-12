@@ -12,6 +12,8 @@
 #include "model/property/reference_property.hpp"
 #include "model/document.hpp"
 
+#define fake_i18n kli18n
+
 using namespace glaxnimate::model;
 using namespace glaxnimate;
 
@@ -104,7 +106,7 @@ private Q_SLOTS:
         Object obj(nullptr);
         pci.connect(obj);
 
-        Property<int> prop(&obj, "foo", 456);
+        Property<int> prop(&obj, fake_i18n("foo"), 456);
         QVERIFY(pci.not_called());
         QCOMPARE(prop.get(), 456);
     }
@@ -115,7 +117,7 @@ private Q_SLOTS:
         Object obj(nullptr);
         pci.connect(obj);
 
-        Property<int> prop(&obj, "foo");
+        Property<int> prop(&obj, fake_i18n("foo"));
         prop.set(123);
         QVERIFY(pci.called_with("foo", 123));
         QCOMPARE(prop.get(), 123);
@@ -127,7 +129,7 @@ private Q_SLOTS:
         Object obj(nullptr);
         pci.connect(obj);
 
-        Property<int> prop(&obj, "foo", 123);
+        Property<int> prop(&obj, fake_i18n("foo"), 123);
         QCOMPARE(prop.value(), QVariant(123));
         QVERIFY(prop.set_value(QVariant(456)));
         QVERIFY(pci.called_with("foo", 456));

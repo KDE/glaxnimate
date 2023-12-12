@@ -134,7 +134,7 @@ void GlaxnimateWindow::Private::do_setup_document()
 
     // Export
     export_options = {};
-    ui.action_export->setText(tr("Export..."));
+    ui.action_export->setText(i18n("Export..."));
 }
 
 void GlaxnimateWindow::Private::setup_document_new(const QString& filename)
@@ -146,7 +146,7 @@ void GlaxnimateWindow::Private::setup_document_new(const QString& filename)
     current_document->assets()->add_comp_no_undo();
 
     do_setup_document();
-    QUrl url = QUrl::fromLocalFile(tr("Unsaved Animation"));
+    QUrl url = QUrl::fromLocalFile(i18n("Unsaved Animation"));
     autosave_file.setManagedFile(url);
     comp->name.set(comp->type_name_human());
     comp->width.set(GlaxnimateSettings::width());
@@ -228,20 +228,20 @@ bool GlaxnimateWindow::Private::setup_document_open(QIODevice* file, const io::O
         stale[0]->setParent(current_document.get());
 
         WindowMessageWidget::Message msg{
-            tr("Looks like this file is being edited by another Glaxnimate instance or it was being edited when Glaxnimate crashed."),
+            i18n("Looks like this file is being edited by another Glaxnimate instance or it was being edited when Glaxnimate crashed."),
             KMessageWidget::Information
         };
 
         msg.add_action(
             QIcon::fromTheme("document-close"),
-            tr("Close Document"),
+            i18n("Close Document"),
             parent,
             &GlaxnimateWindow::document_new
         );
 
         msg.add_action(
             QIcon::fromTheme("document-revert"),
-            tr("Load Backup"),
+            i18n("Load Backup"),
             parent,
             [this, file=stale[0]]{ load_backup(file, true); }
         );
@@ -289,8 +289,8 @@ bool GlaxnimateWindow::Private::close_document()
         if ( !current_document->undo_stack().isClean() )
         {
             QMessageBox warning(parent);
-            warning.setWindowTitle(QObject::tr("Closing Animation"));
-            warning.setText(QObject::tr("The animation has unsaved changes.\nDo you want to save your changes?"));
+            warning.setWindowTitle(i18n("Closing Animation"));
+            warning.setText(i18n("The animation has unsaved changes.\nDo you want to save your changes?"));
             warning.setInformativeText(current_document->filename());
             warning.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
             warning.setDefaultButton(QMessageBox::Save);
@@ -393,7 +393,7 @@ bool GlaxnimateWindow::Private::save_document(bool force_dialog, bool export_opt
     if ( export_opts )
     {
         export_options = opts;
-        ui.action_export->setText(tr("Export to %1").arg(QFileInfo(opts.filename).fileName()));
+        ui.action_export->setText(i18n("Export to %1", QFileInfo(opts.filename).fileName()));
     }
     else
     {
@@ -444,12 +444,12 @@ io::Options GlaxnimateWindow::Private::options_from_filename(const QString& file
         }
         else
         {
-            show_warning(tr("Open File"), tr("No importer found for %1").arg(filename));
+            show_warning(i18n("Open File"), i18n("No importer found for %1", filename));
         }
     }
     else
     {
-        show_warning(tr("Open File"), tr("The file might have been moved or deleted\n%1").arg(filename));
+        show_warning(i18n("Open File"), i18n("The file might have been moved or deleted\n%1", filename));
     }
 
     return {};
@@ -477,18 +477,18 @@ void GlaxnimateWindow::Private::drop_document(const QString& filename, bool as_c
     bool ok = options.format->open(file, options.filename, &imported, options.settings);
     if ( !ok )
     {
-        show_warning(tr("Import File"), tr("Could not import %1").arg(options.filename));
+        show_warning(i18n("Import File"), i18n("Could not import %1", options.filename));
         return;
     }
 
-    parent->paste_document(&imported, tr("Import File"), as_comp);
+    parent->paste_document(&imported, i18n("Import File"), as_comp);
 }
 
 void GlaxnimateWindow::Private::document_reload()
 {
     if ( !current_document_has_file )
     {
-        status_message(tr("No file to reload from"));
+        status_message(i18n("No file to reload from"));
         return;
     }
 
@@ -499,7 +499,7 @@ void GlaxnimateWindow::Private::document_reload()
 
 void GlaxnimateWindow::Private::preview(io::ImportExport& exporter, const QVariantMap& options)
 {
-    dialog_export_status->reset(&exporter, tr("Web Preview"));
+    dialog_export_status->reset(&exporter, i18n("Web Preview"));
 
     auto promise = QtConcurrent::run(
         [&exporter, comp=comp, options]() -> QString {
@@ -521,13 +521,13 @@ void GlaxnimateWindow::Private::preview(io::ImportExport& exporter, const QVaria
 
     if ( path.isEmpty() )
     {
-        show_warning(tr("Web Preview"), tr("Could not create file"));
+        show_warning(i18n("Web Preview"), i18n("Could not create file"));
         return;
     }
 
     if ( !QDesktopServices::openUrl(QUrl::fromLocalFile(path)) )
     {
-        show_warning(tr("Web Preview"), tr("Could not open browser"));
+        show_warning(i18n("Web Preview"), i18n("Could not open browser"));
     }
 }
 
@@ -552,10 +552,10 @@ void GlaxnimateWindow::Private::preview_rive()
 void GlaxnimateWindow::Private::save_frame_bmp()
 {
     int frame = current_document->current_time();
-    QFileDialog fd(parent, tr("Save Frame Image"));
+    QFileDialog fd(parent, i18n("Save Frame Image"));
     fd.setDirectory(GlaxnimateSettings::render_path());
     fd.setDefaultSuffix("png");
-    fd.selectFile(tr("Frame%1.png").arg(frame));
+    fd.selectFile(i18n("Frame%1.png", frame));
     fd.setAcceptMode(QFileDialog::AcceptSave);
     fd.setFileMode(QFileDialog::AnyFile);
     fd.setOption(QFileDialog::DontUseNativeDialog, !GlaxnimateSettings::use_native_io_dialog());
@@ -563,7 +563,7 @@ void GlaxnimateWindow::Private::save_frame_bmp()
     QString formats;
     for ( const auto& fmt : QImageWriter::supportedImageFormats() )
         formats += QString("*.%1 ").arg(QString::fromUtf8(fmt));
-    fd.setNameFilter(tr("Image files (%1)").arg(formats));
+    fd.setNameFilter(i18n("Image files (%1)", formats));
 
     if ( fd.exec() == QDialog::Rejected )
         return;
@@ -572,20 +572,20 @@ void GlaxnimateWindow::Private::save_frame_bmp()
 
     QImage image = io::raster::RasterMime().to_image({comp});
     if ( !image.save(fd.selectedFiles()[0]) )
-        show_warning(tr("Render Frame"), tr("Could not save image"));
+        show_warning(i18n("Render Frame"), i18n("Could not save image"));
 }
 
 
 void GlaxnimateWindow::Private::save_frame_svg()
 {
     int frame = current_document->current_time();
-    QFileDialog fd(parent, tr("Save Frame Image"));
+    QFileDialog fd(parent, i18n("Save Frame Image"));
     fd.setDirectory(GlaxnimateSettings::render_path());
     fd.setDefaultSuffix("svg");
-    fd.selectFile(tr("Frame%1.svg").arg(frame));
+    fd.selectFile(i18n("Frame%1.svg", frame));
     fd.setAcceptMode(QFileDialog::AcceptSave);
     fd.setFileMode(QFileDialog::AnyFile);
-    fd.setNameFilter(tr("Scalable Vector Graphics (*.svg)"));
+    fd.setNameFilter(i18n("Scalable Vector Graphics (*.svg)"));
     fd.setOption(QFileDialog::DontUseNativeDialog, !GlaxnimateSettings::use_native_io_dialog());
 
     if ( fd.exec() == QDialog::Rejected )
@@ -596,7 +596,7 @@ void GlaxnimateWindow::Private::save_frame_svg()
     QFile file(fd.selectedFiles()[0]);
     if ( !file.open(QFile::WriteOnly) )
     {
-        show_warning(tr("Render Frame"), tr("Could not save image"));
+        show_warning(i18n("Render Frame"), i18n("Could not save image"));
         return;
     }
 
@@ -609,9 +609,9 @@ void GlaxnimateWindow::Private::validate_discord()
 {
     IoStatusDialog dialog(QIcon::fromTheme("discord"), "", false, parent);
     io::lottie::LottieFormat fmt;
-    dialog.reset(&fmt, tr("Validate Discord Sticker"));
+    dialog.reset(&fmt, i18n("Validate Discord Sticker"));
     io::lottie::validate_discord(current_document.get(), comp, &fmt);
-    dialog.show_errors(tr("No issues found"), tr("Some issues detected"));
+    dialog.show_errors(i18n("No issues found"), i18n("Some issues detected"));
     dialog.exec();
 }
 
@@ -619,9 +619,9 @@ void GlaxnimateWindow::Private::validate_tgs()
 {
     IoStatusDialog dialog(QIcon::fromTheme("telegram"), "", false, parent);
     io::lottie::TgsFormat fmt;
-    dialog.reset(&fmt, tr("Validate Telegram Sticker"));
+    dialog.reset(&fmt, i18n("Validate Telegram Sticker"));
     fmt.validate(current_document.get(), comp);
-    dialog.show_errors(tr("No issues found"), tr("Some issues detected"));
+    dialog.show_errors(i18n("No issues found"), i18n("Some issues detected"));
     dialog.exec();
 }
 
@@ -663,7 +663,7 @@ void GlaxnimateWindow::Private::load_backup(KAutoSaveFile* file, bool io_options
 
     if ( !file->open(QIODevice::ReadOnly) )
     {
-        show_warning(tr("Load Backup"), tr("Could not open the backup file"));
+        show_warning(i18n("Load Backup"), i18n("Could not open the backup file"));
         return;
     }
 
@@ -728,12 +728,12 @@ void GlaxnimateWindow::Private::set_color_def(model::BrushStyle* def, bool secon
     if ( secondary )
     {
         target = ui.stroke_style_widget->current();
-        what = tr("Stroke");
+        what = i18n("Stroke");
     }
     else
     {
         target = ui.fill_style_widget->current();
-        what = tr("Fill");
+        what = i18n("Fill");
     }
 
     if ( target )
@@ -742,7 +742,7 @@ void GlaxnimateWindow::Private::set_color_def(model::BrushStyle* def, bool secon
 
         if ( !def )
         {
-            command::UndoMacroGuard macro(tr("Unlink %1 Color").arg(what), current_document.get());
+            command::UndoMacroGuard macro(i18n("Unlink %1 Color", what), current_document.get());
             if ( auto col = qobject_cast<model::NamedColor*>(target->use.get()) )
                 target->color.set_undoable(col->color.get());
             target->use.set_undoable(QVariant::fromValue(def));
@@ -752,7 +752,7 @@ void GlaxnimateWindow::Private::set_color_def(model::BrushStyle* def, bool secon
         }
         else
         {
-            command::UndoMacroGuard macro(tr("Link %1 Color").arg(what), current_document.get());
+            command::UndoMacroGuard macro(i18n("Link %1 Color", what), current_document.get());
             target->use.set_undoable(QVariant::fromValue(def));
             target->visible.set_undoable(true);
             if ( old )
@@ -821,12 +821,12 @@ void GlaxnimateWindow::Private::import_file(QIODevice* file, const io::Options& 
     bool ok = options.format->open(*file, options.filename, &imported, settings);
     if ( !ok )
     {
-        show_warning(tr("Import File"), tr("Could not import %1").arg(options.filename));
+        show_warning(i18n("Import File"), i18n("Could not import %1", options.filename));
         return;
     }
 
     /// \todo ask if comp
-    parent->paste_document(&imported, tr("Import File"), true);
+    parent->paste_document(&imported, i18n("Import File"), true);
 
     load_pending();
 }
@@ -838,7 +838,7 @@ void GlaxnimateWindow::Private::import_file(const QString& filename, const QVari
     opts.settings = settings;
     opts.format = io::IoRegistry::instance().from_extension(finfo.suffix(), io::ImportExport::Import);
     if ( !opts.format )
-        show_warning(tr("Import File"), tr("Could not import %1").arg(filename));
+        show_warning(i18n("Import File"), i18n("Could not import %1", filename));
     opts.filename = filename;
     opts.path = finfo.dir();
     import_file(opts);
@@ -864,7 +864,7 @@ static void on_font_loader_finished(glaxnimate::gui::font::FontLoader* loader)
         auto document = static_cast<glaxnimate::model::Document*>(loader->parent());
         bool clear = document->undo_stack().count() == 0;
 
-        glaxnimate::command::UndoMacroGuard guard(QObject::tr("Download fonts"), document);
+        glaxnimate::command::UndoMacroGuard guard(i18n("Download fonts"), document);
         for ( const auto& font : loader->fonts() )
             document->assets()->add_font(font);
         guard.finish();
@@ -902,14 +902,14 @@ void glaxnimate::gui::GlaxnimateWindow::Private::load_remote_document(const QUrl
             if ( code.isValid() )
             {
                 auto reason = reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
-                message = tr("HTTP Error %1 %2").arg(code.toInt()).arg(reason);
+                message = i18n("HTTP Error %1 %2", code.toInt(), reason);
             }
             else
             {
-                message = tr("Network Error");
+                message = i18n("Network Error");
             }
 
-            show_warning(tr("Load URL"), tr("Could not load %1: %2").arg(reply->url().toString()).arg(message));
+            show_warning(i18n("Load URL"), i18n("Could not load %1: %2", reply->url().toString(), message));
             return;
         }
 
@@ -927,15 +927,15 @@ void glaxnimate::gui::GlaxnimateWindow::Private::check_autosaves()
         return;
 
     WindowMessageWidget::Message msg{
-        tr("There are %1 auto-save files that can be restored.").arg(stale.size()),
+        i18n("There are %1 auto-save files that can be restored.", stale.size()),
         KMessageWidget::Information
     };
 
-    msg.add_action(QIcon::fromTheme("dialog-cancel"), tr("Ignore"));
+    msg.add_action(QIcon::fromTheme("dialog-cancel"), i18n("Ignore"));
 
     msg.add_action(
         QIcon::fromTheme("document-revert"),
-        tr("Load Backup..."),
+        i18n("Load Backup..."),
         parent,
         [this, stale]{ show_stale_autosave_list(stale); }
     );

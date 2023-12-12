@@ -89,8 +89,6 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     this->parent = parent;
     parent->createGUI();
     ui.setupUi(parent);
-    redo_text = ui.action_redo->text();
-    undo_text = ui.action_undo->text();
 
     init_actions();
 
@@ -110,8 +108,8 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     connect(ui.canvas, &Canvas::dropped, parent, [this](const QMimeData* d){dropped(d);});
 
     // Dialogs
-    dialog_import_status = new IoStatusDialog(QIcon::fromTheme("document-open"), tr("Open File"), false, parent);
-    dialog_export_status = new IoStatusDialog(QIcon::fromTheme("document-save"), tr("Save File"), false, parent);
+    dialog_import_status = new IoStatusDialog(QIcon::fromTheme("document-open"), i18n("Open File"), false, parent);
+    dialog_export_status = new IoStatusDialog(QIcon::fromTheme("document-save"), i18n("Save File"), false, parent);
     about_dialog = new AboutDialog(parent);
 
     // Only enabled on debug because it isn't fully integrated yet
@@ -245,11 +243,11 @@ void GlaxnimateWindow::Private::init_actions()
 
     connect(ui.action_play, &QAction::triggered, ui.play_controls, &FrameControlsWidget::toggle_play);
     connect(ui.play_controls, &FrameControlsWidget::play_started, parent, [this]{
-        ui.action_play->setText(tr("Pause"));
+        ui.action_play->setText(i18n("Pause"));
         ui.action_play->setIcon(QIcon::fromTheme("media-playback-pause"));
     });
     connect(ui.play_controls, &FrameControlsWidget::play_stopped, parent, [this]{
-        ui.action_play->setText(tr("Play"));
+        ui.action_play->setText(i18n("Play"));
         ui.action_play->setIcon(QIcon::fromTheme("media-playback-start"));
     });
     connect(ui.play_controls, &FrameControlsWidget::record_toggled, ui.action_record, &QAction::setChecked);
@@ -326,12 +324,12 @@ void GlaxnimateWindow::Private::init_actions()
     QObject::connect(ui.action_redo, &QAction::triggered, &parent->undo_group(), &QUndoGroup::redo);
     QObject::connect(&parent->undo_group(), &QUndoGroup::canRedoChanged, ui.action_redo, &QAction::setEnabled);
     QObject::connect(&parent->undo_group(), &QUndoGroup::redoTextChanged, ui.action_redo, [this](const QString& s){
-        ui.action_redo->setText(redo_text.arg(s));
+        ui.action_redo->setText(i18n("Redo %1", s));
     });
     QObject::connect(ui.action_undo, &QAction::triggered, &parent->undo_group(), &QUndoGroup::undo);
     QObject::connect(&parent->undo_group(), &QUndoGroup::canUndoChanged, ui.action_undo, &QAction::setEnabled);
     QObject::connect(&parent->undo_group(), &QUndoGroup::undoTextChanged, ui.action_undo, [this](const QString& s){
-        ui.action_undo->setText(undo_text.arg(s));
+        ui.action_undo->setText(i18n("Undo %1", s));
     });
     ui.view_undo->setGroup(&parent->undo_group());
 
@@ -511,7 +509,7 @@ void GlaxnimateWindow::Private::init_status_bar()
     lay->addWidget(label_recording_icon);
 
     label_recording = new QLabel();
-    label_recording->setText(tr("Recording Keyframes"));
+    label_recording->setText(i18n("Recording Keyframes"));
     lay->addWidget(label_recording);
 
     lay->addWidget(status_bar_separator());
@@ -938,7 +936,7 @@ void GlaxnimateWindow::Private::init_menus()
             bool ok = false;
             setup_document_ptr(templ.create(&ok));
             if ( !ok )
-                show_warning(tr("New from Template"), tr("Could not load template"));
+                show_warning(i18n("New from Template"), i18n("Could not load template"));
         }
     );
 
@@ -946,13 +944,13 @@ void GlaxnimateWindow::Private::init_menus()
         bool ok = true;
 
         QString old_name = comp->name.get();
-        QString name = QInputDialog::getText(parent, tr("Save as Template"), tr("Name"), QLineEdit::Normal, old_name, &ok);
+        QString name = QInputDialog::getText(parent, i18n("Save as Template"), i18n("Name"), QLineEdit::Normal, old_name, &ok);
         if ( !ok )
             return;
 
         comp->name.set(name);
         if ( !settings::DocumentTemplates::instance().save_as_template(current_document.get()) )
-            show_warning(tr("Save as Template"), tr("Could not save template"));
+            show_warning(i18n("Save as Template"), i18n("Could not save template"));
         comp->name.set(old_name);
     });
 }
@@ -989,12 +987,10 @@ void GlaxnimateWindow::Private::init_restore_state()
 void GlaxnimateWindow::Private::retranslateUi(QMainWindow* parent)
 {
     ui.retranslateUi(parent);
-    label_recording->setText(tr("Recording Keyframes"));
+    label_recording->setText(i18n("Recording Keyframes"));
 
-    redo_text = ui.action_redo->text();
-    undo_text = ui.action_undo->text();
-    ui.action_undo->setText(redo_text.arg(current_document->undo_stack().undoText()));
-    ui.action_redo->setText(redo_text.arg(current_document->undo_stack().redoText()));
+    ui.action_undo->setText(i18n("Undo %1", current_document->undo_stack().undoText()));
+    ui.action_redo->setText(i18n("Redo %1", current_document->undo_stack().redoText()));
 
     for ( const auto& grp : tools::Registry::instance() )
         for ( const auto& tool : grp.second )
@@ -1140,7 +1136,7 @@ void GlaxnimateWindow::Private::trace_dialog(model::DocumentNode* object)
             {
                 if ( bmp )
                 {
-                    show_warning(tr("Trace Bitmap"), tr("Only select one image"), app::log::Info);
+                    show_warning(i18n("Trace Bitmap"), i18n("Only select one image"), app::log::Info);
                     return;
                 }
                 bmp = image;
@@ -1149,14 +1145,14 @@ void GlaxnimateWindow::Private::trace_dialog(model::DocumentNode* object)
 
         if ( !bmp )
         {
-            show_warning(tr("Trace Bitmap"), tr("You need to select an image to trace"), app::log::Info);
+            show_warning(i18n("Trace Bitmap"), i18n("You need to select an image to trace"), app::log::Info);
             return;
         }
     }
 
     if ( !bmp->image.get() )
     {
-        show_warning(tr("Trace Bitmap"), tr("You selected an image with no data"), app::log::Info);
+        show_warning(i18n("Trace Bitmap"), i18n("You selected an image with no data"), app::log::Info);
         return;
     }
 
@@ -1206,7 +1202,7 @@ void GlaxnimateWindow::Private::init_plugins()
 
 void GlaxnimateWindow::Private::mouse_moved(const QPointF& pos)
 {
-    label_mouse_pos->setText(tr("X: %1 Y: %2").arg(pos.x(), 8, 'f', 3).arg(pos.y(), 8, 'f', 3));
+    label_mouse_pos->setText(ki18n("X: %1 Y: %2").subs(pos.x(), 8, 'f', 3).subs(pos.y(), 8, 'f', 3).toString());
 }
 
 void GlaxnimateWindow::Private::show_startup_dialog()
@@ -1225,7 +1221,7 @@ void GlaxnimateWindow::Private::show_startup_dialog()
 void GlaxnimateWindow::Private::drop_file(const QString& file)
 {
     QDialog dialog(parent);
-    dialog.setWindowTitle(tr("Drop File"));
+    dialog.setWindowTitle(i18n("Drop File"));
     QIcon icon = QIcon::fromTheme("dialog-question");
     dialog.setWindowIcon(icon);
     QVBoxLayout lay;
@@ -1236,25 +1232,25 @@ void GlaxnimateWindow::Private::drop_file(const QString& file)
     label_icon.setPixmap(icon.pixmap(64));
     lay1.addWidget(&label_icon);
     QLabel label_text;
-    label_text.setText(tr("Add to current file?"));
+    label_text.setText(i18n("Add to current file?"));
     label_text.setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     lay1.addWidget(&label_text);
     lay.addLayout(&lay1);
 
     QHBoxLayout lay2;
-    QPushButton btn1(tr("Add as Object"));
+    QPushButton btn1(i18n("Add as Object"));
     lay2.addWidget(&btn1);
     connect(&btn1, &QPushButton::clicked, &dialog, [&dialog, this, &file]{
         drop_document(file, false);
         dialog.accept();
     });
-    QPushButton btn2(tr("Add as Composition"));
+    QPushButton btn2(i18n("Add as Composition"));
     lay2.addWidget(&btn2);
     connect(&btn2, &QPushButton::clicked, &dialog, [&dialog, this, &file]{
         drop_document(file, true);
         dialog.accept();
     });
-    QPushButton btn3(tr("Open"));
+    QPushButton btn3(i18n("Open"));
     lay2.addWidget(&btn3);
     connect(&btn3, &QPushButton::clicked, &dialog, [&dialog, this, &file]{
         document_open_from_filename(file);

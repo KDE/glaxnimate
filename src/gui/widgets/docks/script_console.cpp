@@ -58,10 +58,10 @@ public:
                 try {
                     ok = ctx->run_from_module(plugin.data().dir, script.module, script.function, args);
                     if ( !ok )
-                        parent->error(plugin.data().name, tr("Could not run the plugin"));
+                        parent->error(plugin.data().name, i18n("Could not run the plugin"));
                 } catch ( const app::scripting::ScriptError& err ) {
                     console_error(err);
-                    parent->error(plugin.data().name, tr("Plugin raised an exception"));
+                    parent->error(plugin.data().name, i18n("Plugin raised an exception"));
                     ok = false;
                 }
                 current_plugin = nullptr;
@@ -69,7 +69,7 @@ public:
             }
         }
 
-        parent->error(plugin.data().name, tr("Could not find an interpreter"));
+        parent->error(plugin.data().name, i18n("Could not find an interpreter"));
         return false;
     }
 

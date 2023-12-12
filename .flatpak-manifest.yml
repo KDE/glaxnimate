@@ -33,8 +33,6 @@ modules:
         config-opts:
             - -DCMAKE_BUILD_TYPE=RelWithDebInfo
             - -DQT_MAJOR_VERSION=5
-        build-commands:
-            - ninja translations
         sources:
             -
                 type: dir

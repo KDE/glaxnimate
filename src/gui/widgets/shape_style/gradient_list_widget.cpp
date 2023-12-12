@@ -130,7 +130,7 @@ public:
         }
 
         // Undo macro
-        command::UndoMacroGuard macro(tr("Set %1 Gradient").arg(model::Gradient::gradient_type_name(gradient_type)), document);
+        command::UndoMacroGuard macro(i18n("Set %1 Gradient", model::Gradient::gradient_type_name(gradient_type)), document);
 
         // Gather bounding box
         auto shape_element = window->current_shape();
@@ -209,7 +209,7 @@ public:
         if ( targets.empty() )
             return;
 
-        command::UndoMacroGuard macro(tr("Remove Gradient"), document);
+        command::UndoMacroGuard macro(i18n("Remove Gradient"), document);
 
         for ( auto styler : targets )
         {
@@ -229,7 +229,7 @@ public:
 
     void add_gradient()
     {
-        add_gradient({{0, window->current_color()}, {1, window->secondary_color()}}, tr("Gradient"));
+        add_gradient({{0, window->current_color()}, {1, window->secondary_color()}}, i18n("Gradient"));
     }
 
     void add_gradient(const QGradientStops& stops, const QString& name)
@@ -385,7 +385,7 @@ public:
     void from_preset()
     {
         QDialog dialog(window->as_widget());
-        dialog.setWindowTitle(tr("Gradient Presets"));
+        dialog.setWindowTitle(i18n("Gradient Presets"));
         dialog.setWindowIcon(QIcon::fromTheme("color-gradient"));
         QVBoxLayout lay;
         dialog.setLayout(&lay);

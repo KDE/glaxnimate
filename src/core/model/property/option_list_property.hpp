@@ -11,7 +11,7 @@
 
 #define GLAXNIMATE_PROPERTY_OPTIONS(type, name, defval, container, ...)         \
 public:                                                                         \
-    OptionListProperty<type, container> name{this, #name, defval, __VA_ARGS__}; \
+    OptionListProperty<type, container> name{this, kli18n(#name), defval, __VA_ARGS__}; \
     GLAXNIMATE_PROPERTY_IMPL(type, name)                                        \
     Q_PROPERTY(QVariantList name##_options READ name##_options)                 \
     QVariantList name##_options() const { return name.value_options(); }        \
@@ -52,7 +52,7 @@ class OptionListProperty : public detail::PropertyTemplate<OptionListPropertyBas
 public:
     OptionListProperty(
         Object* obj,
-        const QString& name,
+        const KLazyLocalizedString& name,
         Type default_value,
         PropertyCallback<Container> option_list,
         PropertyCallback<void, Type, Type> emitter = {},

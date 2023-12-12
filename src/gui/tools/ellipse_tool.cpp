@@ -14,8 +14,8 @@ class EllipseTool : public RectangleTool
 public:
     QString id() const override { return "draw-ellipse"; }
     QIcon icon() const override { return QIcon::fromTheme("draw-ellipse"); }
-    QString name() const override { return QObject::tr("Ellipse"); }
-    QKeySequence key_sequence() const override { return QKeySequence(QObject::tr("F5"), QKeySequence::PortableText); }
+    QString name() const override { return i18n("Ellipse"); }
+    QKeySequence key_sequence() const override { return QKeySequence(i18n("F5"), QKeySequence::PortableText); }
     static int static_group() noexcept { return Registry::Shape; }
     int group() const noexcept override { return static_group(); }
 
@@ -25,7 +25,7 @@ public:
         rect = rect.normalized();
         shape->position.set(rect.center());
         shape->size.set(rect.size());
-        create_shape(QObject::tr("Draw Ellipse"), event, std::move(shape));
+        create_shape(i18n("Draw Ellipse"), event, std::move(shape));
     }
 
     void paint(const PaintEvent& event) override

@@ -7,6 +7,7 @@
 #pragma once
 
 #include "app/settings/custom_settings_group.hpp"
+#include <KLocalizedString>
 
 namespace glaxnimate::gui::settings {
 
@@ -15,7 +16,7 @@ class ToolbarSettingsGroup : public app::settings::CustomSettingsGroupBase
 public:
     QString slug() const override { return "toolbars"; }
     QIcon icon() const override { return QIcon::fromTheme("configure-toolbars"); }
-    QString label() const override { return QObject::tr("Toolbars"); }
+    QString label() const override { return i18n("Toolbars"); }
 
     void load ( QSettings & settings ) override;
     void save ( QSettings & settings ) override;

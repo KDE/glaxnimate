@@ -10,6 +10,7 @@
 #include <QTabBar>
 #include <QPainter>
 #include <QStyleOptionTab>
+#include <KLocalizedString>
 
 using namespace glaxnimate::gui;
 
@@ -56,7 +57,7 @@ TabBarCloseButton::TabBarCloseButton(QWidget *parent)
 {
     setFocusPolicy(Qt::NoFocus);
     setCursor(Qt::ArrowCursor);
-    setToolTip(tr("Delete Composition"));
+    setToolTip(i18n("Delete Composition"));
 
     resize(sizeHint());
 }
