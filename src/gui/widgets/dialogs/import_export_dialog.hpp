@@ -14,6 +14,7 @@
 #include "io/io_registry.hpp"
 #include "model/document.hpp"
 #include "app/settings/widget_builder.hpp"
+#include "glaxnimate_settings.hpp"
 
 namespace glaxnimate::gui {
 
