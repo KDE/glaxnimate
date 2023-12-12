@@ -289,7 +289,7 @@ void glaxnimate::gui::SettingsDialog::updateSettings()
     {
         auto group = GlaxnimateSettings::self()->config()->group(QStringLiteral("Shortcuts"));
         d->action_collection->writeSettings(&group);
-        d->shortcut_editor->commit();
+        d->shortcut_editor->save();
     }
     else
     {
