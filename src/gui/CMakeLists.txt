@@ -244,4 +244,7 @@ if ( NOT ANDROID )
         ${LIB_NAME_GUI} PUBLIC
         KF${KF_MAJOR}::Crash
     )
+
+    install(FILES widgets/dialogs/glaxnimateui.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/glaxnimate)
+    configure_file(widgets/dialogs/glaxnimateui.rc ${KDE_INSTALL_KXMLGUI5DIR}/glaxnimate/glaxnimateui.rc COPYONLY)
 endif()

@@ -87,7 +87,6 @@ static void action_combo(QComboBox* box, QAction* action)
 void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, GlaxnimateWindow* parent)
 {
     this->parent = parent;
-    parent->createGUI();
     ui.setupUi(parent);
 
     init_actions();
@@ -110,15 +109,6 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     // Dialogs
     dialog_import_status = new IoStatusDialog(QIcon::fromTheme("document-open"), i18n("Open File"), false, parent);
     dialog_export_status = new IoStatusDialog(QIcon::fromTheme("document-save"), i18n("Save File"), false, parent);
-    about_dialog = new AboutDialog(parent);
-
-    // Only enabled on debug because it isn't fully integrated yet
-    if ( debug )
-    {
-        KHelpMenu *help_menu = new KHelpMenu(parent);
-        ui.menu_bar->addMenu(help_menu->menu());
-        connect(help_menu, &KHelpMenu::showAboutApplication, about_dialog, &QWidget::show);
-    }
 
     // Recent files
     recent_files = GlaxnimateSettings::recent_files();
@@ -144,14 +134,18 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     if ( restore_state )
         init_restore_state();
 
+
+    qDeleteAll(parent->findChildren<QToolBar*>());
+    parent->setupGUI(KXmlGuiWindow::Default, "glaxnimateui.rc");
+
     auto group = GlaxnimateSettings::self()->config()->group(QStringLiteral("Shortcuts"));
     parent->actionCollection()->readSettings(&group);
 
 
     // Toolbar settings
-    parent->setToolButtonStyle(settings::ToolbarSettingsGroup::button_style);
-    parent->setIconSize(settings::ToolbarSettingsGroup::icon_size());
-    ui.toolbar_tools->setIconSize(settings::ToolbarSettingsGroup::tool_icon_size());
+    // parent->setToolButtonStyle(settings::ToolbarSettingsGroup::button_style);
+    // parent->setIconSize(settings::ToolbarSettingsGroup::icon_size());
+    // ui.toolbar_tools->setIconSize(settings::ToolbarSettingsGroup::tool_icon_size());
 }
 
 template<class T>
@@ -307,18 +301,6 @@ void GlaxnimateWindow::Private::init_actions()
     connect(ui.action_text_remove_from_path, &QAction::triggered, parent, [this]{text_remove_from_path();});
     connect(ui.action_insert_emoji, &QAction::triggered, parent, [this]{insert_emoji();});
     connect(ui.action_open_lottiefiles, &QAction::triggered, parent, [this]{import_from_lottiefiles();});
-    connect(ui.action_shortcuts, &QAction::triggered, parent, [this]{
-        KShortcutsDialog::showDialog(parent->actionCollection(), KShortcutsEditor::LetterShortcutsAllowed, this->parent);
-    });
-
-    connect(ui.action_settings, &QAction::triggered, parent, [this]{
-        if (KConfigDialog::showDialog(QStringLiteral("settings"))) {
-            return;
-        }
-
-        SettingsDialog dialog(parent);
-        dialog.exec();
-    });
 
     // Undo Redo
     QObject::connect(ui.action_redo, &QAction::triggered, &parent->undo_group(), &QUndoGroup::redo);
@@ -333,19 +315,35 @@ void GlaxnimateWindow::Private::init_actions()
     });
     ui.view_undo->setGroup(&parent->undo_group());
 
+    about_dialog = new AboutDialog(parent);
+    KStandardAction::aboutApp(about_dialog, &QWidget::show, parent->actionCollection());
+    auto action_help_contents = KStandardAction::helpContents(parent, &GlaxnimateWindow::help_manual, parent->actionCollection());
+    action_help_contents->setShortcut({});
+    parent->actionCollection()->setDefaultShortcut(action_help_contents, {});
+    KStandardAction::donate(parent, &GlaxnimateWindow::help_donate, parent->actionCollection());
+    KStandardAction::preferences(parent, [this]{
+            SettingsDialog dialog(parent);
+            dialog.exec();
+    }, parent->actionCollection());
+
+
 #ifdef Q_OS_WIN32
     // Can't get emoji_data.cpp to compile on windows for qt6 for some reason
     // the compiler errors out without message
     ui.action_insert_emoji->setEnabled(false);
 #endif
 
-    parent->actionCollection()->addAssociatedWidget(parent);
+    // parent->actionCollection()->addAssociatedWidget(parent);
     for ( auto action : parent->findChildren<QAction*>() )
     {
-        if ( !action->isSeparator() && !action->objectName().isEmpty() )
+        if ( !action->isSeparator() && !action->objectName().isEmpty() && !action->objectName().startsWith("_") )
         {
-            parent->actionCollection()->addAction(action->objectName(), action);
-            parent->actionCollection()->setDefaultShortcut(action, action->shortcut());
+            auto action_parent = action->parent();
+            if ( qobject_cast<QMenu*>(action_parent) || action_parent == parent )
+            {
+                parent->actionCollection()->addAction(action->objectName(), action);
+                parent->actionCollection()->setDefaultShortcut(action, action->shortcut());
+            }
         }
     }
 }

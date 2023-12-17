@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gui name="glaxnimate" version="4" xmlns="http://www.kde.org/standards/kxmlgui/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
+  <MenuBar name="menu_bar">
+    <Menu name="menu_file">
+      <text>&amp;File</text>
+      <Action name="action_new" />
+      <Menu name="menu_new_from_template">
+        <text>New from Template</text>
+      </Menu>
+      <Action name="action_open" />
+      <Action name="action_import_image" />
+      <Action name="action_import" />
+      <Action name="action_open_lottiefiles" />
+      <Action name="action_open_last" />
+      <Menu name="menu_open_recent">
+        <text>Open &amp;Recent</text>
+        <Separator />
+      </Menu>
+      <Separator />
+      <Action name="action_reload" />
+      <Action name="action_save" />
+      <Action name="action_save_as" />
+      <Action name="action_save_as_template" />
+      <Separator />
+      <Action name="action_export" />
+      <Action name="action_export_as" />
+      <Action name="action_export_sequence" />
+      <Separator />
+      <Action name="action_close" />
+      <Separator />
+      <Action name="action_quit" />
+    </Menu>
+    <Menu name="menu_edit">
+      <text>&amp;Edit</text>
+      <Action name="action_undo" />
+      <Separator />
+      <Action name="action_redo" />
+      <Separator />
+      <Action name="action_cut" />
+      <Action name="action_copy" />
+      <Action name="action_paste" />
+      <Action name="action_paste_as_composition" />
+      <Action name="action_duplicate" />
+      <Action name="action_select_all" />
+      <Action name="action_delete" />
+      <Separator />
+    </Menu>
+    <Menu name="menu_tools">
+      <text>&amp;Tools</text>
+    </Menu>
+    <Menu name="menu_view">
+      <text>&amp;View</text>
+      <Separator />
+      <Menu name="menu_views">
+        <text>&amp;Views</text>
+        <Separator />
+      </Menu>
+      <Menu name="menu_layout">
+        <text>&amp;Layout</text>
+        <Action name="action_layout_custom" />
+        <Action name="action_layout_automatic" />
+        <Action name="action_layout_wide" />
+        <Action name="action_layout_medium" />
+        <Action name="action_layout_compact" />
+      </Menu>
+      <Menu name="menu_toolbars">
+        <text>Tool&amp;bars</text>
+      </Menu>
+      <Action name="action_view_zoom_in" />
+      <Action name="action_view_zoom_out" />
+      <Action name="action_view_zoom_reset" />
+      <Action name="action_view_fit" />
+      <Action name="action_view_reset_rotation" />
+      <Action name="action_flip_view" />
+    </Menu>
+    <Menu name="menu_document">
+      <text>&amp;Document</text>
+      <Menu name="menu_render_single_frame">
+        <text>Render Single &amp;Frame</text>
+        <Action name="action_render_frame_raster" />
+        <Action name="action_render_frame_svg" />
+      </Menu>
+      <Menu name="menu_web_preview">
+        <text>&amp;Web Preview</text>
+        <Action name="action_lottie_preview" />
+        <Action name="action_lottie_canvas_preview" />
+        <Action name="action_svg_preview" />
+        <Action name="action_rive_preview" />
+      </Menu>
+      <Action name="action_validate_tgs" />
+      <Action name="action_validate_discord" />
+      <Separator />
+      <Action name="action_resize" />
+      <Action name="action_timing" />
+      <Action name="action_metadata" />
+      <Separator />
+      <Action name="action_document_cleanup" />
+    </Menu>
+    <Menu name="menu_playback">
+      <text>&amp;Playback</text>
+      <Action name="action_play" />
+      <Action name="action_play_loop" />
+      <Action name="action_record" />
+      <Separator />
+      <Action name="action_frame_first" />
+      <Action name="action_frame_prev" />
+      <Action name="action_frame_next" />
+      <Action name="action_frame_last" />
+    </Menu>
+    <Menu name="menu_layers">
+      <text>&amp;Layers</text>
+      <Menu name="menu_new_layer">
+        <text>&amp;New</text>
+        <Menu name="menu_new_comp_layer">
+          <text>&amp;Composition</text>
+          <Separator />
+        </Menu>
+        <Action name="action_new_layer" />
+        <Action name="action_new_group" />
+        <Action name="action_new_fill" />
+        <Action name="action_new_stroke" />
+        <Action name="action_insert_emoji" />
+      </Menu>
+      <Action name="action_new_precomp_selection" />
+      <Action name="action_new_precomp" />
+      <Separator />
+    </Menu>
+    <Menu name="menu_object">
+      <text>&amp;Object</text>
+      <Action name="action_raise_to_top" />
+      <Action name="action_raise" />
+      <Action name="action_lower" />
+      <Action name="action_lower_to_bottom" />
+      <Action name="action_move_to" />
+      <Separator />
+      <Action name="action_group" />
+      <Action name="action_ungroup" />
+      <Separator />
+      <Menu name="menu_align">
+        <text>&amp;Align and Distribute</text>
+        <Action name="separator_align_relative_to" />
+        <Action name="action_align_to_selection" />
+        <Action name="action_align_to_canvas" />
+        <Action name="action_align_to_canvas_group" />
+        <Action name="separator_align_horizontal" />
+        <Action name="action_align_hor_left_out" />
+        <Action name="action_align_hor_left" />
+        <Action name="action_align_hor_center" />
+        <Action name="action_align_hor_right" />
+        <Action name="action_align_hor_right_out" />
+        <Action name="separator_align_vertical" />
+        <Action name="action_align_vert_top_out" />
+        <Action name="action_align_vert_top" />
+        <Action name="action_align_vert_center" />
+        <Action name="action_align_vert_bottom" />
+        <Action name="action_align_vert_bottom_out" />
+      </Menu>
+    </Menu>
+    <Menu name="menu_path">
+      <text>&amp;Path</text>
+      <Separator />
+      <Action name="action_object_to_path" />
+      <Action name="action_trace_bitmap" />
+      <Separator />
+      <Action name="action_path_add" />
+      <Action name="action_path_subtract" />
+      <Action name="action_path_intersect" />
+      <Action name="action_path_xor" />
+      <Separator />
+      <Action name="action_path_reverse" />
+      <Separator />
+      <Action name="action_node_dissolve" />
+      <Action name="action_node_remove" />
+      <Action name="action_node_add" />
+      <Separator />
+      <Action name="action_node_join" />
+      <Action name="action_node_split" />
+      <Separator />
+      <Action name="action_node_type_corner" />
+      <Action name="action_node_type_smooth" />
+      <Action name="action_node_type_symmetric" />
+      <Separator />
+      <Action name="action_segment_lines" />
+      <Action name="action_segment_curve" />
+    </Menu>
+    <Menu name="menu_text">
+      <text>&amp;Text</text>
+      <Action name="action_text_put_on_path" />
+      <Action name="action_text_remove_from_path" />
+    </Menu>
+    <Menu name="menu_plugins">
+      <text>Plu&amp;gins</text>
+    </Menu>
+    <Menu name="settings">
+      <text>&amp;Settings</text>
+      <Action name="action_settings" />
+    </Menu>
+    <Menu name="menu_help">
+      <text>&amp;Help</text>
+      <Action name="action_online_manual" />
+      <Action name="action_donate" />
+      <Action name="action_report_issue" />
+      <Action name="action_about" />
+    </Menu>
+  </MenuBar>
+  <ToolBar name="toolbar_main" iconText="icononly" fullWidth="true" newline="false" position="top">
+    <text>Main Toolbar</text>
+    <Action name="action_new" />
+    <Action name="action_open" />
+    <Action name="action_save" />
+    <Action name="action_save_as" />
+    <Action name="action_export" />
+    <Separator />
+    <Action name="action_undo" />
+    <Action name="action_redo" />
+    <Separator />
+    <Action name="action_copy" />
+    <Action name="action_cut" />
+    <Action name="action_paste" />
+    <Separator />
+    <Action name="action_select_all" />
+    <Separator />
+    <Action name="action_raise_to_top" />
+    <Action name="action_raise" />
+    <Action name="action_lower" />
+    <Action name="action_lower_to_bottom" />
+    <Action name="action_move_to" />
+    <Separator />
+  </ToolBar>
+  <ToolBar name="toolbar_node" iconText="icononly" fullWidth="true" newline="false" position="top">
+    <text>Node Editing</text>
+    <Action name="action_node_type_corner" />
+    <Action name="action_node_type_smooth" />
+    <Action name="action_node_type_symmetric" />
+    <Separator />
+    <Action name="action_node_dissolve" />
+    <Action name="action_node_remove" />
+    <Action name="action_node_add" />
+    <Separator />
+    <Action name="action_segment_lines" />
+    <Action name="action_segment_curve" />
+  </ToolBar>
+  <ToolBar name="toolbar_tools" iconText="icononly" fullWidth="true" newline="false" position="left">
+    <text>Tools</text>
+  </ToolBar>
+</gui>
