@@ -385,7 +385,7 @@ msgstr "Sauvegarder le fichier"
 #: src/android/document_opener.cpp:106
 #, kde-format
 msgid "Could not save the file"
-msgstr "Ne peut sauvegarder le fichier"
+msgstr "Impossible d'enregistrer le fichier"
 
 #: src/android/document_opener.cpp:128
 #, kde-format
@@ -395,7 +395,7 @@ msgstr "Type de fichier inconnu"
 #: src/android/document_opener.cpp:154
 #, kde-format
 msgid "Could not unzip the file"
-msgstr "Ne peut déziper le fichier"
+msgstr "Impossible de dézipper le fichier"
 
 #: src/android/document_opener.cpp:193
 #, kde-format
@@ -438,14 +438,14 @@ msgstr ""
 #, kde-format
 msgid "Save the current document, prompting to select a file for new documents"
 msgstr ""
-"Sauvegarde le document actuel, demandant de choisir un fichier pour les "
+"Enregistre le document actuel, demandant de choisir un fichier pour les "
 "nouveaux documents"
 
 #: src/android/help_dialog.cpp:70
 #, kde-format
 msgid "Save the current document, always prompting to select a file."
 msgstr ""
-"Sauvegarde le document actuel, demande toujours de sélectionner un fichier."
+"Enregistre le document actuel, demande toujours de sélectionner un fichier."
 
 #: src/android/help_dialog.cpp:74
 #, kde-format
@@ -454,15 +454,15 @@ msgid ""
 "Currently the following formats are supported:\n"
 "%1"
 msgstr ""
-"Sauve une copie du document actuel, en demandant de choisir un format et un "
-"fichier.\n"
+"Enregistre une copie du document actuel, en demandant de choisir un format "
+"et un fichier.\n"
 "Les formats suivants sont actuellement supportés :\n"
 "%1"
 
 #: src/android/help_dialog.cpp:78
 #, kde-format
 msgid "Saves the current frame as a still image"
-msgstr "Sauvegarde l'image actuelle comme une image fixe"
+msgstr "Enregistre l'image actuelle comme une image fixe"
 
 #: src/android/help_dialog.cpp:82
 #, kde-format
@@ -513,7 +513,7 @@ msgid ""
 "Opens the side pane used to change the advanced properties for the selected "
 "object."
 msgstr ""
-"Ouvrir le panneau latéral, utilisé pour changer les propriétées avancées des "
+"Ouvrir le panneau latéral, utilisé pour changer les propriétés avancées des "
 "objets séléctionnés."
 
 #: src/android/help_dialog.cpp:114
@@ -545,7 +545,7 @@ msgid ""
 "Select tool, you can use it to select objects and change their transform."
 msgstr ""
 "Outil sélection, vous pouvez l'utiliser pour sélectionner des objets et "
-"change leurs transformations."
+"changer leurs transformations."
 
 #: src/android/help_dialog.cpp:134
 #, kde-format
@@ -593,13 +593,13 @@ msgid ""
 "polygon and change the number of sides from the properties pane."
 msgstr ""
 "Trace une étoile, après qu'elle ai été crée, vous pouvez la transformer en "
-"polygone régulier puis changer le nombre de côtés depuis le panneaaux des "
+"polygone régulier puis changer le nombre de côtés depuis le panneaux des "
 "propriétés."
 
 #: src/android/help_dialog.cpp:166
 #, kde-format
 msgid "Create and edit text shapes."
-msgstr "Crée et édite des formes texte."
+msgstr "Crée et modifie des formes texte."
 
 #: src/android/help_dialog.cpp:170
 #, kde-format
@@ -654,7 +654,7 @@ msgstr "Pousse la sélection vers l'arrière."
 #: src/android/help_dialog.cpp:206
 #, kde-format
 msgid "Brings the selection further to the front."
-msgstr "Ammener la sélection d'avantage vers l'avant"
+msgstr "Ammener la sélection davantage vers l'avant"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_timeline)
 #: src/android/main_window.cpp:411
@@ -789,7 +789,7 @@ msgstr "Importer comme composition"
 #: src/android/main_window.cpp:516
 #, kde-format
 msgid "Save..."
-msgstr "Sauvegarder..."
+msgstr "Enregistrer..."
 
 #. i18n: ectx: property (text), widget (QToolButton, preview_2)
 #: src/android/main_window.cpp:518
@@ -803,7 +803,7 @@ msgstr "Sauvegarder"
 #: src/android/main_window.cpp:521
 #, kde-format
 msgid "Save As"
-msgstr "Sauvegarder comme"
+msgstr "Enregistrer comme"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_export)
 #: src/android/main_window.cpp:524
@@ -817,7 +817,7 @@ msgstr "Exporter"
 #: src/android/main_window.cpp:527
 #, kde-format
 msgid "Save Frame as PNG"
-msgstr "Sauvegarder l'image en PNG"
+msgstr "Enregistrer l'image en PNG"
 
 #: src/android/main_window.cpp:531
 #, kde-format
@@ -863,8 +863,8 @@ msgid ""
 "The animation has unsaved changes.\n"
 "Do you want to save your changes?"
 msgstr ""
-"L'animation comporte des changements non sauvegardés.\n"
-"Désirez-vous sauvegarder vos changements ?"
+"L'animation comporte des changements non enregistrés.\n"
+"Souhaitez-vous enregistrer vos changements ?"
 
 #: src/android/main_window.cpp:749 src/android/main_window.cpp:753
 #: src/android/main_window.cpp:886
@@ -935,18 +935,18 @@ msgstr "Autocollants trop nombreux"
 #: src/android/sticker_pack_builder_dialog.cpp:171
 #, kde-format
 msgid "Could not open file"
-msgstr "Ne peut ouvrir le fichier"
+msgstr "Impossible d'ouvrir le fichier"
 
 #: src/android/sticker_pack_builder_dialog.cpp:222
 #, kde-format
 msgid "Cannot save as TGS"
-msgstr "Ne peut sauvegarder comme TGS"
+msgstr "Impossible d'enregistrer comme TGS"
 
 #: src/android/sticker_pack_builder_dialog.cpp:263
 #, kde-format
 msgid "Are you sure you want to remove all stickers from the pack?"
 msgstr ""
-"Êtes vous sur que vous désirez supprimer tous les autocollants du paquet ?"
+"Êtes-vous sur que vous souhaitez supprimer tous les autocollants du paquet ?"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, StickerPackBuilderDialog)
 #: src/android/sticker_pack_builder_dialog.ui:21
@@ -979,7 +979,7 @@ msgstr "Ajouter l'actuel"
 #: src/android/telegram_intent.cpp:47
 #, kde-format
 msgid "Could not start activity, is Telegram installed?"
-msgstr "Ne peut démarrer l'actvité, est-ce que Telegram est installé ?"
+msgstr "Impossible de démarrer l'activité, est-ce que Telegram est installé ?"
 
 #: src/core/app_info.cpp:68
 #, kde-format
@@ -1323,7 +1323,8 @@ msgstr "La propriété %1 de %2 fait référence à l'objet inexistant %3"
 #, kde-format
 msgid "Could not load %1 for %2: uuid refers to an unacceptable object"
 msgstr ""
-"Ne peut charger %1 pour %2 : uuid fait référence à un objet inacceptable"
+"Impossible de charger %1 pour %2 : uuid fait référence à un objet "
+"inacceptable"
 
 #: src/core/io/glaxnimate/import_state.hpp:128
 #, kde-format
@@ -1333,17 +1334,17 @@ msgstr "L'objet %1 est invalide"
 #: src/core/io/glaxnimate/import_state.hpp:317
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
-msgstr "Type d'objet erronée : '%1' attendu, mais a obtenu '%2'"
+msgstr "Type d'objet erroné : '%1' attendu, mais a obtenu '%2'"
 
 #: src/core/io/glaxnimate/import_state.hpp:323
 #, kde-format
 msgid "Could not load %1 for %2"
-msgstr "Ne peut charger %1 pour %2"
+msgstr "Impossible de charger %1 pour %2"
 
 #: src/core/io/glaxnimate/import_state.hpp:335
 #, kde-format
 msgid "Could not set property %1"
-msgstr "Ne peut définir la propriété %1"
+msgstr "Impossible de définir la propriété %1"
 
 #: src/core/io/glaxnimate/import_state.hpp:361
 #, kde-format
@@ -1368,7 +1369,7 @@ msgstr "Une image clé doit spécifier une valeur"
 #: src/core/io/glaxnimate/import_state.hpp:427
 #, kde-format
 msgid "Could not add keyframe"
-msgstr "Ne peut ajouter une image clé"
+msgstr "Impossible d'ajouter une image clé"
 
 #: src/core/io/glaxnimate/import_state.hpp:611
 #, kde-format
@@ -1537,7 +1538,7 @@ msgstr "Les images ne sont pas supportées"
 #: src/core/io/lottie/tgs_format.cpp:56
 #, kde-format
 msgid "Gradient strokes are not officially supported"
-msgstr "Les gradients de contours ne sont pas officiellement supportés"
+msgstr "Les dégradés de contours ne sont pas officiellement supportés"
 
 #: src/core/io/lottie/tgs_format.cpp:61
 #, kde-format
@@ -1587,7 +1588,7 @@ msgstr "Hauteur invalide : %1, devrait être %2"
 #: src/core/io/lottie/validation.cpp:41
 #, kde-format
 msgid "Invalid fps: %1, should be %2"
-msgstr "fps invalides : %1, devrait être %2"
+msgstr "ips invalides : %1, devrait être %2"
 
 #: src/core/io/lottie/validation.cpp:49
 #, kde-format
@@ -1675,12 +1676,12 @@ msgstr ""
 #: src/core/io/rive/rive_format.cpp:24
 #, kde-format
 msgid "Unsupported format"
-msgstr ""
+msgstr "Format non pris en charge"
 
 #: src/core/io/rive/rive_format.cpp:34
 #, kde-format
 msgid "Could not read header"
-msgstr ""
+msgstr "Impossible de lire l'entête"
 
 #: src/core/io/rive/rive_format.cpp:40
 #, kde-format
@@ -1787,12 +1788,12 @@ msgstr ""
 #: src/core/io/svg/svg_format.cpp:67
 #, kde-format
 msgid "External Stylesheet"
-msgstr "Peuille de style externe"
+msgstr "Feuille de style externe"
 
 #: src/core/io/svg/svg_format.cpp:69
 #, kde-format
 msgid "Font face with external url"
-msgstr "Fonte avec URL externe"
+msgstr "Police avec URL externe"
 
 #: src/core/io/svg/svg_format.cpp:71
 #, kde-format
@@ -1810,12 +1811,12 @@ msgstr "Ignorer"
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
 msgid "External Fonts"
-msgstr "Fontes externes"
+msgstr "Polices externes"
 
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
 msgid "How to include external font"
-msgstr "Comment inclure une fonte externe"
+msgstr "Comment inclure une police externe"
 
 #: src/core/io/svg/svg_format.cpp:92
 #, fuzzy, kde-format
@@ -1840,17 +1841,17 @@ msgstr "Prévisualisation SVG"
 #: src/core/io/video/video_format.cpp:73
 #, kde-format
 msgid "Could not find encoder for '%1'"
-msgstr "Ne peut trouver d'encodeur pour '%1'"
+msgstr "Impossible de trouver un encodeur pour '%1'"
 
 #: src/core/io/video/video_format.cpp:77
 #, kde-format
 msgid "Could not allocate stream"
-msgstr "Ne peut allouer le flux"
+msgstr "Impossible d'allouer le flux"
 
 #: src/core/io/video/video_format.cpp:82
 #, kde-format
 msgid "Could not alloc an encoding context"
-msgstr "Ne peut allouer un contexte d'encodage"
+msgstr "Impossible d'allouer un contexte d'encodage"
 
 #: src/core/io/video/video_format.cpp:110
 #, kde-format
@@ -1871,27 +1872,27 @@ msgstr "Erreur d'envoie d'une image à l'encoder : %1"
 #: src/core/io/video/video_format.cpp:201
 #, kde-format
 msgid "Could not set dict key `%1`: %2"
-msgstr "Ne peut définir la clé de dictionnaire `%1` : %2"
+msgstr "Impossible de définir la clé de dictionnaire `%1` : %2"
 
 #: src/core/io/video/video_format.cpp:246
 #, kde-format
 msgid "Could not erase dict key `%1`: %2"
-msgstr "Ne peut effacer la clé de dictionnaire `%1` : %2"
+msgstr "Impossible d'effacer la clé de dictionnaire `%1` : %2"
 
 #: src/core/io/video/video_format.cpp:267
 #, kde-format
 msgid "Could not copy dict: %1"
-msgstr "Ne peut copier le dictionnaire : %1"
+msgstr "Impossible de copier le dictionnaire : %1"
 
 #: src/core/io/video/video_format.cpp:280
 #, kde-format
 msgid "Could not copy dict `%1`: %2"
-msgstr "ne peut copier le dictionnaire `%1` : %2"
+msgstr "Impossible de copier le dictionnaire `%1` : %2"
 
 #: src/core/io/video/video_format.cpp:318
 #, kde-format
 msgid "Could not allocate frame data."
-msgstr "Ne peut allouer des données de l'image"
+msgstr "Impossible d'allouer des données de l'image"
 
 #: src/core/io/video/video_format.cpp:403
 #: src/core/io/video/video_format.cpp:777
@@ -1904,22 +1905,22 @@ msgstr "Pas de codec vidéo"
 #: src/core/io/video/video_format.cpp:431
 #, kde-format
 msgid "Could not determine pixel format"
-msgstr "Ne peut déterminer le format de pixel"
+msgstr "NImpossible de déterminer le format de pixel"
 
 #: src/core/io/video/video_format.cpp:441
 #, kde-format
 msgid "Could not open video codec: %1"
-msgstr "Ne peut ouvrir le codec vidéo : %1"
+msgstr "Impossible d'ouvrir le codec vidéo : %1"
 
 #: src/core/io/video/video_format.cpp:446
 #, kde-format
 msgid "Could not allocate video frame"
-msgstr "Ne peut allouer l'image vidéo"
+msgstr "Impossible d'allouer l'image vidéo"
 
 #: src/core/io/video/video_format.cpp:453
 #, kde-format
 msgid "Could not copy the stream parameters"
-msgstr "Ne peut copier les paramètres de flux"
+msgstr "Impossible de copier les paramètres de flux"
 
 #: src/core/io/video/video_format.cpp:473
 #, kde-format
@@ -1929,12 +1930,12 @@ msgstr "Erreur pendant la création d'une image vidéo"
 #: src/core/io/video/video_format.cpp:497
 #, kde-format
 msgid "Could not initialize the conversion context"
-msgstr "Ne peut initialiser le contexte de conversion"
+msgstr "Impossible d'initialiser le contexte de conversion"
 
 #: src/core/io/video/video_format.cpp:503
 #, kde-format
 msgid "Could not allocate temporary picture"
-msgstr "Ne peux allouer l'image temporaire"
+msgstr "Impossible d'allouer l'image temporaire"
 
 #: src/core/io/video/video_format.cpp:745
 #, kde-format
@@ -2083,12 +2084,12 @@ msgstr "Gradiants"
 #: src/core/model/assets/assets.hpp:151
 #, kde-format
 msgid "Compositions"
-msgstr ""
+msgstr "Compositions"
 
 #: src/core/model/assets/assets.hpp:173
 #, kde-format
 msgid "Fonts"
-msgstr "Fontes"
+msgstr "Police"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_assets)
 #: src/core/model/assets/assets.hpp:207
@@ -2155,7 +2156,7 @@ msgstr "Supprimer la couleur de %1"
 #: src/core/model/assets/gradient.cpp:211
 #, kde-format
 msgid "%1 Gradient"
-msgstr "Gradiant %1"
+msgstr "Dégradé %1"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_fill_linear)
 #. i18n: ectx: property (text), widget (QToolButton, btn_fill_linear)
@@ -2325,7 +2326,7 @@ msgstr "Contour"
 #: src/core/model/shapes/text.cpp:255
 #, kde-format
 msgid "Change Font"
-msgstr "Changer la fonte"
+msgstr "Changer la police"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_style)
 #: src/core/model/shapes/text.cpp:489
@@ -2960,7 +2961,7 @@ msgstr "Redimensionner le Canvas"
 #: src/gui/graphics/gradient_editor.cpp:109
 #, kde-format
 msgid "Drag Gradient"
-msgstr "Déplacer le gradient"
+msgstr "Déplacer le dégradé"
 
 #: src/gui/graphics/transform_graphics_item.cpp:421
 #: src/gui/graphics/transform_graphics_item.cpp:480
@@ -3027,7 +3028,7 @@ msgstr ""
 #: src/gui/item_models/property_model_full.cpp:258
 #, kde-format
 msgid "Hidden"
-msgstr ""
+msgstr "Caché"
 
 #: src/gui/item_models/property_model_full.cpp:265
 #, kde-format
@@ -3037,7 +3038,7 @@ msgstr ""
 #: src/gui/item_models/property_model_full.cpp:292
 #, kde-format
 msgid "Unlocked"
-msgstr ""
+msgstr "Déverrouillé"
 
 #: src/gui/item_models/property_model_full.cpp:300
 #, kde-format
@@ -3286,7 +3287,7 @@ msgstr "Définir le type de nœud"
 #: src/gui/tools/edit_tool.cpp:914
 #, kde-format
 msgid "Straighten segments"
-msgstr "Segment redressés"
+msgstr "Segments redressés"
 
 #: src/gui/tools/edit_tool.cpp:962
 #, kde-format
@@ -3906,7 +3907,7 @@ msgstr "Déscription"
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:70
 #, kde-format
 msgid "Keywords"
-msgstr ""
+msgstr "Mots-clés"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
@@ -4083,13 +4084,13 @@ msgstr "Nouvelle animation"
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:63
 #, kde-format
 msgid "File saved"
-msgstr "Fichier sauvegardé"
+msgstr "Fichier enregistré"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:57
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:65
 #, kde-format
 msgid "Could not save file"
-msgstr "Ne peut sauvegarder le fichier"
+msgstr "Impossible d'enregistrer le fichier"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:71
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:79
@@ -4101,7 +4102,7 @@ msgstr "Fichier exporté"
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:81
 #, kde-format
 msgid "Could not export file"
-msgstr "Ne peut exporter le fichier"
+msgstr "Impossible d'exporter le fichier"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:189
 #, kde-format
@@ -4403,13 +4404,13 @@ msgstr "&Ouvrir..."
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1108
 #, kde-format
 msgid "&Save"
-msgstr "&Sauvegarder"
+msgstr "&Enregistrer"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1117
 #, kde-format
 msgid "Save &As..."
-msgstr "Sauvegarder &sous..."
+msgstr "Enregistrer &sous..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1126
@@ -4572,7 +4573,7 @@ msgstr "Symétrique"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1456
 #, kde-format
 msgid "&Copy"
-msgstr "&copier"
+msgstr "&Copier"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1465
@@ -5016,7 +5017,7 @@ msgstr "&Mirroiter la vue"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:955
 #, kde-format
 msgid "Save as Template"
-msgstr "Sauvegarder comme modèle"
+msgstr "Enregistrer comme modèle"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2173
@@ -5187,7 +5188,7 @@ msgstr "Le fichier a du être déplacé ou supprimé %1"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:842
 #, kde-format
 msgid "Could not import %1"
-msgstr "Ne peut importer %1"
+msgstr "Impossible d'importer %1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:492
 #, kde-format
@@ -5204,18 +5205,18 @@ msgstr "Prévisualisation web"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:525
 #, kde-format
 msgid "Could not create file"
-msgstr "Ne peut créer le fichier"
+msgstr "Impossible de créer le fichier"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:531
 #, kde-format
 msgid "Could not open browser"
-msgstr "Ne peut ouvrir le navigateur"
+msgstr "Impossible d'ouvrir le navigateur"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:556
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:583
 #, kde-format
 msgid "Save Frame Image"
-msgstr "Sauvegarder une image de l'animation"
+msgstr "Enregistrer une image de l'animation"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:559
 #, kde-format
@@ -5237,7 +5238,7 @@ msgstr "Éffectuer un rendu de l'image"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:600
 #, kde-format
 msgid "Could not save image"
-msgstr "Ne peut sauvegarder l'image"
+msgstr "Impossible d'enregistrer l'image"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:586
 #, kde-format
@@ -5259,7 +5260,7 @@ msgstr "Aucun problème n'a été trouvé"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:625
 #, kde-format
 msgid "Some issues detected"
-msgstr "Des problèmes ont été détéctés"
+msgstr "Des problèmes ont été détectés"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:623
 #, kde-format
@@ -5285,7 +5286,7 @@ msgstr "Lier la couleur %1"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:868
 #, kde-format
 msgid "Download fonts"
-msgstr "Télécharger des fontes"
+msgstr "Télécharger des polices"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:906
 #, kde-format
@@ -5344,7 +5345,7 @@ msgstr "Importer une image"
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:253
 #, kde-format
 msgid "Could not import image"
-msgstr "Ne peut importer l'image"
+msgstr "Impossible d'importer l'image"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:290
 #, kde-format
@@ -5414,12 +5415,12 @@ msgstr "Enregistrer les images clés"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:941
 #, kde-format
 msgid "Could not load template"
-msgstr "Ne peut charger le modèle"
+msgstr "Impossible de charger le modèle"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:955
 #, kde-format
 msgid "Could not save template"
-msgstr "Ne peut sauvegarder le modèle"
+msgstr "Impossible d'enregistrer le modèle"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1139
@@ -5475,7 +5476,7 @@ msgstr "Ajouter comme composition"
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:39
 #, kde-format
 msgid "Save file"
-msgstr "Sauvegarder le fichier"
+msgstr "Enregistrer le fichier"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:59
 #, kde-format
@@ -5485,7 +5486,7 @@ msgstr "Écraser le fichier ?"
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:60
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
-msgstr "Le fichier « %1 » existe déjà. Désirez-vous l'écraser ?"
+msgstr "Le fichier « %1 » existe déjà. Souhaitez-vous l'écraser ?"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:82
 #, kde-format
@@ -5505,7 +5506,7 @@ msgstr "Tous les fichiers (%1)"
 #: src/gui/widgets/dialogs/io_status_dialog.cpp:71
 #, kde-format
 msgid "Operation Failed"
-msgstr "L'opération a échouée"
+msgstr "L'opération a échoué"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, IoStatusDialog)
 #: src/gui/widgets/dialogs/io_status_dialog.ui:21
@@ -5566,7 +5567,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/shape_parent_dialog.ui:21
 #, kde-format
 msgid "Destination"
-msgstr "Déstination"
+msgstr "Destination"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 #: src/gui/widgets/dialogs/shape_parent_dialog.ui:48
@@ -5613,7 +5614,7 @@ msgstr "Démarrage"
 #: src/gui/widgets/dialogs/startup_dialog.ui:29
 #, kde-format
 msgid "Create New"
-msgstr "Crée un nouveau"
+msgstr "Créer un nouveau"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_presets)
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -5655,7 +5656,7 @@ msgstr "Réglages"
 #: src/gui/widgets/dialogs/startup_dialog.ui:113
 #, kde-format
 msgid " fps"
-msgstr " fps"
+msgstr " ips"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_open_browse)
 #: src/gui/widgets/dialogs/startup_dialog.ui:158
@@ -5672,7 +5673,7 @@ msgstr "Affiche au démarrage"
 #: src/gui/widgets/dialogs/timing_dialog.cpp:83
 #, kde-format
 msgid "Change Animation Properties"
-msgstr "Changer les propriétés de n'animation"
+msgstr "Changer les propriétés de l'animation"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
@@ -5986,7 +5987,7 @@ msgstr "Ne peut pas lancer le plugin"
 #: src/gui/widgets/docks/script_console.cpp:64
 #, kde-format
 msgid "Plugin raised an exception"
-msgstr "Le plugin à lever une exception"
+msgstr "Le plugin a levé une exception"
 
 #: src/gui/widgets/docks/script_console.cpp:72
 #, fuzzy, kde-format
@@ -6027,7 +6028,7 @@ msgstr "Les snippets nécessitent un nom"
 #: src/gui/widgets/docks/snippet_list_widget.cpp:66
 #, kde-format
 msgid "Could not create snippet: `%1`"
-msgstr "Ne peut crée la snippet : `%1`"
+msgstr "Impossible de créer la snippet : `%1`"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 #: src/gui/widgets/docks/snippet_list_widget.ui:26
@@ -6039,19 +6040,19 @@ msgstr "Nouvelle snippet"
 #: src/gui/widgets/docks/snippet_list_widget.ui:40
 #, kde-format
 msgid "Edit the selected snippet"
-msgstr "Éditer la snippet sélectionnée"
+msgstr "Modifier la snippet sélectionnée"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/docks/snippet_list_widget.ui:43
 #, kde-format
 msgid "Edit..."
-msgstr "Éditer..."
+msgstr "Modifier..."
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_3)
 #: src/gui/widgets/docks/snippet_list_widget.ui:54
 #, kde-format
 msgid "Delete selected snippet"
-msgstr "Supprimer la snippet sélectionée"
+msgstr "Supprimer la snippet sélectionnée"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_4)
 #: src/gui/widgets/docks/snippet_list_widget.ui:68
@@ -6144,7 +6145,7 @@ msgid ""
 "ttf, *.otf); All files (*)"
 msgstr ""
 "Tous les fichiers supportés (*.ttf, *.otf, *.css); fichiers CSS (*.css); "
-"fichier de fontes (*.ttf, *.otf); Tous les fichiers (*)"
+"fichier de polices (*.ttf, *.otf); Tous les fichiers (*)"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/font/external_font_widget.ui:26
@@ -6169,7 +6170,7 @@ msgstr "Style de fonte"
 #: src/gui/widgets/font/font_loader.cpp:47
 #, kde-format
 msgid "Could not open file %1"
-msgstr "Ne peut pas ouvrir le fichier %1"
+msgstr "Impossible d'ouvrir le fichier %1"
 
 #: src/gui/widgets/font/font_loader.cpp:58
 #, kde-format
@@ -6179,7 +6180,7 @@ msgstr "URL des données invalide"
 #: src/gui/widgets/font/font_loader.cpp:138
 #, kde-format
 msgid "Font format not supported for %1"
-msgstr "Format de fonte non supporté pour %1"
+msgstr "Format de police non supporté pour %1"
 
 #: src/gui/widgets/font/font_preview_widget.cpp:25
 #, kde-format
@@ -6196,7 +6197,7 @@ msgstr "Échelle de la prévisualisation"
 #: src/gui/widgets/font/font_style_dialog.ui:52
 #, kde-format
 msgid "Google Fonts"
-msgstr "Fontes Google"
+msgstr "Polices Google"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/gui/widgets/font/font_style_widget.ui:53
@@ -6234,7 +6235,7 @@ msgstr "Proportionnelle"
 #: src/gui/widgets/font/google_fonts_model.cpp:180
 #, kde-format
 msgid "Could not add font"
-msgstr "Ne peut pas ajouter de fonte"
+msgstr "Impossible d'ajouter la police"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:274
 #, kde-format
@@ -6313,7 +6314,7 @@ msgstr ""
 #: src/gui/widgets/lottiefiles/search_result.cpp:81
 #, kde-format
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:33
 #, kde-format
@@ -6600,7 +6601,7 @@ msgstr "Désactiver"
 #: src/gui/widgets/settings/plugin_settings_widget.ui:134
 #, kde-format
 msgid "Uninstall"
-msgstr "Désintaller"
+msgstr "Désinstaller"
 
 #. i18n: ectx: property (text), widget (QTableWidget, list_services)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:163
@@ -6924,7 +6925,7 @@ msgstr "Godet depuis la palette"
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:340
 #, kde-format
 msgid "Overwrite on save"
-msgstr "Écraser lors de la sauvegarde"
+msgstr "Écraser lors de l'enregistrement"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:344
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:531
@@ -6947,7 +6948,7 @@ msgstr "Charger la palette"
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:115
 #, kde-format
 msgid "Save Palette"
-msgstr "Sauvegarder la palette"
+msgstr "Enregistrer la palette"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:429
 #, kde-format
@@ -7026,7 +7027,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:133
 #, kde-format
 msgid "Set %1 Gradient"
-msgstr "Définir le gradient %1"
+msgstr "Définir le dégradé %1"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_remove)
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:212
@@ -7038,7 +7039,7 @@ msgstr "Supprimer le gradient"
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:388
 #, kde-format
 msgid "Gradient Presets"
-msgstr "Préréglages de gradient"
+msgstr "Préréglages de dégradé"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_new)
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:42
@@ -7061,7 +7062,7 @@ msgstr "Prérégéglage"
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:139
 #, kde-format
 msgid "Update Stroke Color"
-msgstr "Metter à jour la couleur du contour"
+msgstr "Mettre à jour la couleur du contour"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:234
 #, kde-format
@@ -7128,7 +7129,7 @@ msgstr "Pointillés"
 #: src/gui/widgets/spin2d.cpp:93
 #, kde-format
 msgid "Lock Ratio"
-msgstr "Vérouiller le rapport"
+msgstr "Verrouiller le rapport"
 
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:86
 #, kde-format
