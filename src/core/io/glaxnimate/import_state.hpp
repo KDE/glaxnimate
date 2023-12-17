@@ -320,10 +320,7 @@ private:
         {
             if ( object.contains(prop->name()) && !load_prop(prop, object[prop->name()], path.sub(prop)) )
             {
-                error(i18n("Could not load %1 for %2")
-                    .arg(prop->name())
-                    .arg(prop->object()->object_name())
-                );
+                error(i18n("Could not load %1 for %2", prop->name(), prop->object()->object_name()));
             }
         }
 
