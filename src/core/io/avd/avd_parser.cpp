@@ -647,7 +647,7 @@ private:
 
         if ( resource_path.isRoot() || id.isEmpty() || id[0] != '@' || id.back() == '\0' )
         {
-            warning(i18n("Unkown resource id %1", id));
+            warning(i18n("Unknown resource id %1", id));
             return {};
         }
 

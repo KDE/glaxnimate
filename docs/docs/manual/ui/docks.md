@@ -170,7 +170,7 @@ Clicking on the tabs will switch to a different composition.
 
 ![Property List](/img/screenshots/views/timeline/property_list.png)
 
-On its left handside, the the Timeline view has the list of objects and properties.
+On its left handside, the Timeline view has the list of objects and properties.
 
 For shapes and other obects, it shows their group color, visibility, lock status, and name.
 All of those can be modified from the timeline itself.

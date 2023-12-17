@@ -272,7 +272,7 @@ bool cli_export(const app::cli::ParsedArguments& args)
 
     if ( !exporter || !exporter->can_save() )
     {
-        app::cli::show_message(i18nc("@info:shell", "Unknown exporter. use --export-format-list for a list of available formats"), true);
+        app::cli::show_message(i18nc("@info:shell", "Unknown exporter. Use --export-format-list for a list of available formats"), true);
         return false;
     }
 
