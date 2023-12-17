@@ -1,59 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#spec-component-filespec -->
 <component type="desktop">
-    <id>org.mattbas.Glaxnimate</id>
-    <metadata_license>CC-BY-SA-4.0</metadata_license>
-    <project_license>GPL-3.0+</project_license>
-    <name>Glaxnimate</name>
-    <summary>Vector Animation Editor</summary>
-    <description>
-        <p>Glaxnimate is an open-source vector animation and motion design desktop application.</p>
-        <p>Features:</p>
-        <ul>
-            <li>Tweening</li>
-            <li>Precompositions</li>
-            <li>Time Stretching</li>
-            <li>Motion Along Path</li>
-            <li>Shape Modifiers</li>
-            <li>Text Support</li>
-            <li>Animated Gradients</li>
-            <li>Raster to Vector</li>
-            <li>Scripting Support</li>
-        </ul>
-        <p>Supported file formats:</p>
-        <ul>
-            <li>Lottie</li>
-            <li>Animated SVG</li>
-            <li>Animated WebP</li>
-            <li>Animated Vector Drawables</li>
-            <li>RIVE</li>
-            <li>Video Export</li>
-            <li>Spritesheet Export</li>
-        </ul>
-    </description>
-    <categories>
-        <category>Graphics</category>
-    </categories>
-    <url type="homepage">https://glaxnimate.mattbas.org/</url>
-    <url type="bugtracker">https://gitlab.com/mattbas/glaxnimate/-/issues</url>
-    <url type="help">https://glaxnimate.mattbas.org/manual/</url>
-    <url type="donation">https://glaxnimate.mattbas.org/donate/</url>
-<!-- url type=contribute is not recognized but it should be valid o_O -->
-<!--     <url type="contribute">https://glaxnimate.mattbas.org/contributing/</url> -->
-    <screenshots>
-        <screenshot type="default">
-            <caption>Glaxnimate main window</caption>
-            <image>https://glaxnimate.mattbas.org/img/screenshots/main_window/main_window.png</image>
-        </screenshot>
-    </screenshots>
-    <provides>
-        <binary>glaxnimate</binary>
-        <mediatype>image/svg+xml</mediatype>
-        <mediatype>application/vnd.glaxnimate.rawr+json</mediatype>
-    </provides>
-    <launchable type="desktop-id">org.mattbas.Glaxnimate.desktop</launchable>
-    <content_rating type="oars-1.1" />
-    <releases>
-        <release version="0.5.4" date="2023-09-09"></release>
-    </releases>
+  <id>org.mattbas.Glaxnimate</id>
+  <metadata_license>CC-BY-SA-4.0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
+  <name>Glaxnimate</name>
+  <name xml:lang="ca">Glaxnimate</name>
+  <name xml:lang="nl">Glaxnimate</name>
+  <name xml:lang="uk">Glaxnimate</name>
+  <name xml:lang="x-test">xxGlaxnimatexx</name>
+  <summary>Vector Animation Editor</summary>
+  <summary xml:lang="ca">Editor d'animació vectorial</summary>
+  <summary xml:lang="nl">Bewerker voor vectoranimatie</summary>
+  <summary xml:lang="uk">Редактор векторної анімації</summary>
+  <summary xml:lang="x-test">xxVector Animation Editorxx</summary>
+  <description>
+    <p>Glaxnimate is an open-source vector animation and motion design desktop application.</p>
+    <p xml:lang="ca">El Glaxnimate és una aplicació d'escriptori d'animació vectorial i disseny de moviment de codi font obert.</p>
+    <p xml:lang="nl">Glaxnimate is een open-source bureaubladtoepassing voor vectoranimatie en ontwerpen van beweging.</p>
+    <p xml:lang="uk">Glaxnimate — програма з відкритим кодом для роботи з векторною анімацією та моушн-дизайном.</p>
+    <p xml:lang="x-test">xxGlaxnimate is an open-source vector animation and motion design desktop application.xx</p>
+    <p>Features:</p>
+    <p xml:lang="ca">Característiques:</p>
+    <p xml:lang="nl">Mogelijkheden:</p>
+    <p xml:lang="uk">Можливості:</p>
+    <p xml:lang="x-test">xxFeatures:xx</p>
+    <ul>
+      <li>Tweening</li>
+      <li xml:lang="ca">Creació de fotogrames intermedis («tweening»)</li>
+      <li xml:lang="nl">Tweening</li>
+      <li xml:lang="uk">Проміжні кадри</li>
+      <li xml:lang="x-test">xxTweeningxx</li>
+      <li>Precompositions</li>
+      <li xml:lang="ca">Precomposicions</li>
+      <li xml:lang="nl">Composities vooraf</li>
+      <li xml:lang="uk">Попереднє компонування</li>
+      <li xml:lang="x-test">xxPrecompositionsxx</li>
+      <li>Time Stretching</li>
+      <li xml:lang="ca">Estirament del temps</li>
+      <li xml:lang="nl">Uitrekken van tijd</li>
+      <li xml:lang="uk">Розтягування за часом</li>
+      <li xml:lang="x-test">xxTime Stretchingxx</li>
+      <li>Motion Along Path</li>
+      <li xml:lang="ca">Moviment a través d'un camí</li>
+      <li xml:lang="nl">Beweging langs pad</li>
+      <li xml:lang="uk">Рух уздовж контуру</li>
+      <li xml:lang="x-test">xxMotion Along Pathxx</li>
+      <li>Shape Modifiers</li>
+      <li xml:lang="ca">Modificadors de formes</li>
+      <li xml:lang="nl">Wijzigen van vorm</li>
+      <li xml:lang="uk">Модифікатори форм</li>
+      <li xml:lang="x-test">xxShape Modifiersxx</li>
+      <li>Text Support</li>
+      <li xml:lang="ca">Admet text</li>
+      <li xml:lang="nl">Ondersteuning van tekst</li>
+      <li xml:lang="uk">Підтримка тексту</li>
+      <li xml:lang="x-test">xxText Supportxx</li>
+      <li>Animated Gradients</li>
+      <li xml:lang="ca">Degradats animats</li>
+      <li xml:lang="nl">Geanimeerd kleurverloop</li>
+      <li xml:lang="uk">Анімовані градієнти</li>
+      <li xml:lang="x-test">xxAnimated Gradientsxx</li>
+      <li>Raster to Vector</li>
+      <li xml:lang="ca">Rasterització a vector</li>
+      <li xml:lang="nl">Raster naar vector</li>
+      <li xml:lang="uk">Перетворення з растрового на векторний формат</li>
+      <li xml:lang="x-test">xxRaster to Vectorxx</li>
+      <li>Scripting Support</li>
+      <li xml:lang="ca">Permet la creació de scripts</li>
+      <li xml:lang="nl">Scripting-ondersteuning</li>
+      <li xml:lang="uk">Підтримка запису скриптів</li>
+      <li xml:lang="x-test">xxScripting Supportxx</li>
+    </ul>
+    <p>Supported file formats:</p>
+    <p xml:lang="ca">Formats de fitxer admesos:</p>
+    <p xml:lang="nl">Ondersteunde bestandsformaten:</p>
+    <p xml:lang="uk">Підтримувані формати файлів:</p>
+    <p xml:lang="x-test">xxSupported file formats:xx</p>
+    <ul>
+      <li>Lottie</li>
+      <li xml:lang="ca">Lottie</li>
+      <li xml:lang="nl">Lottie</li>
+      <li xml:lang="uk">Lottie</li>
+      <li xml:lang="x-test">xxLottiexx</li>
+      <li>Animated SVG</li>
+      <li xml:lang="ca">SVG animat</li>
+      <li xml:lang="nl">Geanimeerde SVG</li>
+      <li xml:lang="uk">Анімовані SVG</li>
+      <li xml:lang="x-test">xxAnimated SVGxx</li>
+      <li>Animated WebP</li>
+      <li xml:lang="ca">WebP animat</li>
+      <li xml:lang="nl">Geanimeerde WebP</li>
+      <li xml:lang="uk">Анімований WebP</li>
+      <li xml:lang="x-test">xxAnimated WebPxx</li>
+      <li>Animated Vector Drawables</li>
+      <li xml:lang="ca">Dibuixable vectorial animat</li>
+      <li xml:lang="nl">Geanimeerde tekenbare vectoren</li>
+      <li xml:lang="uk">Креслення векторної анімації</li>
+      <li xml:lang="x-test">xxAnimated Vector Drawablesxx</li>
+      <li>RIVE</li>
+      <li xml:lang="ca">RIVE</li>
+      <li xml:lang="nl">RIVE</li>
+      <li xml:lang="uk">RIVE</li>
+      <li xml:lang="x-test">xxRIVExx</li>
+      <li>Video Export</li>
+      <li xml:lang="ca">Exportació a vídeo</li>
+      <li xml:lang="nl">Video exporteren</li>
+      <li xml:lang="uk">Експорт відео</li>
+      <li xml:lang="x-test">xxVideo Exportxx</li>
+      <li>Spritesheet Export</li>
+      <li xml:lang="ca">Exportació a Spritesheet</li>
+      <li xml:lang="nl">Exporteren van spritesheet</li>
+      <li xml:lang="uk">Експорт таблиці спрайтів</li>
+      <li xml:lang="x-test">xxSpritesheet Exportxx</li>
+    </ul>
+  </description>
+  <categories>
+    <category>Graphics</category>
+  </categories>
+  <url type="homepage">https://glaxnimate.mattbas.org/</url>
+  <url type="bugtracker">https://gitlab.com/mattbas/glaxnimate/-/issues</url>
+  <url type="help">https://glaxnimate.mattbas.org/manual/</url>
+  <url type="donation">https://glaxnimate.mattbas.org/donate/</url>
+  <!-- url type=contribute is not recognized but it should be valid o_O -->
+  <!--     <url type="contribute">https://glaxnimate.mattbas.org/contributing/</url> -->
+  <screenshots>
+    <screenshot type="default">
+      <caption>Glaxnimate main window</caption>
+      <caption xml:lang="ca">Finestra principal del Glaxnimate</caption>
+      <caption xml:lang="nl">Hoofdvenster van Glaxnimate</caption>
+      <caption xml:lang="uk">Головне вікно Glaxnimate</caption>
+      <caption xml:lang="x-test">xxGlaxnimate main windowxx</caption>
+      <image>https://glaxnimate.mattbas.org/img/screenshots/main_window/main_window.png</image>
+    </screenshot>
+  </screenshots>
+  <provides>
+    <binary>glaxnimate</binary>
+    <mediatype>image/svg+xml</mediatype>
+    <mediatype>application/vnd.glaxnimate.rawr+json</mediatype>
+  </provides>
+  <launchable type="desktop-id">org.mattbas.Glaxnimate.desktop</launchable>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="0.5.4" date="2023-09-09"/>
+  </releases>
 </component>
