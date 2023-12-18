@@ -9,10 +9,9 @@
 #include <QMenu>
 
 #include "model/animation/animatable.hpp"
+#include "widgets/dialogs/selection_manager.hpp"
 
 namespace glaxnimate::gui {
-
-class SelectionManager;
 
 class AnimatedPropertyMenu : public QMenu
 {

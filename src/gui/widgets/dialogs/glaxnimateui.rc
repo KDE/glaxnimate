@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <gui name="glaxnimate" version="4" xmlns="http://www.kde.org/standards/kxmlgui/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
+  <!-- see https://invent.kde.org/frameworks/kxmlgui/-/blob/master/src/ui_standards.rc -->
   <MenuBar name="menu_bar">
     <Menu name="menu_file">
       <text>&amp;File</text>
@@ -44,9 +45,23 @@
       <Action name="action_select_all" />
       <Action name="action_delete" />
       <Separator />
+      <Action name="options_configure"/>
     </Menu>
     <Menu name="menu_tools">
       <text>&amp;Tools</text>
+      <Action name="action_tool_draw_bezier" />
+      <Action name="action_tool_select" />
+      <Action name="action_tool_edit" />
+      <Separator />
+      <Action name="action_tool_draw_bezier" />
+      <Action name="action_tool_draw_freehand" />
+      <Action name="action_tool_draw_rect" />
+      <Action name="action_tool_draw_ellipse" />
+      <Action name="action_tool_draw_star" />
+      <Action name="action_tool_text" />
+      <Separator />
+      <Action name="action_tool_color_picker" />
+      <Action name="action_tool_fill" />
     </Menu>
     <Menu name="menu_view">
       <text>&amp;View</text>
@@ -242,5 +257,17 @@
   </ToolBar>
   <ToolBar name="toolbar_tools" iconText="icononly" fullWidth="true" newline="false" position="left">
     <text>Tools</text>
+      <Action name="action_tool_select" />
+      <Action name="action_tool_edit" />
+      <Separator />
+      <Action name="action_tool_draw_bezier" />
+      <Action name="action_tool_draw_freehand" />
+      <Action name="action_tool_draw_rect" />
+      <Action name="action_tool_draw_ellipse" />
+      <Action name="action_tool_draw_star" />
+      <Action name="action_tool_text" />
+      <Separator />
+      <Action name="action_tool_color_picker" />
+      <Action name="action_tool_fill" />
   </ToolBar>
 </gui>

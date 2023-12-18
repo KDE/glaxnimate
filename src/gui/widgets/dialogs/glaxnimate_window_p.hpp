@@ -128,7 +128,7 @@ public:
     graphics::DocumentScene scene;
     model::Composition* comp = nullptr;
 
-    GlaxnimateWindow* parent = nullptr;
+    glaxnimate::gui::GlaxnimateWindow* parent = nullptr;
 
     QStringList recent_files;
     io::Options export_options;

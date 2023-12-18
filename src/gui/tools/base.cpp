@@ -145,6 +145,7 @@ QAction* tools::Tool::get_action()
         action->setCheckable(true);
         action->setIcon(icon());
         action->setData(QVariant::fromValue(this));
+        action->setObjectName(QStringLiteral("action_tool_%1").arg(id().replace("-", "_")));
     }
     return action;
 }

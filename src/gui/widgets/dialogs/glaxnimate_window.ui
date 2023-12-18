@@ -328,13 +328,6 @@
     <addaction name="action_text_put_on_path"/>
     <addaction name="action_text_remove_from_path"/>
    </widget>
-   <widget class="QMenu" name="menu_Settings">
-    <property name="title">
-     <string>&amp;Settings</string>
-    </property>
-    <addaction name="action_shortcuts"/>
-    <addaction name="action_settings"/>
-   </widget>
    <addaction name="menu_file"/>
    <addaction name="menu_edit"/>
    <addaction name="menu_tools"/>
@@ -1621,15 +1614,6 @@
     <string>Reset &amp;Zoom</string>
    </property>
   </action>
-  <action name="action_preferences">
-   <property name="icon">
-    <iconset theme="settings-configure">
-     <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-   </property>
-   <property name="text">
-    <string>Pr&amp;eferences...</string>
-   </property>
-  </action>
   <action name="action_about">
    <property name="icon">
     <iconset theme="help-about">
@@ -2281,14 +2265,6 @@
    </property>
    <property name="toolTip">
     <string>More compact that Wide but larger than Compact</string>
-   </property>
-  </action>
-  <action name="action_settings">
-   <property name="icon">
-    <iconset theme="settings-configure"/>
-   </property>
-   <property name="text">
-    <string>Configure Glaxnimate...</string>
    </property>
   </action>
  </widget>

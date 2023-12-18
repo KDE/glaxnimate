@@ -19,6 +19,7 @@
 #include <KHelpMenu>
 #include <KActionCollection>
 #include <KShortcutsDialog>
+#include <KXMLGUIFactory>
 
 #include "glaxnimate_settings.hpp"
 
@@ -89,9 +90,9 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     this->parent = parent;
     ui.setupUi(parent);
 
-    init_actions();
-
     tools::Tool* to_activate = init_tools_ui();
+
+    init_actions();
 
     init_item_views();
 
@@ -109,6 +110,7 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     // Dialogs
     dialog_import_status = new IoStatusDialog(QIcon::fromTheme("document-open"), i18n("Open File"), false, parent);
     dialog_export_status = new IoStatusDialog(QIcon::fromTheme("document-save"), i18n("Save File"), false, parent);
+    about_dialog = new AboutDialog(parent);
 
     // Recent files
     recent_files = GlaxnimateSettings::recent_files();
@@ -134,9 +136,30 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     if ( restore_state )
         init_restore_state();
 
-
     qDeleteAll(parent->findChildren<QToolBar*>());
     parent->setupGUI(KXmlGuiWindow::Default, "glaxnimateui.rc");
+
+    QAction *official_help = parent->actionCollection()->action(KStandardAction::name(KStandardAction::HelpContents));
+    parent->actionCollection()->removeAction(official_help);
+    auto action_help_contents = KStandardAction::helpContents(parent, &GlaxnimateWindow::help_manual, parent->actionCollection());
+    action_help_contents->setShortcut({});
+    parent->actionCollection()->setDefaultShortcut(action_help_contents, {});
+
+    QAction *whats_this = parent->actionCollection()->action(KStandardAction::name(KStandardAction::WhatsThis));
+    QMenu *help_menu = static_cast<QMenu *>(parent->factory()->container(QStringLiteral("help"), parent));
+
+
+    QAction *official_about = parent->actionCollection()->action(KStandardAction::name(KStandardAction::AboutApp));
+    parent->actionCollection()->removeAction(official_about);
+    auto action_about = KStandardAction::aboutApp(about_dialog, &QWidget::show, parent->actionCollection());
+
+    if ( help_menu )
+    {
+        help_menu->insertAction(whats_this, action_help_contents);
+        auto action_about_kde = parent->actionCollection()->action(KStandardAction::name(KStandardAction::AboutKDE));
+        help_menu->insertAction(action_about_kde, action_about);
+    }
+    parent->actionCollection()->removeAction(whats_this);
 
     auto group = GlaxnimateSettings::self()->config()->group(QStringLiteral("Shortcuts"));
     parent->actionCollection()->readSettings(&group);
@@ -315,23 +338,17 @@ void GlaxnimateWindow::Private::init_actions()
     });
     ui.view_undo->setGroup(&parent->undo_group());
 
-    about_dialog = new AboutDialog(parent);
-    KStandardAction::aboutApp(about_dialog, &QWidget::show, parent->actionCollection());
-    auto action_help_contents = KStandardAction::helpContents(parent, &GlaxnimateWindow::help_manual, parent->actionCollection());
-    action_help_contents->setShortcut({});
-    parent->actionCollection()->setDefaultShortcut(action_help_contents, {});
-    KStandardAction::donate(parent, &GlaxnimateWindow::help_donate, parent->actionCollection());
-    KStandardAction::preferences(parent, [this]{
-            SettingsDialog dialog(parent);
-            dialog.exec();
-    }, parent->actionCollection());
-
-
 #ifdef Q_OS_WIN32
     // Can't get emoji_data.cpp to compile on windows for qt6 for some reason
     // the compiler errors out without message
     ui.action_insert_emoji->setEnabled(false);
 #endif
+
+    KStandardAction::donate(parent, &GlaxnimateWindow::help_donate, parent->actionCollection());
+    KStandardAction::preferences(parent, [this]{
+            SettingsDialog dialog(parent);
+            dialog.exec();
+    }, parent->actionCollection());
 
     // parent->actionCollection()->addAssociatedWidget(parent);
     for ( auto action : parent->findChildren<QAction*>() )
@@ -363,7 +380,7 @@ tools::Tool* GlaxnimateWindow::Private::init_tools_ui()
         {
             QAction* action = tool.second->get_action();
             action->setParent(parent);
-            ui.menu_tools->addAction(action);
+            // ui.menu_tools->addAction(action);
             action->setActionGroup(tool_actions);
             ScalableButton *button = tool.second->get_button();
             connect(action, &QAction::triggered, parent, &GlaxnimateWindow::tool_triggered);
@@ -383,8 +400,8 @@ tools::Tool* GlaxnimateWindow::Private::init_tools_ui()
                 action->setChecked(true);
             }
         }
-        ui.menu_tools->addSeparator();
-        ui.toolbar_tools->addSeparator();
+        // ui.menu_tools->addSeparator();
+        // ui.toolbar_tools->addSeparator();
     }
 
     ui.toolbar_node->setVisible(false);
@@ -1081,7 +1098,6 @@ void GlaxnimateWindow::Private::switch_tool(tools::Tool* tool)
             action->setEnabled(false);
         }
     }
-
 
     for ( const auto& widget : tool_widgets[tool->id()] )
     {
