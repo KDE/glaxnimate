@@ -120,7 +120,7 @@ public:
 
             case Image:
             {
-                auto name = image_slug.slug(emoji.hex_slug) + image_suffix;
+                QString name = image_slug.slug(emoji.hex_slug) + image_suffix;
                 if ( !image_path.exists(name) )
                     return nullptr;
 
@@ -143,7 +143,6 @@ public:
     void load_step()
     {
         const auto& grp = *EmojiGroup::table[curr_group];
-
 
         if ( curr_subgroup == 0 )
         {
