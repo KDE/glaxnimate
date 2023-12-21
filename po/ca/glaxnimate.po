@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-18 00:40+0000\n"
-"PO-Revision-Date: 2023-12-19 21:46+0100\n"
+"PO-Revision-Date: 2023-12-20 22:30+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1193,7 +1193,7 @@ msgstr "Interpolador %s desconegut"
 #: src/core/io/avd/avd_parser.cpp:650
 #, kde-format
 msgid "Unknown resource id %1"
-msgstr "Identificador de recurs desconegut %1"
+msgstr "ID de recurs desconegut %1"
 
 #: src/core/io/avd/avd_parser.cpp:658
 #, kde-format
@@ -1441,7 +1441,7 @@ msgid "Invalid bezier point %1 in %2"
 msgstr "El punt de Bézier %1 no és vàlid a %2"
 
 #: src/core/io/lottie/lottie_importer.hpp:916
-#, fuzzy, kde-format
+#, kde-format
 msgid "Invalid keyframes for %1"
 msgstr "Fotogrames clau no vàlids per a %1"
 
@@ -1456,92 +1456,92 @@ msgid "(empty)"
 msgstr "(buit)"
 
 #: src/core/io/lottie/lottie_importer.hpp:980
-#, fuzzy, kde-format
+#, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
 msgstr "No s'ha pogut carregar el fotograma clau a %1 per a %2 amb el valor %3"
 
 #: src/core/io/lottie/lottie_importer.hpp:1032
-#, fuzzy, kde-format
+#, kde-format
 msgid "Duplicate Bitmap ID: %1"
 msgstr "ID del mapa de bits duplicat: %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:1064
-#, fuzzy, kde-format
+#, kde-format
 msgid "Duplicate Composition ID: %1"
-msgstr "Identificador de composició duplicat: %1"
+msgstr "ID de composició duplicat: %1"
 
 #: src/core/io/lottie/tgs_format.cpp:47
-#, fuzzy, kde-format
+#, kde-format
 msgid "Star Shapes are not officially supported"
-msgstr "Les formes de les estrelles no estan implementades oficialment"
+msgstr "Les formes d'estrelles no estan admeses oficialment"
 
 #: src/core/io/lottie/tgs_format.cpp:51 src/core/io/lottie/validation.cpp:71
-#, fuzzy, kde-format
+#, kde-format
 msgid "Images are not supported"
 msgstr "No s'admeten imatges"
 
 #: src/core/io/lottie/tgs_format.cpp:56
-#, fuzzy, kde-format
+#, kde-format
 msgid "Gradient strokes are not officially supported"
-msgstr "Els traços de degradat no són compatibles oficialment"
+msgstr "Els traços de degradat no són admesos oficialment"
 
 #: src/core/io/lottie/tgs_format.cpp:61
-#, fuzzy, kde-format
+#, kde-format
 msgid "Masks are not supported"
-msgstr "Les màscares no són compatibles"
+msgstr "Les màscares no s'admeten"
 
 #: src/core/io/lottie/tgs_format.cpp:65
-#, fuzzy, kde-format
+#, kde-format
 msgid "Repeaters are not officially supported"
-msgstr "Els repetidors no són compatibles oficialment"
+msgstr "Els repetidors no s'admeten oficialment"
 
 #: src/core/io/lottie/tgs_format.cpp:69
-#, fuzzy, kde-format
+#, kde-format
 msgid "Inflate/Deflate is not supported"
-msgstr "Inflate/Deflate no és compatible"
+msgstr "Infla/desinfla no s'admet"
 
 #: src/core/io/lottie/tgs_format.cpp:73
-#, fuzzy, kde-format
+#, kde-format
 msgid "Offset Path is not supported"
 msgstr "No s'admet el camí de desplaçament"
 
 #: src/core/io/lottie/tgs_format.cpp:77
-#, fuzzy, kde-format
+#, kde-format
 msgid "ZigZag is not supported"
-msgstr "ZigZag no és compatible"
+msgstr "ZigZag no s'admet"
 
 #: src/core/io/lottie/tgs_format.cpp:110
-#, fuzzy, kde-format
+#, kde-format
 msgid "File too large: %1k, should be under 64k"
 msgstr "Fitxer massa gran: %1k, hauria de ser inferior a 64k"
 
 #: src/core/io/lottie/tgs_format.hpp:19
-#, fuzzy, kde-format
+#, kde-format
 msgid "Telegram Animated Sticker"
-msgstr "Marcador animat del Telegram"
+msgstr "Adhesiu animat del Telegram"
 
 #: src/core/io/lottie/validation.cpp:25
-#, fuzzy, kde-format
+#, kde-format
 msgid "Invalid width: %1, should be %2"
 msgstr "Amplada no vàlida: %1, hauria de ser %2"
 
 #: src/core/io/lottie/validation.cpp:29
-#, fuzzy, kde-format
+#, kde-format
 msgid "Invalid height: %1, should be %2"
 msgstr "Alçada no vàlida: %1, hauria de ser %2"
 
 #: src/core/io/lottie/validation.cpp:41
-#, fuzzy, kde-format
+#, kde-format
 msgid "Invalid fps: %1, should be %2"
-msgstr "Fps no vàlid: %1, hauria de ser %2"
+msgstr "FPS no vàlid: %1, hauria de ser %2"
 
 #: src/core/io/lottie/validation.cpp:49
-#, fuzzy, kde-format
+#, kde-format
 msgid "Too many frames: %1, should be less than %2"
 msgstr "Massa fotogrames: %1, hauria de ser menor que %2"
 
 #: src/core/io/lottie/validation.hpp:22
-#, fuzzy, kde-format
+#, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
@@ -1562,17 +1562,17 @@ msgid "Frame Width"
 msgstr "Amplada del fotograma"
 
 #: src/core/io/raster/spritesheet_format.cpp:32
-#, fuzzy, kde-format
+#, kde-format
 msgid "Width of each frame"
 msgstr "Amplada de cada fotograma"
 
 #: src/core/io/raster/spritesheet_format.cpp:33
-#, fuzzy, kde-format
+#, kde-format
 msgid "Frame Height"
 msgstr "Alçada del fotograma"
 
 #: src/core/io/raster/spritesheet_format.cpp:33
-#, fuzzy, kde-format
+#, kde-format
 msgid "Height of each frame"
 msgstr "Alçada de cada fotograma"
 
@@ -1592,28 +1592,29 @@ msgid "Time Step"
 msgstr "Pas temporal"
 
 #: src/core/io/raster/spritesheet_format.cpp:35
-#, fuzzy, kde-format
+#, kde-format
 msgid "By how much each rendered frame should increase time (in frames)"
 msgstr ""
-"Quant hauria d'augmentar el temps cada fotograma renderitzat (en fotogrames)"
+"Quant hauria d'augmentar el temps de cada fotograma renderitzat (en "
+"fotogrames)"
 
 #: src/core/io/raster/spritesheet_format.hpp:23
-#, fuzzy, kde-format
+#, kde-format
 msgid "Sprite Sheet"
-msgstr "Full de Sprite"
+msgstr "Full de sprite"
 
 #: src/core/io/rive/rive_exporter.hpp:359
-#, fuzzy, kde-format
+#, kde-format
 msgid "Bezier has mismatching number of points"
-msgstr "El Bézier té un nombre de punts que no coincideix"
+msgstr "La Bézier té un nombre de punts que no coincideix"
 
 #: src/core/io/rive/rive_exporter.hpp:421
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unknown property %1 of %2 (%3, %4)"
 msgstr "Propietat desconeguda %1 de %2 (%3, %4)"
 
 #: src/core/io/rive/rive_exporter.hpp:455
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unknown keyframe type for property %1 of %2 (%3, %4)"
 msgstr ""
 "Tipus de fotograma clau desconegut per a la propietat %1 de %2 (%3, %4)"
@@ -1629,117 +1630,117 @@ msgid "Could not read header"
 msgstr "No s'ha pogut llegir la capçalera"
 
 #: src/core/io/rive/rive_format.cpp:40
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Loading unsupported rive file version %1.%2, the only supported version is %3"
 msgstr ""
-"S'està carregant el fitxer rive no admès versió %1.%2, l'única versió "
-"suportada és %3"
+"S'està carregant el fitxer «rive» no admès versió %1.%2, l'única versió "
+"admesa és %3"
 
 #: src/core/io/rive/rive_format.cpp:46 src/core/io/rive/rive_loader.cpp:750
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not read property table"
 msgstr "No s'ha pogut llegir la taula de propietats"
 
 #: src/core/io/rive/rive_format.hpp:24
-#, fuzzy, kde-format
+#, kde-format
 msgid "Rive Animation"
-msgstr "Animació en rebrot"
+msgstr "Animació «rive»"
 
 #: src/core/io/rive/rive_html_format.hpp:20
-#, fuzzy, kde-format
+#, kde-format
 msgid "RIVE HTML Preview"
-msgstr "Vista prèvia HTML RIVE"
+msgstr "Vista prèvia HTML del RIVE"
 
 #: src/core/io/rive/rive_loader.cpp:179
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unexpected Keyed Object"
-msgstr "Objecte clau inesperat"
+msgstr "Objecte inesperat amb clau"
 
 #: src/core/io/rive/rive_loader.cpp:187
-#, fuzzy, kde-format
+#, kde-format
 msgid "Invalid Keyed Object id %1"
-msgstr "Identificador d'objecte clau %1 no vàlid"
+msgstr "ID d'objecte amb clau %1 no vàlid"
 
 #: src/core/io/rive/rive_loader.cpp:195
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unexpected Keyed Property"
-msgstr "Propietat clau inesperada"
+msgstr "Propietat amb clau inesperada"
 
 #: src/core/io/rive/rive_loader.cpp:204
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unknown Keyed Property id %1"
-msgstr "Identificador desconegut de propietat clau %1"
+msgstr "ID desconegut de propietat amb clau %1"
 
 #: src/core/io/rive/rive_loader.cpp:215
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unexpected Animation"
 msgstr "Animació inesperada"
 
 #: src/core/io/rive/rive_loader.cpp:231
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unexpected Asset Contents"
 msgstr "Contingut de recurs inesperat"
 
 #: src/core/io/rive/rive_loader.cpp:242
-#, fuzzy, kde-format
+#, kde-format
 msgid "Invalid Image Data"
-msgstr "Dades d'imatge no vàlides"
+msgstr "Dades no vàlides d'imatge"
 
 #: src/core/io/rive/rive_loader.cpp:253
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unexpected Keyframe"
 msgstr "Fotograma clau inesperat"
 
 #: src/core/io/rive/rive_loader.cpp:268
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not find parent with id %1"
-msgstr "No s'ha pogut trobar el pare amb l'identificador %1"
+msgstr "No s'ha pogut trobar el pare amb l'ID %1"
 
 #: src/core/io/rive/rive_loader.cpp:318
-#, fuzzy, kde-format
+#, kde-format
 msgid "Parent circular reference detected"
-msgstr "S'ha detectat una referència circular pare"
+msgstr "S'ha detectat una referència circular del pare"
 
 #: src/core/io/rive/rive_loader.cpp:746
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unknown object of type %1"
 msgstr "Objecte desconegut del tipus %1"
 
 #: src/core/io/rive/rive_loader.cpp:791
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not load object type ID"
 msgstr "No s'ha pogut carregar l'ID del tipus d'objecte"
 
 #: src/core/io/rive/rive_loader.cpp:805
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not load property ID in %1 (%2)"
-msgstr "No s'ha pogut carregar l'identificador de la propietat a %1 (%2)"
+msgstr "No s'ha pogut carregar l'ID de la propietat a %1 (%2)"
 
 #: src/core/io/rive/rive_loader.cpp:819
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unknown property %1 of %2 (%3)"
 msgstr "Propietat desconeguda %1 de %2 (%3)"
 
 #: src/core/io/rive/rive_loader.cpp:825
-#, fuzzy, kde-format
+#, kde-format
 msgid "Skipping unknown property %1 of %2 (%3)"
-msgstr "S'està ometent la propietat desconeguda %1 de %2 (%3)"
+msgstr "S'ha omès la propietat desconeguda %1 de %2 (%3)"
 
 #: src/core/io/rive/rive_loader.cpp:834
-#, fuzzy, kde-format
+#, kde-format
 msgid "Error loading property %1 (%2) of %3 (%4)"
-msgstr "S'ha produït un error en carregar la propietat %1 (%2) de %3 (%4)"
+msgstr "Error en carregar la propietat %1 (%2) de %3 (%4)"
 
 #: src/core/io/svg/svg_format.cpp:67
-#, fuzzy, kde-format
+#, kde-format
 msgid "External Stylesheet"
 msgstr "Full d'estil extern"
 
 #: src/core/io/svg/svg_format.cpp:69
-#, fuzzy, kde-format
+#, kde-format
 msgid "Font face with external url"
-msgstr "Cara del tipus de lletra amb URL extern"
+msgstr "Lletra tipogràfica amb URL extern"
 
 #: src/core/io/svg/svg_format.cpp:71
 #, kde-format
@@ -1753,14 +1754,14 @@ msgid "Ignore"
 msgstr "Ignora"
 
 #: src/core/io/svg/svg_format.cpp:75
-#, fuzzy, kde-format
+#, kde-format
 msgid "External Fonts"
-msgstr "Tipus de lletra externs"
+msgstr "Lletres externes"
 
 #: src/core/io/svg/svg_format.cpp:75
-#, fuzzy, kde-format
+#, kde-format
 msgid "How to include external font"
-msgstr "Com incloure el tipus de lletra extern"
+msgstr "Com incloure una lletra externa"
 
 #: src/core/io/svg/svg_format.cpp:92
 #, kde-format
@@ -1773,121 +1774,124 @@ msgid "SVG"
 msgstr "SVG"
 
 #: src/core/io/svg/svg_html_format.hpp:18
-#, fuzzy, kde-format
+#, kde-format
 msgid "SVG Preview"
-msgstr "Vista prèvia SVG"
+msgstr "Vista prèvia de SVG"
 
 #: src/core/io/video/video_format.cpp:73
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not find encoder for '%1'"
 msgstr "No s'ha pogut trobar el codificador per a «%1»"
 
 #: src/core/io/video/video_format.cpp:77
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not allocate stream"
 msgstr "No s'ha pogut assignar el flux"
 
 #: src/core/io/video/video_format.cpp:82
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not alloc an encoding context"
-msgstr "No s'ha pogut al·ludir a un context de codificació"
+msgstr "No s'ha pogut assignar un context de codificació"
 
 #: src/core/io/video/video_format.cpp:110
-#, fuzzy, kde-format
+#, kde-format
 msgid "Error encoding a frame: %1"
 msgstr "Error en codificar un fotograma: %1"
 
 #: src/core/io/video/video_format.cpp:120
-#, fuzzy, kde-format
+#, kde-format
 msgid "Error while writing output packet: %1"
 msgstr "Error en escriure el paquet de sortida: %1"
 
 #: src/core/io/video/video_format.cpp:131
-#, fuzzy, kde-format
+#, kde-format
 msgid "Error sending a frame to the encoder: %1"
 msgstr "Error en enviar un fotograma al codificador: %1"
 
+# skip-rule: t-acc_obe
 #: src/core/io/video/video_format.cpp:187
 #: src/core/io/video/video_format.cpp:201
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not set dict key `%1`: %2"
-msgstr "No s'ha pogut establir la clau dict «%1»: %2"
+msgstr "No s'ha pogut establir la clau del diccionari `%1`: %2"
 
+# skip-rule: t-acc_obe
 #: src/core/io/video/video_format.cpp:246
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not erase dict key `%1`: %2"
-msgstr "No s'ha pogut esborrar la clau del dict «%1»: %2"
+msgstr "No s'ha pogut esborrar la clau del diccionari `%1`: %2"
 
 #: src/core/io/video/video_format.cpp:267
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not copy dict: %1"
-msgstr "No s'ha pogut copiar el dict: %1"
+msgstr "No s'ha pogut copiar el diccionari: %1"
 
+# skip-rule: t-acc_obe
 #: src/core/io/video/video_format.cpp:280
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not copy dict `%1`: %2"
-msgstr "No s'ha pogut copiar el dict «%1»: %2"
+msgstr "No s'ha pogut copiar el diccionari `%1`: %2"
 
 #: src/core/io/video/video_format.cpp:318
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not allocate frame data."
 msgstr "No s'han pogut assignar les dades del fotograma."
 
 #: src/core/io/video/video_format.cpp:403
 #: src/core/io/video/video_format.cpp:777
-#, fuzzy, kde-format
+#, kde-format
 msgid "No video codec"
 msgstr "Sense còdec de vídeo"
 
 #: src/core/io/video/video_format.cpp:431
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not determine pixel format"
 msgstr "No s'ha pogut determinar el format del píxel"
 
 #: src/core/io/video/video_format.cpp:441
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not open video codec: %1"
 msgstr "No s'ha pogut obrir el còdec de vídeo: %1"
 
 #: src/core/io/video/video_format.cpp:446
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not allocate video frame"
-msgstr "No s'ha pogut assignar el fotograma del vídeo"
+msgstr "No s'ha pogut assignar el fotograma de vídeo"
 
 #: src/core/io/video/video_format.cpp:453
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not copy the stream parameters"
 msgstr "No s'han pogut copiar els paràmetres del flux"
 
 #: src/core/io/video/video_format.cpp:473
-#, fuzzy, kde-format
+#, kde-format
 msgid "Error while creating video frame"
 msgstr "S'ha produït un error en crear el fotograma de vídeo"
 
 #: src/core/io/video/video_format.cpp:497
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not initialize the conversion context"
 msgstr "No s'ha pogut inicialitzar el context de conversió"
 
 #: src/core/io/video/video_format.cpp:503
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not allocate temporary picture"
 msgstr "No s'ha pogut assignar la imatge temporal"
 
 #: src/core/io/video/video_format.cpp:745
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
 msgstr ""
-"No s'ha pogut deduir el format de sortida de l'extensió del fitxer: "
+"No s'ha pogut deduir el format de sortida a partir de l'extensió de fitxer: "
 "s'utilitza MPEG."
 
 #: src/core/io/video/video_format.cpp:749
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not find output format"
 msgstr "No s'ha pogut trobar el format de sortida"
 
 #: src/core/io/video/video_format.cpp:822
-#, fuzzy, kde-format
+#, kde-format
 msgid "Error occurred when opening output file: %1"
 msgstr "S'ha produït un error en obrir el fitxer de sortida: %1"
 
@@ -1911,7 +1915,7 @@ msgstr "Amplada"
 
 #: src/core/io/video/video_format.cpp:858
 #: src/core/io/video/video_format.cpp:859
-#, fuzzy, kde-format
+#, kde-format
 msgid "If not 0, it will overwrite the size"
 msgstr "Si no és 0, sobreescriurà la mida"
 
@@ -1928,7 +1932,7 @@ msgid "Verbose"
 msgstr "Sortida detallada"
 
 #: src/core/io/video/video_format.cpp:860
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show verbose information on the conversion"
 msgstr "Mostra informació detallada sobre la conversió"
 
@@ -1958,12 +1962,12 @@ msgid "Add Keyframe"
 msgstr "Afegeix un fotograma clau"
 
 #: src/core/model/animation/animatable_path.cpp:139
-#, fuzzy, kde-format
+#, kde-format
 msgid "Extend Shape"
 msgstr "Amplia la forma"
 
 #: src/core/model/animation_container.cpp:54
-#, fuzzy, kde-format
+#, kde-format
 msgid "Animation Timing"
 msgstr "Temporització de l'animació"
 
@@ -2017,7 +2021,7 @@ msgid "Assets"
 msgstr "Recursos"
 
 #: src/core/model/assets/bitmap.cpp:205
-#, fuzzy, kde-format
+#, kde-format
 msgid "Embedded image"
 msgstr "Imatge incrustada"
 
@@ -2050,14 +2054,14 @@ msgid "Gradient"
 msgstr "Degradat"
 
 #: src/core/model/assets/gradient.cpp:133
-#, fuzzy, kde-format
+#, kde-format
 msgid "Add color to %1"
 msgstr "Afegeix color a %1"
 
 #: src/core/model/assets/gradient.cpp:152
-#, fuzzy, kde-format
+#, kde-format
 msgid "Remove color from %1"
-msgstr "Suprimeix el color de %1"
+msgstr "Elimina el color de %1"
 
 #: src/core/model/assets/gradient.cpp:211
 #, kde-format
@@ -2105,7 +2109,7 @@ msgid "Conical"
 msgstr "Cònic"
 
 #: src/core/model/assets/named_color.cpp:17
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unnamed Color"
 msgstr "Color sense nom"
 
@@ -2153,7 +2157,7 @@ msgid "Image"
 msgstr "Imatge"
 
 #: src/core/model/shapes/inflate_deflate.cpp:18
-#, fuzzy, kde-format
+#, kde-format
 msgid "Inflate and Deflate"
 msgstr "Infla i desinfla"
 
@@ -2165,9 +2169,9 @@ msgid "Layer"
 msgstr "Capa"
 
 #: src/core/model/shapes/offset_path.cpp:342
-#, fuzzy, kde-format
+#, kde-format
 msgid "Offset Path"
-msgstr "Desplaçament del camí"
+msgstr "Camí de desplaçament"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/model/shapes/path.hpp:38
@@ -2178,12 +2182,12 @@ msgid "Path"
 msgstr "Camí"
 
 #: src/core/model/shapes/polystar.hpp:48
-#, fuzzy, kde-format
+#, kde-format
 msgid "PolyStar"
 msgstr "PolyStar"
 
 #: src/core/model/shapes/precomp_layer.cpp:30
-#, fuzzy, kde-format
+#, kde-format
 msgid "Composition Layer"
 msgstr "Capa de composició"
 
@@ -2220,7 +2224,7 @@ msgstr "Traç"
 #: src/core/model/shapes/text.cpp:255
 #, kde-format
 msgid "Change Font"
-msgstr "Canvia el tipus de lletra"
+msgstr "Canvia la de lletra"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_style)
 #: src/core/model/shapes/text.cpp:489
@@ -2230,7 +2234,7 @@ msgid "Text"
 msgstr "Text"
 
 #: src/core/model/shapes/trim.cpp:24
-#, fuzzy, kde-format
+#, kde-format
 msgid "Trim Path"
 msgstr "Retalla el camí"
 
@@ -2252,52 +2256,53 @@ msgid "Transform"
 msgstr "Transforma"
 
 #: src/core/plugin/snippet.hpp:93
-#, fuzzy, kde-format
+#, kde-format
 msgid "# Glaxnimate snippet"
-msgstr "Fragment glaxnimat"
+msgstr "#Fragment del Glaxnimate"
 
+# skip-rule: t-acc_obe
 #: src/core/plugin/snippet.hpp:95
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "# You have access to the `window` and `document` global variables and the "
 "`glaxnimate` module"
 msgstr ""
-"the Teniu accés a les variables globals  thewindow the i  thedocument the i "
-"al mòdul  theglaxnimate the"
+"# Teniu accés a les variables globals `window` i `document` i al mòdul "
+"`glaxnimate`"
 
 #: src/core/plugin/snippet.hpp:97
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "# For documentation see https://glaxnimate.mattbas.org/contributing/"
 "scripting/"
 msgstr ""
-"Per a documentació vegeu https://glaxnimate.mattbas.org/contributing/"
+"# Per a documentació vegeu https://glaxnimate.mattbas.org/contributing/"
 "scripting/"
 
 #: src/core/utils/gzip.cpp:30
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not decompress data"
 msgstr "No s'han pogut descomprimir les dades"
 
 #: src/core/utils/trace_wrapper.cpp:160
-#, fuzzy, kde-format
+#, kde-format
 msgid "Traced %1"
 msgstr "Traçat %1"
 
 #: src/gui/cli.cpp:27
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Informational Options"
 msgstr "Opcions d'informació"
 
 #: src/gui/cli.cpp:28
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Show this help and exit"
 msgstr "Mostra aquesta ajuda i surt"
 
 #: src/gui/cli.cpp:29
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Show version information and exit"
 msgstr "Mostra la informació de la versió i surt"
@@ -2315,47 +2320,47 @@ msgid "File to open"
 msgstr "Fitxer a obrir"
 
 #: src/gui/cli.cpp:33
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "When opening image files, trace them instead of embedding"
-msgstr "En obrir fitxers d'imatge, traça'ls en lloc d'incrustar-los"
+msgstr "En obrir fitxers d'imatge, els traça en lloc d'incrustar-los"
 
 #: src/gui/cli.cpp:35
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "GUI Options"
 msgstr "Opcions de l'IGU"
 
 #: src/gui/cli.cpp:36
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "If present, doesn't restore the main window state"
 msgstr "Si està present, no restaurarà l'estat de la finestra principal"
 
 #: src/gui/cli.cpp:39
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Specify the name of the local socket/named pipe to connect to a host "
 "application."
 msgstr ""
 "Especifiqueu el nom del sòcol local/canonada amb nom per a connectar-vos a "
-"una aplicació d'amfitrió."
+"una aplicació del servidor."
 
 #: src/gui/cli.cpp:46
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Use a specific size for the main window"
 msgstr "Usa una mida específica per a la finestra principal"
 
 #: src/gui/cli.cpp:54
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Print the window id"
-msgstr "Imprimeix l'identificador de la finestra"
+msgstr "Imprimeix l'ID de la finestra"
 
 #: src/gui/cli.cpp:57
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Enables the debug menu"
 msgstr "Activa el menú de depuració"
@@ -2367,37 +2372,36 @@ msgid "Export Options"
 msgstr "Opcions d'exportació"
 
 #: src/gui/cli.cpp:63
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Export the input file to the given file instead of starting the GUI"
 msgstr ""
 "Exporta el fitxer d'entrada al fitxer indicat en comptes d'iniciar la IGU"
 
 #: src/gui/cli.cpp:70
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Specify the format for --export. If omitted it's determined based on the "
 "file name. See --export-format-list for a list of supported formats."
 msgstr ""
 "Especifiqueu el format per a --export. Si s'omet, es determina en funció del "
-"nom del fitxer. Vegeu --export-format-list per a una llista de formats "
-"admesos."
+"nom del fitxer. Vegeu una llista de formats admesos a --export-format-list."
 
 #: src/gui/cli.cpp:77
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Shows possible values for --export-format"
-msgstr "Mostra els valors possibles per a --export-format"
+msgstr "Mostra els valors possibles de --export-format"
 
 #: src/gui/cli.cpp:81
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Render Frame Options"
-msgstr "Opcions del fotograma de renderització"
+msgstr "Opcions de renderització dels fotogrames"
 
 #: src/gui/cli.cpp:84
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Render frames the input file to the given file instead of starting the GUI"
@@ -2406,68 +2410,68 @@ msgstr ""
 "d'iniciar la IGU"
 
 #: src/gui/cli.cpp:91
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Specify the format for --render. If omitted it's determined based on the "
 "file name. See --render-format-list for a list of supported formats."
 msgstr ""
-"Especifiqueu el format per a --render. Si s'omet, es determina en funció del "
-"nom del fitxer. Vegeu --render-format-list per a una llista de formats "
-"admesos."
+"Especifiqueu el format de --render. Si s'omet, es determina en funció del "
+"nom del fitxer. Vegeu una llista de formats admesos a --render-format-list."
 
+# skip-rule: t-acc_obe
 #: src/gui/cli.cpp:98
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Frame number to render, use `all` to render all frames"
 msgstr ""
-"Número de fotograma a renderitzar, utilitzeu sall to per a renderitzar tots "
+"Número de fotograma a renderitzar, utilitzeu `all` per a renderitzar tots "
 "els fotogrames"
 
 #: src/gui/cli.cpp:105
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Shows possible values for --render-format"
-msgstr "Mostra els valors possibles per a --render-format"
+msgstr "Mostra els valors possibles de --render-format"
 
 #: src/gui/cli.cpp:159
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Could not run the plugin"
 msgstr "No s'ha pogut executar el connector"
 
 #: src/gui/cli.cpp:168
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Could not find an interpreter"
 msgstr "No s'ha pogut trobar un intèrpret"
 
 #: src/gui/cli.cpp:225
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Unknown importer"
 msgstr "Importador desconegut"
 
 #: src/gui/cli.cpp:232
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Could not open input file for reading"
 msgstr "No s'ha pogut obrir el fitxer d'entrada per a lectura"
 
 #: src/gui/cli.cpp:246
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Error loading input file"
-msgstr "S'ha produït un error en carregar el fitxer d'entrada"
+msgstr "Error en carregar el fitxer d'entrada"
 
 #: src/gui/cli.cpp:260
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to export"
 msgstr "Heu d'especificar un fitxer a exportar"
 
 #: src/gui/cli.cpp:275
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Unknown exporter. Use --export-format-list for a list of available formats"
@@ -2476,34 +2480,34 @@ msgstr ""
 "formats disponibles"
 
 #: src/gui/cli.cpp:286
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Could not open output file for writing"
 msgstr "No s'ha pogut obrir el fitxer de sortida per a escriptura"
 
 #: src/gui/cli.cpp:295
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Error converting to the output format"
-msgstr "S'ha produït un error en convertir al format de sortida"
+msgstr "Error en convertir al format de sortida"
 
 #: src/gui/cli.cpp:315 src/gui/cli.cpp:335
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Could not save to %1"
 msgstr "No s'ha pogut desar a %1"
 
 #: src/gui/cli.cpp:344
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to render"
 msgstr "Heu d'especificar un fitxer a renderitzar"
 
 #: src/gui/emoji/emoji_dialog.cpp:32
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Select Emoji"
-msgstr "Selecciona Emoji"
+msgstr "Selecció d'emoji"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:164
 #: src/gui/emoji/emoji_set_dialog.cpp:217
@@ -2531,16 +2535,16 @@ msgid "Could not download: %1"
 msgstr "No s'han pogut baixar: %1"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:215
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Package install status"
 msgid "Didn't download any files"
 msgstr "No s'ha baixat cap fitxer"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, EmojiSetDialog)
 #: src/gui/emoji/emoji_set_dialog.ui:21
-#, fuzzy, kde-format
+#, kde-format
 msgid "Emoji Set"
-msgstr "Conjunt d'emoji"
+msgstr "Conjunt d'emojis"
 
 #. i18n: ectx: property (text), widget (QTableWidget, emoji_set_view)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
@@ -2618,9 +2622,9 @@ msgid "Close"
 msgstr "Tanca"
 
 #: src/gui/glaxnimate_app.cpp:79
-#, fuzzy, kde-format
+#, kde-format
 msgid "Glaxnimate Default"
-msgstr "Glaxnima per defecte"
+msgstr "Predeterminat del Glaxnimate"
 
 #: src/gui/glaxnimate_app.cpp:170
 #, kde-format
@@ -2635,7 +2639,7 @@ msgid "Language"
 msgstr "Idioma"
 
 #: src/gui/glaxnimate_app.cpp:174
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Interface Language"
 msgstr "Idioma de la interfície"
@@ -2647,13 +2651,13 @@ msgid "Icon Theme"
 msgstr "Tema d'icones"
 
 #: src/gui/glaxnimate_app.cpp:178
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:check"
 msgid "Horizontal Timeline Scroll"
 msgstr "Desplaçament horitzontal de la línia de temps"
 
 #: src/gui/glaxnimate_app.cpp:179
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
@@ -2663,10 +2667,10 @@ msgstr ""
 "predeterminada i verticalment amb Maj o Alt"
 
 #: src/gui/glaxnimate_app.cpp:186
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title settings group"
 msgid "New Animation Defaults"
-msgstr "Valors predeterminats de l'animació nova"
+msgstr "Valors predeterminats d'animació nova"
 
 #: src/gui/glaxnimate_app.cpp:188
 #, kde-format
@@ -2711,25 +2715,25 @@ msgid "Open / Save"
 msgstr "Obre/Desa"
 
 #: src/gui/glaxnimate_app.cpp:203
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Max Recent Files"
 msgstr "Nombre màxim de fitxers recents"
 
 #: src/gui/glaxnimate_app.cpp:207
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Backup Frequency"
-msgstr "Freqüència de la còpia de seguretat"
+msgstr "Freqüència de les copies de seguretat"
 
 #: src/gui/glaxnimate_app.cpp:208
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "How often to save a backup copy (in minutes)"
 msgstr "Amb quina freqüència es desa una còpia de seguretat (en minuts)"
 
 #: src/gui/glaxnimate_app.cpp:211
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:check"
 msgid "Use system file dialog"
 msgstr "Usa el diàleg de fitxer del sistema"
@@ -2747,12 +2751,12 @@ msgid "Tools"
 msgstr "Eines"
 
 #: src/gui/graphics/bezier_item.cpp:239
-#, fuzzy, kde-format
+#, kde-format
 msgid "Remove node tangent"
-msgstr "Suprimeix la tangent del node"
+msgstr "Elimina la tangent del node"
 
 #: src/gui/graphics/bezier_item.cpp:351
-#, fuzzy, kde-format
+#, kde-format
 msgid "Update path"
 msgstr "Actualitza el camí"
 
@@ -2762,12 +2766,12 @@ msgid "Remove Point"
 msgstr "Elimina el punt"
 
 #: src/gui/graphics/bezier_item.cpp:392
-#, fuzzy, kde-format
+#, kde-format
 msgid "Set Start"
 msgstr "Estableix l'inici"
 
 #: src/gui/graphics/bezier_item.cpp:421
-#, fuzzy, kde-format
+#, kde-format
 msgid "Update shape"
 msgstr "Actualitza la forma"
 
@@ -2777,18 +2781,18 @@ msgid "Resize Canvas"
 msgstr "Redimensiona el llenç"
 
 #: src/gui/graphics/gradient_editor.cpp:109
-#, fuzzy, kde-format
+#, kde-format
 msgid "Drag Gradient"
-msgstr "Arrossegueu el degradat"
+msgstr "Arrossega el degradat"
 
 #: src/gui/graphics/transform_graphics_item.cpp:421
 #: src/gui/graphics/transform_graphics_item.cpp:480
-#, fuzzy, kde-format
+#, kde-format
 msgid "Drag anchor point"
 msgstr "Arrossega el punt d'ancoratge"
 
 #: src/gui/item_models/document_model_base.cpp:101
-#, fuzzy, kde-format
+#, kde-format
 msgid "Move Layers"
 msgstr "Mou les capes"
 
@@ -2828,12 +2832,12 @@ msgid "%1%"
 msgstr "%1%"
 
 #: src/gui/item_models/property_model_full.cpp:208
-#, fuzzy, kde-format
+#, kde-format
 msgid "Group Color"
-msgstr "Color del grup"
+msgstr "Color de grup"
 
 #: src/gui/item_models/property_model_full.cpp:215
-#, fuzzy, kde-format
+#, kde-format
 msgid "Jump to previous keyframe"
 msgstr "Salta al fotograma clau anterior"
 
@@ -2843,7 +2847,7 @@ msgid "Hidden"
 msgstr "Ocult"
 
 #: src/gui/item_models/property_model_full.cpp:265
-#, fuzzy, kde-format
+#, kde-format
 msgid "Toggle Keyframe"
 msgstr "Commuta el fotograma clau"
 
@@ -2853,17 +2857,17 @@ msgid "Unlocked"
 msgstr "S'ha desblocat"
 
 #: src/gui/item_models/property_model_full.cpp:300
-#, fuzzy, kde-format
+#, kde-format
 msgid "Jump to next keyframe"
 msgstr "Salta al fotograma clau següent"
 
 #: src/gui/item_models/property_model_full.cpp:394
-#, fuzzy, kde-format
+#, kde-format
 msgid "Parent Layer"
 msgstr "Capa pare"
 
 #: src/gui/item_models/property_model_full.cpp:400
-#, fuzzy, kde-format
+#, kde-format
 msgid "(No Parent)"
 msgstr "(Sense pare)"
 
@@ -2882,19 +2886,19 @@ msgid "Value"
 msgstr "Valor"
 
 #: src/gui/item_models/python_snippet_model.hpp:35
-#, fuzzy, kde-format
+#, kde-format
 msgid "New Snippet %1"
 msgstr "Fragment nou %1"
 
 #: src/gui/settings/api_credentials.cpp:86
-#, fuzzy, kde-format
+#, kde-format
 msgid "Information"
 msgstr "Informació"
 
 #: src/gui/settings/api_credentials.hpp:41
-#, fuzzy, kde-format
+#, kde-format
 msgid "API Credentials"
-msgstr "Credencials API"
+msgstr "Credencials de l'API"
 
 #: src/gui/settings/clipboard_settings.hpp:18
 #, kde-format
@@ -2907,12 +2911,12 @@ msgid "Unnamed"
 msgstr "Sense nom"
 
 #: src/gui/settings/document_templates.cpp:118
-#, fuzzy, kde-format
+#, kde-format
 msgid "%1"
 msgstr "%1"
 
 #: src/gui/settings/document_templates.cpp:125
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
@@ -2925,7 +2929,7 @@ msgid "Template"
 msgstr "Plantilla"
 
 #: src/gui/settings/document_templates.cpp:184
-#, fuzzy, kde-format
+#, kde-format
 msgid "%1 %2"
 msgstr "%1 %2"
 
@@ -2950,7 +2954,7 @@ msgstr "Barres d'eines"
 #: src/gui/widgets/font/font_preview_widget.ui:45
 #: src/gui/widgets/spin2d.cpp:129 src/gui/widgets/spin2d.cpp:130
 #: src/gui/widgets/view_transform_widget.ui:60
-#, fuzzy, no-c-format, kde-format
+#, no-c-format, kde-format
 msgid "%"
 msgstr "%"
 
@@ -2965,27 +2969,27 @@ msgid "F7"
 msgstr "F7"
 
 #: src/gui/tools/draw_tool.cpp:184
-#, fuzzy, kde-format
+#, kde-format
 msgid "Extend Path"
 msgstr "Amplia el camí"
 
 #: src/gui/tools/draw_tool.cpp:207
-#, fuzzy, kde-format
+#, kde-format
 msgid "Draw Shape"
 msgstr "Dibuixa la forma"
 
 #: src/gui/tools/draw_tool.cpp:318
-#, fuzzy, kde-format
+#, kde-format
 msgid "Delete curve point"
-msgstr "Suprimeix el punt de corba"
+msgstr "Suprimeix el punt de la corba"
 
 #: src/gui/tools/draw_tool.cpp:425
-#, fuzzy, kde-format
+#, kde-format
 msgid "Add curve point"
 msgstr "Afegeix un punt de corba"
 
 #: src/gui/tools/draw_tool.hpp:25
-#, fuzzy, kde-format
+#, kde-format
 msgid "Draw Bezier"
 msgstr "Dibuixa Bézier"
 
@@ -2997,14 +3001,14 @@ msgid "F3"
 msgstr "F3"
 
 #: src/gui/tools/edit_tool.cpp:169
-#, fuzzy, kde-format
+#, kde-format
 msgid "Drag nodes"
-msgstr "Arrossegueu els nodes"
+msgstr "Arrossega nodes"
 
 #: src/gui/tools/edit_tool.cpp:276
-#, fuzzy, kde-format
+#, kde-format
 msgid "Cusp"
-msgstr "Cusp"
+msgstr "Vèrtex"
 
 #: src/gui/tools/edit_tool.cpp:280
 #, kde-format
@@ -3012,12 +3016,12 @@ msgid "Smooth"
 msgstr "Suavitzat"
 
 #: src/gui/tools/edit_tool.cpp:284
-#, fuzzy, kde-format
+#, kde-format
 msgid "Symmetrical"
 msgstr "Simètric"
 
 #: src/gui/tools/edit_tool.cpp:291
-#, fuzzy, kde-format
+#, kde-format
 msgid "Set %1 Node"
 msgstr "Estableix el node %1"
 
@@ -3027,24 +3031,24 @@ msgid "Node"
 msgstr "Node"
 
 #: src/gui/tools/edit_tool.cpp:315
-#, fuzzy, kde-format
+#, kde-format
 msgid "Remove Node"
 msgstr "Suprimeix el node"
 
 #: src/gui/tools/edit_tool.cpp:319
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show Tangents"
-msgstr "Mostra els Tangents"
+msgstr "Mostra les tangents"
 
 #: src/gui/tools/edit_tool.cpp:326
-#, fuzzy, kde-format
+#, kde-format
 msgid "Make First Node"
 msgstr "Fes el primer node"
 
 #: src/gui/tools/edit_tool.cpp:334
-#, fuzzy, kde-format
+#, kde-format
 msgid "Remove Tangent"
-msgstr "Elimina el Tangent"
+msgstr "Elimina la tangent"
 
 #: src/gui/tools/edit_tool.cpp:369
 #, kde-format
@@ -3067,24 +3071,24 @@ msgstr "Elimina una aturada"
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/tools/edit_tool.cpp:527
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1849
-#, fuzzy, kde-format
+#, kde-format
 msgid "Dissolve Nodes"
 msgstr "Dissol els nodes"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/tools/edit_tool.cpp:527
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1387
-#, fuzzy, kde-format
+#, kde-format
 msgid "Delete Nodes"
 msgstr "Suprimeix els nodes"
 
 #: src/gui/tools/edit_tool.cpp:886
-#, fuzzy, kde-format
+#, kde-format
 msgid "Set node type"
 msgstr "Estableix el tipus de node"
 
 #: src/gui/tools/edit_tool.cpp:914
-#, fuzzy, kde-format
+#, kde-format
 msgid "Straighten segments"
 msgstr "Redreça els segments"
 
@@ -3125,7 +3129,7 @@ msgid "F8"
 msgstr "F8"
 
 #: src/gui/tools/fill_tool.cpp:53
-#, fuzzy, kde-format
+#, kde-format
 msgid "Apply Style"
 msgstr "Aplica l'estil"
 
@@ -3225,12 +3229,12 @@ msgstr "Estrella"
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/tools/star_tool.cpp:20
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1243
-#, fuzzy, kde-format
+#, kde-format
 msgid "*"
 msgstr "*"
 
 #: src/gui/tools/star_tool.cpp:47
-#, fuzzy, kde-format
+#, kde-format
 msgid "Draw Star"
 msgstr "Dibuixa una estrella"
 
@@ -3253,7 +3257,7 @@ msgstr "Atribucions"
 
 #. i18n: ectx: property (text), widget (QLabel, credits)
 #: src/gui/widgets/dialogs/about_dialog.ui:139
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not find AUTHORS.md"
 msgstr "No s'ha pogut trobar AUTHORS.md"
 
@@ -3265,7 +3269,7 @@ msgstr "Camins"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/about_dialog.ui:181
-#, fuzzy, kde-format
+#, kde-format
 msgid "User Data Directory:"
 msgstr "Directori de dades de l'usuari:"
 
@@ -3289,9 +3293,9 @@ msgstr "Directoris de dades:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/about_dialog.ui:297
-#, fuzzy, kde-format
+#, kde-format
 msgid "Icon Theme Paths:"
-msgstr "Icona Camins del tema:"
+msgstr "Camins del tema d'icones:"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_3)
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
@@ -3317,31 +3321,31 @@ msgstr "CPU"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
 #: src/gui/widgets/dialogs/about_dialog.ui:355
-#, fuzzy, kde-format
+#, kde-format
 msgid "Application Qt"
-msgstr "Qt de l'aplicació"
+msgstr "Aplicació Qt"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
 #: src/gui/widgets/dialogs/about_dialog.ui:360
-#, fuzzy, kde-format
+#, kde-format
 msgid "System Qt"
-msgstr "Qt del sistema"
+msgstr "Sistema Qt"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
 #: src/gui/widgets/dialogs/about_dialog.ui:365
-#, fuzzy, kde-format
+#, kde-format
 msgid "Potrace"
 msgstr "Potrace"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
 #: src/gui/widgets/dialogs/about_dialog.ui:370
-#, fuzzy, kde-format
+#, kde-format
 msgid "Libav"
 msgstr "Libav"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
 #: src/gui/widgets/dialogs/about_dialog.ui:375
-#, fuzzy, kde-format
+#, kde-format
 msgid "libarchive"
 msgstr "libarchive"
 
@@ -3367,7 +3371,7 @@ msgstr "Formats"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: src/gui/widgets/dialogs/about_dialog.ui:464
-#, fuzzy, kde-format
+#, kde-format
 msgid "Input Formats"
 msgstr "Formats d'entrada"
 
@@ -3389,9 +3393,9 @@ msgstr "Extensions"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: src/gui/widgets/dialogs/about_dialog.ui:505
-#, fuzzy, kde-format
+#, kde-format
 msgid "Output Formats "
-msgstr "Formats de sortida"
+msgstr "Formats de sortida "
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:21
@@ -4305,9 +4309,9 @@ msgstr "Afegeix un node..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1384
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Delete Nodes"
-msgstr "Suprimeix els nodes"
+msgstr "Su&primeix els nodes"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1399
@@ -4323,9 +4327,9 @@ msgstr "Divideix els nodes"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1423
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Cusp"
-msgstr "Cusp"
+msgstr "&Vèrtex"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1435
@@ -4789,15 +4793,15 @@ msgstr "Desa com a plantilla"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2173
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Put on Path"
-msgstr "Posa al camí"
+msgstr "&Posa al camí"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2182
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Remove from Path"
-msgstr "Suprimeix del camí"
+msgstr "&Elimina del camí"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2191
@@ -4868,9 +4872,9 @@ msgstr "Disposició més adequada per a pantalles més petites"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2267
-#, fuzzy, kde-format
+#, kde-format
 msgid "RIVE (canvas)"
-msgstr "RIVE (canvas)"
+msgstr "RIVE (llenç)"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2272
@@ -4943,7 +4947,7 @@ msgid "No importer found for %1"
 msgstr "No s'ha trobat cap importador per a %1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:453
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "The file might have been moved or deleted\n"
 "%1"
@@ -5051,9 +5055,9 @@ msgid "Link %1 Color"
 msgstr "Color de l'enllaç %1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:868
-#, fuzzy, kde-format
+#, kde-format
 msgid "Download fonts"
-msgstr "Baixa els tipus de lletra"
+msgstr "Baixa les fonts"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:906
 #, kde-format
@@ -5154,9 +5158,9 @@ msgid "Put text on path"
 msgstr "Posa el text al camí"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:834
-#, fuzzy, kde-format
+#, kde-format
 msgid "Remove text from path"
-msgstr "Suprimeix el text del camí"
+msgstr "Elimina text del camí"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:240
 #, kde-format
@@ -5862,7 +5866,7 @@ msgstr "Edita..."
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_3)
 #: src/gui/widgets/docks/snippet_list_widget.ui:54
-#, fuzzy, kde-format
+#, kde-format
 msgid "Delete selected snippet"
 msgstr "Suprimeix el fragment seleccionat"
 
@@ -5949,17 +5953,17 @@ msgid "Polygon"
 msgstr "Polígon"
 
 #: src/gui/widgets/font/external_font_widget.cpp:137
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "All supported files (*.ttf, *.otf, *.css); CSS files (*.css); Font files (*."
 "ttf, *.otf); All files (*)"
 msgstr ""
 "Tots els fitxers admesos (*.ttf, *.otf, *.css); fitxers CSS (*.css); fitxers "
-"de tipus de lletra (*.ttf, *.otf); tots els fitxers (*)"
+"de fonts (*.ttf, *.otf); tots els fitxers (*)"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/font/external_font_widget.ui:26
-#, fuzzy, kde-format
+#, kde-format
 msgid "File/URL"
 msgstr "Fitxer/URL"
 
@@ -5971,7 +5975,7 @@ msgstr "Fitxer/URL"
 #: src/gui/widgets/font/google_fonts_widget.ui:82
 #, kde-format
 msgid "Font Style"
-msgstr "Estil del tipus de lletra"
+msgstr "Estil de la lletra"
 
 #: src/gui/widgets/font/font_loader.cpp:47
 #, kde-format
@@ -5984,9 +5988,9 @@ msgid "Invalid data URL"
 msgstr "URL de dades invàlida"
 
 #: src/gui/widgets/font/font_loader.cpp:138
-#, fuzzy, kde-format
+#, kde-format
 msgid "Font format not supported for %1"
-msgstr "El format del tipus de lletra no està admès per a %1"
+msgstr "El format de font no està admès per a %1"
 
 #: src/gui/widgets/font/font_preview_widget.cpp:25
 #, kde-format
@@ -6001,9 +6005,9 @@ msgstr "Escala de la vista prèvia"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_google)
 #: src/gui/widgets/font/font_style_dialog.ui:52
-#, fuzzy, kde-format
+#, kde-format
 msgid "Google Fonts"
-msgstr "Tipus de lletra de Google"
+msgstr "Fonts de Google"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/gui/widgets/font/font_style_widget.ui:53
@@ -6033,9 +6037,9 @@ msgid "Proportional"
 msgstr "Proporcional"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:180
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not add font"
-msgstr "No s'ha pogut afegir el tipus de lletra"
+msgstr "No s'ha pogut afegir la lletra"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:274
 #, kde-format
@@ -6266,9 +6270,9 @@ msgid "Decompose"
 msgstr "Descompon"
 
 #: src/gui/widgets/menus/node_menu.cpp:396
-#, fuzzy, kde-format
+#, kde-format
 msgid "Remove from Path"
-msgstr "Suprimeix del camí"
+msgstr "Elimina del camí"
 
 #: src/gui/widgets/menus/node_menu.cpp:410
 #, fuzzy, kde-format
@@ -6714,9 +6718,9 @@ msgid "Link shapes with matching colors"
 msgstr "Enllaça les formes amb colors coincidents"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:349
-#, fuzzy, kde-format
+#, kde-format
 msgid "Remove existing colors"
-msgstr "Suprimeix els colors existents"
+msgstr "Elimina els colors existents"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:368
 #, fuzzy, kde-format
@@ -6812,9 +6816,9 @@ msgstr "Estableix el degradat %1"
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_remove)
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:212
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:83
-#, fuzzy, kde-format
+#, kde-format
 msgid "Remove Gradient"
-msgstr "Suprimeix el degradat"
+msgstr "Elimina el degradat"
 
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:388
 #, fuzzy, kde-format
