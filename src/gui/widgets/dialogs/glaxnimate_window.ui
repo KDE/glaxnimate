@@ -72,7 +72,6 @@
        <normaloff>.</normaloff>.</iconset>
      </property>
     </widget>
-    <addaction name="action_new"/>
     <addaction name="menu_new_from_template"/>
     <addaction name="action_open"/>
     <addaction name="action_import_image"/>
@@ -81,18 +80,11 @@
     <addaction name="action_open_last"/>
     <addaction name="menu_open_recent"/>
     <addaction name="separator"/>
-    <addaction name="action_reload"/>
-    <addaction name="action_save"/>
-    <addaction name="action_save_as"/>
     <addaction name="action_save_as_template"/>
     <addaction name="separator"/>
     <addaction name="action_export"/>
     <addaction name="action_export_as"/>
     <addaction name="action_export_sequence"/>
-    <addaction name="separator"/>
-    <addaction name="action_close"/>
-    <addaction name="separator"/>
-    <addaction name="action_quit"/>
    </widget>
    <widget class="QMenu" name="menu_tools">
     <property name="title">
@@ -170,12 +162,8 @@
     <addaction name="separator"/>
     <addaction name="action_redo"/>
     <addaction name="separator"/>
-    <addaction name="action_cut"/>
-    <addaction name="action_copy"/>
-    <addaction name="action_paste"/>
     <addaction name="action_paste_as_composition"/>
     <addaction name="action_duplicate"/>
-    <addaction name="action_select_all"/>
     <addaction name="action_delete"/>
     <addaction name="separator"/>
    </widget>
@@ -208,10 +196,7 @@
     <addaction name="menu_views"/>
     <addaction name="menu_layout"/>
     <addaction name="menu_toolbars"/>
-    <addaction name="action_view_zoom_in"/>
-    <addaction name="action_view_zoom_out"/>
     <addaction name="action_view_zoom_reset"/>
-    <addaction name="action_view_fit"/>
     <addaction name="action_view_reset_rotation"/>
     <addaction name="action_flip_view"/>
    </widget>
@@ -353,20 +338,10 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="action_new"/>
-   <addaction name="action_open"/>
-   <addaction name="action_save"/>
-   <addaction name="action_save_as"/>
    <addaction name="action_export"/>
    <addaction name="separator"/>
    <addaction name="action_undo"/>
    <addaction name="action_redo"/>
-   <addaction name="separator"/>
-   <addaction name="action_copy"/>
-   <addaction name="action_cut"/>
-   <addaction name="action_paste"/>
-   <addaction name="separator"/>
-   <addaction name="action_select_all"/>
    <addaction name="separator"/>
    <addaction name="action_raise_to_top"/>
    <addaction name="action_raise"/>
@@ -1074,60 +1049,6 @@
     </layout>
    </widget>
   </widget>
-  <action name="action_new">
-   <property name="icon">
-    <iconset theme="document-new">
-     <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;New</string>
-   </property>
-  </action>
-  <action name="action_open">
-   <property name="icon">
-    <iconset theme="document-open">
-     <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Open...</string>
-   </property>
-  </action>
-  <action name="action_save">
-   <property name="icon">
-    <iconset theme="document-save">
-     <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Save</string>
-   </property>
-  </action>
-  <action name="action_save_as">
-   <property name="icon">
-    <iconset theme="document-save-as">
-     <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-   </property>
-   <property name="text">
-    <string>Save &amp;As...</string>
-   </property>
-  </action>
-  <action name="action_close">
-   <property name="icon">
-    <iconset theme="document-close">
-     <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Close</string>
-   </property>
-  </action>
-  <action name="action_quit">
-   <property name="icon">
-    <iconset theme="application-exit">
-     <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Quit</string>
-   </property>
-  </action>
   <action name="action_tool_select">
    <property name="checkable">
     <bool>true</bool>
@@ -1440,45 +1361,6 @@
     <string>Sy&amp;mmetric</string>
    </property>
   </action>
-  <action name="action_copy">
-   <property name="icon">
-    <iconset theme="edit-copy">
-     <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Copy</string>
-   </property>
-  </action>
-  <action name="action_cut">
-   <property name="icon">
-    <iconset theme="edit-cut">
-     <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-   </property>
-   <property name="text">
-    <string>Cu&amp;t</string>
-   </property>
-  </action>
-  <action name="action_paste">
-   <property name="icon">
-    <iconset theme="edit-paste">
-     <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Paste</string>
-   </property>
-  </action>
-  <action name="action_select_all">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="icon">
-    <iconset theme="edit-select-all">
-     <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Select All</string>
-   </property>
-  </action>
   <action name="action_raise_to_top">
    <property name="icon">
     <iconset theme="layer-top">
@@ -1527,15 +1409,6 @@
     <string>End</string>
    </property>
   </action>
-  <action name="action_reload">
-   <property name="icon">
-    <iconset theme="document-revert">
-     <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-   </property>
-   <property name="text">
-    <string>Re&amp;load</string>
-   </property>
-  </action>
   <action name="action_undo">
    <property name="enabled">
     <bool>false</bool>
@@ -1560,15 +1433,6 @@
     <string notr="true">&amp;Redo %1</string>
    </property>
   </action>
-  <action name="action_view_fit">
-   <property name="icon">
-    <iconset theme="zoom-fit-page">
-     <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Fit Animation</string>
-   </property>
-  </action>
   <action name="action_view_reset">
    <property name="icon">
     <iconset theme="zoom-original">
@@ -1585,24 +1449,6 @@
    </property>
    <property name="text">
     <string>&amp;Reset Rotation</string>
-   </property>
-  </action>
-  <action name="action_view_zoom_in">
-   <property name="icon">
-    <iconset theme="zoom-in">
-     <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-   </property>
-   <property name="text">
-    <string>Zoom &amp;In</string>
-   </property>
-  </action>
-  <action name="action_view_zoom_out">
-   <property name="icon">
-    <iconset theme="zoom-out">
-     <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-   </property>
-   <property name="text">
-    <string>Zoom &amp;Out</string>
    </property>
   </action>
   <action name="action_view_zoom_reset">
@@ -2372,54 +2218,6 @@
  <resources/>
  <connections>
   <connection>
-   <sender>action_save</sender>
-   <signal>triggered()</signal>
-   <receiver>glaxnimate::gui::GlaxnimateWindow</receiver>
-   <slot>document_save()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>656</x>
-     <y>526</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>action_new</sender>
-   <signal>triggered()</signal>
-   <receiver>glaxnimate::gui::GlaxnimateWindow</receiver>
-   <slot>document_new()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>656</x>
-     <y>526</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>action_save_as</sender>
-   <signal>triggered()</signal>
-   <receiver>glaxnimate::gui::GlaxnimateWindow</receiver>
-   <slot>document_save_as()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>656</x>
-     <y>526</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>btn_layer_add</sender>
    <signal>clicked()</signal>
    <receiver>glaxnimate::gui::GlaxnimateWindow</receiver>
@@ -2452,22 +2250,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>action_view_zoom_in</sender>
-   <signal>triggered()</signal>
-   <receiver>canvas</receiver>
-   <slot>zoom_in()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>656</x>
-     <y>509</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>action_view_zoom_reset</sender>
    <signal>triggered()</signal>
    <receiver>canvas</receiver>
@@ -2484,38 +2266,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>action_view_zoom_out</sender>
-   <signal>triggered()</signal>
-   <receiver>canvas</receiver>
-   <slot>zoom_out()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>656</x>
-     <y>509</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>action_view_fit</sender>
-   <signal>triggered()</signal>
-   <receiver>glaxnimate::gui::GlaxnimateWindow</receiver>
-   <slot>view_fit()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>656</x>
-     <y>526</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>action_view_reset_rotation</sender>
    <signal>triggered()</signal>
    <receiver>canvas</receiver>
@@ -2528,38 +2278,6 @@
     <hint type="destinationlabel">
      <x>656</x>
      <y>509</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>action_open</sender>
-   <signal>triggered()</signal>
-   <receiver>glaxnimate::gui::GlaxnimateWindow</receiver>
-   <slot>document_open_dialog()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>656</x>
-     <y>526</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>action_close</sender>
-   <signal>triggered()</signal>
-   <receiver>glaxnimate::gui::GlaxnimateWindow</receiver>
-   <slot>document_new()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>656</x>
-     <y>526</y>
     </hint>
    </hints>
   </connection>

@@ -1,14 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
-<gui name="glaxnimate" version="4" xmlns="http://www.kde.org/standards/kxmlgui/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
-  <!-- see https://invent.kde.org/frameworks/kxmlgui/-/blob/master/src/ui_standards.rc -->
+<gui name="glaxnimate" version="5" xmlns="http://www.kde.org/standards/kxmlgui/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
+  <!-- see
+    https://invent.kde.org/frameworks/kxmlgui/-/blob/master/src/ui_standards.rc
+    https://invent.kde.org/frameworks/kxmlgui/-/raw/master/src/ui_standards.rc
+  -->
   <MenuBar name="menu_bar">
     <Menu name="menu_file">
       <text>&amp;File</text>
-      <Action name="action_new" />
+      <Action name="file_new" />
       <Menu name="menu_new_from_template">
         <text>New from Template</text>
       </Menu>
-      <Action name="action_open" />
+        <Separator />
+      <Action name="file_open" />
       <Action name="action_import_image" />
       <Action name="action_import" />
       <Action name="action_open_lottiefiles" />
@@ -18,18 +22,19 @@
         <Separator />
       </Menu>
       <Separator />
-      <Action name="action_reload" />
-      <Action name="action_save" />
-      <Action name="action_save_as" />
+      <Action name="file_save" />
+      <Action name="file_save_as" />
       <Action name="action_save_as_template" />
+      <Action name="action_reload" />
+      <Action name="file_revert" />
       <Separator />
       <Action name="action_export" />
       <Action name="action_export_as" />
       <Action name="action_export_sequence" />
       <Separator />
-      <Action name="action_close" />
+      <Action name="file_close" />
       <Separator />
-      <Action name="action_quit" />
+      <Action name="file_quit" />
     </Menu>
     <Menu name="menu_edit">
       <text>&amp;Edit</text>
@@ -37,12 +42,12 @@
       <Separator />
       <Action name="action_redo" />
       <Separator />
-      <Action name="action_cut" />
-      <Action name="action_copy" />
-      <Action name="action_paste" />
+      <Action name="edit_cut" />
+      <Action name="edit_copy" />
+      <Action name="edit_paste" />
       <Action name="action_paste_as_composition" />
       <Action name="action_duplicate" />
-      <Action name="action_select_all" />
+      <Action name="edit_select_all" />
       <Action name="action_delete" />
       <Separator />
       <Action name="options_configure"/>
@@ -81,10 +86,10 @@
       <Menu name="menu_toolbars">
         <text>Tool&amp;bars</text>
       </Menu>
-      <Action name="action_view_zoom_in" />
-      <Action name="action_view_zoom_out" />
+      <Action name="view_zoom_in" />
+      <Action name="view_zoom_out" />
       <Action name="action_view_zoom_reset" />
-      <Action name="action_view_fit" />
+      <Action name="view_fit_to_page" />
       <Action name="action_view_reset_rotation" />
       <Action name="action_flip_view" />
     </Menu>

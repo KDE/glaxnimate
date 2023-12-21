@@ -20,6 +20,7 @@
 #include <KActionCollection>
 #include <KShortcutsDialog>
 #include <KXMLGUIFactory>
+#include <kstandardaction.h>
 
 #include "glaxnimate_settings.hpp"
 
@@ -36,6 +37,7 @@
 #include "model/shapes/zig_zag.hpp"
 #include "io/io_registry.hpp"
 
+#include "widgets/dialogs/glaxnimate_window.hpp"
 #include "widgets/dialogs/io_status_dialog.hpp"
 #include "widgets/dialogs/about_dialog.hpp"
 #include "widgets/dialogs/resize_dialog.hpp"
@@ -183,18 +185,24 @@ void GlaxnimateWindow::Private::add_modifier_menu_action(QMenu* menu)
 void GlaxnimateWindow::Private::init_actions()
 {
     // Standard Shortcuts
-    ui.action_new->setShortcut(QKeySequence::New);
-    ui.action_open->setShortcut(QKeySequence::Open);
-    ui.action_close->setShortcut(QKeySequence::Close);
-    ui.action_reload->setShortcut(QKeySequence("Ctrl+F5", QKeySequence::PortableText));
-    ui.action_save->setShortcut(QKeySequence::Save);
-    ui.action_save_as->setShortcut(QKeySequence::SaveAs);
-    ui.action_quit->setShortcut(QKeySequence::Quit);
-    ui.action_copy->setShortcut(QKeySequence::Copy);
-    ui.action_cut->setShortcut(QKeySequence::Cut);
-    ui.action_paste->setShortcut(QKeySequence::Paste);
+    KStandardAction::openNew(parent, &GlaxnimateWindow::document_new, parent->actionCollection());
+    KStandardAction::open(parent, &GlaxnimateWindow::document_open_dialog, parent->actionCollection());
+    KStandardAction::close(parent, &GlaxnimateWindow::document_new, parent->actionCollection());
+    KStandardAction::save(parent, &GlaxnimateWindow::document_save, parent->actionCollection());
+    KStandardAction::saveAs(parent, &GlaxnimateWindow::document_save_as, parent->actionCollection());
+    auto revert = KStandardAction::revert(parent, &GlaxnimateWindow::document_reload, parent->actionCollection());
+    parent->actionCollection()->setDefaultShortcut(revert, QKeySequence("Ctrl+F5", QKeySequence::PortableText));
+    KStandardAction::quit(parent, &GlaxnimateWindow::close, parent->actionCollection());
+    KStandardAction::copy(parent, &GlaxnimateWindow::copy, parent->actionCollection());
+    KStandardAction::cut(parent, &GlaxnimateWindow::cut, parent->actionCollection());
+    KStandardAction::paste(parent, &GlaxnimateWindow::paste, parent->actionCollection());
+    // TODO implement
+    KStandardAction::selectAll(parent, []{}, parent->actionCollection())->setEnabled(false);
+    KStandardAction::fitToPage(parent, &GlaxnimateWindow::view_fit, parent->actionCollection());
+    KStandardAction::zoomIn(ui.canvas, &Canvas::zoom_in, parent->actionCollection());
+    KStandardAction::zoomOut(ui.canvas, &Canvas::zoom_out, parent->actionCollection());
+
     ui.action_paste_as_composition->setShortcut(QKeySequence("Ctrl+Shift+V", QKeySequence::PortableText));
-    ui.action_select_all->setShortcut(QKeySequence::SelectAll);
     ui.action_undo->setShortcut(QKeySequence::Undo);
     ui.action_redo->setShortcut(QKeySequence::Redo);
     ui.action_group->setShortcut(QKeySequence("Ctrl+G", QKeySequence::PortableText));
@@ -212,19 +220,14 @@ void GlaxnimateWindow::Private::init_actions()
     ui.action_play->setShortcut(QKeySequence("Space", QKeySequence::PortableText));
 
     // Actions
-    connect(ui.action_copy, &QAction::triggered, parent, &GlaxnimateWindow::copy);
-    connect(ui.action_paste, &QAction::triggered, parent, &GlaxnimateWindow::paste);
     connect(ui.action_paste_as_composition, &QAction::triggered, parent, [this]{parent->paste_as_composition();});
-    connect(ui.action_cut, &QAction::triggered, parent, &GlaxnimateWindow::cut);
     connect(ui.action_duplicate, &QAction::triggered, parent, &GlaxnimateWindow::duplicate_selection);
-    connect(ui.action_reload, &QAction::triggered, parent, &GlaxnimateWindow::document_reload);
     connect(ui.action_raise_to_top, &QAction::triggered, parent, &GlaxnimateWindow::layer_top);
     connect(ui.action_raise, &QAction::triggered, parent, &GlaxnimateWindow::layer_raise);
     connect(ui.action_lower, &QAction::triggered, parent, &GlaxnimateWindow::layer_lower);
     connect(ui.action_lower_to_bottom, &QAction::triggered, parent, &GlaxnimateWindow::layer_bottom);
     connect(ui.action_group, &QAction::triggered, parent, &GlaxnimateWindow::group_shapes);
     connect(ui.action_ungroup, &QAction::triggered, parent, &GlaxnimateWindow::ungroup_shapes);
-    connect(ui.action_quit, &QAction::triggered, parent, &GlaxnimateWindow::close);
     connect(ui.action_move_to, &QAction::triggered, parent, &GlaxnimateWindow::move_to);
     connect(ui.action_validate_tgs, &QAction::triggered, parent, &GlaxnimateWindow::validate_tgs);
     connect(ui.action_validate_discord, &QAction::triggered, parent, [this]{validate_discord();});
