@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-18 00:40+0000\n"
-"PO-Revision-Date: 2023-12-19 09:45+0100\n"
+"PO-Revision-Date: 2023-12-24 12:38+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1187,8 +1187,7 @@ msgid "Unknown interpolator %s"
 msgstr "Neznan interpolator %s"
 
 #: src/core/io/avd/avd_parser.cpp:650
-#, fuzzy, kde-format
-#| msgid "Unkown resource id %1"
+#, kde-format
 msgid "Unknown resource id %1"
 msgstr "Neznan ID sredstva %1"
 
@@ -1424,9 +1423,9 @@ msgid "Unsupported shape type %1"
 msgstr "Nepodprta vrsta lika %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:507
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unknown field %2%1"
-msgstr "Neznano polje/polslika %2%1"
+msgstr "Neznano polje %2%1"
 
 #: src/core/io/lottie/lottie_importer.hpp:832
 #, kde-format
@@ -1590,9 +1589,9 @@ msgid "By how much each rendered frame should increase time (in frames)"
 msgstr "Za koliko naj bi se podaljšal čas vsake izrisane sličice (v sličicah)"
 
 #: src/core/io/raster/spritesheet_format.hpp:23
-#, fuzzy, kde-format
+#, kde-format
 msgid "Sprite Sheet"
-msgstr "List sprajtov"
+msgstr "Predloga likov"
 
 #: src/core/io/rive/rive_exporter.hpp:359
 #, kde-format
@@ -2452,16 +2451,13 @@ msgid "You need to specify a file to export"
 msgstr "Navesti morate datoteko za izvoz"
 
 #: src/gui/cli.cpp:275
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid ""
-#| "Unknown exporter. use --export-format-list for a list of available formats"
+#, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Unknown exporter. Use --export-format-list for a list of available formats"
 msgstr ""
 "Neznani izvoznik. uporabite --export-format-list za seznam razpoložljivih "
-"formatov"
+"zapisov"
 
 #: src/gui/cli.cpp:286
 #, kde-format
@@ -3419,7 +3415,7 @@ msgstr "Načini izključitve robov"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:76
-#, fuzzy, kde-format
+#, kde-format
 msgid "Match"
 msgstr "Ujemanje"
 
@@ -3448,56 +3444,11 @@ msgstr "Najpogostejše"
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:117
 #, kde-format
 msgid "Closest"
-msgstr "Najbližji"
+msgstr "Najbližje"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:141
-#, fuzzy, kde-format
-#| msgid ""
-#| "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#| "REC-html40/strict.dtd\">\n"
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; "
-#| "font-weight:400; font-style:normal;\">\n"
-#| "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">k-Means divides the "
-#| "colors into clusters and refines the assignment at every iteration.</p>\n"
-#| "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#| "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
-#| "\"><br /></p>\n"
-#| "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">This is the best option "
-#| "when tracing images with a lot of colors or shading.</p>\n"
-#| "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#| "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
-#| "\"><br /></p>\n"
-#| "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">For pictures with a lot "
-#| "of colors increasing the number of iterations will yield better results "
-#| "but it might be slower.</p>\n"
-#| "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#| "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
-#| "\"><br /></p>\n"
-#| "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">The <span style=\" font-"
-#| "style:italic;\">Match</span> option performs some post-processing:</p>\n"
-#| "<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
-#| "right: 0px; -qt-list-indent: 1;\"><li style=\"\" style=\" margin-"
-#| "top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-"
-#| "indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">None</"
-#| "span>: Don't perform any post-processing and return the means (note this "
-#| "might result in colors not present in the original image)</li>\n"
-#| "<li style=\"\" style=\" margin-top:0px; margin-bottom:0px; margin-"
-#| "left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span "
-#| "style=\" font-weight:600;\">Closest</span>: Find the color in the "
-#| "original image the is the closest to the mean</li>\n"
-#| "<li style=\"\" style=\" margin-top:0px; margin-bottom:12px; margin-"
-#| "left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span "
-#| "style=\" font-weight:600;\">Most Frequent</span>: Find the color in the "
-#| "cluster that appears most often in the source image</li></ul></body></"
-#| "html>"
+#, kde-format
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -5174,9 +5125,9 @@ msgid "Align Selection"
 msgstr "Poravnaj izbor"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:716
-#, fuzzy, kde-format
+#, kde-format
 msgid "Drop"
-msgstr "Opusti"
+msgstr "Izpusti"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:812
 #, kde-format
@@ -5246,9 +5197,9 @@ msgid "X: %1 Y: %2"
 msgstr "X: %1 Y: %2"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1229
-#, fuzzy, kde-format
+#, kde-format
 msgid "Drop File"
-msgstr "Opusti datoteko"
+msgstr "Spusti datoteko"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1240
 #, kde-format
@@ -6051,9 +6002,9 @@ msgstr "Sistem pisanja"
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/font/font_style_widget.ui:76
 #: src/gui/widgets/font/google_fonts_model.cpp:396
-#, fuzzy, kde-format
+#, kde-format
 msgid "Monospace"
-msgstr "Monospace"
+msgstr "Enakomerno"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: src/gui/widgets/font/font_style_widget.ui:93
@@ -6091,7 +6042,7 @@ msgstr "Stanje"
 #: src/gui/widgets/font/google_fonts_model.cpp:390
 #, kde-format
 msgid "Any"
-msgstr "Poljubna"
+msgstr "Poljubno"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:392
 #, kde-format
@@ -6104,9 +6055,9 @@ msgid "Serif"
 msgstr "Z zaključki"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:398
-#, fuzzy, kde-format
+#, kde-format
 msgid "Display"
-msgstr "Zaslon/Prikaži"
+msgstr "Prikaži"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:400
 #, kde-format
@@ -6144,14 +6095,14 @@ msgid "Import"
 msgstr "Uvozi"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:33
-#, fuzzy, kde-format
+#, kde-format
 msgid "by %1"
-msgstr "avtor_ica %1"
+msgstr "%1"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:49
-#, fuzzy, kde-format
+#, kde-format
 msgid "Likes"
-msgstr "je všeč"
+msgstr "Všečkano"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:58
 #, kde-format
@@ -7089,19 +7040,19 @@ msgid "Fast"
 msgstr "Hitro"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:84
-#, fuzzy, kde-format
+#, kde-format
 msgid "Ease In"
-msgstr "Omehčan vstop"
+msgstr "Nežen vstop"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:86
-#, fuzzy, kde-format
+#, kde-format
 msgid "Ease Out"
-msgstr "Omehčan izhod"
+msgstr "Nežen izhod"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:89
-#, fuzzy, kde-format
+#, kde-format
 msgid "Ease"
-msgstr "Omehčano"
+msgstr "Nežno"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:98
 #, kde-format
