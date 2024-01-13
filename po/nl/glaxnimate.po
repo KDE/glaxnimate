@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the glaxnimate package.
 #
-# SPDX-FileCopyrightText: 2023 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2023, 2024 Freek de Kruijf <freekdekruijf@kde.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-18 00:40+0000\n"
-"PO-Revision-Date: 2023-12-16 11:27+0100\n"
+"PO-Revision-Date: 2024-01-12 12:27+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -20,7 +20,7 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Freek de Kruijf - 2023"
+msgstr "Freek de Kruijf - 2023 t/m 2024"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -243,25 +243,25 @@ msgstr "kleuren"
 #. i18n: Property name
 #, kde-format
 msgid "start_point"
-msgstr "start_point"
+msgstr "start_punt"
 
 #. i18n: file: src/core/model/assets/assets.hpp
 #. i18n: Property name
 #, kde-format
 msgid "gradient_colors"
-msgstr ""
+msgstr "verlopende_kleuren"
 
 #. i18n: file: src/core/model/assets/assets.hpp
 #. i18n: Property name
 #, kde-format
 msgid "compositions"
-msgstr ""
+msgstr "composities"
 
 #. i18n: file: src/core/model/animation_container.hpp
 #. i18n: Property name
 #, kde-format
 msgid "first_frame"
-msgstr ""
+msgstr "eerste_frame"
 
 #. i18n: file: src/core/model/property/option_list_property.hpp
 #. i18n: Property name
@@ -308,7 +308,7 @@ msgstr ""
 #: data/plugins/FrameByFrame/create_frames.ui:43
 #, kde-format
 msgid "Begin"
-msgstr ""
+msgstr "Begin"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
@@ -316,13 +316,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1534
 #, kde-format
 msgid "End"
-msgstr ""
+msgstr "Einde"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: data/plugins/FrameByFrame/create_frames.ui:77
 #, kde-format
 msgid "Number of frames"
-msgstr ""
+msgstr "Aantal frames"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QPushButton, pushButton_4)
@@ -330,13 +330,13 @@ msgstr ""
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:36
 #, kde-format
 msgid "Search"
-msgstr ""
+msgstr "Zoeken"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: data/plugins/ReplaceColor/replace.ui:28
 #, kde-format
 msgid "Replace"
-msgstr ""
+msgstr "Vervangen"
 
 #: src/android/document_opener.cpp:35 src/android/document_opener.cpp:128
 #: src/android/document_opener.cpp:154 src/android/document_opener.cpp:193
@@ -347,33 +347,33 @@ msgstr ""
 #: src/gui/widgets/font/external_font_widget.cpp:136
 #, kde-format
 msgid "Open File"
-msgstr ""
+msgstr "Bestand openen"
 
 #: src/android/document_opener.cpp:36
 #, kde-format
 msgid "Raster images need to be traced into vectors"
-msgstr ""
+msgstr "Rasterafbeeldingen moeten omgezet worden in vectoren"
 
 #: src/android/document_opener.cpp:106
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:109
 #, kde-format
 msgid "Save File"
-msgstr ""
+msgstr "Bestand opslaan"
 
 #: src/android/document_opener.cpp:106
 #, kde-format
 msgid "Could not save the file"
-msgstr ""
+msgstr "Kon het bestand niet opslaan"
 
 #: src/android/document_opener.cpp:128
 #, kde-format
 msgid "Unknown file type"
-msgstr ""
+msgstr "Onbekend bestandstype"
 
 #: src/android/document_opener.cpp:154
 #, kde-format
 msgid "Could not unzip the file"
-msgstr ""
+msgstr "Kon unzip niet uitvoeren op het bestand"
 
 #: src/android/document_opener.cpp:193
 #, kde-format
@@ -385,7 +385,7 @@ msgstr ""
 #: src/android/document_opener.cpp:201
 #, kde-format
 msgid "Error loading %1 file"
-msgstr ""
+msgstr "Fout bij laden van %1 bestand"
 
 #: src/android/help_dialog.cpp:54
 #, kde-format
@@ -608,51 +608,51 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:731
 #, kde-format
 msgid "Timeline"
-msgstr ""
+msgstr "Tijdlijn"
 
 #: src/android/main_window.cpp:416
 #, kde-format
 msgid "Fill Style"
-msgstr ""
+msgstr "Vulstijl"
 
 #: src/android/main_window.cpp:421
 #, kde-format
 msgid "Stroke Style"
-msgstr ""
+msgstr "Streekstijl"
 
 #: src/android/main_window.cpp:451 src/gui/widgets/menus/node_menu.cpp:105
 #, kde-format
 msgid "Raise"
-msgstr ""
+msgstr "Naar voren"
 
 #: src/android/main_window.cpp:456 src/gui/widgets/menus/node_menu.cpp:109
 #, kde-format
 msgid "Lower"
-msgstr ""
+msgstr "Naar achter"
 
 #: src/android/main_window.cpp:463 src/gui/tools/select_tool.cpp:408
 #: src/gui/widgets/dialogs/selection_manager.cpp:85
 #, kde-format
 msgid "Cut"
-msgstr ""
+msgstr "Knippen"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 #: src/android/main_window.cpp:466 src/gui/tools/select_tool.cpp:410
 #: src/gui/widgets/dialogs/about_dialog.ui:414
 #, kde-format
 msgid "Copy"
-msgstr ""
+msgstr "Kopiëren"
 
 #: src/android/main_window.cpp:469 src/gui/tools/select_tool.cpp:412
 #: src/gui/widgets/dialogs/selection_manager.cpp:166
 #, kde-format
 msgid "Paste"
-msgstr ""
+msgstr "Plakken"
 
 #: src/android/main_window.cpp:473
 #, kde-format
 msgid "Delete Selected"
-msgstr ""
+msgstr "Selectie verwijderen"
 
 #: src/android/main_window.cpp:481
 #, kde-format
@@ -667,12 +667,12 @@ msgstr ""
 #: src/android/main_window.cpp:489
 #, kde-format
 msgid "Undo"
-msgstr ""
+msgstr "Ongedaan maken"
 
 #: src/android/main_window.cpp:491
 #, kde-format
 msgid "Redo"
-msgstr ""
+msgstr "Opnieuw"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #. i18n: ectx: property (text), widget (QToolButton, btn_new)
@@ -683,14 +683,14 @@ msgstr ""
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:45
 #, kde-format
 msgid "New"
-msgstr ""
+msgstr "Nieuw"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 #: src/android/main_window.cpp:508
 #: src/gui/widgets/font/external_font_widget.ui:47
 #, kde-format
 msgid "Open..."
-msgstr ""
+msgstr "Openen..."
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
@@ -712,7 +712,7 @@ msgstr ""
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
 #, kde-format
 msgid "Open"
-msgstr ""
+msgstr "Openen"
 
 #: src/android/main_window.cpp:513
 #, kde-format
@@ -722,26 +722,26 @@ msgstr ""
 #: src/android/main_window.cpp:516
 #, kde-format
 msgid "Save..."
-msgstr ""
+msgstr "Opslaan..."
 
 #. i18n: ectx: property (text), widget (QToolButton, preview_2)
 #: src/android/main_window.cpp:518
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:128
 #, kde-format
 msgid "Save"
-msgstr ""
+msgstr "Opslaan"
 
 #: src/android/main_window.cpp:521
 #, kde-format
 msgid "Save As"
-msgstr ""
+msgstr "Opslaan als"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_export)
 #: src/android/main_window.cpp:524
 #: src/android/sticker_pack_builder_dialog.ui:154
 #, kde-format
 msgid "Export"
-msgstr ""
+msgstr "Exporteren"
 
 #: src/android/main_window.cpp:527
 #, kde-format
@@ -760,22 +760,22 @@ msgstr ""
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #, kde-format
 msgid "Layers"
-msgstr ""
+msgstr "Lagen"
 
 #: src/android/main_window.cpp:549
 #, kde-format
 msgid "Advanced Properties"
-msgstr ""
+msgstr "Uitgebreide eigenschappen"
 
 #: src/android/main_window.cpp:554
 #, kde-format
 msgid "Help"
-msgstr ""
+msgstr "Help"
 
 #: src/android/main_window.cpp:622
 #, kde-format
 msgid "Animation.%1"
-msgstr ""
+msgstr "Animatie.%1"
 
 #: src/android/main_window.cpp:664
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:293
@@ -800,7 +800,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:842
 #, kde-format
 msgid "Import File"
-msgstr ""
+msgstr "Bestand importeren"
 
 #: src/android/main_window.cpp:749
 #, kde-format
@@ -815,12 +815,12 @@ msgstr ""
 #: src/android/main_window.cpp:977
 #, kde-format
 msgid "Add keyframe"
-msgstr ""
+msgstr "Keyframe toevoegen"
 
 #: src/android/main_window.cpp:986
 #, kde-format
 msgid "Remove keyframe"
-msgstr ""
+msgstr "Keyframe verwijderen"
 
 #: src/android/main_window.cpp:1001
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
@@ -832,7 +832,7 @@ msgstr ""
 #: src/android/main_window.cpp:1066
 #, kde-format
 msgid "Emoji"
-msgstr ""
+msgstr "Emoji"
 
 #: src/android/main_window.cpp:1097
 #, kde-format
@@ -843,7 +843,7 @@ msgstr ""
 #: src/android/main_window.ui:21 src/core/app_info.cpp:17
 #, kde-format
 msgid "Glaxnimate"
-msgstr ""
+msgstr "Glaxnimate"
 
 #: src/android/sticker_pack_builder_dialog.cpp:156
 #, kde-format
@@ -854,7 +854,7 @@ msgstr ""
 #: src/android/sticker_pack_builder_dialog.cpp:171
 #, kde-format
 msgid "Could not open file"
-msgstr ""
+msgstr "Kon bestand niet openen"
 
 #: src/android/sticker_pack_builder_dialog.cpp:222
 #, kde-format
@@ -886,7 +886,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:693
 #, kde-format
 msgid "Clear"
-msgstr ""
+msgstr "Wissen"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_add_current)
 #: src/android/sticker_pack_builder_dialog.ui:173
@@ -902,7 +902,7 @@ msgstr ""
 #: src/core/app_info.cpp:68
 #, kde-format
 msgid "(c) 2019-2023"
-msgstr ""
+msgstr "(c) 2019-2023"
 
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
@@ -917,7 +917,7 @@ msgstr ""
 #: src/core/command/animation_commands.cpp:117
 #, kde-format
 msgid "Remove %1 keyframe %2"
-msgstr ""
+msgstr "%1 keyframe %2 verwijderen"
 
 #: src/core/command/animation_commands.cpp:289
 #, kde-format
@@ -945,7 +945,7 @@ msgstr ""
 #: src/core/command/animation_commands.cpp:358
 #, kde-format
 msgid "Move keyframe"
-msgstr ""
+msgstr "Keyframe verplaatsen"
 
 #: src/core/command/animation_commands.cpp:381
 #, kde-format
@@ -976,33 +976,33 @@ msgstr ""
 #: src/core/command/object_list_commands.hpp:101
 #, kde-format
 msgid "Move Object"
-msgstr ""
+msgstr "Object verplaatsen"
 
 #: src/core/command/shape_commands.cpp:120 src/gui/tools/select_tool.cpp:421
 #, kde-format
 msgid "Group Shapes"
-msgstr ""
+msgstr "Vormen groeperen"
 
 #: src/core/command/shape_commands.cpp:153 src/gui/tools/select_tool.cpp:424
 #, kde-format
 msgid "Ungroup Shapes"
-msgstr ""
+msgstr "Vormengroepering opheffen"
 
 #: src/core/command/shape_commands.cpp:178
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:82
 #, kde-format
 msgid "Duplicate %1"
-msgstr ""
+msgstr "%1 dupliceren"
 
 #: src/core/command/structure_commands.cpp:73
 #, kde-format
 msgid "Move %1"
-msgstr ""
+msgstr "%1 verplaatsen"
 
 #: src/core/io/aep/aep_format.cpp:36
 #, kde-format
 msgid "Could not load file: %1"
-msgstr ""
+msgstr "Kon bestand niet laden: %1"
 
 #: src/core/io/aep/aep_format.hpp:21
 #, kde-format
@@ -1062,7 +1062,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:381
 #, kde-format
 msgid "Clip"
-msgstr ""
+msgstr "Clip"
 
 #: src/core/io/aep/aep_loader.cpp:1248
 #, kde-format
@@ -1117,28 +1117,28 @@ msgstr ""
 #: src/core/io/aep/aep_parser.hpp:657
 #, kde-format
 msgid "Not enough data in list"
-msgstr ""
+msgstr "Niet genoeg gegevens in lijst"
 
 #: src/core/io/aep/aep_parser.hpp:791
 #, kde-format
 msgid "Invalid text document: %1"
-msgstr ""
+msgstr "Ongeldig tekstdocument: %1"
 
 #: src/core/io/aep/riff.hpp:220 src/core/io/aep/riff.hpp:233
 #: src/core/io/aep/riff.hpp:254 src/core/io/aep/riff.hpp:292
 #, kde-format
 msgid "Not enough data"
-msgstr ""
+msgstr "Niet genoeg gegevens"
 
 #: src/core/io/aep/riff.hpp:528
 #, kde-format
 msgid "Unknown format %1"
-msgstr ""
+msgstr "Onbekend formaat %1"
 
 #: src/core/io/avd/avd_format.hpp:21
 #, kde-format
 msgid "Android Vector Drawable"
-msgstr ""
+msgstr "Te tekenen Android-vector"
 
 #: src/core/io/avd/avd_parser.cpp:223
 #, kde-format
@@ -1153,7 +1153,7 @@ msgstr ""
 #: src/core/io/avd/avd_parser.cpp:658
 #, kde-format
 msgid "Could not read file %1"
-msgstr ""
+msgstr "Kon bestand %1 niet lezen"
 
 #: src/core/io/avd/avd_parser.cpp:659 src/core/io/avd/avd_parser.cpp:668
 #, kde-format
@@ -1301,7 +1301,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
 msgid "Pretty"
-msgstr ""
+msgstr "Mooi"
 
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
@@ -1311,7 +1311,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
 msgid "Strip"
-msgstr ""
+msgstr "Verwijderen"
 
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
@@ -1321,7 +1321,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
 msgid "Embed Images"
-msgstr ""
+msgstr "Afbeeldingen inbedden"
 
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
@@ -1382,7 +1382,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:507
 #, kde-format
 msgid "Unknown field %2%1"
-msgstr ""
+msgstr "Onbekend veld %2%1"
 
 #: src/core/io/lottie/lottie_importer.hpp:832
 #, kde-format
@@ -1397,12 +1397,12 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:966
 #, kde-format
 msgid "(null)"
-msgstr ""
+msgstr "(nul)"
 
 #: src/core/io/lottie/lottie_importer.hpp:972
 #, kde-format
 msgid "(empty)"
-msgstr ""
+msgstr "(leeg)"
 
 #: src/core/io/lottie/lottie_importer.hpp:980
 #, kde-format
@@ -1497,18 +1497,18 @@ msgstr ""
 #: src/core/io/mime/json_mime.hpp:18
 #, kde-format
 msgid "JSON"
-msgstr ""
+msgstr "JSON"
 
 #: src/core/io/raster/raster_format.hpp:25
 #: src/core/io/raster/raster_mime.hpp:25
 #, kde-format
 msgid "Raster Image"
-msgstr ""
+msgstr "Rasterbeeld"
 
 #: src/core/io/raster/spritesheet_format.cpp:32
 #, kde-format
 msgid "Frame Width"
-msgstr ""
+msgstr "Framebreedte"
 
 #: src/core/io/raster/spritesheet_format.cpp:32
 #, kde-format
@@ -1528,7 +1528,7 @@ msgstr ""
 #: src/core/io/raster/spritesheet_format.cpp:34
 #, kde-format
 msgid "Columns"
-msgstr ""
+msgstr "Kolommen"
 
 #: src/core/io/raster/spritesheet_format.cpp:34
 #, kde-format
@@ -1538,7 +1538,7 @@ msgstr ""
 #: src/core/io/raster/spritesheet_format.cpp:35
 #, kde-format
 msgid "Time Step"
-msgstr ""
+msgstr "Tijdstap"
 
 #: src/core/io/raster/spritesheet_format.cpp:35
 #, kde-format
@@ -1568,7 +1568,7 @@ msgstr ""
 #: src/core/io/rive/rive_format.cpp:24
 #, kde-format
 msgid "Unsupported format"
-msgstr ""
+msgstr "Niet-ondersteund formaat"
 
 #: src/core/io/rive/rive_format.cpp:34
 #, kde-format
@@ -1689,13 +1689,13 @@ msgstr ""
 #: src/core/io/svg/svg_format.cpp:71
 #, kde-format
 msgid "Embedded data"
-msgstr ""
+msgstr "Ingebedde gegevens"
 
 #: src/core/io/svg/svg_format.cpp:72
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:935
 #, kde-format
 msgid "Ignore"
-msgstr ""
+msgstr "Negeren"
 
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
@@ -1710,12 +1710,12 @@ msgstr ""
 #: src/core/io/svg/svg_format.cpp:92
 #, kde-format
 msgid "Could not write to file"
-msgstr ""
+msgstr "Kon niet naar bestand schrijven"
 
 #: src/core/io/svg/svg_format.hpp:21 src/core/io/svg/svg_mime.hpp:20
 #, kde-format
 msgid "SVG"
-msgstr ""
+msgstr "SVG"
 
 #: src/core/io/svg/svg_html_format.hpp:18
 #, kde-format
@@ -1837,12 +1837,12 @@ msgstr ""
 #: src/core/io/video/video_format.cpp:857
 #, kde-format
 msgid "Background"
-msgstr ""
+msgstr "Achtergrond"
 
 #: src/core/io/video/video_format.cpp:857
 #, kde-format
 msgid "Background color"
-msgstr ""
+msgstr "Achtergrondkleur"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/io/video/video_format.cpp:858
@@ -1850,7 +1850,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:46
 #, kde-format
 msgid "Width"
-msgstr ""
+msgstr "Breedte"
 
 #: src/core/io/video/video_format.cpp:858
 #: src/core/io/video/video_format.cpp:859
@@ -1863,12 +1863,12 @@ msgstr ""
 #: src/gui/widgets/dialogs/resize_dialog.ui:33
 #, kde-format
 msgid "Height"
-msgstr ""
+msgstr "Hoogte"
 
 #: src/core/io/video/video_format.cpp:860
 #, kde-format
 msgid "Verbose"
-msgstr ""
+msgstr "Uitvoerig"
 
 #: src/core/io/video/video_format.cpp:860
 #, kde-format
@@ -1878,19 +1878,19 @@ msgstr ""
 #: src/core/io/video/video_format.hpp:21
 #, kde-format
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: src/core/model/animation/animatable.cpp:271
 #: src/core/model/animation/animatable_path.cpp:30
 #, kde-format
 msgid "Split Segment"
-msgstr ""
+msgstr "Segment splitsen"
 
 #: src/core/model/animation/animatable.cpp:340
 #: src/core/model/animation/animatable_path.cpp:60
 #, kde-format
 msgid "Remove Nodes"
-msgstr ""
+msgstr "Knooppunten verwijderen"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/core/model/animation/animatable.cpp:418
@@ -1898,7 +1898,7 @@ msgstr ""
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:196
 #, kde-format
 msgid "Add Keyframe"
-msgstr ""
+msgstr "Keyframe toevoegen"
 
 #: src/core/model/animation/animatable_path.cpp:139
 #, kde-format
@@ -1923,41 +1923,41 @@ msgstr ""
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:48
 #, kde-format
 msgid "Swatch"
-msgstr ""
+msgstr "Kleurenstaal"
 
 #: src/core/model/assets/assets.hpp:117
 #, kde-format
 msgid "Images"
-msgstr ""
+msgstr "Afbeeldingen"
 
 #: src/core/model/assets/assets.hpp:127 src/gui/tools/edit_tool.cpp:352
 #, kde-format
 msgid "Gradient Colors"
-msgstr ""
+msgstr "Kleuren van het kleurverloop"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_gradients)
 #: src/core/model/assets/assets.hpp:137
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:919
 #, kde-format
 msgid "Gradients"
-msgstr ""
+msgstr "Kleurverloop"
 
 #: src/core/model/assets/assets.hpp:151
 #, kde-format
 msgid "Compositions"
-msgstr ""
+msgstr "Composities"
 
 #: src/core/model/assets/assets.hpp:173
 #, kde-format
 msgid "Fonts"
-msgstr ""
+msgstr "Lettertypen"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_assets)
 #: src/core/model/assets/assets.hpp:207
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:965
 #, kde-format
 msgid "Assets"
-msgstr ""
+msgstr "Bezittingen"
 
 #: src/core/model/assets/bitmap.cpp:205
 #, kde-format
@@ -1967,12 +1967,12 @@ msgstr ""
 #: src/core/model/assets/bitmap.hpp:41
 #, kde-format
 msgid "Bitmap"
-msgstr ""
+msgstr "Bitmap"
 
 #: src/core/model/assets/composition.cpp:24
 #, kde-format
 msgid "Composition"
-msgstr ""
+msgstr "Compositie"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -1983,14 +1983,14 @@ msgstr ""
 #: src/gui/widgets/font/google_fonts_widget.ui:68
 #, kde-format
 msgid "Font"
-msgstr ""
+msgstr "Lettertype"
 
 #: src/core/model/assets/gradient.cpp:83
 #: src/gui/item_models/gradient_list_model.cpp:175
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:232
 #, kde-format
 msgid "Gradient"
-msgstr ""
+msgstr "Kleurverloop"
 
 #: src/core/model/assets/gradient.cpp:133
 #, kde-format
@@ -2005,7 +2005,7 @@ msgstr ""
 #: src/core/model/assets/gradient.cpp:211
 #, kde-format
 msgid "%1 Gradient"
-msgstr ""
+msgstr "%1 kleurverloop"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_fill_linear)
 #. i18n: ectx: property (text), widget (QToolButton, btn_fill_linear)
@@ -2019,7 +2019,7 @@ msgstr ""
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:60
 #, kde-format
 msgid "Linear"
-msgstr ""
+msgstr "Lineair"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_fill_radial)
 #. i18n: ectx: property (text), widget (QToolButton, btn_fill_radial)
@@ -2032,7 +2032,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:177
 #, kde-format
 msgid "Radial"
-msgstr ""
+msgstr "Radiaal"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_fill_conical)
 #. i18n: ectx: property (text), widget (QToolButton, btn_fill_conical)
@@ -2045,7 +2045,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:226
 #, kde-format
 msgid "Conical"
-msgstr ""
+msgstr "Kegelvormig"
 
 #: src/core/model/assets/named_color.cpp:17
 #, kde-format
@@ -2055,7 +2055,7 @@ msgstr ""
 #: src/core/model/mask_settings.cpp:13
 #, kde-format
 msgid "Mask"
-msgstr ""
+msgstr "Masker"
 
 #: src/core/model/object.hpp:90
 #, kde-format
@@ -2065,7 +2065,7 @@ msgstr ""
 #: src/core/model/shapes/ellipse.cpp:19 src/gui/tools/ellipse_tool.cpp:17
 #, kde-format
 msgid "Ellipse"
-msgstr ""
+msgstr "Ellips"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_colors)
@@ -2081,19 +2081,19 @@ msgstr ""
 #: src/gui/widgets/tools/shape_tool_widget.ui:66
 #, kde-format
 msgid "Fill"
-msgstr ""
+msgstr "Vullen"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/model/shapes/group.hpp:42
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
 #, kde-format
 msgid "Group"
-msgstr ""
+msgstr "Groep"
 
 #: src/core/model/shapes/image.cpp:85 src/gui/widgets/menus/node_menu.cpp:352
 #, kde-format
 msgid "Image"
-msgstr ""
+msgstr "Afbeelding"
 
 #: src/core/model/shapes/inflate_deflate.cpp:18
 #, kde-format
@@ -2105,7 +2105,7 @@ msgstr ""
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
 #, kde-format
 msgid "Layer"
-msgstr ""
+msgstr "Laag"
 
 #: src/core/model/shapes/offset_path.cpp:342
 #, kde-format
@@ -2118,7 +2118,7 @@ msgstr ""
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
-msgstr ""
+msgstr "Pad"
 
 #: src/core/model/shapes/polystar.hpp:48
 #, kde-format
@@ -2133,17 +2133,17 @@ msgstr ""
 #: src/core/model/shapes/rect.hpp:31 src/gui/tools/rectangle_tool.hpp:20
 #, kde-format
 msgid "Rectangle"
-msgstr ""
+msgstr "Rechthoek"
 
 #: src/core/model/shapes/repeater.cpp:25
 #, kde-format
 msgid "Repeater"
-msgstr ""
+msgstr "Repeater"
 
 #: src/core/model/shapes/round_corners.cpp:20
 #, kde-format
 msgid "Round Corners"
-msgstr ""
+msgstr "Hoeken afronden"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_stroke)
@@ -2158,12 +2158,12 @@ msgstr ""
 #: src/gui/widgets/tools/shape_tool_widget.ui:80
 #, kde-format
 msgid "Stroke"
-msgstr ""
+msgstr "Streek"
 
 #: src/core/model/shapes/text.cpp:255
 #, kde-format
 msgid "Change Font"
-msgstr ""
+msgstr "Lettertype wijzigen"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_style)
 #: src/core/model/shapes/text.cpp:489
@@ -2180,19 +2180,19 @@ msgstr ""
 #: src/core/model/shapes/zig_zag.cpp:139
 #, kde-format
 msgid "Zig Zag"
-msgstr ""
+msgstr "Zigzag"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TimingDialog)
 #: src/core/model/stretchable_time.cpp:28
 #: src/gui/widgets/dialogs/timing_dialog.ui:21
 #, kde-format
 msgid "Timing"
-msgstr ""
+msgstr "Timing"
 
 #: src/core/model/transform.hpp:29
 #, kde-format
 msgid "Transform"
-msgstr ""
+msgstr "Transformeren"
 
 #: src/core/plugin/snippet.hpp:93
 #, kde-format
@@ -2245,13 +2245,13 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Options"
-msgstr ""
+msgstr "Opties"
 
 #: src/gui/cli.cpp:32
 #, kde-format
 msgctxt "@info:shell"
 msgid "File to open"
-msgstr ""
+msgstr "Te openen bestand"
 
 #: src/gui/cli.cpp:33
 #, kde-format
@@ -2301,7 +2301,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Export Options"
-msgstr ""
+msgstr "Exportopties"
 
 #: src/gui/cli.cpp:63
 #, kde-format
@@ -2434,25 +2434,25 @@ msgstr ""
 #, kde-format
 msgctxt "Package install status"
 msgid "Installed"
-msgstr ""
+msgstr "Geïnstalleerd"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:166
 #, kde-format
 msgctxt "Package install status"
 msgid "Not Installed"
-msgstr ""
+msgstr "Niet geïnstalleerd"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:185
 #, kde-format
 msgctxt "Package install status"
 msgid "Downloading"
-msgstr ""
+msgstr "Downloaden"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:196
 #, kde-format
 msgctxt "Package install status, %1 reason"
 msgid "Could not download: %1"
-msgstr ""
+msgstr "Kon niet downloaden: %1"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:215
 #, kde-format
@@ -2488,19 +2488,19 @@ msgstr ""
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:89
 #, kde-format
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #. i18n: ectx: property (text), widget (QTableWidget, emoji_set_view)
 #: src/gui/emoji/emoji_set_dialog.ui:55
 #, kde-format
 msgid "License"
-msgstr ""
+msgstr "Licentie"
 
 #. i18n: ectx: property (text), widget (QTableWidget, emoji_set_view)
 #: src/gui/emoji/emoji_set_dialog.ui:90
 #, kde-format
 msgid "Downloaded"
-msgstr ""
+msgstr "Gedownload"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton_2)
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_5)
@@ -2512,25 +2512,25 @@ msgstr ""
 #: src/gui/widgets/font/google_fonts_widget.ui:36
 #, kde-format
 msgid "Reload"
-msgstr ""
+msgstr "Herladen"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_view_website)
 #: src/gui/emoji/emoji_set_dialog.ui:121
 #, kde-format
 msgid "View Website"
-msgstr ""
+msgstr "Website bekijken"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_download)
 #: src/gui/emoji/emoji_set_dialog.ui:135
 #, kde-format
 msgid "Download"
-msgstr ""
+msgstr "Downloaden"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_add_emoji)
 #: src/gui/emoji/emoji_set_dialog.ui:149
 #, kde-format
 msgid "Add Emoji..."
-msgstr ""
+msgstr "Emoji toevoegen..."
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_close)
@@ -2539,7 +2539,7 @@ msgstr ""
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:171
 #, kde-format
 msgid "Close"
-msgstr ""
+msgstr "Sluiten"
 
 #: src/gui/glaxnimate_app.cpp:79
 #, kde-format
@@ -2550,13 +2550,13 @@ msgstr ""
 #, kde-format
 msgctxt "@title settings group"
 msgid "User Interface"
-msgstr ""
+msgstr "Gebruikersinterface"
 
 #: src/gui/glaxnimate_app.cpp:173
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Language"
-msgstr ""
+msgstr "Taal"
 
 #: src/gui/glaxnimate_app.cpp:174
 #, kde-format
@@ -2568,7 +2568,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Icon Theme"
-msgstr ""
+msgstr "Pictogramthema"
 
 #: src/gui/glaxnimate_app.cpp:178
 #, kde-format
@@ -2594,43 +2594,43 @@ msgstr ""
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Width"
-msgstr ""
+msgstr "Breedte"
 
 #: src/gui/glaxnimate_app.cpp:191
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Height"
-msgstr ""
+msgstr "Hoogte"
 
 #: src/gui/glaxnimate_app.cpp:194
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "FPS"
-msgstr ""
+msgstr "FPS"
 
 #: src/gui/glaxnimate_app.cpp:195
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Frames per second"
-msgstr ""
+msgstr "Frames per seconde"
 
 #: src/gui/glaxnimate_app.cpp:198
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Duration"
-msgstr ""
+msgstr "Tijdsduur"
 
 #: src/gui/glaxnimate_app.cpp:199
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Duration in seconds"
-msgstr ""
+msgstr "Tijdsduur in seconden"
 
 #: src/gui/glaxnimate_app.cpp:202
 #, kde-format
 msgctxt "@title settings group"
 msgid "Open / Save"
-msgstr ""
+msgstr "Openen / opslaan"
 
 #: src/gui/glaxnimate_app.cpp:203
 #, kde-format
@@ -2660,13 +2660,13 @@ msgstr ""
 #, kde-format
 msgctxt "@title settings group"
 msgid "Scripting"
-msgstr ""
+msgstr "Scripts maken"
 
 #: src/gui/glaxnimate_app.cpp:218
 #, kde-format
 msgctxt "@title settings group"
 msgid "Tools"
-msgstr ""
+msgstr "Hulpmiddelen"
 
 #: src/gui/graphics/bezier_item.cpp:239
 #, kde-format
@@ -2681,7 +2681,7 @@ msgstr ""
 #: src/gui/graphics/bezier_item.cpp:368
 #, kde-format
 msgid "Remove Point"
-msgstr ""
+msgstr "Punt verwijderen"
 
 #: src/gui/graphics/bezier_item.cpp:392
 #, kde-format
@@ -2696,7 +2696,7 @@ msgstr ""
 #: src/gui/graphics/composition_item.hpp:113
 #, kde-format
 msgid "Resize Canvas"
-msgstr ""
+msgstr "Werkveldgrootte wijzigen..."
 
 #: src/gui/graphics/gradient_editor.cpp:109
 #, kde-format
@@ -2725,13 +2725,13 @@ msgstr ""
 #: src/gui/item_models/property_model_full.cpp:257
 #, kde-format
 msgid "Visible"
-msgstr ""
+msgstr "Zichtbaar"
 
 #: src/gui/item_models/document_node_model.cpp:259
 #: src/gui/item_models/property_model_full.cpp:291
 #, kde-format
 msgid "Locked"
-msgstr ""
+msgstr "Vergrendeld"
 
 #: src/gui/item_models/document_node_model.cpp:261
 #: src/gui/item_models/gradient_list_model.cpp:179
@@ -2742,7 +2742,7 @@ msgstr ""
 #: src/gui/item_models/gradient_list_model.cpp:181
 #, kde-format
 msgid "Number of users"
-msgstr ""
+msgstr "Aantal gebruikers"
 
 #: src/gui/item_models/property_model_base.cpp:247
 #, kde-format
@@ -2762,7 +2762,7 @@ msgstr ""
 #: src/gui/item_models/property_model_full.cpp:258
 #, kde-format
 msgid "Hidden"
-msgstr ""
+msgstr "Verborgen"
 
 #: src/gui/item_models/property_model_full.cpp:265
 #, kde-format
@@ -2772,7 +2772,7 @@ msgstr ""
 #: src/gui/item_models/property_model_full.cpp:292
 #, kde-format
 msgid "Unlocked"
-msgstr ""
+msgstr "Ontgrendeld"
 
 #: src/gui/item_models/property_model_full.cpp:300
 #, kde-format
@@ -2801,7 +2801,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:153
 #, kde-format
 msgid "Value"
-msgstr ""
+msgstr "Waarde"
 
 #: src/gui/item_models/python_snippet_model.hpp:35
 #, kde-format
@@ -2811,7 +2811,7 @@ msgstr ""
 #: src/gui/settings/api_credentials.cpp:86
 #, kde-format
 msgid "Information"
-msgstr ""
+msgstr "Informatie"
 
 #: src/gui/settings/api_credentials.hpp:41
 #, kde-format
@@ -2821,12 +2821,12 @@ msgstr ""
 #: src/gui/settings/clipboard_settings.hpp:18
 #, kde-format
 msgid "Clipboard"
-msgstr ""
+msgstr "Klembord"
 
 #: src/gui/settings/document_templates.cpp:52
 #, kde-format
 msgid "Unnamed"
-msgstr ""
+msgstr "Naamloos"
 
 #: src/gui/settings/document_templates.cpp:118
 #, kde-format
@@ -2844,7 +2844,7 @@ msgstr ""
 #: src/gui/settings/document_templates.cpp:180
 #, kde-format
 msgid "Template"
-msgstr ""
+msgstr "Sjabloon"
 
 #: src/gui/settings/document_templates.cpp:184
 #, kde-format
@@ -2854,12 +2854,12 @@ msgstr ""
 #: src/gui/settings/plugin_settings_group.hpp:23
 #, kde-format
 msgid "Plugins"
-msgstr ""
+msgstr "Plug-ins"
 
 #: src/gui/settings/toolbar_settings.hpp:19
 #, kde-format
 msgid "Toolbars"
-msgstr ""
+msgstr "Werkbalken"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
@@ -2879,12 +2879,12 @@ msgstr ""
 #: src/gui/tools/color_picker.cpp:19
 #, kde-format
 msgid "Color Picker"
-msgstr ""
+msgstr "Kleurenkiezer"
 
 #: src/gui/tools/color_picker.cpp:20
 #, kde-format
 msgid "F7"
-msgstr ""
+msgstr "F7"
 
 #: src/gui/tools/draw_tool.cpp:184
 #, kde-format
@@ -2916,7 +2916,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1183
 #, kde-format
 msgid "F3"
-msgstr ""
+msgstr "F3"
 
 #: src/gui/tools/edit_tool.cpp:169
 #, kde-format
@@ -2931,7 +2931,7 @@ msgstr ""
 #: src/gui/tools/edit_tool.cpp:280
 #, kde-format
 msgid "Smooth"
-msgstr ""
+msgstr "Vloeiend"
 
 #: src/gui/tools/edit_tool.cpp:284
 #, kde-format
@@ -2946,7 +2946,7 @@ msgstr ""
 #: src/gui/tools/edit_tool.cpp:305
 #, kde-format
 msgid "Node"
-msgstr ""
+msgstr "Knooppunt"
 
 #: src/gui/tools/edit_tool.cpp:315
 #, kde-format
@@ -2972,7 +2972,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Stop Color..."
-msgstr ""
+msgstr "Eindkleur..."
 
 #: src/gui/tools/edit_tool.cpp:381
 #, kde-format
@@ -2984,7 +2984,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Remove Stop"
-msgstr ""
+msgstr "Stop verwijderen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/tools/edit_tool.cpp:527
@@ -3013,38 +3013,38 @@ msgstr ""
 #: src/gui/tools/edit_tool.cpp:962
 #, kde-format
 msgid "Curve segments"
-msgstr ""
+msgstr "Segmenten van krommen"
 
 #. i18n: ectx: property (text), widget (QToolButton, preview_tool_2)
 #: src/gui/tools/edit_tool.hpp:27
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:157
 #, kde-format
 msgid "Edit"
-msgstr ""
+msgstr "Bewerken"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/tools/edit_tool.hpp:28
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1168
 #, kde-format
 msgid "F2"
-msgstr ""
+msgstr "F2"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/tools/ellipse_tool.cpp:18
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1228
 #, kde-format
 msgid "F5"
-msgstr ""
+msgstr "F5"
 
 #: src/gui/tools/ellipse_tool.cpp:28
 #, kde-format
 msgid "Draw Ellipse"
-msgstr ""
+msgstr "Ellips tekenen"
 
 #: src/gui/tools/fill_tool.cpp:26 src/gui/tools/text_tool.cpp:29
 #, kde-format
 msgid "F8"
-msgstr ""
+msgstr "F8"
 
 #: src/gui/tools/fill_tool.cpp:53
 #, kde-format
@@ -3054,12 +3054,12 @@ msgstr ""
 #: src/gui/tools/fill_tool.cpp:88
 #, kde-format
 msgid "%1 Fill"
-msgstr ""
+msgstr "%1 vullen"
 
 #: src/gui/tools/fill_tool.cpp:99
 #, kde-format
 msgid "%1 Stroke"
-msgstr ""
+msgstr "%1 streek"
 
 #: src/gui/tools/freehand.cpp:18 src/gui/tools/freehand.cpp:47
 #, kde-format
@@ -3071,57 +3071,57 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1198
 #, kde-format
 msgid "F6"
-msgstr ""
+msgstr "F6"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_properties)
 #: src/gui/tools/handle_menu.hpp:33
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:690
 #, kde-format
 msgid "Properties"
-msgstr ""
+msgstr "Eigenschappen"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/tools/rectangle_tool.hpp:21
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1213
 #, kde-format
 msgid "F4"
-msgstr ""
+msgstr "F4"
 
 #: src/gui/tools/rectangle_tool.hpp:42
 #, kde-format
 msgid "Draw Rectangle"
-msgstr ""
+msgstr "Rechthoek tekenen"
 
 #. i18n: ectx: property (text), widget (QToolButton, preview_tool_1)
 #: src/gui/tools/select_tool.cpp:29
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:146
 #, kde-format
 msgid "Select"
-msgstr ""
+msgstr "Selecteren"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/tools/select_tool.cpp:30
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1153
 #, kde-format
 msgid "F1"
-msgstr ""
+msgstr "F1"
 
 #: src/gui/tools/select_tool.cpp:133
 #, kde-format
 msgid "Drag"
-msgstr ""
+msgstr "Verslepen"
 
 #: src/gui/tools/select_tool.cpp:398 src/gui/widgets/dialogs/gw_impl_ui.cpp:317
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:993
 #, kde-format
 msgid "Undo %1"
-msgstr ""
+msgstr "%1 ongedaan maken"
 
 #: src/gui/tools/select_tool.cpp:403 src/gui/widgets/dialogs/gw_impl_ui.cpp:312
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:994
 #, kde-format
 msgid "Redo %1"
-msgstr ""
+msgstr "%1 opnieuw doen"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_delete)
@@ -3132,17 +3132,17 @@ msgstr ""
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:66
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "Verwijderen"
 
 #: src/gui/tools/select_tool.cpp:428
 #, kde-format
 msgid "Move to..."
-msgstr ""
+msgstr "Verplaatsen naar..."
 
 #: src/gui/tools/star_tool.cpp:19 src/gui/widgets/enum_combo.cpp:90
 #, kde-format
 msgid "Star"
-msgstr ""
+msgstr "Ster"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/tools/star_tool.cpp:20
@@ -3159,19 +3159,19 @@ msgstr ""
 #: src/gui/tools/text_tool.cpp:28 src/gui/tools/text_tool.cpp:157
 #, kde-format
 msgid "Draw Text"
-msgstr ""
+msgstr "Tekst tekenen"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::AboutDialog)
 #: src/gui/widgets/dialogs/about_dialog.ui:21
 #, kde-format
 msgid "About"
-msgstr ""
+msgstr "Info over"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab)
 #: src/gui/widgets/dialogs/about_dialog.ui:91
 #, kde-format
 msgid "Credits"
-msgstr ""
+msgstr "Dankbetuigingen"
 
 #. i18n: ectx: property (text), widget (QLabel, credits)
 #: src/gui/widgets/dialogs/about_dialog.ui:139
@@ -3183,7 +3183,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/about_dialog.ui:160
 #, kde-format
 msgid "Paths"
-msgstr ""
+msgstr "Paden"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/about_dialog.ui:181
@@ -3195,13 +3195,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/about_dialog.ui:213
 #, kde-format
 msgid "Settings File:"
-msgstr ""
+msgstr "Instellingenbestand:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: src/gui/widgets/dialogs/about_dialog.ui:245
 #, kde-format
 msgid "Backup Directory:"
-msgstr ""
+msgstr "Map voor reservekopie:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/about_dialog.ui:277
@@ -3223,19 +3223,19 @@ msgstr ""
 #: src/gui/widgets/font/font_style_dialog.ui:35
 #, kde-format
 msgid "System"
-msgstr ""
+msgstr "Systeem"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
 #: src/gui/widgets/dialogs/about_dialog.ui:345
 #, kde-format
 msgid "Kernel"
-msgstr ""
+msgstr "Kernel"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
 #: src/gui/widgets/dialogs/about_dialog.ui:350
 #, kde-format
 msgid "CPU"
-msgstr ""
+msgstr "CPU"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
 #: src/gui/widgets/dialogs/about_dialog.ui:355
@@ -3279,13 +3279,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/about_dialog.ui:390
 #, kde-format
 msgid "About Qt"
-msgstr ""
+msgstr "Info over Qt"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_4)
 #: src/gui/widgets/dialogs/about_dialog.ui:428
 #, kde-format
 msgid "Formats"
-msgstr ""
+msgstr "Formaten"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: src/gui/widgets/dialogs/about_dialog.ui:464
@@ -3299,7 +3299,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/about_dialog.ui:533
 #, kde-format
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_output)
@@ -3307,7 +3307,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/about_dialog.ui:538
 #, kde-format
 msgid "Extensions"
-msgstr ""
+msgstr "Extensies"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: src/gui/widgets/dialogs/about_dialog.ui:505
@@ -3325,7 +3325,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:33
 #, kde-format
 msgid "Algorithm"
-msgstr ""
+msgstr "Algoritme"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:44
@@ -3361,7 +3361,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:83
 #, kde-format
 msgid "Max Iterations"
-msgstr ""
+msgstr "Max. iteraties"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
@@ -3370,7 +3370,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:59
 #, kde-format
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:112
@@ -3382,7 +3382,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:117
 #, kde-format
 msgid "Closest"
-msgstr ""
+msgstr "Meest nabij"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:141
@@ -3468,7 +3468,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:189
 #, kde-format
 msgid "Min Frequency"
-msgstr ""
+msgstr "Min frequentie"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_3)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:205
@@ -3506,7 +3506,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:38
 #, kde-format
 msgid "Common"
-msgstr ""
+msgstr "Algemeen"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -3514,7 +3514,7 @@ msgstr ""
 #: src/gui/widgets/settings/plugin_settings_widget.ui:200
 #, kde-format
 msgid "Author"
-msgstr ""
+msgstr "Auteur"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: ectx: property (text), widget (QLabel, label_5)
@@ -3522,13 +3522,13 @@ msgstr ""
 #: src/gui/widgets/settings/plugin_settings_widget.ui:214
 #, kde-format
 msgid "Description"
-msgstr ""
+msgstr "Beschrijving"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:70
 #, kde-format
 msgid "Keywords"
-msgstr ""
+msgstr "Trefwoorden"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
@@ -3539,13 +3539,13 @@ msgstr ""
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:69
 #, kde-format
 msgid "Custom"
-msgstr ""
+msgstr "Aangepast"
 
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:82
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
-msgstr ""
+msgstr "Fout"
 
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:82
 #, kde-format
@@ -3559,13 +3559,13 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Choose directory"
-msgstr ""
+msgstr "Een map kiezen"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::ExportImageSequenceDialog)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:21
 #, kde-format
 msgid "Export as Image Sequence"
-msgstr ""
+msgstr "Als afbeeldingensequentie exporteren"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:30
@@ -3577,7 +3577,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:43
 #, kde-format
 msgid "File Name"
-msgstr ""
+msgstr "Bestandsnaam"
 
 #. i18n: ectx: property (toolTip), widget (QLineEdit, input_name)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:56
@@ -3595,7 +3595,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:73
 #, kde-format
 msgid "Frame Step"
-msgstr ""
+msgstr "Framestap"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:112
@@ -3607,12 +3607,12 @@ msgstr ""
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:132
 #, kde-format
 msgid "Select..."
-msgstr ""
+msgstr "Selecteren..."
 
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:40
 #, kde-format
 msgid "f"
-msgstr ""
+msgstr "f"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_seconds)
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:51
@@ -3637,7 +3637,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/timing_dialog.ui:52
 #, kde-format
 msgid "Duration"
-msgstr ""
+msgstr "Tijdsduur"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:34
@@ -3649,13 +3649,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:48
 #, kde-format
 msgid "Shape"
-msgstr ""
+msgstr "Vorm"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:58
 #, kde-format
 msgid "End Time"
-msgstr ""
+msgstr "Eindtijd"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_units)
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -3665,7 +3665,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/timing_dialog.ui:72
 #, kde-format
 msgid "Frames"
-msgstr ""
+msgstr "Frames"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_units)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_time_units)
@@ -3673,19 +3673,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/startup_dialog.ui:135
 #, kde-format
 msgid "Seconds"
-msgstr ""
+msgstr "Seconden"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:91
 #, kde-format
 msgid "Choose..."
-msgstr ""
+msgstr "Kiezen..."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:100
 #, kde-format
 msgid "Start Time"
-msgstr ""
+msgstr "Starttijd"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:27
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:49
@@ -3697,13 +3697,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:63
 #, kde-format
 msgid "File saved"
-msgstr ""
+msgstr "Bestand opgeslagen"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:57
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:65
 #, kde-format
 msgid "Could not save file"
-msgstr ""
+msgstr "Kon bestand niet opslaan"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:71
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:79
@@ -3715,12 +3715,12 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:81
 #, kde-format
 msgid "Could not export file"
-msgstr ""
+msgstr "Kon bestand niet exporteren"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:189
 #, kde-format
 msgid "Warning"
-msgstr ""
+msgstr "Waarschuwing"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_file)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:54
@@ -3732,26 +3732,26 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:58
 #, kde-format
 msgid "Open &Recent"
-msgstr ""
+msgstr "&Recent openen"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_new_from_template)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:68
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:941
 #, kde-format
 msgid "New from Template"
-msgstr ""
+msgstr "Nieuw ui sjabloon"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_tools)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:99
 #, kde-format
 msgid "&Tools"
-msgstr ""
+msgstr "&Hulpmiddelen"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_layers)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:104
 #, kde-format
 msgid "&Layers"
-msgstr ""
+msgstr "&Lagen"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_new_layer)
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
@@ -3759,19 +3759,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1090
 #, kde-format
 msgid "&New"
-msgstr ""
+msgstr "&Nieuw"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_new_comp_layer)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:116
 #, kde-format
 msgid "&Composition"
-msgstr ""
+msgstr "&Compositie"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_path)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:138
 #, kde-format
 msgid "&Path"
-msgstr ""
+msgstr "&Pad"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_edit)
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
@@ -3779,49 +3779,49 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1165
 #, kde-format
 msgid "&Edit"
-msgstr ""
+msgstr "B&ewerken"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_view)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:184
 #, kde-format
 msgid "&View"
-msgstr ""
+msgstr "&Beeld"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_views)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:188
 #, kde-format
 msgid "&Views"
-msgstr ""
+msgstr "&Weergaven"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_toolbars)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:194
 #, kde-format
 msgid "Tool&bars"
-msgstr ""
+msgstr "Werk&balken"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_layout)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:199
 #, kde-format
 msgid "&Layout"
-msgstr ""
+msgstr "Inde&ling"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_help)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:220
 #, kde-format
 msgid "&Help"
-msgstr ""
+msgstr "&Help"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_plugins)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:229
 #, kde-format
 msgid "Plu&gins"
-msgstr ""
+msgstr "Plu&g-ins"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_document)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:234
 #, kde-format
 msgid "&Document"
-msgstr ""
+msgstr "&Document"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_render_single_frame)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:238
@@ -3839,13 +3839,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:273
 #, kde-format
 msgid "&Playback"
-msgstr ""
+msgstr "&Afspelen"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_object)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:286
 #, kde-format
 msgid "&Object"
-msgstr ""
+msgstr "&Object"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_align)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:290
@@ -3863,13 +3863,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:333
 #, kde-format
 msgid "&Settings"
-msgstr ""
+msgstr "In&stellingen"
 
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolbar_main)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:355
 #, kde-format
 msgid "Main Toolbar"
-msgstr ""
+msgstr "Hoofdwerkbalk"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_tools)
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolbar_tools)
@@ -3877,13 +3877,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1005
 #, kde-format
 msgid "Tools"
-msgstr ""
+msgstr "Hulpmiddelen"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_tool_options)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:440
 #, kde-format
 msgid "Tool Options"
-msgstr ""
+msgstr "Hulpmiddelopties"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_add)
@@ -3907,7 +3907,7 @@ msgstr ""
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:69
 #, kde-format
 msgid "Duplicate"
-msgstr ""
+msgstr "Dupliceren"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_2)
 #. i18n: ectx: property (text), widget (QToolButton, btn_remove)
@@ -3929,7 +3929,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:623
 #, kde-format
 msgid "Move To Top"
-msgstr ""
+msgstr "Naar de top verplaatsen"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_up)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_up)
@@ -3937,7 +3937,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:637
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "Omhoog verplaatsen"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_down)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_down)
@@ -3945,7 +3945,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:651
 #, kde-format
 msgid "Move Down"
-msgstr ""
+msgstr "Omlaag verplaatsen"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_bottom)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_bottom)
@@ -3953,37 +3953,37 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:665
 #, kde-format
 msgid "Move To Bottom"
-msgstr ""
+msgstr "Naar onderaan verplaatsen"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_script_console)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:770
 #, kde-format
 msgid "Script Console"
-msgstr ""
+msgstr "Console voor script"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_logs)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:789
 #, kde-format
 msgid "Logs"
-msgstr ""
+msgstr "Logs"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_undo)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:855
 #, kde-format
 msgid "Undo History"
-msgstr ""
+msgstr "Geschiedenis van ongedaan maken"
 
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolbar_node)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:894
 #, kde-format
 msgid "Node Editing"
-msgstr ""
+msgstr "Node bewerken"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_align)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:950
 #, kde-format
 msgid "Align"
-msgstr ""
+msgstr "Uitlijnen"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_snippets)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1026
@@ -3991,7 +3991,7 @@ msgstr ""
 #: src/gui/widgets/docks/snippet_list_widget.cpp:66
 #, kde-format
 msgid "Snippets"
-msgstr ""
+msgstr "Fragmenten"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_time_slider)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1057
@@ -4003,37 +4003,37 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1099
 #, kde-format
 msgid "&Open..."
-msgstr ""
+msgstr "&Openen..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1108
 #, kde-format
 msgid "&Save"
-msgstr ""
+msgstr "Op&slaan"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1117
 #, kde-format
 msgid "Save &As..."
-msgstr ""
+msgstr "Opslaan &als..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1126
 #, kde-format
 msgid "&Close"
-msgstr ""
+msgstr "&Sluiten"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1135
 #, kde-format
 msgid "&Quit"
-msgstr ""
+msgstr "&Afsluiten"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1150
 #, kde-format
 msgid "&Select"
-msgstr ""
+msgstr "&Selecteren"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1180
@@ -4051,19 +4051,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1210
 #, kde-format
 msgid "&Rectangle"
-msgstr ""
+msgstr "&Rechthoek"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1225
 #, kde-format
 msgid "&Ellipse"
-msgstr ""
+msgstr "&Ellips"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1240
 #, kde-format
 msgid "S&tar"
-msgstr ""
+msgstr "S&ter"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1252
@@ -4076,7 +4076,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1693
 #, kde-format
 msgid "&Group"
-msgstr ""
+msgstr "&Groep"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1273
@@ -4094,37 +4094,37 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1291
 #, kde-format
 msgid "New &Composition"
-msgstr ""
+msgstr "Nieuwe &compositie"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1303
 #, kde-format
 msgid "&Union"
-msgstr ""
+msgstr "&Union"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1315
 #, kde-format
 msgid "&Difference"
-msgstr ""
+msgstr "&Verschil"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1327
 #, kde-format
 msgid "&Intersect"
-msgstr ""
+msgstr "Sn&ijpunt"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1339
 #, kde-format
 msgid "E&xclusion"
-msgstr ""
+msgstr "&Uitsluiting"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1351
 #, kde-format
 msgid "Re&verse"
-msgstr ""
+msgstr "Omge&keerd"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1360
@@ -4166,37 +4166,37 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1435
 #, kde-format
 msgid "&Smooth"
-msgstr ""
+msgstr "&Vloeiend"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1447
 #, kde-format
 msgid "Sy&mmetric"
-msgstr ""
+msgstr "Sy&mmetrisch"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1456
 #, kde-format
 msgid "&Copy"
-msgstr ""
+msgstr "&Kopiëren"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1465
 #, kde-format
 msgid "Cu&t"
-msgstr ""
+msgstr "&Knippen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1474
 #, kde-format
 msgid "&Paste"
-msgstr ""
+msgstr "&Plakken"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1486
 #, kde-format
 msgid "&Select All"
-msgstr ""
+msgstr "Alles &selecteren"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1495
@@ -4208,31 +4208,31 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1498
 #, kde-format
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1507
 #, kde-format
 msgid "&Raise"
-msgstr ""
+msgstr "Naar vo&ren"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1510
 #, kde-format
 msgid "PgUp"
-msgstr ""
+msgstr "PgUp"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1519
 #, kde-format
 msgid "&Lower"
-msgstr ""
+msgstr "Naar &achteren brengen"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1522
 #, kde-format
 msgid "PgDown"
-msgstr ""
+msgstr "PgDown"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1531
@@ -4244,7 +4244,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1543
 #, kde-format
 msgid "Re&load"
-msgstr ""
+msgstr "Her&laden"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1576
@@ -4256,43 +4256,43 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1585
 #, kde-format
 msgid "Re&set View"
-msgstr ""
+msgstr "Beeld her&stellen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1594
 #, kde-format
 msgid "&Reset Rotation"
-msgstr ""
+msgstr "Rotatie &resetten"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1603
 #, kde-format
 msgid "Zoom &In"
-msgstr ""
+msgstr "&Inzoomen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1612
 #, kde-format
 msgid "Zoom &Out"
-msgstr ""
+msgstr "&Uitzoomen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1621
 #, kde-format
 msgid "Reset &Zoom"
-msgstr ""
+msgstr "&Zoom resetten"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1630
 #, kde-format
 msgid "Pr&eferences..."
-msgstr ""
+msgstr "Voork&euren..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1639
 #, kde-format
 msgid "About..."
-msgstr ""
+msgstr "Info over..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1648
@@ -4304,13 +4304,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1657
 #, kde-format
 msgid "&Raster..."
-msgstr ""
+msgstr "&Raster..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1666
 #, kde-format
 msgid "S&VG..."
-msgstr ""
+msgstr "S&VG..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1675
@@ -4322,19 +4322,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1684
 #, kde-format
 msgid "Report &Issue..."
-msgstr ""
+msgstr "&Probleem rapporteren..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1702
 #, kde-format
 msgid "&Ungroup"
-msgstr ""
+msgstr "Groepering &opheffen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1711
 #, kde-format
 msgid "&Move to..."
-msgstr ""
+msgstr "&Verplaatsen naar..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1720
@@ -4346,31 +4346,31 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1729
 #, kde-format
 msgid "Re&size..."
-msgstr ""
+msgstr "&Grootte wijzigen..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1738
 #, kde-format
 msgid "Donate..."
-msgstr ""
+msgstr "Doneren..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1747
 #, kde-format
 msgid "&Fill"
-msgstr ""
+msgstr "&Vullen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1756
 #, kde-format
 msgid "&Stroke"
-msgstr ""
+msgstr "&Streek"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1765
 #, kde-format
 msgid "&Layer"
-msgstr ""
+msgstr "&Laag"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1777
@@ -4382,13 +4382,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1786
 #, kde-format
 msgid "Add &Image..."
-msgstr ""
+msgstr "&Afbeelding toevoegen..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1795
 #, kde-format
 msgid "&Delete"
-msgstr ""
+msgstr "Verwij&deren"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1807
@@ -4406,19 +4406,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1828
 #, kde-format
 msgid "&Export..."
-msgstr ""
+msgstr "&Exporteren..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1837
 #, kde-format
 msgid "E&xport As..."
-msgstr ""
+msgstr "E&xporteren als..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1858
 #, kde-format
 msgid "Cleanup"
-msgstr ""
+msgstr "Opruimen"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1861
@@ -4430,19 +4430,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1870
 #, kde-format
 msgid "Timing..."
-msgstr ""
+msgstr "Timing..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1879
 #, kde-format
 msgid "&Play"
-msgstr ""
+msgstr "Afs&pelen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1894
 #, kde-format
 msgid "&Loop"
-msgstr ""
+msgstr "&Lus"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1906
@@ -4466,19 +4466,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1933
 #, kde-format
 msgid "&Next Frame"
-msgstr ""
+msgstr "Volge&nde frame"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1942
 #, kde-format
 msgid "Pre&vious Frame"
-msgstr ""
+msgstr "&Vorige frame"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1951
 #, kde-format
 msgid "Metadata..."
-msgstr ""
+msgstr "Metagegevens..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1960
@@ -4509,44 +4509,44 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1999
 #, kde-format
 msgid "Selection"
-msgstr ""
+msgstr "Selectie"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2011
 #, kde-format
 msgid "Canvas"
-msgstr ""
+msgstr "Werkveld"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2020
 #, kde-format
 msgid "Left"
-msgstr ""
+msgstr "Links"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2029
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2056
 #, kde-format
 msgid "Center"
-msgstr ""
+msgstr "Midden"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2038
 #, kde-format
 msgid "Right"
-msgstr ""
+msgstr "Rechts"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2047
 #, kde-format
 msgid "Top"
-msgstr ""
+msgstr "Boven"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2065
 #, kde-format
 msgid "Bottom"
-msgstr ""
+msgstr "Onder"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2077
@@ -4564,13 +4564,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2087
 #, kde-format
 msgid "Horizontal"
-msgstr ""
+msgstr "Horizontaal"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2092
 #, kde-format
 msgid "Vertical"
-msgstr ""
+msgstr "Verticaal"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2101
@@ -4600,7 +4600,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2137
 #, kde-format
 msgid "&Import..."
-msgstr ""
+msgstr "&Importeren..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2146
@@ -4612,7 +4612,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2155
 #, kde-format
 msgid "F&lip View"
-msgstr ""
+msgstr "Beeld omk&lappen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2164
@@ -4620,7 +4620,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:955
 #, kde-format
 msgid "Save as Template"
-msgstr ""
+msgstr "Als sjabloon opslaan"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2173
@@ -4645,7 +4645,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2200
 #, kde-format
 msgid "Emo&ji..."
-msgstr ""
+msgstr "Emo&ji..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2209
@@ -4657,7 +4657,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2218
 #, kde-format
 msgid "Export as Image Sequence..."
-msgstr ""
+msgstr "Als afbeeldingensequentie exporteren..."
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2229
@@ -4669,7 +4669,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2237
 #, kde-format
 msgid "Automatic"
-msgstr ""
+msgstr "Automatisch"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2240
@@ -4681,7 +4681,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2248
 #, kde-format
 msgid "Wide"
-msgstr ""
+msgstr "Breed"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2251
@@ -4693,54 +4693,54 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2259
 #, kde-format
 msgid "Compact"
-msgstr ""
+msgstr "Compact"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2262
 #, kde-format
 msgid "Layout best suited for smaller screens"
-msgstr ""
+msgstr "Indeling het best geschikt voor kleinere schermen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2267
 #, kde-format
 msgid "RIVE (canvas)"
-msgstr ""
+msgstr "RIVE (werkveld)"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2272
 #, kde-format
 msgid "LottieFiles"
-msgstr ""
+msgstr "LottieBestanden"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2280
 #, kde-format
 msgid "Medium"
-msgstr ""
+msgstr "Middelgroot"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2283
 #, kde-format
 msgid "More compact that Wide but larger than Compact"
-msgstr ""
+msgstr "Compacter dan breed maar groter dan compact"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2292
 #, kde-format
 msgid "Configure &Keyboard Shortcuts..."
-msgstr ""
+msgstr "&Sneltoetsen configureren..."
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2295
 #, kde-format
 msgid "Ctrl+Alt+,"
-msgstr ""
+msgstr "Ctrl+Alt+,"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:138
 #, kde-format
 msgid "Export..."
-msgstr ""
+msgstr "Exporteren..."
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:150
 #, kde-format
@@ -4757,7 +4757,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:238
 #, kde-format
 msgid "Close Document"
-msgstr ""
+msgstr "Document sluiten"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:245
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:667
@@ -4768,7 +4768,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:397
 #, kde-format
 msgid "Export to %1"
-msgstr ""
+msgstr "Exporteren naar %1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:448
 #, kde-format
@@ -4787,7 +4787,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:842
 #, kde-format
 msgid "Could not import %1"
-msgstr ""
+msgstr "Kon %1 niet importeren"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:492
 #, kde-format
@@ -4804,7 +4804,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:525
 #, kde-format
 msgid "Could not create file"
-msgstr ""
+msgstr "Kon bestand niet aanmaken"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:531
 #, kde-format
@@ -4825,7 +4825,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:567
 #, kde-format
 msgid "Image files (%1)"
-msgstr ""
+msgstr "Afbeeldingsbestanden (%1)"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:576
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:600
@@ -4847,13 +4847,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:589
 #, kde-format
 msgid "Scalable Vector Graphics (*.svg)"
-msgstr ""
+msgstr "Schaalbare Vector Graphics (*.svg)"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:615
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:625
 #, kde-format
 msgid "No issues found"
-msgstr ""
+msgstr "Geen problemen gevonden"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:615
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:625
@@ -4879,7 +4879,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:756
 #, kde-format
 msgid "Link %1 Color"
-msgstr ""
+msgstr "Koppel kleur %1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:868
 #, kde-format
@@ -4889,13 +4889,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:906
 #, kde-format
 msgid "HTTP Error %1 %2"
-msgstr ""
+msgstr "HTTP-fout %1 %2"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:910
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.cpp:213
 #, kde-format
 msgid "Network Error"
-msgstr ""
+msgstr "Netwerkfout"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:913
 #, kde-format
@@ -4905,7 +4905,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:913
 #, kde-format
 msgid "Could not load %1: %2"
-msgstr ""
+msgstr "Kon %1 niet laden: %2"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:931
 #, kde-format
@@ -4920,24 +4920,24 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:87
 #, kde-format
 msgid "Delete %1"
-msgstr ""
+msgstr "%1 verwijderen"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:185
 #, kde-format
 msgid "Move Shapes"
-msgstr ""
+msgstr "Vormen verplaatsen"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:209
 #, kde-format
 msgid "All Supported files (%1)"
-msgstr ""
+msgstr "Alle ondersteunde bestanden (%1)"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:236
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:243
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:253
 #, kde-format
 msgid "Import Image"
-msgstr ""
+msgstr "Afbeelding importeren"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:253
 #, kde-format
@@ -4957,12 +4957,12 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:306
 #, kde-format
 msgid "Convert to path"
-msgstr ""
+msgstr "Naar pad converteren"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:308
 #, kde-format
 msgid "Convert %1 to path"
-msgstr ""
+msgstr "%1 naar pad converteren"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:486
 #, kde-format
@@ -4977,7 +4977,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:716
 #, kde-format
 msgid "Drop"
-msgstr ""
+msgstr "Laten vallen"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:812
 #, kde-format
@@ -4992,14 +4992,14 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:240
 #, kde-format
 msgid "Pause"
-msgstr ""
+msgstr "Pauzeren"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:244
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
 #, kde-format
 msgid "Play"
-msgstr ""
+msgstr "Afspelen"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:991
@@ -5044,7 +5044,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1210
 #, kde-format
 msgid "X: %1 Y: %2"
-msgstr ""
+msgstr "X: %1 Y: %2"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1229
 #, kde-format
@@ -5069,37 +5069,37 @@ msgstr ""
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:39
 #, kde-format
 msgid "Save file"
-msgstr ""
+msgstr "Bestand opslaan"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:59
 #, kde-format
 msgid "Overwrite File?"
-msgstr ""
+msgstr "Bestand overschrijven?"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:60
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
-msgstr ""
+msgstr "Het bestand \"%1\" bestaat al. Wilt u het overschrijven?"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:82
 #, kde-format
 msgid "Open file"
-msgstr ""
+msgstr "Bestand openen"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:101
 #, kde-format
 msgid "%1 Options"
-msgstr ""
+msgstr "%1 opties"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:166
 #, kde-format
 msgid "All files (%1)"
-msgstr ""
+msgstr "Alle bestanden (%1)"
 
 #: src/gui/widgets/dialogs/io_status_dialog.cpp:71
 #, kde-format
 msgid "Operation Failed"
-msgstr ""
+msgstr "Handeling mislukt"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, IoStatusDialog)
 #: src/gui/widgets/dialogs/io_status_dialog.ui:21
@@ -5125,24 +5125,24 @@ msgstr ""
 #: src/gui/widgets/dialogs/resize_dialog.ui:21
 #, kde-format
 msgid "Resize Document"
-msgstr ""
+msgstr "Afmeting van document aanpassen"
 
 #: src/gui/widgets/dialogs/resize_dialog.cpp:92
 #, kde-format
 msgid "Resize"
-msgstr ""
+msgstr "Grootte wijzigen"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, check_aspect)
 #: src/gui/widgets/dialogs/resize_dialog.ui:71
 #, kde-format
 msgid "Lock Aspect Ratio"
-msgstr ""
+msgstr "Beeldverhouding vergrendelen"
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_scale_layers)
 #: src/gui/widgets/dialogs/resize_dialog.ui:93
 #, kde-format
 msgid "Scale Layers"
-msgstr ""
+msgstr "Lagen schalen"
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_layer_ratio)
 #: src/gui/widgets/dialogs/resize_dialog.ui:103
@@ -5160,19 +5160,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/shape_parent_dialog.ui:21
 #, kde-format
 msgid "Destination"
-msgstr ""
+msgstr "Bestemming"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 #: src/gui/widgets/dialogs/shape_parent_dialog.ui:48
 #, kde-format
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton_2)
 #: src/gui/widgets/dialogs/shape_parent_dialog.ui:59
 #, kde-format
 msgid "Move"
-msgstr ""
+msgstr "Verplaatsen"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::StalefilesDialog)
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:18
@@ -5186,25 +5186,25 @@ msgstr ""
 #: src/gui/widgets/font/external_font_widget.ui:36
 #, kde-format
 msgid "Load"
-msgstr ""
+msgstr "Laden"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_delete_all)
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:57
 #, kde-format
 msgid "Delete All"
-msgstr ""
+msgstr "Alles verwijderen"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, StartupDialog)
 #: src/gui/widgets/dialogs/startup_dialog.ui:21
 #, kde-format
 msgid "Startup"
-msgstr ""
+msgstr "Opstarten"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/gui/widgets/dialogs/startup_dialog.ui:29
 #, kde-format
 msgid "Create New"
-msgstr ""
+msgstr "Nieuwe aanmaken"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_presets)
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -5224,31 +5224,31 @@ msgstr ""
 #: src/gui/widgets/dialogs/startup_dialog.ui:96
 #, kde-format
 msgid "Framerate"
-msgstr ""
+msgstr "Framesnelheid"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_presets)
 #: src/gui/widgets/dialogs/startup_dialog.ui:63
 #, kde-format
 msgid "Aspect"
-msgstr ""
+msgstr "Verhouding"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 #: src/gui/widgets/dialogs/startup_dialog.ui:76
 #, kde-format
 msgid "Settings"
-msgstr ""
+msgstr "Instellingen"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_fps)
 #: src/gui/widgets/dialogs/startup_dialog.ui:113
 #, kde-format
 msgid " fps"
-msgstr ""
+msgstr " fps"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_open_browse)
 #: src/gui/widgets/dialogs/startup_dialog.ui:158
 #, kde-format
 msgid "Browse..."
-msgstr ""
+msgstr "Bladeren..."
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_show_at_startup)
 #: src/gui/widgets/dialogs/startup_dialog.ui:176
@@ -5265,7 +5265,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
 #, kde-format
 msgid "FPS"
-msgstr ""
+msgstr "FPS"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer_keep)
 #: src/gui/widgets/dialogs/timing_dialog.ui:97
@@ -5289,19 +5289,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:89
 #, kde-format
 msgid "Detailed"
-msgstr ""
+msgstr "Gedetailleerd"
 
 #. i18n: ectx: property (text), item, widget (QListWidget, list_presets)
 #: src/gui/widgets/dialogs/trace_dialog.ui:94
 #, kde-format
 msgid "Flat"
-msgstr ""
+msgstr "Vlak"
 
 #. i18n: ectx: property (text), item, widget (QListWidget, list_presets)
 #: src/gui/widgets/dialogs/trace_dialog.ui:99
 #, kde-format
 msgid "Pixel Art"
-msgstr ""
+msgstr "Pixel Art"
 
 #. i18n: ectx: property (html), widget (QTextBrowser, textBrowser)
 #: src/gui/widgets/dialogs/trace_dialog.ui:151
@@ -5399,13 +5399,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:254
 #, kde-format
 msgid "Mode"
-msgstr ""
+msgstr "Modus"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_mode)
 #: src/gui/widgets/dialogs/trace_dialog.ui:262
 #, kde-format
 msgid "Transparency"
-msgstr ""
+msgstr "Transparantie"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_mode)
 #: src/gui/widgets/dialogs/trace_dialog.ui:267
@@ -5423,13 +5423,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:277
 #, kde-format
 msgid "Pixel"
-msgstr ""
+msgstr "Pixel"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #: src/gui/widgets/dialogs/trace_dialog.ui:288
 #, kde-format
 msgid "Image Options"
-msgstr ""
+msgstr "Afbeeldingsopties"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/dialogs/trace_dialog.ui:307
@@ -5441,19 +5441,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:331
 #, kde-format
 msgid "Invert"
-msgstr ""
+msgstr "Inverteren"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: src/gui/widgets/dialogs/trace_dialog.ui:345
 #, kde-format
 msgid "Threshold"
-msgstr ""
+msgstr "Drempel"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: src/gui/widgets/dialogs/trace_dialog.ui:372
 #, kde-format
 msgid "Colors"
-msgstr ""
+msgstr "Kleuren"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 #: src/gui/widgets/dialogs/trace_dialog.ui:394
@@ -5471,13 +5471,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:453
 #, kde-format
 msgid "Tolerance"
-msgstr ""
+msgstr "Tolerantie"
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: src/gui/widgets/dialogs/trace_dialog.ui:460
 #, kde-format
 msgid "Outline"
-msgstr ""
+msgstr "Omlijning"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_detect_colors)
 #: src/gui/widgets/dialogs/trace_dialog.ui:483
@@ -5495,7 +5495,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:493
 #, kde-format
 msgid "Configure..."
-msgstr ""
+msgstr "Configureren..."
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_potrace)
 #: src/gui/widgets/dialogs/trace_dialog.ui:514
@@ -5507,7 +5507,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:520
 #, kde-format
 msgid "Smoothness"
-msgstr ""
+msgstr "Gladheid"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/trace_dialog.ui:559
@@ -5521,7 +5521,7 @@ msgstr ""
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:95
 #, kde-format
 msgid "Preview"
-msgstr ""
+msgstr "Voorbeeld"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_update_preview)
 #: src/gui/widgets/dialogs/trace_dialog.ui:608
@@ -5535,13 +5535,13 @@ msgstr ""
 #: src/gui/widgets/view_transform_widget.ui:50
 #, kde-format
 msgid "Zoom"
-msgstr ""
+msgstr "Zoomen"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_help)
 #: src/gui/widgets/dialogs/trace_dialog.ui:670
 #, kde-format
 msgid "Help..."
-msgstr ""
+msgstr "Help..."
 
 #. i18n: ectx: property (text), widget (QPushButton, button_defaults)
 #: src/gui/widgets/dialogs/trace_dialog.ui:681
@@ -5553,7 +5553,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:692
 #, kde-format
 msgid "Advanced"
-msgstr ""
+msgstr "Geavanceerd"
 
 #: src/gui/widgets/docks/script_console.cpp:61
 #, kde-format
@@ -5574,7 +5574,7 @@ msgstr ""
 #: src/gui/widgets/docks/script_console.ui:71
 #, kde-format
 msgid "Clear Output"
-msgstr ""
+msgstr "Uitvoer wissen"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, check_persist)
 #: src/gui/widgets/docks/script_console.ui:85
@@ -5620,7 +5620,7 @@ msgstr ""
 #: src/gui/widgets/docks/snippet_list_widget.ui:43
 #, kde-format
 msgid "Edit..."
-msgstr ""
+msgstr "Bewerken..."
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_3)
 #: src/gui/widgets/docks/snippet_list_widget.ui:54
@@ -5638,7 +5638,7 @@ msgstr ""
 #: src/gui/widgets/docks/snippet_list_widget.ui:71
 #, kde-format
 msgid "Run"
-msgstr ""
+msgstr "Uitvoeren"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_5)
 #: src/gui/widgets/docks/snippet_list_widget.ui:95
@@ -5663,7 +5663,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:81
 #, kde-format
 msgid "Butt"
-msgstr ""
+msgstr "Onderkant"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_cap_round)
 #. i18n: ectx: property (text), widget (QToolButton, button_cap_round)
@@ -5676,7 +5676,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:199
 #, kde-format
 msgid "Round"
-msgstr ""
+msgstr "Afronden"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_cap_square)
 #. i18n: ectx: property (text), widget (QToolButton, button_cap_square)
@@ -5685,7 +5685,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:141
 #, kde-format
 msgid "Square"
-msgstr ""
+msgstr "Vierkant"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_join_miter)
 #. i18n: ectx: property (text), widget (QToolButton, button_join_miter)
@@ -5708,7 +5708,7 @@ msgstr ""
 #: src/gui/widgets/enum_combo.cpp:92
 #, kde-format
 msgid "Polygon"
-msgstr ""
+msgstr "Veelhoek"
 
 #: src/gui/widgets/font/external_font_widget.cpp:137
 #, kde-format
@@ -5731,12 +5731,12 @@ msgstr ""
 #: src/gui/widgets/font/google_fonts_widget.ui:82
 #, kde-format
 msgid "Font Style"
-msgstr ""
+msgstr "Lettertypestijl"
 
 #: src/gui/widgets/font/font_loader.cpp:47
 #, kde-format
 msgid "Could not open file %1"
-msgstr ""
+msgstr "Kon bestand %1 niet openen"
 
 #: src/gui/widgets/font/font_loader.cpp:58
 #, kde-format
@@ -5751,7 +5751,7 @@ msgstr ""
 #: src/gui/widgets/font/font_preview_widget.cpp:25
 #, kde-format
 msgid "The quick brown fox jumps over the lazy dog"
-msgstr ""
+msgstr "Filmquiz bracht knappe ex-yogi van de wijs"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_zoom)
 #: src/gui/widgets/font/font_preview_widget.ui:42
@@ -5770,27 +5770,27 @@ msgstr ""
 #: src/gui/widgets/font/google_fonts_widget.ui:97
 #, kde-format
 msgid "Filters"
-msgstr ""
+msgstr "Filters"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/font/font_style_widget.ui:59
 #: src/gui/widgets/font/google_fonts_widget.ui:103
 #, kde-format
 msgid "Writing System"
-msgstr ""
+msgstr "Schrijfsysteem"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/font/font_style_widget.ui:76
 #: src/gui/widgets/font/google_fonts_model.cpp:396
 #, kde-format
 msgid "Monospace"
-msgstr ""
+msgstr "Niet-proportioneel"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: src/gui/widgets/font/font_style_widget.ui:93
 #, kde-format
 msgid "Proportional"
-msgstr ""
+msgstr "Proportioneel"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:180
 #, kde-format
@@ -5800,44 +5800,44 @@ msgstr ""
 #: src/gui/widgets/font/google_fonts_model.cpp:274
 #, kde-format
 msgid "Family"
-msgstr ""
+msgstr "Familie"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/font/google_fonts_model.cpp:276
 #: src/gui/widgets/font/google_fonts_widget.ui:120
 #, kde-format
 msgid "Category"
-msgstr ""
+msgstr "Categorie"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:278
 #, kde-format
 msgid "Rank"
-msgstr ""
+msgstr "Rangorde"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:280
 #, kde-format
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:390
 #, kde-format
 msgid "Any"
-msgstr ""
+msgstr "Elke"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:392
 #, kde-format
 msgid "Sans-Serif"
-msgstr ""
+msgstr "Schreefloos"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:394
 #, kde-format
 msgid "Serif"
-msgstr ""
+msgstr "Met schreef"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:398
 #, kde-format
 msgid "Display"
-msgstr ""
+msgstr "Weergave"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:400
 #, kde-format
@@ -5847,7 +5847,7 @@ msgstr ""
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.cpp:207
 #, kde-format
 msgid "HTTP Error %1: %2"
-msgstr ""
+msgstr "HTTP-fout %1: %2"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, LottieFilesSearchDialog)
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:21
@@ -5859,35 +5859,35 @@ msgstr ""
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:98
 #, kde-format
 msgid "Previous Page"
-msgstr ""
+msgstr "Vorige pagina"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_next)
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:121
 #, kde-format
 msgid "Next Page"
-msgstr ""
+msgstr "Volgende pagina"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_import)
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:147
 #: src/gui/widgets/lottiefiles/search_result.cpp:81
 #, kde-format
 msgid "Import"
-msgstr ""
+msgstr "Importeren"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:33
 #, kde-format
 msgid "by %1"
-msgstr ""
+msgstr "door %1"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:49
 #, kde-format
 msgid "Likes"
-msgstr ""
+msgstr "Likes"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:58
 #, kde-format
 msgid "Comments"
-msgstr ""
+msgstr "Opmerkingen"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:67
 #, kde-format
@@ -5898,12 +5898,12 @@ msgstr ""
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:181
 #, kde-format
 msgid "Paste Keyframe"
-msgstr ""
+msgstr "Keyframe plakken"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:62
 #, kde-format
 msgid "Loop Animation"
-msgstr ""
+msgstr "Animatie rond laten lopen"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
@@ -5914,7 +5914,7 @@ msgstr ""
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:177
 #, kde-format
 msgid "Remove Keyframe"
-msgstr ""
+msgstr "Keyframe verwijderen"
 
 #: src/gui/widgets/menus/node_menu.cpp:49
 #: src/gui/widgets/menus/node_menu.cpp:253
@@ -5927,17 +5927,17 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:101
 #, kde-format
 msgid "Move to Top"
-msgstr ""
+msgstr "Naar de top verplaatsen"
 
 #: src/gui/widgets/menus/node_menu.cpp:113
 #, kde-format
 msgid "Move to Bottom"
-msgstr ""
+msgstr "Naar onderaan"
 
 #: src/gui/widgets/menus/node_menu.cpp:199
 #, kde-format
 msgid "Convert %1 to %2"
-msgstr ""
+msgstr "%1 converteren naar %2"
 
 #: src/gui/widgets/menus/node_menu.cpp:257
 #, kde-format
@@ -5953,7 +5953,7 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:277
 #, kde-format
 msgid "Parent"
-msgstr ""
+msgstr "Ouder"
 
 #: src/gui/widgets/menus/node_menu.cpp:278
 #, kde-format
@@ -5984,12 +5984,12 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:309
 #, kde-format
 msgid "Convert to Path"
-msgstr ""
+msgstr "Converteren naar pad"
 
 #: src/gui/widgets/menus/node_menu.cpp:314
 #, kde-format
 msgid "Embed"
-msgstr ""
+msgstr "Inbedden"
 
 #: src/gui/widgets/menus/node_menu.cpp:318
 #, kde-format
@@ -6004,7 +6004,7 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:324
 #, kde-format
 msgid "From File..."
-msgstr ""
+msgstr "Uit bestand..."
 
 #: src/gui/widgets/menus/node_menu.cpp:325
 #: src/gui/widgets/menus/node_menu.cpp:329
@@ -6036,54 +6036,54 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:411
 #, kde-format
 msgid "Speed Multiplier"
-msgstr ""
+msgstr "Vermenigvuldiger van snelheid"
 
 #: src/gui/widgets/menus/node_menu.cpp:428
 #, kde-format
 msgctxt "@option:check"
 msgid "Visible"
-msgstr ""
+msgstr "Zichtbaar"
 
 #: src/gui/widgets/menus/node_menu.cpp:429
 #, kde-format
 msgctxt "@option:check"
 msgid "Locked"
-msgstr ""
+msgstr "Vergrendeld"
 
 #: src/gui/widgets/menus/node_menu.cpp:434
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Delete"
-msgstr ""
+msgstr "Verwijderen"
 
 #: src/gui/widgets/menus/node_menu.cpp:438
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Duplicate"
-msgstr ""
+msgstr "Dupliceren"
 
 #: src/gui/widgets/menus/node_menu.cpp:451
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Move to..."
-msgstr ""
+msgstr "Verplaatsen naar..."
 
 #: src/gui/widgets/menus/node_menu.cpp:479
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Convert to Path"
-msgstr ""
+msgstr "Converteren naar pad"
 
 #: src/gui/widgets/menus/node_menu.cpp:496
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Change speed"
-msgstr ""
+msgstr "Snelheid wijzigen"
 
 #: src/gui/widgets/settings/plugin_settings_widget.cpp:73
 #, kde-format
 msgid "Unknown"
-msgstr ""
+msgstr "Onbekend"
 
 #: src/gui/widgets/settings/plugin_settings_widget.cpp:75
 #, kde-format
@@ -6093,7 +6093,7 @@ msgstr ""
 #: src/gui/widgets/settings/plugin_settings_widget.cpp:77
 #, kde-format
 msgid "File Format"
-msgstr ""
+msgstr "Bestandsformaat"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:31
@@ -6105,19 +6105,19 @@ msgstr ""
 #: src/gui/widgets/settings/plugin_settings_widget.ui:34
 #, kde-format
 msgid "Refresh"
-msgstr ""
+msgstr "Vernieuwen"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:58
 #, kde-format
 msgid "Install from file"
-msgstr ""
+msgstr "Uit bestand installeren"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:61
 #, kde-format
 msgid "Install..."
-msgstr ""
+msgstr "Installeren..."
 
 #. i18n: ectx: property (text), widget (QLineEdit, line_version)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:90
@@ -6129,31 +6129,31 @@ msgstr ""
 #: src/gui/widgets/settings/plugin_settings_widget.ui:112
 #, kde-format
 msgid "Enable"
-msgstr ""
+msgstr "Inschakelen"
 
 #. i18n: ectx: property (text), widget (QPushButton, btn_disable)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:123
 #, kde-format
 msgid "Disable"
-msgstr ""
+msgstr "Uitschakelen"
 
 #. i18n: ectx: property (text), widget (QPushButton, btn_uninstall)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:134
 #, kde-format
 msgid "Uninstall"
-msgstr ""
+msgstr "Deïnstalleren"
 
 #. i18n: ectx: property (text), widget (QTableWidget, list_services)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:163
 #, kde-format
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:221
 #, kde-format
 msgid "Services"
-msgstr ""
+msgstr "Services"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_style)
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:51
@@ -6165,13 +6165,13 @@ msgstr ""
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:61
 #, kde-format
 msgid "Text beside Icon"
-msgstr ""
+msgstr "Tekst naast pictogram"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_style)
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:66
 #, kde-format
 msgid "Text under Icon"
-msgstr ""
+msgstr "Tekst onder pictogram"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:74
@@ -6183,50 +6183,50 @@ msgstr ""
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:81
 #, kde-format
 msgid "Icon Size"
-msgstr ""
+msgstr "Pictogramgrootte"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:88
 #, kde-format
 msgid "Button Style"
-msgstr ""
+msgstr "Stijl van knoppen"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:30
 #, kde-format
 msgid "Color Mode"
-msgstr ""
+msgstr "Kleurmodus"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:34
 #, kde-format
 msgid "HSV"
-msgstr ""
+msgstr "HSV"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:39
 #, kde-format
 msgid "HSL"
-msgstr ""
+msgstr "HSL"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:44
 #, kde-format
 msgid "RGB"
-msgstr ""
+msgstr "RGB"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:49
 #, kde-format
 msgid "CMYK"
-msgstr ""
+msgstr "CMYK"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:54
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:390
 #, kde-format
 msgid "Palette"
-msgstr ""
+msgstr "Palet"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_2)
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_2)
@@ -6236,7 +6236,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:163
 #, kde-format
 msgid "Saturation"
-msgstr ""
+msgstr "Verzadiging"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (text), widget (QLabel, label_6)
@@ -6244,7 +6244,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:297
 #, kde-format
 msgid "S"
-msgstr ""
+msgstr "S"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::HueSlider, slider_hsv_hue)
 #. i18n: ectx: property (toolTip), widget (QLabel, label)
@@ -6260,7 +6260,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:241
 #, kde-format
 msgid "Hue"
-msgstr ""
+msgstr "Tint"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_5)
@@ -6268,19 +6268,19 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:227
 #, kde-format
 msgid "H"
-msgstr ""
+msgstr "H"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/shape_style/color_selector.ui:156
 #, kde-format
 msgid "V"
-msgstr ""
+msgstr "V"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: src/gui/widgets/shape_style/color_selector.ui:304
 #, kde-format
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_rgb_b)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_10)
@@ -6290,13 +6290,13 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:407
 #, kde-format
 msgid "Blue"
-msgstr ""
+msgstr "Blauw"
 
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 #: src/gui/widgets/shape_style/color_selector.ui:340
 #, kde-format
 msgid "B"
-msgstr ""
+msgstr "B"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_rgb_g)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_9)
@@ -6306,7 +6306,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:397
 #, kde-format
 msgid "Green"
-msgstr ""
+msgstr "Groen"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_8)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_rgb_r)
@@ -6316,19 +6316,19 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:387
 #, kde-format
 msgid "Red"
-msgstr ""
+msgstr "Rood"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: src/gui/widgets/shape_style/color_selector.ui:360
 #, kde-format
 msgid "R"
-msgstr ""
+msgstr "R"
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: src/gui/widgets/shape_style/color_selector.ui:370
 #, kde-format
 msgid "G"
-msgstr ""
+msgstr "G"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_11)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_c)
@@ -6338,13 +6338,13 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:453
 #, kde-format
 msgid "Cyan"
-msgstr ""
+msgstr "Cyaan"
 
 #. i18n: ectx: property (text), widget (QLabel, label_11)
 #: src/gui/widgets/shape_style/color_selector.ui:436
 #, kde-format
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_13)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_m)
@@ -6354,13 +6354,13 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:483
 #, kde-format
 msgid "Magenta"
-msgstr ""
+msgstr "Magenta"
 
 #. i18n: ectx: property (text), widget (QLabel, label_13)
 #: src/gui/widgets/shape_style/color_selector.ui:466
 #, kde-format
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_12)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_y)
@@ -6370,13 +6370,13 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:513
 #, kde-format
 msgid "Yellow"
-msgstr ""
+msgstr "Geel"
 
 #. i18n: ectx: property (text), widget (QLabel, label_12)
 #: src/gui/widgets/shape_style/color_selector.ui:496
 #, kde-format
 msgid "Y"
-msgstr ""
+msgstr "Y"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_14)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_k)
@@ -6386,13 +6386,13 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:543
 #, kde-format
 msgid "Black"
-msgstr ""
+msgstr "Zwart"
 
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 #: src/gui/widgets/shape_style/color_selector.ui:526
 #, kde-format
 msgid "K"
-msgstr ""
+msgstr "K"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_alpha)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_4)
@@ -6408,7 +6408,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:586
 #, kde-format
 msgid "A"
-msgstr ""
+msgstr "A"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::ColorSelector, color_preview)
 #: src/gui/widgets/shape_style/color_selector.ui:637
@@ -6428,7 +6428,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:682
 #, kde-format
 msgid "Swap"
-msgstr ""
+msgstr "Omwisselen"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:49
 #, kde-format
@@ -6486,7 +6486,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:115
 #, kde-format
 msgid "Save Palette"
-msgstr ""
+msgstr "Palet opslaan"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:429
 #, kde-format
@@ -6506,7 +6506,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:456
 #, kde-format
 msgid "Rename..."
-msgstr ""
+msgstr "Hernoemen..."
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:460
 #, kde-format
@@ -6538,7 +6538,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:103
 #, kde-format
 msgid "Generate"
-msgstr ""
+msgstr "Genereren"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:106
@@ -6595,7 +6595,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:59
 #, kde-format
 msgid "Preset"
-msgstr ""
+msgstr "Voorinstelling"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:139
 #, kde-format
@@ -6621,7 +6621,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:364
 #, kde-format
 msgid "Set Line Width"
-msgstr ""
+msgstr "Lijnbreedte instellen"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:396
 #, kde-format
@@ -6632,57 +6632,57 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:40
 #, kde-format
 msgid "Style"
-msgstr ""
+msgstr "Stijl"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_stroke_width)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:59
 #, kde-format
 msgid "Stroke Width"
-msgstr ""
+msgstr "Dikte van streek"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:69
 #, kde-format
 msgid "Cap"
-msgstr ""
+msgstr "Kap"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:157
 #, kde-format
 msgid "Join"
-msgstr ""
+msgstr "Samenvoegen"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_miter)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:263
 #, kde-format
 msgid "Miter Limit"
-msgstr ""
+msgstr "Limiet van schuine hoek in verbinding"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:338
 #, kde-format
 msgid "Dashes"
-msgstr ""
+msgstr "Streepjes"
 
 #: src/gui/widgets/spin2d.cpp:93
 #, kde-format
 msgid "Lock Ratio"
-msgstr ""
+msgstr "Vergrendel verhouding"
 
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:86
 #, kde-format
 msgid "Rename"
-msgstr ""
+msgstr "Hernoemen"
 
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:89
 #, kde-format
 msgid "Rename Composition"
-msgstr ""
+msgstr "Compositie hernoemen"
 
 #: src/gui/widgets/tab_bar/tab_bar_close_button.cpp:60
 #, kde-format
 msgid "Delete Composition"
-msgstr ""
+msgstr "Compositie verwijderen"
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:159
 #, kde-format
@@ -6697,42 +6697,42 @@ msgstr ""
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:167
 #, kde-format
 msgid "Custom..."
-msgstr ""
+msgstr "Aangepast..."
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:180
 #, kde-format
 msgid "Copy Keyframe"
-msgstr ""
+msgstr "Keyframe kopiëren"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:201
 #, kde-format
 msgid "&Clear Animations"
-msgstr ""
+msgstr "Animaties &wissen"
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spin_frame)
 #: src/gui/widgets/timeline/frame_controls_widget.ui:33
 #, kde-format
 msgid "Frame number"
-msgstr ""
+msgstr "Framenummer"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spin_frame)
 #: src/gui/widgets/timeline/frame_controls_widget.ui:39
 #, kde-format
 msgid " f"
-msgstr ""
+msgstr " f"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_loop)
 #: src/gui/widgets/timeline/frame_controls_widget.ui:60
 #, kde-format
 msgid "Loop animation"
-msgstr ""
+msgstr "Animatie rond laten lopen"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_loop)
 #: src/gui/widgets/timeline/frame_controls_widget.ui:63
 #, kde-format
 msgid "Loop"
-msgstr ""
+msgstr "Lus"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_first)
 #. i18n: ectx: property (text), widget (QToolButton, button_first)
@@ -6740,7 +6740,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:83
 #, kde-format
 msgid "Go To First Frame"
-msgstr ""
+msgstr "Ga naar eerste frame"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_prev_kf)
 #. i18n: ectx: property (text), widget (QToolButton, button_prev_kf)
@@ -6748,7 +6748,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:100
 #, kde-format
 msgid "Go To Previous Keyframe"
-msgstr ""
+msgstr "Ga naar vorig keyframe"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_prev)
 #. i18n: ectx: property (text), widget (QToolButton, button_prev)
@@ -6756,7 +6756,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:114
 #, kde-format
 msgid "Go To Previous Frame"
-msgstr ""
+msgstr "Ga naar vorige frame"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_next)
 #. i18n: ectx: property (text), widget (QToolButton, button_next)
@@ -6764,7 +6764,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:128
 #, kde-format
 msgid "Go To Next Frame"
-msgstr ""
+msgstr "Ga naar volgende frame"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_next_kf)
 #. i18n: ectx: property (text), widget (QToolButton, button_next_kf)
@@ -6772,7 +6772,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:145
 #, kde-format
 msgid "Go To Next Keyframe"
-msgstr ""
+msgstr "Ga naar volgend keyframe"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_last)
 #. i18n: ectx: property (text), widget (QToolButton, button_last)
@@ -6780,7 +6780,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:159
 #, kde-format
 msgid "Go To Last Frame"
-msgstr ""
+msgstr "Ga naar laatste frame"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_record)
 #. i18n: ectx: property (text), widget (QToolButton, button_record)
@@ -6788,84 +6788,84 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:173
 #, kde-format
 msgid "Record"
-msgstr ""
+msgstr "Opnemen"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/gui/widgets/timeline/keyframe_editor_widget.ui:37
 #, kde-format
 msgid "Presets"
-msgstr ""
+msgstr "Voorinstellingen"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/timeline/keyframe_editor_widget.ui:43
 #, kde-format
 msgid "Start"
-msgstr ""
+msgstr "Begin"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/timeline/keyframe_editor_widget.ui:66
 #, kde-format
 msgid "Finish"
-msgstr ""
+msgstr "Einde"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:58
 #, kde-format
 msgid "Hold"
-msgstr ""
+msgstr "In wacht"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:64
 #, kde-format
 msgid "Fast"
-msgstr ""
+msgstr "Snel"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:84
 #, kde-format
 msgid "Ease In"
-msgstr ""
+msgstr "Rustig in"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:86
 #, kde-format
 msgid "Ease Out"
-msgstr ""
+msgstr "Rustig uit"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:89
 #, kde-format
 msgid "Ease"
-msgstr ""
+msgstr "Rustig"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:98
 #, kde-format
 msgid "Anticipate"
-msgstr ""
+msgstr "Anticiperen"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:100
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:103
 #, kde-format
 msgid "Overshoot"
-msgstr ""
+msgstr "Overshoot"
 
 #: src/gui/widgets/timeline/timeline_items.cpp:142
 #, kde-format
 msgid "Drag Keyframes"
-msgstr ""
+msgstr "Keyframes slepen"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_both)
 #: src/gui/widgets/tools/fill_tool_widget.ui:49
 #, kde-format
 msgid "Fill and Stroke"
-msgstr ""
+msgstr "Vullen en streek"
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_box)
 #: src/gui/widgets/tools/shape_tool_widget.ui:24
 #, kde-format
 msgid "Create"
-msgstr ""
+msgstr "Aanmaken"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_raw_shape)
 #: src/gui/widgets/tools/shape_tool_widget.ui:30
 #, kde-format
 msgid "Raw Shape"
-msgstr ""
+msgstr "Ruwe vorm"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_view_fit)
 #. i18n: ectx: property (text), widget (QToolButton, btn_view_fit)
@@ -6873,7 +6873,7 @@ msgstr ""
 #: src/gui/widgets/view_transform_widget.ui:39
 #, kde-format
 msgid "Fit View"
-msgstr ""
+msgstr "Weergave laten passencccc"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_zoom_in)
 #. i18n: ectx: property (text), widget (QToolButton, btn_zoom_in)
@@ -6881,7 +6881,7 @@ msgstr ""
 #: src/gui/widgets/view_transform_widget.ui:82
 #, kde-format
 msgid "Zoom In"
-msgstr ""
+msgstr "Inzoomen"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_zoom_out)
 #. i18n: ectx: property (text), widget (QToolButton, btn_zoom_out)
@@ -6889,7 +6889,7 @@ msgstr ""
 #: src/gui/widgets/view_transform_widget.ui:96
 #, kde-format
 msgid "Zoom Out"
-msgstr ""
+msgstr "Uitzoomen"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_zoom_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_zoom_reset)
@@ -6897,19 +6897,19 @@ msgstr ""
 #: src/gui/widgets/view_transform_widget.ui:110
 #, kde-format
 msgid "Reset Zoom"
-msgstr ""
+msgstr "Zoom resetten"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/view_transform_widget.ui:121
 #, kde-format
 msgid "Angle"
-msgstr ""
+msgstr "Hoek"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_angle)
 #: src/gui/widgets/view_transform_widget.ui:131
 #, kde-format
 msgid "°"
-msgstr ""
+msgstr "°"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_angle_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_angle_reset)
@@ -6917,7 +6917,7 @@ msgstr ""
 #: src/gui/widgets/view_transform_widget.ui:153
 #, kde-format
 msgid "Reset Rotation"
-msgstr ""
+msgstr "Reset rotatie"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_flip_view)
 #. i18n: ectx: property (text), widget (QToolButton, btn_flip_view)
@@ -6925,4 +6925,4 @@ msgstr ""
 #: src/gui/widgets/view_transform_widget.ui:167
 #, kde-format
 msgid "Flip View"
-msgstr ""
+msgstr "Beeld omklappen"
