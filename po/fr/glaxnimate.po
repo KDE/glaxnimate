@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-18 00:40+0000\n"
-"PO-Revision-Date: 2024-01-04 18:30+0100\n"
+"PO-Revision-Date: 2024-01-15 21:34+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -47,9 +47,9 @@ msgstr "Maj"
 
 #. i18n: file: src/core/model/shapes/stroke.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
+#, kde-format
 msgid "miter_limit"
-msgstr "Limite d'anglet"
+msgstr "miter_limit"
 
 #. i18n: file: src/core/model/shapes/shape.hpp
 #. i18n: Property name
@@ -193,10 +193,9 @@ msgstr "fréquence"
 
 #. i18n: file: src/core/model/transform.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Drag anchor point"
+#, kde-format
 msgid "anchor_point"
-msgstr "Déplacer un autre point"
+msgstr "point_ancrage"
 
 #. i18n: file: src/core/model/transform.hpp
 #. i18n: Property name
@@ -246,11 +245,9 @@ msgstr "start_point"
 
 #. i18n: file: src/core/model/assets/assets.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::tools::EditTool#1"
-#| msgid "Gradient Colors"
+#, kde-format
 msgid "gradient_colors"
-msgstr "Couleurs du gradient"
+msgstr "Couleurs_de_dégradé"
 
 #. i18n: file: src/core/model/assets/assets.hpp
 #. i18n: Property name
@@ -1060,7 +1057,7 @@ msgstr "Projet « Adobe After Effects XML »"
 #: src/core/io/aep/aep_loader.cpp:75
 #, kde-format
 msgid "External asset not found: %1"
-msgstr "Actif externe non trouvé :%1"
+msgstr "Impossible de trouver l'actif externe :%1"
 
 #: src/core/io/aep/aep_loader.cpp:117
 #, kde-format
@@ -1367,7 +1364,7 @@ msgstr "Bande"
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
 msgid "Strip unused properties"
-msgstr ""
+msgstr "Supprimer les propriétés inutilisées"
 
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
@@ -1506,7 +1503,7 @@ msgstr "La compression /décompression n'est pas prise en charge."
 #: src/core/io/lottie/tgs_format.cpp:73
 #, kde-format
 msgid "Offset Path is not supported"
-msgstr ""
+msgstr "Le décalage d'un tracé n'est pas pris en charge"
 
 #: src/core/io/lottie/tgs_format.cpp:77
 #, kde-format
@@ -1634,6 +1631,8 @@ msgstr "Impossible de lire l'en-tête"
 msgid ""
 "Loading unsupported rive file version %1.%2, the only supported version is %3"
 msgstr ""
+"Chargement d'une version %1. %2 de fichier « RIVE » non pris en charge. La "
+"seule version prise en charge est %3."
 
 #: src/core/io/rive/rive_format.cpp:46 src/core/io/rive/rive_loader.cpp:750
 #, kde-format
@@ -1643,32 +1642,32 @@ msgstr "Impossible de lire la table des propriétés"
 #: src/core/io/rive/rive_format.hpp:24
 #, kde-format
 msgid "Rive Animation"
-msgstr ""
+msgstr "Animation « RIVE »"
 
 #: src/core/io/rive/rive_html_format.hpp:20
 #, kde-format
 msgid "RIVE HTML Preview"
-msgstr ""
+msgstr "Aperçu « HTML » de RIVE"
 
 #: src/core/io/rive/rive_loader.cpp:179
 #, kde-format
 msgid "Unexpected Keyed Object"
-msgstr ""
+msgstr "Objet intégré inattendu"
 
 #: src/core/io/rive/rive_loader.cpp:187
 #, kde-format
 msgid "Invalid Keyed Object id %1"
-msgstr ""
+msgstr "Identifiant %1 d'un objet intégré inattendu"
 
 #: src/core/io/rive/rive_loader.cpp:195
 #, kde-format
 msgid "Unexpected Keyed Property"
-msgstr ""
+msgstr "Propriété intégrée inattendue"
 
 #: src/core/io/rive/rive_loader.cpp:204
 #, kde-format
 msgid "Unknown Keyed Property id %1"
-msgstr ""
+msgstr "Identifiant de propriété à clé inconnue %1"
 
 #: src/core/io/rive/rive_loader.cpp:215
 #, kde-format
@@ -1678,7 +1677,7 @@ msgstr "Animation inattendue"
 #: src/core/io/rive/rive_loader.cpp:231
 #, kde-format
 msgid "Unexpected Asset Contents"
-msgstr ""
+msgstr "Contenu inattendu des actifs "
 
 #: src/core/io/rive/rive_loader.cpp:242
 #, kde-format
@@ -1804,7 +1803,7 @@ msgstr "Erreur pendant l'écriture du paquet de sortie : %1"
 #: src/core/io/video/video_format.cpp:131
 #, kde-format
 msgid "Error sending a frame to the encoder: %1"
-msgstr "Erreur d’envoi d'une image à l'encoder : %1"
+msgstr "Erreur d'envoi d'une image à l'encoder : %1"
 
 #: src/core/io/video/video_format.cpp:187
 #: src/core/io/video/video_format.cpp:201
@@ -1977,13 +1976,9 @@ msgstr "valeurs"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:879
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:45
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:48
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "glaxnimate::gui::DocumentSwatchWidget#1glaxnimate::gui::"
-#| "DocumentSwatchWidget#1"
-#| msgid "Swatch"
+#, kde-format
 msgid "Swatch"
-msgstr "Godet"
+msgstr "Échantillon"
 
 #: src/core/model/assets/assets.hpp:117
 #, kde-format
@@ -2170,7 +2165,7 @@ msgstr "Calque"
 #: src/core/model/shapes/offset_path.cpp:342
 #, kde-format
 msgid "Offset Path"
-msgstr ""
+msgstr "Décalage de tracé"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/model/shapes/path.hpp:38
@@ -2346,6 +2341,8 @@ msgid ""
 "Specify the name of the local socket/named pipe to connect to a host "
 "application."
 msgstr ""
+"Spécifiez le nom du socket local / du pipeline pour vous connecter à une "
+"application hôte."
 
 #: src/gui/cli.cpp:46
 #, kde-format
@@ -2380,18 +2377,16 @@ msgstr ""
 "l'interface graphique utilisateur"
 
 #: src/gui/cli.cpp:70
-#, fuzzy, kde-format
-#| msgid ""
-#| "Specify the format for --export. If omitted it's determined based on the "
-#| "file name. See --export-format-list for a list of supported formats."
+#, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Specify the format for --export. If omitted it's determined based on the "
 "file name. See --export-format-list for a list of supported formats."
 msgstr ""
-"Spécifie le format pour --export. Si omit, il sera déterminé en fonction du "
-"nom de fichier. Voir --export-fromat-list pour une liste des formats "
-"supportés."
+"Spécifier le format pour l'option « --export ». Si cette option est omise, "
+"elle sera déterminée en fonction du nom de fichier. Veuillez consulter le "
+"paramètre « --export-format-list » pour une liste des formats prise en "
+"charge."
 
 #: src/gui/cli.cpp:77
 #, kde-format
@@ -2411,6 +2406,8 @@ msgctxt "@info:shell"
 msgid ""
 "Render frames the input file to the given file instead of starting the GUI"
 msgstr ""
+"Effectuer le rendu en trames pour le fichier d'entrée vers le fichier donné "
+"au lieu de démarrer l'interface graphique utilisateur"
 
 #: src/gui/cli.cpp:91
 #, kde-format
@@ -2772,7 +2769,7 @@ msgstr "Supprimer le point"
 #: src/gui/graphics/bezier_item.cpp:392
 #, kde-format
 msgid "Set Start"
-msgstr ""
+msgstr "Définir le début"
 
 #: src/gui/graphics/bezier_item.cpp:421
 #, kde-format
@@ -3057,11 +3054,10 @@ msgid "Remove Tangent"
 msgstr "Supprimer la tangente"
 
 #: src/gui/tools/edit_tool.cpp:369
-#, fuzzy, kde-format
-#| msgid "Stop Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Stop Color..."
-msgstr "Couleur du point..."
+msgstr "Couleur d'arrêt..."
 
 #: src/gui/tools/edit_tool.cpp:381
 #, kde-format
@@ -3070,11 +3066,10 @@ msgid "Add Stop"
 msgstr "Ajouter un point d'arrêt"
 
 #: src/gui/tools/edit_tool.cpp:385
-#, fuzzy, kde-format
-#| msgid "Remove Stop"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Remove Stop"
-msgstr "Supprime le point"
+msgstr "Supprimer l'arrêt"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/tools/edit_tool.cpp:527
@@ -3588,7 +3583,7 @@ msgstr ""
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_2)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:178
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -3613,7 +3608,7 @@ msgstr ""
 "</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">L'algorithme Octree  "
+"right:0px; -qt-block-indent:0; text-indent:0px;\">L'algorithme « Octree » "
 "fusionne les couleurs similaires de bas en haut.</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
 "right:0px; -qt-block-indent:0; text-indent:0px;\">Il donne des couleurs plus "
@@ -4863,13 +4858,13 @@ msgstr "Disposition la mieux adaptée aux écrans de petite dimension"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2267
 #, kde-format
 msgid "RIVE (canvas)"
-msgstr ""
+msgstr "RIVE (Tableau)"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2272
 #, kde-format
 msgid "LottieFiles"
-msgstr ""
+msgstr "Fichiers « Lotties »"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2280
@@ -4881,7 +4876,7 @@ msgstr "Moyen"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2283
 #, kde-format
 msgid "More compact that Wide but larger than Compact"
-msgstr "Plus dense que important mais plus volumineux que compact"
+msgstr "Plus dense que important mais plus volumineux que concis"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2292
@@ -5439,11 +5434,9 @@ msgstr "Conserver la chronologie initiale"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer_trim)
 #: src/gui/widgets/dialogs/timing_dialog.ui:104
-#, fuzzy, kde-format
-#| msgctxt "TimingDialog#8"
-#| msgid "Trim Extra Frames"
+#, kde-format
 msgid "Trim Extra Frames"
-msgstr "Rogner les images supplémentaires"
+msgstr "Ajuster les trames supplémentaires"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer_scale)
 #: src/gui/widgets/dialogs/timing_dialog.ui:114
@@ -5562,6 +5555,24 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">This is only suitable for "
 "fairly small images with a low number of colors.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Ceci est adapté au "
+"PixelArt. Le vecteur tracé conservera toutes les couleurs de l'image "
+"d'origine ainsi que les bords pixelisés. </p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Cela ne convient que pour "
+"des images assez petites avec un faible nombre de couleurs. </p> </odody> </"
+"html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/trace_dialog.ui:254
@@ -5829,9 +5840,9 @@ msgstr "Parité"
 #: src/gui/widgets/enum_combo.cpp:66
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:78
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:81
-#, fuzzy, kde-format
+#, kde-format
 msgid "Butt"
-msgstr "Bas"
+msgstr "Fesse"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_cap_round)
 #. i18n: ectx: property (text), widget (QToolButton, button_cap_round)
@@ -5860,16 +5871,16 @@ msgstr "Carré"
 #: src/gui/widgets/enum_combo.cpp:78
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:226
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:229
-#, fuzzy, kde-format
+#, kde-format
 msgid "Miter"
-msgstr "Anglet"
+msgstr "Onglet"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_join_bevel)
 #. i18n: ectx: property (text), widget (QToolButton, button_join_bevel)
 #: src/gui/widgets/enum_combo.cpp:82
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:166
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:169
-#, fuzzy, kde-format
+#, kde-format
 msgid "Bevel"
 msgstr "Biseau"
 
@@ -5918,10 +5929,11 @@ msgstr "URL des données non valable"
 msgid "Font format not supported for %1"
 msgstr "Format de police non pris en charge pour %1"
 
+# Pangramme en français
 #: src/gui/widgets/font/font_preview_widget.cpp:25
 #, kde-format
 msgid "The quick brown fox jumps over the lazy dog"
-msgstr ""
+msgstr "Portez ce vieux whisky au juge blond qui fume"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_zoom)
 #: src/gui/widgets/font/font_preview_widget.ui:42
@@ -6052,7 +6064,7 @@ msgstr "par %1"
 #: src/gui/widgets/lottiefiles/search_result.cpp:49
 #, kde-format
 msgid "Likes"
-msgstr ""
+msgstr "Likes"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:58
 #, kde-format
@@ -6062,7 +6074,7 @@ msgstr "Commentaires"
 #: src/gui/widgets/lottiefiles/search_result.cpp:67
 #, kde-format
 msgid "View on LottieFiles..."
-msgstr ""
+msgstr "Afficher sur Lottiefiles..."
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:61
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:181
@@ -6078,7 +6090,7 @@ msgstr "Mettre une animation en boucle"
 #: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
 msgid "Follow Path..."
-msgstr ""
+msgstr "Suivre le tracé..."
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:65
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:177
@@ -6782,12 +6794,12 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:249
 #, kde-format
 msgid "Set Line Join"
-msgstr ""
+msgstr "Définir la jointure de ligne"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:341
 #, kde-format
 msgid "Set Miter Limit"
-msgstr ""
+msgstr "Définir la limite des onglets"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:349
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:364
@@ -6808,9 +6820,9 @@ msgstr "Style"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_stroke_width)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:59
-#, fuzzy, kde-format
+#, kde-format
 msgid "Stroke Width"
-msgstr "Largeur du contour"
+msgstr "Épaisseur du trait"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:69
@@ -6820,15 +6832,15 @@ msgstr "Maj"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:157
-#, fuzzy, kde-format
+#, kde-format
 msgid "Join"
-msgstr "Jointure"
+msgstr "Rejoindre"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_miter)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:263
-#, fuzzy, kde-format
+#, kde-format
 msgid "Miter Limit"
-msgstr "Limite d'anglet"
+msgstr "Limite de biseau"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:338
