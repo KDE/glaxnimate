@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-18 00:40+0000\n"
-"PO-Revision-Date: 2024-01-15 21:34+0100\n"
+"PO-Revision-Date: 2024-01-25 20:15+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -195,7 +195,7 @@ msgstr "fréquence"
 #. i18n: Property name
 #, kde-format
 msgid "anchor_point"
-msgstr "point_ancrage"
+msgstr "anchor_point"
 
 #. i18n: file: src/core/model/transform.hpp
 #. i18n: Property name
@@ -247,7 +247,7 @@ msgstr "start_point"
 #. i18n: Property name
 #, kde-format
 msgid "gradient_colors"
-msgstr "Couleurs_de_dégradé"
+msgstr "gradient_colors"
 
 #. i18n: file: src/core/model/assets/assets.hpp
 #. i18n: Property name
@@ -877,7 +877,7 @@ msgstr "Émoticône"
 #: src/android/main_window.cpp:1097
 #, kde-format
 msgid "Import Emoji"
-msgstr "Importer un Émoji"
+msgstr "Importer une émoticône"
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
 #: src/android/main_window.ui:21 src/core/app_info.cpp:17
@@ -1178,7 +1178,7 @@ msgstr "Format inconnu %1"
 #: src/core/io/avd/avd_format.hpp:21
 #, kde-format
 msgid "Android Vector Drawable"
-msgstr ""
+msgstr "Vecteur à dessiner sous Android"
 
 #: src/core/io/avd/avd_parser.cpp:223
 #, kde-format
@@ -1513,7 +1513,7 @@ msgstr "Zigzag n'est pas pris en charge"
 #: src/core/io/lottie/tgs_format.cpp:110
 #, kde-format
 msgid "File too large: %1k, should be under 64k"
-msgstr "Fichier trop volumineux : %1 k, should be under 64 k"
+msgstr "Fichier trop volumineux : %1 Ko. Devrait être sous les 64 Ko"
 
 #: src/core/io/lottie/tgs_format.hpp:19
 #, kde-format
@@ -2545,7 +2545,7 @@ msgstr "N'a téléchargé aucun fichier"
 #: src/gui/emoji/emoji_set_dialog.ui:21
 #, kde-format
 msgid "Emoji Set"
-msgstr "Ensemble d'Émoji"
+msgstr "Ensemble d'émoticônes"
 
 #. i18n: ectx: property (text), widget (QTableWidget, emoji_set_view)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
@@ -2611,7 +2611,7 @@ msgstr "Télécharger"
 #: src/gui/emoji/emoji_set_dialog.ui:149
 #, kde-format
 msgid "Add Emoji..."
-msgstr "Ajouter un Emoji..."
+msgstr "Ajouter une émoticône..."
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_close)
@@ -2779,7 +2779,7 @@ msgstr "Mettre à jour la forme"
 #: src/gui/graphics/composition_item.hpp:113
 #, kde-format
 msgid "Resize Canvas"
-msgstr "Redimensionner le Canvas"
+msgstr "Redimensionner le tableau"
 
 #: src/gui/graphics/gradient_editor.cpp:109
 #, kde-format
@@ -3471,7 +3471,7 @@ msgstr "Le plus proche"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:141
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -3525,43 +3525,43 @@ msgstr ""
 "</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">k-moyenne divise les "
-"couleurs en grappes et affine leur assignement à chaque itération.</p>\n"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">k-Means divise les "
+"couleurs en grappes et affine leur allocation à chaque itération.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
 "\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
 "right:0px; -qt-block-indent:0; text-indent:0px;\">C'est la meilleur option "
-"lors de tracage d'images comportant de nombres couleurs ou ombres.</p>\n"
+"lors de traçage d'images comportant de nombreuses couleurs ou ombres.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
 "\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
 "right:0px; -qt-block-indent:0; text-indent:0px;\">Pour les images comportant "
 "beaucoup de couleurs, l'augmentation du nombre d'itérations débouchera sur "
-"un meilleur résultat mais pourrait être plus lent.</p>\n"
+"de meilleurs résultats mais pourrait être plus lent.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
 "\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">L'option <span style=\" "
-"font-style:italic;\">Correspondance</span> applique des post-traitements :</"
-"p>\n"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">The <span style=\" font-"
+"style:italic;\">Correspondre</span> Cette option réalise quelques post-"
+"traitement :</p>\n"
 "<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
 "right: 0px; -qt-list-indent: 1;\"><li style=\"\" style=\" margin-top:12px; "
 "margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
-"text-indent:0px;\"><span style=\" font-weight:600;\">None</span>: "
-"N'appliquer aucun post-traitement et retourne la moyenne (notez que vous "
-"pourriez obtenir des couleurs qui n'étaient pas présentes dans l'image "
-"d'origine)</li>\n"
+"text-indent:0px;\"><span style=\" font-weight:600;\">Aucun : </span> "
+"N'appliquer aucun post-traitement et retourne la moyenne (Veuillez noter que "
+"vous pourriez obtenir des couleurs qui n'étaient pas présentes dans l'image "
+"d'origine),</li>\n"
 "<li style=\"\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
 "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"weight:600;\">Closest</span>: Trouver la couleur dans l'image originale qui "
-"est la plus proche de la moyenne</li>\n"
+"weight:600;\">La plus proche : </span> Trouver la couleur dans l'image "
+"originale qui est la plus proche de la moyenne,</li>\n"
 "<li style=\"\" style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; "
 "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"weight:600;\">Most Frequent</span>: Trouver la couleur dans la grappe qui "
-"apparaît le plus souvent dans l'image source</li></ul></body></html>"
+"weight:600;\">La plus proche : </span>Trouver la couleur dans l'image "
+"originale qui est la plus proche de la moyenne</li></ul></body></html>"
 
 #. i18n: ectx: property (plainText), widget (QPlainTextEdit, plainTextEdit)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:159
@@ -3646,6 +3646,27 @@ msgid ""
 "that a color must have to be considered (as a percentage of the total number "
 "of pixels in the image).</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Les modes d'exclusion de "
+"bords prennent en compte la couleur (mode) la plus fréquente et ensuite, "
+"excluent tous les pixels touchant cette zone, puis le processus se répète "
+"jusqu'à ce que le nombre approprié de couleurs ait été trouvé.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Cette approche supprime "
+"les bords avec anti-crénelage mais cela peut entraîner l'absence de "
+"détection de petits détails.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">La fréquence minimale</span> fait référence à la quantité "
+"minimale de pixels qu'une couleur doit avoir pour être prise en compte (En "
+"pourcentage du nombre total de pixels dans l'image).</p></body></html>"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, DocumentMetadataDialog)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:21
@@ -4656,7 +4677,7 @@ msgstr "&SVG (SMIL)"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1975
 #, kde-format
 msgid "Lottie (canvas)"
-msgstr "Lottie (canvas)"
+msgstr "Lottie (tableau)"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1999
@@ -4765,7 +4786,7 @@ msgstr "Coller comme composition"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2155
 #, kde-format
 msgid "F&lip View"
-msgstr "&Mirroiter la vue"
+msgstr "Faire basculer &la vue"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2164
@@ -5179,11 +5200,9 @@ msgstr "Impossible d'enregistrer le modèle"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1148
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1155
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::GlaxnimateWindow#191"
-#| msgid "Trace Bitmap"
+#, kde-format
 msgid "Trace Bitmap"
-msgstr "Tracer une image matricielle"
+msgstr "Image de trace"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1139
 #, kde-format
@@ -5270,7 +5289,7 @@ msgstr "IoStatusDialog"
 #: src/gui/widgets/dialogs/io_status_dialog.ui:50
 #, kde-format
 msgid "/path/to/your/file/in.here"
-msgstr "/chemin/vers/votre/fichier/est.ici"
+msgstr "/emplacement/de/votre/fichier/est.ici"
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_box)
 #: src/gui/widgets/dialogs/io_status_dialog.ui:84
@@ -5401,7 +5420,7 @@ msgstr "Configuration"
 #: src/gui/widgets/dialogs/startup_dialog.ui:113
 #, kde-format
 msgid " fps"
-msgstr " ips"
+msgstr " FPS"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_open_browse)
 #: src/gui/widgets/dialogs/startup_dialog.ui:158
@@ -5440,11 +5459,9 @@ msgstr "Ajuster les trames supplémentaires"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer_scale)
 #: src/gui/widgets/dialogs/timing_dialog.ui:114
-#, fuzzy, kde-format
-#| msgctxt "TimingDialog#9"
-#| msgid "Scale Timing"
+#, kde-format
 msgid "Scale Timing"
-msgstr "Étendre la temporalisation"
+msgstr "Étendre la chronologie"
 
 #. i18n: ectx: property (text), item, widget (QListWidget, list_presets)
 #: src/gui/widgets/dialogs/trace_dialog.ui:89
@@ -5497,6 +5514,34 @@ msgid ""
 "\"https://linktr.ee/FellFallow\"><span style=\" text-decoration: underline; "
 "color:#2980b9;\">FellFallow</span></a>)</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Cette option est la plus "
+"adaptée pour les photos, les peintures et les illustrations détaillées.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Le nombre de couleurs est "
+"réduit en fonction de <span style=\" font-weight:600;\">du niveau de "
+"postérisation</span> ci-dessous.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"> Veuillez noter qu'il y a "
+"une réduction significative de la qualité d'image lors de la conversion de "
+"ce type d'images en graphiques vectoriels.</p>\n"
+"<p style=\" margin-top:37px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">(Image par <a href="
+"\"https://linktr.ee/FellFallow\"><span style=\" text-decoration: underline; "
+"color:#2980b9;\">FellFallow</span></a>)</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: src/gui/widgets/dialogs/trace_dialog.ui:164
@@ -5532,6 +5577,29 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">Very small details might "
 "get lost in the process.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Cette option est la plus "
+"adaptée aux images numériques, autocollants et dessins animés à plat.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Le nombre de couleurs sera "
+"réduit automatiquement, en sélectionnant les couleurs les plus courantes de "
+"l'image source.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">De très petits détails "
+"pourraient être perdus durant le processus.</p></body></html>"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_3)
 #: src/gui/widgets/dialogs/trace_dialog.ui:233
@@ -6789,7 +6857,7 @@ msgstr "Mettre à jour la couleur du contour"
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:234
 #, kde-format
 msgid "Set Line Cap"
-msgstr ""
+msgstr "Définir la fin de ligne"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:249
 #, kde-format
@@ -7003,14 +7071,14 @@ msgid "Fast"
 msgstr "Rapide"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:84
-#, fuzzy, kde-format
+#, kde-format
 msgid "Ease In"
-msgstr "Adoucissement de début"
+msgstr "Faciliter l'accès"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:86
-#, fuzzy, kde-format
+#, kde-format
 msgid "Ease Out"
-msgstr "Adoucissement de fin"
+msgstr "Faciliter la sortie"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:89
 #, kde-format
@@ -7109,7 +7177,7 @@ msgstr "Remise à zéro de la rotation"
 #: src/gui/widgets/view_transform_widget.ui:167
 #, kde-format
 msgid "Flip View"
-msgstr "Mirroiter la vue"
+msgstr "Basculer la vue"
 
 #, fuzzy
 #~ msgctxt "DocumentMetadataDialog#8"
