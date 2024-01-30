@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-18 00:40+0000\n"
-"PO-Revision-Date: 2024-01-12 12:27+0100\n"
+"PO-Revision-Date: 2024-01-29 10:52+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -381,6 +381,8 @@ msgid ""
 "Unknown file type. Supported files:\n"
 "%1"
 msgstr ""
+"Onbekend type bestand. Ondersteunde bestanden:\n"
+"%1"
 
 #: src/android/document_opener.cpp:201
 #, kde-format
@@ -390,7 +392,7 @@ msgstr "Fout bij laden van %1 bestand"
 #: src/android/help_dialog.cpp:54
 #, kde-format
 msgid "Clears the current document and creates a new empty one"
-msgstr ""
+msgstr "Wist het huidige document en maakt een nieuwe lege"
 
 #: src/android/help_dialog.cpp:58
 #, kde-format
@@ -399,6 +401,9 @@ msgid ""
 "Currently the following formats are supported:\n"
 "%1"
 msgstr ""
+"Vraagt de gebruiker om een document te selecteren om te openen.\n"
+"De volgende formaten worden ondersteund:\n"
+"%1"
 
 #: src/android/help_dialog.cpp:62
 #, kde-format
@@ -406,11 +411,15 @@ msgid ""
 "Prompts the user to select a document to append as an object to the current "
 "one."
 msgstr ""
+"Vraagt de gebruiker om een document te selecteren om als een object achter "
+"te voegen aan de huidige."
 
 #: src/android/help_dialog.cpp:66
 #, kde-format
 msgid "Save the current document, prompting to select a file for new documents"
 msgstr ""
+"Het huidige document opslaan, en te vragen een bestand te selecteren voor "
+"nieuwe documenten"
 
 #: src/android/help_dialog.cpp:70
 #, kde-format
@@ -781,7 +790,7 @@ msgstr "Animatie.%1"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:293
 #, kde-format
 msgid "Closing Animation"
-msgstr ""
+msgstr "Animatie sluiten"
 
 #: src/android/main_window.cpp:665
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:294
@@ -790,6 +799,8 @@ msgid ""
 "The animation has unsaved changes.\n"
 "Do you want to save your changes?"
 msgstr ""
+"De animatie heeft niet opgeslagen wijzigingen.\n"
+"Wilt u uw wijzigingen opslaan?"
 
 #: src/android/main_window.cpp:749 src/android/main_window.cpp:753
 #: src/android/main_window.cpp:886
@@ -805,12 +816,12 @@ msgstr "Bestand importeren"
 #: src/android/main_window.cpp:749
 #, kde-format
 msgid "Could not import file"
-msgstr ""
+msgstr "Kon bestand niet importeren"
 
 #: src/android/main_window.cpp:788
 #, kde-format
 msgid "Frame %1.png"
-msgstr ""
+msgstr "Frame %1.png"
 
 #: src/android/main_window.cpp:977
 #, kde-format
@@ -827,7 +838,7 @@ msgstr "Keyframe verwijderen"
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:178
 #, kde-format
 msgid "Clear Animations"
-msgstr ""
+msgstr "Animaties wissen"
 
 #: src/android/main_window.cpp:1066
 #, kde-format
