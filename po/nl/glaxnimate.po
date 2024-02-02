@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-18 00:40+0000\n"
-"PO-Revision-Date: 2024-01-29 10:52+0100\n"
+"PO-Revision-Date: 2024-02-01 16:47+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -425,6 +425,7 @@ msgstr ""
 #, kde-format
 msgid "Save the current document, always prompting to select a file."
 msgstr ""
+"Het huidige document opslaan, altijd vragen om een bestand te selecteren."
 
 #: src/android/help_dialog.cpp:74
 #, kde-format
@@ -433,11 +434,15 @@ msgid ""
 "Currently the following formats are supported:\n"
 "%1"
 msgstr ""
+"Een kopie van het huidige document op te slaan, vragen om een formaat en een "
+"bestand te selecteren.\n"
+"Op dit moment worden de volgende formaten ondersteund:\n"
+"%1"
 
 #: src/android/help_dialog.cpp:78
 #, kde-format
 msgid "Saves the current frame as a still image"
-msgstr ""
+msgstr "Slaat het huidige frame op als een losse afbeelding"
 
 #: src/android/help_dialog.cpp:82
 #, kde-format
@@ -447,36 +452,40 @@ msgid ""
 "If your Telegram version is too old, you can Export the file to TGS and "
 "upload that on Telegram."
 msgstr ""
+"Maakt een stickerpak om naar Telegram te exporteren.\n"
+"Merk op dat alleen een recente versie van Telegram dit ondersteunt.\n"
+"Als uw versie van Telegram te oud is, kunt u het bestand exporteren naar TGS "
+"en dat uploaden naar Telegram."
 
 #: src/android/help_dialog.cpp:86
 #, kde-format
 msgid "Cuts the selection into the clipboard."
-msgstr ""
+msgstr "Knipt de selectie in het klembord."
 
 #: src/android/help_dialog.cpp:90
 #, kde-format
 msgid "Copies the selection into the clipboard."
-msgstr ""
+msgstr "Kopieert de selectie in het klembord."
 
 #: src/android/help_dialog.cpp:94
 #, kde-format
 msgid "Pastes from the clipboard into the current document."
-msgstr ""
+msgstr "Plakt vanuit het klembord in het huidige document."
 
 #: src/android/help_dialog.cpp:98
 #, kde-format
 msgid "Removes the selected item."
-msgstr ""
+msgstr "Verwijdert het geselecteerde item."
 
 #: src/android/help_dialog.cpp:102
 #, kde-format
 msgid "Undoes the last action."
-msgstr ""
+msgstr "Maakt de laatste actie ongedaan."
 
 #: src/android/help_dialog.cpp:106
 #, kde-format
 msgid "Redoes the last undone action."
-msgstr ""
+msgstr "Voert de laatste ongedaan gemaakte handeling opnieuw uit."
 
 #: src/android/help_dialog.cpp:110
 #, kde-format
@@ -484,32 +493,38 @@ msgid ""
 "Opens the side pane used to change the advanced properties for the selected "
 "object."
 msgstr ""
+"Opent het zijpaneel gebruikt om de geavanceerde eigenschappen voor het "
+"geselecteerde object te wijzigen."
 
 #: src/android/help_dialog.cpp:114
 #, kde-format
 msgid "Shows the timeline and playback controls."
-msgstr ""
+msgstr "Toont de tijdlijn en afspeelbesturing."
 
 #: src/android/help_dialog.cpp:118
 #, kde-format
 msgid "Opens the side pane used to select the fill color."
-msgstr ""
+msgstr "Opent het zijpaneel gebruikt om de vulkleur te selecteren."
 
 #: src/android/help_dialog.cpp:122
 #, kde-format
 msgid "Opens the side pane used to select the stroke color and style."
 msgstr ""
+"Opent het zijpaneel gebruikt om de kleur van de streek en de stijl te "
+"selecteren."
 
 #: src/android/help_dialog.cpp:126
 #, kde-format
 msgid "Shows this help."
-msgstr ""
+msgstr "Toont deze hulp."
 
 #: src/android/help_dialog.cpp:130
 #, kde-format
 msgid ""
 "Select tool, you can use it to select objects and change their transform."
 msgstr ""
+"Selectiehulpmiddel, u kunt het gebruiken om objecten te selecteren en hun "
+"transformatie te wijzigen."
 
 #: src/android/help_dialog.cpp:134
 #, kde-format
@@ -517,36 +532,39 @@ msgid ""
 "Edit tool, used to edit existing items (eg: moving, bezier nodes, setting "
 "rounded corners on a rectangle, etc.)"
 msgstr ""
+"Bewerkingshulpmiddel, gebruikt om bestaande items te bewerken (vijv.: "
+"verplaatsen, beziernodes, instellen van afgeronde hoeken op een rechthoek, "
+"etc.)"
 
 #: src/android/help_dialog.cpp:138
 #, kde-format
 msgid "Shows a tray with the curve drawing tools."
-msgstr ""
+msgstr "Toont een systeemvak met de hulpmiddelen om een kromme te tekenen."
 
 #: src/android/help_dialog.cpp:142
 #, kde-format
 msgid "Create Bezier curves using nodes and handles."
-msgstr ""
+msgstr "Bezier-krommen maken met nodes en hendels."
 
 #: src/android/help_dialog.cpp:146
 #, kde-format
 msgid "Draw curves freehand."
-msgstr ""
+msgstr "Krommen uit de vrije hand te tekenen."
 
 #: src/android/help_dialog.cpp:150
 #, kde-format
 msgid "Shows a tray with the shape drawing tools."
-msgstr ""
+msgstr "Toont een systeemvak met de hulpmiddelen voor het tekenen van vormen."
 
 #: src/android/help_dialog.cpp:154
 #, kde-format
 msgid "Draws rectangles."
-msgstr ""
+msgstr "Tekent rechthoeken."
 
 #: src/android/help_dialog.cpp:158
 #, kde-format
 msgid "Draws ellipses."
-msgstr ""
+msgstr "Tekent ellipsen."
 
 #: src/android/help_dialog.cpp:162
 #, kde-format
@@ -554,46 +572,48 @@ msgid ""
 "Draws a star, after it's been created you can change it into a regular "
 "polygon and change the number of sides from the properties pane."
 msgstr ""
+"Tekent een ster, nadat het is gemaakt kunt u het wijzigen in een reguliere "
+"polygoon en het aantal zijden wijzigen uit het eigenschappenpaneel."
 
 #: src/android/help_dialog.cpp:166
 #, kde-format
 msgid "Create and edit text shapes."
-msgstr ""
+msgstr "Tekstvormen maken en bewerken."
 
 #: src/android/help_dialog.cpp:170
 #, kde-format
 msgid "Toggles the menu showing non-drawing buttons."
-msgstr ""
+msgstr "Schakelt het menu om en toont niet-tekenende knoppen."
 
 #: src/android/help_dialog.cpp:174
 #, kde-format
 msgid "Starts playback."
-msgstr ""
+msgstr "Start het afspelen."
 
 #: src/android/help_dialog.cpp:178
 #, kde-format
 msgid "Toggles looping for the playback (on by default)."
-msgstr ""
+msgstr "Schakelt in lus om voor het afspelen (standaard aan)."
 
 #: src/android/help_dialog.cpp:182
 #, kde-format
 msgid "Jumps to the first frame."
-msgstr ""
+msgstr "Springt naar het eerste frame."
 
 #: src/android/help_dialog.cpp:186
 #, kde-format
 msgid "Goes to the previous frame."
-msgstr ""
+msgstr "Gaat naar het vorige frame."
 
 #: src/android/help_dialog.cpp:190
 #, kde-format
 msgid "Goes to the next frame."
-msgstr ""
+msgstr "Gaat naar het volgende frame."
 
 #: src/android/help_dialog.cpp:194
 #, kde-format
 msgid "Jumps to the last frame."
-msgstr ""
+msgstr "Springt naar het laatste frame."
 
 #: src/android/help_dialog.cpp:198
 #, kde-format
@@ -601,16 +621,18 @@ msgid ""
 "When enabled (which is the default) whenever you change an object property, "
 "a new keyframe is added for that property."
 msgstr ""
+"Indien ingeschakeld (wat de standaard is) wanneer u een object eigenschap "
+"wijzigt, wordt een nieuw keyframe voor die eigenschap toegevoegd."
 
 #: src/android/help_dialog.cpp:202
 #, kde-format
 msgid "Push the selection further back."
-msgstr ""
+msgstr "De selectie verder achterwaarts drukken."
 
 #: src/android/help_dialog.cpp:206
 #, kde-format
 msgid "Brings the selection further to the front."
-msgstr ""
+msgstr "De selectie verder voorwaarts brengen."
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_timeline)
 #: src/android/main_window.cpp:411
@@ -666,12 +688,12 @@ msgstr "Selectie verwijderen"
 #: src/android/main_window.cpp:481
 #, kde-format
 msgid "Raise Above"
-msgstr ""
+msgstr "Erboven heffen"
 
 #: src/android/main_window.cpp:485
 #, kde-format
 msgid "Lower Below"
-msgstr ""
+msgstr "Er onder verlagen"
 
 #: src/android/main_window.cpp:489
 #, kde-format
@@ -726,7 +748,7 @@ msgstr "Openen"
 #: src/android/main_window.cpp:513
 #, kde-format
 msgid "Import as Composition"
-msgstr ""
+msgstr "Als compositie importeren"
 
 #: src/android/main_window.cpp:516
 #, kde-format
@@ -755,12 +777,12 @@ msgstr "Exporteren"
 #: src/android/main_window.cpp:527
 #, kde-format
 msgid "Save Frame as PNG"
-msgstr ""
+msgstr "Frame opslaan als PNG"
 
 #: src/android/main_window.cpp:531
 #, kde-format
 msgid "Send to Telegram"
-msgstr ""
+msgstr "Naar Telegram verzenden"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
