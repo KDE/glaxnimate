@@ -153,6 +153,8 @@ if (KF_MAJOR STREQUAL "6")
   set(KF_DEP_VERSION "5.240.0")
 endif()
 
+find_package(KF6BreezeIcons ${KF_DEP_VERSION} QUIET)
+
 find_package(KF${KF_MAJOR} ${KF_DEP_VERSION}
     REQUIRED COMPONENTS
     I18n

@@ -233,6 +233,13 @@ target_link_libraries(
     KF${KF_MAJOR}::IconThemes
 )
 
+if(TARGET KF6::BreezeIcons)
+    target_link_libraries(${LIB_NAME_GUI} PUBLIC
+            KF6::BreezeIcons
+    )
+    target_compile_definitions(${LIB_NAME_GUI} PRIVATE WITH_BREEZEICONS_LIB)
+endif ()
+
 if ( NOT ANDROID )
     target_link_libraries(
         ${LIB_NAME_GUI} PUBLIC
