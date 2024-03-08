@@ -15,7 +15,7 @@ set(LIB_NAME_GUI "${PROJECT_SLUG}_gui")
 set(LIB_NAME_PYTHON "${PROJECT_SLUG}_python_lib")
 set(LIB_NAME_DESKTOP "${PROJECT_SLUG}_desktop")
 set(DATA_INSTALL "share/${PROJECT_SLUG}/${PROJECT_SLUG}")
-set(PROJECT_ID "org.mattbas.Glaxnimate")
+set(PROJECT_ID "org.kde.glaxnimate")
 
 set(PROJECT_HOMEPAGE_URL "https://glaxnimate.mattbas.org/")
 set(URL_DOCS "https://glaxnimate.mattbas.org/")
@@ -259,7 +259,7 @@ add_custom_target(
 if (ANDROID)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/android/android/version.gradle.in ${CMAKE_BINARY_DIR}/version.gradle)
 endif()
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/deploy/org.mattbas.Glaxnimate.metainfo.xml DESTINATION share/metainfo)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/deploy/org.kde.glaxnimate.metainfo.xml DESTINATION share/metainfo)
 
 ki18n_install(po)
 file(CREATE_LINK ${CMAKE_CURRENT_BINARY_DIR}/locale ${CMAKE_CURRENT_BINARY_DIR}/share/locale SYMBOLIC)

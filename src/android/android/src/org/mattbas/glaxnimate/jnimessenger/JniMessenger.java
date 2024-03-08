@@ -3,7 +3,7 @@
 
 // TODO convert to JNI calls
 
-package org.mattbas.glaxnimate.jnimessenger;
+package org.kde.glaxnimate.jnimessenger;
 
 import java.util.ArrayList;
 

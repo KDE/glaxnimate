@@ -90,7 +90,6 @@ android {
         namespace projectId
         versionCode timestamp
         versionName projectVersionFull
-        namespace "org.mattbas.Glaxnimate"
         manifestPlaceholders = [versionName: projectVersionFull, versionCode: timestamp, applicationLabel: "Glaxnimate Mobile"]
     }
 }

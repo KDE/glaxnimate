@@ -36,7 +36,7 @@ else
 fi
 
 
-METAINFO_FILE="$HERE/org.mattbas.Glaxnimate.metainfo.xml"
+METAINFO_FILE="$HERE/org.kde.glaxnimate.metainfo.xml"
 metainfo_release_tag="version=\"$TAG_NAME\" date=\"`date +%Y-%m-%d`\""
 if ! grep -q -F "$metainfo_release_tag" "$METAINFO_FILE"
 then

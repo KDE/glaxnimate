@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#spec-component-filespec -->
 <component type="desktop">
-  <id>org.mattbas.Glaxnimate</id>
+  <id>org.kde.glaxnimate</id>
+  <replaces>
+    <id>org.mattbas.Glaxnimate</id>
+  </replaces>
   <metadata_license>CC-BY-SA-4.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>Glaxnimate</name>
@@ -343,7 +346,7 @@
     <mediatype>image/svg+xml</mediatype>
     <mediatype>application/vnd.glaxnimate.rawr+json</mediatype>
   </provides>
-  <launchable type="desktop-id">org.mattbas.Glaxnimate.desktop</launchable>
+  <launchable type="desktop-id">org.kde.glaxnimate.desktop</launchable>
   <content_rating type="oars-1.1"/>
   <releases>
     <release version="0.5.4" date="2023-09-09">
