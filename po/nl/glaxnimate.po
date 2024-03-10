@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-18 00:40+0000\n"
-"PO-Revision-Date: 2024-03-07 15:31+0100\n"
+"PO-Revision-Date: 2024-03-09 12:29+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -303,6 +303,13 @@ msgid ""
 "Then layers are created that appear in and out at uniform time intervals. "
 "You can use these layers for frame-by-frame animation."
 msgstr ""
+"Deze dialoog maakt een laag om te helpen met frame voor frame animatie.\n"
+"\n"
+"U specificeert de tijdsperiode die u wilt splitsen in frames en het aantal "
+"frames dat u wilt.\n"
+"\n"
+"Daarna worden lagen gemaakt die in en uit verschijnen op uniforme "
+"tijdsintervallen. U kunt deze lagen gebruiken voor frame-bij-frame animatie."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: data/plugins/FrameByFrame/create_frames.ui:43
@@ -870,7 +877,7 @@ msgstr "Emoji"
 #: src/android/main_window.cpp:1097
 #, kde-format
 msgid "Import Emoji"
-msgstr ""
+msgstr "Emoji importeren"
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
 #: src/android/main_window.ui:21 src/core/app_info.cpp:17
@@ -881,7 +888,7 @@ msgstr "Glaxnimate"
 #: src/android/sticker_pack_builder_dialog.cpp:156
 #, kde-format
 msgid "Too many stickers"
-msgstr ""
+msgstr "Teveel stickers"
 
 #: src/android/sticker_pack_builder_dialog.cpp:162
 #: src/android/sticker_pack_builder_dialog.cpp:171
@@ -892,24 +899,24 @@ msgstr "Kon bestand niet openen"
 #: src/android/sticker_pack_builder_dialog.cpp:222
 #, kde-format
 msgid "Cannot save as TGS"
-msgstr ""
+msgstr "Kan niet opslaan als TGS"
 
 #: src/android/sticker_pack_builder_dialog.cpp:263
 #, kde-format
 msgid "Are you sure you want to remove all stickers from the pack?"
-msgstr ""
+msgstr "Wilt u alle stickers uit het pak verwijderen?"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, StickerPackBuilderDialog)
 #: src/android/sticker_pack_builder_dialog.ui:21
 #, kde-format
 msgid "Export Stickers"
-msgstr ""
+msgstr "Stickers exporteren"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_add)
 #: src/android/sticker_pack_builder_dialog.ui:116
 #, kde-format
 msgid "Open Sticker"
-msgstr ""
+msgstr "Sticker openen"
 
 #. i18n: ectx: property (text), widget (QToolButton, btn_clear_console)
 #. i18n: ectx: property (text), widget (QToolButton, btn_clear)
@@ -925,12 +932,12 @@ msgstr "Wissen"
 #: src/android/sticker_pack_builder_dialog.ui:173
 #, kde-format
 msgid "Add Current"
-msgstr ""
+msgstr "Huidige toevoegen"
 
 #: src/android/telegram_intent.cpp:47
 #, kde-format
 msgid "Could not start activity, is Telegram installed?"
-msgstr ""
+msgstr "Kon activiteit niet starten, is Telgram geïnstalleerd?"
 
 #: src/core/app_info.cpp:68
 #, kde-format
@@ -940,12 +947,12 @@ msgstr "(c) 2019-2023"
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
 msgid "Update %1 keyframe at %2"
-msgstr ""
+msgstr "%1 keyframe bijwerken bij %2"
 
 #: src/core/command/animation_commands.cpp:86
 #, kde-format
 msgid "Remove %1 keyframe at %2"
-msgstr ""
+msgstr "%1 keyframe verwijderen bij %2"
 
 #: src/core/command/animation_commands.cpp:117
 #, kde-format
@@ -955,25 +962,25 @@ msgstr "%1 keyframe %2 verwijderen"
 #: src/core/command/animation_commands.cpp:289
 #, kde-format
 msgid "Add keyframe for %1 at %2"
-msgstr ""
+msgstr "Keyframe toevoegen voor %1 bij %2"
 
 #: src/core/command/animation_commands.cpp:292
 #, kde-format
 msgid "Update %1 at %2"
-msgstr ""
+msgstr "%1 bijwerken bij %2"
 
 #: src/core/command/animation_commands.cpp:294
 #: src/core/command/property_commands.hpp:24
 #: src/core/model/animation/animatable.cpp:171
 #, kde-format
 msgid "Update %1"
-msgstr ""
+msgstr "%1 bijwerken"
 
 #: src/core/command/animation_commands.cpp:307
 #: src/gui/widgets/timeline/timeline_items.cpp:537
 #, kde-format
 msgid "Update keyframe transition"
-msgstr ""
+msgstr "Overgang van keyframe bijwerken"
 
 #: src/core/command/animation_commands.cpp:358
 #, kde-format
@@ -983,28 +990,28 @@ msgstr "Keyframe verplaatsen"
 #: src/core/command/animation_commands.cpp:381
 #, kde-format
 msgid "Remove animations from %1"
-msgstr ""
+msgstr "Animaties uit %1 verwijderen"
 
 #: src/core/command/animation_commands.cpp:432
 #, kde-format
 msgid "Update animation path"
-msgstr ""
+msgstr "Animatiepad bijwerken"
 
 #: src/core/command/animation_commands.hpp:242
 #, kde-format
 msgid "Stretch Time"
-msgstr ""
+msgstr "Uitrektijd"
 
 #: src/core/command/object_list_commands.hpp:26
 #, kde-format
 msgid "Create %1"
-msgstr ""
+msgstr "%1 aanmaken"
 
 #: src/core/command/object_list_commands.hpp:61
 #: src/core/command/object_list_commands.hpp:67
 #, kde-format
 msgid "Remove %1"
-msgstr ""
+msgstr "%1 verwijderen"
 
 #: src/core/command/object_list_commands.hpp:101
 #, kde-format
@@ -1040,27 +1047,27 @@ msgstr "Kon bestand niet laden: %1"
 #: src/core/io/aep/aep_format.hpp:21
 #, kde-format
 msgid "Adobe After Effects Project"
-msgstr ""
+msgstr "Project met Adobe naeffecten"
 
 #: src/core/io/aep/aep_format.hpp:42
 #, kde-format
 msgid "Adobe After Effects Project XML"
-msgstr ""
+msgstr "XML van project met Adobe naeffecten"
 
 #: src/core/io/aep/aep_loader.cpp:75
 #, kde-format
 msgid "External asset not found: %1"
-msgstr ""
+msgstr "Extern bezit niet gevonden: %1"
 
 #: src/core/io/aep/aep_loader.cpp:117
 #, kde-format
 msgid "Unknown property \"%1\" of \"%2\""
-msgstr ""
+msgstr "Onbekende eigenschap %1\" van \"%2\""
 
 #: src/core/io/aep/aep_loader.cpp:404
 #, kde-format
 msgid "Expected property for %1"
-msgstr ""
+msgstr "Verwacht eigenschap voor %1"
 
 #: src/core/io/aep/aep_loader.cpp:411
 #, kde-format
