@@ -152,7 +152,7 @@ StrokeStyleWidget::StrokeStyleWidget(QWidget* parent)
     d->ui.button_join_bevel->setIcon(QIcon::fromTheme("stroke-join-bevel"));
     d->ui.button_join_miter->setIcon(QIcon::fromTheme("stroke-join-miter"));
     d->ui.button_join_round->setIcon(QIcon::fromTheme("stroke-join-round"));
-    d->ui.main_layout->setMargin(0);
+    d->ui.main_layout->setContentsMargins(0, 0, 0, 0);
 #endif
 
     d->group_cap.addButton(d->ui.button_cap_butt);
