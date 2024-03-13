@@ -75,9 +75,9 @@ QMenu::item:selected, QMenu::item:checked {
     app.initialize();
 
 #ifdef Q_OS_ANDROID
-    QIcon::setThemeSearchPaths({"assets:/share/glaxnimate/glaxnimate/icons"});
+    QIcon::setThemeSearchPaths({QStringLiteral("assets:/share/glaxnimate/glaxnimate")});
 #endif
-    QIcon::setThemeName("icons");
+    QIcon::setThemeName("breeze-internal");
 
 
 
