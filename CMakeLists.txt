@@ -139,7 +139,9 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_MODULE_PATH})
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings)
-include(ECMAddAndroidApk)
+if (QT_MAJOR_VERSION STREQUAL "6")
+    include(ECMAddAndroidApk)
+endif()
 
 # TODO: The following definitons should be enabled
 remove_definitions(
