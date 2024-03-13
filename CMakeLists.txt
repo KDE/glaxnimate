@@ -103,7 +103,7 @@ endif()
 
 
 # Python
-if ( NOT ANDROID )
+if ( NOT MOBILE_UI )
     set(PYTHON_SCRIPTING_ENABLED ON)
 else()
     set(PYTHON_SCRIPTING_ENABLED OFF)
