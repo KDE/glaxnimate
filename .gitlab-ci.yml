@@ -25,13 +25,14 @@ include:
         - /gitlab-templates/reuse-lint.yml
         - /gitlab-templates/linux.yml
         - /gitlab-templates/freebsd.yml
-        - /gitlab-templates/android.yml
         - /gitlab-templates/windows.yml
         - /gitlab-templates/freebsd-qt6.yml
         - /gitlab-templates/linux-qt6.yml
+        - /gitlab-templates/android-qt6.yml
         - /gitlab-templates/flatpak.yml
         - /gitlab-templates/craft-appimage.yml
         - /gitlab-templates/craft-android-apks.yml
+        - /gitlab-templates/craft-android-qt6-apks.yml
         - /gitlab-templates/craft-windows-x86-64.yml
         - /gitlab-templates/craft-macos-x86-64-qt6.yml
         - /gitlab-templates/craft-macos-arm64-qt6.yml
