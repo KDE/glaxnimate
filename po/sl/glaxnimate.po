@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-12 01:33+0000\n"
+"POT-Creation-Date: 2024-03-17 01:57+0000\n"
 "PO-Revision-Date: 2023-12-24 12:38+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -833,7 +833,7 @@ msgstr ""
 "Ali želite shraniti spremembe?"
 
 #: src/android/main_window.cpp:750 src/android/main_window.cpp:754
-#: src/android/main_window.cpp:887
+#: src/android/main_window.cpp:889
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:481
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:485
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:825
@@ -853,32 +853,27 @@ msgstr "Datoteke ni bilo mogoče uvoziti"
 msgid "Frame %1.png"
 msgstr "Sličica %1.png"
 
-#: src/android/main_window.cpp:978
+#: src/android/main_window.cpp:980
 #, kde-format
 msgid "Add keyframe"
 msgstr "Dodaj ključno sličico"
 
-#: src/android/main_window.cpp:987
+#: src/android/main_window.cpp:989
 #, kde-format
 msgid "Remove keyframe"
 msgstr "Odstrani ključno sličico"
 
-#: src/android/main_window.cpp:1002
+#: src/android/main_window.cpp:1004
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:178
 #, kde-format
 msgid "Clear Animations"
 msgstr "Počisti animacije"
 
-#: src/android/main_window.cpp:1067
+#: src/android/main_window.cpp:1069
 #, kde-format
 msgid "Emoji"
 msgstr "Emotikoni"
-
-#: src/android/main_window.cpp:1098
-#, kde-format
-msgid "Import Emoji"
-msgstr "Uvozi emotikone"
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
 #: src/android/main_window.ui:21 src/core/app_info.cpp:17
@@ -935,7 +930,7 @@ msgstr "Počisti"
 msgid "Add Current"
 msgstr "Dodaj trenutno"
 
-#: src/android/telegram_intent.cpp:47
+#: src/android/telegram_intent.cpp:45
 #, kde-format
 msgid "Could not start activity, is Telegram installed?"
 msgstr "Dejavnosti ni bilo mogoče zagnati, ali je Telegram nameščen?"
@@ -7147,3 +7142,6 @@ msgstr "Ponastavi vrtenje"
 #, kde-format
 msgid "Flip View"
 msgstr "Zrcali pogled"
+
+#~ msgid "Import Emoji"
+#~ msgstr "Uvozi emotikone"

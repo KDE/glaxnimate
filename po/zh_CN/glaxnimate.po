@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-12 01:33+0000\n"
-"PO-Revision-Date: 2024-03-15 21:04\n"
+"POT-Creation-Date: 2024-03-17 01:57+0000\n"
+"PO-Revision-Date: 2024-03-16 20:50\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -807,7 +807,7 @@ msgstr ""
 "你想要保存更改？"
 
 #: src/android/main_window.cpp:750 src/android/main_window.cpp:754
-#: src/android/main_window.cpp:887
+#: src/android/main_window.cpp:889
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:481
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:485
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:825
@@ -827,32 +827,27 @@ msgstr "不能导入文件"
 msgid "Frame %1.png"
 msgstr "Frame %1.png"
 
-#: src/android/main_window.cpp:978
+#: src/android/main_window.cpp:980
 #, kde-format
 msgid "Add keyframe"
 msgstr "添加关键帧"
 
-#: src/android/main_window.cpp:987
+#: src/android/main_window.cpp:989
 #, kde-format
 msgid "Remove keyframe"
 msgstr "删除关键帧"
 
-#: src/android/main_window.cpp:1002
+#: src/android/main_window.cpp:1004
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:178
 #, kde-format
 msgid "Clear Animations"
 msgstr ""
 
-#: src/android/main_window.cpp:1067
+#: src/android/main_window.cpp:1069
 #, kde-format
 msgid "Emoji"
 msgstr "Emoji"
-
-#: src/android/main_window.cpp:1098
-#, kde-format
-msgid "Import Emoji"
-msgstr "导入Emoji"
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
 #: src/android/main_window.ui:21 src/core/app_info.cpp:17
@@ -909,7 +904,7 @@ msgstr ""
 msgid "Add Current"
 msgstr "添加当前"
 
-#: src/android/telegram_intent.cpp:47
+#: src/android/telegram_intent.cpp:45
 #, kde-format
 msgid "Could not start activity, is Telegram installed?"
 msgstr "无法启动活动，是否安装了 Telegram？"
@@ -6947,3 +6942,6 @@ msgstr "重置旋转"
 #, kde-format
 msgid "Flip View"
 msgstr "翻转视图"
+
+#~ msgid "Import Emoji"
+#~ msgstr "导入Emoji"

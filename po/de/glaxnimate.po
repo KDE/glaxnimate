@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-12 01:33+0000\n"
+"POT-Creation-Date: 2024-03-17 01:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: German <LL@li.org>\n"
@@ -823,7 +823,7 @@ msgid ""
 msgstr ""
 
 #: src/android/main_window.cpp:750 src/android/main_window.cpp:754
-#: src/android/main_window.cpp:887
+#: src/android/main_window.cpp:889
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:481
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:485
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:825
@@ -843,17 +843,17 @@ msgstr ""
 msgid "Frame %1.png"
 msgstr ""
 
-#: src/android/main_window.cpp:978
+#: src/android/main_window.cpp:980
 #, kde-format
 msgid "Add keyframe"
 msgstr ""
 
-#: src/android/main_window.cpp:987
+#: src/android/main_window.cpp:989
 #, kde-format
 msgid "Remove keyframe"
 msgstr ""
 
-#: src/android/main_window.cpp:1002
+#: src/android/main_window.cpp:1004
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:178
 #, fuzzy, kde-format
@@ -862,14 +862,9 @@ msgstr ""
 msgid "Clear Animations"
 msgstr "&Animation einpassen"
 
-#: src/android/main_window.cpp:1067
+#: src/android/main_window.cpp:1069
 #, kde-format
 msgid "Emoji"
-msgstr ""
-
-#: src/android/main_window.cpp:1098
-#, kde-format
-msgid "Import Emoji"
 msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
@@ -927,7 +922,7 @@ msgstr ""
 msgid "Add Current"
 msgstr ""
 
-#: src/android/telegram_intent.cpp:47
+#: src/android/telegram_intent.cpp:45
 #, kde-format
 msgid "Could not start activity, is Telegram installed?"
 msgstr ""

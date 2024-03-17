@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-12 01:33+0000\n"
+"POT-Creation-Date: 2024-03-17 01:57+0000\n"
 "PO-Revision-Date: 2024-02-04 10:11+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -829,7 +829,7 @@ msgstr ""
 "Czy zapisać je?"
 
 #: src/android/main_window.cpp:750 src/android/main_window.cpp:754
-#: src/android/main_window.cpp:887
+#: src/android/main_window.cpp:889
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:481
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:485
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:825
@@ -849,32 +849,27 @@ msgstr "Nie można zaimportować pliku"
 msgid "Frame %1.png"
 msgstr "Klatka %1.png"
 
-#: src/android/main_window.cpp:978
+#: src/android/main_window.cpp:980
 #, kde-format
 msgid "Add keyframe"
 msgstr "Dodaj klatkę kluczową"
 
-#: src/android/main_window.cpp:987
+#: src/android/main_window.cpp:989
 #, kde-format
 msgid "Remove keyframe"
 msgstr "Usuń klatkę kluczową"
 
-#: src/android/main_window.cpp:1002
+#: src/android/main_window.cpp:1004
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:178
 #, kde-format
 msgid "Clear Animations"
 msgstr "Wyczyść animacje"
 
-#: src/android/main_window.cpp:1067
+#: src/android/main_window.cpp:1069
 #, kde-format
 msgid "Emoji"
 msgstr "Emoji"
-
-#: src/android/main_window.cpp:1098
-#, kde-format
-msgid "Import Emoji"
-msgstr "Zaimportuj Emoji"
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
 #: src/android/main_window.ui:21 src/core/app_info.cpp:17
@@ -931,7 +926,7 @@ msgstr "Wyczyść"
 msgid "Add Current"
 msgstr "Dodaj bieżący"
 
-#: src/android/telegram_intent.cpp:47
+#: src/android/telegram_intent.cpp:45
 #, kde-format
 msgid "Could not start activity, is Telegram installed?"
 msgstr "Nie udało rozpocząć aktywności. Czy Telegram jest wgrany?"
@@ -7154,3 +7149,6 @@ msgstr "Wyzeruj obrót"
 #, kde-format
 msgid "Flip View"
 msgstr "Odbij widok"
+
+#~ msgid "Import Emoji"
+#~ msgstr "Zaimportuj Emoji"
