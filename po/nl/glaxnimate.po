@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-17 01:57+0000\n"
-"PO-Revision-Date: 2024-03-09 12:29+0100\n"
+"PO-Revision-Date: 2024-03-20 11:50+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1067,7 +1067,7 @@ msgstr "Verwacht eigenschap voor %1"
 #: src/core/io/aep/aep_loader.cpp:411
 #, kde-format
 msgid "Could convert %1"
-msgstr ""
+msgstr "Kon %1 converteren"
 
 #: src/core/io/aep/aep_loader.cpp:415
 #: src/core/io/lottie/lottie_importer.hpp:879
@@ -1075,22 +1075,22 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:908
 #, kde-format
 msgid "Invalid value for %1"
-msgstr ""
+msgstr "Ongeldige waarde voor %1"
 
 #: src/core/io/aep/aep_loader.cpp:510
 #, kde-format
 msgid "Expected property group for transform"
-msgstr ""
+msgstr "Verwachte eigenschapsgroep voor transformatie"
 
 #: src/core/io/aep/aep_loader.cpp:557
 #, kde-format
 msgid "Unknown property \"%1\""
-msgstr ""
+msgstr "Onbekende eigenschap \"%1\""
 
 #: src/core/io/aep/aep_loader.cpp:1084
 #, kde-format
 msgid "Unknown shape %1"
-msgstr ""
+msgstr "Onbekende vorm %1"
 
 #: src/core/io/aep/aep_loader.cpp:1143
 #: src/core/io/lottie/lottie_importer.hpp:369
@@ -1102,52 +1102,52 @@ msgstr "Clip"
 #: src/core/io/aep/aep_loader.cpp:1248
 #, kde-format
 msgid "Unknown asset type for %1"
-msgstr ""
+msgstr "Onbekend type bezit voor %1"
 
 #: src/core/io/aep/aep_parser.hpp:49
 #, kde-format
 msgid "Not an AEP file"
-msgstr ""
+msgstr "Geen AEP-bestand"
 
 #: src/core/io/aep/aep_parser.hpp:123
 #, kde-format
 msgid "Unknown Item type %s"
-msgstr ""
+msgstr "Onbekend type van item %s"
 
 #: src/core/io/aep/aep_parser.hpp:137
 #, kde-format
 msgid "Missing composition data"
-msgstr ""
+msgstr "Ontbrekende compositiegegevens"
 
 #: src/core/io/aep/aep_parser.hpp:214
 #, kde-format
 msgid "Unknown encoding for %1"
-msgstr ""
+msgstr "Onbekende codering voor %1"
 
 #: src/core/io/aep/aep_parser.hpp:230
 #, kde-format
 msgid "Missing asset data"
-msgstr ""
+msgstr "Ontbrekende gegevens van bezit"
 
 #: src/core/io/aep/aep_parser.hpp:288
 #, kde-format
 msgid "Missing layer data"
-msgstr ""
+msgstr "Ontbrekende gegevens van laag"
 
 #: src/core/io/aep/aep_parser.hpp:372 src/core/io/aep/aep_parser.hpp:377
 #, kde-format
 msgid "Missing mask properties"
-msgstr ""
+msgstr "Ontbrekende eigenschappen van masker"
 
 #: src/core/io/aep/aep_parser.hpp:424
 #, kde-format
 msgid "Unknown property type: %1"
-msgstr ""
+msgstr "Onbekend type van eigenschap: %1"
 
 #: src/core/io/aep/aep_parser.hpp:645
 #, kde-format
 msgid "Missing list data"
-msgstr ""
+msgstr "Ontbrekende gegevens in lijst"
 
 #: src/core/io/aep/aep_parser.hpp:657
 #, kde-format
@@ -1178,12 +1178,12 @@ msgstr "Te tekenen Android-vector"
 #: src/core/io/avd/avd_parser.cpp:223
 #, kde-format
 msgid "Unknown interpolator %s"
-msgstr ""
+msgstr "Onbekende interpolator %s"
 
 #: src/core/io/avd/avd_parser.cpp:650
 #, kde-format
 msgid "Unknown resource id %1"
-msgstr ""
+msgstr "Onbekende hulpbron-id %1"
 
 #: src/core/io/avd/avd_parser.cpp:658
 #, kde-format
@@ -1193,138 +1193,142 @@ msgstr "Kon bestand %1 niet lezen"
 #: src/core/io/avd/avd_parser.cpp:659 src/core/io/avd/avd_parser.cpp:668
 #, kde-format
 msgid "Could not load resource %1"
-msgstr ""
+msgstr "Kon hulpbron %1 niet laden"
 
 #: src/core/io/avd/avd_renderer.cpp:159
 #, kde-format
 msgid "%s should be in a group"
-msgstr ""
+msgstr "%s zou in een groep moeten zitten"
 
 #: src/core/io/avd/avd_renderer.cpp:163
 #, kde-format
 msgid "%s is not supported"
-msgstr ""
+msgstr "%s wordt niet ondersteund"
 
 #: src/core/io/avd/avd_renderer.cpp:252
 #, kde-format
 msgid "%s are not supported"
-msgstr ""
+msgstr "%s worden niet ondersteund"
 
 #: src/core/io/avd/avd_renderer.cpp:518
 #, kde-format
 msgid "%s cannot be a clip path"
-msgstr ""
+msgstr "%s kan geen pad van een clip zijn"
 
 #: src/core/io/base.cpp:22 src/core/io/svg/svg_renderer.cpp:822
 #: src/gui/tools/base.cpp:193
 #, kde-format
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: src/core/io/glaxnimate/glaxnimate_format.hpp:26
 #: src/core/io/glaxnimate/glaxnimate_mime.hpp:21
 #, kde-format
 msgid "Glaxnimate Animation"
-msgstr ""
+msgstr "Animatie van Glaxnimate"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:21
 #: src/core/io/glaxnimate/glaxnimate_mime.cpp:88
 #: src/core/io/lottie/lottie_format.cpp:34
 #, kde-format
 msgid "Could not parse JSON: %1"
-msgstr ""
+msgstr "Kon JSON niet ontleden: %1"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:27
 #: src/core/io/glaxnimate/glaxnimate_mime.cpp:94
 #: src/core/io/lottie/lottie_format.cpp:40
 #, kde-format
 msgid "No JSON object found"
-msgstr ""
+msgstr "Geen JSON-object gevonden"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:35
 #, kde-format
 msgid "Opening a file from a newer version of Glaxnimate"
-msgstr ""
+msgstr "Een bestand uit een nieuwere versie van Glaxnimate wordt geopend"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:43
 #, kde-format
 msgid "Missing composition"
-msgstr ""
+msgstr "Ontbrekende compositie"
 
 #: src/core/io/glaxnimate/import_state.hpp:108
 #, kde-format
 msgid "Property %1 of %2 refers to unexisting object %3"
-msgstr ""
+msgstr "Eigenschap %1 van %2 verwijst naar niet bestaand object %3"
 
 #: src/core/io/glaxnimate/import_state.hpp:117
 #, kde-format
 msgid "Could not load %1 for %2: uuid refers to an unacceptable object"
 msgstr ""
+"Kon %1 voor %2 niet laden: uuid verwijst naar een niet-acceptabel object"
 
 #: src/core/io/glaxnimate/import_state.hpp:128
 #, kde-format
 msgid "Object %1 is invalid"
-msgstr ""
+msgstr "Object %1 is ongeldig"
 
 #: src/core/io/glaxnimate/import_state.hpp:317
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
-msgstr ""
+msgstr "Verkeerd type object: verwacht '%1' maar kreeg '%2'"
 
 #: src/core/io/glaxnimate/import_state.hpp:323
 #, kde-format
 msgid "Could not load %1 for %2"
-msgstr ""
+msgstr "Kon %1 voor %2 niet laden"
 
 #: src/core/io/glaxnimate/import_state.hpp:335
 #, kde-format
 msgid "Could not set property %1"
-msgstr ""
+msgstr "Kon eigenschap %1 niet instellen"
 
 #: src/core/io/glaxnimate/import_state.hpp:361
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
-msgstr ""
+msgstr "Item %1 voor %2 in %3 is geen object"
 
 #: src/core/io/glaxnimate/import_state.hpp:373
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
-msgstr ""
+msgstr "Item %1 voor %2 in %3 is niet acceptabel"
 
 #: src/core/io/glaxnimate/import_state.hpp:412
 #, kde-format
 msgid "Keyframe must specify a time"
-msgstr ""
+msgstr "Keyframe moet een tijd specificeren"
 
 #: src/core/io/glaxnimate/import_state.hpp:417
 #, kde-format
 msgid "Keyframe must specify a value"
-msgstr ""
+msgstr "Keyframe moet een waarde specificeren"
 
 #: src/core/io/glaxnimate/import_state.hpp:427
 #, kde-format
 msgid "Could not add keyframe"
-msgstr ""
+msgstr "Kon keyframe niet toevoegen"
 
 #: src/core/io/glaxnimate/import_state.hpp:611
 #, kde-format
 msgid "Unknown object of type '%1'"
-msgstr ""
+msgstr "Onbekend object van het type '%1'"
 
 #: src/core/io/lottie/lottie_exporter.hpp:559
 #, kde-format
 msgid "Lottie only supports layers in the top level"
-msgstr ""
+msgstr "Lottie ondersteunt alleen lagen op het topniveau"
 
 #: src/core/io/lottie/lottie_exporter.hpp:561
 #, kde-format
 msgid "Lottie only supports auto-orient layers in the top level"
 msgstr ""
+"Lottie ondersteunt alleen automatische oriëntatielagen op het topniveau"
 
 #: src/core/io/lottie/lottie_exporter.hpp:610
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
+"Afbeeldingen kunnen niet gegroepeerd worden met andere vormen, ze moeten in "
+"een laag zijn"
 
 #: src/core/io/lottie/lottie_exporter.hpp:612
 #, kde-format
@@ -1332,6 +1336,8 @@ msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
 "a layer"
 msgstr ""
+"Compositielagen kunnen niet gegroepeerd worden met andere vormen, ze moeten "
+"in een laag zijn"
 
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
@@ -1341,7 +1347,7 @@ msgstr "Mooi"
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
 msgid "Pretty print the JSON"
-msgstr ""
+msgstr "Maak een mooie afdruk van de JSON"
 
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
@@ -1351,7 +1357,7 @@ msgstr "Verwijderen"
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
 msgid "Strip unused properties"
-msgstr ""
+msgstr "Ongebruikte eigenschappen strippen"
 
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
@@ -1361,22 +1367,22 @@ msgstr "Afbeeldingen inbedden"
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
 msgid "Automatically embed non-embedded images"
-msgstr ""
+msgstr "Automatisch niet-ingebedde afbeeldingen inbedden"
 
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
 msgid "Legacy Keyframes"
-msgstr ""
+msgstr "Verouderde keyframes"
 
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
 msgid "Compatibility with lottie-web versions prior to 5.0.0"
-msgstr ""
+msgstr "Compatibiliteit met lottie-web versies vóór 5.0.0"
 
 #: src/core/io/lottie/lottie_format.hpp:22
 #, kde-format
 msgid "Lottie Animation"
-msgstr ""
+msgstr "Lottie-animatie"
 
 #: src/core/io/lottie/lottie_html_format.hpp:20
 #, kde-format
