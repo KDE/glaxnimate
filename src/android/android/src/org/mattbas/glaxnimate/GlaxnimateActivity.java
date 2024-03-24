@@ -6,7 +6,7 @@ import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
 
-import org.qtproject.qt5.android.bindings.QtActivity;
+import org.qtproject.qt.android.bindings.QtActivity;
 
 
 public class GlaxnimateActivity extends QtActivity

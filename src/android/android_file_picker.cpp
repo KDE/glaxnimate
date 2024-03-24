@@ -54,10 +54,9 @@ public:
 };
 #else
 
-#include <QAndroidJniObject>
-#include <QtAndroid>
-#include <QAndroidActivityResultReceiver>
-#include <QAndroidJniEnvironment>
+#include <QJniObject>
+#include <QtCore/private/qandroidextras_p.h>
+#include <QJniEnvironment>
 
 class glaxnimate::android::AndroidFilePicker::Private
 {
@@ -79,7 +78,7 @@ public:
             : parent(parent)
         {}
 
-        void handleActivityResult(int receiverRequestCode, int resultCode, const QAndroidJniObject &data)
+        void handleActivityResult(int receiverRequestCode, int resultCode, const QJniObject &data)
         {
             switch ( receiverRequestCode )
             {
@@ -99,9 +98,9 @@ public:
         }
 
     private:
-        QUrl result_to_url(int resultCode, const QAndroidJniObject &data)
+        QUrl result_to_url(int resultCode, const QJniObject &data)
         {
-            jint RESULT_OK = QAndroidJniObject::getStaticField<jint>("android/app/Activity", "RESULT_OK");
+            jint RESULT_OK = QJniObject::getStaticField<jint>("android/app/Activity", "RESULT_OK");
             if ( resultCode != RESULT_OK )
                 return {};
 
@@ -118,17 +117,17 @@ public:
 
     bool select_open(bool is_import)
     {
-        QAndroidJniObject ACTION_OPEN_DOCUMENT = QAndroidJniObject::fromString("android.intent.action.OPEN_DOCUMENT");
-        QAndroidJniObject intent("android/content/Intent");
+        QJniObject ACTION_OPEN_DOCUMENT = QJniObject::fromString("android.intent.action.OPEN_DOCUMENT");
+        QJniObject intent("android/content/Intent");
         if ( !ACTION_OPEN_DOCUMENT.isValid() || !intent.isValid())
             return false;
 
-        QAndroidJniObject CATEGORY_OPENABLE = QAndroidJniObject::getStaticObjectField("android/content/Intent", "CATEGORY_OPENABLE", "Ljava/lang/String;");
+        QJniObject CATEGORY_OPENABLE = QJniObject::getStaticObjectField("android/content/Intent", "CATEGORY_OPENABLE", "Ljava/lang/String;");
         intent.callObjectMethod("addCategory", "(Ljava/lang/String;)Landroid/content/Intent;", CATEGORY_OPENABLE.object<jstring>());
 
         intent.callObjectMethod("setAction", "(Ljava/lang/String;)Landroid/content/Intent;", ACTION_OPEN_DOCUMENT.object<jstring>());
-        intent.callObjectMethod("setType", "(Ljava/lang/String;)Landroid/content/Intent;", QAndroidJniObject::fromString("*/*").object<jstring>());
-        QtAndroid::startActivity(intent.object<jobject>(), is_import ? ResultReceiver::RequestImport : ResultReceiver::RequestOpen , &receiver);
+        intent.callObjectMethod("setType", "(Ljava/lang/String;)Landroid/content/Intent;", QJniObject::fromString("*/*").object<jstring>());
+        QtAndroidPrivate::startActivity(intent.object<jobject>(), is_import ? ResultReceiver::RequestImport : ResultReceiver::RequestOpen , &receiver);
 
         return true;
     }
@@ -136,21 +135,21 @@ public:
 
     bool select_save(const QString &suggested_name, bool is_export, const QString& mime)
     {
-        QAndroidJniObject ACTION_SAVE_DOCUMENT = QAndroidJniObject::fromString("android.intent.action.CREATE_DOCUMENT");
-        QAndroidJniObject intent("android/content/Intent");
+        QJniObject ACTION_SAVE_DOCUMENT = QJniObject::fromString("android.intent.action.CREATE_DOCUMENT");
+        QJniObject intent("android/content/Intent");
         if ( !ACTION_SAVE_DOCUMENT.isValid() || !intent.isValid())
             return false;
 
-        QAndroidJniObject CATEGORY_OPENABLE = QAndroidJniObject::getStaticObjectField("android/content/Intent", "CATEGORY_OPENABLE", "Ljava/lang/String;");
+        QJniObject CATEGORY_OPENABLE = QJniObject::getStaticObjectField("android/content/Intent", "CATEGORY_OPENABLE", "Ljava/lang/String;");
         intent.callObjectMethod("addCategory", "(Ljava/lang/String;)Landroid/content/Intent;", CATEGORY_OPENABLE.object<jstring>());
 
         intent.callObjectMethod("setAction", "(Ljava/lang/String;)Landroid/content/Intent;", ACTION_SAVE_DOCUMENT.object<jstring>());
-        intent.callObjectMethod("setType", "(Ljava/lang/String;)Landroid/content/Intent;", QAndroidJniObject::fromString(mime).object<jstring>());
+        intent.callObjectMethod("setType", "(Ljava/lang/String;)Landroid/content/Intent;", QJniObject::fromString(mime).object<jstring>());
 
         if ( !suggested_name.isEmpty() )
         {
-            auto title = QAndroidJniObject::fromString("android.intent.extra.TITLE");
-            auto j_suggested_name = QAndroidJniObject::fromString(suggested_name);
+            auto title = QJniObject::fromString("android.intent.extra.TITLE");
+            auto j_suggested_name = QJniObject::fromString(suggested_name);
             intent.callObjectMethod(
                 "putExtra",
                 "(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;",
@@ -159,28 +158,29 @@ public:
             );
         }
 
-        QtAndroid::startActivity(intent.object<jobject>(), is_export ? ResultReceiver::RequestExport : ResultReceiver::RequestSave, &receiver);
+        QtAndroidPrivate::startActivity(intent.object<jobject>(), is_export ? ResultReceiver::RequestExport : ResultReceiver::RequestSave, &receiver);
 
         return true;
     }
 
     static QByteArray read_content_uri(const QString &cppuri)
     {
-        QAndroidJniObject uri = QAndroidJniObject::callStaticObjectMethod(
+        QJniObject uri = QJniObject::callStaticObjectMethod(
             "android/net/Uri",
             "parse",
             "(Ljava/lang/String;)Landroid/net/Uri;",
-            QAndroidJniObject::fromString(cppuri).object<jstring>()
+            QJniObject::fromString(cppuri).object<jstring>()
         );
 
-        QAndroidJniObject contentResolver = QtAndroid::androidActivity().callObjectMethod("getContentResolver", "()Landroid/content/ContentResolver;");
-        QAndroidJniObject input_stream = contentResolver.callObjectMethod(
+        const QJniObject activity = QNativeInterface::QAndroidApplication::context();
+        const QJniObject contentResolver = activity.callObjectMethod("getContentResolver", "()Landroid/content/ContentResolver;");
+        QJniObject input_stream = contentResolver.callObjectMethod(
             "openInputStream",
             "(Landroid/net/Uri;)Ljava/io/InputStream;",
             uri.object<jobject>()
         );
 
-        QAndroidJniEnvironment env;
+        QJniEnvironment env;
         jint avail = input_stream.callMethod<jint>("available", "()I");
         int chunk_size = 1024 * 10;
         if ( chunk_size > avail )
@@ -202,21 +202,21 @@ public:
 
     static bool write_content_uri(const QString& cppuri, const QByteArray& data)
     {
-        QAndroidJniObject uri = QAndroidJniObject::callStaticObjectMethod(
+        QJniObject uri = QJniObject::callStaticObjectMethod(
             "android/net/Uri",
             "parse",
             "(Ljava/lang/String;)Landroid/net/Uri;",
-            QAndroidJniObject::fromString(cppuri).object<jstring>()
+            QJniObject::fromString(cppuri).object<jstring>()
         );
 
         if ( !uri.isValid() )
             return false;
-
-        QAndroidJniObject contentResolver = QtAndroid::androidActivity().callObjectMethod("getContentResolver", "()Landroid/content/ContentResolver;");
+        const QJniObject activity = QNativeInterface::QAndroidApplication::context();
+        const QJniObject contentResolver = activity.callObjectMethod("getContentResolver", "()Landroid/content/ContentResolver;");
         if ( !contentResolver.isValid() )
             return false;
 
-        QAndroidJniObject output = contentResolver.callObjectMethod(
+        QJniObject output = contentResolver.callObjectMethod(
             "openOutputStream",
             "(Landroid/net/Uri;)Ljava/io/OutputStream;",
             uri.object<jobject>()
@@ -225,7 +225,7 @@ public:
         if ( !output.isValid() )
             return false;
 
-        QAndroidJniEnvironment env;
+        QJniEnvironment env;
         int chunk_size = 1024 * 10;
         jbyteArray jdata = env->NewByteArray(chunk_size);
 
@@ -249,12 +249,11 @@ public:
     {
         for ( const QString &permission : permissions )
         {
-            auto result = QtAndroid::checkPermission(permission);
-            if ( result == QtAndroid::PermissionResult::Denied )
+            auto result = QtAndroidPrivate::checkPermission(permission);
+            result.waitForFinished();
+            if ( result.result() == QtAndroidPrivate::PermissionResult::Denied )
             {
-                auto resultHash = QtAndroid::requestPermissionsSync(QStringList({permission}));
-                if ( resultHash[permission] == QtAndroid::PermissionResult::Denied )
-                    return false;
+                return false;
             }
         }
 
@@ -265,26 +264,26 @@ public:
     bool open_external(const QUrl &cppuri, const QString &mime)
     {
 
-        QAndroidJniObject ACTION_VIEW = QAndroidJniObject::fromString("android.intent.action.VIEW");
-        QAndroidJniObject intent("android/content/Intent");
+        QJniObject ACTION_VIEW = QJniObject::fromString("android.intent.action.VIEW");
+        QJniObject intent("android/content/Intent");
         if ( !ACTION_VIEW.isValid() || !intent.isValid())
             return false;
 
-        auto uri_str = QAndroidJniObject::fromString(cppuri.toString());
-        QAndroidJniObject uri = QAndroidJniObject::callStaticObjectMethod(
+        auto uri_str = QJniObject::fromString(cppuri.toString());
+        QJniObject uri = QJniObject::callStaticObjectMethod(
             "android/net/Uri",
             "parse",
             "(Ljava/lang/String;)Landroid/net/Uri;",
             uri_str.object<jstring>()
         );
-        auto jmime = QAndroidJniObject::fromString(mime);
+        auto jmime = QJniObject::fromString(mime);
         intent.callObjectMethod(
             "setDataAndType",
             "(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/Intent;",
             uri_str.object<jobject>(),
             jmime.object<jstring>()
         );
-        QtAndroid::startActivity(intent.object<jobject>(), ResultReceiver::RequestView, &receiver);
+        QtAndroidPrivate::startActivity(intent.object<jobject>(), ResultReceiver::RequestView, &receiver);
 
 
         return true;
@@ -294,17 +293,18 @@ public:
     {
         std::vector<QString> paths;
 
-        QAndroidJniObject asset_manager = QtAndroid::androidActivity().callObjectMethod(
+        const QJniObject activity = QNativeInterface::QAndroidApplication::context();
+        const QJniObject asset_manager = activity.callObjectMethod(
             "getAssets", "()Landroid/content/res/AssetManager;"
         );
-        QAndroidJniObject objs = asset_manager.callObjectMethod(
+        QJniObject objs = asset_manager.callObjectMethod(
             "list",
             "(Ljava/lang/String;)[Ljava/lang/String;",
-            QAndroidJniObject::fromString(path).object<jstring>()
+            QJniObject::fromString(path).object<jstring>()
         );
 
         jobjectArray files = objs.object<jobjectArray>();
-        QAndroidJniEnvironment env;
+        QJniEnvironment env;
         jsize len = env->GetArrayLength(files);
         QString prefix = path;
         if ( !prefix.isEmpty() )

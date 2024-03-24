@@ -264,7 +264,7 @@ public:
         ui.preview_slider->hide();
         ui.spin_preview_zoom->hide();
         ui.label_preview_zoom->hide();
-        ui.group_preview_layout->setMargin(0);
+        ui.group_preview_layout->setContentsMargins(0, 0, 0, 0);
         ui.button_detect_colors->setText("Auto colors");
         ui.gridLayout->addWidget(ui.button_detect_colors, 3, 0, 1, 2);
         ui.layout_buttons->insertWidget(0, ui.button_update_preview);
@@ -275,7 +275,7 @@ public:
             w->setMaximumHeight(40);
 
         for ( auto w : parent->findChildren<QLayout*>() )
-            w->setMargin(0);
+            w->setContentsMargins(0, 0, 0, 0);
 
         zoom = 1.05;
 

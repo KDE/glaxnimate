@@ -20,7 +20,7 @@ FrameControlsWidget::FrameControlsWidget(QWidget* parent)
     d->setupUi(this);
 
 #ifdef Q_OS_ANDROID
-    d->layout->setMargin(0);
+    d->layout->setContentsMargins(0, 0, 0, 0);
     d->layout->setSpacing(0);
 #endif
 

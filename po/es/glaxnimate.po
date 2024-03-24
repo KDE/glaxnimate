@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-18 00:40+0000\n"
+"POT-Creation-Date: 2024-03-17 01:57+0000\n"
 "PO-Revision-Date: 2024-01-20 19:29+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -639,72 +639,72 @@ msgid "Brings the selection further to the front."
 msgstr "Trae la selección más hacia el frente."
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_timeline)
-#: src/android/main_window.cpp:411
+#: src/android/main_window.cpp:412
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:731
 #, kde-format
 msgid "Timeline"
 msgstr "Línea temporal"
 
-#: src/android/main_window.cpp:416
+#: src/android/main_window.cpp:417
 #, kde-format
 msgid "Fill Style"
 msgstr "Estilo de relleno"
 
-#: src/android/main_window.cpp:421
+#: src/android/main_window.cpp:422
 #, kde-format
 msgid "Stroke Style"
 msgstr "Estilo de trazo"
 
-#: src/android/main_window.cpp:451 src/gui/widgets/menus/node_menu.cpp:105
+#: src/android/main_window.cpp:452 src/gui/widgets/menus/node_menu.cpp:105
 #, kde-format
 msgid "Raise"
 msgstr "Elevar"
 
-#: src/android/main_window.cpp:456 src/gui/widgets/menus/node_menu.cpp:109
+#: src/android/main_window.cpp:457 src/gui/widgets/menus/node_menu.cpp:109
 #, kde-format
 msgid "Lower"
 msgstr "Bajar"
 
-#: src/android/main_window.cpp:463 src/gui/tools/select_tool.cpp:408
+#: src/android/main_window.cpp:464 src/gui/tools/select_tool.cpp:408
 #: src/gui/widgets/dialogs/selection_manager.cpp:85
 #, kde-format
 msgid "Cut"
 msgstr "Cortar"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
-#: src/android/main_window.cpp:466 src/gui/tools/select_tool.cpp:410
+#: src/android/main_window.cpp:467 src/gui/tools/select_tool.cpp:410
 #: src/gui/widgets/dialogs/about_dialog.ui:414
 #, kde-format
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/android/main_window.cpp:469 src/gui/tools/select_tool.cpp:412
+#: src/android/main_window.cpp:470 src/gui/tools/select_tool.cpp:412
 #: src/gui/widgets/dialogs/selection_manager.cpp:166
 #, kde-format
 msgid "Paste"
 msgstr "Pegar"
 
-#: src/android/main_window.cpp:473
+#: src/android/main_window.cpp:474
 #, kde-format
 msgid "Delete Selected"
 msgstr "Borrar lo seleccionado"
 
-#: src/android/main_window.cpp:481
+#: src/android/main_window.cpp:482
 #, kde-format
 msgid "Raise Above"
 msgstr "Poner encima"
 
-#: src/android/main_window.cpp:485
+#: src/android/main_window.cpp:486
 #, kde-format
 msgid "Lower Below"
 msgstr "Bajar al fondo"
 
-#: src/android/main_window.cpp:489
+#: src/android/main_window.cpp:490
 #, kde-format
 msgid "Undo"
 msgstr "Deshacer"
 
-#: src/android/main_window.cpp:491
+#: src/android/main_window.cpp:492
 #, kde-format
 msgid "Redo"
 msgstr "Rehacer"
@@ -712,7 +712,7 @@ msgstr "Rehacer"
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #. i18n: ectx: property (text), widget (QToolButton, btn_new)
 #. i18n: ectx: property (text), widget (QToolButton, preview_1)
-#: src/android/main_window.cpp:505
+#: src/android/main_window.cpp:506
 #: src/gui/widgets/docks/snippet_list_widget.ui:29
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:114
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:45
@@ -721,7 +721,7 @@ msgid "New"
 msgstr "Nuevo"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
-#: src/android/main_window.cpp:508
+#: src/android/main_window.cpp:509
 #: src/gui/widgets/font/external_font_widget.ui:47
 #, kde-format
 msgid "Open..."
@@ -735,7 +735,7 @@ msgstr "Abrir..."
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #. i18n: ectx: property (text), widget (QPushButton, button_open)
-#: src/android/main_window.cpp:510 src/gui/widgets/dialogs/about_dialog.ui:197
+#: src/android/main_window.cpp:511 src/gui/widgets/dialogs/about_dialog.ui:197
 #: src/gui/widgets/dialogs/about_dialog.ui:200
 #: src/gui/widgets/dialogs/about_dialog.ui:229
 #: src/gui/widgets/dialogs/about_dialog.ui:232
@@ -749,76 +749,76 @@ msgstr "Abrir..."
 msgid "Open"
 msgstr "Abrir"
 
-#: src/android/main_window.cpp:513
+#: src/android/main_window.cpp:514
 #, kde-format
 msgid "Import as Composition"
 msgstr "Importar como composición"
 
-#: src/android/main_window.cpp:516
+#: src/android/main_window.cpp:517
 #, kde-format
 msgid "Save..."
 msgstr "Guardar..."
 
 #. i18n: ectx: property (text), widget (QToolButton, preview_2)
-#: src/android/main_window.cpp:518
+#: src/android/main_window.cpp:519
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:128
 #, kde-format
 msgid "Save"
 msgstr "Guardar"
 
-#: src/android/main_window.cpp:521
+#: src/android/main_window.cpp:522
 #, kde-format
 msgid "Save As"
 msgstr "Guardar como"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_export)
-#: src/android/main_window.cpp:524
+#: src/android/main_window.cpp:525
 #: src/android/sticker_pack_builder_dialog.ui:154
 #, kde-format
 msgid "Export"
 msgstr "Exportar"
 
-#: src/android/main_window.cpp:527
+#: src/android/main_window.cpp:528
 #, kde-format
 msgid "Save Frame as PNG"
 msgstr "Guardar fotograma como PNG"
 
-#: src/android/main_window.cpp:531
+#: src/android/main_window.cpp:532
 #, kde-format
 msgid "Send to Telegram"
 msgstr "Enviar a Telegram"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
-#: src/android/main_window.cpp:543
+#: src/android/main_window.cpp:544
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:525
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #, kde-format
 msgid "Layers"
 msgstr "Capas"
 
-#: src/android/main_window.cpp:549
+#: src/android/main_window.cpp:550
 #, kde-format
 msgid "Advanced Properties"
 msgstr "Propiedades avanzadas"
 
-#: src/android/main_window.cpp:554
+#: src/android/main_window.cpp:555
 #, kde-format
 msgid "Help"
 msgstr "Ayuda"
 
-#: src/android/main_window.cpp:622
+#: src/android/main_window.cpp:623
 #, kde-format
 msgid "Animation.%1"
 msgstr "Animación.%1"
 
-#: src/android/main_window.cpp:664
+#: src/android/main_window.cpp:665
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:293
 #, kde-format
 msgid "Closing Animation"
 msgstr "Cerrando Animación"
 
-#: src/android/main_window.cpp:665
+#: src/android/main_window.cpp:666
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:294
 #, kde-format
 msgid ""
@@ -828,8 +828,8 @@ msgstr ""
 "La animación tiene cambios sin guardar.\n"
 "¿Quieres guardar tus cambios?"
 
-#: src/android/main_window.cpp:749 src/android/main_window.cpp:753
-#: src/android/main_window.cpp:886
+#: src/android/main_window.cpp:750 src/android/main_window.cpp:754
+#: src/android/main_window.cpp:889
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:481
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:485
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:825
@@ -839,42 +839,37 @@ msgstr ""
 msgid "Import File"
 msgstr "Importar archivo"
 
-#: src/android/main_window.cpp:749
+#: src/android/main_window.cpp:750
 #, kde-format
 msgid "Could not import file"
 msgstr "No se pudo importar archivo"
 
-#: src/android/main_window.cpp:788
+#: src/android/main_window.cpp:789
 #, kde-format
 msgid "Frame %1.png"
 msgstr "Fotograma %1.png"
 
-#: src/android/main_window.cpp:977
+#: src/android/main_window.cpp:980
 #, kde-format
 msgid "Add keyframe"
 msgstr "Añadir fotograma clave"
 
-#: src/android/main_window.cpp:986
+#: src/android/main_window.cpp:989
 #, kde-format
 msgid "Remove keyframe"
 msgstr "Eliminar fotograma clave"
 
-#: src/android/main_window.cpp:1001
+#: src/android/main_window.cpp:1004
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:178
 #, kde-format
 msgid "Clear Animations"
 msgstr "Limpiar animaciones"
 
-#: src/android/main_window.cpp:1066
+#: src/android/main_window.cpp:1069
 #, kde-format
 msgid "Emoji"
 msgstr "Emoji"
-
-#: src/android/main_window.cpp:1097
-#, kde-format
-msgid "Import Emoji"
-msgstr "Importar emoji"
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
 #: src/android/main_window.ui:21 src/core/app_info.cpp:17
@@ -931,7 +926,7 @@ msgstr "Limpiar"
 msgid "Add Current"
 msgstr "Añadir actual"
 
-#: src/android/telegram_intent.cpp:47
+#: src/android/telegram_intent.cpp:45
 #, kde-format
 msgid "Could not start activity, is Telegram installed?"
 msgstr "No se pudo iniciar la actividad, ¿Está Telegram instalado?"
@@ -7166,3 +7161,6 @@ msgstr "Reiniciar Rotación"
 #, kde-format
 msgid "Flip View"
 msgstr "Voltear Vista"
+
+#~ msgid "Import Emoji"
+#~ msgstr "Importar emoji"

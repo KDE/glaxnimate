@@ -94,7 +94,7 @@ if ( ANDROID )
             _find_breeze_icon(${_iconName} _iconPath)
             message (STATUS ${_iconPath})
             if (EXISTS ${_iconPath})
-                install(FILES ${_iconPath} DESTINATION ${DATA_INSTALL}/icons/icons RENAME ${_iconName}.svg)
+                install(FILES ${_iconPath} DESTINATION ${DATA_INSTALL}/breeze-internal/icons RENAME ${_iconName}.svg)
             else()
                 message (WARNING "${_iconName} not found")
             endif()
@@ -102,7 +102,7 @@ if ( ANDROID )
 
         #generate an index.theme that qiconloader can understand
         file(WRITE ${CMAKE_BINARY_DIR}/index.theme "[Icon Theme]\nName=Breeze\nDirectories=icons\n[icons]\nSize=32\nType=Scalable")
-        install(FILES ${CMAKE_BINARY_DIR}/index.theme DESTINATION ${DATA_INSTALL}/icons)
+        install(FILES ${CMAKE_BINARY_DIR}/index.theme DESTINATION ${DATA_INSTALL}/breeze-internal)
     endfunction()
 
     android_package_breeze_icons(ICONS
