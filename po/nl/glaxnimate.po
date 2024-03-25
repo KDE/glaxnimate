@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-17 01:57+0000\n"
-"PO-Revision-Date: 2024-03-21 15:18+0100\n"
+"POT-Creation-Date: 2024-03-25 01:59+0000\n"
+"PO-Revision-Date: 2024-03-24 14:31+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -934,7 +934,7 @@ msgstr "Huidige toevoegen"
 msgid "Could not start activity, is Telegram installed?"
 msgstr "Kon activiteit niet starten, is Telgram geïnstalleerd?"
 
-#: src/core/app_info.cpp:68
+#: src/core/app_info.cpp:63
 #, kde-format
 msgid "(c) 2019-2023"
 msgstr "(c) 2019-2023"
@@ -1453,87 +1453,87 @@ msgstr "Kan keyframe op %1 voor %2 met waarde %3 niet laden"
 #: src/core/io/lottie/lottie_importer.hpp:1032
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
-msgstr ""
+msgstr "Dubbele bitmap-ID: %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:1064
 #, kde-format
 msgid "Duplicate Composition ID: %1"
-msgstr ""
+msgstr "Dubbele compositie-ID: %1"
 
 #: src/core/io/lottie/tgs_format.cpp:47
 #, kde-format
 msgid "Star Shapes are not officially supported"
-msgstr ""
+msgstr "Stervormen worden niet officieel ondersteund"
 
 #: src/core/io/lottie/tgs_format.cpp:51 src/core/io/lottie/validation.cpp:71
 #, kde-format
 msgid "Images are not supported"
-msgstr ""
+msgstr "Afbeeldingen worden niet ondersteund"
 
 #: src/core/io/lottie/tgs_format.cpp:56
 #, kde-format
 msgid "Gradient strokes are not officially supported"
-msgstr ""
+msgstr "Stroken met kleurverloop worden niet officieel ondersteund"
 
 #: src/core/io/lottie/tgs_format.cpp:61
 #, kde-format
 msgid "Masks are not supported"
-msgstr ""
+msgstr "Maskers worden niet ondersteund"
 
 #: src/core/io/lottie/tgs_format.cpp:65
 #, kde-format
 msgid "Repeaters are not officially supported"
-msgstr ""
+msgstr "Herhalingen worden niet officieel ondersteund"
 
 #: src/core/io/lottie/tgs_format.cpp:69
 #, kde-format
 msgid "Inflate/Deflate is not supported"
-msgstr ""
+msgstr "Compressie/decompressie wordt niet ondersteund"
 
 #: src/core/io/lottie/tgs_format.cpp:73
 #, kde-format
 msgid "Offset Path is not supported"
-msgstr ""
+msgstr "Offsetpad wordt niet ondersteund"
 
 #: src/core/io/lottie/tgs_format.cpp:77
 #, kde-format
 msgid "ZigZag is not supported"
-msgstr ""
+msgstr "ZigZag wordt niet ondersteund"
 
 #: src/core/io/lottie/tgs_format.cpp:110
 #, kde-format
 msgid "File too large: %1k, should be under 64k"
-msgstr ""
+msgstr "Bestand is te groot: %1k, zou onder 64k moeten zijn"
 
 #: src/core/io/lottie/tgs_format.hpp:19
 #, kde-format
 msgid "Telegram Animated Sticker"
-msgstr ""
+msgstr "Telegram geanimeerde sticker"
 
 #: src/core/io/lottie/validation.cpp:25
 #, kde-format
 msgid "Invalid width: %1, should be %2"
-msgstr ""
+msgstr "Ongeldige breedte: %1, zou %2 moeten zijn"
 
 #: src/core/io/lottie/validation.cpp:29
 #, kde-format
 msgid "Invalid height: %1, should be %2"
-msgstr ""
+msgstr "Ongeldige hoogte: %1, zou %2 moeten zijn"
 
 #: src/core/io/lottie/validation.cpp:41
 #, kde-format
 msgid "Invalid fps: %1, should be %2"
-msgstr ""
+msgstr "Ongeldige fps: %1, zou %2 moeten zijn"
 
 #: src/core/io/lottie/validation.cpp:49
 #, kde-format
 msgid "Too many frames: %1, should be less than %2"
-msgstr ""
+msgstr "Teveel frames: %1, zou minder dan %2 moeten zijn"
 
 #: src/core/io/lottie/validation.hpp:22
 #, kde-format
 msgid "%1: %2"
-msgstr ""
+msgstr "%1: %2"
 
 #: src/core/io/mime/json_mime.hpp:18
 #, kde-format
@@ -1554,17 +1554,17 @@ msgstr "Framebreedte"
 #: src/core/io/raster/spritesheet_format.cpp:32
 #, kde-format
 msgid "Width of each frame"
-msgstr ""
+msgstr "Breedte van elk frame"
 
 #: src/core/io/raster/spritesheet_format.cpp:33
 #, kde-format
 msgid "Frame Height"
-msgstr ""
+msgstr "Framehoogte"
 
 #: src/core/io/raster/spritesheet_format.cpp:33
 #, kde-format
 msgid "Height of each frame"
-msgstr ""
+msgstr "Hoogte van elk frame"
 
 #: src/core/io/raster/spritesheet_format.cpp:34
 #, kde-format
@@ -1574,7 +1574,7 @@ msgstr "Kolommen"
 #: src/core/io/raster/spritesheet_format.cpp:34
 #, kde-format
 msgid "Number of columns in the sheet"
-msgstr ""
+msgstr "Aantal kolommen in het rekenblad"
 
 #: src/core/io/raster/spritesheet_format.cpp:35
 #, kde-format
@@ -1585,26 +1585,28 @@ msgstr "Tijdstap"
 #, kde-format
 msgid "By how much each rendered frame should increase time (in frames)"
 msgstr ""
+"Met hoeveel elk gerenderd frame in tijd (in frames) verhoogd zou moeten "
+"worden"
 
 #: src/core/io/raster/spritesheet_format.hpp:23
 #, kde-format
 msgid "Sprite Sheet"
-msgstr ""
+msgstr "Sprite-blad"
 
 #: src/core/io/rive/rive_exporter.hpp:359
 #, kde-format
 msgid "Bezier has mismatching number of points"
-msgstr ""
+msgstr "Bezier heeft niet overeenkomend aantal punten"
 
 #: src/core/io/rive/rive_exporter.hpp:421
 #, kde-format
 msgid "Unknown property %1 of %2 (%3, %4)"
-msgstr ""
+msgstr "Onbekende eigenschap %1 van %2 (%3, %4)"
 
 #: src/core/io/rive/rive_exporter.hpp:455
 #, kde-format
 msgid "Unknown keyframe type for property %1 of %2 (%3, %4)"
-msgstr ""
+msgstr "Onbekende type keyframe voor eigenschap %1 van %2 (%3, %4)"
 
 #: src/core/io/rive/rive_format.cpp:24
 #, kde-format
@@ -1614,73 +1616,75 @@ msgstr "Niet-ondersteund formaat"
 #: src/core/io/rive/rive_format.cpp:34
 #, kde-format
 msgid "Could not read header"
-msgstr ""
+msgstr "Kon header niet lezen"
 
 #: src/core/io/rive/rive_format.cpp:40
 #, kde-format
 msgid ""
 "Loading unsupported rive file version %1.%2, the only supported version is %3"
 msgstr ""
+"Niet-ondersteund rive-bestandsversie %1.%2, de enige ondersteunde versie is "
+"%3"
 
 #: src/core/io/rive/rive_format.cpp:46 src/core/io/rive/rive_loader.cpp:750
 #, kde-format
 msgid "Could not read property table"
-msgstr ""
+msgstr "Kon eigenschappentabel niet lezen"
 
 #: src/core/io/rive/rive_format.hpp:24
 #, kde-format
 msgid "Rive Animation"
-msgstr ""
+msgstr "Rive-animatie"
 
 #: src/core/io/rive/rive_html_format.hpp:20
 #, kde-format
 msgid "RIVE HTML Preview"
-msgstr ""
+msgstr "RIVE HTML-voorbeeld"
 
 #: src/core/io/rive/rive_loader.cpp:179
 #, kde-format
 msgid "Unexpected Keyed Object"
-msgstr ""
+msgstr "Onverwacht object met sleutel"
 
 #: src/core/io/rive/rive_loader.cpp:187
 #, kde-format
 msgid "Invalid Keyed Object id %1"
-msgstr ""
+msgstr "Ongeldige object-met-sleutel-id %1"
 
 #: src/core/io/rive/rive_loader.cpp:195
 #, kde-format
 msgid "Unexpected Keyed Property"
-msgstr ""
+msgstr "Onverwachte eigenschap met sleutel"
 
 #: src/core/io/rive/rive_loader.cpp:204
 #, kde-format
 msgid "Unknown Keyed Property id %1"
-msgstr ""
+msgstr "Onbekende eigenschap-met-sleutel-id %1"
 
 #: src/core/io/rive/rive_loader.cpp:215
 #, kde-format
 msgid "Unexpected Animation"
-msgstr ""
+msgstr "Onverwachte animatie"
 
 #: src/core/io/rive/rive_loader.cpp:231
 #, kde-format
 msgid "Unexpected Asset Contents"
-msgstr ""
+msgstr "Onverwachte inhoud van bezit"
 
 #: src/core/io/rive/rive_loader.cpp:242
 #, kde-format
 msgid "Invalid Image Data"
-msgstr ""
+msgstr "Ongeldige afbeeldingsgegevens"
 
 #: src/core/io/rive/rive_loader.cpp:253
 #, kde-format
 msgid "Unexpected Keyframe"
-msgstr ""
+msgstr "Onverwacht keyframe"
 
 #: src/core/io/rive/rive_loader.cpp:268
 #, kde-format
 msgid "Could not find parent with id %1"
-msgstr ""
+msgstr "Kon ouder met id %1 niet vinden"
 
 #: src/core/io/rive/rive_loader.cpp:318
 #, kde-format
