@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-25 01:59+0000\n"
-"PO-Revision-Date: 2024-03-25 12:19+0100\n"
+"PO-Revision-Date: 2024-03-26 11:39+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1785,99 +1785,100 @@ msgstr "Kon geen coderingscontext toewijzen"
 #: src/core/io/video/video_format.cpp:110
 #, kde-format
 msgid "Error encoding a frame: %1"
-msgstr ""
+msgstr "Fout bij coderen van een frame: %1"
 
 #: src/core/io/video/video_format.cpp:120
 #, kde-format
 msgid "Error while writing output packet: %1"
-msgstr ""
+msgstr "Fout bij schrijven van uitvoerpakket: %1"
 
 #: src/core/io/video/video_format.cpp:131
 #, kde-format
 msgid "Error sending a frame to the encoder: %1"
-msgstr ""
+msgstr "Fout bij verzenden van een frame naar de codeerder: %1"
 
 #: src/core/io/video/video_format.cpp:187
 #: src/core/io/video/video_format.cpp:201
 #, kde-format
 msgid "Could not set dict key `%1`: %2"
-msgstr ""
+msgstr "Kon dict-sleutel `%1` niet instellen: %2"
 
 #: src/core/io/video/video_format.cpp:246
 #, kde-format
 msgid "Could not erase dict key `%1`: %2"
-msgstr ""
+msgstr "Kon dict-sleutel `%1` niet wissen: %2"
 
 #: src/core/io/video/video_format.cpp:267
 #, kde-format
 msgid "Could not copy dict: %1"
-msgstr ""
+msgstr "Kon dict niet kopiëren: %1"
 
 #: src/core/io/video/video_format.cpp:280
 #, kde-format
 msgid "Could not copy dict `%1`: %2"
-msgstr ""
+msgstr "Kon dict `%1` niet kopiëren: %2"
 
 #: src/core/io/video/video_format.cpp:318
 #, kde-format
 msgid "Could not allocate frame data."
-msgstr ""
+msgstr "Kon framegegevens niet toewijzen."
 
 #: src/core/io/video/video_format.cpp:403
 #: src/core/io/video/video_format.cpp:777
 #, kde-format
 msgid "No video codec"
-msgstr ""
+msgstr "Geen video-codec"
 
 #: src/core/io/video/video_format.cpp:431
 #, kde-format
 msgid "Could not determine pixel format"
-msgstr ""
+msgstr "Kon pixelformaat niet bepalen"
 
 #: src/core/io/video/video_format.cpp:441
 #, kde-format
 msgid "Could not open video codec: %1"
-msgstr ""
+msgstr "Kon video-codec niet openen: %1"
 
 #: src/core/io/video/video_format.cpp:446
 #, kde-format
 msgid "Could not allocate video frame"
-msgstr ""
+msgstr "Kon videoframe niet toewijzen"
 
 #: src/core/io/video/video_format.cpp:453
 #, kde-format
 msgid "Could not copy the stream parameters"
-msgstr ""
+msgstr "Kon de streamparameters niet kopiëren"
 
 #: src/core/io/video/video_format.cpp:473
 #, kde-format
 msgid "Error while creating video frame"
-msgstr ""
+msgstr "Fout bij aanmaken van videoframe"
 
 #: src/core/io/video/video_format.cpp:497
 #, kde-format
 msgid "Could not initialize the conversion context"
-msgstr ""
+msgstr "Kon de conversiecontext niet initialiseren"
 
 #: src/core/io/video/video_format.cpp:503
 #, kde-format
 msgid "Could not allocate temporary picture"
-msgstr ""
+msgstr "Kon tijdelijk plaatje niet toewijzen"
 
 #: src/core/io/video/video_format.cpp:745
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
 msgstr ""
+"Kon uitvoerformaat niet opmaken uit bestandsextensie: MPEG wordt gebruikt."
 
 #: src/core/io/video/video_format.cpp:749
 #, kde-format
 msgid "Could not find output format"
-msgstr ""
+msgstr "Kon uitvoerformaat niet vinden"
 
 #: src/core/io/video/video_format.cpp:822
 #, kde-format
 msgid "Error occurred when opening output file: %1"
-msgstr ""
+msgstr "Er deed zich een fout voor bij openen van uitvoerbestand: %1"
 
 #: src/core/io/video/video_format.cpp:857
 #, kde-format
@@ -1901,7 +1902,7 @@ msgstr "Breedte"
 #: src/core/io/video/video_format.cpp:859
 #, kde-format
 msgid "If not 0, it will overwrite the size"
-msgstr ""
+msgstr "Indien niet 0, zal het de grootte overschrijven"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/core/io/video/video_format.cpp:859
@@ -1918,7 +1919,7 @@ msgstr "Uitvoerig"
 #: src/core/io/video/video_format.cpp:860
 #, kde-format
 msgid "Show verbose information on the conversion"
-msgstr ""
+msgstr "Uitgebreide informatie tonen van de conversatie"
 
 #: src/core/io/video/video_format.hpp:21
 #, kde-format
@@ -1948,16 +1949,16 @@ msgstr "Keyframe toevoegen"
 #: src/core/model/animation/animatable_path.cpp:139
 #, kde-format
 msgid "Extend Shape"
-msgstr ""
+msgstr "Vorm uitbreiden"
 
 #: src/core/model/animation_container.cpp:54
 #, kde-format
 msgid "Animation Timing"
-msgstr ""
+msgstr "Timing van animatie"
 
 #: src/core/model/assets/assets.hpp:34
 msgid "values"
-msgstr ""
+msgstr "waarden"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_extra)
 #. i18n: ectx: property (text), widget (QToolButton, button_extra)
@@ -2007,7 +2008,7 @@ msgstr "Bezittingen"
 #: src/core/model/assets/bitmap.cpp:205
 #, kde-format
 msgid "Embedded image"
-msgstr ""
+msgstr "Ingebedde afbeelding"
 
 #: src/core/model/assets/bitmap.hpp:41
 #, kde-format
@@ -2040,12 +2041,12 @@ msgstr "Kleurverloop"
 #: src/core/model/assets/gradient.cpp:133
 #, kde-format
 msgid "Add color to %1"
-msgstr ""
+msgstr "Kleur aan %1 toevoegen"
 
 #: src/core/model/assets/gradient.cpp:152
 #, kde-format
 msgid "Remove color from %1"
-msgstr ""
+msgstr "Kleur verwijderen uit %1"
 
 #: src/core/model/assets/gradient.cpp:211
 #, kde-format
@@ -2095,7 +2096,7 @@ msgstr "Kegelvormig"
 #: src/core/model/assets/named_color.cpp:17
 #, kde-format
 msgid "Unnamed Color"
-msgstr ""
+msgstr "Kleur zonder naam"
 
 #: src/core/model/mask_settings.cpp:13
 #, kde-format
@@ -2105,7 +2106,7 @@ msgstr "Masker"
 #: src/core/model/object.hpp:90
 #, kde-format
 msgid "Unknown Object"
-msgstr ""
+msgstr "Onbekend object"
 
 #: src/core/model/shapes/ellipse.cpp:19 src/gui/tools/ellipse_tool.cpp:17
 #, kde-format
@@ -2143,7 +2144,7 @@ msgstr "Afbeelding"
 #: src/core/model/shapes/inflate_deflate.cpp:18
 #, kde-format
 msgid "Inflate and Deflate"
-msgstr ""
+msgstr "Compressie en decompressie"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/model/shapes/layer.hpp:81
@@ -2155,7 +2156,7 @@ msgstr "Laag"
 #: src/core/model/shapes/offset_path.cpp:342
 #, kde-format
 msgid "Offset Path"
-msgstr ""
+msgstr "Offsetpad"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/model/shapes/path.hpp:38
@@ -2168,12 +2169,12 @@ msgstr "Pad"
 #: src/core/model/shapes/polystar.hpp:48
 #, kde-format
 msgid "PolyStar"
-msgstr ""
+msgstr "PolyStar"
 
 #: src/core/model/shapes/precomp_layer.cpp:30
 #, kde-format
 msgid "Composition Layer"
-msgstr ""
+msgstr "Compositielaag"
 
 #: src/core/model/shapes/rect.hpp:31 src/gui/tools/rectangle_tool.hpp:20
 #, kde-format
@@ -2215,12 +2216,12 @@ msgstr "Lettertype wijzigen"
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:56
 #, kde-format
 msgid "Text"
-msgstr ""
+msgstr "Tekst"
 
 #: src/core/model/shapes/trim.cpp:24
 #, kde-format
 msgid "Trim Path"
-msgstr ""
+msgstr "Trimpad"
 
 #: src/core/model/shapes/zig_zag.cpp:139
 #, kde-format
