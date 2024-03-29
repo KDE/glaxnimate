@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-25 01:59+0000\n"
-"PO-Revision-Date: 2024-03-26 11:39+0100\n"
+"PO-Revision-Date: 2024-03-28 13:11+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 24.02.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2243,7 +2243,7 @@ msgstr "Transformeren"
 #: src/core/plugin/snippet.hpp:93
 #, kde-format
 msgid "# Glaxnimate snippet"
-msgstr ""
+msgstr "# Glaxnimate-tekstfragment"
 
 #: src/core/plugin/snippet.hpp:95
 #, kde-format
@@ -2251,6 +2251,8 @@ msgid ""
 "# You have access to the `window` and `document` global variables and the "
 "`glaxnimate` module"
 msgstr ""
+"# U hebt toegang tot de globale variabelen `window` en `document` en de "
+"`glaxnimate` module"
 
 #: src/core/plugin/snippet.hpp:97
 #, kde-format
@@ -2258,34 +2260,36 @@ msgid ""
 "# For documentation see https://glaxnimate.mattbas.org/contributing/"
 "scripting/"
 msgstr ""
+"# Voor documentatie zie https://glaxnimate.mattbas.org/contributing/"
+"scripting/"
 
 #: src/core/utils/gzip.cpp:30
 #, kde-format
 msgid "Could not decompress data"
-msgstr ""
+msgstr "Kon gegevens niet uitpakken"
 
 #: src/core/utils/trace_wrapper.cpp:160
 #, kde-format
 msgid "Traced %1"
-msgstr ""
+msgstr "Gevolgd %1"
 
 #: src/gui/cli.cpp:27
 #, kde-format
 msgctxt "@info:shell"
 msgid "Informational Options"
-msgstr ""
+msgstr "Opties voor informatie"
 
 #: src/gui/cli.cpp:28
 #, kde-format
 msgctxt "@info:shell"
 msgid "Show this help and exit"
-msgstr ""
+msgstr "Deze help tonen en afsluiten"
 
 #: src/gui/cli.cpp:29
 #, kde-format
 msgctxt "@info:shell"
 msgid "Show version information and exit"
-msgstr ""
+msgstr "Versie-informatie tonen en afsluiten"
 
 #: src/gui/cli.cpp:31
 #, kde-format
@@ -2303,19 +2307,19 @@ msgstr "Te openen bestand"
 #, kde-format
 msgctxt "@info:shell"
 msgid "When opening image files, trace them instead of embedding"
-msgstr ""
+msgstr "Bij openen van afbeeldingsbestanden, volg ze in plaats van inbedden"
 
 #: src/gui/cli.cpp:35
 #, kde-format
 msgctxt "@info:shell"
 msgid "GUI Options"
-msgstr ""
+msgstr "GUI-opties"
 
 #: src/gui/cli.cpp:36
 #, kde-format
 msgctxt "@info:shell"
 msgid "If present, doesn't restore the main window state"
-msgstr ""
+msgstr "Indien aanwezig, de status van het hoofdvenster niet herstellen"
 
 #: src/gui/cli.cpp:39
 #, kde-format
@@ -2324,24 +2328,26 @@ msgid ""
 "Specify the name of the local socket/named pipe to connect to a host "
 "application."
 msgstr ""
+"De naam van het lokale socket/genaamde pipe specificeren om met een "
+"hosttoepassing te verbinden."
 
 #: src/gui/cli.cpp:46
 #, kde-format
 msgctxt "@info:shell"
 msgid "Use a specific size for the main window"
-msgstr ""
+msgstr "Een specifieke grootte voor het hoofdvenster gebruiken"
 
 #: src/gui/cli.cpp:54
 #, kde-format
 msgctxt "@info:shell"
 msgid "Print the window id"
-msgstr ""
+msgstr "Het venster-id tonen"
 
 #: src/gui/cli.cpp:57
 #, kde-format
 msgctxt "@info:shell"
 msgid "Enables the debug menu"
-msgstr ""
+msgstr "Schakelt het debugmenu in"
 
 #: src/gui/cli.cpp:60
 #, kde-format
@@ -2354,6 +2360,8 @@ msgstr "Exportopties"
 msgctxt "@info:shell"
 msgid "Export the input file to the given file instead of starting the GUI"
 msgstr ""
+"Het invoerbestand exporteren naar het gegeven bestand in plaats van de GUI "
+"te starten"
 
 #: src/gui/cli.cpp:70
 #, kde-format
@@ -2362,18 +2370,21 @@ msgid ""
 "Specify the format for --export. If omitted it's determined based on the "
 "file name. See --export-format-list for a list of supported formats."
 msgstr ""
+"Het formaat voor --export specificeren. Indien weggelaten wordt het bepaald "
+"gebaseerd op de bestandsnaam. Zie --export-format-list voor een lijst met "
+"ondersteunde formaten."
 
 #: src/gui/cli.cpp:77
 #, kde-format
 msgctxt "@info:shell"
 msgid "Shows possible values for --export-format"
-msgstr ""
+msgstr "Toont mogelijke waarden voor --export-format"
 
 #: src/gui/cli.cpp:81
 #, kde-format
 msgctxt "@info:shell"
 msgid "Render Frame Options"
-msgstr ""
+msgstr "Opties voor renderen van frame"
 
 #: src/gui/cli.cpp:84
 #, kde-format
@@ -2381,6 +2392,8 @@ msgctxt "@info:shell"
 msgid ""
 "Render frames the input file to the given file instead of starting the GUI"
 msgstr ""
+"Frames in het invoerbestand renderen naar het gegeven bestand in plaats van "
+"de GUI te starten"
 
 #: src/gui/cli.cpp:91
 #, kde-format
@@ -2389,30 +2402,33 @@ msgid ""
 "Specify the format for --render. If omitted it's determined based on the "
 "file name. See --render-format-list for a list of supported formats."
 msgstr ""
+"Het formaat voor --render specificeren Indien weggelaten wordt het bepaald "
+"gebaseerd op de bestandsnaam. Zie --render-format-list voor een lijst met "
+"ondersteunde formaten."
 
 #: src/gui/cli.cpp:98
 #, kde-format
 msgctxt "@info:shell"
 msgid "Frame number to render, use `all` to render all frames"
-msgstr ""
+msgstr "Te renderen framenummer, gebruik `all` om alle frames te renderen"
 
 #: src/gui/cli.cpp:105
 #, kde-format
 msgctxt "@info:shell"
 msgid "Shows possible values for --render-format"
-msgstr ""
+msgstr "Toont mogelijke waarden voor --render-format"
 
 #: src/gui/cli.cpp:159
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not run the plugin"
-msgstr ""
+msgstr "Kon de plug-in niet uitvoeren"
 
 #: src/gui/cli.cpp:168
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not find an interpreter"
-msgstr ""
+msgstr "Kon een interpretator niet vinden"
 
 #: src/gui/cli.cpp:225
 #, kde-format
