@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-25 01:59+0000\n"
-"PO-Revision-Date: 2024-03-28 13:11+0100\n"
+"PO-Revision-Date: 2024-03-29 14:06+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -2434,25 +2434,25 @@ msgstr "Kon een interpretator niet vinden"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Unknown importer"
-msgstr ""
+msgstr "Onbekende importeur"
 
 #: src/gui/cli.cpp:232
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not open input file for reading"
-msgstr ""
+msgstr "Kon invoerbestand  niet openen voor lezen"
 
 #: src/gui/cli.cpp:246
 #, kde-format
 msgctxt "@info:shell"
 msgid "Error loading input file"
-msgstr ""
+msgstr "Fout bij laden van invoerbestand"
 
 #: src/gui/cli.cpp:260
 #, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to export"
-msgstr ""
+msgstr "U dient een bestand te specificeren om te exporteren"
 
 #: src/gui/cli.cpp:275
 #, kde-format
@@ -2460,36 +2460,38 @@ msgctxt "@info:shell"
 msgid ""
 "Unknown exporter. Use --export-format-list for a list of available formats"
 msgstr ""
+"Onbekende exporteur. Gebruik --export-format-list voor een lijst met "
+"beschikbare formaten"
 
 #: src/gui/cli.cpp:286
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not open output file for writing"
-msgstr ""
+msgstr "Kon uitvoerbestand niet openen voor schrijven"
 
 #: src/gui/cli.cpp:295
 #, kde-format
 msgctxt "@info:shell"
 msgid "Error converting to the output format"
-msgstr ""
+msgstr "Fout bij converteren naar het uitvoerformaat"
 
 #: src/gui/cli.cpp:315 src/gui/cli.cpp:335
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not save to %1"
-msgstr ""
+msgstr "Kon niet opslaan naar %1"
 
 #: src/gui/cli.cpp:344
 #, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to render"
-msgstr ""
+msgstr "U dient een bestand te specificeren om te renderen"
 
 #: src/gui/emoji/emoji_dialog.cpp:32
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Emoji"
-msgstr ""
+msgstr "Emoji selecteren"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:164
 #: src/gui/emoji/emoji_set_dialog.cpp:217
@@ -2520,13 +2522,13 @@ msgstr "Kon niet downloaden: %1"
 #, kde-format
 msgctxt "Package install status"
 msgid "Didn't download any files"
-msgstr ""
+msgstr "Er zijn geen bestanden gedownload"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, EmojiSetDialog)
 #: src/gui/emoji/emoji_set_dialog.ui:21
 #, kde-format
 msgid "Emoji Set"
-msgstr ""
+msgstr "Emoji-set"
 
 #. i18n: ectx: property (text), widget (QTableWidget, emoji_set_view)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
@@ -2606,7 +2608,7 @@ msgstr "Sluiten"
 #: src/gui/glaxnimate_app.cpp:79
 #, kde-format
 msgid "Glaxnimate Default"
-msgstr ""
+msgstr "Glaxnimate-standaard"
 
 #: src/gui/glaxnimate_app.cpp:170
 #, kde-format
@@ -2624,7 +2626,7 @@ msgstr "Taal"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Interface Language"
-msgstr ""
+msgstr "Taal van interface"
 
 #: src/gui/glaxnimate_app.cpp:175
 #, kde-format
@@ -2636,7 +2638,7 @@ msgstr "Pictogramthema"
 #, kde-format
 msgctxt "@option:check"
 msgid "Horizontal Timeline Scroll"
-msgstr ""
+msgstr "Horizontaal tijdlijn verschuiven"
 
 #: src/gui/glaxnimate_app.cpp:179
 #, kde-format
@@ -2645,12 +2647,14 @@ msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
 msgstr ""
+"Indien geactiveerd zal de tijdlijn standaard horizontaal verschuiven en "
+"verticaal met Shift of Alt"
 
 #: src/gui/glaxnimate_app.cpp:186
 #, kde-format
 msgctxt "@title settings group"
 msgid "New Animation Defaults"
-msgstr ""
+msgstr "Nieuwe animatie standaarden"
 
 #: src/gui/glaxnimate_app.cpp:188
 #, kde-format
@@ -2698,25 +2702,25 @@ msgstr "Openen / opslaan"
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Max Recent Files"
-msgstr ""
+msgstr "Maximum recente bestanden"
 
 #: src/gui/glaxnimate_app.cpp:207
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Backup Frequency"
-msgstr ""
+msgstr "Frequentie van reservekopie maken"
 
 #: src/gui/glaxnimate_app.cpp:208
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "How often to save a backup copy (in minutes)"
-msgstr ""
+msgstr "Hoe vaak een reservekopie opslaan (in minuten)"
 
 #: src/gui/glaxnimate_app.cpp:211
 #, kde-format
 msgctxt "@option:check"
 msgid "Use system file dialog"
-msgstr ""
+msgstr "Systeembestandsdialoog gebruiken"
 
 #: src/gui/glaxnimate_app.cpp:213
 #, kde-format
@@ -2733,12 +2737,12 @@ msgstr "Hulpmiddelen"
 #: src/gui/graphics/bezier_item.cpp:239
 #, kde-format
 msgid "Remove node tangent"
-msgstr ""
+msgstr "Raaklijn aan knooppunt verwijderen"
 
 #: src/gui/graphics/bezier_item.cpp:351
 #, kde-format
 msgid "Update path"
-msgstr ""
+msgstr "Pad bijwerken"
 
 #: src/gui/graphics/bezier_item.cpp:368
 #, kde-format
@@ -2748,12 +2752,12 @@ msgstr "Punt verwijderen"
 #: src/gui/graphics/bezier_item.cpp:392
 #, kde-format
 msgid "Set Start"
-msgstr ""
+msgstr "Start instellen"
 
 #: src/gui/graphics/bezier_item.cpp:421
 #, kde-format
 msgid "Update shape"
-msgstr ""
+msgstr "Vorm bijwerken"
 
 #: src/gui/graphics/composition_item.hpp:113
 #, kde-format
