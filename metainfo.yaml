@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: none
+# SPDX-License-Identifier: CC0-1.0
+fancyname: Glaxnimate
+description: Scripting API for Glaxnimate
+maintainer: mbasaglia
+deprecated: false
+release: true
+public_lib: true
+logo: data/logo/logo.svg
+platforms:
+    - name: Linux
+    - name: FreeBSD
+    - name: Windows
+    - name: macOS
+    - name: Android
+main_page: src/python/README.md
+public_doc_dir: docs/docs/contributing/scripting/
+public_source_dirs:
+    - src/python
+
