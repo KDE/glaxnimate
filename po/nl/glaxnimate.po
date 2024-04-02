@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-25 01:59+0000\n"
-"PO-Revision-Date: 2024-03-30 15:57+0100\n"
+"PO-Revision-Date: 2024-04-01 11:24+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -3357,7 +3357,7 @@ msgstr "Formaten"
 #: src/gui/widgets/dialogs/about_dialog.ui:464
 #, kde-format
 msgid "Input Formats"
-msgstr ""
+msgstr "Invoerformaten"
 
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_output)
@@ -3379,13 +3379,13 @@ msgstr "Extensies"
 #: src/gui/widgets/dialogs/about_dialog.ui:505
 #, kde-format
 msgid "Output Formats "
-msgstr ""
+msgstr "Uitvoerformaten"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:21
 #, kde-format
 msgid "Configure color detection"
-msgstr ""
+msgstr "Kleurdetectie configureren"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:33
@@ -3397,31 +3397,31 @@ msgstr "Algoritme"
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:44
 #, kde-format
 msgid "k-Means"
-msgstr ""
+msgstr "k-Means"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:49
 #, kde-format
 msgid "k-Modes"
-msgstr ""
+msgstr "k-Modi"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:54
 #, kde-format
 msgid "Octree"
-msgstr ""
+msgstr "Octree"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:59
 #, kde-format
 msgid "Edge Exclusion Modes"
-msgstr ""
+msgstr "Modi voor uitsluiten van randen"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:76
 #, kde-format
 msgid "Match"
-msgstr ""
+msgstr "Overeenkomst"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:83
@@ -3442,7 +3442,7 @@ msgstr "Geen"
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:112
 #, kde-format
 msgid "Most Frequent"
-msgstr ""
+msgstr "Meest vaak"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:117
@@ -3498,6 +3498,50 @@ msgid ""
 "weight:600;\">Most Frequent</span>: Find the color in the cluster that "
 "appears most often in the source image</li></ul></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">k-Means verdeelt de "
+"kleuren in clusters en verfijnt de toekenning bij iedere iteratie.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Dit is de beste optie bij "
+"het volgen van afbeeldingen met veel kleuren of schaduw.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Voor afbeeldingen met veel "
+"kleuren zal verhogen van het aantal iteraties betere resultaten opleveren "
+"maar het kan langzamer zijn.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">De optie <span style=\" "
+"font-style:italic;\">Overeenkomst</span> doet enige nabewerking:</p>\n"
+"<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
+"right: 0px; -qt-list-indent: 1;\"><li style=\"\" style=\" margin-top:12px; "
+"margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+"text-indent:0px;\"><span style=\" font-weight:600;\">Geen</span>: doet geen "
+"enkele nabewerking en geeft het gemiddelde terug (merk op dat dit kan "
+"resulteren in kleuren die niet aanwezig zijn in de originele afbeelding)</"
+"li>\n"
+"<li style=\"\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">Dichtstbijzijnd</span>: zoek de kleur in de originele "
+"afbeelding die het dichtstbijzijnd is met het gemiddelde</li>\n"
+"<li style=\"\" style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">Meest vaak</span>: zoek de kleur in het cluster dat het vaakst "
+"in de bronafbeelding voor komt</li></ul></body></html>"
 
 #. i18n: ectx: property (plainText), widget (QPlainTextEdit, plainTextEdit)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:159
@@ -3509,6 +3553,12 @@ msgid ""
 "\n"
 "This is the best option when tracing images with flat colors."
 msgstr ""
+"k-Modi geeft u de kleuren die het vaakst voor komen in de bronafbeelding.\n"
+"\n"
+"Het is erg snel maar het geeft geen accurate kleuren voor complex "
+"afbeeldingen.\n"
+"\n"
+"Dit is de beste optie bij volgen van afbeeldingen met vlakke kleuren."
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_2)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:178
@@ -3529,6 +3579,20 @@ msgid ""
 "colors for complex images but it might result into colors that are not "
 "present in the source image.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Het algoritme Octree mengt "
+"gelijke kleuren van onderaan.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Het geeft meer accurate "
+"kleuren voor complexe afbeeldingen maar het kan resulteren in kleuren die "
+"niet aanwezig zijn in de bronafbeelding.</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:189
@@ -3566,7 +3630,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:21
 #, kde-format
 msgid "Document Metadata"
-msgstr ""
+msgstr "Metagegevens van documenten"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:38
@@ -3620,6 +3684,8 @@ msgid ""
 "Could not create directory\n"
 "%1"
 msgstr ""
+"Kon map niet aanmaken\n"
+"%1"
 
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:124
 #, kde-format
@@ -3637,7 +3703,7 @@ msgstr "Als afbeeldingensequentie exporteren"
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:30
 #, kde-format
 msgid "To Frame"
-msgstr ""
+msgstr "Naar frame"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:43
@@ -3649,13 +3715,13 @@ msgstr "Bestandsnaam"
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:56
 #, kde-format
 msgid "Use {frame} to represent the frame number"
-msgstr ""
+msgstr "Gebruik {frame} om het framenummer weer te geven"
 
 #. i18n: ectx: property (text), widget (QLineEdit, input_name)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:59
 #, kde-format
 msgid "Frame {frame}"
-msgstr ""
+msgstr "Frame {frame}"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:73
@@ -3667,7 +3733,7 @@ msgstr "Framestap"
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:112
 #, kde-format
 msgid "From Frame"
-msgstr ""
+msgstr "Uit Frame"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_select)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:132
@@ -3685,14 +3751,14 @@ msgstr "f"
 #: src/gui/widgets/dialogs/timing_dialog.ui:65
 #, kde-format
 msgid "\""
-msgstr ""
+msgstr "\""
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::FollowPathDialog)
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:128
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:21
 #, kde-format
 msgid "Follow Path"
-msgstr ""
+msgstr "Volg pad"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -3709,7 +3775,7 @@ msgstr "Tijdsduur"
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:34
 #, kde-format
 msgid "Time Units"
-msgstr ""
+msgstr "Tijdseenheden"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:48
@@ -3757,7 +3823,7 @@ msgstr "Starttijd"
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:49
 #, kde-format
 msgid "New Animation"
-msgstr ""
+msgstr "Nieuw animatie"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:55
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:63
@@ -3775,7 +3841,7 @@ msgstr "Kon bestand niet opslaan"
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:79
 #, kde-format
 msgid "File exported"
-msgstr ""
+msgstr "Bestand geëxporteerd"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:73
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:81
@@ -3792,7 +3858,7 @@ msgstr "Waarschuwing"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:54
 #, kde-format
 msgid "&File"
-msgstr ""
+msgstr "&Bestand"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_open_recent)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:58
@@ -3893,7 +3959,7 @@ msgstr "&Document"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:238
 #, kde-format
 msgid "Render Single &Frame"
-msgstr ""
+msgstr "Enkel &Frame renderen"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_web_preview)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:249
