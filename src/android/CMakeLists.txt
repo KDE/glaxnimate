@@ -27,11 +27,12 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/external/QtAppSetup/src
     ${CMAKE_SOURCE_DIR}/src/core
     ${CMAKE_SOURCE_DIR}/src/gui
-    ${CMAKE_SOURCE_DIR}/external/QtColorWidgets/include
+    ${CMAKE_SOURCE_DIR}/external/Qt-Color-Widgets/include
 )
 
 if (ANDROID)
-    find_package(Qt${QT_VERSION_MAJOR} COMPONENTS AndroidExtras Svg REQUIRED)
+    find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Svg REQUIRED)
+    find_package(Qt6 REQUIRED COMPONENTS Core)
 endif()
 
 add_executable(${PROJECT_SLUG}_mobile ${SOURCES})
@@ -53,15 +54,19 @@ target_link_libraries(${PROJECT_SLUG}_mobile PUBLIC
 
 if (ANDROID)
     target_link_libraries(${PROJECT_SLUG}_mobile PUBLIC
-        Qt${QT_VERSION_MAJOR}::AndroidExtras
         Qt${QT_VERSION_MAJOR}::Svg
     )
+    target_link_libraries(${PROJECT_SLUG}_mobile PRIVATE Qt6::CorePrivate)
 endif()
 
 string(TIMESTAMP VERSION_CODE "%s" UTC)
 
 #install(TARGETS ${PROJECT_SLUG}_mobile ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install(TARGETS ${PROJECT_SLUG}_mobile)
+
+if(ANDROID)
+    ecm_add_android_apk(${PROJECT_SLUG}_mobile ANDROID_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android)
+endif()
 
 # Download Twemoji
 add_custom_command(

@@ -7,6 +7,7 @@
 #include "main_window.hpp"
 #include "ui_main_window.h"
 
+#include <QActionGroup>
 #include <QMessageBox>
 #include <QPointer>
 #include <QScreen>
@@ -74,7 +75,7 @@ public:
     QHBoxLayout* layout_edit_actions = nullptr;
     QAction* action_undo = nullptr;
     QAction* action_redo = nullptr;
-    StickerPackBuilderDialog telegram_export_dialog;
+    //StickerPackBuilderDialog telegram_export_dialog;
     gui::style::PropertyDelegate property_delegate;
     QActionGroup *view_actions = nullptr;
     TimelineSlider* timeline_slider;
@@ -156,7 +157,7 @@ public:
     {
         auto lay = new QHBoxLayout();
         lay->setSpacing(0);
-        lay->setMargin(0);
+        lay->setContentsMargins(0, 0, 0, 0);
         return lay;
     }
 
@@ -495,7 +496,7 @@ public:
     void init_toolbar_edit()
     {
         layout_edit_actions = new QHBoxLayout();
-        layout_edit_actions->setMargin(0);
+        layout_edit_actions->setContentsMargins(0, 0, 0, 0);
         layout_edit_actions->setSpacing(0);
         ui.widget_edit_actions->setLayout(layout_edit_actions);
 
@@ -801,8 +802,10 @@ public:
 
     void document_export_telegram()
     {
+        /*
         telegram_export_dialog.set_current_file(current_document.get());
         telegram_export_dialog.exec();
+        */
     }
 
     void adjust_size()
@@ -963,7 +966,7 @@ public:
                 QVBoxLayout* lay = new QVBoxLayout();
                 prop_widget->setLayout(lay);
                 lay->addWidget(wid);
-                lay->setMargin(0);
+                lay->setContentsMargins(0, 0, 0, 0);
                 lay->setSpacing(0);
                 wid->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 
@@ -1070,6 +1073,7 @@ public:
 
     void import_emoji()
     {
+        /*
         qDebug() << "foo";
         emoji::EmojiDialog& dialog = telegram_export_dialog.emoji_dialog();
         dialog.show();
@@ -1095,6 +1099,7 @@ public:
             return;
 
         parent->paste_document(&imported, i18n("Import Emoji"), true);
+        */
     }
 };
 

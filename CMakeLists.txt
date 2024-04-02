@@ -103,7 +103,7 @@ endif()
 
 
 # Python
-if ( NOT ANDROID )
+if ( NOT MOBILE_UI )
     set(PYTHON_SCRIPTING_ENABLED ON)
 else()
     set(PYTHON_SCRIPTING_ENABLED OFF)
@@ -122,9 +122,14 @@ else()
 endif()
 
 # QT_MAJOR_VERSION is the common name in KDE apps and infrastructure.
+# BUILD_WITH_QT6 is another thing on KDE infrastructure.
 # However some third-party submodules use QT_VERSION_MAJOR so we need to set that too.
 if (NOT DEFINED QT_MAJOR_VERSION)
-    set(QT_MAJOR_VERSION 5)
+    if(BUILD_WITH_QT6)
+        set(QT_MAJOR_VERSION 6)
+    else()
+        set(QT_MAJOR_VERSION 5)
+    endif()
 endif()
 set(QT_VERSION_MAJOR ${QT_MAJOR_VERSION})
 
@@ -139,6 +144,9 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_MODULE_PATH})
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings)
+if (QT_MAJOR_VERSION STREQUAL "6")
+    include(ECMAddAndroidApk)
+endif()
 
 # TODO: The following definitons should be enabled
 remove_definitions(

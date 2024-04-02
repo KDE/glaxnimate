@@ -54,15 +54,10 @@ QUrl glaxnimate::AppInfo::url_donate() const
 
 void glaxnimate::AppInfo::init_qapplication() const
 {
-    qApp->setApplicationName(slug());
-    qApp->setApplicationVersion(version());
-    qApp->setOrganizationName(organization());
-    qApp->setApplicationDisplayName(name());
-
     KAboutData aboutData(
-        QStringLiteral(PROJECT_SLUG),
+        slug(),
         name(),
-        QStringLiteral(PROJECT_VERSION),
+        version(),
         QStringLiteral(PROJECT_DESCRIPTION),
         KAboutLicense::GPL,
         i18n("(c) 2019-2023"),
@@ -73,4 +68,5 @@ void glaxnimate::AppInfo::init_qapplication() const
     );
 
     KAboutData::setApplicationData(aboutData);
+    qApp->setOrganizationName(organization());
 }

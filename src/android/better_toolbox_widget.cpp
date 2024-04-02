@@ -41,7 +41,7 @@ glaxnimate::android::BetterToolboxWidget::BetterToolboxWidget(QWidget *parent)
     : QWidget(parent), d(std::make_unique<Private>())
 {
     d->layout = new QVBoxLayout(this);
-    d->layout->setMargin(0);
+    d->layout->setContentsMargins(0, 0, 0, 0);
     d->layout->setSpacing(0);
     setLayout(d->layout);
     d->group.setExclusive(true);

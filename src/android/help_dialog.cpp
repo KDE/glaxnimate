@@ -19,7 +19,7 @@ glaxnimate::android::HelpDialog::HelpDialog(QWidget *parent)
     : BaseDialog(parent)
 {
     QGridLayout* ml = new QGridLayout(this);
-    ml->setMargin(0);
+    ml->setContentsMargins(0, 0, 0, 0);
     setLayout(ml);
 
     QScrollArea* area = new QScrollArea(this);
@@ -33,7 +33,7 @@ glaxnimate::android::HelpDialog::HelpDialog(QWidget *parent)
     area->setWidget(wid);
 
     QGridLayout* lay = new QGridLayout(wid);
-    lay->setMargin(0);
+    lay->setContentsMargins(0, 0, 0, 0);
     wid->setLayout(lay);
 
     QString supported_formats_import;

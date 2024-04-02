@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-18 00:40+0000\n"
+"POT-Creation-Date: 2024-03-25 01:59+0000\n"
 "PO-Revision-Date: 2023-12-17 14:36+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -602,72 +602,72 @@ msgid "Brings the selection further to the front."
 msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_timeline)
-#: src/android/main_window.cpp:411
+#: src/android/main_window.cpp:412
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:731
 #, kde-format
 msgid "Timeline"
 msgstr "Časová os"
 
-#: src/android/main_window.cpp:416
+#: src/android/main_window.cpp:417
 #, kde-format
 msgid "Fill Style"
 msgstr "Štýl výplne"
 
-#: src/android/main_window.cpp:421
+#: src/android/main_window.cpp:422
 #, fuzzy, kde-format
 msgid "Stroke Style"
 msgstr "Ťah (štýl)"
 
-#: src/android/main_window.cpp:451 src/gui/widgets/menus/node_menu.cpp:105
+#: src/android/main_window.cpp:452 src/gui/widgets/menus/node_menu.cpp:105
 #, fuzzy, kde-format
 msgid "Raise"
 msgstr "Presunúť dopredu"
 
-#: src/android/main_window.cpp:456 src/gui/widgets/menus/node_menu.cpp:109
+#: src/android/main_window.cpp:457 src/gui/widgets/menus/node_menu.cpp:109
 #, fuzzy, kde-format
 msgid "Lower"
 msgstr "Presunúť dozadu"
 
-#: src/android/main_window.cpp:463 src/gui/tools/select_tool.cpp:408
+#: src/android/main_window.cpp:464 src/gui/tools/select_tool.cpp:408
 #: src/gui/widgets/dialogs/selection_manager.cpp:85
 #, kde-format
 msgid "Cut"
 msgstr "Vystrihnúť"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
-#: src/android/main_window.cpp:466 src/gui/tools/select_tool.cpp:410
+#: src/android/main_window.cpp:467 src/gui/tools/select_tool.cpp:410
 #: src/gui/widgets/dialogs/about_dialog.ui:414
 #, fuzzy, kde-format
 msgid "Copy"
 msgstr "Kopírovať"
 
-#: src/android/main_window.cpp:469 src/gui/tools/select_tool.cpp:412
+#: src/android/main_window.cpp:470 src/gui/tools/select_tool.cpp:412
 #: src/gui/widgets/dialogs/selection_manager.cpp:166
 #, kde-format
 msgid "Paste"
 msgstr "Vložiť"
 
-#: src/android/main_window.cpp:473
+#: src/android/main_window.cpp:474
 #, kde-format
 msgid "Delete Selected"
 msgstr "Odstrániť vybrané"
 
-#: src/android/main_window.cpp:481
+#: src/android/main_window.cpp:482
 #, kde-format
 msgid "Raise Above"
 msgstr ""
 
-#: src/android/main_window.cpp:485
+#: src/android/main_window.cpp:486
 #, kde-format
 msgid "Lower Below"
 msgstr ""
 
-#: src/android/main_window.cpp:489
+#: src/android/main_window.cpp:490
 #, fuzzy, kde-format
 msgid "Undo"
 msgstr "Späť"
 
-#: src/android/main_window.cpp:491
+#: src/android/main_window.cpp:492
 #, fuzzy, kde-format
 msgid "Redo"
 msgstr "Znovu"
@@ -675,7 +675,7 @@ msgstr "Znovu"
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #. i18n: ectx: property (text), widget (QToolButton, btn_new)
 #. i18n: ectx: property (text), widget (QToolButton, preview_1)
-#: src/android/main_window.cpp:505
+#: src/android/main_window.cpp:506
 #: src/gui/widgets/docks/snippet_list_widget.ui:29
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:114
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:45
@@ -684,7 +684,7 @@ msgid "New"
 msgstr "Nové"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
-#: src/android/main_window.cpp:508
+#: src/android/main_window.cpp:509
 #: src/gui/widgets/font/external_font_widget.ui:47
 #, fuzzy, kde-format
 msgid "Open..."
@@ -698,7 +698,7 @@ msgstr "Otvoriť"
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #. i18n: ectx: property (text), widget (QPushButton, button_open)
-#: src/android/main_window.cpp:510 src/gui/widgets/dialogs/about_dialog.ui:197
+#: src/android/main_window.cpp:511 src/gui/widgets/dialogs/about_dialog.ui:197
 #: src/gui/widgets/dialogs/about_dialog.ui:200
 #: src/gui/widgets/dialogs/about_dialog.ui:229
 #: src/gui/widgets/dialogs/about_dialog.ui:232
@@ -712,76 +712,76 @@ msgstr "Otvoriť"
 msgid "Open"
 msgstr "Otvoriť"
 
-#: src/android/main_window.cpp:513
+#: src/android/main_window.cpp:514
 #, kde-format
 msgid "Import as Composition"
 msgstr ""
 
-#: src/android/main_window.cpp:516
+#: src/android/main_window.cpp:517
 #, fuzzy, kde-format
 msgid "Save..."
 msgstr "Uložiť..."
 
 #. i18n: ectx: property (text), widget (QToolButton, preview_2)
-#: src/android/main_window.cpp:518
+#: src/android/main_window.cpp:519
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:128
 #, fuzzy, kde-format
 msgid "Save"
 msgstr "Uložiť"
 
-#: src/android/main_window.cpp:521
+#: src/android/main_window.cpp:522
 #, fuzzy, kde-format
 msgid "Save As"
 msgstr "Uložiť ako"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_export)
-#: src/android/main_window.cpp:524
+#: src/android/main_window.cpp:525
 #: src/android/sticker_pack_builder_dialog.ui:154
 #, fuzzy, kde-format
 msgid "Export"
 msgstr "Exportovať"
 
-#: src/android/main_window.cpp:527
+#: src/android/main_window.cpp:528
 #, kde-format
 msgid "Save Frame as PNG"
 msgstr ""
 
-#: src/android/main_window.cpp:531
+#: src/android/main_window.cpp:532
 #, kde-format
 msgid "Send to Telegram"
 msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
-#: src/android/main_window.cpp:543
+#: src/android/main_window.cpp:544
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:525
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #, kde-format
 msgid "Layers"
 msgstr "Vrstvy"
 
-#: src/android/main_window.cpp:549
+#: src/android/main_window.cpp:550
 #, kde-format
 msgid "Advanced Properties"
 msgstr "&Rozšírené vlastnosti"
 
-#: src/android/main_window.cpp:554
+#: src/android/main_window.cpp:555
 #, fuzzy, kde-format
 msgid "Help"
 msgstr "Pomocník"
 
-#: src/android/main_window.cpp:622
+#: src/android/main_window.cpp:623
 #, fuzzy, kde-format
 msgid "Animation.%1"
 msgstr "Animácia"
 
-#: src/android/main_window.cpp:664
+#: src/android/main_window.cpp:665
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:293
 #, kde-format
 msgid "Closing Animation"
 msgstr ""
 
-#: src/android/main_window.cpp:665
+#: src/android/main_window.cpp:666
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:294
 #, kde-format
 msgid ""
@@ -789,8 +789,8 @@ msgid ""
 "Do you want to save your changes?"
 msgstr ""
 
-#: src/android/main_window.cpp:749 src/android/main_window.cpp:753
-#: src/android/main_window.cpp:886
+#: src/android/main_window.cpp:750 src/android/main_window.cpp:754
+#: src/android/main_window.cpp:889
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:481
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:485
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:825
@@ -800,41 +800,36 @@ msgstr ""
 msgid "Import File"
 msgstr "Importovať súbor"
 
-#: src/android/main_window.cpp:749
+#: src/android/main_window.cpp:750
 #, kde-format
 msgid "Could not import file"
 msgstr ""
 
-#: src/android/main_window.cpp:788
+#: src/android/main_window.cpp:789
 #, kde-format
 msgid "Frame %1.png"
 msgstr ""
 
-#: src/android/main_window.cpp:977
+#: src/android/main_window.cpp:980
 #, kde-format
 msgid "Add keyframe"
 msgstr "Pridať kľúčovú snímku"
 
-#: src/android/main_window.cpp:986
+#: src/android/main_window.cpp:989
 #, fuzzy, kde-format
 msgid "Remove keyframe"
 msgstr "Vymazať kľúčovú snímku"
 
-#: src/android/main_window.cpp:1001
+#: src/android/main_window.cpp:1004
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:178
 #, kde-format
 msgid "Clear Animations"
 msgstr ""
 
-#: src/android/main_window.cpp:1066
+#: src/android/main_window.cpp:1069
 #, kde-format
 msgid "Emoji"
-msgstr ""
-
-#: src/android/main_window.cpp:1097
-#, kde-format
-msgid "Import Emoji"
 msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
@@ -892,12 +887,12 @@ msgstr "Vyčistiť"
 msgid "Add Current"
 msgstr ""
 
-#: src/android/telegram_intent.cpp:47
+#: src/android/telegram_intent.cpp:45
 #, kde-format
 msgid "Could not start activity, is Telegram installed?"
 msgstr ""
 
-#: src/core/app_info.cpp:68
+#: src/core/app_info.cpp:63
 #, kde-format
 msgid "(c) 2019-2023"
 msgstr "(c) 2019-2023"

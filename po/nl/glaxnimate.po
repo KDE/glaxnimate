@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-18 00:40+0000\n"
-"PO-Revision-Date: 2024-03-07 15:31+0100\n"
+"POT-Creation-Date: 2024-03-25 01:59+0000\n"
+"PO-Revision-Date: 2024-04-01 11:24+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -303,6 +303,13 @@ msgid ""
 "Then layers are created that appear in and out at uniform time intervals. "
 "You can use these layers for frame-by-frame animation."
 msgstr ""
+"Deze dialoog maakt een laag om te helpen met frame voor frame animatie.\n"
+"\n"
+"U specificeert de tijdsperiode die u wilt splitsen in frames en het aantal "
+"frames dat u wilt.\n"
+"\n"
+"Daarna worden lagen gemaakt die in en uit verschijnen op uniforme "
+"tijdsintervallen. U kunt deze lagen gebruiken voor frame-bij-frame animatie."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: data/plugins/FrameByFrame/create_frames.ui:43
@@ -635,72 +642,72 @@ msgid "Brings the selection further to the front."
 msgstr "De selectie verder voorwaarts brengen."
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_timeline)
-#: src/android/main_window.cpp:411
+#: src/android/main_window.cpp:412
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:731
 #, kde-format
 msgid "Timeline"
 msgstr "Tijdlijn"
 
-#: src/android/main_window.cpp:416
+#: src/android/main_window.cpp:417
 #, kde-format
 msgid "Fill Style"
 msgstr "Vulstijl"
 
-#: src/android/main_window.cpp:421
+#: src/android/main_window.cpp:422
 #, kde-format
 msgid "Stroke Style"
 msgstr "Streekstijl"
 
-#: src/android/main_window.cpp:451 src/gui/widgets/menus/node_menu.cpp:105
+#: src/android/main_window.cpp:452 src/gui/widgets/menus/node_menu.cpp:105
 #, kde-format
 msgid "Raise"
 msgstr "Naar voren"
 
-#: src/android/main_window.cpp:456 src/gui/widgets/menus/node_menu.cpp:109
+#: src/android/main_window.cpp:457 src/gui/widgets/menus/node_menu.cpp:109
 #, kde-format
 msgid "Lower"
 msgstr "Naar achter"
 
-#: src/android/main_window.cpp:463 src/gui/tools/select_tool.cpp:408
+#: src/android/main_window.cpp:464 src/gui/tools/select_tool.cpp:408
 #: src/gui/widgets/dialogs/selection_manager.cpp:85
 #, kde-format
 msgid "Cut"
 msgstr "Knippen"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
-#: src/android/main_window.cpp:466 src/gui/tools/select_tool.cpp:410
+#: src/android/main_window.cpp:467 src/gui/tools/select_tool.cpp:410
 #: src/gui/widgets/dialogs/about_dialog.ui:414
 #, kde-format
 msgid "Copy"
 msgstr "Kopiëren"
 
-#: src/android/main_window.cpp:469 src/gui/tools/select_tool.cpp:412
+#: src/android/main_window.cpp:470 src/gui/tools/select_tool.cpp:412
 #: src/gui/widgets/dialogs/selection_manager.cpp:166
 #, kde-format
 msgid "Paste"
 msgstr "Plakken"
 
-#: src/android/main_window.cpp:473
+#: src/android/main_window.cpp:474
 #, kde-format
 msgid "Delete Selected"
 msgstr "Selectie verwijderen"
 
-#: src/android/main_window.cpp:481
+#: src/android/main_window.cpp:482
 #, kde-format
 msgid "Raise Above"
 msgstr "Erboven heffen"
 
-#: src/android/main_window.cpp:485
+#: src/android/main_window.cpp:486
 #, kde-format
 msgid "Lower Below"
 msgstr "Er onder verlagen"
 
-#: src/android/main_window.cpp:489
+#: src/android/main_window.cpp:490
 #, kde-format
 msgid "Undo"
 msgstr "Ongedaan maken"
 
-#: src/android/main_window.cpp:491
+#: src/android/main_window.cpp:492
 #, kde-format
 msgid "Redo"
 msgstr "Opnieuw"
@@ -708,7 +715,7 @@ msgstr "Opnieuw"
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #. i18n: ectx: property (text), widget (QToolButton, btn_new)
 #. i18n: ectx: property (text), widget (QToolButton, preview_1)
-#: src/android/main_window.cpp:505
+#: src/android/main_window.cpp:506
 #: src/gui/widgets/docks/snippet_list_widget.ui:29
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:114
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:45
@@ -717,7 +724,7 @@ msgid "New"
 msgstr "Nieuw"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
-#: src/android/main_window.cpp:508
+#: src/android/main_window.cpp:509
 #: src/gui/widgets/font/external_font_widget.ui:47
 #, kde-format
 msgid "Open..."
@@ -731,7 +738,7 @@ msgstr "Openen..."
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #. i18n: ectx: property (text), widget (QPushButton, button_open)
-#: src/android/main_window.cpp:510 src/gui/widgets/dialogs/about_dialog.ui:197
+#: src/android/main_window.cpp:511 src/gui/widgets/dialogs/about_dialog.ui:197
 #: src/gui/widgets/dialogs/about_dialog.ui:200
 #: src/gui/widgets/dialogs/about_dialog.ui:229
 #: src/gui/widgets/dialogs/about_dialog.ui:232
@@ -745,76 +752,76 @@ msgstr "Openen..."
 msgid "Open"
 msgstr "Openen"
 
-#: src/android/main_window.cpp:513
+#: src/android/main_window.cpp:514
 #, kde-format
 msgid "Import as Composition"
 msgstr "Als compositie importeren"
 
-#: src/android/main_window.cpp:516
+#: src/android/main_window.cpp:517
 #, kde-format
 msgid "Save..."
 msgstr "Opslaan..."
 
 #. i18n: ectx: property (text), widget (QToolButton, preview_2)
-#: src/android/main_window.cpp:518
+#: src/android/main_window.cpp:519
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:128
 #, kde-format
 msgid "Save"
 msgstr "Opslaan"
 
-#: src/android/main_window.cpp:521
+#: src/android/main_window.cpp:522
 #, kde-format
 msgid "Save As"
 msgstr "Opslaan als"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_export)
-#: src/android/main_window.cpp:524
+#: src/android/main_window.cpp:525
 #: src/android/sticker_pack_builder_dialog.ui:154
 #, kde-format
 msgid "Export"
 msgstr "Exporteren"
 
-#: src/android/main_window.cpp:527
+#: src/android/main_window.cpp:528
 #, kde-format
 msgid "Save Frame as PNG"
 msgstr "Frame opslaan als PNG"
 
-#: src/android/main_window.cpp:531
+#: src/android/main_window.cpp:532
 #, kde-format
 msgid "Send to Telegram"
 msgstr "Naar Telegram verzenden"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
-#: src/android/main_window.cpp:543
+#: src/android/main_window.cpp:544
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:525
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #, kde-format
 msgid "Layers"
 msgstr "Lagen"
 
-#: src/android/main_window.cpp:549
+#: src/android/main_window.cpp:550
 #, kde-format
 msgid "Advanced Properties"
 msgstr "Uitgebreide eigenschappen"
 
-#: src/android/main_window.cpp:554
+#: src/android/main_window.cpp:555
 #, kde-format
 msgid "Help"
 msgstr "Help"
 
-#: src/android/main_window.cpp:622
+#: src/android/main_window.cpp:623
 #, kde-format
 msgid "Animation.%1"
 msgstr "Animatie.%1"
 
-#: src/android/main_window.cpp:664
+#: src/android/main_window.cpp:665
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:293
 #, kde-format
 msgid "Closing Animation"
 msgstr "Animatie sluiten"
 
-#: src/android/main_window.cpp:665
+#: src/android/main_window.cpp:666
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:294
 #, kde-format
 msgid ""
@@ -824,8 +831,8 @@ msgstr ""
 "De animatie heeft niet opgeslagen wijzigingen.\n"
 "Wilt u uw wijzigingen opslaan?"
 
-#: src/android/main_window.cpp:749 src/android/main_window.cpp:753
-#: src/android/main_window.cpp:886
+#: src/android/main_window.cpp:750 src/android/main_window.cpp:754
+#: src/android/main_window.cpp:889
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:481
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:485
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:825
@@ -835,42 +842,37 @@ msgstr ""
 msgid "Import File"
 msgstr "Bestand importeren"
 
-#: src/android/main_window.cpp:749
+#: src/android/main_window.cpp:750
 #, kde-format
 msgid "Could not import file"
 msgstr "Kon bestand niet importeren"
 
-#: src/android/main_window.cpp:788
+#: src/android/main_window.cpp:789
 #, kde-format
 msgid "Frame %1.png"
 msgstr "Frame %1.png"
 
-#: src/android/main_window.cpp:977
+#: src/android/main_window.cpp:980
 #, kde-format
 msgid "Add keyframe"
 msgstr "Keyframe toevoegen"
 
-#: src/android/main_window.cpp:986
+#: src/android/main_window.cpp:989
 #, kde-format
 msgid "Remove keyframe"
 msgstr "Keyframe verwijderen"
 
-#: src/android/main_window.cpp:1001
+#: src/android/main_window.cpp:1004
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:178
 #, kde-format
 msgid "Clear Animations"
 msgstr "Animaties wissen"
 
-#: src/android/main_window.cpp:1066
+#: src/android/main_window.cpp:1069
 #, kde-format
 msgid "Emoji"
 msgstr "Emoji"
-
-#: src/android/main_window.cpp:1097
-#, kde-format
-msgid "Import Emoji"
-msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
 #: src/android/main_window.ui:21 src/core/app_info.cpp:17
@@ -881,7 +883,7 @@ msgstr "Glaxnimate"
 #: src/android/sticker_pack_builder_dialog.cpp:156
 #, kde-format
 msgid "Too many stickers"
-msgstr ""
+msgstr "Teveel stickers"
 
 #: src/android/sticker_pack_builder_dialog.cpp:162
 #: src/android/sticker_pack_builder_dialog.cpp:171
@@ -892,24 +894,24 @@ msgstr "Kon bestand niet openen"
 #: src/android/sticker_pack_builder_dialog.cpp:222
 #, kde-format
 msgid "Cannot save as TGS"
-msgstr ""
+msgstr "Kan niet opslaan als TGS"
 
 #: src/android/sticker_pack_builder_dialog.cpp:263
 #, kde-format
 msgid "Are you sure you want to remove all stickers from the pack?"
-msgstr ""
+msgstr "Wilt u alle stickers uit het pak verwijderen?"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, StickerPackBuilderDialog)
 #: src/android/sticker_pack_builder_dialog.ui:21
 #, kde-format
 msgid "Export Stickers"
-msgstr ""
+msgstr "Stickers exporteren"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_add)
 #: src/android/sticker_pack_builder_dialog.ui:116
 #, kde-format
 msgid "Open Sticker"
-msgstr ""
+msgstr "Sticker openen"
 
 #. i18n: ectx: property (text), widget (QToolButton, btn_clear_console)
 #. i18n: ectx: property (text), widget (QToolButton, btn_clear)
@@ -925,14 +927,14 @@ msgstr "Wissen"
 #: src/android/sticker_pack_builder_dialog.ui:173
 #, kde-format
 msgid "Add Current"
-msgstr ""
+msgstr "Huidige toevoegen"
 
-#: src/android/telegram_intent.cpp:47
+#: src/android/telegram_intent.cpp:45
 #, kde-format
 msgid "Could not start activity, is Telegram installed?"
-msgstr ""
+msgstr "Kon activiteit niet starten, is Telgram geïnstalleerd?"
 
-#: src/core/app_info.cpp:68
+#: src/core/app_info.cpp:63
 #, kde-format
 msgid "(c) 2019-2023"
 msgstr "(c) 2019-2023"
@@ -940,12 +942,12 @@ msgstr "(c) 2019-2023"
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
 msgid "Update %1 keyframe at %2"
-msgstr ""
+msgstr "%1 keyframe bijwerken bij %2"
 
 #: src/core/command/animation_commands.cpp:86
 #, kde-format
 msgid "Remove %1 keyframe at %2"
-msgstr ""
+msgstr "%1 keyframe verwijderen bij %2"
 
 #: src/core/command/animation_commands.cpp:117
 #, kde-format
@@ -955,25 +957,25 @@ msgstr "%1 keyframe %2 verwijderen"
 #: src/core/command/animation_commands.cpp:289
 #, kde-format
 msgid "Add keyframe for %1 at %2"
-msgstr ""
+msgstr "Keyframe toevoegen voor %1 bij %2"
 
 #: src/core/command/animation_commands.cpp:292
 #, kde-format
 msgid "Update %1 at %2"
-msgstr ""
+msgstr "%1 bijwerken bij %2"
 
 #: src/core/command/animation_commands.cpp:294
 #: src/core/command/property_commands.hpp:24
 #: src/core/model/animation/animatable.cpp:171
 #, kde-format
 msgid "Update %1"
-msgstr ""
+msgstr "%1 bijwerken"
 
 #: src/core/command/animation_commands.cpp:307
 #: src/gui/widgets/timeline/timeline_items.cpp:537
 #, kde-format
 msgid "Update keyframe transition"
-msgstr ""
+msgstr "Overgang van keyframe bijwerken"
 
 #: src/core/command/animation_commands.cpp:358
 #, kde-format
@@ -983,28 +985,28 @@ msgstr "Keyframe verplaatsen"
 #: src/core/command/animation_commands.cpp:381
 #, kde-format
 msgid "Remove animations from %1"
-msgstr ""
+msgstr "Animaties uit %1 verwijderen"
 
 #: src/core/command/animation_commands.cpp:432
 #, kde-format
 msgid "Update animation path"
-msgstr ""
+msgstr "Animatiepad bijwerken"
 
 #: src/core/command/animation_commands.hpp:242
 #, kde-format
 msgid "Stretch Time"
-msgstr ""
+msgstr "Uitrektijd"
 
 #: src/core/command/object_list_commands.hpp:26
 #, kde-format
 msgid "Create %1"
-msgstr ""
+msgstr "%1 aanmaken"
 
 #: src/core/command/object_list_commands.hpp:61
 #: src/core/command/object_list_commands.hpp:67
 #, kde-format
 msgid "Remove %1"
-msgstr ""
+msgstr "%1 verwijderen"
 
 #: src/core/command/object_list_commands.hpp:101
 #, kde-format
@@ -1040,32 +1042,32 @@ msgstr "Kon bestand niet laden: %1"
 #: src/core/io/aep/aep_format.hpp:21
 #, kde-format
 msgid "Adobe After Effects Project"
-msgstr ""
+msgstr "Project met Adobe naeffecten"
 
 #: src/core/io/aep/aep_format.hpp:42
 #, kde-format
 msgid "Adobe After Effects Project XML"
-msgstr ""
+msgstr "XML van project met Adobe naeffecten"
 
 #: src/core/io/aep/aep_loader.cpp:75
 #, kde-format
 msgid "External asset not found: %1"
-msgstr ""
+msgstr "Extern bezit niet gevonden: %1"
 
 #: src/core/io/aep/aep_loader.cpp:117
 #, kde-format
 msgid "Unknown property \"%1\" of \"%2\""
-msgstr ""
+msgstr "Onbekende eigenschap %1\" van \"%2\""
 
 #: src/core/io/aep/aep_loader.cpp:404
 #, kde-format
 msgid "Expected property for %1"
-msgstr ""
+msgstr "Verwacht eigenschap voor %1"
 
 #: src/core/io/aep/aep_loader.cpp:411
 #, kde-format
 msgid "Could convert %1"
-msgstr ""
+msgstr "Kon %1 converteren"
 
 #: src/core/io/aep/aep_loader.cpp:415
 #: src/core/io/lottie/lottie_importer.hpp:879
@@ -1073,22 +1075,22 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:908
 #, kde-format
 msgid "Invalid value for %1"
-msgstr ""
+msgstr "Ongeldige waarde voor %1"
 
 #: src/core/io/aep/aep_loader.cpp:510
 #, kde-format
 msgid "Expected property group for transform"
-msgstr ""
+msgstr "Verwachte eigenschapsgroep voor transformatie"
 
 #: src/core/io/aep/aep_loader.cpp:557
 #, kde-format
 msgid "Unknown property \"%1\""
-msgstr ""
+msgstr "Onbekende eigenschap \"%1\""
 
 #: src/core/io/aep/aep_loader.cpp:1084
 #, kde-format
 msgid "Unknown shape %1"
-msgstr ""
+msgstr "Onbekende vorm %1"
 
 #: src/core/io/aep/aep_loader.cpp:1143
 #: src/core/io/lottie/lottie_importer.hpp:369
@@ -1100,52 +1102,52 @@ msgstr "Clip"
 #: src/core/io/aep/aep_loader.cpp:1248
 #, kde-format
 msgid "Unknown asset type for %1"
-msgstr ""
+msgstr "Onbekend type bezit voor %1"
 
 #: src/core/io/aep/aep_parser.hpp:49
 #, kde-format
 msgid "Not an AEP file"
-msgstr ""
+msgstr "Geen AEP-bestand"
 
 #: src/core/io/aep/aep_parser.hpp:123
 #, kde-format
 msgid "Unknown Item type %s"
-msgstr ""
+msgstr "Onbekend type van item %s"
 
 #: src/core/io/aep/aep_parser.hpp:137
 #, kde-format
 msgid "Missing composition data"
-msgstr ""
+msgstr "Ontbrekende compositiegegevens"
 
 #: src/core/io/aep/aep_parser.hpp:214
 #, kde-format
 msgid "Unknown encoding for %1"
-msgstr ""
+msgstr "Onbekende codering voor %1"
 
 #: src/core/io/aep/aep_parser.hpp:230
 #, kde-format
 msgid "Missing asset data"
-msgstr ""
+msgstr "Ontbrekende gegevens van bezit"
 
 #: src/core/io/aep/aep_parser.hpp:288
 #, kde-format
 msgid "Missing layer data"
-msgstr ""
+msgstr "Ontbrekende gegevens van laag"
 
 #: src/core/io/aep/aep_parser.hpp:372 src/core/io/aep/aep_parser.hpp:377
 #, kde-format
 msgid "Missing mask properties"
-msgstr ""
+msgstr "Ontbrekende eigenschappen van masker"
 
 #: src/core/io/aep/aep_parser.hpp:424
 #, kde-format
 msgid "Unknown property type: %1"
-msgstr ""
+msgstr "Onbekend type van eigenschap: %1"
 
 #: src/core/io/aep/aep_parser.hpp:645
 #, kde-format
 msgid "Missing list data"
-msgstr ""
+msgstr "Ontbrekende gegevens in lijst"
 
 #: src/core/io/aep/aep_parser.hpp:657
 #, kde-format
@@ -1176,12 +1178,12 @@ msgstr "Te tekenen Android-vector"
 #: src/core/io/avd/avd_parser.cpp:223
 #, kde-format
 msgid "Unknown interpolator %s"
-msgstr ""
+msgstr "Onbekende interpolator %s"
 
 #: src/core/io/avd/avd_parser.cpp:650
 #, kde-format
 msgid "Unknown resource id %1"
-msgstr ""
+msgstr "Onbekende hulpbron-id %1"
 
 #: src/core/io/avd/avd_parser.cpp:658
 #, kde-format
@@ -1191,138 +1193,142 @@ msgstr "Kon bestand %1 niet lezen"
 #: src/core/io/avd/avd_parser.cpp:659 src/core/io/avd/avd_parser.cpp:668
 #, kde-format
 msgid "Could not load resource %1"
-msgstr ""
+msgstr "Kon hulpbron %1 niet laden"
 
 #: src/core/io/avd/avd_renderer.cpp:159
 #, kde-format
 msgid "%s should be in a group"
-msgstr ""
+msgstr "%s zou in een groep moeten zitten"
 
 #: src/core/io/avd/avd_renderer.cpp:163
 #, kde-format
 msgid "%s is not supported"
-msgstr ""
+msgstr "%s wordt niet ondersteund"
 
 #: src/core/io/avd/avd_renderer.cpp:252
 #, kde-format
 msgid "%s are not supported"
-msgstr ""
+msgstr "%s worden niet ondersteund"
 
 #: src/core/io/avd/avd_renderer.cpp:518
 #, kde-format
 msgid "%s cannot be a clip path"
-msgstr ""
+msgstr "%s kan geen pad van een clip zijn"
 
 #: src/core/io/base.cpp:22 src/core/io/svg/svg_renderer.cpp:822
 #: src/gui/tools/base.cpp:193
 #, kde-format
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: src/core/io/glaxnimate/glaxnimate_format.hpp:26
 #: src/core/io/glaxnimate/glaxnimate_mime.hpp:21
 #, kde-format
 msgid "Glaxnimate Animation"
-msgstr ""
+msgstr "Animatie van Glaxnimate"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:21
 #: src/core/io/glaxnimate/glaxnimate_mime.cpp:88
 #: src/core/io/lottie/lottie_format.cpp:34
 #, kde-format
 msgid "Could not parse JSON: %1"
-msgstr ""
+msgstr "Kon JSON niet ontleden: %1"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:27
 #: src/core/io/glaxnimate/glaxnimate_mime.cpp:94
 #: src/core/io/lottie/lottie_format.cpp:40
 #, kde-format
 msgid "No JSON object found"
-msgstr ""
+msgstr "Geen JSON-object gevonden"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:35
 #, kde-format
 msgid "Opening a file from a newer version of Glaxnimate"
-msgstr ""
+msgstr "Een bestand uit een nieuwere versie van Glaxnimate wordt geopend"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:43
 #, kde-format
 msgid "Missing composition"
-msgstr ""
+msgstr "Ontbrekende compositie"
 
 #: src/core/io/glaxnimate/import_state.hpp:108
 #, kde-format
 msgid "Property %1 of %2 refers to unexisting object %3"
-msgstr ""
+msgstr "Eigenschap %1 van %2 verwijst naar niet bestaand object %3"
 
 #: src/core/io/glaxnimate/import_state.hpp:117
 #, kde-format
 msgid "Could not load %1 for %2: uuid refers to an unacceptable object"
 msgstr ""
+"Kon %1 voor %2 niet laden: uuid verwijst naar een niet-acceptabel object"
 
 #: src/core/io/glaxnimate/import_state.hpp:128
 #, kde-format
 msgid "Object %1 is invalid"
-msgstr ""
+msgstr "Object %1 is ongeldig"
 
 #: src/core/io/glaxnimate/import_state.hpp:317
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
-msgstr ""
+msgstr "Verkeerd type object: verwacht '%1' maar kreeg '%2'"
 
 #: src/core/io/glaxnimate/import_state.hpp:323
 #, kde-format
 msgid "Could not load %1 for %2"
-msgstr ""
+msgstr "Kon %1 voor %2 niet laden"
 
 #: src/core/io/glaxnimate/import_state.hpp:335
 #, kde-format
 msgid "Could not set property %1"
-msgstr ""
+msgstr "Kon eigenschap %1 niet instellen"
 
 #: src/core/io/glaxnimate/import_state.hpp:361
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
-msgstr ""
+msgstr "Item %1 voor %2 in %3 is geen object"
 
 #: src/core/io/glaxnimate/import_state.hpp:373
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
-msgstr ""
+msgstr "Item %1 voor %2 in %3 is niet acceptabel"
 
 #: src/core/io/glaxnimate/import_state.hpp:412
 #, kde-format
 msgid "Keyframe must specify a time"
-msgstr ""
+msgstr "Keyframe moet een tijd specificeren"
 
 #: src/core/io/glaxnimate/import_state.hpp:417
 #, kde-format
 msgid "Keyframe must specify a value"
-msgstr ""
+msgstr "Keyframe moet een waarde specificeren"
 
 #: src/core/io/glaxnimate/import_state.hpp:427
 #, kde-format
 msgid "Could not add keyframe"
-msgstr ""
+msgstr "Kon keyframe niet toevoegen"
 
 #: src/core/io/glaxnimate/import_state.hpp:611
 #, kde-format
 msgid "Unknown object of type '%1'"
-msgstr ""
+msgstr "Onbekend object van het type '%1'"
 
 #: src/core/io/lottie/lottie_exporter.hpp:559
 #, kde-format
 msgid "Lottie only supports layers in the top level"
-msgstr ""
+msgstr "Lottie ondersteunt alleen lagen op het topniveau"
 
 #: src/core/io/lottie/lottie_exporter.hpp:561
 #, kde-format
 msgid "Lottie only supports auto-orient layers in the top level"
 msgstr ""
+"Lottie ondersteunt alleen automatische oriëntatielagen op het topniveau"
 
 #: src/core/io/lottie/lottie_exporter.hpp:610
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
+"Afbeeldingen kunnen niet gegroepeerd worden met andere vormen, ze moeten in "
+"een laag zijn"
 
 #: src/core/io/lottie/lottie_exporter.hpp:612
 #, kde-format
@@ -1330,6 +1336,8 @@ msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
 "a layer"
 msgstr ""
+"Compositielagen kunnen niet gegroepeerd worden met andere vormen, ze moeten "
+"in een laag zijn"
 
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
@@ -1339,7 +1347,7 @@ msgstr "Mooi"
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
 msgid "Pretty print the JSON"
-msgstr ""
+msgstr "Maak een mooie afdruk van de JSON"
 
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
@@ -1349,7 +1357,7 @@ msgstr "Verwijderen"
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
 msgid "Strip unused properties"
-msgstr ""
+msgstr "Ongebruikte eigenschappen strippen"
 
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
@@ -1359,58 +1367,58 @@ msgstr "Afbeeldingen inbedden"
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
 msgid "Automatically embed non-embedded images"
-msgstr ""
+msgstr "Automatisch niet-ingebedde afbeeldingen inbedden"
 
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
 msgid "Legacy Keyframes"
-msgstr ""
+msgstr "Verouderde keyframes"
 
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
 msgid "Compatibility with lottie-web versions prior to 5.0.0"
-msgstr ""
+msgstr "Compatibiliteit met lottie-web versies vóór 5.0.0"
 
 #: src/core/io/lottie/lottie_format.hpp:22
 #, kde-format
 msgid "Lottie Animation"
-msgstr ""
+msgstr "Lottie-animatie"
 
 #: src/core/io/lottie/lottie_html_format.hpp:20
 #, kde-format
 msgid "Lottie HTML Preview"
-msgstr ""
+msgstr "Lottie HTML-voorbeeld"
 
 #: src/core/io/lottie/lottie_importer.hpp:162
 #, kde-format
 msgid "Missing layer type for %1"
-msgstr ""
+msgstr "Ontbrekend type laag voor %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:299
 #, kde-format
 msgid "Cannot use %1 as parent as it couldn't be loaded"
-msgstr ""
+msgstr "Kan %1 niet als ouder gebruiken omdat het niet kan worden geladen"
 
 #: src/core/io/lottie/lottie_importer.hpp:310
 #, kde-format
 msgid "Invalid parent layer %1"
-msgstr ""
+msgstr "Ongeldige ouderlaag %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:436
 #, kde-format
 msgid "Unsupported layer of type %1"
-msgstr ""
+msgstr "Niet-ondersteunde laag van type %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:461
 #, kde-format
 msgid "Missing shape type"
-msgstr ""
+msgstr "Ontbrekend type vorm"
 
 #: src/core/io/lottie/lottie_importer.hpp:474
 #: src/core/io/lottie/lottie_importer.hpp:484
 #, kde-format
 msgid "Unsupported shape type %1"
-msgstr ""
+msgstr "Niet-ondersteund type vorm %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:507
 #, kde-format
@@ -1420,12 +1428,12 @@ msgstr "Onbekend veld %2%1"
 #: src/core/io/lottie/lottie_importer.hpp:832
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
-msgstr ""
+msgstr "Ongeldige bezierpunt %1 in %2"
 
 #: src/core/io/lottie/lottie_importer.hpp:916
 #, kde-format
 msgid "Invalid keyframes for %1"
-msgstr ""
+msgstr "Ongeldige keyframes voor %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:966
 #, kde-format
@@ -1440,92 +1448,92 @@ msgstr "(leeg)"
 #: src/core/io/lottie/lottie_importer.hpp:980
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
-msgstr ""
+msgstr "Kan keyframe op %1 voor %2 met waarde %3 niet laden"
 
 #: src/core/io/lottie/lottie_importer.hpp:1032
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
-msgstr ""
+msgstr "Dubbele bitmap-ID: %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:1064
 #, kde-format
 msgid "Duplicate Composition ID: %1"
-msgstr ""
+msgstr "Dubbele compositie-ID: %1"
 
 #: src/core/io/lottie/tgs_format.cpp:47
 #, kde-format
 msgid "Star Shapes are not officially supported"
-msgstr ""
+msgstr "Stervormen worden niet officieel ondersteund"
 
 #: src/core/io/lottie/tgs_format.cpp:51 src/core/io/lottie/validation.cpp:71
 #, kde-format
 msgid "Images are not supported"
-msgstr ""
+msgstr "Afbeeldingen worden niet ondersteund"
 
 #: src/core/io/lottie/tgs_format.cpp:56
 #, kde-format
 msgid "Gradient strokes are not officially supported"
-msgstr ""
+msgstr "Stroken met kleurverloop worden niet officieel ondersteund"
 
 #: src/core/io/lottie/tgs_format.cpp:61
 #, kde-format
 msgid "Masks are not supported"
-msgstr ""
+msgstr "Maskers worden niet ondersteund"
 
 #: src/core/io/lottie/tgs_format.cpp:65
 #, kde-format
 msgid "Repeaters are not officially supported"
-msgstr ""
+msgstr "Herhalingen worden niet officieel ondersteund"
 
 #: src/core/io/lottie/tgs_format.cpp:69
 #, kde-format
 msgid "Inflate/Deflate is not supported"
-msgstr ""
+msgstr "Compressie/decompressie wordt niet ondersteund"
 
 #: src/core/io/lottie/tgs_format.cpp:73
 #, kde-format
 msgid "Offset Path is not supported"
-msgstr ""
+msgstr "Offsetpad wordt niet ondersteund"
 
 #: src/core/io/lottie/tgs_format.cpp:77
 #, kde-format
 msgid "ZigZag is not supported"
-msgstr ""
+msgstr "ZigZag wordt niet ondersteund"
 
 #: src/core/io/lottie/tgs_format.cpp:110
 #, kde-format
 msgid "File too large: %1k, should be under 64k"
-msgstr ""
+msgstr "Bestand is te groot: %1k, zou onder 64k moeten zijn"
 
 #: src/core/io/lottie/tgs_format.hpp:19
 #, kde-format
 msgid "Telegram Animated Sticker"
-msgstr ""
+msgstr "Telegram geanimeerde sticker"
 
 #: src/core/io/lottie/validation.cpp:25
 #, kde-format
 msgid "Invalid width: %1, should be %2"
-msgstr ""
+msgstr "Ongeldige breedte: %1, zou %2 moeten zijn"
 
 #: src/core/io/lottie/validation.cpp:29
 #, kde-format
 msgid "Invalid height: %1, should be %2"
-msgstr ""
+msgstr "Ongeldige hoogte: %1, zou %2 moeten zijn"
 
 #: src/core/io/lottie/validation.cpp:41
 #, kde-format
 msgid "Invalid fps: %1, should be %2"
-msgstr ""
+msgstr "Ongeldige fps: %1, zou %2 moeten zijn"
 
 #: src/core/io/lottie/validation.cpp:49
 #, kde-format
 msgid "Too many frames: %1, should be less than %2"
-msgstr ""
+msgstr "Teveel frames: %1, zou minder dan %2 moeten zijn"
 
 #: src/core/io/lottie/validation.hpp:22
 #, kde-format
 msgid "%1: %2"
-msgstr ""
+msgstr "%1: %2"
 
 #: src/core/io/mime/json_mime.hpp:18
 #, kde-format
@@ -1546,17 +1554,17 @@ msgstr "Framebreedte"
 #: src/core/io/raster/spritesheet_format.cpp:32
 #, kde-format
 msgid "Width of each frame"
-msgstr ""
+msgstr "Breedte van elk frame"
 
 #: src/core/io/raster/spritesheet_format.cpp:33
 #, kde-format
 msgid "Frame Height"
-msgstr ""
+msgstr "Framehoogte"
 
 #: src/core/io/raster/spritesheet_format.cpp:33
 #, kde-format
 msgid "Height of each frame"
-msgstr ""
+msgstr "Hoogte van elk frame"
 
 #: src/core/io/raster/spritesheet_format.cpp:34
 #, kde-format
@@ -1566,7 +1574,7 @@ msgstr "Kolommen"
 #: src/core/io/raster/spritesheet_format.cpp:34
 #, kde-format
 msgid "Number of columns in the sheet"
-msgstr ""
+msgstr "Aantal kolommen in het rekenblad"
 
 #: src/core/io/raster/spritesheet_format.cpp:35
 #, kde-format
@@ -1577,26 +1585,28 @@ msgstr "Tijdstap"
 #, kde-format
 msgid "By how much each rendered frame should increase time (in frames)"
 msgstr ""
+"Met hoeveel elk gerenderd frame in tijd (in frames) verhoogd zou moeten "
+"worden"
 
 #: src/core/io/raster/spritesheet_format.hpp:23
 #, kde-format
 msgid "Sprite Sheet"
-msgstr ""
+msgstr "Sprite-blad"
 
 #: src/core/io/rive/rive_exporter.hpp:359
 #, kde-format
 msgid "Bezier has mismatching number of points"
-msgstr ""
+msgstr "Bezier heeft niet overeenkomend aantal punten"
 
 #: src/core/io/rive/rive_exporter.hpp:421
 #, kde-format
 msgid "Unknown property %1 of %2 (%3, %4)"
-msgstr ""
+msgstr "Onbekende eigenschap %1 van %2 (%3, %4)"
 
 #: src/core/io/rive/rive_exporter.hpp:455
 #, kde-format
 msgid "Unknown keyframe type for property %1 of %2 (%3, %4)"
-msgstr ""
+msgstr "Onbekende type keyframe voor eigenschap %1 van %2 (%3, %4)"
 
 #: src/core/io/rive/rive_format.cpp:24
 #, kde-format
@@ -1606,118 +1616,120 @@ msgstr "Niet-ondersteund formaat"
 #: src/core/io/rive/rive_format.cpp:34
 #, kde-format
 msgid "Could not read header"
-msgstr ""
+msgstr "Kon header niet lezen"
 
 #: src/core/io/rive/rive_format.cpp:40
 #, kde-format
 msgid ""
 "Loading unsupported rive file version %1.%2, the only supported version is %3"
 msgstr ""
+"Niet-ondersteund rive-bestandsversie %1.%2, de enige ondersteunde versie is "
+"%3"
 
 #: src/core/io/rive/rive_format.cpp:46 src/core/io/rive/rive_loader.cpp:750
 #, kde-format
 msgid "Could not read property table"
-msgstr ""
+msgstr "Kon eigenschappentabel niet lezen"
 
 #: src/core/io/rive/rive_format.hpp:24
 #, kde-format
 msgid "Rive Animation"
-msgstr ""
+msgstr "Rive-animatie"
 
 #: src/core/io/rive/rive_html_format.hpp:20
 #, kde-format
 msgid "RIVE HTML Preview"
-msgstr ""
+msgstr "RIVE HTML-voorbeeld"
 
 #: src/core/io/rive/rive_loader.cpp:179
 #, kde-format
 msgid "Unexpected Keyed Object"
-msgstr ""
+msgstr "Onverwacht object met sleutel"
 
 #: src/core/io/rive/rive_loader.cpp:187
 #, kde-format
 msgid "Invalid Keyed Object id %1"
-msgstr ""
+msgstr "Ongeldige object-met-sleutel-id %1"
 
 #: src/core/io/rive/rive_loader.cpp:195
 #, kde-format
 msgid "Unexpected Keyed Property"
-msgstr ""
+msgstr "Onverwachte eigenschap met sleutel"
 
 #: src/core/io/rive/rive_loader.cpp:204
 #, kde-format
 msgid "Unknown Keyed Property id %1"
-msgstr ""
+msgstr "Onbekende eigenschap-met-sleutel-id %1"
 
 #: src/core/io/rive/rive_loader.cpp:215
 #, kde-format
 msgid "Unexpected Animation"
-msgstr ""
+msgstr "Onverwachte animatie"
 
 #: src/core/io/rive/rive_loader.cpp:231
 #, kde-format
 msgid "Unexpected Asset Contents"
-msgstr ""
+msgstr "Onverwachte inhoud van bezit"
 
 #: src/core/io/rive/rive_loader.cpp:242
 #, kde-format
 msgid "Invalid Image Data"
-msgstr ""
+msgstr "Ongeldige afbeeldingsgegevens"
 
 #: src/core/io/rive/rive_loader.cpp:253
 #, kde-format
 msgid "Unexpected Keyframe"
-msgstr ""
+msgstr "Onverwacht keyframe"
 
 #: src/core/io/rive/rive_loader.cpp:268
 #, kde-format
 msgid "Could not find parent with id %1"
-msgstr ""
+msgstr "Kon ouder met id %1 niet vinden"
 
 #: src/core/io/rive/rive_loader.cpp:318
 #, kde-format
 msgid "Parent circular reference detected"
-msgstr ""
+msgstr "Circulaire verwijzing naar ouder gedetecteerd"
 
 #: src/core/io/rive/rive_loader.cpp:746
 #, kde-format
 msgid "Unknown object of type %1"
-msgstr ""
+msgstr "Onbekend object van het type %1"
 
 #: src/core/io/rive/rive_loader.cpp:791
 #, kde-format
 msgid "Could not load object type ID"
-msgstr ""
+msgstr "Kon objecttype-id niet laden"
 
 #: src/core/io/rive/rive_loader.cpp:805
 #, kde-format
 msgid "Could not load property ID in %1 (%2)"
-msgstr ""
+msgstr "Kon eigenschap-id in %1 (%2) niet laden"
 
 #: src/core/io/rive/rive_loader.cpp:819
 #, kde-format
 msgid "Unknown property %1 of %2 (%3)"
-msgstr ""
+msgstr "Onbekende eigenschap %1 van %2 (%3)"
 
 #: src/core/io/rive/rive_loader.cpp:825
 #, kde-format
 msgid "Skipping unknown property %1 of %2 (%3)"
-msgstr ""
+msgstr "Onbekende eigenschap %1 van %2 (%3) wordt overgeslagen"
 
 #: src/core/io/rive/rive_loader.cpp:834
 #, kde-format
 msgid "Error loading property %1 (%2) of %3 (%4)"
-msgstr ""
+msgstr "Fout bij het laden van eigenschap %1 (%2) van %3 (%4)  "
 
 #: src/core/io/svg/svg_format.cpp:67
 #, kde-format
 msgid "External Stylesheet"
-msgstr ""
+msgstr "Extern stijlblad"
 
 #: src/core/io/svg/svg_format.cpp:69
 #, kde-format
 msgid "Font face with external url"
-msgstr ""
+msgstr "Lettertypegezicht met externe url"
 
 #: src/core/io/svg/svg_format.cpp:71
 #, kde-format
@@ -1733,12 +1745,12 @@ msgstr "Negeren"
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
 msgid "External Fonts"
-msgstr ""
+msgstr "Externe lettertypen"
 
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
 msgid "How to include external font"
-msgstr ""
+msgstr "Hoe een extern lettertype invoegen"
 
 #: src/core/io/svg/svg_format.cpp:92
 #, kde-format
@@ -1753,119 +1765,120 @@ msgstr "SVG"
 #: src/core/io/svg/svg_html_format.hpp:18
 #, kde-format
 msgid "SVG Preview"
-msgstr ""
+msgstr "SVG-voorbeeld"
 
 #: src/core/io/video/video_format.cpp:73
 #, kde-format
 msgid "Could not find encoder for '%1'"
-msgstr ""
+msgstr "Kon codeerder voor '%1' niet vinden"
 
 #: src/core/io/video/video_format.cpp:77
 #, kde-format
 msgid "Could not allocate stream"
-msgstr ""
+msgstr "Kon stream niet toewijzen"
 
 #: src/core/io/video/video_format.cpp:82
 #, kde-format
 msgid "Could not alloc an encoding context"
-msgstr ""
+msgstr "Kon geen coderingscontext toewijzen"
 
 #: src/core/io/video/video_format.cpp:110
 #, kde-format
 msgid "Error encoding a frame: %1"
-msgstr ""
+msgstr "Fout bij coderen van een frame: %1"
 
 #: src/core/io/video/video_format.cpp:120
 #, kde-format
 msgid "Error while writing output packet: %1"
-msgstr ""
+msgstr "Fout bij schrijven van uitvoerpakket: %1"
 
 #: src/core/io/video/video_format.cpp:131
 #, kde-format
 msgid "Error sending a frame to the encoder: %1"
-msgstr ""
+msgstr "Fout bij verzenden van een frame naar de codeerder: %1"
 
 #: src/core/io/video/video_format.cpp:187
 #: src/core/io/video/video_format.cpp:201
 #, kde-format
 msgid "Could not set dict key `%1`: %2"
-msgstr ""
+msgstr "Kon dict-sleutel `%1` niet instellen: %2"
 
 #: src/core/io/video/video_format.cpp:246
 #, kde-format
 msgid "Could not erase dict key `%1`: %2"
-msgstr ""
+msgstr "Kon dict-sleutel `%1` niet wissen: %2"
 
 #: src/core/io/video/video_format.cpp:267
 #, kde-format
 msgid "Could not copy dict: %1"
-msgstr ""
+msgstr "Kon dict niet kopiëren: %1"
 
 #: src/core/io/video/video_format.cpp:280
 #, kde-format
 msgid "Could not copy dict `%1`: %2"
-msgstr ""
+msgstr "Kon dict `%1` niet kopiëren: %2"
 
 #: src/core/io/video/video_format.cpp:318
 #, kde-format
 msgid "Could not allocate frame data."
-msgstr ""
+msgstr "Kon framegegevens niet toewijzen."
 
 #: src/core/io/video/video_format.cpp:403
 #: src/core/io/video/video_format.cpp:777
 #, kde-format
 msgid "No video codec"
-msgstr ""
+msgstr "Geen video-codec"
 
 #: src/core/io/video/video_format.cpp:431
 #, kde-format
 msgid "Could not determine pixel format"
-msgstr ""
+msgstr "Kon pixelformaat niet bepalen"
 
 #: src/core/io/video/video_format.cpp:441
 #, kde-format
 msgid "Could not open video codec: %1"
-msgstr ""
+msgstr "Kon video-codec niet openen: %1"
 
 #: src/core/io/video/video_format.cpp:446
 #, kde-format
 msgid "Could not allocate video frame"
-msgstr ""
+msgstr "Kon videoframe niet toewijzen"
 
 #: src/core/io/video/video_format.cpp:453
 #, kde-format
 msgid "Could not copy the stream parameters"
-msgstr ""
+msgstr "Kon de streamparameters niet kopiëren"
 
 #: src/core/io/video/video_format.cpp:473
 #, kde-format
 msgid "Error while creating video frame"
-msgstr ""
+msgstr "Fout bij aanmaken van videoframe"
 
 #: src/core/io/video/video_format.cpp:497
 #, kde-format
 msgid "Could not initialize the conversion context"
-msgstr ""
+msgstr "Kon de conversiecontext niet initialiseren"
 
 #: src/core/io/video/video_format.cpp:503
 #, kde-format
 msgid "Could not allocate temporary picture"
-msgstr ""
+msgstr "Kon tijdelijk plaatje niet toewijzen"
 
 #: src/core/io/video/video_format.cpp:745
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
 msgstr ""
+"Kon uitvoerformaat niet opmaken uit bestandsextensie: MPEG wordt gebruikt."
 
 #: src/core/io/video/video_format.cpp:749
 #, kde-format
 msgid "Could not find output format"
-msgstr ""
+msgstr "Kon uitvoerformaat niet vinden"
 
 #: src/core/io/video/video_format.cpp:822
 #, kde-format
 msgid "Error occurred when opening output file: %1"
-msgstr ""
+msgstr "Er deed zich een fout voor bij openen van uitvoerbestand: %1"
 
 #: src/core/io/video/video_format.cpp:857
 #, kde-format
@@ -1889,7 +1902,7 @@ msgstr "Breedte"
 #: src/core/io/video/video_format.cpp:859
 #, kde-format
 msgid "If not 0, it will overwrite the size"
-msgstr ""
+msgstr "Indien niet 0, zal het de grootte overschrijven"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/core/io/video/video_format.cpp:859
@@ -1906,7 +1919,7 @@ msgstr "Uitvoerig"
 #: src/core/io/video/video_format.cpp:860
 #, kde-format
 msgid "Show verbose information on the conversion"
-msgstr ""
+msgstr "Uitgebreide informatie tonen van de conversatie"
 
 #: src/core/io/video/video_format.hpp:21
 #, kde-format
@@ -1936,16 +1949,16 @@ msgstr "Keyframe toevoegen"
 #: src/core/model/animation/animatable_path.cpp:139
 #, kde-format
 msgid "Extend Shape"
-msgstr ""
+msgstr "Vorm uitbreiden"
 
 #: src/core/model/animation_container.cpp:54
 #, kde-format
 msgid "Animation Timing"
-msgstr ""
+msgstr "Timing van animatie"
 
 #: src/core/model/assets/assets.hpp:34
 msgid "values"
-msgstr ""
+msgstr "waarden"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_extra)
 #. i18n: ectx: property (text), widget (QToolButton, button_extra)
@@ -1995,7 +2008,7 @@ msgstr "Bezittingen"
 #: src/core/model/assets/bitmap.cpp:205
 #, kde-format
 msgid "Embedded image"
-msgstr ""
+msgstr "Ingebedde afbeelding"
 
 #: src/core/model/assets/bitmap.hpp:41
 #, kde-format
@@ -2028,12 +2041,12 @@ msgstr "Kleurverloop"
 #: src/core/model/assets/gradient.cpp:133
 #, kde-format
 msgid "Add color to %1"
-msgstr ""
+msgstr "Kleur aan %1 toevoegen"
 
 #: src/core/model/assets/gradient.cpp:152
 #, kde-format
 msgid "Remove color from %1"
-msgstr ""
+msgstr "Kleur verwijderen uit %1"
 
 #: src/core/model/assets/gradient.cpp:211
 #, kde-format
@@ -2083,7 +2096,7 @@ msgstr "Kegelvormig"
 #: src/core/model/assets/named_color.cpp:17
 #, kde-format
 msgid "Unnamed Color"
-msgstr ""
+msgstr "Kleur zonder naam"
 
 #: src/core/model/mask_settings.cpp:13
 #, kde-format
@@ -2093,7 +2106,7 @@ msgstr "Masker"
 #: src/core/model/object.hpp:90
 #, kde-format
 msgid "Unknown Object"
-msgstr ""
+msgstr "Onbekend object"
 
 #: src/core/model/shapes/ellipse.cpp:19 src/gui/tools/ellipse_tool.cpp:17
 #, kde-format
@@ -2131,7 +2144,7 @@ msgstr "Afbeelding"
 #: src/core/model/shapes/inflate_deflate.cpp:18
 #, kde-format
 msgid "Inflate and Deflate"
-msgstr ""
+msgstr "Compressie en decompressie"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/model/shapes/layer.hpp:81
@@ -2143,7 +2156,7 @@ msgstr "Laag"
 #: src/core/model/shapes/offset_path.cpp:342
 #, kde-format
 msgid "Offset Path"
-msgstr ""
+msgstr "Offsetpad"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/model/shapes/path.hpp:38
@@ -2156,12 +2169,12 @@ msgstr "Pad"
 #: src/core/model/shapes/polystar.hpp:48
 #, kde-format
 msgid "PolyStar"
-msgstr ""
+msgstr "PolyStar"
 
 #: src/core/model/shapes/precomp_layer.cpp:30
 #, kde-format
 msgid "Composition Layer"
-msgstr ""
+msgstr "Compositielaag"
 
 #: src/core/model/shapes/rect.hpp:31 src/gui/tools/rectangle_tool.hpp:20
 #, kde-format
@@ -2203,12 +2216,12 @@ msgstr "Lettertype wijzigen"
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:56
 #, kde-format
 msgid "Text"
-msgstr ""
+msgstr "Tekst"
 
 #: src/core/model/shapes/trim.cpp:24
 #, kde-format
 msgid "Trim Path"
-msgstr ""
+msgstr "Trimpad"
 
 #: src/core/model/shapes/zig_zag.cpp:139
 #, kde-format
@@ -2230,7 +2243,7 @@ msgstr "Transformeren"
 #: src/core/plugin/snippet.hpp:93
 #, kde-format
 msgid "# Glaxnimate snippet"
-msgstr ""
+msgstr "# Glaxnimate-tekstfragment"
 
 #: src/core/plugin/snippet.hpp:95
 #, kde-format
@@ -2238,6 +2251,8 @@ msgid ""
 "# You have access to the `window` and `document` global variables and the "
 "`glaxnimate` module"
 msgstr ""
+"# U hebt toegang tot de globale variabelen `window` en `document` en de "
+"`glaxnimate` module"
 
 #: src/core/plugin/snippet.hpp:97
 #, kde-format
@@ -2245,34 +2260,36 @@ msgid ""
 "# For documentation see https://glaxnimate.mattbas.org/contributing/"
 "scripting/"
 msgstr ""
+"# Voor documentatie zie https://glaxnimate.mattbas.org/contributing/"
+"scripting/"
 
 #: src/core/utils/gzip.cpp:30
 #, kde-format
 msgid "Could not decompress data"
-msgstr ""
+msgstr "Kon gegevens niet uitpakken"
 
 #: src/core/utils/trace_wrapper.cpp:160
 #, kde-format
 msgid "Traced %1"
-msgstr ""
+msgstr "Gevolgd %1"
 
 #: src/gui/cli.cpp:27
 #, kde-format
 msgctxt "@info:shell"
 msgid "Informational Options"
-msgstr ""
+msgstr "Opties voor informatie"
 
 #: src/gui/cli.cpp:28
 #, kde-format
 msgctxt "@info:shell"
 msgid "Show this help and exit"
-msgstr ""
+msgstr "Deze help tonen en afsluiten"
 
 #: src/gui/cli.cpp:29
 #, kde-format
 msgctxt "@info:shell"
 msgid "Show version information and exit"
-msgstr ""
+msgstr "Versie-informatie tonen en afsluiten"
 
 #: src/gui/cli.cpp:31
 #, kde-format
@@ -2290,19 +2307,19 @@ msgstr "Te openen bestand"
 #, kde-format
 msgctxt "@info:shell"
 msgid "When opening image files, trace them instead of embedding"
-msgstr ""
+msgstr "Bij openen van afbeeldingsbestanden, volg ze in plaats van inbedden"
 
 #: src/gui/cli.cpp:35
 #, kde-format
 msgctxt "@info:shell"
 msgid "GUI Options"
-msgstr ""
+msgstr "GUI-opties"
 
 #: src/gui/cli.cpp:36
 #, kde-format
 msgctxt "@info:shell"
 msgid "If present, doesn't restore the main window state"
-msgstr ""
+msgstr "Indien aanwezig, de status van het hoofdvenster niet herstellen"
 
 #: src/gui/cli.cpp:39
 #, kde-format
@@ -2311,24 +2328,26 @@ msgid ""
 "Specify the name of the local socket/named pipe to connect to a host "
 "application."
 msgstr ""
+"De naam van het lokale socket/genaamde pipe specificeren om met een "
+"hosttoepassing te verbinden."
 
 #: src/gui/cli.cpp:46
 #, kde-format
 msgctxt "@info:shell"
 msgid "Use a specific size for the main window"
-msgstr ""
+msgstr "Een specifieke grootte voor het hoofdvenster gebruiken"
 
 #: src/gui/cli.cpp:54
 #, kde-format
 msgctxt "@info:shell"
 msgid "Print the window id"
-msgstr ""
+msgstr "Het venster-id tonen"
 
 #: src/gui/cli.cpp:57
 #, kde-format
 msgctxt "@info:shell"
 msgid "Enables the debug menu"
-msgstr ""
+msgstr "Schakelt het debugmenu in"
 
 #: src/gui/cli.cpp:60
 #, kde-format
@@ -2341,6 +2360,8 @@ msgstr "Exportopties"
 msgctxt "@info:shell"
 msgid "Export the input file to the given file instead of starting the GUI"
 msgstr ""
+"Het invoerbestand exporteren naar het gegeven bestand in plaats van de GUI "
+"te starten"
 
 #: src/gui/cli.cpp:70
 #, kde-format
@@ -2349,18 +2370,21 @@ msgid ""
 "Specify the format for --export. If omitted it's determined based on the "
 "file name. See --export-format-list for a list of supported formats."
 msgstr ""
+"Het formaat voor --export specificeren. Indien weggelaten wordt het bepaald "
+"gebaseerd op de bestandsnaam. Zie --export-format-list voor een lijst met "
+"ondersteunde formaten."
 
 #: src/gui/cli.cpp:77
 #, kde-format
 msgctxt "@info:shell"
 msgid "Shows possible values for --export-format"
-msgstr ""
+msgstr "Toont mogelijke waarden voor --export-format"
 
 #: src/gui/cli.cpp:81
 #, kde-format
 msgctxt "@info:shell"
 msgid "Render Frame Options"
-msgstr ""
+msgstr "Opties voor renderen van frame"
 
 #: src/gui/cli.cpp:84
 #, kde-format
@@ -2368,6 +2392,8 @@ msgctxt "@info:shell"
 msgid ""
 "Render frames the input file to the given file instead of starting the GUI"
 msgstr ""
+"Frames in het invoerbestand renderen naar het gegeven bestand in plaats van "
+"de GUI te starten"
 
 #: src/gui/cli.cpp:91
 #, kde-format
@@ -2376,54 +2402,57 @@ msgid ""
 "Specify the format for --render. If omitted it's determined based on the "
 "file name. See --render-format-list for a list of supported formats."
 msgstr ""
+"Het formaat voor --render specificeren Indien weggelaten wordt het bepaald "
+"gebaseerd op de bestandsnaam. Zie --render-format-list voor een lijst met "
+"ondersteunde formaten."
 
 #: src/gui/cli.cpp:98
 #, kde-format
 msgctxt "@info:shell"
 msgid "Frame number to render, use `all` to render all frames"
-msgstr ""
+msgstr "Te renderen framenummer, gebruik `all` om alle frames te renderen"
 
 #: src/gui/cli.cpp:105
 #, kde-format
 msgctxt "@info:shell"
 msgid "Shows possible values for --render-format"
-msgstr ""
+msgstr "Toont mogelijke waarden voor --render-format"
 
 #: src/gui/cli.cpp:159
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not run the plugin"
-msgstr ""
+msgstr "Kon de plug-in niet uitvoeren"
 
 #: src/gui/cli.cpp:168
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not find an interpreter"
-msgstr ""
+msgstr "Kon een interpretator niet vinden"
 
 #: src/gui/cli.cpp:225
 #, kde-format
 msgctxt "@info:shell"
 msgid "Unknown importer"
-msgstr ""
+msgstr "Onbekende importeur"
 
 #: src/gui/cli.cpp:232
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not open input file for reading"
-msgstr ""
+msgstr "Kon invoerbestand  niet openen voor lezen"
 
 #: src/gui/cli.cpp:246
 #, kde-format
 msgctxt "@info:shell"
 msgid "Error loading input file"
-msgstr ""
+msgstr "Fout bij laden van invoerbestand"
 
 #: src/gui/cli.cpp:260
 #, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to export"
-msgstr ""
+msgstr "U dient een bestand te specificeren om te exporteren"
 
 #: src/gui/cli.cpp:275
 #, kde-format
@@ -2431,36 +2460,38 @@ msgctxt "@info:shell"
 msgid ""
 "Unknown exporter. Use --export-format-list for a list of available formats"
 msgstr ""
+"Onbekende exporteur. Gebruik --export-format-list voor een lijst met "
+"beschikbare formaten"
 
 #: src/gui/cli.cpp:286
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not open output file for writing"
-msgstr ""
+msgstr "Kon uitvoerbestand niet openen voor schrijven"
 
 #: src/gui/cli.cpp:295
 #, kde-format
 msgctxt "@info:shell"
 msgid "Error converting to the output format"
-msgstr ""
+msgstr "Fout bij converteren naar het uitvoerformaat"
 
 #: src/gui/cli.cpp:315 src/gui/cli.cpp:335
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not save to %1"
-msgstr ""
+msgstr "Kon niet opslaan naar %1"
 
 #: src/gui/cli.cpp:344
 #, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to render"
-msgstr ""
+msgstr "U dient een bestand te specificeren om te renderen"
 
 #: src/gui/emoji/emoji_dialog.cpp:32
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Emoji"
-msgstr ""
+msgstr "Emoji selecteren"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:164
 #: src/gui/emoji/emoji_set_dialog.cpp:217
@@ -2491,13 +2522,13 @@ msgstr "Kon niet downloaden: %1"
 #, kde-format
 msgctxt "Package install status"
 msgid "Didn't download any files"
-msgstr ""
+msgstr "Er zijn geen bestanden gedownload"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, EmojiSetDialog)
 #: src/gui/emoji/emoji_set_dialog.ui:21
 #, kde-format
 msgid "Emoji Set"
-msgstr ""
+msgstr "Emoji-set"
 
 #. i18n: ectx: property (text), widget (QTableWidget, emoji_set_view)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
@@ -2577,7 +2608,7 @@ msgstr "Sluiten"
 #: src/gui/glaxnimate_app.cpp:79
 #, kde-format
 msgid "Glaxnimate Default"
-msgstr ""
+msgstr "Glaxnimate-standaard"
 
 #: src/gui/glaxnimate_app.cpp:170
 #, kde-format
@@ -2595,7 +2626,7 @@ msgstr "Taal"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Interface Language"
-msgstr ""
+msgstr "Taal van interface"
 
 #: src/gui/glaxnimate_app.cpp:175
 #, kde-format
@@ -2607,7 +2638,7 @@ msgstr "Pictogramthema"
 #, kde-format
 msgctxt "@option:check"
 msgid "Horizontal Timeline Scroll"
-msgstr ""
+msgstr "Horizontaal tijdlijn verschuiven"
 
 #: src/gui/glaxnimate_app.cpp:179
 #, kde-format
@@ -2616,12 +2647,14 @@ msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
 msgstr ""
+"Indien geactiveerd zal de tijdlijn standaard horizontaal verschuiven en "
+"verticaal met Shift of Alt"
 
 #: src/gui/glaxnimate_app.cpp:186
 #, kde-format
 msgctxt "@title settings group"
 msgid "New Animation Defaults"
-msgstr ""
+msgstr "Nieuwe animatie standaarden"
 
 #: src/gui/glaxnimate_app.cpp:188
 #, kde-format
@@ -2669,25 +2702,25 @@ msgstr "Openen / opslaan"
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Max Recent Files"
-msgstr ""
+msgstr "Maximum recente bestanden"
 
 #: src/gui/glaxnimate_app.cpp:207
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Backup Frequency"
-msgstr ""
+msgstr "Frequentie van reservekopie maken"
 
 #: src/gui/glaxnimate_app.cpp:208
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "How often to save a backup copy (in minutes)"
-msgstr ""
+msgstr "Hoe vaak een reservekopie opslaan (in minuten)"
 
 #: src/gui/glaxnimate_app.cpp:211
 #, kde-format
 msgctxt "@option:check"
 msgid "Use system file dialog"
-msgstr ""
+msgstr "Systeembestandsdialoog gebruiken"
 
 #: src/gui/glaxnimate_app.cpp:213
 #, kde-format
@@ -2704,12 +2737,12 @@ msgstr "Hulpmiddelen"
 #: src/gui/graphics/bezier_item.cpp:239
 #, kde-format
 msgid "Remove node tangent"
-msgstr ""
+msgstr "Raaklijn aan knooppunt verwijderen"
 
 #: src/gui/graphics/bezier_item.cpp:351
 #, kde-format
 msgid "Update path"
-msgstr ""
+msgstr "Pad bijwerken"
 
 #: src/gui/graphics/bezier_item.cpp:368
 #, kde-format
@@ -2719,12 +2752,12 @@ msgstr "Punt verwijderen"
 #: src/gui/graphics/bezier_item.cpp:392
 #, kde-format
 msgid "Set Start"
-msgstr ""
+msgstr "Start instellen"
 
 #: src/gui/graphics/bezier_item.cpp:421
 #, kde-format
 msgid "Update shape"
-msgstr ""
+msgstr "Vorm bijwerken"
 
 #: src/gui/graphics/composition_item.hpp:113
 #, kde-format
@@ -2734,25 +2767,25 @@ msgstr "Werkveldgrootte wijzigen..."
 #: src/gui/graphics/gradient_editor.cpp:109
 #, kde-format
 msgid "Drag Gradient"
-msgstr ""
+msgstr "Kleurverloop verslepen"
 
 #: src/gui/graphics/transform_graphics_item.cpp:421
 #: src/gui/graphics/transform_graphics_item.cpp:480
 #, kde-format
 msgid "Drag anchor point"
-msgstr ""
+msgstr "Ankerpunt verslepen"
 
 #: src/gui/item_models/document_model_base.cpp:101
 #, kde-format
 msgid "Move Layers"
-msgstr ""
+msgstr "Meer lagen"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_3)
 #: src/gui/item_models/document_node_model.cpp:253
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:279
 #, kde-format
 msgid "Color"
-msgstr ""
+msgstr "Kleur"
 
 #: src/gui/item_models/document_node_model.cpp:257
 #: src/gui/item_models/property_model_full.cpp:257
@@ -2770,7 +2803,7 @@ msgstr "Vergrendeld"
 #: src/gui/item_models/gradient_list_model.cpp:179
 #, kde-format
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: src/gui/item_models/gradient_list_model.cpp:181
 #, kde-format
@@ -2780,17 +2813,17 @@ msgstr "Aantal gebruikers"
 #: src/gui/item_models/property_model_base.cpp:247
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%1%"
 
 #: src/gui/item_models/property_model_full.cpp:208
 #, kde-format
 msgid "Group Color"
-msgstr ""
+msgstr "Groepskleur"
 
 #: src/gui/item_models/property_model_full.cpp:215
 #, kde-format
 msgid "Jump to previous keyframe"
-msgstr ""
+msgstr "Naar vorige keyframe springen"
 
 #: src/gui/item_models/property_model_full.cpp:258
 #, kde-format
@@ -2800,7 +2833,7 @@ msgstr "Verborgen"
 #: src/gui/item_models/property_model_full.cpp:265
 #, kde-format
 msgid "Toggle Keyframe"
-msgstr ""
+msgstr "Keyframe omschakelen"
 
 #: src/gui/item_models/property_model_full.cpp:292
 #, kde-format
@@ -2810,17 +2843,17 @@ msgstr "Ontgrendeld"
 #: src/gui/item_models/property_model_full.cpp:300
 #, kde-format
 msgid "Jump to next keyframe"
-msgstr ""
+msgstr "Naar volgende keyframe springen"
 
 #: src/gui/item_models/property_model_full.cpp:394
 #, kde-format
 msgid "Parent Layer"
-msgstr ""
+msgstr "Ouderlaag"
 
 #: src/gui/item_models/property_model_full.cpp:400
 #, kde-format
 msgid "(No Parent)"
-msgstr ""
+msgstr "(Geen ouder)"
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_3)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_hsv_value)
@@ -2839,7 +2872,7 @@ msgstr "Waarde"
 #: src/gui/item_models/python_snippet_model.hpp:35
 #, kde-format
 msgid "New Snippet %1"
-msgstr ""
+msgstr "Nieuw fragment %1"
 
 #: src/gui/settings/api_credentials.cpp:86
 #, kde-format
@@ -2849,7 +2882,7 @@ msgstr "Informatie"
 #: src/gui/settings/api_credentials.hpp:41
 #, kde-format
 msgid "API Credentials"
-msgstr ""
+msgstr "Credentials van API"
 
 #: src/gui/settings/clipboard_settings.hpp:18
 #, kde-format
@@ -2864,7 +2897,7 @@ msgstr "Naamloos"
 #: src/gui/settings/document_templates.cpp:118
 #, kde-format
 msgid "%1"
-msgstr ""
+msgstr "%1"
 
 #: src/gui/settings/document_templates.cpp:125
 #, kde-format
@@ -2872,7 +2905,7 @@ msgctxt ""
 "%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
 msgid "%5 - %1x%2 %3 %4fps"
-msgstr ""
+msgstr "%5 - %1x%2 %3 %4fps"
 
 #: src/gui/settings/document_templates.cpp:180
 #, kde-format
@@ -2882,7 +2915,7 @@ msgstr "Sjabloon"
 #: src/gui/settings/document_templates.cpp:184
 #, kde-format
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: src/gui/settings/plugin_settings_group.hpp:23
 #, kde-format
@@ -2907,7 +2940,7 @@ msgstr "Werkbalken"
 #: src/gui/widgets/view_transform_widget.ui:60
 #, no-c-format, kde-format
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: src/gui/tools/color_picker.cpp:19
 #, kde-format
@@ -2922,27 +2955,27 @@ msgstr "F7"
 #: src/gui/tools/draw_tool.cpp:184
 #, kde-format
 msgid "Extend Path"
-msgstr ""
+msgstr "Pad uitbreiden"
 
 #: src/gui/tools/draw_tool.cpp:207
 #, kde-format
 msgid "Draw Shape"
-msgstr ""
+msgstr "Vorm tekenen"
 
 #: src/gui/tools/draw_tool.cpp:318
 #, kde-format
 msgid "Delete curve point"
-msgstr ""
+msgstr "Punt op kromme verwijderen"
 
 #: src/gui/tools/draw_tool.cpp:425
 #, kde-format
 msgid "Add curve point"
-msgstr ""
+msgstr "Punt op kromme toevoegen"
 
 #: src/gui/tools/draw_tool.hpp:25
 #, kde-format
 msgid "Draw Bezier"
-msgstr ""
+msgstr "Bezier tekenen"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/tools/draw_tool.hpp:26
@@ -2954,12 +2987,12 @@ msgstr "F3"
 #: src/gui/tools/edit_tool.cpp:169
 #, kde-format
 msgid "Drag nodes"
-msgstr ""
+msgstr "Knooppunten verslepen"
 
 #: src/gui/tools/edit_tool.cpp:276
 #, kde-format
 msgid "Cusp"
-msgstr ""
+msgstr "Keerpunt"
 
 #: src/gui/tools/edit_tool.cpp:280
 #, kde-format
@@ -2969,12 +3002,12 @@ msgstr "Vloeiend"
 #: src/gui/tools/edit_tool.cpp:284
 #, kde-format
 msgid "Symmetrical"
-msgstr ""
+msgstr "Symmetrisch"
 
 #: src/gui/tools/edit_tool.cpp:291
 #, kde-format
 msgid "Set %1 Node"
-msgstr ""
+msgstr "Knooppunt %1 instellen"
 
 #: src/gui/tools/edit_tool.cpp:305
 #, kde-format
@@ -2984,22 +3017,22 @@ msgstr "Knooppunt"
 #: src/gui/tools/edit_tool.cpp:315
 #, kde-format
 msgid "Remove Node"
-msgstr ""
+msgstr "Knooppunt verwijderen"
 
 #: src/gui/tools/edit_tool.cpp:319
 #, kde-format
 msgid "Show Tangents"
-msgstr ""
+msgstr "Raaklijnen tonen"
 
 #: src/gui/tools/edit_tool.cpp:326
 #, kde-format
 msgid "Make First Node"
-msgstr ""
+msgstr "Eerste knooppunt maken"
 
 #: src/gui/tools/edit_tool.cpp:334
 #, kde-format
 msgid "Remove Tangent"
-msgstr ""
+msgstr "Raaklijn verwijderen"
 
 #: src/gui/tools/edit_tool.cpp:369
 #, kde-format
@@ -3011,7 +3044,7 @@ msgstr "Eindkleur..."
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Add Stop"
-msgstr ""
+msgstr "Stop toevoegen"
 
 #: src/gui/tools/edit_tool.cpp:385
 #, kde-format
@@ -3024,24 +3057,24 @@ msgstr "Stop verwijderen"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1849
 #, kde-format
 msgid "Dissolve Nodes"
-msgstr ""
+msgstr "Knooppunten oplossen"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/tools/edit_tool.cpp:527
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1387
 #, kde-format
 msgid "Delete Nodes"
-msgstr ""
+msgstr "Knooppunten verwijderen"
 
 #: src/gui/tools/edit_tool.cpp:886
 #, kde-format
 msgid "Set node type"
-msgstr ""
+msgstr "Type knooppunt instellen"
 
 #: src/gui/tools/edit_tool.cpp:914
 #, kde-format
 msgid "Straighten segments"
-msgstr ""
+msgstr "Segmenten rechttrekken"
 
 #: src/gui/tools/edit_tool.cpp:962
 #, kde-format
@@ -3082,7 +3115,7 @@ msgstr "F8"
 #: src/gui/tools/fill_tool.cpp:53
 #, kde-format
 msgid "Apply Style"
-msgstr ""
+msgstr "Stijl toepassen"
 
 #: src/gui/tools/fill_tool.cpp:88
 #, kde-format
@@ -3097,7 +3130,7 @@ msgstr "%1 streek"
 #: src/gui/tools/freehand.cpp:18 src/gui/tools/freehand.cpp:47
 #, kde-format
 msgid "Draw Freehand"
-msgstr ""
+msgstr "Uit de vrije hand tekenen"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/tools/freehand.cpp:19
@@ -3182,12 +3215,12 @@ msgstr "Ster"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1243
 #, kde-format
 msgid "*"
-msgstr ""
+msgstr "*"
 
 #: src/gui/tools/star_tool.cpp:47
 #, kde-format
 msgid "Draw Star"
-msgstr ""
+msgstr "Ster tekenen"
 
 #: src/gui/tools/text_tool.cpp:28 src/gui/tools/text_tool.cpp:157
 #, kde-format
@@ -3210,7 +3243,7 @@ msgstr "Dankbetuigingen"
 #: src/gui/widgets/dialogs/about_dialog.ui:139
 #, kde-format
 msgid "Could not find AUTHORS.md"
-msgstr ""
+msgstr "Kon AUTHORS.md niet vinden"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #: src/gui/widgets/dialogs/about_dialog.ui:160
@@ -3222,7 +3255,7 @@ msgstr "Paden"
 #: src/gui/widgets/dialogs/about_dialog.ui:181
 #, kde-format
 msgid "User Data Directory:"
-msgstr ""
+msgstr "Gegevensmap van gebruiker:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/about_dialog.ui:213
@@ -3240,13 +3273,13 @@ msgstr "Map voor reservekopie:"
 #: src/gui/widgets/dialogs/about_dialog.ui:277
 #, kde-format
 msgid "Data Directories:"
-msgstr ""
+msgstr "Gegevensmap:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/about_dialog.ui:297
 #, kde-format
 msgid "Icon Theme Paths:"
-msgstr ""
+msgstr "Paden van pictogramthema:"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_3)
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
@@ -3274,31 +3307,31 @@ msgstr "CPU"
 #: src/gui/widgets/dialogs/about_dialog.ui:355
 #, kde-format
 msgid "Application Qt"
-msgstr ""
+msgstr "Toepassing Qt"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
 #: src/gui/widgets/dialogs/about_dialog.ui:360
 #, kde-format
 msgid "System Qt"
-msgstr ""
+msgstr "Systeem-Qt"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
 #: src/gui/widgets/dialogs/about_dialog.ui:365
 #, kde-format
 msgid "Potrace"
-msgstr ""
+msgstr "Potrace"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
 #: src/gui/widgets/dialogs/about_dialog.ui:370
 #, kde-format
 msgid "Libav"
-msgstr ""
+msgstr "Libav"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
 #: src/gui/widgets/dialogs/about_dialog.ui:375
 #, kde-format
 msgid "libarchive"
-msgstr ""
+msgstr "libarchive"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -3306,7 +3339,7 @@ msgstr ""
 #: src/gui/widgets/settings/plugin_settings_widget.ui:207
 #, kde-format
 msgid "Version"
-msgstr ""
+msgstr "Versie"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton_2)
 #: src/gui/widgets/dialogs/about_dialog.ui:390
@@ -3324,7 +3357,7 @@ msgstr "Formaten"
 #: src/gui/widgets/dialogs/about_dialog.ui:464
 #, kde-format
 msgid "Input Formats"
-msgstr ""
+msgstr "Invoerformaten"
 
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_output)
@@ -3346,13 +3379,13 @@ msgstr "Extensies"
 #: src/gui/widgets/dialogs/about_dialog.ui:505
 #, kde-format
 msgid "Output Formats "
-msgstr ""
+msgstr "Uitvoerformaten"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:21
 #, kde-format
 msgid "Configure color detection"
-msgstr ""
+msgstr "Kleurdetectie configureren"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:33
@@ -3364,31 +3397,31 @@ msgstr "Algoritme"
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:44
 #, kde-format
 msgid "k-Means"
-msgstr ""
+msgstr "k-Means"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:49
 #, kde-format
 msgid "k-Modes"
-msgstr ""
+msgstr "k-Modi"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:54
 #, kde-format
 msgid "Octree"
-msgstr ""
+msgstr "Octree"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:59
 #, kde-format
 msgid "Edge Exclusion Modes"
-msgstr ""
+msgstr "Modi voor uitsluiten van randen"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:76
 #, kde-format
 msgid "Match"
-msgstr ""
+msgstr "Overeenkomst"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:83
@@ -3409,7 +3442,7 @@ msgstr "Geen"
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:112
 #, kde-format
 msgid "Most Frequent"
-msgstr ""
+msgstr "Meest vaak"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:117
@@ -3465,6 +3498,50 @@ msgid ""
 "weight:600;\">Most Frequent</span>: Find the color in the cluster that "
 "appears most often in the source image</li></ul></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">k-Means verdeelt de "
+"kleuren in clusters en verfijnt de toekenning bij iedere iteratie.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Dit is de beste optie bij "
+"het volgen van afbeeldingen met veel kleuren of schaduw.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Voor afbeeldingen met veel "
+"kleuren zal verhogen van het aantal iteraties betere resultaten opleveren "
+"maar het kan langzamer zijn.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">De optie <span style=\" "
+"font-style:italic;\">Overeenkomst</span> doet enige nabewerking:</p>\n"
+"<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
+"right: 0px; -qt-list-indent: 1;\"><li style=\"\" style=\" margin-top:12px; "
+"margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+"text-indent:0px;\"><span style=\" font-weight:600;\">Geen</span>: doet geen "
+"enkele nabewerking en geeft het gemiddelde terug (merk op dat dit kan "
+"resulteren in kleuren die niet aanwezig zijn in de originele afbeelding)</"
+"li>\n"
+"<li style=\"\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">Dichtstbijzijnd</span>: zoek de kleur in de originele "
+"afbeelding die het dichtstbijzijnd is met het gemiddelde</li>\n"
+"<li style=\"\" style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">Meest vaak</span>: zoek de kleur in het cluster dat het vaakst "
+"in de bronafbeelding voor komt</li></ul></body></html>"
 
 #. i18n: ectx: property (plainText), widget (QPlainTextEdit, plainTextEdit)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:159
@@ -3476,6 +3553,12 @@ msgid ""
 "\n"
 "This is the best option when tracing images with flat colors."
 msgstr ""
+"k-Modi geeft u de kleuren die het vaakst voor komen in de bronafbeelding.\n"
+"\n"
+"Het is erg snel maar het geeft geen accurate kleuren voor complex "
+"afbeeldingen.\n"
+"\n"
+"Dit is de beste optie bij volgen van afbeeldingen met vlakke kleuren."
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_2)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:178
@@ -3496,6 +3579,20 @@ msgid ""
 "colors for complex images but it might result into colors that are not "
 "present in the source image.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Het algoritme Octree mengt "
+"gelijke kleuren van onderaan.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Het geeft meer accurate "
+"kleuren voor complexe afbeeldingen maar het kan resulteren in kleuren die "
+"niet aanwezig zijn in de bronafbeelding.</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:189
@@ -3533,7 +3630,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:21
 #, kde-format
 msgid "Document Metadata"
-msgstr ""
+msgstr "Metagegevens van documenten"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:38
@@ -3587,6 +3684,8 @@ msgid ""
 "Could not create directory\n"
 "%1"
 msgstr ""
+"Kon map niet aanmaken\n"
+"%1"
 
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:124
 #, kde-format
@@ -3604,7 +3703,7 @@ msgstr "Als afbeeldingensequentie exporteren"
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:30
 #, kde-format
 msgid "To Frame"
-msgstr ""
+msgstr "Naar frame"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:43
@@ -3616,13 +3715,13 @@ msgstr "Bestandsnaam"
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:56
 #, kde-format
 msgid "Use {frame} to represent the frame number"
-msgstr ""
+msgstr "Gebruik {frame} om het framenummer weer te geven"
 
 #. i18n: ectx: property (text), widget (QLineEdit, input_name)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:59
 #, kde-format
 msgid "Frame {frame}"
-msgstr ""
+msgstr "Frame {frame}"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:73
@@ -3634,7 +3733,7 @@ msgstr "Framestap"
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:112
 #, kde-format
 msgid "From Frame"
-msgstr ""
+msgstr "Uit Frame"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_select)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:132
@@ -3652,14 +3751,14 @@ msgstr "f"
 #: src/gui/widgets/dialogs/timing_dialog.ui:65
 #, kde-format
 msgid "\""
-msgstr ""
+msgstr "\""
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::FollowPathDialog)
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:128
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:21
 #, kde-format
 msgid "Follow Path"
-msgstr ""
+msgstr "Volg pad"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -3676,7 +3775,7 @@ msgstr "Tijdsduur"
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:34
 #, kde-format
 msgid "Time Units"
-msgstr ""
+msgstr "Tijdseenheden"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:48
@@ -3724,7 +3823,7 @@ msgstr "Starttijd"
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:49
 #, kde-format
 msgid "New Animation"
-msgstr ""
+msgstr "Nieuw animatie"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:55
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:63
@@ -3742,7 +3841,7 @@ msgstr "Kon bestand niet opslaan"
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:79
 #, kde-format
 msgid "File exported"
-msgstr ""
+msgstr "Bestand geëxporteerd"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:73
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:81
@@ -3759,7 +3858,7 @@ msgstr "Waarschuwing"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:54
 #, kde-format
 msgid "&File"
-msgstr ""
+msgstr "&Bestand"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_open_recent)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:58
@@ -3860,7 +3959,7 @@ msgstr "&Document"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:238
 #, kde-format
 msgid "Render Single &Frame"
-msgstr ""
+msgstr "Enkel &Frame renderen"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_web_preview)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:249
@@ -6959,3 +7058,6 @@ msgstr "Reset rotatie"
 #, kde-format
 msgid "Flip View"
 msgstr "Beeld omklappen"
+
+#~ msgid "Import Emoji"
+#~ msgstr "Emoji importeren"
