@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-25 01:59+0000\n"
-"PO-Revision-Date: 2024-02-26 14:54+0100\n"
+"PO-Revision-Date: 2024-03-25 08:55+0100\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -608,7 +608,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:731
 #, kde-format
 msgid "Timeline"
-msgstr ""
+msgstr "Časová osa"
 
 #: src/android/main_window.cpp:417
 #, kde-format
@@ -623,36 +623,36 @@ msgstr ""
 #: src/android/main_window.cpp:452 src/gui/widgets/menus/node_menu.cpp:105
 #, kde-format
 msgid "Raise"
-msgstr ""
+msgstr "Do popředí"
 
 #: src/android/main_window.cpp:457 src/gui/widgets/menus/node_menu.cpp:109
 #, kde-format
 msgid "Lower"
-msgstr ""
+msgstr "Do pozadí"
 
 #: src/android/main_window.cpp:464 src/gui/tools/select_tool.cpp:408
 #: src/gui/widgets/dialogs/selection_manager.cpp:85
 #, kde-format
 msgid "Cut"
-msgstr ""
+msgstr "Vyjmout"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 #: src/android/main_window.cpp:467 src/gui/tools/select_tool.cpp:410
 #: src/gui/widgets/dialogs/about_dialog.ui:414
 #, kde-format
 msgid "Copy"
-msgstr ""
+msgstr "Kopírovat"
 
 #: src/android/main_window.cpp:470 src/gui/tools/select_tool.cpp:412
 #: src/gui/widgets/dialogs/selection_manager.cpp:166
 #, kde-format
 msgid "Paste"
-msgstr ""
+msgstr "Vložit"
 
 #: src/android/main_window.cpp:474
 #, kde-format
 msgid "Delete Selected"
-msgstr ""
+msgstr "Smazat vybrané"
 
 #: src/android/main_window.cpp:482
 #, kde-format
@@ -667,12 +667,12 @@ msgstr ""
 #: src/android/main_window.cpp:490
 #, kde-format
 msgid "Undo"
-msgstr ""
+msgstr "Zpět"
 
 #: src/android/main_window.cpp:492
 #, kde-format
 msgid "Redo"
-msgstr ""
+msgstr "Znovu"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #. i18n: ectx: property (text), widget (QToolButton, btn_new)
@@ -683,14 +683,14 @@ msgstr ""
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:45
 #, kde-format
 msgid "New"
-msgstr ""
+msgstr "Nový"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 #: src/android/main_window.cpp:509
 #: src/gui/widgets/font/external_font_widget.ui:47
 #, kde-format
 msgid "Open..."
-msgstr ""
+msgstr "Otevřít..."
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
@@ -712,7 +712,7 @@ msgstr ""
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
 #, kde-format
 msgid "Open"
-msgstr ""
+msgstr "Otevřít"
 
 #: src/android/main_window.cpp:514
 #, kde-format
@@ -722,26 +722,26 @@ msgstr ""
 #: src/android/main_window.cpp:517
 #, kde-format
 msgid "Save..."
-msgstr ""
+msgstr "Uložit..."
 
 #. i18n: ectx: property (text), widget (QToolButton, preview_2)
 #: src/android/main_window.cpp:519
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:128
 #, kde-format
 msgid "Save"
-msgstr ""
+msgstr "Uložit"
 
 #: src/android/main_window.cpp:522
 #, kde-format
 msgid "Save As"
-msgstr ""
+msgstr "Uložit jako"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_export)
 #: src/android/main_window.cpp:525
 #: src/android/sticker_pack_builder_dialog.ui:154
 #, kde-format
 msgid "Export"
-msgstr ""
+msgstr "Exportovat"
 
 #: src/android/main_window.cpp:528
 #, kde-format
@@ -760,22 +760,22 @@ msgstr ""
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #, kde-format
 msgid "Layers"
-msgstr ""
+msgstr "Vrstvy"
 
 #: src/android/main_window.cpp:550
 #, kde-format
 msgid "Advanced Properties"
-msgstr ""
+msgstr "Rozšířené vlastnosti"
 
 #: src/android/main_window.cpp:555
 #, kde-format
 msgid "Help"
-msgstr ""
+msgstr "Nápověda"
 
 #: src/android/main_window.cpp:623
 #, kde-format
 msgid "Animation.%1"
-msgstr ""
+msgstr "Animace.%1"
 
 #: src/android/main_window.cpp:665
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:293
@@ -800,7 +800,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:842
 #, kde-format
 msgid "Import File"
-msgstr ""
+msgstr "Importovat soubor"
 
 #: src/android/main_window.cpp:750
 #, kde-format
@@ -815,12 +815,12 @@ msgstr ""
 #: src/android/main_window.cpp:980
 #, kde-format
 msgid "Add keyframe"
-msgstr ""
+msgstr "Přidat klíčový snímek"
 
 #: src/android/main_window.cpp:989
 #, kde-format
 msgid "Remove keyframe"
-msgstr ""
+msgstr "Odstranit klíčový snímek"
 
 #: src/android/main_window.cpp:1004
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
@@ -832,13 +832,13 @@ msgstr ""
 #: src/android/main_window.cpp:1069
 #, kde-format
 msgid "Emoji"
-msgstr ""
+msgstr "Emotikon"
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
 #: src/android/main_window.ui:21 src/core/app_info.cpp:17
 #, kde-format
 msgid "Glaxnimate"
-msgstr ""
+msgstr "Glaxnimate"
 
 #: src/android/sticker_pack_builder_dialog.cpp:156
 #, kde-format
@@ -849,7 +849,7 @@ msgstr ""
 #: src/android/sticker_pack_builder_dialog.cpp:171
 #, kde-format
 msgid "Could not open file"
-msgstr ""
+msgstr "Nelze otevřít soubor"
 
 #: src/android/sticker_pack_builder_dialog.cpp:222
 #, kde-format
@@ -881,7 +881,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:693
 #, kde-format
 msgid "Clear"
-msgstr ""
+msgstr "Vyprázdnit"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_add_current)
 #: src/android/sticker_pack_builder_dialog.ui:173
@@ -897,7 +897,7 @@ msgstr ""
 #: src/core/app_info.cpp:63
 #, kde-format
 msgid "(c) 2019-2023"
-msgstr ""
+msgstr "(c) 2019-2023"
 
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
@@ -912,7 +912,7 @@ msgstr ""
 #: src/core/command/animation_commands.cpp:117
 #, kde-format
 msgid "Remove %1 keyframe %2"
-msgstr ""
+msgstr "Odstranit %1 klíčový snímek %2"
 
 #: src/core/command/animation_commands.cpp:289
 #, kde-format
@@ -929,7 +929,7 @@ msgstr ""
 #: src/core/model/animation/animatable.cpp:171
 #, kde-format
 msgid "Update %1"
-msgstr ""
+msgstr "Aktualizovat %1"
 
 #: src/core/command/animation_commands.cpp:307
 #: src/gui/widgets/timeline/timeline_items.cpp:537
@@ -940,7 +940,7 @@ msgstr ""
 #: src/core/command/animation_commands.cpp:358
 #, kde-format
 msgid "Move keyframe"
-msgstr ""
+msgstr "Posunout klíčový snímek"
 
 #: src/core/command/animation_commands.cpp:381
 #, kde-format
@@ -960,44 +960,44 @@ msgstr ""
 #: src/core/command/object_list_commands.hpp:26
 #, kde-format
 msgid "Create %1"
-msgstr ""
+msgstr "Vytvořit %1"
 
 #: src/core/command/object_list_commands.hpp:61
 #: src/core/command/object_list_commands.hpp:67
 #, kde-format
 msgid "Remove %1"
-msgstr ""
+msgstr "Odstranit %1"
 
 #: src/core/command/object_list_commands.hpp:101
 #, kde-format
 msgid "Move Object"
-msgstr ""
+msgstr "Přesunout objekt"
 
 #: src/core/command/shape_commands.cpp:120 src/gui/tools/select_tool.cpp:421
 #, kde-format
 msgid "Group Shapes"
-msgstr ""
+msgstr "Seskupit tvary"
 
 #: src/core/command/shape_commands.cpp:153 src/gui/tools/select_tool.cpp:424
 #, kde-format
 msgid "Ungroup Shapes"
-msgstr ""
+msgstr "Zrušit seskupení tvarů"
 
 #: src/core/command/shape_commands.cpp:178
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:82
 #, kde-format
 msgid "Duplicate %1"
-msgstr ""
+msgstr "Duplikovat %1"
 
 #: src/core/command/structure_commands.cpp:73
 #, kde-format
 msgid "Move %1"
-msgstr ""
+msgstr "Přesunout %1"
 
 #: src/core/io/aep/aep_format.cpp:36
 #, kde-format
 msgid "Could not load file: %1"
-msgstr ""
+msgstr "Není možné načíst soubor: %1"
 
 #: src/core/io/aep/aep_format.hpp:21
 #, kde-format
@@ -1057,7 +1057,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:381
 #, kde-format
 msgid "Clip"
-msgstr ""
+msgstr "Klip"
 
 #: src/core/io/aep/aep_loader.cpp:1248
 #, kde-format
@@ -1128,7 +1128,7 @@ msgstr ""
 #: src/core/io/aep/riff.hpp:528
 #, kde-format
 msgid "Unknown format %1"
-msgstr ""
+msgstr "Neznámý formát %1"
 
 #: src/core/io/avd/avd_format.hpp:21
 #, kde-format
@@ -1148,7 +1148,7 @@ msgstr ""
 #: src/core/io/avd/avd_parser.cpp:658
 #, kde-format
 msgid "Could not read file %1"
-msgstr ""
+msgstr "Nelze přečíst soubor '%1"
 
 #: src/core/io/avd/avd_parser.cpp:659 src/core/io/avd/avd_parser.cpp:668
 #, kde-format
@@ -1296,7 +1296,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
 msgid "Pretty"
-msgstr ""
+msgstr "Pěkný"
 
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
@@ -1306,7 +1306,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
 msgid "Strip"
-msgstr ""
+msgstr "Odstranit"
 
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
@@ -1316,7 +1316,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
 msgid "Embed Images"
-msgstr ""
+msgstr "Vložit obrázky"
 
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
@@ -1377,7 +1377,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:507
 #, kde-format
 msgid "Unknown field %2%1"
-msgstr ""
+msgstr "Neznámé pole %2%1"
 
 #: src/core/io/lottie/lottie_importer.hpp:832
 #, kde-format
@@ -1392,12 +1392,12 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:966
 #, kde-format
 msgid "(null)"
-msgstr ""
+msgstr "(null)"
 
 #: src/core/io/lottie/lottie_importer.hpp:972
 #, kde-format
 msgid "(empty)"
-msgstr ""
+msgstr "(prázdný)"
 
 #: src/core/io/lottie/lottie_importer.hpp:980
 #, kde-format
@@ -1492,7 +1492,7 @@ msgstr "%1: %2"
 #: src/core/io/mime/json_mime.hpp:18
 #, kde-format
 msgid "JSON"
-msgstr ""
+msgstr "JSON"
 
 #: src/core/io/raster/raster_format.hpp:25
 #: src/core/io/raster/raster_mime.hpp:25
@@ -1503,7 +1503,7 @@ msgstr ""
 #: src/core/io/raster/spritesheet_format.cpp:32
 #, kde-format
 msgid "Frame Width"
-msgstr ""
+msgstr "Šířka rámečku"
 
 #: src/core/io/raster/spritesheet_format.cpp:32
 #, kde-format
@@ -1523,7 +1523,7 @@ msgstr ""
 #: src/core/io/raster/spritesheet_format.cpp:34
 #, kde-format
 msgid "Columns"
-msgstr ""
+msgstr "Sloupce"
 
 #: src/core/io/raster/spritesheet_format.cpp:34
 #, kde-format
@@ -1533,7 +1533,7 @@ msgstr ""
 #: src/core/io/raster/spritesheet_format.cpp:35
 #, kde-format
 msgid "Time Step"
-msgstr ""
+msgstr "Časový krok"
 
 #: src/core/io/raster/spritesheet_format.cpp:35
 #, kde-format
@@ -1563,7 +1563,7 @@ msgstr ""
 #: src/core/io/rive/rive_format.cpp:24
 #, kde-format
 msgid "Unsupported format"
-msgstr ""
+msgstr "Nepodporovaný formát"
 
 #: src/core/io/rive/rive_format.cpp:34
 #, kde-format
@@ -1684,13 +1684,13 @@ msgstr ""
 #: src/core/io/svg/svg_format.cpp:71
 #, kde-format
 msgid "Embedded data"
-msgstr ""
+msgstr "Vložená data"
 
 #: src/core/io/svg/svg_format.cpp:72
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:935
 #, kde-format
 msgid "Ignore"
-msgstr ""
+msgstr "Ignorovat"
 
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
@@ -1705,12 +1705,12 @@ msgstr ""
 #: src/core/io/svg/svg_format.cpp:92
 #, kde-format
 msgid "Could not write to file"
-msgstr ""
+msgstr "Nelze zapisovat do souboru"
 
 #: src/core/io/svg/svg_format.hpp:21 src/core/io/svg/svg_mime.hpp:20
 #, kde-format
 msgid "SVG"
-msgstr ""
+msgstr "SVG"
 
 #: src/core/io/svg/svg_html_format.hpp:18
 #, kde-format
@@ -1832,12 +1832,12 @@ msgstr ""
 #: src/core/io/video/video_format.cpp:857
 #, kde-format
 msgid "Background"
-msgstr ""
+msgstr "Pozadí"
 
 #: src/core/io/video/video_format.cpp:857
 #, kde-format
 msgid "Background color"
-msgstr ""
+msgstr "Barva pozadí"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/io/video/video_format.cpp:858
@@ -1845,7 +1845,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:46
 #, kde-format
 msgid "Width"
-msgstr ""
+msgstr "Šířka"
 
 #: src/core/io/video/video_format.cpp:858
 #: src/core/io/video/video_format.cpp:859
@@ -1858,12 +1858,12 @@ msgstr ""
 #: src/gui/widgets/dialogs/resize_dialog.ui:33
 #, kde-format
 msgid "Height"
-msgstr ""
+msgstr "Výška"
 
 #: src/core/io/video/video_format.cpp:860
 #, kde-format
 msgid "Verbose"
-msgstr ""
+msgstr "Podrobný"
 
 #: src/core/io/video/video_format.cpp:860
 #, kde-format
@@ -1873,13 +1873,13 @@ msgstr ""
 #: src/core/io/video/video_format.hpp:21
 #, kde-format
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: src/core/model/animation/animatable.cpp:271
 #: src/core/model/animation/animatable_path.cpp:30
 #, kde-format
 msgid "Split Segment"
-msgstr ""
+msgstr "Rozdělit segment"
 
 #: src/core/model/animation/animatable.cpp:340
 #: src/core/model/animation/animatable_path.cpp:60
@@ -1893,7 +1893,7 @@ msgstr ""
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:196
 #, kde-format
 msgid "Add Keyframe"
-msgstr ""
+msgstr "Přidat klíčový snímek"
 
 #: src/core/model/animation/animatable_path.cpp:139
 #, kde-format
@@ -1907,7 +1907,7 @@ msgstr ""
 
 #: src/core/model/assets/assets.hpp:34
 msgid "values"
-msgstr ""
+msgstr "hodnoty"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_extra)
 #. i18n: ectx: property (text), widget (QToolButton, button_extra)
@@ -1923,36 +1923,36 @@ msgstr ""
 #: src/core/model/assets/assets.hpp:117
 #, kde-format
 msgid "Images"
-msgstr ""
+msgstr "Obrázky"
 
 #: src/core/model/assets/assets.hpp:127 src/gui/tools/edit_tool.cpp:352
 #, kde-format
 msgid "Gradient Colors"
-msgstr ""
+msgstr "Barvy přechodu"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_gradients)
 #: src/core/model/assets/assets.hpp:137
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:919
 #, kde-format
 msgid "Gradients"
-msgstr ""
+msgstr "Přechody"
 
 #: src/core/model/assets/assets.hpp:151
 #, kde-format
 msgid "Compositions"
-msgstr ""
+msgstr "Kompozice"
 
 #: src/core/model/assets/assets.hpp:173
 #, kde-format
 msgid "Fonts"
-msgstr ""
+msgstr "Písma"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_assets)
 #: src/core/model/assets/assets.hpp:207
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:965
 #, kde-format
 msgid "Assets"
-msgstr ""
+msgstr "Aktiva"
 
 #: src/core/model/assets/bitmap.cpp:205
 #, kde-format
@@ -1962,12 +1962,12 @@ msgstr ""
 #: src/core/model/assets/bitmap.hpp:41
 #, kde-format
 msgid "Bitmap"
-msgstr ""
+msgstr "Bitmapa"
 
 #: src/core/model/assets/composition.cpp:24
 #, kde-format
 msgid "Composition"
-msgstr ""
+msgstr "Kompozice"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -1978,14 +1978,14 @@ msgstr ""
 #: src/gui/widgets/font/google_fonts_widget.ui:68
 #, kde-format
 msgid "Font"
-msgstr ""
+msgstr "Písmo"
 
 #: src/core/model/assets/gradient.cpp:83
 #: src/gui/item_models/gradient_list_model.cpp:175
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:232
 #, kde-format
 msgid "Gradient"
-msgstr ""
+msgstr "Přechod"
 
 #: src/core/model/assets/gradient.cpp:133
 #, kde-format
@@ -2000,7 +2000,7 @@ msgstr ""
 #: src/core/model/assets/gradient.cpp:211
 #, kde-format
 msgid "%1 Gradient"
-msgstr ""
+msgstr "%1 Přechod"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_fill_linear)
 #. i18n: ectx: property (text), widget (QToolButton, btn_fill_linear)
@@ -2014,7 +2014,7 @@ msgstr ""
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:60
 #, kde-format
 msgid "Linear"
-msgstr ""
+msgstr "Lineární"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_fill_radial)
 #. i18n: ectx: property (text), widget (QToolButton, btn_fill_radial)
@@ -2027,7 +2027,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:177
 #, kde-format
 msgid "Radial"
-msgstr ""
+msgstr "Radiální"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_fill_conical)
 #. i18n: ectx: property (text), widget (QToolButton, btn_fill_conical)
@@ -2040,7 +2040,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:226
 #, kde-format
 msgid "Conical"
-msgstr ""
+msgstr "Kónický"
 
 #: src/core/model/assets/named_color.cpp:17
 #, kde-format
@@ -2050,7 +2050,7 @@ msgstr ""
 #: src/core/model/mask_settings.cpp:13
 #, kde-format
 msgid "Mask"
-msgstr ""
+msgstr "Maska"
 
 #: src/core/model/object.hpp:90
 #, kde-format
@@ -2060,7 +2060,7 @@ msgstr ""
 #: src/core/model/shapes/ellipse.cpp:19 src/gui/tools/ellipse_tool.cpp:17
 #, kde-format
 msgid "Ellipse"
-msgstr ""
+msgstr "Elipsa"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_colors)
@@ -2076,19 +2076,19 @@ msgstr ""
 #: src/gui/widgets/tools/shape_tool_widget.ui:66
 #, kde-format
 msgid "Fill"
-msgstr ""
+msgstr "Vyplnit"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/model/shapes/group.hpp:42
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
 #, kde-format
 msgid "Group"
-msgstr ""
+msgstr "Skupina"
 
 #: src/core/model/shapes/image.cpp:85 src/gui/widgets/menus/node_menu.cpp:352
 #, kde-format
 msgid "Image"
-msgstr ""
+msgstr "Obrázek"
 
 #: src/core/model/shapes/inflate_deflate.cpp:18
 #, kde-format
@@ -2100,7 +2100,7 @@ msgstr ""
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
 #, kde-format
 msgid "Layer"
-msgstr ""
+msgstr "Vrstva"
 
 #: src/core/model/shapes/offset_path.cpp:342
 #, kde-format
@@ -2113,7 +2113,7 @@ msgstr ""
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
-msgstr ""
+msgstr "Cesta"
 
 #: src/core/model/shapes/polystar.hpp:48
 #, kde-format
@@ -2128,17 +2128,17 @@ msgstr ""
 #: src/core/model/shapes/rect.hpp:31 src/gui/tools/rectangle_tool.hpp:20
 #, kde-format
 msgid "Rectangle"
-msgstr ""
+msgstr "Obdélník"
 
 #: src/core/model/shapes/repeater.cpp:25
 #, kde-format
 msgid "Repeater"
-msgstr ""
+msgstr "Opakovač"
 
 #: src/core/model/shapes/round_corners.cpp:20
 #, kde-format
 msgid "Round Corners"
-msgstr ""
+msgstr "Kulaté rohy"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_stroke)
@@ -2153,19 +2153,19 @@ msgstr ""
 #: src/gui/widgets/tools/shape_tool_widget.ui:80
 #, kde-format
 msgid "Stroke"
-msgstr ""
+msgstr "Tah"
 
 #: src/core/model/shapes/text.cpp:255
 #, kde-format
 msgid "Change Font"
-msgstr ""
+msgstr "Změnit písmo"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_style)
 #: src/core/model/shapes/text.cpp:489
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:56
 #, kde-format
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: src/core/model/shapes/trim.cpp:24
 #, kde-format
@@ -2175,19 +2175,19 @@ msgstr ""
 #: src/core/model/shapes/zig_zag.cpp:139
 #, kde-format
 msgid "Zig Zag"
-msgstr ""
+msgstr "Cikcak"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TimingDialog)
 #: src/core/model/stretchable_time.cpp:28
 #: src/gui/widgets/dialogs/timing_dialog.ui:21
 #, kde-format
 msgid "Timing"
-msgstr ""
+msgstr "Časování"
 
 #: src/core/model/transform.hpp:29
 #, kde-format
 msgid "Transform"
-msgstr ""
+msgstr "Transformovat"
 
 #: src/core/plugin/snippet.hpp:93
 #, kde-format
@@ -2240,13 +2240,13 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Options"
-msgstr ""
+msgstr "Možnosti"
 
 #: src/gui/cli.cpp:32
 #, kde-format
 msgctxt "@info:shell"
 msgid "File to open"
-msgstr ""
+msgstr "Soubor k otevření"
 
 #: src/gui/cli.cpp:33
 #, kde-format
@@ -2296,7 +2296,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Export Options"
-msgstr ""
+msgstr "Možnosti exportu"
 
 #: src/gui/cli.cpp:63
 #, kde-format
@@ -2429,25 +2429,25 @@ msgstr ""
 #, kde-format
 msgctxt "Package install status"
 msgid "Installed"
-msgstr ""
+msgstr "Nainstalováno"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:166
 #, kde-format
 msgctxt "Package install status"
 msgid "Not Installed"
-msgstr ""
+msgstr "Nenainstalováno"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:185
 #, kde-format
 msgctxt "Package install status"
 msgid "Downloading"
-msgstr ""
+msgstr "Stahuji"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:196
 #, kde-format
 msgctxt "Package install status, %1 reason"
 msgid "Could not download: %1"
-msgstr ""
+msgstr "Nelze stáhnout: %1"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:215
 #, kde-format
@@ -2483,19 +2483,19 @@ msgstr ""
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:89
 #, kde-format
 msgid "Name"
-msgstr ""
+msgstr "Název"
 
 #. i18n: ectx: property (text), widget (QTableWidget, emoji_set_view)
 #: src/gui/emoji/emoji_set_dialog.ui:55
 #, kde-format
 msgid "License"
-msgstr ""
+msgstr "Licence"
 
 #. i18n: ectx: property (text), widget (QTableWidget, emoji_set_view)
 #: src/gui/emoji/emoji_set_dialog.ui:90
 #, kde-format
 msgid "Downloaded"
-msgstr ""
+msgstr "Staženo"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton_2)
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_5)
@@ -2507,7 +2507,7 @@ msgstr ""
 #: src/gui/widgets/font/google_fonts_widget.ui:36
 #, kde-format
 msgid "Reload"
-msgstr ""
+msgstr "Obnovit"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_view_website)
 #: src/gui/emoji/emoji_set_dialog.ui:121
@@ -2519,13 +2519,13 @@ msgstr ""
 #: src/gui/emoji/emoji_set_dialog.ui:135
 #, kde-format
 msgid "Download"
-msgstr ""
+msgstr "Stáhnout"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_add_emoji)
 #: src/gui/emoji/emoji_set_dialog.ui:149
 #, kde-format
 msgid "Add Emoji..."
-msgstr ""
+msgstr "Přidat emotikon..."
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_close)
@@ -2534,7 +2534,7 @@ msgstr ""
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:171
 #, kde-format
 msgid "Close"
-msgstr ""
+msgstr "Zavřít"
 
 #: src/gui/glaxnimate_app.cpp:79
 #, kde-format
@@ -2545,13 +2545,13 @@ msgstr ""
 #, kde-format
 msgctxt "@title settings group"
 msgid "User Interface"
-msgstr ""
+msgstr "Uživatelské rozhraní"
 
 #: src/gui/glaxnimate_app.cpp:173
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Language"
-msgstr ""
+msgstr "Jazyk"
 
 #: src/gui/glaxnimate_app.cpp:174
 #, kde-format
@@ -2563,7 +2563,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Icon Theme"
-msgstr ""
+msgstr "Motiv ikon"
 
 #: src/gui/glaxnimate_app.cpp:178
 #, kde-format
@@ -2589,31 +2589,31 @@ msgstr ""
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Width"
-msgstr ""
+msgstr "Šířka"
 
 #: src/gui/glaxnimate_app.cpp:191
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Height"
-msgstr ""
+msgstr "Výška"
 
 #: src/gui/glaxnimate_app.cpp:194
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "FPS"
-msgstr ""
+msgstr "FPS"
 
 #: src/gui/glaxnimate_app.cpp:195
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Frames per second"
-msgstr ""
+msgstr "Snímků za sekundu"
 
 #: src/gui/glaxnimate_app.cpp:198
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Duration"
-msgstr ""
+msgstr "Trvání"
 
 #: src/gui/glaxnimate_app.cpp:199
 #, kde-format
@@ -2625,7 +2625,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title settings group"
 msgid "Open / Save"
-msgstr ""
+msgstr "Otevřít/Uložit"
 
 #: src/gui/glaxnimate_app.cpp:203
 #, kde-format
@@ -2655,13 +2655,13 @@ msgstr ""
 #, kde-format
 msgctxt "@title settings group"
 msgid "Scripting"
-msgstr ""
+msgstr "Skriptování"
 
 #: src/gui/glaxnimate_app.cpp:218
 #, kde-format
 msgctxt "@title settings group"
 msgid "Tools"
-msgstr ""
+msgstr "Nástroje"
 
 #: src/gui/graphics/bezier_item.cpp:239
 #, kde-format
@@ -2676,7 +2676,7 @@ msgstr ""
 #: src/gui/graphics/bezier_item.cpp:368
 #, kde-format
 msgid "Remove Point"
-msgstr ""
+msgstr "Odstranit bod"
 
 #: src/gui/graphics/bezier_item.cpp:392
 #, kde-format
@@ -2691,7 +2691,7 @@ msgstr ""
 #: src/gui/graphics/composition_item.hpp:113
 #, kde-format
 msgid "Resize Canvas"
-msgstr ""
+msgstr "Změnit velikost plátna"
 
 #: src/gui/graphics/gradient_editor.cpp:109
 #, kde-format
@@ -2714,19 +2714,19 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:279
 #, kde-format
 msgid "Color"
-msgstr ""
+msgstr "Barva"
 
 #: src/gui/item_models/document_node_model.cpp:257
 #: src/gui/item_models/property_model_full.cpp:257
 #, kde-format
 msgid "Visible"
-msgstr ""
+msgstr "Viditelný"
 
 #: src/gui/item_models/document_node_model.cpp:259
 #: src/gui/item_models/property_model_full.cpp:291
 #, kde-format
 msgid "Locked"
-msgstr ""
+msgstr "Uzamčeno"
 
 #: src/gui/item_models/document_node_model.cpp:261
 #: src/gui/item_models/gradient_list_model.cpp:179
@@ -2737,7 +2737,7 @@ msgstr "#"
 #: src/gui/item_models/gradient_list_model.cpp:181
 #, kde-format
 msgid "Number of users"
-msgstr ""
+msgstr "Počet uživatelů "
 
 #: src/gui/item_models/property_model_base.cpp:247
 #, kde-format
@@ -2757,7 +2757,7 @@ msgstr ""
 #: src/gui/item_models/property_model_full.cpp:258
 #, kde-format
 msgid "Hidden"
-msgstr ""
+msgstr "Skryté"
 
 #: src/gui/item_models/property_model_full.cpp:265
 #, kde-format
@@ -2767,7 +2767,7 @@ msgstr ""
 #: src/gui/item_models/property_model_full.cpp:292
 #, kde-format
 msgid "Unlocked"
-msgstr ""
+msgstr "Odemčeno"
 
 #: src/gui/item_models/property_model_full.cpp:300
 #, kde-format
@@ -2796,7 +2796,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:153
 #, kde-format
 msgid "Value"
-msgstr ""
+msgstr "Hodnota"
 
 #: src/gui/item_models/python_snippet_model.hpp:35
 #, kde-format
@@ -2806,7 +2806,7 @@ msgstr ""
 #: src/gui/settings/api_credentials.cpp:86
 #, kde-format
 msgid "Information"
-msgstr ""
+msgstr "Informace"
 
 #: src/gui/settings/api_credentials.hpp:41
 #, kde-format
@@ -2816,12 +2816,12 @@ msgstr ""
 #: src/gui/settings/clipboard_settings.hpp:18
 #, kde-format
 msgid "Clipboard"
-msgstr ""
+msgstr "Schránka"
 
 #: src/gui/settings/document_templates.cpp:52
 #, kde-format
 msgid "Unnamed"
-msgstr ""
+msgstr "Nepojmenované"
 
 #: src/gui/settings/document_templates.cpp:118
 #, kde-format
@@ -2839,7 +2839,7 @@ msgstr ""
 #: src/gui/settings/document_templates.cpp:180
 #, kde-format
 msgid "Template"
-msgstr ""
+msgstr "Šablona"
 
 #: src/gui/settings/document_templates.cpp:184
 #, kde-format
@@ -2849,12 +2849,12 @@ msgstr "%1 %2"
 #: src/gui/settings/plugin_settings_group.hpp:23
 #, kde-format
 msgid "Plugins"
-msgstr ""
+msgstr "Moduly"
 
 #: src/gui/settings/toolbar_settings.hpp:19
 #, kde-format
 msgid "Toolbars"
-msgstr ""
+msgstr "Panely nástrojů"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
@@ -2874,12 +2874,12 @@ msgstr "%"
 #: src/gui/tools/color_picker.cpp:19
 #, kde-format
 msgid "Color Picker"
-msgstr ""
+msgstr "Kapátko"
 
 #: src/gui/tools/color_picker.cpp:20
 #, kde-format
 msgid "F7"
-msgstr ""
+msgstr "F7"
 
 #: src/gui/tools/draw_tool.cpp:184
 #, kde-format
@@ -2911,7 +2911,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1183
 #, kde-format
 msgid "F3"
-msgstr ""
+msgstr "F3"
 
 #: src/gui/tools/edit_tool.cpp:169
 #, kde-format
@@ -2926,7 +2926,7 @@ msgstr ""
 #: src/gui/tools/edit_tool.cpp:280
 #, kde-format
 msgid "Smooth"
-msgstr ""
+msgstr "Hladké"
 
 #: src/gui/tools/edit_tool.cpp:284
 #, kde-format
@@ -2941,7 +2941,7 @@ msgstr ""
 #: src/gui/tools/edit_tool.cpp:305
 #, kde-format
 msgid "Node"
-msgstr ""
+msgstr "Uzel"
 
 #: src/gui/tools/edit_tool.cpp:315
 #, kde-format
@@ -2979,7 +2979,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Remove Stop"
-msgstr ""
+msgstr "Odstranit přerušení"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/tools/edit_tool.cpp:527
@@ -3015,31 +3015,31 @@ msgstr ""
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:157
 #, kde-format
 msgid "Edit"
-msgstr ""
+msgstr "Upravit"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/tools/edit_tool.hpp:28
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1168
 #, kde-format
 msgid "F2"
-msgstr ""
+msgstr "F2"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/tools/ellipse_tool.cpp:18
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1228
 #, kde-format
 msgid "F5"
-msgstr ""
+msgstr "F5"
 
 #: src/gui/tools/ellipse_tool.cpp:28
 #, kde-format
 msgid "Draw Ellipse"
-msgstr ""
+msgstr "Nakreslit elipsu"
 
 #: src/gui/tools/fill_tool.cpp:26 src/gui/tools/text_tool.cpp:29
 #, kde-format
 msgid "F8"
-msgstr ""
+msgstr "F8"
 
 #: src/gui/tools/fill_tool.cpp:53
 #, kde-format
@@ -3049,12 +3049,12 @@ msgstr ""
 #: src/gui/tools/fill_tool.cpp:88
 #, kde-format
 msgid "%1 Fill"
-msgstr ""
+msgstr "%1 Vyplnit"
 
 #: src/gui/tools/fill_tool.cpp:99
 #, kde-format
 msgid "%1 Stroke"
-msgstr ""
+msgstr "%1 Tah"
 
 #: src/gui/tools/freehand.cpp:18 src/gui/tools/freehand.cpp:47
 #, kde-format
@@ -3066,57 +3066,57 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1198
 #, kde-format
 msgid "F6"
-msgstr ""
+msgstr "F6"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_properties)
 #: src/gui/tools/handle_menu.hpp:33
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:690
 #, kde-format
 msgid "Properties"
-msgstr ""
+msgstr "Vlastnosti"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/tools/rectangle_tool.hpp:21
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1213
 #, kde-format
 msgid "F4"
-msgstr ""
+msgstr "F4"
 
 #: src/gui/tools/rectangle_tool.hpp:42
 #, kde-format
 msgid "Draw Rectangle"
-msgstr ""
+msgstr "Nakreslit pravoúhelník"
 
 #. i18n: ectx: property (text), widget (QToolButton, preview_tool_1)
 #: src/gui/tools/select_tool.cpp:29
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:146
 #, kde-format
 msgid "Select"
-msgstr ""
+msgstr "Vybrat"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/tools/select_tool.cpp:30
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1153
 #, kde-format
 msgid "F1"
-msgstr ""
+msgstr "F1"
 
 #: src/gui/tools/select_tool.cpp:133
 #, kde-format
 msgid "Drag"
-msgstr ""
+msgstr "Táhnout"
 
 #: src/gui/tools/select_tool.cpp:398 src/gui/widgets/dialogs/gw_impl_ui.cpp:317
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:993
 #, kde-format
 msgid "Undo %1"
-msgstr ""
+msgstr "Zpět %1"
 
 #: src/gui/tools/select_tool.cpp:403 src/gui/widgets/dialogs/gw_impl_ui.cpp:312
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:994
 #, kde-format
 msgid "Redo %1"
-msgstr ""
+msgstr "Znovu %1"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_delete)
@@ -3127,17 +3127,17 @@ msgstr ""
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:66
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "Smazat"
 
 #: src/gui/tools/select_tool.cpp:428
 #, kde-format
 msgid "Move to..."
-msgstr ""
+msgstr "Přesunout do..."
 
 #: src/gui/tools/star_tool.cpp:19 src/gui/widgets/enum_combo.cpp:90
 #, kde-format
 msgid "Star"
-msgstr ""
+msgstr "Hvězda"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/tools/star_tool.cpp:20
@@ -3154,19 +3154,19 @@ msgstr ""
 #: src/gui/tools/text_tool.cpp:28 src/gui/tools/text_tool.cpp:157
 #, kde-format
 msgid "Draw Text"
-msgstr ""
+msgstr "Nakreslit text"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::AboutDialog)
 #: src/gui/widgets/dialogs/about_dialog.ui:21
 #, kde-format
 msgid "About"
-msgstr ""
+msgstr "O aplikaci"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab)
 #: src/gui/widgets/dialogs/about_dialog.ui:91
 #, kde-format
 msgid "Credits"
-msgstr ""
+msgstr "Poděkování"
 
 #. i18n: ectx: property (text), widget (QLabel, credits)
 #: src/gui/widgets/dialogs/about_dialog.ui:139
@@ -3178,7 +3178,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/about_dialog.ui:160
 #, kde-format
 msgid "Paths"
-msgstr ""
+msgstr "Cesty"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/about_dialog.ui:181
@@ -3190,13 +3190,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/about_dialog.ui:213
 #, kde-format
 msgid "Settings File:"
-msgstr ""
+msgstr "Soubor nastavení:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: src/gui/widgets/dialogs/about_dialog.ui:245
 #, kde-format
 msgid "Backup Directory:"
-msgstr ""
+msgstr "Adresář zálohy:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/about_dialog.ui:277
@@ -3218,19 +3218,19 @@ msgstr ""
 #: src/gui/widgets/font/font_style_dialog.ui:35
 #, kde-format
 msgid "System"
-msgstr ""
+msgstr "Systém"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
 #: src/gui/widgets/dialogs/about_dialog.ui:345
 #, kde-format
 msgid "Kernel"
-msgstr ""
+msgstr "Jádro"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
 #: src/gui/widgets/dialogs/about_dialog.ui:350
 #, kde-format
 msgid "CPU"
-msgstr ""
+msgstr "CPU"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
 #: src/gui/widgets/dialogs/about_dialog.ui:355
@@ -3268,19 +3268,19 @@ msgstr ""
 #: src/gui/widgets/settings/plugin_settings_widget.ui:207
 #, kde-format
 msgid "Version"
-msgstr ""
+msgstr "Verze"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton_2)
 #: src/gui/widgets/dialogs/about_dialog.ui:390
 #, kde-format
 msgid "About Qt"
-msgstr ""
+msgstr "O &Qt"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_4)
 #: src/gui/widgets/dialogs/about_dialog.ui:428
 #, kde-format
 msgid "Formats"
-msgstr ""
+msgstr "Formáty"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: src/gui/widgets/dialogs/about_dialog.ui:464
@@ -3294,7 +3294,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/about_dialog.ui:533
 #, kde-format
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_output)
@@ -3302,7 +3302,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/about_dialog.ui:538
 #, kde-format
 msgid "Extensions"
-msgstr ""
+msgstr "Rozšíření"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: src/gui/widgets/dialogs/about_dialog.ui:505
@@ -3320,7 +3320,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:33
 #, kde-format
 msgid "Algorithm"
-msgstr ""
+msgstr "Algoritmus"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:44
@@ -3350,13 +3350,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:76
 #, kde-format
 msgid "Match"
-msgstr ""
+msgstr "Odpovídá"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:83
 #, kde-format
 msgid "Max Iterations"
-msgstr ""
+msgstr "Maximum iterací"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
@@ -3365,7 +3365,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:59
 #, kde-format
 msgid "None"
-msgstr ""
+msgstr "Žádný"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:112
@@ -3377,7 +3377,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:117
 #, kde-format
 msgid "Closest"
-msgstr ""
+msgstr "Nejbližší"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:141
@@ -3463,7 +3463,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:189
 #, kde-format
 msgid "Min Frequency"
-msgstr ""
+msgstr "Minimální frekvence"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_3)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:205
@@ -3501,7 +3501,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:38
 #, kde-format
 msgid "Common"
-msgstr ""
+msgstr "Společné"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -3509,7 +3509,7 @@ msgstr ""
 #: src/gui/widgets/settings/plugin_settings_widget.ui:200
 #, kde-format
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: ectx: property (text), widget (QLabel, label_5)
@@ -3517,13 +3517,13 @@ msgstr ""
 #: src/gui/widgets/settings/plugin_settings_widget.ui:214
 #, kde-format
 msgid "Description"
-msgstr ""
+msgstr "Popis"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:70
 #, kde-format
 msgid "Keywords"
-msgstr ""
+msgstr "Klíčová slova"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
@@ -3534,13 +3534,13 @@ msgstr ""
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:69
 #, kde-format
 msgid "Custom"
-msgstr ""
+msgstr "Vlastní"
 
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:82
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
-msgstr ""
+msgstr "Chyba"
 
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:82
 #, kde-format
@@ -3554,13 +3554,13 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Choose directory"
-msgstr ""
+msgstr "Vyberte adresář"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::ExportImageSequenceDialog)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:21
 #, kde-format
 msgid "Export as Image Sequence"
-msgstr ""
+msgstr "Exportovat jako sekvenci obrázků"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:30
@@ -3572,7 +3572,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:43
 #, kde-format
 msgid "File Name"
-msgstr ""
+msgstr "Název souboru"
 
 #. i18n: ectx: property (toolTip), widget (QLineEdit, input_name)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:56
@@ -3602,12 +3602,12 @@ msgstr ""
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:132
 #, kde-format
 msgid "Select..."
-msgstr ""
+msgstr "Vybrat..."
 
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:40
 #, kde-format
 msgid "f"
-msgstr ""
+msgstr "f"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_seconds)
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:51
@@ -3632,7 +3632,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/timing_dialog.ui:52
 #, kde-format
 msgid "Duration"
-msgstr ""
+msgstr "Trvání"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:34
@@ -3644,13 +3644,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:48
 #, kde-format
 msgid "Shape"
-msgstr ""
+msgstr "Tvar"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:58
 #, kde-format
 msgid "End Time"
-msgstr ""
+msgstr "Čas ukončení"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_units)
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -3660,7 +3660,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/timing_dialog.ui:72
 #, kde-format
 msgid "Frames"
-msgstr ""
+msgstr "Rámce"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_units)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_time_units)
@@ -3668,19 +3668,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/startup_dialog.ui:135
 #, kde-format
 msgid "Seconds"
-msgstr ""
+msgstr "Sekundy"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:91
 #, kde-format
 msgid "Choose..."
-msgstr ""
+msgstr "Vybrat..."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:100
 #, kde-format
 msgid "Start Time"
-msgstr ""
+msgstr "Čas zahájení"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:27
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:49
@@ -3692,13 +3692,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:63
 #, kde-format
 msgid "File saved"
-msgstr ""
+msgstr "Soubor byl uložen"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:57
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:65
 #, kde-format
 msgid "Could not save file"
-msgstr ""
+msgstr "Není možné uložit soubor"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:71
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:79
@@ -3710,43 +3710,43 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:81
 #, kde-format
 msgid "Could not export file"
-msgstr ""
+msgstr "Nelze exportovat soubor."
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:189
 #, kde-format
 msgid "Warning"
-msgstr ""
+msgstr "Varování"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_file)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:54
 #, kde-format
 msgid "&File"
-msgstr ""
+msgstr "&Soubor"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_open_recent)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:58
 #, kde-format
 msgid "Open &Recent"
-msgstr ""
+msgstr "Otevřít ne&dávný"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_new_from_template)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:68
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:941
 #, kde-format
 msgid "New from Template"
-msgstr ""
+msgstr "Nový ze šablony"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_tools)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:99
 #, kde-format
 msgid "&Tools"
-msgstr ""
+msgstr "Nás&troje"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_layers)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:104
 #, kde-format
 msgid "&Layers"
-msgstr ""
+msgstr "&Vrstvy"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_new_layer)
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
@@ -3754,19 +3754,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1090
 #, kde-format
 msgid "&New"
-msgstr ""
+msgstr "&Nový"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_new_comp_layer)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:116
 #, kde-format
 msgid "&Composition"
-msgstr ""
+msgstr "Kompozi&ce"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_path)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:138
 #, kde-format
 msgid "&Path"
-msgstr ""
+msgstr "&Cesta"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_edit)
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
@@ -3774,49 +3774,49 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1165
 #, kde-format
 msgid "&Edit"
-msgstr ""
+msgstr "&Upravit"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_view)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:184
 #, kde-format
 msgid "&View"
-msgstr ""
+msgstr "Po&hled"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_views)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:188
 #, kde-format
 msgid "&Views"
-msgstr ""
+msgstr "Po&hledy"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_toolbars)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:194
 #, kde-format
 msgid "Tool&bars"
-msgstr ""
+msgstr "Pane&ly nástrojů"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_layout)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:199
 #, kde-format
 msgid "&Layout"
-msgstr ""
+msgstr "&Uspořádání"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_help)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:220
 #, kde-format
 msgid "&Help"
-msgstr ""
+msgstr "Nápo&věda"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_plugins)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:229
 #, kde-format
 msgid "Plu&gins"
-msgstr ""
+msgstr "Mod&uly"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_document)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:234
 #, kde-format
 msgid "&Document"
-msgstr ""
+msgstr "&Dokument"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_render_single_frame)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:238
@@ -3834,13 +3834,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:273
 #, kde-format
 msgid "&Playback"
-msgstr ""
+msgstr "&Přehrávání"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_object)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:286
 #, kde-format
 msgid "&Object"
-msgstr ""
+msgstr "&Objekt"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_align)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:290
@@ -3852,19 +3852,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:326
 #, kde-format
 msgid "&Text"
-msgstr ""
+msgstr "&Text"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_Settings)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:333
 #, kde-format
 msgid "&Settings"
-msgstr ""
+msgstr "Na&stavení"
 
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolbar_main)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:355
 #, kde-format
 msgid "Main Toolbar"
-msgstr ""
+msgstr "Hlavní panel nástrojů"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_tools)
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolbar_tools)
@@ -3872,13 +3872,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1005
 #, kde-format
 msgid "Tools"
-msgstr ""
+msgstr "Nástroje"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_tool_options)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:440
 #, kde-format
 msgid "Tool Options"
-msgstr ""
+msgstr "Možnosti nástrojů"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_add)
@@ -3890,7 +3890,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:75
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "Přidat"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_duplicate)
@@ -3902,7 +3902,7 @@ msgstr ""
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:69
 #, kde-format
 msgid "Duplicate"
-msgstr ""
+msgstr "Duplikovat"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_2)
 #. i18n: ectx: property (text), widget (QToolButton, btn_remove)
@@ -3916,7 +3916,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:86
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "Odstranit"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_top)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_top)
@@ -3924,7 +3924,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:623
 #, kde-format
 msgid "Move To Top"
-msgstr ""
+msgstr "Přesunout nahoru"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_up)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_up)
@@ -3932,7 +3932,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:637
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "Přesunout nahoru"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_down)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_down)
@@ -3940,7 +3940,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:651
 #, kde-format
 msgid "Move Down"
-msgstr ""
+msgstr "Posunout výš"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_bottom)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_bottom)
@@ -3948,25 +3948,25 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:665
 #, kde-format
 msgid "Move To Bottom"
-msgstr ""
+msgstr "Přesunout dolů"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_script_console)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:770
 #, kde-format
 msgid "Script Console"
-msgstr ""
+msgstr "Konzole skriptu"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_logs)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:789
 #, kde-format
 msgid "Logs"
-msgstr ""
+msgstr "Záznamy"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_undo)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:855
 #, kde-format
 msgid "Undo History"
-msgstr ""
+msgstr "Historie činností"
 
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolbar_node)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:894
@@ -3978,7 +3978,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:950
 #, kde-format
 msgid "Align"
-msgstr ""
+msgstr "Zarovnat"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_snippets)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1026
@@ -3986,7 +3986,7 @@ msgstr ""
 #: src/gui/widgets/docks/snippet_list_widget.cpp:66
 #, kde-format
 msgid "Snippets"
-msgstr ""
+msgstr "Ústřižky"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_time_slider)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1057
@@ -3998,37 +3998,37 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1099
 #, kde-format
 msgid "&Open..."
-msgstr ""
+msgstr "&Otevřít..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1108
 #, kde-format
 msgid "&Save"
-msgstr ""
+msgstr "&Uložit"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1117
 #, kde-format
 msgid "Save &As..."
-msgstr ""
+msgstr "Uložit j&ako..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1126
 #, kde-format
 msgid "&Close"
-msgstr ""
+msgstr "&Zavřít"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1135
 #, kde-format
 msgid "&Quit"
-msgstr ""
+msgstr "U&končit"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1150
 #, kde-format
 msgid "&Select"
-msgstr ""
+msgstr "&Vybrat"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1180
@@ -4046,19 +4046,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1210
 #, kde-format
 msgid "&Rectangle"
-msgstr ""
+msgstr "&Obdélník"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1225
 #, kde-format
 msgid "&Ellipse"
-msgstr ""
+msgstr "&Elipsa"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1240
 #, kde-format
 msgid "S&tar"
-msgstr ""
+msgstr "Hvězda"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1252
@@ -4071,7 +4071,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1693
 #, kde-format
 msgid "&Group"
-msgstr ""
+msgstr "S&kupina"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1273
@@ -4089,25 +4089,25 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1291
 #, kde-format
 msgid "New &Composition"
-msgstr ""
+msgstr "Nová kompozi&ce"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1303
 #, kde-format
 msgid "&Union"
-msgstr ""
+msgstr "S&jednocení"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1315
 #, kde-format
 msgid "&Difference"
-msgstr ""
+msgstr "&Rozdíl"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1327
 #, kde-format
 msgid "&Intersect"
-msgstr ""
+msgstr "&Průnik"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1339
@@ -4119,7 +4119,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1351
 #, kde-format
 msgid "Re&verse"
-msgstr ""
+msgstr "Obrátit s&měr"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1360
@@ -4161,37 +4161,37 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1435
 #, kde-format
 msgid "&Smooth"
-msgstr ""
+msgstr "&Hladké"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1447
 #, kde-format
 msgid "Sy&mmetric"
-msgstr ""
+msgstr "Sy&metrické"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1456
 #, kde-format
 msgid "&Copy"
-msgstr ""
+msgstr "&Kopírovat"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1465
 #, kde-format
 msgid "Cu&t"
-msgstr ""
+msgstr "Vyjmou&t"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1474
 #, kde-format
 msgid "&Paste"
-msgstr ""
+msgstr "V&ložit"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1486
 #, kde-format
 msgid "&Select All"
-msgstr ""
+msgstr "Vybr&at vše"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1495
@@ -4203,31 +4203,31 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1498
 #, kde-format
 msgid "Home"
-msgstr ""
+msgstr "Domů"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1507
 #, kde-format
 msgid "&Raise"
-msgstr ""
+msgstr "&Do popředí"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1510
 #, kde-format
 msgid "PgUp"
-msgstr ""
+msgstr "PgUp"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1519
 #, kde-format
 msgid "&Lower"
-msgstr ""
+msgstr "Dát do &pozadí"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1522
 #, kde-format
 msgid "PgDown"
-msgstr ""
+msgstr "PgDown"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1531
@@ -4239,7 +4239,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1543
 #, kde-format
 msgid "Re&load"
-msgstr ""
+msgstr "Znovu načís&t"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1576
@@ -4251,43 +4251,43 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1585
 #, kde-format
 msgid "Re&set View"
-msgstr ""
+msgstr "Přena&stavit pohled"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1594
 #, kde-format
 msgid "&Reset Rotation"
-msgstr ""
+msgstr "&Vrátit otočení"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1603
 #, kde-format
 msgid "Zoom &In"
-msgstr ""
+msgstr "Přiblíž&it"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1612
 #, kde-format
 msgid "Zoom &Out"
-msgstr ""
+msgstr "&Oddálit"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1621
 #, kde-format
 msgid "Reset &Zoom"
-msgstr ""
+msgstr "Původní při&blížení"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1630
 #, kde-format
 msgid "Pr&eferences..."
-msgstr ""
+msgstr "Př&edvolby..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1639
 #, kde-format
 msgid "About..."
-msgstr ""
+msgstr "O aplikaci..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1648
@@ -4305,7 +4305,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1666
 #, kde-format
 msgid "S&VG..."
-msgstr ""
+msgstr "S&VG..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1675
@@ -4317,19 +4317,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1684
 #, kde-format
 msgid "Report &Issue..."
-msgstr ""
+msgstr "Nahlásit &problém..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1702
 #, kde-format
 msgid "&Ungroup"
-msgstr ""
+msgstr "Zr&ušit seskupení"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1711
 #, kde-format
 msgid "&Move to..."
-msgstr ""
+msgstr "&Přesunout do..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1720
@@ -4341,31 +4341,31 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1729
 #, kde-format
 msgid "Re&size..."
-msgstr ""
+msgstr "Změnit veliko&st..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1738
 #, kde-format
 msgid "Donate..."
-msgstr ""
+msgstr "Přispějte..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1747
 #, kde-format
 msgid "&Fill"
-msgstr ""
+msgstr "&Vyplnit"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1756
 #, kde-format
 msgid "&Stroke"
-msgstr ""
+msgstr "&Tah"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1765
 #, kde-format
 msgid "&Layer"
-msgstr ""
+msgstr "&Vrstva"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1777
@@ -4377,13 +4377,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1786
 #, kde-format
 msgid "Add &Image..."
-msgstr ""
+msgstr "Př&idat obrázek..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1795
 #, kde-format
 msgid "&Delete"
-msgstr ""
+msgstr "&Smazat"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1807
@@ -4401,19 +4401,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1828
 #, kde-format
 msgid "&Export..."
-msgstr ""
+msgstr "&Exportovat..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1837
 #, kde-format
 msgid "E&xport As..."
-msgstr ""
+msgstr "E&xportovat jako..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1858
 #, kde-format
 msgid "Cleanup"
-msgstr ""
+msgstr "Úklid"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1861
@@ -4425,19 +4425,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1870
 #, kde-format
 msgid "Timing..."
-msgstr ""
+msgstr "Časování..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1879
 #, kde-format
 msgid "&Play"
-msgstr ""
+msgstr "&Přehrát"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1894
 #, kde-format
 msgid "&Loop"
-msgstr ""
+msgstr "&Smyčka"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1906
@@ -4461,19 +4461,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1933
 #, kde-format
 msgid "&Next Frame"
-msgstr ""
+msgstr "&Následující rámec"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1942
 #, kde-format
 msgid "Pre&vious Frame"
-msgstr ""
+msgstr "Předchozí ráme&c"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1951
 #, kde-format
 msgid "Metadata..."
-msgstr ""
+msgstr "Metadata..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1960
@@ -4504,44 +4504,44 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1999
 #, kde-format
 msgid "Selection"
-msgstr ""
+msgstr "Výběr"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2011
 #, kde-format
 msgid "Canvas"
-msgstr ""
+msgstr "Plátno"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2020
 #, kde-format
 msgid "Left"
-msgstr ""
+msgstr "Vlevo"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2029
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2056
 #, kde-format
 msgid "Center"
-msgstr ""
+msgstr "Střed"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2038
 #, kde-format
 msgid "Right"
-msgstr ""
+msgstr "Vpravo"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2047
 #, kde-format
 msgid "Top"
-msgstr ""
+msgstr "Nahoře"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2065
 #, kde-format
 msgid "Bottom"
-msgstr ""
+msgstr "Dole"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2077
@@ -4559,13 +4559,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2087
 #, kde-format
 msgid "Horizontal"
-msgstr ""
+msgstr "Vodorovně"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2092
 #, kde-format
 msgid "Vertical"
-msgstr ""
+msgstr "Svisle"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2101
@@ -4595,7 +4595,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2137
 #, kde-format
 msgid "&Import..."
-msgstr ""
+msgstr "&Importovat..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2146
@@ -4607,7 +4607,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2155
 #, kde-format
 msgid "F&lip View"
-msgstr ""
+msgstr "Otočit pohled"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2164
@@ -4615,7 +4615,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:955
 #, kde-format
 msgid "Save as Template"
-msgstr ""
+msgstr "Uložit jako šablonu"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2173
@@ -4640,7 +4640,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2200
 #, kde-format
 msgid "Emo&ji..."
-msgstr ""
+msgstr "Emotikon..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2209
@@ -4652,7 +4652,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2218
 #, kde-format
 msgid "Export as Image Sequence..."
-msgstr ""
+msgstr "Exportovat jako sekvenci obrázků..."
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2229
@@ -4664,7 +4664,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2237
 #, kde-format
 msgid "Automatic"
-msgstr ""
+msgstr "Automaticky"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2240
@@ -4676,7 +4676,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2248
 #, kde-format
 msgid "Wide"
-msgstr ""
+msgstr "Široký"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2251
@@ -4688,7 +4688,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2259
 #, kde-format
 msgid "Compact"
-msgstr ""
+msgstr "Kompaktní"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2262
@@ -4712,7 +4712,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2280
 #, kde-format
 msgid "Medium"
-msgstr ""
+msgstr "Střední"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2283
@@ -4724,18 +4724,18 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2292
 #, kde-format
 msgid "Configure &Keyboard Shortcuts..."
-msgstr ""
+msgstr "Nastavit &klávesové zkratky..."
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2295
 #, kde-format
 msgid "Ctrl+Alt+,"
-msgstr ""
+msgstr "Ctrl+Alt+,"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:138
 #, kde-format
 msgid "Export..."
-msgstr ""
+msgstr "Exportovat..."
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:150
 #, kde-format
@@ -4752,7 +4752,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:238
 #, kde-format
 msgid "Close Document"
-msgstr ""
+msgstr "Zavřít dokument"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:245
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:667
@@ -4763,7 +4763,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:397
 #, kde-format
 msgid "Export to %1"
-msgstr ""
+msgstr "Exportovat do %1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:448
 #, kde-format
@@ -4782,7 +4782,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:842
 #, kde-format
 msgid "Could not import %1"
-msgstr ""
+msgstr "Nelze importovat %1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:492
 #, kde-format
@@ -4799,7 +4799,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:525
 #, kde-format
 msgid "Could not create file"
-msgstr ""
+msgstr "Nelze vytvořit soubor"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:531
 #, kde-format
@@ -4820,7 +4820,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:567
 #, kde-format
 msgid "Image files (%1)"
-msgstr ""
+msgstr "Soubory obrázků (%1)"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:576
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:600
@@ -4842,7 +4842,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:589
 #, kde-format
 msgid "Scalable Vector Graphics (*.svg)"
-msgstr ""
+msgstr "Scalable Vector Graphics (*.svg)"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:615
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:625
@@ -4874,7 +4874,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:756
 #, kde-format
 msgid "Link %1 Color"
-msgstr ""
+msgstr "Barva odkazu %1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:868
 #, kde-format
@@ -4884,13 +4884,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:906
 #, kde-format
 msgid "HTTP Error %1 %2"
-msgstr ""
+msgstr "Chyba HTTP %1 %2"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:910
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.cpp:213
 #, kde-format
 msgid "Network Error"
-msgstr ""
+msgstr "Chyba sítě"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:913
 #, kde-format
@@ -4915,7 +4915,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:87
 #, kde-format
 msgid "Delete %1"
-msgstr ""
+msgstr "Smazat %1"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:185
 #, kde-format
@@ -4925,14 +4925,14 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:209
 #, kde-format
 msgid "All Supported files (%1)"
-msgstr ""
+msgstr "Všechny podporované soubory (%1)"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:236
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:243
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:253
 #, kde-format
 msgid "Import Image"
-msgstr ""
+msgstr "Importovat obrázek"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:253
 #, kde-format
@@ -4952,12 +4952,12 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:306
 #, kde-format
 msgid "Convert to path"
-msgstr ""
+msgstr "Převést na cestu"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:308
 #, kde-format
 msgid "Convert %1 to path"
-msgstr ""
+msgstr "Převést %1 na cestu"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:486
 #, kde-format
@@ -4972,7 +4972,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:716
 #, kde-format
 msgid "Drop"
-msgstr ""
+msgstr "Pustit"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:812
 #, kde-format
@@ -4987,14 +4987,14 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:240
 #, kde-format
 msgid "Pause"
-msgstr ""
+msgstr "Pozastavit"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:244
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
 #, kde-format
 msgid "Play"
-msgstr ""
+msgstr "Přehrát"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:991
@@ -5039,7 +5039,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1210
 #, kde-format
 msgid "X: %1 Y: %2"
-msgstr ""
+msgstr "X: %1 Y: %2"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1229
 #, kde-format
@@ -5064,37 +5064,37 @@ msgstr ""
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:39
 #, kde-format
 msgid "Save file"
-msgstr ""
+msgstr "Uložit soubor"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:59
 #, kde-format
 msgid "Overwrite File?"
-msgstr ""
+msgstr "Přepsat soubor?"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:60
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
-msgstr ""
+msgstr "Soubor \"%1\" již existuje. Přejete si jej přepsat?"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:82
 #, kde-format
 msgid "Open file"
-msgstr ""
+msgstr "Otevřít soubor"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:101
 #, kde-format
 msgid "%1 Options"
-msgstr ""
+msgstr "Možnosti %1"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:166
 #, kde-format
 msgid "All files (%1)"
-msgstr ""
+msgstr "Všechny soubory (%1)"
 
 #: src/gui/widgets/dialogs/io_status_dialog.cpp:71
 #, kde-format
 msgid "Operation Failed"
-msgstr ""
+msgstr "Operace selhala"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, IoStatusDialog)
 #: src/gui/widgets/dialogs/io_status_dialog.ui:21
@@ -5120,18 +5120,18 @@ msgstr "Vydání"
 #: src/gui/widgets/dialogs/resize_dialog.ui:21
 #, kde-format
 msgid "Resize Document"
-msgstr ""
+msgstr "Změnit velikost dokumentu"
 
 #: src/gui/widgets/dialogs/resize_dialog.cpp:92
 #, kde-format
 msgid "Resize"
-msgstr ""
+msgstr "Změnit velikost"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, check_aspect)
 #: src/gui/widgets/dialogs/resize_dialog.ui:71
 #, kde-format
 msgid "Lock Aspect Ratio"
-msgstr ""
+msgstr "Uzamknout poměr stran"
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_scale_layers)
 #: src/gui/widgets/dialogs/resize_dialog.ui:93
@@ -5155,19 +5155,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/shape_parent_dialog.ui:21
 #, kde-format
 msgid "Destination"
-msgstr ""
+msgstr "Cíl"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 #: src/gui/widgets/dialogs/shape_parent_dialog.ui:48
 #, kde-format
 msgid "Cancel"
-msgstr ""
+msgstr "Zrušit"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton_2)
 #: src/gui/widgets/dialogs/shape_parent_dialog.ui:59
 #, kde-format
 msgid "Move"
-msgstr ""
+msgstr "Přesunout"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::StalefilesDialog)
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:18
@@ -5181,25 +5181,25 @@ msgstr ""
 #: src/gui/widgets/font/external_font_widget.ui:36
 #, kde-format
 msgid "Load"
-msgstr ""
+msgstr "Načíst"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_delete_all)
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:57
 #, kde-format
 msgid "Delete All"
-msgstr ""
+msgstr "Smazat vše"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, StartupDialog)
 #: src/gui/widgets/dialogs/startup_dialog.ui:21
 #, kde-format
 msgid "Startup"
-msgstr ""
+msgstr "Spuštění"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/gui/widgets/dialogs/startup_dialog.ui:29
 #, kde-format
 msgid "Create New"
-msgstr ""
+msgstr "Vytvořit nový"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_presets)
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -5211,7 +5211,7 @@ msgstr ""
 #: src/gui/widgets/font/google_fonts_widget.ui:75
 #, kde-format
 msgid "Size"
-msgstr ""
+msgstr "Velikost"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_presets)
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -5219,31 +5219,31 @@ msgstr ""
 #: src/gui/widgets/dialogs/startup_dialog.ui:96
 #, kde-format
 msgid "Framerate"
-msgstr ""
+msgstr "Rychlost snímků"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_presets)
 #: src/gui/widgets/dialogs/startup_dialog.ui:63
 #, kde-format
 msgid "Aspect"
-msgstr ""
+msgstr "Poměr"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 #: src/gui/widgets/dialogs/startup_dialog.ui:76
 #, kde-format
 msgid "Settings"
-msgstr ""
+msgstr "Nastavení"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_fps)
 #: src/gui/widgets/dialogs/startup_dialog.ui:113
 #, kde-format
 msgid " fps"
-msgstr ""
+msgstr " fps"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_open_browse)
 #: src/gui/widgets/dialogs/startup_dialog.ui:158
 #, kde-format
 msgid "Browse..."
-msgstr ""
+msgstr "Procházet..."
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_show_at_startup)
 #: src/gui/widgets/dialogs/startup_dialog.ui:176
@@ -5260,7 +5260,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
 #, kde-format
 msgid "FPS"
-msgstr ""
+msgstr "FPS"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer_keep)
 #: src/gui/widgets/dialogs/timing_dialog.ui:97
@@ -5284,13 +5284,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:89
 #, kde-format
 msgid "Detailed"
-msgstr ""
+msgstr "Podrobný"
 
 #. i18n: ectx: property (text), item, widget (QListWidget, list_presets)
 #: src/gui/widgets/dialogs/trace_dialog.ui:94
 #, kde-format
 msgid "Flat"
-msgstr ""
+msgstr "Ploché"
 
 #. i18n: ectx: property (text), item, widget (QListWidget, list_presets)
 #: src/gui/widgets/dialogs/trace_dialog.ui:99
@@ -5394,13 +5394,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:254
 #, kde-format
 msgid "Mode"
-msgstr ""
+msgstr "Režim"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_mode)
 #: src/gui/widgets/dialogs/trace_dialog.ui:262
 #, kde-format
 msgid "Transparency"
-msgstr ""
+msgstr "Průhlednost"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_mode)
 #: src/gui/widgets/dialogs/trace_dialog.ui:267
@@ -5418,13 +5418,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:277
 #, kde-format
 msgid "Pixel"
-msgstr ""
+msgstr "Pixel"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #: src/gui/widgets/dialogs/trace_dialog.ui:288
 #, kde-format
 msgid "Image Options"
-msgstr ""
+msgstr "Volby obrázku"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/dialogs/trace_dialog.ui:307
@@ -5436,19 +5436,19 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:331
 #, kde-format
 msgid "Invert"
-msgstr ""
+msgstr "Invertovat"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: src/gui/widgets/dialogs/trace_dialog.ui:345
 #, kde-format
 msgid "Threshold"
-msgstr ""
+msgstr "Invertovat"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: src/gui/widgets/dialogs/trace_dialog.ui:372
 #, kde-format
 msgid "Colors"
-msgstr ""
+msgstr "Barvy"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 #: src/gui/widgets/dialogs/trace_dialog.ui:394
@@ -5466,13 +5466,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:453
 #, kde-format
 msgid "Tolerance"
-msgstr ""
+msgstr "Tolerance"
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: src/gui/widgets/dialogs/trace_dialog.ui:460
 #, kde-format
 msgid "Outline"
-msgstr ""
+msgstr "Obrys"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_detect_colors)
 #: src/gui/widgets/dialogs/trace_dialog.ui:483
@@ -5490,7 +5490,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:493
 #, kde-format
 msgid "Configure..."
-msgstr ""
+msgstr "Nastavit..."
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_potrace)
 #: src/gui/widgets/dialogs/trace_dialog.ui:514
@@ -5502,7 +5502,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:520
 #, kde-format
 msgid "Smoothness"
-msgstr ""
+msgstr "Hladkost"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/trace_dialog.ui:559
@@ -5516,13 +5516,13 @@ msgstr ""
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:95
 #, kde-format
 msgid "Preview"
-msgstr ""
+msgstr "Náhled"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_update_preview)
 #: src/gui/widgets/dialogs/trace_dialog.ui:608
 #, kde-format
 msgid "Update"
-msgstr ""
+msgstr "Aktualizovat"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_preview_zoom)
@@ -5530,13 +5530,13 @@ msgstr ""
 #: src/gui/widgets/view_transform_widget.ui:50
 #, kde-format
 msgid "Zoom"
-msgstr ""
+msgstr "Zvětšení"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_help)
 #: src/gui/widgets/dialogs/trace_dialog.ui:670
 #, kde-format
 msgid "Help..."
-msgstr ""
+msgstr "Nápověda..."
 
 #. i18n: ectx: property (text), widget (QPushButton, button_defaults)
 #: src/gui/widgets/dialogs/trace_dialog.ui:681
@@ -5548,7 +5548,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:692
 #, kde-format
 msgid "Advanced"
-msgstr ""
+msgstr "Pokročilé"
 
 #: src/gui/widgets/docks/script_console.cpp:61
 #, kde-format
@@ -5569,7 +5569,7 @@ msgstr ""
 #: src/gui/widgets/docks/script_console.ui:71
 #, kde-format
 msgid "Clear Output"
-msgstr ""
+msgstr "Vyprázdnit výstup"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, check_persist)
 #: src/gui/widgets/docks/script_console.ui:85
@@ -5615,7 +5615,7 @@ msgstr ""
 #: src/gui/widgets/docks/snippet_list_widget.ui:43
 #, kde-format
 msgid "Edit..."
-msgstr ""
+msgstr "Upravit..."
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_3)
 #: src/gui/widgets/docks/snippet_list_widget.ui:54
@@ -5633,7 +5633,7 @@ msgstr ""
 #: src/gui/widgets/docks/snippet_list_widget.ui:71
 #, kde-format
 msgid "Run"
-msgstr ""
+msgstr "Spustit"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_5)
 #: src/gui/widgets/docks/snippet_list_widget.ui:95
@@ -5671,7 +5671,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:199
 #, kde-format
 msgid "Round"
-msgstr ""
+msgstr "Kolo"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_cap_square)
 #. i18n: ectx: property (text), widget (QToolButton, button_cap_square)
@@ -5680,7 +5680,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:141
 #, kde-format
 msgid "Square"
-msgstr ""
+msgstr "Čtverec"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_join_miter)
 #. i18n: ectx: property (text), widget (QToolButton, button_join_miter)
@@ -5703,7 +5703,7 @@ msgstr ""
 #: src/gui/widgets/enum_combo.cpp:92
 #, kde-format
 msgid "Polygon"
-msgstr ""
+msgstr "Mnohoúhelník"
 
 #: src/gui/widgets/font/external_font_widget.cpp:137
 #, kde-format
@@ -5726,12 +5726,12 @@ msgstr ""
 #: src/gui/widgets/font/google_fonts_widget.ui:82
 #, kde-format
 msgid "Font Style"
-msgstr ""
+msgstr "Styl písma"
 
 #: src/gui/widgets/font/font_loader.cpp:47
 #, kde-format
 msgid "Could not open file %1"
-msgstr ""
+msgstr "Nelze otevřít soubor %1"
 
 #: src/gui/widgets/font/font_loader.cpp:58
 #, kde-format
@@ -5746,7 +5746,7 @@ msgstr ""
 #: src/gui/widgets/font/font_preview_widget.cpp:25
 #, kde-format
 msgid "The quick brown fox jumps over the lazy dog"
-msgstr ""
+msgstr "Šíleně žluťoučký kůň úpěl ďábelské ódy"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_zoom)
 #: src/gui/widgets/font/font_preview_widget.ui:42
@@ -5765,27 +5765,27 @@ msgstr ""
 #: src/gui/widgets/font/google_fonts_widget.ui:97
 #, kde-format
 msgid "Filters"
-msgstr ""
+msgstr "Filtry"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/font/font_style_widget.ui:59
 #: src/gui/widgets/font/google_fonts_widget.ui:103
 #, kde-format
 msgid "Writing System"
-msgstr ""
+msgstr "Systém psaní"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/font/font_style_widget.ui:76
 #: src/gui/widgets/font/google_fonts_model.cpp:396
 #, kde-format
 msgid "Monospace"
-msgstr ""
+msgstr "Pevná šířka"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: src/gui/widgets/font/font_style_widget.ui:93
 #, kde-format
 msgid "Proportional"
-msgstr ""
+msgstr "Proporcionální"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:180
 #, kde-format
@@ -5795,44 +5795,44 @@ msgstr ""
 #: src/gui/widgets/font/google_fonts_model.cpp:274
 #, kde-format
 msgid "Family"
-msgstr ""
+msgstr "Rodina"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/font/google_fonts_model.cpp:276
 #: src/gui/widgets/font/google_fonts_widget.ui:120
 #, kde-format
 msgid "Category"
-msgstr ""
+msgstr "Kategorie"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:278
 #, kde-format
 msgid "Rank"
-msgstr ""
+msgstr "Pořadí"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:280
 #, kde-format
 msgid "Status"
-msgstr ""
+msgstr "Stav"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:390
 #, kde-format
 msgid "Any"
-msgstr ""
+msgstr "Cokoliv"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:392
 #, kde-format
 msgid "Sans-Serif"
-msgstr ""
+msgstr "Sans Serif"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:394
 #, kde-format
 msgid "Serif"
-msgstr ""
+msgstr "Serif"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:398
 #, kde-format
 msgid "Display"
-msgstr ""
+msgstr "Zobrazení"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:400
 #, kde-format
@@ -5842,7 +5842,7 @@ msgstr ""
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.cpp:207
 #, kde-format
 msgid "HTTP Error %1: %2"
-msgstr ""
+msgstr "Chyba HTTP %1: %2"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, LottieFilesSearchDialog)
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:21
@@ -5854,25 +5854,25 @@ msgstr ""
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:98
 #, kde-format
 msgid "Previous Page"
-msgstr ""
+msgstr "Předchozí strana"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_next)
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:121
 #, kde-format
 msgid "Next Page"
-msgstr ""
+msgstr "Následující strana"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_import)
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:147
 #: src/gui/widgets/lottiefiles/search_result.cpp:81
 #, kde-format
 msgid "Import"
-msgstr ""
+msgstr "Importovat"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:33
 #, kde-format
 msgid "by %1"
-msgstr ""
+msgstr "od %1"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:49
 #, kde-format
@@ -5882,7 +5882,7 @@ msgstr ""
 #: src/gui/widgets/lottiefiles/search_result.cpp:58
 #, kde-format
 msgid "Comments"
-msgstr ""
+msgstr "Komentáře"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:67
 #, kde-format
@@ -5893,7 +5893,7 @@ msgstr ""
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:181
 #, kde-format
 msgid "Paste Keyframe"
-msgstr ""
+msgstr "Vložit klíčový snímek"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:62
 #, kde-format
@@ -5909,7 +5909,7 @@ msgstr ""
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:177
 #, kde-format
 msgid "Remove Keyframe"
-msgstr ""
+msgstr "Odstranit klíčový snímek"
 
 #: src/gui/widgets/menus/node_menu.cpp:49
 #: src/gui/widgets/menus/node_menu.cpp:253
@@ -5922,17 +5922,17 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:101
 #, kde-format
 msgid "Move to Top"
-msgstr ""
+msgstr "Přesunout nahoru"
 
 #: src/gui/widgets/menus/node_menu.cpp:113
 #, kde-format
 msgid "Move to Bottom"
-msgstr ""
+msgstr "Přesunout dolů"
 
 #: src/gui/widgets/menus/node_menu.cpp:199
 #, kde-format
 msgid "Convert %1 to %2"
-msgstr ""
+msgstr "Převést %1 do %2"
 
 #: src/gui/widgets/menus/node_menu.cpp:257
 #, kde-format
@@ -5948,7 +5948,7 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:277
 #, kde-format
 msgid "Parent"
-msgstr ""
+msgstr "Rodič"
 
 #: src/gui/widgets/menus/node_menu.cpp:278
 #, kde-format
@@ -5979,7 +5979,7 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:309
 #, kde-format
 msgid "Convert to Path"
-msgstr ""
+msgstr "Převést na cestu"
 
 #: src/gui/widgets/menus/node_menu.cpp:314
 #, kde-format
@@ -5999,7 +5999,7 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:324
 #, kde-format
 msgid "From File..."
-msgstr ""
+msgstr "Ze souboru..."
 
 #: src/gui/widgets/menus/node_menu.cpp:325
 #: src/gui/widgets/menus/node_menu.cpp:329
@@ -6037,37 +6037,37 @@ msgstr ""
 #, kde-format
 msgctxt "@option:check"
 msgid "Visible"
-msgstr ""
+msgstr "Viditelný"
 
 #: src/gui/widgets/menus/node_menu.cpp:429
 #, kde-format
 msgctxt "@option:check"
 msgid "Locked"
-msgstr ""
+msgstr "Uzamčeno"
 
 #: src/gui/widgets/menus/node_menu.cpp:434
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Delete"
-msgstr ""
+msgstr "Smazat"
 
 #: src/gui/widgets/menus/node_menu.cpp:438
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Duplicate"
-msgstr ""
+msgstr "Duplikovat"
 
 #: src/gui/widgets/menus/node_menu.cpp:451
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Move to..."
-msgstr ""
+msgstr "Přesunout do..."
 
 #: src/gui/widgets/menus/node_menu.cpp:479
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Convert to Path"
-msgstr ""
+msgstr "Převést na cestu"
 
 #: src/gui/widgets/menus/node_menu.cpp:496
 #, kde-format
@@ -6078,7 +6078,7 @@ msgstr ""
 #: src/gui/widgets/settings/plugin_settings_widget.cpp:73
 #, kde-format
 msgid "Unknown"
-msgstr ""
+msgstr "Neznámý"
 
 #: src/gui/widgets/settings/plugin_settings_widget.cpp:75
 #, kde-format
@@ -6088,7 +6088,7 @@ msgstr ""
 #: src/gui/widgets/settings/plugin_settings_widget.cpp:77
 #, kde-format
 msgid "File Format"
-msgstr ""
+msgstr "Formát souboru"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:31
@@ -6100,19 +6100,19 @@ msgstr "Obnovit zásuvné moduly"
 #: src/gui/widgets/settings/plugin_settings_widget.ui:34
 #, kde-format
 msgid "Refresh"
-msgstr ""
+msgstr "Obnovit"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:58
 #, kde-format
 msgid "Install from file"
-msgstr ""
+msgstr "Instalovat ze souboru"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:61
 #, kde-format
 msgid "Install..."
-msgstr ""
+msgstr "Instalovat..."
 
 #. i18n: ectx: property (text), widget (QLineEdit, line_version)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:90
@@ -6124,49 +6124,49 @@ msgstr "123"
 #: src/gui/widgets/settings/plugin_settings_widget.ui:112
 #, kde-format
 msgid "Enable"
-msgstr ""
+msgstr "Povolit"
 
 #. i18n: ectx: property (text), widget (QPushButton, btn_disable)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:123
 #, kde-format
 msgid "Disable"
-msgstr ""
+msgstr "Povolit"
 
 #. i18n: ectx: property (text), widget (QPushButton, btn_uninstall)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:134
 #, kde-format
 msgid "Uninstall"
-msgstr ""
+msgstr "Odinstalovat"
 
 #. i18n: ectx: property (text), widget (QTableWidget, list_services)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:163
 #, kde-format
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:221
 #, kde-format
 msgid "Services"
-msgstr ""
+msgstr "Služby"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_style)
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:51
 #, kde-format
 msgid "Icon"
-msgstr ""
+msgstr "Ikona"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_style)
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:61
 #, kde-format
 msgid "Text beside Icon"
-msgstr ""
+msgstr "Text vedle ikony"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_style)
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:66
 #, kde-format
 msgid "Text under Icon"
-msgstr ""
+msgstr "Text pod ikonou"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:74
@@ -6178,7 +6178,7 @@ msgstr ""
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:81
 #, kde-format
 msgid "Icon Size"
-msgstr ""
+msgstr "Text pod ikonou"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:88
@@ -6190,38 +6190,38 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:30
 #, kde-format
 msgid "Color Mode"
-msgstr ""
+msgstr "Barevný režim"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:34
 #, kde-format
 msgid "HSV"
-msgstr ""
+msgstr "HSV"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:39
 #, kde-format
 msgid "HSL"
-msgstr ""
+msgstr "HSL"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:44
 #, kde-format
 msgid "RGB"
-msgstr ""
+msgstr "RGB"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:49
 #, kde-format
 msgid "CMYK"
-msgstr ""
+msgstr "CMYK"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:54
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:390
 #, kde-format
 msgid "Palette"
-msgstr ""
+msgstr "Paleta"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_2)
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_2)
@@ -6231,7 +6231,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:163
 #, kde-format
 msgid "Saturation"
-msgstr ""
+msgstr "Nasycení"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (text), widget (QLabel, label_6)
@@ -6239,7 +6239,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:297
 #, kde-format
 msgid "S"
-msgstr ""
+msgstr "S"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::HueSlider, slider_hsv_hue)
 #. i18n: ectx: property (toolTip), widget (QLabel, label)
@@ -6255,7 +6255,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:241
 #, kde-format
 msgid "Hue"
-msgstr ""
+msgstr "Tón"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_5)
@@ -6263,19 +6263,19 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:227
 #, kde-format
 msgid "H"
-msgstr ""
+msgstr "H"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/shape_style/color_selector.ui:156
 #, kde-format
 msgid "V"
-msgstr ""
+msgstr "V"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: src/gui/widgets/shape_style/color_selector.ui:304
 #, kde-format
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_rgb_b)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_10)
@@ -6285,13 +6285,13 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:407
 #, kde-format
 msgid "Blue"
-msgstr ""
+msgstr "Modrá"
 
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 #: src/gui/widgets/shape_style/color_selector.ui:340
 #, kde-format
 msgid "B"
-msgstr ""
+msgstr "B"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_rgb_g)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_9)
@@ -6301,7 +6301,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:397
 #, kde-format
 msgid "Green"
-msgstr ""
+msgstr "Zelená"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_8)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_rgb_r)
@@ -6311,19 +6311,19 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:387
 #, kde-format
 msgid "Red"
-msgstr ""
+msgstr "Červená"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: src/gui/widgets/shape_style/color_selector.ui:360
 #, kde-format
 msgid "R"
-msgstr ""
+msgstr "R"
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: src/gui/widgets/shape_style/color_selector.ui:370
 #, kde-format
 msgid "G"
-msgstr ""
+msgstr "G"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_11)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_c)
@@ -6333,13 +6333,13 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:453
 #, kde-format
 msgid "Cyan"
-msgstr ""
+msgstr "Azurová"
 
 #. i18n: ectx: property (text), widget (QLabel, label_11)
 #: src/gui/widgets/shape_style/color_selector.ui:436
 #, kde-format
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_13)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_m)
@@ -6349,13 +6349,13 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:483
 #, kde-format
 msgid "Magenta"
-msgstr ""
+msgstr "Purpurová"
 
 #. i18n: ectx: property (text), widget (QLabel, label_13)
 #: src/gui/widgets/shape_style/color_selector.ui:466
 #, kde-format
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_12)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_y)
@@ -6365,13 +6365,13 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:513
 #, kde-format
 msgid "Yellow"
-msgstr ""
+msgstr "Žlutá"
 
 #. i18n: ectx: property (text), widget (QLabel, label_12)
 #: src/gui/widgets/shape_style/color_selector.ui:496
 #, kde-format
 msgid "Y"
-msgstr ""
+msgstr "Y"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_14)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_k)
@@ -6381,13 +6381,13 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:543
 #, kde-format
 msgid "Black"
-msgstr ""
+msgstr "Černá"
 
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 #: src/gui/widgets/shape_style/color_selector.ui:526
 #, kde-format
 msgid "K"
-msgstr ""
+msgstr "K"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_alpha)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_4)
@@ -6403,7 +6403,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:586
 #, kde-format
 msgid "A"
-msgstr ""
+msgstr "A"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::ColorSelector, color_preview)
 #: src/gui/widgets/shape_style/color_selector.ui:637
@@ -6423,7 +6423,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:682
 #, kde-format
 msgid "Swap"
-msgstr ""
+msgstr "Prohodit"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:49
 #, kde-format
@@ -6481,7 +6481,7 @@ msgstr "Načíst paletu"
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:115
 #, kde-format
 msgid "Save Palette"
-msgstr ""
+msgstr "Uložit paletu"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:429
 #, kde-format
@@ -6501,7 +6501,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:456
 #, kde-format
 msgid "Rename..."
-msgstr ""
+msgstr "Přejmenovat..."
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:460
 #, kde-format
@@ -6533,7 +6533,7 @@ msgstr "Přidat barvu"
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:103
 #, kde-format
 msgid "Generate"
-msgstr ""
+msgstr "Vygenerovat"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:106
@@ -6590,7 +6590,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:59
 #, kde-format
 msgid "Preset"
-msgstr ""
+msgstr "Přednastavení"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:139
 #, kde-format
@@ -6627,13 +6627,13 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:40
 #, kde-format
 msgid "Style"
-msgstr ""
+msgstr "Styl"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_stroke_width)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:59
 #, kde-format
 msgid "Stroke Width"
-msgstr ""
+msgstr "Šířka tahu"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:69

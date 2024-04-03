@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-25 01:59+0000\n"
-"PO-Revision-Date: 2024-04-01 11:24+0200\n"
+"PO-Revision-Date: 2024-04-02 15:11+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -3965,7 +3965,7 @@ msgstr "Enkel &Frame renderen"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:249
 #, kde-format
 msgid "&Web Preview"
-msgstr ""
+msgstr "&Web-voorbeeld"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_playback)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:273
@@ -3983,13 +3983,13 @@ msgstr "&Object"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:290
 #, kde-format
 msgid "&Align and Distribute"
-msgstr ""
+msgstr "&uitlijnen en verdelen"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_text)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:326
 #, kde-format
 msgid "&Text"
-msgstr ""
+msgstr "&Tekst"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_Settings)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:333
@@ -4027,7 +4027,7 @@ msgstr "Hulpmiddelopties"
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:75
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "Toevoegen"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_duplicate)
@@ -4053,7 +4053,7 @@ msgstr "Dupliceren"
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:86
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "Verwijderen"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_top)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_top)
@@ -4129,7 +4129,7 @@ msgstr "Fragmenten"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1057
 #, kde-format
 msgid "Compact Timelime"
-msgstr ""
+msgstr "Tijdlijn compact maken"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1099
@@ -4171,13 +4171,13 @@ msgstr "&Selecteren"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1180
 #, kde-format
 msgid "&Draw Bezier"
-msgstr ""
+msgstr "&Bezier tekenen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1195
 #, kde-format
 msgid "Draw &Freehand"
-msgstr ""
+msgstr "Uit de &vrije hand tekenen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1210
@@ -4201,7 +4201,7 @@ msgstr "S&ter"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1252
 #, kde-format
 msgid "&Empty Layer"
-msgstr ""
+msgstr "L&ege laag"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1261
@@ -4214,13 +4214,13 @@ msgstr "&Groep"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1273
 #, kde-format
 msgid "&Precomposition Layer"
-msgstr ""
+msgstr "&Vooraf samengestelde laag"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1282
 #, kde-format
 msgid "&Precompose Selection"
-msgstr ""
+msgstr "Selectie &vooraf samenstellen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1291
@@ -4262,37 +4262,37 @@ msgstr "Omge&keerd"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1360
 #, kde-format
 msgid "Object to &Path"
-msgstr ""
+msgstr "Object naar &pad"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1372
 #, kde-format
 msgid "Add &Node..."
-msgstr ""
+msgstr "&Knooppunt toevoegen..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1384
 #, kde-format
 msgid "&Delete Nodes"
-msgstr ""
+msgstr "Knooppunten &verwijderen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1399
 #, kde-format
 msgid "&Join Nodes"
-msgstr ""
+msgstr "Knooppunten &samenvoegen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1411
 #, kde-format
 msgid "S&plit Nodes"
-msgstr ""
+msgstr "Knooppunten s&plitsen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1423
 #, kde-format
 msgid "&Cusp"
-msgstr ""
+msgstr "&Keerpunt"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1435
@@ -4334,7 +4334,7 @@ msgstr "Alles &selecteren"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1495
 #, kde-format
 msgid "Raise to &Top"
-msgstr ""
+msgstr "Naar de &top brengen"
 
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1498
@@ -4370,7 +4370,7 @@ msgstr "PgDown"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1531
 #, kde-format
 msgid "Lower to &Bottom"
-msgstr ""
+msgstr "Naar &onder brengen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1543
@@ -4382,7 +4382,7 @@ msgstr "Her&laden"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1576
 #, kde-format
 msgid "&Fit Animation"
-msgstr ""
+msgstr "Animatie &fitten"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1585
@@ -4430,7 +4430,7 @@ msgstr "Info over..."
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1648
 #, kde-format
 msgid "Solid &Color Layer"
-msgstr ""
+msgstr "Vlakke &kleurlaag"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1657
@@ -4448,7 +4448,7 @@ msgstr "S&VG..."
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1675
 #, kde-format
 msgid "Online &Manual..."
-msgstr ""
+msgstr "Online &handleiding..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1684
@@ -4472,7 +4472,7 @@ msgstr "&Verplaatsen naar..."
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1720
 #, kde-format
 msgid "Validate &Telegram Sticker"
-msgstr ""
+msgstr "&Telegramsticker valideren"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1729
@@ -4508,7 +4508,7 @@ msgstr "&Laag"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1777
 #, kde-format
 msgid "Open Most Recent"
-msgstr ""
+msgstr "Meest recent openen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1786
@@ -4526,7 +4526,7 @@ msgstr "Verwij&deren"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1807
 #, kde-format
 msgid "Make segments straight"
-msgstr ""
+msgstr "Segmenten recht maken"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1819
