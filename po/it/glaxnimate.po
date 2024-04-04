@@ -3,19 +3,20 @@
 # SPDX-FileCopyrightText: 2022, 2023 Mattia Basaglia <glax@dragon.best>
 # SPDX-FileCopyrightText: 2023 Vincenzo Reale <smart2128vr@gmail.com>
 # SPDX-FileCopyrightText: 2024 Paolo Zamponi <feus73@gmail.com>
+# SPDX-FileCopyrightText: 2024 Valter Mura <valtermura@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-25 01:59+0000\n"
-"PO-Revision-Date: 2024-01-06 23:21+0100\n"
-"Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
+"PO-Revision-Date: 2024-04-01 18:39+0200\n"
+"Last-Translator: Valter Mura <valtermura@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #, kde-format
@@ -50,9 +51,9 @@ msgstr "estremità"
 
 #. i18n: file: src/core/model/shapes/stroke.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
+#, kde-format
 msgid "miter_limit"
-msgstr "Limite Mitra"
+msgstr "limite_giunzione"
 
 #. i18n: file: src/core/model/shapes/shape.hpp
 #. i18n: Property name
@@ -150,7 +151,7 @@ msgstr "angolo"
 #. i18n: Property name
 #, kde-format
 msgid "outer_roundness"
-msgstr ""
+msgstr "rotondità_esterna"
 
 #. i18n: file: src/core/model/shapes/styler.hpp
 #. i18n: Property name
@@ -288,10 +289,9 @@ msgstr "invertito"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, Dialog)
 #: data/plugins/FrameByFrame/create_frames.ui:18
-#, fuzzy, kde-format
-#| msgid "Create a new palette"
+#, kde-format
 msgid "Create frame layers"
-msgstr "Crea nuova tavolozza"
+msgstr "Crea livelli di fotogrammi"
 
 #. i18n: ectx: property (plainText), widget (QPlainTextEdit, plainTextEdit)
 #: data/plugins/FrameByFrame/create_frames.ui:34
@@ -412,6 +412,9 @@ msgid ""
 "Currently the following formats are supported:\n"
 "%1"
 msgstr ""
+"Chiede all'utente di selezionare un documento da aprire.\n"
+"Attualmente sono supportati i formati seguenti:\n"
+"%1"
 
 #: src/android/help_dialog.cpp:62
 #, kde-format
@@ -419,6 +422,8 @@ msgid ""
 "Prompts the user to select a document to append as an object to the current "
 "one."
 msgstr ""
+"Chiede all'utente di selezionare un documento da allegare come oggetto a "
+"quello attivo."
 
 #: src/android/help_dialog.cpp:66
 #, kde-format
@@ -449,6 +454,7 @@ msgstr ""
 msgid "Saves the current frame as a still image"
 msgstr "Salva il fotogramma corrente come un'immagine fissa"
 
+# VM: si dovrebbe utilizzare il termine "sticker" per uniformarlo all'uso in Telegram.
 #: src/android/help_dialog.cpp:82
 #, kde-format
 msgid ""
@@ -457,6 +463,10 @@ msgid ""
 "If your Telegram version is too old, you can Export the file to TGS and "
 "upload that on Telegram."
 msgstr ""
+"Crea un pacchetto di adesivi da esportare in Telegram.\n"
+"Nota che solamente la versione recente di Telegram lo supporta.\n"
+"Se la tua versione è troppo vecchia, puoi esportare il file in formato TGS e "
+"caricare quello in Telegram."
 
 #: src/android/help_dialog.cpp:86
 #, kde-format
@@ -512,6 +522,8 @@ msgstr ""
 #, kde-format
 msgid "Opens the side pane used to select the stroke color and style."
 msgstr ""
+"Apre il pannello laterale utilizzato per selezionare il colore del tratto e "
+"lo stile."
 
 #: src/android/help_dialog.cpp:126
 #, kde-format
@@ -937,12 +949,12 @@ msgstr "(c) 2019-2023"
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
 msgid "Update %1 keyframe at %2"
-msgstr "Aggiorna il fotogramma per %1 al %2"
+msgstr "Aggiorna il fotogramma chiave per %1 al %2"
 
 #: src/core/command/animation_commands.cpp:86
 #, kde-format
 msgid "Remove %1 keyframe at %2"
-msgstr "Rimuovi il fotogramma per %1 al %2"
+msgstr "Rimuovi il fotogramma chiave per %1 al %2"
 
 #: src/core/command/animation_commands.cpp:117
 #, kde-format
@@ -952,7 +964,7 @@ msgstr "Rimuovi %1 fotogramma chiave %2"
 #: src/core/command/animation_commands.cpp:289
 #, kde-format
 msgid "Add keyframe for %1 at %2"
-msgstr "Aggiungi fotogramma per %1 al %2"
+msgstr "Aggiungi fotogramma chiave per %1 al %2"
 
 #: src/core/command/animation_commands.cpp:292
 #, kde-format
@@ -968,16 +980,14 @@ msgstr "Aggiorna %1"
 
 #: src/core/command/animation_commands.cpp:307
 #: src/gui/widgets/timeline/timeline_items.cpp:537
-#, fuzzy, kde-format
-#| msgctxt "QObject#31"
-#| msgid "Update keyframe transition"
+#, kde-format
 msgid "Update keyframe transition"
-msgstr "Aggiorna transizione fotogramma"
+msgstr "Aggiorna transizione fotogramma chiave"
 
 #: src/core/command/animation_commands.cpp:358
 #, kde-format
 msgid "Move keyframe"
-msgstr "Sposta fotogramma"
+msgstr "Sposta fotogramma chiave"
 
 #: src/core/command/animation_commands.cpp:381
 #, kde-format
@@ -1077,7 +1087,7 @@ msgstr "Valore non valido per %1"
 #: src/core/io/aep/aep_loader.cpp:510
 #, kde-format
 msgid "Expected property group for transform"
-msgstr ""
+msgstr "Gruppo di proprietà atteso per la trasformazione"
 
 #: src/core/io/aep/aep_loader.cpp:557
 #, kde-format
@@ -1114,7 +1124,7 @@ msgstr "Tipo di elemento %s sconosciuto"
 #: src/core/io/aep/aep_parser.hpp:137
 #, kde-format
 msgid "Missing composition data"
-msgstr ""
+msgstr "Dati della composizione mancanti"
 
 #: src/core/io/aep/aep_parser.hpp:214
 #, kde-format
@@ -1144,7 +1154,7 @@ msgstr "Tipo di proprietà sconosciuta: %1"
 #: src/core/io/aep/aep_parser.hpp:645
 #, kde-format
 msgid "Missing list data"
-msgstr ""
+msgstr "Dati dell'elenco mancanti"
 
 #: src/core/io/aep/aep_parser.hpp:657
 #, kde-format
@@ -1165,22 +1175,23 @@ msgstr "Dati insufficienti"
 #: src/core/io/aep/riff.hpp:528
 #, kde-format
 msgid "Unknown format %1"
-msgstr "Formato sconosciuto %1"
+msgstr "Formato %1 sconosciuto"
 
+# VM: tipo di formato
 #: src/core/io/avd/avd_format.hpp:21
 #, kde-format
 msgid "Android Vector Drawable"
-msgstr ""
+msgstr "Android Vector Drawable"
 
 #: src/core/io/avd/avd_parser.cpp:223
 #, kde-format
 msgid "Unknown interpolator %s"
-msgstr ""
+msgstr "Interpolatore %s sconosciuto"
 
 #: src/core/io/avd/avd_parser.cpp:650
 #, kde-format
 msgid "Unknown resource id %1"
-msgstr "id risorsa sconosciuto %1"
+msgstr "id risorsa %1 sconosciuto"
 
 #: src/core/io/avd/avd_parser.cpp:658
 #, kde-format
@@ -1195,7 +1206,7 @@ msgstr "Impossibile caricare la risorsa %1"
 #: src/core/io/avd/avd_renderer.cpp:159
 #, kde-format
 msgid "%s should be in a group"
-msgstr "%s dovrebbe essere in un gruppo"
+msgstr "%s dovrebbe stare in un gruppo"
 
 #: src/core/io/avd/avd_renderer.cpp:163
 #, kde-format
@@ -1293,7 +1304,7 @@ msgstr "L'elemento %1 per %2 in %3 non è accettabile"
 #: src/core/io/glaxnimate/import_state.hpp:412
 #, kde-format
 msgid "Keyframe must specify a time"
-msgstr ""
+msgstr "Il fotogramma chiave deve specificare un tempo"
 
 #: src/core/io/glaxnimate/import_state.hpp:417
 #, kde-format
@@ -1324,7 +1335,7 @@ msgstr "Lottie supporta i livelli auto orientati solo nel primo livello"
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
-"Le immagini non possono essere raggruppate con altre forme, devono essere "
+"Le immagini non possono essere raggruppate con altre forme, devono stare "
 "dentro un livello"
 
 #: src/core/io/lottie/lottie_exporter.hpp:612
@@ -1333,16 +1344,18 @@ msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
 "a layer"
 msgstr ""
+"I livelli della composizione non possono essere raggruppati con altre forme, "
+"devono stare dentro un livello"
 
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
 msgid "Pretty"
-msgstr ""
+msgstr "Formatta"
 
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
 msgid "Pretty print the JSON"
-msgstr ""
+msgstr "Formatta il file JSON"
 
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
@@ -1352,7 +1365,7 @@ msgstr "Rimozione spazi"
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
 msgid "Strip unused properties"
-msgstr ""
+msgstr "Rimuovi le proprietà inutilizzate"
 
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
@@ -1367,12 +1380,12 @@ msgstr "Incorpora automaticamente le immagini non incorporate"
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
 msgid "Legacy Keyframes"
-msgstr ""
+msgstr "Fotogrammi chiave con retrocompatibilità"
 
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
 msgid "Compatibility with lottie-web versions prior to 5.0.0"
-msgstr ""
+msgstr "Compatibilità con le versioni web Lottie precedenti alla 5.0.0"
 
 #: src/core/io/lottie/lottie_format.hpp:22
 #, kde-format
@@ -1435,7 +1448,7 @@ msgstr "Fotogrammi non validi per %1"
 #: src/core/io/lottie/lottie_importer.hpp:966
 #, kde-format
 msgid "(null)"
-msgstr ""
+msgstr "(null)"
 
 #: src/core/io/lottie/lottie_importer.hpp:972
 #, kde-format
@@ -1450,12 +1463,12 @@ msgstr "Impossibile caricare il fotogramma chiave a %1 per %2 con valore %3"
 #: src/core/io/lottie/lottie_importer.hpp:1032
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
-msgstr ""
+msgstr "Duplica ID della bitmap: %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:1064
 #, kde-format
 msgid "Duplicate Composition ID: %1"
-msgstr ""
+msgstr "Duplica ID della composizione: %1"
 
 #: src/core/io/lottie/tgs_format.cpp:47
 #, kde-format
@@ -1470,7 +1483,7 @@ msgstr "Le immagini non sono supportate"
 #: src/core/io/lottie/tgs_format.cpp:56
 #, kde-format
 msgid "Gradient strokes are not officially supported"
-msgstr ""
+msgstr "I tratteggi di sfumatura non sono supportati ufficialmente"
 
 #: src/core/io/lottie/tgs_format.cpp:61
 #, kde-format
@@ -1480,22 +1493,22 @@ msgstr "Le maschere non sono supportate"
 #: src/core/io/lottie/tgs_format.cpp:65
 #, kde-format
 msgid "Repeaters are not officially supported"
-msgstr ""
+msgstr "I ripetitori non sono supportati ufficialmente"
 
 #: src/core/io/lottie/tgs_format.cpp:69
 #, kde-format
 msgid "Inflate/Deflate is not supported"
-msgstr ""
+msgstr "Inflate/Deflate non è supportato"
 
 #: src/core/io/lottie/tgs_format.cpp:73
 #, kde-format
 msgid "Offset Path is not supported"
-msgstr ""
+msgstr "Offset Path non è supportato"
 
 #: src/core/io/lottie/tgs_format.cpp:77
 #, kde-format
 msgid "ZigZag is not supported"
-msgstr ""
+msgstr "ZigZag non è supportato"
 
 #: src/core/io/lottie/tgs_format.cpp:110
 #, kde-format
@@ -1582,18 +1595,17 @@ msgstr "Incremento temporale"
 #, kde-format
 msgid "By how much each rendered frame should increase time (in frames)"
 msgstr ""
-"Di quanto ogni fotogramma renderizzato deve incrementare il tempo (in "
-"fotogrammi)"
+"Di quanto ogni fotogramma reso deve incrementare il tempo (in fotogrammi)"
 
 #: src/core/io/raster/spritesheet_format.hpp:23
 #, kde-format
 msgid "Sprite Sheet"
-msgstr ""
+msgstr "Foglio sprite"
 
 #: src/core/io/rive/rive_exporter.hpp:359
 #, kde-format
 msgid "Bezier has mismatching number of points"
-msgstr ""
+msgstr "Beziér ha un numero di punti che non corrispondono"
 
 #: src/core/io/rive/rive_exporter.hpp:421
 #, kde-format
@@ -1642,42 +1654,42 @@ msgstr "Anteprima HTML RIVE"
 #: src/core/io/rive/rive_loader.cpp:179
 #, kde-format
 msgid "Unexpected Keyed Object"
-msgstr ""
+msgstr "Oggetto con chiave inatteso"
 
 #: src/core/io/rive/rive_loader.cpp:187
 #, kde-format
 msgid "Invalid Keyed Object id %1"
-msgstr ""
+msgstr "ID %1 dell'oggetto con chiave non valido"
 
 #: src/core/io/rive/rive_loader.cpp:195
 #, kde-format
 msgid "Unexpected Keyed Property"
-msgstr ""
+msgstr "Proprietà con chiave inattesa"
 
 #: src/core/io/rive/rive_loader.cpp:204
 #, kde-format
 msgid "Unknown Keyed Property id %1"
-msgstr ""
+msgstr "ID %1 della proprietà con chiave sconosciuto"
 
 #: src/core/io/rive/rive_loader.cpp:215
 #, kde-format
 msgid "Unexpected Animation"
-msgstr "Animazione non attesa"
+msgstr "Animazione inattesa"
 
 #: src/core/io/rive/rive_loader.cpp:231
 #, kde-format
 msgid "Unexpected Asset Contents"
-msgstr "Contenuti della risorsa non attesi"
+msgstr "Contenuti della risorsa inattesi"
 
 #: src/core/io/rive/rive_loader.cpp:242
 #, kde-format
 msgid "Invalid Image Data"
-msgstr ""
+msgstr "Dati immagine non validi"
 
 #: src/core/io/rive/rive_loader.cpp:253
 #, kde-format
 msgid "Unexpected Keyframe"
-msgstr "Fotogramma chiave non atteso"
+msgstr "Fotogramma chiave inatteso"
 
 #: src/core/io/rive/rive_loader.cpp:268
 #, kde-format
@@ -1687,7 +1699,7 @@ msgstr "Impossibile trovare un genitore con id %1"
 #: src/core/io/rive/rive_loader.cpp:318
 #, kde-format
 msgid "Parent circular reference detected"
-msgstr ""
+msgstr "Rilevato riferimento circolare al genitore"
 
 #: src/core/io/rive/rive_loader.cpp:746
 #, kde-format
@@ -1697,7 +1709,7 @@ msgstr "Oggetto sconosciuto di tipo %1"
 #: src/core/io/rive/rive_loader.cpp:791
 #, kde-format
 msgid "Could not load object type ID"
-msgstr ""
+msgstr "Impossibile caricare l'ID del tipo di oggetto"
 
 #: src/core/io/rive/rive_loader.cpp:805
 #, kde-format
@@ -1725,10 +1737,9 @@ msgid "External Stylesheet"
 msgstr "Foglio di stile esterno"
 
 #: src/core/io/svg/svg_format.cpp:69
-#, fuzzy, kde-format
-#| msgid "Font face with external url"
+#, kde-format
 msgid "Font face with external url"
-msgstr "CSS con URL esterno"
+msgstr "Tipo di carattere con URL esterno"
 
 #: src/core/io/svg/svg_format.cpp:71
 #, kde-format
@@ -2270,11 +2281,9 @@ msgid "Could not decompress data"
 msgstr "Impossibile decomprimere i dati"
 
 #: src/core/utils/trace_wrapper.cpp:160
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::TraceDialog#35"
-#| msgid "Traced %1"
+#, kde-format
 msgid "Traced %1"
-msgstr "Tracciata %1"
+msgstr "Tracciato %1"
 
 #: src/gui/cli.cpp:27
 #, kde-format
@@ -2310,7 +2319,7 @@ msgstr "File da aprire"
 #, kde-format
 msgctxt "@info:shell"
 msgid "When opening image files, trace them instead of embedding"
-msgstr ""
+msgstr "Quando apri i file immagine, tracciali anziché incorporarli"
 
 #: src/gui/cli.cpp:35
 #, kde-format
@@ -2331,6 +2340,8 @@ msgid ""
 "Specify the name of the local socket/named pipe to connect to a host "
 "application."
 msgstr ""
+"Specifica il nome del trasporto con nome/socket locale per collegarsi a "
+"un'applicazione ospite."
 
 #: src/gui/cli.cpp:46
 #, kde-format
@@ -2361,6 +2372,8 @@ msgstr "Opzioni di esportazione"
 msgctxt "@info:shell"
 msgid "Export the input file to the given file instead of starting the GUI"
 msgstr ""
+"Esporta il file di ingresso al file specificato, anziché avviare "
+"l'interfaccia"
 
 #: src/gui/cli.cpp:70
 #, kde-format
@@ -2380,11 +2393,10 @@ msgid "Shows possible values for --export-format"
 msgstr "Mostra i valori possibili per --export-format"
 
 #: src/gui/cli.cpp:81
-#, fuzzy, kde-format
-#| msgid "Render Frame"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Render Frame Options"
-msgstr "Renderizza fotogramma"
+msgstr "Opzioni di resa fotogramma"
 
 #: src/gui/cli.cpp:84
 #, kde-format
@@ -2392,6 +2404,8 @@ msgctxt "@info:shell"
 msgid ""
 "Render frames the input file to the given file instead of starting the GUI"
 msgstr ""
+"Rende i fotogrammi dal file di ingresso al file specificato, anziché avviare "
+"l'interfaccia"
 
 #: src/gui/cli.cpp:91
 #, kde-format
@@ -2409,6 +2423,7 @@ msgstr ""
 msgctxt "@info:shell"
 msgid "Frame number to render, use `all` to render all frames"
 msgstr ""
+"Numero di fotogramma da rendere, usa «all» per rendere tutti i fotogrammi"
 
 #: src/gui/cli.cpp:105
 #, kde-format
@@ -2480,11 +2495,10 @@ msgid "Could not save to %1"
 msgstr "Impossibile salvare in %1"
 
 #: src/gui/cli.cpp:344
-#, fuzzy, kde-format
-#| msgid "You need to select an image to trace"
+#, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to render"
-msgstr "Devi delezionare un'immagine da tracciare"
+msgstr "Devi specificare un file di cui eseguire la resa"
 
 #: src/gui/emoji/emoji_dialog.cpp:32
 #, kde-format
@@ -2518,11 +2532,10 @@ msgid "Could not download: %1"
 msgstr "Impossibile scaricare: %1"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:215
-#, fuzzy, kde-format
-#| msgid "Didn't download any files"
+#, kde-format
 msgctxt "Package install status"
 msgid "Didn't download any files"
-msgstr "Non ha scaricato nessun file"
+msgstr "Non è stato scaricato alcun file"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, EmojiSetDialog)
 #: src/gui/emoji/emoji_set_dialog.ui:21
@@ -2833,7 +2846,7 @@ msgstr "Nascosto"
 #: src/gui/item_models/property_model_full.cpp:265
 #, kde-format
 msgid "Toggle Keyframe"
-msgstr ""
+msgstr "Attiva/disattiva fotogramma chiave"
 
 #: src/gui/item_models/property_model_full.cpp:292
 #, kde-format
@@ -3028,7 +3041,7 @@ msgstr "Mostra tangenti"
 #: src/gui/tools/edit_tool.cpp:326
 #, kde-format
 msgid "Make First Node"
-msgstr ""
+msgstr "Crea il primo nodo"
 
 #: src/gui/tools/edit_tool.cpp:334
 #, kde-format
@@ -3036,25 +3049,22 @@ msgid "Remove Tangent"
 msgstr "Rimuovi tangenti"
 
 #: src/gui/tools/edit_tool.cpp:369
-#, fuzzy, kde-format
-#| msgid "Stop Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Stop Color..."
-msgstr "Colore Stop..."
+msgstr "Colore punto..."
 
 #: src/gui/tools/edit_tool.cpp:381
-#, fuzzy, kde-format
-#| msgid "Add Stop"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Add Stop"
-msgstr "Aggiungi Stop"
+msgstr "Aggiungi punto"
 
 #: src/gui/tools/edit_tool.cpp:385
-#, fuzzy, kde-format
-#| msgid "Remove Stop"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Remove Stop"
-msgstr "Rimuovi Stop"
+msgstr "Rimuovi punto"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/tools/edit_tool.cpp:527
@@ -3411,9 +3421,7 @@ msgstr "k-Modes"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:54
-#, fuzzy, kde-format
-#| msgctxt "ColorQuantizationDialog#5"
-#| msgid "Octree"
+#, kde-format
 msgid "Octree"
 msgstr "Octree"
 
@@ -3504,6 +3512,50 @@ msgid ""
 "weight:600;\">Most Frequent</span>: Find the color in the cluster that "
 "appears most often in the source image</li></ul></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">k-Means divide i colori in "
+"gruppi e raffina l'assegnazione a ogni iterazione.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">È l'opzione migliore "
+"quando si tracciano le immagini con molti colori o ombreggiature.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Per le immagini con molti "
+"colori, l'aumento del numero di iterazioni produrrà risultati migliori ma "
+"potrebbe creare rallentamenti.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">L'opzione <span style=\" "
+"font-style:italic;\">Corrispondenza</span> esegue della post-elaborazione:</"
+"p>\n"
+"<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
+"right: 0px; -qt-list-indent: 1;\"><li style=\"\" style=\" margin-top:12px; "
+"margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+"text-indent:0px;\"><span style=\" font-weight:600;\">Nessuno</span>: non "
+"esegue alcuna post-elaborazione e restituisce le medie (nota che potrebbe "
+"produrre colori non presenti nell'immagine originale)</li>\n"
+"<li style=\"\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">Più vicino</span>: trova il colore nell'immagine originale che "
+"è più vicino alla media</li>\n"
+"<li style=\"\" style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">Più frequente</span>: trova il colore nel gruppo che appare "
+"più spesso nell'immagine sorgente</li></ul></body></html>"
 
 #. i18n: ectx: property (plainText), widget (QPlainTextEdit, plainTextEdit)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:159
@@ -3540,6 +3592,20 @@ msgid ""
 "colors for complex images but it might result into colors that are not "
 "present in the source image.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">L'algoritmo Octree unisce "
+"colori simili dal basso verso l'alto.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Fornisce colori più "
+"accurati per immagini complesse ma potrebbe produrre colori che non sono "
+"presenti nell'immagine sorgente.</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:189
@@ -3572,6 +3638,26 @@ msgid ""
 "that a color must have to be considered (as a percentage of the total number "
 "of pixels in the image).</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Modalità con esclusione di "
+"bordi prende il colore (modalità) più frequente nell'immagine, poi esclude "
+"tutti i pixel che toccano la detta area, quindi ripete il processo fino a "
+"quando trova il numero appropriato di colori.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Questo approccio rimuove i "
+"bordi con antialias ma potrebbe non rilevare alcuni piccoli dettagli.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">Frequenza minima</span> si riferisce alla quantità minima di "
+"pixel che un colore deve avere per essere considerato (come percentuale del "
+"numero totale di pixel nell'immagine).</p></body></html>"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, DocumentMetadataDialog)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:21
@@ -3906,7 +3992,7 @@ msgstr "&Documento"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:238
 #, kde-format
 msgid "Render Single &Frame"
-msgstr "Disegna &fotogramma singolo"
+msgstr "Resa &fotogramma singolo"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_web_preview)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:249
@@ -4562,11 +4648,9 @@ msgstr "Metadati..."
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1960
 #: src/gui/widgets/menus/node_menu.cpp:356
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::GlaxnimateWindow#140"
-#| msgid "Trace Bitmap..."
+#, kde-format
 msgid "Trace Bitmap..."
-msgstr "Traccia Immagine..."
+msgstr "Traccia bitmap..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1965
@@ -4918,7 +5002,7 @@ msgstr "File immagine (%1)"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:600
 #, kde-format
 msgid "Render Frame"
-msgstr "Renderizza fotogramma"
+msgstr "Resa fotogramma"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:576
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:600
@@ -5110,9 +5194,9 @@ msgstr "Impossibile salvare modello"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1148
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1155
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
-#, fuzzy, kde-format
+#, kde-format
 msgid "Trace Bitmap"
-msgstr "Traccia Immagine"
+msgstr "Traccia bitmap"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1139
 #, kde-format
@@ -5193,7 +5277,7 @@ msgstr "Operazione non riuscita"
 #: src/gui/widgets/dialogs/io_status_dialog.ui:21
 #, kde-format
 msgid "IoStatusDialog"
-msgstr ""
+msgstr "FinestraDiStatoIO"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/io_status_dialog.ui:50
@@ -5357,9 +5441,7 @@ msgstr "FPS"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer_keep)
 #: src/gui/widgets/dialogs/timing_dialog.ui:97
-#, fuzzy, kde-format
-#| msgctxt "TimingDialog#7"
-#| msgid "Keep Initial Timing"
+#, kde-format
 msgid "Keep Initial Timing"
 msgstr "Mantieni tempistica iniziale"
 
@@ -5371,9 +5453,7 @@ msgstr "Ritaglia i fotogrammi extra"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer_scale)
 #: src/gui/widgets/dialogs/timing_dialog.ui:114
-#, fuzzy, kde-format
-#| msgctxt "TimingDialog#9"
-#| msgid "Scale Timing"
+#, kde-format
 msgid "Scale Timing"
 msgstr "Scala tempistica"
 
@@ -5428,6 +5508,34 @@ msgid ""
 "\"https://linktr.ee/FellFallow\"><span style=\" text-decoration: underline; "
 "color:#2980b9;\">FellFallow</span></a>)</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Questa opzione si adatta "
+"meglio alle foto, i dipinti e le illustrazioni con dettagli.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Il numero di colori viene "
+"ridotto in base al <span style=\" font-weight:600;\">Livello di "
+"posterizzazione</span> sottostante.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Nota che quando si "
+"converte questo tipo di immagini in immagini vettoriali si verifica una "
+"riduzione significativa nella qualità dell'immagine.</p>\n"
+"<p style=\" margin-top:37px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">(Immagine di <a href="
+"\"https://linktr.ee/FellFallow\"><span style=\" text-decoration: underline; "
+"color:#2980b9;\">FellFallow</span></a>)</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: src/gui/widgets/dialogs/trace_dialog.ui:164
@@ -5463,6 +5571,30 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">Very small details might "
 "get lost in the process.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Questa opzione si adatta "
+"meglio alle immagini digitali con ombre piatte, adesivi e cartoni animati.</"
+"p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Il numero di colori sarà "
+"ridotto automaticamente, prelevando i colori più comuni dall'immagine "
+"sorgente.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Durante l'elaborazione "
+"potrebbero andare persi dettagli molto piccoli.</p></body></html>"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_3)
 #: src/gui/widgets/dialogs/trace_dialog.ui:233
@@ -5486,6 +5618,23 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">This is only suitable for "
 "fairly small images with a low number of colors.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Adatto alla pixel art. Il "
+"vettore tracciato manterrà tutti i colori nell'immagine originalo, come pure "
+"i bordi con pixel.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Adatto solo alle immagini "
+"piuttosto piccole con pochi colori.</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/trace_dialog.ui:254
@@ -5784,18 +5933,18 @@ msgstr "Quadrato"
 #: src/gui/widgets/enum_combo.cpp:78
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:226
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:229
-#, fuzzy, kde-format
+#, kde-format
 msgid "Miter"
-msgstr "Mitra"
+msgstr "Giunzione"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_join_bevel)
 #. i18n: ectx: property (text), widget (QToolButton, button_join_bevel)
 #: src/gui/widgets/enum_combo.cpp:82
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:166
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:169
-#, fuzzy, kde-format
+#, kde-format
 msgid "Bevel"
-msgstr "Smussato"
+msgstr "Smussatura"
 
 #: src/gui/widgets/enum_combo.cpp:92
 #, kde-format
@@ -6711,7 +6860,7 @@ msgstr "Imposta linea di unione"
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:341
 #, kde-format
 msgid "Set Miter Limit"
-msgstr ""
+msgstr "Imposta limite giunzione"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:349
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:364
@@ -6750,9 +6899,9 @@ msgstr "Unisci"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_miter)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:263
-#, fuzzy, kde-format
+#, kde-format
 msgid "Miter Limit"
-msgstr "Limite Mitra"
+msgstr "Limite giunzione"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:338
@@ -6915,19 +7064,19 @@ msgid "Fast"
 msgstr "Veloce"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:84
-#, fuzzy, kde-format
+#, kde-format
 msgid "Ease In"
 msgstr "Allenta dentro"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:86
-#, fuzzy, kde-format
+#, kde-format
 msgid "Ease Out"
 msgstr "Allenta fuori"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:89
-#, fuzzy, kde-format
+#, kde-format
 msgid "Ease"
-msgstr "Allentamento"
+msgstr "Allenta"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:98
 #, kde-format
@@ -6938,7 +7087,7 @@ msgstr "Anticipa"
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:103
 #, kde-format
 msgid "Overshoot"
-msgstr ""
+msgstr "Oltrepassa"
 
 #: src/gui/widgets/timeline/timeline_items.cpp:142
 #, kde-format
@@ -6959,10 +7108,9 @@ msgstr "Crea"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_raw_shape)
 #: src/gui/widgets/tools/shape_tool_widget.ui:30
-#, fuzzy, kde-format
-#| msgid "Raw Shape"
+#, kde-format
 msgid "Raw Shape"
-msgstr "Forma da sola"
+msgstr "Forma grezza"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_view_fit)
 #. i18n: ectx: property (text), widget (QToolButton, btn_view_fit)

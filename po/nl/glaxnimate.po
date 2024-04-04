@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-25 01:59+0000\n"
-"PO-Revision-Date: 2024-04-02 15:11+0200\n"
+"PO-Revision-Date: 2024-04-03 15:41+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -3625,6 +3625,27 @@ msgid ""
 "that a color must have to be considered (as a percentage of the total number "
 "of pixels in the image).</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Modus rand uitsluiten "
+"neemt de meest frequente kleur (modus) in de afbeelding, sluit daarna alle "
+"pixels uit die raken aan het aangegeven gebied, herhaalt daarna het proces "
+"totdat het toepasselijke aantal kleuren is gevonden.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Deze benadering verwijdert "
+"anti-aliased randen maar het zou kunnen veroorzaken dat kleine details niet "
+"worden gedetecteerd.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">Min frequentie</span> verwijst naar de minimale hoeveelheid "
+"pixels die een kleur moet hebben om beschouwd te worden (als een percentage "
+"van het totale aantal pixels in de afbeelding).</p></body></html>"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, DocumentMetadataDialog)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:21
@@ -4532,7 +4553,7 @@ msgstr "Segmenten recht maken"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1819
 #, kde-format
 msgid "Make segments curved"
-msgstr ""
+msgstr "Segmenten gekromd maken"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1828
@@ -4556,7 +4577,7 @@ msgstr "Opruimen"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1861
 #, kde-format
 msgid "Remove unused assets"
-msgstr ""
+msgstr "Ongebruikte bezittingen verwijderen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1870
@@ -4580,19 +4601,19 @@ msgstr "&Lus"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1906
 #, kde-format
 msgid "&Record Keyframes"
-msgstr ""
+msgstr "Neem keyframes &op"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1915
 #, kde-format
 msgid "Jump to &Start"
-msgstr ""
+msgstr "Spring naar het &begin"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1924
 #, kde-format
 msgid "Jump to &End"
-msgstr ""
+msgstr "Spring naar het &einde"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1933
@@ -4617,25 +4638,25 @@ msgstr "Metagegevens..."
 #: src/gui/widgets/menus/node_menu.cpp:356
 #, kde-format
 msgid "Trace Bitmap..."
-msgstr ""
+msgstr "Bitmap volgen..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1965
 #, kde-format
 msgid "&Lottie (SVG)"
-msgstr ""
+msgstr "&Lottie (SVG)"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1970
 #, kde-format
 msgid "&SVG (SMIL)"
-msgstr ""
+msgstr "&SVG (SMIL)"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1975
 #, kde-format
 msgid "Lottie (canvas)"
-msgstr ""
+msgstr "Lottie (werkveld)"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1999
@@ -4684,13 +4705,13 @@ msgstr "Onder"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2077
 #, kde-format
 msgid "Canvas (as Group)"
-msgstr ""
+msgstr "Werkveld (als groep)"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2082
 #, kde-format
 msgid "Relative To"
-msgstr ""
+msgstr "Relatief tot"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2087
@@ -4708,25 +4729,25 @@ msgstr "Verticaal"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2101
 #, kde-format
 msgid "Outside Left"
-msgstr ""
+msgstr "Links er buiten"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2110
 #, kde-format
 msgid "Outside Right"
-msgstr ""
+msgstr "Rechts er buiten"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2119
 #, kde-format
 msgid "Outside Top"
-msgstr ""
+msgstr "Bovenaan er buiten"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2128
 #, kde-format
 msgid "Outside Bottom"
-msgstr ""
+msgstr "Onderaan er buien"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2137
@@ -4738,7 +4759,7 @@ msgstr "&Importeren..."
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2146
 #, kde-format
 msgid "Paste as Composition"
-msgstr ""
+msgstr "Als compositie plakken"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2155
@@ -4758,20 +4779,20 @@ msgstr "Als sjabloon opslaan"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2173
 #, kde-format
 msgid "&Put on Path"
-msgstr ""
+msgstr "Op &pad zetten"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2182
 #, kde-format
 msgid "&Remove from Path"
-msgstr ""
+msgstr "Uit pad ve&rwijderen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2191
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:613
 #, kde-format
 msgid "Validate Discord Sticker"
-msgstr ""
+msgstr "Meningsverschilsticker valideren"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2200
@@ -4783,7 +4804,7 @@ msgstr "Emo&ji..."
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2209
 #, kde-format
 msgid "Import from LottieFiles..."
-msgstr ""
+msgstr "Uit Lottie-bestanden importeren..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2218
@@ -4795,7 +4816,7 @@ msgstr "Als afbeeldingensequentie exporteren..."
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2229
 #, kde-format
 msgid "Customized Layout"
-msgstr ""
+msgstr "Indeling aanpassen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2237
@@ -4807,7 +4828,7 @@ msgstr "Automatisch"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2240
 #, kde-format
 msgid "Determines the best layout based on screen size"
-msgstr ""
+msgstr "Bepaal de beste indeling gebaseerd op de schermgrootte"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2248
@@ -4819,7 +4840,7 @@ msgstr "Breed"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2251
 #, kde-format
 msgid "Layout best suited for larger screens"
-msgstr ""
+msgstr "Indeling het best geschikt voor grotere schermen"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2259
@@ -4877,7 +4898,7 @@ msgstr "Exporteren..."
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:150
 #, kde-format
 msgid "Unsaved Animation"
-msgstr ""
+msgstr "Niet opgeslagen animatie"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:232
 #, kde-format
