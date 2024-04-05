@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-25 01:59+0000\n"
-"PO-Revision-Date: 2024-04-03 15:41+0200\n"
+"PO-Revision-Date: 2024-04-04 13:45+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -4906,6 +4906,8 @@ msgid ""
 "Looks like this file is being edited by another Glaxnimate instance or it "
 "was being edited when Glaxnimate crashed."
 msgstr ""
+"Het lijkt erop dat dit bestand bewerkt is door een ander exemplaar van "
+"Glaxnimate of dat het was bewerkt toen Glaxnimate crashte."
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:238
 #, kde-format
@@ -4916,7 +4918,7 @@ msgstr "Document sluiten"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:667
 #, kde-format
 msgid "Load Backup"
-msgstr ""
+msgstr "Reservekopie laden"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:397
 #, kde-format
@@ -4926,7 +4928,7 @@ msgstr "Exporteren naar %1"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:448
 #, kde-format
 msgid "No importer found for %1"
-msgstr ""
+msgstr "Geen importprogramma gevonden voor %1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:453
 #, kde-format
@@ -4934,6 +4936,8 @@ msgid ""
 "The file might have been moved or deleted\n"
 "%1"
 msgstr ""
+"Het bestand kan verplaatst of verwijderd zijn\n"
+"%1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:481
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:825
@@ -4945,7 +4949,7 @@ msgstr "Kon %1 niet importeren"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:492
 #, kde-format
 msgid "No file to reload from"
-msgstr ""
+msgstr "Geen bestand om uit te herladen"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:503
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:525
