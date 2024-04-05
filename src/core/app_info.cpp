@@ -67,6 +67,8 @@ void glaxnimate::AppInfo::init_qapplication() const
         QStringLiteral(URL_ISSUES)
     );
 
+    aboutData.setDesktopFileName(QStringLiteral(PROJECT_ID));
+
     KAboutData::setApplicationData(aboutData);
     qApp->setOrganizationName(organization());
 }
