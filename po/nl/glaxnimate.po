@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-25 01:59+0000\n"
-"PO-Revision-Date: 2024-04-05 11:08+0200\n"
+"PO-Revision-Date: 2024-04-08 11:24+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -5139,12 +5139,12 @@ msgstr "Laten vallen"
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:812
 #, kde-format
 msgid "Put text on path"
-msgstr ""
+msgstr "Tekst op een pad zetten"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:834
 #, kde-format
 msgid "Remove text from path"
-msgstr ""
+msgstr "Tekst van een pad verwijderen"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:240
 #, kde-format
@@ -5162,17 +5162,17 @@ msgstr "Afspelen"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:991
 #, kde-format
 msgid "Recording Keyframes"
-msgstr ""
+msgstr "Keyframes opnemen"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:941
 #, kde-format
 msgid "Could not load template"
-msgstr ""
+msgstr "Kon sjabloon niet laden"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:955
 #, kde-format
 msgid "Could not save template"
-msgstr ""
+msgstr "Kon sjabloon niet opslaan"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1139
@@ -5181,22 +5181,22 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
-msgstr ""
+msgstr "Bitmap volgen"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1139
 #, kde-format
 msgid "Only select one image"
-msgstr ""
+msgstr "Slechts één afbeelding selecteren"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1148
 #, kde-format
 msgid "You need to select an image to trace"
-msgstr ""
+msgstr "U moet een te volgen afbeelding selecteren"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1155
 #, kde-format
 msgid "You selected an image with no data"
-msgstr ""
+msgstr "U selecteerde een afbeelding zonder gegevens"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1210
 #, kde-format
@@ -5206,22 +5206,22 @@ msgstr "X: %1 Y: %2"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1229
 #, kde-format
 msgid "Drop File"
-msgstr ""
+msgstr "Bestand loslaten"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1240
 #, kde-format
 msgid "Add to current file?"
-msgstr ""
+msgstr "Aan het huidige bestand toevoegen?"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1246
 #, kde-format
 msgid "Add as Object"
-msgstr ""
+msgstr "Als object toevoegen"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1252
 #, kde-format
 msgid "Add as Composition"
-msgstr ""
+msgstr "Als compositie toevoegen"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:39
 #, kde-format
@@ -5262,19 +5262,19 @@ msgstr "Handeling mislukt"
 #: src/gui/widgets/dialogs/io_status_dialog.ui:21
 #, kde-format
 msgid "IoStatusDialog"
-msgstr ""
+msgstr "IoStatusDialog"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/io_status_dialog.ui:50
 #, kde-format
 msgid "/path/to/your/file/in.here"
-msgstr ""
+msgstr "/pad/naar/uw/bestand/hierin"
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_box)
 #: src/gui/widgets/dialogs/io_status_dialog.ui:84
 #, kde-format
 msgid "Issues"
-msgstr ""
+msgstr "Problemen"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ResizeDialog)
 #: src/gui/widgets/dialogs/resize_dialog.cpp:28
@@ -5305,13 +5305,13 @@ msgstr "Lagen schalen"
 #: src/gui/widgets/dialogs/resize_dialog.ui:103
 #, kde-format
 msgid "Preserve Layer Aspect Ratio"
-msgstr ""
+msgstr "Beeldverhouding van laag behouden"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::SelectShapeDialog)
 #: src/gui/widgets/dialogs/select_shape_dialog.ui:21
 #, kde-format
 msgid "Select Shape"
-msgstr ""
+msgstr "Vorm selecteren"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShapeParentDialog)
 #: src/gui/widgets/dialogs/shape_parent_dialog.ui:21
@@ -5335,7 +5335,7 @@ msgstr "Verplaatsen"
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:18
 #, kde-format
 msgid "Autosave Files"
-msgstr ""
+msgstr "Bestanden automatisch opslaan"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_open)
 #. i18n: ectx: property (text), widget (QPushButton, button_load)
@@ -5373,7 +5373,7 @@ msgstr "Nieuwe aanmaken"
 #: src/gui/widgets/font/google_fonts_widget.ui:75
 #, kde-format
 msgid "Size"
-msgstr ""
+msgstr "Grootte"
 
 #. i18n: ectx: property (text), widget (QTableWidget, view_presets)
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -5411,12 +5411,12 @@ msgstr "Bladeren..."
 #: src/gui/widgets/dialogs/startup_dialog.ui:176
 #, kde-format
 msgid "Show at startup"
-msgstr ""
+msgstr "Bij opstarten tonen"
 
 #: src/gui/widgets/dialogs/timing_dialog.cpp:83
 #, kde-format
 msgid "Change Animation Properties"
-msgstr ""
+msgstr "Animatie-eigenschappen wijzigen"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
@@ -5428,19 +5428,19 @@ msgstr "FPS"
 #: src/gui/widgets/dialogs/timing_dialog.ui:97
 #, kde-format
 msgid "Keep Initial Timing"
-msgstr ""
+msgstr "Initiële timing behouden"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer_trim)
 #: src/gui/widgets/dialogs/timing_dialog.ui:104
 #, kde-format
 msgid "Trim Extra Frames"
-msgstr ""
+msgstr "Extra frames trimmen"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer_scale)
 #: src/gui/widgets/dialogs/timing_dialog.ui:114
 #, kde-format
 msgid "Scale Timing"
-msgstr ""
+msgstr "Timing schalen"
 
 #. i18n: ectx: property (text), item, widget (QListWidget, list_presets)
 #: src/gui/widgets/dialogs/trace_dialog.ui:89
