@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-25 01:59+0000\n"
-"PO-Revision-Date: 2024-04-08 11:24+0200\n"
+"PO-Revision-Date: 2024-04-09 16:21+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -5493,12 +5493,40 @@ msgid ""
 "\"https://linktr.ee/FellFallow\"><span style=\" text-decoration: underline; "
 "color:#2980b9;\">FellFallow</span></a>)</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Deze optie is het best "
+"geschikt voor foto's, schilderijen en gedetailleerde illustraties.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Het aantal kleuren is "
+"gereduceerd gebaseerd op <span style=\" font-weight:600;\">Niveau poster "
+"maken</span> below.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Merk op dat er een "
+"aanzienlijke reductie in kwaliteit van de afbeelding is bij dit soort "
+"afbeeldingen converteren naar vectorgrafiek.</p>\n"
+"<p style=\" margin-top:37px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">(Afbeelding door <a href="
+"\"https://linktr.ee/FellFallow\"><span style=\" text-decoration: underline; "
+"color:#2980b9;\">FellFallow</span></a>)</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: src/gui/widgets/dialogs/trace_dialog.ui:164
 #, kde-format
 msgid "Posterization Level"
-msgstr ""
+msgstr "Niveau poster maken"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_2)
 #: src/gui/widgets/dialogs/trace_dialog.ui:198
@@ -5528,6 +5556,30 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">Very small details might "
 "get lost in the process.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Deze optie is het best "
+"geschikt voor digitale afbeeldingen met vlakke schaduwen, stickers en "
+"cartoons.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Het aantal kleuren zal "
+"automatisch gereduceerd worden, waarbij de meest algemene kleuren in de "
+"bronafbeelding worden gekozen.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Erg kleine details kunnen "
+"verloren gaan in het proces.</p></body></html>"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_3)
 #: src/gui/widgets/dialogs/trace_dialog.ui:233
@@ -5551,6 +5603,24 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">This is only suitable for "
 "fairly small images with a low number of colors.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Dit is geschikt voor pixel "
+"kunst. De gevolgde vector zal alle kleuren in de originele afbeelding "
+"behouden evenals de randen met pixels.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Dit is alleen geschikt "
+"voor tamelijk kleine afbeeldingen met een laag aantal kleuren.</p></body></"
+"html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/trace_dialog.ui:254
@@ -5568,13 +5638,13 @@ msgstr "Transparantie"
 #: src/gui/widgets/dialogs/trace_dialog.ui:267
 #, kde-format
 msgid "Closest Color"
-msgstr ""
+msgstr "Dichtstbijzijnde kleur"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_mode)
 #: src/gui/widgets/dialogs/trace_dialog.ui:272
 #, kde-format
 msgid "Extract Colors"
-msgstr ""
+msgstr "Kleuren extraheren"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_mode)
 #: src/gui/widgets/dialogs/trace_dialog.ui:277
@@ -5592,7 +5662,7 @@ msgstr "Afbeeldingsopties"
 #: src/gui/widgets/dialogs/trace_dialog.ui:307
 #, kde-format
 msgid "Output Color"
-msgstr ""
+msgstr "Uitvoerkleur"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/trace_dialog.ui:331
@@ -5616,13 +5686,13 @@ msgstr "Kleuren"
 #: src/gui/widgets/dialogs/trace_dialog.ui:394
 #, kde-format
 msgid "Add Color"
-msgstr ""
+msgstr "Kleur toevoegen"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/dialogs/trace_dialog.ui:421
 #, kde-format
 msgid "Remove Color"
-msgstr ""
+msgstr "Kleur verwijderen"
 
 #. i18n: ectx: property (text), widget (QLabel, label_tolerance)
 #: src/gui/widgets/dialogs/trace_dialog.ui:453
@@ -5640,13 +5710,13 @@ msgstr "Omlijning"
 #: src/gui/widgets/dialogs/trace_dialog.ui:483
 #, kde-format
 msgid "Detect Colors"
-msgstr ""
+msgstr "Kleuren detecteren"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_quantize_options)
 #: src/gui/widgets/dialogs/trace_dialog.ui:490
 #, kde-format
 msgid "Configure Color Detection"
-msgstr ""
+msgstr "Kleurdetectie configureren"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_quantize_options)
 #: src/gui/widgets/dialogs/trace_dialog.ui:493
@@ -5658,7 +5728,7 @@ msgstr "Configureren..."
 #: src/gui/widgets/dialogs/trace_dialog.ui:514
 #, kde-format
 msgid "Curve Options"
-msgstr ""
+msgstr "Opties voor krommen"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/trace_dialog.ui:520
@@ -5670,7 +5740,7 @@ msgstr "Gladheid"
 #: src/gui/widgets/dialogs/trace_dialog.ui:559
 #, kde-format
 msgid "Minimum Area"
-msgstr ""
+msgstr "Minimumgebied"
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_preview)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -5684,7 +5754,7 @@ msgstr "Voorbeeld"
 #: src/gui/widgets/dialogs/trace_dialog.ui:608
 #, kde-format
 msgid "Update"
-msgstr ""
+msgstr "Bijwerken"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_preview_zoom)
@@ -5704,7 +5774,7 @@ msgstr "Help..."
 #: src/gui/widgets/dialogs/trace_dialog.ui:681
 #, kde-format
 msgid "Revert to Defaults"
-msgstr ""
+msgstr "Naar standaard terugzetten"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_advanced)
 #: src/gui/widgets/dialogs/trace_dialog.ui:692
@@ -5715,7 +5785,7 @@ msgstr "Geavanceerd"
 #: src/gui/widgets/docks/script_console.cpp:61
 #, kde-format
 msgid "Could not run the plugin"
-msgstr ""
+msgstr "Kon de plug-in niet uitvoeren"
 
 #: src/gui/widgets/docks/script_console.cpp:64
 #, kde-format
@@ -5725,7 +5795,7 @@ msgstr ""
 #: src/gui/widgets/docks/script_console.cpp:72
 #, kde-format
 msgid "Could not find an interpreter"
-msgstr ""
+msgstr "Kon een interpretator niet vinden"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_clear_console)
 #: src/gui/widgets/docks/script_console.ui:71
@@ -5765,7 +5835,7 @@ msgstr ""
 #: src/gui/widgets/docks/snippet_list_widget.ui:26
 #, kde-format
 msgid "New Snippet"
-msgstr ""
+msgstr "Nieuw fragment"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/docks/snippet_list_widget.ui:40
@@ -6010,7 +6080,7 @@ msgstr "HTTP-fout %1: %2"
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:21
 #, kde-format
 msgid "Import From LottieFiles"
-msgstr ""
+msgstr "Uit Lottie-bestanden importeren"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_previous)
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:98
@@ -6065,7 +6135,7 @@ msgstr "Animatie rond laten lopen"
 #: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
 msgid "Follow Path..."
-msgstr ""
+msgstr "Volg pad..."
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:65
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:177
@@ -6167,28 +6237,28 @@ msgstr "Uit bestand..."
 #: src/gui/widgets/menus/node_menu.cpp:329
 #, kde-format
 msgid "Update Image"
-msgstr ""
+msgstr "Afbeelding bijwerken"
 
 #: src/gui/widgets/menus/node_menu.cpp:367
 #, kde-format
 msgid "Rename from Composition"
-msgstr ""
+msgstr "Uit compositie hernoemen"
 
 #: src/gui/widgets/menus/node_menu.cpp:371
 #: src/gui/widgets/menus/node_menu.cpp:372
 #, kde-format
 msgid "Decompose"
-msgstr ""
+msgstr "Uiteenrafelen"
 
 #: src/gui/widgets/menus/node_menu.cpp:396
 #, kde-format
 msgid "Remove from Path"
-msgstr ""
+msgstr "Uit pad verwijderen"
 
 #: src/gui/widgets/menus/node_menu.cpp:410
 #, kde-format
 msgid "Stretch time"
-msgstr ""
+msgstr "Uitrektijd"
 
 #: src/gui/widgets/menus/node_menu.cpp:411
 #, kde-format
