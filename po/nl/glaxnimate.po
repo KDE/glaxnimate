@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-25 01:59+0000\n"
-"PO-Revision-Date: 2024-04-09 16:21+0200\n"
+"PO-Revision-Date: 2024-04-10 11:30+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -5790,7 +5790,7 @@ msgstr "Kon de plug-in niet uitvoeren"
 #: src/gui/widgets/docks/script_console.cpp:64
 #, kde-format
 msgid "Plugin raised an exception"
-msgstr ""
+msgstr "Plug-in kwam met een uitzondering"
 
 #: src/gui/widgets/docks/script_console.cpp:72
 #, kde-format
@@ -5807,29 +5807,29 @@ msgstr "Uitvoer wissen"
 #: src/gui/widgets/docks/script_console.ui:85
 #, kde-format
 msgid "Persist Logs"
-msgstr ""
+msgstr "Blijvende logs"
 
 #. i18n: ectx: property (text), widget (QToolButton, check_persist)
 #: src/gui/widgets/docks/script_console.ui:88
 #, kde-format
 msgid "Persist"
-msgstr ""
+msgstr "Blijvend"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_reload)
 #: src/gui/widgets/docks/script_console.ui:102
 #, kde-format
 msgid "Reload Script Modules"
-msgstr ""
+msgstr "Modules voor scripten herladen"
 
 #: src/gui/widgets/docks/snippet_list_widget.cpp:60
 #, kde-format
 msgid "Snippets need a name"
-msgstr ""
+msgstr "Tekstfragmenten hebben een naam nodig"
 
 #: src/gui/widgets/docks/snippet_list_widget.cpp:66
 #, kde-format
 msgid "Could not create snippet: `%1`"
-msgstr ""
+msgstr "Kon tekstfragment niet aanmaken: `%1`"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 #: src/gui/widgets/docks/snippet_list_widget.ui:26
@@ -5841,7 +5841,7 @@ msgstr "Nieuw fragment"
 #: src/gui/widgets/docks/snippet_list_widget.ui:40
 #, kde-format
 msgid "Edit the selected snippet"
-msgstr ""
+msgstr "Het geselecteerde tekstfragment bewerken"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/docks/snippet_list_widget.ui:43
@@ -5853,13 +5853,13 @@ msgstr "Bewerken..."
 #: src/gui/widgets/docks/snippet_list_widget.ui:54
 #, kde-format
 msgid "Delete selected snippet"
-msgstr ""
+msgstr "Geselecteerd tekstfragment verwijderen"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_4)
 #: src/gui/widgets/docks/snippet_list_widget.ui:68
 #, kde-format
 msgid "Run selected snippet"
-msgstr ""
+msgstr "Geselecteerd tekstfragment uitvoeren"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_4)
 #: src/gui/widgets/docks/snippet_list_widget.ui:71
@@ -5871,17 +5871,17 @@ msgstr "Uitvoeren"
 #: src/gui/widgets/docks/snippet_list_widget.ui:95
 #, kde-format
 msgid "Reload snippets"
-msgstr ""
+msgstr "Tekstfragmenten herladen"
 
 #: src/gui/widgets/enum_combo.cpp:56
 #, kde-format
 msgid "NonZero"
-msgstr ""
+msgstr "NietNul"
 
 #: src/gui/widgets/enum_combo.cpp:58
 #, kde-format
 msgid "Even Odd"
-msgstr ""
+msgstr "Even oneven"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_cap_butt)
 #. i18n: ectx: property (text), widget (QToolButton, button_cap_butt)
@@ -5921,7 +5921,7 @@ msgstr "Vierkant"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:229
 #, kde-format
 msgid "Miter"
-msgstr ""
+msgstr "Verstekverbinding"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_join_bevel)
 #. i18n: ectx: property (text), widget (QToolButton, button_join_bevel)
@@ -5930,7 +5930,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:169
 #, kde-format
 msgid "Bevel"
-msgstr ""
+msgstr "Schuine hoek"
 
 #: src/gui/widgets/enum_combo.cpp:92
 #, kde-format
@@ -5943,12 +5943,14 @@ msgid ""
 "All supported files (*.ttf, *.otf, *.css); CSS files (*.css); Font files (*."
 "ttf, *.otf); All files (*)"
 msgstr ""
+"Alle ondersteunde bestanden (*.ttf, *.otf, *.css); CSS-bestanden (*.css); "
+"Lettertypebestanden (*.ttf, *.otf); Alle bestanden (*)"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/font/external_font_widget.ui:26
 #, kde-format
 msgid "File/URL"
-msgstr ""
+msgstr "Bestand/URL"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::font::FontStyleDialog)
@@ -5968,12 +5970,12 @@ msgstr "Kon bestand %1 niet openen"
 #: src/gui/widgets/font/font_loader.cpp:58
 #, kde-format
 msgid "Invalid data URL"
-msgstr ""
+msgstr "Ongeldige gegevens-URL"
 
 #: src/gui/widgets/font/font_loader.cpp:138
 #, kde-format
 msgid "Font format not supported for %1"
-msgstr ""
+msgstr "Formaat van lettertype wordt voor %1 niet ondersteund"
 
 #: src/gui/widgets/font/font_preview_widget.cpp:25
 #, kde-format
@@ -5984,13 +5986,13 @@ msgstr "Filmquiz bracht knappe ex-yogi van de wijs"
 #: src/gui/widgets/font/font_preview_widget.ui:42
 #, kde-format
 msgid "Preview Scale"
-msgstr ""
+msgstr "Schaal van voorbeeld"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_google)
 #: src/gui/widgets/font/font_style_dialog.ui:52
 #, kde-format
 msgid "Google Fonts"
-msgstr ""
+msgstr "Lettertypen van Google"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/gui/widgets/font/font_style_widget.ui:53
@@ -6022,7 +6024,7 @@ msgstr "Proportioneel"
 #: src/gui/widgets/font/google_fonts_model.cpp:180
 #, kde-format
 msgid "Could not add font"
-msgstr ""
+msgstr "Kon lettertype niet toevoegen"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:274
 #, kde-format
@@ -6069,7 +6071,7 @@ msgstr "Weergave"
 #: src/gui/widgets/font/google_fonts_model.cpp:400
 #, kde-format
 msgid "Handwriting"
-msgstr ""
+msgstr "Handgeschreven"
 
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.cpp:207
 #, kde-format
@@ -6119,7 +6121,7 @@ msgstr "Opmerkingen"
 #: src/gui/widgets/lottiefiles/search_result.cpp:67
 #, kde-format
 msgid "View on LottieFiles..."
-msgstr ""
+msgstr "Zicht op Lottie-bestanden..."
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:61
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:181
@@ -6149,7 +6151,7 @@ msgstr "Keyframe verwijderen"
 #: src/gui/widgets/menus/node_menu.cpp:363
 #, kde-format
 msgid "Reset Transform"
-msgstr ""
+msgstr "Transformatie resetten"
 
 #: src/gui/widgets/menus/node_menu.cpp:101
 #, kde-format
@@ -6169,13 +6171,13 @@ msgstr "%1 converteren naar %2"
 #: src/gui/widgets/menus/node_menu.cpp:257
 #, kde-format
 msgid "Auto Orient"
-msgstr ""
+msgstr "Automatisch oriëntatie"
 
 #: src/gui/widgets/menus/node_menu.cpp:266
 #: src/gui/widgets/menus/node_menu.cpp:267
 #, kde-format
 msgid "Span All Frames"
-msgstr ""
+msgstr "Alle frames omvatten"
 
 #: src/gui/widgets/menus/node_menu.cpp:277
 #, kde-format
@@ -6185,28 +6187,28 @@ msgstr "Ouder"
 #: src/gui/widgets/menus/node_menu.cpp:278
 #, kde-format
 msgid "Convert to Group"
-msgstr ""
+msgstr "Naar groep converteren"
 
 #: src/gui/widgets/menus/node_menu.cpp:279
 #, kde-format
 msgid "Precompose"
-msgstr ""
+msgstr "Vooraf samenstellen"
 
 #: src/gui/widgets/menus/node_menu.cpp:285
 #: src/gui/widgets/menus/node_menu.cpp:304
 #, kde-format
 msgid "Convert to Mask"
-msgstr ""
+msgstr "Naar masker converteren"
 
 #: src/gui/widgets/menus/node_menu.cpp:291
 #, kde-format
 msgid "Remove Mask"
-msgstr ""
+msgstr "Masker verwijderen"
 
 #: src/gui/widgets/menus/node_menu.cpp:300
 #, kde-format
 msgid "Convert to Layer"
-msgstr ""
+msgstr "Naar laag converteren"
 
 #: src/gui/widgets/menus/node_menu.cpp:309
 #, kde-format
@@ -6221,12 +6223,13 @@ msgstr "Inbedden"
 #: src/gui/widgets/menus/node_menu.cpp:318
 #, kde-format
 msgid "Open with External Application"
-msgstr ""
+msgstr "Met externe applicatie openen"
 
 #: src/gui/widgets/menus/node_menu.cpp:320
 #, kde-format
 msgid "Could not find suitable application, check your system settings."
 msgstr ""
+"Kon geschikte toepassing niet vinden, controleer uw systeeminstellingen."
 
 #: src/gui/widgets/menus/node_menu.cpp:324
 #, kde-format
@@ -6315,7 +6318,7 @@ msgstr "Onbekend"
 #: src/gui/widgets/settings/plugin_settings_widget.cpp:75
 #, kde-format
 msgid "Menu Action"
-msgstr ""
+msgstr "Menu-actie"
 
 #: src/gui/widgets/settings/plugin_settings_widget.cpp:77
 #, kde-format
@@ -6326,7 +6329,7 @@ msgstr "Bestandsformaat"
 #: src/gui/widgets/settings/plugin_settings_widget.ui:31
 #, kde-format
 msgid "Reload Plugins"
-msgstr ""
+msgstr "Plug-ins herladen"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:34
@@ -6350,7 +6353,7 @@ msgstr "Installeren..."
 #: src/gui/widgets/settings/plugin_settings_widget.ui:90
 #, kde-format
 msgid "123"
-msgstr ""
+msgstr "123"
 
 #. i18n: ectx: property (text), widget (QPushButton, btn_enable)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:112
@@ -6386,7 +6389,7 @@ msgstr "Services"
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:51
 #, kde-format
 msgid "Icon"
-msgstr ""
+msgstr "Pictogram"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_style)
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:61
@@ -6404,7 +6407,7 @@ msgstr "Tekst onder pictogram"
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:74
 #, kde-format
 msgid "Tool Icon Size"
-msgstr ""
+msgstr "Pictogramgrootte van hulpmiddel"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/settings/toolbar_settings_widget.ui:81
@@ -6629,7 +6632,7 @@ msgstr "K"
 #: src/gui/widgets/shape_style/color_selector.ui:593
 #, kde-format
 msgid "Alpha (Transparency)"
-msgstr ""
+msgstr "Alfa (transparantie)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/shape_style/color_selector.ui:586
@@ -6641,13 +6644,13 @@ msgstr "A"
 #: src/gui/widgets/shape_style/color_selector.ui:637
 #, kde-format
 msgid "Primary Color"
-msgstr ""
+msgstr "Primaire kleur"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::ColorSelector, color_preview_secondary)
 #: src/gui/widgets/shape_style/color_selector.ui:656
 #, kde-format
 msgid "Secondary Color"
-msgstr ""
+msgstr "Secundaire kleur"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, color_swap)
 #. i18n: ectx: property (text), widget (QToolButton, color_swap)
@@ -6660,43 +6663,43 @@ msgstr "Omwisselen"
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:49
 #, kde-format
 msgid "Gather Document Swatch"
-msgstr ""
+msgstr "Stukjes document verzamelen"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:121
 #, kde-format
 msgid "Link Shapes to Swatch"
-msgstr ""
+msgstr "Vormen aan stukjes koppelen"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:245
 #, kde-format
 msgid "Modify Palette Color"
-msgstr ""
+msgstr "Paletkleur wijzigen"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:324
 #, kde-format
 msgid "Load from Palette"
-msgstr ""
+msgstr "Uit palet laden"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:325
 #, kde-format
 msgid "No palettes are installed"
-msgstr ""
+msgstr "Geen paletten geïnstalleerd"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:331
 #, kde-format
 msgid "Swatch from Palette"
-msgstr ""
+msgstr "Stukje uit pallet"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:340
 #, kde-format
 msgid "Overwrite on save"
-msgstr ""
+msgstr "Bij opslaan overschrijven"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:344
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:531
 #, kde-format
 msgid "Link shapes with matching colors"
-msgstr ""
+msgstr "Vormen met overeenkomende kleuren koppelen"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:349
 #, kde-format
@@ -6832,7 +6835,7 @@ msgstr "Kleur van streek bijwerken"
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:234
 #, kde-format
 msgid "Set Line Cap"
-msgstr ""
+msgstr "Uiteinde van lijn instellen"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:249
 #, kde-format
