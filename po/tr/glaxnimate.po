@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-25 01:59+0000\n"
-"PO-Revision-Date: 2024-04-07 21:33+0300\n"
+"PO-Revision-Date: 2024-04-18 15:48+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 24.04.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2616,13 +2616,13 @@ msgstr "Arayüz Dili"
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Icon Theme"
-msgstr "Simge Teması"
+msgstr "Simge teması"
 
 #: src/gui/glaxnimate_app.cpp:178
 #, kde-format
 msgctxt "@option:check"
 msgid "Horizontal Timeline Scroll"
-msgstr "Yatay Zaman Akışı Sarımı"
+msgstr "Yatay zaman akışı sarımı"
 
 #: src/gui/glaxnimate_app.cpp:179
 #, kde-format
@@ -2686,7 +2686,7 @@ msgstr "Aç/Kaydet"
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Max Recent Files"
-msgstr "En Çok Son Kullanılan Dosya Sayısı"
+msgstr "En çok son kullanılan dosya sayısı"
 
 #: src/gui/glaxnimate_app.cpp:207
 #, kde-format
@@ -2787,7 +2787,7 @@ msgstr "Kilitli"
 #: src/gui/item_models/gradient_list_model.cpp:179
 #, kde-format
 msgid "#"
-msgstr "#"
+msgstr "№"
 
 #: src/gui/item_models/gradient_list_model.cpp:181
 #, kde-format
@@ -3411,7 +3411,7 @@ msgstr "Eşleştir"
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:83
 #, kde-format
 msgid "Max Iterations"
-msgstr "En Çok Yineleme"
+msgstr "En çok yineleme"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
@@ -4529,13 +4529,13 @@ msgstr "&Sil"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1807
 #, kde-format
 msgid "Make segments straight"
-msgstr "Bölütleri düz yap"
+msgstr "Bölütleri Düz Yap"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1819
 #, kde-format
 msgid "Make segments curved"
-msgstr "Bölütleri kıvrımlı yap"
+msgstr "Bölütleri Kıvrımlı Yap"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1828
@@ -4711,25 +4711,25 @@ msgstr "Dikey"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2101
 #, kde-format
 msgid "Outside Left"
-msgstr "Sol Dış"
+msgstr "Dış Sol"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2110
 #, kde-format
 msgid "Outside Right"
-msgstr "Sağ Dış"
+msgstr "Dış Sağ"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2119
 #, kde-format
 msgid "Outside Top"
-msgstr "Üst Dış"
+msgstr "Dış Üst"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2128
 #, kde-format
 msgid "Outside Bottom"
-msgstr "Alt Dış"
+msgstr "Dış Alt"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2137
@@ -4741,13 +4741,13 @@ msgstr "&İçe Aktar…"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2146
 #, kde-format
 msgid "Paste as Composition"
-msgstr "Kompozisyon olarak yapıştır"
+msgstr "Kompozisyon Olarak Yapıştır"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2155
 #, kde-format
 msgid "F&lip View"
-msgstr "Görünümü &ters çevir"
+msgstr "Görünümü &Ters Çevir"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2164
@@ -4755,19 +4755,19 @@ msgstr "Görünümü &ters çevir"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:955
 #, kde-format
 msgid "Save as Template"
-msgstr "Şablon olarak kaydet"
+msgstr "Şablon Olarak Kaydet"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2173
 #, kde-format
 msgid "&Put on Path"
-msgstr "&Yola koy"
+msgstr "&Yola Koy"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2182
 #, kde-format
 msgid "&Remove from Path"
-msgstr "Yol&dan kaldır"
+msgstr "Yol&dan Kaldır"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2191
