@@ -1,91 +1,64 @@
-.pypi_build:
+python_build_wheel:
     stage: build
+    image: invent-registry.kde.org/sysadmin/ci-images/suse-qt67:latest
     tags:
         - Linux
-    only:
-        - master
-        - release
-        - tags
-        - pypi
-    script:
+    variables:
+        KDECI_CC_CACHE: /mnt/caches/suse-qt6.7/
+        KDECI_CACHE_PATH: /mnt/artifacts/suse-qt6.7/
+        KDECI_GITLAB_SERVER: https://invent.kde.org/
+        KDECI_PACKAGE_PROJECT: teams/ci-artifacts/suse-qt6.7
+    before_script:
         - python3 --version
-        - python -m venv .venv
+        - git clone https://invent.kde.org/sysadmin/ci-utilities.git --depth=1
+        - git clone https://invent.kde.org/sysadmin/ci-notary-service.git
+        - git clone https://invent.kde.org/sysadmin/repo-metadata.git ci-utilities/repo-metadata/ --depth=1
+        - git config --global --add safe.directory $CI_PROJECT_DIR
+        - python3 -u ci-utilities/run-ci-build.py --project $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME --platform Linux/Qt6/Shared --only-setup-environment
+    script:
+        - cd _build
+        - python3 -m venv .venv
         - source .venv/bin/activate
-        - apt-get update
-        - apt-get install -y cmake
-        - mkdir build
-        - cd build
-        - cmake ..
+        #- PYTHONPATH=${CMAKE_BINARY_DIR}/bin/python/build/lib
+        - |
+            if [ -z "$CI_COMMIT_TAG" ] ; then
+                version="$(../deploy/pypi_version_tail.sh)"; else version="git.`date +%Y%m%d%H%M%S`.$CI_COMMIT_BRANCH.$CI_COMMIT_SHORT_SHA";
+            fi
+        - cmake -DCMAKE_INSTALL_PREFIX=$CI_PROJECT_DIR/_install -DVERSION_SUFFIX=$version -DBUILD_WITH_QT6=ON ..
+        #- pip install -r src/python/build-requirements.txt
         - make glaxnimate_python_depends_install
+        - ls bin/python/build/lib
         - make glaxnimate_python
+        - make glaxnimate_python_wheel
     artifacts:
         paths:
-            - build/bin/python/build/lib/
+            - _build/bin/python/build/lib/
+            - _build/bin/python/dist/*.whl
 
-#linux:pypi_3.8:
-    #extends: .pypi_build
-    #image: python:3.8
-
-#linux:pypi_3.9:
-    #extends: .pypi_build
-    #image: python:3.8
-
-linux:pypi_3.10:
-    extends: .pypi_build
-    image: python:3.10
-
-linux:pypi_3.11:
-    extends: .pypi_build
-    image: python:3.11
-
-linux:pypi_3.12:
-    extends: .pypi_build
-    image: python:3.12
-
-
-linux:pypi_deploy_gitlab:
-    image: python:3.10
+pypi_deploy_gitlab:
     stage: deploy
+    image: invent-registry.kde.org/sysadmin/ci-images/suse-qt67:latest
     needs:
-        - linux:pypi_3.10
-    dependencies:
-        - linux:pypi_3.10
+        - job: python_build_wheel
+          artifacts: true
     script:
-        - python3 --version
-        - apt-get install -y cmake
-        - mkdir -p build
-        - cd build
-        - cmake .. -DVERSION_SUFFIX="git.`date +%Y%m%d%H%M%S`.$CI_COMMIT_BRANCH.$CI_COMMIT_SHORT_SHA"
-        - make glaxnimate_python_depends_install
-        - ls bin/python/build/lib
-        - make glaxnimate_python_wheel
-        - python3 -m twine upload bin/python/dist/*.whl --repository-url $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/pypi --verbose
-    only:
-        - master
-        - release
-    environment:
-        name: Gitlab PyPI
+        - TWINE_PASSWORD=$CI_JOB_TOKEN TWINE_USERNAME=gitlab-ci-token python3 -m twine upload bin/python/dist/*.whl --repository-url $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/pypi --verbose
+    rules:
+        # allow to run the job only on master branch
+        - if: $CI_COMMIT_REF_NAME == "master"
+          when: manual
+        - when: never
 
-linux:pypi_deploy_tag_pypy-org:
-    image: python:3.10
+pypi_deploy_pypiorg:
     stage: deploy
+    image: invent-registry.kde.org/sysadmin/ci-images/suse-qt67:latest
     needs:
-        - linux:pypi_3.10
-    dependencies:
-        - linux:pypi_3.10
+        - job: python_build_wheel
+          artifacts: true
     script:
-        - python3 --version
-        - apt-get install -y cmake
-        - mkdir -p build
-        - cd build
-        - if [ -z "$CI_COMMIT_TAG" ] ; then version="$(../deploy/pypi_version_tail.sh)"; else version=""; fi
-        - cmake .. -DVERSION_SUFFIX="$version"
-        - make glaxnimate_python_depends_install
-        - ls bin/python/build/lib
-        - make glaxnimate_python_wheel
-        - make glaxnimate_python_upload
-    environment:
-        name: PyPI
-    only:
-        - tags
-        - pypi
+        - python3 -u ci-notary-service/publishonpypi.py --config ci-utilities/signing/publishonpypi.ini --repository pypi dist
+    rules:
+        # allow to run the job only on mainline branches of mainline repositories
+        - if: $KDECI_SECURE_SERVICES_KEY
+          when: manual
+        - when: never

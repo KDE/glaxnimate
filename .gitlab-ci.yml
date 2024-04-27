@@ -13,7 +13,7 @@ variables:
 
 include:
     # - .gitlab/ci/documentation.yml
-    # - .gitlab/ci/python_package.yml
+    - .gitlab/ci/python_package.yml
     # - .gitlab/ci/snap.yml
     # - .gitlab/ci/archlinux_packages.yml
     # - .gitlab/ci/deb_packages.yml
