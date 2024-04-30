@@ -24,53 +24,7 @@ plugins:
         hooks:
             on_env: "mkdocs_plugin:on_env"
 nav:
-    - index.md
-    - "Download": download.md
-    - "Donate": donate.md
-    - "<i class='fa fa-book'></i> User Manual":
-        - manual/index.md
-        - manual/shapes.md
-        - manual/formats.md
-        - "User Interface":
-            - manual/ui/tools.md
-            - manual/ui/canvas.md
-            - manual/ui/docks.md
-            - manual/ui/dialogs.md
-            - manual/ui/menus.md
-            - manual/ui/settings.md
-        - "Tutorials":
-            - tutorial/index.md
-            - tutorial/bouncy-ball/index.md
-            - tutorial/loading-spinner/index.md
-            - examples/dragon_curve.md
-        - "Release Notes":
-            - "0.5.2": release-notes/0.5.2/index.md
-            - "0.5.3": release-notes/0.5.3/index.md
-            - "0.5.4": release-notes/0.5.4/index.md
-    - "<i class='fa fa-hands-helping'></i> Contributing":
-        - "Introduction": contributing/index.md
-        - "Scripting":
-            - contributing/scripting/index.md
-            - contributing/scripting/plugins.md
-            - contributing/scripting/examples.md
-            - "Reference": contributing/scripting/python_reference.md
-        - "Building From Source":
-            - "Readme": contributing/read_me.md
-            - contributing/repository_structure.md
-            - contributing/cross_compiling.md
-        - "Writing Code":
-            - contributing/code/branches.md
-            - contributing/code/settings.md
-            - contributing/code/model_objects.md
-            - contributing/code/misc.md
-        - "Writing Documentation": contributing/documentation.md
-        - "Translations": contributing/translations.md
-        - "Assets": contributing/assets.md
-        - "Roadmap": contributing/roadmap.md
-        - "File Format": contributing/json_reference.md
-    - "<i class='fa fa-globe'></i> Links":
-        - '<i class="fab fa-telegram"></i> Telegram Chat': ${DOCS_CHAT_URL}
-        - '<i class="fab fa-gitlab"></i>   Code Browser': ${DOCS_REPO_URL}
-        - '<i class="fa fa-bug"></i>       Issues': ${URL_ISSUES}
-        - '<i class="fa-brands fa-mastodon"></i> Mastodon': https://floss.social/@glax
-        - '<i class="fas fa-external-link-alt"></i> More Links': contributing/links.md
+    - "Start": index.md
+    - "Scripting Reference": contributing/scripting/python_reference.md
+    - "File Format": json_reference.md
+    - "Homepage": https://glaxnimate.org
