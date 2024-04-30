@@ -652,7 +652,12 @@ private:
         return device->read((char*)buf, buf_size);
     }
 
+
+#if LIBAVFORMAT_VERSION_MAJOR >= 61
+    static int write_packet(void *opaque, const uint8_t *buf, int buf_size)
+#else
     static int write_packet(void *opaque, uint8_t *buf, int buf_size)
+#endif
     {
         QIODevice* device = (QIODevice*)opaque;
         return device->write((char*)buf, buf_size);
