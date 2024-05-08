@@ -829,7 +829,7 @@ const ObjectConverter<model::GradientColors, model::GradientColors>& gradient_st
     {
         initialized = true;
         gradient
-            .prop(&model::GradientColors::colors, "ADBE Vector Grad Colors")
+            .prop(&model::GradientColors::colors, "ADBE Vector Grad Colors", {}, {{0, QColor(255, 255, 255)}, {1, QColor(0, 0, 0)}})
         ;
     }
 
