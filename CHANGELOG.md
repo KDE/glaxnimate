@@ -30,6 +30,7 @@
     * Fixed rendering of round corners modifier
     * Fixed "New Composition" action creating an invisible layer
     * Fixed repeater opacity not being applied correctly
+    * Improved handling of repeater with stroke
 
 ## 0.5.4
 
