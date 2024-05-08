@@ -552,6 +552,8 @@ void load_transform(io::ImportExport* io, model::Transform* tf, const PropertyBa
         else if ( !p.match_name.endsWith("Position_1") &&
             !p.match_name.endsWith("Position_0") &&
             !p.match_name.endsWith("Opacity") &&
+            !p.match_name.endsWith("Opacity 1") &&
+            !p.match_name.endsWith("Opacity 2") &&
             !p.match_name.endsWith("Envir Appear in Reflect")
         )
             io->information(i18n("Unknown property \"%1\"", p.match_name));
@@ -1057,10 +1059,27 @@ const ObjectFactory<model::ShapeElement>& shape_factory()
                 load_transform(io, shape->transform.get(), *tf, nullptr, {1, 1}, false);
                 const char* pmn = "ADBE Vector Repeater Start Opacity";
                 if ( auto o = tf->get(pmn) )
+                {
                     load_property_check(io, shape->start_opacity, *o, pmn, &convert_divide<100>);
+                }
+                else
+                {
+                    const char* pmn = "ADBE Vector Repeater Opacity 1";
+                    if ( auto o = tf->get(pmn) )
+                        load_property_check(io, shape->start_opacity, *o, pmn, &convert_divide<100>);
+                }
+
                 pmn = "ADBE Vector Repeater End Opacity";
                 if ( auto o = tf->get(pmn) )
+                {
                     load_property_check(io, shape->end_opacity, *o, pmn, &convert_divide<100>);
+                }
+                else
+                {
+                    const char* pmn = "ADBE Vector Repeater Opacity 2";
+                    if ( auto o = tf->get(pmn) )
+                        load_property_check(io, shape->end_opacity, *o, pmn, &convert_divide<100>);
+                }
             }
 
             if ( auto copies = prop.value->get("ADBE Vector Repeater Copies") )

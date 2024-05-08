@@ -54,7 +54,7 @@ public:
 
     Q_INVOKABLE bool can_handle_filename(const QString& filename, glaxnimate::io::ImportExport::Direction direction) const
     {
-        return can_handle_extension(QFileInfo(filename).completeSuffix(), direction);
+        return can_handle_extension(QFileInfo(filename).completeSuffix(), direction) || can_handle_extension(QFileInfo(filename).suffix(), direction);
     }
 
     /**
