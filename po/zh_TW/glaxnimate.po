@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-25 01:59+0000\n"
-"PO-Revision-Date: 2024-04-17 09:19+0900\n"
+"PO-Revision-Date: 2024-05-08 04:42+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -496,7 +496,7 @@ msgstr ""
 #: src/android/help_dialog.cpp:126
 #, kde-format
 msgid "Shows this help."
-msgstr ""
+msgstr "顯示此說明。"
 
 #: src/android/help_dialog.cpp:130
 #, kde-format
@@ -551,7 +551,7 @@ msgstr ""
 #: src/android/help_dialog.cpp:166
 #, kde-format
 msgid "Create and edit text shapes."
-msgstr ""
+msgstr "建立或編輯文字形狀。"
 
 #: src/android/help_dialog.cpp:170
 #, kde-format
@@ -566,44 +566,44 @@ msgstr "開始播放。"
 #: src/android/help_dialog.cpp:178
 #, kde-format
 msgid "Toggles looping for the playback (on by default)."
-msgstr ""
+msgstr "切換播放循環（預設開啟）。"
 
 #: src/android/help_dialog.cpp:182
 #, kde-format
 msgid "Jumps to the first frame."
-msgstr ""
+msgstr "跳到第一個影格。"
 
 #: src/android/help_dialog.cpp:186
 #, kde-format
 msgid "Goes to the previous frame."
-msgstr ""
+msgstr "前往上一個影格。"
 
 #: src/android/help_dialog.cpp:190
 #, kde-format
 msgid "Goes to the next frame."
-msgstr ""
+msgstr "前往下一個影格。"
 
 #: src/android/help_dialog.cpp:194
 #, kde-format
 msgid "Jumps to the last frame."
-msgstr ""
+msgstr "跳到最後一個影格。"
 
 #: src/android/help_dialog.cpp:198
 #, kde-format
 msgid ""
 "When enabled (which is the default) whenever you change an object property, "
 "a new keyframe is added for that property."
-msgstr ""
+msgstr "啟用時（這是預設值）當您變更物件屬性時，為該屬性新增關鍵幀。"
 
 #: src/android/help_dialog.cpp:202
 #, kde-format
 msgid "Push the selection further back."
-msgstr ""
+msgstr "將選取區往後推。"
 
 #: src/android/help_dialog.cpp:206
 #, kde-format
 msgid "Brings the selection further to the front."
-msgstr ""
+msgstr "將選取區往前移動。"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_timeline)
 #: src/android/main_window.cpp:412
@@ -643,18 +643,18 @@ msgstr "剪下"
 #: src/gui/widgets/dialogs/about_dialog.ui:414
 #, kde-format
 msgid "Copy"
-msgstr ""
+msgstr "複製"
 
 #: src/android/main_window.cpp:470 src/gui/tools/select_tool.cpp:412
 #: src/gui/widgets/dialogs/selection_manager.cpp:166
 #, kde-format
 msgid "Paste"
-msgstr ""
+msgstr "貼上"
 
 #: src/android/main_window.cpp:474
 #, kde-format
 msgid "Delete Selected"
-msgstr ""
+msgstr "刪除選擇的項目"
 
 #: src/android/main_window.cpp:482
 #, kde-format
@@ -719,7 +719,7 @@ msgstr "開啟"
 #: src/android/main_window.cpp:514
 #, kde-format
 msgid "Import as Composition"
-msgstr ""
+msgstr "匯入為合成"
 
 #: src/android/main_window.cpp:517
 #, kde-format
@@ -753,7 +753,7 @@ msgstr "將影格儲存為 PNG"
 #: src/android/main_window.cpp:532
 #, kde-format
 msgid "Send to Telegram"
-msgstr ""
+msgstr "傳送到 Telegram"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
@@ -819,12 +819,12 @@ msgstr "影格 %1.png"
 #: src/android/main_window.cpp:980
 #, kde-format
 msgid "Add keyframe"
-msgstr "新增關鍵影格"
+msgstr "新增關鍵幀"
 
 #: src/android/main_window.cpp:989
 #, kde-format
 msgid "Remove keyframe"
-msgstr "移除關鍵影格"
+msgstr "移除關鍵幀"
 
 #: src/android/main_window.cpp:1004
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
@@ -906,22 +906,22 @@ msgstr "(c) 2019-2023"
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
 msgid "Update %1 keyframe at %2"
-msgstr "在 %2 更新 %1 關鍵影格"
+msgstr "在 %2 更新 %1 關鍵幀"
 
 #: src/core/command/animation_commands.cpp:86
 #, kde-format
 msgid "Remove %1 keyframe at %2"
-msgstr ""
+msgstr "於 %2 移除 %1 關鍵幀"
 
 #: src/core/command/animation_commands.cpp:117
 #, kde-format
 msgid "Remove %1 keyframe %2"
-msgstr ""
+msgstr "移除 %1 關鍵幀 %2"
 
 #: src/core/command/animation_commands.cpp:289
 #, kde-format
 msgid "Add keyframe for %1 at %2"
-msgstr ""
+msgstr "新增 %1 的關鍵幀於 %2"
 
 #: src/core/command/animation_commands.cpp:292
 #, kde-format
@@ -939,17 +939,17 @@ msgstr "更新%1"
 #: src/gui/widgets/timeline/timeline_items.cpp:537
 #, kde-format
 msgid "Update keyframe transition"
-msgstr "更新關鍵影格過渡"
+msgstr "更新關鍵幀過渡"
 
 #: src/core/command/animation_commands.cpp:358
 #, kde-format
 msgid "Move keyframe"
-msgstr "移動關鍵影格"
+msgstr "移動關鍵幀"
 
 #: src/core/command/animation_commands.cpp:381
 #, kde-format
 msgid "Remove animations from %1"
-msgstr ""
+msgstr "從 %1 中移除動畫"
 
 #: src/core/command/animation_commands.cpp:432
 #, kde-format
@@ -959,7 +959,7 @@ msgstr "更新動畫路徑"
 #: src/core/command/animation_commands.hpp:242
 #, kde-format
 msgid "Stretch Time"
-msgstr ""
+msgstr "拉伸時間"
 
 #: src/core/command/object_list_commands.hpp:26
 #, kde-format
@@ -980,38 +980,38 @@ msgstr "移動物件"
 #: src/core/command/shape_commands.cpp:120 src/gui/tools/select_tool.cpp:421
 #, kde-format
 msgid "Group Shapes"
-msgstr ""
+msgstr "群組化形狀"
 
 #: src/core/command/shape_commands.cpp:153 src/gui/tools/select_tool.cpp:424
 #, kde-format
 msgid "Ungroup Shapes"
-msgstr ""
+msgstr "解散形狀群組"
 
 #: src/core/command/shape_commands.cpp:178
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:82
 #, kde-format
 msgid "Duplicate %1"
-msgstr ""
+msgstr "建立 %1 複本"
 
 #: src/core/command/structure_commands.cpp:73
 #, kde-format
 msgid "Move %1"
-msgstr ""
+msgstr "移動 %1"
 
 #: src/core/io/aep/aep_format.cpp:36
 #, kde-format
 msgid "Could not load file: %1"
-msgstr ""
+msgstr "無法載入檔案：%1"
 
 #: src/core/io/aep/aep_format.hpp:21
 #, kde-format
 msgid "Adobe After Effects Project"
-msgstr ""
+msgstr "Adobe After Effects 專案"
 
 #: src/core/io/aep/aep_format.hpp:42
 #, kde-format
 msgid "Adobe After Effects Project XML"
-msgstr ""
+msgstr "Adobe After Effects 專案 XML"
 
 #: src/core/io/aep/aep_loader.cpp:75
 #, kde-format
@@ -1031,7 +1031,7 @@ msgstr ""
 #: src/core/io/aep/aep_loader.cpp:411
 #, kde-format
 msgid "Could convert %1"
-msgstr ""
+msgstr "可以轉換 %1"
 
 #: src/core/io/aep/aep_loader.cpp:415
 #: src/core/io/lottie/lottie_importer.hpp:879
@@ -1049,19 +1049,19 @@ msgstr ""
 #: src/core/io/aep/aep_loader.cpp:557
 #, kde-format
 msgid "Unknown property \"%1\""
-msgstr ""
+msgstr "未知屬性「%1」"
 
 #: src/core/io/aep/aep_loader.cpp:1084
 #, kde-format
 msgid "Unknown shape %1"
-msgstr ""
+msgstr "未知形狀 %1"
 
 #: src/core/io/aep/aep_loader.cpp:1143
 #: src/core/io/lottie/lottie_importer.hpp:369
 #: src/core/io/lottie/lottie_importer.hpp:381
 #, kde-format
 msgid "Clip"
-msgstr ""
+msgstr "素材"
 
 #: src/core/io/aep/aep_loader.cpp:1248
 #, kde-format
@@ -1071,7 +1071,7 @@ msgstr ""
 #: src/core/io/aep/aep_parser.hpp:49
 #, kde-format
 msgid "Not an AEP file"
-msgstr ""
+msgstr "不是 AEP 檔案"
 
 #: src/core/io/aep/aep_parser.hpp:123
 #, kde-format
@@ -1081,7 +1081,7 @@ msgstr ""
 #: src/core/io/aep/aep_parser.hpp:137
 #, kde-format
 msgid "Missing composition data"
-msgstr ""
+msgstr "遺失合成資料"
 
 #: src/core/io/aep/aep_parser.hpp:214
 #, kde-format
@@ -1091,17 +1091,17 @@ msgstr ""
 #: src/core/io/aep/aep_parser.hpp:230
 #, kde-format
 msgid "Missing asset data"
-msgstr ""
+msgstr "遺失資源資料"
 
 #: src/core/io/aep/aep_parser.hpp:288
 #, kde-format
 msgid "Missing layer data"
-msgstr ""
+msgstr "遺失圖層資料"
 
 #: src/core/io/aep/aep_parser.hpp:372 src/core/io/aep/aep_parser.hpp:377
 #, kde-format
 msgid "Missing mask properties"
-msgstr ""
+msgstr "遺失遮罩屬性"
 
 #: src/core/io/aep/aep_parser.hpp:424
 #, kde-format
@@ -1111,7 +1111,7 @@ msgstr ""
 #: src/core/io/aep/aep_parser.hpp:645
 #, kde-format
 msgid "Missing list data"
-msgstr ""
+msgstr "遺失清單資料"
 
 #: src/core/io/aep/aep_parser.hpp:657
 #, kde-format
@@ -1121,13 +1121,13 @@ msgstr ""
 #: src/core/io/aep/aep_parser.hpp:791
 #, kde-format
 msgid "Invalid text document: %1"
-msgstr ""
+msgstr "無效的文字文件：%1"
 
 #: src/core/io/aep/riff.hpp:220 src/core/io/aep/riff.hpp:233
 #: src/core/io/aep/riff.hpp:254 src/core/io/aep/riff.hpp:292
 #, kde-format
 msgid "Not enough data"
-msgstr ""
+msgstr "不夠資料"
 
 #: src/core/io/aep/riff.hpp:528
 #, kde-format
@@ -1147,22 +1147,22 @@ msgstr ""
 #: src/core/io/avd/avd_parser.cpp:650
 #, kde-format
 msgid "Unknown resource id %1"
-msgstr ""
+msgstr "未知的資源 ID %1"
 
 #: src/core/io/avd/avd_parser.cpp:658
 #, kde-format
 msgid "Could not read file %1"
-msgstr ""
+msgstr "無法讀取檔案 %1"
 
 #: src/core/io/avd/avd_parser.cpp:659 src/core/io/avd/avd_parser.cpp:668
 #, kde-format
 msgid "Could not load resource %1"
-msgstr ""
+msgstr "無法載入資源 %1"
 
 #: src/core/io/avd/avd_renderer.cpp:159
 #, kde-format
 msgid "%s should be in a group"
-msgstr ""
+msgstr "%s 應在群組內"
 
 #: src/core/io/avd/avd_renderer.cpp:163
 #, kde-format
@@ -1196,7 +1196,7 @@ msgstr "Glaxnimate 動畫"
 #: src/core/io/lottie/lottie_format.cpp:34
 #, kde-format
 msgid "Could not parse JSON: %1"
-msgstr ""
+msgstr "無法剖析 JSON：%1"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:27
 #: src/core/io/glaxnimate/glaxnimate_mime.cpp:94
@@ -1213,7 +1213,7 @@ msgstr ""
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:43
 #, kde-format
 msgid "Missing composition"
-msgstr ""
+msgstr "遺失合成"
 
 #: src/core/io/glaxnimate/import_state.hpp:108
 #, kde-format
@@ -1223,12 +1223,12 @@ msgstr ""
 #: src/core/io/glaxnimate/import_state.hpp:117
 #, kde-format
 msgid "Could not load %1 for %2: uuid refers to an unacceptable object"
-msgstr ""
+msgstr "無法為 %2 載入 %1：UUID 參照了無法接受的物件"
 
 #: src/core/io/glaxnimate/import_state.hpp:128
 #, kde-format
 msgid "Object %1 is invalid"
-msgstr ""
+msgstr "物件 %1 是無效的"
 
 #: src/core/io/glaxnimate/import_state.hpp:317
 #, kde-format
@@ -1238,12 +1238,12 @@ msgstr ""
 #: src/core/io/glaxnimate/import_state.hpp:323
 #, kde-format
 msgid "Could not load %1 for %2"
-msgstr ""
+msgstr "無法為 %2 載入 %1"
 
 #: src/core/io/glaxnimate/import_state.hpp:335
 #, kde-format
 msgid "Could not set property %1"
-msgstr ""
+msgstr "無法設定屬性 %1"
 
 #: src/core/io/glaxnimate/import_state.hpp:361
 #, kde-format
@@ -1258,17 +1258,17 @@ msgstr ""
 #: src/core/io/glaxnimate/import_state.hpp:412
 #, kde-format
 msgid "Keyframe must specify a time"
-msgstr "關鍵影格必須指定時間"
+msgstr "關鍵幀必須指定時間"
 
 #: src/core/io/glaxnimate/import_state.hpp:417
 #, kde-format
 msgid "Keyframe must specify a value"
-msgstr "關鍵影格必須指定數值"
+msgstr "關鍵幀必須指定數值"
 
 #: src/core/io/glaxnimate/import_state.hpp:427
 #, kde-format
 msgid "Could not add keyframe"
-msgstr "無法新增關鍵影格"
+msgstr "無法新增關鍵幀"
 
 #: src/core/io/glaxnimate/import_state.hpp:611
 #, kde-format
@@ -1310,12 +1310,12 @@ msgstr "將 JSON 美化印出"
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
 msgid "Strip"
-msgstr ""
+msgstr "清理"
 
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
 msgid "Strip unused properties"
-msgstr ""
+msgstr "清理未使用的屬性"
 
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
@@ -1325,42 +1325,42 @@ msgstr "嵌入圖片"
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
 msgid "Automatically embed non-embedded images"
-msgstr ""
+msgstr "自動嵌入尚未嵌入的影像"
 
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
 msgid "Legacy Keyframes"
-msgstr "舊式關鍵影格"
+msgstr "舊式關鍵幀"
 
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
 msgid "Compatibility with lottie-web versions prior to 5.0.0"
-msgstr ""
+msgstr "與 lottie-web 5.0.0 版之前的版本的相容性"
 
 #: src/core/io/lottie/lottie_format.hpp:22
 #, kde-format
 msgid "Lottie Animation"
-msgstr ""
+msgstr "Lottie 動畫"
 
 #: src/core/io/lottie/lottie_html_format.hpp:20
 #, kde-format
 msgid "Lottie HTML Preview"
-msgstr ""
+msgstr "Lottie HTML 預覽"
 
 #: src/core/io/lottie/lottie_importer.hpp:162
 #, kde-format
 msgid "Missing layer type for %1"
-msgstr ""
+msgstr "遺失 %1 的圖層類型"
 
 #: src/core/io/lottie/lottie_importer.hpp:299
 #, kde-format
 msgid "Cannot use %1 as parent as it couldn't be loaded"
-msgstr ""
+msgstr "無法將 %1 作為上層，因為它無法被載入"
 
 #: src/core/io/lottie/lottie_importer.hpp:310
 #, kde-format
 msgid "Invalid parent layer %1"
-msgstr ""
+msgstr "無效上層圖層 %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:436
 #, kde-format
@@ -1370,7 +1370,7 @@ msgstr "不支援圖層類型 %1"
 #: src/core/io/lottie/lottie_importer.hpp:461
 #, kde-format
 msgid "Missing shape type"
-msgstr ""
+msgstr "遺失形狀類型"
 
 #: src/core/io/lottie/lottie_importer.hpp:474
 #: src/core/io/lottie/lottie_importer.hpp:484
@@ -1391,7 +1391,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:916
 #, kde-format
 msgid "Invalid keyframes for %1"
-msgstr ""
+msgstr "%1 有無效的關鍵幀"
 
 #: src/core/io/lottie/lottie_importer.hpp:966
 #, kde-format
@@ -1406,7 +1406,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:980
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
-msgstr ""
+msgstr "無法為 %2 載入於 %1 的關鍵幀，數值為 %3"
 
 #: src/core/io/lottie/lottie_importer.hpp:1032
 #, kde-format
@@ -1562,7 +1562,7 @@ msgstr ""
 #: src/core/io/rive/rive_exporter.hpp:455
 #, kde-format
 msgid "Unknown keyframe type for property %1 of %2 (%3, %4)"
-msgstr ""
+msgstr "關鍵幀類型對於 %2 的屬性 %1 是未知的（%3，%4）"
 
 #: src/core/io/rive/rive_format.cpp:24
 #, kde-format
@@ -1572,7 +1572,7 @@ msgstr "不支援的格式"
 #: src/core/io/rive/rive_format.cpp:34
 #, kde-format
 msgid "Could not read header"
-msgstr ""
+msgstr "無法讀取標頭"
 
 #: src/core/io/rive/rive_format.cpp:40
 #, kde-format
@@ -1583,7 +1583,7 @@ msgstr ""
 #: src/core/io/rive/rive_format.cpp:46 src/core/io/rive/rive_loader.cpp:750
 #, kde-format
 msgid "Could not read property table"
-msgstr ""
+msgstr "無法讀取屬性表"
 
 #: src/core/io/rive/rive_format.hpp:24
 #, kde-format
@@ -1623,7 +1623,7 @@ msgstr ""
 #: src/core/io/rive/rive_loader.cpp:231
 #, kde-format
 msgid "Unexpected Asset Contents"
-msgstr ""
+msgstr "未預期的資源內容"
 
 #: src/core/io/rive/rive_loader.cpp:242
 #, kde-format
@@ -1633,12 +1633,12 @@ msgstr ""
 #: src/core/io/rive/rive_loader.cpp:253
 #, kde-format
 msgid "Unexpected Keyframe"
-msgstr "未預期的關鍵影格"
+msgstr "未預期的關鍵幀"
 
 #: src/core/io/rive/rive_loader.cpp:268
 #, kde-format
 msgid "Could not find parent with id %1"
-msgstr ""
+msgstr "找不到 ID 為 %1 的上層"
 
 #: src/core/io/rive/rive_loader.cpp:318
 #, kde-format
@@ -1653,12 +1653,12 @@ msgstr ""
 #: src/core/io/rive/rive_loader.cpp:791
 #, kde-format
 msgid "Could not load object type ID"
-msgstr ""
+msgstr "無法載入物件類型 ID"
 
 #: src/core/io/rive/rive_loader.cpp:805
 #, kde-format
 msgid "Could not load property ID in %1 (%2)"
-msgstr ""
+msgstr "無法載入 %1 內的屬性 ID（%2）"
 
 #: src/core/io/rive/rive_loader.cpp:819
 #, kde-format
@@ -1704,12 +1704,12 @@ msgstr "外部字型"
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
 msgid "How to include external font"
-msgstr ""
+msgstr "如何包含外部字型"
 
 #: src/core/io/svg/svg_format.cpp:92
 #, kde-format
 msgid "Could not write to file"
-msgstr ""
+msgstr "無法寫入檔案"
 
 #: src/core/io/svg/svg_format.hpp:21 src/core/io/svg/svg_mime.hpp:20
 #, kde-format
@@ -1724,17 +1724,17 @@ msgstr "SVG 預覽"
 #: src/core/io/video/video_format.cpp:73
 #, kde-format
 msgid "Could not find encoder for '%1'"
-msgstr ""
+msgstr "找不到「%1」的編碼器"
 
 #: src/core/io/video/video_format.cpp:77
 #, kde-format
 msgid "Could not allocate stream"
-msgstr ""
+msgstr "無法分配串流"
 
 #: src/core/io/video/video_format.cpp:82
 #, kde-format
 msgid "Could not alloc an encoding context"
-msgstr ""
+msgstr "無法分配編碼內文"
 
 #: src/core/io/video/video_format.cpp:110
 #, kde-format
@@ -1755,78 +1755,78 @@ msgstr ""
 #: src/core/io/video/video_format.cpp:201
 #, kde-format
 msgid "Could not set dict key `%1`: %2"
-msgstr ""
+msgstr "無法設定字典鍵值 `%1`：%2"
 
 #: src/core/io/video/video_format.cpp:246
 #, kde-format
 msgid "Could not erase dict key `%1`: %2"
-msgstr ""
+msgstr "無法刪除字典鍵值 `%1`：%2"
 
 #: src/core/io/video/video_format.cpp:267
 #, kde-format
 msgid "Could not copy dict: %1"
-msgstr ""
+msgstr "無法複製字典：%1"
 
 #: src/core/io/video/video_format.cpp:280
 #, kde-format
 msgid "Could not copy dict `%1`: %2"
-msgstr ""
+msgstr "無法複製字典 `%1`：%2"
 
 #: src/core/io/video/video_format.cpp:318
 #, kde-format
 msgid "Could not allocate frame data."
-msgstr ""
+msgstr "無法分配影格資料。"
 
 #: src/core/io/video/video_format.cpp:403
 #: src/core/io/video/video_format.cpp:777
 #, kde-format
 msgid "No video codec"
-msgstr ""
+msgstr "沒有視訊編碼器"
 
 #: src/core/io/video/video_format.cpp:431
 #, kde-format
 msgid "Could not determine pixel format"
-msgstr ""
+msgstr "無法判斷像素格式"
 
 #: src/core/io/video/video_format.cpp:441
 #, kde-format
 msgid "Could not open video codec: %1"
-msgstr ""
+msgstr "無法開啟影片編碼：%1"
 
 #: src/core/io/video/video_format.cpp:446
 #, kde-format
 msgid "Could not allocate video frame"
-msgstr ""
+msgstr "無法分配視訊影格"
 
 #: src/core/io/video/video_format.cpp:453
 #, kde-format
 msgid "Could not copy the stream parameters"
-msgstr ""
+msgstr "無法複製串流參數"
 
 #: src/core/io/video/video_format.cpp:473
 #, kde-format
 msgid "Error while creating video frame"
-msgstr ""
+msgstr "建立視訊影格時發生錯誤"
 
 #: src/core/io/video/video_format.cpp:497
 #, kde-format
 msgid "Could not initialize the conversion context"
-msgstr ""
+msgstr "無法初始化轉換內文"
 
 #: src/core/io/video/video_format.cpp:503
 #, kde-format
 msgid "Could not allocate temporary picture"
-msgstr ""
+msgstr "無法分配暫存圖片"
 
 #: src/core/io/video/video_format.cpp:745
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
-msgstr ""
+msgstr "無法從檔案副檔名辨認輸出格式；將使用 MPEG。"
 
 #: src/core/io/video/video_format.cpp:749
 #, kde-format
 msgid "Could not find output format"
-msgstr ""
+msgstr "找不到輸出格式"
 
 #: src/core/io/video/video_format.cpp:822
 #, kde-format
@@ -1872,18 +1872,18 @@ msgstr ""
 #: src/core/io/video/video_format.cpp:860
 #, kde-format
 msgid "Show verbose information on the conversion"
-msgstr ""
+msgstr "顯示轉換時的更多資訊"
 
 #: src/core/io/video/video_format.hpp:21
 #, kde-format
 msgid "Video"
-msgstr ""
+msgstr "視訊"
 
 #: src/core/model/animation/animatable.cpp:271
 #: src/core/model/animation/animatable_path.cpp:30
 #, kde-format
 msgid "Split Segment"
-msgstr ""
+msgstr "分割片段"
 
 #: src/core/model/animation/animatable.cpp:340
 #: src/core/model/animation/animatable_path.cpp:60
@@ -1897,7 +1897,7 @@ msgstr "移除節點"
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:196
 #, kde-format
 msgid "Add Keyframe"
-msgstr "新增關鍵影格"
+msgstr "新增關鍵幀"
 
 #: src/core/model/animation/animatable_path.cpp:139
 #, kde-format
@@ -1922,12 +1922,12 @@ msgstr "數值"
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:48
 #, kde-format
 msgid "Swatch"
-msgstr ""
+msgstr "色塊"
 
 #: src/core/model/assets/assets.hpp:117
 #, kde-format
 msgid "Images"
-msgstr ""
+msgstr "影像"
 
 #: src/core/model/assets/assets.hpp:127 src/gui/tools/edit_tool.cpp:352
 #, kde-format
@@ -1956,7 +1956,7 @@ msgstr "字型"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:965
 #, kde-format
 msgid "Assets"
-msgstr ""
+msgstr "資源"
 
 #: src/core/model/assets/bitmap.cpp:205
 #, kde-format
@@ -1971,7 +1971,7 @@ msgstr "點陣圖"
 #: src/core/model/assets/composition.cpp:24
 #, kde-format
 msgid "Composition"
-msgstr ""
+msgstr "合成"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -2054,12 +2054,12 @@ msgstr "未命名顏色"
 #: src/core/model/mask_settings.cpp:13
 #, kde-format
 msgid "Mask"
-msgstr ""
+msgstr "遮罩"
 
 #: src/core/model/object.hpp:90
 #, kde-format
 msgid "Unknown Object"
-msgstr ""
+msgstr "未知物件"
 
 #: src/core/model/shapes/ellipse.cpp:19 src/gui/tools/ellipse_tool.cpp:17
 #, kde-format
@@ -2109,7 +2109,7 @@ msgstr "圖層"
 #: src/core/model/shapes/offset_path.cpp:342
 #, kde-format
 msgid "Offset Path"
-msgstr ""
+msgstr "位移路徑"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/model/shapes/path.hpp:38
@@ -2117,7 +2117,7 @@ msgstr ""
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
-msgstr ""
+msgstr "路徑"
 
 #: src/core/model/shapes/polystar.hpp:48
 #, kde-format
@@ -2127,7 +2127,7 @@ msgstr ""
 #: src/core/model/shapes/precomp_layer.cpp:30
 #, kde-format
 msgid "Composition Layer"
-msgstr ""
+msgstr "合成圖層"
 
 #: src/core/model/shapes/rect.hpp:31 src/gui/tools/rectangle_tool.hpp:20
 #, kde-format
@@ -2137,12 +2137,12 @@ msgstr "矩形"
 #: src/core/model/shapes/repeater.cpp:25
 #, kde-format
 msgid "Repeater"
-msgstr ""
+msgstr "重複器"
 
 #: src/core/model/shapes/round_corners.cpp:20
 #, kde-format
 msgid "Round Corners"
-msgstr ""
+msgstr "圓角"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_stroke)
@@ -2179,7 +2179,7 @@ msgstr ""
 #: src/core/model/shapes/zig_zag.cpp:139
 #, kde-format
 msgid "Zig Zag"
-msgstr ""
+msgstr "鋸齒狀"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TimingDialog)
 #: src/core/model/stretchable_time.cpp:28
@@ -2191,12 +2191,12 @@ msgstr "時序"
 #: src/core/model/transform.hpp:29
 #, kde-format
 msgid "Transform"
-msgstr ""
+msgstr "簡易變形"
 
 #: src/core/plugin/snippet.hpp:93
 #, kde-format
 msgid "# Glaxnimate snippet"
-msgstr ""
+msgstr "# Glaxnimate 片段"
 
 #: src/core/plugin/snippet.hpp:95
 #, kde-format
@@ -2204,18 +2204,20 @@ msgid ""
 "# You have access to the `window` and `document` global variables and the "
 "`glaxnimate` module"
 msgstr ""
+"# 您可以使用正常的 `window` 與 `document` 全域變數，另外 `glaxnimate` 模組也"
+"可供使用"
 
 #: src/core/plugin/snippet.hpp:97
 #, kde-format
 msgid ""
 "# For documentation see https://glaxnimate.mattbas.org/contributing/"
 "scripting/"
-msgstr ""
+msgstr "# 說明文件請見 https://glaxnimate.mattbas.org/contributing/scripting/"
 
 #: src/core/utils/gzip.cpp:30
 #, kde-format
 msgid "Could not decompress data"
-msgstr ""
+msgstr "無法解壓縮資料"
 
 #: src/core/utils/trace_wrapper.cpp:160
 #, kde-format
@@ -2232,13 +2234,13 @@ msgstr "資訊選項"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Show this help and exit"
-msgstr ""
+msgstr "顯示此說明後離開"
 
 #: src/gui/cli.cpp:29
 #, kde-format
 msgctxt "@info:shell"
 msgid "Show version information and exit"
-msgstr ""
+msgstr "顯示版本資訊後離開"
 
 #: src/gui/cli.cpp:31
 #, kde-format
@@ -2282,19 +2284,19 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Use a specific size for the main window"
-msgstr ""
+msgstr "為主視窗使用特定大小"
 
 #: src/gui/cli.cpp:54
 #, kde-format
 msgctxt "@info:shell"
 msgid "Print the window id"
-msgstr ""
+msgstr "印出視窗 ID"
 
 #: src/gui/cli.cpp:57
 #, kde-format
 msgctxt "@info:shell"
 msgid "Enables the debug menu"
-msgstr ""
+msgstr "啟用除錯選單"
 
 #: src/gui/cli.cpp:60
 #, kde-format
@@ -2315,12 +2317,14 @@ msgid ""
 "Specify the format for --export. If omitted it's determined based on the "
 "file name. See --export-format-list for a list of supported formats."
 msgstr ""
+"指定 --export 的格式。如果未指定則會自動從檔案名稱判斷。請見 --export-format-"
+"list 列出的所有支援的格式。"
 
 #: src/gui/cli.cpp:77
 #, kde-format
 msgctxt "@info:shell"
 msgid "Shows possible values for --export-format"
-msgstr ""
+msgstr "顯示 --export-format 可用的所有值"
 
 #: src/gui/cli.cpp:81
 #, kde-format
@@ -2361,37 +2365,37 @@ msgstr "顯示 --render-format 可用的所有值"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not run the plugin"
-msgstr ""
+msgstr "無法執行外掛程式"
 
 #: src/gui/cli.cpp:168
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not find an interpreter"
-msgstr ""
+msgstr "找不到直譯器"
 
 #: src/gui/cli.cpp:225
 #, kde-format
 msgctxt "@info:shell"
 msgid "Unknown importer"
-msgstr ""
+msgstr "未知的匯入器"
 
 #: src/gui/cli.cpp:232
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not open input file for reading"
-msgstr ""
+msgstr "無法開啟輸入檔案供讀取"
 
 #: src/gui/cli.cpp:246
 #, kde-format
 msgctxt "@info:shell"
 msgid "Error loading input file"
-msgstr ""
+msgstr "載入輸入檔時發生錯誤"
 
 #: src/gui/cli.cpp:260
 #, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to export"
-msgstr ""
+msgstr "您必須指定要匯出的檔案"
 
 #: src/gui/cli.cpp:275
 #, kde-format
@@ -2404,19 +2408,19 @@ msgstr "未知的匯出器。使用 --export-format-list 來檢視可用的格�
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not open output file for writing"
-msgstr ""
+msgstr "無法開啟輸出檔案供寫入"
 
 #: src/gui/cli.cpp:295
 #, kde-format
 msgctxt "@info:shell"
 msgid "Error converting to the output format"
-msgstr ""
+msgstr "轉換成輸出格式時發生錯誤"
 
 #: src/gui/cli.cpp:315 src/gui/cli.cpp:335
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not save to %1"
-msgstr ""
+msgstr "無法儲存到 %1"
 
 #: src/gui/cli.cpp:344
 #, kde-format
@@ -2459,7 +2463,7 @@ msgstr "無法下載：%1"
 #, kde-format
 msgctxt "Package install status"
 msgid "Didn't download any files"
-msgstr ""
+msgstr "並未下載任何檔案"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, EmojiSetDialog)
 #: src/gui/emoji/emoji_set_dialog.ui:21
@@ -2649,7 +2653,7 @@ msgstr "備份頻率"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "How often to save a backup copy (in minutes)"
-msgstr ""
+msgstr "要多經常儲存備份複本（分鐘）"
 
 #: src/gui/glaxnimate_app.cpp:211
 #, kde-format
@@ -2697,7 +2701,7 @@ msgstr "更新形狀"
 #: src/gui/graphics/composition_item.hpp:113
 #, kde-format
 msgid "Resize Canvas"
-msgstr ""
+msgstr "調整畫布大小"
 
 #: src/gui/graphics/gradient_editor.cpp:109
 #, kde-format
@@ -2748,7 +2752,7 @@ msgstr "使用者數量"
 #: src/gui/item_models/property_model_base.cpp:247
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%1%"
 
 #: src/gui/item_models/property_model_full.cpp:208
 #, kde-format
@@ -2758,17 +2762,17 @@ msgstr "群組顏色"
 #: src/gui/item_models/property_model_full.cpp:215
 #, kde-format
 msgid "Jump to previous keyframe"
-msgstr ""
+msgstr "跳到上一個關鍵幀"
 
 #: src/gui/item_models/property_model_full.cpp:258
 #, kde-format
 msgid "Hidden"
-msgstr ""
+msgstr "隱藏"
 
 #: src/gui/item_models/property_model_full.cpp:265
 #, kde-format
 msgid "Toggle Keyframe"
-msgstr ""
+msgstr "切換關鍵幀"
 
 #: src/gui/item_models/property_model_full.cpp:292
 #, kde-format
@@ -2778,7 +2782,7 @@ msgstr "已解除鎖定"
 #: src/gui/item_models/property_model_full.cpp:300
 #, kde-format
 msgid "Jump to next keyframe"
-msgstr ""
+msgstr "跳到下一個關鍵幀"
 
 #: src/gui/item_models/property_model_full.cpp:394
 #, kde-format
@@ -2807,7 +2811,7 @@ msgstr "數值"
 #: src/gui/item_models/python_snippet_model.hpp:35
 #, kde-format
 msgid "New Snippet %1"
-msgstr ""
+msgstr "新片段 %1"
 
 #: src/gui/settings/api_credentials.cpp:86
 #, kde-format
@@ -2875,7 +2879,7 @@ msgstr "工具列"
 #: src/gui/widgets/view_transform_widget.ui:60
 #, no-c-format, kde-format
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: src/gui/tools/color_picker.cpp:19
 #, kde-format
@@ -2962,7 +2966,7 @@ msgstr ""
 #: src/gui/tools/edit_tool.cpp:326
 #, kde-format
 msgid "Make First Node"
-msgstr ""
+msgstr "建立第一個節點"
 
 #: src/gui/tools/edit_tool.cpp:334
 #, kde-format
@@ -2992,7 +2996,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1849
 #, kde-format
 msgid "Dissolve Nodes"
-msgstr ""
+msgstr "溶解節點"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/tools/edit_tool.cpp:527
@@ -3362,7 +3366,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:83
 #, kde-format
 msgid "Max Iterations"
-msgstr ""
+msgstr "最大重複次數"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
@@ -3377,7 +3381,7 @@ msgstr "無"
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:112
 #, kde-format
 msgid "Most Frequent"
-msgstr ""
+msgstr "最多次的"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:117
@@ -3469,7 +3473,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:189
 #, kde-format
 msgid "Min Frequency"
-msgstr ""
+msgstr "最低頻率"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_3)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:205
@@ -3501,13 +3505,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:21
 #, kde-format
 msgid "Document Metadata"
-msgstr ""
+msgstr "文件中繼資料"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:38
 #, kde-format
 msgid "Common"
-msgstr ""
+msgstr "通用"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -3555,12 +3559,14 @@ msgid ""
 "Could not create directory\n"
 "%1"
 msgstr ""
+"無法建立目錄\n"
+"%1"
 
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:124
 #, kde-format
 msgctxt "@title:window"
 msgid "Choose directory"
-msgstr ""
+msgstr "選擇目錄"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::ExportImageSequenceDialog)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:21
@@ -3572,7 +3578,7 @@ msgstr "匯出為影像序列"
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:30
 #, kde-format
 msgid "To Frame"
-msgstr ""
+msgstr "到影格"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:43
@@ -3584,7 +3590,7 @@ msgstr "檔案名稱"
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:56
 #, kde-format
 msgid "Use {frame} to represent the frame number"
-msgstr ""
+msgstr "使用 {frame} 來代表影格編號"
 
 #. i18n: ectx: property (text), widget (QLineEdit, input_name)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:59
@@ -3602,7 +3608,7 @@ msgstr "影格間隔"
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:112
 #, kde-format
 msgid "From Frame"
-msgstr ""
+msgstr "從影格"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_select)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:132
@@ -3613,7 +3619,7 @@ msgstr "選擇..."
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:40
 #, kde-format
 msgid "f"
-msgstr ""
+msgstr "f"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_seconds)
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:51
@@ -3627,7 +3633,7 @@ msgstr "\""
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:21
 #, kde-format
 msgid "Follow Path"
-msgstr ""
+msgstr "跟隨路徑"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -3644,13 +3650,13 @@ msgstr "時長"
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:34
 #, kde-format
 msgid "Time Units"
-msgstr ""
+msgstr "時間單位"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:48
 #, kde-format
 msgid "Shape"
-msgstr ""
+msgstr "形狀"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:58
@@ -3674,13 +3680,13 @@ msgstr "影格數"
 #: src/gui/widgets/dialogs/startup_dialog.ui:135
 #, kde-format
 msgid "Seconds"
-msgstr ""
+msgstr "秒"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:91
 #, kde-format
 msgid "Choose..."
-msgstr ""
+msgstr "選擇…"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:100
@@ -3704,7 +3710,7 @@ msgstr "檔案已儲存"
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:65
 #, kde-format
 msgid "Could not save file"
-msgstr ""
+msgstr "無法儲存檔案"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:71
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:79
@@ -3716,7 +3722,7 @@ msgstr "檔案已匯出"
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:81
 #, kde-format
 msgid "Could not export file"
-msgstr ""
+msgstr "無法匯出檔案"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:189
 #, kde-format
@@ -3766,7 +3772,7 @@ msgstr "新增(&N)"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:116
 #, kde-format
 msgid "&Composition"
-msgstr ""
+msgstr "合成(&C)"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_path)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:138
@@ -3972,7 +3978,7 @@ msgstr "紀錄"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:855
 #, kde-format
 msgid "Undo History"
-msgstr "復原歷史記錄"
+msgstr "復原紀錄"
 
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolbar_node)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:894
@@ -3992,13 +3998,13 @@ msgstr "對齊"
 #: src/gui/widgets/docks/snippet_list_widget.cpp:66
 #, kde-format
 msgid "Snippets"
-msgstr ""
+msgstr "片段"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_time_slider)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1057
 #, kde-format
 msgid "Compact Timelime"
-msgstr ""
+msgstr "簡潔時間軸"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1099
@@ -4425,7 +4431,7 @@ msgstr "清理"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1861
 #, kde-format
 msgid "Remove unused assets"
-msgstr ""
+msgstr "移除未使用的資源"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1870
@@ -4449,7 +4455,7 @@ msgstr "循環(&L)"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1906
 #, kde-format
 msgid "&Record Keyframes"
-msgstr "錄製關鍵影格(&R)"
+msgstr "錄製關鍵幀(&R)"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1915
@@ -4492,13 +4498,13 @@ msgstr "描繪點陣圖..."
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1965
 #, kde-format
 msgid "&Lottie (SVG)"
-msgstr ""
+msgstr "&Lottie (SVG)"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1970
 #, kde-format
 msgid "&SVG (SMIL)"
-msgstr ""
+msgstr "&SVG (SMIL)"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1975
@@ -4516,44 +4522,44 @@ msgstr "選取區"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2011
 #, kde-format
 msgid "Canvas"
-msgstr ""
+msgstr "畫布"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2020
 #, kde-format
 msgid "Left"
-msgstr ""
+msgstr "左"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2029
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2056
 #, kde-format
 msgid "Center"
-msgstr ""
+msgstr "中"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2038
 #, kde-format
 msgid "Right"
-msgstr ""
+msgstr "右"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2047
 #, kde-format
 msgid "Top"
-msgstr ""
+msgstr "頂端"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2065
 #, kde-format
 msgid "Bottom"
-msgstr ""
+msgstr "底端"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2077
 #, kde-format
 msgid "Canvas (as Group)"
-msgstr ""
+msgstr "畫布（作為群組）"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2082
@@ -4646,13 +4652,13 @@ msgstr "驗證 Discord 貼圖"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2200
 #, kde-format
 msgid "Emo&ji..."
-msgstr ""
+msgstr "表情符號(&J)…"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2209
 #, kde-format
 msgid "Import from LottieFiles..."
-msgstr ""
+msgstr "從 LottieFiles 匯入..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2218
@@ -4664,67 +4670,67 @@ msgstr "匯出為影像序列..."
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2229
 #, kde-format
 msgid "Customized Layout"
-msgstr ""
+msgstr "自訂版面配置"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2237
 #, kde-format
 msgid "Automatic"
-msgstr ""
+msgstr "自動"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2240
 #, kde-format
 msgid "Determines the best layout based on screen size"
-msgstr ""
+msgstr "依螢幕大小自動判斷最適合的版面配置"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2248
 #, kde-format
 msgid "Wide"
-msgstr ""
+msgstr "寬"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2251
 #, kde-format
 msgid "Layout best suited for larger screens"
-msgstr ""
+msgstr "適合較大螢幕的版面配置"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2259
 #, kde-format
 msgid "Compact"
-msgstr ""
+msgstr "簡潔"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2262
 #, kde-format
 msgid "Layout best suited for smaller screens"
-msgstr ""
+msgstr "適合較小螢幕的版面配置"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2267
 #, kde-format
 msgid "RIVE (canvas)"
-msgstr ""
+msgstr "RIVE（畫布）"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2272
 #, kde-format
 msgid "LottieFiles"
-msgstr ""
+msgstr "LottieFiles"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2280
 #, kde-format
 msgid "Medium"
-msgstr ""
+msgstr "中"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2283
 #, kde-format
 msgid "More compact that Wide but larger than Compact"
-msgstr ""
+msgstr "比「寬」還小一些，但比「簡潔」還大一些"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2292
@@ -4736,7 +4742,7 @@ msgstr "設定鍵盤快捷鍵(&K)..."
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2295
 #, kde-format
 msgid "Ctrl+Alt+,"
-msgstr ""
+msgstr "Ctrl+Alt+,"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:138
 #, kde-format
@@ -4764,7 +4770,7 @@ msgstr "關閉文件"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:667
 #, kde-format
 msgid "Load Backup"
-msgstr ""
+msgstr "載入備份"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:397
 #, kde-format
@@ -4774,7 +4780,7 @@ msgstr "匯出到 %1"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:448
 #, kde-format
 msgid "No importer found for %1"
-msgstr ""
+msgstr "未找到 %1 的匯入器"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:453
 #, kde-format
@@ -4782,18 +4788,20 @@ msgid ""
 "The file might have been moved or deleted\n"
 "%1"
 msgstr ""
+"檔案可能已被移動或刪除\n"
+"%1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:481
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:825
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:842
 #, kde-format
 msgid "Could not import %1"
-msgstr ""
+msgstr "無法匯入 %1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:492
 #, kde-format
 msgid "No file to reload from"
-msgstr ""
+msgstr "沒有可以重新載入的檔案"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:503
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:525
@@ -4805,18 +4813,18 @@ msgstr "網路預覽"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:525
 #, kde-format
 msgid "Could not create file"
-msgstr ""
+msgstr "無法建立檔案"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:531
 #, kde-format
 msgid "Could not open browser"
-msgstr ""
+msgstr "無法開啟瀏覽器"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:556
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:583
 #, kde-format
 msgid "Save Frame Image"
-msgstr ""
+msgstr "儲存影格影像"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:559
 #, kde-format
@@ -4826,7 +4834,7 @@ msgstr "影格%1.png"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:567
 #, kde-format
 msgid "Image files (%1)"
-msgstr ""
+msgstr "影像檔 (%1)"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:576
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:600
@@ -4838,7 +4846,7 @@ msgstr "算繪影格"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:600
 #, kde-format
 msgid "Could not save image"
-msgstr ""
+msgstr "無法儲存影像"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:586
 #, kde-format
@@ -4870,17 +4878,17 @@ msgstr "驗證 Telegram 貼圖"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:667
 #, kde-format
 msgid "Could not open the backup file"
-msgstr ""
+msgstr "無法開啟備份檔"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:746
 #, kde-format
 msgid "Unlink %1 Color"
-msgstr ""
+msgstr "取消連結 %1 顏色"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:756
 #, kde-format
 msgid "Link %1 Color"
-msgstr ""
+msgstr "連結 %1 顏色"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:868
 #, kde-format
@@ -4890,23 +4898,23 @@ msgstr "下載字型"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:906
 #, kde-format
 msgid "HTTP Error %1 %2"
-msgstr ""
+msgstr "HTTP 錯誤 %1 %2"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:910
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.cpp:213
 #, kde-format
 msgid "Network Error"
-msgstr ""
+msgstr "網路錯誤"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:913
 #, kde-format
 msgid "Load URL"
-msgstr ""
+msgstr "載入 URL"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:913
 #, kde-format
 msgid "Could not load %1: %2"
-msgstr ""
+msgstr "無法載入 %1：%2"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:931
 #, kde-format
@@ -4916,17 +4924,17 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:939
 #, kde-format
 msgid "Load Backup..."
-msgstr ""
+msgstr "載入備份..."
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:87
 #, kde-format
 msgid "Delete %1"
-msgstr ""
+msgstr "刪除 %1"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:185
 #, kde-format
 msgid "Move Shapes"
-msgstr ""
+msgstr "移動形狀"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:209
 #, kde-format
@@ -4943,7 +4951,7 @@ msgstr "匯入影像"
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:253
 #, kde-format
 msgid "Could not import image"
-msgstr ""
+msgstr "無法匯入影像"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:290
 #, kde-format
@@ -4953,22 +4961,22 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:298
 #, kde-format
 msgid "Removed %1 assets"
-msgstr ""
+msgstr "已移除 %1 個資源"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:306
 #, kde-format
 msgid "Convert to path"
-msgstr ""
+msgstr "轉換為路徑"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:308
 #, kde-format
 msgid "Convert %1 to path"
-msgstr ""
+msgstr "將 %1 轉換為路徑"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:486
 #, kde-format
 msgid "New Composition from Selection"
-msgstr ""
+msgstr "從選取區建立新合成"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:674
 #, kde-format
@@ -4993,14 +5001,14 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:240
 #, kde-format
 msgid "Pause"
-msgstr ""
+msgstr "暫停"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:244
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
 #, kde-format
 msgid "Play"
-msgstr ""
+msgstr "播放"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:991
@@ -5030,7 +5038,7 @@ msgstr "描繪點陣圖"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1139
 #, kde-format
 msgid "Only select one image"
-msgstr ""
+msgstr "只選擇一張影像"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1148
 #, kde-format
@@ -5040,7 +5048,7 @@ msgstr "您需要選取要描繪的影像"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1155
 #, kde-format
 msgid "You selected an image with no data"
-msgstr ""
+msgstr "您選擇了沒有資料的影像"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1210
 #, kde-format
@@ -5126,12 +5134,12 @@ msgstr ""
 #: src/gui/widgets/dialogs/resize_dialog.ui:21
 #, kde-format
 msgid "Resize Document"
-msgstr ""
+msgstr "調整文件大小"
 
 #: src/gui/widgets/dialogs/resize_dialog.cpp:92
 #, kde-format
 msgid "Resize"
-msgstr ""
+msgstr "調整大小"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, check_aspect)
 #: src/gui/widgets/dialogs/resize_dialog.ui:71
@@ -5243,7 +5251,7 @@ msgstr "設定"
 #: src/gui/widgets/dialogs/startup_dialog.ui:113
 #, kde-format
 msgid " fps"
-msgstr ""
+msgstr " fps"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_open_browse)
 #: src/gui/widgets/dialogs/startup_dialog.ui:158
@@ -5255,7 +5263,7 @@ msgstr "瀏覽…"
 #: src/gui/widgets/dialogs/startup_dialog.ui:176
 #, kde-format
 msgid "Show at startup"
-msgstr ""
+msgstr "啟動時顯示"
 
 #: src/gui/widgets/dialogs/timing_dialog.cpp:83
 #, kde-format
@@ -5337,6 +5345,32 @@ msgid ""
 "\"https://linktr.ee/FellFallow\"><span style=\" text-decoration: underline; "
 "color:#2980b9;\">FellFallow</span></a>)</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">這個選項比較適合照片、油畫"
+"與細節豐富的插畫。</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">色彩數量依下方<span style="
+"\" font-weight:600;\">色調分離等級</span>來降低。</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">請注意，將這種影像轉換為向"
+"量圖形時會造成非常明顯的品質降低。</p>\n"
+"<p style=\" margin-top:37px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">（影像作者：<a href="
+"\"https://linktr.ee/FellFallow\"><span style=\" text-decoration: underline; "
+"color:#2980b9;\">FellFallow</span></a>）</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: src/gui/widgets/dialogs/trace_dialog.ui:164
@@ -5559,7 +5593,7 @@ msgstr "進階"
 #: src/gui/widgets/docks/script_console.cpp:61
 #, kde-format
 msgid "Could not run the plugin"
-msgstr ""
+msgstr "無法執行外掛程式"
 
 #: src/gui/widgets/docks/script_console.cpp:64
 #, kde-format
@@ -5569,7 +5603,7 @@ msgstr "外掛程式發生了例外"
 #: src/gui/widgets/docks/script_console.cpp:72
 #, kde-format
 msgid "Could not find an interpreter"
-msgstr ""
+msgstr "找不到直譯器"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_clear_console)
 #: src/gui/widgets/docks/script_console.ui:71
@@ -5581,29 +5615,29 @@ msgstr "清除輸出"
 #: src/gui/widgets/docks/script_console.ui:85
 #, kde-format
 msgid "Persist Logs"
-msgstr ""
+msgstr "保留紀錄"
 
 #. i18n: ectx: property (text), widget (QToolButton, check_persist)
 #: src/gui/widgets/docks/script_console.ui:88
 #, kde-format
 msgid "Persist"
-msgstr ""
+msgstr "保留"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_reload)
 #: src/gui/widgets/docks/script_console.ui:102
 #, kde-format
 msgid "Reload Script Modules"
-msgstr ""
+msgstr "重新載入文稿模組"
 
 #: src/gui/widgets/docks/snippet_list_widget.cpp:60
 #, kde-format
 msgid "Snippets need a name"
-msgstr ""
+msgstr "片段需要名稱"
 
 #: src/gui/widgets/docks/snippet_list_widget.cpp:66
 #, kde-format
 msgid "Could not create snippet: `%1`"
-msgstr ""
+msgstr "無法建立片段：`%1`"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 #: src/gui/widgets/docks/snippet_list_widget.ui:26
@@ -5709,7 +5743,7 @@ msgstr ""
 #: src/gui/widgets/enum_combo.cpp:92
 #, kde-format
 msgid "Polygon"
-msgstr ""
+msgstr "多邊形"
 
 #: src/gui/widgets/font/external_font_widget.cpp:137
 #, kde-format
@@ -5754,7 +5788,7 @@ msgstr ""
 #: src/gui/widgets/font/font_preview_widget.cpp:25
 #, kde-format
 msgid "The quick brown fox jumps over the lazy dog"
-msgstr ""
+msgstr "The Quick Brown Fox Jumps Over The Lazy Dog 廣角空房亮滑沒過麵以化骨"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_zoom)
 #: src/gui/widgets/font/font_preview_widget.ui:42
@@ -5793,7 +5827,7 @@ msgstr "等寬字體"
 #: src/gui/widgets/font/font_style_widget.ui:93
 #, kde-format
 msgid "Proportional"
-msgstr ""
+msgstr "比例"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:180
 #, kde-format
@@ -5850,13 +5884,13 @@ msgstr "手寫"
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.cpp:207
 #, kde-format
 msgid "HTTP Error %1: %2"
-msgstr ""
+msgstr "HTTP 錯誤 %1：%2"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, LottieFilesSearchDialog)
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:21
 #, kde-format
 msgid "Import From LottieFiles"
-msgstr ""
+msgstr "從 LottieFiles 匯入"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_previous)
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:98
@@ -5880,28 +5914,28 @@ msgstr "匯入"
 #: src/gui/widgets/lottiefiles/search_result.cpp:33
 #, kde-format
 msgid "by %1"
-msgstr ""
+msgstr "由：%1"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:49
 #, kde-format
 msgid "Likes"
-msgstr ""
+msgstr "喜歡"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:58
 #, kde-format
 msgid "Comments"
-msgstr ""
+msgstr "評論"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:67
 #, kde-format
 msgid "View on LottieFiles..."
-msgstr ""
+msgstr "在 LottieFiles 上檢視…"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:61
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:181
 #, kde-format
 msgid "Paste Keyframe"
-msgstr "貼上關鍵影格"
+msgstr "貼上關鍵幀"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:62
 #, kde-format
@@ -5917,7 +5951,7 @@ msgstr "跟隨路徑..."
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:177
 #, kde-format
 msgid "Remove Keyframe"
-msgstr "移除關鍵影格"
+msgstr "移除關鍵幀"
 
 #: src/gui/widgets/menus/node_menu.cpp:49
 #: src/gui/widgets/menus/node_menu.cpp:253
@@ -5940,12 +5974,12 @@ msgstr "移到最下層"
 #: src/gui/widgets/menus/node_menu.cpp:199
 #, kde-format
 msgid "Convert %1 to %2"
-msgstr ""
+msgstr "將 %1 轉換為 %2"
 
 #: src/gui/widgets/menus/node_menu.cpp:257
 #, kde-format
 msgid "Auto Orient"
-msgstr ""
+msgstr "自動調整旋轉方向"
 
 #: src/gui/widgets/menus/node_menu.cpp:266
 #: src/gui/widgets/menus/node_menu.cpp:267
@@ -5956,12 +5990,12 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:277
 #, kde-format
 msgid "Parent"
-msgstr ""
+msgstr "上層"
 
 #: src/gui/widgets/menus/node_menu.cpp:278
 #, kde-format
 msgid "Convert to Group"
-msgstr ""
+msgstr "轉換為群組"
 
 #: src/gui/widgets/menus/node_menu.cpp:279
 #, kde-format
@@ -5972,7 +6006,7 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:304
 #, kde-format
 msgid "Convert to Mask"
-msgstr ""
+msgstr "轉換為遮罩"
 
 #: src/gui/widgets/menus/node_menu.cpp:291
 #, kde-format
@@ -5982,7 +6016,7 @@ msgstr "移除遮罩"
 #: src/gui/widgets/menus/node_menu.cpp:300
 #, kde-format
 msgid "Convert to Layer"
-msgstr "轉換成圖層"
+msgstr "轉換為圖層"
 
 #: src/gui/widgets/menus/node_menu.cpp:309
 #, kde-format
@@ -6018,7 +6052,7 @@ msgstr "更新影像"
 #: src/gui/widgets/menus/node_menu.cpp:367
 #, kde-format
 msgid "Rename from Composition"
-msgstr ""
+msgstr "從合成重新命名"
 
 #: src/gui/widgets/menus/node_menu.cpp:371
 #: src/gui/widgets/menus/node_menu.cpp:372
@@ -6034,12 +6068,12 @@ msgstr "從路徑上移除"
 #: src/gui/widgets/menus/node_menu.cpp:410
 #, kde-format
 msgid "Stretch time"
-msgstr ""
+msgstr "拉伸時間"
 
 #: src/gui/widgets/menus/node_menu.cpp:411
 #, kde-format
 msgid "Speed Multiplier"
-msgstr ""
+msgstr "速度倍數"
 
 #: src/gui/widgets/menus/node_menu.cpp:428
 #, kde-format
@@ -6229,7 +6263,7 @@ msgstr "CMYK"
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:390
 #, kde-format
 msgid "Palette"
-msgstr "調色盤"
+msgstr "調色板"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_2)
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_2)
@@ -6247,7 +6281,7 @@ msgstr "飽和度"
 #: src/gui/widgets/shape_style/color_selector.ui:297
 #, kde-format
 msgid "S"
-msgstr ""
+msgstr "S"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::HueSlider, slider_hsv_hue)
 #. i18n: ectx: property (toolTip), widget (QLabel, label)
@@ -6271,19 +6305,19 @@ msgstr "色相"
 #: src/gui/widgets/shape_style/color_selector.ui:227
 #, kde-format
 msgid "H"
-msgstr ""
+msgstr "H"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/shape_style/color_selector.ui:156
 #, kde-format
 msgid "V"
-msgstr ""
+msgstr "V"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: src/gui/widgets/shape_style/color_selector.ui:304
 #, kde-format
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_rgb_b)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_10)
@@ -6299,7 +6333,7 @@ msgstr "藍色"
 #: src/gui/widgets/shape_style/color_selector.ui:340
 #, kde-format
 msgid "B"
-msgstr ""
+msgstr "B"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_rgb_g)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_9)
@@ -6325,13 +6359,13 @@ msgstr "紅色"
 #: src/gui/widgets/shape_style/color_selector.ui:360
 #, kde-format
 msgid "R"
-msgstr ""
+msgstr "R"
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: src/gui/widgets/shape_style/color_selector.ui:370
 #, kde-format
 msgid "G"
-msgstr ""
+msgstr "G"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_11)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_c)
@@ -6347,7 +6381,7 @@ msgstr "青色"
 #: src/gui/widgets/shape_style/color_selector.ui:436
 #, kde-format
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_13)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_m)
@@ -6363,7 +6397,7 @@ msgstr "紫紅色"
 #: src/gui/widgets/shape_style/color_selector.ui:466
 #, kde-format
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_12)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_y)
@@ -6379,7 +6413,7 @@ msgstr "黃色"
 #: src/gui/widgets/shape_style/color_selector.ui:496
 #, kde-format
 msgid "Y"
-msgstr ""
+msgstr "Y"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_14)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_k)
@@ -6395,7 +6429,7 @@ msgstr "黑色"
 #: src/gui/widgets/shape_style/color_selector.ui:526
 #, kde-format
 msgid "K"
-msgstr ""
+msgstr "K"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_alpha)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_4)
@@ -6411,7 +6445,7 @@ msgstr "Alpha（透明度）"
 #: src/gui/widgets/shape_style/color_selector.ui:586
 #, kde-format
 msgid "A"
-msgstr ""
+msgstr "A"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::ColorSelector, color_preview)
 #: src/gui/widgets/shape_style/color_selector.ui:637
@@ -6436,75 +6470,75 @@ msgstr "交換"
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:49
 #, kde-format
 msgid "Gather Document Swatch"
-msgstr ""
+msgstr "收集文件色塊"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:121
 #, kde-format
 msgid "Link Shapes to Swatch"
-msgstr ""
+msgstr "將形狀連結到色塊"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:245
 #, kde-format
 msgid "Modify Palette Color"
-msgstr ""
+msgstr "修改調色板顏色"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:324
 #, kde-format
 msgid "Load from Palette"
-msgstr ""
+msgstr "從調色板載入"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:325
 #, kde-format
 msgid "No palettes are installed"
-msgstr ""
+msgstr "未安裝任何調色板"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:331
 #, kde-format
 msgid "Swatch from Palette"
-msgstr ""
+msgstr "從調色板產生色塊"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:340
 #, kde-format
 msgid "Overwrite on save"
-msgstr ""
+msgstr "儲存時覆寫"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:344
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:531
 #, kde-format
 msgid "Link shapes with matching colors"
-msgstr ""
+msgstr "將形狀與對應顏色進行連結"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:349
 #, kde-format
 msgid "Remove existing colors"
-msgstr ""
+msgstr "移除現有的顏色"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:368
 #, kde-format
 msgid "Load Palette"
-msgstr ""
+msgstr "載入調色板"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:400
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:115
 #, kde-format
 msgid "Save Palette"
-msgstr ""
+msgstr "儲存調色板"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:429
 #, kde-format
 msgid "Unlink Color"
-msgstr ""
+msgstr "取消連結顏色"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:433
 #, kde-format
 msgid "Unlink fill"
-msgstr ""
+msgstr "取消連結填充色"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:442
 #, kde-format
 msgid "Unlink stroke"
-msgstr ""
+msgstr "取消連結邊框色"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:456
 #, kde-format
@@ -6514,7 +6548,7 @@ msgstr "重新命名..."
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:460
 #, kde-format
 msgid "Rename Swatch Color"
-msgstr ""
+msgstr "重新命名色塊顏色"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:468
 #, kde-format
@@ -6547,13 +6581,13 @@ msgstr "產生"
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:106
 #, kde-format
 msgid "Generate Swatch from the open Document"
-msgstr ""
+msgstr "從已開啟文件產生色塊"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:124
 #, kde-format
 msgid "From Palette..."
-msgstr ""
+msgstr "從調色板…"
 
 #: src/gui/widgets/shape_style/fill_style_widget.cpp:102
 #, kde-format
@@ -6608,12 +6642,12 @@ msgstr "更新邊框顏色"
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:234
 #, kde-format
 msgid "Set Line Cap"
-msgstr ""
+msgstr "設定線頭"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:249
-#, kde-format
+#, fuzzy, kde-format
 msgid "Set Line Join"
-msgstr ""
+msgstr "設定線條"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:341
 #, kde-format
@@ -6629,7 +6663,7 @@ msgstr "設定線條寬度"
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:396
 #, kde-format
 msgid "Clear Line Color"
-msgstr ""
+msgstr "清除線條顏色"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:40
@@ -6647,7 +6681,7 @@ msgstr "邊框寬度"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:69
 #, kde-format
 msgid "Cap"
-msgstr ""
+msgstr "線頭"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:157
@@ -6665,12 +6699,12 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:338
 #, kde-format
 msgid "Dashes"
-msgstr ""
+msgstr "虛線"
 
 #: src/gui/widgets/spin2d.cpp:93
 #, kde-format
 msgid "Lock Ratio"
-msgstr ""
+msgstr "鎖定寬高比"
 
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:86
 #, kde-format
@@ -6680,22 +6714,22 @@ msgstr "重新命名"
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:89
 #, kde-format
 msgid "Rename Composition"
-msgstr ""
+msgstr "重新命名合成"
 
 #: src/gui/widgets/tab_bar/tab_bar_close_button.cpp:60
 #, kde-format
 msgid "Delete Composition"
-msgstr ""
+msgstr "刪除合成"
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:159
 #, kde-format
 msgid "Transition From Previous"
-msgstr ""
+msgstr "從前一個過渡"
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:160
 #, kde-format
 msgid "Transition To Next"
-msgstr ""
+msgstr "過渡到下一個"
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:167
 #, kde-format
@@ -6705,7 +6739,7 @@ msgstr "自訂..."
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:180
 #, kde-format
 msgid "Copy Keyframe"
-msgstr "複製關鍵影格"
+msgstr "複製關鍵幀"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:201
@@ -6723,7 +6757,7 @@ msgstr "影格編號"
 #: src/gui/widgets/timeline/frame_controls_widget.ui:39
 #, kde-format
 msgid " f"
-msgstr ""
+msgstr " f"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_loop)
 #: src/gui/widgets/timeline/frame_controls_widget.ui:60
@@ -6743,7 +6777,7 @@ msgstr "循環"
 #: src/gui/widgets/timeline/frame_controls_widget.ui:83
 #, kde-format
 msgid "Go To First Frame"
-msgstr ""
+msgstr "跳到第一個影格"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_prev_kf)
 #. i18n: ectx: property (text), widget (QToolButton, button_prev_kf)
@@ -6751,7 +6785,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:100
 #, kde-format
 msgid "Go To Previous Keyframe"
-msgstr "跳到上一個關鍵影格"
+msgstr "跳到上一個關鍵幀"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_prev)
 #. i18n: ectx: property (text), widget (QToolButton, button_prev)
@@ -6759,7 +6793,7 @@ msgstr "跳到上一個關鍵影格"
 #: src/gui/widgets/timeline/frame_controls_widget.ui:114
 #, kde-format
 msgid "Go To Previous Frame"
-msgstr ""
+msgstr "跳到上一個影格"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_next)
 #. i18n: ectx: property (text), widget (QToolButton, button_next)
@@ -6767,7 +6801,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:128
 #, kde-format
 msgid "Go To Next Frame"
-msgstr ""
+msgstr "跳到下一個影格"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_next_kf)
 #. i18n: ectx: property (text), widget (QToolButton, button_next_kf)
@@ -6775,7 +6809,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:145
 #, kde-format
 msgid "Go To Next Keyframe"
-msgstr "跳到下一個關鍵影格"
+msgstr "跳到下一個關鍵幀"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_last)
 #. i18n: ectx: property (text), widget (QToolButton, button_last)
@@ -6783,7 +6817,7 @@ msgstr "跳到下一個關鍵影格"
 #: src/gui/widgets/timeline/frame_controls_widget.ui:159
 #, kde-format
 msgid "Go To Last Frame"
-msgstr ""
+msgstr "跳到最後一個影格"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_record)
 #. i18n: ectx: property (text), widget (QToolButton, button_record)
@@ -6791,7 +6825,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:173
 #, kde-format
 msgid "Record"
-msgstr ""
+msgstr "擷取"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/gui/widgets/timeline/keyframe_editor_widget.ui:37
@@ -6812,14 +6846,14 @@ msgid "Finish"
 msgstr "結束"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:58
-#, kde-format
+#, fuzzy, kde-format
 msgid "Hold"
-msgstr ""
+msgstr "保留"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:64
 #, kde-format
 msgid "Fast"
-msgstr ""
+msgstr "快速"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:84
 #, kde-format
@@ -6850,7 +6884,7 @@ msgstr ""
 #: src/gui/widgets/timeline/timeline_items.cpp:142
 #, kde-format
 msgid "Drag Keyframes"
-msgstr "拖曳關鍵影格"
+msgstr "拖曳關鍵幀"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_both)
 #: src/gui/widgets/tools/fill_tool_widget.ui:49
