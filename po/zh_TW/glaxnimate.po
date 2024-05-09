@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 01:59+0000\n"
+"POT-Creation-Date: 2024-05-09 01:50+0000\n"
 "PO-Revision-Date: 2024-05-08 04:42+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -1046,24 +1046,24 @@ msgstr ""
 msgid "Expected property group for transform"
 msgstr ""
 
-#: src/core/io/aep/aep_loader.cpp:557
+#: src/core/io/aep/aep_loader.cpp:559
 #, kde-format
 msgid "Unknown property \"%1\""
 msgstr "未知屬性「%1」"
 
-#: src/core/io/aep/aep_loader.cpp:1084
+#: src/core/io/aep/aep_loader.cpp:1103
 #, kde-format
 msgid "Unknown shape %1"
 msgstr "未知形狀 %1"
 
-#: src/core/io/aep/aep_loader.cpp:1143
+#: src/core/io/aep/aep_loader.cpp:1162
 #: src/core/io/lottie/lottie_importer.hpp:369
 #: src/core/io/lottie/lottie_importer.hpp:381
 #, kde-format
 msgid "Clip"
 msgstr "素材"
 
-#: src/core/io/aep/aep_loader.cpp:1248
+#: src/core/io/aep/aep_loader.cpp:1267
 #, kde-format
 msgid "Unknown asset type for %1"
 msgstr ""
@@ -1778,7 +1778,7 @@ msgid "Could not allocate frame data."
 msgstr "無法分配影格資料。"
 
 #: src/core/io/video/video_format.cpp:403
-#: src/core/io/video/video_format.cpp:777
+#: src/core/io/video/video_format.cpp:782
 #, kde-format
 msgid "No video codec"
 msgstr "沒有視訊編碼器"
@@ -1818,58 +1818,58 @@ msgstr "無法初始化轉換內文"
 msgid "Could not allocate temporary picture"
 msgstr "無法分配暫存圖片"
 
-#: src/core/io/video/video_format.cpp:745
+#: src/core/io/video/video_format.cpp:750
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
 msgstr "無法從檔案副檔名辨認輸出格式；將使用 MPEG。"
 
-#: src/core/io/video/video_format.cpp:749
+#: src/core/io/video/video_format.cpp:754
 #, kde-format
 msgid "Could not find output format"
 msgstr "找不到輸出格式"
 
-#: src/core/io/video/video_format.cpp:822
+#: src/core/io/video/video_format.cpp:827
 #, kde-format
 msgid "Error occurred when opening output file: %1"
 msgstr ""
 
-#: src/core/io/video/video_format.cpp:857
+#: src/core/io/video/video_format.cpp:862
 #, kde-format
 msgid "Background"
 msgstr "背景"
 
-#: src/core/io/video/video_format.cpp:857
+#: src/core/io/video/video_format.cpp:862
 #, kde-format
 msgid "Background color"
 msgstr "背景顏色"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/core/io/video/video_format.cpp:858
+#: src/core/io/video/video_format.cpp:863
 #: src/gui/widgets/dialogs/resize_dialog.ui:56
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:46
 #, kde-format
 msgid "Width"
 msgstr "寬度"
 
-#: src/core/io/video/video_format.cpp:858
-#: src/core/io/video/video_format.cpp:859
+#: src/core/io/video/video_format.cpp:863
+#: src/core/io/video/video_format.cpp:864
 #, kde-format
 msgid "If not 0, it will overwrite the size"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/core/io/video/video_format.cpp:859
+#: src/core/io/video/video_format.cpp:864
 #: src/gui/widgets/dialogs/resize_dialog.ui:33
 #, kde-format
 msgid "Height"
 msgstr "高度"
 
-#: src/core/io/video/video_format.cpp:860
+#: src/core/io/video/video_format.cpp:865
 #, kde-format
 msgid "Verbose"
 msgstr ""
 
-#: src/core/io/video/video_format.cpp:860
+#: src/core/io/video/video_format.cpp:865
 #, kde-format
 msgid "Show verbose information on the conversion"
 msgstr "顯示轉換時的更多資訊"

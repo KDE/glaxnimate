@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 01:59+0000\n"
+"POT-Creation-Date: 2024-05-09 01:50+0000\n"
 "PO-Revision-Date: 2024-01-07 21:14+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo.org>\n"
@@ -1077,24 +1077,24 @@ msgstr "Nevalida valoro por %1"
 msgid "Expected property group for transform"
 msgstr "Atendata proprecogrupo por transformo"
 
-#: src/core/io/aep/aep_loader.cpp:557
+#: src/core/io/aep/aep_loader.cpp:559
 #, kde-format
 msgid "Unknown property \"%1\""
 msgstr "Nekonata propreco \"%1\""
 
-#: src/core/io/aep/aep_loader.cpp:1084
+#: src/core/io/aep/aep_loader.cpp:1103
 #, kde-format
 msgid "Unknown shape %1"
 msgstr "Nekonata formo %1"
 
-#: src/core/io/aep/aep_loader.cpp:1143
+#: src/core/io/aep/aep_loader.cpp:1162
 #: src/core/io/lottie/lottie_importer.hpp:369
 #: src/core/io/lottie/lottie_importer.hpp:381
 #, kde-format
 msgid "Clip"
 msgstr "Clip"
 
-#: src/core/io/aep/aep_loader.cpp:1248
+#: src/core/io/aep/aep_loader.cpp:1267
 #, kde-format
 msgid "Unknown asset type for %1"
 msgstr "Nekonata valoraĵo por %1"
@@ -1815,7 +1815,7 @@ msgid "Could not allocate frame data."
 msgstr "Ne eblis asigni kadrajn datumojn."
 
 #: src/core/io/video/video_format.cpp:403
-#: src/core/io/video/video_format.cpp:777
+#: src/core/io/video/video_format.cpp:782
 #, kde-format
 msgid "No video codec"
 msgstr "Neniu videokodeko"
@@ -1855,58 +1855,58 @@ msgstr "Ne eblis pravalorigi la konvertan kuntekston"
 msgid "Could not allocate temporary picture"
 msgstr "Ne eblis asigni provizoran bildon"
 
-#: src/core/io/video/video_format.cpp:745
+#: src/core/io/video/video_format.cpp:750
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
 msgstr "Ne eblis dedukti eligformaton el dosier-etendaĵo: uzante MPEG."
 
-#: src/core/io/video/video_format.cpp:749
+#: src/core/io/video/video_format.cpp:754
 #, kde-format
 msgid "Could not find output format"
 msgstr "Ne eblis trovi eligformaton"
 
-#: src/core/io/video/video_format.cpp:822
+#: src/core/io/video/video_format.cpp:827
 #, kde-format
 msgid "Error occurred when opening output file: %1"
 msgstr "Eraro okazis dum malfermo de eligdosiero: %1"
 
-#: src/core/io/video/video_format.cpp:857
+#: src/core/io/video/video_format.cpp:862
 #, kde-format
 msgid "Background"
 msgstr "Fono"
 
-#: src/core/io/video/video_format.cpp:857
+#: src/core/io/video/video_format.cpp:862
 #, kde-format
 msgid "Background color"
 msgstr "Fona koloro"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/core/io/video/video_format.cpp:858
+#: src/core/io/video/video_format.cpp:863
 #: src/gui/widgets/dialogs/resize_dialog.ui:56
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:46
 #, kde-format
 msgid "Width"
 msgstr "Larĝo"
 
-#: src/core/io/video/video_format.cpp:858
-#: src/core/io/video/video_format.cpp:859
+#: src/core/io/video/video_format.cpp:863
+#: src/core/io/video/video_format.cpp:864
 #, kde-format
 msgid "If not 0, it will overwrite the size"
 msgstr "Se ne 0, ĝi anstataŭigos la grandecon"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/core/io/video/video_format.cpp:859
+#: src/core/io/video/video_format.cpp:864
 #: src/gui/widgets/dialogs/resize_dialog.ui:33
 #, kde-format
 msgid "Height"
 msgstr "Alto"
 
-#: src/core/io/video/video_format.cpp:860
+#: src/core/io/video/video_format.cpp:865
 #, kde-format
 msgid "Verbose"
 msgstr "Vorta"
 
-#: src/core/io/video/video_format.cpp:860
+#: src/core/io/video/video_format.cpp:865
 #, kde-format
 msgid "Show verbose information on the conversion"
 msgstr "Montri multvortajn informojn pri la konvertiĝo"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 01:59+0000\n"
+"POT-Creation-Date: 2024-05-09 01:50+0000\n"
 "PO-Revision-Date: 2024-05-02 12:13+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -1082,24 +1082,24 @@ msgstr "Valeur non valable pour %1"
 msgid "Expected property group for transform"
 msgstr "Groupe de propriétés attendu pour la transformation"
 
-#: src/core/io/aep/aep_loader.cpp:557
+#: src/core/io/aep/aep_loader.cpp:559
 #, kde-format
 msgid "Unknown property \"%1\""
 msgstr "Propriété inconnue « %1 »"
 
-#: src/core/io/aep/aep_loader.cpp:1084
+#: src/core/io/aep/aep_loader.cpp:1103
 #, kde-format
 msgid "Unknown shape %1"
 msgstr "Forme inconnue %1"
 
-#: src/core/io/aep/aep_loader.cpp:1143
+#: src/core/io/aep/aep_loader.cpp:1162
 #: src/core/io/lottie/lottie_importer.hpp:369
 #: src/core/io/lottie/lottie_importer.hpp:381
 #, kde-format
 msgid "Clip"
 msgstr "Clip"
 
-#: src/core/io/aep/aep_loader.cpp:1248
+#: src/core/io/aep/aep_loader.cpp:1267
 #, kde-format
 msgid "Unknown asset type for %1"
 msgstr "Type d'actif inconnu pour %1"
@@ -1827,7 +1827,7 @@ msgid "Could not allocate frame data."
 msgstr "Impossible d'allouer des données de l'image"
 
 #: src/core/io/video/video_format.cpp:403
-#: src/core/io/video/video_format.cpp:777
+#: src/core/io/video/video_format.cpp:782
 #, kde-format
 msgid "No video codec"
 msgstr "Aucun codec vidéo"
@@ -1867,60 +1867,60 @@ msgstr "Impossible d'initialiser le contexte de conversion"
 msgid "Could not allocate temporary picture"
 msgstr "Impossible d'allouer l'image temporaire"
 
-#: src/core/io/video/video_format.cpp:745
+#: src/core/io/video/video_format.cpp:750
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
 msgstr ""
 "Impossible de déduire le format de sortie à partir de l'extension de "
 "fichier : utilisation du format » MPEG »."
 
-#: src/core/io/video/video_format.cpp:749
+#: src/core/io/video/video_format.cpp:754
 #, kde-format
 msgid "Could not find output format"
 msgstr "Ne peut pas trouver le format de sortie"
 
-#: src/core/io/video/video_format.cpp:822
+#: src/core/io/video/video_format.cpp:827
 #, kde-format
 msgid "Error occurred when opening output file: %1"
 msgstr "Une erreur est survenue lors de l'ouverture du fichier de sortie : %1"
 
-#: src/core/io/video/video_format.cpp:857
+#: src/core/io/video/video_format.cpp:862
 #, kde-format
 msgid "Background"
 msgstr "Fond"
 
-#: src/core/io/video/video_format.cpp:857
+#: src/core/io/video/video_format.cpp:862
 #, kde-format
 msgid "Background color"
 msgstr "Couleur de fond"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/core/io/video/video_format.cpp:858
+#: src/core/io/video/video_format.cpp:863
 #: src/gui/widgets/dialogs/resize_dialog.ui:56
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:46
 #, kde-format
 msgid "Width"
 msgstr "Largeur"
 
-#: src/core/io/video/video_format.cpp:858
-#: src/core/io/video/video_format.cpp:859
+#: src/core/io/video/video_format.cpp:863
+#: src/core/io/video/video_format.cpp:864
 #, kde-format
 msgid "If not 0, it will overwrite the size"
 msgstr "Si différent de 0, la taille sera écrasée"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/core/io/video/video_format.cpp:859
+#: src/core/io/video/video_format.cpp:864
 #: src/gui/widgets/dialogs/resize_dialog.ui:33
 #, kde-format
 msgid "Height"
 msgstr "Hauteur"
 
-#: src/core/io/video/video_format.cpp:860
+#: src/core/io/video/video_format.cpp:865
 #, kde-format
 msgid "Verbose"
 msgstr "Verbeux"
 
-#: src/core/io/video/video_format.cpp:860
+#: src/core/io/video/video_format.cpp:865
 #, kde-format
 msgid "Show verbose information on the conversion"
 msgstr "Affiche des informations verbeuses sur la conversion"
