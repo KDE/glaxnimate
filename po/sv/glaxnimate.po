@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-09 01:50+0000\n"
-"PO-Revision-Date: 2024-05-05 15:03+0200\n"
+"PO-Revision-Date: 2024-05-09 07:08+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -39,19 +39,19 @@ msgstr "transformera"
 #. i18n: Property name
 #, kde-format
 msgid "start_opacity"
-msgstr ""
+msgstr "startogenomskinlighet"
 
 #. i18n: file: src/core/model/shapes/stroke.hpp
 #. i18n: Property name
 #, kde-format
 msgid "cap"
-msgstr ""
+msgstr "ända"
 
 #. i18n: file: src/core/model/shapes/stroke.hpp
 #. i18n: Property name
 #, kde-format
 msgid "miter_limit"
-msgstr ""
+msgstr "snedgräns"
 
 #. i18n: file: src/core/model/shapes/shape.hpp
 #. i18n: Property name
@@ -71,13 +71,13 @@ msgstr "position"
 #. i18n: Property name
 #, kde-format
 msgid "rounded"
-msgstr ""
+msgstr "avrundad"
 
 #. i18n: file: src/core/model/shapes/precomp_layer.hpp
 #. i18n: Property name
 #, kde-format
 msgid "timing"
-msgstr ""
+msgstr "tidtagning"
 
 #. i18n: file: src/core/model/shapes/precomp_layer.hpp
 #. i18n: Property name
@@ -111,7 +111,7 @@ msgstr "slut"
 #. i18n: Property name
 #, kde-format
 msgid "multiple"
-msgstr ""
+msgstr "multipel"
 
 #. i18n: file: src/core/model/shapes/text.hpp
 #. i18n: Property name
@@ -123,7 +123,7 @@ msgstr "kontur"
 #. i18n: Property name
 #, kde-format
 msgid "fill_rule"
-msgstr ""
+msgstr "fyllregel"
 
 #. i18n: file: src/core/model/shapes/polystar.hpp
 #. i18n: Property name
@@ -137,7 +137,7 @@ msgstr "typ"
 #. i18n: Property name
 #, kde-format
 msgid "outer_radius"
-msgstr ""
+msgstr "ytterradie"
 
 #. i18n: file: src/core/model/shapes/polystar.hpp
 #. i18n: Property name
@@ -149,7 +149,7 @@ msgstr "vinkel"
 #. i18n: Property name
 #, kde-format
 msgid "outer_roundness"
-msgstr ""
+msgstr "yttre rundhet"
 
 #. i18n: file: src/core/model/shapes/styler.hpp
 #. i18n: Property name
@@ -161,7 +161,7 @@ msgstr "färg"
 #. i18n: Property name
 #, kde-format
 msgid "use"
-msgstr ""
+msgstr "användning"
 
 #. i18n: file: src/core/model/shapes/offset_path.hpp
 #. i18n: Property name
@@ -173,7 +173,7 @@ msgstr "mängd"
 #. i18n: Property name
 #, kde-format
 msgid "join"
-msgstr ""
+msgstr "sammanfoga"
 
 #. i18n: file: src/core/model/shapes/layer.hpp
 #. i18n: Property name
@@ -185,7 +185,7 @@ msgstr "animering"
 #. i18n: Property name
 #, kde-format
 msgid "mask"
-msgstr ""
+msgstr "mask"
 
 #. i18n: file: src/core/model/shapes/zig_zag.hpp
 #. i18n: Property name
@@ -197,7 +197,7 @@ msgstr "frekvens"
 #. i18n: Property name
 #, kde-format
 msgid "anchor_point"
-msgstr ""
+msgstr "förankringspunkt"
 
 #. i18n: file: src/core/model/transform.hpp
 #. i18n: Property name
@@ -229,7 +229,7 @@ msgstr "bredd"
 #. i18n: Property name
 #, kde-format
 msgid "css_url"
-msgstr ""
+msgstr "CSS-webbadress"
 
 #. i18n: file: src/core/model/assets/gradient.hpp
 #. i18n: Property name
@@ -243,25 +243,25 @@ msgstr "färger"
 #. i18n: Property name
 #, kde-format
 msgid "start_point"
-msgstr ""
+msgstr "startpunkt"
 
 #. i18n: file: src/core/model/assets/assets.hpp
 #. i18n: Property name
 #, kde-format
 msgid "gradient_colors"
-msgstr ""
+msgstr "toningsfärger"
 
 #. i18n: file: src/core/model/assets/assets.hpp
 #. i18n: Property name
 #, kde-format
 msgid "compositions"
-msgstr ""
+msgstr "sammansättningar"
 
 #. i18n: file: src/core/model/animation_container.hpp
 #. i18n: Property name
 #, kde-format
 msgid "first_frame"
-msgstr ""
+msgstr "förstabild"
 
 #. i18n: file: src/core/model/property/option_list_property.hpp
 #. i18n: Property name
@@ -277,19 +277,19 @@ msgstr "namn"
 #. i18n: Property name
 #, kde-format
 msgid "stretch"
-msgstr ""
+msgstr "sträck"
 
 #. i18n: file: src/core/model/mask_settings.hpp
 #. i18n: Property name
 #, kde-format
 msgid "inverted"
-msgstr ""
+msgstr "inverterad"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, Dialog)
 #: data/plugins/FrameByFrame/create_frames.ui:18
 #, kde-format
 msgid "Create frame layers"
-msgstr ""
+msgstr "Skapa bildlager"
 
 #. i18n: ectx: property (plainText), widget (QPlainTextEdit, plainTextEdit)
 #: data/plugins/FrameByFrame/create_frames.ui:34
@@ -308,7 +308,7 @@ msgstr ""
 #: data/plugins/FrameByFrame/create_frames.ui:43
 #, kde-format
 msgid "Begin"
-msgstr ""
+msgstr "Start"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (shortcut), widget (QSlider, scroll_time)
@@ -316,13 +316,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1534
 #, kde-format
 msgid "End"
-msgstr ""
+msgstr "Slut"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: data/plugins/FrameByFrame/create_frames.ui:77
 #, kde-format
 msgid "Number of frames"
-msgstr ""
+msgstr "Antal bilder"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QPushButton, pushButton_4)
@@ -352,7 +352,7 @@ msgstr "Öppna fil"
 #: src/android/document_opener.cpp:36
 #, kde-format
 msgid "Raster images need to be traced into vectors"
-msgstr ""
+msgstr "Rasterbilder måste omvandlas till vektorer."
 
 #: src/android/document_opener.cpp:106
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:109
@@ -373,7 +373,7 @@ msgstr "Okänd filtyp"
 #: src/android/document_opener.cpp:154
 #, kde-format
 msgid "Could not unzip the file"
-msgstr ""
+msgstr "Kunde inte packa upp filen"
 
 #: src/android/document_opener.cpp:193
 #, kde-format
@@ -381,16 +381,18 @@ msgid ""
 "Unknown file type. Supported files:\n"
 "%1"
 msgstr ""
+"Okänd filtyp. Filer som stöds:\n"
+"%1"
 
 #: src/android/document_opener.cpp:201
 #, kde-format
 msgid "Error loading %1 file"
-msgstr ""
+msgstr "Fel vid inläsning av filen %1"
 
 #: src/android/help_dialog.cpp:54
 #, kde-format
 msgid "Clears the current document and creates a new empty one"
-msgstr ""
+msgstr "Rensar aktuellt dokument och skapar ett nytt tomt"
 
 #: src/android/help_dialog.cpp:58
 #, kde-format
@@ -428,7 +430,7 @@ msgstr ""
 #: src/android/help_dialog.cpp:78
 #, kde-format
 msgid "Saves the current frame as a still image"
-msgstr ""
+msgstr "Sparar aktuell bildruta som en stillbild"
 
 #: src/android/help_dialog.cpp:82
 #, kde-format
@@ -442,22 +444,22 @@ msgstr ""
 #: src/android/help_dialog.cpp:86
 #, kde-format
 msgid "Cuts the selection into the clipboard."
-msgstr ""
+msgstr "Klipper ut markeringen till klippbordet."
 
 #: src/android/help_dialog.cpp:90
 #, kde-format
 msgid "Copies the selection into the clipboard."
-msgstr ""
+msgstr "Kopierar markeringen till klippbordet."
 
 #: src/android/help_dialog.cpp:94
 #, kde-format
 msgid "Pastes from the clipboard into the current document."
-msgstr ""
+msgstr "Klistrar in från klippbordet i aktuellt dokument."
 
 #: src/android/help_dialog.cpp:98
 #, kde-format
 msgid "Removes the selected item."
-msgstr ""
+msgstr "Tar bort det markerade objektet."
 
 #: src/android/help_dialog.cpp:102
 #, kde-format
@@ -479,17 +481,17 @@ msgstr ""
 #: src/android/help_dialog.cpp:114
 #, kde-format
 msgid "Shows the timeline and playback controls."
-msgstr ""
+msgstr "Visar tidslinjen och uppspelningsknappar."
 
 #: src/android/help_dialog.cpp:118
 #, kde-format
 msgid "Opens the side pane used to select the fill color."
-msgstr ""
+msgstr "Visar sidopanelen som används för att välja fyllfärg."
 
 #: src/android/help_dialog.cpp:122
 #, kde-format
 msgid "Opens the side pane used to select the stroke color and style."
-msgstr ""
+msgstr "Visar sidopanelen som används för att välja streckfärg och stil."
 
 #: src/android/help_dialog.cpp:126
 #, kde-format
@@ -717,7 +719,7 @@ msgstr ""
 #: src/android/main_window.cpp:514
 #, kde-format
 msgid "Import as Composition"
-msgstr ""
+msgstr "Importera som sammansättning"
 
 #: src/android/main_window.cpp:517
 #, kde-format
@@ -987,7 +989,7 @@ msgstr ""
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:82
 #, kde-format
 msgid "Duplicate %1"
-msgstr ""
+msgstr "Du&plicera %1"
 
 #: src/core/command/structure_commands.cpp:73
 #, kde-format
@@ -1077,7 +1079,7 @@ msgstr ""
 #: src/core/io/aep/aep_parser.hpp:137
 #, kde-format
 msgid "Missing composition data"
-msgstr ""
+msgstr "Saknar sammansättningsdata"
 
 #: src/core/io/aep/aep_parser.hpp:214
 #, kde-format
@@ -1209,7 +1211,7 @@ msgstr ""
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:43
 #, kde-format
 msgid "Missing composition"
-msgstr ""
+msgstr "Saknar sammansättning"
 
 #: src/core/io/glaxnimate/import_state.hpp:108
 #, kde-format
@@ -1940,7 +1942,7 @@ msgstr ""
 #: src/core/model/assets/assets.hpp:151
 #, kde-format
 msgid "Compositions"
-msgstr ""
+msgstr "Sammansättningar"
 
 #: src/core/model/assets/assets.hpp:173
 #, kde-format
@@ -1967,7 +1969,7 @@ msgstr ""
 #: src/core/model/assets/composition.cpp:24
 #, kde-format
 msgid "Composition"
-msgstr ""
+msgstr "Sammansättning"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -2123,7 +2125,7 @@ msgstr ""
 #: src/core/model/shapes/precomp_layer.cpp:30
 #, kde-format
 msgid "Composition Layer"
-msgstr ""
+msgstr "Sammansättningslager"
 
 #: src/core/model/shapes/rect.hpp:31 src/gui/tools/rectangle_tool.hpp:20
 #, kde-format
@@ -2483,7 +2485,7 @@ msgstr ""
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:89
 #, kde-format
 msgid "Name"
-msgstr ""
+msgstr "Namn"
 
 #. i18n: ectx: property (text), widget (QTableWidget, emoji_set_view)
 #: src/gui/emoji/emoji_set_dialog.ui:55
@@ -2691,7 +2693,7 @@ msgstr ""
 #: src/gui/graphics/composition_item.hpp:113
 #, kde-format
 msgid "Resize Canvas"
-msgstr ""
+msgstr "Ändra dukstorlek"
 
 #: src/gui/graphics/gradient_editor.cpp:109
 #, kde-format
@@ -3127,7 +3129,7 @@ msgstr ""
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:66
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "Ta bort"
 
 #: src/gui/tools/select_tool.cpp:428
 #, kde-format
@@ -3760,7 +3762,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:116
 #, kde-format
 msgid "&Composition"
-msgstr ""
+msgstr "&Sammansättning"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_path)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:138
@@ -3902,7 +3904,7 @@ msgstr ""
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:69
 #, kde-format
 msgid "Duplicate"
-msgstr ""
+msgstr "Duplicera"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_2)
 #. i18n: ectx: property (text), widget (QToolButton, btn_remove)
@@ -4089,7 +4091,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1291
 #, kde-format
 msgid "New &Composition"
-msgstr ""
+msgstr "Ny &sammansättning"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1303
@@ -4601,7 +4603,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2146
 #, kde-format
 msgid "Paste as Composition"
-msgstr ""
+msgstr "Klistra in som sammansättning"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2155
@@ -4962,7 +4964,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:486
 #, kde-format
 msgid "New Composition from Selection"
-msgstr ""
+msgstr "Ny sammansättning från markering"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:674
 #, kde-format
@@ -5059,7 +5061,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1252
 #, kde-format
 msgid "Add as Composition"
-msgstr ""
+msgstr "Lägg till som sammansättning"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:39
 #, kde-format
@@ -6355,7 +6357,7 @@ msgstr "Magenta"
 #: src/gui/widgets/shape_style/color_selector.ui:466
 #, kde-format
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_12)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_y)
@@ -6371,7 +6373,7 @@ msgstr "Gul"
 #: src/gui/widgets/shape_style/color_selector.ui:496
 #, kde-format
 msgid "Y"
-msgstr ""
+msgstr "Y"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_14)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_k)
@@ -6387,7 +6389,7 @@ msgstr "Svart"
 #: src/gui/widgets/shape_style/color_selector.ui:526
 #, kde-format
 msgid "K"
-msgstr ""
+msgstr "K"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_alpha)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_4)
@@ -6397,19 +6399,19 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:593
 #, kde-format
 msgid "Alpha (Transparency)"
-msgstr ""
+msgstr "Alfa (genomskinlighet)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/shape_style/color_selector.ui:586
 #, kde-format
 msgid "A"
-msgstr ""
+msgstr "A"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::ColorSelector, color_preview)
 #: src/gui/widgets/shape_style/color_selector.ui:637
 #, kde-format
 msgid "Primary Color"
-msgstr ""
+msgstr "Grundfärg"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::ColorSelector, color_preview_secondary)
 #: src/gui/widgets/shape_style/color_selector.ui:656
@@ -6423,7 +6425,7 @@ msgstr "Sekundär färg"
 #: src/gui/widgets/shape_style/color_selector.ui:682
 #, kde-format
 msgid "Swap"
-msgstr ""
+msgstr "Byt"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:49
 #, kde-format
@@ -6438,17 +6440,17 @@ msgstr ""
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:245
 #, kde-format
 msgid "Modify Palette Color"
-msgstr ""
+msgstr "Ändra palettfärg"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:324
 #, kde-format
 msgid "Load from Palette"
-msgstr ""
+msgstr "Läs in från palett"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:325
 #, kde-format
 msgid "No palettes are installed"
-msgstr ""
+msgstr "Inga paletter är installerade"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:331
 #, kde-format
@@ -6458,18 +6460,18 @@ msgstr ""
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:340
 #, kde-format
 msgid "Overwrite on save"
-msgstr ""
+msgstr "Skriv över vid spara"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:344
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:531
 #, kde-format
 msgid "Link shapes with matching colors"
-msgstr ""
+msgstr "Länka former med matchande färger"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:349
 #, kde-format
 msgid "Remove existing colors"
-msgstr ""
+msgstr "Ta bort befintliga färger"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:368
 #, kde-format
@@ -6516,12 +6518,12 @@ msgstr "Redigera färg..."
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:511
 #, kde-format
 msgid "Set as fill"
-msgstr ""
+msgstr "Använd för fyll"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:520
 #, kde-format
 msgid "Set as stroke"
-msgstr ""
+msgstr "Använd för streck"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:72
@@ -6550,41 +6552,41 @@ msgstr "Från palett..."
 #: src/gui/widgets/shape_style/fill_style_widget.cpp:102
 #, kde-format
 msgid "Update Fill Color"
-msgstr ""
+msgstr "Uppdatera fyllfärg"
 
 #: src/gui/widgets/shape_style/fill_style_widget.cpp:120
 #, kde-format
 msgid "Clear Fill Color"
-msgstr ""
+msgstr "Rensa fyllfärg"
 
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:133
 #, kde-format
 msgid "Set %1 Gradient"
-msgstr ""
+msgstr "Ställ in toning %1"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_remove)
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:212
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:83
 #, kde-format
 msgid "Remove Gradient"
-msgstr ""
+msgstr "Ta bort toning"
 
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:388
 #, kde-format
 msgid "Gradient Presets"
-msgstr ""
+msgstr "Toningsförinställningar"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_new)
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:42
 #, kde-format
 msgid "Add Gradient"
-msgstr ""
+msgstr "Lägg till toning"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_preset)
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:56
 #, kde-format
 msgid "Add from Preset"
-msgstr ""
+msgstr "Lägg till från förinställning"
 
 #. i18n: ectx: property (text), widget (QToolButton, btn_preset)
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:59
@@ -6595,33 +6597,33 @@ msgstr "Förinställning"
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:139
 #, kde-format
 msgid "Update Stroke Color"
-msgstr ""
+msgstr "Uppdatera streckfärg"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:234
 #, kde-format
 msgid "Set Line Cap"
-msgstr ""
+msgstr "Ställ in linjeände"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:249
 #, kde-format
 msgid "Set Line Join"
-msgstr ""
+msgstr "Ställ in linjesammanfogning"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:341
 #, kde-format
 msgid "Set Miter Limit"
-msgstr ""
+msgstr "Ställ in snedgräns"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:349
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:364
 #, kde-format
 msgid "Set Line Width"
-msgstr ""
+msgstr "Ställ in linjebredd"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:396
 #, kde-format
 msgid "Clear Line Color"
-msgstr ""
+msgstr "Rensa linjefärg"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:40
@@ -6633,31 +6635,31 @@ msgstr "Stil"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:59
 #, kde-format
 msgid "Stroke Width"
-msgstr ""
+msgstr "Streckbredd"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:69
 #, kde-format
 msgid "Cap"
-msgstr ""
+msgstr "Ände"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:157
 #, kde-format
 msgid "Join"
-msgstr ""
+msgstr "Sammanfoga"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_miter)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:263
 #, kde-format
 msgid "Miter Limit"
-msgstr ""
+msgstr "Snedgräns"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:338
 #, kde-format
 msgid "Dashes"
-msgstr ""
+msgstr "Streck"
 
 #: src/gui/widgets/spin2d.cpp:93
 #, kde-format
@@ -6672,50 +6674,50 @@ msgstr "Byt namn"
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:89
 #, kde-format
 msgid "Rename Composition"
-msgstr ""
+msgstr "Byt namn på sammansättning"
 
 #: src/gui/widgets/tab_bar/tab_bar_close_button.cpp:60
 #, kde-format
 msgid "Delete Composition"
-msgstr ""
+msgstr "Ta bor sammansättning"
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:159
 #, kde-format
 msgid "Transition From Previous"
-msgstr ""
+msgstr "Övergång från föregående"
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:160
 #, kde-format
 msgid "Transition To Next"
-msgstr ""
+msgstr "Övergång till nästa"
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:167
 #, kde-format
 msgid "Custom..."
-msgstr ""
+msgstr "Egen..."
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:180
 #, kde-format
 msgid "Copy Keyframe"
-msgstr ""
+msgstr "Kopiera nyckelbild"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:201
 #, kde-format
 msgid "&Clear Animations"
-msgstr ""
+msgstr "&Rensa animeringar"
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spin_frame)
 #: src/gui/widgets/timeline/frame_controls_widget.ui:33
 #, kde-format
 msgid "Frame number"
-msgstr ""
+msgstr "Bildnummer"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spin_frame)
 #: src/gui/widgets/timeline/frame_controls_widget.ui:39
 #, kde-format
 msgid " f"
-msgstr ""
+msgstr " b"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_loop)
 #: src/gui/widgets/timeline/frame_controls_widget.ui:60
@@ -6743,7 +6745,7 @@ msgstr "Gå till första bildrutan"
 #: src/gui/widgets/timeline/frame_controls_widget.ui:100
 #, kde-format
 msgid "Go To Previous Keyframe"
-msgstr ""
+msgstr "Gå till föregående nyckelbild"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_prev)
 #. i18n: ectx: property (text), widget (QToolButton, button_prev)
@@ -6767,7 +6769,7 @@ msgstr "Gå till nästa bildruta"
 #: src/gui/widgets/timeline/frame_controls_widget.ui:145
 #, kde-format
 msgid "Go To Next Keyframe"
-msgstr ""
+msgstr "Gå till nästa nyckelbild"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_last)
 #. i18n: ectx: property (text), widget (QToolButton, button_last)
@@ -6842,13 +6844,13 @@ msgstr ""
 #: src/gui/widgets/timeline/timeline_items.cpp:142
 #, kde-format
 msgid "Drag Keyframes"
-msgstr ""
+msgstr "Dra nyckelbilder"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_both)
 #: src/gui/widgets/tools/fill_tool_widget.ui:49
 #, kde-format
 msgid "Fill and Stroke"
-msgstr ""
+msgstr "Fyll och dra streck"
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_box)
 #: src/gui/widgets/tools/shape_tool_widget.ui:24
@@ -6860,7 +6862,7 @@ msgstr "Skapa"
 #: src/gui/widgets/tools/shape_tool_widget.ui:30
 #, kde-format
 msgid "Raw Shape"
-msgstr ""
+msgstr "Obehandlad form"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_view_fit)
 #. i18n: ectx: property (text), widget (QToolButton, btn_view_fit)
