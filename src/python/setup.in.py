@@ -21,7 +21,7 @@ setuptools.setup(
     description="Python bindings for ${PROJECT_NAME}",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://glaxnimate.mattbas.org/",
+    url="https://glaxnimate.org/",
     license="GNU General Public License v3 or later (GPLv3+)",
     keywords="telegram stickers tgs lottie svg animation",
     #ext_modules=[Extension("${PROJECT_SLUG}", sources=[])],
@@ -41,10 +41,10 @@ setuptools.setup(
     zip_safe=True,
     python_requires=">=3",
     project_urls={
-        "Code": "https://gitlab.com/mattbas/glaxnimate",
-        "Documentation": "https://glaxnimate.mattbas.org/",
+        "Code": "https://invent.kde.org/graphics/glaxnimate",
+        "Documentation": "https://glaxnimate.org/",
         "Chat": "https://t.me/Glaxnimate",
         "Downloads": "https://glaxnimate.mattbas.org/download/",
-        "Issues": "https://gitlab.com/mattbas/glaxnimate/-/issues",
+        "Issues": "https://bugs.kde.org/enter_bug.cgi?product=glaxnimate",
     },
 )

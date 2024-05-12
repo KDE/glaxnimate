@@ -1,7 +1,7 @@
 Python Glaxnimate
 =================
 
-Python bindings for [Glaxnimate](https://glaxnimate.mattbas.org/).
+Python bindings for [Glaxnimate](https://glaxnimate.org/).
 
 Allows to create and modify vector animations. With support for Lottie, SVG, and other formats.
 

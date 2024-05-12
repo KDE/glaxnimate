@@ -238,8 +238,9 @@ Contacts
 ---------------------------------------
 
 * [Telegram (Chat)](https://t.me/Glaxnimate)
-* [GitLab (Code, Issues)](https://gitlab.com/mattbas/glaxnimate)
-* [User Manual](https://glaxnimate.mattbas.org)
+* [KDE GitLab (Code)](https://invent.kde.org/graphics/glaxnimate)
+* [Bugtracker](https://bugs.kde.org/enter_bug.cgi?product=glaxnimate).
+* [User Manual](https://docs.glaxnimate.org)
 
 
 License

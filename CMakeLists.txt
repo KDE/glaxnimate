@@ -17,10 +17,10 @@ set(LIB_NAME_DESKTOP "${PROJECT_SLUG}_desktop")
 set(DATA_INSTALL "share/${PROJECT_SLUG}/${PROJECT_SLUG}")
 set(PROJECT_ID "org.kde.glaxnimate")
 
-set(PROJECT_HOMEPAGE_URL "https://glaxnimate.mattbas.org/")
-set(URL_DOCS "https://glaxnimate.mattbas.org/")
-set(URL_ISSUES "https://gitlab.com/mattbas/glaxnimate/-/issues")
-set(URL_DONATE "https://glaxnimate.mattbas.org/donate/")
+set(PROJECT_HOMEPAGE_URL "https://glaxnimate.org/")
+set(URL_DOCS "https://docs.glaxnimate.org/")
+set(URL_ISSUES "https://bugs.kde.org/enter_bug.cgi?product=glaxnimate")
+set(URL_DONATE "https://glaxnimate.org/donate/")
 
 # You can use it to change the url used by `make docs`
 set(DOCS_SITE_URL ${URL_DOCS} CACHE STRING "")

@@ -6,13 +6,13 @@ Donating
 ---------------------------------------
 
 If you don't have any technical skill you can still support Glaxnimate by
-[donating](https://glaxnimate.mattbas.org/donate).
+[donating](https://www.kde.org/community/donations/?app=glaxnimate&source=appdata).
 
 
 Reporting Issues
 ---------------------------------------
 
-You can report issues on [GitLab](https://gitlab.com/mattbas/glaxnimate/-/issues).
+You can report issues on [KDE's Bugtracker](https://bugs.kde.org/enter_bug.cgi?product=glaxnimate).
 
 Bug reports and feature requests are welcome.
 
@@ -66,11 +66,11 @@ Documentation
 You can add to the documentation by adding tutorials, missing information,
 correcting typos, etc...
 
-On the [Documentation Website](https://glaxnimate.mattbas.org/) each page
+On the [Documentation Website](https://docs.glaxnimate.org/) each page
 has a link to its source file on GitLab, you can use that page to edit it and
 create a pull request.
 
-Details on how to work with the documentation are at [Documentation](https://glaxnimate.mattbas.org/contributing/documentation/).
+Details on how to work with the documentation are at [Documentation](https://glaxnimate.org/contributing/documentation/).
 
 
 Translations
@@ -78,15 +78,15 @@ Translations
 
 You can add or improve translations using Qt linguist.
 
-See [Translations](https://glaxnimate.mattbas.org/contributing/translations/) for more details.
+See [Translations](https://glaxnimate.org/contributing/translations/) for more details.
 
 
 Code
 ---------------------------------------
 
-See the [README](https://glaxnimate.mattbas.org/contributing/read_me/) for build instructions.
+See the [README](https://invent.kde.org/graphics/glaxnimate/-/blob/master/README.md) for build instructions.
 
-You can open [merge requests on GitLab](https://gitlab.com/mattbas/glaxnimate/-/merge_requests)
+You can open [merge requests on GitLab](https://invent.kde.org/graphics/glaxnimate/-/merge_requests)
 to get your changes merged into Glaxnimate.
 
 ### License
