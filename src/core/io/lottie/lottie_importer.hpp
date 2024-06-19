@@ -60,6 +60,29 @@ private:
         }
     }
 
+    // https://github.com/airbnb/lottie-web/blob/0d658b34c40d4e81eafdccbf698815346454a899/player/js/utils/DataManager.js#L170
+    bool is_version_older_than(int major, int minor, int patch) {
+        if (major > version[0]) {
+            return true;
+        } if (version[0] > major) {
+            return false;
+        }
+
+        if (minor > version[1]) {
+            return true;
+        } if (version[1] > minor) {
+            return false;
+        }
+
+        if (patch > version[2]) {
+            return true;
+        } if (version[2] > patch) {
+            return false;
+        }
+
+        return false;
+    }
+
     bool animated(const QJsonObject& obj)
     {
         if ( obj.contains("a") )
@@ -751,7 +774,8 @@ private:
     {
         QJsonArray arr = val.toArray();
 
-        if ( version[0] < 5 )
+        // https://github.com/airbnb/lottie-web/blob/0d658b34c40d4e81eafdccbf698815346454a899/player/js/utils/DataManager.js#L329
+        if ( is_version_older_than(4, 1, 9) )
         {
             auto iter = std::find_if(arr.begin(), arr.end(), [](const QJsonValue& v){ return v.toDouble() > 1; });
             if ( iter != arr.end() )
