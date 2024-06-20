@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-09 01:50+0000\n"
+"POT-Creation-Date: 2024-06-20 01:47+0000\n"
 "PO-Revision-Date: 2024-04-14 12:20+0200\n"
 "Last-Translator: Valter Mura <valtermura@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -1077,9 +1077,9 @@ msgid "Could convert %1"
 msgstr "Impossibile convertire %1"
 
 #: src/core/io/aep/aep_loader.cpp:415
-#: src/core/io/lottie/lottie_importer.hpp:879
-#: src/core/io/lottie/lottie_importer.hpp:901
-#: src/core/io/lottie/lottie_importer.hpp:908
+#: src/core/io/lottie/lottie_importer.hpp:903
+#: src/core/io/lottie/lottie_importer.hpp:925
+#: src/core/io/lottie/lottie_importer.hpp:932
 #, kde-format
 msgid "Invalid value for %1"
 msgstr "Valore non valido per %1"
@@ -1100,8 +1100,8 @@ msgid "Unknown shape %1"
 msgstr "Forma sconosciuta %1"
 
 #: src/core/io/aep/aep_loader.cpp:1162
-#: src/core/io/lottie/lottie_importer.hpp:369
-#: src/core/io/lottie/lottie_importer.hpp:381
+#: src/core/io/lottie/lottie_importer.hpp:392
+#: src/core/io/lottie/lottie_importer.hpp:404
 #, kde-format
 msgid "Clip"
 msgstr "Ritaglio"
@@ -1397,75 +1397,75 @@ msgstr "Animazione Lottie"
 msgid "Lottie HTML Preview"
 msgstr "Anteprima HTML Lottie"
 
-#: src/core/io/lottie/lottie_importer.hpp:162
+#: src/core/io/lottie/lottie_importer.hpp:185
 #, kde-format
 msgid "Missing layer type for %1"
 msgstr "Manca il tipo di livello per %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:299
+#: src/core/io/lottie/lottie_importer.hpp:322
 #, kde-format
 msgid "Cannot use %1 as parent as it couldn't be loaded"
 msgstr ""
 "Non si può usare %1 come livello genitore perché non è stato possibile "
 "caricarlo"
 
-#: src/core/io/lottie/lottie_importer.hpp:310
+#: src/core/io/lottie/lottie_importer.hpp:333
 #, kde-format
 msgid "Invalid parent layer %1"
 msgstr "Livello genitore %1 non valido"
 
-#: src/core/io/lottie/lottie_importer.hpp:436
+#: src/core/io/lottie/lottie_importer.hpp:459
 #, kde-format
 msgid "Unsupported layer of type %1"
 msgstr "Livello di tipo %1 non supportato"
 
-#: src/core/io/lottie/lottie_importer.hpp:461
+#: src/core/io/lottie/lottie_importer.hpp:484
 #, kde-format
 msgid "Missing shape type"
 msgstr "Manca il tipo di forma"
 
-#: src/core/io/lottie/lottie_importer.hpp:474
-#: src/core/io/lottie/lottie_importer.hpp:484
+#: src/core/io/lottie/lottie_importer.hpp:497
+#: src/core/io/lottie/lottie_importer.hpp:507
 #, kde-format
 msgid "Unsupported shape type %1"
 msgstr "Tipo di forma %1 non supportato"
 
-#: src/core/io/lottie/lottie_importer.hpp:507
+#: src/core/io/lottie/lottie_importer.hpp:530
 #, kde-format
 msgid "Unknown field %2%1"
 msgstr "Campo sconosciuto %2%1"
 
-#: src/core/io/lottie/lottie_importer.hpp:832
+#: src/core/io/lottie/lottie_importer.hpp:856
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
 msgstr "Punto bezier %1 non valido in %2"
 
-#: src/core/io/lottie/lottie_importer.hpp:916
+#: src/core/io/lottie/lottie_importer.hpp:940
 #, kde-format
 msgid "Invalid keyframes for %1"
 msgstr "Fotogrammi non validi per %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:966
+#: src/core/io/lottie/lottie_importer.hpp:990
 #, kde-format
 msgid "(null)"
 msgstr "(null)"
 
-#: src/core/io/lottie/lottie_importer.hpp:972
+#: src/core/io/lottie/lottie_importer.hpp:996
 #, kde-format
 msgid "(empty)"
 msgstr "(vuoto)"
 
-#: src/core/io/lottie/lottie_importer.hpp:980
+#: src/core/io/lottie/lottie_importer.hpp:1004
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
 msgstr "Impossibile caricare il fotogramma chiave a %1 per %2 con valore %3"
 
-#: src/core/io/lottie/lottie_importer.hpp:1032
+#: src/core/io/lottie/lottie_importer.hpp:1056
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
 msgstr "Duplica ID della bitmap: %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:1064
+#: src/core/io/lottie/lottie_importer.hpp:1088
 #, kde-format
 msgid "Duplicate Composition ID: %1"
 msgstr "Duplica ID della composizione: %1"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-09 01:50+0000\n"
+"POT-Creation-Date: 2024-06-20 01:47+0000\n"
 "PO-Revision-Date: 2024-04-18 15:48+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1066,9 +1066,9 @@ msgid "Could convert %1"
 msgstr "%1 dönüştürülebildi"
 
 #: src/core/io/aep/aep_loader.cpp:415
-#: src/core/io/lottie/lottie_importer.hpp:879
-#: src/core/io/lottie/lottie_importer.hpp:901
-#: src/core/io/lottie/lottie_importer.hpp:908
+#: src/core/io/lottie/lottie_importer.hpp:903
+#: src/core/io/lottie/lottie_importer.hpp:925
+#: src/core/io/lottie/lottie_importer.hpp:932
 #, kde-format
 msgid "Invalid value for %1"
 msgstr "%1 için geçersiz değer"
@@ -1089,8 +1089,8 @@ msgid "Unknown shape %1"
 msgstr "Bilinmeyen şekil %1"
 
 #: src/core/io/aep/aep_loader.cpp:1162
-#: src/core/io/lottie/lottie_importer.hpp:369
-#: src/core/io/lottie/lottie_importer.hpp:381
+#: src/core/io/lottie/lottie_importer.hpp:392
+#: src/core/io/lottie/lottie_importer.hpp:404
 #, kde-format
 msgid "Clip"
 msgstr "Klip"
@@ -1383,73 +1383,73 @@ msgstr "Lottie Canlandırması"
 msgid "Lottie HTML Preview"
 msgstr "Lottie HTML Önizlemesi"
 
-#: src/core/io/lottie/lottie_importer.hpp:162
+#: src/core/io/lottie/lottie_importer.hpp:185
 #, kde-format
 msgid "Missing layer type for %1"
 msgstr "%1 için katman türü eksik"
 
-#: src/core/io/lottie/lottie_importer.hpp:299
+#: src/core/io/lottie/lottie_importer.hpp:322
 #, kde-format
 msgid "Cannot use %1 as parent as it couldn't be loaded"
 msgstr "Yüklenemediğinden %1 üst öge olarak kullanılamıyor"
 
-#: src/core/io/lottie/lottie_importer.hpp:310
+#: src/core/io/lottie/lottie_importer.hpp:333
 #, kde-format
 msgid "Invalid parent layer %1"
 msgstr "Geçersiz üst katman %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:436
+#: src/core/io/lottie/lottie_importer.hpp:459
 #, kde-format
 msgid "Unsupported layer of type %1"
 msgstr "Desteklenmeyen katman türü %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:461
+#: src/core/io/lottie/lottie_importer.hpp:484
 #, kde-format
 msgid "Missing shape type"
 msgstr "Şekil türü eksik"
 
-#: src/core/io/lottie/lottie_importer.hpp:474
-#: src/core/io/lottie/lottie_importer.hpp:484
+#: src/core/io/lottie/lottie_importer.hpp:497
+#: src/core/io/lottie/lottie_importer.hpp:507
 #, kde-format
 msgid "Unsupported shape type %1"
 msgstr "Desteklenmeyen şekil türü %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:507
+#: src/core/io/lottie/lottie_importer.hpp:530
 #, kde-format
 msgid "Unknown field %2%1"
 msgstr "Bilinmeyen alan %2%1"
 
-#: src/core/io/lottie/lottie_importer.hpp:832
+#: src/core/io/lottie/lottie_importer.hpp:856
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
 msgstr "%2 içinde bilinmeyen bezier noktası %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:916
+#: src/core/io/lottie/lottie_importer.hpp:940
 #, kde-format
 msgid "Invalid keyframes for %1"
 msgstr "%1 için geçersiz anahtar kareler"
 
-#: src/core/io/lottie/lottie_importer.hpp:966
+#: src/core/io/lottie/lottie_importer.hpp:990
 #, kde-format
 msgid "(null)"
 msgstr "(yok)"
 
-#: src/core/io/lottie/lottie_importer.hpp:972
+#: src/core/io/lottie/lottie_importer.hpp:996
 #, kde-format
 msgid "(empty)"
 msgstr "(boş)"
 
-#: src/core/io/lottie/lottie_importer.hpp:980
+#: src/core/io/lottie/lottie_importer.hpp:1004
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
 msgstr "%3 değeriyle %2 için %1 konumunda anahtar kare yüklenemiyor"
 
-#: src/core/io/lottie/lottie_importer.hpp:1032
+#: src/core/io/lottie/lottie_importer.hpp:1056
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
 msgstr "Yinelenen biteşlem kimliği: %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:1064
+#: src/core/io/lottie/lottie_importer.hpp:1088
 #, kde-format
 msgid "Duplicate Composition ID: %1"
 msgstr "Yinelenen kompozisyon kimliği: %1"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-09 01:50+0000\n"
+"POT-Creation-Date: 2024-06-20 01:47+0000\n"
 "PO-Revision-Date: 2024-05-04 18:32+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1075,9 +1075,9 @@ msgid "Could convert %1"
 msgstr "S'ha pogut convertir %1"
 
 #: src/core/io/aep/aep_loader.cpp:415
-#: src/core/io/lottie/lottie_importer.hpp:879
-#: src/core/io/lottie/lottie_importer.hpp:901
-#: src/core/io/lottie/lottie_importer.hpp:908
+#: src/core/io/lottie/lottie_importer.hpp:903
+#: src/core/io/lottie/lottie_importer.hpp:925
+#: src/core/io/lottie/lottie_importer.hpp:932
 #, kde-format
 msgid "Invalid value for %1"
 msgstr "Valor no vàlid per a %1"
@@ -1098,8 +1098,8 @@ msgid "Unknown shape %1"
 msgstr "Forma desconeguda %1"
 
 #: src/core/io/aep/aep_loader.cpp:1162
-#: src/core/io/lottie/lottie_importer.hpp:369
-#: src/core/io/lottie/lottie_importer.hpp:381
+#: src/core/io/lottie/lottie_importer.hpp:392
+#: src/core/io/lottie/lottie_importer.hpp:404
 #, kde-format
 msgid "Clip"
 msgstr "Clip"
@@ -1394,73 +1394,73 @@ msgstr "Animació de Lottie"
 msgid "Lottie HTML Preview"
 msgstr "Vista prèvia HTML de Lottie"
 
-#: src/core/io/lottie/lottie_importer.hpp:162
+#: src/core/io/lottie/lottie_importer.hpp:185
 #, kde-format
 msgid "Missing layer type for %1"
 msgstr "Falta el tipus de capa per a %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:299
+#: src/core/io/lottie/lottie_importer.hpp:322
 #, kde-format
 msgid "Cannot use %1 as parent as it couldn't be loaded"
 msgstr "No s'ha pogut utilitzar %1 com a pare, ja que no es pot carregar"
 
-#: src/core/io/lottie/lottie_importer.hpp:310
+#: src/core/io/lottie/lottie_importer.hpp:333
 #, kde-format
 msgid "Invalid parent layer %1"
 msgstr "La capa pare %1 no és vàlida"
 
-#: src/core/io/lottie/lottie_importer.hpp:436
+#: src/core/io/lottie/lottie_importer.hpp:459
 #, kde-format
 msgid "Unsupported layer of type %1"
 msgstr "Capa no admesa del tipus %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:461
+#: src/core/io/lottie/lottie_importer.hpp:484
 #, kde-format
 msgid "Missing shape type"
 msgstr "Falta el tipus de forma"
 
-#: src/core/io/lottie/lottie_importer.hpp:474
-#: src/core/io/lottie/lottie_importer.hpp:484
+#: src/core/io/lottie/lottie_importer.hpp:497
+#: src/core/io/lottie/lottie_importer.hpp:507
 #, kde-format
 msgid "Unsupported shape type %1"
 msgstr "Tipus de forma no admés %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:507
+#: src/core/io/lottie/lottie_importer.hpp:530
 #, kde-format
 msgid "Unknown field %2%1"
 msgstr "Camp desconegut %2%1"
 
-#: src/core/io/lottie/lottie_importer.hpp:832
+#: src/core/io/lottie/lottie_importer.hpp:856
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
 msgstr "El punt de Bézier %1 no és vàlid a %2"
 
-#: src/core/io/lottie/lottie_importer.hpp:916
+#: src/core/io/lottie/lottie_importer.hpp:940
 #, kde-format
 msgid "Invalid keyframes for %1"
 msgstr "Fotogrames clau no vàlids per a %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:966
+#: src/core/io/lottie/lottie_importer.hpp:990
 #, kde-format
 msgid "(null)"
 msgstr "(nul)"
 
-#: src/core/io/lottie/lottie_importer.hpp:972
+#: src/core/io/lottie/lottie_importer.hpp:996
 #, kde-format
 msgid "(empty)"
 msgstr "(buit)"
 
-#: src/core/io/lottie/lottie_importer.hpp:980
+#: src/core/io/lottie/lottie_importer.hpp:1004
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
 msgstr "No s'ha pogut carregar el fotograma clau a %1 per a %2 amb el valor %3"
 
-#: src/core/io/lottie/lottie_importer.hpp:1032
+#: src/core/io/lottie/lottie_importer.hpp:1056
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
 msgstr "ID del mapa de bits duplicat: %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:1064
+#: src/core/io/lottie/lottie_importer.hpp:1088
 #, kde-format
 msgid "Duplicate Composition ID: %1"
 msgstr "ID de composició duplicat: %1"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-09 01:50+0000\n"
+"POT-Creation-Date: 2024-06-20 01:47+0000\n"
 "PO-Revision-Date: 2024-04-22 16:06\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1045,9 +1045,9 @@ msgid "Could convert %1"
 msgstr ""
 
 #: src/core/io/aep/aep_loader.cpp:415
-#: src/core/io/lottie/lottie_importer.hpp:879
-#: src/core/io/lottie/lottie_importer.hpp:901
-#: src/core/io/lottie/lottie_importer.hpp:908
+#: src/core/io/lottie/lottie_importer.hpp:903
+#: src/core/io/lottie/lottie_importer.hpp:925
+#: src/core/io/lottie/lottie_importer.hpp:932
 #, kde-format
 msgid "Invalid value for %1"
 msgstr ""
@@ -1068,8 +1068,8 @@ msgid "Unknown shape %1"
 msgstr ""
 
 #: src/core/io/aep/aep_loader.cpp:1162
-#: src/core/io/lottie/lottie_importer.hpp:369
-#: src/core/io/lottie/lottie_importer.hpp:381
+#: src/core/io/lottie/lottie_importer.hpp:392
+#: src/core/io/lottie/lottie_importer.hpp:404
 #, kde-format
 msgid "Clip"
 msgstr "剪辑"
@@ -1358,73 +1358,73 @@ msgstr "Lottie动画"
 msgid "Lottie HTML Preview"
 msgstr "LottieHTML预览"
 
-#: src/core/io/lottie/lottie_importer.hpp:162
+#: src/core/io/lottie/lottie_importer.hpp:185
 #, kde-format
 msgid "Missing layer type for %1"
 msgstr "缺少 %1 的图层类型"
 
-#: src/core/io/lottie/lottie_importer.hpp:299
+#: src/core/io/lottie/lottie_importer.hpp:322
 #, kde-format
 msgid "Cannot use %1 as parent as it couldn't be loaded"
 msgstr "无法将%1用作父级，因为它无法加载"
 
-#: src/core/io/lottie/lottie_importer.hpp:310
+#: src/core/io/lottie/lottie_importer.hpp:333
 #, kde-format
 msgid "Invalid parent layer %1"
 msgstr "无效的父级图层%1"
 
-#: src/core/io/lottie/lottie_importer.hpp:436
+#: src/core/io/lottie/lottie_importer.hpp:459
 #, kde-format
 msgid "Unsupported layer of type %1"
 msgstr "不支持的图层类型%1"
 
-#: src/core/io/lottie/lottie_importer.hpp:461
+#: src/core/io/lottie/lottie_importer.hpp:484
 #, kde-format
 msgid "Missing shape type"
 msgstr "缺少形状类型"
 
-#: src/core/io/lottie/lottie_importer.hpp:474
-#: src/core/io/lottie/lottie_importer.hpp:484
+#: src/core/io/lottie/lottie_importer.hpp:497
+#: src/core/io/lottie/lottie_importer.hpp:507
 #, kde-format
 msgid "Unsupported shape type %1"
 msgstr "不支持的形状类型%1"
 
-#: src/core/io/lottie/lottie_importer.hpp:507
+#: src/core/io/lottie/lottie_importer.hpp:530
 #, kde-format
 msgid "Unknown field %2%1"
 msgstr ""
 
-#: src/core/io/lottie/lottie_importer.hpp:832
+#: src/core/io/lottie/lottie_importer.hpp:856
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
 msgstr "无效的贝塞尔曲线点%1在%2"
 
-#: src/core/io/lottie/lottie_importer.hpp:916
+#: src/core/io/lottie/lottie_importer.hpp:940
 #, kde-format
 msgid "Invalid keyframes for %1"
 msgstr "无效的关键帧为%1"
 
-#: src/core/io/lottie/lottie_importer.hpp:966
+#: src/core/io/lottie/lottie_importer.hpp:990
 #, kde-format
 msgid "(null)"
 msgstr ""
 
-#: src/core/io/lottie/lottie_importer.hpp:972
+#: src/core/io/lottie/lottie_importer.hpp:996
 #, kde-format
 msgid "(empty)"
 msgstr ""
 
-#: src/core/io/lottie/lottie_importer.hpp:980
+#: src/core/io/lottie/lottie_importer.hpp:1004
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
 msgstr ""
 
-#: src/core/io/lottie/lottie_importer.hpp:1032
+#: src/core/io/lottie/lottie_importer.hpp:1056
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
 msgstr "复制位图ID: %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:1064
+#: src/core/io/lottie/lottie_importer.hpp:1088
 #, kde-format
 msgid "Duplicate Composition ID: %1"
 msgstr ""

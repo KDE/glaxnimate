@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-09 01:50+0000\n"
+"POT-Creation-Date: 2024-06-20 01:47+0000\n"
 "PO-Revision-Date: 2024-05-02 12:13+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -1070,9 +1070,9 @@ msgid "Could convert %1"
 msgstr "Pourrait convertir %1"
 
 #: src/core/io/aep/aep_loader.cpp:415
-#: src/core/io/lottie/lottie_importer.hpp:879
-#: src/core/io/lottie/lottie_importer.hpp:901
-#: src/core/io/lottie/lottie_importer.hpp:908
+#: src/core/io/lottie/lottie_importer.hpp:903
+#: src/core/io/lottie/lottie_importer.hpp:925
+#: src/core/io/lottie/lottie_importer.hpp:932
 #, kde-format
 msgid "Invalid value for %1"
 msgstr "Valeur non valable pour %1"
@@ -1093,8 +1093,8 @@ msgid "Unknown shape %1"
 msgstr "Forme inconnue %1"
 
 #: src/core/io/aep/aep_loader.cpp:1162
-#: src/core/io/lottie/lottie_importer.hpp:369
-#: src/core/io/lottie/lottie_importer.hpp:381
+#: src/core/io/lottie/lottie_importer.hpp:392
+#: src/core/io/lottie/lottie_importer.hpp:404
 #, kde-format
 msgid "Clip"
 msgstr "Clip"
@@ -1392,75 +1392,75 @@ msgstr "Animation Lottie"
 msgid "Lottie HTML Preview"
 msgstr "Aperçu en « HTML » de Lottie"
 
-#: src/core/io/lottie/lottie_importer.hpp:162
+#: src/core/io/lottie/lottie_importer.hpp:185
 #, kde-format
 msgid "Missing layer type for %1"
 msgstr "Type de calque manquant pour %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:299
+#: src/core/io/lottie/lottie_importer.hpp:322
 #, kde-format
 msgid "Cannot use %1 as parent as it couldn't be loaded"
 msgstr ""
 "Il est impossible d'utiliser %1 comme parent, comme il a été impossible de "
 "le charger"
 
-#: src/core/io/lottie/lottie_importer.hpp:310
+#: src/core/io/lottie/lottie_importer.hpp:333
 #, kde-format
 msgid "Invalid parent layer %1"
 msgstr "Calque parent %1 non valable"
 
-#: src/core/io/lottie/lottie_importer.hpp:436
+#: src/core/io/lottie/lottie_importer.hpp:459
 #, kde-format
 msgid "Unsupported layer of type %1"
 msgstr "Calque non pris en charge de type %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:461
+#: src/core/io/lottie/lottie_importer.hpp:484
 #, kde-format
 msgid "Missing shape type"
 msgstr "Type de forme manquant"
 
-#: src/core/io/lottie/lottie_importer.hpp:474
-#: src/core/io/lottie/lottie_importer.hpp:484
+#: src/core/io/lottie/lottie_importer.hpp:497
+#: src/core/io/lottie/lottie_importer.hpp:507
 #, kde-format
 msgid "Unsupported shape type %1"
 msgstr "Forme non prise en charge de type %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:507
+#: src/core/io/lottie/lottie_importer.hpp:530
 #, kde-format
 msgid "Unknown field %2%1"
 msgstr "Champs %2%1 inconnu"
 
-#: src/core/io/lottie/lottie_importer.hpp:832
+#: src/core/io/lottie/lottie_importer.hpp:856
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
 msgstr "Nœud de Bézier non valable %1 parmi %2"
 
-#: src/core/io/lottie/lottie_importer.hpp:916
+#: src/core/io/lottie/lottie_importer.hpp:940
 #, kde-format
 msgid "Invalid keyframes for %1"
 msgstr "Images-clé non valables pour %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:966
+#: src/core/io/lottie/lottie_importer.hpp:990
 #, kde-format
 msgid "(null)"
 msgstr "(NULL)"
 
-#: src/core/io/lottie/lottie_importer.hpp:972
+#: src/core/io/lottie/lottie_importer.hpp:996
 #, kde-format
 msgid "(empty)"
 msgstr "(vide)"
 
-#: src/core/io/lottie/lottie_importer.hpp:980
+#: src/core/io/lottie/lottie_importer.hpp:1004
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
 msgstr "Impossible de charger la trame clé à %1 pour %2 avec une valeur %3"
 
-#: src/core/io/lottie/lottie_importer.hpp:1032
+#: src/core/io/lottie/lottie_importer.hpp:1056
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
 msgstr "ID d'image matricielle dupliqué : %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:1064
+#: src/core/io/lottie/lottie_importer.hpp:1088
 #, kde-format
 msgid "Duplicate Composition ID: %1"
 msgstr "Identifiant de composition dupliqué : %1"
