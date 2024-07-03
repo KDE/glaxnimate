@@ -276,11 +276,7 @@ set(CPACK_DEBIAN_PACKAGE_SECTION "graphics")
 set(CPACK_DEBIAN_PACKAGE_HOMEPAGE ${PROJECT_HOMEPAGE_URL})
 
 set(CPACK_BUNDLE_NAME ${PROJECT_NAME})
-configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/deploy/bundle.xml.plist"
-    "${CMAKE_CURRENT_BINARY_DIR}/bundle.xml.plist"
-)
-set(CPACK_BUNDLE_PLIST "${CMAKE_CURRENT_BINARY_DIR}/bundle.xml.plist")
+
 set(CPACK_BUNDLE_ICON "${CMAKE_CURRENT_BINARY_DIR}/glaxnimate.icns")
 
 include(CPack)
