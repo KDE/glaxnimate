@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-20 01:47+0000\n"
-"PO-Revision-Date: 2024-06-01 11:42+0200\n"
-"Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
+"PO-Revision-Date: 2024-07-20 19:16+0200\n"
+"Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -77,7 +77,7 @@ msgstr "avrundad"
 #. i18n: Property name
 #, kde-format
 msgid "timing"
-msgstr "tidtagning"
+msgstr "tid"
 
 #. i18n: file: src/core/model/shapes/precomp_layer.hpp
 #. i18n: Property name
@@ -117,7 +117,7 @@ msgstr "multipel"
 #. i18n: Property name
 #, kde-format
 msgid "path"
-msgstr "sökväg"
+msgstr "kontur"
 
 #. i18n: file: src/core/model/shapes/fill.hpp
 #. i18n: Property name
@@ -988,7 +988,7 @@ msgstr "Ta bort animeringar från %1"
 #: src/core/command/animation_commands.cpp:432
 #, kde-format
 msgid "Update animation path"
-msgstr "Uppdatera animeringssökväg"
+msgstr "Uppdatera animeringskontur"
 
 #: src/core/command/animation_commands.hpp:242
 #, kde-format
@@ -1211,7 +1211,7 @@ msgstr "%s stöds inte"
 #: src/core/io/avd/avd_renderer.cpp:518
 #, kde-format
 msgid "%s cannot be a clip path"
-msgstr "%s kan inte vara en klippsökväg"
+msgstr "%s kan inte vara en klippkontur"
 
 #: src/core/io/base.cpp:22 src/core/io/svg/svg_renderer.cpp:822
 #: src/gui/tools/base.cpp:193
@@ -1490,7 +1490,7 @@ msgstr "Uppblåsning/uttömning stöds inte"
 #: src/core/io/lottie/tgs_format.cpp:73
 #, kde-format
 msgid "Offset Path is not supported"
-msgstr "Positionskontur stöds inte"
+msgstr "Positionera kontur stöds inte"
 
 #: src/core/io/lottie/tgs_format.cpp:77
 #, kde-format
@@ -2138,7 +2138,7 @@ msgstr "Bild"
 #: src/core/model/shapes/inflate_deflate.cpp:18
 #, kde-format
 msgid "Inflate and Deflate"
-msgstr "Blås upp och töm ut"
+msgstr "Blås upp och töm ur"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/model/shapes/layer.hpp:81
@@ -2150,7 +2150,7 @@ msgstr "Lager"
 #: src/core/model/shapes/offset_path.cpp:342
 #, kde-format
 msgid "Offset Path"
-msgstr "Positionskontur"
+msgstr "Positionera kontur"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/model/shapes/path.hpp:38
@@ -2215,7 +2215,7 @@ msgstr "Text"
 #: src/core/model/shapes/trim.cpp:24
 #, kde-format
 msgid "Trim Path"
-msgstr "Beskär sökväg"
+msgstr "Beskärningskontur"
 
 #: src/core/model/shapes/zig_zag.cpp:139
 #, kde-format
@@ -2227,7 +2227,7 @@ msgstr "Sicksack"
 #: src/gui/widgets/dialogs/timing_dialog.ui:21
 #, kde-format
 msgid "Timing"
-msgstr "Tidtagning"
+msgstr "Tid"
 
 #: src/core/model/transform.hpp:29
 #, kde-format
@@ -2947,7 +2947,7 @@ msgstr "F7"
 #: src/gui/tools/draw_tool.cpp:184
 #, kde-format
 msgid "Extend Path"
-msgstr "Utökad sökväg"
+msgstr "Utökad kontur"
 
 #: src/gui/tools/draw_tool.cpp:207
 #, kde-format
@@ -3271,7 +3271,7 @@ msgstr "Datakataloger:"
 #: src/gui/widgets/dialogs/about_dialog.ui:297
 #, kde-format
 msgid "Icon Theme Paths:"
-msgstr "Sökvägar från ikontema:"
+msgstr "Sökvägar för ikontema:"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_3)
 #. i18n: ectx: property (text), widget (QTableWidget, view_system)
@@ -3679,7 +3679,7 @@ msgstr "Nyckelord"
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:69
 #, kde-format
 msgid "Custom"
-msgstr "Egna"
+msgstr "Egen"
 
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:82
 #, kde-format
@@ -3768,7 +3768,7 @@ msgstr "\""
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:21
 #, kde-format
 msgid "Follow Path"
-msgstr "Följ sökväg"
+msgstr "Följ kontur"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -3913,7 +3913,7 @@ msgstr "&Sammansättning"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:138
 #, kde-format
 msgid "&Path"
-msgstr "&Sökväg"
+msgstr "&Kontur"
 
 #. i18n: ectx: property (title), widget (QMenu, menu_edit)
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
@@ -4181,7 +4181,7 @@ msgstr "&Markera"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1180
 #, kde-format
 msgid "&Draw Bezier"
-msgstr "&Rita Bezier"
+msgstr "&Rita Bezierkurva"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1195
@@ -4272,7 +4272,7 @@ msgstr "&Vänd"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1360
 #, kde-format
 msgid "Object to &Path"
-msgstr "Objekt till &sökväg"
+msgstr "Objekt till &kontur"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1372
@@ -4308,7 +4308,7 @@ msgstr "&Topp"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1435
 #, kde-format
 msgid "&Smooth"
-msgstr "&Utjämnad"
+msgstr "&Jämn"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1447
@@ -4404,7 +4404,7 @@ msgstr "Åter&ställ vy"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1594
 #, kde-format
 msgid "&Reset Rotation"
-msgstr "Återställ &rotation"
+msgstr "Nollställ &rotation"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1603
@@ -4422,7 +4422,7 @@ msgstr "Z&ooma ut"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1621
 #, kde-format
 msgid "Reset &Zoom"
-msgstr "Återställ &zoomnivå"
+msgstr "Nollställ &zoomnivå"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1630
@@ -4482,7 +4482,7 @@ msgstr "&Flytta till..."
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1720
 #, kde-format
 msgid "Validate &Telegram Sticker"
-msgstr "Validera klistermärken för &Telegram"
+msgstr "Validera &Telegram klistermärke"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1729
@@ -4572,7 +4572,7 @@ msgstr "Ta bort oanvända tillgångar"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1870
 #, kde-format
 msgid "Timing..."
-msgstr "Timing..."
+msgstr "Tid..."
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:1879
@@ -4768,13 +4768,13 @@ msgstr "Spara som mall"
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2173
 #, kde-format
 msgid "&Put on Path"
-msgstr "&Lägg till i sökväg"
+msgstr "&Lägg till i kontur"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2182
 #, kde-format
 msgid "&Remove from Path"
-msgstr "Ta bo&rt från sökväg"
+msgstr "Ta bo&rt från kontur"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2191
@@ -4805,7 +4805,7 @@ msgstr "Exportera som bildsekvens..."
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2229
 #, kde-format
 msgid "Customized Layout"
-msgstr "Anpassad layout"
+msgstr "Egen layout"
 
 #. i18n: ectx: property (text), widget (QSlider, scroll_time)
 #: src/gui/widgets/dialogs/glaxnimate_window.ui:2237
@@ -5010,7 +5010,7 @@ msgstr "Några problem detekterades"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:623
 #, kde-format
 msgid "Validate Telegram Sticker"
-msgstr "Validera klistermärken för Telegram"
+msgstr "Validera Telegram klistermärke"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:667
 #, kde-format
@@ -5103,12 +5103,12 @@ msgstr "Tog bort %1 tillgångar"
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:306
 #, kde-format
 msgid "Convert to path"
-msgstr "Konvertera till sökväg"
+msgstr "Konvertera till kontur"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:308
 #, kde-format
 msgid "Convert %1 to path"
-msgstr "Konvertera %1 till sökväg"
+msgstr "Konvertera %1 till kontur"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:486
 #, kde-format
@@ -5128,12 +5128,12 @@ msgstr "Hoppa över"
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:812
 #, kde-format
 msgid "Put text on path"
-msgstr "Lägg till text i sökväg"
+msgstr "Lägg till text i kontur"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:834
 #, kde-format
 msgid "Remove text from path"
-msgstr "Ta bort text från sökväg"
+msgstr "Ta bort text från kontur"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:240
 #, kde-format
@@ -5648,7 +5648,7 @@ msgstr "Bildalternativ"
 #: src/gui/widgets/dialogs/trace_dialog.ui:307
 #, kde-format
 msgid "Output Color"
-msgstr "Utdatafärg"
+msgstr "Utmatningsfärg"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/trace_dialog.ui:331
@@ -5787,7 +5787,7 @@ msgstr "Kunde inte hitta en tolk"
 #: src/gui/widgets/docks/script_console.ui:71
 #, kde-format
 msgid "Clear Output"
-msgstr "Rensa utdata"
+msgstr "Rensa utmatning"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, check_persist)
 #: src/gui/widgets/docks/script_console.ui:85
@@ -6123,7 +6123,7 @@ msgstr "Upprepa animering"
 #: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
 msgid "Follow Path..."
-msgstr "Följ sökväg..."
+msgstr "Följ kontur..."
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:65
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:177
@@ -6178,7 +6178,7 @@ msgstr "Konvertera till grupp"
 #: src/gui/widgets/menus/node_menu.cpp:279
 #, kde-format
 msgid "Precompose"
-msgstr "Förkomponera"
+msgstr "Försammansätt"
 
 #: src/gui/widgets/menus/node_menu.cpp:285
 #: src/gui/widgets/menus/node_menu.cpp:304
@@ -6199,7 +6199,7 @@ msgstr "Konvertera till lager"
 #: src/gui/widgets/menus/node_menu.cpp:309
 #, kde-format
 msgid "Convert to Path"
-msgstr "Konvertera till sökväg"
+msgstr "Konvertera till kontur"
 
 #: src/gui/widgets/menus/node_menu.cpp:314
 #, kde-format
@@ -6241,7 +6241,7 @@ msgstr "Sönderdela"
 #: src/gui/widgets/menus/node_menu.cpp:396
 #, kde-format
 msgid "Remove from Path"
-msgstr "Ta bort från sökväg"
+msgstr "Ta bort från kontur"
 
 #: src/gui/widgets/menus/node_menu.cpp:410
 #, kde-format
@@ -6287,7 +6287,7 @@ msgstr "Flytta till..."
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Convert to Path"
-msgstr "Konvertera till sökväg"
+msgstr "Konvertera till kontur"
 
 #: src/gui/widgets/menus/node_menu.cpp:496
 #, kde-format
