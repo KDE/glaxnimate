@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-20 01:47+0000\n"
-"PO-Revision-Date: 2024-07-16 20:37+0200\n"
+"PO-Revision-Date: 2024-07-22 19:47+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -1259,51 +1259,53 @@ msgstr "A propiedade %1 de %2 fai referencia ao obxecto inexistente %3"
 #, kde-format
 msgid "Could not load %1 for %2: uuid refers to an unacceptable object"
 msgstr ""
+"Non foi posíbel cargar %1 para %2: o UUID fai referencia a un obxecto "
+"inaceptábel."
 
 #: src/core/io/glaxnimate/import_state.hpp:128
 #, kde-format
 msgid "Object %1 is invalid"
-msgstr ""
+msgstr "O obxecto %1 non é válido."
 
 #: src/core/io/glaxnimate/import_state.hpp:317
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
-msgstr ""
+msgstr "O tipo do obxecto é incorrecto: esperábase «%1» pero obtívose «%2»."
 
 #: src/core/io/glaxnimate/import_state.hpp:323
 #, kde-format
 msgid "Could not load %1 for %2"
-msgstr ""
+msgstr "Non foi posíbel cargar %1 para %2."
 
 #: src/core/io/glaxnimate/import_state.hpp:335
 #, kde-format
 msgid "Could not set property %1"
-msgstr ""
+msgstr "Non foi posíbel definir a propiedade %1."
 
 #: src/core/io/glaxnimate/import_state.hpp:361
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
-msgstr ""
+msgstr "O elemento %1 para %2 en %3 non é un obxecto."
 
 #: src/core/io/glaxnimate/import_state.hpp:373
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
-msgstr ""
+msgstr "O elemento %1 para %2 en %3 non é aceptábel."
 
 #: src/core/io/glaxnimate/import_state.hpp:412
 #, kde-format
 msgid "Keyframe must specify a time"
-msgstr ""
+msgstr "O fotograma clave debe indicar un tempo."
 
 #: src/core/io/glaxnimate/import_state.hpp:417
 #, kde-format
 msgid "Keyframe must specify a value"
-msgstr ""
+msgstr "O fotograma clave debe indicar un valor."
 
 #: src/core/io/glaxnimate/import_state.hpp:427
 #, kde-format
 msgid "Could not add keyframe"
-msgstr ""
+msgstr "Non foi posíbel engadir o fotograma clave."
 
 #: src/core/io/glaxnimate/import_state.hpp:611
 #, kde-format
