@@ -12,6 +12,7 @@
 #include <QPointer>
 #include <QNetworkAccessManager>
 
+#include <KActionCategory>
 #include <KAutoSaveFile>
 
 #include "QtColorWidgets/color_delegate.hpp"
@@ -272,14 +273,14 @@ public:
     void set_brush_reference(model::BrushStyle* sty, bool secondary);
     void trace_dialog(model::DocumentNode* object);
     void mouse_moved(const QPointF& pos);
-    template<class T> void add_modifier_menu_action();
+    template<class T> void add_modifier_menu_action(KActionCategory *collection);
     void show_startup_dialog();
     void drop_file(const QString& file);
     void insert_emoji();
     void style_change_event();
     void import_from_lottiefiles();
 
-    QAction* add_action(const QString &id, const QString &text, const QString &iconName = {}, const QString &toolTip = {}, const QKeySequence &shortcut = {});
+    QAction* add_action(KActionCategory *collection, const QString &id, const QString &text, const QString &iconName = {}, const QString &toolTip = {}, const QKeySequence &shortcut = {});
 
     void setup_file_actions();
     void setup_edit_actions();

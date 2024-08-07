@@ -57,11 +57,11 @@ AlignDock::AlignDock(GlaxnimateWindow *parent)
     combo_align_to->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     align_grid->addWidget(combo_align_to, 0, 0, 1, 3);
 
-    QAction *align_to_selection = parent->actionCollection()->action(QStringLiteral("align_to_selection"));
+    QAction *align_to_selection = parent->action(QStringLiteral("align_to_selection"));
     AlignDock::Private::action_combo(combo_align_to, align_to_selection);
-    QAction *align_to_canvas = parent->actionCollection()->action(QStringLiteral("align_to_canvas"));
+    QAction *align_to_canvas = parent->action(QStringLiteral("align_to_canvas"));
     AlignDock::Private::action_combo(combo_align_to, align_to_canvas);
-    QAction *align_to_canvas_group = parent->actionCollection()->action(QStringLiteral("align_to_canvas_group"));
+    QAction *align_to_canvas_group = parent->action(QStringLiteral("align_to_canvas_group"));
     AlignDock::Private::action_combo(combo_align_to, align_to_canvas_group);
 
     QActionGroup *align_relative = new QActionGroup(parent);
@@ -76,28 +76,28 @@ AlignDock::AlignDock(GlaxnimateWindow *parent)
 
 
     int row = 1;
-    QAction *align_hor_left = parent->actionCollection()->action(QStringLiteral("align_hor_left"));
+    QAction *align_hor_left = parent->action(QStringLiteral("align_hor_left"));
     align_grid->addWidget(AlignDock::Private::action_button(align_hor_left, widget()),         row, 0);
-    QAction *align_hor_center = parent->actionCollection()->action(QStringLiteral("align_hor_center"));
+    QAction *align_hor_center = parent->action(QStringLiteral("align_hor_center"));
     align_grid->addWidget(AlignDock::Private::action_button(align_hor_center, widget()),       row, 1);
-    QAction *align_hor_right = parent->actionCollection()->action(QStringLiteral("align_hor_right"));
+    QAction *align_hor_right = parent->action(QStringLiteral("align_hor_right"));
     align_grid->addWidget(AlignDock::Private::action_button(align_hor_right, widget()),        row, 2);
     row++;
-    QAction *hor_left_out = parent->actionCollection()->action(QStringLiteral("align_hor_left_out"));
+    QAction *hor_left_out = parent->action(QStringLiteral("align_hor_left_out"));
     align_grid->addWidget(AlignDock::Private::action_button(hor_left_out, widget()),     row, 0);
-    QAction *hor_right_out = parent->actionCollection()->action(QStringLiteral("align_hor_right_out"));
+    QAction *hor_right_out = parent->action(QStringLiteral("align_hor_right_out"));
     align_grid->addWidget(AlignDock::Private::action_button(hor_right_out, widget()),    row, 2);
     row++;
-    QAction *align_vert_top = parent->actionCollection()->action(QStringLiteral("align_vert_top"));
+    QAction *align_vert_top = parent->action(QStringLiteral("align_vert_top"));
     align_grid->addWidget(AlignDock::Private::action_button(align_vert_top, widget()),         row, 0);
-    QAction *align_vert_center = parent->actionCollection()->action(QStringLiteral("align_vert_center"));
+    QAction *align_vert_center = parent->action(QStringLiteral("align_vert_center"));
     align_grid->addWidget(AlignDock::Private::action_button(align_vert_center, widget()),      row, 1);
-    QAction *align_vert_bottom = parent->actionCollection()->action(QStringLiteral("align_vert_bottom"));
+    QAction *align_vert_bottom = parent->action(QStringLiteral("align_vert_bottom"));
     align_grid->addWidget(AlignDock::Private::action_button(align_vert_bottom, widget()),      row, 2);
     row++;
-    QAction *vert_top_out = parent->actionCollection()->action(QStringLiteral("align_vert_top_out"));
+    QAction *vert_top_out = parent->action(QStringLiteral("align_vert_top_out"));
     align_grid->addWidget(AlignDock::Private::action_button(vert_top_out, widget()),     row, 0);
-    QAction *vert_bottom_out = parent->actionCollection()->action(QStringLiteral("align_vert_bottom_out"));
+    QAction *vert_bottom_out = parent->action(QStringLiteral("align_vert_bottom_out"));
     align_grid->addWidget(AlignDock::Private::action_button(vert_bottom_out, widget()),  row, 2);
     row++;
     align_grid->addItem(new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding),        row, 0);

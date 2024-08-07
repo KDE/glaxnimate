@@ -19,6 +19,7 @@
 #include <QStatusBar>
 
 #include <KHelpMenu>
+#include <KActionCategory>
 #include <KActionCollection>
 #include <KShortcutsDialog>
 #include <KSharedConfig>
@@ -127,14 +128,17 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     setup_layers_actions();
 
     // Actions: Text
-    QAction *textOnPath = add_action(QStringLiteral("text_put_on_path"), i18n("Put on Path"), QStringLiteral("text-put-on-path"));
+    KActionCategory *textActions = new KActionCategory(i18n("Text"), parent->actionCollection());
+
+    QAction *textOnPath = add_action(textActions, QStringLiteral("text_put_on_path"), i18n("Put on Path"), QStringLiteral("text-put-on-path"));
     connect(textOnPath, &QAction::triggered, parent, [this]{text_put_on_path();});
 
-    QAction *textRemovePath = add_action(QStringLiteral("text_remove_from_path"), i18n("Remove from Path"), QStringLiteral("text-remove-from-path"));
+    QAction *textRemovePath = add_action(textActions, QStringLiteral("text_remove_from_path"), i18n("Remove from Path"), QStringLiteral("text-remove-from-path"));
     connect(textRemovePath, &QAction::triggered, parent, [this]{text_remove_from_path();});
 
     // Actions: Misc
-    add_action(QStringLiteral("new_layer_color"), i18n("Solid Color Layer"), QStringLiteral("object-fill"));
+    QAction *solidColorLayer = new QAction(QIcon::fromTheme(QStringLiteral("object-fill")), i18n("Solid Color Layer"), parent);
+    parent->actionCollection()->addAction(QStringLiteral("new_layer_color"), solidColorLayer);
 
     // Main Window
     parent->setupGUI();
@@ -199,7 +203,7 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     case LayoutPreset::Custom:
         layout_auto();
         app::settings::set("ui", "layout", int(LayoutPreset::Custom));
-        QAction *layoutCustom = parent->actionCollection()->action(QStringLiteral("layout_custom"));
+        QAction *layoutCustom = parent->action(QStringLiteral("layout_custom"));
         layoutCustom->setChecked(true);
         break;
     }
@@ -232,9 +236,9 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
 }
 
 template<class T>
-void GlaxnimateWindow::Private::add_modifier_menu_action()
+void GlaxnimateWindow::Private::add_modifier_menu_action(KActionCategory *collection)
 {
-    QAction *action = add_action("new_" + T::static_class_name().toLower(), T::static_type_name_human());
+    QAction *action = add_action(collection, "new_" + T::static_class_name().toLower(), T::static_type_name_human());
     action->setIcon(T::static_tree_icon());
     connect(action, &QAction::triggered, [this]{
         auto layer = std::make_unique<T>(current_document.get());
@@ -242,7 +246,7 @@ void GlaxnimateWindow::Private::add_modifier_menu_action()
     });
 }
 
-QAction* GlaxnimateWindow::Private::add_action(const QString &id, const QString &text, const QString &iconName, const QString &toolTip, const QKeySequence &shortcut)
+QAction* GlaxnimateWindow::Private::add_action(KActionCategory *category, const QString &id, const QString &text, const QString &iconName, const QString &toolTip, const QKeySequence &shortcut)
 {
     QAction *action = new QAction(parent);
     action->setText(text);
@@ -250,8 +254,8 @@ QAction* GlaxnimateWindow::Private::add_action(const QString &id, const QString 
     if (!iconName.isEmpty()) {
         action->setIcon(QIcon::fromTheme(iconName));
     }
-    parent->actionCollection()->addAction(id, action);
     parent->actionCollection()->setDefaultShortcut(action, shortcut);
+    category->addAction(id, action);
     return action;
 }
 
@@ -259,19 +263,21 @@ void GlaxnimateWindow::Private::setup_file_actions()
 {
     //QAction *clearAction = add_action(QStringLiteral("clear"), i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
 
+    KActionCategory *fileActions = new KActionCategory(i18n("File"), parent->actionCollection());
+
     // File
-    KStandardAction::openNew(parent, &GlaxnimateWindow::document_new, parent->actionCollection());
-    KStandardAction::open(parent, &GlaxnimateWindow::document_open_dialog, parent->actionCollection());
-    QAction *importImage = add_action(QStringLiteral("import_image"), i18n("Add Image…"), QStringLiteral("insert-image"), {}, Qt::CTRL | Qt::Key_I);
+    fileActions->addAction(KStandardAction::New, parent, SLOT(document_new()));
+    fileActions->addAction(KStandardAction::Open, parent, SLOT(document_open_dialog()));
+    QAction *importImage = add_action(fileActions, QStringLiteral("import_image"), i18n("Add Image…"), QStringLiteral("insert-image"), {}, Qt::CTRL | Qt::Key_I);
     connect(importImage, &QAction::triggered, parent, [this]{import_image();});
 
-    QAction *documentImport = add_action(QStringLiteral("import"), i18n("Import…"), QStringLiteral("document-import"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_I);
+    QAction *documentImport = add_action(fileActions, QStringLiteral("import"), i18n("Import…"), QStringLiteral("document-import"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_I);
     connect(documentImport, &QAction::triggered, parent, [this]{import_file();});
 
-    QAction *importLottie = add_action(QStringLiteral("open_lottiefiles"), i18n("Import from LottieFiles…"), QStringLiteral("lottiefiles"));
+    QAction *importLottie = add_action(fileActions, QStringLiteral("open_lottiefiles"), i18n("Import from LottieFiles…"), QStringLiteral("lottiefiles"));
     connect(importLottie, &QAction::triggered, parent, [this]{import_from_lottiefiles();});
 
-    QAction *openLast = add_action(QStringLiteral("open_last"), i18n("Open Most Recent"), QStringLiteral("document-open-recent"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_O);
+    QAction *openLast = add_action(fileActions, QStringLiteral("open_last"), i18n("Open Most Recent"), QStringLiteral("document-open-recent"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_O);
     connect(openLast, &QAction::triggered, parent, [this]{
         QList<QUrl> recent_file_urls = m_recentFilesAction->urls();
         if ( !recent_file_urls.isEmpty() )
@@ -282,16 +288,18 @@ void GlaxnimateWindow::Private::setup_file_actions()
         }
     });
 
-    m_recentFilesAction = KStandardAction::openRecent(parent, &GlaxnimateWindow::document_open_recent, parent->actionCollection());
+    m_recentFilesAction = KStandardAction::openRecent(parent, &GlaxnimateWindow::document_open_recent, fileActions);
+    fileActions->addAction(KStandardAction::name(KStandardAction::OpenRecent), m_recentFilesAction);
     connect(m_recentFilesAction, &KRecentFilesAction::enabledChanged, openLast, &QAction::setEnabled);
 
     m_recentFilesAction->loadEntries(KConfigGroup(KSharedConfig::openConfig(), QString()));
 
-    QAction *revertAction = KStandardAction::revert(parent, &GlaxnimateWindow::document_reload, parent->actionCollection());
+    QAction *revertAction = fileActions->addAction(KStandardAction::Revert, parent, SLOT(document_reload()));
+
     KActionCollection::setDefaultShortcut(revertAction, Qt::CTRL | Qt::Key_F5);
-    KStandardAction::save(parent, &GlaxnimateWindow::document_save, parent->actionCollection());
-    KStandardAction::saveAs(parent,&GlaxnimateWindow::document_save_as, parent->actionCollection());
-    QAction *saveAsTemplate = add_action(QStringLiteral("save_as_template"), i18n("Save as Template"), QStringLiteral("document-save-as-template"));
+    fileActions->addAction(KStandardAction::Save, parent, SLOT(document_save()));
+    fileActions->addAction(KStandardAction::SaveAs, parent, SLOT(document_save_as()));
+    QAction *saveAsTemplate = add_action(fileActions, QStringLiteral("save_as_template"), i18n("Save as Template"), QStringLiteral("document-save-as-template"));
     connect(saveAsTemplate, &QAction::triggered, parent, [this]{
         bool ok = true;
 
@@ -306,13 +314,13 @@ void GlaxnimateWindow::Private::setup_file_actions()
         comp->name.set(old_name);
     });
 
-    QAction *documentExport = add_action(QStringLiteral("export"), i18n("Export…"), QStringLiteral("document-export"), {}, Qt::CTRL | Qt::Key_E);
+    QAction *documentExport = add_action(fileActions, QStringLiteral("export"), i18n("Export…"), QStringLiteral("document-export"), {}, Qt::CTRL | Qt::Key_E);
     connect(documentExport, &QAction::triggered, parent, &GlaxnimateWindow::document_export);
 
-    QAction *exportAs = add_action(QStringLiteral("export_as"), i18n("Export As…"), QStringLiteral("document-export"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_E);
+    QAction *exportAs = add_action(fileActions, QStringLiteral("export_as"), i18n("Export As…"), QStringLiteral("document-export"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_E);
     connect(exportAs, &QAction::triggered, parent, &GlaxnimateWindow::document_export_as);
 
-    QAction *exportSequence = add_action(QStringLiteral("export_sequence"), i18n("Export as Image Sequence…"), QStringLiteral("folder-images"));
+    QAction *exportSequence = add_action(fileActions, QStringLiteral("export_sequence"), i18n("Export as Image Sequence…"), QStringLiteral("folder-images"));
     connect(exportSequence, &QAction::triggered, parent, &GlaxnimateWindow::document_export_sequence);
 
     KStandardAction::close(parent, &GlaxnimateWindow::close, parent->actionCollection());
@@ -321,31 +329,33 @@ void GlaxnimateWindow::Private::setup_file_actions()
 
 void GlaxnimateWindow::Private::setup_edit_actions()
 {
-    QAction *undo = KStandardAction::create(KStandardAction::Undo, &parent->undo_group(), &QUndoGroup::undo,parent->actionCollection());
+    KActionCategory *editActions = new KActionCategory(i18n("Edit"), parent->actionCollection());
+
+    QAction *undo = editActions->addAction(KStandardAction::Undo, &parent->undo_group(), SLOT(undo()));
     QObject::connect(&parent->undo_group(), &QUndoGroup::canUndoChanged, undo, &QAction::setEnabled);
     QObject::connect(&parent->undo_group(), &QUndoGroup::undoTextChanged, undo, [this, undo](const QString& s){
         undo->setText(i18n("Undo %1", s));
     });
 
-    QAction *redo = KStandardAction::create(KStandardAction::Redo, &parent->undo_group(), &QUndoGroup::undo,parent->actionCollection());
+    QAction *redo = editActions->addAction(KStandardAction::Redo, &parent->undo_group(), SLOT(undo()));
     QObject::connect(&parent->undo_group(), &QUndoGroup::canRedoChanged, redo, &QAction::setEnabled);
     QObject::connect(&parent->undo_group(), &QUndoGroup::redoTextChanged, redo, [this, redo](const QString& s){
         redo->setText(i18n("Redo %1", s));
     });
-    KStandardAction::cut(parent, &GlaxnimateWindow::cut, parent->actionCollection());
-    KStandardAction::copy(parent, &GlaxnimateWindow::copy, parent->actionCollection());
-    KStandardAction::paste(parent, &GlaxnimateWindow::paste, parent->actionCollection());
+    editActions->addAction(KStandardAction::Cut, parent, SLOT(cut()));
+    editActions->addAction(KStandardAction::Copy, parent, SLOT(copy()));
+    editActions->addAction(KStandardAction::Paste, parent, SLOT(paste()));
 
     // edit_paste_as_completion
-    QAction *pasteAsComposition = add_action(QStringLiteral("edit_paste_as_composition"), i18n("Paste as Composition"), QStringLiteral("special_paste"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_V);
+    QAction *pasteAsComposition = add_action(editActions, QStringLiteral("edit_paste_as_composition"), i18n("Paste as Composition"), QStringLiteral("special_paste"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_V);
     connect(pasteAsComposition, &QAction::triggered, parent, [this]{parent->paste_as_composition();});
 
-    QAction *duplicate = add_action(QStringLiteral("duplicate"), i18n("Duplicate"), QStringLiteral("edit-duplicate"), {}, Qt::CTRL | Qt::Key_D);
+    QAction *duplicate = add_action(editActions, QStringLiteral("duplicate"), i18n("Duplicate"), QStringLiteral("edit-duplicate"), {}, Qt::CTRL | Qt::Key_D);
     connect(duplicate, &QAction::triggered, parent, &GlaxnimateWindow::duplicate_selection);
 
-    QAction *selectAll = KStandardAction::selectAll(parent->actionCollection());
+    QAction *selectAll = editActions->addAction(KStandardAction::SelectAll);
     selectAll->setEnabled(false);
-    QAction *editDelete = add_action(QStringLiteral("edit_delete"), i18n("Delete"), QStringLiteral("edit-delete"), {}, Qt::Key_Delete);
+    QAction *editDelete = add_action(editActions, QStringLiteral("edit_delete"), i18n("Delete"), QStringLiteral("edit-delete"), {}, Qt::Key_Delete);
     connect(editDelete, &QAction::triggered, [this](){
         if (active_tool->id() == QStringLiteral("edit")) {
             parent->action(QStringLiteral("node_remove"))->trigger();
@@ -360,6 +370,8 @@ void GlaxnimateWindow::Private::setup_edit_actions()
 
 tools::Tool* GlaxnimateWindow::Private::setup_tools_actions()
 {
+    KActionCategory *toolActions = new KActionCategory(i18n("Tools"), parent->actionCollection());
+
     // Tool Actions
     QActionGroup *tool_actions = new QActionGroup(parent);
     tool_actions->setExclusive(true);
@@ -369,7 +381,7 @@ tools::Tool* GlaxnimateWindow::Private::setup_tools_actions()
     {
         for ( const auto& tool : grp.second )
         {
-            QAction *action = add_action(tool.second->action_name(), tool.second->name());
+            QAction *action = add_action(toolActions, tool.second->action_name(), tool.second->name());
             action->setIcon(tool.second->icon());
             action->setShortcut(tool.second->key_sequence());
             action->setCheckable(true);
@@ -392,81 +404,87 @@ tools::Tool* GlaxnimateWindow::Private::setup_tools_actions()
 
 void GlaxnimateWindow::Private::setup_view_actions()
 {
+    KActionCategory *viewActions = new KActionCategory(i18n("View"), parent->actionCollection());
+
     QActionGroup *layout_actions = new QActionGroup(parent);
     layout_actions->setExclusive(true);
 
-    QAction *layoutCustom = add_action(QStringLiteral("layout_custom"), i18n("Custom"), {}, QStringLiteral("Customized Layout"));
+    QAction *layoutCustom = add_action(viewActions, QStringLiteral("layout_custom"), i18n("Custom"), {}, QStringLiteral("Customized Layout"));
     layoutCustom->setActionGroup(layout_actions);
     layoutCustom->setCheckable(true);
 
     connect(layoutCustom, &QAction::triggered, parent, [this]{layout_update();});
 
-    QAction *layoutAuto = add_action(QStringLiteral("layout_automatic"), i18n("Automatic"), {}, QStringLiteral("Determines the best layout based on screen size"));
+    QAction *layoutAuto = add_action(viewActions, QStringLiteral("layout_automatic"), i18n("Automatic"), {}, QStringLiteral("Determines the best layout based on screen size"));
     layoutAuto->setActionGroup(layout_actions);
     layoutAuto->setCheckable(true);
     connect(layoutAuto, &QAction::triggered, parent, [this]{layout_update();});
 
-    QAction *layoutWide = add_action(QStringLiteral("layout_wide"), i18n("Wide"), {}, QStringLiteral("Layout best suited for larger screens"));
+    QAction *layoutWide = add_action(viewActions, QStringLiteral("layout_wide"), i18n("Wide"), {}, QStringLiteral("Layout best suited for larger screens"));
     layoutWide->setActionGroup(layout_actions);
     layoutWide->setCheckable(true);
     connect(layoutWide, &QAction::triggered, parent, [this]{layout_update();});
 
-    QAction *layoutMedium = add_action(QStringLiteral("layout_medium"), i18n("Medium"), {}, QStringLiteral("More compact than Wide but larger than Compact"));
+    QAction *layoutMedium = add_action(viewActions, QStringLiteral("layout_medium"), i18n("Medium"), {}, QStringLiteral("More compact than Wide but larger than Compact"));
     layoutMedium->setActionGroup(layout_actions);
     layoutMedium->setCheckable(true);
     connect(layoutMedium, &QAction::triggered, parent, [this]{layout_update();});
 
-    QAction *layoutCompact = add_action(QStringLiteral("layout_compact"), i18n("Compact"), {}, QStringLiteral("Layout best suited for smaller screens"));
+    QAction *layoutCompact = add_action(viewActions, QStringLiteral("layout_compact"), i18n("Compact"), {}, QStringLiteral("Layout best suited for smaller screens"));
     layoutCompact->setActionGroup(layout_actions);
     layoutCompact->setCheckable(true);
     connect(layoutCompact, &QAction::triggered, parent, [this]{layout_update();});
 
 
-    KStandardAction::zoomIn(canvas, &Canvas::zoom_in, parent->actionCollection());
-    KStandardAction::zoomOut(canvas, &Canvas::zoom_out, parent->actionCollection());
-    KStandardAction::fitToPage(parent, &GlaxnimateWindow::view_fit, parent->actionCollection());
-    KStandardAction::actualSize(canvas, &Canvas::reset_zoom, parent->actionCollection());
-    QAction *toolResetRotation = add_action(QStringLiteral("view_reset_rotation"), i18n("Reset Rotation"), QStringLiteral("rotation-allowed"));
+    viewActions->addAction(KStandardAction::ZoomIn, canvas, SLOT(zoom_in()));
+    viewActions->addAction(KStandardAction::ZoomOut, canvas, SLOT(zoom_out()));
+    viewActions->addAction(KStandardAction::FitToPage, parent, SLOT(view_fit()));
+    viewActions->addAction(KStandardAction::ActualSize, canvas, SLOT(reset_zoom()));
+
+    QAction *toolResetRotation = add_action(viewActions, QStringLiteral("view_reset_rotation"), i18n("Reset Rotation"), QStringLiteral("rotation-allowed"));
     connect(toolResetRotation, &QAction::triggered, canvas, &Canvas::reset_rotation);
-    QAction *toolFlipView = add_action(QStringLiteral("flip_view"), i18n("Flip View"), QStringLiteral("object-flip-horizontal"));
+    QAction *toolFlipView = add_action(viewActions, QStringLiteral("flip_view"), i18n("Flip View"), QStringLiteral("object-flip-horizontal"));
     connect(toolFlipView, &QAction::triggered, canvas, &Canvas::flip_horizontal);
 }
 
 void GlaxnimateWindow::Private::setup_document_actions()
 {
-    QAction *renderRaster = add_action(QStringLiteral("render_frame_raster"), i18n("Raster…"), QStringLiteral("image-png"));
-    QAction *renderSvg = add_action(QStringLiteral("render_frame_svg"), i18n("SVG…"), QStringLiteral("image-svg+xml"));
+    KActionCategory *documentActions = new KActionCategory(i18n("Document"), parent->actionCollection());
 
-    QAction *previewLottie = add_action(QStringLiteral("lottie_preview"), i18n("Lottie (SVG)"));
+    // TODO
+    QAction *renderRaster = add_action(documentActions, QStringLiteral("render_frame_raster"), i18n("Raster…"), QStringLiteral("image-png"));
+    QAction *renderSvg = add_action(documentActions, QStringLiteral("render_frame_svg"), i18n("SVG…"), QStringLiteral("image-svg+xml"));
+
+    QAction *previewLottie = add_action(documentActions, QStringLiteral("lottie_preview"), i18n("Lottie (SVG)"));
     connect(previewLottie, &QAction::triggered, parent, [this]{preview_lottie("svg");});
 
-    QAction *previewLottieCanvas = add_action(QStringLiteral("lottie_canvas_preview"), i18n("Lottie (canvas)"));
+    QAction *previewLottieCanvas = add_action(documentActions, QStringLiteral("lottie_canvas_preview"), i18n("Lottie (canvas)"));
     connect(previewLottieCanvas, &QAction::triggered, parent, [this]{preview_lottie("canvas");});
 
-    QAction *previewSvg = add_action(QStringLiteral("svg_preview"), i18n("SVG (SMIL)"));
+    QAction *previewSvg = add_action(documentActions, QStringLiteral("svg_preview"), i18n("SVG (SMIL)"));
     connect(previewSvg, &QAction::triggered, parent, [this]{preview_svg();});
 
-    QAction *previewRive = add_action(QStringLiteral("rive_preview"), i18n("RIVE (canvas)"));
+    QAction *previewRive = add_action(documentActions, QStringLiteral("rive_preview"), i18n("RIVE (canvas)"));
     connect(previewRive, &QAction::triggered, parent, [this]{preview_rive();});
 
-    QAction *validateTgs = add_action(QStringLiteral("validate_tgs"), i18n("Validate Telegram Sticker"), QStringLiteral("telegram"));
+    QAction *validateTgs = add_action(documentActions, QStringLiteral("validate_tgs"), i18n("Validate Telegram Sticker"), QStringLiteral("telegram"));
     connect(validateTgs, &QAction::triggered, parent, &GlaxnimateWindow::validate_tgs);
 
-    QAction *validateDiscord = add_action(QStringLiteral("validate_discord"), i18n("Validate Discord Sticker"), QStringLiteral("discord"));
+    QAction *validateDiscord = add_action(documentActions, QStringLiteral("validate_discord"), i18n("Validate Discord Sticker"), QStringLiteral("discord"));
     connect(validateDiscord, &QAction::triggered, parent, [this]{validate_discord();});
 
-    QAction *documentResize = add_action(QStringLiteral("document_resize"), i18n("Resize…"), QStringLiteral("transform-scale"));
+    QAction *documentResize = add_action(documentActions, QStringLiteral("document_resize"), i18n("Resize…"), QStringLiteral("transform-scale"));
     connect(documentResize, &QAction::triggered, parent, [this]{ ResizeDialog(this->parent).resize_composition(comp); });
 
-    QAction *documentCleanup = add_action(QStringLiteral("document_cleanup"), i18n("Cleanup"), QStringLiteral("document-cleanup"), QStringLiteral("Remove unused assets"));
+    QAction *documentCleanup = add_action(documentActions, QStringLiteral("document_cleanup"), i18n("Cleanup"), QStringLiteral("document-cleanup"), QStringLiteral("Remove unused assets"));
     connect(documentCleanup, &QAction::triggered, parent, [this]{cleanup_document();});
 
-    QAction *documentTiming = add_action(QStringLiteral("document_timing"), i18n("Timing…"), QStringLiteral("player-time"));
+    QAction *documentTiming = add_action(documentActions, QStringLiteral("document_timing"), i18n("Timing…"), QStringLiteral("player-time"));
     connect(documentTiming, &QAction::triggered, parent, [this]{
         TimingDialog(comp, this->parent).exec();
     });
 
-    QAction *documentMetadata = add_action(QStringLiteral("document_metadata"), i18n("Metadata…"), QStringLiteral("documentinfo"));
+    QAction *documentMetadata = add_action(documentActions, QStringLiteral("document_metadata"), i18n("Metadata…"), QStringLiteral("documentinfo"));
     connect(documentMetadata, &QAction::triggered, parent, [this]{
         DocumentMetadataDialog(current_document.get(), this->parent).exec();
     });
@@ -474,24 +492,27 @@ void GlaxnimateWindow::Private::setup_document_actions()
 
 void GlaxnimateWindow::Private::setup_playback_actions()
 {
-    add_action(QStringLiteral("play"), i18n("Play"), QStringLiteral("media-playback-start"), {}, Qt::Key_Space);
+    KActionCategory *playbackActions = new KActionCategory(i18n("Playback"), parent->actionCollection());
 
-    add_action(QStringLiteral("play_loop"), i18n("Loop"), QStringLiteral("media-playlist-repeat"));
 
-    add_action(QStringLiteral("record"), i18n("Record Keyframes"), QStringLiteral("media-record"));
+    add_action(playbackActions, QStringLiteral("play"), i18n("Play"), QStringLiteral("media-playback-start"), {}, Qt::Key_Space);
 
-    add_action(QStringLiteral("frame_first"), i18n("Jump to Start"), QStringLiteral("go-first"));
+    add_action(playbackActions, QStringLiteral("play_loop"), i18n("Loop"), QStringLiteral("media-playlist-repeat"));
 
-    add_action(QStringLiteral("frame_last"), i18n("Jump to End"), QStringLiteral("go-last"));
+    add_action(playbackActions, QStringLiteral("record"), i18n("Record Keyframes"), QStringLiteral("media-record"));
 
-    add_action(QStringLiteral("frame_next"), i18n("Next Frame"), QStringLiteral("go-next"), {}, Qt::Key_Right);
+    add_action(playbackActions, QStringLiteral("frame_first"), i18n("Jump to Start"), QStringLiteral("go-first"));
 
-    add_action(QStringLiteral("frame_prev"), i18n("Previous Frame"), QStringLiteral("go-previous"), {}, Qt::Key_Left);
+    add_action(playbackActions, QStringLiteral("frame_last"), i18n("Jump to End"), QStringLiteral("go-last"));
+
+    add_action(playbackActions, QStringLiteral("frame_next"), i18n("Next Frame"), QStringLiteral("go-next"), {}, Qt::Key_Right);
+
+    add_action(playbackActions, QStringLiteral("frame_prev"), i18n("Previous Frame"), QStringLiteral("go-previous"), {}, Qt::Key_Left);
 }
 
 void GlaxnimateWindow::Private::connect_playback_actions()
 {
-    QAction *play = parent->actionCollection()->action(QStringLiteral("play"));
+    QAction *play = parent->action(QStringLiteral("play"));
     connect(play, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::toggle_play);
     connect(timeline_dock->playControls(), &FrameControlsWidget::play_started, parent, [play]{
         play->setText(i18n("Pause"));
@@ -501,25 +522,25 @@ void GlaxnimateWindow::Private::connect_playback_actions()
         play->setText(i18n("Play"));
         play->setIcon(QIcon::fromTheme("media-playback-start"));
     });
-    QAction *record = parent->actionCollection()->action(QStringLiteral("record"));
+    QAction *record = parent->action(QStringLiteral("record"));
     connect(timeline_dock->playControls(), &FrameControlsWidget::record_toggled, record, &QAction::setChecked);
 
-    QAction *playLoop = parent->actionCollection()->action(QStringLiteral("play_loop"));
+    QAction *playLoop = parent->action(QStringLiteral("play_loop"));
     connect(timeline_dock->playControls(), &FrameControlsWidget::loop_changed, playLoop, &QAction::setChecked);
     connect(playLoop, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::set_loop);
 
     connect(record, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::set_record_enabled);
 
-    QAction *frameFirst = parent->actionCollection()->action(QStringLiteral("frame_first"));
+    QAction *frameFirst = parent->action(QStringLiteral("frame_first"));
     connect(frameFirst, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::go_first);
 
-    QAction *frameLast = parent->actionCollection()->action(QStringLiteral("frame_last"));
+    QAction *frameLast = parent->action(QStringLiteral("frame_last"));
     connect(frameLast, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::go_last);
 
-    QAction *frameNext = parent->actionCollection()->action(QStringLiteral("frame_next"));
+    QAction *frameNext = parent->action(QStringLiteral("frame_next"));
     connect(frameNext, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::go_next);
 
-    QAction *framePrev = parent->actionCollection()->action(QStringLiteral("frame_prev"));
+    QAction *framePrev = parent->action(QStringLiteral("frame_prev"));
     connect(framePrev, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::go_prev);
 
     connect(timeline_dock->playControls(),   &FrameControlsWidget::min_changed,    time_slider_dock->playControls(), &FrameControlsWidget::set_min);
@@ -540,38 +561,41 @@ void GlaxnimateWindow::Private::connect_playback_actions()
 
 void GlaxnimateWindow::Private::setup_layers_actions()
 {
-    add_modifier_menu_action<model::Repeater>();
-    add_modifier_menu_action<model::Trim>();
-    add_modifier_menu_action<model::InflateDeflate>();
-    add_modifier_menu_action<model::RoundCorners>();
-    add_modifier_menu_action<model::OffsetPath>();
-    add_modifier_menu_action<model::ZigZag>();
+    KActionCategory *layersActions = new KActionCategory(i18n("Layers"), parent->actionCollection());
 
-    QAction *newPrecompSelection = add_action(QStringLiteral("new_precomp_selection"), i18n("Precompose Selection"), QStringLiteral("archive-extract"));
+    add_modifier_menu_action<model::Repeater>(layersActions);
+    add_modifier_menu_action<model::Trim>(layersActions);
+    add_modifier_menu_action<model::InflateDeflate>(layersActions);
+    add_modifier_menu_action<model::RoundCorners>(layersActions);
+    add_modifier_menu_action<model::OffsetPath>(layersActions);
+    add_modifier_menu_action<model::ZigZag>(layersActions);
+
+    QAction *newPrecompSelection = add_action(layersActions, QStringLiteral("new_precomp_selection"), i18n("Precompose Selection"), QStringLiteral("archive-extract"));
     connect(newPrecompSelection, &QAction::triggered, parent, [this]{
         objects_to_new_composition(comp, cleaned_selection(), &comp->shapes, -1);
     });
-    QAction *newComp = add_action(QStringLiteral("new_comp"), i18n("New Composition"), QStringLiteral("folder-video"));
+    QAction *newComp = add_action(layersActions, QStringLiteral("new_comp"), i18n("New Composition"), QStringLiteral("folder-video"));
     connect(newComp, &QAction::triggered, parent, [this]{add_composition();});
 
     // TODO
-    QAction *newPrecomp = add_action(QStringLiteral("new_precomp"), i18n("Precomposition Layer"), QStringLiteral("video-x-generic"));
+    QAction *newPrecomp = add_action(layersActions, QStringLiteral("new_precomp"), i18n("Precomposition Layer"), QStringLiteral("video-x-generic"));
 
-    QAction *newLayer = add_action(QStringLiteral("new_layer"), i18n("Layer"), QStringLiteral("folder"));
+    QAction *newLayer = add_action(layersActions, QStringLiteral("new_layer"), i18n("Layer"), QStringLiteral("folder"));
     connect(newLayer, &QAction::triggered, parent, [this]{layer_new_layer();});
 
-    add_action(QStringLiteral("new_layer_empty"), i18n("Empty Layer"), QStringLiteral("transform-move"));
+    // TODO
+    QAction *emptyLayer = add_action(layersActions, QStringLiteral("new_layer_empty"), i18n("Empty Layer"), QStringLiteral("transform-move"));
 
-    QAction *newGroup = add_action(QStringLiteral("new_layer_group"), i18n("Group"), QStringLiteral("shapes-symbolic"));
+    QAction *newGroup = add_action(layersActions, QStringLiteral("new_layer_group"), i18n("Group"), QStringLiteral("shapes-symbolic"));
     connect(newGroup, &QAction::triggered, parent, [this]{layer_new_group();});
 
-    QAction *newFill = add_action(QStringLiteral("new_fill"), i18n("Fill"), QStringLiteral("format-fill-color"));
+    QAction *newFill = add_action(layersActions, QStringLiteral("new_fill"), i18n("Fill"), QStringLiteral("format-fill-color"));
     connect(newFill, &QAction::triggered, parent, [this]{layer_new_fill();});
 
-    QAction *newStroke = add_action(QStringLiteral("new_stroke"), i18n("Stroke"), QStringLiteral("object-stroke-style"));
+    QAction *newStroke = add_action(layersActions, QStringLiteral("new_stroke"), i18n("Stroke"), QStringLiteral("object-stroke-style"));
     connect(newStroke, &QAction::triggered, parent, [this]{layer_new_stroke();});
 
-    QAction *insertEmoji = add_action(QStringLiteral("insert_emoji"), i18n("Emoji…"), QStringLiteral("smiley-shape"));
+    QAction *insertEmoji = add_action(layersActions, QStringLiteral("insert_emoji"), i18n("Emoji…"), QStringLiteral("smiley-shape"));
     connect(insertEmoji, &QAction::triggered, parent, [this]{insert_emoji();});
 #ifdef Q_OS_WIN32
     // Can't get emoji_data.cpp to compile on windows for qt6 for some reason
@@ -582,98 +606,105 @@ void GlaxnimateWindow::Private::setup_layers_actions()
 
 void GlaxnimateWindow::Private::setup_object_actions()
 {
-    QAction *raiseToTop = add_action(QStringLiteral("object_raise_to_top"), i18n("Raise to Top"), QStringLiteral("layer-top"), {}, Qt::Key_Home);
+    KActionCategory *objectActions = new KActionCategory(i18n("Object"), parent->actionCollection());
+
+    QAction *raiseToTop = add_action(objectActions, QStringLiteral("object_raise_to_top"), i18n("Raise to Top"), QStringLiteral("layer-top"), {}, Qt::Key_Home);
     connect(raiseToTop, &QAction::triggered, parent, &GlaxnimateWindow::document_reload);
 
-    QAction *raise = add_action(QStringLiteral("object_raise"), i18n("Raise"), QStringLiteral("layer-raise"), {}, Qt::Key_PageUp);
+    QAction *raise = add_action(objectActions, QStringLiteral("object_raise"), i18n("Raise"), QStringLiteral("layer-raise"), {}, Qt::Key_PageUp);
     connect(raise, &QAction::triggered, parent, &GlaxnimateWindow::layer_raise);
 
-    QAction *lower = add_action(QStringLiteral("object_lower"), i18n("Lower"), QStringLiteral("layer-lower"), {}, Qt::Key_PageDown);
+    QAction *lower = add_action(objectActions, QStringLiteral("object_lower"), i18n("Lower"), QStringLiteral("layer-lower"), {}, Qt::Key_PageDown);
     connect(lower, &QAction::triggered, parent, &GlaxnimateWindow::layer_lower);
 
-    QAction *lowerToBottom = add_action(QStringLiteral("object_lower_to_bottom"), i18n("Lower to Bottom"), QStringLiteral("layer-bottom"), {}, Qt::Key_End);
+    QAction *lowerToBottom = add_action(objectActions, QStringLiteral("object_lower_to_bottom"), i18n("Lower to Bottom"), QStringLiteral("layer-bottom"), {}, Qt::Key_End);
     connect(lowerToBottom, &QAction::triggered, parent, &GlaxnimateWindow::layer_lower);
 
-    QAction *moveTo = add_action(QStringLiteral("move_to"), i18n("Move to…"), QStringLiteral("selection-move-to-layer-above"));
+    QAction *moveTo = add_action(objectActions, QStringLiteral("move_to"), i18n("Move to…"), QStringLiteral("selection-move-to-layer-above"));
     connect(moveTo, &QAction::triggered, parent, &GlaxnimateWindow::move_to);
 
-    QAction *group = add_action(QStringLiteral("action_group"), i18n("Group"), QStringLiteral("object-group"), {}, Qt::CTRL | Qt::Key_G);
+    QAction *group = add_action(objectActions, QStringLiteral("action_group"), i18n("Group"), QStringLiteral("object-group"), {}, Qt::CTRL | Qt::Key_G);
     connect(group, &QAction::triggered, parent, &GlaxnimateWindow::group_shapes);
 
-    QAction *ungroup = add_action(QStringLiteral("action_ungroup"), i18n("Ungroup"), QStringLiteral("object-ungroup"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_G);
+    QAction *ungroup = add_action(objectActions, QStringLiteral("action_ungroup"), i18n("Ungroup"), QStringLiteral("object-ungroup"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_G);
     connect(ungroup, &QAction::triggered, parent, &GlaxnimateWindow::ungroup_shapes);
 
-    QAction *alignToSelection = add_action(QStringLiteral("align_to_selection"), i18n("Selection"), QStringLiteral("select-rectangular"));
+    KActionCategory *alginActions = new KActionCategory(i18n("Align"), parent->actionCollection());
+
+    QAction *alignToSelection = add_action(alginActions, QStringLiteral("align_to_selection"), i18n("Selection"), QStringLiteral("select-rectangular"));
     alignToSelection->setCheckable(true);
-    QAction *alignToCanvas = add_action(QStringLiteral("align_to_canvas"), i18n("Canvas"), QStringLiteral("snap-page"));
+    QAction *alignToCanvas = add_action(alginActions, QStringLiteral("align_to_canvas"), i18n("Canvas"), QStringLiteral("snap-page"));
     alignToCanvas->setCheckable(true);
-    QAction *alignToCanvasGroup = add_action(QStringLiteral("align_to_canvas_group"), i18n("Canvas (as Group)"), QStringLiteral("object-group"));
+    QAction *alignToCanvasGroup = add_action(alginActions, QStringLiteral("align_to_canvas_group"), i18n("Canvas (as Group)"), QStringLiteral("object-group"));
     alignToCanvasGroup->setCheckable(true);
 
-    QAction *alignHorLeft = add_action(QStringLiteral("align_hor_left"), i18n("Left"), QStringLiteral("align-horizontal-left"));
+    QAction *alignHorLeft = add_action(alginActions, QStringLiteral("align_hor_left"), i18n("Left"), QStringLiteral("align-horizontal-left"));
     connect(alignHorLeft, &QAction::triggered, parent, [this]{align(AlignDirection::Horizontal, AlignPosition::Begin, false);});
 
-    QAction *alignHorCenter = add_action(QStringLiteral("align_hor_center"), i18n("Center"), QStringLiteral("align-horizontal-center"));
+    QAction *alignHorCenter = add_action(alginActions, QStringLiteral("align_hor_center"), i18n("Center"), QStringLiteral("align-horizontal-center"));
     connect(alignHorCenter, &QAction::triggered, parent, [this]{align(AlignDirection::Horizontal, AlignPosition::Center, false);});
 
-    QAction *alignHorRight = add_action(QStringLiteral("align_hor_right"), i18n("Right"), QStringLiteral("align-horizontal-right"));
+    QAction *alignHorRight = add_action(alginActions, QStringLiteral("align_hor_right"), i18n("Right"), QStringLiteral("align-horizontal-right"));
     connect(alignHorRight, &QAction::triggered, parent, [this]{align(AlignDirection::Horizontal, AlignPosition::End, false);});
 
-    QAction *alignVertTop = add_action(QStringLiteral("align_vert_top"), i18n("Top"), QStringLiteral("align-vertical-top"));
+    QAction *alignVertTop = add_action(alginActions, QStringLiteral("align_vert_top"), i18n("Top"), QStringLiteral("align-vertical-top"));
     connect(alignVertTop, &QAction::triggered, parent, [this]{align(AlignDirection::Vertical, AlignPosition::Begin, false);});
 
-    QAction *alignVertCenter = add_action(QStringLiteral("align_vert_center"), i18n("Center"), QStringLiteral("align-vertical-center"));
+    QAction *alignVertCenter = add_action(alginActions, QStringLiteral("align_vert_center"), i18n("Center"), QStringLiteral("align-vertical-center"));
     connect(alignVertCenter, &QAction::triggered, parent, [this]{align(AlignDirection::Vertical, AlignPosition::Center, false);});
 
-    QAction *alignVertBottom = add_action(QStringLiteral("align_vert_bottom"), i18n("Bottom"), QStringLiteral("align-vertical-bottom"));
+    QAction *alignVertBottom = add_action(alginActions, QStringLiteral("align_vert_bottom"), i18n("Bottom"), QStringLiteral("align-vertical-bottom"));
     connect(alignVertBottom, &QAction::triggered, parent, [this]{align(AlignDirection::Vertical, AlignPosition::End, false);});
 
 
     // addAction(QStringLiteral("separator_align_relative_to"), i18n("Relative To"), QStringLiteral(""));
     // addAction(QStringLiteral("separator_align_horizontal"), i18n("Horizontal"), QStringLiteral(""));
     // addAction(QStringLiteral("separator_align_vertical"), i18n("Vertical"), QStringLiteral(""));
-    QAction *alignHorLeftOut = add_action(QStringLiteral("align_hor_left_out"), i18n("Outside Left"), QStringLiteral("align-horizontal-right-out"));
+    QAction *alignHorLeftOut = add_action(alginActions, QStringLiteral("align_hor_left_out"), i18n("Outside Left"), QStringLiteral("align-horizontal-right-out"));
     connect(alignHorLeftOut, &QAction::triggered, parent, [this]{align(AlignDirection::Horizontal, AlignPosition::Begin, true);});
 
-    QAction *alignHorRightOut = add_action(QStringLiteral("align_hor_right_out"), i18n("Outside Right"), QStringLiteral("align-horizontal-left-out"));
+    QAction *alignHorRightOut = add_action(alginActions, QStringLiteral("align_hor_right_out"), i18n("Outside Right"), QStringLiteral("align-horizontal-left-out"));
     connect(alignHorRightOut, &QAction::triggered, parent, [this]{align(AlignDirection::Horizontal, AlignPosition::End, true);});
 
-    QAction *alignVertTopOut = add_action(QStringLiteral("align_vert_top_out"), i18n("Outside Top"), QStringLiteral("align-vertical-bottom-out"));
+    QAction *alignVertTopOut = add_action(alginActions, QStringLiteral("align_vert_top_out"), i18n("Outside Top"), QStringLiteral("align-vertical-bottom-out"));
     connect(alignVertTopOut, &QAction::triggered, parent, [this]{align(AlignDirection::Vertical, AlignPosition::Begin, true);});
 
-    QAction *alignVertBottomOut = add_action(QStringLiteral("align_vert_bottom_out"), i18n("Outside Bottom"), QStringLiteral("align-vertical-top-out"));
+    QAction *alignVertBottomOut = add_action(alginActions, QStringLiteral("align_vert_bottom_out"), i18n("Outside Bottom"), QStringLiteral("align-vertical-top-out"));
     connect(alignVertBottomOut, &QAction::triggered, parent, [this]{align(AlignDirection::Vertical, AlignPosition::End, true);});
 }
 
 void GlaxnimateWindow::Private::setup_path_actions()
 {
-    QAction *objectToPath = add_action(QStringLiteral("object_to_path"), i18n("Object to Path"), QStringLiteral("object-to-path"));
+    KActionCategory *pathActions = new KActionCategory(i18n("Path"), parent->actionCollection());
+
+    QAction *objectToPath = add_action(pathActions, QStringLiteral("object_to_path"), i18n("Object to Path"), QStringLiteral("object-to-path"));
     connect(objectToPath, &QAction::triggered, parent, [this]{to_path();});
 
-    QAction *traceBitmap = add_action(QStringLiteral("trace_bitmap"), i18n("Trace Bitmap…"), QStringLiteral("bitmap-trace"));
+    QAction *traceBitmap = add_action(pathActions, QStringLiteral("trace_bitmap"), i18n("Trace Bitmap…"), QStringLiteral("bitmap-trace"));
     connect(traceBitmap, &QAction::triggered, parent, [this]{
         trace_dialog(parent->current_shape());
     });
 
-    QAction *pathAdd = add_action(QStringLiteral("path_add"), i18n("Union"), QStringLiteral("path-union"));
-    QAction *pathSubstract = add_action(QStringLiteral("path_subtract"), i18n("Difference"), QStringLiteral("path-difference"));
-    QAction *pathIntersect = add_action(QStringLiteral("path_intersect"), i18n("Intersect"), QStringLiteral("path-intersection"));
-    QAction *pathXor = add_action(QStringLiteral("path_xor"), i18n("Exclusion"), QStringLiteral("path-exclusion"));
+    //TODO
+    QAction *pathAdd = add_action(pathActions, QStringLiteral("path_add"), i18n("Union"), QStringLiteral("path-union"));
+    QAction *pathSubstract = add_action(pathActions, QStringLiteral("path_subtract"), i18n("Difference"), QStringLiteral("path-difference"));
+    QAction *pathIntersect = add_action(pathActions, QStringLiteral("path_intersect"), i18n("Intersect"), QStringLiteral("path-intersection"));
+    QAction *pathXor = add_action(pathActions, QStringLiteral("path_xor"), i18n("Exclusion"), QStringLiteral("path-exclusion"));
 
-    QAction *pathReverse = add_action(QStringLiteral("path_reverse"), i18n("Reverse"), QStringLiteral("path-reverse"));
+    QAction *pathReverse = add_action(pathActions, QStringLiteral("path_reverse"), i18n("Reverse"), QStringLiteral("path-reverse"));
 
-    QAction *nodeRemove = add_action(QStringLiteral("node_remove"), i18n("Delete Nodes"), QStringLiteral("format-remove-node"));
-    QAction *nodeAdd = add_action(QStringLiteral("node_add"), i18n("Add Node…"), QStringLiteral("format-insert-node"));
+    QAction *nodeRemove = add_action(pathActions, QStringLiteral("node_remove"), i18n("Delete Nodes"), QStringLiteral("format-remove-node"));
+    QAction *nodeAdd = add_action(pathActions, QStringLiteral("node_add"), i18n("Add Node…"), QStringLiteral("format-insert-node"));
 
-    QAction *nodeJoin = add_action(QStringLiteral("node_join"), i18n("Join Nodes"), QStringLiteral("format-join-node"));
-    QAction *nodeSplit = add_action(QStringLiteral("node_split"), i18n("Split Nodes"), QStringLiteral("format-break-node"));
+    QAction *nodeJoin = add_action(pathActions, QStringLiteral("node_join"), i18n("Join Nodes"), QStringLiteral("format-join-node"));
+    QAction *nodeSplit = add_action(pathActions, QStringLiteral("node_split"), i18n("Split Nodes"), QStringLiteral("format-break-node"));
 
-    QAction *nodeTypeCorner = add_action(QStringLiteral("node_type_corner"), i18n("Cusp"), QStringLiteral("node-type-cusp"));
-    QAction *nodeTypeSmooth = add_action(QStringLiteral("node_type_smooth"), i18n("Smooth"), QStringLiteral("node-type-smooth"));
-    QAction *nodeTypeSymmetric = add_action(QStringLiteral("node_type_symmetric"), i18n("Symmetric"), QStringLiteral("node-type-auto-smooth"));
-    QAction *segmentLines = add_action(QStringLiteral("segment_lines"), i18n("Make segments straight"), QStringLiteral("node-segment-line"));
-    QAction *segmentCurve = add_action(QStringLiteral("segment_curve"), i18n("Make segments curved"), QStringLiteral("node-segment-curve"));
-    QAction *nodeDissolve = add_action(QStringLiteral("node_dissolve"), i18n("Dissolve Nodes"), QStringLiteral("format-node-curve"));
+    QAction *nodeTypeCorner = add_action(pathActions, QStringLiteral("node_type_corner"), i18n("Cusp"), QStringLiteral("node-type-cusp"));
+    QAction *nodeTypeSmooth = add_action(pathActions, QStringLiteral("node_type_smooth"), i18n("Smooth"), QStringLiteral("node-type-smooth"));
+    QAction *nodeTypeSymmetric = add_action(pathActions, QStringLiteral("node_type_symmetric"), i18n("Symmetric"), QStringLiteral("node-type-auto-smooth"));
+    QAction *segmentLines = add_action(pathActions, QStringLiteral("segment_lines"), i18n("Make segments straight"), QStringLiteral("node-segment-line"));
+    QAction *segmentCurve = add_action(pathActions, QStringLiteral("segment_curve"), i18n("Make segments curved"), QStringLiteral("node-segment-curve"));
+    QAction *nodeDissolve = add_action(pathActions, QStringLiteral("node_dissolve"), i18n("Dissolve Nodes"), QStringLiteral("format-node-curve"));
 
     this->tool_actions["edit"] = {
         parent->action(QStringLiteral("edit_delete")),
@@ -730,7 +761,7 @@ void GlaxnimateWindow::Private::init_tools_ui()
     {
         for ( const auto& tool : grp.second )
         {
-            QAction *action = parent->actionCollection()->action(tool.second->action_name());
+            QAction *action = parent->action(tool.second->action_name());
 
             ScalableButton *button = tool.second->get_button();
 
@@ -844,7 +875,7 @@ void GlaxnimateWindow::Private::init_status_bar()
     connect(canvas, &Canvas::rotated, view_trans_widget, &ViewTransformWidget::set_angle);
     connect(view_trans_widget, &ViewTransformWidget::view_fit, parent, &GlaxnimateWindow::view_fit);
 
-    QAction *flipView = parent->actionCollection()->action(QStringLiteral("flip_view"));
+    QAction *flipView = parent->action(QStringLiteral("flip_view"));
     connect(view_trans_widget, &ViewTransformWidget::flip_view, flipView, &QAction::trigger);
 }
 
@@ -947,10 +978,10 @@ void GlaxnimateWindow::Private::init_docks()
 
 void GlaxnimateWindow::Private::layout_update()
 {
-    QAction *layoutWide = parent->actionCollection()->action(QStringLiteral("layout_wide"));
-    QAction *layoutCompact = parent->actionCollection()->action(QStringLiteral("layout_compact"));
-    QAction *layoutCustom = parent->actionCollection()->action(QStringLiteral("layout_custom"));
-    QAction *layoutMedium = parent->actionCollection()->action(QStringLiteral("layout_medium"));
+    QAction *layoutWide = parent->action(QStringLiteral("layout_wide"));
+    QAction *layoutCompact = parent->action(QStringLiteral("layout_compact"));
+    QAction *layoutCustom = parent->action(QStringLiteral("layout_custom"));
+    QAction *layoutMedium = parent->action(QStringLiteral("layout_medium"));
 
 
     if ( layoutWide->isChecked() )
@@ -1026,7 +1057,7 @@ void GlaxnimateWindow::Private::layout_medium()
     parent->resize(1440, 900);
 
     app::settings::set("ui", "layout", int(LayoutPreset::Medium));
-    QAction *layoutMedium = parent->actionCollection()->action(QStringLiteral("layout_medium"));
+    QAction *layoutMedium = parent->action(QStringLiteral("layout_medium"));
     layoutMedium->setChecked(true);
 }
 
@@ -1090,7 +1121,7 @@ void GlaxnimateWindow::Private::layout_wide()
     parent->resize(1920, 1080);
 
     app::settings::set("ui", "layout", int(LayoutPreset::Wide));
-    QAction *layoutWide = parent->actionCollection()->action(QStringLiteral("layout_wide"));
+    QAction *layoutWide = parent->action(QStringLiteral("layout_wide"));
     layoutWide->setChecked(true);
 }
 
@@ -1148,7 +1179,7 @@ void GlaxnimateWindow::Private::layout_compact()
     parent->resize(1366, 768);
 
     app::settings::set("ui", "layout", int(LayoutPreset::Compact));
-    QAction *layoutCompact = parent->actionCollection()->action(QStringLiteral("layout_compact"));
+    QAction *layoutCompact = parent->action(QStringLiteral("layout_compact"));
     layoutCompact->setChecked(true);
 }
 
@@ -1162,14 +1193,14 @@ void GlaxnimateWindow::Private::layout_auto()
     else
         layout_compact();
 
-    QAction *layoutAuto = parent->actionCollection()->action(QStringLiteral("layout_automatic"));
+    QAction *layoutAuto = parent->action(QStringLiteral("layout_automatic"));
     layoutAuto->setChecked(true);
 }
 
 void GlaxnimateWindow::Private::layout_custom()
 {
     init_restore_state();
-    QAction *layoutCustom = parent->actionCollection()->action(QStringLiteral("layout_custom"));
+    QAction *layoutCustom = parent->action(QStringLiteral("layout_custom"));
     layoutCustom->setChecked(true);
 }
 
@@ -1334,7 +1365,7 @@ void GlaxnimateWindow::Private::switch_tool(tools::Tool* tool)
     if ( !tool || tool == active_tool )
         return;
 
-    QAction *action = parent->actionCollection()->action(tool->action_name());
+    QAction *action = parent->action(tool->action_name());
     if ( !action->isChecked() )
         action->setChecked(true);
 
