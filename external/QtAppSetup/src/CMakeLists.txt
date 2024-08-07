@@ -14,8 +14,8 @@ app/widgets/settings_dialog.cpp
 app/widgets/settings_dialog.ui
 app/widgets/widget_palette_editor.cpp
 app/widgets/widget_palette_editor.ui
-app/widgets/clearable_keysequence_edit.cpp
-app/widgets/clearable_keysequence_edit.ui
+
+
 app/log/logger.cpp
 app/log/log_model.cpp
 app/cli.cpp
