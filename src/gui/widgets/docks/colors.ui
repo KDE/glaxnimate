@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>dock_colors</class>
+ <widget class="QDockWidget" name="dock_colors">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="color-management"/>
+  </property>
+  <property name="windowTitle">
+   <string>Fill</string>
+  </property>
+  <widget class="QWidget" name="dockWidgetContents">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="glaxnimate::gui::FillStyleWidget" name="fill_style_widget" native="true"/>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>glaxnimate::gui::FillStyleWidget</class>
+   <extends>QWidget</extends>
+   <header>widgets/shape_style/fill_style_widget.hpp</header>
+   <container>1</container>
+   <slots>
+    <signal>secondary_color_changed(QColor)</signal>
+    <slot>set_secondary_color(QColor)</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

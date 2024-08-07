@@ -89,6 +89,20 @@ widgets/tab_bar/tab_bar_close_button.cpp
 widgets/tab_bar/clickable_tab_bar.cpp
 widgets/tab_bar/composition_tab_bar.cpp
 widgets/docks/layer_view.cpp
+widgets/docks/aligndock.cpp
+widgets/docks/assetsdock.cpp
+widgets/docks/colorsdock.cpp
+widgets/docks/strokedock.cpp
+widgets/docks/layersdock.cpp
+widgets/docks/propertiesdock.cpp
+widgets/docks/timelinedock.cpp
+widgets/docks/logsdock.cpp
+widgets/docks/timesliderdock.cpp
+widgets/docks/gradientsdock.cpp
+widgets/docks/swatchesdock.cpp
+widgets/docks/snippetsdock.cpp
+widgets/docks/undodock.cpp
+widgets/docks/tooloptionsdock.cpp
 
 widgets/settings/plugin_settings_widget.cpp
 widgets/settings/toolbar_settings_widget.cpp
@@ -181,6 +195,20 @@ if ( NOT MOBILE_UI )
 
         widgets/dialogs/about_dialog.ui
         widgets/dialogs/glaxnimate_window.ui
+        widgets/docks/assets.ui
+        widgets/docks/colors.ui
+        widgets/docks/stroke.ui
+        widgets/docks/layers.ui
+        widgets/docks/properties.ui
+        widgets/docks/timeline.ui
+        widgets/docks/scriptconsole.ui
+        widgets/docks/logs.ui
+        widgets/docks/time_slider.ui
+        widgets/docks/gradients.ui
+        widgets/docks/swatches.ui
+        widgets/docks/snippets.ui
+        widgets/docks/undo.ui
+        widgets/docks/tooloptions.ui
     )
 endif()
 

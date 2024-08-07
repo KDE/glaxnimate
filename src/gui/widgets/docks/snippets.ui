@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>dock_snippets</class>
+ <widget class="QDockWidget" name="dock_snippets">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="dialog-scripts"/>
+  </property>
+  <property name="windowTitle">
+   <string>Snippets</string>
+  </property>
+  <widget class="QWidget" name="dockWidgetContents">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="glaxnimate::gui::SnippetListWidget" name="widget" native="true"/>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>glaxnimate::gui::SnippetListWidget</class>
+   <extends>QWidget</extends>
+   <header>widgets/docks/snippet_list_widget.hpp</header>
+   <container>1</container>
+   <slots>
+    <signal>run_snippet(QString)</signal>
+    <signal>warning(QString,QString)</signal>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

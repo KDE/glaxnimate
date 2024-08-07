@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>dock_timeline</class>
+ <widget class="QDockWidget" name="dock_timeline">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="player-time"/>
+  </property>
+  <property name="windowTitle">
+   <string>&amp;Timeline</string>
+  </property>
+  <widget class="QWidget" name="dockWidgetContents">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="glaxnimate::gui::FrameControlsWidget" name="play_controls" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="glaxnimate::gui::CompoundTimelineWidget" name="timeline_widget" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>glaxnimate::gui::FrameControlsWidget</class>
+   <extends>QWidget</extends>
+   <header>widgets/timeline/frame_controls_widget.hpp</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>glaxnimate::gui::CompoundTimelineWidget</class>
+   <extends>QWidget</extends>
+   <header>widgets/timeline/compound_timeline_widget.hpp</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
