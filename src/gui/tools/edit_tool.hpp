@@ -25,7 +25,8 @@ public:
     QString id() const override { return "edit"; }
     QIcon icon() const override { return QIcon::fromTheme("edit-node"); }
     QString name() const override { return i18n("Edit"); }
-    QKeySequence key_sequence() const override { return QKeySequence(i18n("F2"), QKeySequence::PortableText); }
+    QString action_name() const override { return QStringLiteral("tool_edit"); }
+    QKeySequence key_sequence() const override { return Qt::Key_F2; }
     static int static_group() noexcept { return Registry::Core; }
     int group() const noexcept override { return static_group(); }
 

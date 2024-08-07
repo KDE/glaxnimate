@@ -23,7 +23,8 @@ public:
     QString id() const override { return "draw-bezier"; }
     QIcon icon() const override { return QIcon::fromTheme("draw-bezier-curves"); }
     QString name() const override { return i18n("Draw Bezier"); }
-    QKeySequence key_sequence() const override { return QKeySequence(i18n("F3"), QKeySequence::PortableText); }
+    QString action_name() const override { return QStringLiteral("tool_draw_bezier"); }
+    QKeySequence key_sequence() const override { return Qt::Key_F3; }
     static int static_group() noexcept { return Registry::Draw;  }
     int group() const noexcept override { return static_group(); }
 

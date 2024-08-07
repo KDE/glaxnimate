@@ -17,7 +17,8 @@ public:
     QString id() const override { return "draw-star"; }
     QIcon icon() const override { return QIcon::fromTheme("draw-polygon-star"); }
     QString name() const override { return i18n("Star"); }
-    QKeySequence key_sequence() const override { return QKeySequence(i18n("*"), QKeySequence::PortableText); }
+    QString action_name() const override { return QStringLiteral("tool_draw_star"); }
+    QKeySequence key_sequence() const override { return Qt::Key_Asterisk; }
     static int static_group() noexcept { return Registry::Shape; }
     int group() const noexcept override { return static_group(); }
 

@@ -101,6 +101,7 @@ public:
 
     virtual QString id() const = 0;
     virtual QIcon icon() const = 0;
+    virtual QString action_name() const = 0;
     virtual QString name() const = 0;
     virtual QString tooltip() const { return name(); }
     virtual QKeySequence key_sequence() const = 0;

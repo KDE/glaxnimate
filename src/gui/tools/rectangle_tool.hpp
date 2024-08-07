@@ -18,7 +18,8 @@ public:
     QString id() const override { return "draw-rect"; }
     QIcon icon() const override { return QIcon::fromTheme("draw-rectangle"); }
     QString name() const override { return i18n("Rectangle"); }
-    QKeySequence key_sequence() const override { return QKeySequence(i18n("F4"), QKeySequence::PortableText); }
+    QString action_name() const override { return QStringLiteral("tool_draw_rect"); }
+    QKeySequence key_sequence() const override { return Qt::Key_F4; }
     static int static_group() noexcept { return Registry::Shape; }
     int group() const noexcept override { return static_group(); }
 
