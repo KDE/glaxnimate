@@ -1,4 +1,4 @@
-<!DOCTYPE RCC>
+<?xml version="1.0"?>
 <!--
 SPDX-FileCopyrightText: none
 SPDX-License-Identifier: CC0-1.0
@@ -6,5 +6,8 @@ SPDX-License-Identifier: CC0-1.0
 <RCC>
     <qresource prefix="/glaxnimate">
         <file alias="splash.svg">${CMAKE_SOURCE_DIR}/data/logo/splash-screen.svg</file>
+    </qresource>
+    <qresource prefix="/kxmlgui5/glaxnimate">
+        <file alias="glaxnimateui.rc">${CMAKE_SOURCE_DIR}/src/gui/glaxnimateui.rc</file>
     </qresource>
 </RCC>
