@@ -426,9 +426,10 @@ void GlaxnimateWindow::Private::setup_document_actions()
 {
     KActionCategory *documentActions = new KActionCategory(i18n("Document"), parent->actionCollection());
 
-    // TODO
     QAction *renderRaster = add_action(documentActions, QStringLiteral("render_frame_raster"), i18n("Raster…"), QStringLiteral("image-png"));
+    connect(renderRaster, &QAction::triggered, parent, &GlaxnimateWindow::save_frame_bmp);
     QAction *renderSvg = add_action(documentActions, QStringLiteral("render_frame_svg"), i18n("SVG…"), QStringLiteral("image-svg+xml"));
+    connect(renderSvg, &QAction::triggered, parent, &GlaxnimateWindow::save_frame_svg);
 
     QAction *previewLottie = add_action(documentActions, QStringLiteral("lottie_preview"), i18n("Lottie (SVG)"));
     connect(previewLottie, &QAction::triggered, parent, [this]{preview_lottie("svg");});
@@ -552,14 +553,8 @@ void GlaxnimateWindow::Private::setup_layers_actions()
     QAction *newComp = add_action(layersActions, QStringLiteral("new_comp"), i18n("New Composition"), QStringLiteral("folder-video"));
     connect(newComp, &QAction::triggered, parent, [this]{add_composition();});
 
-    // TODO
-    QAction *newPrecomp = add_action(layersActions, QStringLiteral("new_precomp"), i18n("Precomposition Layer"), QStringLiteral("video-x-generic"));
-
     QAction *newLayer = add_action(layersActions, QStringLiteral("new_layer"), i18n("Layer"), QStringLiteral("folder"));
     connect(newLayer, &QAction::triggered, parent, [this]{layer_new_layer();});
-
-    // TODO
-    QAction *emptyLayer = add_action(layersActions, QStringLiteral("new_layer_empty"), i18n("Empty Layer"), QStringLiteral("transform-move"));
 
     QAction *newGroup = add_action(layersActions, QStringLiteral("new_layer_group"), i18n("Group"), QStringLiteral("shapes-symbolic"));
     connect(newGroup, &QAction::triggered, parent, [this]{layer_new_group();});
@@ -662,17 +657,24 @@ void GlaxnimateWindow::Private::setup_path_actions()
 
     //TODO
     QAction *pathAdd = add_action(pathActions, QStringLiteral("path_add"), i18n("Union"), QStringLiteral("path-union"));
+    pathAdd->setEnabled(false);
     QAction *pathSubstract = add_action(pathActions, QStringLiteral("path_subtract"), i18n("Difference"), QStringLiteral("path-difference"));
+    pathSubstract->setEnabled(false);
     QAction *pathIntersect = add_action(pathActions, QStringLiteral("path_intersect"), i18n("Intersect"), QStringLiteral("path-intersection"));
+    pathIntersect->setEnabled(false);
     QAction *pathXor = add_action(pathActions, QStringLiteral("path_xor"), i18n("Exclusion"), QStringLiteral("path-exclusion"));
+    pathXor->setEnabled(false);
 
     QAction *pathReverse = add_action(pathActions, QStringLiteral("path_reverse"), i18n("Reverse"), QStringLiteral("path-reverse"));
+    pathReverse->setEnabled(false);
 
     QAction *nodeRemove = add_action(pathActions, QStringLiteral("node_remove"), i18n("Delete Nodes"), QStringLiteral("format-remove-node"));
     QAction *nodeAdd = add_action(pathActions, QStringLiteral("node_add"), i18n("Add Node…"), QStringLiteral("format-insert-node"));
 
     QAction *nodeJoin = add_action(pathActions, QStringLiteral("node_join"), i18n("Join Nodes"), QStringLiteral("format-join-node"));
+    nodeJoin->setEnabled(false);
     QAction *nodeSplit = add_action(pathActions, QStringLiteral("node_split"), i18n("Split Nodes"), QStringLiteral("format-break-node"));
+    nodeSplit->setEnabled(false);
 
     QAction *nodeTypeCorner = add_action(pathActions, QStringLiteral("node_type_corner"), i18n("Cusp"), QStringLiteral("node-type-cusp"));
     QAction *nodeTypeSmooth = add_action(pathActions, QStringLiteral("node_type_smooth"), i18n("Smooth"), QStringLiteral("node-type-smooth"));
