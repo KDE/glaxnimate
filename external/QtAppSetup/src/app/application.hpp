@@ -11,7 +11,6 @@
 #include <QDir>
 
 #include "app/settings/settings.hpp"
-#include "app/translation_service.hpp"
 
 namespace app {
 
@@ -78,11 +77,6 @@ protected:
      * \note set application name and stuff in here
      */
     virtual void on_initialize() {}
-
-    /**
-     * \brief Called after on_initialize
-     */
-    virtual void on_initialize_translations();
 
     /**
      * \brief Called after on_initialize() and after translations are loaded

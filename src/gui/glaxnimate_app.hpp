@@ -92,7 +92,6 @@ public:
 protected:
     void on_initialize() override;
     void on_initialize_settings() override;
-    void on_initialize_translations() override;
     bool event(QEvent *event) override;
 
 private:

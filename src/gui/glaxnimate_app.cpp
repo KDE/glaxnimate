@@ -108,23 +108,6 @@ static void set_icon_theme(const QVariant& v)
     QIcon::setThemeName(theme_name);
 }
 
-static QVariantMap avail_languages()
-{
-    QVariantMap avail_languages;
-    for ( const QString& name : app::TranslationService::instance().available_languages().keys() )
-    {
-        avail_languages[name] = app::TranslationService::instance().available_languages()[name];
-    }
-
-    return avail_languages;
-}
-
-static void set_language(const QVariant& v)
-{
-    QString code = v.toString();
-    app::TranslationService::instance().change_lang_code(code);
-}
-
 static void icon_theme_fixup()
 {
     QString default_theme = default_icon_theme();
@@ -164,13 +147,9 @@ void GlaxnimateApp::on_initialize()
 void GlaxnimateApp::on_initialize_settings()
 {
     using namespace app::settings;
-    QString curr_lang = app::TranslationService::instance().current_language_code();
 
     Settings::instance().add_group("ui", i18nc("@title settings group", "User Interface"), "preferences-desktop-theme", {
         //      slug            Label/Tooltip                                               Type                default     choices             side effects
-        Setting("language",
-                i18nc("@label:listbox", "Language"),
-                i18nc("@info:tooltip", "Interface Language"),                        Setting::String,    curr_lang,  avail_languages(),  set_language),
         Setting("icon_theme", i18nc("@label:listbox", "Icon Theme"),  {},             Setting::String,    "",         avail_icon_themes(), ::set_icon_theme),
         // Setting("startup_dialog", i18nc("@option:check", "Show startup dialog"), {},  Setting::Bool,      true),
         Setting("timeline_scroll_horizontal",
@@ -260,11 +239,6 @@ void GlaxnimateApp::set_clipboard_data(QMimeData *data)
 const QMimeData *GlaxnimateApp::get_clipboard_data()
 {
     return QGuiApplication::clipboard()->mimeData();
-}
-
-void glaxnimate::gui::GlaxnimateApp::on_initialize_translations()
-{
-    app::TranslationService::instance().initialize("en_US");
 }
 
 bool GlaxnimateApp::event(QEvent *event)

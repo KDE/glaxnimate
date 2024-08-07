@@ -8,7 +8,7 @@ app/application.cpp
 app/settings/settings_group.cpp
 app/settings/settings.cpp
 app/settings/palette_settings.cpp
-app/translation_service.cpp
+
 app/scripting/script_engine.cpp
 app/widgets/settings_dialog.cpp
 app/widgets/settings_dialog.ui
