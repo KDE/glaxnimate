@@ -145,9 +145,9 @@ void GlaxnimateWindow::document_open_recent(const QUrl &url)
     d->document_open_from_url(url);
 }
 
-void GlaxnimateWindow::help_about()
+void GlaxnimateWindow::help_about_env()
 {
-    d->help_about();
+    d->help_about_env();
 }
 
 void GlaxnimateWindow::document_open(const QString& filename)
@@ -290,6 +290,11 @@ void GlaxnimateWindow::delete_selected()
 void GlaxnimateWindow::duplicate_selection() const
 {
     d->duplicate_selection();
+}
+
+void GlaxnimateWindow::copyDebugInfo()
+{
+    d->copyDebugInfo();
 }
 
 void GlaxnimateWindow::layer_top()

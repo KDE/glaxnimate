@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
-
-SPDX-License-Identifier: GPL-3.0-or-later
--->
-
 <ui version="4.0">
- <class>glaxnimate::gui::AboutDialog</class>
- <widget class="QDialog" name="glaxnimate::gui::AboutDialog">
+ <class>glaxnimate::gui::AboutEnvironmentDialog</class>
+ <widget class="QDialog" name="glaxnimate::gui::AboutEnvironmentDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -18,143 +11,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
    </rect>
   </property>
   <property name="windowTitle">
-   <string>About</string>
+   <string>About Environment</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="label_icon">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>80</width>
-         <height>80</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>80</width>
-         <height>80</height>
-        </size>
-       </property>
-       <property name="text">
-        <string notr="true">icon</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QLabel" name="label_title">
-         <property name="font">
-          <font>
-           <pointsize>32</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string notr="true">Title</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_version">
-         <property name="text">
-          <string notr="true">Version</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="textInteractionFlags">
-          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </item>
-   <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
-     <widget class="QWidget" name="tab">
-      <attribute name="title">
-       <string>Credits</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QScrollArea" name="scrollArea">
-         <property name="minimumSize">
-          <size>
-           <width>480</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
-         <property name="horizontalScrollBarPolicy">
-          <enum>Qt::ScrollBarAlwaysOff</enum>
-         </property>
-         <property name="widgetResizable">
-          <bool>true</bool>
-         </property>
-         <widget class="QWidget" name="scrollAreaWidgetContents">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>485</width>
-            <height>358</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_5">
-           <item>
-            <widget class="QLabel" name="credits">
-             <property name="text">
-              <string>Could not find AUTHORS.md</string>
-             </property>
-             <property name="textFormat">
-              <enum>Qt::MarkdownText</enum>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-             </property>
-             <property name="openExternalLinks">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-       </item>
-      </layout>
-     </widget>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
        <string>Paths</string>
@@ -170,8 +34,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>448</width>
-            <height>432</height>
+            <width>463</width>
+            <height>438</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -200,8 +64,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 <string>Open</string>
                </property>
                <property name="icon">
-                <iconset theme="folder-open">
-                 <normaloff>.</normaloff>.</iconset>
+                <iconset theme="folder-open"/>
                </property>
               </widget>
              </item>
@@ -232,8 +95,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 <string>Open</string>
                </property>
                <property name="icon">
-                <iconset theme="document-open">
-                 <normaloff>.</normaloff>.</iconset>
+                <iconset theme="document-open"/>
                </property>
               </widget>
              </item>
@@ -264,8 +126,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 <string>Open</string>
                </property>
                <property name="icon">
-                <iconset theme="folder-open">
-                 <normaloff>.</normaloff>.</iconset>
+                <iconset theme="folder-open"/>
                </property>
               </widget>
              </item>
@@ -281,13 +142,13 @@ SPDX-License-Identifier: GPL-3.0-or-later
            <item>
             <widget class="QListWidget" name="view_data">
              <property name="verticalScrollBarPolicy">
-              <enum>Qt::ScrollBarAlwaysOff</enum>
+              <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
              </property>
              <property name="horizontalScrollBarPolicy">
-              <enum>Qt::ScrollBarAlwaysOff</enum>
+              <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
              </property>
              <property name="textElideMode">
-              <enum>Qt::ElideMiddle</enum>
+              <enum>Qt::TextElideMode::ElideMiddle</enum>
              </property>
             </widget>
            </item>
@@ -301,125 +162,19 @@ SPDX-License-Identifier: GPL-3.0-or-later
            <item>
             <widget class="QListWidget" name="view_icons">
              <property name="verticalScrollBarPolicy">
-              <enum>Qt::ScrollBarAlwaysOff</enum>
+              <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
              </property>
              <property name="horizontalScrollBarPolicy">
-              <enum>Qt::ScrollBarAlwaysOff</enum>
+              <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
              </property>
              <property name="textElideMode">
-              <enum>Qt::ElideMiddle</enum>
+              <enum>Qt::TextElideMode::ElideMiddle</enum>
              </property>
             </widget>
            </item>
           </layout>
          </widget>
         </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab_3">
-      <attribute name="title">
-       <string>System</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_6">
-       <item>
-        <widget class="QTableWidget" name="view_system">
-         <attribute name="horizontalHeaderVisible">
-          <bool>false</bool>
-         </attribute>
-         <attribute name="horizontalHeaderStretchLastSection">
-          <bool>true</bool>
-         </attribute>
-         <row>
-          <property name="text">
-           <string notr="true">Glaxnimate</string>
-          </property>
-         </row>
-         <row>
-          <property name="text">
-           <string>System</string>
-          </property>
-         </row>
-         <row>
-          <property name="text">
-           <string>Kernel</string>
-          </property>
-         </row>
-         <row>
-          <property name="text">
-           <string>CPU</string>
-          </property>
-         </row>
-         <row>
-          <property name="text">
-           <string>Application Qt</string>
-          </property>
-         </row>
-         <row>
-          <property name="text">
-           <string>System Qt</string>
-          </property>
-         </row>
-         <row>
-          <property name="text">
-           <string>Potrace</string>
-          </property>
-         </row>
-         <row>
-          <property name="text">
-           <string>Libav</string>
-          </property>
-         </row>
-         <row>
-          <property name="text">
-           <string>libarchive</string>
-          </property>
-         </row>
-         <column>
-          <property name="text">
-           <string>Version</string>
-          </property>
-         </column>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QPushButton" name="pushButton_2">
-           <property name="text">
-            <string>About Qt</string>
-           </property>
-           <property name="icon">
-            <iconset theme="qtcreator">
-             <normaloff>.</normaloff>.</iconset>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton">
-           <property name="text">
-            <string>Copy</string>
-           </property>
-           <property name="icon">
-            <iconset theme="edit-copy">
-             <normaloff>.</normaloff>.</iconset>
-           </property>
-          </widget>
-         </item>
-        </layout>
        </item>
       </layout>
      </widget>
@@ -443,7 +198,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
        <item>
         <widget class="QScrollArea" name="scrollArea_3">
          <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
+          <enum>QFrame::Shape::NoFrame</enum>
          </property>
          <property name="widgetResizable">
           <bool>true</bool>
@@ -453,8 +208,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>485</width>
-            <height>358</height>
+            <width>483</width>
+            <height>458</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -468,16 +223,16 @@ SPDX-License-Identifier: GPL-3.0-or-later
            <item>
             <widget class="QTableWidget" name="table_formats_input">
              <property name="verticalScrollBarPolicy">
-              <enum>Qt::ScrollBarAlwaysOff</enum>
+              <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
              </property>
              <property name="editTriggers">
-              <set>QAbstractItemView::NoEditTriggers</set>
+              <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
              </property>
              <property name="textElideMode">
-              <enum>Qt::ElideNone</enum>
+              <enum>Qt::TextElideMode::ElideNone</enum>
              </property>
              <property name="horizontalScrollMode">
-              <enum>QAbstractItemView::ScrollPerPixel</enum>
+              <enum>QAbstractItemView::ScrollMode::ScrollPerPixel</enum>
              </property>
              <attribute name="verticalHeaderVisible">
               <bool>false</bool>
@@ -509,16 +264,16 @@ SPDX-License-Identifier: GPL-3.0-or-later
            <item>
             <widget class="QTableWidget" name="table_formats_output">
              <property name="verticalScrollBarPolicy">
-              <enum>Qt::ScrollBarAlwaysOff</enum>
+              <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
              </property>
              <property name="editTriggers">
-              <set>QAbstractItemView::NoEditTriggers</set>
+              <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
              </property>
              <property name="textElideMode">
-              <enum>Qt::ElideNone</enum>
+              <enum>Qt::TextElideMode::ElideNone</enum>
              </property>
              <property name="horizontalScrollMode">
-              <enum>QAbstractItemView::ScrollPerPixel</enum>
+              <enum>QAbstractItemView::ScrollMode::ScrollPerPixel</enum>
              </property>
              <attribute name="verticalHeaderVisible">
               <bool>false</bool>
@@ -551,10 +306,10 @@ SPDX-License-Identifier: GPL-3.0-or-later
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::Close</set>
+      <set>QDialogButtonBox::StandardButton::Close</set>
      </property>
     </widget>
    </item>
@@ -565,7 +320,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>glaxnimate::gui::AboutDialog</receiver>
+   <receiver>glaxnimate::gui::AboutEnvironmentDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -579,73 +334,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
    </hints>
   </connection>
   <connection>
-   <sender>toolButton</sender>
-   <signal>clicked()</signal>
-   <receiver>glaxnimate::gui::AboutDialog</receiver>
-   <slot>open_user_data()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>458</x>
-     <y>200</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>504</x>
-     <y>220</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>toolButton_2</sender>
-   <signal>clicked()</signal>
-   <receiver>glaxnimate::gui::AboutDialog</receiver>
-   <slot>open_settings_file()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>458</x>
-     <y>264</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>504</x>
-     <y>265</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>glaxnimate::gui::AboutDialog</receiver>
-   <slot>copy_system()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>102</x>
-     <y>152</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>579</x>
-     <y>520</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_2</sender>
-   <signal>clicked()</signal>
-   <receiver>glaxnimate::gui::AboutDialog</receiver>
-   <slot>about_qt()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>53</x>
-     <y>152</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>254</x>
-     <y>547</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>view_data</sender>
    <signal>doubleClicked(QModelIndex)</signal>
-   <receiver>glaxnimate::gui::AboutDialog</receiver>
+   <receiver>glaxnimate::gui::AboutEnvironmentDialog</receiver>
    <slot>dir_open(QModelIndex)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -661,7 +352,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
   <connection>
    <sender>view_icons</sender>
    <signal>doubleClicked(QModelIndex)</signal>
-   <receiver>glaxnimate::gui::AboutDialog</receiver>
+   <receiver>glaxnimate::gui::AboutEnvironmentDialog</receiver>
    <slot>dir_open(QModelIndex)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -675,9 +366,25 @@ SPDX-License-Identifier: GPL-3.0-or-later
    </hints>
   </connection>
   <connection>
+   <sender>toolButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>glaxnimate::gui::AboutEnvironmentDialog</receiver>
+   <slot>open_settings_file()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>458</x>
+     <y>264</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>504</x>
+     <y>265</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>toolButton_3</sender>
    <signal>clicked()</signal>
-   <receiver>glaxnimate::gui::AboutDialog</receiver>
+   <receiver>glaxnimate::gui::AboutEnvironmentDialog</receiver>
    <slot>open_backup()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -687,6 +394,22 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <hint type="destinationlabel">
      <x>653</x>
      <y>342</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButton</sender>
+   <signal>clicked()</signal>
+   <receiver>glaxnimate::gui::AboutEnvironmentDialog</receiver>
+   <slot>open_user_data()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>458</x>
+     <y>200</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>504</x>
+     <y>220</y>
     </hint>
    </hints>
   </connection>

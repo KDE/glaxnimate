@@ -17,6 +17,7 @@
 #include <QScreen>
 #include <QDialogButtonBox>
 #include <QStatusBar>
+#include <QClipboard>
 
 #include <KHelpMenu>
 #include <KActionCategory>
@@ -26,6 +27,9 @@
 #include <KConfigGroup>
 #include <KRecentFilesAction>
 #include <KToolBar>
+#include <KSandbox>
+#include <KAboutData>
+#include <KCoreAddons>
 
 #include "tools/base.hpp"
 #include "model/shapes/group.hpp"
@@ -39,7 +43,7 @@
 #include "io/io_registry.hpp"
 
 #include "widgets/dialogs/io_status_dialog.hpp"
-#include "widgets/dialogs/about_dialog.hpp"
+#include "widgets/dialogs/about_env_dialog.hpp"
 #include "widgets/dialogs/resize_dialog.hpp"
 #include "widgets/dialogs/timing_dialog.hpp"
 #include "widgets/dialogs/document_metadata_dialog.hpp"
@@ -115,6 +119,13 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     QAction *solidColorLayer = new QAction(QIcon::fromTheme(QStringLiteral("object-fill")), i18n("Solid Color Layer"), parent);
     parent->actionCollection()->addAction(QStringLiteral("new_layer_color"), solidColorLayer);
 
+    QAction *copyDebug = new QAction(QIcon::fromTheme(QStringLiteral("edit-copy")), i18n("Copy Debug Information"), parent);
+    parent->actionCollection()->addAction(QStringLiteral("copy_debuginfo"), copyDebug);
+    connect(copyDebug, &QAction::triggered, parent, &GlaxnimateWindow::copyDebugInfo);
+
+    QAction *aboutEnv = new QAction(QIcon::fromTheme(QStringLiteral("help-about-symbolic")), i18n("About Environment"), parent);
+    parent->actionCollection()->addAction(QStringLiteral("about_env"), aboutEnv);
+
     // Main Window
     parent->setupGUI();
 
@@ -144,8 +155,9 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     // Dialogs
     dialog_import_status = new IoStatusDialog(QIcon::fromTheme("document-open"), i18n("Open File"), false, parent);
     dialog_export_status = new IoStatusDialog(QIcon::fromTheme("document-save"), i18n("Save File"), false, parent);
-    // TODO remove
-    //about_dialog = new AboutDialog(parent);
+
+    about_env_dialog = new AboutEnvironmentDialog(parent);
+    connect(aboutEnv, &QAction::triggered, parent, &GlaxnimateWindow::help_about_env);
 
     // Docks
     init_docks();
@@ -1275,9 +1287,47 @@ void GlaxnimateWindow::Private::show_warning(const QString& title, const QString
     app::log::Log(title).log(message, icon);
 }
 
-void GlaxnimateWindow::Private::help_about()
+void GlaxnimateWindow::Private::help_about_env()
 {
-    about_dialog->show();
+    about_env_dialog->show();
+}
+
+void GlaxnimateWindow::Private::copyDebugInfo()
+{
+    // General note for this function: since the information targets developers, we don't want it it be translated
+
+    QString debuginfo = QStringLiteral("%1: %2\n").arg(KAboutData::applicationData().displayName(), KAboutData::applicationData().version());
+
+    QString packageType = QStringLiteral("Unknown/Default");
+
+    if (KSandbox::isFlatpak()) {
+        packageType = QStringLiteral("Flatpak");
+    }
+
+    if (KSandbox::isSnap()) {
+        packageType = QStringLiteral("Snap");
+    }
+
+    QString appPath = qApp->applicationDirPath();
+    if (appPath.contains(QStringLiteral("/tmp/.mount_"))) {
+        packageType = QStringLiteral("AppImage");
+    }
+
+    debuginfo.append(QStringLiteral("Package Type: %1\n").arg(packageType));
+    debuginfo.append(QStringLiteral("Qt: %1 (built against %2 %3)\n").arg(QString::fromLocal8Bit(qVersion()), QT_VERSION_STR, QSysInfo::buildAbi()));
+    debuginfo.append(QStringLiteral("Frameworks: %2\n").arg(KCoreAddons::versionString()));
+    debuginfo.append(QStringLiteral("System: %1\n").arg(QSysInfo::prettyProductName()));
+    debuginfo.append(QStringLiteral("Kernel: %1 %2\n").arg(QSysInfo::kernelType(), QSysInfo::kernelVersion()));
+    debuginfo.append(QStringLiteral("CPU: %1\n").arg(QSysInfo::currentCpuArchitecture()));
+    debuginfo.append(QStringLiteral("Windowing System: %1\n").arg(QGuiApplication::platformName()));
+
+    for ( KAboutComponent &component : KAboutData::applicationData().components())
+    {
+        debuginfo.append(QStringLiteral("%1: %2\n").arg(component.name(), component.version()));
+    }
+
+    QClipboard *clipboard = qApp->clipboard();
+    clipboard->setText(debuginfo);
 }
 
 void GlaxnimateWindow::Private::shutdown()

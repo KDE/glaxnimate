@@ -200,6 +200,10 @@
             <text>Plugins</text>
             <ActionList name="plugins_actionlist"/>
         </Menu>
+        <Menu name="help" >
+          <Action name="copy_debuginfo"/>
+          <Action name="about_env"/>
+        </Menu>
     </MenuBar>
     <ToolBar name="mainToolBar" iconText="icononly">
         <text>Main Toolbar</text>

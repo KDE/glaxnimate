@@ -4,29 +4,28 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#ifndef ABOUTDIALOG_H
-#define ABOUTDIALOG_H
+#pragma once
 
 #include <memory>
 #include <QDialog>
 
 namespace glaxnimate::gui::Ui
 {
-class AboutDialog;
+class AboutEnvironmentDialog;
 }
 
 class QListWidget;
 
 namespace glaxnimate::gui {
 
-class AboutDialog : public QDialog
+class AboutEnvironmentDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    AboutDialog(QWidget* parent = nullptr);
+    AboutEnvironmentDialog(QWidget* parent = nullptr);
 
-    ~AboutDialog();
+    ~AboutEnvironmentDialog();
 
 protected:
     void populate_view(QListWidget* wid, const QStringList& paths);
@@ -34,15 +33,11 @@ protected:
 private Q_SLOTS:
     void open_user_data();
     void open_settings_file();
-    void copy_system();
-    void about_qt();
     void dir_open(const QModelIndex& index);
     void open_backup();
 
 private:
-    std::unique_ptr<Ui::AboutDialog> d;
+    std::unique_ptr<Ui::AboutEnvironmentDialog> d;
 };
 
 } // namespace glaxnimate::gui
-
-#endif // ABOUTDIALOG_H

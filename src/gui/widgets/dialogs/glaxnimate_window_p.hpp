@@ -73,7 +73,7 @@ namespace glaxnimate::gui {
 
 
     class IoStatusDialog;
-    class AboutDialog;
+    class AboutEnvironmentDialog;
     class ViewTransformWidget;
     class FlowLayout;
     class ShapeStylePreviewWidget;
@@ -209,7 +209,7 @@ public:
     bool started = false;
     IoStatusDialog* dialog_import_status;
     IoStatusDialog* dialog_export_status;
-    AboutDialog* about_dialog;
+    AboutEnvironmentDialog* about_env_dialog;
     FlowLayout* dock_tools_layout;
     app::log::LogModel log_model;
     color_widgets::ColorPaletteModel palette_model;
@@ -261,7 +261,8 @@ public:
     void setupUi(bool restore_state, bool debug, GlaxnimateWindow* parent);
     void view_fit();
     void show_warning(const QString& title, const QString& message, app::log::Severity icon = app::log::Warning);
-    void help_about();
+    void help_about_env();
+    void copyDebugInfo();
     void shutdown();
     void switch_tool(tools::Tool* tool);
     void switch_tool_action(QAction* action);

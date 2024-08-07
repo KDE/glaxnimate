@@ -169,6 +169,8 @@ public Q_SLOTS:
     void duplicate_selection() const;
     void delete_selected();
 
+    void copyDebugInfo();
+
 private Q_SLOTS:
     void document_new();
     void document_open_dialog();
@@ -187,7 +189,7 @@ private Q_SLOTS:
     void layer_lower();
     void layer_bottom();
 
-    void help_about();
+    void help_about_env();
     void help_manual();
 
     void refresh_title();

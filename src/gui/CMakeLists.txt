@@ -179,7 +179,7 @@ if ( NOT MOBILE_UI )
         tools/color_picker.cpp
         tools/fill_tool.cpp
 
-        widgets/dialogs/about_dialog.cpp
+        widgets/dialogs/about_env_dialog.cpp
         widgets/dialogs/glaxnimate_window.cpp
         widgets/dialogs/gw_impl_document.cpp
         widgets/dialogs/gw_impl_model.cpp
@@ -193,7 +193,7 @@ if ( NOT MOBILE_UI )
     list(APPEND SOURCES_UIS
         emoji/emoji_set_dialog.ui
 
-        widgets/dialogs/about_dialog.ui
+        widgets/dialogs/about_env_dialog.ui
         widgets/docks/assets.ui
         widgets/docks/colors.ui
         widgets/docks/stroke.ui
