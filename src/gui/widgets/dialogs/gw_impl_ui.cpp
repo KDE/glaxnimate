@@ -72,29 +72,6 @@
 using namespace glaxnimate::gui;
 
 
-static QToolButton* action_button(QAction* action, QWidget* parent)
-{
-    auto button = new ScalableButton(parent);
-    button->setDefaultAction(action);
-    button->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-    button->resize(16, 16);
-    button->setMaximumSize(64, 64);
-    return button;
-}
-
-static void action_combo(QComboBox* box, QAction* action)
-{
-    int index = box->count();
-    box->addItem(action->icon(), action->text(), QVariant::fromValue(action));
-    QObject::connect(action, &QAction::triggered, box, [index, box]{
-        box->setCurrentIndex(index);
-    });
-    QObject::connect(action, &QAction::changed, box, [index, box, action]{
-        box->setItemIcon(index, action->icon());
-        box->setItemText(index, action->text());
-    });
-}
-
 void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, GlaxnimateWindow* parent)
 {
     this->parent = parent;
