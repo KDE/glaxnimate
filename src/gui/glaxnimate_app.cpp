@@ -69,7 +69,6 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
 #include "app/log/listener_file.hpp"
 #include "settings/plugin_settings_group.hpp"
 #include "settings/clipboard_settings.hpp"
-#include "settings/toolbar_settings.hpp"
 #include "settings/api_credentials.hpp"
 
 static QVariantMap avail_icon_themes()
@@ -212,7 +211,6 @@ void GlaxnimateApp::on_initialize_settings()
     // catch all
     Settings::instance().add_group("internal", "", "", {});
 
-    app::settings::Settings::instance().add_group(std::make_unique<settings::ToolbarSettingsGroup>());
     app::settings::Settings::instance().add_group(std::make_unique<settings::PluginSettingsGroup>(QStringList{
         "AnimatedRaster", "ReplaceColor", "dotLottie", "FrameByFrame"
     }));

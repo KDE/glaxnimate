@@ -26,7 +26,7 @@ item_models/document_model_base.cpp
 item_models/comp_filter_model.cpp
 
 settings/clipboard_settings.cpp
-settings/toolbar_settings.cpp
+
 settings/document_templates.cpp
 settings/api_credentials.cpp
 
@@ -105,7 +105,7 @@ widgets/docks/undodock.cpp
 widgets/docks/tooloptionsdock.cpp
 
 widgets/settings/plugin_settings_widget.cpp
-widgets/settings/toolbar_settings_widget.cpp
+
 
 widgets/shape_style/color_selector.cpp
 widgets/shape_style/stroke_style_widget.cpp
@@ -154,7 +154,7 @@ set(SOURCES_UIS
     widgets/view_transform_widget.ui
 
     widgets/settings/plugin_settings_widget.ui
-    widgets/settings/toolbar_settings_widget.ui
+
 
     widgets/shape_style/color_selector.ui
     widgets/shape_style/stroke_style_widget.ui

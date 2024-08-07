@@ -66,7 +66,6 @@
 #include "tools/edit_tool.hpp"
 #include "plugin/action.hpp"
 #include "glaxnimate_app.hpp"
-#include "settings/toolbar_settings.hpp"
 #include "settings/document_templates.hpp"
 #include "emoji/emoji_set_dialog.hpp"
 
@@ -205,12 +204,6 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     // NOTE: keep at the end so we do this once all the widgets are in their default spots
     if ( restore_state )
         init_restore_state();
-
-
-    // Toolbar settings
-    //parent->setToolButtonStyle(settings::ToolbarSettingsGroup::button_style);
-    //parent->setIconSize(settings::ToolbarSettingsGroup::icon_size());
-    //ui.toolbar_tools->setIconSize(settings::ToolbarSettingsGroup::tool_icon_size());
 }
 
 template<class T>
