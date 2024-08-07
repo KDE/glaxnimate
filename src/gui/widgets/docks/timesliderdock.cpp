@@ -29,3 +29,8 @@ glaxnimate::gui::FrameControlsWidget* TimeSliderDock::playControls()
 {
     return d->ui.play_controls_2;
 }
+
+QSlider* TimeSliderDock::timeSlider()
+{
+    return d->ui.scroll_time;
+}

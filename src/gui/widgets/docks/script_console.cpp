@@ -5,7 +5,7 @@
  */
 
 #include "script_console.hpp"
-#include "ui_script_console.h"
+#include "ui_scriptconsole.h"
 
 #include <QEvent>
 #include <QRegularExpression>
@@ -20,14 +20,14 @@
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
 
-class ScriptConsole::Private
+class ScriptConsoleDock::Private
 {
 public:
-    Ui::ScriptConsole ui;
+    Ui::dock_script_console ui;
 
     std::vector<app::scripting::ScriptContext> script_contexts;
     const plugin::Plugin* current_plugin = nullptr;
-    ScriptConsole* parent;
+    ScriptConsoleDock* parent;
     std::map<QString, QVariant> globals;
     QRegularExpression re_completion{R"(^[a-zA-Z_0-9.\s\[\]]+$)"};
     KCompletion completion;
@@ -200,8 +200,8 @@ public:
     }
 };
 
-ScriptConsole::ScriptConsole(QWidget* parent)
-    : QWidget(parent), d(std::make_unique<Private>())
+ScriptConsoleDock::ScriptConsoleDock(QWidget* parent)
+    : QDockWidget(parent), d(std::make_unique<Private>())
 {
     d->ui.setupUi(this);
     d->parent = this;
@@ -218,14 +218,14 @@ ScriptConsole::ScriptConsole(QWidget* parent)
             d->ui.console_language->setCurrentIndex(d->ui.console_language->count()-1);
     }
 
-    connect(d->ui.btn_reload, &QAbstractButton::clicked, this, &ScriptConsole::clear_contexts);
+    connect(d->ui.btn_reload, &QAbstractButton::clicked, this, &ScriptConsoleDock::clear_contexts);
 }
 
-ScriptConsole::~ScriptConsole() = default;
+ScriptConsoleDock::~ScriptConsoleDock() = default;
 
-void ScriptConsole::changeEvent ( QEvent* e )
+void ScriptConsoleDock::changeEvent ( QEvent* e )
 {
-    QWidget::changeEvent(e);
+    QDockWidget::changeEvent(e);
 
     if ( e->type() == QEvent::LanguageChange)
     {
@@ -233,22 +233,22 @@ void ScriptConsole::changeEvent ( QEvent* e )
     }
 }
 
-void ScriptConsole::console_clear()
+void ScriptConsoleDock::console_clear()
 {
     d->ui.console_output->clear();
 }
 
-void ScriptConsole::console_commit(const QString& command)
+void ScriptConsoleDock::console_commit(const QString& command)
 {
     d->console_commit(command);
 }
 
-bool ScriptConsole::execute(const plugin::Plugin& plugin, const plugin::PluginScript& script, const QVariantList& args)
+bool ScriptConsoleDock::execute(const plugin::Plugin& plugin, const plugin::PluginScript& script, const QVariantList& args)
 {
     return d->execute_script(plugin, script, args);
 }
 
-QVariant ScriptConsole::get_global(const QString& name)
+QVariant ScriptConsoleDock::get_global(const QString& name)
 {
     auto it = d->globals.find(name);
     if ( it != d->globals.end() )
@@ -256,28 +256,28 @@ QVariant ScriptConsole::get_global(const QString& name)
     return {};
 }
 
-void ScriptConsole::set_global(const QString& name, const QVariant& value)
+void ScriptConsoleDock::set_global(const QString& name, const QVariant& value)
 {
     d->globals[name] = value;
 }
 
-void ScriptConsole::clear_contexts()
+void ScriptConsoleDock::clear_contexts()
 {
     d->script_contexts.clear();
 }
 
-void ScriptConsole::clear_output()
+void ScriptConsoleDock::clear_output()
 {
     if ( !d->ui.check_persist->isChecked() )
         console_clear();
 }
 
-PluginUiDialog* ScriptConsole::create_dialog(const QString& ui_file) const
+PluginUiDialog* ScriptConsoleDock::create_dialog(const QString& ui_file) const
 {
     return d->create_dialog(ui_file);
 }
 
-void ScriptConsole::save_settings()
+void ScriptConsoleDock::save_settings()
 {
     QStringList history = d->ui.console_input->historyItems();
     int max_history = app::settings::get<int>("scripting", "max_history");
@@ -286,7 +286,7 @@ void ScriptConsole::save_settings()
     app::settings::set("scripting", "history", history);
 }
 
-void ScriptConsole::run_snippet(const QString& source)
+void ScriptConsoleDock::run_snippet(const QString& source)
 {
     d->run_snippet(source, false);
 }

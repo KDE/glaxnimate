@@ -19,6 +19,7 @@
 #include <QtGlobal>
 #include <QNetworkReply>
 
+#include <KRecentFilesAction>
 
 #include "io/lottie/lottie_html_format.hpp"
 #include "io/svg/svg_renderer.hpp"
@@ -70,9 +71,9 @@ void GlaxnimateWindow::Private::setup_document_ptr(std::unique_ptr<model::Docume
 
     view_fit();
     if ( comp && !comp->shapes.empty() )
-        ui.view_document_node->set_current_node(comp->shapes[0]);
+        layers_dock->layer_view()->set_current_node(comp->shapes[0]);
 
-    ui.timeline_widget->reset_view();
+    timeline_dock->timelineWidget()->reset_view();
 }
 
 void GlaxnimateWindow::Private::do_setup_document()
@@ -83,7 +84,8 @@ void GlaxnimateWindow::Private::do_setup_document()
     comp = nullptr;
     connect(current_document->assets()->compositions.get(), &model::CompositionList::docnode_child_remove_end, parent, [this](model::DocumentNode*, int index){on_remove_precomp(index);});
     connect(current_document->assets()->compositions.get(), &model::CompositionList::precomp_added, parent, [this](model::Composition* node, int row){setup_composition(node, row);});
-    ui.menu_new_comp_layer->setEnabled(false);
+    parent->plugActionList( "new_comp_actionlist", new_comp_actions );
+
     for ( const auto& precomp : current_document->assets()->compositions->values )
         setup_composition(precomp.get());
 
@@ -93,26 +95,26 @@ void GlaxnimateWindow::Private::do_setup_document()
 
     // Views
     document_node_model.set_document(current_document.get());
-    ui.view_document_node->set_composition(comp);
-    ui.timeline_widget->set_document(current_document.get());
-    ui.timeline_widget->set_composition(comp);
-    ui.view_assets->setRootIndex(asset_model.mapFromSource(document_node_model.node_index(current_document->assets()).siblingAtColumn(1)));
+    layers_dock->layer_view()->set_composition(comp);
+    timeline_dock->timelineWidget()->set_document(current_document.get());
+    timeline_dock->timelineWidget()->set_composition(comp);
+    assets_dock->setRootIndex(asset_model.mapFromSource(document_node_model.node_index(current_document->assets()).siblingAtColumn(1)));
 
     property_model.set_document(current_document.get());
     property_model.set_object(comp);
-    ui.tab_bar->set_document(current_document.get());
+    tab_bar->set_document(current_document.get());
 
     scene.set_document(current_document.get());
 
     if ( !current_document->assets()->compositions->values.empty() )
         switch_composition(current_document->assets()->compositions->values[0], 0);
 
-    ui.document_swatch_widget->set_document(current_document.get());
-    ui.widget_gradients->set_document(current_document.get());
+    swatches_dock->set_document(current_document.get());
+    gradients_dock->set_document(current_document.get());
 
     // Scripting
-    ui.console->clear_contexts();
-    ui.console->set_global("document", QVariant::fromValue(current_document.get()));
+    scriptconsole_dock->clear_contexts();
+    scriptconsole_dock->set_global("document", QVariant::fromValue(current_document.get()));
 
     // Title
     QObject::connect(current_document.get(), &model::Document::filename_changed, parent, &GlaxnimateWindow::refresh_title);
@@ -120,22 +122,20 @@ void GlaxnimateWindow::Private::do_setup_document()
     refresh_title();
 
     // Playback
-    ui.play_controls->set_record_enabled(false);
-    ui.play_controls_2->set_record_enabled(false);
     ///...
-    QObject::connect(ui.play_controls, &FrameControlsWidget::frame_selected, current_document.get(), [this](int frame){current_document->set_current_time(frame);});
-    QObject::connect(current_document.get(), &model::Document::current_time_changed, ui.play_controls, [this](float frame){ui.play_controls->set_frame(frame);});
-    QObject::connect(current_document.get(), &model::Document::record_to_keyframe_changed, ui.play_controls, &FrameControlsWidget::set_record_enabled);
-    QObject::connect(current_document.get(), &model::Document::record_to_keyframe_changed, ui.play_controls_2, &FrameControlsWidget::set_record_enabled);
-    QObject::connect(ui.play_controls, &FrameControlsWidget::record_toggled, current_document.get(), &model::Document::set_record_to_keyframe);
-    QObject::connect(ui.play_controls_2, &FrameControlsWidget::record_toggled, current_document.get(), &model::Document::set_record_to_keyframe);
+    QObject::connect(timeline_dock->playControls(), &FrameControlsWidget::frame_selected, current_document.get(), [this](int frame){current_document->set_current_time(frame);});
+    QObject::connect(current_document.get(), &model::Document::current_time_changed, timeline_dock->playControls(), [this](float frame){timeline_dock->playControls()->set_frame(frame);});
+    QObject::connect(current_document.get(), &model::Document::record_to_keyframe_changed, timeline_dock->playControls(), &FrameControlsWidget::set_record_enabled);
+    QObject::connect(current_document.get(), &model::Document::record_to_keyframe_changed, time_slider_dock->playControls(), &FrameControlsWidget::set_record_enabled);
+    QObject::connect(timeline_dock->playControls(), &FrameControlsWidget::record_toggled, current_document.get(), &model::Document::set_record_to_keyframe);
+    QObject::connect(time_slider_dock->playControls(), &FrameControlsWidget::record_toggled, current_document.get(), &model::Document::set_record_to_keyframe);
 
     widget_recording->setVisible(false);
     QObject::connect(current_document.get(), &model::Document::record_to_keyframe_changed, widget_recording, &QWidget::setVisible);
 
     // Export
     export_options = {};
-    ui.action_export->setText(i18n("Export..."));
+    parent->action(QStringLiteral("export"))->setText(i18n("Export..."));
 }
 
 void GlaxnimateWindow::Private::setup_document_new(const QString& filename)
@@ -175,11 +175,11 @@ void GlaxnimateWindow::Private::setup_document_new(const QString& filename)
     opts.path = path;
     current_document->set_io_options(opts);
 
-    ui.view_document_node->set_current_node(ptr);
-    ui.play_controls->set_range(0, out_point);
+    layers_dock->layer_view()->set_current_node(ptr);
+    timeline_dock->playControls()->set_range(0, out_point);
     view_fit();
 
-    ui.timeline_widget->reset_view();
+    timeline_dock->timelineWidget()->reset_view();
 }
 
 bool GlaxnimateWindow::Private::setup_document_open(QIODevice* file, const io::Options& options, bool is_file)
@@ -213,7 +213,7 @@ bool GlaxnimateWindow::Private::setup_document_open(QIODevice* file, const io::O
         app::settings::set<QString>("open_save", "path", options.path.absolutePath());
 
         if ( ok && !autosave_load )
-            most_recent_file(options.filename);
+            m_recentFilesAction->addUrl(QUrl::fromLocalFile(options.filename));
     }
 
     view_fit();
@@ -250,13 +250,13 @@ bool GlaxnimateWindow::Private::setup_document_open(QIODevice* file, const io::O
         for ( int i = 1; i < stale.size(); i++ )
             delete stale[i];
 
-        ui.message_widget->queue_message(std::move(msg));
+        message_widget->queue_message(std::move(msg));
     }
 
     export_options = options;
     export_options.filename = "";
 
-    ui.timeline_widget->reset_view();
+    timeline_dock->timelineWidget()->reset_view();
 
     load_pending();
 
@@ -314,31 +314,30 @@ bool GlaxnimateWindow::Private::close_document()
     }
 
     if ( active_tool )
-        active_tool->close_document_event({ui.canvas, &scene, parent});
+        active_tool->close_document_event({canvas, &scene, parent});
 
     comp = nullptr;
-    ui.stroke_style_widget->set_targets({});
-    ui.stroke_style_widget->set_current(nullptr);
-    ui.fill_style_widget->set_targets({});
-    ui.fill_style_widget->set_current(nullptr);
+    stroke_dock->clear_document();
+    colors_dock->clear_document();
     document_node_model.clear_document();
     property_model.clear_document();
     scene.clear_document();
-    ui.timeline_widget->clear_document();
-    ui.document_swatch_widget->set_document(nullptr);
-    ui.widget_gradients->set_document(nullptr);
-    ui.view_document_node->set_composition(nullptr);
-    ui.tab_bar->set_document(nullptr);
+    timeline_dock->clear_document();
+    swatches_dock->clear_document();
+    gradients_dock->clear_document();
+    layers_dock->layer_view()->set_composition(nullptr);
+    tab_bar->set_document(nullptr);
 
     for ( const auto& stack : parent->undo_group().stacks() )
         parent->undo_group().removeStack(stack);
 
-    ui.console->clear_contexts();
-    ui.console->clear_output();
-    ui.console->set_global("document", QVariant{});
+    scriptconsole_dock->clear_contexts();
+    scriptconsole_dock->clear_output();
+    scriptconsole_dock->set_global("document", QVariant{});
 
     comp_selections.clear();
-    ui.menu_new_comp_layer->clear();
+    parent->unplugActionList("new_comp_actionlist");
+    new_comp_actions.clear();
 
     return true;
 }
@@ -394,12 +393,13 @@ bool GlaxnimateWindow::Private::save_document(bool force_dialog, bool export_opt
     if ( export_opts )
     {
         export_options = opts;
-        ui.action_export->setText(i18n("Export to %1", QFileInfo(opts.filename).fileName()));
+        parent->action(QStringLiteral("export"))->setText(i18n("Export to %1", QFileInfo(opts.filename).fileName()));
+
     }
     else
     {
         if ( opts.format->can_open() )
-            most_recent_file(opts.filename);
+            m_recentFilesAction->addUrl(QUrl::fromLocalFile(opts.filename));
         current_document->undo_stack().setClean();
         current_document_has_file = true;
         app::settings::set<QString>("open_save", "path", opts.path.absolutePath());
@@ -418,7 +418,7 @@ void GlaxnimateWindow::Private::document_open()
 {
     io::Options options = current_document->io_options();
 
-    ImportExportDialog dialog(options, ui.centralwidget->parentWidget());
+    ImportExportDialog dialog(options, parent);
     if ( dialog.import_dialog() )
         setup_document_open(dialog.io_options());
 }
@@ -437,7 +437,7 @@ io::Options GlaxnimateWindow::Private::options_from_filename(const QString& file
 
         if ( opts.format )
         {
-            ImportExportDialog dialog(opts, ui.centralwidget->parentWidget());
+            ImportExportDialog dialog(opts, parent);
             if ( dialog.options_dialog(opts.format->open_settings()) )
                 return dialog.io_options();
 
@@ -463,7 +463,17 @@ void GlaxnimateWindow::Private::document_open_from_filename(const QString& filen
     if ( opts.format )
     {
         setup_document_open(opts);
-        most_recent_file(filename);
+        //most_recent_file(filename);
+    }
+}
+
+void GlaxnimateWindow::Private::document_open_from_url(const QUrl& url)
+{
+    io::Options opts = options_from_filename(url.toLocalFile(), {});
+    if ( opts.format )
+    {
+        setup_document_open(opts);
+        m_recentFilesAction->addUrl(url);
     }
 }
 
@@ -728,12 +738,12 @@ void GlaxnimateWindow::Private::set_color_def(model::BrushStyle* def, bool secon
     QString what;
     if ( secondary )
     {
-        target = ui.stroke_style_widget->current();
+        target = stroke_dock->current();
         what = i18n("Stroke");
     }
     else
     {
-        target = ui.fill_style_widget->current();
+        target = colors_dock->current();
         what = i18n("Fill");
     }
 
@@ -785,7 +795,7 @@ void GlaxnimateWindow::Private::set_brush_reference ( model::BrushStyle* sty, bo
 void GlaxnimateWindow::Private::style_change_event()
 {
     if ( active_tool )
-        active_tool->shape_style_change_event({ui.canvas, &scene, parent});
+        active_tool->shape_style_change_event({canvas, &scene, parent});
 }
 
 
@@ -796,7 +806,7 @@ void GlaxnimateWindow::Private::import_file()
     if ( !path.isEmpty() )
         options.path.setPath(path);
 
-    ImportExportDialog dialog(options, ui.centralwidget->parentWidget());
+    ImportExportDialog dialog(options, parent);
     if ( dialog.import_dialog() )
     {
         options = dialog.io_options();
@@ -941,7 +951,7 @@ void glaxnimate::gui::GlaxnimateWindow::Private::check_autosaves()
         [this, stale]{ show_stale_autosave_list(stale); }
     );
 
-    ui.message_widget->queue_message(std::move(msg));
+    message_widget->queue_message(std::move(msg));
 }
 
 void glaxnimate::gui::GlaxnimateWindow::Private::show_stale_autosave_list(const QList<KAutoSaveFile*>& stale)

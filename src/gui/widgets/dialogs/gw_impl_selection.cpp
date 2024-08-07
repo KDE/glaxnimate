@@ -22,8 +22,8 @@ void GlaxnimateWindow::Private::scene_selection_changed(const std::vector<model:
     }
     else
     {
-        auto current = ui.view_document_node->currentIndex();
-        if ( current.isValid() && ! ui.view_document_node->selectionModel()->isSelected(current) )
+        auto current = layers_dock->layer_view()->currentIndex();
+        if ( current.isValid() && ! layers_dock->layer_view()->selectionModel()->isSelected(current) )
             set_current_object(nullptr);
     }
 }
@@ -35,8 +35,8 @@ void GlaxnimateWindow::Private::timeline_current_node_changed(model::VisualNode*
 
 void GlaxnimateWindow::Private::set_current_document_node(model::VisualNode* node)
 {
-    ui.view_document_node->replace_selection(node);
-    ui.view_document_node->set_current_node(node);
+    layers_dock->layer_view()->replace_selection(node);
+    layers_dock->layer_view()->set_current_node(node);
 }
 
 void GlaxnimateWindow::Private::set_current_object(model::DocumentNode* node)
@@ -94,23 +94,23 @@ void GlaxnimateWindow::Private::set_current_object(model::DocumentNode* node)
 
     // Property view
     property_model.set_object(node);
-    ui.view_properties->expandAll();
+    properties_dock->expandAll();
 
     // Timeline Widget
-    if ( parent->sender() != ui.timeline_widget )
-        ui.timeline_widget->set_current_node(node);
+    if ( parent->sender() != timeline_dock->timelineWidget() )
+        timeline_dock->timelineWidget()->set_current_node(node);
 
     // Document tree view
-    if ( parent->sender() != ui.view_document_node )
+    if ( parent->sender() != layers_dock->layer_view() )
     {
-        ui.view_document_node->set_current_node(node);
-        ui.view_document_node->repaint();
+        layers_dock->layer_view()->set_current_node(node);
+        layers_dock->layer_view()->repaint();
     }
 
     // Styles
-    ui.stroke_style_widget->set_current(stroke);;
-    ui.fill_style_widget->set_current(fill);
-    ui.widget_gradients->set_current(fill, stroke);
+    stroke_dock->set_current(stroke);;
+    colors_dock->set_current(fill);
+    gradients_dock->set_current(fill, stroke);
     widget_current_style->clear_gradients();
 
     if ( fill )
@@ -136,8 +136,8 @@ void GlaxnimateWindow::Private::selection_changed(const std::vector<model::Visua
 
     auto lock = update_selection.get_lock();
 
-    if ( parent->sender() != ui.view_document_node && parent->sender() != ui.view_document_node->selectionModel() )
-        ui.view_document_node->update_selection(selected, deselected);
+    if ( parent->sender() != layers_dock->layer_view() && parent->sender() != layers_dock->layer_view()->selectionModel() )
+        layers_dock->layer_view()->update_selection(selected, deselected);
 
     if ( parent->sender() != &scene )
     {
@@ -145,8 +145,8 @@ void GlaxnimateWindow::Private::selection_changed(const std::vector<model::Visua
         scene.user_select(selected, graphics::DocumentScene::Append);
     }
 
-    if ( parent->sender() != ui.timeline_widget )
-        ui.timeline_widget->select(selected, deselected);
+    if ( parent->sender() != timeline_dock->timelineWidget() )
+        timeline_dock->timelineWidget()->select(selected, deselected);
 
     const auto& selection = scene.selection();
 
@@ -169,8 +169,8 @@ void GlaxnimateWindow::Private::selection_changed(const std::vector<model::Visua
         }
     }
 
-    ui.fill_style_widget->set_targets(fills);
-    ui.stroke_style_widget->set_targets(strokes);
-    ui.widget_gradients->set_targets(fills, strokes);
+    colors_dock->set_targets(fills);
+    stroke_dock->set_targets(strokes);
+    gradients_dock->set_targets(fills, strokes);
 }
 

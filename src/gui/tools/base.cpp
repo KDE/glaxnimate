@@ -137,18 +137,6 @@ void tools::Tool::on_deselected(graphics::DocumentScene* scene, model::VisualNod
     scene->hide_editors(node, true, true);
 }
 
-QAction* tools::Tool::get_action()
-{
-    if ( !action )
-    {
-        action = new QAction();
-        action->setCheckable(true);
-        action->setIcon(icon());
-        action->setData(QVariant::fromValue(this));
-    }
-    return action;
-}
-
 ScalableButton* tools::Tool::get_button()
 {
     if ( !button )
@@ -158,9 +146,6 @@ ScalableButton* tools::Tool::get_button()
         button->setIcon(icon());
         button->setCheckable(true);
         button->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
-
-        QObject::connect(action, &QAction::toggled, button, &QAbstractButton::setChecked);
-        QObject::connect(button, &QAbstractButton::clicked, action, &QAction::trigger);
     }
 
     return button;
@@ -178,15 +163,6 @@ QWidget* tools::Tool::get_settings_widget()
 
 void tools::Tool::retranslate()
 {
-    if ( action )
-    {
-        action->setText(name());
-        action->setToolTip(tooltip());
-#ifndef Q_OS_ANDROID
-        action->setShortcut(key_sequence());
-#endif
-    }
-
     if ( button )
     {
         button->setText(name());

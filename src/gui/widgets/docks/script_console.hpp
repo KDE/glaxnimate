@@ -8,7 +8,7 @@
 #define SCRIPTCONSOLE_H
 
 #include <memory>
-#include <QWidget>
+#include <QDockWidget>
 
 #include "plugin/executor.hpp"
 
@@ -16,13 +16,13 @@ namespace glaxnimate::gui {
 
 class PluginUiDialog;
 
-class ScriptConsole : public QWidget, public plugin::Executor
+class ScriptConsoleDock : public QDockWidget, public plugin::Executor
 {
     Q_OBJECT
 
 public:
-    ScriptConsole(QWidget* parent = nullptr);
-    ~ScriptConsole();
+    ScriptConsoleDock(QWidget* parent = nullptr);
+    ~ScriptConsoleDock();
 
     bool execute(const plugin::Plugin& plugin, const plugin::PluginScript& script, const QVariantList& in_args) override;
     QVariant get_global(const QString& name) override;

@@ -194,7 +194,6 @@ if ( NOT MOBILE_UI )
         emoji/emoji_set_dialog.ui
 
         widgets/dialogs/about_dialog.ui
-        widgets/dialogs/glaxnimate_window.ui
         widgets/docks/assets.ui
         widgets/docks/colors.ui
         widgets/docks/stroke.ui

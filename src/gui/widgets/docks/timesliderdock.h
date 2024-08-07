@@ -5,6 +5,8 @@
 #include <QDockWidget>
 #include <QObject>
 
+class QSlider;
+
 namespace glaxnimate::gui {
 
 class TimeSliderDock : public QDockWidget
@@ -17,6 +19,7 @@ public:
     ~TimeSliderDock();
 
     glaxnimate::gui::FrameControlsWidget* playControls();
+    QSlider* timeSlider();
 
 
 private:

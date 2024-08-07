@@ -41,7 +41,7 @@ model::Composition* GlaxnimateWindow::Private::current_composition()
 
 model::VisualNode* GlaxnimateWindow::Private::current_document_node()
 {
-    if ( auto dn = ui.view_document_node->current_node() )
+    if ( auto dn = layers_dock->layer_view()->current_node() )
         return dn;
     return comp;
 }
@@ -59,14 +59,14 @@ void GlaxnimateWindow::Private::layer_new_layer()
 void GlaxnimateWindow::Private::layer_new_fill()
 {
     auto layer = std::make_unique<model::Fill>(current_document.get());
-    layer->color.set(ui.fill_style_widget->current_color());
+    layer->color.set(colors_dock->current_color());
     parent->layer_new_impl(std::move(layer));
 }
 
 void GlaxnimateWindow::Private::layer_new_stroke()
 {
     auto layer = std::make_unique<model::Stroke>(current_document.get());
-    layer->set_pen_style(ui.stroke_style_widget->pen_style());
+    layer->set_pen_style(stroke_dock->pen_style());
     parent->layer_new_impl(std::move(layer));
 }
 
@@ -369,49 +369,49 @@ void GlaxnimateWindow::Private::to_path()
 
 void GlaxnimateWindow::Private::switch_composition(model::Composition* new_comp, int i)
 {
-    if ( i != ui.tab_bar->currentIndex() )
+    if ( i != tab_bar->currentIndex() )
     {
-        QSignalBlocker g(ui.tab_bar);
-        ui.tab_bar->setCurrentIndex(i);
+        QSignalBlocker g(tab_bar);
+        tab_bar->setCurrentIndex(i);
     }
 
     if ( comp )
     {
         int old_i = current_document->assets()->compositions->values.index_of(static_cast<model::Composition*>(comp));
         comp_selections[old_i].selection = scene.selection();
-        if ( ui.view_document_node->currentIndex().isValid() )
-            comp_selections[old_i].current = ui.view_document_node->current_node();
+        if ( layers_dock->layer_view()->currentIndex().isValid() )
+            comp_selections[old_i].current = layers_dock->layer_view()->current_node();
         else
             comp_selections[old_i].current = comp;
 
-        QObject::disconnect(comp->animation.get(), &model::AnimationContainer::first_frame_changed, ui.play_controls, nullptr);
-        QObject::disconnect(comp, &model::Composition::fps_changed, ui.play_controls, &FrameControlsWidget::set_fps);
+        QObject::disconnect(comp->animation.get(), &model::AnimationContainer::first_frame_changed, timeline_dock->playControls(), nullptr);
+        QObject::disconnect(comp, &model::Composition::fps_changed, timeline_dock->playControls(), &FrameControlsWidget::set_fps);
     }
 
     comp = new_comp;
 
-    ui.play_controls->set_range(comp->animation->first_frame.get(), comp->animation->last_frame.get());
-    ui.play_controls->set_fps(comp->fps.get());
-    ui.play_controls_2->set_range(comp->animation->first_frame.get(), comp->animation->last_frame.get());
-    ui.play_controls_2->set_fps(comp->fps.get());
+    timeline_dock->playControls()->set_range(comp->animation->first_frame.get(), comp->animation->last_frame.get());
+    timeline_dock->playControls()->set_fps(comp->fps.get());
+    time_slider_dock->playControls()->set_range(comp->animation->first_frame.get(), comp->animation->last_frame.get());
+    time_slider_dock->playControls()->set_fps(comp->fps.get());
 
-    QObject::connect(comp->animation.get(), &model::AnimationContainer::first_frame_changed, ui.play_controls, [this](float frame){ui.play_controls->set_min(frame);});
-    QObject::connect(comp->animation.get(), &model::AnimationContainer::last_frame_changed, ui.play_controls, [this](float frame){ui.play_controls->set_max(frame);});
-    QObject::connect(comp, &model::Composition::fps_changed, ui.play_controls, &FrameControlsWidget::set_fps);
+    QObject::connect(comp->animation.get(), &model::AnimationContainer::first_frame_changed, timeline_dock->playControls(), [this](float frame){timeline_dock->playControls()->set_min(frame);});
+    QObject::connect(comp->animation.get(), &model::AnimationContainer::last_frame_changed, timeline_dock->playControls(), [this](float frame){timeline_dock->playControls()->set_max(frame);});
+    QObject::connect(comp, &model::Composition::fps_changed, timeline_dock->playControls(), &FrameControlsWidget::set_fps);
 
     auto possible = current_document->comp_graph().possible_descendants(comp, current_document.get());
     std::set<model::Composition*> comps(possible.begin(), possible.end());
-    for ( QAction* action : ui.menu_new_comp_layer->actions() )
+    for ( QAction* action : new_comp_actions )
         action->setEnabled(comps.count(action->data().value<model::Composition*>()));
 
-    ui.view_document_node->set_composition(comp);
-    ui.timeline_widget->set_composition(comp);
+    layers_dock->layer_view()->set_composition(comp);
+    timeline_dock->timelineWidget()->set_composition(comp);
     scene.set_composition(comp);
     scene.user_select(comp_selections[i].selection, graphics::DocumentScene::Replace);
     auto current = comp_selections[i].current;
-    ui.view_document_node->set_current_node(current);
+    layers_dock->layer_view()->set_current_node(current);
 
-    ui.canvas->viewport()->update();
+    canvas->viewport()->update();
 }
 
 void GlaxnimateWindow::Private::setup_composition(model::Composition* comp, int index)
@@ -429,13 +429,15 @@ void GlaxnimateWindow::Private::setup_composition(model::Composition* comp, int 
 
     QAction* action = nullptr;
 
-    ui.menu_new_comp_layer->setEnabled(true);
+
     action = new QAction(comp->instance_icon(), comp->object_name(), comp);
-    if ( ui.menu_new_comp_layer->actions().empty() || index >= ui.menu_new_comp_layer->actions().size() )
-        ui.menu_new_comp_layer->addAction(action);
+    if ( new_comp_actions.empty() || index >= new_comp_actions.size() )
+        new_comp_actions.append(action);
     else
-        ui.menu_new_comp_layer->insertAction(ui.menu_new_comp_layer->actions()[index-1], action);
+        new_comp_actions.insert(index-1, action);
+
     action->setData(QVariant::fromValue(comp));
+    connect(action, &QAction::triggered, parent, [this, action](bool){layer_new_comp_action(action);});
 
     connect(comp, &model::DocumentNode::name_changed, action, [comp, action](){
         action->setText(comp->object_name());
@@ -444,6 +446,8 @@ void GlaxnimateWindow::Private::setup_composition(model::Composition* comp, int 
         action->setIcon(comp->instance_icon());
     });
 
+    parent->unplugActionList( "new_comp_actionlist" );
+    parent->plugActionList( "new_comp_actionlist", new_comp_actions );
 }
 
 void GlaxnimateWindow::Private::add_composition()
@@ -469,7 +473,7 @@ void GlaxnimateWindow::Private::add_composition()
 
     current_document->set_best_name(comp.get());
     current_document->push_command(new command::AddObject(&current_document->assets()->compositions->values, std::move(comp)));
-    ui.tab_bar->setCurrentIndex(ui.tab_bar->count()-1);
+    tab_bar->setCurrentIndex(tab_bar->count()-1);
 }
 
 void GlaxnimateWindow::Private::objects_to_new_composition(
@@ -537,7 +541,7 @@ void GlaxnimateWindow::Private::on_remove_precomp(int index)
         switch_composition(comps[qMax(comps.size(), index)], 0);
     }
 
-    delete ui.menu_new_comp_layer->actions()[index];
+    delete new_comp_actions[index];
     comp_selections.erase(comp_selections.begin()+index);
 }
 
@@ -655,15 +659,15 @@ void GlaxnimateWindow::Private::align(AlignDirection direction, AlignPosition po
 
     QPointF reference;
 
-    if ( ui.action_align_to_selection->isChecked() )
+    if ( parent->action(QStringLiteral("align_to_canvas_group"))->isChecked() )
     {
         reference = align_point(bounds, direction, position);
     }
-    else if ( ui.action_align_to_canvas->isChecked() )
+    else if ( parent->action(QStringLiteral("align_to_canvas"))->isChecked() )
     {
         reference = align_point(comp->rect(), direction, position);
     }
-    else if ( ui.action_align_to_canvas_group->isChecked() )
+    else if ( parent->action(QStringLiteral("align_to_canvas_group"))->isChecked() )
     {
         reference = align_point(comp->rect(), direction, position);
         QPointF bounds_point = align_point(bounds, direction, bound_pos);

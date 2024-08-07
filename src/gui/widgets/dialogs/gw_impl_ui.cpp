@@ -12,13 +12,19 @@
 #include <QInputDialog>
 #include <QLabel>
 #include <QPushButton>
+#include <QAction>
 #include <QActionGroup>
 #include <QScreen>
 #include <QDialogButtonBox>
+#include <QStatusBar>
 
 #include <KHelpMenu>
 #include <KActionCollection>
 #include <KShortcutsDialog>
+#include <KSharedConfig>
+#include <KConfigGroup>
+#include <KRecentFilesAction>
+#include <KToolBar>
 
 #include "app/settings/keyboard_shortcuts.hpp"
 
@@ -40,6 +46,12 @@
 #include "widgets/dialogs/document_metadata_dialog.hpp"
 #include "widgets/dialogs/trace_dialog.hpp"
 #include "widgets/dialogs/startup_dialog.hpp"
+#include "widgets/docks/aligndock.h"
+#include "widgets/docks/assetsdock.h"
+#include "widgets/docks/logsdock.h"
+#include "widgets/docks/propertiesdock.h"
+#include "widgets/docks/script_console.hpp"
+#include "widgets/docks/timelinedock.h"
 #include "widgets/lottiefiles/lottiefiles_search_dialog.hpp"
 
 #include "widgets/view_transform_widget.hpp"
@@ -54,6 +66,9 @@
 #include "settings/toolbar_settings.hpp"
 #include "settings/document_templates.hpp"
 #include "emoji/emoji_set_dialog.hpp"
+
+#include "widgets/docks/layersdock.h"
+
 
 using namespace glaxnimate::gui;
 
@@ -84,57 +99,125 @@ static void action_combo(QComboBox* box, QAction* action)
 void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, GlaxnimateWindow* parent)
 {
     this->parent = parent;
-    parent->createGUI();
-    ui.setupUi(parent);
 
-    init_actions();
+    // Central Widget
+    QWidget *centralWidget = new QWidget(parent);
+    QVBoxLayout *centralLayout = new QVBoxLayout(centralWidget);
+    centralWidget->setLayout(centralLayout);
 
-    tools::Tool* to_activate = init_tools_ui();
+    canvas = new Canvas(centralWidget);
+    canvas->setAcceptDrops(true);
 
-    init_item_views();
+    message_widget = new WindowMessageWidget(centralWidget);
+    tab_bar = new CompositionTabBar(centralWidget);
 
-    // Tool buttons
-    ui.btn_layer_add->setMenu(ui.menu_new_layer);
+    centralLayout->addWidget(message_widget);
+    centralLayout->addWidget(tab_bar);
+    centralLayout->addWidget(canvas);
+
+    // Actions
+    setup_file_actions();
+    setup_edit_actions();
+    tools::Tool* to_activate = setup_tools_actions();
+    setup_view_actions();
+    setup_path_actions();
+    setup_object_actions();
+    setup_playback_actions();
+    setup_document_actions();
+    setup_layers_actions();
+
+    // Actions: Text
+    QAction *textOnPath = add_action(QStringLiteral("text_put_on_path"), i18n("Put on Path"), QStringLiteral("text-put-on-path"));
+    connect(textOnPath, &QAction::triggered, parent, [this]{text_put_on_path();});
+
+    QAction *textRemovePath = add_action(QStringLiteral("text_remove_from_path"), i18n("Remove from Path"), QStringLiteral("text-remove-from-path"));
+    connect(textRemovePath, &QAction::triggered, parent, [this]{text_remove_from_path();});
+
+    // Actions: Misc
+    add_action(QStringLiteral("new_layer_color"), i18n("Solid Color Layer"), QStringLiteral("object-fill"));
+
+    // Main Window
+    parent->setupGUI();
+
+    parent->setDockOptions(parent->dockOptions() | QMainWindow::AllowNestedDocks | QMainWindow::AllowTabbedDocks);
+    parent->setDockOptions(parent->dockOptions() | QMainWindow::GroupedDragging);
+
+    parent->setCentralWidget(centralWidget);
+
+    // Docks
+    colors_dock = new ColorsDock(parent);
+    parent->addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, colors_dock);
+    stroke_dock = new StrokeDock(parent);
+    parent->addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, stroke_dock);
+
+    tools::EditTool* edit_tool = static_cast<tools::EditTool*>(tools::Registry::instance().tool("edit"));
+    connect(edit_tool, &tools::EditTool::gradient_stop_changed, colors_dock, &ColorsDock::set_gradient_stop);
+    connect(edit_tool, &tools::EditTool::gradient_stop_changed, stroke_dock, &StrokeDock::set_gradient_stop);
 
     init_status_bar();
 
     // Graphics scene
-    ui.canvas->setScene(&scene);
-    ui.canvas->set_tool_target(parent);
+    canvas->setScene(&scene);
+    canvas->set_tool_target(parent);
     connect(&scene, &graphics::DocumentScene::node_user_selected, parent, &GlaxnimateWindow::scene_selection_changed);
-    connect(ui.canvas, &Canvas::dropped, parent, [this](const QMimeData* d){dropped(d);});
+    connect(canvas, &Canvas::dropped, parent, [this](const QMimeData* d){dropped(d);});
 
     // Dialogs
     dialog_import_status = new IoStatusDialog(QIcon::fromTheme("document-open"), i18n("Open File"), false, parent);
     dialog_export_status = new IoStatusDialog(QIcon::fromTheme("document-save"), i18n("Save File"), false, parent);
-    about_dialog = new AboutDialog(parent);
-
-    // Only enabled on debug because it isn't fully integrated yet
-    if ( debug )
-    {
-        KHelpMenu *help_menu = new KHelpMenu(parent);
-        ui.menu_bar->addMenu(help_menu->menu());
-        connect(help_menu, &KHelpMenu::showAboutApplication, about_dialog, &QWidget::show);
-    }
-
-    // Recent files
-    recent_files = app::settings::get<QStringList>("open_save", "recent_files");
-    ui.action_open_last->setEnabled(!recent_files.isEmpty());
-    reload_recent_menu();
-    connect(ui.menu_open_recent, &QMenu::triggered, parent, &GlaxnimateWindow::document_open_recent);
+    // TODO remove
+    //about_dialog = new AboutDialog(parent);
 
     // Docks
     init_docks();
 
+    init_item_views();
+
+    // Initialize tools
+    init_tools_ui();
+    init_tools(to_activate);
+
+    connect_playback_actions();
+
+    auto preset = LayoutPreset(app::settings::get<int>("ui", "layout"));
+
+    switch ( preset )
+    {
+    case LayoutPreset::Unknown:
+    case LayoutPreset::Auto:
+        layout_auto();
+        break;
+    case LayoutPreset::Wide:
+        layout_wide();
+        break;
+    case LayoutPreset::Compact:
+        layout_compact();
+        break;
+    case LayoutPreset::Medium:
+        layout_medium();
+        break;
+    case LayoutPreset::Custom:
+        layout_auto();
+        app::settings::set("ui", "layout", int(LayoutPreset::Custom));
+        QAction *layoutCustom = parent->actionCollection()->action(QStringLiteral("layout_custom"));
+        layoutCustom->setChecked(true);
+        break;
+    }
+
     // Menus
     init_menus();
 
-    // Debug menu
-    if ( debug )
-        init_debug();
+    // Only enabled on debug because it isn't fully integrated yet
+    /*if ( debug )
+    {
+        KHelpMenu *help_menu = new KHelpMenu(parent);
+        ui.menu_bar->addMenu(help_menu->menu());
+        connect(help_menu, &KHelpMenu::showAboutApplication, about_dialog, &QWidget::show);
+    }*/
 
-    // Initialize tools
-    init_tools(to_activate);
+    // Debug menu
+    //if ( debug )
+        //init_debug();
 
     // Restore state
     // NOTE: keep at the end so we do this once all the widgets are in their default spots
@@ -143,226 +226,158 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
 
 
     // Toolbar settings
-    parent->setToolButtonStyle(settings::ToolbarSettingsGroup::button_style);
-    parent->setIconSize(settings::ToolbarSettingsGroup::icon_size());
-    ui.toolbar_tools->setIconSize(settings::ToolbarSettingsGroup::tool_icon_size());
+    //parent->setToolButtonStyle(settings::ToolbarSettingsGroup::button_style);
+    //parent->setIconSize(settings::ToolbarSettingsGroup::icon_size());
+    //ui.toolbar_tools->setIconSize(settings::ToolbarSettingsGroup::tool_icon_size());
 }
 
 template<class T>
-void GlaxnimateWindow::Private::add_modifier_menu_action(QMenu* menu)
+void GlaxnimateWindow::Private::add_modifier_menu_action()
 {
-    menu->addAction(T::static_tree_icon(), T::static_type_name_human(), [this]{
+    QAction *action = add_action("new_" + T::static_class_name().toLower(), T::static_type_name_human());
+    action->setIcon(T::static_tree_icon());
+    connect(action, &QAction::triggered, [this]{
         auto layer = std::make_unique<T>(current_document.get());
         parent->layer_new_impl(std::move(layer));
-    })->setObjectName("action_new_" + T::static_class_name().toLower());
+    });
 }
 
-void GlaxnimateWindow::Private::init_actions()
+QAction* GlaxnimateWindow::Private::add_action(const QString &id, const QString &text, const QString &iconName, const QString &toolTip, const QKeySequence &shortcut)
 {
-    // Standard Shortcuts
-    ui.action_new->setShortcut(QKeySequence::New);
-    ui.action_open->setShortcut(QKeySequence::Open);
-    ui.action_close->setShortcut(QKeySequence::Close);
-    ui.action_reload->setShortcut(QKeySequence("Ctrl+F5", QKeySequence::PortableText));
-    ui.action_save->setShortcut(QKeySequence::Save);
-    ui.action_save_as->setShortcut(QKeySequence::SaveAs);
-    ui.action_quit->setShortcut(QKeySequence::Quit);
-    ui.action_copy->setShortcut(QKeySequence::Copy);
-    ui.action_cut->setShortcut(QKeySequence::Cut);
-    ui.action_paste->setShortcut(QKeySequence::Paste);
-    ui.action_paste_as_composition->setShortcut(QKeySequence("Ctrl+Shift+V", QKeySequence::PortableText));
-    ui.action_select_all->setShortcut(QKeySequence::SelectAll);
-    ui.action_undo->setShortcut(QKeySequence::Undo);
-    ui.action_redo->setShortcut(QKeySequence::Redo);
-    ui.action_group->setShortcut(QKeySequence("Ctrl+G", QKeySequence::PortableText));
-    ui.action_ungroup->setShortcut(QKeySequence("Ctrl+Shift+G", QKeySequence::PortableText));
-    ui.action_open_last->setShortcut(QKeySequence("Ctrl+Shift+O", QKeySequence::PortableText));
-    ui.action_import_image->setShortcut(QKeySequence("Ctrl+I", QKeySequence::PortableText));
-    ui.action_import->setShortcut(QKeySequence("Ctrl+Shift+I", QKeySequence::PortableText));
-    ui.action_node_remove->setShortcut(QKeySequence("Del", QKeySequence::PortableText));
-    ui.action_delete->setShortcut(QKeySequence("Del", QKeySequence::PortableText));
-    ui.action_export->setShortcut(QKeySequence("Ctrl+E", QKeySequence::PortableText));
-    ui.action_export_as->setShortcut(QKeySequence("Ctrl+Shift+E", QKeySequence::PortableText));
-    ui.action_frame_prev->setShortcut(QKeySequence("Left", QKeySequence::PortableText));
-    ui.action_frame_next->setShortcut(QKeySequence("Right", QKeySequence::PortableText));
-    ui.action_duplicate->setShortcut(QKeySequence("Ctrl+D", QKeySequence::PortableText));
-    ui.action_play->setShortcut(QKeySequence("Space", QKeySequence::PortableText));
+    QAction *action = new QAction(parent);
+    action->setText(text);
+    action->setToolTip(toolTip);
+    if (!iconName.isEmpty()) {
+        action->setIcon(QIcon::fromTheme(iconName));
+    }
+    parent->actionCollection()->addAction(id, action);
+    parent->actionCollection()->setDefaultShortcut(action, shortcut);
+    return action;
+}
 
-    // Actions
-    connect(ui.action_copy, &QAction::triggered, parent, &GlaxnimateWindow::copy);
-    connect(ui.action_paste, &QAction::triggered, parent, &GlaxnimateWindow::paste);
-    connect(ui.action_paste_as_composition, &QAction::triggered, parent, [this]{parent->paste_as_composition();});
-    connect(ui.action_cut, &QAction::triggered, parent, &GlaxnimateWindow::cut);
-    connect(ui.action_duplicate, &QAction::triggered, parent, &GlaxnimateWindow::duplicate_selection);
-    connect(ui.action_reload, &QAction::triggered, parent, &GlaxnimateWindow::document_reload);
-    connect(ui.action_raise_to_top, &QAction::triggered, parent, &GlaxnimateWindow::layer_top);
-    connect(ui.action_raise, &QAction::triggered, parent, &GlaxnimateWindow::layer_raise);
-    connect(ui.action_lower, &QAction::triggered, parent, &GlaxnimateWindow::layer_lower);
-    connect(ui.action_lower_to_bottom, &QAction::triggered, parent, &GlaxnimateWindow::layer_bottom);
-    connect(ui.action_group, &QAction::triggered, parent, &GlaxnimateWindow::group_shapes);
-    connect(ui.action_ungroup, &QAction::triggered, parent, &GlaxnimateWindow::ungroup_shapes);
-    connect(ui.action_quit, &QAction::triggered, parent, &GlaxnimateWindow::close);
-    connect(ui.action_move_to, &QAction::triggered, parent, &GlaxnimateWindow::move_to);
-    connect(ui.action_validate_tgs, &QAction::triggered, parent, &GlaxnimateWindow::validate_tgs);
-    connect(ui.action_validate_discord, &QAction::triggered, parent, [this]{validate_discord();});
-    connect(ui.action_resize, &QAction::triggered, parent, [this]{ ResizeDialog(this->parent).resize_composition(comp); });
-    connect(ui.action_donate, &QAction::triggered, parent, &GlaxnimateWindow::help_donate);
-    connect(ui.action_new_layer, &QAction::triggered, parent, [this]{layer_new_layer();});
-    connect(ui.action_new_group, &QAction::triggered, parent, [this]{layer_new_group();});
-    connect(ui.action_new_fill, &QAction::triggered, parent, [this]{layer_new_fill();});
-    connect(ui.action_new_stroke, &QAction::triggered, parent, [this]{layer_new_stroke();});
-    connect(ui.action_open_last, &QAction::triggered, parent, [this]{
-        if ( !recent_files.isEmpty() )
+void GlaxnimateWindow::Private::setup_file_actions()
+{
+    //QAction *clearAction = add_action(QStringLiteral("clear"), i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
+
+    // File
+    KStandardAction::openNew(parent, &GlaxnimateWindow::document_new, parent->actionCollection());
+    KStandardAction::open(parent, &GlaxnimateWindow::document_open_dialog, parent->actionCollection());
+    QAction *importImage = add_action(QStringLiteral("import_image"), i18n("Add Image…"), QStringLiteral("insert-image"), {}, Qt::CTRL | Qt::Key_I);
+    connect(importImage, &QAction::triggered, parent, [this]{import_image();});
+
+    QAction *documentImport = add_action(QStringLiteral("import"), i18n("Import…"), QStringLiteral("document-import"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_I);
+    connect(documentImport, &QAction::triggered, parent, [this]{import_file();});
+
+    QAction *importLottie = add_action(QStringLiteral("open_lottiefiles"), i18n("Import from LottieFiles…"), QStringLiteral("lottiefiles"));
+    connect(importLottie, &QAction::triggered, parent, [this]{import_from_lottiefiles();});
+
+    QAction *openLast = add_action(QStringLiteral("open_last"), i18n("Open Most Recent"), QStringLiteral("document-open-recent"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_O);
+    connect(openLast, &QAction::triggered, parent, [this]{
+        QList<QUrl> recent_file_urls = m_recentFilesAction->urls();
+        if ( !recent_file_urls.isEmpty() )
         {
             // Avoid references to recent_files
-            QString filename = recent_files[0];
-            document_open_from_filename(filename);
+            QUrl url = recent_file_urls.first();
+            document_open_from_url(url);
         }
     });
-    add_modifier_menu_action<model::Repeater>(ui.menu_new_layer);
-    add_modifier_menu_action<model::Trim>(ui.menu_new_layer);
-    add_modifier_menu_action<model::InflateDeflate>(ui.menu_new_layer);
-    add_modifier_menu_action<model::RoundCorners>(ui.menu_new_layer);
-    add_modifier_menu_action<model::OffsetPath>(ui.menu_new_layer);
-    add_modifier_menu_action<model::ZigZag>(ui.menu_new_layer);
-    connect(ui.action_import_image, &QAction::triggered, parent, [this]{import_image();});
-    connect(ui.action_delete, &QAction::triggered, parent, &GlaxnimateWindow::delete_selected);
-    connect(ui.action_export, &QAction::triggered, parent, &GlaxnimateWindow::document_export);
-    connect(ui.action_export_as, &QAction::triggered, parent, &GlaxnimateWindow::document_export_as);
-    connect(ui.action_export_sequence, &QAction::triggered, parent, &GlaxnimateWindow::document_export_sequence);
-    connect(ui.action_document_cleanup, &QAction::triggered, parent, [this]{cleanup_document();});
-    connect(ui.action_timing, &QAction::triggered, parent, [this]{
-        TimingDialog(comp, this->parent).exec();
+
+    m_recentFilesAction = KStandardAction::openRecent(parent, &GlaxnimateWindow::document_open_recent, parent->actionCollection());
+    connect(m_recentFilesAction, &KRecentFilesAction::enabledChanged, openLast, &QAction::setEnabled);
+
+    m_recentFilesAction->loadEntries(KConfigGroup(KSharedConfig::openConfig(), QString()));
+
+    QAction *revertAction = KStandardAction::revert(parent, &GlaxnimateWindow::document_reload, parent->actionCollection());
+    KActionCollection::setDefaultShortcut(revertAction, Qt::CTRL | Qt::Key_F5);
+    KStandardAction::save(parent, &GlaxnimateWindow::document_save, parent->actionCollection());
+    KStandardAction::saveAs(parent,&GlaxnimateWindow::document_save_as, parent->actionCollection());
+    QAction *saveAsTemplate = add_action(QStringLiteral("save_as_template"), i18n("Save as Template"), QStringLiteral("document-save-as-template"));
+    connect(saveAsTemplate, &QAction::triggered, parent, [this]{
+        bool ok = true;
+
+        QString old_name = comp->name.get();
+        QString name = QInputDialog::getText(parent, i18n("Save as Template"), i18n("Name"), QLineEdit::Normal, old_name, &ok);
+        if ( !ok )
+            return;
+
+        comp->name.set(name);
+        if ( !settings::DocumentTemplates::instance().save_as_template(current_document.get()) )
+            show_warning(i18n("Save as Template"), i18n("Could not save template"));
+        comp->name.set(old_name);
     });
 
-    connect(ui.action_play, &QAction::triggered, ui.play_controls, &FrameControlsWidget::toggle_play);
-    connect(ui.play_controls, &FrameControlsWidget::play_started, parent, [this]{
-        ui.action_play->setText(i18n("Pause"));
-        ui.action_play->setIcon(QIcon::fromTheme("media-playback-pause"));
-    });
-    connect(ui.play_controls, &FrameControlsWidget::play_stopped, parent, [this]{
-        ui.action_play->setText(i18n("Play"));
-        ui.action_play->setIcon(QIcon::fromTheme("media-playback-start"));
-    });
-    connect(ui.play_controls, &FrameControlsWidget::record_toggled, ui.action_record, &QAction::setChecked);
-    connect(ui.action_record, &QAction::triggered, ui.play_controls, &FrameControlsWidget::set_record_enabled);
-    connect(ui.action_frame_first, &QAction::triggered, ui.play_controls, &FrameControlsWidget::go_first);
-    connect(ui.action_frame_prev, &QAction::triggered, ui.play_controls, &FrameControlsWidget::go_prev);
-    connect(ui.action_frame_next, &QAction::triggered, ui.play_controls, &FrameControlsWidget::go_next);
-    connect(ui.action_frame_last, &QAction::triggered, ui.play_controls, &FrameControlsWidget::go_last);
-    connect(ui.play_controls, &FrameControlsWidget::loop_changed, ui.action_play_loop, &QAction::setChecked);
-    connect(ui.action_play_loop, &QAction::triggered, ui.play_controls, &FrameControlsWidget::set_loop);
+    QAction *documentExport = add_action(QStringLiteral("export"), i18n("Export…"), QStringLiteral("document-export"), {}, Qt::CTRL | Qt::Key_E);
+    connect(documentExport, &QAction::triggered, parent, &GlaxnimateWindow::document_export);
 
-    connect(ui.play_controls,   &FrameControlsWidget::min_changed,    ui.play_controls_2, &FrameControlsWidget::set_min);
-    connect(ui.play_controls,   &FrameControlsWidget::max_changed,    ui.play_controls_2, &FrameControlsWidget::set_max);
-    connect(ui.play_controls,   &FrameControlsWidget::fps_changed,    ui.play_controls_2, &FrameControlsWidget::set_fps);
-    connect(ui.play_controls,   &FrameControlsWidget::play_started,   ui.play_controls_2, &FrameControlsWidget::play);
-    connect(ui.play_controls,   &FrameControlsWidget::play_stopped,   ui.play_controls_2, &FrameControlsWidget::pause);
-    connect(ui.play_controls,   &FrameControlsWidget::loop_changed,   ui.play_controls_2, &FrameControlsWidget::set_loop);
-    connect(ui.play_controls,   &FrameControlsWidget::frame_selected, ui.play_controls_2, &FrameControlsWidget::set_frame);
-    connect(ui.play_controls_2, &FrameControlsWidget::play_started,   ui.play_controls,   &FrameControlsWidget::play);
-    connect(ui.play_controls_2, &FrameControlsWidget::play_stopped,   ui.play_controls,   &FrameControlsWidget::pause);
-    connect(ui.play_controls_2, &FrameControlsWidget::loop_changed,   ui.play_controls,   &FrameControlsWidget::set_loop);
-    connect(ui.play_controls_2, &FrameControlsWidget::frame_selected, ui.play_controls,   &FrameControlsWidget::set_frame);
-    connect(ui.play_controls, &FrameControlsWidget::min_changed, ui.scroll_time, &QSlider::setMinimum);
-    connect(ui.play_controls, &FrameControlsWidget::max_changed, ui.scroll_time, &QSlider::setMaximum);
-    connect(ui.play_controls, &FrameControlsWidget::frame_selected, ui.scroll_time, &QSlider::setValue);
-    connect(ui.scroll_time, &QSlider::valueChanged, ui.play_controls_2, &FrameControlsWidget::frame_selected);
+    QAction *exportAs = add_action(QStringLiteral("export_as"), i18n("Export As…"), QStringLiteral("document-export"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_E);
+    connect(exportAs, &QAction::triggered, parent, &GlaxnimateWindow::document_export_as);
 
-    connect(ui.action_metadata, &QAction::triggered, parent, [this]{
-        DocumentMetadataDialog(current_document.get(), this->parent).exec();
-    });
-    connect(ui.action_trace_bitmap, &QAction::triggered, parent, [this]{
-        trace_dialog(parent->current_shape());
-    });
-    connect(ui.action_object_to_path, &QAction::triggered, parent, [this]{to_path();});
-    connect(ui.action_lottie_preview, &QAction::triggered, parent, [this]{preview_lottie("svg");});
-    connect(ui.action_lottie_canvas_preview, &QAction::triggered, parent, [this]{preview_lottie("canvas");});
-    connect(ui.action_svg_preview, &QAction::triggered, parent, [this]{preview_svg();});
-    connect(ui.action_rive_preview, &QAction::triggered, parent, [this]{preview_rive();});
-    connect(ui.action_new_precomp, &QAction::triggered, parent, [this]{add_composition();});
-    connect(ui.action_new_precomp_selection, &QAction::triggered, parent, [this]{
-        objects_to_new_composition(comp, cleaned_selection(), &comp->shapes, -1);
-    });
-    connect(ui.menu_new_comp_layer, &QMenu::triggered, parent, [this](QAction* act){layer_new_comp_action(act);});
-    connect(ui.action_align_hor_left_out,   &QAction::triggered, parent, [this]{align(AlignDirection::Horizontal, AlignPosition::Begin,  true);});
-    connect(ui.action_align_hor_left,       &QAction::triggered, parent, [this]{align(AlignDirection::Horizontal, AlignPosition::Begin,  false);});
-    connect(ui.action_align_hor_center,     &QAction::triggered, parent, [this]{align(AlignDirection::Horizontal, AlignPosition::Center, false);});
-    connect(ui.action_align_hor_right,      &QAction::triggered, parent, [this]{align(AlignDirection::Horizontal, AlignPosition::End,    false);});
-    connect(ui.action_align_hor_right_out,  &QAction::triggered, parent, [this]{align(AlignDirection::Horizontal, AlignPosition::End,    true);});
-    connect(ui.action_align_vert_top_out,   &QAction::triggered, parent, [this]{align(AlignDirection::Vertical,   AlignPosition::Begin,  true);});
-    connect(ui.action_align_vert_top,       &QAction::triggered, parent, [this]{align(AlignDirection::Vertical,   AlignPosition::Begin,  false);});
-    connect(ui.action_align_vert_center,    &QAction::triggered, parent, [this]{align(AlignDirection::Vertical,   AlignPosition::Center, false);});
-    connect(ui.action_align_vert_bottom,    &QAction::triggered, parent, [this]{align(AlignDirection::Vertical,   AlignPosition::End,    false);});
-    connect(ui.action_align_vert_bottom_out,&QAction::triggered, parent, [this]{align(AlignDirection::Vertical,   AlignPosition::End,    true);});
-    connect(ui.action_import, &QAction::triggered, parent, [this]{import_file();});
-    connect(ui.action_flip_view, &QAction::triggered, ui.canvas, &Canvas::flip_horizontal);
-    connect(ui.action_text_put_on_path, &QAction::triggered, parent, [this]{text_put_on_path();});
-    connect(ui.action_text_remove_from_path, &QAction::triggered, parent, [this]{text_remove_from_path();});
-    connect(ui.action_insert_emoji, &QAction::triggered, parent, [this]{insert_emoji();});
-    connect(ui.action_open_lottiefiles, &QAction::triggered, parent, [this]{import_from_lottiefiles();});
-    connect(ui.action_shortcuts, &QAction::triggered, parent, [this]{
-        KShortcutsDialog::showDialog(parent->actionCollection(), KShortcutsEditor::LetterShortcutsAllowed, this->parent);
-    });
+    QAction *exportSequence = add_action(QStringLiteral("export_sequence"), i18n("Export as Image Sequence…"), QStringLiteral("folder-images"));
+    connect(exportSequence, &QAction::triggered, parent, &GlaxnimateWindow::document_export_sequence);
 
-    // Undo Redo
-    QObject::connect(ui.action_redo, &QAction::triggered, &parent->undo_group(), &QUndoGroup::redo);
-    QObject::connect(&parent->undo_group(), &QUndoGroup::canRedoChanged, ui.action_redo, &QAction::setEnabled);
-    QObject::connect(&parent->undo_group(), &QUndoGroup::redoTextChanged, ui.action_redo, [this](const QString& s){
-        ui.action_redo->setText(i18n("Redo %1", s));
-    });
-    QObject::connect(ui.action_undo, &QAction::triggered, &parent->undo_group(), &QUndoGroup::undo);
-    QObject::connect(&parent->undo_group(), &QUndoGroup::canUndoChanged, ui.action_undo, &QAction::setEnabled);
-    QObject::connect(&parent->undo_group(), &QUndoGroup::undoTextChanged, ui.action_undo, [this](const QString& s){
-        ui.action_undo->setText(i18n("Undo %1", s));
-    });
-    ui.view_undo->setGroup(&parent->undo_group());
-
-#ifdef Q_OS_WIN32
-    // Can't get emoji_data.cpp to compile on windows for qt6 for some reason
-    // the compiler errors out without message
-    ui.action_insert_emoji->setEnabled(false);
-#endif
-
-    parent->actionCollection()->addAssociatedWidget(parent);
-    for ( auto action : parent->findChildren<QAction*>() )
-    {
-        if ( !action->isSeparator() && !action->objectName().isEmpty() )
-        {
-            parent->actionCollection()->addAction(action->objectName(), action);
-            parent->actionCollection()->setDefaultShortcut(action, action->shortcut());
-        }
-    }
+    KStandardAction::close(parent, &GlaxnimateWindow::close, parent->actionCollection());
+    KStandardAction::quit(qApp, &QCoreApplication::quit, parent->actionCollection());
 }
 
-tools::Tool* GlaxnimateWindow::Private::init_tools_ui()
+void GlaxnimateWindow::Private::setup_edit_actions()
+{
+    QAction *undo = KStandardAction::create(KStandardAction::Undo, &parent->undo_group(), &QUndoGroup::undo,parent->actionCollection());
+    QObject::connect(&parent->undo_group(), &QUndoGroup::canUndoChanged, undo, &QAction::setEnabled);
+    QObject::connect(&parent->undo_group(), &QUndoGroup::undoTextChanged, undo, [this, undo](const QString& s){
+        undo->setText(i18n("Undo %1", s));
+    });
+
+    QAction *redo = KStandardAction::create(KStandardAction::Redo, &parent->undo_group(), &QUndoGroup::undo,parent->actionCollection());
+    QObject::connect(&parent->undo_group(), &QUndoGroup::canRedoChanged, redo, &QAction::setEnabled);
+    QObject::connect(&parent->undo_group(), &QUndoGroup::redoTextChanged, redo, [this, redo](const QString& s){
+        redo->setText(i18n("Redo %1", s));
+    });
+    KStandardAction::cut(parent, &GlaxnimateWindow::cut, parent->actionCollection());
+    KStandardAction::copy(parent, &GlaxnimateWindow::copy, parent->actionCollection());
+    KStandardAction::paste(parent, &GlaxnimateWindow::paste, parent->actionCollection());
+
+    // edit_paste_as_completion
+    QAction *pasteAsComposition = add_action(QStringLiteral("edit_paste_as_composition"), i18n("Paste as Composition"), QStringLiteral("special_paste"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_V);
+    connect(pasteAsComposition, &QAction::triggered, parent, [this]{parent->paste_as_composition();});
+
+    QAction *duplicate = add_action(QStringLiteral("duplicate"), i18n("Duplicate"), QStringLiteral("edit-duplicate"), {}, Qt::CTRL | Qt::Key_D);
+    connect(duplicate, &QAction::triggered, parent, &GlaxnimateWindow::duplicate_selection);
+
+    QAction *selectAll = KStandardAction::selectAll(parent->actionCollection());
+    selectAll->setEnabled(false);
+    QAction *editDelete = add_action(QStringLiteral("edit_delete"), i18n("Delete"), QStringLiteral("edit-delete"), {}, Qt::Key_Delete);
+    connect(editDelete, &QAction::triggered, [this](){
+        if (active_tool->id() == QStringLiteral("edit")) {
+            parent->action(QStringLiteral("node_remove"))->trigger();
+        } else if (active_tool->id() == QStringLiteral("select")) {
+            parent->delete_selected();
+        }
+    });
+    this->tool_actions["select"] = {
+        editDelete,
+    };
+}
+
+tools::Tool* GlaxnimateWindow::Private::setup_tools_actions()
 {
     // Tool Actions
     QActionGroup *tool_actions = new QActionGroup(parent);
     tool_actions->setExclusive(true);
 
-    dock_tools_layout = new FlowLayout();
-    ui.dock_tools_layout_parent->insertLayout(0, dock_tools_layout);
     tools::Tool* to_activate = nullptr;
     for ( const auto& grp : tools::Registry::instance() )
     {
         for ( const auto& tool : grp.second )
         {
-            QAction* action = tool.second->get_action();
-            action->setParent(parent);
-            ui.menu_tools->addAction(action);
+            QAction *action = add_action(tool.second->action_name(), tool.second->name());
+            action->setIcon(tool.second->icon());
+            action->setShortcut(tool.second->key_sequence());
+            action->setCheckable(true);
+            action->setData(QVariant::fromValue(tool.second.get()));
+
             action->setActionGroup(tool_actions);
-            ScalableButton *button = tool.second->get_button();
+
             connect(action, &QAction::triggered, parent, &GlaxnimateWindow::tool_triggered);
-
-            ui.toolbar_tools->addAction(action);
-
-            button->resize(16, 16);
-            dock_tools_layout->addWidget(button);
-
-            QWidget* widget = tool.second->get_settings_widget();
-            widget->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
-            ui.tool_settings_widget->addWidget(widget);
 
             if ( !to_activate )
             {
@@ -370,103 +385,396 @@ tools::Tool* GlaxnimateWindow::Private::init_tools_ui()
                 action->setChecked(true);
             }
         }
-        ui.menu_tools->addSeparator();
-        ui.toolbar_tools->addSeparator();
     }
 
-    ui.toolbar_node->setVisible(false);
-    ui.toolbar_node->setEnabled(false);
+    return to_activate;
+}
 
-    /// \todo Have some way of creating/connecting actions from the tools
-    this->tool_actions["select"] = {
-        ui.action_delete,
-    };
-    tool_widgets["edit"] = {
-        ui.toolbar_node
-    };
+void GlaxnimateWindow::Private::setup_view_actions()
+{
+    QActionGroup *layout_actions = new QActionGroup(parent);
+    layout_actions->setExclusive(true);
+
+    QAction *layoutCustom = add_action(QStringLiteral("layout_custom"), i18n("Custom"), {}, QStringLiteral("Customized Layout"));
+    layoutCustom->setActionGroup(layout_actions);
+    layoutCustom->setCheckable(true);
+
+    connect(layoutCustom, &QAction::triggered, parent, [this]{layout_update();});
+
+    QAction *layoutAuto = add_action(QStringLiteral("layout_automatic"), i18n("Automatic"), {}, QStringLiteral("Determines the best layout based on screen size"));
+    layoutAuto->setActionGroup(layout_actions);
+    layoutAuto->setCheckable(true);
+    connect(layoutAuto, &QAction::triggered, parent, [this]{layout_update();});
+
+    QAction *layoutWide = add_action(QStringLiteral("layout_wide"), i18n("Wide"), {}, QStringLiteral("Layout best suited for larger screens"));
+    layoutWide->setActionGroup(layout_actions);
+    layoutWide->setCheckable(true);
+    connect(layoutWide, &QAction::triggered, parent, [this]{layout_update();});
+
+    QAction *layoutMedium = add_action(QStringLiteral("layout_medium"), i18n("Medium"), {}, QStringLiteral("More compact than Wide but larger than Compact"));
+    layoutMedium->setActionGroup(layout_actions);
+    layoutMedium->setCheckable(true);
+    connect(layoutMedium, &QAction::triggered, parent, [this]{layout_update();});
+
+    QAction *layoutCompact = add_action(QStringLiteral("layout_compact"), i18n("Compact"), {}, QStringLiteral("Layout best suited for smaller screens"));
+    layoutCompact->setActionGroup(layout_actions);
+    layoutCompact->setCheckable(true);
+    connect(layoutCompact, &QAction::triggered, parent, [this]{layout_update();});
+
+
+    KStandardAction::zoomIn(canvas, &Canvas::zoom_in, parent->actionCollection());
+    KStandardAction::zoomOut(canvas, &Canvas::zoom_out, parent->actionCollection());
+    KStandardAction::fitToPage(parent, &GlaxnimateWindow::view_fit, parent->actionCollection());
+    KStandardAction::actualSize(canvas, &Canvas::reset_zoom, parent->actionCollection());
+    QAction *toolResetRotation = add_action(QStringLiteral("view_reset_rotation"), i18n("Reset Rotation"), QStringLiteral("rotation-allowed"));
+    connect(toolResetRotation, &QAction::triggered, canvas, &Canvas::reset_rotation);
+    QAction *toolFlipView = add_action(QStringLiteral("flip_view"), i18n("Flip View"), QStringLiteral("object-flip-horizontal"));
+    connect(toolFlipView, &QAction::triggered, canvas, &Canvas::flip_horizontal);
+}
+
+void GlaxnimateWindow::Private::setup_document_actions()
+{
+    QAction *renderRaster = add_action(QStringLiteral("render_frame_raster"), i18n("Raster…"), QStringLiteral("image-png"));
+    QAction *renderSvg = add_action(QStringLiteral("render_frame_svg"), i18n("SVG…"), QStringLiteral("image-svg+xml"));
+
+    QAction *previewLottie = add_action(QStringLiteral("lottie_preview"), i18n("Lottie (SVG)"));
+    connect(previewLottie, &QAction::triggered, parent, [this]{preview_lottie("svg");});
+
+    QAction *previewLottieCanvas = add_action(QStringLiteral("lottie_canvas_preview"), i18n("Lottie (canvas)"));
+    connect(previewLottieCanvas, &QAction::triggered, parent, [this]{preview_lottie("canvas");});
+
+    QAction *previewSvg = add_action(QStringLiteral("svg_preview"), i18n("SVG (SMIL)"));
+    connect(previewSvg, &QAction::triggered, parent, [this]{preview_svg();});
+
+    QAction *previewRive = add_action(QStringLiteral("rive_preview"), i18n("RIVE (canvas)"));
+    connect(previewRive, &QAction::triggered, parent, [this]{preview_rive();});
+
+    QAction *validateTgs = add_action(QStringLiteral("validate_tgs"), i18n("Validate Telegram Sticker"), QStringLiteral("telegram"));
+    connect(validateTgs, &QAction::triggered, parent, &GlaxnimateWindow::validate_tgs);
+
+    QAction *validateDiscord = add_action(QStringLiteral("validate_discord"), i18n("Validate Discord Sticker"), QStringLiteral("discord"));
+    connect(validateDiscord, &QAction::triggered, parent, [this]{validate_discord();});
+
+    QAction *documentResize = add_action(QStringLiteral("document_resize"), i18n("Resize…"), QStringLiteral("transform-scale"));
+    connect(documentResize, &QAction::triggered, parent, [this]{ ResizeDialog(this->parent).resize_composition(comp); });
+
+    QAction *documentCleanup = add_action(QStringLiteral("document_cleanup"), i18n("Cleanup"), QStringLiteral("document-cleanup"), QStringLiteral("Remove unused assets"));
+    connect(documentCleanup, &QAction::triggered, parent, [this]{cleanup_document();});
+
+    QAction *documentTiming = add_action(QStringLiteral("document_timing"), i18n("Timing…"), QStringLiteral("player-time"));
+    connect(documentTiming, &QAction::triggered, parent, [this]{
+        TimingDialog(comp, this->parent).exec();
+    });
+
+    QAction *documentMetadata = add_action(QStringLiteral("document_metadata"), i18n("Metadata…"), QStringLiteral("documentinfo"));
+    connect(documentMetadata, &QAction::triggered, parent, [this]{
+        DocumentMetadataDialog(current_document.get(), this->parent).exec();
+    });
+}
+
+void GlaxnimateWindow::Private::setup_playback_actions()
+{
+    add_action(QStringLiteral("play"), i18n("Play"), QStringLiteral("media-playback-start"), {}, Qt::Key_Space);
+
+    add_action(QStringLiteral("play_loop"), i18n("Loop"), QStringLiteral("media-playlist-repeat"));
+
+    add_action(QStringLiteral("record"), i18n("Record Keyframes"), QStringLiteral("media-record"));
+
+    add_action(QStringLiteral("frame_first"), i18n("Jump to Start"), QStringLiteral("go-first"));
+
+    add_action(QStringLiteral("frame_last"), i18n("Jump to End"), QStringLiteral("go-last"));
+
+    add_action(QStringLiteral("frame_next"), i18n("Next Frame"), QStringLiteral("go-next"), {}, Qt::Key_Right);
+
+    add_action(QStringLiteral("frame_prev"), i18n("Previous Frame"), QStringLiteral("go-previous"), {}, Qt::Key_Left);
+}
+
+void GlaxnimateWindow::Private::connect_playback_actions()
+{
+    QAction *play = parent->actionCollection()->action(QStringLiteral("play"));
+    connect(play, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::toggle_play);
+    connect(timeline_dock->playControls(), &FrameControlsWidget::play_started, parent, [play]{
+        play->setText(i18n("Pause"));
+        play->setIcon(QIcon::fromTheme("media-playback-pause"));
+    });
+    connect(timeline_dock->playControls(), &FrameControlsWidget::play_stopped, parent, [play]{
+        play->setText(i18n("Play"));
+        play->setIcon(QIcon::fromTheme("media-playback-start"));
+    });
+    QAction *record = parent->actionCollection()->action(QStringLiteral("record"));
+    connect(timeline_dock->playControls(), &FrameControlsWidget::record_toggled, record, &QAction::setChecked);
+
+    QAction *playLoop = parent->actionCollection()->action(QStringLiteral("play_loop"));
+    connect(timeline_dock->playControls(), &FrameControlsWidget::loop_changed, playLoop, &QAction::setChecked);
+    connect(playLoop, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::set_loop);
+
+    connect(record, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::set_record_enabled);
+
+    QAction *frameFirst = parent->actionCollection()->action(QStringLiteral("frame_first"));
+    connect(frameFirst, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::go_first);
+
+    QAction *frameLast = parent->actionCollection()->action(QStringLiteral("frame_last"));
+    connect(frameLast, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::go_last);
+
+    QAction *frameNext = parent->actionCollection()->action(QStringLiteral("frame_next"));
+    connect(frameNext, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::go_next);
+
+    QAction *framePrev = parent->actionCollection()->action(QStringLiteral("frame_prev"));
+    connect(framePrev, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::go_prev);
+
+    connect(timeline_dock->playControls(),   &FrameControlsWidget::min_changed,    time_slider_dock->playControls(), &FrameControlsWidget::set_min);
+    connect(timeline_dock->playControls(),   &FrameControlsWidget::max_changed,    time_slider_dock->playControls(), &FrameControlsWidget::set_max);
+    connect(timeline_dock->playControls(),   &FrameControlsWidget::fps_changed,    time_slider_dock->playControls(), &FrameControlsWidget::set_fps);
+    connect(timeline_dock->playControls(),   &FrameControlsWidget::play_started,   time_slider_dock->playControls(), &FrameControlsWidget::play);
+    connect(timeline_dock->playControls(),   &FrameControlsWidget::play_stopped,   time_slider_dock->playControls(), &FrameControlsWidget::pause);
+    connect(timeline_dock->playControls(),   &FrameControlsWidget::loop_changed,   time_slider_dock->playControls(), &FrameControlsWidget::set_loop);
+    connect(timeline_dock->playControls(),   &FrameControlsWidget::frame_selected, time_slider_dock->playControls(), &FrameControlsWidget::set_frame);
+    connect(time_slider_dock->playControls(), &FrameControlsWidget::play_started,   timeline_dock->playControls(),   &FrameControlsWidget::play);
+    connect(time_slider_dock->playControls(), &FrameControlsWidget::play_stopped,   timeline_dock->playControls(),   &FrameControlsWidget::pause);
+    connect(time_slider_dock->playControls(), &FrameControlsWidget::loop_changed,   timeline_dock->playControls(),   &FrameControlsWidget::set_loop);
+    connect(time_slider_dock->playControls(), &FrameControlsWidget::frame_selected, timeline_dock->playControls(),   &FrameControlsWidget::set_frame);
+    connect(timeline_dock->playControls(), &FrameControlsWidget::min_changed, time_slider_dock->timeSlider(), &QSlider::setMinimum);
+    connect(timeline_dock->playControls(), &FrameControlsWidget::max_changed, time_slider_dock->timeSlider(), &QSlider::setMaximum);
+    connect(timeline_dock->playControls(), &FrameControlsWidget::frame_selected, time_slider_dock->timeSlider(), &QSlider::setValue);
+}
+
+void GlaxnimateWindow::Private::setup_layers_actions()
+{
+    add_modifier_menu_action<model::Repeater>();
+    add_modifier_menu_action<model::Trim>();
+    add_modifier_menu_action<model::InflateDeflate>();
+    add_modifier_menu_action<model::RoundCorners>();
+    add_modifier_menu_action<model::OffsetPath>();
+    add_modifier_menu_action<model::ZigZag>();
+
+    QAction *newPrecompSelection = add_action(QStringLiteral("new_precomp_selection"), i18n("Precompose Selection"), QStringLiteral("archive-extract"));
+    connect(newPrecompSelection, &QAction::triggered, parent, [this]{
+        objects_to_new_composition(comp, cleaned_selection(), &comp->shapes, -1);
+    });
+    QAction *newComp = add_action(QStringLiteral("new_comp"), i18n("New Composition"), QStringLiteral("folder-video"));
+    connect(newComp, &QAction::triggered, parent, [this]{add_composition();});
+
+    // TODO
+    QAction *newPrecomp = add_action(QStringLiteral("new_precomp"), i18n("Precomposition Layer"), QStringLiteral("video-x-generic"));
+
+    QAction *newLayer = add_action(QStringLiteral("new_layer"), i18n("Layer"), QStringLiteral("folder"));
+    connect(newLayer, &QAction::triggered, parent, [this]{layer_new_layer();});
+
+    add_action(QStringLiteral("new_layer_empty"), i18n("Empty Layer"), QStringLiteral("transform-move"));
+
+    QAction *newGroup = add_action(QStringLiteral("new_layer_group"), i18n("Group"), QStringLiteral("shapes-symbolic"));
+    connect(newGroup, &QAction::triggered, parent, [this]{layer_new_group();});
+
+    QAction *newFill = add_action(QStringLiteral("new_fill"), i18n("Fill"), QStringLiteral("format-fill-color"));
+    connect(newFill, &QAction::triggered, parent, [this]{layer_new_fill();});
+
+    QAction *newStroke = add_action(QStringLiteral("new_stroke"), i18n("Stroke"), QStringLiteral("object-stroke-style"));
+    connect(newStroke, &QAction::triggered, parent, [this]{layer_new_stroke();});
+
+    QAction *insertEmoji = add_action(QStringLiteral("insert_emoji"), i18n("Emoji…"), QStringLiteral("smiley-shape"));
+    connect(insertEmoji, &QAction::triggered, parent, [this]{insert_emoji();});
+#ifdef Q_OS_WIN32
+    // Can't get emoji_data.cpp to compile on windows for qt6 for some reason
+    // the compiler errors out without message
+    insertEmoji->setEnabled(false);
+#endif
+}
+
+void GlaxnimateWindow::Private::setup_object_actions()
+{
+    QAction *raiseToTop = add_action(QStringLiteral("object_raise_to_top"), i18n("Raise to Top"), QStringLiteral("layer-top"), {}, Qt::Key_Home);
+    connect(raiseToTop, &QAction::triggered, parent, &GlaxnimateWindow::document_reload);
+
+    QAction *raise = add_action(QStringLiteral("object_raise"), i18n("Raise"), QStringLiteral("layer-raise"), {}, Qt::Key_PageUp);
+    connect(raise, &QAction::triggered, parent, &GlaxnimateWindow::layer_raise);
+
+    QAction *lower = add_action(QStringLiteral("object_lower"), i18n("Lower"), QStringLiteral("layer-lower"), {}, Qt::Key_PageDown);
+    connect(lower, &QAction::triggered, parent, &GlaxnimateWindow::layer_lower);
+
+    QAction *lowerToBottom = add_action(QStringLiteral("object_lower_to_bottom"), i18n("Lower to Bottom"), QStringLiteral("layer-bottom"), {}, Qt::Key_End);
+    connect(lowerToBottom, &QAction::triggered, parent, &GlaxnimateWindow::layer_lower);
+
+    QAction *moveTo = add_action(QStringLiteral("move_to"), i18n("Move to…"), QStringLiteral("selection-move-to-layer-above"));
+    connect(moveTo, &QAction::triggered, parent, &GlaxnimateWindow::move_to);
+
+    QAction *group = add_action(QStringLiteral("action_group"), i18n("Group"), QStringLiteral("object-group"), {}, Qt::CTRL | Qt::Key_G);
+    connect(group, &QAction::triggered, parent, &GlaxnimateWindow::group_shapes);
+
+    QAction *ungroup = add_action(QStringLiteral("action_ungroup"), i18n("Ungroup"), QStringLiteral("object-ungroup"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_G);
+    connect(ungroup, &QAction::triggered, parent, &GlaxnimateWindow::ungroup_shapes);
+
+    QAction *alignToSelection = add_action(QStringLiteral("align_to_selection"), i18n("Selection"), QStringLiteral("select-rectangular"));
+    alignToSelection->setCheckable(true);
+    QAction *alignToCanvas = add_action(QStringLiteral("align_to_canvas"), i18n("Canvas"), QStringLiteral("snap-page"));
+    alignToCanvas->setCheckable(true);
+    QAction *alignToCanvasGroup = add_action(QStringLiteral("align_to_canvas_group"), i18n("Canvas (as Group)"), QStringLiteral("object-group"));
+    alignToCanvasGroup->setCheckable(true);
+
+    QAction *alignHorLeft = add_action(QStringLiteral("align_hor_left"), i18n("Left"), QStringLiteral("align-horizontal-left"));
+    connect(alignHorLeft, &QAction::triggered, parent, [this]{align(AlignDirection::Horizontal, AlignPosition::Begin, false);});
+
+    QAction *alignHorCenter = add_action(QStringLiteral("align_hor_center"), i18n("Center"), QStringLiteral("align-horizontal-center"));
+    connect(alignHorCenter, &QAction::triggered, parent, [this]{align(AlignDirection::Horizontal, AlignPosition::Center, false);});
+
+    QAction *alignHorRight = add_action(QStringLiteral("align_hor_right"), i18n("Right"), QStringLiteral("align-horizontal-right"));
+    connect(alignHorRight, &QAction::triggered, parent, [this]{align(AlignDirection::Horizontal, AlignPosition::End, false);});
+
+    QAction *alignVertTop = add_action(QStringLiteral("align_vert_top"), i18n("Top"), QStringLiteral("align-vertical-top"));
+    connect(alignVertTop, &QAction::triggered, parent, [this]{align(AlignDirection::Vertical, AlignPosition::Begin, false);});
+
+    QAction *alignVertCenter = add_action(QStringLiteral("align_vert_center"), i18n("Center"), QStringLiteral("align-vertical-center"));
+    connect(alignVertCenter, &QAction::triggered, parent, [this]{align(AlignDirection::Vertical, AlignPosition::Center, false);});
+
+    QAction *alignVertBottom = add_action(QStringLiteral("align_vert_bottom"), i18n("Bottom"), QStringLiteral("align-vertical-bottom"));
+    connect(alignVertBottom, &QAction::triggered, parent, [this]{align(AlignDirection::Vertical, AlignPosition::End, false);});
+
+
+    // addAction(QStringLiteral("separator_align_relative_to"), i18n("Relative To"), QStringLiteral(""));
+    // addAction(QStringLiteral("separator_align_horizontal"), i18n("Horizontal"), QStringLiteral(""));
+    // addAction(QStringLiteral("separator_align_vertical"), i18n("Vertical"), QStringLiteral(""));
+    QAction *alignHorLeftOut = add_action(QStringLiteral("align_hor_left_out"), i18n("Outside Left"), QStringLiteral("align-horizontal-right-out"));
+    connect(alignHorLeftOut, &QAction::triggered, parent, [this]{align(AlignDirection::Horizontal, AlignPosition::Begin, true);});
+
+    QAction *alignHorRightOut = add_action(QStringLiteral("align_hor_right_out"), i18n("Outside Right"), QStringLiteral("align-horizontal-left-out"));
+    connect(alignHorRightOut, &QAction::triggered, parent, [this]{align(AlignDirection::Horizontal, AlignPosition::End, true);});
+
+    QAction *alignVertTopOut = add_action(QStringLiteral("align_vert_top_out"), i18n("Outside Top"), QStringLiteral("align-vertical-bottom-out"));
+    connect(alignVertTopOut, &QAction::triggered, parent, [this]{align(AlignDirection::Vertical, AlignPosition::Begin, true);});
+
+    QAction *alignVertBottomOut = add_action(QStringLiteral("align_vert_bottom_out"), i18n("Outside Bottom"), QStringLiteral("align-vertical-top-out"));
+    connect(alignVertBottomOut, &QAction::triggered, parent, [this]{align(AlignDirection::Vertical, AlignPosition::End, true);});
+}
+
+void GlaxnimateWindow::Private::setup_path_actions()
+{
+    QAction *objectToPath = add_action(QStringLiteral("object_to_path"), i18n("Object to Path"), QStringLiteral("object-to-path"));
+    connect(objectToPath, &QAction::triggered, parent, [this]{to_path();});
+
+    QAction *traceBitmap = add_action(QStringLiteral("trace_bitmap"), i18n("Trace Bitmap…"), QStringLiteral("bitmap-trace"));
+    connect(traceBitmap, &QAction::triggered, parent, [this]{
+        trace_dialog(parent->current_shape());
+    });
+
+    QAction *pathAdd = add_action(QStringLiteral("path_add"), i18n("Union"), QStringLiteral("path-union"));
+    QAction *pathSubstract = add_action(QStringLiteral("path_subtract"), i18n("Difference"), QStringLiteral("path-difference"));
+    QAction *pathIntersect = add_action(QStringLiteral("path_intersect"), i18n("Intersect"), QStringLiteral("path-intersection"));
+    QAction *pathXor = add_action(QStringLiteral("path_xor"), i18n("Exclusion"), QStringLiteral("path-exclusion"));
+
+    QAction *pathReverse = add_action(QStringLiteral("path_reverse"), i18n("Reverse"), QStringLiteral("path-reverse"));
+
+    QAction *nodeRemove = add_action(QStringLiteral("node_remove"), i18n("Delete Nodes"), QStringLiteral("format-remove-node"));
+    QAction *nodeAdd = add_action(QStringLiteral("node_add"), i18n("Add Node…"), QStringLiteral("format-insert-node"));
+
+    QAction *nodeJoin = add_action(QStringLiteral("node_join"), i18n("Join Nodes"), QStringLiteral("format-join-node"));
+    QAction *nodeSplit = add_action(QStringLiteral("node_split"), i18n("Split Nodes"), QStringLiteral("format-break-node"));
+
+    QAction *nodeTypeCorner = add_action(QStringLiteral("node_type_corner"), i18n("Cusp"), QStringLiteral("node-type-cusp"));
+    QAction *nodeTypeSmooth = add_action(QStringLiteral("node_type_smooth"), i18n("Smooth"), QStringLiteral("node-type-smooth"));
+    QAction *nodeTypeSymmetric = add_action(QStringLiteral("node_type_symmetric"), i18n("Symmetric"), QStringLiteral("node-type-auto-smooth"));
+    QAction *segmentLines = add_action(QStringLiteral("segment_lines"), i18n("Make segments straight"), QStringLiteral("node-segment-line"));
+    QAction *segmentCurve = add_action(QStringLiteral("segment_curve"), i18n("Make segments curved"), QStringLiteral("node-segment-curve"));
+    QAction *nodeDissolve = add_action(QStringLiteral("node_dissolve"), i18n("Dissolve Nodes"), QStringLiteral("format-node-curve"));
+
     this->tool_actions["edit"] = {
-        ui.action_node_remove,
-        ui.action_node_type_corner,
-        ui.action_node_type_smooth,
-        ui.action_node_type_symmetric,
-        ui.action_segment_lines,
-        ui.action_segment_curve,
-        ui.action_node_add,
-        ui.action_node_dissolve,
+        parent->action(QStringLiteral("edit_delete")),
+        nodeRemove,
+        nodeTypeCorner,
+        nodeTypeSmooth,
+        nodeTypeSymmetric,
+        segmentLines,
+        segmentCurve,
+        nodeAdd,
+        nodeDissolve,
     };
+
     tools::EditTool* edit_tool = static_cast<tools::EditTool*>(tools::Registry::instance().tool("edit"));
-    connect(ui.action_node_type_corner, &QAction::triggered, parent, [edit_tool]{
+    connect(nodeTypeCorner, &QAction::triggered, parent, [edit_tool]{
         edit_tool->selection_set_vertex_type(math::bezier::Corner);
     });
-    connect(ui.action_node_type_smooth, &QAction::triggered, parent, [edit_tool]{
+    connect(nodeTypeSmooth, &QAction::triggered, parent, [edit_tool]{
         edit_tool->selection_set_vertex_type(math::bezier::Smooth);
     });
-    connect(ui.action_node_type_symmetric, &QAction::triggered, parent, [edit_tool]{
+    connect(nodeTypeSymmetric, &QAction::triggered, parent, [edit_tool]{
         edit_tool->selection_set_vertex_type(math::bezier::Symmetrical);
     });
-    connect(ui.action_node_remove, &QAction::triggered, parent, [edit_tool]{
+    connect(nodeRemove, &QAction::triggered, parent, [edit_tool]{
         edit_tool->selection_delete();
     });
-    connect(ui.action_segment_lines, &QAction::triggered, parent, [edit_tool]{
+    connect(segmentLines, &QAction::triggered, parent, [edit_tool]{
         edit_tool->selection_straighten();
     });
-    connect(ui.action_segment_curve, &QAction::triggered, parent, [edit_tool]{
+    connect(segmentCurve, &QAction::triggered, parent, [edit_tool]{
         edit_tool->selection_curve();
     });
-    connect(ui.action_node_add, &QAction::triggered, parent, [edit_tool]{
+    connect(nodeAdd, &QAction::triggered, parent, [edit_tool]{
         edit_tool->add_point_mode();
     });
-    connect(ui.action_node_dissolve, &QAction::triggered, parent, [edit_tool]{
+    connect(nodeDissolve, &QAction::triggered, parent, [edit_tool]{
         edit_tool->selection_dissolve();
     });
-    connect(edit_tool, &tools::EditTool::gradient_stop_changed, ui.fill_style_widget, &FillStyleWidget::set_gradient_stop);
-    connect(edit_tool, &tools::EditTool::gradient_stop_changed, ui.stroke_style_widget, &StrokeStyleWidget::set_gradient_stop);
+}
 
-    return to_activate;
+void GlaxnimateWindow::Private::init_tools_ui()
+{
+    tools_dock = new QDockWidget(i18n("Tools"), this->parent);
+    tools_dock->setWindowIcon(QIcon::fromTheme(QStringLiteral("tools")));
+    tools_dock->setObjectName(QStringLiteral("dock_tools"));
+    parent->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, tools_dock);
+
+    QWidget *widget = new QWidget(tools_dock);
+    dock_tools_layout = new FlowLayout();
+    widget->setLayout(dock_tools_layout);
+    tools_dock->setWidget(widget);
+
+    for ( const auto& grp : tools::Registry::instance() )
+    {
+        for ( const auto& tool : grp.second )
+        {
+            QAction *action = parent->actionCollection()->action(tool.second->action_name());
+
+            ScalableButton *button = tool.second->get_button();
+
+            connect(action, &QAction::toggled, button, &QAbstractButton::setChecked);
+            connect(button, &QAbstractButton::clicked, action, &QAction::trigger);
+            //ui.toolbar_tools->addAction(action);
+
+            button->resize(16, 16);
+            dock_tools_layout->addWidget(button);
+
+            QWidget* widget = tool.second->get_settings_widget();
+            widget->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+            tool_options_dock->addSettingsWidget(widget);
+        }
+    }
+
+    KToolBar *toolbar_node = parent->toolBar(QStringLiteral("nodeToolBar"));
+    toolbar_node->setVisible(false);
+    toolbar_node->setEnabled(false);
 }
 
 void GlaxnimateWindow::Private::init_item_views()
 {
     // Item views
-    ui.view_document_node->set_base_model(&document_node_model);
-    QObject::connect(ui.view_document_node, &LayerView::current_node_changed,
-                        parent, &GlaxnimateWindow::document_treeview_current_changed);
+    layers_dock = new LayersDock(parent, &document_node_model);
+    parent->addDockWidget(Qt::DockWidgetArea::BottomDockWidgetArea, layers_dock);
 
-    ui.view_document_node->setContextMenuPolicy(Qt::CustomContextMenu);
-    QObject::connect(ui.view_document_node, &QWidget::customContextMenuRequested, parent,
-        [this](const QPoint& pos){
-            auto index = ui.view_document_node->indexAt(pos);
-            if ( auto node = ui.view_document_node->node(index) )
-                NodeMenu(node, this->parent, this->parent).exec(ui.view_document_node->mapToGlobal(pos));
-        }
-    );
+    QObject::connect(layers_dock->layer_view(), &LayerView::current_node_changed,
+            parent, &GlaxnimateWindow::document_treeview_current_changed);
 
-    ui.view_properties->setModel(&property_model);
-    ui.view_properties->setItemDelegateForColumn(item_models::PropertyModelSingle::ColumnValue, &property_delegate);
-    ui.view_properties->header()->setSectionResizeMode(item_models::PropertyModelSingle::ColumnName, QHeaderView::ResizeToContents);
-    ui.view_properties->header()->setSectionResizeMode(item_models::PropertyModelSingle::ColumnValue, QHeaderView::Stretch);
+    connect(layers_dock->layer_view(), &LayerView::selection_changed, parent, &GlaxnimateWindow::document_treeview_selection_changed);
 
-    connect(ui.view_document_node, &LayerView::selection_changed, parent, &GlaxnimateWindow::document_treeview_selection_changed);
-
-    ui.timeline_widget->set_controller(parent);
+    properties_dock = new PropertiesDock(parent, &property_model, &property_delegate);
+    parent->addDockWidget(Qt::DockWidgetArea::BottomDockWidgetArea, properties_dock);
 
     asset_model.setSourceModel(&document_node_model);
-    ui.view_assets->setModel(&asset_model);
-    ui.view_assets->header()->setSectionResizeMode(item_models::DocumentNodeModel::ColumnName-1, QHeaderView::Stretch);
-    ui.view_assets->header()->hideSection(item_models::DocumentNodeModel::ColumnVisible-1);
-    ui.view_assets->header()->hideSection(item_models::DocumentNodeModel::ColumnLocked-1);
-    ui.view_assets->header()->setSectionResizeMode(item_models::DocumentNodeModel::ColumnUsers-1, QHeaderView::ResizeToContents);
-    connect(ui.view_assets, &CustomTreeView::customContextMenuRequested, parent, [this](const QPoint& pos){
-        auto node = document_node_model.node(asset_model.mapToSource(ui.view_assets->indexAt(pos)));
-        if ( node )
-            NodeMenu(node, this->parent, this->parent).exec(ui.view_assets->mapToGlobal(pos));
-    });
 
+    assets_dock = new AssetsDock(parent, &asset_model, &document_node_model);
+    parent->addDockWidget(Qt::DockWidgetArea::BottomDockWidgetArea, assets_dock);
 
-    connect(ui.timeline_widget, &CompoundTimelineWidget::current_node_changed, parent, [this](model::VisualNode* node){
+    connect(timeline_dock->timelineWidget(), &CompoundTimelineWidget::current_node_changed, parent, [this](model::VisualNode* node){
         timeline_current_node_changed(node);
     });
-    connect(ui.timeline_widget, &CompoundTimelineWidget::selection_changed, parent, [this](const std::vector<model::VisualNode*>& selected,  const std::vector<model::VisualNode*>& deselected){
+    connect(timeline_dock->timelineWidget(), &CompoundTimelineWidget::selection_changed, parent, [this](const std::vector<model::VisualNode*>& selected,  const std::vector<model::VisualNode*>& deselected){
         selection_changed(selected, deselected);
     });
 }
@@ -483,14 +791,16 @@ void GlaxnimateWindow::Private::init_status_bar()
 {
     // Recording
     widget_recording = new QWidget();
-    ui.status_bar->addPermanentWidget(widget_recording);
+    parent->statusBar()->addPermanentWidget(widget_recording);
+
+
     QHBoxLayout* lay = new QHBoxLayout;
     widget_recording->setLayout(lay);
     lay->setContentsMargins(0, 0, 0, 0);
     widget_recording->setVisible(false);
 
     QLabel* label_recording_icon = new QLabel();
-    label_recording_icon->setPixmap(QIcon::fromTheme("media-record").pixmap(ui.status_bar->height()));
+    label_recording_icon->setPixmap(QIcon::fromTheme("media-record").pixmap(parent->statusBar()->height()));
     lay->addWidget(label_recording_icon);
 
     label_recording = new QLabel();
@@ -501,94 +811,103 @@ void GlaxnimateWindow::Private::init_status_bar()
 
     // X: ... Y: ...
     label_mouse_pos = new QLabel();
-    ui.status_bar->addPermanentWidget(label_mouse_pos);
+    parent->statusBar()->addPermanentWidget(label_mouse_pos);
     QFont font;
     font.setFamily("monospace");
     font.setStyleHint(QFont::Monospace);
     label_mouse_pos->setFont(font);
     mouse_moved(QPointF(0, 0));
-    connect(ui.canvas, &Canvas::mouse_moved, parent, [this](const QPointF& p){mouse_moved(p);});
+    connect(canvas, &Canvas::mouse_moved, parent, [this](const QPointF& p){mouse_moved(p);});
 
-    ui.status_bar->addPermanentWidget(status_bar_separator());
+    parent->statusBar()->addPermanentWidget(status_bar_separator());
 
     // Current Style
     widget_current_style = new ShapeStylePreviewWidget();
-    ui.status_bar->addPermanentWidget(widget_current_style);
-    widget_current_style->setFixedSize(ui.status_bar->height(), ui.status_bar->height());
-    connect(ui.fill_style_widget, &FillStyleWidget::current_color_changed,
+    parent->statusBar()->addPermanentWidget(widget_current_style);
+    widget_current_style->setFixedSize(parent->statusBar()->height(), parent->statusBar()->height());
+    connect(colors_dock, &ColorsDock::current_color_changed,
             widget_current_style, &ShapeStylePreviewWidget::set_fill_color);
-    connect(ui.stroke_style_widget, &StrokeStyleWidget::color_changed,
+    connect(stroke_dock, &StrokeDock::color_changed,
             widget_current_style, &ShapeStylePreviewWidget::set_stroke_color);
-    ui.status_bar->addPermanentWidget(status_bar_separator());
-    widget_current_style->set_fill_color(ui.fill_style_widget->current_color());
-    widget_current_style->set_stroke_color(ui.stroke_style_widget->current_color());
+    parent->statusBar()->addPermanentWidget(status_bar_separator());
+    widget_current_style->set_fill_color(colors_dock->current_color());
+    widget_current_style->set_stroke_color(stroke_dock->current_color());
 
     // Transform widget
-    view_trans_widget = new ViewTransformWidget(ui.status_bar);
-    ui.status_bar->addPermanentWidget(view_trans_widget);
-    connect(view_trans_widget, &ViewTransformWidget::zoom_changed, ui.canvas, &Canvas::set_zoom);
-    connect(ui.canvas, &Canvas::zoomed, view_trans_widget, &ViewTransformWidget::set_zoom);
-    connect(view_trans_widget, &ViewTransformWidget::zoom_in, ui.canvas, &Canvas::zoom_in);
-    connect(view_trans_widget, &ViewTransformWidget::zoom_out, ui.canvas, &Canvas::zoom_out);
-    connect(view_trans_widget, &ViewTransformWidget::angle_changed, ui.canvas, &Canvas::set_rotation);
-    connect(ui.canvas, &Canvas::rotated, view_trans_widget, &ViewTransformWidget::set_angle);
+    view_trans_widget = new ViewTransformWidget(parent->statusBar());
+    parent->statusBar()->addPermanentWidget(view_trans_widget);
+    connect(view_trans_widget, &ViewTransformWidget::zoom_changed, canvas, &Canvas::set_zoom);
+    connect(canvas, &Canvas::zoomed, view_trans_widget, &ViewTransformWidget::set_zoom);
+    connect(view_trans_widget, &ViewTransformWidget::zoom_in, canvas, &Canvas::zoom_in);
+    connect(view_trans_widget, &ViewTransformWidget::zoom_out, canvas, &Canvas::zoom_out);
+    connect(view_trans_widget, &ViewTransformWidget::angle_changed, canvas, &Canvas::set_rotation);
+    connect(canvas, &Canvas::rotated, view_trans_widget, &ViewTransformWidget::set_angle);
     connect(view_trans_widget, &ViewTransformWidget::view_fit, parent, &GlaxnimateWindow::view_fit);
-    connect(view_trans_widget, &ViewTransformWidget::flip_view, ui.action_flip_view, &QAction::trigger);
+
+    QAction *flipView = parent->actionCollection()->action(QStringLiteral("flip_view"));
+    connect(view_trans_widget, &ViewTransformWidget::flip_view, flipView, &QAction::trigger);
 }
 
 void GlaxnimateWindow::Private::init_docks()
 {
+    scriptconsole_dock = new ScriptConsoleDock(this->parent);
     // Scripting
-    connect(ui.console, &ScriptConsole::error, parent, [this](const QString& plugin, const QString& message){
+    connect(scriptconsole_dock, &ScriptConsoleDock::error, parent, [this](const QString& plugin, const QString& message){
         show_warning(plugin, message, app::log::Error);
     });
-    ui.console->set_global("window", QVariant::fromValue(parent));
+    scriptconsole_dock->set_global("window", QVariant::fromValue(parent));
+
+    parent->addDockWidget(Qt::DockWidgetArea::BottomDockWidgetArea, scriptconsole_dock);
+
     init_plugins();
 
     // Logs
     log_model.populate(GlaxnimateApp::instance()->log_lines());
-    ui.view_logs->setModel(&log_model);
-    ui.view_logs->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
-    ui.view_logs->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
-    ui.view_logs->horizontalHeader()->setSectionResizeMode(3, QHeaderView::Stretch);
-    auto del = new style::BetterElideDelegate(Qt::ElideLeft, ui.view_logs);
-    ui.view_logs->setItemDelegateForColumn(2, del);
+
+    logs_dock = new LogsDock(this->parent, &log_model);
+    parent->addDockWidget(Qt::DockWidgetArea::BottomDockWidgetArea, logs_dock);
 
     // Swatches
     palette_model.setSearchPaths(app::Application::instance()->data_paths_unchecked("palettes"));
     palette_model.setSavePath(app::Application::instance()->writable_data_path("palettes"));
     palette_model.load();
-    ui.fill_style_widget->set_palette_model(&palette_model);
-    ui.stroke_style_widget->set_palette_model(&palette_model);
-    ui.document_swatch_widget->set_palette_model(&palette_model);
+    colors_dock->set_palette_model(&palette_model);
+    stroke_dock->set_palette_model(&palette_model);
 
-    connect(ui.document_swatch_widget, &DocumentSwatchWidget::needs_new_color, [this]{
-        ui.document_swatch_widget->add_new_color(ui.fill_style_widget->current_color());
+    swatches_dock = new SwatchesDock(this->parent, &palette_model);
+    parent->addDockWidget(Qt::DockWidgetArea::BottomDockWidgetArea, swatches_dock);
+
+    connect(swatches_dock, &SwatchesDock::needs_new_color, [this]{
+        swatches_dock->add_new_color(colors_dock->current_color());
     });
-    connect(ui.document_swatch_widget, &DocumentSwatchWidget::current_color_def, [this](model::BrushStyle* sty){
+    connect(swatches_dock, &SwatchesDock::current_color_def, [this](model::BrushStyle* sty){
         set_color_def(sty, false);
     });
-    connect(ui.document_swatch_widget, &DocumentSwatchWidget::secondary_color_def, [this](model::BrushStyle* sty){
+    connect(swatches_dock, &SwatchesDock::secondary_color_def, [this](model::BrushStyle* sty){
         set_color_def(sty, true);
     });
 
     // Gradients
-    ui.widget_gradients->set_window(parent);
-        connect(ui.widget_gradients, &GradientListWidget::selected, parent, [this](model::BrushStyle* sty, bool secondary){
+    gradients_dock = new GradientsDock(this->parent);
+    parent->addDockWidget(Qt::DockWidgetArea::BottomDockWidgetArea, gradients_dock);
+    connect(gradients_dock, &GradientsDock::selected, parent, [this](model::BrushStyle* sty, bool secondary){
             set_brush_reference(sty, secondary);
     });
 
     // Fill/Stroke
-    connect(ui.fill_style_widget, &FillStyleWidget::current_color_changed, parent, [this]{style_change_event();});
-    connect(ui.fill_style_widget, &FillStyleWidget::secondary_color_changed, parent, [this]{style_change_event();});
-    connect(ui.stroke_style_widget, &StrokeStyleWidget::pen_style_changed, parent, [this]{style_change_event();});
+    connect(colors_dock, &ColorsDock::current_color_changed, parent, [this]{style_change_event();});
+    connect(colors_dock, &ColorsDock::secondary_color_changed, parent, [this]{style_change_event();});
+    connect(stroke_dock, &StrokeDock::pen_style_changed, parent, [this]{style_change_event();});
 
     // Tab bar
-    connect(ui.tab_bar, &CompositionTabBar::switch_composition, parent, &GlaxnimateWindow::switch_composition);
-    connect(ui.timeline_widget, &CompoundTimelineWidget::switch_composition, parent, &GlaxnimateWindow::switch_composition);
+    connect(tab_bar, &CompositionTabBar::switch_composition, parent, &GlaxnimateWindow::switch_composition);
+
+    timeline_dock = new TimelineDock(this->parent);
+    parent->addDockWidget(Qt::DockWidgetArea::BottomDockWidgetArea, timeline_dock);
+    connect(timeline_dock->timelineWidget(), &CompoundTimelineWidget::switch_composition, parent, &GlaxnimateWindow::switch_composition);
 
     // Align
-    ui.separator_align_relative_to->setSeparator(true);
+    /*ui.separator_align_relative_to->setSeparator(true);
     ui.separator_align_horizontal->setSeparator(true);
     ui.separator_align_vertical->setSeparator(true);
     QActionGroup *align_relative = new QActionGroup(parent);
@@ -607,68 +926,40 @@ void GlaxnimateWindow::Private::init_docks()
     connect(combo_align_to, qOverload<int>(&QComboBox::currentIndexChanged), parent, [combo_align_to](int i){
         combo_align_to->itemData(i).value<QAction*>()->setChecked(true);
     });
+    */
 
-    int row = 1;
-    ui.dock_align_grid->addWidget(action_button(ui.action_align_hor_left, ui.dock_align->widget()),         row, 0);
-    ui.dock_align_grid->addWidget(action_button(ui.action_align_hor_center, ui.dock_align->widget()),       row, 1);
-    ui.dock_align_grid->addWidget(action_button(ui.action_align_hor_right, ui.dock_align->widget()),        row, 2);
-    row++;
-    ui.dock_align_grid->addWidget(action_button(ui.action_align_hor_left_out, ui.dock_align->widget()),     row, 0);
-    ui.dock_align_grid->addWidget(action_button(ui.action_align_hor_right_out, ui.dock_align->widget()),    row, 2);
-    row++;
-    ui.dock_align_grid->addWidget(action_button(ui.action_align_vert_top, ui.dock_align->widget()),         row, 0);
-    ui.dock_align_grid->addWidget(action_button(ui.action_align_vert_center, ui.dock_align->widget()),      row, 1);
-    ui.dock_align_grid->addWidget(action_button(ui.action_align_vert_bottom, ui.dock_align->widget()),      row, 2);
-    row++;
-    ui.dock_align_grid->addWidget(action_button(ui.action_align_vert_top_out, ui.dock_align->widget()),     row, 0);
-    ui.dock_align_grid->addWidget(action_button(ui.action_align_vert_bottom_out, ui.dock_align->widget()),  row, 2);
-    row++;
-    ui.dock_align_grid->addItem(new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding),        row, 0);
-    ui.dock_align->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    align_dock = new AlignDock(this->parent);
+    parent->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, align_dock);
 
-    // Layout
-    QActionGroup *layout_actions = new QActionGroup(parent);
-    layout_actions->setExclusive(true);
-    for ( const auto& action : ui.menu_layout->actions() )
-    {
-        action->setActionGroup(layout_actions);
-        connect(action, &QAction::triggered, parent, [this]{layout_update();});
-    }
+    time_slider_dock = new TimeSliderDock(this->parent);
+    parent->addDockWidget(Qt::DockWidgetArea::BottomDockWidgetArea, time_slider_dock);
 
-    auto preset = LayoutPreset(app::settings::get<int>("ui", "layout"));
+    snippets_dock = new SnippetsDock(this->parent);
+    parent->addDockWidget(Qt::DockWidgetArea::BottomDockWidgetArea, snippets_dock);
 
-    switch ( preset )
-    {
-        case LayoutPreset::Unknown:
-        case LayoutPreset::Auto:
-            layout_auto();
-            break;
-        case LayoutPreset::Wide:
-            layout_wide();
-            break;
-        case LayoutPreset::Compact:
-            layout_compact();
-            break;
-        case LayoutPreset::Medium:
-            layout_medium();
-            break;
-        case LayoutPreset::Custom:
-            layout_auto();
-            app::settings::set("ui", "layout", int(LayoutPreset::Custom));
-            ui.action_layout_custom->setChecked(true);
-            break;
-    }
+    undo_dock = new UndoDock(this->parent);
+    parent->addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, undo_dock);
+    undo_dock->setUndoGroup(&parent->undo_group());
+
+    tool_options_dock = new ToolOptionsDock(this->parent);
+    parent->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, tool_options_dock);
 }
 
 void GlaxnimateWindow::Private::layout_update()
 {
-    if ( ui.action_layout_wide->isChecked() )
+    QAction *layoutWide = parent->actionCollection()->action(QStringLiteral("layout_wide"));
+    QAction *layoutCompact = parent->actionCollection()->action(QStringLiteral("layout_compact"));
+    QAction *layoutCustom = parent->actionCollection()->action(QStringLiteral("layout_custom"));
+    QAction *layoutMedium = parent->actionCollection()->action(QStringLiteral("layout_medium"));
+
+
+    if ( layoutWide->isChecked() )
         layout_wide();
-    else if ( ui.action_layout_compact->isChecked() )
+    else if ( layoutCompact->isChecked() )
         layout_compact();
-    else if ( ui.action_layout_custom->isChecked() )
+    else if ( layoutCustom->isChecked() )
         layout_custom();
-    else if ( ui.action_layout_medium->isChecked() )
+    else if ( layoutMedium->isChecked() )
         layout_medium();
     else
         layout_auto();
@@ -677,185 +968,188 @@ void GlaxnimateWindow::Private::layout_update()
 void GlaxnimateWindow::Private::layout_medium()
 {
     // Bottom
-    parent->addDockWidget(Qt::BottomDockWidgetArea, ui.dock_timeline);
-    parent->tabifyDockWidget(ui.dock_timeline, ui.dock_properties);
-    parent->tabifyDockWidget(ui.dock_properties, ui.dock_script_console);
-    parent->tabifyDockWidget(ui.dock_script_console, ui.dock_logs);
-    parent->tabifyDockWidget(ui.dock_logs, ui.dock_time_slider);
-    ui.dock_timeline->raise();
-    ui.dock_time_slider->setVisible(false);
-    ui.dock_timeline->setVisible(true);
-    ui.dock_properties->setVisible(true);
+    parent->addDockWidget(Qt::BottomDockWidgetArea, timeline_dock);
+    parent->tabifyDockWidget(timeline_dock, properties_dock);
+    parent->tabifyDockWidget(properties_dock, scriptconsole_dock);
+    parent->tabifyDockWidget(scriptconsole_dock, logs_dock);
+    parent->tabifyDockWidget(logs_dock, time_slider_dock);
+    timeline_dock->raise();
+    time_slider_dock->setVisible(false);
+    timeline_dock->setVisible(true);
+    properties_dock->setVisible(true);
 
-    parent->addDockWidget(Qt::BottomDockWidgetArea, ui.dock_snippets);
+    parent->addDockWidget(Qt::BottomDockWidgetArea, snippets_dock);
 
     // Bottom Right
-    parent->addDockWidget(Qt::BottomDockWidgetArea, ui.dock_layers);
-    parent->tabifyDockWidget(ui.dock_layers, ui.dock_gradients);
-    parent->tabifyDockWidget(ui.dock_gradients, ui.dock_swatches);
-    parent->tabifyDockWidget(ui.dock_swatches, ui.dock_assets);
-    ui.dock_gradients->raise();
-    ui.dock_gradients->setVisible(true);
-    ui.dock_assets->setVisible(false);
-    ui.dock_swatches->setVisible(false);
-    ui.dock_layers->setVisible(true);
+    parent->addDockWidget(Qt::BottomDockWidgetArea, layers_dock);
+    parent->tabifyDockWidget(layers_dock, gradients_dock);
+    parent->tabifyDockWidget(gradients_dock, swatches_dock);
+    parent->tabifyDockWidget(swatches_dock, assets_dock);
+    gradients_dock->raise();
+    gradients_dock->setVisible(true);
+    assets_dock->setVisible(false);
+    swatches_dock->setVisible(false);
+    layers_dock->setVisible(true);
 
 
     // Right
-    parent->addDockWidget(Qt::RightDockWidgetArea, ui.dock_colors);
-    parent->tabifyDockWidget(ui.dock_colors, ui.dock_stroke);
-    parent->tabifyDockWidget(ui.dock_stroke, ui.dock_undo);
-    ui.dock_colors->raise();
-    ui.dock_colors->setVisible(true);
-    ui.dock_stroke->setVisible(true);
-    ui.dock_undo->setVisible(true);
+    parent->addDockWidget(Qt::RightDockWidgetArea, colors_dock);
+    parent->tabifyDockWidget(colors_dock, stroke_dock);
+    parent->tabifyDockWidget(stroke_dock, undo_dock);
+    colors_dock->raise();
+    colors_dock->setVisible(true);
+    stroke_dock->setVisible(true);
+    undo_dock->setVisible(true);
 
 
     // Left
-    parent->addDockWidget(Qt::LeftDockWidgetArea, ui.dock_tools);
+    parent->addDockWidget(Qt::LeftDockWidgetArea, tools_dock);
 
-    parent->addDockWidget(Qt::LeftDockWidgetArea, ui.dock_tool_options);
-    parent->tabifyDockWidget(ui.dock_tool_options, ui.dock_align);
-    ui.dock_tool_options->raise();
-    ui.dock_tool_options->setVisible(true);
-    ui.dock_align->setVisible(true);
+    parent->addDockWidget(Qt::LeftDockWidgetArea, tool_options_dock);
+    parent->tabifyDockWidget(tool_options_dock, align_dock);
+    tool_options_dock->raise();
+    tool_options_dock->setVisible(true);
+    align_dock->setVisible(true);
 
     // Resize
-    parent->resizeDocks({ui.dock_snippets}, {1}, Qt::Horizontal);
-    parent->resizeDocks({ui.dock_layers}, {1}, Qt::Horizontal);
-    parent->resizeDocks({ui.dock_tools}, {200}, Qt::Horizontal);
-    parent->resizeDocks({ui.dock_tool_options, ui.dock_align, ui.dock_tools}, {1, 1, 4000}, Qt::Vertical);
-    parent->resizeDocks({ui.dock_timeline}, {300}, Qt::Vertical);
-    ui.dock_script_console->setVisible(false);
-    ui.dock_logs->setVisible(false);
-    ui.dock_tools->setVisible(false);
-    ui.dock_snippets->setVisible(false);
+    parent->resizeDocks({snippets_dock}, {1}, Qt::Horizontal);
+    parent->resizeDocks({layers_dock}, {1}, Qt::Horizontal);
+    parent->resizeDocks({tools_dock}, {200}, Qt::Horizontal);
+    parent->resizeDocks({tool_options_dock, align_dock, tools_dock}, {1, 1, 4000}, Qt::Vertical);
+    parent->resizeDocks({timeline_dock}, {300}, Qt::Vertical);
+    scriptconsole_dock->setVisible(false);
+    logs_dock->setVisible(false);
+    tools_dock->setVisible(false);
+    snippets_dock->setVisible(false);
 
     // Resize parent to have a reasonable default size
     parent->resize(1440, 900);
 
     app::settings::set("ui", "layout", int(LayoutPreset::Medium));
-    ui.action_layout_medium->setChecked(true);
+    QAction *layoutMedium = parent->actionCollection()->action(QStringLiteral("layout_medium"));
+    layoutMedium->setChecked(true);
 }
 
 void GlaxnimateWindow::Private::layout_wide()
 {
     // Bottom
-    parent->addDockWidget(Qt::BottomDockWidgetArea, ui.dock_timeline);
-    parent->tabifyDockWidget(ui.dock_timeline, ui.dock_properties);
-    parent->tabifyDockWidget(ui.dock_properties, ui.dock_script_console);
-    parent->tabifyDockWidget(ui.dock_script_console, ui.dock_logs);
-    parent->tabifyDockWidget(ui.dock_logs, ui.dock_time_slider);
-    ui.dock_timeline->raise();
-    ui.dock_time_slider->setVisible(false);
-    ui.dock_timeline->setVisible(true);
-    ui.dock_properties->setVisible(true);
+    parent->addDockWidget(Qt::BottomDockWidgetArea, timeline_dock);
+    parent->tabifyDockWidget(timeline_dock, properties_dock);
+    parent->tabifyDockWidget(properties_dock, scriptconsole_dock);
+    parent->tabifyDockWidget(scriptconsole_dock, logs_dock);
+    parent->tabifyDockWidget(logs_dock, time_slider_dock);
+    timeline_dock->raise();
+    time_slider_dock->setVisible(false);
+    timeline_dock->setVisible(true);
+    properties_dock->setVisible(true);
 
-    parent->addDockWidget(Qt::BottomDockWidgetArea, ui.dock_snippets);
+    parent->addDockWidget(Qt::BottomDockWidgetArea, snippets_dock);
 
     // Bottom Right
-    parent->addDockWidget(Qt::BottomDockWidgetArea, ui.dock_layers);
-    parent->tabifyDockWidget(ui.dock_layers, ui.dock_gradients);
-    parent->tabifyDockWidget(ui.dock_gradients, ui.dock_swatches);
-    parent->tabifyDockWidget(ui.dock_swatches, ui.dock_assets);
-    ui.dock_gradients->raise();
-    ui.dock_gradients->setVisible(true);
-    ui.dock_assets->setVisible(false);
-    ui.dock_swatches->setVisible(false);
-    ui.dock_layers->setVisible(true);
+    parent->addDockWidget(Qt::BottomDockWidgetArea, layers_dock);
+    parent->tabifyDockWidget(layers_dock, gradients_dock);
+    parent->tabifyDockWidget(gradients_dock, swatches_dock);
+    parent->tabifyDockWidget(swatches_dock, assets_dock);
+    gradients_dock->raise();
+    gradients_dock->setVisible(true);
+    assets_dock->setVisible(false);
+    swatches_dock->setVisible(false);
+    layers_dock->setVisible(true);
 
 
     // Right
-    parent->addDockWidget(Qt::RightDockWidgetArea, ui.dock_colors);
-    parent->tabifyDockWidget(ui.dock_colors, ui.dock_stroke);
-    parent->tabifyDockWidget(ui.dock_stroke, ui.dock_undo);
-    ui.dock_colors->raise();
-    ui.dock_colors->setVisible(true);
-    ui.dock_stroke->setVisible(true);
-    ui.dock_undo->setVisible(true);
+    parent->addDockWidget(Qt::RightDockWidgetArea, colors_dock);
+    parent->tabifyDockWidget(colors_dock, stroke_dock);
+    parent->tabifyDockWidget(stroke_dock, undo_dock);
+    colors_dock->raise();
+    colors_dock->setVisible(true);
+    stroke_dock->setVisible(true);
+    undo_dock->setVisible(true);
 
 
     // Left
-    parent->addDockWidget(Qt::LeftDockWidgetArea, ui.dock_tools);
+    parent->addDockWidget(Qt::LeftDockWidgetArea, tools_dock);
 
-    parent->addDockWidget(Qt::LeftDockWidgetArea, ui.dock_tool_options);
-    parent->addDockWidget(Qt::LeftDockWidgetArea, ui.dock_align);
-    ui.dock_tool_options->setVisible(true);
-    ui.dock_align->setVisible(true);
+    parent->addDockWidget(Qt::LeftDockWidgetArea, tool_options_dock);
+    parent->addDockWidget(Qt::LeftDockWidgetArea, align_dock);
+    tool_options_dock->setVisible(true);
+    align_dock->setVisible(true);
 
     // Resize
-    parent->resizeDocks({ui.dock_snippets}, {1}, Qt::Horizontal);
-    parent->resizeDocks({ui.dock_layers}, {1}, Qt::Horizontal);
-    parent->resizeDocks({ui.dock_tools}, {200}, Qt::Horizontal);
-    parent->resizeDocks({ui.dock_tool_options, ui.dock_align, ui.dock_tools}, {1, 1, 4000}, Qt::Vertical);
-    parent->resizeDocks({ui.dock_timeline}, {1080/3}, Qt::Vertical);
-    ui.dock_script_console->setVisible(false);
-    ui.dock_logs->setVisible(false);
-    ui.dock_tools->setVisible(false);
-    ui.dock_snippets->setVisible(false);
+    parent->resizeDocks({snippets_dock}, {1}, Qt::Horizontal);
+    parent->resizeDocks({layers_dock}, {1}, Qt::Horizontal);
+    parent->resizeDocks({tools_dock}, {200}, Qt::Horizontal);
+    parent->resizeDocks({tool_options_dock, align_dock, tools_dock}, {1, 1, 4000}, Qt::Vertical);
+    parent->resizeDocks({timeline_dock}, {1080/3}, Qt::Vertical);
+    scriptconsole_dock->setVisible(false);
+    logs_dock->setVisible(false);
+    tools_dock->setVisible(false);
+    snippets_dock->setVisible(false);
 
     // Resize parent to have a reasonable default size
     parent->resize(1920, 1080);
 
     app::settings::set("ui", "layout", int(LayoutPreset::Wide));
-    ui.action_layout_wide->setChecked(true);
+    QAction *layoutWide = parent->actionCollection()->action(QStringLiteral("layout_wide"));
+    layoutWide->setChecked(true);
 }
 
 void GlaxnimateWindow::Private::layout_compact()
 {
     // Bottom
-    parent->addDockWidget(Qt::BottomDockWidgetArea, ui.dock_time_slider);
-    parent->tabifyDockWidget(ui.dock_time_slider, ui.dock_timeline);
-    parent->tabifyDockWidget(ui.dock_timeline, ui.dock_script_console);
-    parent->tabifyDockWidget(ui.dock_script_console, ui.dock_logs);
-    ui.dock_time_slider->raise();
-    ui.dock_time_slider->setVisible(true);
-    ui.dock_timeline->setVisible(false);
-    ui.dock_logs->setVisible(false);
+    parent->addDockWidget(Qt::BottomDockWidgetArea, time_slider_dock);
+    parent->tabifyDockWidget(time_slider_dock, timeline_dock);
+    parent->tabifyDockWidget(timeline_dock, scriptconsole_dock);
+    parent->tabifyDockWidget(scriptconsole_dock, logs_dock);
+    time_slider_dock->raise();
+    time_slider_dock->setVisible(true);
+    timeline_dock->setVisible(false);
+    logs_dock->setVisible(false);
 
-    parent->addDockWidget(Qt::BottomDockWidgetArea, ui.dock_snippets);
+    parent->addDockWidget(Qt::BottomDockWidgetArea, snippets_dock);
 
     // Right
-    parent->addDockWidget(Qt::RightDockWidgetArea, ui.dock_colors);
-    parent->tabifyDockWidget(ui.dock_colors, ui.dock_stroke);
-    parent->tabifyDockWidget(ui.dock_stroke, ui.dock_layers);
-    parent->tabifyDockWidget(ui.dock_layers, ui.dock_properties);
-    parent->tabifyDockWidget(ui.dock_properties, ui.dock_undo);
-    parent->tabifyDockWidget(ui.dock_undo, ui.dock_gradients);
-    parent->tabifyDockWidget(ui.dock_gradients, ui.dock_swatches);
-    parent->tabifyDockWidget(ui.dock_swatches, ui.dock_assets);
-    ui.dock_colors->raise();
-    ui.dock_colors->setVisible(true);
-    ui.dock_stroke->setVisible(true);
-    ui.dock_gradients->setVisible(false);
-    ui.dock_assets->setVisible(false);
-    ui.dock_swatches->setVisible(false);
-    ui.dock_undo->setVisible(false);
-    ui.dock_properties->setVisible(true);
-    ui.dock_layers->setVisible(true);
+    parent->addDockWidget(Qt::RightDockWidgetArea, colors_dock);
+    parent->tabifyDockWidget(colors_dock, stroke_dock);
+    parent->tabifyDockWidget(stroke_dock, layers_dock);
+    parent->tabifyDockWidget(layers_dock, properties_dock);
+    parent->tabifyDockWidget(properties_dock, undo_dock);
+    parent->tabifyDockWidget(undo_dock, gradients_dock);
+    parent->tabifyDockWidget(gradients_dock, swatches_dock);
+    parent->tabifyDockWidget(swatches_dock, assets_dock);
+    colors_dock->raise();
+    colors_dock->setVisible(true);
+    stroke_dock->setVisible(true);
+    gradients_dock->setVisible(false);
+    assets_dock->setVisible(false);
+    swatches_dock->setVisible(false);
+    undo_dock->setVisible(false);
+    properties_dock->setVisible(true);
+    layers_dock->setVisible(true);
 
     // Left
-    parent->addDockWidget(Qt::LeftDockWidgetArea, ui.dock_tools);
+    parent->addDockWidget(Qt::LeftDockWidgetArea, tools_dock);
 
-    parent->addDockWidget(Qt::LeftDockWidgetArea, ui.dock_tool_options);
-    parent->tabifyDockWidget(ui.dock_tool_options, ui.dock_align);
-    ui.dock_tool_options->raise();
-    ui.dock_tool_options->setVisible(true);
-    ui.dock_align->setVisible(true);
+    parent->addDockWidget(Qt::LeftDockWidgetArea, tool_options_dock);
+    parent->tabifyDockWidget(tool_options_dock, align_dock);
+    tool_options_dock->raise();
+    tool_options_dock->setVisible(true);
+    align_dock->setVisible(true);
 
     // Resize
-    parent->resizeDocks({ui.dock_tool_options, ui.dock_align, ui.dock_tools}, {1, 1, 4000}, Qt::Vertical);
-    parent->resizeDocks({ui.dock_time_slider}, {64}, Qt::Vertical);
-    ui.dock_script_console->setVisible(false);
-    ui.dock_logs->setVisible(false);
-    ui.dock_tools->setVisible(false);
-    ui.dock_snippets->setVisible(false);
+    parent->resizeDocks({tool_options_dock, align_dock, tools_dock}, {1, 1, 4000}, Qt::Vertical);
+    parent->resizeDocks({time_slider_dock}, {64}, Qt::Vertical);
+    scriptconsole_dock->setVisible(false);
+    logs_dock->setVisible(false);
+    tools_dock->setVisible(false);
+    snippets_dock->setVisible(false);
 
     // Resize parent to have a reasonable default size
     parent->resize(1366, 768);
 
     app::settings::set("ui", "layout", int(LayoutPreset::Compact));
-    ui.action_layout_compact->setChecked(true);
+    QAction *layoutCompact = parent->actionCollection()->action(QStringLiteral("layout_compact"));
+    layoutCompact->setChecked(true);
 }
 
 void GlaxnimateWindow::Private::layout_auto()
@@ -868,46 +1162,53 @@ void GlaxnimateWindow::Private::layout_auto()
     else
         layout_compact();
 
-    app::settings::set("ui", "layout", int(LayoutPreset::Auto));
-    ui.action_layout_automatic->setChecked(true);
+    QAction *layoutAuto = parent->actionCollection()->action(QStringLiteral("layout_automatic"));
+    layoutAuto->setChecked(true);
 }
 
 void GlaxnimateWindow::Private::layout_custom()
 {
     init_restore_state();
-    app::settings::set("ui", "layout", int(LayoutPreset::Custom));
-    ui.action_layout_custom->setChecked(true);
+    QAction *layoutCustom = parent->actionCollection()->action(QStringLiteral("layout_custom"));
+    layoutCustom->setChecked(true);
 }
 
 void GlaxnimateWindow::Private::init_template_menu()
 {
-    ui.menu_new_from_template->clear();
+    QList<QAction*> template_actions;
 
     for ( const auto& templ : settings::DocumentTemplates::instance().templates() )
-        ui.menu_new_from_template->addAction(settings::DocumentTemplates::instance().create_action(templ, ui.menu_new_from_template));
+        template_actions.append(settings::DocumentTemplates::instance().create_action(templ, this->parent));
+
+    parent->unplugActionList( "template_actionlist" );
+    parent->plugActionList( "template_actionlist", template_actions );
 }
 
 void GlaxnimateWindow::Private::init_menus()
 {
     // Menu Views
+    QList<QAction*> view_actions;
+
     for ( QDockWidget* wid : parent->findChildren<QDockWidget*>() )
     {
         QAction* act = wid->toggleViewAction();
         act->setIcon(wid->windowIcon());
-        ui.menu_views->addAction(act);
+        view_actions.append(act);
         wid->setStyle(&dock_style);
     }
+    parent->unplugActionList( "view_actionlist" );
+    parent->plugActionList( "view_actionlist", view_actions );
 
     // Menu Toolbars
-    for ( QToolBar* wid : parent->findChildren<QToolBar*>() )
+    /*for ( QToolBar* wid : parent->findChildren<QToolBar*>() )
     {
         QAction* act = wid->toggleViewAction();
         ui.menu_toolbars->addAction(act);
         wid->setStyle(&dock_style);
-    }
+    }*/
 
     // Load keyboard shortcuts
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_file);
+    /*GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_file);
     GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_edit);
     GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_tools);
     GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_view);
@@ -921,7 +1222,7 @@ void GlaxnimateWindow::Private::init_menus()
     GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_path);
     GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_text);
     GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_plugins);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_help);
+    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_help);*/
 
     // Menu Templates
     init_template_menu();
@@ -942,25 +1243,13 @@ void GlaxnimateWindow::Private::init_menus()
         }
     );
 
-    connect(ui.action_save_as_template, &QAction::triggered, parent, [this]{
-        bool ok = true;
 
-        QString old_name = comp->name.get();
-        QString name = QInputDialog::getText(parent, i18n("Save as Template"), i18n("Name"), QLineEdit::Normal, old_name, &ok);
-        if ( !ok )
-            return;
-
-        comp->name.set(name);
-        if ( !settings::DocumentTemplates::instance().save_as_template(current_document.get()) )
-            show_warning(i18n("Save as Template"), i18n("Could not save template"));
-        comp->name.set(old_name);
-    });
 }
 
 
 void GlaxnimateWindow::Private::init_tools(tools::Tool* to_activate)
 {
-    tools::Event event{ui.canvas, &scene, parent};
+    tools::Event event{canvas, &scene, parent};
     for ( const auto& grp : tools::Registry::instance() )
     {
         for ( const auto& tool : grp.second )
@@ -977,21 +1266,23 @@ void GlaxnimateWindow::Private::init_tools(tools::Tool* to_activate)
 void GlaxnimateWindow::Private::init_restore_state()
 {
     parent->restoreState(app::settings::get<QByteArray>("ui", "window_state"));
-    ui.timeline_widget->load_state(app::settings::get<QByteArray>("ui", "timeline_splitter"));
+    timeline_dock->timelineWidget()->load_state(app::settings::get<QByteArray>("ui", "timeline_splitter"));
     parent->restoreGeometry(app::settings::get<QByteArray>("ui", "window_geometry"));
 
     // Hide tool widgets, as they might get shown by restoreState
-    ui.toolbar_node->setVisible(false);
-    ui.toolbar_node->setEnabled(false);
+    KToolBar *toolbar_node = parent->toolBar(QStringLiteral("nodeToolBar"));
+    toolbar_node->setVisible(false);
+    toolbar_node->setEnabled(false);
 }
 
+// TODO remove
 void GlaxnimateWindow::Private::retranslateUi(QMainWindow* parent)
 {
-    ui.retranslateUi(parent);
+    //ui.retranslateUi(parent);
     label_recording->setText(i18n("Recording Keyframes"));
 
-    ui.action_undo->setText(i18n("Undo %1", current_document->undo_stack().undoText()));
-    ui.action_redo->setText(i18n("Redo %1", current_document->undo_stack().redoText()));
+    //ui.action_undo->setText(i18n("Undo %1", current_document->undo_stack().undoText()));
+    //ui.action_redo->setText(i18n("Redo %1", current_document->undo_stack().redoText()));
 
     for ( const auto& grp : tools::Registry::instance() )
         for ( const auto& tool : grp.second )
@@ -1000,33 +1291,7 @@ void GlaxnimateWindow::Private::retranslateUi(QMainWindow* parent)
 
 void GlaxnimateWindow::Private::view_fit()
 {
-    ui.canvas->view_fit();
-}
-
-void GlaxnimateWindow::Private::reload_recent_menu()
-{
-    QIcon icon(GlaxnimateApp::instance()->data_file("images/glaxnimate-file.svg"));
-    ui.menu_open_recent->clear();
-    for ( const auto& recent : recent_files )
-    {
-        QAction* act = new QAction(icon, QFileInfo(recent).fileName(), ui.menu_open_recent);
-        act->setToolTip(recent);
-        act->setData(recent);
-        ui.menu_open_recent->addAction(act);
-    }
-}
-
-void GlaxnimateWindow::Private::most_recent_file(const QString& s)
-{
-    recent_files.removeAll(s);
-    recent_files.push_front(s);
-    ui.action_open_last->setEnabled(true);
-
-    int max = app::settings::get<int>("open_save", "max_recent_files");
-    if ( recent_files.size() > max )
-        recent_files.erase(recent_files.begin() + max, recent_files.end());
-
-    reload_recent_menu();
+    canvas->view_fit();
 }
 
 void GlaxnimateWindow::Private::show_warning(const QString& title, const QString& message, app::log::Severity icon)
@@ -1038,7 +1303,7 @@ void GlaxnimateWindow::Private::show_warning(const QString& title, const QString
         case app::log::Severity::Warning: message_type = KMessageWidget::Warning; break;
         case app::log::Severity::Error: message_type = KMessageWidget::Error; break;
     }
-    ui.message_widget->queue_message({message, message_type});
+    message_widget->queue_message({message, message_type});
     app::log::Log(title).log(message, icon);
 }
 
@@ -1049,16 +1314,18 @@ void GlaxnimateWindow::Private::help_about()
 
 void GlaxnimateWindow::Private::shutdown()
 {
+    KSharedConfigPtr config = KSharedConfig::openConfig();
     app::settings::set("ui", "window_geometry", parent->saveGeometry());
     app::settings::set("ui", "window_state", parent->saveState());
-    app::settings::set("ui", "timeline_splitter", ui.timeline_widget->save_state());
-    app::settings::set("open_save", "recent_files", recent_files);
+    app::settings::set("ui", "timeline_splitter", timeline_dock->timelineWidget()->save_state());
+    m_recentFilesAction->saveEntries(KConfigGroup(config, QString()));
 
-    ui.fill_style_widget->save_settings();
-    ui.stroke_style_widget->save_settings();
+    colors_dock->save_settings();
 
-    ui.console->save_settings();
-    ui.console->clear_contexts();
+    stroke_dock->save_settings();
+
+    scriptconsole_dock->save_settings();
+    scriptconsole_dock->clear_contexts();
 }
 
 
@@ -1067,15 +1334,17 @@ void GlaxnimateWindow::Private::switch_tool(tools::Tool* tool)
     if ( !tool || tool == active_tool )
         return;
 
-    if ( !tool->get_action()->isChecked() )
-        tool->get_action()->setChecked(true);
+    QAction *action = parent->actionCollection()->action(tool->action_name());
+    if ( !action->isChecked() )
+        action->setChecked(true);
 
     if ( active_tool )
     {
-        for ( const auto& widget : tool_widgets[active_tool->id()] )
+        if (active_tool->id() == QStringLiteral("edit") )
         {
-            widget->setVisible(false);
-            widget->setEnabled(false);
+            KToolBar *toolbar_node = parent->toolBar(QStringLiteral("nodeToolBar"));
+            toolbar_node->setVisible(false);
+            toolbar_node->setEnabled(false);
         }
 
         for ( const auto& action : tool_actions[active_tool->id()] )
@@ -1084,11 +1353,11 @@ void GlaxnimateWindow::Private::switch_tool(tools::Tool* tool)
         }
     }
 
-
-    for ( const auto& widget : tool_widgets[tool->id()] )
+    if (tool->id() == QStringLiteral("edit") )
     {
-        widget->setVisible(true);
-        widget->setEnabled(true);
+        KToolBar *toolbar_node = parent->toolBar(QStringLiteral("nodeToolBar"));
+        toolbar_node->setVisible(true);
+        toolbar_node->setEnabled(true);
     }
 
     for ( const auto& action : tool_actions[tool->id()] )
@@ -1098,14 +1367,15 @@ void GlaxnimateWindow::Private::switch_tool(tools::Tool* tool)
 
     active_tool = tool;
     scene.set_active_tool(tool);
-    ui.canvas->set_active_tool(tool);
+    canvas->set_active_tool(tool);
 
-    if ( auto old_wid = ui.tool_settings_widget->currentWidget() )
+    if ( auto old_wid = tool_options_dock->currentWidget() )
         old_wid->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 
     auto new_wid = tool->get_settings_widget();
     new_wid->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-    ui.tool_settings_widget->setCurrentWidget(new_wid);
+
+    tool_options_dock->setCurrentWidget(new_wid);
     if ( active_tool->group() == tools::Registry::Draw || active_tool->group() == tools::Registry::Shape )
         widget_current_style->clear_gradients();
 }
@@ -1117,7 +1387,7 @@ void GlaxnimateWindow::Private::switch_tool_action(QAction* action)
 
 void GlaxnimateWindow::Private::status_message(const QString& message, int duration)
 {
-    ui.status_bar->showMessage(message, duration);
+    parent->statusBar()->showMessage(message, duration);
 }
 
 void GlaxnimateWindow::Private::trace_dialog(model::DocumentNode* object)
@@ -1159,7 +1429,7 @@ void GlaxnimateWindow::Private::trace_dialog(model::DocumentNode* object)
     TraceDialog dialog(bmp, parent);
     dialog.exec();
     if ( auto created = dialog.created() )
-        ui.view_document_node->set_current_node(created);
+        layers_dock->layer_view()->set_current_node(created);
 }
 
 
@@ -1168,25 +1438,33 @@ void GlaxnimateWindow::Private::init_plugins()
     auto& par = plugin::PluginActionRegistry::instance();
     for ( auto act : par.enabled() )
     {
-        ui.menu_plugins->addAction(par.make_qaction(act));
+        plugin_actions.append(par.make_qaction(act));
     }
 
+    parent->unplugActionList("plugins_actionlist");
+    parent->plugActionList("plugins_actionlist", plugin_actions);
+
     connect(&par, &plugin::PluginActionRegistry::action_added, parent, [this](plugin::ActionService* action, plugin::ActionService* before) {
-        QAction* insert = nullptr;
-        for ( auto act : ui.menu_plugins->actions() )
+        qsizetype index = -1;
+        for ( auto act : plugin_actions )
         {
             if ( act->data().value<plugin::ActionService*>() == before )
             {
-                insert = act;
+                index = plugin_actions.indexOf(act);
                 break;
             }
         }
         QAction* qaction = plugin::PluginActionRegistry::instance().make_qaction(action);
-        ui.menu_plugins->insertAction(insert, qaction);
+        plugin_actions.insert(qMax(0, index -1), qaction);
 
-        app::settings::ShortcutGroup* group = GlaxnimateApp::instance()->shortcuts()->find_group(ui.menu_plugins->menuAction()->iconText());
+        // TODO
+        /*app::settings::ShortcutGroup* group = GlaxnimateApp::instance()->shortcuts()->find_group(ui.menu_plugins->menuAction()->iconText());
         if (group)
             group->actions.push_back(GlaxnimateApp::instance()->shortcuts()->add_action(qaction));
+        */
+
+        parent->unplugActionList("plugins_actionlist");
+        parent->plugActionList("plugins_actionlist", plugin_actions);
     });
 
     connect(&par, &plugin::PluginActionRegistry::action_removed, parent, [](plugin::ActionService* action) {
@@ -1198,11 +1476,11 @@ void GlaxnimateWindow::Private::init_plugins()
     connect(
         &plugin::PluginRegistry::instance(),
         &plugin::PluginRegistry::loaded,
-        ui.console,
-        &ScriptConsole::clear_contexts
+        scriptconsole_dock,
+        &ScriptConsoleDock::clear_contexts
     );
 
-    plugin::PluginRegistry::instance().set_executor(ui.console);
+    plugin::PluginRegistry::instance().set_executor(scriptconsole_dock);
 }
 
 void GlaxnimateWindow::Private::mouse_moved(const QPointF& pos)

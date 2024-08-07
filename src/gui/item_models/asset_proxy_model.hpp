@@ -7,6 +7,8 @@
 #pragma once
 
 #include "proxy_base.hpp"
+#include "model/assets/bitmap.hpp"
+
 #include <QMimeData>
 
 namespace glaxnimate::gui::item_models {

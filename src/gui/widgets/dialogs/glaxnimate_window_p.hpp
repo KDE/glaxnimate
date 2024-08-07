@@ -17,7 +17,6 @@
 #include "QtColorWidgets/color_delegate.hpp"
 #include "QtColorWidgets/color_palette_model.hpp"
 
-#include "ui_glaxnimate_window.h"
 #include "glaxnimate_window.hpp"
 
 #include "model/document.hpp"
@@ -38,6 +37,26 @@
 
 #include "plugin/plugin.hpp"
 #include "utils/pseudo_mutex.hpp"
+#include "widgets/docks/aligndock.h"
+#include "widgets/docks/assetsdock.h"
+#include "widgets/docks/colorsdock.h"
+#include "widgets/docks/layersdock.h"
+#include "widgets/docks/logsdock.h"
+#include "widgets/docks/propertiesdock.h"
+#include "widgets/docks/script_console.hpp"
+#include "widgets/docks/strokedock.h"
+#include "widgets/docks/timelinedock.h"
+#include "widgets/docks/timesliderdock.h"
+#include "widgets/docks/gradientsdock.h"
+#include "widgets/docks/swatchesdock.h"
+#include "widgets/docks/snippetsdock.h"
+#include "widgets/docks/undodock.h"
+#include "widgets/docks/tooloptionsdock.h"
+
+#include "widgets/window_message_widget.hpp"
+#include "widgets/tab_bar/composition_tab_bar.hpp"
+#include "widgets/canvas.hpp"
+
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
@@ -62,6 +81,7 @@ namespace glaxnimate::gui {
 class QLocalSocket;
 class QDataStream;
 class QSharedMemory;
+class KRecentFilesAction;
 
 template <typename T>
 struct QObjectDeleteLater : public std::default_delete<T>
@@ -117,7 +137,32 @@ public:
         Compact
     };
 
-    Ui::GlaxnimateWindow ui;
+    Canvas *canvas;
+
+    CompositionTabBar *tab_bar;
+    WindowMessageWidget *message_widget;
+
+    ColorsDock *colors_dock;
+    StrokeDock *stroke_dock;
+    LayersDock *layers_dock;
+    PropertiesDock *properties_dock;
+    TimelineDock *timeline_dock;
+    AssetsDock *assets_dock;
+    ScriptConsoleDock *scriptconsole_dock;
+    LogsDock *logs_dock;
+    AlignDock *align_dock;
+    TimeSliderDock *time_slider_dock;
+    GradientsDock *gradients_dock;
+    SwatchesDock *swatches_dock;
+    SnippetsDock *snippets_dock;
+    UndoDock *undo_dock;
+    ToolOptionsDock *tool_options_dock;
+    QDockWidget *tools_dock;
+
+    KRecentFilesAction *m_recentFilesAction;
+
+    QList<QAction*> new_comp_actions;
+    QList<QAction*> plugin_actions;
 
     std::unique_ptr<model::Document> current_document;
 
@@ -129,7 +174,6 @@ public:
 
     GlaxnimateWindow* parent = nullptr;
 
-    QStringList recent_files;
     io::Options export_options;
     bool current_document_has_file = false;
 
@@ -185,6 +229,7 @@ public:
     bool save_document(bool force_dialog, bool export_opts);
     void document_open();
     void document_open_from_filename(const QString& filename, const QVariantMap& settings = {});
+    void document_open_from_url(const QUrl& url);
     io::Options options_from_filename(const QString& filename, const QVariantMap& settings = {});
     void drop_document(const QString& filename, bool as_comp);
     void document_reload();
@@ -215,8 +260,6 @@ public:
     void setupUi(bool restore_state, bool debug, GlaxnimateWindow* parent);
     void retranslateUi(QMainWindow* parent);
     void view_fit();
-    void reload_recent_menu();
-    void most_recent_file(const QString& s);
     void show_warning(const QString& title, const QString& message, app::log::Severity icon = app::log::Warning);
     void help_about();
     void shutdown();
@@ -229,16 +272,28 @@ public:
     void set_brush_reference(model::BrushStyle* sty, bool secondary);
     void trace_dialog(model::DocumentNode* object);
     void mouse_moved(const QPointF& pos);
-    template<class T> void add_modifier_menu_action(QMenu* menu);
+    template<class T> void add_modifier_menu_action();
     void show_startup_dialog();
     void drop_file(const QString& file);
     void insert_emoji();
     void style_change_event();
     void import_from_lottiefiles();
 
-    void init_actions();
+    QAction* add_action(const QString &id, const QString &text, const QString &iconName = {}, const QString &toolTip = {}, const QKeySequence &shortcut = {});
+
+    void setup_file_actions();
+    void setup_edit_actions();
+    tools::Tool *setup_tools_actions();
+    void setup_view_actions();
+    void setup_path_actions();
+    void setup_object_actions();
+    void setup_playback_actions();
+    void connect_playback_actions();
+    void setup_document_actions();
+    void setup_layers_actions();
+
     void init_plugins();
-    tools::Tool* init_tools_ui();
+    void init_tools_ui();
     void init_item_views();
     void init_status_bar();
     void init_docks();

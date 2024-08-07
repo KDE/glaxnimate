@@ -154,9 +154,9 @@ void GlaxnimateWindow::closeEvent ( QCloseEvent* event )
     }
 }
 
-void GlaxnimateWindow::document_open_recent(QAction* action)
+void GlaxnimateWindow::document_open_recent(const QUrl &url)
 {
-    d->document_open_from_filename(action->data().toString());
+    d->document_open_from_url(url);
 }
 
 void GlaxnimateWindow::help_about()
@@ -252,22 +252,22 @@ model::VisualNode * GlaxnimateWindow::current_document_node() const
 
 QColor GlaxnimateWindow::current_color() const
 {
-    return d->ui.fill_style_widget->current_color();
+    return d->colors_dock->current_color();
 }
 
 QColor GlaxnimateWindow::secondary_color() const
 {
-    return d->ui.fill_style_widget->secondary_color();
+    return d->colors_dock->secondary_color();
 }
 
 void GlaxnimateWindow::set_current_color(const QColor& c)
 {
-    d->ui.fill_style_widget->set_current_color(c);
+    d->colors_dock->set_current_color(c);
 }
 
 void GlaxnimateWindow::set_secondary_color(const QColor& c)
 {
-    d->ui.stroke_style_widget->set_color(c);
+    d->stroke_dock->set_color(c);
 }
 
 model::Object * GlaxnimateWindow::current_shape_container_script()
@@ -283,7 +283,7 @@ void GlaxnimateWindow::set_current_document_node(model::VisualNode* node)
 
 QPen GlaxnimateWindow::current_pen_style() const
 {
-    return d->ui.stroke_style_widget->pen_style();
+    return d->stroke_dock->pen_style();
 }
 
 std::vector<model::VisualNode*> GlaxnimateWindow::cleaned_selection() const
@@ -363,7 +363,7 @@ void GlaxnimateWindow::validate_tgs()
 
 qreal GlaxnimateWindow::current_zoom() const
 {
-    return d->ui.canvas->get_zoom_factor();
+    return d->canvas->get_zoom_factor();
 }
 
 void GlaxnimateWindow::timerEvent(QTimerEvent*)
@@ -416,7 +416,7 @@ model::BrushStyle * GlaxnimateWindow::linked_brush_style ( bool secondary ) cons
 
 PluginUiDialog * GlaxnimateWindow::create_dialog(const QString& ui_file) const
 {
-    return d->ui.console->create_dialog(ui_file);
+    return d->scriptconsole_dock->create_dialog(ui_file);
 }
 
 void GlaxnimateWindow::trace_dialog(model::DocumentNode* object)
@@ -431,12 +431,7 @@ void GlaxnimateWindow::shape_to_composition(model::ShapeElement* node)
 
 void GlaxnimateWindow::set_current_composition(model::Composition* comp)
 {
-    d->ui.tab_bar->set_current_composition(comp);
-}
-
-QMenu * GlaxnimateWindow::create_layer_menu() const
-{
-    return d->ui.menu_new_layer;
+    d->tab_bar->set_current_composition(comp);
 }
 
 void GlaxnimateWindow::select(const std::vector<model::VisualNode*>& nodes)
@@ -500,7 +495,7 @@ void GlaxnimateWindow::ipc_read()
             ipc_signal_connections(true);
             ipc_write_time(document()->current_time());
         } else if (message == "redraw") {
-            d->ui.canvas->viewport()->update();
+            d->canvas->viewport()->update();
         } else if (message == "clear") {
             // The server sends this when video should no longer be in the background.
             ipc_signal_connections(false);

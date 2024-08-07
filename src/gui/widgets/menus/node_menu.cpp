@@ -481,9 +481,10 @@ NodeMenu::NodeMenu(model::DocumentNode* node, GlaxnimateWindow* window, QWidget*
         }
         else if ( qobject_cast<model::Composition*>(node) )
         {
-            addAction(
-                window->create_layer_menu()->menuAction()
-            );
+            // TODO
+            // addAction(
+            //     window->create_layer_menu()->menuAction()
+            // );
         }
     }
     else if ( auto image = qobject_cast<model::Bitmap*>(node) )

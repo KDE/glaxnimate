@@ -126,8 +126,6 @@ public:
 
     void shape_to_composition(model::ShapeElement* node);
 
-    QMenu* create_layer_menu() const;
-
     /**
      * \brief Converts \p shape to path
      * \returns The converted shape
@@ -195,7 +193,7 @@ private Q_SLOTS:
     void help_donate();
 
     void refresh_title();
-    void document_open_recent(QAction* action);
+    void document_open_recent(const QUrl &url);
     void preferences();
     void save_frame_bmp();
     void save_frame_svg();

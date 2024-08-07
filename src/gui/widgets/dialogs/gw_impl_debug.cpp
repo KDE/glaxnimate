@@ -11,6 +11,8 @@
 #include <QTemporaryFile>
 #include <QDomDocument>
 #include <QFontDatabase>
+#include <QMenu>
+#include <QToolBar>
 
 #include "app/utils/desktop.hpp"
 #include "app/debug/model.hpp"
@@ -86,7 +88,7 @@ void GlaxnimateWindow::Private::init_debug()
 {
     QMenu* menu_debug = new QMenu("Debug", parent);
 
-    auto shortcut = new QShortcut(QKeySequence(Qt::META|Qt::Key_D), ui.canvas);
+    auto shortcut = new QShortcut(QKeySequence(Qt::META|Qt::Key_D), canvas);
     connect(shortcut, &QShortcut::activated, parent, [menu_debug]{
             menu_debug->exec(QCursor::pos());
     });
@@ -100,7 +102,7 @@ void GlaxnimateWindow::Private::init_debug()
     });
 
     menu_print_model->addAction("Document Node - Layers", [this]{
-        app::debug::print_model(ui.view_document_node->model(), {1}, false);
+        app::debug::print_model(layers_dock->layer_view()->model(), {1}, false);
     });
 
     menu_print_model->addAction("Document Node - Assets", [this]{
@@ -114,11 +116,11 @@ void GlaxnimateWindow::Private::init_debug()
     });
 
     menu_print_model->addAction("Properties - Full", [this]{
-        app::debug::print_model(ui.timeline_widget->raw_model(), {0}, false);
+        app::debug::print_model(timeline_dock->timelineWidget()->raw_model(), {0}, false);
     });
 
     menu_print_model->addAction("Properties - Full (Filtered)", [this]{
-        app::debug::print_model(ui.timeline_widget->filtered_model(), {0}, false);
+        app::debug::print_model(timeline_dock->timelineWidget()->filtered_model(), {0}, false);
     });
 
     QMenu* menu_model_signals = new QMenu("Show Model Signals", menu_debug);
@@ -127,28 +129,28 @@ void GlaxnimateWindow::Private::init_debug()
         app::debug::connect_debug(&document_node_model, "Document Node - Full");
     });
     menu_model_signals->addAction("Document Node - Layers", [this]{
-        app::debug::connect_debug(ui.view_document_node->model(), "Document Node - Layers");
+        app::debug::connect_debug(layers_dock->layer_view()->model(), "Document Node - Layers");
     });
 
     menu_debug->addAction("Current index", [this]{
 
-        auto layers_index = ui.view_document_node->currentIndex();
-        qDebug() << "Layers" << layers_index << ui.view_document_node->current_node() << ui.view_document_node->node(layers_index);
+        auto layers_index = layers_dock->layer_view()->currentIndex();
+        qDebug() << "Layers" << layers_index << layers_dock->layer_view()->current_node() << layers_dock->layer_view()->node(layers_index);
 
 
-        qDebug() << "Timeline" << ui.timeline_widget->current_index_raw() << ui.timeline_widget->current_index_filtered() << ui.timeline_widget->current_node();
+        qDebug() << "Timeline" << timeline_dock->timelineWidget()->current_index_raw() << timeline_dock->timelineWidget()->current_index_filtered() << timeline_dock->timelineWidget()->current_node();
     });
 
     // Timeline
     QMenu* menu_timeline = new QMenu("Timeline", menu_debug);
     menu_debug->addAction(menu_timeline->menuAction());
     menu_timeline->addAction("Print lines", [this]{
-        ui.timeline_widget->timeline()->debug_lines();
+        timeline_dock->timelineWidget()->timeline()->debug_lines();
     });
     QAction* toggle_timeline_debug = menu_timeline->addAction("Debug view");
     toggle_timeline_debug->setCheckable(true);
     connect(toggle_timeline_debug, &QAction::toggled, parent, [this](bool on){
-        ui.timeline_widget->timeline()->toggle_debug(on);
+        timeline_dock->timelineWidget()->timeline()->toggle_debug(on);
         app::settings::set("internal", "debug_timeline", on);
     });
     toggle_timeline_debug->setChecked(app::settings::define("internal", "debug_timeline", false));
