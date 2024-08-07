@@ -115,16 +115,15 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     QAction *textRemovePath = add_action(textActions, QStringLiteral("text_remove_from_path"), i18n("Remove from Path"), QStringLiteral("text-remove-from-path"));
     connect(textRemovePath, &QAction::triggered, parent, [this]{text_remove_from_path();});
 
-    // Actions: Misc
-    QAction *solidColorLayer = new QAction(QIcon::fromTheme(QStringLiteral("object-fill")), i18n("Solid Color Layer"), parent);
-    parent->actionCollection()->addAction(QStringLiteral("new_layer_color"), solidColorLayer);
-
+    // Actions: Settings and Help
     QAction *copyDebug = new QAction(QIcon::fromTheme(QStringLiteral("edit-copy")), i18n("Copy Debug Information"), parent);
     parent->actionCollection()->addAction(QStringLiteral("copy_debuginfo"), copyDebug);
     connect(copyDebug, &QAction::triggered, parent, &GlaxnimateWindow::copyDebugInfo);
 
     QAction *aboutEnv = new QAction(QIcon::fromTheme(QStringLiteral("help-about-symbolic")), i18n("About Environment"), parent);
     parent->actionCollection()->addAction(QStringLiteral("about_env"), aboutEnv);
+
+    KStandardAction::preferences(parent, &GlaxnimateWindow::preferences, parent->actionCollection());
 
     // Main Window
     parent->setupGUI();
@@ -1474,12 +1473,6 @@ void GlaxnimateWindow::Private::init_plugins()
         }
         QAction* qaction = plugin::PluginActionRegistry::instance().make_qaction(action);
         plugin_actions.insert(qMax(0, index -1), qaction);
-
-        // TODO
-        /*app::settings::ShortcutGroup* group = GlaxnimateApp::instance()->shortcuts()->find_group(ui.menu_plugins->menuAction()->iconText());
-        if (group)
-            group->actions.push_back(GlaxnimateApp::instance()->shortcuts()->add_action(qaction));
-        */
 
         parent->unplugActionList("plugins_actionlist");
         parent->plugActionList("plugins_actionlist", plugin_actions);
