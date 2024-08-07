@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>dock_stroke</class>
- <widget class="QDockWidget" name="dock_stroke">
+ <class>dock_swatches</class>
+ <widget class="QDockWidget" name="dock_swatches">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,28 +11,27 @@
    </rect>
   </property>
   <property name="windowIcon">
-   <iconset theme="object-stroke-style"/>
+   <iconset theme="paint-swatch"/>
   </property>
   <property name="windowTitle">
-   <string>Stroke</string>
+   <string>Swatch</string>
   </property>
   <widget class="QWidget" name="dockWidgetContents">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="glaxnimate::gui::StrokeStyleWidget" name="stroke_style_widget" native="true"/>
+     <widget class="glaxnimate::gui::DocumentSwatchWidget" name="document_swatch_widget" native="true"/>
     </item>
    </layout>
   </widget>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>glaxnimate::gui::StrokeStyleWidget</class>
+   <class>glaxnimate::gui::DocumentSwatchWidget</class>
    <extends>QWidget</extends>
-   <header>widgets/shape_style/stroke_style_widget.hpp</header>
+   <header>widgets/shape_style/document_swatch_widget.hpp</header>
    <container>1</container>
    <slots>
-    <signal>color_changed(QColor)</signal>
-    <slot>set_color(QColor)</slot>
+    <signal>needs_new_color()</signal>
    </slots>
   </customwidget>
  </customwidgets>
