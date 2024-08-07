@@ -152,18 +152,6 @@ void IoStatusDialog::closeEvent(QCloseEvent* ev)
     QDialog::closeEvent(ev);
 }
 
-
-
-void IoStatusDialog::changeEvent(QEvent *e)
-{
-    QDialog::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->retranslateUi(this);
-    }
-}
-
 bool IoStatusDialog::has_errors() const
 {
     return d->has_errors;

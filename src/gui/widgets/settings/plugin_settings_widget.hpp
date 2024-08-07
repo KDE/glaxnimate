@@ -42,9 +42,6 @@ private Q_SLOTS:
     void disable_current();
     void current_changed(QListWidgetItem* item);
 
-protected:
-    void changeEvent ( QEvent* event ) override;
-
 private:
     void update_entries();
     void clear_selection();

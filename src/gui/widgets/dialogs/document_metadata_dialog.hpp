@@ -24,9 +24,6 @@ public:
     DocumentMetadataDialog(model::Document* document, QWidget* parent = nullptr);
     ~DocumentMetadataDialog();
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private Q_SLOTS:
     void update_item(QTableWidgetItem*);
     void button_clicked(QAbstractButton*);

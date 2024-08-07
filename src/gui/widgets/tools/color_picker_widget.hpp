@@ -25,9 +25,6 @@ public:
     void swap_fill_color();
     void set_color(const QColor& color);
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private:
     class Private;
     std::unique_ptr<Private> d;

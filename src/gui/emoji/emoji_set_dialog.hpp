@@ -22,9 +22,6 @@ public:
 
     const QString& selected_svg() const;
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private Q_SLOTS:
     void reload_sets();
     void download_selected();

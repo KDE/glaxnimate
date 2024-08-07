@@ -21,9 +21,6 @@ public:
     SettingsDialog(QWidget* parent=nullptr);
     ~SettingsDialog();
 
-protected:
-    void changeEvent(QEvent *e) override;
-
 private:
     class Private;
     std::unique_ptr<Private> d;

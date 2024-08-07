@@ -43,6 +43,7 @@ void Spin2D::enable_ratio_lock()
         return;
 
     lock = new QToolButton(this);
+    lock->setToolTip(i18n("Lock Ratio"));
     lock->setCheckable(true);
 #ifdef Q_OS_ANDROID
     lock->setIconSize(QSize(50, 50));
@@ -50,7 +51,6 @@ void Spin2D::enable_ratio_lock()
     lock_toggled(false);
     connect(lock, &QToolButton::clicked, this, &Spin2D::lock_toggled);
     static_cast<QHBoxLayout*>(layout())->addWidget(lock);
-    retranslate();
 }
 
 int SmallerSpinBox::get_spin_size(const QAbstractSpinBox* box)
@@ -76,21 +76,6 @@ int SmallerSpinBox::get_spin_size(const QAbstractSpinBox* box)
     }
 
     return spin_size;
-}
-
-void Spin2D::changeEvent(QEvent* e)
-{
-    QWidget::changeEvent(e);
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        retranslate();
-    }
-}
-
-void Spin2D::retranslate()
-{
-    if ( lock )
-        lock->setToolTip(i18n("Lock Ratio"));
 }
 
 void Spin2D::lock_toggled(bool on)

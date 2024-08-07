@@ -23,9 +23,6 @@ public:
     TimingDialog(model::Composition* comp, QWidget* parent = nullptr);
     ~TimingDialog();
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private Q_SLOTS:
     void btn_clicked(QAbstractButton* button);
     void changed_seconds(double s);

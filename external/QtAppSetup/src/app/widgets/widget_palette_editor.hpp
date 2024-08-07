@@ -28,9 +28,6 @@ private Q_SLOTS:
 
     void apply_palette();
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private:
     class Private;
     std::unique_ptr<Private> d;

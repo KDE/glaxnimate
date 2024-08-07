@@ -223,16 +223,6 @@ ScriptConsoleDock::ScriptConsoleDock(QWidget* parent)
 
 ScriptConsoleDock::~ScriptConsoleDock() = default;
 
-void ScriptConsoleDock::changeEvent ( QEvent* e )
-{
-    QDockWidget::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void ScriptConsoleDock::console_clear()
 {
     d->ui.console_output->clear();

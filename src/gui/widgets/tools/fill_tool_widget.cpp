@@ -25,16 +25,6 @@ FillToolWidget::FillToolWidget(QWidget* parent)
 
 FillToolWidget::~FillToolWidget() = default;
 
-void FillToolWidget::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 bool FillToolWidget::fill() const
 {
     return !d->ui.check_stroke->isChecked();

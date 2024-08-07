@@ -43,16 +43,6 @@ ToolbarSettingsWidget::ToolbarSettingsWidget(QWidget* parent)
 
 ToolbarSettingsWidget::~ToolbarSettingsWidget() = default;
 
-void ToolbarSettingsWidget::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void ToolbarSettingsWidget::update_preview()
 {
     settings::ToolbarSettingsGroup::icon_size_extent = d->ui.spin_icon_size->value();

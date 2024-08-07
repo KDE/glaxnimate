@@ -87,16 +87,6 @@ AboutDialog::AboutDialog(QWidget* parent)
 
 AboutDialog::~AboutDialog() = default;
 
-void AboutDialog::changeEvent(QEvent *e)
-{
-    QDialog::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->retranslateUi(this);
-    }
-}
-
 void AboutDialog::open_user_data()
 {
     QDesktopServices::openUrl(QUrl::fromLocalFile(d->line_user_data->text()));

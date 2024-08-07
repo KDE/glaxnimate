@@ -28,9 +28,6 @@ public:
     void save_settings();
     void reset_settings();
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private:
     class Private;
     std::unique_ptr<Private> d;

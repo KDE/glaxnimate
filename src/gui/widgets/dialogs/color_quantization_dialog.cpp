@@ -31,16 +31,6 @@ ColorQuantizationDialog::ColorQuantizationDialog(QWidget* parent)
 
 ColorQuantizationDialog::~ColorQuantizationDialog() = default;
 
-void ColorQuantizationDialog::changeEvent ( QEvent* e )
-{
-    QDialog::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 std::vector<QRgb> ColorQuantizationDialog::quantize(const QImage& image, int k) const
 {
     switch ( d->ui.combo_algo->currentIndex() )

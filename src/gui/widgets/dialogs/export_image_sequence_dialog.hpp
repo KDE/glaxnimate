@@ -23,9 +23,6 @@ public:
 
     QDir export_path() const;
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private Q_SLOTS:
     void pick_path();
     void render();

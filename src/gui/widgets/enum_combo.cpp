@@ -108,14 +108,6 @@ std::pair<QString, const char*> EnumCombo::data_for(const QMetaEnum& meta_enum, 
     return {meta_enum.valueToKey(value), "paint-unknown"};
 }
 
-void EnumCombo::retranslate()
-{
-    for ( int i = 0; i < count(); i++ )
-    {
-        setItemText(i, data_for(meta_enum, meta_enum.value(i)).first);
-    }
-}
-
 int EnumCombo::current_value() const
 {
     return itemData(currentIndex()).toInt();

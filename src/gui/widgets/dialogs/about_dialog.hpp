@@ -29,7 +29,6 @@ public:
     ~AboutDialog();
 
 protected:
-    void changeEvent(QEvent *e) override;
     void populate_view(QListWidget* wid, const QStringList& paths);
 
 private Q_SLOTS:

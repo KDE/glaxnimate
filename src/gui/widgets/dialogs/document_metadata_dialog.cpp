@@ -62,16 +62,6 @@ DocumentMetadataDialog::DocumentMetadataDialog(model::Document* document, QWidge
 
 DocumentMetadataDialog::~DocumentMetadataDialog() = default;
 
-void DocumentMetadataDialog::changeEvent ( QEvent* e )
-{
-    QDialog::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void DocumentMetadataDialog::update_item(QTableWidgetItem* item)
 {
     int row = d->ui.table_widget->row(item);

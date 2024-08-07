@@ -186,17 +186,9 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     // Menus
     init_menus();
 
-    // Only enabled on debug because it isn't fully integrated yet
-    /*if ( debug )
-    {
-        KHelpMenu *help_menu = new KHelpMenu(parent);
-        ui.menu_bar->addMenu(help_menu->menu());
-        connect(help_menu, &KHelpMenu::showAboutApplication, about_dialog, &QWidget::show);
-    }*/
-
     // Debug menu
-    //if ( debug )
-        //init_debug();
+    if ( debug )
+        init_debug();
 
     // Restore state
     // NOTE: keep at the end so we do this once all the widgets are in their default spots
@@ -1245,7 +1237,6 @@ void GlaxnimateWindow::Private::init_tools(tools::Tool* to_activate)
     {
         for ( const auto& tool : grp.second )
         {
-            tool.second->retranslate();
             tool.second->initialize(event);
 
             if ( to_activate == tool.second.get() )
@@ -1264,20 +1255,6 @@ void GlaxnimateWindow::Private::init_restore_state()
     KToolBar *toolbar_node = parent->toolBar(QStringLiteral("nodeToolBar"));
     toolbar_node->setVisible(false);
     toolbar_node->setEnabled(false);
-}
-
-// TODO remove
-void GlaxnimateWindow::Private::retranslateUi(QMainWindow* parent)
-{
-    //ui.retranslateUi(parent);
-    label_recording->setText(i18n("Recording Keyframes"));
-
-    //ui.action_undo->setText(i18n("Undo %1", current_document->undo_stack().undoText()));
-    //ui.action_redo->setText(i18n("Redo %1", current_document->undo_stack().redoText()));
-
-    for ( const auto& grp : tools::Registry::instance() )
-        for ( const auto& tool : grp.second )
-            tool.second->retranslate();
 }
 
 void GlaxnimateWindow::Private::view_fit()

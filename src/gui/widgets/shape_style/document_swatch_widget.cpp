@@ -163,15 +163,6 @@ DocumentSwatchWidget::DocumentSwatchWidget(QWidget* parent)
 
 DocumentSwatchWidget::~DocumentSwatchWidget() = default;
 
-void DocumentSwatchWidget::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent(e);
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void DocumentSwatchWidget::set_document(model::Document* document)
 {
     auto palette = &d->ui.swatch->palette();

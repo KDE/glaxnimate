@@ -30,7 +30,6 @@ public:
 
 protected:
     void closeEvent(QCloseEvent* ev) override;
-    void changeEvent(QEvent *e) override;
 
 private:
     void _on_error(const QString& message, app::log::Severity severity);

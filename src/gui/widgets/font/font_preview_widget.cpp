@@ -50,16 +50,6 @@ glaxnimate::gui::font::FontPreviewWidget::~FontPreviewWidget()
     d->scene.removeItem(&d->item);
 }
 
-void glaxnimate::gui::font::FontPreviewWidget::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void glaxnimate::gui::font::FontPreviewWidget::set_font(const QFont& font)
 {
     d->item.setFont(font);

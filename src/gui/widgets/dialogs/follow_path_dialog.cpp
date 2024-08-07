@@ -95,16 +95,6 @@ glaxnimate::gui::FollowPathDialog::FollowPathDialog(model::AnimatedProperty<QPoi
 
 glaxnimate::gui::FollowPathDialog::~FollowPathDialog() = default;
 
-void glaxnimate::gui::FollowPathDialog::changeEvent ( QEvent* e )
-{
-    QDialog::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void glaxnimate::gui::FollowPathDialog::apply()
 {
     if ( !d->shape )

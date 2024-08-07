@@ -28,9 +28,6 @@ public:
     model::Shape* shape() const;
     void set_shape(model::Shape* shape);
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private Q_SLOTS:
     void select(const QModelIndex& index);
 

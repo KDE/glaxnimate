@@ -30,9 +30,6 @@ private Q_SLOTS:
     void delete_selected();
     void current_changed(int index);
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private:
     class Private;
     std::unique_ptr<Private> d;

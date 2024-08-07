@@ -151,11 +151,6 @@ public:
             connect(ac, &QAction::triggered, parent, &CompoundTimelineWidget::keyframe_action_exit);
         }
 
-        retranslate_menu();
-    }
-
-    void retranslate_menu()
-    {
         action_enter->setText(i18n("Transition From Previous"));
         action_exit->setText(i18n("Transition To Next"));
 
@@ -179,12 +174,6 @@ public:
 
         action_kf_copy.setText(i18n("Copy Keyframe"));
         action_kf_paste.setText(i18n("Paste Keyframe"));
-    }
-
-    void retranslateUi(CompoundTimelineWidget* parent)
-    {
-        ui.retranslateUi(parent);
-        retranslate_menu();
     }
 
     void clear_menu_data()
@@ -315,15 +304,6 @@ CompoundTimelineWidget::CompoundTimelineWidget(QWidget* parent)
 
 
 CompoundTimelineWidget::~CompoundTimelineWidget() = default;
-
-void CompoundTimelineWidget::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent(e);
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->retranslateUi(this);
-    }
-}
 
 void CompoundTimelineWidget::set_composition(model::Composition* comp)
 {

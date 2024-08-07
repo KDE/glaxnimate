@@ -42,15 +42,6 @@ ResizeDialog::ResizeDialog(QWidget* parent)
 
 ResizeDialog::~ResizeDialog() = default;
 
-void ResizeDialog::changeEvent ( QEvent* e )
-{
-    QDialog::changeEvent(e);
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void ResizeDialog::width_changed(int w)
 {
     if ( d->ui.check_aspect->isChecked() )

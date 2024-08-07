@@ -70,7 +70,9 @@ protected:
         grid->addWidget(spin_points, row, 1);
         row++;
 
-        on_retranslate();
+        label_ratio->setText("Spoke Ratio");
+        label_points->setText("Corners");
+        group->setTitle("Star");
     }
 
     void on_load_settings() override
@@ -85,13 +87,6 @@ protected:
         app::settings::set("tools", "star_type", combo->current_value());
         app::settings::set("tools", "star_ratio", spin_ratio->value());
         app::settings::set("tools", "star_points", spin_points->value());
-    }
-
-    void on_retranslate() override
-    {
-        label_ratio->setText("Spoke Ratio");
-        label_points->setText("Corners");
-        group->setTitle("Star");
     }
 
     EnumCombo* combo;

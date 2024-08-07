@@ -27,9 +27,6 @@ public:
 Q_SIGNALS:
     void font_size_changed(qreal size);
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private Q_SLOTS:
     void size_edited(double size);
     void size_selected(const QModelIndex& index);

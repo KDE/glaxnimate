@@ -24,17 +24,6 @@ PluginSettingsWidget::PluginSettingsWidget(QWidget* parent)
 
 PluginSettingsWidget::~PluginSettingsWidget() = default;
 
-void PluginSettingsWidget::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->retranslateUi(this);
-        update_entries();
-    }
-}
-
 void PluginSettingsWidget::current_changed ( QListWidgetItem* item )
 {
     d->stacked_widget->setCurrentWidget(d->page_noplugin);

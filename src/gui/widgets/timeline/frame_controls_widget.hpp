@@ -62,9 +62,6 @@ private Q_SLOTS:
 protected:
     void timerEvent(QTimerEvent* e) override;
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private:
     qreal fps = 60;
     int timer = 0;

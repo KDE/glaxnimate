@@ -44,9 +44,6 @@ private Q_SLOTS:
     void fuckyoumoc_on_zoom_changed(qreal percent);
     void fuckyoumoc_on_angle_changed(qreal degrees);
 
-protected:
-    void changeEvent(QEvent *e) override;
-
 private:
     std::unique_ptr<Ui::ViewTransformWidget> d;
 };

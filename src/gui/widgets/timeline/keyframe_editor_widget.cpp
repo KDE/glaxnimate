@@ -32,15 +32,6 @@ KeyframeEditorWidget::KeyframeEditorWidget(QWidget* parent)
 
 KeyframeEditorWidget::~KeyframeEditorWidget() = default;
 
-void KeyframeEditorWidget::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent(e);
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->retranslateUi(this);
-    }
-}
-
 void KeyframeEditorWidget::set_target(model::KeyframeTransition* kft)
 {
     d->bezier_editor->set_target(kft);

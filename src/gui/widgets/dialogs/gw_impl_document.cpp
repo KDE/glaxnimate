@@ -463,6 +463,7 @@ void GlaxnimateWindow::Private::document_open_from_filename(const QString& filen
     if ( opts.format )
     {
         setup_document_open(opts);
+        // TODO
         //most_recent_file(filename);
     }
 }

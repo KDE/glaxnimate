@@ -20,9 +20,6 @@ public:
     SnippetListWidget(QWidget* parent = nullptr);
     ~SnippetListWidget();
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private Q_SLOTS:
     void snippet_new();
     void snippet_edit();

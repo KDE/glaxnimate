@@ -37,19 +37,6 @@ ViewTransformWidget::ViewTransformWidget(QWidget* parent)
 
 ViewTransformWidget::~ViewTransformWidget() = default;
 
-void ViewTransformWidget::changeEvent(QEvent* e)
-{
-
-    QWidget::changeEvent(e);
-    switch ( e->type() )
-    {
-        case QEvent::LanguageChange:
-            d->retranslateUi(this);
-            break;
-        default:
-            break;
-    }
-}
 
 void ViewTransformWidget::set_angle(qreal radians)
 {

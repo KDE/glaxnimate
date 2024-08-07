@@ -91,16 +91,6 @@ glaxnimate::gui::font::FontStyleWidget::FontStyleWidget(QWidget* parent)
 
 glaxnimate::gui::font::FontStyleWidget::~FontStyleWidget() = default;
 
-void glaxnimate::gui::font::FontStyleWidget::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void glaxnimate::gui::font::FontStyleWidget::set_font(const QFont& font)
 {
     d->font = font;

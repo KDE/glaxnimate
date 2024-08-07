@@ -27,9 +27,6 @@ public:
 
     void set_target(model::KeyframeTransition* kft);
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private Q_SLOTS:
     void preset_before(int index);
     void preset_after(int index);

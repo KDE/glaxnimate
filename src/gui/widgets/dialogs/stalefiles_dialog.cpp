@@ -34,16 +34,6 @@ StalefilesDialog::StalefilesDialog(const QList<KAutoSaveFile*>& stale, QWidget* 
 
 StalefilesDialog::~StalefilesDialog() = default;
 
-void StalefilesDialog::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void glaxnimate::gui::StalefilesDialog::current_changed(int index)
 {
     d->index = index;

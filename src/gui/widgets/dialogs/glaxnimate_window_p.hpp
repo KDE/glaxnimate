@@ -259,7 +259,6 @@ public:
 
     // ui
     void setupUi(bool restore_state, bool debug, GlaxnimateWindow* parent);
-    void retranslateUi(QMainWindow* parent);
     void view_fit();
     void show_warning(const QString& title, const QString& message, app::log::Severity icon = app::log::Warning);
     void help_about();

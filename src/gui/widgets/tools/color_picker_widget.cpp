@@ -26,15 +26,6 @@ ColorPickerWidget::ColorPickerWidget ( QWidget* parent )
 
 ColorPickerWidget::~ColorPickerWidget() = default;
 
-void ColorPickerWidget::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent ( e );
-
-    if ( e->type() == QEvent::LanguageChange ) {
-        d->ui.retranslateUi ( this );
-    }
-}
-
 void ColorPickerWidget::set_color ( const QColor& color )
 {
     d->ui.color_preview->setColor(color);

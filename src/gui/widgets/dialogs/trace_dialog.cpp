@@ -362,16 +362,6 @@ glaxnimate::gui::TraceDialog::TraceDialog(model::Image* image, QWidget* parent)
 
 glaxnimate::gui::TraceDialog::~TraceDialog() = default;
 
-void glaxnimate::gui::TraceDialog::changeEvent ( QEvent* e )
-{
-    QDialog::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void glaxnimate::gui::TraceDialog::update_preview()
 {
     if ( !d->initialized )

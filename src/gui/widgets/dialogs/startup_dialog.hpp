@@ -24,9 +24,6 @@ public:
 
     std::unique_ptr<model::Document> create() const;
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private Q_SLOTS:
     void reload_presets();
     void select_preset(const QModelIndex& index);

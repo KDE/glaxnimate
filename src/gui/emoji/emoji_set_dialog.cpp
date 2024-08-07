@@ -92,16 +92,6 @@ glaxnimate::emoji::EmojiSetDialog::EmojiSetDialog(QWidget* parent)
 
 glaxnimate::emoji::EmojiSetDialog::~EmojiSetDialog() = default;
 
-void glaxnimate::emoji::EmojiSetDialog::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void glaxnimate::emoji::EmojiSetDialog::reload_sets()
 {
     d->ui.emoji_set_view->setRowCount(0);

@@ -52,11 +52,6 @@ public:
         parent->addAction(&action_follow_path);
         action_follow_path.setVisible(false);
 
-        retranslate_menu();
-    }
-
-    void retranslate_menu()
-    {
         action_remove_all_keyframes.setText(i18n("Clear Animations"));
         action_kf_paste.setText(i18n("Paste Keyframe"));
         action_kf_loop.setText(i18n("Loop Animation"));
@@ -148,15 +143,6 @@ void glaxnimate::gui::AnimatedPropertyMenu::remove_all_keyframes()
 void glaxnimate::gui::AnimatedPropertyMenu::set_controller(glaxnimate::gui::SelectionManager* window)
 {
     d->window = window;
-}
-
-void glaxnimate::gui::AnimatedPropertyMenu::changeEvent(QEvent* e)
-{
-    QWidget::changeEvent(e);
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->retranslate_menu();
-    }
 }
 
 void glaxnimate::gui::AnimatedPropertyMenu::set_property(model::AnimatableBase* property)

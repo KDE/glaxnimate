@@ -50,22 +50,3 @@ app::SettingsDialog::SettingsDialog ( QWidget* parent ) :
 
 app::SettingsDialog::~SettingsDialog() = default;
 
-
-void app::SettingsDialog::changeEvent(QEvent *e)
-{
-    QDialog::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->retranslateUi(this);
-        int i = 0;
-        for ( const auto& group : app::settings::Settings::instance() )
-        {
-            if ( group->has_visible_settings() )
-            {
-                d->list_widget->item(i)->setText(group->label());
-                i++;
-            }
-        }
-    }
-}

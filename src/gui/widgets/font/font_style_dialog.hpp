@@ -32,7 +32,6 @@ public:
     model::CustomFont custom_font() const;
 
 protected:
-    void changeEvent ( QEvent* e ) override;
     void showEvent(QShowEvent* e) override;
 
 private:

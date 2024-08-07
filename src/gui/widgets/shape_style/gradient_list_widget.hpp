@@ -35,9 +35,6 @@ public:
     void set_current(model::Fill* fill, model::Stroke* stroke);
     void set_window(glaxnimate::gui::SelectionManager* window);
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private Q_SLOTS:
     void change_current_gradient();
 

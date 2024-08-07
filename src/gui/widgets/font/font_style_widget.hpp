@@ -29,9 +29,6 @@ public:
 
     FontModel& model();
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 Q_SIGNALS:
     void font_edited(const QFont& font);
     void font_changed(const QFont& font);

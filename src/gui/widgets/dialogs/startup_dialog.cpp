@@ -111,16 +111,6 @@ StartupDialog::StartupDialog(QWidget* parent)
 
 StartupDialog::~StartupDialog() = default;
 
-void StartupDialog::changeEvent ( QEvent* e )
-{
-    QDialog::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void StartupDialog::reload_presets()
 {
     d->ui.view_presets->clearContents();

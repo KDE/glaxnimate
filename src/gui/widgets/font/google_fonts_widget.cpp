@@ -221,16 +221,6 @@ glaxnimate::gui::font::GoogleFontsWidget::GoogleFontsWidget(QWidget* parent)
 
 glaxnimate::gui::font::GoogleFontsWidget::~GoogleFontsWidget() = default;
 
-void glaxnimate::gui::font::GoogleFontsWidget::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void glaxnimate::gui::font::GoogleFontsWidget::showEvent(QShowEvent* e)
 {
     QWidget::showEvent(e);

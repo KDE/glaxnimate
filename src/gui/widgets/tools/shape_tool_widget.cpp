@@ -16,15 +16,6 @@ ShapeToolWidget::ShapeToolWidget(QWidget* parent)
 
 ShapeToolWidget::~ShapeToolWidget() = default;
 
-void ShapeToolWidget::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent(e);
-    if ( e->type() == QEvent::LanguageChange )
-    {
-        d->retranslate(this);
-    }
-}
-
 void ShapeToolWidget::check_checks()
 {
     d->check_checks();

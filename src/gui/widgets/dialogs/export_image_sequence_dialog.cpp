@@ -54,16 +54,6 @@ glaxnimate::gui::ExportImageSequenceDialog::ExportImageSequenceDialog(
 
 glaxnimate::gui::ExportImageSequenceDialog::~ExportImageSequenceDialog() = default;
 
-void glaxnimate::gui::ExportImageSequenceDialog::changeEvent ( QEvent* e )
-{
-    QDialog::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 QDir glaxnimate::gui::ExportImageSequenceDialog::export_path() const
 {
     return d->ui.input_path->text();

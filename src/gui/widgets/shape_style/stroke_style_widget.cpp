@@ -179,15 +179,6 @@ StrokeStyleWidget::StrokeStyleWidget(QWidget* parent)
 
 StrokeStyleWidget::~StrokeStyleWidget() = default;
 
-void StrokeStyleWidget::changeEvent(QEvent* e)
-{
-    QWidget::changeEvent(e);
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void StrokeStyleWidget::paintEvent(QPaintEvent* event)
 {
     QWidget::paintEvent(event);

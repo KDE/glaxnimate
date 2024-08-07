@@ -60,9 +60,6 @@ Q_SIGNALS:
     void current_color_committed(const QColor& c);
     void current_color_cleared();
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private:
     class Private;
     std::unique_ptr<Private> d;

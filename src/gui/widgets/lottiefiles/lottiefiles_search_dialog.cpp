@@ -361,16 +361,6 @@ glaxnimate::gui::LottieFilesSearchDialog::LottieFilesSearchDialog(QWidget* paren
 
 glaxnimate::gui::LottieFilesSearchDialog::~LottieFilesSearchDialog() = default;
 
-void glaxnimate::gui::LottieFilesSearchDialog::changeEvent ( QEvent* e )
-{
-    QDialog::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void glaxnimate::gui::LottieFilesSearchDialog::clicked_import()
 {
     done(Import);

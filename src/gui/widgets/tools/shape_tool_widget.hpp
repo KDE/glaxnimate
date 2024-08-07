@@ -39,7 +39,6 @@ protected:
     class Private;
     ShapeToolWidget(std::unique_ptr<Private> d, QWidget* parent);
 
-    void changeEvent ( QEvent* e ) override;
     void showEvent(QShowEvent *event) override;
 
     std::unique_ptr<Private> d;

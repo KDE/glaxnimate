@@ -38,9 +38,6 @@ public:
 
     void set_palette_model(color_widgets::ColorPaletteModel* palette_model);
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private Q_SLOTS:
     void swatch_link(int index, Qt::KeyboardModifiers mod);
     void swatch_add();

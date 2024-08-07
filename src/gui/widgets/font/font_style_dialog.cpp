@@ -44,16 +44,6 @@ glaxnimate::gui::font::FontStyleDialog::FontStyleDialog(QWidget* parent)
 
 glaxnimate::gui::font::FontStyleDialog::~FontStyleDialog() = default;
 
-void glaxnimate::gui::font::FontStyleDialog::changeEvent ( QEvent* e )
-{
-    QDialog::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 QFont glaxnimate::gui::font::FontStyleDialog::selected_font() const
 {
     return d->ui.preview->selected_font();

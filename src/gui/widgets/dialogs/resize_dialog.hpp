@@ -25,9 +25,6 @@ public:
 
     void resize_composition(model::Composition* comp);
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private Q_SLOTS:
     void width_changed(int w);
     void height_changed(int h);

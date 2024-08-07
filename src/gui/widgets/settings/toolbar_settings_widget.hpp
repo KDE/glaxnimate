@@ -20,9 +20,6 @@ public:
     ToolbarSettingsWidget(QWidget* parent = nullptr);
     ~ToolbarSettingsWidget();
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 protected Q_SLOTS:
     void update_preview();
 

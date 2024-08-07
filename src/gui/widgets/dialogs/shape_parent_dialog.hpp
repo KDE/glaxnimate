@@ -27,9 +27,6 @@ public:
 
     model::ShapeListProperty* get_shape_parent();
 
-protected:
-    void changeEvent(QEvent *e) override;
-
 private Q_SLOTS:
     void select(const QModelIndex& index);
     void select_and_accept(const QModelIndex& index);

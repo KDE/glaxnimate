@@ -32,16 +32,6 @@ SnippetListWidget::SnippetListWidget(QWidget* parent)
 
 SnippetListWidget::~SnippetListWidget() = default;
 
-void SnippetListWidget::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void SnippetListWidget::snippet_new()
 {
     d->ui.list_view->setCurrentIndex(d->model.append());

@@ -28,7 +28,6 @@ public:
     const QFont& selected_font() const;
 
 protected:
-    void changeEvent ( QEvent* e ) override;
     void showEvent(QShowEvent * event) override;
 
 private Q_SLOTS:

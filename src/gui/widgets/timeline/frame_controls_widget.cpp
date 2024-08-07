@@ -34,15 +34,6 @@ FrameControlsWidget::FrameControlsWidget(QWidget* parent)
 
 FrameControlsWidget::~FrameControlsWidget() = default;
 
-void FrameControlsWidget::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent(e);
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->retranslateUi(this);
-    }
-}
-
 void FrameControlsWidget::play_toggled(bool checked)
 {
     if ( checked )

@@ -267,15 +267,6 @@ ColorSelector::ColorSelector(QWidget* parent)
 
 ColorSelector::~ColorSelector() {}
 
-void ColorSelector::changeEvent(QEvent* e)
-{
-    QWidget::changeEvent(e);
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void ColorSelector::save_settings()
 {
     app::settings::set("tools", "color_main", d->current_color().name());

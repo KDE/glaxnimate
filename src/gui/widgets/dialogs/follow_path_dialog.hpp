@@ -24,9 +24,6 @@ public:
     FollowPathDialog(model::AnimatedProperty<QPointF>* property, model::Composition* comp, item_models::DocumentNodeModel* model, QWidget* parent = nullptr);
     ~FollowPathDialog();
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private Q_SLOTS:
     void apply();
     void change_units(int index);

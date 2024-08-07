@@ -28,7 +28,6 @@ public Q_SLOTS:
     void set_font(const QFont& font);
 
 protected:
-    void changeEvent ( QEvent* e ) override;
     void resizeEvent(QResizeEvent * event) override;
     void showEvent(QShowEvent * event) override;
 

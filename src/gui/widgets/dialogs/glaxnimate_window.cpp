@@ -30,20 +30,6 @@ GlaxnimateWindow::GlaxnimateWindow(bool restore_state, bool debug, QWidget *pare
 
 GlaxnimateWindow::~GlaxnimateWindow() = default;
 
-
-void GlaxnimateWindow::changeEvent(QEvent *e)
-{
-    KXmlGuiWindow::changeEvent(e);
-    switch ( e->type() )
-    {
-        case QEvent::LanguageChange:
-            d->retranslateUi(this);
-            break;
-        default:
-            break;
-    }
-}
-
 void GlaxnimateWindow::document_new()
 {
     d->setup_document_new(i18n("New Animation"));

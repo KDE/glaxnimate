@@ -102,16 +102,6 @@ glaxnimate::gui::font::ExternalFontWidget::ExternalFontWidget(QWidget* parent)
 
 glaxnimate::gui::font::ExternalFontWidget::~ExternalFontWidget() = default;
 
-void glaxnimate::gui::font::ExternalFontWidget::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void glaxnimate::gui::font::ExternalFontWidget::load_url()
 {
     if ( d->url.scheme() == "" )

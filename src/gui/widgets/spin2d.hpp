@@ -36,9 +36,6 @@ public:
     qreal x() const;
     qreal y() const;
     
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private Q_SLOTS:
     void lock_toggled(bool on);
     void x_changed(qreal x);
@@ -49,7 +46,6 @@ Q_SIGNALS:
     
 private:
     bool ratio_lock() const;
-    void retranslate();
     
     qreal ratio = 1;
     SmallerSpinBox* spin_x;

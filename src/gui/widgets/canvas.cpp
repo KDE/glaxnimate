@@ -258,6 +258,7 @@ void Canvas::mouseMoveEvent(QMouseEvent* event)
 
     d->move_last = mpos;
     d->move_last_scene = scene_pos;
+    // TODO use globalPosition()
     d->move_last_screen = event->screenPos().toPoint();
 //     scene()->invalidate();
     viewport()->update();
@@ -612,6 +613,7 @@ bool Canvas::viewportEvent(QEvent *event)
                     if ( math::abs(distance - initial_distance) > travel_distance )
                     {
                         // scenePos() lies...
+                        // TODO use position()
                         QPointF center = (d->map_to_scene(p0.pos()) + d->map_to_scene(p1.pos())) / 2;
                         qreal scale_by = distance / initial_distance;
 

@@ -156,15 +156,6 @@ WidgetPaletteEditor::~WidgetPaletteEditor()
         delete d->style;
 }
 
-void WidgetPaletteEditor::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent ( e );
-
-    if ( e->type() == QEvent::LanguageChange ) {
-        d->ui.retranslateUi ( this );
-    }
-}
-
 void WidgetPaletteEditor::update_color ( int row, int column )
 {
     auto item = d->ui.palette_view->item(row, column);

@@ -48,7 +48,6 @@ private:
     void after_set_target();
 
 protected:
-    void changeEvent ( QEvent* e ) override;
     void paintEvent(QPaintEvent * event) override;
 
 public Q_SLOTS:

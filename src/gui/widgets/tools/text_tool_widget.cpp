@@ -132,7 +132,11 @@ public:
         dialog = new font::FontStyleDialog(parent);
 
         set_font(QFont("sans", 36));
-        on_retranslate();
+
+        label_style->setText("Style");
+        label_size->setText("Size");
+        button->setText("Advanced...");
+        group->setTitle("Font");
     }
 
     void on_load_settings() override
@@ -153,14 +157,6 @@ public:
         app::settings::set("tools", "text_family", combo_font->currentText());
         app::settings::set("tools", "text_style", combo_style->currentText());
         app::settings::set("tools", "text_size", spin_size->value());
-    }
-
-    void on_retranslate() override
-    {
-        label_style->setText("Style");
-        label_size->setText("Size");
-        button->setText("Advanced...");
-        group->setTitle("Font");
     }
 
     void update_styles(const QString& family)

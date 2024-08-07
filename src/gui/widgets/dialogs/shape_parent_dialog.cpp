@@ -57,16 +57,6 @@ ShapeParentDialog::ShapeParentDialog(item_models::DocumentNodeModel* model, QWid
 
 ShapeParentDialog::~ShapeParentDialog() = default;
 
-void ShapeParentDialog::changeEvent(QEvent* e)
-{
-    QDialog::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 model::ShapeListProperty * ShapeParentDialog::shape_parent() const
 {
     return d->current;

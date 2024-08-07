@@ -56,16 +56,6 @@ TimingDialog::TimingDialog(model::Composition* comp, QWidget* parent)
 
 TimingDialog::~TimingDialog() = default;
 
-void TimingDialog::changeEvent ( QEvent* e )
-{
-    QDialog::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void TimingDialog::btn_clicked(QAbstractButton* button)
 {
     auto role = d->ui.button_box->buttonRole(button);

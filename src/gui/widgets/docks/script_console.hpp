@@ -34,9 +34,6 @@ public:
     void clear_output();
     void save_settings();
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 public Q_SLOTS:
     void run_snippet(const QString& source);
 

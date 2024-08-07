@@ -53,7 +53,6 @@ Q_SIGNALS:
     void selection_changed(const std::vector<model::VisualNode*>& selected,  const std::vector<model::VisualNode*>& deselected);
     
 protected:
-    void changeEvent ( QEvent* e ) override;
     bool eventFilter(QObject *watched, QEvent *event) override;
     
 private Q_SLOTS:

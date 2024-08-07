@@ -33,7 +33,6 @@ Q_SIGNALS:
     void font_changed(const QFont& font);
 
 protected:
-    void changeEvent ( QEvent* e ) override;
     void showEvent(QShowEvent* e) override;
 
 private Q_SLOTS:

@@ -29,9 +29,6 @@ public:
     const QUrl& selected_url() const;
     const QString& selected_name() const;
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 private Q_SLOTS:
     void clicked_open();
     void clicked_import();

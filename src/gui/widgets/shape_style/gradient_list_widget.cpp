@@ -431,16 +431,6 @@ GradientListWidget::GradientListWidget(QWidget* parent)
 
 GradientListWidget::~GradientListWidget() = default;
 
-void GradientListWidget::changeEvent ( QEvent* e )
-{
-    QWidget::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void GradientListWidget::set_document(model::Document* document)
 {
     d->document = document;

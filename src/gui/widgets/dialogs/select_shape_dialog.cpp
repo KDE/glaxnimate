@@ -43,16 +43,6 @@ glaxnimate::gui::SelectShapeDialog::SelectShapeDialog(item_models::DocumentNodeM
 
 glaxnimate::gui::SelectShapeDialog::~SelectShapeDialog() = default;
 
-void glaxnimate::gui::SelectShapeDialog::changeEvent ( QEvent* e )
-{
-    QDialog::changeEvent(e);
-
-    if ( e->type() == QEvent::LanguageChange)
-    {
-        d->ui.retranslateUi(this);
-    }
-}
-
 void glaxnimate::gui::SelectShapeDialog::select(const QModelIndex& index)
 {
     auto node = d->proxy.node(index);

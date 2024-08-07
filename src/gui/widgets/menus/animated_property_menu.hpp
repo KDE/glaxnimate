@@ -29,9 +29,6 @@ public:
 
     bool can_paste() const;
 
-protected:
-    void changeEvent ( QEvent* e ) override;
-
 public Q_SLOTS:
     void paste_keyframe();
     void loop_keyframes();

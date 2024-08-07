@@ -146,6 +146,8 @@ ScalableButton* tools::Tool::get_button()
         button->setIcon(icon());
         button->setCheckable(true);
         button->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+        button->setText(name());
+        button->setToolTip(i18n("%1 (%2)", name(), key_sequence().toString()));
     }
 
     return button;
@@ -159,15 +161,4 @@ QWidget* tools::Tool::get_settings_widget()
     }
 
     return settings_widget;
-}
-
-void tools::Tool::retranslate()
-{
-    if ( button )
-    {
-        button->setText(name());
-        button->setToolTip(i18n("%1 (%2)", name(), key_sequence().toString()));
-    }
-
-    on_translate();
 }
