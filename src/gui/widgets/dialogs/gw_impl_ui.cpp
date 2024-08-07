@@ -352,13 +352,10 @@ tools::Tool* GlaxnimateWindow::Private::setup_tools_actions()
     {
         for ( const auto& tool : grp.second )
         {
-            QAction *action = add_action(toolActions, tool.second->action_name(), tool.second->name());
-            action->setIcon(tool.second->icon());
-            action->setShortcut(tool.second->key_sequence());
-            action->setCheckable(true);
-            action->setData(QVariant::fromValue(tool.second.get()));
-
+            QAction *action = tool.second->get_action();
             action->setActionGroup(tool_actions);
+            parent->actionCollection()->setDefaultShortcut(action, tool.second->key_sequence());
+            toolActions->addAction(tool.second->action_name(), action);
 
             connect(action, &QAction::triggered, parent, &GlaxnimateWindow::tool_triggered);
 

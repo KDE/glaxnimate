@@ -355,7 +355,6 @@ public:
                 to_activate = tool.second.get();
                 action->setChecked(true);
             }
-            tool.second->retranslate();
             tool.second->initialize(event);
         }
 
@@ -1119,14 +1118,6 @@ void MainWindow::changeEvent(QEvent *e)
     switch (e->type()) {
         case QEvent::LanguageChange:
             d->ui.retranslateUi(this);
-
-            for ( const auto& grp : gui::tools::Registry::instance() )
-            {
-                for ( const auto& tool : grp.second )
-                {
-                    tool.second->retranslate();
-                }
-            }
             break;
         default:
             break;

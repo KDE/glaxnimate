@@ -61,6 +61,8 @@ widgets/dialogs/select_shape_dialog.cpp
 widgets/dialogs/follow_path_dialog.cpp
 widgets/dialogs/stalefiles_dialog.cpp
 
+widgets/docks/layer_view.cpp
+
 widgets/lottiefiles/lottiefiles_search_dialog.cpp
 widgets/lottiefiles/search_result.cpp
 widgets/lottiefiles/graphql.cpp
@@ -88,21 +90,6 @@ widgets/window_message_widget.cpp
 widgets/tab_bar/tab_bar_close_button.cpp
 widgets/tab_bar/clickable_tab_bar.cpp
 widgets/tab_bar/composition_tab_bar.cpp
-widgets/docks/layer_view.cpp
-widgets/docks/aligndock.cpp
-widgets/docks/assetsdock.cpp
-widgets/docks/colorsdock.cpp
-widgets/docks/strokedock.cpp
-widgets/docks/layersdock.cpp
-widgets/docks/propertiesdock.cpp
-widgets/docks/timelinedock.cpp
-widgets/docks/logsdock.cpp
-widgets/docks/timesliderdock.cpp
-widgets/docks/gradientsdock.cpp
-widgets/docks/swatchesdock.cpp
-widgets/docks/snippetsdock.cpp
-widgets/docks/undodock.cpp
-widgets/docks/tooloptionsdock.cpp
 
 widgets/settings/plugin_settings_widget.cpp
 
@@ -186,6 +173,21 @@ if ( NOT MOBILE_UI )
         widgets/dialogs/gw_impl_ui.cpp
         widgets/dialogs/gw_impl_debug.cpp
         widgets/dialogs/gw_impl_selection.cpp
+
+        widgets/docks/aligndock.cpp
+        widgets/docks/assetsdock.cpp
+        widgets/docks/colorsdock.cpp
+        widgets/docks/strokedock.cpp
+        widgets/docks/layersdock.cpp
+        widgets/docks/propertiesdock.cpp
+        widgets/docks/timelinedock.cpp
+        widgets/docks/logsdock.cpp
+        widgets/docks/timesliderdock.cpp
+        widgets/docks/gradientsdock.cpp
+        widgets/docks/swatchesdock.cpp
+        widgets/docks/snippetsdock.cpp
+        widgets/docks/undodock.cpp
+        widgets/docks/tooloptionsdock.cpp
 
         widgets/menus/node_menu.cpp
     )

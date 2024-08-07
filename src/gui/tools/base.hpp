@@ -163,6 +163,7 @@ Q_SIGNALS:
     void cursor_changed(const QCursor&);
 
 private:
+    QAction* action = nullptr;
     ScalableButton* button = nullptr;
     QWidget* settings_widget = nullptr;
 

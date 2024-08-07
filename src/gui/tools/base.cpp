@@ -137,6 +137,18 @@ void tools::Tool::on_deselected(graphics::DocumentScene* scene, model::VisualNod
     scene->hide_editors(node, true, true);
 }
 
+QAction* tools::Tool::get_action()
+{
+    if ( !action )
+    {
+        action = new QAction(name());
+        action->setCheckable(true);
+        action->setIcon(icon());
+        action->setData(QVariant::fromValue(this));
+    }
+    return action;
+}
+
 ScalableButton* tools::Tool::get_button()
 {
     if ( !button )
