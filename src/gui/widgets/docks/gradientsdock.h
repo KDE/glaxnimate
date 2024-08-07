@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: 2024 Julius Künzel <julius.kuenzel@kde.org>
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 # pragma once
 
 #include "model/assets/gradient.hpp"

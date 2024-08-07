@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2024 Julius Künzel <julius.kuenzel@kde.org>
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 #include "aligndock.h"
 #include "kactioncollection.h"
 #include "qactiongroup.h"
@@ -6,14 +13,11 @@
 
 #include <QGridLayout>
 
-//#include "ui_logs.h"
-
 using namespace glaxnimate::gui;
 
 class AlignDock::Private
 {
 public:
-   // ::Ui::dock_logs ui;
     static QToolButton* action_button(QAction* action, QWidget* parent)
     {
         auto button = new ScalableButton(parent);
