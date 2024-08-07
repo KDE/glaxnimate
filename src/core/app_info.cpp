@@ -37,19 +37,9 @@ QUrl glaxnimate::AppInfo::url_docs() const
     return QUrl(URL_DOCS);
 }
 
-QUrl glaxnimate::AppInfo::url_issues() const
-{
-    return QUrl(URL_ISSUES);
-}
-
 QString glaxnimate::AppInfo::description() const
 {
     return PROJECT_DESCRIPTION;
-}
-
-QUrl glaxnimate::AppInfo::url_donate() const
-{
-    return QUrl(URL_DONATE);
 }
 
 void glaxnimate::AppInfo::init_qapplication() const
@@ -63,10 +53,10 @@ void glaxnimate::AppInfo::init_qapplication() const
         i18n("(c) 2019-2023"),
         // Optional text shown in the About box.
         QStringLiteral(""),
-        QStringLiteral(URL_DOCS),
-        QStringLiteral(URL_ISSUES)
+        QStringLiteral(URL_DOCS)
     );
 
+    aboutData.setOrganizationDomain(QByteArray("kde.org"));
     aboutData.setDesktopFileName(QStringLiteral(PROJECT_ID));
 
     KAboutData::setApplicationData(aboutData);
