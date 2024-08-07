@@ -9,7 +9,6 @@
 #include <QShortcut>
 
 #include "model/shapes/path.hpp"
-#include "app/settings/keyboard_shortcuts.hpp"
 #include "glaxnimate_app.hpp"
 #include "math/geom.hpp"
 #include "math/vector.hpp"

@@ -66,7 +66,6 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
 
 #include "app/settings/settings.hpp"
 #include "app/settings/palette_settings.hpp"
-#include "app/settings/keyboard_shortcuts.hpp"
 #include "app/log/listener_file.hpp"
 #include "settings/plugin_settings_group.hpp"
 #include "settings/clipboard_settings.hpp"
@@ -243,10 +242,6 @@ void GlaxnimateApp::on_initialize_settings()
     auto palette_settings = std::make_unique<app::settings::PaletteSettings>();
     load_themes(this, palette_settings.get());
     app::settings::Settings::instance().add_group(std::move(palette_settings));
-
-    auto sc_settings = std::make_unique<app::settings::ShortcutSettings>();
-    shortcut_settings = sc_settings.get();
-    app::settings::Settings::instance().add_group(std::move(sc_settings));
 
     app::settings::Settings::instance().add_group(std::make_unique<settings::ApiCredentials>());
 

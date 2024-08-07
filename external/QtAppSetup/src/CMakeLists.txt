@@ -8,8 +8,6 @@ app/application.cpp
 app/settings/settings_group.cpp
 app/settings/settings.cpp
 app/settings/palette_settings.cpp
-app/settings/keyboard_shortcuts.cpp
-app/settings/keyboard_shortcuts_model.cpp
 app/translation_service.cpp
 app/scripting/script_engine.cpp
 app/widgets/settings_dialog.cpp
@@ -18,8 +16,6 @@ app/widgets/widget_palette_editor.cpp
 app/widgets/widget_palette_editor.ui
 app/widgets/clearable_keysequence_edit.cpp
 app/widgets/clearable_keysequence_edit.ui
-app/widgets/keyboard_settings_widget.cpp
-app/widgets/keyboard_settings_widget.ui
 app/log/logger.cpp
 app/log/log_model.cpp
 app/cli.cpp

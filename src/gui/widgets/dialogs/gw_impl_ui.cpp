@@ -27,8 +27,6 @@
 #include <KRecentFilesAction>
 #include <KToolBar>
 
-#include "app/settings/keyboard_shortcuts.hpp"
-
 #include "tools/base.hpp"
 #include "model/shapes/group.hpp"
 #include "model/shapes/image.hpp"
@@ -1238,23 +1236,6 @@ void GlaxnimateWindow::Private::init_menus()
         wid->setStyle(&dock_style);
     }*/
 
-    // Load keyboard shortcuts
-    /*GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_file);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_edit);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_tools);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_view);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_views);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_document);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_render_single_frame);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_playback);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_layers);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_new_layer);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_object);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_path);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_text);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_plugins);
-    GlaxnimateApp::instance()->shortcuts()->add_menu(ui.menu_help);*/
-
     // Menu Templates
     init_template_menu();
 
@@ -1498,11 +1479,12 @@ void GlaxnimateWindow::Private::init_plugins()
         parent->plugActionList("plugins_actionlist", plugin_actions);
     });
 
+    // TODO ?
+    /*
     connect(&par, &plugin::PluginActionRegistry::action_removed, parent, [](plugin::ActionService* action) {
         QString slug = "action_plugin_" + action->plugin()->data().name.toLower() + "_" + action->label.toLower();
-        app::settings::ShortcutAction* act = GlaxnimateApp::instance()->shortcuts()->action(slug);
-        GlaxnimateApp::instance()->shortcuts()->remove_action(act);
     });
+    */
 
     connect(
         &plugin::PluginRegistry::instance(),
