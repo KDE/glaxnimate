@@ -19,11 +19,17 @@ class LayersDock : public QDockWidget
     Q_OBJECT
 
 public:
-    LayersDock(GlaxnimateWindow* parent, item_models::DocumentModelBase* base_model);
+    LayersDock(GlaxnimateWindow* parent, item_models::DocumentModelBase* base_model, QMenu* menu_new_layer);
 
     ~LayersDock();
 
     glaxnimate::gui::LayerView* layer_view();
+
+Q_SIGNALS:
+    void add_layer();
+    void duplicate_layer();
+    void delete_layer();
+
 
 private:
     class Private;

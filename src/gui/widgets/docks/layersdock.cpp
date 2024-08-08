@@ -18,7 +18,7 @@ public:
     ::Ui::dock_layers ui;
 };
 
-LayersDock::LayersDock(GlaxnimateWindow *parent, item_models::DocumentModelBase* base_model)
+LayersDock::LayersDock(GlaxnimateWindow *parent, item_models::DocumentModelBase* base_model, QMenu* menu_new_layer)
     : QDockWidget(parent)
     , d(std::make_unique<Private>())
 {
@@ -35,32 +35,16 @@ LayersDock::LayersDock(GlaxnimateWindow *parent, item_models::DocumentModelBase*
                      }
                 );
 
-
-    QMenu *menu_new_layer = new QMenu(i18n("New"));
-    menu_new_layer->setIcon(QIcon::fromTheme(QStringLiteral("list-add")));
-
-    //menu_new_layer.addMenu();
-    /*
-        <widget class="QMenu" name="menu_new_comp_layer">
-        <property name="title">
-        <string>&amp;Composition</string>
-        </property>
-        <property name="icon">
-        <iconset theme="component"/>
-        </property>
-        </widget>
-        </widget>
-    */
-    menu_new_layer->addSeparator();
-    menu_new_layer->addAction(parent->actionCollection()->action(QStringLiteral("new_complayer"))); // TODO menu_new_comp_layer
-    menu_new_layer->addAction(parent->actionCollection()->action(QStringLiteral("new_layer")));
-    menu_new_layer->addAction(parent->actionCollection()->action(QStringLiteral("new_group"))); // TODO action_new_group
-    menu_new_layer->addAction(parent->actionCollection()->action(QStringLiteral("new_fill")));
-    menu_new_layer->addAction(parent->actionCollection()->action(QStringLiteral("new_stroke"))); // TODO action_new_stroke
-    menu_new_layer->addAction(parent->actionCollection()->action(QStringLiteral("insert_emoji")));
-
     d->ui.btn_layer_add->setMenu(menu_new_layer);
 
+    d->ui.btn_layer_top->setDefaultAction(parent->actionCollection()->action("object_raise_to_top"));
+    d->ui.btn_layer_up->setDefaultAction(parent->actionCollection()->action("object_raise"));
+    d->ui.btn_layer_down->setDefaultAction(parent->actionCollection()->action("object_lower"));
+    d->ui.btn_layer_bottom->setDefaultAction(parent->actionCollection()->action("object_lower_to_bottom"));
+
+    connect(d->ui.btn_layer_add, &QToolButton::clicked, this, &LayersDock::add_layer);
+    connect(d->ui.btn_layer_duplicate, &QToolButton::clicked, this, &LayersDock::duplicate_layer);
+    connect(d->ui.btn_layer_remove, &QToolButton::clicked, this, &LayersDock::delete_layer);
 }
 
 LayersDock::~LayersDock() = default;

@@ -13,6 +13,7 @@
 #include <QLocalSocket>
 #include <QDataStream>
 #include <QSharedMemory>
+#include <QMenu>
 
 #include "app/widgets/settings_dialog.hpp"
 #include "app_info.hpp"
@@ -413,6 +414,11 @@ void GlaxnimateWindow::shape_to_composition(model::ShapeElement* node)
 void GlaxnimateWindow::set_current_composition(model::Composition* comp)
 {
     d->tab_bar->set_current_composition(comp);
+}
+
+QMenu * GlaxnimateWindow::create_layer_menu() const
+{
+    return findChild<QMenu *>("new_layer_menu");
 }
 
 void GlaxnimateWindow::select(const std::vector<model::VisualNode*>& nodes)

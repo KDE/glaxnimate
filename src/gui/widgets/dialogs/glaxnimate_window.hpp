@@ -63,6 +63,8 @@ public:
     void set_current_composition(model::Composition* comp) override;
     model::Composition* current_composition() const override;
 
+    QMenu* create_layer_menu() const;
+
     model::Object* current_shape_container_script();
 
     QColor current_color() const override;

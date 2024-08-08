@@ -655,7 +655,6 @@ void GlaxnimateWindow::Private::setup_path_actions()
         trace_dialog(parent->current_shape());
     });
 
-    //TODO
     QAction *pathAdd = add_action(pathActions, QStringLiteral("path_add"), i18n("Union"), QStringLiteral("path-union"));
     pathAdd->setEnabled(false);
     QAction *pathSubstract = add_action(pathActions, QStringLiteral("path_subtract"), i18n("Difference"), QStringLiteral("path-difference"));
@@ -763,7 +762,10 @@ void GlaxnimateWindow::Private::init_tools_ui()
 void GlaxnimateWindow::Private::init_item_views()
 {
     // Item views
-    layers_dock = new LayersDock(parent, &document_node_model);
+    layers_dock = new LayersDock(parent, &document_node_model, parent->create_layer_menu());
+    connect(layers_dock, &LayersDock::add_layer, parent, [this]{layer_new_layer();});
+    connect(layers_dock, &LayersDock::duplicate_layer, parent, &GlaxnimateWindow::layer_duplicate);
+    connect(layers_dock, &LayersDock::delete_layer, parent, &GlaxnimateWindow::layer_delete);
     parent->addDockWidget(Qt::DockWidgetArea::BottomDockWidgetArea, layers_dock);
 
     QObject::connect(layers_dock->layer_view(), &LayerView::current_node_changed,
