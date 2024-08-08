@@ -31,7 +31,7 @@ AssetsDock::AssetsDock(GlaxnimateWindow *parent, item_models::AssetProxyModel* a
     d->ui.view_assets->header()->setSectionResizeMode(item_models::DocumentNodeModel::ColumnUsers-1, QHeaderView::ResizeToContents);
 
 
-    connect(d->ui.view_assets, &CustomTreeView::customContextMenuRequested, parent, [&, this](const QPoint& pos){
+    connect(d->ui.view_assets, &CustomTreeView::customContextMenuRequested, parent, [this, parent, document_node_model, asset_model](const QPoint& pos){
         auto node = document_node_model->node(asset_model->mapToSource(d->ui.view_assets->indexAt(pos)));
         if ( node )
             NodeMenu(node, parent, parent).exec(d->ui.view_assets->mapToGlobal(pos));
