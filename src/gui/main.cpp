@@ -7,6 +7,8 @@
 #include <QSplashScreen>
 #include <QtGlobal>
 
+#include <kiconthemes_version.h>
+
 #ifndef Q_OS_ANDROID
 #   include <KCrash>
 #endif
@@ -15,6 +17,8 @@
 #if HAVE_STYLE_MANAGER
 #include <KStyleManager>
 #endif
+#include <KIconTheme>
+
 #include "app/env.hpp"
 #include "app/scripting/python/python_engine.hpp"
 #include "app/log/log.hpp"
@@ -38,6 +42,11 @@ int main(int argc, char *argv[])
 #ifdef Q_OS_WIN
     // workaround crash bug #408 in Qt/Windows
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+#endif
+
+// trigger initialisation of proper icon theme
+#if KICONTHEMES_VERSION >= QT_VERSION_CHECK(6, 3, 0)
+    KIconTheme::initTheme();
 #endif
 
     gui::GlaxnimateApp app(argc, argv);
