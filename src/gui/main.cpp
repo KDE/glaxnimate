@@ -35,14 +35,9 @@ int main(int argc, char *argv[])
     // workaround crash bug #408 in Qt/Windows
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
 #endif
-    QDir binpath(QCoreApplication::applicationDirPath());
-    binpath.cdUp();
-    KLocalizedString::addDomainLocaleDir("glaxnimate", binpath.absoluteFilePath(QStringLiteral("share/locale")));
-
-    KLocalizedString::setApplicationDomain("glaxnimate");
 
     gui::GlaxnimateApp app(argc, argv);
-
+    KLocalizedString::setApplicationDomain("glaxnimate");
 
 #ifndef Q_OS_ANDROID
     KCrash::setDrKonqiEnabled(true);
