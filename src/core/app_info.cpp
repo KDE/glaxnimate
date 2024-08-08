@@ -65,6 +65,7 @@ void glaxnimate::AppInfo::init_qapplication() const
     aboutData.addAuthor(i18n("Mattia \"Glax\" Basaglie"), i18n("Maintainer"), QStringLiteral("glax@dragon.best"));
 
     aboutData.addComponent(i18n("potrace"), i18n("Used by the bitmap tracing feature."), utils::trace::Tracer::potrace_version(), QStringLiteral("http://potrace.sourceforge.net/"), KAboutLicense::GPL_V2);
+#ifndef Q_OS_ANDROID
     aboutData.addComponent(i18n("libav"), {}, io::video::VideoFormat::library_version(), QStringLiteral("https://libav.org/"), KAboutLicense::LGPL);
     aboutData.addComponent(i18n("libarchive"), {}, utils::tar::libarchive_version());
     aboutData.addComponent(i18n("zlib"), {}, {}, QStringLiteral("https://www.zlib.net/"));
@@ -73,6 +74,7 @@ void glaxnimate::AppInfo::init_qapplication() const
     aboutData.addComponent(i18n("CPython"), i18n("Used by the plugin system."), {}, QStringLiteral("hhttps://python.org/"));
 
     aboutData.addComponent(i18n("Inkscape"), {}, {}, QStringLiteral("https://inkscape.org/"), KAboutLicense::GPL_V2);
+#endif
 
     KAboutData::setApplicationData(aboutData);
     qApp->setOrganizationName(organization());
