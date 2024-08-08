@@ -55,8 +55,6 @@ private:
 #include "app/log/listener_stderr.hpp"
 #include "app/log/listener_store.hpp"
 
-namespace app::settings { class ShortcutSettings; }
-
 namespace glaxnimate::gui {
 
 class GlaxnimateApp : public app::Application
@@ -78,8 +76,6 @@ public:
 
     QString backup_path() const;
 
-    app::settings::ShortcutSettings* shortcuts() const;
-
     static QString temp_path();
 
     static qreal handle_size_multiplier() { return 1; }
@@ -96,7 +92,6 @@ protected:
 
 private:
     app::log::ListenerStore* store_logger;
-    app::settings::ShortcutSettings* shortcut_settings;
 
 };
 

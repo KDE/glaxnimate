@@ -65,7 +65,6 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
 #include <KLocalizedString>
 
 #include "app/settings/settings.hpp"
-#include "app/settings/palette_settings.hpp"
 #include "app/log/listener_file.hpp"
 #include "settings/plugin_settings_group.hpp"
 #include "settings/clipboard_settings.hpp"
@@ -117,18 +116,6 @@ static void icon_theme_fixup()
         QIcon::setThemeName(default_theme);
     else
         set_icon_theme(old);
-}
-
-static void load_themes(GlaxnimateApp* app, app::settings::PaletteSettings* settings)
-{
-    for ( QDir themedir : app->data_paths("themes") )
-    {
-        for ( const auto& theme : themedir.entryList({"*.ini"}, QDir::Files|QDir::Readable, QDir::Name|QDir::IgnoreCase) )
-        {
-            QSettings ini_parser(themedir.absoluteFilePath(theme), QSettings::IniFormat);
-            settings->load_palette(ini_parser, true);
-        }
-    }
 }
 
 void GlaxnimateApp::on_initialize()
@@ -216,17 +203,8 @@ void GlaxnimateApp::on_initialize_settings()
     }));
     app::settings::Settings::instance().add_group(std::make_unique<settings::ClipboardSettings>());
 
-    auto palette_settings = std::make_unique<app::settings::PaletteSettings>();
-    load_themes(this, palette_settings.get());
-    app::settings::Settings::instance().add_group(std::move(palette_settings));
-
     app::settings::Settings::instance().add_group(std::make_unique<settings::ApiCredentials>());
 
-}
-
-app::settings::ShortcutSettings * GlaxnimateApp::shortcuts() const
-{
-    return shortcut_settings;
 }
 
 void GlaxnimateApp::set_clipboard_data(QMimeData *data)
