@@ -262,13 +262,19 @@ void GlaxnimateWindow::Private::setup_file_actions()
 
     m_recentFilesAction = KStandardAction::openRecent(parent, &GlaxnimateWindow::document_open_recent, fileActions);
     fileActions->addAction(KStandardAction::name(KStandardAction::OpenRecent), m_recentFilesAction);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     connect(m_recentFilesAction, &KRecentFilesAction::enabledChanged, openLast, &QAction::setEnabled);
+#else
+    connect(m_recentFilesAction, &KRecentFilesAction::changed, [this, openLast](){
+        openLast->setEnabled(m_recentFilesAction->isEnabled());
+    });
+#endif
 
     m_recentFilesAction->loadEntries(KConfigGroup(KSharedConfig::openConfig(), QString()));
 
     QAction *revertAction = fileActions->addAction(KStandardAction::Revert, parent, SLOT(document_reload()));
 
-    KActionCollection::setDefaultShortcut(revertAction, Qt::CTRL | Qt::Key_F5);
+    parent->actionCollection()->setDefaultShortcut(revertAction, Qt::CTRL | Qt::Key_F5);
     fileActions->addAction(KStandardAction::Save, parent, SLOT(document_save()));
     fileActions->addAction(KStandardAction::SaveAs, parent, SLOT(document_save_as()));
     QAction *saveAsTemplate = add_action(fileActions, QStringLiteral("save_as_template"), i18n("Save as Template"), QStringLiteral("document-save-as-template"));
@@ -1463,7 +1469,7 @@ void GlaxnimateWindow::Private::init_plugins()
             }
         }
         QAction* qaction = plugin::PluginActionRegistry::instance().make_qaction(action);
-        plugin_actions.insert(qMax(0, index -1), qaction);
+        plugin_actions.insert(qMax(qsizetype(0), qsizetype(index -1)), qaction);
 
         parent->unplugActionList("plugins_actionlist");
         parent->plugActionList("plugins_actionlist", plugin_actions);
