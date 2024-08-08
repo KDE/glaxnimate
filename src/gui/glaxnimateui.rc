@@ -205,6 +205,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <text>Plugins</text>
             <ActionList name="plugins_actionlist"/>
         </Menu>
+        <Menu name="settings">
+            <Action name="colorscheme_menu"/>
+        </Menu>
         <Menu name="help" >
           <Action name="copy_debuginfo"/>
           <Action name="about_env"/>

@@ -31,6 +31,9 @@
 #include <KSandbox>
 #include <KAboutData>
 #include <KCoreAddons>
+#include <KColorSchemeMenu>
+#include <KColorSchemeManager>
+#include <KActionMenu>
 
 #include "tools/base.hpp"
 #include "model/shapes/group.hpp"
@@ -114,6 +117,11 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
 
     QAction *textRemovePath = add_action(textActions, QStringLiteral("text_remove_from_path"), i18n("Remove from Path"), QStringLiteral("text-remove-from-path"));
     connect(textRemovePath, &QAction::triggered, parent, [this]{text_remove_from_path();});
+
+    // Load themes
+    KColorSchemeManager *manager = new KColorSchemeManager(parent);
+    auto *colorSelectionMenu = KColorSchemeMenu::createMenu(manager, parent);
+    parent->actionCollection()->addAction(QStringLiteral("colorscheme_menu"), colorSelectionMenu);
 
     // Actions: Settings and Help
     QAction *copyDebug = new QAction(QIcon::fromTheme(QStringLiteral("edit-copy")), i18n("Copy Debug Information"), parent);
