@@ -11,6 +11,10 @@
 #   include <KCrash>
 #endif
 
+#define HAVE_STYLE_MANAGER __has_include(<KStyleManager>)
+#if HAVE_STYLE_MANAGER
+#include <KStyleManager>
+#endif
 #include "app/env.hpp"
 #include "app/scripting/python/python_engine.hpp"
 #include "app/log/log.hpp"
@@ -38,6 +42,11 @@ int main(int argc, char *argv[])
 
     gui::GlaxnimateApp app(argc, argv);
     KLocalizedString::setApplicationDomain("glaxnimate");
+
+#if HAVE_STYLE_MANAGER
+    // trigger initialisation of proper application style
+    KStyleManager::initStyle();
+#endif
 
 #ifndef Q_OS_ANDROID
     KCrash::setDrKonqiEnabled(true);

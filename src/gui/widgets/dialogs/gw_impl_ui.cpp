@@ -34,6 +34,10 @@
 #include <KColorSchemeMenu>
 #include <KColorSchemeManager>
 #include <KActionMenu>
+#define HAVE_STYLE_MANAGER __has_include(<KStyleManager>)
+#if HAVE_STYLE_MANAGER
+#include <KStyleManager>
+#endif
 
 #include "tools/base.hpp"
 #include "model/shapes/group.hpp"
@@ -122,6 +126,11 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     KColorSchemeManager *manager = new KColorSchemeManager(parent);
     auto *colorSelectionMenu = KColorSchemeMenu::createMenu(manager, parent);
     parent->actionCollection()->addAction(QStringLiteral("colorscheme_menu"), colorSelectionMenu);
+
+#if HAVE_STYLE_MANAGER
+    // style configure action is only visible on non KDE platform
+    parent->actionCollection()->addAction(QStringLiteral("styles_menu"), KStyleManager::createConfigureAction(parent));
+#endif
 
     // Actions: Settings and Help
     QAction *copyDebug = new QAction(QIcon::fromTheme(QStringLiteral("edit-copy")), i18n("Copy Debug Information"), parent);
