@@ -24,7 +24,7 @@ public:
     QIcon icon() const override { return QIcon::fromTheme("fill-color"); }
     QString name() const override { return i18n("Fill"); }
     QString action_name() const override { return QStringLiteral("tool_fill"); }
-    QKeySequence key_sequence() const override { return Qt::Key_F8; }
+    QKeySequence key_sequence() const override { return Qt::Key_F10; }
     static int static_group() noexcept { return Registry::Style; }
     int group() const noexcept override { return static_group(); }
 

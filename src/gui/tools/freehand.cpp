@@ -17,7 +17,7 @@ public:
     QIcon icon() const override { return QIcon::fromTheme("draw-freehand"); }
     QString name() const override { return i18n("Draw Freehand"); }
     QString action_name() const override { return QStringLiteral("tool_draw_freehand"); }
-    QKeySequence key_sequence() const override { return Qt::Key_F6; }
+    QKeySequence key_sequence() const override { return Qt::Key_F5; }
     static int static_group() noexcept { return Registry::Draw; }
     int group() const noexcept override { return static_group(); }
 
