@@ -659,15 +659,15 @@ void GlaxnimateWindow::Private::align(AlignDirection direction, AlignPosition po
 
     QPointF reference;
 
-    if ( parent->action(QStringLiteral("align_to_canvas_group"))->isChecked() )
+    if ( parent->actionCollection()->action(QStringLiteral("align_to_canvas_group"))->isChecked() )
     {
         reference = align_point(bounds, direction, position);
     }
-    else if ( parent->action(QStringLiteral("align_to_canvas"))->isChecked() )
+    else if ( parent->actionCollection()->action(QStringLiteral("align_to_canvas"))->isChecked() )
     {
         reference = align_point(comp->rect(), direction, position);
     }
-    else if ( parent->action(QStringLiteral("align_to_canvas_group"))->isChecked() )
+    else if ( parent->actionCollection()->action(QStringLiteral("align_to_canvas_group"))->isChecked() )
     {
         reference = align_point(comp->rect(), direction, position);
         QPointF bounds_point = align_point(bounds, direction, bound_pos);

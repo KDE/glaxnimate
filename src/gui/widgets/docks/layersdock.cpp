@@ -52,12 +52,12 @@ LayersDock::LayersDock(GlaxnimateWindow *parent, item_models::DocumentModelBase*
         </widget>
     */
     menu_new_layer->addSeparator();
-    menu_new_layer->addAction(parent->action(QStringLiteral("new_complayer"))); // TODO menu_new_comp_layer
-    menu_new_layer->addAction(parent->action(QStringLiteral("new_layer")));
-    menu_new_layer->addAction(parent->action(QStringLiteral("new_group"))); // TODO action_new_group
-    menu_new_layer->addAction(parent->action(QStringLiteral("new_fill")));
-    menu_new_layer->addAction(parent->action(QStringLiteral("new_stroke"))); // TODO action_new_stroke
-    menu_new_layer->addAction(parent->action(QStringLiteral("insert_emoji")));
+    menu_new_layer->addAction(parent->actionCollection()->action(QStringLiteral("new_complayer"))); // TODO menu_new_comp_layer
+    menu_new_layer->addAction(parent->actionCollection()->action(QStringLiteral("new_layer")));
+    menu_new_layer->addAction(parent->actionCollection()->action(QStringLiteral("new_group"))); // TODO action_new_group
+    menu_new_layer->addAction(parent->actionCollection()->action(QStringLiteral("new_fill")));
+    menu_new_layer->addAction(parent->actionCollection()->action(QStringLiteral("new_stroke"))); // TODO action_new_stroke
+    menu_new_layer->addAction(parent->actionCollection()->action(QStringLiteral("insert_emoji")));
 
     d->ui.btn_layer_add->setMenu(menu_new_layer);
 

@@ -135,7 +135,7 @@ void GlaxnimateWindow::Private::do_setup_document()
 
     // Export
     export_options = {};
-    parent->action(QStringLiteral("export"))->setText(i18n("Export..."));
+    parent->actionCollection()->action(QStringLiteral("export"))->setText(i18n("Export..."));
 }
 
 void GlaxnimateWindow::Private::setup_document_new(const QString& filename)
@@ -393,7 +393,7 @@ bool GlaxnimateWindow::Private::save_document(bool force_dialog, bool export_opt
     if ( export_opts )
     {
         export_options = opts;
-        parent->action(QStringLiteral("export"))->setText(i18n("Export to %1", QFileInfo(opts.filename).fileName()));
+        parent->actionCollection()->action(QStringLiteral("export"))->setText(i18n("Export to %1", QFileInfo(opts.filename).fileName()));
 
     }
     else

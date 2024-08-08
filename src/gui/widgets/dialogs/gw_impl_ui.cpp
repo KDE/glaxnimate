@@ -189,7 +189,7 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     case LayoutPreset::Custom:
         layout_auto();
         app::settings::set("ui", "layout", int(LayoutPreset::Custom));
-        QAction *layoutCustom = parent->action(QStringLiteral("layout_custom"));
+        QAction *layoutCustom = parent->actionCollection()->action(QStringLiteral("layout_custom"));
         layoutCustom->setChecked(true);
         break;
     }
@@ -330,7 +330,7 @@ void GlaxnimateWindow::Private::setup_edit_actions()
     QAction *editDelete = add_action(editActions, QStringLiteral("edit_delete"), i18n("Delete"), QStringLiteral("edit-delete"), {}, Qt::Key_Delete);
     connect(editDelete, &QAction::triggered, [this](){
         if (active_tool->id() == QStringLiteral("edit")) {
-            parent->action(QStringLiteral("node_remove"))->trigger();
+            parent->actionCollection()->action(QStringLiteral("node_remove"))->trigger();
         } else if (active_tool->id() == QStringLiteral("select")) {
             parent->delete_selected();
         }
@@ -482,7 +482,7 @@ void GlaxnimateWindow::Private::setup_playback_actions()
 
 void GlaxnimateWindow::Private::connect_playback_actions()
 {
-    QAction *play = parent->action(QStringLiteral("play"));
+    QAction *play = parent->actionCollection()->action(QStringLiteral("play"));
     connect(play, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::toggle_play);
     connect(timeline_dock->playControls(), &FrameControlsWidget::play_started, parent, [play]{
         play->setText(i18n("Pause"));
@@ -492,25 +492,25 @@ void GlaxnimateWindow::Private::connect_playback_actions()
         play->setText(i18n("Play"));
         play->setIcon(QIcon::fromTheme("media-playback-start"));
     });
-    QAction *record = parent->action(QStringLiteral("record"));
+    QAction *record = parent->actionCollection()->action(QStringLiteral("record"));
     connect(timeline_dock->playControls(), &FrameControlsWidget::record_toggled, record, &QAction::setChecked);
 
-    QAction *playLoop = parent->action(QStringLiteral("play_loop"));
+    QAction *playLoop = parent->actionCollection()->action(QStringLiteral("play_loop"));
     connect(timeline_dock->playControls(), &FrameControlsWidget::loop_changed, playLoop, &QAction::setChecked);
     connect(playLoop, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::set_loop);
 
     connect(record, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::set_record_enabled);
 
-    QAction *frameFirst = parent->action(QStringLiteral("frame_first"));
+    QAction *frameFirst = parent->actionCollection()->action(QStringLiteral("frame_first"));
     connect(frameFirst, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::go_first);
 
-    QAction *frameLast = parent->action(QStringLiteral("frame_last"));
+    QAction *frameLast = parent->actionCollection()->action(QStringLiteral("frame_last"));
     connect(frameLast, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::go_last);
 
-    QAction *frameNext = parent->action(QStringLiteral("frame_next"));
+    QAction *frameNext = parent->actionCollection()->action(QStringLiteral("frame_next"));
     connect(frameNext, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::go_next);
 
-    QAction *framePrev = parent->action(QStringLiteral("frame_prev"));
+    QAction *framePrev = parent->actionCollection()->action(QStringLiteral("frame_prev"));
     connect(framePrev, &QAction::triggered, timeline_dock->playControls(), &FrameControlsWidget::go_prev);
 
     connect(timeline_dock->playControls(),   &FrameControlsWidget::min_changed,    time_slider_dock->playControls(), &FrameControlsWidget::set_min);
@@ -678,7 +678,7 @@ void GlaxnimateWindow::Private::setup_path_actions()
     QAction *nodeDissolve = add_action(pathActions, QStringLiteral("node_dissolve"), i18n("Dissolve Nodes"), QStringLiteral("format-node-curve"));
 
     this->tool_actions["edit"] = {
-        parent->action(QStringLiteral("edit_delete")),
+        parent->actionCollection()->action(QStringLiteral("edit_delete")),
         nodeRemove,
         nodeTypeCorner,
         nodeTypeSmooth,
@@ -732,7 +732,7 @@ void GlaxnimateWindow::Private::init_tools_ui()
     {
         for ( const auto& tool : grp.second )
         {
-            QAction *action = parent->action(tool.second->action_name());
+            QAction *action = parent->actionCollection()->action(tool.second->action_name());
 
             ScalableButton *button = tool.second->get_button();
 
@@ -846,7 +846,7 @@ void GlaxnimateWindow::Private::init_status_bar()
     connect(canvas, &Canvas::rotated, view_trans_widget, &ViewTransformWidget::set_angle);
     connect(view_trans_widget, &ViewTransformWidget::view_fit, parent, &GlaxnimateWindow::view_fit);
 
-    QAction *flipView = parent->action(QStringLiteral("flip_view"));
+    QAction *flipView = parent->actionCollection()->action(QStringLiteral("flip_view"));
     connect(view_trans_widget, &ViewTransformWidget::flip_view, flipView, &QAction::trigger);
 }
 
@@ -949,10 +949,10 @@ void GlaxnimateWindow::Private::init_docks()
 
 void GlaxnimateWindow::Private::layout_update()
 {
-    QAction *layoutWide = parent->action(QStringLiteral("layout_wide"));
-    QAction *layoutCompact = parent->action(QStringLiteral("layout_compact"));
-    QAction *layoutCustom = parent->action(QStringLiteral("layout_custom"));
-    QAction *layoutMedium = parent->action(QStringLiteral("layout_medium"));
+    QAction *layoutWide = parent->actionCollection()->action(QStringLiteral("layout_wide"));
+    QAction *layoutCompact = parent->actionCollection()->action(QStringLiteral("layout_compact"));
+    QAction *layoutCustom = parent->actionCollection()->action(QStringLiteral("layout_custom"));
+    QAction *layoutMedium = parent->actionCollection()->action(QStringLiteral("layout_medium"));
 
 
     if ( layoutWide->isChecked() )
@@ -1028,7 +1028,7 @@ void GlaxnimateWindow::Private::layout_medium()
     parent->resize(1440, 900);
 
     app::settings::set("ui", "layout", int(LayoutPreset::Medium));
-    QAction *layoutMedium = parent->action(QStringLiteral("layout_medium"));
+    QAction *layoutMedium = parent->actionCollection()->action(QStringLiteral("layout_medium"));
     layoutMedium->setChecked(true);
 }
 
@@ -1092,7 +1092,7 @@ void GlaxnimateWindow::Private::layout_wide()
     parent->resize(1920, 1080);
 
     app::settings::set("ui", "layout", int(LayoutPreset::Wide));
-    QAction *layoutWide = parent->action(QStringLiteral("layout_wide"));
+    QAction *layoutWide = parent->actionCollection()->action(QStringLiteral("layout_wide"));
     layoutWide->setChecked(true);
 }
 
@@ -1150,7 +1150,7 @@ void GlaxnimateWindow::Private::layout_compact()
     parent->resize(1366, 768);
 
     app::settings::set("ui", "layout", int(LayoutPreset::Compact));
-    QAction *layoutCompact = parent->action(QStringLiteral("layout_compact"));
+    QAction *layoutCompact = parent->actionCollection()->action(QStringLiteral("layout_compact"));
     layoutCompact->setChecked(true);
 }
 
@@ -1164,14 +1164,14 @@ void GlaxnimateWindow::Private::layout_auto()
     else
         layout_compact();
 
-    QAction *layoutAuto = parent->action(QStringLiteral("layout_automatic"));
+    QAction *layoutAuto = parent->actionCollection()->action(QStringLiteral("layout_automatic"));
     layoutAuto->setChecked(true);
 }
 
 void GlaxnimateWindow::Private::layout_custom()
 {
     init_restore_state();
-    QAction *layoutCustom = parent->action(QStringLiteral("layout_custom"));
+    QAction *layoutCustom = parent->actionCollection()->action(QStringLiteral("layout_custom"));
     layoutCustom->setChecked(true);
 }
 
@@ -1342,7 +1342,7 @@ void GlaxnimateWindow::Private::switch_tool(tools::Tool* tool)
     if ( !tool || tool == active_tool )
         return;
 
-    QAction *action = parent->action(tool->action_name());
+    QAction *action = parent->actionCollection()->action(tool->action_name());
     if ( !action->isChecked() )
         action->setChecked(true);
 
