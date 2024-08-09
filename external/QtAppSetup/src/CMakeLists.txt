@@ -10,8 +10,7 @@ app/settings/settings.cpp
 
 
 app/scripting/script_engine.cpp
-app/widgets/settings_dialog.cpp
-app/widgets/settings_dialog.ui
+
 
 
 
