@@ -247,6 +247,7 @@ public:
 
         // Views
         layer_view->set_composition(comp);
+        scene.set_composition(comp);
 
     }
 
