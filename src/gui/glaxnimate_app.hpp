@@ -88,7 +88,6 @@ public:
 protected:
     void on_initialize() override;
     void on_initialize_settings() override;
-    bool event(QEvent *event) override;
 
 private:
     app::log::ListenerStore* store_logger;

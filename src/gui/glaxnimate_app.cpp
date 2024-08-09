@@ -70,57 +70,8 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
 #include "settings/clipboard_settings.hpp"
 #include "settings/api_credentials.hpp"
 
-static QVariantMap avail_icon_themes()
-{
-    QVariantMap avail_icon_themes;
-    avail_icon_themes[i18n("Glaxnimate Default")] = "";
-    for ( QDir search : QIcon::themeSearchPaths() )
-    {
-        for ( const auto& avail : search.entryInfoList(QDir::Dirs|QDir::NoDotAndDotDot) )
-        {
-            QDir subdir(avail.filePath());
-            if ( subdir.exists("index.theme") )
-                avail_icon_themes[avail.baseName()] = avail.baseName();
-        }
-    }
-
-    return avail_icon_themes;
-}
-
-static QString default_icon_theme()
-{
-    QPalette palette = QGuiApplication::palette();
-    if ( palette.color(QPalette::Button).value() < 100 )
-        return "breeze-dark";
-    else
-        return "breeze";
-}
-
-static void set_icon_theme(const QVariant& v)
-{
-    QString theme_name = v.toString();
-
-    if ( theme_name.isEmpty() )
-        theme_name = default_icon_theme();
-
-    QIcon::setThemeName(theme_name);
-}
-
-static void icon_theme_fixup()
-{
-    QString default_theme = default_icon_theme();
-    QIcon::setFallbackThemeName(default_theme);
-
-    QString old = QIcon::themeName();
-    if ( old == "breeze" || old == "breeze-dark" )
-        QIcon::setThemeName(default_theme);
-    else
-        set_icon_theme(old);
-}
-
 void GlaxnimateApp::on_initialize()
 {
-
     app::log::Logger::instance().add_listener<app::log::ListenerFile>(writable_data_path("log.txt"));
     app::log::Logger::instance().add_listener<app::log::ListenerStderr>();
     store_logger = app::log::Logger::instance().add_listener<app::log::ListenerStore>();
@@ -136,7 +87,6 @@ void GlaxnimateApp::on_initialize_settings()
 
     Settings::instance().add_group("ui", i18nc("@title settings group", "User Interface"), "preferences-desktop-theme", {
         //      slug            Label/Tooltip                                               Type                default     choices             side effects
-        Setting("icon_theme", i18nc("@label:listbox", "Icon Theme"),  {},             Setting::String,    "",         avail_icon_themes(), ::set_icon_theme),
         // Setting("startup_dialog", i18nc("@option:check", "Show startup dialog"), {},  Setting::Bool,      true),
         Setting("timeline_scroll_horizontal",
                 i18nc("@option:check", "Horizontal Timeline Scroll"),
@@ -215,14 +165,6 @@ void GlaxnimateApp::set_clipboard_data(QMimeData *data)
 const QMimeData *GlaxnimateApp::get_clipboard_data()
 {
     return QGuiApplication::clipboard()->mimeData();
-}
-
-bool GlaxnimateApp::event(QEvent *event)
-{
-    if ( event->type() == QEvent::ApplicationPaletteChange )
-        icon_theme_fixup();
-
-    return app::Application::event(event);
 }
 
 #endif
