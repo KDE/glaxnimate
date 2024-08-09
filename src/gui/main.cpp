@@ -84,6 +84,8 @@ int main(int argc, char *argv[])
     auto pyhome = app::Environment::Variable("PYTHONHOME");
     if ( pyhome.empty() )
     {
+        QDir binpath(QCoreApplication::applicationDirPath());
+        binpath.cdUp();
         pyhome = binpath.absolutePath();
         app::log::Log("Python").log("Setting PYTHONHOME to " + pyhome.get(), app::log::Info);
     }
