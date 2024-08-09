@@ -256,6 +256,11 @@ QPen GlaxnimateWindow::current_pen_style() const
     return d->stroke_dock->pen_style();
 }
 
+QList<QUrl> GlaxnimateWindow::recent_files() const
+{
+    return d->m_recentFilesAction->urls();
+}
+
 std::vector<model::VisualNode*> GlaxnimateWindow::cleaned_selection() const
 {
     return d->cleaned_selection();

@@ -74,6 +74,8 @@ public:
 
     QPen current_pen_style() const override;
 
+    QList<QUrl> recent_files() const;
+
     /**
      * @brief Shows a warning popup
      */

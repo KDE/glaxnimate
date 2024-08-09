@@ -10,6 +10,7 @@
 #include <QEvent>
 
 #include "glaxnimate_settings.hpp"
+#include "glaxnimate_window.hpp"
 #include "settings/document_templates.hpp"
 #include <model/assets/assets.hpp>
 
@@ -71,7 +72,7 @@ public:
     }
 };
 
-StartupDialog::StartupDialog(QWidget* parent)
+StartupDialog::StartupDialog(GlaxnimateWindow* parent)
     : QDialog(parent), d(std::make_unique<Private>())
 {
     d->ui.setupUi(this);
@@ -90,13 +91,13 @@ StartupDialog::StartupDialog(QWidget* parent)
     d->adjust_duration_spin();
     d->ui.spin_duration->setValue(GlaxnimateSettings::duration());
 
-    for ( const auto& recent : GlaxnimateSettings::recent_files() )
+    for ( const auto& recent : parent->recent_files() )
     {
-        QFileInfo finfo(recent);
+        QFileInfo finfo(recent.toLocalFile());
         if ( !finfo.exists() || !finfo.isReadable() )
             continue;
         auto item = new QListWidgetItem(QIcon::fromTheme("document-open-recent"), finfo.fileName());
-        item->setData(Qt::ToolTipRole, recent);
+        item->setData(Qt::ToolTipRole, recent.toLocalFile());
         d->ui.view_recent->addItem(item);
     }
 

@@ -4,22 +4,24 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#ifndef STARTUPDIALOG_H
-#define STARTUPDIALOG_H
+#pragma once
 
 #include <memory>
 #include <QDialog>
 
 #include "model/document.hpp"
 
+
 namespace glaxnimate::gui {
+
+class GlaxnimateWindow;
 
 class StartupDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    StartupDialog(QWidget* parent = nullptr);
+    StartupDialog(GlaxnimateWindow *parent = nullptr);
     ~StartupDialog();
 
     std::unique_ptr<model::Document> create() const;
@@ -41,5 +43,3 @@ private:
 };
 
 } // namespace glaxnimate::gui
-
-#endif // STARTUPDIALOG_H

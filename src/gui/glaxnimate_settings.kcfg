@@ -13,7 +13,6 @@
     <include>api_keys.hpp</include>
     <include>settings/base.hpp</include>
     <group name="ui">
-        <entry name="icon_theme" type="String"></entry>
         <entry name="startup_dialog" type="Bool">
             <default>true</default>
         </entry>
@@ -56,9 +55,6 @@
             <default>false</default>
         </entry>
         <entry name="path" type="Path">
-            <default></default>
-        </entry>
-        <entry name="recent_files" type="StringList">
             <default></default>
         </entry>
         <entry name="render_path" type="Path">
