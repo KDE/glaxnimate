@@ -10,6 +10,14 @@
 #include <QSplashScreen>
 #include <QLabel>
 
+#include <kiconthemes_version.h>
+
+#define HAVE_STYLE_MANAGER __has_include(<KStyleManager>)
+#if HAVE_STYLE_MANAGER
+#include <KStyleManager>
+#endif
+#include <KIconTheme>
+
 #include "main_window.hpp"
 #include "glaxnimate_app.hpp"
 #include "app_info.hpp"
@@ -27,7 +35,17 @@ int main(int argc, char *argv[])
     using namespace glaxnimate;
     using namespace glaxnimate::android;
 
+// trigger initialisation of proper icon theme
+#if KICONTHEMES_VERSION >= QT_VERSION_CHECK(6, 3, 0)
+    KIconTheme::initTheme();
+#endif
+
     gui::GlaxnimateApp app(argc, argv);
+
+#if HAVE_STYLE_MANAGER
+    // trigger initialisation of proper application style
+    KStyleManager::initStyle();
+#endif
 
     AppInfo::instance().init_qapplication();
 
