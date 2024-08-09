@@ -55,7 +55,6 @@ widgets/dialogs/document_metadata_dialog.cpp
 widgets/dialogs/trace_dialog.cpp
 widgets/dialogs/clipboard_inspector.cpp
 widgets/dialogs/color_quantization_dialog.cpp
-widgets/dialogs/startup_dialog.cpp
 widgets/dialogs/export_image_sequence_dialog.cpp
 widgets/dialogs/select_shape_dialog.cpp
 widgets/dialogs/follow_path_dialog.cpp
@@ -124,7 +123,6 @@ set(SOURCES_UIS
     widgets/dialogs/document_metadata_dialog.ui
     widgets/dialogs/trace_dialog.ui
     widgets/dialogs/color_quantization_dialog.ui
-    widgets/dialogs/startup_dialog.ui
     widgets/dialogs/export_image_sequence_dialog.ui
     widgets/dialogs/select_shape_dialog.ui
     widgets/dialogs/follow_path_dialog.ui
@@ -170,6 +168,8 @@ if ( NOT MOBILE_UI )
 
         widgets/dialogs/about_env_dialog.cpp
         widgets/dialogs/glaxnimate_window.cpp
+        widgets/dialogs/startup_dialog.cpp
+
         widgets/dialogs/gw_impl_document.cpp
         widgets/dialogs/gw_impl_model.cpp
         widgets/dialogs/gw_impl_ui.cpp
@@ -198,6 +198,8 @@ if ( NOT MOBILE_UI )
         emoji/emoji_set_dialog.ui
 
         widgets/dialogs/about_env_dialog.ui
+        widgets/dialogs/startup_dialog.ui
+
         widgets/docks/assets.ui
         widgets/docks/colors.ui
         widgets/docks/stroke.ui
