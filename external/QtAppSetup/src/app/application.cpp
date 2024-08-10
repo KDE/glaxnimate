@@ -17,7 +17,10 @@ void app::Application::initialize()
 {
     on_initialize();
     on_initialize_settings();
-    app::settings::Settings::instance().load();
+}
+
+void app::Application::finalize()
+{
 }
 
 QString app::Application::writable_data_path(const QString& name) const

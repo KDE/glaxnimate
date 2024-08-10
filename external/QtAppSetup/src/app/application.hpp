@@ -25,10 +25,7 @@ public:
 
     void initialize();
 
-    void finalize()
-    {
-        app::settings::Settings::instance().save();
-    }
+    void finalize();
 
     static Application* instance()
     {

@@ -144,7 +144,7 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     QAction *aboutEnv = new QAction(QIcon::fromTheme(QStringLiteral("help-about-symbolic")), i18n("About Environment"), parent);
     parent->actionCollection()->addAction(QStringLiteral("about_env"), aboutEnv);
 
-    KStandardAction::preferences(parent, [this, parent]{
+    KStandardAction::preferences(parent, [parent]{
             if (KConfigDialog::showDialog(QStringLiteral("settings"))) {
                 return;
             }
