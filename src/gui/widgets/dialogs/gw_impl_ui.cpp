@@ -1281,8 +1281,8 @@ void GlaxnimateWindow::Private::init_tools(tools::Tool* to_activate)
 void GlaxnimateWindow::Private::init_restore_state()
 {
     // TODO check if they are properly restored once fully migrated to XmlGui
-    // parent->restoreState(GlaxnimateSettings::window_state());
-    // timeline_dock->timelineWidget()->load_state(GlaxnimateSettings::timeline_splitter());
+    parent->restoreState(QByteArray::fromBase64(GlaxnimateSettings::window_state().toUtf8()));
+    timeline_dock->timelineWidget()->load_state(QByteArray::fromBase64(GlaxnimateSettings::timeline_splitter().toUtf8()));
     // parent->restoreGeometry(GlaxnimateSettings::window_geometry());
 
     // Hide tool widgets, as they might get shown by restoreState
@@ -1354,12 +1354,13 @@ void GlaxnimateWindow::Private::copyDebugInfo()
 
 void GlaxnimateWindow::Private::shutdown()
 {
-    // TODO
-    // GlaxnimateSettings::setWindow_geometry(parent->saveGeometry());
-    // GlaxnimateSettings::setWindow_state(parent->saveState());
-    // GlaxnimateSettings::setTimeline_splitter(timeline_dock->timelineWidget()->save_state());
     KSharedConfigPtr config = KSharedConfig::openConfig();
     m_recentFilesAction->saveEntries(KConfigGroup(config, QString()));
+
+    // TODO
+    // GlaxnimateSettings::setWindow_geometry(parent->saveGeometry());
+    GlaxnimateSettings::setWindow_state(QString::fromLatin1(parent->saveState().toBase64()));
+    GlaxnimateSettings::setTimeline_splitter(QString::fromLatin1(timeline_dock->timelineWidget()->save_state().toBase64()));
 
     colors_dock->save_settings();
 
@@ -1367,6 +1368,8 @@ void GlaxnimateWindow::Private::shutdown()
 
     scriptconsole_dock->save_settings();
     scriptconsole_dock->clear_contexts();
+
+    GlaxnimateSettings::self()->save();
 }
 
 
