@@ -22,7 +22,7 @@ include:
     # - .gitlab/ci/test-files.yml
     - project: sysadmin/ci-utilities
       file:
-        # CI
+        # CI Qt5
         - /gitlab-templates/reuse-lint.yml
         - /gitlab-templates/linux.yml
         - /gitlab-templates/freebsd.yml
@@ -32,14 +32,24 @@ include:
         - /gitlab-templates/linux-qt6.yml
         - /gitlab-templates/windows-qt6.yml
         - /gitlab-templates/android-qt6.yml
-        # CD
+        # CD Qt5
         - /gitlab-templates/flatpak.yml
         - /gitlab-templates/craft-appimage.yml
-        - /gitlab-templates/craft-android-qt6-apks.yml
         - /gitlab-templates/craft-windows-x86-64.yml
         # CD Qt6
+        - /gitlab-templates/craft-android-qt6-apks.yml
         - /gitlab-templates/craft-appimage-qt6.yml
         - /gitlab-templates/craft-windows-x86-64-qt6.yml
         - /gitlab-templates/craft-windows-appx-qt6.yml
         - /gitlab-templates/craft-macos-x86-64-qt6.yml
         - /gitlab-templates/craft-macos-arm64-qt6.yml
+
+craft_appimage_qt515_x86_64:
+  when: manual
+  # we don't want the manual job to block the pipeline
+  allow_failure: true
+
+craft_windows_qt515_x86_64:
+  when: manual
+  # we don't want the manual job to block the pipeline
+  allow_failure: true
