@@ -270,3 +270,13 @@ void app::scripting::python::PythonEngine::add_module_search_paths(const QString
 {
     app::Environment::Variable("PYTHONPATH").push_back(paths);
 }
+
+QString app::scripting::python::PythonEngine::pybind_version()
+{
+    return QStringLiteral("%1.%2.%3").arg(PYBIND11_VERSION_MAJOR).arg(PYBIND11_VERSION_MINOR).arg(PYBIND11_VERSION_PATCH);
+}
+
+QString app::scripting::python::PythonEngine::python_version()
+{
+    return QStringLiteral(PY_VERSION);
+}

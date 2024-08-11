@@ -52,6 +52,9 @@ public:
 
     ScriptContext create_context() const override;
 
+    static QString pybind_version();
+    static QString python_version();
+
 private:
     static Autoregister<PythonEngine> autoreg;
 };
