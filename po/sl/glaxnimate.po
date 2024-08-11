@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-10 01:53+0000\n"
-"PO-Revision-Date: 2023-12-24 12:38+0100\n"
-"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
+"PO-Revision-Date: 2024-08-10 06:39+0200\n"
+"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -372,7 +372,7 @@ msgstr "Shrani datoteko"
 #: src/android/document_opener.cpp:106
 #, kde-format
 msgid "Could not save the file"
-msgstr "Datoteke ni mogoče shraniti."
+msgstr "Datoteke ni bilo mogoče shraniti"
 
 #: src/android/document_opener.cpp:128
 #, kde-format
@@ -382,7 +382,7 @@ msgstr "Neznana vrsta datoteke"
 #: src/android/document_opener.cpp:154
 #, kde-format
 msgid "Could not unzip the file"
-msgstr "Datoteke ni mogoče razširiti."
+msgstr "Datoteke ni bilo mogoče razširiti"
 
 #: src/android/document_opener.cpp:193
 #, kde-format
@@ -940,29 +940,27 @@ msgstr "(c) 2019-2023"
 #: src/core/app_info.cpp:65
 #, kde-format
 msgid "Mattia \"Glax\" Basaglie"
-msgstr ""
+msgstr "Mattia \"Glax\" Basaglie"
 
 #: src/core/app_info.cpp:65
 #, kde-format
 msgid "Maintainer"
-msgstr ""
+msgstr "Vzdrževalec"
 
 #: src/core/app_info.cpp:67
-#, fuzzy, kde-format
-#| msgid "Potrace"
+#, kde-format
 msgid "potrace"
-msgstr "Potrace"
+msgstr "potrace"
 
 #: src/core/app_info.cpp:67
 #, kde-format
 msgid "Used by the bitmap tracing feature."
-msgstr ""
+msgstr "Uporablja ga zmožnost sledenja bitne slike."
 
 #: src/core/app_info.cpp:69
-#, fuzzy, kde-format
-#| msgid "Libav"
+#, kde-format
 msgid "libav"
-msgstr "Libav"
+msgstr "libav"
 
 #: src/core/app_info.cpp:70
 #, kde-format
@@ -972,27 +970,27 @@ msgstr "libarchive"
 #: src/core/app_info.cpp:71
 #, kde-format
 msgid "zlib"
-msgstr ""
+msgstr "zlib"
 
 #: src/core/app_info.cpp:73
 #, kde-format
 msgid "pybind11"
-msgstr ""
+msgstr "pybind11"
 
 #: src/core/app_info.cpp:73 src/core/app_info.cpp:74
 #, kde-format
 msgid "Used by the plugin system."
-msgstr ""
+msgstr "Uporablja ga sistem vtičnikov."
 
 #: src/core/app_info.cpp:74
 #, kde-format
 msgid "CPython"
-msgstr ""
+msgstr "CPython"
 
 #: src/core/app_info.cpp:76
 #, kde-format
 msgid "Inkscape"
-msgstr ""
+msgstr "Inkscape"
 
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
@@ -1519,7 +1517,7 @@ msgstr "Oblike zvezd niso uradno podprte"
 #: src/core/io/lottie/tgs_format.cpp:51 src/core/io/lottie/validation.cpp:71
 #, kde-format
 msgid "Images are not supported"
-msgstr "Slike niso podprte."
+msgstr "Slike niso podprte"
 
 #: src/core/io/lottie/tgs_format.cpp:56
 #, kde-format
@@ -1665,7 +1663,7 @@ msgstr "Nepodprta vrsta zapisa"
 #: src/core/io/rive/rive_format.cpp:34
 #, kde-format
 msgid "Could not read header"
-msgstr "Ni mogoče brati glave:"
+msgstr "Ni bilo mogoče brati glave"
 
 #: src/core/io/rive/rive_format.cpp:40
 #, kde-format
@@ -2777,31 +2775,27 @@ msgstr "Orodja"
 
 #. i18n: ectx: Menu (views_menu)
 #: src/gui/glaxnimateui.rc:66
-#, fuzzy, kde-format
-#| msgid "&Views"
+#, kde-format
 msgid "Views"
-msgstr "Po&gledi"
+msgstr "Pogledi"
 
 #. i18n: ectx: Menu (layout_menu)
 #: src/gui/glaxnimateui.rc:70
-#, fuzzy, kde-format
-#| msgid "&Layout"
+#, kde-format
 msgid "Layout"
-msgstr "Pos&tavitev"
+msgstr "Postavitev"
 
 #. i18n: ectx: Menu (document)
 #: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:444
-#, fuzzy, kde-format
-#| msgid "&Document"
+#, kde-format
 msgid "Document"
-msgstr "&Dokument"
+msgstr "Dokument"
 
 #. i18n: ectx: Menu (render_frame_menu)
 #: src/gui/glaxnimateui.rc:88
-#, fuzzy, kde-format
-#| msgid "Render Single &Frame"
+#, kde-format
 msgid "Render Single Frame"
-msgstr "Izriši posamezno &sličico"
+msgstr "Izriši posamezno sličico"
 
 #. i18n: ectx: Menu (web_preview_menu)
 #: src/gui/glaxnimateui.rc:93 src/gui/widgets/dialogs/gw_impl_document.cpp:514
@@ -2813,24 +2807,21 @@ msgstr "Spletni predogled"
 
 #. i18n: ectx: Menu (playback)
 #: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:488
-#, fuzzy, kde-format
-#| msgid "&Playback"
+#, kde-format
 msgid "Playback"
-msgstr "&Predvajanje"
+msgstr "Predvajanje"
 
 #. i18n: ectx: Menu (object)
 #: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:596
-#, fuzzy, kde-format
-#| msgid "&Object"
+#, kde-format
 msgid "Object"
-msgstr "&Predmet"
+msgstr "Predmet"
 
 #. i18n: ectx: Menu (align_menu)
 #: src/gui/glaxnimateui.rc:154
-#, fuzzy, kde-format
-#| msgid "&Align and Distribute"
+#, kde-format
 msgid "Align and Distribute"
-msgstr "Por&avnaj in razporedi"
+msgstr "Poravnaj in razporedi"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:205 src/gui/settings/plugin_settings_group.hpp:23
@@ -2846,17 +2837,15 @@ msgstr "Glavna orodna vrstica"
 
 #. i18n: ectx: ToolBar (toolsToolBar)
 #: src/gui/glaxnimateui.rc:242
-#, fuzzy, kde-format
-#| msgid "Toolbars"
+#, kde-format
 msgid "Tools Toolbar"
-msgstr "Orodne vrstice"
+msgstr "Orodna vrstica"
 
 #. i18n: ectx: ToolBar (nodeToolBar)
 #: src/gui/glaxnimateui.rc:258
-#, fuzzy, kde-format
-#| msgid "Toolbars"
+#, kde-format
 msgid "Node Toolbar"
-msgstr "Orodne vrstice"
+msgstr "Vrstica vozlišč"
 
 #: src/gui/graphics/bezier_item.cpp:239
 #, kde-format
@@ -3276,7 +3265,7 @@ msgstr "Nariši besedilo"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:140
 #, kde-format
 msgid "About Environment"
-msgstr ""
+msgstr "O okolju"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:30
@@ -3346,7 +3335,7 @@ msgstr "Končnice"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:266
 #, kde-format
 msgid "Output Formats "
-msgstr "Izhodni formati"
+msgstr "Izhodni formati "
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:21
@@ -3788,7 +3777,7 @@ msgstr "Sličice"
 #: src/gui/widgets/dialogs/startup_dialog.ui:135
 #, kde-format
 msgid "Seconds"
-msgstr "sekund"
+msgstr "Sekund"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:91
@@ -4095,10 +4084,9 @@ msgid "Remove text from path"
 msgstr "Odstrani besedilo s poti"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:119
-#, fuzzy, kde-format
-#| msgid "&Put on Path"
+#, kde-format
 msgid "Put on Path"
-msgstr "&Pripni na pot"
+msgstr "Pripni na pot"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:122
 #: src/gui/widgets/menus/node_menu.cpp:396
@@ -4107,35 +4095,30 @@ msgid "Remove from Path"
 msgstr "Odstrani s poti"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:136
-#, fuzzy, kde-format
-#| msgid "Information"
+#, kde-format
 msgid "Copy Debug Information"
-msgstr "Podatki"
+msgstr "Kopiraj podatke za razhroščevanje"
 
 #. i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:255
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File"
-msgstr "&Datoteka"
+msgstr "Datoteka"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:260
-#, fuzzy, kde-format
-#| msgid "Add &Image..."
+#, kde-format
 msgid "Add Image…"
-msgstr "Doda&j sliko …"
+msgstr "Dodaj sliko…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:263
-#, fuzzy, kde-format
-#| msgid "Import"
+#, kde-format
 msgid "Import…"
-msgstr "Uvozi"
+msgstr "Uvozi…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:266
-#, fuzzy, kde-format
-#| msgid "Import From LottieFiles"
+#, kde-format
 msgid "Import from LottieFiles…"
-msgstr "Uvozi iz LottieFiles"
+msgstr "Uvozi iz LottieFiles…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:269
 #, kde-format
@@ -4155,22 +4138,19 @@ msgid "Could not save template"
 msgstr "Shranjevanje predloge je spodletelo"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:312
-#, fuzzy, kde-format
-#| msgid "Export"
+#, kde-format
 msgid "Export…"
-msgstr "Izvozi"
+msgstr "Izvozi…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:315
-#, fuzzy, kde-format
-#| msgid "E&xport As..."
+#, kde-format
 msgid "Export As…"
-msgstr "I&zvozi kot …"
+msgstr "Izvozi kot…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:318
-#, fuzzy, kde-format
-#| msgid "Export as Image Sequence"
+#, kde-format
 msgid "Export as Image Sequence…"
-msgstr "Izvozi kot zaporedje slik"
+msgstr "Izvozi kot zaporedje slik…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:345
 #, kde-format
@@ -4188,10 +4168,9 @@ msgid "Duplicate"
 msgstr "Podvoji"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:399
-#, fuzzy, kde-format
-#| msgid "&View"
+#, kde-format
 msgid "View"
-msgstr "Po&gled"
+msgstr "Pogled"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:410
 #, kde-format
@@ -4232,21 +4211,19 @@ msgid "Flip View"
 msgstr "Zrcali pogled"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:446
-#, fuzzy, kde-format
-#| msgid "&Raster..."
+#, kde-format
 msgid "Raster…"
-msgstr "&Rasteriziraj …"
+msgstr "Rasteriziraj…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:448
 #, kde-format
 msgid "SVG…"
-msgstr ""
+msgstr "SVG…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:451
-#, fuzzy, kde-format
-#| msgid "&Lottie (SVG)"
+#, kde-format
 msgid "Lottie (SVG)"
-msgstr "&Lottie (SVG)"
+msgstr "Lottie (SVG)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:454
 #, kde-format
@@ -4254,10 +4231,9 @@ msgid "Lottie (canvas)"
 msgstr "Lottie (platno)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:457
-#, fuzzy, kde-format
-#| msgid "&SVG (SMIL)"
+#, kde-format
 msgid "SVG (SMIL)"
-msgstr "&SVG (SMIL)"
+msgstr "SVG (SMIL)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:460
 #, kde-format
@@ -4265,27 +4241,24 @@ msgid "RIVE (canvas)"
 msgstr "RIVE (platno)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:469
-#, fuzzy, kde-format
-#| msgid "Resize"
+#, kde-format
 msgid "Resize…"
-msgstr "Spremeni velikost"
+msgstr "Spremeni velikost…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:472
 #, kde-format
 msgid "Cleanup"
-msgstr "Čiščenje"
+msgstr "Počisti"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:475
-#, fuzzy, kde-format
-#| msgid "Timing"
+#, kde-format
 msgid "Timing…"
-msgstr "Časovna usklajenost"
+msgstr "Časovna usklajenost…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:480
-#, fuzzy, kde-format
-#| msgid "Metadata..."
+#, kde-format
 msgid "Metadata…"
-msgstr "Metapodatki …"
+msgstr "Metapodatki…"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:491
@@ -4303,34 +4276,29 @@ msgid "Loop"
 msgstr "Zankaj"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:495
-#, fuzzy, kde-format
-#| msgid "&Record Keyframes"
+#, kde-format
 msgid "Record Keyframes"
-msgstr "&Posnemi ključne sličice"
+msgstr "Posnemi ključne sličice"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
-#, fuzzy, kde-format
-#| msgid "Jump to &Start"
+#, kde-format
 msgid "Jump to Start"
-msgstr "Skoči na &začetek"
+msgstr "Skoči na začetek"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:499
-#, fuzzy, kde-format
-#| msgid "Jump to &End"
+#, kde-format
 msgid "Jump to End"
-msgstr "Skoči na &konec"
+msgstr "Skoči na konec"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:501
-#, fuzzy, kde-format
-#| msgid "&Next Frame"
+#, kde-format
 msgid "Next Frame"
-msgstr "&Naslednja sličica"
+msgstr "Naslednja sličica"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:503
-#, fuzzy, kde-format
-#| msgid "Pre&vious Frame"
+#, kde-format
 msgid "Previous Frame"
-msgstr "Prej&šnja sličica"
+msgstr "Prejšnja sličica"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:511
 #, kde-format
@@ -4338,46 +4306,39 @@ msgid "Pause"
 msgstr "Premor"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:566
-#, fuzzy, kde-format
-#| msgid "&Precompose Selection"
+#, kde-format
 msgid "Precompose Selection"
-msgstr "&Izbor predsestave"
+msgstr "Izbor predsestave"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:570
-#, fuzzy, kde-format
-#| msgid "New &Composition"
+#, kde-format
 msgid "New Composition"
-msgstr "Nova &sestava"
+msgstr "Nova sestava"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:585
-#, fuzzy, kde-format
-#| msgid "Emoji"
+#, kde-format
 msgid "Emoji…"
-msgstr "Emotikoni"
+msgstr "Emotikon…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:598
-#, fuzzy, kde-format
-#| msgid "Raise to &Top"
+#, kde-format
 msgid "Raise to Top"
-msgstr "Dvigni na &vrh"
+msgstr "Dvigni na vrh"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:607
-#, fuzzy, kde-format
-#| msgid "Lower to &Bottom"
+#, kde-format
 msgid "Lower to Bottom"
-msgstr "Spusti na &dno"
+msgstr "Spusti na dno"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:610
-#, fuzzy, kde-format
-#| msgid "Move to..."
+#, kde-format
 msgid "Move to…"
-msgstr "Premakni v …"
+msgstr "Premakni v…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:616
-#, fuzzy, kde-format
-#| msgid "&Ungroup"
+#, kde-format
 msgid "Ungroup"
-msgstr "&Razdruži"
+msgstr "Razdruži"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:619
 #: src/gui/widgets/docks/aligndock.cpp:46
@@ -4450,70 +4411,59 @@ msgid "Outside Bottom"
 msgstr "Zunaj spodaj"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:667
-#, fuzzy, kde-format
-#| msgid "Object to &Path"
+#, kde-format
 msgid "Object to Path"
-msgstr "Predmet v po&t"
+msgstr "Predmet v pot"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
-#, fuzzy, kde-format
-#| msgid "Trace Bitmap"
+#, kde-format
 msgid "Trace Bitmap…"
-msgstr "Preriši bitno sliko"
+msgstr "Sledi bitno sliko…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:675
-#, fuzzy, kde-format
-#| msgid "&Union"
+#, kde-format
 msgid "Union"
-msgstr "&Unija"
+msgstr "Unija"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:677
-#, fuzzy, kde-format
-#| msgid "&Difference"
+#, kde-format
 msgid "Difference"
-msgstr "&Razlika"
+msgstr "Razlika"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:679
-#, fuzzy, kde-format
-#| msgid "&Intersect"
+#, kde-format
 msgid "Intersect"
-msgstr "Pre&sekaj …"
+msgstr "Presek"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:681
-#, fuzzy, kde-format
-#| msgid "E&xclusion"
+#, kde-format
 msgid "Exclusion"
-msgstr "Iz&ključitev"
+msgstr "Izključitev"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:684
-#, fuzzy, kde-format
-#| msgid "Re&verse"
+#, kde-format
 msgid "Reverse"
-msgstr "&Obratno"
+msgstr "Obrat"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
-#, fuzzy, kde-format
-#| msgid "Add &Node..."
+#, kde-format
 msgid "Add Node…"
-msgstr "Dodaj &vozlišče …"
+msgstr "Dodaj vozlišče…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:690
-#, fuzzy, kde-format
-#| msgid "&Join Nodes"
+#, kde-format
 msgid "Join Nodes"
-msgstr "&Spoji vozlišča"
+msgstr "Spoji vozlišča"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
-#, fuzzy, kde-format
-#| msgid "S&plit Nodes"
+#, kde-format
 msgid "Split Nodes"
-msgstr "&Razdeli vozlišča"
+msgstr "Razdeli vozlišča"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:697
-#, fuzzy, kde-format
-#| msgid "Sy&mmetric"
+#, kde-format
 msgid "Symmetric"
-msgstr "Si&metrično"
+msgstr "Simetrično"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:698
 #, kde-format
@@ -5308,22 +5258,19 @@ msgstr "Znova naloži delčke"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_time_slider)
 #: src/gui/widgets/docks/time_slider.ui:22
-#, fuzzy, kde-format
-#| msgid "Compact Timelime"
+#, kde-format
 msgid "Compact Timeline"
 msgstr "Strni časovnico"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_timeline)
 #: src/gui/widgets/docks/timeline.ui:22
-#, fuzzy, kde-format
-#| msgid "Timeline"
+#, kde-format
 msgid "&Timeline"
 msgstr "Časovnica"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_tool_options)
 #: src/gui/widgets/docks/tooloptions.ui:22
-#, fuzzy, kde-format
-#| msgid "Tool Options"
+#, kde-format
 msgid "&Tool Options"
 msgstr "Možnosti orodja"
 

@@ -1,22 +1,22 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the glaxnimate package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2023.
+# Yuri Chornoivan <yurchor@ukr.net>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-10 01:53+0000\n"
-"PO-Revision-Date: 2023-12-18 12:31+0200\n"
+"PO-Revision-Date: 2024-08-10 08:56+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
+"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -938,29 +938,27 @@ msgstr "© 2019-2023"
 #: src/core/app_info.cpp:65
 #, kde-format
 msgid "Mattia \"Glax\" Basaglie"
-msgstr ""
+msgstr "Mattia \"Glax\" Basaglie"
 
 #: src/core/app_info.cpp:65
 #, kde-format
 msgid "Maintainer"
-msgstr ""
+msgstr "Супровідник"
 
 #: src/core/app_info.cpp:67
-#, fuzzy, kde-format
-#| msgid "Potrace"
+#, kde-format
 msgid "potrace"
-msgstr "Potrace"
+msgstr "potrace"
 
 #: src/core/app_info.cpp:67
 #, kde-format
 msgid "Used by the bitmap tracing feature."
-msgstr ""
+msgstr "Використано для реалізації можливості трасування растрових зображень."
 
 #: src/core/app_info.cpp:69
-#, fuzzy, kde-format
-#| msgid "Libav"
+#, kde-format
 msgid "libav"
-msgstr "Libav"
+msgstr "libav"
 
 #: src/core/app_info.cpp:70
 #, kde-format
@@ -970,27 +968,27 @@ msgstr "libarchive"
 #: src/core/app_info.cpp:71
 #, kde-format
 msgid "zlib"
-msgstr ""
+msgstr "zlib"
 
 #: src/core/app_info.cpp:73
 #, kde-format
 msgid "pybind11"
-msgstr ""
+msgstr "pybind11"
 
 #: src/core/app_info.cpp:73 src/core/app_info.cpp:74
 #, kde-format
 msgid "Used by the plugin system."
-msgstr ""
+msgstr "Використано у системі додатків."
 
 #: src/core/app_info.cpp:74
 #, kde-format
 msgid "CPython"
-msgstr ""
+msgstr "CPython"
 
 #: src/core/app_info.cpp:76
 #, kde-format
 msgid "Inkscape"
-msgstr ""
+msgstr "Inkscape"
 
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
@@ -2794,31 +2792,27 @@ msgstr "Інструменти"
 
 #. i18n: ectx: Menu (views_menu)
 #: src/gui/glaxnimateui.rc:66
-#, fuzzy, kde-format
-#| msgid "&Views"
+#, kde-format
 msgid "Views"
-msgstr "П&ерегляди"
+msgstr "Перегляди"
 
 #. i18n: ectx: Menu (layout_menu)
 #: src/gui/glaxnimateui.rc:70
-#, fuzzy, kde-format
-#| msgid "&Layout"
+#, kde-format
 msgid "Layout"
-msgstr "К&омпонування"
+msgstr "Компонування"
 
 #. i18n: ectx: Menu (document)
 #: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:444
-#, fuzzy, kde-format
-#| msgid "&Document"
+#, kde-format
 msgid "Document"
-msgstr "До&кумент"
+msgstr "Документ"
 
 #. i18n: ectx: Menu (render_frame_menu)
 #: src/gui/glaxnimateui.rc:88
-#, fuzzy, kde-format
-#| msgid "Render Single &Frame"
+#, kde-format
 msgid "Render Single Frame"
-msgstr "Обробити один &кадр"
+msgstr "Обробити один кадр"
 
 #. i18n: ectx: Menu (web_preview_menu)
 #: src/gui/glaxnimateui.rc:93 src/gui/widgets/dialogs/gw_impl_document.cpp:514
@@ -2830,24 +2824,21 @@ msgstr "Інтернет-перегляд"
 
 #. i18n: ectx: Menu (playback)
 #: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:488
-#, fuzzy, kde-format
-#| msgid "&Playback"
+#, kde-format
 msgid "Playback"
-msgstr "Від&творення"
+msgstr "Відтворення"
 
 #. i18n: ectx: Menu (object)
 #: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:596
-#, fuzzy, kde-format
-#| msgid "&Object"
+#, kde-format
 msgid "Object"
-msgstr "&Об'єкт"
+msgstr "Об'єкт"
 
 #. i18n: ectx: Menu (align_menu)
 #: src/gui/glaxnimateui.rc:154
-#, fuzzy, kde-format
-#| msgid "&Align and Distribute"
+#, kde-format
 msgid "Align and Distribute"
-msgstr "Ви&рівняти і розподілити"
+msgstr "Вирівняти і розподілити"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:205 src/gui/settings/plugin_settings_group.hpp:23
@@ -2863,17 +2854,15 @@ msgstr "Головна панель"
 
 #. i18n: ectx: ToolBar (toolsToolBar)
 #: src/gui/glaxnimateui.rc:242
-#, fuzzy, kde-format
-#| msgid "Toolbars"
+#, kde-format
 msgid "Tools Toolbar"
-msgstr "Панелі інструментів"
+msgstr "Панель інструментів"
 
 #. i18n: ectx: ToolBar (nodeToolBar)
 #: src/gui/glaxnimateui.rc:258
-#, fuzzy, kde-format
-#| msgid "Toolbars"
+#, kde-format
 msgid "Node Toolbar"
-msgstr "Панелі інструментів"
+msgstr "Панель інструментів вузла"
 
 #: src/gui/graphics/bezier_item.cpp:239
 #, kde-format
@@ -3293,7 +3282,7 @@ msgstr "Додати текст"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:140
 #, kde-format
 msgid "About Environment"
-msgstr ""
+msgstr "Про середовище"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:30
@@ -4118,10 +4107,9 @@ msgid "Remove text from path"
 msgstr "Зняти текст з контуру"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:119
-#, fuzzy, kde-format
-#| msgid "&Put on Path"
+#, kde-format
 msgid "Put on Path"
-msgstr "Роз&містити за контуром"
+msgstr "Розмістити по контуру"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:122
 #: src/gui/widgets/menus/node_menu.cpp:396
@@ -4130,35 +4118,30 @@ msgid "Remove from Path"
 msgstr "Зняти текст з контуру"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:136
-#, fuzzy, kde-format
-#| msgid "Information"
+#, kde-format
 msgid "Copy Debug Information"
-msgstr "Інформація"
+msgstr "Копіювати діагностичні дані"
 
 #. i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:255
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File"
-msgstr "&Файл"
+msgstr "Файл"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:260
-#, fuzzy, kde-format
-#| msgid "Add &Image..."
+#, kde-format
 msgid "Add Image…"
-msgstr "Додати зо&браження…"
+msgstr "Додати зображення…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:263
-#, fuzzy, kde-format
-#| msgid "Import"
+#, kde-format
 msgid "Import…"
-msgstr "Імпортувати"
+msgstr "Імпортувати…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:266
-#, fuzzy, kde-format
-#| msgid "Import From LottieFiles"
+#, kde-format
 msgid "Import from LottieFiles…"
-msgstr "Імпортувати з LottieFiles"
+msgstr "Імпортувати з LottieFiles…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:269
 #, kde-format
@@ -4178,22 +4161,19 @@ msgid "Could not save template"
 msgstr "Не вдалося зберегти шаблон"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:312
-#, fuzzy, kde-format
-#| msgid "Export"
+#, kde-format
 msgid "Export…"
-msgstr "Експортувати"
+msgstr "Експортувати…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:315
-#, fuzzy, kde-format
-#| msgid "E&xport As..."
+#, kde-format
 msgid "Export As…"
-msgstr "&Експортувати як…"
+msgstr "Експортувати як…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:318
-#, fuzzy, kde-format
-#| msgid "Export as Image Sequence"
+#, kde-format
 msgid "Export as Image Sequence…"
-msgstr "Експортувати як послідовність зображень"
+msgstr "Експортувати як послідовність зображень…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:345
 #, kde-format
@@ -4211,10 +4191,9 @@ msgid "Duplicate"
 msgstr "Дублювати"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:399
-#, fuzzy, kde-format
-#| msgid "&View"
+#, kde-format
 msgid "View"
-msgstr "П&ерегляд"
+msgstr "Перегляд"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:410
 #, kde-format
@@ -4255,21 +4234,19 @@ msgid "Flip View"
 msgstr "Перевернути перегляд"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:446
-#, fuzzy, kde-format
-#| msgid "&Raster..."
+#, kde-format
 msgid "Raster…"
-msgstr "&Растр…"
+msgstr "Растр…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:448
 #, kde-format
 msgid "SVG…"
-msgstr ""
+msgstr "SVG…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:451
-#, fuzzy, kde-format
-#| msgid "&Lottie (SVG)"
+#, kde-format
 msgid "Lottie (SVG)"
-msgstr "&Lottie (SVG)"
+msgstr "Lottie (SVG)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:454
 #, kde-format
@@ -4277,10 +4254,9 @@ msgid "Lottie (canvas)"
 msgstr "Lottie (полотно)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:457
-#, fuzzy, kde-format
-#| msgid "&SVG (SMIL)"
+#, kde-format
 msgid "SVG (SMIL)"
-msgstr "&SVG (SMIL)"
+msgstr "SVG (SMIL)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:460
 #, kde-format
@@ -4288,10 +4264,9 @@ msgid "RIVE (canvas)"
 msgstr "RIVE (полотно)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:469
-#, fuzzy, kde-format
-#| msgid "Resize"
+#, kde-format
 msgid "Resize…"
-msgstr "Змінити розмір"
+msgstr "Змінити розмір…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:472
 #, kde-format
@@ -4299,14 +4274,12 @@ msgid "Cleanup"
 msgstr "Очищення"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:475
-#, fuzzy, kde-format
-#| msgid "Timing"
+#, kde-format
 msgid "Timing…"
-msgstr "Час"
+msgstr "Час…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:480
-#, fuzzy, kde-format
-#| msgid "Metadata..."
+#, kde-format
 msgid "Metadata…"
 msgstr "Метадані…"
 
@@ -4326,34 +4299,29 @@ msgid "Loop"
 msgstr "Цикл"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:495
-#, fuzzy, kde-format
-#| msgid "&Record Keyframes"
+#, kde-format
 msgid "Record Keyframes"
-msgstr "За&писати ключові кадри"
+msgstr "Записати ключові кадри"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
-#, fuzzy, kde-format
-#| msgid "Jump to &Start"
+#, kde-format
 msgid "Jump to Start"
-msgstr "Перейти до по&чатку"
+msgstr "Перейти до початку"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:499
-#, fuzzy, kde-format
-#| msgid "Jump to &End"
+#, kde-format
 msgid "Jump to End"
-msgstr "Перейти до &кінця"
+msgstr "Перейти до кінця"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:501
-#, fuzzy, kde-format
-#| msgid "&Next Frame"
+#, kde-format
 msgid "Next Frame"
-msgstr "&Наступний кадр"
+msgstr "Наступний кадр"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:503
-#, fuzzy, kde-format
-#| msgid "Pre&vious Frame"
+#, kde-format
 msgid "Previous Frame"
-msgstr "&Попередній кадр"
+msgstr "Попередній кадр"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:511
 #, kde-format
@@ -4361,46 +4329,39 @@ msgid "Pause"
 msgstr "Пауза"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:566
-#, fuzzy, kde-format
-#| msgid "&Precompose Selection"
+#, kde-format
 msgid "Precompose Selection"
-msgstr "Поп&ередньо скомпонувати позначене"
+msgstr "Попередньо скомпонувати позначене"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:570
-#, fuzzy, kde-format
-#| msgid "New &Composition"
+#, kde-format
 msgid "New Composition"
-msgstr "Створити &композицію"
+msgstr "Створити композицію"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:585
-#, fuzzy, kde-format
-#| msgid "Emoji"
+#, kde-format
 msgid "Emoji…"
-msgstr "Емоційка"
+msgstr "Емоційка…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:598
-#, fuzzy, kde-format
-#| msgid "Raise to &Top"
+#, kde-format
 msgid "Raise to Top"
-msgstr "Під&няти на передній план"
+msgstr "Підняти на передній план"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:607
-#, fuzzy, kde-format
-#| msgid "Lower to &Bottom"
+#, kde-format
 msgid "Lower to Bottom"
-msgstr "Опустити на задні&й план"
+msgstr "Опустити на задній план"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:610
-#, fuzzy, kde-format
-#| msgid "Move to..."
+#, kde-format
 msgid "Move to…"
-msgstr "Пересунути до…"
+msgstr "Перемістити до…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:616
-#, fuzzy, kde-format
-#| msgid "&Ungroup"
+#, kde-format
 msgid "Ungroup"
-msgstr "&Розгрупувати"
+msgstr "Розгрупувати"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:619
 #: src/gui/widgets/docks/aligndock.cpp:46
@@ -4473,70 +4434,59 @@ msgid "Outside Bottom"
 msgstr "Ззовні внизу"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:667
-#, fuzzy, kde-format
-#| msgid "Object to &Path"
+#, kde-format
 msgid "Object to Path"
-msgstr "Об'&єкт у контур"
+msgstr "Об'єкт у контур"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
-#, fuzzy, kde-format
-#| msgid "Trace Bitmap"
+#, kde-format
 msgid "Trace Bitmap…"
-msgstr "Векторизація растрового зображення"
+msgstr "Векторизація растрового зображення…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:675
-#, fuzzy, kde-format
-#| msgid "&Union"
+#, kde-format
 msgid "Union"
-msgstr "&Об'єднання"
+msgstr "Об'єднання"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:677
-#, fuzzy, kde-format
-#| msgid "&Difference"
+#, kde-format
 msgid "Difference"
-msgstr "&Різниця"
+msgstr "Різниця"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:679
-#, fuzzy, kde-format
-#| msgid "&Intersect"
+#, kde-format
 msgid "Intersect"
-msgstr "П&еретин"
+msgstr "Перетин"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:681
-#, fuzzy, kde-format
-#| msgid "E&xclusion"
+#, kde-format
 msgid "Exclusion"
-msgstr "Викл&ючення"
+msgstr "Виключення"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:684
-#, fuzzy, kde-format
-#| msgid "Re&verse"
+#, kde-format
 msgid "Reverse"
-msgstr "Обер&нути"
+msgstr "Обернути"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
-#, fuzzy, kde-format
-#| msgid "Add &Node..."
+#, kde-format
 msgid "Add Node…"
-msgstr "&Додати вузол…"
+msgstr "Додати вузол…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:690
-#, fuzzy, kde-format
-#| msgid "&Join Nodes"
+#, kde-format
 msgid "Join Nodes"
-msgstr "З'&єднати вузли"
+msgstr "З'єднати вузли"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
-#, fuzzy, kde-format
-#| msgid "S&plit Nodes"
+#, kde-format
 msgid "Split Nodes"
-msgstr "Р&озділити вузли"
+msgstr "Розділити вузли"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:697
-#, fuzzy, kde-format
-#| msgid "Sy&mmetric"
+#, kde-format
 msgid "Symmetric"
-msgstr "Си&метричний"
+msgstr "Симетрично"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:698
 #, kde-format
@@ -5333,24 +5283,21 @@ msgstr "Перезавантажити фрагменти"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_time_slider)
 #: src/gui/widgets/docks/time_slider.ui:22
-#, fuzzy, kde-format
-#| msgid "Compact Timelime"
+#, kde-format
 msgid "Compact Timeline"
 msgstr "Компактний монтажний стіл"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_timeline)
 #: src/gui/widgets/docks/timeline.ui:22
-#, fuzzy, kde-format
-#| msgid "Timeline"
+#, kde-format
 msgid "&Timeline"
-msgstr "Монтажний стіл"
+msgstr "&Монтажний стіл"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_tool_options)
 #: src/gui/widgets/docks/tooloptions.ui:22
-#, fuzzy, kde-format
-#| msgid "Tool Options"
+#, kde-format
 msgid "&Tool Options"
-msgstr "Параметри інструмента"
+msgstr "П&араметри інструмента"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_undo)
 #: src/gui/widgets/docks/undo.ui:22

@@ -922,10 +922,9 @@ msgid "Maintainer"
 msgstr ""
 
 #: src/core/app_info.cpp:67
-#, fuzzy, kde-format
-#| msgid "Potrace"
+#, kde-format
 msgid "potrace"
-msgstr "Potrace"
+msgstr ""
 
 #: src/core/app_info.cpp:67
 #, kde-format
@@ -933,10 +932,9 @@ msgid "Used by the bitmap tracing feature."
 msgstr ""
 
 #: src/core/app_info.cpp:69
-#, fuzzy, kde-format
-#| msgid "Libav"
+#, kde-format
 msgid "libav"
-msgstr "Libav"
+msgstr ""
 
 #: src/core/app_info.cpp:70
 #, kde-format
@@ -2730,10 +2728,9 @@ msgstr ""
 
 #. i18n: ectx: Menu (views_menu)
 #: src/gui/glaxnimateui.rc:66
-#, fuzzy, kde-format
-#| msgid "&Views"
+#, kde-format
 msgid "Views"
-msgstr "&视图"
+msgstr ""
 
 #. i18n: ectx: Menu (layout_menu)
 #: src/gui/glaxnimateui.rc:70
@@ -2743,17 +2740,15 @@ msgstr ""
 
 #. i18n: ectx: Menu (document)
 #: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:444
-#, fuzzy, kde-format
-#| msgid "&Document"
+#, kde-format
 msgid "Document"
-msgstr "&动画"
+msgstr ""
 
 #. i18n: ectx: Menu (render_frame_menu)
 #: src/gui/glaxnimateui.rc:88
-#, fuzzy, kde-format
-#| msgid "Render Frame"
+#, kde-format
 msgid "Render Single Frame"
-msgstr "渲染帧"
+msgstr ""
 
 #. i18n: ectx: Menu (web_preview_menu)
 #: src/gui/glaxnimateui.rc:93 src/gui/widgets/dialogs/gw_impl_document.cpp:514
@@ -2765,24 +2760,21 @@ msgstr ""
 
 #. i18n: ectx: Menu (playback)
 #: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:488
-#, fuzzy, kde-format
-#| msgid "&Playback"
+#, kde-format
 msgid "Playback"
-msgstr "&预览"
+msgstr ""
 
 #. i18n: ectx: Menu (object)
 #: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:596
-#, fuzzy, kde-format
-#| msgid "&Object"
+#, kde-format
 msgid "Object"
-msgstr "对象"
+msgstr ""
 
 #. i18n: ectx: Menu (align_menu)
 #: src/gui/glaxnimateui.rc:154
-#, fuzzy, kde-format
-#| msgid "&Align and Distribute"
+#, kde-format
 msgid "Align and Distribute"
-msgstr "&对齐与分布"
+msgstr ""
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:205 src/gui/settings/plugin_settings_group.hpp:23
@@ -2798,17 +2790,15 @@ msgstr "主工具栏"
 
 #. i18n: ectx: ToolBar (toolsToolBar)
 #: src/gui/glaxnimateui.rc:242
-#, fuzzy, kde-format
-#| msgid "Toolbars"
+#, kde-format
 msgid "Tools Toolbar"
-msgstr "工具栏"
+msgstr ""
 
 #. i18n: ectx: ToolBar (nodeToolBar)
 #: src/gui/glaxnimateui.rc:258
-#, fuzzy, kde-format
-#| msgid "Toolbars"
+#, kde-format
 msgid "Node Toolbar"
-msgstr "工具栏"
+msgstr ""
 
 #: src/gui/graphics/bezier_item.cpp:239
 #, kde-format
@@ -3963,10 +3953,9 @@ msgid "Remove text from path"
 msgstr "从路径中删除文本"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:119
-#, fuzzy, kde-format
-#| msgid "&Put on Path"
+#, kde-format
 msgid "Put on Path"
-msgstr "&跟随路径"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:122
 #: src/gui/widgets/menus/node_menu.cpp:396
@@ -3975,29 +3964,25 @@ msgid "Remove from Path"
 msgstr "删除文本路径"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:136
-#, fuzzy, kde-format
-#| msgid "Information"
+#, kde-format
 msgid "Copy Debug Information"
-msgstr "信息"
+msgstr ""
 
 #. i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:255
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File"
-msgstr "文件"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:260
-#, fuzzy, kde-format
-#| msgid "Add &Image..."
+#, kde-format
 msgid "Add Image…"
-msgstr "添加图片"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:263
-#, fuzzy, kde-format
-#| msgid "&Import..."
+#, kde-format
 msgid "Import…"
-msgstr "&导入..."
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:266
 #, kde-format
@@ -4022,16 +4007,14 @@ msgid "Could not save template"
 msgstr "不能保存模板"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:312
-#, fuzzy, kde-format
-#| msgid "Export..."
+#, kde-format
 msgid "Export…"
-msgstr "导出..."
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:315
-#, fuzzy, kde-format
-#| msgid "E&xport As..."
+#, kde-format
 msgid "Export As…"
-msgstr "导出为..."
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:318
 #, kde-format
@@ -4054,10 +4037,9 @@ msgid "Duplicate"
 msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:399
-#, fuzzy, kde-format
-#| msgid "&View"
+#, kde-format
 msgid "View"
-msgstr "视图"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:410
 #, kde-format
@@ -4098,10 +4080,9 @@ msgid "Flip View"
 msgstr "翻转视图"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:446
-#, fuzzy, kde-format
-#| msgid "&Raster..."
+#, kde-format
 msgid "Raster…"
-msgstr "&位图..."
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:448
 #, kde-format
@@ -4109,10 +4090,9 @@ msgid "SVG…"
 msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:451
-#, fuzzy, kde-format
-#| msgid "&Lottie (SVG)"
+#, kde-format
 msgid "Lottie (SVG)"
-msgstr "Lottie(SVG)"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:454
 #, kde-format
@@ -4120,10 +4100,9 @@ msgid "Lottie (canvas)"
 msgstr "Lottie(画布)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:457
-#, fuzzy, kde-format
-#| msgid "&SVG (SMIL)"
+#, kde-format
 msgid "SVG (SMIL)"
-msgstr "&SVG (SMIL)"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:460
 #, kde-format
@@ -4131,10 +4110,9 @@ msgid "RIVE (canvas)"
 msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:469
-#, fuzzy, kde-format
-#| msgid "Resize"
+#, kde-format
 msgid "Resize…"
-msgstr "调整"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:472
 #, kde-format
@@ -4142,16 +4120,14 @@ msgid "Cleanup"
 msgstr "清理"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:475
-#, fuzzy, kde-format
-#| msgid "Timing..."
+#, kde-format
 msgid "Timing…"
-msgstr "持续时间"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:480
-#, fuzzy, kde-format
-#| msgid "Metadata..."
+#, kde-format
 msgid "Metadata…"
-msgstr "元数据..."
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:491
@@ -4169,34 +4145,29 @@ msgid "Loop"
 msgstr "循环"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:495
-#, fuzzy, kde-format
-#| msgid "&Record Keyframes"
+#, kde-format
 msgid "Record Keyframes"
-msgstr "记录关键帧"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
-#, fuzzy, kde-format
-#| msgid "Jump to &Start"
+#, kde-format
 msgid "Jump to Start"
-msgstr "跳转到开始"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:499
-#, fuzzy, kde-format
-#| msgid "Jump to &End"
+#, kde-format
 msgid "Jump to End"
-msgstr "跳转到结束"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:501
-#, fuzzy, kde-format
-#| msgid "&Next Frame"
+#, kde-format
 msgid "Next Frame"
-msgstr "下一帧"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:503
-#, fuzzy, kde-format
-#| msgid "Pre&vious Frame"
+#, kde-format
 msgid "Previous Frame"
-msgstr "前一帧(&V)"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:511
 #, kde-format
@@ -4204,46 +4175,39 @@ msgid "Pause"
 msgstr "暂停"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:566
-#, fuzzy, kde-format
-#| msgid "&Precompose Selection"
+#, kde-format
 msgid "Precompose Selection"
-msgstr "选择预合成"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:570
-#, fuzzy, kde-format
-#| msgid "New &Composition"
+#, kde-format
 msgid "New Composition"
-msgstr "新建预合成"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:585
-#, fuzzy, kde-format
-#| msgid "Emoji"
+#, kde-format
 msgid "Emoji…"
-msgstr "Emoji"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:598
-#, fuzzy, kde-format
-#| msgid "Raise to &Top"
+#, kde-format
 msgid "Raise to Top"
-msgstr "移到最上层"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:607
-#, fuzzy, kde-format
-#| msgid "Lower to &Bottom"
+#, kde-format
 msgid "Lower to Bottom"
-msgstr "移到底层"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:610
-#, fuzzy, kde-format
-#| msgid "&Move to..."
+#, kde-format
 msgid "Move to…"
-msgstr "&移动到"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:616
-#, fuzzy, kde-format
-#| msgid "&Ungroup"
+#, kde-format
 msgid "Ungroup"
-msgstr "解除编组"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:619
 #: src/gui/widgets/docks/aligndock.cpp:46
@@ -4316,10 +4280,9 @@ msgid "Outside Bottom"
 msgstr "Outside Bottom"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:667
-#, fuzzy, kde-format
-#| msgid "Object to &Path"
+#, kde-format
 msgid "Object to Path"
-msgstr "将对象转换为路径"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
 #, kde-format
@@ -4327,58 +4290,49 @@ msgid "Trace Bitmap…"
 msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:675
-#, fuzzy, kde-format
-#| msgid "&Union"
+#, kde-format
 msgid "Union"
-msgstr "联集"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:677
-#, fuzzy, kde-format
-#| msgid "&Difference"
+#, kde-format
 msgid "Difference"
-msgstr "减去顶层"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:679
-#, fuzzy, kde-format
-#| msgid "&Intersect"
+#, kde-format
 msgid "Intersect"
-msgstr "相交"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:681
-#, fuzzy, kde-format
-#| msgid "E&xclusion"
+#, kde-format
 msgid "Exclusion"
-msgstr "差集"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:684
-#, fuzzy, kde-format
-#| msgid "Re&verse"
+#, kde-format
 msgid "Reverse"
-msgstr "反向(&V)"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
-#, fuzzy, kde-format
-#| msgid "Add &Node..."
+#, kde-format
 msgid "Add Node…"
-msgstr "添加锚点"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:690
-#, fuzzy, kde-format
-#| msgid "&Join Nodes"
+#, kde-format
 msgid "Join Nodes"
-msgstr "加入锚点"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
-#, fuzzy, kde-format
-#| msgid "S&plit Nodes"
+#, kde-format
 msgid "Split Nodes"
-msgstr "分离锚点"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:697
-#, fuzzy, kde-format
-#| msgid "Sy&mmetric"
+#, kde-format
 msgid "Symmetric"
-msgstr "对称锚点"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:698
 #, kde-format
@@ -5117,10 +5071,9 @@ msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_tool_options)
 #: src/gui/widgets/docks/tooloptions.ui:22
-#, fuzzy, kde-format
-#| msgid "Tool Options"
+#, kde-format
 msgid "&Tool Options"
-msgstr "工具选项"
+msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_undo)
 #: src/gui/widgets/docks/undo.ui:22
@@ -6364,252 +6317,3 @@ msgstr "角度"
 #, kde-format
 msgid "°"
 msgstr "°"
-
-#~ msgid "F7"
-#~ msgstr "F7"
-
-#~ msgid "F8"
-#~ msgstr "F8"
-
-#~ msgid "About"
-#~ msgstr "关于"
-
-#~ msgid "Credits"
-#~ msgstr "学分"
-
-#~ msgid "Kernel"
-#~ msgstr "内核"
-
-#~ msgid "CPU"
-#~ msgstr "CPU"
-
-#~ msgid "Application Qt"
-#~ msgstr "Qt应用"
-
-#~ msgid "System Qt"
-#~ msgstr "系统Qt"
-
-#~ msgid "About Qt"
-#~ msgstr "关于Qt"
-
-#~ msgid "Open &Recent"
-#~ msgstr "打开最近用过的文件"
-
-#~ msgid "&Tools"
-#~ msgstr "工具"
-
-#~ msgid "&Layers"
-#~ msgstr "图层"
-
-#~ msgid "&New"
-#~ msgstr "新建"
-
-#~ msgid "&Composition"
-#~ msgstr "&预合成"
-
-#~ msgid "&Path"
-#~ msgstr "路径"
-
-#~ msgid "&Edit"
-#~ msgstr "编辑"
-
-#~ msgid "Tool&bars"
-#~ msgstr "工具栏(&B)"
-
-#~ msgid "&Help"
-#~ msgstr "帮助"
-
-#~ msgid "Plu&gins"
-#~ msgstr "插件"
-
-#~ msgid "&Text"
-#~ msgstr "文本"
-
-#~ msgid "Node Editing"
-#~ msgstr "锚点编辑"
-
-#~ msgid "&Open..."
-#~ msgstr "打开"
-
-#~ msgid "&Save"
-#~ msgstr "保存"
-
-#~ msgid "Save &As..."
-#~ msgstr "另存为..."
-
-#~ msgid "&Close"
-#~ msgstr "关闭(&C)"
-
-#~ msgid "&Quit"
-#~ msgstr "退出"
-
-#~ msgid "&Select"
-#~ msgstr "选择"
-
-#~ msgid "&Draw Bezier"
-#~ msgstr "贝塞尔曲线"
-
-#~ msgid "Draw &Freehand"
-#~ msgstr "自由绘制"
-
-#~ msgid "&Rectangle"
-#~ msgstr "矩形"
-
-#~ msgid "&Ellipse"
-#~ msgstr "椭圆"
-
-#~ msgid "S&tar"
-#~ msgstr "星形"
-
-#~ msgid "&Empty Layer"
-#~ msgstr "空图层"
-
-#~ msgid "&Group"
-#~ msgstr "编组(&G)"
-
-#~ msgid "&Precomposition Layer"
-#~ msgstr "预合成图层"
-
-#~ msgid "&Delete Nodes"
-#~ msgstr "删除锚点"
-
-#~ msgid "&Cusp"
-#~ msgstr "&尖锐锚点"
-
-#~ msgid "&Smooth"
-#~ msgstr "平滑锚点"
-
-#~ msgid "&Copy"
-#~ msgstr "复制"
-
-#~ msgid "Cu&t"
-#~ msgstr "剪切"
-
-#~ msgid "&Paste"
-#~ msgstr "粘贴(&P)"
-
-#~ msgid "&Select All"
-#~ msgstr "选择所有"
-
-#~ msgid "Home"
-#~ msgstr "Home"
-
-#~ msgid "&Raise"
-#~ msgstr "上移一层"
-
-#~ msgid "PgUp"
-#~ msgstr "PgUp"
-
-#~ msgid "&Lower"
-#~ msgstr "下移一层"
-
-#~ msgid "PgDown"
-#~ msgstr "PgDown"
-
-#~ msgid "Re&load"
-#~ msgstr "重新加载"
-
-#~ msgid "&Fit Animation"
-#~ msgstr "&适应工作区"
-
-#~ msgid "Re&set View"
-#~ msgstr "重置视图"
-
-#~ msgid "&Reset Rotation"
-#~ msgstr "重置旋转"
-
-#~ msgid "Zoom &In"
-#~ msgstr "放大"
-
-#~ msgid "Zoom &Out"
-#~ msgstr "缩小"
-
-#~ msgid "Reset &Zoom"
-#~ msgstr "重置放大"
-
-#~ msgid "Pr&eferences..."
-#~ msgstr "首选项…"
-
-#~ msgid "About..."
-#~ msgstr "关于..."
-
-#~ msgid "Solid &Color Layer"
-#~ msgstr "纯色图层"
-
-#~ msgid "S&VG..."
-#~ msgstr "S&VG..."
-
-#~ msgid "Online &Manual..."
-#~ msgstr "用户手册"
-
-#~ msgid "Report &Issue..."
-#~ msgstr "报告问题"
-
-#~ msgid "Validate &Telegram Sticker"
-#~ msgstr "验证Telegram贴纸"
-
-#~ msgid "Re&size..."
-#~ msgstr "调整画布大小"
-
-#~ msgid "Donate..."
-#~ msgstr "支援Glaxnimate"
-
-#~ msgid "&Fill"
-#~ msgstr "填充"
-
-#~ msgid "&Stroke"
-#~ msgstr "描边"
-
-#~ msgid "&Layer"
-#~ msgstr "图层(&L)"
-
-#~ msgid "&Delete"
-#~ msgstr "删除"
-
-#~ msgid "&Export..."
-#~ msgstr "&导出..."
-
-#~ msgid "Remove unused assets"
-#~ msgstr "删除未使用的资产"
-
-#~ msgid "&Play"
-#~ msgstr "&播放"
-
-#~ msgid "&Loop"
-#~ msgstr "循环"
-
-#~ msgid "Relative To"
-#~ msgstr "Relative To"
-
-#~ msgid "Horizontal"
-#~ msgstr "水平"
-
-#~ msgid "Vertical"
-#~ msgstr "垂直"
-
-#~ msgid "F&lip View"
-#~ msgstr "翻转视图"
-
-#~ msgid "&Remove from Path"
-#~ msgstr "从路径中删除"
-
-#~ msgid "Emo&ji..."
-#~ msgstr "Emo&ji..."
-
-#~ msgid "Icon"
-#~ msgstr "图标"
-
-#~ msgid "Text beside Icon"
-#~ msgstr "图标旁边的文字"
-
-#~ msgid "Text under Icon"
-#~ msgstr "图标下的文字"
-
-#~ msgid "Tool Icon Size"
-#~ msgstr "工具图标大小"
-
-#~ msgid "Icon Size"
-#~ msgstr "图标大小"
-
-#~ msgid "Button Style"
-#~ msgstr "按钮样式"
