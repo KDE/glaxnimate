@@ -165,6 +165,7 @@ public:
 
     QList<QAction*> new_comp_actions;
     QList<QAction*> plugin_actions;
+    KActionCategory* plugin_category;
 
     std::unique_ptr<model::Document> current_document;
 

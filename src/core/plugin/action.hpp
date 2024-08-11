@@ -25,6 +25,7 @@ public:
     }
 
     QAction* make_qaction(ActionService* action);
+    QString qaction_name(ActionService* action);
 
     void add_action(ActionService* action);
     void remove_action(ActionService* action);

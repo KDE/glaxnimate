@@ -39,7 +39,6 @@
 #include <KStyleManager>
 #endif
 
-
 #include "glaxnimate_settings.hpp"
 
 #include "tools/base.hpp"
@@ -1479,10 +1478,14 @@ void GlaxnimateWindow::Private::trace_dialog(model::DocumentNode* object)
 
 void GlaxnimateWindow::Private::init_plugins()
 {
+    plugin_category = new KActionCategory(i18n("Plugins"), parent->actionCollection());
+
     auto& par = plugin::PluginActionRegistry::instance();
     for ( auto act : par.enabled() )
     {
-        plugin_actions.append(par.make_qaction(act));
+        QAction* qaction = par.make_qaction(act);
+        plugin_actions.append(qaction);
+        plugin_category->addAction(qaction->objectName(), qaction);
     }
 
     parent->unplugActionList("plugins_actionlist");
@@ -1500,17 +1503,25 @@ void GlaxnimateWindow::Private::init_plugins()
         }
         QAction* qaction = plugin::PluginActionRegistry::instance().make_qaction(action);
         plugin_actions.insert(qMax(qsizetype(0), qsizetype(index -1)), qaction);
+        plugin_category->addAction(qaction->objectName(), qaction);
 
         parent->unplugActionList("plugins_actionlist");
         parent->plugActionList("plugins_actionlist", plugin_actions);
+
     });
 
-    // TODO ?
-    /*
-    connect(&par, &plugin::PluginActionRegistry::action_removed, parent, [](plugin::ActionService* action) {
-        QString slug = "action_plugin_" + action->plugin()->data().name.toLower() + "_" + action->label.toLower();
+    connect(&par, &plugin::PluginActionRegistry::action_removed, parent, [this](plugin::ActionService* action) {
+        QString slug = plugin::PluginActionRegistry::instance().qaction_name(action);;
+        auto iter = std::find_if(plugin_actions.begin(), plugin_actions.end(), [&slug](QAction* action){ return action->objectName() == slug; });
+        if ( iter != plugin_actions.end() )
+        {
+            parent->actionCollection()->removeAction(*iter);
+            plugin_actions.erase(iter);
+
+            parent->unplugActionList("plugins_actionlist");
+            parent->plugActionList("plugins_actionlist", plugin_actions);
+        }
     });
-    */
 
     connect(
         &plugin::PluginRegistry::instance(),

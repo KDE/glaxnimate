@@ -29,9 +29,15 @@ QAction * plugin::PluginActionRegistry::make_qaction ( plugin::ActionService* ac
     connect(act, &QAction::triggered, action, &ActionService::trigger);
     connect(action, &ActionService::disabled, act, &QAction::deleteLater);
     act->setData(QVariant::fromValue(action));
-    act->setObjectName("action_plugin_" + action->plugin()->data().name.toLower() + "_" + action->label.toLower());
+    act->setObjectName(qaction_name(action));
     return act;
 }
+
+QString glaxnimate::plugin::PluginActionRegistry::qaction_name(ActionService* action)
+{
+    return QStringLiteral("action_plugin_") + action->plugin()->data().name.toLower() + QStringLiteral("_") + action->label.toLower();
+}
+
 
 void plugin::PluginActionRegistry::add_action ( plugin::ActionService* action )
 {
