@@ -538,7 +538,7 @@ void Canvas::changeEvent(QEvent* event)
 {
     QWidget::changeEvent ( event );
 
-    if ( event->type() == QEvent::PaletteChange ) {
+    if ( event->type() == QEvent::PaletteChange && scene() ) {
         scene()->setPalette(palette());
     }
 }
