@@ -201,6 +201,11 @@ public:
     virtual void on_visit_doc(model::Document *){}
     virtual void on_visit_node(model::DocumentNode*){}
 
+    void visit_nocomp(model::Document* doc, bool skip_locked)
+    {
+        visit(doc, nullptr, skip_locked);
+    }
+
 private:
     void on_visit_document(model::Document * document, model::Composition*) override
     {
@@ -474,6 +479,7 @@ void register_py_module(py::module& glaxnimate_module)
     py::class_<PyVisitorPublic, PyVisitorTrampoline>(model, "Visitor")
         .def(py::init())
         .def("visit", (void (PyVisitorPublic::*)(model::Document*, model::Composition*, bool))&PyVisitorPublic::visit, py::arg("document"), py::arg("composition"), py::arg("skip_locked"))
+        .def("visit", (void (PyVisitorPublic::*)(model::Document*, bool))&PyVisitorPublic::visit_nocomp, py::arg("document"), py::arg("skip_locked"))
         .def("visit", (void (PyVisitorPublic::*)(model::DocumentNode*, bool))&PyVisitorPublic::visit, py::arg("node"), py::arg("skip_locked"))
         .def("on_visit_document", &PyVisitorPublic::on_visit_doc)
         .def("on_visit_node", &PyVisitorPublic::on_visit_node)
