@@ -212,8 +212,8 @@ SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
     AutoConfigBuilder(kli18nc("Settings", "New Animation Defaults"), "video-webm", skeleton, this)
         .add_item("width", kli18n("Canvas Width"))
         .add_item("height", kli18n("Canvas Height"))
-        .add_item("fps", kli18n("FPS"), kli18n("Frames per secons"))
-        .add_item_widget("duration", seconds, kli18n("Duration"), kli18n("Duration in secons"))
+        .add_item("fps", kli18n("FPS"), kli18n("Frames per seconds"))
+        .add_item_widget("duration", seconds, kli18n("Duration"), kli18n("Duration in seconds"))
         .commit()
     ;
 
