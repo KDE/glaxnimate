@@ -11,6 +11,18 @@ variables:
     # DEBIAN_FRONTEND: noninteractive
     GIT_SUBMODULE_STRATEGY: recursive
 
+craft_appimage_qt515_x86_64:
+  rules:
+  - when: manual
+    # we don't want the manual job to block the pipeline
+    allow_failure: true
+
+craft_windows_qt515_x86_64:
+  rules:
+  - when: manual
+    # we don't want the manual job to block the pipeline
+    allow_failure: true
+
 include:
     # - .gitlab/ci/documentation.yml
     - .gitlab/ci/python_package.yml
@@ -43,13 +55,3 @@ include:
         - /gitlab-templates/craft-windows-appx-qt6.yml
         - /gitlab-templates/craft-macos-x86-64-qt6.yml
         - /gitlab-templates/craft-macos-arm64-qt6.yml
-
-craft_appimage_qt515_x86_64:
-  when: manual
-  # we don't want the manual job to block the pipeline
-  allow_failure: true
-
-craft_windows_qt515_x86_64:
-  when: manual
-  # we don't want the manual job to block the pipeline
-  allow_failure: true
