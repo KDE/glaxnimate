@@ -47,6 +47,8 @@ pypi_deploy_gitlab:
         # allow to run the job only on master branch
         - if: $CI_COMMIT_REF_NAME == "master"
           when: manual
+          # we don't want the manual job to block the pipeline
+          allow_failure: true
         - when: never
 
 pypi_deploy_pypiorg:
@@ -61,4 +63,6 @@ pypi_deploy_pypiorg:
         # allow to run the job only on mainline branches of mainline repositories
         - if: $KDECI_SECURE_SERVICES_KEY
           when: manual
+          # we don't want the manual job to block the pipeline
+          allow_failure: true
         - when: never
