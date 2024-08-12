@@ -258,6 +258,7 @@ public:
     void load_remote_document(const QUrl& url, io::Options options, bool open);
     void check_autosaves();
     void show_stale_autosave_list(const QList<KAutoSaveFile*>& stale);
+    void push_recent_file(const QUrl& url);
 
     // ui
     void setupUi(bool restore_state, bool debug, GlaxnimateWindow* parent);

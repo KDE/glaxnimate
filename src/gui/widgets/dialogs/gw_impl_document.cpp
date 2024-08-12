@@ -213,7 +213,7 @@ bool GlaxnimateWindow::Private::setup_document_open(QIODevice* file, const io::O
         app::settings::set<QString>("open_save", "path", options.path.absolutePath());
 
         if ( ok && !autosave_load )
-            m_recentFilesAction->addUrl(QUrl::fromLocalFile(options.filename));
+            push_recent_file(QUrl::fromLocalFile(options.filename));
     }
 
     view_fit();
@@ -399,7 +399,7 @@ bool GlaxnimateWindow::Private::save_document(bool force_dialog, bool export_opt
     else
     {
         if ( opts.format->can_open() )
-            m_recentFilesAction->addUrl(QUrl::fromLocalFile(opts.filename));
+            push_recent_file(QUrl::fromLocalFile(opts.filename));
         current_document->undo_stack().setClean();
         current_document_has_file = true;
         app::settings::set<QString>("open_save", "path", opts.path.absolutePath());
@@ -470,12 +470,27 @@ void GlaxnimateWindow::Private::document_open_from_filename(const QString& filen
 
 void GlaxnimateWindow::Private::document_open_from_url(const QUrl& url)
 {
-    io::Options opts = options_from_filename(url.toLocalFile(), {});
+    QString filename = url.scheme() == "tmp" ? url.path() : url.toLocalFile();
+    io::Options opts = options_from_filename(filename, {});
     if ( opts.format )
     {
         setup_document_open(opts);
-        m_recentFilesAction->addUrl(url);
+        push_recent_file(url);
     }
+}
+
+void GlaxnimateWindow::Private::push_recent_file(const QUrl& url)
+{
+    if ( url.isLocalFile() )
+    {
+        QString file = url.toLocalFile();
+        if ( file.startsWith(QDir::tempPath()) )
+        {
+            m_recentFilesAction->addUrl(QUrl(QStringLiteral("tmp://") + file));
+            return;
+        }
+    }
+    m_recentFilesAction->addUrl(url);
 }
 
 void GlaxnimateWindow::Private::drop_document(const QString& filename, bool as_comp)
