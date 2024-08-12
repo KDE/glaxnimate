@@ -58,8 +58,7 @@ public:
                     QMessageBox overwrite(
                         QMessageBox::Question,
                         i18n("Overwrite File?"),
-                        i18n("The file \"%1\" already exists. Do you wish to overwrite it?")
-                            .arg(finfo.baseName()),
+                        i18n("The file \"%1\" already exists. Do you wish to overwrite it?", finfo.baseName()),
                         QMessageBox::Yes|QMessageBox::No,
                         parent
                     );
