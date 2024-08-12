@@ -1,4 +1,4 @@
-## 0.5.5
+## 0.6.0
 
 * Editing:
     * The rotation handle now preserves rotation direction and multiple full rotations
@@ -6,6 +6,8 @@
     * Alt + click on bezier points cycles between tangent symmetry modes (Ctrl+click still works)
     * Changing a bezier point from corner to smooth will add tangents if they are missing
     * The import image dialog now allows importing multiple images at once
+* I/O:
+    * Added support for SVG text-anchor
 * UI:
     * Middle mouse drag now pans the timeline
     * There is an icon on the timeline to quickly toggle keyframes
