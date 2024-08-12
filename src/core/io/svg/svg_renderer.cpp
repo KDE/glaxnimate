@@ -330,6 +330,7 @@ public:
                 animation.setAttribute("repeatCount", "indefinite");
                 if ( !type.isEmpty() )
                     animation.setAttribute("type", type);
+                animation.setAttribute("values", data.values.join("; "));
             }
         }
 

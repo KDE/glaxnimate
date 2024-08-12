@@ -33,6 +33,7 @@
     * Fixed "New Composition" action creating an invisible layer
     * Fixed repeater opacity not being applied correctly
     * Improved handling of repeater with stroke
+    * Fixed SVG animation export
 
 ## 0.5.4
 
