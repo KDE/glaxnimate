@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-10 01:53+0000\n"
-"PO-Revision-Date: 2024-04-18 15:48+0300\n"
+"POT-Creation-Date: 2024-08-12 01:44+0000\n"
+"PO-Revision-Date: 2024-08-11 23:14+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 24.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -349,7 +349,7 @@ msgstr "Değiştir"
 #: src/android/document_opener.cpp:201
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:448
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:453
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:172
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:182
 #: src/gui/widgets/font/external_font_widget.cpp:126
 #, kde-format
 msgid "Open File"
@@ -361,7 +361,7 @@ msgid "Raster images need to be traced into vectors"
 msgstr "Raster görsellerin vektörlere taranması gerekir"
 
 #: src/android/document_opener.cpp:106
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:173
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:183
 #, kde-format
 msgid "Save File"
 msgstr "Dosyayı Kaydet"
@@ -650,13 +650,13 @@ msgstr "Dolgu Biçemi"
 msgid "Stroke Style"
 msgstr "Vuruş Biçemi"
 
-#: src/android/main_window.cpp:452 src/gui/widgets/dialogs/gw_impl_ui.cpp:601
+#: src/android/main_window.cpp:452 src/gui/widgets/dialogs/gw_impl_ui.cpp:611
 #: src/gui/widgets/menus/node_menu.cpp:105
 #, kde-format
 msgid "Raise"
 msgstr "Kaldır"
 
-#: src/android/main_window.cpp:457 src/gui/widgets/dialogs/gw_impl_ui.cpp:604
+#: src/android/main_window.cpp:457 src/gui/widgets/dialogs/gw_impl_ui.cpp:614
 #: src/gui/widgets/menus/node_menu.cpp:109
 #, kde-format
 msgid "Lower"
@@ -736,7 +736,7 @@ msgstr "Aç…"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:101
 #: src/gui/widgets/dialogs/about_env_dialog.ui:129
 #: src/gui/widgets/dialogs/about_env_dialog.ui:132
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1564
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1586
 #: src/gui/widgets/dialogs/startup_dialog.ui:149
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:136
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
@@ -785,7 +785,7 @@ msgstr "Telegram’a Gönder"
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/android/main_window.cpp:544 src/gui/glaxnimateui.rc:120
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:557
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:567
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #: src/gui/widgets/docks/layers.ui:29
 #, kde-format
@@ -867,7 +867,7 @@ msgid "Emoji"
 msgstr "Emoji"
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
-#: src/android/main_window.ui:21 src/core/app_info.cpp:20
+#: src/android/main_window.ui:21 src/core/app_info.cpp:21
 #, kde-format
 msgid "Glaxnimate"
 msgstr "Glaxnimate"
@@ -927,67 +927,66 @@ msgstr "Geçerliyi Ekle"
 msgid "Could not start activity, is Telegram installed?"
 msgstr "Etkinlik başlatılamadı, Telegram kurulu mu?"
 
-#: src/core/app_info.cpp:56
+#: src/core/app_info.cpp:57
 #, kde-format
 msgid "(c) 2019-2023"
 msgstr "(c) 2019–2023"
 
-#: src/core/app_info.cpp:65
-#, kde-format
-msgid "Mattia \"Glax\" Basaglie"
-msgstr ""
+#: src/core/app_info.cpp:66
+#, fuzzy, kde-format
+#| msgid "Mattia \"Glax\" Basaglie"
+msgid "Mattia \"Glax\" Basaglia"
+msgstr "Mattia “Glax” Basaglie"
 
-#: src/core/app_info.cpp:65
+#: src/core/app_info.cpp:66
 #, kde-format
 msgid "Maintainer"
-msgstr ""
+msgstr "Bakımcı"
 
-#: src/core/app_info.cpp:67
-#, fuzzy, kde-format
-#| msgid "Potrace"
+#: src/core/app_info.cpp:68
+#, kde-format
 msgid "potrace"
-msgstr "Potrace"
+msgstr "potrace"
 
-#: src/core/app_info.cpp:67
+#: src/core/app_info.cpp:68
 #, kde-format
 msgid "Used by the bitmap tracing feature."
-msgstr ""
-
-#: src/core/app_info.cpp:69
-#, fuzzy, kde-format
-#| msgid "Libav"
-msgid "libav"
-msgstr "Libav"
+msgstr "Biteşlem izleme özelliği tarafından kullanılır."
 
 #: src/core/app_info.cpp:70
+#, kde-format
+msgid "libav"
+msgstr "libav"
+
+#: src/core/app_info.cpp:71
 #, kde-format
 msgid "libarchive"
 msgstr "libarchive"
 
-#: src/core/app_info.cpp:71
+#: src/core/app_info.cpp:72
 #, kde-format
 msgid "zlib"
-msgstr ""
-
-#: src/core/app_info.cpp:73
-#, kde-format
-msgid "pybind11"
-msgstr ""
-
-#: src/core/app_info.cpp:73 src/core/app_info.cpp:74
-#, kde-format
-msgid "Used by the plugin system."
-msgstr ""
+msgstr "zlib"
 
 #: src/core/app_info.cpp:74
 #, kde-format
-msgid "CPython"
-msgstr ""
+msgid "pybind11"
+msgstr "pybind11"
 
-#: src/core/app_info.cpp:76
+#: src/core/app_info.cpp:74 src/core/app_info.cpp:75
+#, kde-format
+msgid "Used by the plugin system."
+msgstr "Eklenti sistemi tarafından kullanılır."
+
+#: src/core/app_info.cpp:75
+#, kde-format
+msgid "CPython"
+msgstr "CPython"
+
+#: src/core/app_info.cpp:77
 #, kde-format
 msgid "Inkscape"
-msgstr ""
+msgstr "Inkscape"
 
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
@@ -1326,37 +1325,37 @@ msgstr "Geçersiz nesne türü: “%1” bekleniyordu, “%2” alındı"
 msgid "Could not load %1 for %2"
 msgstr "%2 için %1 yüklenemedi"
 
-#: src/core/io/glaxnimate/import_state.hpp:335
+#: src/core/io/glaxnimate/import_state.hpp:332
 #, kde-format
 msgid "Could not set property %1"
 msgstr "%1 özelliği ayarlanamadı"
 
-#: src/core/io/glaxnimate/import_state.hpp:361
+#: src/core/io/glaxnimate/import_state.hpp:358
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
 msgstr "%3 içindeki %2 için olan %1 ögesi bir nesne değil"
 
-#: src/core/io/glaxnimate/import_state.hpp:373
+#: src/core/io/glaxnimate/import_state.hpp:370
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
 msgstr "%3 içindeki %2 için olan %1 ögesi kabul edilemez"
 
-#: src/core/io/glaxnimate/import_state.hpp:412
+#: src/core/io/glaxnimate/import_state.hpp:409
 #, kde-format
 msgid "Keyframe must specify a time"
 msgstr "Anahtar kare bir zaman belirtmeli"
 
-#: src/core/io/glaxnimate/import_state.hpp:417
+#: src/core/io/glaxnimate/import_state.hpp:414
 #, kde-format
 msgid "Keyframe must specify a value"
 msgstr "Anahtar kare bir değer belirtmeli"
 
-#: src/core/io/glaxnimate/import_state.hpp:427
+#: src/core/io/glaxnimate/import_state.hpp:424
 #, kde-format
 msgid "Could not add keyframe"
 msgstr "Anahtar kare eklenemedi"
 
-#: src/core/io/glaxnimate/import_state.hpp:611
+#: src/core/io/glaxnimate/import_state.hpp:608
 #, kde-format
 msgid "Unknown object of type '%1'"
 msgstr "“%1” türünde bilinmeyen nesne"
@@ -1506,7 +1505,7 @@ msgstr "Yinelenen biteşlem kimliği: %1"
 #: src/core/io/lottie/lottie_importer.hpp:1088
 #, kde-format
 msgid "Duplicate Composition ID: %1"
-msgstr "Yinelenen kompozisyon kimliği: %1"
+msgstr "Yinelenmiş kompozisyon kimliği: %1"
 
 #: src/core/io/lottie/tgs_format.cpp:47
 #, kde-format
@@ -2161,7 +2160,7 @@ msgstr "Elips"
 #: src/core/model/shapes/fill.hpp:48 src/gui/tools/draw_tool_base.cpp:114
 #: src/gui/tools/fill_tool.cpp:25
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:748
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:579
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:589
 #: src/gui/widgets/docks/colors.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:191
 #: src/gui/widgets/tools/color_picker_widget.ui:24
@@ -2173,8 +2172,8 @@ msgstr "Dolgu"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/model/shapes/group.hpp:42
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:576
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:613
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:586
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:623
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
 #, kde-format
 msgid "Group"
@@ -2192,7 +2191,7 @@ msgstr "Şişir ve Söndür"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/model/shapes/layer.hpp:81
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:573
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:583
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
 #, kde-format
 msgid "Layer"
@@ -2207,7 +2206,7 @@ msgstr "Ofset Yolu"
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/model/shapes/path.hpp:38 src/gui/glaxnimateui.rc:174
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:665
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:675
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
@@ -2244,7 +2243,7 @@ msgstr "Yuvarlak Köşeler"
 #. i18n: ectx: property (text), widget (QRadioButton, check_stroke)
 #: src/core/model/shapes/stroke.hpp:68 src/gui/tools/draw_tool_base.cpp:126
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:743
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:582
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:592
 #: src/gui/widgets/docks/stroke.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:101
 #: src/gui/widgets/tools/color_picker_widget.ui:37
@@ -2261,7 +2260,7 @@ msgstr "Yazıtipini Değiştir"
 
 #. i18n: ectx: Menu (text)
 #: src/core/model/shapes/text.cpp:489 src/gui/glaxnimateui.rc:200
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:117
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:120
 #, kde-format
 msgid "Text"
 msgstr "Metin"
@@ -2587,7 +2586,7 @@ msgstr "Emoji Kümesi"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:248
 #: src/gui/widgets/dialogs/about_env_dialog.ui:289
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:109
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:302
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:312
 #: src/gui/widgets/dialogs/startup_dialog.ui:48
 #: src/gui/widgets/settings/plugin_settings_widget.ui:168
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:391
@@ -2649,152 +2648,42 @@ msgstr "Emoji Ekle…"
 msgid "Close"
 msgstr "Kapat"
 
-#: src/gui/glaxnimate_app.cpp:88
-#, kde-format
-msgctxt "@title settings group"
-msgid "User Interface"
-msgstr "Kullanıcı Arayüzü"
-
-#: src/gui/glaxnimate_app.cpp:92
-#, kde-format
-msgctxt "@option:check"
-msgid "Horizontal Timeline Scroll"
-msgstr "Yatay zaman akışı sarımı"
-
-#: src/gui/glaxnimate_app.cpp:93
-#, kde-format
-msgctxt "@info:tooltip"
-msgid ""
-"If enabled, the timeline will scroll horizontally by default and vertically "
-"with Shift or Alt"
-msgstr ""
-"Etkinleştirilirse zaman akışı öntanımlı olarak yatay olarak sarılır ve Üst "
-"Karakter veya Seçenek ile dikeye geçiş yapılabilir"
-
-#: src/gui/glaxnimate_app.cpp:100
-#, kde-format
-msgctxt "@title settings group"
-msgid "New Animation Defaults"
-msgstr "Yeni Canlandırma Öntanımlıları"
-
-#: src/gui/glaxnimate_app.cpp:102
-#, kde-format
-msgctxt "@label:spinbox"
-msgid "Width"
-msgstr "Genişlik"
-
-#: src/gui/glaxnimate_app.cpp:105
-#, kde-format
-msgctxt "@label:spinbox"
-msgid "Height"
-msgstr "Yükseklik"
-
-#: src/gui/glaxnimate_app.cpp:108
-#, kde-format
-msgctxt "@label:spinbox"
-msgid "FPS"
-msgstr "FPS"
-
-#: src/gui/glaxnimate_app.cpp:109
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Frames per second"
-msgstr "Saniye başına kare sayısı"
-
-#: src/gui/glaxnimate_app.cpp:112
-#, kde-format
-msgctxt "@label:spinbox"
-msgid "Duration"
-msgstr "Süre"
-
-#: src/gui/glaxnimate_app.cpp:113
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Duration in seconds"
-msgstr "Saniye türünden süre"
-
-#: src/gui/glaxnimate_app.cpp:116
-#, kde-format
-msgctxt "@title settings group"
-msgid "Open / Save"
-msgstr "Aç/Kaydet"
-
-#: src/gui/glaxnimate_app.cpp:117
-#, kde-format
-msgctxt "@label:spinbox"
-msgid "Max Recent Files"
-msgstr "En çok son kullanılan dosya sayısı"
-
-#: src/gui/glaxnimate_app.cpp:121
-#, kde-format
-msgctxt "@label:spinbox"
-msgid "Backup Frequency"
-msgstr "Yedek Sıklığı"
-
-#: src/gui/glaxnimate_app.cpp:122
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "How often to save a backup copy (in minutes)"
-msgstr "Ne kadar sıklıkla bir yedek kopyası alınmalı (dakika olarak)"
-
-#: src/gui/glaxnimate_app.cpp:125
-#, kde-format
-msgctxt "@option:check"
-msgid "Use system file dialog"
-msgstr "Sistem dosya iletişim kutularını kullan"
-
-#: src/gui/glaxnimate_app.cpp:127
-#, kde-format
-msgctxt "@title settings group"
-msgid "Scripting"
-msgstr "Betik Yazımı"
-
-#: src/gui/glaxnimate_app.cpp:132
-#, kde-format
-msgctxt "@title settings group"
-msgid "Tools"
-msgstr "Araçlar"
-
 #. i18n: ectx: Menu (file_new_from_template)
-#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1252
+#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1257
 #, kde-format
 msgid "New from Template"
 msgstr "Şablondan Yeni"
 
 #. i18n: ectx: Menu (edit_tools)
-#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:368
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:743
+#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:378
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:753
 #, kde-format
 msgid "Tools"
 msgstr "Araçlar"
 
 #. i18n: ectx: Menu (views_menu)
 #: src/gui/glaxnimateui.rc:66
-#, fuzzy, kde-format
-#| msgid "&Views"
+#, kde-format
 msgid "Views"
-msgstr "Gö&rünümler"
+msgstr "Görünümler"
 
 #. i18n: ectx: Menu (layout_menu)
 #: src/gui/glaxnimateui.rc:70
-#, fuzzy, kde-format
-#| msgid "&Layout"
+#, kde-format
 msgid "Layout"
-msgstr "Y&erleşim"
+msgstr "Yerleşim"
 
 #. i18n: ectx: Menu (document)
-#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:444
-#, fuzzy, kde-format
-#| msgid "&Document"
+#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:454
+#, kde-format
 msgid "Document"
-msgstr "&Belge"
+msgstr "Belge"
 
 #. i18n: ectx: Menu (render_frame_menu)
 #: src/gui/glaxnimateui.rc:88
-#, fuzzy, kde-format
-#| msgid "Render Single &Frame"
+#, kde-format
 msgid "Render Single Frame"
-msgstr "Tek Kare &Sun"
+msgstr "Tek Kare Sun"
 
 #. i18n: ectx: Menu (web_preview_menu)
 #: src/gui/glaxnimateui.rc:93 src/gui/widgets/dialogs/gw_impl_document.cpp:514
@@ -2805,28 +2694,26 @@ msgid "Web Preview"
 msgstr "Web Önizlemesi"
 
 #. i18n: ectx: Menu (playback)
-#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:488
-#, fuzzy, kde-format
-#| msgid "&Playback"
+#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:498
+#, kde-format
 msgid "Playback"
-msgstr "&Oynatma"
+msgstr "Oynatma"
 
 #. i18n: ectx: Menu (object)
-#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:596
-#, fuzzy, kde-format
-#| msgid "&Object"
+#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:606
+#, kde-format
 msgid "Object"
-msgstr "&Nesne"
+msgstr "Nesne"
 
 #. i18n: ectx: Menu (align_menu)
 #: src/gui/glaxnimateui.rc:154
-#, fuzzy, kde-format
-#| msgid "&Align and Distribute"
+#, kde-format
 msgid "Align and Distribute"
-msgstr "&Hizala ve Dağıt"
+msgstr "Hizala ve Dağıt"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:205 src/gui/settings/plugin_settings_group.hpp:23
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1481
 #, kde-format
 msgid "Plugins"
 msgstr "Eklentiler"
@@ -2839,17 +2726,15 @@ msgstr "Ana Araç Çubuğu"
 
 #. i18n: ectx: ToolBar (toolsToolBar)
 #: src/gui/glaxnimateui.rc:242
-#, fuzzy, kde-format
-#| msgid "Toolbars"
+#, kde-format
 msgid "Tools Toolbar"
-msgstr "Araç Çubukları"
+msgstr "Araçlar Araç Çubuğu"
 
 #. i18n: ectx: ToolBar (nodeToolBar)
 #: src/gui/glaxnimateui.rc:258
-#, fuzzy, kde-format
-#| msgid "Toolbars"
+#, kde-format
 msgid "Node Toolbar"
-msgstr "Araç Çubukları"
+msgstr "Düğüm Araç Çubuğu"
 
 #: src/gui/graphics/bezier_item.cpp:239
 #, kde-format
@@ -2991,18 +2876,23 @@ msgstr "Değer"
 msgid "New Snippet %1"
 msgstr "Yeni Parçacık %1"
 
-#: src/gui/settings/api_credentials.cpp:86
+#. i18n: ectx: attribute (title), widget (QWidget, tab_google)
+#: src/gui/settings/api_credentials.cpp:28
+#: src/gui/widgets/font/font_style_dialog.ui:52
+#, kde-format
+msgid "Google Fonts"
+msgstr "Google Fonts"
+
+#: src/gui/settings/api_credentials.cpp:89
 #, kde-format
 msgid "Information"
 msgstr "Bilgi"
 
-#: src/gui/settings/api_credentials.hpp:41
-#, kde-format
+#: src/gui/settings/api_credentials.hpp:42
 msgid "API Credentials"
 msgstr "API Kimlik Bilgileri"
 
 #: src/gui/settings/clipboard_settings.hpp:18
-#, kde-format
 msgid "Clipboard"
 msgstr "Pano"
 
@@ -3084,12 +2974,12 @@ msgstr "Bezier Çiz"
 msgid "Drag nodes"
 msgstr "Düğümleri sürükle"
 
-#: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:695
+#: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:705
 #, kde-format
 msgid "Cusp"
 msgstr "Çıkıntı"
 
-#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:696
+#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:706
 #, kde-format
 msgid "Smooth"
 msgstr "Pürüzsüz"
@@ -3147,12 +3037,12 @@ msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "Durağı Kaldır"
 
-#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:700
+#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:710
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr "Düğümleri Çözdür"
 
-#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:687
+#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:697
 #, kde-format
 msgid "Delete Nodes"
 msgstr "Düğümleri Sil"
@@ -3172,7 +3062,7 @@ msgstr "Bölütleri düzleştir"
 msgid "Curve segments"
 msgstr "Eğri segmentleri"
 
-#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:327
+#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:337
 #, kde-format
 msgid "Edit"
 msgstr "Düzenle"
@@ -3223,19 +3113,19 @@ msgstr "Seç"
 msgid "Drag"
 msgstr "Sürükle"
 
-#: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:332
+#: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:342
 #, kde-format
 msgid "Undo %1"
 msgstr "Geri Al: %1"
 
-#: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:338
+#: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:348
 #, kde-format
 msgid "Redo %1"
 msgstr "Yinele: %1"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_delete)
-#: src/gui/tools/select_tool.cpp:417 src/gui/widgets/dialogs/gw_impl_ui.cpp:353
+#: src/gui/tools/select_tool.cpp:417 src/gui/widgets/dialogs/gw_impl_ui.cpp:363
 #: src/gui/widgets/dialogs/selection_manager.cpp:90
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:46
 #: src/gui/widgets/docks/snippet_list_widget.ui:57
@@ -3266,10 +3156,10 @@ msgstr "Metin Çiz"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::AboutEnvironmentDialog)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:20
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:140
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:143
 #, kde-format
 msgid "About Environment"
-msgstr ""
+msgstr "Ortam Hakkında"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:30
@@ -3642,7 +3532,7 @@ msgstr "Anahtar Sözcükler"
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #. i18n: ectx: attribute (title), widget (QWidget, tab_custom)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:84
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:404
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:414
 #: src/gui/widgets/font/font_style_dialog.ui:77
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:69
 #, kde-format
@@ -3733,7 +3623,7 @@ msgstr "\""
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::FollowPathDialog)
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:118
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:21
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:18
 #, kde-format
 msgid "Follow Path"
 msgstr "Yolu İzle"
@@ -3741,28 +3631,29 @@ msgstr "Yolu İzle"
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: ectx: property (text), widget (QTableWidget, view_presets)
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:27
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:24
 #: src/gui/widgets/dialogs/startup_dialog.ui:68
 #: src/gui/widgets/dialogs/startup_dialog.ui:82
 #: src/gui/widgets/dialogs/timing_dialog.ui:52
+#: src/gui/widgets/settings/settings_dialog.cpp:216
 #, kde-format
 msgid "Duration"
 msgstr "Süre"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:34
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:31
 #, kde-format
 msgid "Time Units"
 msgstr "Zaman Birimleri"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:48
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:45
 #, kde-format
 msgid "Shape"
 msgstr "Şekil"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:58
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:55
 #, kde-format
 msgid "End Time"
 msgstr "Bitiş Zamanı"
@@ -3770,7 +3661,7 @@ msgstr "Bitiş Zamanı"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_units)
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_time_units)
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:66
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:63
 #: src/gui/widgets/dialogs/startup_dialog.ui:130
 #: src/gui/widgets/dialogs/timing_dialog.ui:72
 #, kde-format
@@ -3779,55 +3670,55 @@ msgstr "Kareler"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_units)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_time_units)
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:71
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:68
 #: src/gui/widgets/dialogs/startup_dialog.ui:135
 #, kde-format
 msgid "Seconds"
 msgstr "Saniye"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:91
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:88
 #, kde-format
 msgid "Choose..."
 msgstr "Seç…"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:100
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:97
 #, kde-format
 msgid "Start Time"
 msgstr "Başlangıç Zamanı"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:28
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:36
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:27
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:35
 #, kde-format
 msgid "New Animation"
 msgstr "Yeni Canlandırma"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:42
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:50
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:41
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:49
 #, kde-format
 msgid "File saved"
 msgstr "Dosya kaydedildi"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:44
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:52
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:43
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:51
 #, kde-format
 msgid "Could not save file"
 msgstr "Dosya kaydedilemedi"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:58
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:66
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:57
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:65
 #, kde-format
 msgid "File exported"
 msgstr "Dosya dışa aktarıldı"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:60
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:68
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:59
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:67
 #, kde-format
 msgid "Could not export file"
 msgstr "Dosya dışa aktarılamadı"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:176
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:169
 #, kde-format
 msgid "Warning"
 msgstr "Uyarı"
@@ -3942,7 +3833,7 @@ msgid "Scalable Vector Graphics (*.svg)"
 msgstr "Ölçeklenebilir Vektör Grafikler (*.svg)"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:624
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:466
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:476
 #, kde-format
 msgid "Validate Discord Sticker"
 msgstr "Discord Çıkartmasını Onayla"
@@ -3960,7 +3851,7 @@ msgid "Some issues detected"
 msgstr "Birkaç sorun bulundu"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:634
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:463
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:473
 #, kde-format
 msgid "Validate Telegram Sticker"
 msgstr "Telegram Çıkartmasını Doğrula"
@@ -4016,164 +3907,155 @@ msgstr "Geri yüklenebilen %1 kendiliğinden kayıt dosyası var"
 msgid "Load Backup..."
 msgstr "Yedeği Yükle…"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:87
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:89
 #, kde-format
 msgid "Delete %1"
 msgstr "Sil: %1"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:185
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:187
 #, kde-format
 msgid "Move Shapes"
 msgstr "Şekilleri Taşı"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:209
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:211
 #, kde-format
 msgid "All Supported files (%1)"
 msgstr "Tüm desteklenen dosyalar (%1)"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:236
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:243
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:253
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:238
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:245
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:255
 #, kde-format
 msgid "Import Image"
 msgstr "Görsel İçe Aktar"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:253
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:255
 #, kde-format
 msgid "Could not import image"
 msgstr "Görsel içe aktarılamadı"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:290
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:292
 #, kde-format
 msgid "Cleanup Document"
 msgstr "Belgeyi Temizle"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:298
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:300
 #, kde-format
 msgid "Removed %1 assets"
 msgstr "%1 varlık kaldırıldı"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:306
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:308
 #, kde-format
 msgid "Convert to path"
 msgstr "Yola Dönüştür"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:308
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:310
 #, kde-format
 msgid "Convert %1 to path"
 msgstr "Şunu Yola Dönüştür: %1"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:490
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:492
 #, kde-format
 msgid "New Composition from Selection"
 msgstr "Seçimden Yeni Kompozisyon"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:678
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:680
 #, kde-format
 msgid "Align Selection"
 msgstr "Seçimi Hizala"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:720
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:722
 #, kde-format
 msgid "Drop"
 msgstr "Bırak"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:816
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:818
 #, kde-format
 msgid "Put text on path"
 msgstr "Yolu Metne Koy"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:838
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:840
 #, kde-format
 msgid "Remove text from path"
 msgstr "Yoldan Metni Kaldır"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:119
-#, fuzzy, kde-format
-#| msgid "&Put on Path"
-msgid "Put on Path"
-msgstr "&Yola Koy"
-
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:122
+#, kde-format
+msgid "Put on Path"
+msgstr "Yola Koy"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:125
 #: src/gui/widgets/menus/node_menu.cpp:396
 #, kde-format
 msgid "Remove from Path"
 msgstr "Yoldan Kaldır"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:136
-#, fuzzy, kde-format
-#| msgid "Information"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:139
+#, kde-format
 msgid "Copy Debug Information"
-msgstr "Bilgi"
+msgstr "Hata Ayıklama Bilgisini Kopyala"
 
 #. i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:255
-#, fuzzy, kde-format
-#| msgid "&File"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:265
+#, kde-format
 msgid "File"
-msgstr "&Dosya"
+msgstr "Dosya"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:260
-#, fuzzy, kde-format
-#| msgid "Add &Image..."
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:270
+#, kde-format
 msgid "Add Image…"
-msgstr "&Görsel Ekle…"
+msgstr "Görsel Ekle…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:263
-#, fuzzy, kde-format
-#| msgid "Import"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:273
+#, kde-format
 msgid "Import…"
-msgstr "İçe Aktar"
+msgstr "İçe Aktar…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:266
-#, fuzzy, kde-format
-#| msgid "Import From LottieFiles"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:276
+#, kde-format
 msgid "Import from LottieFiles…"
-msgstr "LottieFiles’dan İçe Aktar"
+msgstr "LottieFiles’dan İçe Aktar…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:269
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:279
 #, kde-format
 msgid "Open Most Recent"
 msgstr "En Son Kullanılanı Aç"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:297
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:302
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:308
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:307
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:312
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:318
 #, kde-format
 msgid "Save as Template"
 msgstr "Şablon Olarak Kaydet"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:308
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:318
 #, kde-format
 msgid "Could not save template"
 msgstr "Şablon kaydedilemedi"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:312
-#, fuzzy, kde-format
-#| msgid "Export"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:322
+#, kde-format
 msgid "Export…"
-msgstr "Dışa Aktar"
+msgstr "Dışa Aktar…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:315
-#, fuzzy, kde-format
-#| msgid "E&xport As..."
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:325
+#, kde-format
 msgid "Export As…"
-msgstr "&Farklı Dışa Aktar…"
+msgstr "Farklı Dışa Aktar…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:318
-#, fuzzy, kde-format
-#| msgid "Export as Image Sequence"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:328
+#, kde-format
 msgid "Export as Image Sequence…"
-msgstr "Görsel Sekansı Olarak Dışa Aktar"
+msgstr "Görsel Sekansı Olarak Dışa Aktar…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:345
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:355
 #, kde-format
 msgid "Paste as Composition"
 msgstr "Kompozisyon Olarak Yapıştır"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_duplicate)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:348
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:358
 #: src/gui/widgets/docks/layers.ui:80 src/gui/widgets/docks/layers.ui:83
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:486
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:69
@@ -4181,35 +4063,34 @@ msgstr "Kompozisyon Olarak Yapıştır"
 msgid "Duplicate"
 msgstr "Çoğalt"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:399
-#, fuzzy, kde-format
-#| msgid "&View"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:409
+#, kde-format
 msgid "View"
-msgstr "&Görünüm"
+msgstr "Görünüm"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:410
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:420
 #, kde-format
 msgid "Automatic"
 msgstr "Kendiliğinden"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:415
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:425
 #, kde-format
 msgid "Wide"
 msgstr "Geniş"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:420
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:430
 #, kde-format
 msgid "Medium"
 msgstr "Orta"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:425
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:435
 #, kde-format
 msgid "Compact"
 msgstr "Sıkışık"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_angle_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_angle_reset)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:436
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:446
 #: src/gui/widgets/view_transform_widget.ui:150
 #: src/gui/widgets/view_transform_widget.ui:153
 #, kde-format
@@ -4218,204 +4099,186 @@ msgstr "Döndürmeyi sıfırla"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_flip_view)
 #. i18n: ectx: property (text), widget (QToolButton, btn_flip_view)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:438
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:448
 #: src/gui/widgets/view_transform_widget.ui:164
 #: src/gui/widgets/view_transform_widget.ui:167
 #, kde-format
 msgid "Flip View"
 msgstr "Görünümü ters çevir"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:446
-#, fuzzy, kde-format
-#| msgid "&Raster..."
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:456
+#, kde-format
 msgid "Raster…"
-msgstr "&Rasterleştir…"
+msgstr "Rasterleştir…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:448
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:458
 #, kde-format
 msgid "SVG…"
-msgstr ""
+msgstr "SVG…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:451
-#, fuzzy, kde-format
-#| msgid "&Lottie (SVG)"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:461
+#, kde-format
 msgid "Lottie (SVG)"
-msgstr "&Lottie (SVG)"
+msgstr "Lottie (SVG)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:454
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:464
 #, kde-format
 msgid "Lottie (canvas)"
 msgstr "Lottie (Tuval)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:457
-#, fuzzy, kde-format
-#| msgid "&SVG (SMIL)"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:467
+#, kde-format
 msgid "SVG (SMIL)"
-msgstr "&SVG (SMIL)"
+msgstr "SVG (SMIL)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:460
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:470
 #, kde-format
 msgid "RIVE (canvas)"
 msgstr "Rive (Tuval)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:469
-#, fuzzy, kde-format
-#| msgid "Resize"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:479
+#, kde-format
 msgid "Resize…"
-msgstr "Yeniden Boyutlandır"
+msgstr "Yeniden Boyutlandır…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:472
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:482
 #, kde-format
 msgid "Cleanup"
 msgstr "Temizle"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:475
-#, fuzzy, kde-format
-#| msgid "Timing"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:485
+#, kde-format
 msgid "Timing…"
-msgstr "Zamanlama"
+msgstr "Zamanlama…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:480
-#, fuzzy, kde-format
-#| msgid "Metadata..."
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:490
+#, kde-format
 msgid "Metadata…"
 msgstr "Üst Veri…"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:491
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:515
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:501
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:525
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
 #, kde-format
 msgid "Play"
 msgstr "Oynat"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_loop)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:493
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:503
 #: src/gui/widgets/timeline/frame_controls_widget.ui:63
 #, kde-format
 msgid "Loop"
 msgstr "Döngü"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:495
-#, fuzzy, kde-format
-#| msgid "&Record Keyframes"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:505
+#, kde-format
 msgid "Record Keyframes"
-msgstr "Anahtar Kareleri &Kaydet"
+msgstr "Anahtar Kareleri Kaydet"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
-#, fuzzy, kde-format
-#| msgid "Jump to &Start"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:507
+#, kde-format
 msgid "Jump to Start"
-msgstr "Başlangıca &Atla"
+msgstr "Başlangıca Atla"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:499
-#, fuzzy, kde-format
-#| msgid "Jump to &End"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:509
+#, kde-format
 msgid "Jump to End"
-msgstr "Bitişe A&tla"
-
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:501
-#, fuzzy, kde-format
-#| msgid "&Next Frame"
-msgid "Next Frame"
-msgstr "&Sonraki Kare"
-
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:503
-#, fuzzy, kde-format
-#| msgid "Pre&vious Frame"
-msgid "Previous Frame"
-msgstr "&Önceki Kare"
+msgstr "Bitişe Atla"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:511
+#, kde-format
+msgid "Next Frame"
+msgstr "Sonraki Kare"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:513
+#, kde-format
+msgid "Previous Frame"
+msgstr "Önceki Kare"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:521
 #, kde-format
 msgid "Pause"
 msgstr "Duraklat"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:566
-#, fuzzy, kde-format
-#| msgid "&Precompose Selection"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:576
+#, kde-format
 msgid "Precompose Selection"
-msgstr "Seçimi Ö&nden Bileşikleştir"
+msgstr "Seçimi Önden Bileşikleştir"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:570
-#, fuzzy, kde-format
-#| msgid "New &Composition"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:580
+#, kde-format
 msgid "New Composition"
-msgstr "Yeni &Kompozisyon"
+msgstr "Yeni Kompozisyon"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:585
-#, fuzzy, kde-format
-#| msgid "Emoji"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:595
+#, kde-format
 msgid "Emoji…"
-msgstr "Emoji"
+msgstr "Emoji…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:598
-#, fuzzy, kde-format
-#| msgid "Raise to &Top"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:608
+#, kde-format
 msgid "Raise to Top"
-msgstr "En Üste &Kaldır"
+msgstr "En Üste Kaldır"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:607
-#, fuzzy, kde-format
-#| msgid "Lower to &Bottom"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:617
+#, kde-format
 msgid "Lower to Bottom"
-msgstr "En Alta İn&dir"
+msgstr "En Alta İndir"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:610
-#, fuzzy, kde-format
-#| msgid "Move to..."
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:620
+#, kde-format
 msgid "Move to…"
 msgstr "Şuraya Taşı…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:616
-#, fuzzy, kde-format
-#| msgid "&Ungroup"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:626
+#, kde-format
 msgid "Ungroup"
-msgstr "Grubu Ç&öz"
+msgstr "Grubu Çöz"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:619
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:629
 #: src/gui/widgets/docks/aligndock.cpp:46
 #, kde-format
 msgid "Align"
 msgstr "Hizala"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:621
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:631
 #, kde-format
 msgid "Selection"
 msgstr "Seçim"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:623
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:633
 #, kde-format
 msgid "Canvas"
 msgstr "Tuval"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:625
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:635
 #, kde-format
 msgid "Canvas (as Group)"
 msgstr "Tuval (Grup Olarak)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:628
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:638
 #, kde-format
 msgid "Left"
 msgstr "Sol"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:631
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:640
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:641
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:650
 #, kde-format
 msgid "Center"
 msgstr "Orta"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:634
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:644
 #, kde-format
 msgid "Right"
 msgstr "Sağ"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:637
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:647
 #, kde-format
 msgid "Top"
 msgstr "Üst"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:643
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:653
 #, kde-format
 msgid "Bottom"
 msgstr "Alt"
@@ -4423,187 +4286,176 @@ msgstr "Alt"
 #. i18n("Relative To"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_horizontal"), i18n("Horizontal"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_vertical"), i18n("Vertical"), QStringLiteral(""));
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:650
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:660
 #, kde-format
 msgid "Outside Left"
 msgstr "Dış Sol"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:653
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:663
 #, kde-format
 msgid "Outside Right"
 msgstr "Dış Sağ"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:656
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:666
 #, kde-format
 msgid "Outside Top"
 msgstr "Dış Üst"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:659
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:669
 #, kde-format
 msgid "Outside Bottom"
 msgstr "Dış Alt"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:667
-#, fuzzy, kde-format
-#| msgid "Object to &Path"
-msgid "Object to Path"
-msgstr "Nesneden &Yola"
-
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
-#, fuzzy, kde-format
-#| msgid "Trace Bitmap"
-msgid "Trace Bitmap…"
-msgstr "Biteşlem İzle"
-
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:675
-#, fuzzy, kde-format
-#| msgid "&Union"
-msgid "Union"
-msgstr "&Birleştir"
-
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:677
-#, fuzzy, kde-format
-#| msgid "&Difference"
+#, kde-format
+msgid "Object to Path"
+msgstr "Nesneden Yola"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:680
+#, kde-format
+msgid "Trace Bitmap…"
+msgstr "Biteşlem İzle…"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:685
+#, kde-format
+msgid "Union"
+msgstr "Birleştir"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:687
+#, kde-format
 msgid "Difference"
-msgstr "&Fark"
+msgstr "Fark"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:679
-#, fuzzy, kde-format
-#| msgid "&Intersect"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:689
+#, kde-format
 msgid "Intersect"
-msgstr "Ke&sişim"
+msgstr "Kesişim"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:681
-#, fuzzy, kde-format
-#| msgid "E&xclusion"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:691
+#, kde-format
 msgid "Exclusion"
-msgstr "&Dışlama"
+msgstr "Dışlama"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:684
-#, fuzzy, kde-format
-#| msgid "Re&verse"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:694
+#, kde-format
 msgid "Reverse"
-msgstr "&Ters"
-
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
-#, fuzzy, kde-format
-#| msgid "Add &Node..."
-msgid "Add Node…"
-msgstr "&Düğüm Ekle…"
-
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:690
-#, fuzzy, kde-format
-#| msgid "&Join Nodes"
-msgid "Join Nodes"
-msgstr "Düğümleri Birbirine &Kat"
-
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
-#, fuzzy, kde-format
-#| msgid "S&plit Nodes"
-msgid "Split Nodes"
-msgstr "Düğümleri &Böl"
-
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:697
-#, fuzzy, kde-format
-#| msgid "Sy&mmetric"
-msgid "Symmetric"
-msgstr "Si&metrik"
+msgstr "Ters"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:698
+#, kde-format
+msgid "Add Node…"
+msgstr "Düğüm Ekle…"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:700
+#, kde-format
+msgid "Join Nodes"
+msgstr "Düğümleri Birbirine Kat"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:702
+#, kde-format
+msgid "Split Nodes"
+msgstr "Düğümleri Böl"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:707
+#, kde-format
+msgid "Symmetric"
+msgstr "Simetrik"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:708
 #, kde-format
 msgid "Make segments straight"
 msgstr "Bölütleri Düz Yap"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:699
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:709
 #, kde-format
 msgid "Make segments curved"
 msgstr "Bölütleri Kıvrımlı Yap"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:834
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:844
 #, kde-format
 msgid "Recording Keyframes"
 msgstr "Anahtar Kareler Kaydediliyor"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1252
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1257
 #, kde-format
 msgid "Could not load template"
 msgstr "Şablon yüklenemedi"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1442
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1451
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1458
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1452
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1461
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1468
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
 msgstr "Biteşlem İzle"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1442
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1452
 #, kde-format
 msgid "Only select one image"
 msgstr "Yalnızca bir görsel seçin"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1451
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1461
 #, kde-format
 msgid "You need to select an image to trace"
 msgstr "İzlenecek bir görsel seçmelisiniz"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1458
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1468
 #, kde-format
 msgid "You selected an image with no data"
 msgstr "Verisi olmayan bir görsel seçtiniz"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1516
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1538
 #, kde-format
 msgid "X: %1 Y: %2"
 msgstr "X: %1 Y: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1535
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1557
 #, kde-format
 msgid "Drop File"
 msgstr "Dosya Bırak"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1546
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1568
 #, kde-format
 msgid "Add to current file?"
 msgstr "Geçerli dosyaya eklensin mi?"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1552
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1574
 #, kde-format
 msgid "Add as Object"
 msgstr "Nesne Olarak Ekle"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1558
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1580
 #, kde-format
 msgid "Add as Composition"
 msgstr "Kompozisyon Olarak Ekle"
 
-#: src/gui/widgets/dialogs/import_export_dialog.hpp:39
+#: src/gui/widgets/dialogs/import_export_dialog.hpp:40
 #, kde-format
 msgid "Save file"
 msgstr "Dosyayı Kaydet"
 
-#: src/gui/widgets/dialogs/import_export_dialog.hpp:59
+#: src/gui/widgets/dialogs/import_export_dialog.hpp:60
 #, kde-format
 msgid "Overwrite File?"
 msgstr "Dosyanın Üzerine Yaz?"
 
-#: src/gui/widgets/dialogs/import_export_dialog.hpp:60
+#: src/gui/widgets/dialogs/import_export_dialog.hpp:61
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "“%1” dosyası halihazırda var. Üzerine yazmak istiyor musunuz?"
 
-#: src/gui/widgets/dialogs/import_export_dialog.hpp:82
+#: src/gui/widgets/dialogs/import_export_dialog.hpp:83
 #, kde-format
 msgid "Open file"
 msgstr "Dosyayı Aç"
 
-#: src/gui/widgets/dialogs/import_export_dialog.hpp:101
+#: src/gui/widgets/dialogs/import_export_dialog.hpp:102
 #, kde-format
 msgid "%1 Options"
 msgstr "%1 Seçenekleri"
 
-#: src/gui/widgets/dialogs/import_export_dialog.hpp:166
+#: src/gui/widgets/dialogs/import_export_dialog.hpp:167
 #, kde-format
 msgid "All files (%1)"
 msgstr "Tüm dosyalar (%1)"
@@ -4775,6 +4627,7 @@ msgstr "Canlandırma Özelliklerini Değiştir"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
+#: src/gui/widgets/settings/settings_dialog.cpp:215
 #, kde-format
 msgid "FPS"
 msgstr "FPS"
@@ -5301,24 +5154,21 @@ msgstr "Parçacıkları yeniden yükle"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_time_slider)
 #: src/gui/widgets/docks/time_slider.ui:22
-#, fuzzy, kde-format
-#| msgid "Compact Timelime"
+#, kde-format
 msgid "Compact Timeline"
 msgstr "Sıkışık Zaman Akışı"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_timeline)
 #: src/gui/widgets/docks/timeline.ui:22
-#, fuzzy, kde-format
-#| msgid "Timeline"
+#, kde-format
 msgid "&Timeline"
 msgstr "Zaman Akışı"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_tool_options)
 #: src/gui/widgets/docks/tooloptions.ui:22
-#, fuzzy, kde-format
-#| msgid "Tool Options"
+#, kde-format
 msgid "&Tool Options"
-msgstr "Araç Seçenekleri"
+msgstr "&Araç Seçenekleri"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_undo)
 #: src/gui/widgets/docks/undo.ui:22
@@ -5447,12 +5297,6 @@ msgstr "Önizleme Ölçeği"
 msgid "System"
 msgstr "Sistem"
 
-#. i18n: ectx: attribute (title), widget (QWidget, tab_google)
-#: src/gui/widgets/font/font_style_dialog.ui:52
-#, kde-format
-msgid "Google Fonts"
-msgstr "Google Fonts"
-
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/gui/widgets/font/font_style_widget.ui:53
 #: src/gui/widgets/font/google_fonts_widget.ui:97
@@ -5515,7 +5359,7 @@ msgstr "Herhangi Biri"
 #: src/gui/widgets/font/google_fonts_model.cpp:392
 #, kde-format
 msgid "Sans-Serif"
-msgstr "Sans-Serif"
+msgstr "Sans Serif"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:394
 #, kde-format
@@ -5848,6 +5692,114 @@ msgstr "Sürüm"
 #, kde-format
 msgid "Services"
 msgstr "Hizmetler"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:199
+#, fuzzy
+#| msgctxt "@title settings group"
+#| msgid "User Interface"
+msgctxt "Settings"
+msgid "User Interface"
+msgstr "Kullanıcı Arayüzü"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:200
+#, fuzzy
+#| msgid "Show at startup"
+msgid "Show startup dialog"
+msgstr "Başlangıçta göster"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:203
+#, fuzzy
+#| msgctxt "@option:check"
+#| msgid "Horizontal Timeline Scroll"
+msgid "Horizontal Timeline Scroll"
+msgstr "Yatay zaman akışı sarımı"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:204
+#, fuzzy
+#| msgctxt "@info:tooltip"
+#| msgid ""
+#| "If enabled, the timeline will scroll horizontally by default and "
+#| "vertically with Shift or Alt"
+msgid ""
+"If enabled, the timeline will scroll horizontally by default and vertically "
+"with Shift or Alt"
+msgstr ""
+"Etkinleştirilirse zaman akışı öntanımlı olarak yatay olarak sarılır ve Üst "
+"Karakter veya Seçenek ile dikeye geçiş yapılabilir"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:210
+#, kde-format
+msgctxt "Seconds suffix"
+msgid "s"
+msgstr ""
+
+#: src/gui/widgets/settings/settings_dialog.cpp:212
+#, fuzzy
+#| msgctxt "@title settings group"
+#| msgid "New Animation Defaults"
+msgctxt "Settings"
+msgid "New Animation Defaults"
+msgstr "Yeni Canlandırma Öntanımlıları"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:213
+#, fuzzy
+#| msgid "Canvas"
+msgid "Canvas Width"
+msgstr "Tuval"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:214
+#, fuzzy
+#| msgid "Frame Height"
+msgid "Canvas Height"
+msgstr "Kare Yüksekliği"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:215
+#, fuzzy
+#| msgctxt "@info:tooltip"
+#| msgid "Frames per second"
+msgid "Frames per secons"
+msgstr "Saniye başına kare sayısı"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:216
+#, fuzzy
+#| msgctxt "@info:tooltip"
+#| msgid "Duration in seconds"
+msgid "Duration in secons"
+msgstr "Saniye türünden süre"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:220
+#, fuzzy
+#| msgctxt "@title settings group"
+#| msgid "Open / Save"
+msgctxt "Settings"
+msgid "Open / Save"
+msgstr "Aç/Kaydet"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:221
+#, fuzzy
+#| msgctxt "@label:spinbox"
+#| msgid "Max Recent Files"
+msgid "Max Recent Files"
+msgstr "En çok son kullanılan dosya sayısı"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:221
+#: src/gui/widgets/settings/settings_dialog.cpp:222
+msgid "Number of items to show in the recent files menu"
+msgstr ""
+
+#: src/gui/widgets/settings/settings_dialog.cpp:222
+#, fuzzy
+#| msgctxt "@label:spinbox"
+#| msgid "Backup Frequency"
+msgid "Backup Frequency"
+msgstr "Yedek Sıklığı"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:223
+#, fuzzy
+#| msgctxt "@option:check"
+#| msgid "Use system file dialog"
+msgid "Use system file dialog"
+msgstr "Sistem dosya iletişim kutularını kullan"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:30
@@ -6562,6 +6514,34 @@ msgstr "Açı"
 #, kde-format
 msgid "°"
 msgstr "°"
+
+#~ msgctxt "@label:spinbox"
+#~ msgid "Width"
+#~ msgstr "Genişlik"
+
+#~ msgctxt "@label:spinbox"
+#~ msgid "Height"
+#~ msgstr "Yükseklik"
+
+#~ msgctxt "@label:spinbox"
+#~ msgid "FPS"
+#~ msgstr "FPS"
+
+#~ msgctxt "@label:spinbox"
+#~ msgid "Duration"
+#~ msgstr "Süre"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "How often to save a backup copy (in minutes)"
+#~ msgstr "Ne kadar sıklıkla bir yedek kopyası alınmalı (dakika olarak)"
+
+#~ msgctxt "@title settings group"
+#~ msgid "Scripting"
+#~ msgstr "Betik Yazımı"
+
+#~ msgctxt "@title settings group"
+#~ msgid "Tools"
+#~ msgstr "Araçlar"
 
 #~ msgid "Glaxnimate Default"
 #~ msgstr "Glaxnimate Öntanımlısı"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-10 01:53+0000\n"
+"POT-Creation-Date: 2024-08-12 01:44+0000\n"
 "PO-Revision-Date: 2024-08-10 08:56+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -349,7 +349,7 @@ msgstr "Замінити"
 #: src/android/document_opener.cpp:201
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:448
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:453
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:172
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:182
 #: src/gui/widgets/font/external_font_widget.cpp:126
 #, kde-format
 msgid "Open File"
@@ -361,7 +361,7 @@ msgid "Raster images need to be traced into vectors"
 msgstr "Растрові зображення, які слід трасувати у вектори"
 
 #: src/android/document_opener.cpp:106
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:173
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:183
 #, kde-format
 msgid "Save File"
 msgstr "Зберегти файл"
@@ -653,13 +653,13 @@ msgstr "Стиль заповнення"
 msgid "Stroke Style"
 msgstr "Стиль штриха"
 
-#: src/android/main_window.cpp:452 src/gui/widgets/dialogs/gw_impl_ui.cpp:601
+#: src/android/main_window.cpp:452 src/gui/widgets/dialogs/gw_impl_ui.cpp:611
 #: src/gui/widgets/menus/node_menu.cpp:105
 #, kde-format
 msgid "Raise"
 msgstr "Підняти"
 
-#: src/android/main_window.cpp:457 src/gui/widgets/dialogs/gw_impl_ui.cpp:604
+#: src/android/main_window.cpp:457 src/gui/widgets/dialogs/gw_impl_ui.cpp:614
 #: src/gui/widgets/menus/node_menu.cpp:109
 #, kde-format
 msgid "Lower"
@@ -739,7 +739,7 @@ msgstr "Відкрити…"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:101
 #: src/gui/widgets/dialogs/about_env_dialog.ui:129
 #: src/gui/widgets/dialogs/about_env_dialog.ui:132
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1564
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1586
 #: src/gui/widgets/dialogs/startup_dialog.ui:149
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:136
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
@@ -788,7 +788,7 @@ msgstr "Надіслати до Telegram"
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/android/main_window.cpp:544 src/gui/glaxnimateui.rc:120
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:557
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:567
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #: src/gui/widgets/docks/layers.ui:29
 #, kde-format
@@ -870,7 +870,7 @@ msgid "Emoji"
 msgstr "Емоційка"
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
-#: src/android/main_window.ui:21 src/core/app_info.cpp:20
+#: src/android/main_window.ui:21 src/core/app_info.cpp:21
 #, kde-format
 msgid "Glaxnimate"
 msgstr "Glaxnimate"
@@ -930,62 +930,63 @@ msgstr "Додати поточну"
 msgid "Could not start activity, is Telegram installed?"
 msgstr "Не вдалося започаткувати дію. Чи встановлено Telegram?"
 
-#: src/core/app_info.cpp:56
+#: src/core/app_info.cpp:57
 #, kde-format
 msgid "(c) 2019-2023"
 msgstr "© 2019-2023"
 
-#: src/core/app_info.cpp:65
-#, kde-format
-msgid "Mattia \"Glax\" Basaglie"
+#: src/core/app_info.cpp:66
+#, fuzzy, kde-format
+#| msgid "Mattia \"Glax\" Basaglie"
+msgid "Mattia \"Glax\" Basaglia"
 msgstr "Mattia \"Glax\" Basaglie"
 
-#: src/core/app_info.cpp:65
+#: src/core/app_info.cpp:66
 #, kde-format
 msgid "Maintainer"
 msgstr "Супровідник"
 
-#: src/core/app_info.cpp:67
+#: src/core/app_info.cpp:68
 #, kde-format
 msgid "potrace"
 msgstr "potrace"
 
-#: src/core/app_info.cpp:67
+#: src/core/app_info.cpp:68
 #, kde-format
 msgid "Used by the bitmap tracing feature."
 msgstr "Використано для реалізації можливості трасування растрових зображень."
 
-#: src/core/app_info.cpp:69
+#: src/core/app_info.cpp:70
 #, kde-format
 msgid "libav"
 msgstr "libav"
 
-#: src/core/app_info.cpp:70
+#: src/core/app_info.cpp:71
 #, kde-format
 msgid "libarchive"
 msgstr "libarchive"
 
-#: src/core/app_info.cpp:71
+#: src/core/app_info.cpp:72
 #, kde-format
 msgid "zlib"
 msgstr "zlib"
 
-#: src/core/app_info.cpp:73
+#: src/core/app_info.cpp:74
 #, kde-format
 msgid "pybind11"
 msgstr "pybind11"
 
-#: src/core/app_info.cpp:73 src/core/app_info.cpp:74
+#: src/core/app_info.cpp:74 src/core/app_info.cpp:75
 #, kde-format
 msgid "Used by the plugin system."
 msgstr "Використано у системі додатків."
 
-#: src/core/app_info.cpp:74
+#: src/core/app_info.cpp:75
 #, kde-format
 msgid "CPython"
 msgstr "CPython"
 
-#: src/core/app_info.cpp:76
+#: src/core/app_info.cpp:77
 #, kde-format
 msgid "Inkscape"
 msgstr "Inkscape"
@@ -1328,37 +1329,37 @@ msgstr "Помилковий тип об'єкта: мало бути «%1», а 
 msgid "Could not load %1 for %2"
 msgstr "Не вдалося завантажити %1 для %2"
 
-#: src/core/io/glaxnimate/import_state.hpp:335
+#: src/core/io/glaxnimate/import_state.hpp:332
 #, kde-format
 msgid "Could not set property %1"
 msgstr "Не вдалося встановити властивість %1"
 
-#: src/core/io/glaxnimate/import_state.hpp:361
+#: src/core/io/glaxnimate/import_state.hpp:358
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
 msgstr "Запис %1 для %2 у %3 не є об'єктом"
 
-#: src/core/io/glaxnimate/import_state.hpp:373
+#: src/core/io/glaxnimate/import_state.hpp:370
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
 msgstr "Запис %1 для %2 у %3 є неприйнятним"
 
-#: src/core/io/glaxnimate/import_state.hpp:412
+#: src/core/io/glaxnimate/import_state.hpp:409
 #, kde-format
 msgid "Keyframe must specify a time"
 msgstr "Ключовий кадр має вказувати час"
 
-#: src/core/io/glaxnimate/import_state.hpp:417
+#: src/core/io/glaxnimate/import_state.hpp:414
 #, kde-format
 msgid "Keyframe must specify a value"
 msgstr "Ключовий кадр має вказувати значення"
 
-#: src/core/io/glaxnimate/import_state.hpp:427
+#: src/core/io/glaxnimate/import_state.hpp:424
 #, kde-format
 msgid "Could not add keyframe"
 msgstr "Не вдалося додати ключовий кадр"
 
-#: src/core/io/glaxnimate/import_state.hpp:611
+#: src/core/io/glaxnimate/import_state.hpp:608
 #, kde-format
 msgid "Unknown object of type '%1'"
 msgstr "Невідомий об'єкт типу «%1»"
@@ -2176,7 +2177,7 @@ msgstr "Еліпс"
 #: src/core/model/shapes/fill.hpp:48 src/gui/tools/draw_tool_base.cpp:114
 #: src/gui/tools/fill_tool.cpp:25
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:748
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:579
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:589
 #: src/gui/widgets/docks/colors.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:191
 #: src/gui/widgets/tools/color_picker_widget.ui:24
@@ -2188,8 +2189,8 @@ msgstr "Заповнення"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/model/shapes/group.hpp:42
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:576
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:613
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:586
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:623
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
 #, kde-format
 msgid "Group"
@@ -2207,7 +2208,7 @@ msgstr "Збільшення і зменшення"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/model/shapes/layer.hpp:81
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:573
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:583
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
 #, kde-format
 msgid "Layer"
@@ -2222,7 +2223,7 @@ msgstr "Розтягнення контуру"
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/model/shapes/path.hpp:38 src/gui/glaxnimateui.rc:174
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:665
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:675
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
@@ -2259,7 +2260,7 @@ msgstr "Заокруглити кути"
 #. i18n: ectx: property (text), widget (QRadioButton, check_stroke)
 #: src/core/model/shapes/stroke.hpp:68 src/gui/tools/draw_tool_base.cpp:126
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:743
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:582
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:592
 #: src/gui/widgets/docks/stroke.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:101
 #: src/gui/widgets/tools/color_picker_widget.ui:37
@@ -2276,7 +2277,7 @@ msgstr "Змінити шрифт"
 
 #. i18n: ectx: Menu (text)
 #: src/core/model/shapes/text.cpp:489 src/gui/glaxnimateui.rc:200
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:117
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:120
 #, kde-format
 msgid "Text"
 msgstr "Текст"
@@ -2609,7 +2610,7 @@ msgstr "Набір емоційок"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:248
 #: src/gui/widgets/dialogs/about_env_dialog.ui:289
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:109
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:302
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:312
 #: src/gui/widgets/dialogs/startup_dialog.ui:48
 #: src/gui/widgets/settings/plugin_settings_widget.ui:168
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:391
@@ -2671,121 +2672,15 @@ msgstr "Додати емодзі…"
 msgid "Close"
 msgstr "Закрити"
 
-#: src/gui/glaxnimate_app.cpp:88
-#, kde-format
-msgctxt "@title settings group"
-msgid "User Interface"
-msgstr "Інтерфейс користувача"
-
-#: src/gui/glaxnimate_app.cpp:92
-#, kde-format
-msgctxt "@option:check"
-msgid "Horizontal Timeline Scroll"
-msgstr "Горизонтальне гортання монтажного столу"
-
-#: src/gui/glaxnimate_app.cpp:93
-#, kde-format
-msgctxt "@info:tooltip"
-msgid ""
-"If enabled, the timeline will scroll horizontally by default and vertically "
-"with Shift or Alt"
-msgstr ""
-"Якщо увімкнено, гортання монтажного столу типово відбуватиметься у "
-"горизонтальному напрямку, а у вертикальному — з Shift або Alt"
-
-#: src/gui/glaxnimate_app.cpp:100
-#, kde-format
-msgctxt "@title settings group"
-msgid "New Animation Defaults"
-msgstr "Нові типові параметри анімацій"
-
-#: src/gui/glaxnimate_app.cpp:102
-#, kde-format
-msgctxt "@label:spinbox"
-msgid "Width"
-msgstr "Ширина"
-
-#: src/gui/glaxnimate_app.cpp:105
-#, kde-format
-msgctxt "@label:spinbox"
-msgid "Height"
-msgstr "Висота"
-
-#: src/gui/glaxnimate_app.cpp:108
-#, kde-format
-msgctxt "@label:spinbox"
-msgid "FPS"
-msgstr "Частота кадрів"
-
-#: src/gui/glaxnimate_app.cpp:109
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Frames per second"
-msgstr "Кадрів в секунду"
-
-#: src/gui/glaxnimate_app.cpp:112
-#, kde-format
-msgctxt "@label:spinbox"
-msgid "Duration"
-msgstr "Тривалість"
-
-#: src/gui/glaxnimate_app.cpp:113
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Duration in seconds"
-msgstr "Тривалість (у секундах)"
-
-#: src/gui/glaxnimate_app.cpp:116
-#, kde-format
-msgctxt "@title settings group"
-msgid "Open / Save"
-msgstr "Відкриття/Збереження"
-
-#: src/gui/glaxnimate_app.cpp:117
-#, kde-format
-msgctxt "@label:spinbox"
-msgid "Max Recent Files"
-msgstr "Максимальна кількість нещодавніх файлів"
-
-#: src/gui/glaxnimate_app.cpp:121
-#, kde-format
-msgctxt "@label:spinbox"
-msgid "Backup Frequency"
-msgstr "Частота резервного копіювання"
-
-#: src/gui/glaxnimate_app.cpp:122
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "How often to save a backup copy (in minutes)"
-msgstr "Наскільки часто слід зберігати резервні копії (у хвилинах)"
-
-#: src/gui/glaxnimate_app.cpp:125
-#, kde-format
-msgctxt "@option:check"
-msgid "Use system file dialog"
-msgstr "Використовувати вікно роботи з файлами системи"
-
-#: src/gui/glaxnimate_app.cpp:127
-#, kde-format
-msgctxt "@title settings group"
-msgid "Scripting"
-msgstr "Скрипти"
-
-#: src/gui/glaxnimate_app.cpp:132
-#, kde-format
-msgctxt "@title settings group"
-msgid "Tools"
-msgstr "Інструменти"
-
 #. i18n: ectx: Menu (file_new_from_template)
-#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1252
+#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1257
 #, kde-format
 msgid "New from Template"
 msgstr "Створити з шаблона"
 
 #. i18n: ectx: Menu (edit_tools)
-#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:368
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:743
+#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:378
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:753
 #, kde-format
 msgid "Tools"
 msgstr "Інструменти"
@@ -2803,7 +2698,7 @@ msgid "Layout"
 msgstr "Компонування"
 
 #. i18n: ectx: Menu (document)
-#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:444
+#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:454
 #, kde-format
 msgid "Document"
 msgstr "Документ"
@@ -2823,13 +2718,13 @@ msgid "Web Preview"
 msgstr "Інтернет-перегляд"
 
 #. i18n: ectx: Menu (playback)
-#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:488
+#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:498
 #, kde-format
 msgid "Playback"
 msgstr "Відтворення"
 
 #. i18n: ectx: Menu (object)
-#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:596
+#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:606
 #, kde-format
 msgid "Object"
 msgstr "Об'єкт"
@@ -2842,6 +2737,7 @@ msgstr "Вирівняти і розподілити"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:205 src/gui/settings/plugin_settings_group.hpp:23
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1481
 #, kde-format
 msgid "Plugins"
 msgstr "Додатки"
@@ -3004,18 +2900,23 @@ msgstr "Значення"
 msgid "New Snippet %1"
 msgstr "Новий фрагмент %1"
 
-#: src/gui/settings/api_credentials.cpp:86
+#. i18n: ectx: attribute (title), widget (QWidget, tab_google)
+#: src/gui/settings/api_credentials.cpp:28
+#: src/gui/widgets/font/font_style_dialog.ui:52
+#, kde-format
+msgid "Google Fonts"
+msgstr "Шрифти Google"
+
+#: src/gui/settings/api_credentials.cpp:89
 #, kde-format
 msgid "Information"
 msgstr "Інформація"
 
-#: src/gui/settings/api_credentials.hpp:41
-#, kde-format
+#: src/gui/settings/api_credentials.hpp:42
 msgid "API Credentials"
 msgstr "Реєстраційні дані до програмного інтерфейсу"
 
 #: src/gui/settings/clipboard_settings.hpp:18
-#, kde-format
 msgid "Clipboard"
 msgstr "Буфер обміну"
 
@@ -3097,12 +2998,12 @@ msgstr "Намалювати криву Безьє"
 msgid "Drag nodes"
 msgstr "Перетягнути вузли"
 
-#: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:695
+#: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:705
 #, kde-format
 msgid "Cusp"
 msgstr "Гострий"
 
-#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:696
+#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:706
 #, kde-format
 msgid "Smooth"
 msgstr "Гладкий"
@@ -3160,12 +3061,12 @@ msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "Вилучити опорну точку"
 
-#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:700
+#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:710
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr "Розчинити вузли"
 
-#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:687
+#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:697
 #, kde-format
 msgid "Delete Nodes"
 msgstr "Вилучити вузли"
@@ -3185,7 +3086,7 @@ msgstr "Розпрямити сегменти"
 msgid "Curve segments"
 msgstr "Сегменти кривої"
 
-#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:327
+#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:337
 #, kde-format
 msgid "Edit"
 msgstr "Змінити"
@@ -3236,19 +3137,19 @@ msgstr "Позначити"
 msgid "Drag"
 msgstr "Перетягування"
 
-#: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:332
+#: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:342
 #, kde-format
 msgid "Undo %1"
 msgstr "Скасувати %1"
 
-#: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:338
+#: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:348
 #, kde-format
 msgid "Redo %1"
 msgstr "Повторити %1"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_delete)
-#: src/gui/tools/select_tool.cpp:417 src/gui/widgets/dialogs/gw_impl_ui.cpp:353
+#: src/gui/tools/select_tool.cpp:417 src/gui/widgets/dialogs/gw_impl_ui.cpp:363
 #: src/gui/widgets/dialogs/selection_manager.cpp:90
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:46
 #: src/gui/widgets/docks/snippet_list_widget.ui:57
@@ -3279,7 +3180,7 @@ msgstr "Додати текст"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::AboutEnvironmentDialog)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:20
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:140
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:143
 #, kde-format
 msgid "About Environment"
 msgstr "Про середовище"
@@ -3658,7 +3559,7 @@ msgstr "Ключові слова"
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #. i18n: ectx: attribute (title), widget (QWidget, tab_custom)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:84
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:404
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:414
 #: src/gui/widgets/font/font_style_dialog.ui:77
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:69
 #, kde-format
@@ -3749,7 +3650,7 @@ msgstr "\""
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::FollowPathDialog)
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:118
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:21
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:18
 #, kde-format
 msgid "Follow Path"
 msgstr "Розташувати за контуром"
@@ -3757,28 +3658,29 @@ msgstr "Розташувати за контуром"
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: ectx: property (text), widget (QTableWidget, view_presets)
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:27
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:24
 #: src/gui/widgets/dialogs/startup_dialog.ui:68
 #: src/gui/widgets/dialogs/startup_dialog.ui:82
 #: src/gui/widgets/dialogs/timing_dialog.ui:52
+#: src/gui/widgets/settings/settings_dialog.cpp:216
 #, kde-format
 msgid "Duration"
 msgstr "Тривалість"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:34
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:31
 #, kde-format
 msgid "Time Units"
 msgstr "Одиниці часу"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:48
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:45
 #, kde-format
 msgid "Shape"
 msgstr "Форма"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:58
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:55
 #, kde-format
 msgid "End Time"
 msgstr "Час завершення"
@@ -3786,7 +3688,7 @@ msgstr "Час завершення"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_units)
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_time_units)
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:66
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:63
 #: src/gui/widgets/dialogs/startup_dialog.ui:130
 #: src/gui/widgets/dialogs/timing_dialog.ui:72
 #, kde-format
@@ -3795,55 +3697,55 @@ msgstr "Кадри"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_units)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_time_units)
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:71
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:68
 #: src/gui/widgets/dialogs/startup_dialog.ui:135
 #, kde-format
 msgid "Seconds"
 msgstr "Секунди"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:91
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:88
 #, kde-format
 msgid "Choose..."
 msgstr "Вибрати…"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/gui/widgets/dialogs/follow_path_dialog.ui:100
+#: src/gui/widgets/dialogs/follow_path_dialog.ui:97
 #, kde-format
 msgid "Start Time"
 msgstr "Час початку"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:28
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:36
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:27
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:35
 #, kde-format
 msgid "New Animation"
 msgstr "Нова анімація"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:42
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:50
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:41
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:49
 #, kde-format
 msgid "File saved"
 msgstr "Файл збережено"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:44
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:52
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:43
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:51
 #, kde-format
 msgid "Could not save file"
 msgstr "Не вдалося зберегти файл"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:58
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:66
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:57
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:65
 #, kde-format
 msgid "File exported"
 msgstr "Файл експортовано"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:60
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:68
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:59
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:67
 #, kde-format
 msgid "Could not export file"
 msgstr "Не вдалось експортувати файл"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:176
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:169
 #, kde-format
 msgid "Warning"
 msgstr "Попередження"
@@ -3959,7 +3861,7 @@ msgid "Scalable Vector Graphics (*.svg)"
 msgstr "масштабована векторна графіка (*.svg)"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:624
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:466
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:476
 #, kde-format
 msgid "Validate Discord Sticker"
 msgstr "Перевірити наліпку Discord"
@@ -3977,7 +3879,7 @@ msgid "Some issues detected"
 msgstr "Виявлено певні проблеми"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:634
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:463
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:473
 #, kde-format
 msgid "Validate Telegram Sticker"
 msgstr "Перевірити наліпку Telegram"
@@ -4034,155 +3936,155 @@ msgstr ""
 msgid "Load Backup..."
 msgstr "Завантажити резервну копію…"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:87
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:89
 #, kde-format
 msgid "Delete %1"
 msgstr "Вилучити %1"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:185
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:187
 #, kde-format
 msgid "Move Shapes"
 msgstr "Пересунути форми"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:209
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:211
 #, kde-format
 msgid "All Supported files (%1)"
 msgstr "усі підтримувані файли (%1)"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:236
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:243
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:253
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:238
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:245
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:255
 #, kde-format
 msgid "Import Image"
 msgstr "Імпортувати зображення"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:253
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:255
 #, kde-format
 msgid "Could not import image"
 msgstr "Не вдалося імпортувати зображення"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:290
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:292
 #, kde-format
 msgid "Cleanup Document"
 msgstr "Очистити документ"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:298
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:300
 #, kde-format
 msgid "Removed %1 assets"
 msgstr "Вилучено ресурси %1"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:306
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:308
 #, kde-format
 msgid "Convert to path"
 msgstr "Перетворити на контур"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:308
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:310
 #, kde-format
 msgid "Convert %1 to path"
 msgstr "Перетворити %1 на контур"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:490
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:492
 #, kde-format
 msgid "New Composition from Selection"
 msgstr "Створити композицію з позначеного"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:678
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:680
 #, kde-format
 msgid "Align Selection"
 msgstr "Вирівняти позначене"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:720
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:722
 #, kde-format
 msgid "Drop"
 msgstr "Скидання"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:816
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:818
 #, kde-format
 msgid "Put text on path"
 msgstr "Розмістити текст за контуром"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:838
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:840
 #, kde-format
 msgid "Remove text from path"
 msgstr "Зняти текст з контуру"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:119
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:122
 #, kde-format
 msgid "Put on Path"
 msgstr "Розмістити по контуру"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:122
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:125
 #: src/gui/widgets/menus/node_menu.cpp:396
 #, kde-format
 msgid "Remove from Path"
 msgstr "Зняти текст з контуру"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:136
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:139
 #, kde-format
 msgid "Copy Debug Information"
 msgstr "Копіювати діагностичні дані"
 
 #. i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:255
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:265
 #, kde-format
 msgid "File"
 msgstr "Файл"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:260
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:270
 #, kde-format
 msgid "Add Image…"
 msgstr "Додати зображення…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:263
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:273
 #, kde-format
 msgid "Import…"
 msgstr "Імпортувати…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:266
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:276
 #, kde-format
 msgid "Import from LottieFiles…"
 msgstr "Імпортувати з LottieFiles…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:269
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:279
 #, kde-format
 msgid "Open Most Recent"
 msgstr "Відкрити останній з нещодавніх"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:297
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:302
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:308
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:307
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:312
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:318
 #, kde-format
 msgid "Save as Template"
 msgstr "Зберегти як шаблон"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:308
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:318
 #, kde-format
 msgid "Could not save template"
 msgstr "Не вдалося зберегти шаблон"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:312
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:322
 #, kde-format
 msgid "Export…"
 msgstr "Експортувати…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:315
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:325
 #, kde-format
 msgid "Export As…"
 msgstr "Експортувати як…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:318
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:328
 #, kde-format
 msgid "Export as Image Sequence…"
 msgstr "Експортувати як послідовність зображень…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:345
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:355
 #, kde-format
 msgid "Paste as Composition"
 msgstr "Вставити як композицію"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_duplicate)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:348
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:358
 #: src/gui/widgets/docks/layers.ui:80 src/gui/widgets/docks/layers.ui:83
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:486
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:69
@@ -4190,34 +4092,34 @@ msgstr "Вставити як композицію"
 msgid "Duplicate"
 msgstr "Дублювати"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:399
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:409
 #, kde-format
 msgid "View"
 msgstr "Перегляд"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:410
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:420
 #, kde-format
 msgid "Automatic"
 msgstr "Автоматично"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:415
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:425
 #, kde-format
 msgid "Wide"
 msgstr "Широке"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:420
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:430
 #, kde-format
 msgid "Medium"
 msgstr "Середнє"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:425
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:435
 #, kde-format
 msgid "Compact"
 msgstr "Компактне"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_angle_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_angle_reset)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:436
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:446
 #: src/gui/widgets/view_transform_widget.ui:150
 #: src/gui/widgets/view_transform_widget.ui:153
 #, kde-format
@@ -4226,186 +4128,186 @@ msgstr "Скинути обертання"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_flip_view)
 #. i18n: ectx: property (text), widget (QToolButton, btn_flip_view)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:438
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:448
 #: src/gui/widgets/view_transform_widget.ui:164
 #: src/gui/widgets/view_transform_widget.ui:167
 #, kde-format
 msgid "Flip View"
 msgstr "Перевернути перегляд"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:446
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:456
 #, kde-format
 msgid "Raster…"
 msgstr "Растр…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:448
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:458
 #, kde-format
 msgid "SVG…"
 msgstr "SVG…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:451
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:461
 #, kde-format
 msgid "Lottie (SVG)"
 msgstr "Lottie (SVG)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:454
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:464
 #, kde-format
 msgid "Lottie (canvas)"
 msgstr "Lottie (полотно)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:457
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:467
 #, kde-format
 msgid "SVG (SMIL)"
 msgstr "SVG (SMIL)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:460
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:470
 #, kde-format
 msgid "RIVE (canvas)"
 msgstr "RIVE (полотно)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:469
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:479
 #, kde-format
 msgid "Resize…"
 msgstr "Змінити розмір…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:472
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:482
 #, kde-format
 msgid "Cleanup"
 msgstr "Очищення"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:475
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:485
 #, kde-format
 msgid "Timing…"
 msgstr "Час…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:480
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:490
 #, kde-format
 msgid "Metadata…"
 msgstr "Метадані…"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:491
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:515
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:501
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:525
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
 #, kde-format
 msgid "Play"
 msgstr "Пуск"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_loop)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:493
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:503
 #: src/gui/widgets/timeline/frame_controls_widget.ui:63
 #, kde-format
 msgid "Loop"
 msgstr "Цикл"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:495
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:505
 #, kde-format
 msgid "Record Keyframes"
 msgstr "Записати ключові кадри"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:507
 #, kde-format
 msgid "Jump to Start"
 msgstr "Перейти до початку"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:499
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:509
 #, kde-format
 msgid "Jump to End"
 msgstr "Перейти до кінця"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:501
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:511
 #, kde-format
 msgid "Next Frame"
 msgstr "Наступний кадр"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:503
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:513
 #, kde-format
 msgid "Previous Frame"
 msgstr "Попередній кадр"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:511
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:521
 #, kde-format
 msgid "Pause"
 msgstr "Пауза"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:566
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:576
 #, kde-format
 msgid "Precompose Selection"
 msgstr "Попередньо скомпонувати позначене"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:570
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:580
 #, kde-format
 msgid "New Composition"
 msgstr "Створити композицію"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:585
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:595
 #, kde-format
 msgid "Emoji…"
 msgstr "Емоційка…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:598
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:608
 #, kde-format
 msgid "Raise to Top"
 msgstr "Підняти на передній план"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:607
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:617
 #, kde-format
 msgid "Lower to Bottom"
 msgstr "Опустити на задній план"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:610
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:620
 #, kde-format
 msgid "Move to…"
 msgstr "Перемістити до…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:616
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:626
 #, kde-format
 msgid "Ungroup"
 msgstr "Розгрупувати"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:619
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:629
 #: src/gui/widgets/docks/aligndock.cpp:46
 #, kde-format
 msgid "Align"
 msgstr "Вирівняти"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:621
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:631
 #, kde-format
 msgid "Selection"
 msgstr "Позначення"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:623
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:633
 #, kde-format
 msgid "Canvas"
 msgstr "Полотно"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:625
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:635
 #, kde-format
 msgid "Canvas (as Group)"
 msgstr "Полотно (як група)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:628
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:638
 #, kde-format
 msgid "Left"
 msgstr "Ліворуч"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:631
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:640
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:641
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:650
 #, kde-format
 msgid "Center"
 msgstr "За центром"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:634
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:644
 #, kde-format
 msgid "Right"
 msgstr "Праворуч"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:637
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:647
 #, kde-format
 msgid "Top"
 msgstr "Вгорі"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:643
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:653
 #, kde-format
 msgid "Bottom"
 msgstr "Внизу"
@@ -4413,176 +4315,176 @@ msgstr "Внизу"
 #. i18n("Relative To"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_horizontal"), i18n("Horizontal"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_vertical"), i18n("Vertical"), QStringLiteral(""));
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:650
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:660
 #, kde-format
 msgid "Outside Left"
 msgstr "Ззовні ліворуч"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:653
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:663
 #, kde-format
 msgid "Outside Right"
 msgstr "Ззовні праворуч"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:656
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:666
 #, kde-format
 msgid "Outside Top"
 msgstr "Ззовні згори"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:659
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:669
 #, kde-format
 msgid "Outside Bottom"
 msgstr "Ззовні внизу"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:667
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:677
 #, kde-format
 msgid "Object to Path"
 msgstr "Об'єкт у контур"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:680
 #, kde-format
 msgid "Trace Bitmap…"
 msgstr "Векторизація растрового зображення…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:675
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:685
 #, kde-format
 msgid "Union"
 msgstr "Об'єднання"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:677
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:687
 #, kde-format
 msgid "Difference"
 msgstr "Різниця"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:679
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:689
 #, kde-format
 msgid "Intersect"
 msgstr "Перетин"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:681
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:691
 #, kde-format
 msgid "Exclusion"
 msgstr "Виключення"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:684
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:694
 #, kde-format
 msgid "Reverse"
 msgstr "Обернути"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:698
 #, kde-format
 msgid "Add Node…"
 msgstr "Додати вузол…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:690
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:700
 #, kde-format
 msgid "Join Nodes"
 msgstr "З'єднати вузли"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:702
 #, kde-format
 msgid "Split Nodes"
 msgstr "Розділити вузли"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:697
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:707
 #, kde-format
 msgid "Symmetric"
 msgstr "Симетрично"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:698
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:708
 #, kde-format
 msgid "Make segments straight"
 msgstr "Зробити сегменти прямими"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:699
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:709
 #, kde-format
 msgid "Make segments curved"
 msgstr "Зробити сегменти кривими"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:834
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:844
 #, kde-format
 msgid "Recording Keyframes"
 msgstr "Записування ключових кадрів"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1252
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1257
 #, kde-format
 msgid "Could not load template"
 msgstr "Не вдалося завантажити шаблон"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1442
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1451
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1458
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1452
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1461
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1468
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
 msgstr "Векторизація растрового зображення"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1442
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1452
 #, kde-format
 msgid "Only select one image"
 msgstr "Позначте лише одне зображення"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1451
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1461
 #, kde-format
 msgid "You need to select an image to trace"
 msgstr "Вам слід позначити зображення для векторизації"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1458
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1468
 #, kde-format
 msgid "You selected an image with no data"
 msgstr "Вами позначено зображення, яке не містить даних"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1516
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1538
 #, kde-format
 msgid "X: %1 Y: %2"
 msgstr "X: %1 Y: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1535
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1557
 #, kde-format
 msgid "Drop File"
 msgstr "Скиньте файл"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1546
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1568
 #, kde-format
 msgid "Add to current file?"
 msgstr "Додати до поточного файла?"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1552
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1574
 #, kde-format
 msgid "Add as Object"
 msgstr "Додати як об'єкт"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1558
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1580
 #, kde-format
 msgid "Add as Composition"
 msgstr "Додати як композицію"
 
-#: src/gui/widgets/dialogs/import_export_dialog.hpp:39
+#: src/gui/widgets/dialogs/import_export_dialog.hpp:40
 #, kde-format
 msgid "Save file"
 msgstr "Зберегти файл"
 
-#: src/gui/widgets/dialogs/import_export_dialog.hpp:59
+#: src/gui/widgets/dialogs/import_export_dialog.hpp:60
 #, kde-format
 msgid "Overwrite File?"
 msgstr "Перезаписати файл?"
 
-#: src/gui/widgets/dialogs/import_export_dialog.hpp:60
+#: src/gui/widgets/dialogs/import_export_dialog.hpp:61
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "Файл з назвою «%1» вже існує. Бажаєте його перезаписати?"
 
-#: src/gui/widgets/dialogs/import_export_dialog.hpp:82
+#: src/gui/widgets/dialogs/import_export_dialog.hpp:83
 #, kde-format
 msgid "Open file"
 msgstr "Відкрити файл"
 
-#: src/gui/widgets/dialogs/import_export_dialog.hpp:101
+#: src/gui/widgets/dialogs/import_export_dialog.hpp:102
 #, kde-format
 msgid "%1 Options"
 msgstr "Параметри %1"
 
-#: src/gui/widgets/dialogs/import_export_dialog.hpp:166
+#: src/gui/widgets/dialogs/import_export_dialog.hpp:167
 #, kde-format
 msgid "All files (%1)"
 msgstr "усі файли (%1)"
@@ -4756,6 +4658,7 @@ msgstr "Зміна властивостей анімації"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
+#: src/gui/widgets/settings/settings_dialog.cpp:215
 #, kde-format
 msgid "FPS"
 msgstr "Частота кадрів"
@@ -5426,12 +5329,6 @@ msgstr "Масштаб перегляду"
 msgid "System"
 msgstr "Система"
 
-#. i18n: ectx: attribute (title), widget (QWidget, tab_google)
-#: src/gui/widgets/font/font_style_dialog.ui:52
-#, kde-format
-msgid "Google Fonts"
-msgstr "Шрифти Google"
-
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/gui/widgets/font/font_style_widget.ui:53
 #: src/gui/widgets/font/google_fonts_widget.ui:97
@@ -5828,6 +5725,114 @@ msgstr "Версія"
 #, kde-format
 msgid "Services"
 msgstr "Служби"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:199
+#, fuzzy
+#| msgctxt "@title settings group"
+#| msgid "User Interface"
+msgctxt "Settings"
+msgid "User Interface"
+msgstr "Інтерфейс користувача"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:200
+#, fuzzy
+#| msgid "Show at startup"
+msgid "Show startup dialog"
+msgstr "Показувати на початку"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:203
+#, fuzzy
+#| msgctxt "@option:check"
+#| msgid "Horizontal Timeline Scroll"
+msgid "Horizontal Timeline Scroll"
+msgstr "Горизонтальне гортання монтажного столу"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:204
+#, fuzzy
+#| msgctxt "@info:tooltip"
+#| msgid ""
+#| "If enabled, the timeline will scroll horizontally by default and "
+#| "vertically with Shift or Alt"
+msgid ""
+"If enabled, the timeline will scroll horizontally by default and vertically "
+"with Shift or Alt"
+msgstr ""
+"Якщо увімкнено, гортання монтажного столу типово відбуватиметься у "
+"горизонтальному напрямку, а у вертикальному — з Shift або Alt"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:210
+#, kde-format
+msgctxt "Seconds suffix"
+msgid "s"
+msgstr ""
+
+#: src/gui/widgets/settings/settings_dialog.cpp:212
+#, fuzzy
+#| msgctxt "@title settings group"
+#| msgid "New Animation Defaults"
+msgctxt "Settings"
+msgid "New Animation Defaults"
+msgstr "Нові типові параметри анімацій"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:213
+#, fuzzy
+#| msgid "Canvas"
+msgid "Canvas Width"
+msgstr "Полотно"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:214
+#, fuzzy
+#| msgid "Frame Height"
+msgid "Canvas Height"
+msgstr "Висота кадру"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:215
+#, fuzzy
+#| msgctxt "@info:tooltip"
+#| msgid "Frames per second"
+msgid "Frames per secons"
+msgstr "Кадрів в секунду"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:216
+#, fuzzy
+#| msgctxt "@info:tooltip"
+#| msgid "Duration in seconds"
+msgid "Duration in secons"
+msgstr "Тривалість (у секундах)"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:220
+#, fuzzy
+#| msgctxt "@title settings group"
+#| msgid "Open / Save"
+msgctxt "Settings"
+msgid "Open / Save"
+msgstr "Відкриття/Збереження"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:221
+#, fuzzy
+#| msgctxt "@label:spinbox"
+#| msgid "Max Recent Files"
+msgid "Max Recent Files"
+msgstr "Максимальна кількість нещодавніх файлів"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:221
+#: src/gui/widgets/settings/settings_dialog.cpp:222
+msgid "Number of items to show in the recent files menu"
+msgstr ""
+
+#: src/gui/widgets/settings/settings_dialog.cpp:222
+#, fuzzy
+#| msgctxt "@label:spinbox"
+#| msgid "Backup Frequency"
+msgid "Backup Frequency"
+msgstr "Частота резервного копіювання"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:223
+#, fuzzy
+#| msgctxt "@option:check"
+#| msgid "Use system file dialog"
+msgid "Use system file dialog"
+msgstr "Використовувати вікно роботи з файлами системи"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:30
@@ -6542,6 +6547,34 @@ msgstr "Кут"
 #, kde-format
 msgid "°"
 msgstr "°"
+
+#~ msgctxt "@label:spinbox"
+#~ msgid "Width"
+#~ msgstr "Ширина"
+
+#~ msgctxt "@label:spinbox"
+#~ msgid "Height"
+#~ msgstr "Висота"
+
+#~ msgctxt "@label:spinbox"
+#~ msgid "FPS"
+#~ msgstr "Частота кадрів"
+
+#~ msgctxt "@label:spinbox"
+#~ msgid "Duration"
+#~ msgstr "Тривалість"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "How often to save a backup copy (in minutes)"
+#~ msgstr "Наскільки часто слід зберігати резервні копії (у хвилинах)"
+
+#~ msgctxt "@title settings group"
+#~ msgid "Scripting"
+#~ msgstr "Скрипти"
+
+#~ msgctxt "@title settings group"
+#~ msgid "Tools"
+#~ msgstr "Інструменти"
 
 #~ msgid "Glaxnimate Default"
 #~ msgstr "Типовий для Glaxnimate"
