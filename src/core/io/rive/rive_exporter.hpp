@@ -418,12 +418,13 @@ private:
         auto rive_prop = object.type().property(name);
         if ( !rive_prop )
         {
-            format->warning(i18n("Unknown property %1 of %2 (%3, %4)")
-                .arg(name)
-                .arg(int(object.type().id))
-                .arg(types.type_name(object.type().id))
-                .arg(prop.object()->type_name_human())
-            );
+            format->warning(i18n(
+                "Unknown property %1 of %2 (%3, %4)",
+                name,
+                int(object.type().id),
+                types.type_name(object.type().id),
+                prop.object()->type_name_human()
+            ));
             return;
         }
 
@@ -452,12 +453,13 @@ private:
 
         if ( !kf_type )
         {
-            format->warning(i18n("Unknown keyframe type for property %1 of %2 (%3, %4)")
-                .arg(name)
-                .arg(int(object.type().id))
-                .arg(types.type_name(object.type().id))
-                .arg(prop.object()->type_name_human())
-            );
+            format->warning(i18n(
+                "Unknown keyframe type for property %1 of %2 (%3, %4)",
+                name,
+                int(object.type().id),
+                types.type_name(object.type().id),
+                prop.object()->type_name_human()
+            ));
             return;
         }
 

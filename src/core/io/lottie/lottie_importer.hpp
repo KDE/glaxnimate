@@ -319,8 +319,7 @@ private:
             if ( invalid_indices.count(parent_index) )
             {
                 warning(
-                    i18n("Cannot use %1 as parent as it couldn't be loaded")
-                    .arg(parent_index),
+                    i18n("Cannot use %1 as parent as it couldn't be loaded", parent_index),
                     json
                 );
             }
@@ -330,8 +329,7 @@ private:
                 if ( it == layer_indices.end() )
                 {
                     warning(
-                        i18n("Invalid parent layer %1")
-                        .arg(parent_index),
+                        i18n("Invalid parent layer %1", parent_index),
                         json
                     );
                 }
@@ -527,9 +525,7 @@ private:
         for ( const auto& not_found : props )
         {
             Q_EMIT format->information(
-                i18n("Unknown field %2%1")
-                .arg(not_found)
-                .arg(object_error_string(nullptr))
+                i18n("Unknown field %2%1", not_found, object_error_string(nullptr))
             );
         }
     }
@@ -853,9 +849,7 @@ private:
                     if ( !compound_value_2d_raw(pos[i], p) )
                     {
                         Q_EMIT format->warning(
-                            i18n("Invalid bezier point %1 in %2")
-                            .arg(i)
-                            .arg(property_error_string(prop))
+                            i18n("Invalid bezier point %1 in %2", i, property_error_string(prop))
                         );
                         continue;
                     }
@@ -1001,9 +995,12 @@ private:
                         value += QMetaType::typeName(v->userType());
 #endif
                     }
-                    Q_EMIT format->warning(i18n("Cannot load keyframe at %1 for %2 with value %3")
-                        .arg(time).arg(property_error_string(prop)).arg(value)
-                    );
+                    Q_EMIT format->warning(i18n(
+                        "Cannot load keyframe at %1 for %2 with value %3",
+                        time,
+                        property_error_string(prop),
+                        value
+                    ));
                 }
             }
         }

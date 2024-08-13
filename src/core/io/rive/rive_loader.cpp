@@ -802,8 +802,11 @@ Object RiveLoader::read_object()
         Identifier prop_id = stream.read_uint_leb128();
         if ( stream.has_error() )
         {
-            format->error(i18n("Could not load property ID in %1 (%2)")
-                .arg(int(type_id)).arg(obj.definition()->name));
+            format->error(i18n(
+                "Could not load property ID in %1 (%2)",
+                int(type_id),
+                obj.definition()->name
+            ));
             return {};
         }
 
@@ -816,14 +819,22 @@ Object RiveLoader::read_object()
             auto unknown_it = extra_props.find(prop_id);
             if ( unknown_it == extra_props.end() )
             {
-                format->error(i18n("Unknown property %1 of %2 (%3)")
-                    .arg(prop_id).arg(int(type_id)).arg(obj.definition()->name));
+                format->error(i18n(
+                    "Unknown property %1 of %2 (%3)",
+                    prop_id,
+                    int(type_id),
+                    obj.definition()->name
+                ));
                 return {};
             }
             else
             {
-                format->warning(i18n("Skipping unknown property %1 of %2 (%3)")
-                        .arg(prop_id).arg(int(type_id)).arg(obj.definition()->name));
+                format->warning(i18n(
+                    "Skipping unknown property %1 of %2 (%3)",
+                    prop_id,
+                    int(type_id),
+                    obj.definition()->name
+                ));
             }
         }
         else
@@ -831,8 +842,13 @@ Object RiveLoader::read_object()
             obj.set(prop_def, read_property_value(prop_def->type));
             if ( stream.has_error() )
             {
-                format->error(i18n("Error loading property %1 (%2) of %3 (%4)")
-                    .arg(prop_id).arg(prop_def->name).arg(int(type_id)).arg(obj.definition()->name));
+                format->error(i18n(
+                    "Error loading property %1 (%2) of %3 (%4)",
+                    prop_id,
+                    prop_def->name,
+                    int(type_id),
+                    obj.definition()->name
+                ));
                 return {};
             }
         }
