@@ -354,24 +354,24 @@ private:
                     model::ObjectListPropertyBase* prop = static_cast<model::ObjectListPropertyBase*>(target);
                     if ( !ptr )
                     {
-                        error(
-                            i18n("Item %1 for %2 in %3 isn't an object")
-                            .arg(index)
-                            .arg(target->name())
-                            .arg(target->object()->object_name())
-                        );
+                        error(i18n(
+                            "Item %1 for %2 in %3 isn't an object",
+                            index,
+                            target->name(),
+                            target->object()->object_name()
+                        ));
                     }
                     else
                     {
                         auto inserted = prop->insert_clone(ptr);
                         if ( !inserted )
                         {
-                            error(
-                                i18n("Item %1 for %2 in %3 is not acceptable")
-                                .arg(index)
-                                .arg(target->name())
-                                .arg(target->object()->object_name())
-                            );
+                            error(i18n(
+                                "Item %1 for %2 in %3 is not acceptable",
+                                index,
+                                target->name(),
+                                target->object()->object_name()
+                            ));
                         }
                         else
                         {
