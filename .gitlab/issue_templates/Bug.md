@@ -12,7 +12,7 @@
 #### Version
 
 <!-- List Operating System and Glaxnimate version
-From Glaxnimate you can go to "Help > About... > System" and click "Copy"
+From Glaxnimate you can click on "Help > Copy Debug Information"
 then paste here the information -->
 
 <!-- Example file:
