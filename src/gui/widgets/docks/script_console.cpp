@@ -5,7 +5,7 @@
  */
 
 #include "script_console.hpp"
-#include "ui_scriptconsole.h"
+#include "ui_script_console.h"
 
 #include <QEvent>
 #include <QRegularExpression>
@@ -23,7 +23,7 @@ using namespace glaxnimate;
 class ScriptConsoleDock::Private
 {
 public:
-    Ui::dock_script_console ui;
+    Ui::ScriptConsole ui;
 
     std::vector<app::scripting::ScriptContext> script_contexts;
     const plugin::Plugin* current_plugin = nullptr;

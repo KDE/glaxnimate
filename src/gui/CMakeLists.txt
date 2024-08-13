@@ -206,7 +206,7 @@ if ( NOT MOBILE_UI )
         widgets/docks/layers.ui
         widgets/docks/properties.ui
         widgets/docks/timeline.ui
-        widgets/docks/scriptconsole.ui
+        widgets/docks/script_console.ui
         widgets/docks/logs.ui
         widgets/docks/time_slider.ui
         widgets/docks/gradients.ui
