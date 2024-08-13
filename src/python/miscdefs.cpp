@@ -15,6 +15,7 @@
 #include <QRectF>
 #include <QColor>
 #include <QFile>
+#include <QSaveFile>
 #include <QGuiApplication>
 
 #include "app/log/log.hpp"
@@ -312,9 +313,10 @@ void define_utils(py::module& m)
 
 py::module define_detail(py::module& parent)
 {
+
     py::module detail = parent.def_submodule("__detail", "");
     py::class_<QObject>(detail, "__QObject");
-    py::class_<QIODevice>(detail, "QIODevice")
+    py::class_<QIODevice, QObject>(detail, "QIODevice")
         .def("write", qOverload<const QByteArray&>(&QIODevice::write))
         .def("close", &QIODevice::close)
         .def_property_readonly("closed", [](const QIODevice& f){ return !f.isOpen(); })
@@ -356,9 +358,14 @@ py::module define_detail(py::module& parent)
             f.open(flags);
         })
     ;
-    py::class_<QFile, QIODevice>(detail, "QFile")
-        .def("flush", &QFile::flush)
+    py::class_<QFileDevice, QIODevice>(detail, "QFileDevice")
+        .def("flush", &QFileDevice::flush)
+        .def("fileName", &QFileDevice::flush)
     ;
+
+    py::class_<QSaveFile, QFileDevice>(detail, "QSaveFile");
+    py::class_<QFile, QFileDevice>(detail, "QFile");
+
 
     py::class_<QGuiApplication>(detail, "QGuiApplication");
 
