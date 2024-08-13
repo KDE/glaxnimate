@@ -59,6 +59,7 @@ int main(int argc, char *argv[])
 
 #ifndef Q_OS_ANDROID
     KCrash::setDrKonqiEnabled(true);
+    KCrash::initialize();
 #endif
 
     AppInfo::instance().init_qapplication();
