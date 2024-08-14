@@ -74,7 +74,7 @@ def save_webp(window, document, comp, file, name, import_export, settings):
 
 def open_image(window, document, file, name, import_export, settings):
     raster = Image.open(file)
-    comp = document.assets.compositions.values[0]
+    comp = document.assets.add_composition()
     comp.width = raster.width
     comp.height = raster.height
 

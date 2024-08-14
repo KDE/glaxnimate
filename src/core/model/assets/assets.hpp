@@ -196,6 +196,7 @@ public:
     Q_INVOKABLE glaxnimate::model::EmbeddedFont* add_font(const QByteArray& ttf_data);
     glaxnimate::model::EmbeddedFont* add_font(const CustomFont& font);
     Q_INVOKABLE glaxnimate::model::EmbeddedFont* font_by_index(int database_index) const;
+    Q_INVOKABLE glaxnimate::model::Composition* add_composition();
     glaxnimate::model::Composition* add_comp_no_undo();
 
     DocumentNode* docnode_parent() const override;

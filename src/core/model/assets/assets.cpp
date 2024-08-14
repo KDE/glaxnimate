@@ -131,13 +131,13 @@ glaxnimate::model::Gradient* glaxnimate::model::Assets::add_gradient(int index)
     return ptr;
 }
 
-/*glaxnimate::model::Composition* glaxnimate::model::Assets::add_composition()
+glaxnimate::model::Composition* glaxnimate::model::Assets::add_composition()
 {
     auto comp = std::make_unique<glaxnimate::model::Composition>(document());
     auto ptr = comp.get();
     push_command(new command::AddObject(&compositions->values, std::move(comp), compositions->values.size()));
     return ptr;
-}*/
+}
 
 glaxnimate::model::Composition* glaxnimate::model::Assets::add_comp_no_undo()
 {

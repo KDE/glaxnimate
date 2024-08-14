@@ -15,6 +15,8 @@
     * Improved LottieFiles import dialog
     * Improved autosave recovery process
     * Script console now supports basic autocompletion
+* Scripting:
+    * Exposed method to add new compositions
 * Misc:
     * Switched to an even/odd version numbering scheme
     * Integration with KDE Frameworks
@@ -34,6 +36,7 @@
     * Fixed repeater opacity not being applied correctly
     * Improved handling of repeater with stroke
     * Fixed SVG animation export
+    * Fixed animated raster plugin I/O
 
 ## 0.5.4
 

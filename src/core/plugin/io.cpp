@@ -24,7 +24,7 @@ void plugin::IoService::disable()
     registered = nullptr;
 }
 
-bool plugin::IoFormat::on_open(QIODevice& file, const QString& name, model::Document* document, const QVariantMap& settings)
+    bool plugin::IoFormat::on_open(QIODevice& file, const QString& name, model::Document* document, const QVariantMap& settings)
 {
     return service->plugin()->run_script(service->open, {
         PluginRegistry::instance().global_parameter("window"),
