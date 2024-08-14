@@ -106,6 +106,7 @@ public:
     void clear_associated_properties();
 
     void set_offset(const QPointF& offset);
+    const QPointF& offset() const;
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent * event) override;

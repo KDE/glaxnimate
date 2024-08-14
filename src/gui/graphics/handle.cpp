@@ -29,7 +29,6 @@ public:
     QColor color_border;
     bool dragged = false;
     QPointF offset = {};
-    QPointF drag_scene_pos = {};
 
     qreal external_radius()
     {
@@ -163,24 +162,20 @@ void graphics::MoveHandle::mousePressEvent(QGraphicsSceneMouseEvent* event)
     setFocus(Qt::MouseFocusReason);
     event->accept();
     d->dragged = false;
-    d->drag_scene_pos = event->scenePos();
 }
 
 void graphics::MoveHandle::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 {
+    QTransform scene_to_parent = parentItem()->sceneTransform().inverted();
+    QPointF p = scene_to_parent.map(event->scenePos());
+
     if ( !d->dragged )
     {
         d->dragged = true;
-        Q_EMIT drag_starting(pos(), event->modifiers());
+        Q_EMIT drag_starting(p, event->modifiers());
     }
 
-    QTransform scene_to_parent = parentItem()->sceneTransform().inverted();
-    QPointF parent_drag_from = scene_to_parent.map(d->drag_scene_pos);
-    d->drag_scene_pos =  event->scenePos();
-    QPointF parent_drag_to = scene_to_parent.map(d->drag_scene_pos);
-    QPointF delta = parent_drag_to - parent_drag_from;
     QPointF oldp = scene_to_parent.map(scenePos());
-    QPointF p = oldp + delta;
     d->apply_constraints(oldp, p);
     if ( !d->dont_move )
         setPos(p);
@@ -264,4 +259,9 @@ void glaxnimate::gui::graphics::MoveHandle::set_offset(const QPointF& offset)
 {
     d->offset = offset;
     prepareGeometryChange();
+}
+
+const QPointF & glaxnimate::gui::graphics::MoveHandle::offset() const
+{
+    return d->offset;
 }

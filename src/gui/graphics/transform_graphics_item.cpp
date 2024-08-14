@@ -71,6 +71,7 @@ public:
     QPointF pos_drag_start;
     QTransform pos_trans;
     QPointF pos_start_value;
+    qreal angle_from_anchor;
     TransformGraphicsItem* parent;
     Canvas* canvas = nullptr;
 
@@ -260,16 +261,23 @@ graphics::TransformGraphicsItem::TransformGraphicsItem(
     {
         connect(h.handle, &MoveHandle::dragged, this, h.signal);
         if ( &h == &d->handles[Private::Anchor] )
+        {
             connect(h.handle, &MoveHandle::drag_finished, this, &TransformGraphicsItem::commit_anchor);
+        }
         else if ( &h == &d->handles[Private::Rot] )
+        {
+            connect(h.handle, &MoveHandle::drag_starting, this, &TransformGraphicsItem::drag_rot_start);
             connect(h.handle, &MoveHandle::drag_finished, this, &TransformGraphicsItem::commit_rot);
+        }
         else if ( &h == &d->handles[Private::Position] )
         {
             connect(h.handle, &MoveHandle::drag_starting, this, &TransformGraphicsItem::drag_pos_start);
             connect(h.handle, &MoveHandle::drag_finished, this, &TransformGraphicsItem::commit_pos);
         }
         else
+        {
             connect(h.handle, &MoveHandle::drag_finished, this, &TransformGraphicsItem::commit_scale);
+        }
     }
 
 #ifdef Q_OS_ANDROID
@@ -426,12 +434,24 @@ void graphics::TransformGraphicsItem::drag_a(const QPointF& p, Qt::KeyboardModif
     ));
 }
 
+void graphics::TransformGraphicsItem::drag_rot_start(const QPointF& p, Qt::KeyboardModifiers)
+{
+    QPointF p_new = d->transform_matrix.map(p);
+    QPointF anchor = d->transform_matrix.map(d->transform->anchor_point.get());
+
+    QPointF diff = p_new - anchor;
+    qreal angle_rad = std::atan2(diff.y(), diff.x());
+
+    d->angle_from_anchor = angle_rad;
+}
+
 void graphics::TransformGraphicsItem::drag_rot(const QPointF& p, Qt::KeyboardModifiers modifiers)
 {
     QPointF p_new = d->transform_matrix.map(p);
     QPointF anchor = d->transform_matrix.map(d->transform->anchor_point.get());
-    QPointF diff = anchor - p_new;
-    qreal angle_rad = -std::atan2(diff.x(), diff.y());
+
+    QPointF diff = p_new - anchor;
+    qreal angle_rad = std::atan2(diff.y(), diff.x()) - d->angle_from_anchor;
     // angle in [-180, 180]
     qreal angle = qRadiansToDegrees(angle_rad);
 
@@ -458,7 +478,6 @@ void graphics::TransformGraphicsItem::paint(QPainter* painter, const QStyleOptio
             update_offshoots();
         }
     }
-
 
     painter->save();
     QPen pen(opt->palette.color(QPalette::Highlight), 1);

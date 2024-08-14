@@ -39,6 +39,7 @@ private Q_SLOTS:
     void drag_r(const QPointF& p, Qt::KeyboardModifiers modifiers);
     void drag_a(const QPointF& p, Qt::KeyboardModifiers modifiers);
     void drag_rot(const QPointF& p, Qt::KeyboardModifiers modifiers);
+    void drag_rot_start(const QPointF& p, Qt::KeyboardModifiers modifiers);
     void drag_pos(const QPointF& p, Qt::KeyboardModifiers modifiers);
     void drag_pos_start(const QPointF& p);
 
