@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-13 01:45+0000\n"
+"POT-Creation-Date: 2024-08-14 01:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Russian <LL@li.org>\n"
@@ -969,8 +969,7 @@ msgstr "Открыть стикер"
 #. i18n: ectx: property (text), widget (QToolButton, btn_clear)
 #. i18n: ectx: property (text), widget (QPushButton, button_clear)
 #: src/android/sticker_pack_builder_dialog.ui:135
-#: src/gui/widgets/docks/script_console.ui:74
-#: src/gui/widgets/docks/scriptconsole.ui:61
+#: src/gui/widgets/docks/script_console.ui:57
 #: src/gui/widgets/shape_style/color_selector.ui:693
 #, fuzzy, kde-format
 #| msgctxt "ClearableKeysequenceEdit#2ClearableKeysequenceEdit#2ClearableKeysequenceEdit#2"
@@ -1190,9 +1189,9 @@ msgid "Could convert %1"
 msgstr "Не удалось преобразовать %1"
 
 #: src/core/io/aep/aep_loader.cpp:415
-#: src/core/io/lottie/lottie_importer.hpp:903
-#: src/core/io/lottie/lottie_importer.hpp:925
-#: src/core/io/lottie/lottie_importer.hpp:932
+#: src/core/io/lottie/lottie_importer.hpp:897
+#: src/core/io/lottie/lottie_importer.hpp:919
+#: src/core/io/lottie/lottie_importer.hpp:926
 #, fuzzy, kde-format
 #| msgctxt "QObject#33"
 #| msgid "Invalid value for %1"
@@ -1215,8 +1214,8 @@ msgid "Unknown shape %1"
 msgstr "Неизвестная фигура %1"
 
 #: src/core/io/aep/aep_loader.cpp:1162
-#: src/core/io/lottie/lottie_importer.hpp:392
-#: src/core/io/lottie/lottie_importer.hpp:404
+#: src/core/io/lottie/lottie_importer.hpp:390
+#: src/core/io/lottie/lottie_importer.hpp:402
 #, kde-format
 msgid "Clip"
 msgstr "Клип"
@@ -1528,63 +1527,63 @@ msgstr ""
 "Невозможно использовать %1 в качестве родительского слоя в связи с "
 "невозможностью загрузки"
 
-#: src/core/io/lottie/lottie_importer.hpp:333
+#: src/core/io/lottie/lottie_importer.hpp:332
 #, kde-format
 msgid "Invalid parent layer %1"
 msgstr "Недопустимый родительский слой %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:459
+#: src/core/io/lottie/lottie_importer.hpp:457
 #, kde-format
 msgid "Unsupported layer of type %1"
 msgstr "Не поддерживается слой типа %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:484
+#: src/core/io/lottie/lottie_importer.hpp:482
 #, kde-format
 msgid "Missing shape type"
 msgstr "Отсутствует тип фигуры"
 
-#: src/core/io/lottie/lottie_importer.hpp:497
-#: src/core/io/lottie/lottie_importer.hpp:507
+#: src/core/io/lottie/lottie_importer.hpp:495
+#: src/core/io/lottie/lottie_importer.hpp:505
 #, kde-format
 msgid "Unsupported shape type %1"
 msgstr "Не поддерживается фигура типа %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:530
+#: src/core/io/lottie/lottie_importer.hpp:528
 #, kde-format
 msgid "Unknown field %2%1"
 msgstr "Неизвестное поле %2%1"
 
-#: src/core/io/lottie/lottie_importer.hpp:856
+#: src/core/io/lottie/lottie_importer.hpp:852
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
 msgstr "Недопустимая точка кривой Безье %1 в %2"
 
-#: src/core/io/lottie/lottie_importer.hpp:940
+#: src/core/io/lottie/lottie_importer.hpp:934
 #, kde-format
 msgid "Invalid keyframes for %1"
 msgstr "Недопустимые ключевые кадры для %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:990
+#: src/core/io/lottie/lottie_importer.hpp:984
 #, kde-format
 msgid "(null)"
 msgstr "(нулевое значение)"
 
-#: src/core/io/lottie/lottie_importer.hpp:996
+#: src/core/io/lottie/lottie_importer.hpp:990
 #, kde-format
 msgid "(empty)"
 msgstr "(пустое значение)"
 
-#: src/core/io/lottie/lottie_importer.hpp:1004
+#: src/core/io/lottie/lottie_importer.hpp:999
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
 msgstr "Не удалось загрузить ключевой кадр на %1 для %2 со значением %3"
 
-#: src/core/io/lottie/lottie_importer.hpp:1056
+#: src/core/io/lottie/lottie_importer.hpp:1053
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
 msgstr "Идентификатор дубликата растра: %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:1088
+#: src/core/io/lottie/lottie_importer.hpp:1085
 #, kde-format
 msgid "Duplicate Composition ID: %1"
 msgstr "Идентификатор дубликата композиции: %1"
@@ -1731,12 +1730,12 @@ msgstr "Лист спрайтов"
 msgid "Bezier has mismatching number of points"
 msgstr "Не совпадает количество точек кривой Безье"
 
-#: src/core/io/rive/rive_exporter.hpp:421
+#: src/core/io/rive/rive_exporter.hpp:422
 #, kde-format
 msgid "Unknown property %1 of %2 (%3, %4)"
 msgstr "Неизвестное свойство %1 у %2 (%3, %4)"
 
-#: src/core/io/rive/rive_exporter.hpp:455
+#: src/core/io/rive/rive_exporter.hpp:457
 #, kde-format
 msgid "Unknown keyframe type for property %1 of %2 (%3, %4)"
 msgstr "Неизвестный тип ключевого кадра для свойства %1 у %2 (%3, %4)"
@@ -1836,22 +1835,22 @@ msgstr "Неизвестный объект типа %1"
 msgid "Could not load object type ID"
 msgstr "Не удалось загрузить идентификатор типа объекта"
 
-#: src/core/io/rive/rive_loader.cpp:805
+#: src/core/io/rive/rive_loader.cpp:806
 #, kde-format
 msgid "Could not load property ID in %1 (%2)"
 msgstr "Не удалось загрузить идентификатор свойства в %1 (%2)"
 
-#: src/core/io/rive/rive_loader.cpp:819
+#: src/core/io/rive/rive_loader.cpp:823
 #, kde-format
 msgid "Unknown property %1 of %2 (%3)"
 msgstr "Неизвестное свойство %1 у %2 (%3)"
 
-#: src/core/io/rive/rive_loader.cpp:825
+#: src/core/io/rive/rive_loader.cpp:833
 #, kde-format
 msgid "Skipping unknown property %1 of %2 (%3)"
 msgstr "Пропущено неизвестное свойство %1 у %2 (%3)"
 
-#: src/core/io/rive/rive_loader.cpp:834
+#: src/core/io/rive/rive_loader.cpp:846
 #, kde-format
 msgid "Error loading property %1 (%2) of %3 (%4)"
 msgstr "Ошибка загрузки свойства %1 (%2) у %3 (%4)"
@@ -2835,8 +2834,7 @@ msgstr "Загружено"
 #. i18n: ectx: property (text), widget (QToolButton, btn_reload)
 #. i18n: ectx: property (text), widget (QToolButton, button_google_refresh)
 #: src/gui/emoji/emoji_set_dialog.ui:107
-#: src/gui/widgets/docks/script_console.ui:105
-#: src/gui/widgets/docks/scriptconsole.ui:90
+#: src/gui/widgets/docks/script_console.ui:87
 #: src/gui/widgets/docks/snippet_list_widget.ui:98
 #: src/gui/widgets/font/google_fonts_widget.ui:36
 #, fuzzy, kde-format
@@ -5667,39 +5665,35 @@ msgstr "Подключаемый модуль вызвал исключение"
 msgid "Could not find an interpreter"
 msgstr "Не удалось найти интерпретатор"
 
+#. i18n: ectx: property (windowTitle), widget (QDockWidget, ScriptConsole)
+#: src/gui/widgets/docks/script_console.ui:18
+#, kde-format
+msgid "Script Console"
+msgstr "Консоль сценария"
+
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_clear_console)
-#: src/gui/widgets/docks/script_console.ui:71
-#: src/gui/widgets/docks/scriptconsole.ui:58
+#: src/gui/widgets/docks/script_console.ui:54
 #, kde-format
 msgid "Clear Output"
 msgstr "Очистить вывод"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, check_persist)
-#: src/gui/widgets/docks/script_console.ui:85
-#: src/gui/widgets/docks/scriptconsole.ui:71
+#: src/gui/widgets/docks/script_console.ui:67
 #, kde-format
 msgid "Persist Logs"
 msgstr "Хранить журналы"
 
 #. i18n: ectx: property (text), widget (QToolButton, check_persist)
-#: src/gui/widgets/docks/script_console.ui:88
-#: src/gui/widgets/docks/scriptconsole.ui:74
+#: src/gui/widgets/docks/script_console.ui:70
 #, kde-format
 msgid "Persist"
 msgstr "Хранить"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_reload)
-#: src/gui/widgets/docks/script_console.ui:102
-#: src/gui/widgets/docks/scriptconsole.ui:87
+#: src/gui/widgets/docks/script_console.ui:84
 #, kde-format
 msgid "Reload Script Modules"
 msgstr "Перезагрузить модули сценария"
-
-#. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_script_console)
-#: src/gui/widgets/docks/scriptconsole.ui:22
-#, kde-format
-msgid "Script Console"
-msgstr "Консоль сценария"
 
 #: src/gui/widgets/docks/snippet_list_widget.cpp:50
 #, kde-format

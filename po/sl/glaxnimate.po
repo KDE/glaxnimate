@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-13 01:45+0000\n"
-"PO-Revision-Date: 2024-08-12 10:20+0200\n"
+"POT-Creation-Date: 2024-08-14 01:46+0000\n"
+"PO-Revision-Date: 2024-08-13 06:22+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -914,8 +914,7 @@ msgstr "Odpri nalepko"
 #. i18n: ectx: property (text), widget (QToolButton, btn_clear)
 #. i18n: ectx: property (text), widget (QPushButton, button_clear)
 #: src/android/sticker_pack_builder_dialog.ui:135
-#: src/gui/widgets/docks/script_console.ui:74
-#: src/gui/widgets/docks/scriptconsole.ui:61
+#: src/gui/widgets/docks/script_console.ui:57
 #: src/gui/widgets/shape_style/color_selector.ui:693
 #, kde-format
 msgid "Clear"
@@ -1123,9 +1122,9 @@ msgid "Could convert %1"
 msgstr "Ni možno pretvoriti %1"
 
 #: src/core/io/aep/aep_loader.cpp:415
-#: src/core/io/lottie/lottie_importer.hpp:903
-#: src/core/io/lottie/lottie_importer.hpp:925
-#: src/core/io/lottie/lottie_importer.hpp:932
+#: src/core/io/lottie/lottie_importer.hpp:897
+#: src/core/io/lottie/lottie_importer.hpp:919
+#: src/core/io/lottie/lottie_importer.hpp:926
 #, kde-format
 msgid "Invalid value for %1"
 msgstr "Neveljavna vrednost za %1"
@@ -1146,8 +1145,8 @@ msgid "Unknown shape %1"
 msgstr "Neznan lik %1"
 
 #: src/core/io/aep/aep_loader.cpp:1162
-#: src/core/io/lottie/lottie_importer.hpp:392
-#: src/core/io/lottie/lottie_importer.hpp:404
+#: src/core/io/lottie/lottie_importer.hpp:390
+#: src/core/io/lottie/lottie_importer.hpp:402
 #, kde-format
 msgid "Clip"
 msgstr "Posnetek"
@@ -1448,63 +1447,63 @@ msgstr "Manjka vrsta plasti za %1"
 msgid "Cannot use %1 as parent as it couldn't be loaded"
 msgstr "%1 ni mogoče uporabiti kot nadrejenega, ker ga ni bilo mogoče naložiti"
 
-#: src/core/io/lottie/lottie_importer.hpp:333
+#: src/core/io/lottie/lottie_importer.hpp:332
 #, kde-format
 msgid "Invalid parent layer %1"
 msgstr "Neveljavna nadrejena plast %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:459
+#: src/core/io/lottie/lottie_importer.hpp:457
 #, kde-format
 msgid "Unsupported layer of type %1"
 msgstr "Nepodprta plast vrste %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:484
+#: src/core/io/lottie/lottie_importer.hpp:482
 #, kde-format
 msgid "Missing shape type"
 msgstr "Manjkajoča vrsta lika"
 
-#: src/core/io/lottie/lottie_importer.hpp:497
-#: src/core/io/lottie/lottie_importer.hpp:507
+#: src/core/io/lottie/lottie_importer.hpp:495
+#: src/core/io/lottie/lottie_importer.hpp:505
 #, kde-format
 msgid "Unsupported shape type %1"
 msgstr "Nepodprta vrsta lika %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:530
+#: src/core/io/lottie/lottie_importer.hpp:528
 #, kde-format
 msgid "Unknown field %2%1"
 msgstr "Neznano polje %2%1"
 
-#: src/core/io/lottie/lottie_importer.hpp:856
+#: src/core/io/lottie/lottie_importer.hpp:852
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
 msgstr "Neveljavna Bezierjeva točka %1 v %2"
 
-#: src/core/io/lottie/lottie_importer.hpp:940
+#: src/core/io/lottie/lottie_importer.hpp:934
 #, kde-format
 msgid "Invalid keyframes for %1"
 msgstr "Neveljavne ključne sličice za %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:990
+#: src/core/io/lottie/lottie_importer.hpp:984
 #, kde-format
 msgid "(null)"
 msgstr "(nič)"
 
-#: src/core/io/lottie/lottie_importer.hpp:996
+#: src/core/io/lottie/lottie_importer.hpp:990
 #, kde-format
 msgid "(empty)"
 msgstr "(prazno)"
 
-#: src/core/io/lottie/lottie_importer.hpp:1004
+#: src/core/io/lottie/lottie_importer.hpp:999
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
 msgstr "Ni mogoče naložiti ključne sličice pri %1 za %2 z vrednostjo %3"
 
-#: src/core/io/lottie/lottie_importer.hpp:1056
+#: src/core/io/lottie/lottie_importer.hpp:1053
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
 msgstr "Podvojen ID bitne slike: %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:1088
+#: src/core/io/lottie/lottie_importer.hpp:1085
 #, kde-format
 msgid "Duplicate Composition ID: %1"
 msgstr "Podvojen ID sestave: %1"
@@ -1645,12 +1644,12 @@ msgstr "Predloga likov"
 msgid "Bezier has mismatching number of points"
 msgstr "Bezier ima neusklajeno število točk"
 
-#: src/core/io/rive/rive_exporter.hpp:421
+#: src/core/io/rive/rive_exporter.hpp:422
 #, kde-format
 msgid "Unknown property %1 of %2 (%3, %4)"
 msgstr "Neznana lastnost %1 od %2 (%3, %4)"
 
-#: src/core/io/rive/rive_exporter.hpp:455
+#: src/core/io/rive/rive_exporter.hpp:457
 #, kde-format
 msgid "Unknown keyframe type for property %1 of %2 (%3, %4)"
 msgstr "Neznana vrsta ključne sličice za lastnost %1 od %2 (%3, %4)"
@@ -1748,22 +1747,22 @@ msgstr "Neznan predmet vrste %1"
 msgid "Could not load object type ID"
 msgstr "Ni mogoče naložiti predmeta vrste ID"
 
-#: src/core/io/rive/rive_loader.cpp:805
+#: src/core/io/rive/rive_loader.cpp:806
 #, kde-format
 msgid "Could not load property ID in %1 (%2)"
 msgstr "Ni bilo mogoče naložiti ID-ja lastnosti v %1 (%2)"
 
-#: src/core/io/rive/rive_loader.cpp:819
+#: src/core/io/rive/rive_loader.cpp:823
 #, kde-format
 msgid "Unknown property %1 of %2 (%3)"
 msgstr "Neznana lastnost %1 od %2 (%3)"
 
-#: src/core/io/rive/rive_loader.cpp:825
+#: src/core/io/rive/rive_loader.cpp:833
 #, kde-format
 msgid "Skipping unknown property %1 of %2 (%3)"
 msgstr "Preskok neznane lastnosti %1 od %2 (%3)"
 
-#: src/core/io/rive/rive_loader.cpp:834
+#: src/core/io/rive/rive_loader.cpp:846
 #, kde-format
 msgid "Error loading property %1 (%2) of %3 (%4)"
 msgstr "Napaka pri nalaganju lastnosti %1 (%2) od %3 (%4)"
@@ -2619,8 +2618,7 @@ msgstr "Prejeto"
 #. i18n: ectx: property (text), widget (QToolButton, btn_reload)
 #. i18n: ectx: property (text), widget (QToolButton, button_google_refresh)
 #: src/gui/emoji/emoji_set_dialog.ui:107
-#: src/gui/widgets/docks/script_console.ui:105
-#: src/gui/widgets/docks/scriptconsole.ui:90
+#: src/gui/widgets/docks/script_console.ui:87
 #: src/gui/widgets/docks/snippet_list_widget.ui:98
 #: src/gui/widgets/font/google_fonts_widget.ui:36
 #, kde-format
@@ -5064,39 +5062,35 @@ msgstr "Vstavek je povzročil izjemo"
 msgid "Could not find an interpreter"
 msgstr "Ni bilo možno najti tolmača"
 
+#. i18n: ectx: property (windowTitle), widget (QDockWidget, ScriptConsole)
+#: src/gui/widgets/docks/script_console.ui:18
+#, kde-format
+msgid "Script Console"
+msgstr "Skriptna konzola"
+
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_clear_console)
-#: src/gui/widgets/docks/script_console.ui:71
-#: src/gui/widgets/docks/scriptconsole.ui:58
+#: src/gui/widgets/docks/script_console.ui:54
 #, kde-format
 msgid "Clear Output"
 msgstr "Počisti izhod"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, check_persist)
-#: src/gui/widgets/docks/script_console.ui:85
-#: src/gui/widgets/docks/scriptconsole.ui:71
+#: src/gui/widgets/docks/script_console.ui:67
 #, kde-format
 msgid "Persist Logs"
 msgstr "Vztrajaj beležiti"
 
 #. i18n: ectx: property (text), widget (QToolButton, check_persist)
-#: src/gui/widgets/docks/script_console.ui:88
-#: src/gui/widgets/docks/scriptconsole.ui:74
+#: src/gui/widgets/docks/script_console.ui:70
 #, kde-format
 msgid "Persist"
 msgstr "Vztrajaj"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_reload)
-#: src/gui/widgets/docks/script_console.ui:102
-#: src/gui/widgets/docks/scriptconsole.ui:87
+#: src/gui/widgets/docks/script_console.ui:84
 #, kde-format
 msgid "Reload Script Modules"
 msgstr "Ponovno naloži skriptne module"
-
-#. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_script_console)
-#: src/gui/widgets/docks/scriptconsole.ui:22
-#, kde-format
-msgid "Script Console"
-msgstr "Skriptna konzola"
 
 #: src/gui/widgets/docks/snippet_list_widget.cpp:50
 #, kde-format
@@ -5741,14 +5735,10 @@ msgid "Canvas Height"
 msgstr "Višina platna"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:215
-#, fuzzy
-#| msgid "Frames per secons"
 msgid "Frames per seconds"
-msgstr "Sličice na sekundo"
+msgstr "Sličic na sekundo"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:216
-#, fuzzy
-#| msgid "Duration in secons"
 msgid "Duration in seconds"
 msgstr "Trajanje v sekundah"
 

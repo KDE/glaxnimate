@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-13 01:45+0000\n"
-"PO-Revision-Date: 2024-08-12 10:23+0200\n"
+"POT-Creation-Date: 2024-08-14 01:46+0000\n"
+"PO-Revision-Date: 2024-08-13 14:35+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -913,8 +913,7 @@ msgstr "Sticker openen"
 #. i18n: ectx: property (text), widget (QToolButton, btn_clear)
 #. i18n: ectx: property (text), widget (QPushButton, button_clear)
 #: src/android/sticker_pack_builder_dialog.ui:135
-#: src/gui/widgets/docks/script_console.ui:74
-#: src/gui/widgets/docks/scriptconsole.ui:61
+#: src/gui/widgets/docks/script_console.ui:57
 #: src/gui/widgets/shape_style/color_selector.ui:693
 #, kde-format
 msgid "Clear"
@@ -1122,9 +1121,9 @@ msgid "Could convert %1"
 msgstr "Kon %1 converteren"
 
 #: src/core/io/aep/aep_loader.cpp:415
-#: src/core/io/lottie/lottie_importer.hpp:903
-#: src/core/io/lottie/lottie_importer.hpp:925
-#: src/core/io/lottie/lottie_importer.hpp:932
+#: src/core/io/lottie/lottie_importer.hpp:897
+#: src/core/io/lottie/lottie_importer.hpp:919
+#: src/core/io/lottie/lottie_importer.hpp:926
 #, kde-format
 msgid "Invalid value for %1"
 msgstr "Ongeldige waarde voor %1"
@@ -1145,8 +1144,8 @@ msgid "Unknown shape %1"
 msgstr "Onbekende vorm %1"
 
 #: src/core/io/aep/aep_loader.cpp:1162
-#: src/core/io/lottie/lottie_importer.hpp:392
-#: src/core/io/lottie/lottie_importer.hpp:404
+#: src/core/io/lottie/lottie_importer.hpp:390
+#: src/core/io/lottie/lottie_importer.hpp:402
 #, kde-format
 msgid "Clip"
 msgstr "Clip"
@@ -1451,63 +1450,63 @@ msgstr "Ontbrekend type laag voor %1"
 msgid "Cannot use %1 as parent as it couldn't be loaded"
 msgstr "Kan %1 niet als ouder gebruiken omdat het niet kan worden geladen"
 
-#: src/core/io/lottie/lottie_importer.hpp:333
+#: src/core/io/lottie/lottie_importer.hpp:332
 #, kde-format
 msgid "Invalid parent layer %1"
 msgstr "Ongeldige ouderlaag %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:459
+#: src/core/io/lottie/lottie_importer.hpp:457
 #, kde-format
 msgid "Unsupported layer of type %1"
 msgstr "Niet-ondersteunde laag van type %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:484
+#: src/core/io/lottie/lottie_importer.hpp:482
 #, kde-format
 msgid "Missing shape type"
 msgstr "Ontbrekend type vorm"
 
-#: src/core/io/lottie/lottie_importer.hpp:497
-#: src/core/io/lottie/lottie_importer.hpp:507
+#: src/core/io/lottie/lottie_importer.hpp:495
+#: src/core/io/lottie/lottie_importer.hpp:505
 #, kde-format
 msgid "Unsupported shape type %1"
 msgstr "Niet-ondersteund type vorm %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:530
+#: src/core/io/lottie/lottie_importer.hpp:528
 #, kde-format
 msgid "Unknown field %2%1"
 msgstr "Onbekend veld %2%1"
 
-#: src/core/io/lottie/lottie_importer.hpp:856
+#: src/core/io/lottie/lottie_importer.hpp:852
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
 msgstr "Ongeldige bezierpunt %1 in %2"
 
-#: src/core/io/lottie/lottie_importer.hpp:940
+#: src/core/io/lottie/lottie_importer.hpp:934
 #, kde-format
 msgid "Invalid keyframes for %1"
 msgstr "Ongeldige keyframes voor %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:990
+#: src/core/io/lottie/lottie_importer.hpp:984
 #, kde-format
 msgid "(null)"
 msgstr "(nul)"
 
-#: src/core/io/lottie/lottie_importer.hpp:996
+#: src/core/io/lottie/lottie_importer.hpp:990
 #, kde-format
 msgid "(empty)"
 msgstr "(leeg)"
 
-#: src/core/io/lottie/lottie_importer.hpp:1004
+#: src/core/io/lottie/lottie_importer.hpp:999
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
 msgstr "Kan keyframe op %1 voor %2 met waarde %3 niet laden"
 
-#: src/core/io/lottie/lottie_importer.hpp:1056
+#: src/core/io/lottie/lottie_importer.hpp:1053
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
 msgstr "Dubbele bitmap-ID: %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:1088
+#: src/core/io/lottie/lottie_importer.hpp:1085
 #, kde-format
 msgid "Duplicate Composition ID: %1"
 msgstr "Dubbele compositie-ID: %1"
@@ -1650,12 +1649,12 @@ msgstr "Sprite-blad"
 msgid "Bezier has mismatching number of points"
 msgstr "Bezier heeft niet overeenkomend aantal punten"
 
-#: src/core/io/rive/rive_exporter.hpp:421
+#: src/core/io/rive/rive_exporter.hpp:422
 #, kde-format
 msgid "Unknown property %1 of %2 (%3, %4)"
 msgstr "Onbekende eigenschap %1 van %2 (%3, %4)"
 
-#: src/core/io/rive/rive_exporter.hpp:455
+#: src/core/io/rive/rive_exporter.hpp:457
 #, kde-format
 msgid "Unknown keyframe type for property %1 of %2 (%3, %4)"
 msgstr "Onbekende type keyframe voor eigenschap %1 van %2 (%3, %4)"
@@ -1753,22 +1752,22 @@ msgstr "Onbekend object van het type %1"
 msgid "Could not load object type ID"
 msgstr "Kon objecttype-id niet laden"
 
-#: src/core/io/rive/rive_loader.cpp:805
+#: src/core/io/rive/rive_loader.cpp:806
 #, kde-format
 msgid "Could not load property ID in %1 (%2)"
 msgstr "Kon eigenschap-id in %1 (%2) niet laden"
 
-#: src/core/io/rive/rive_loader.cpp:819
+#: src/core/io/rive/rive_loader.cpp:823
 #, kde-format
 msgid "Unknown property %1 of %2 (%3)"
 msgstr "Onbekende eigenschap %1 van %2 (%3)"
 
-#: src/core/io/rive/rive_loader.cpp:825
+#: src/core/io/rive/rive_loader.cpp:833
 #, kde-format
 msgid "Skipping unknown property %1 of %2 (%3)"
 msgstr "Onbekende eigenschap %1 van %2 (%3) wordt overgeslagen"
 
-#: src/core/io/rive/rive_loader.cpp:834
+#: src/core/io/rive/rive_loader.cpp:846
 #, kde-format
 msgid "Error loading property %1 (%2) of %3 (%4)"
 msgstr "Fout bij het laden van eigenschap %1 (%2) van %3 (%4)  "
@@ -2628,8 +2627,7 @@ msgstr "Gedownload"
 #. i18n: ectx: property (text), widget (QToolButton, btn_reload)
 #. i18n: ectx: property (text), widget (QToolButton, button_google_refresh)
 #: src/gui/emoji/emoji_set_dialog.ui:107
-#: src/gui/widgets/docks/script_console.ui:105
-#: src/gui/widgets/docks/scriptconsole.ui:90
+#: src/gui/widgets/docks/script_console.ui:87
 #: src/gui/widgets/docks/snippet_list_widget.ui:98
 #: src/gui/widgets/font/google_fonts_widget.ui:36
 #, kde-format
@@ -5078,39 +5076,35 @@ msgstr "Plug-in kwam met een uitzondering"
 msgid "Could not find an interpreter"
 msgstr "Kon een interpretator niet vinden"
 
+#. i18n: ectx: property (windowTitle), widget (QDockWidget, ScriptConsole)
+#: src/gui/widgets/docks/script_console.ui:18
+#, kde-format
+msgid "Script Console"
+msgstr "Console voor script"
+
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_clear_console)
-#: src/gui/widgets/docks/script_console.ui:71
-#: src/gui/widgets/docks/scriptconsole.ui:58
+#: src/gui/widgets/docks/script_console.ui:54
 #, kde-format
 msgid "Clear Output"
 msgstr "Uitvoer wissen"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, check_persist)
-#: src/gui/widgets/docks/script_console.ui:85
-#: src/gui/widgets/docks/scriptconsole.ui:71
+#: src/gui/widgets/docks/script_console.ui:67
 #, kde-format
 msgid "Persist Logs"
 msgstr "Blijvende logs"
 
 #. i18n: ectx: property (text), widget (QToolButton, check_persist)
-#: src/gui/widgets/docks/script_console.ui:88
-#: src/gui/widgets/docks/scriptconsole.ui:74
+#: src/gui/widgets/docks/script_console.ui:70
 #, kde-format
 msgid "Persist"
 msgstr "Blijvend"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_reload)
-#: src/gui/widgets/docks/script_console.ui:102
-#: src/gui/widgets/docks/scriptconsole.ui:87
+#: src/gui/widgets/docks/script_console.ui:84
 #, kde-format
 msgid "Reload Script Modules"
 msgstr "Modules voor scripten herladen"
-
-#. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_script_console)
-#: src/gui/widgets/docks/scriptconsole.ui:22
-#, kde-format
-msgid "Script Console"
-msgstr "Console voor script"
 
 #: src/gui/widgets/docks/snippet_list_widget.cpp:50
 #, kde-format
@@ -5755,14 +5749,10 @@ msgid "Canvas Height"
 msgstr "Hoogte van werkveld"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:215
-#, fuzzy
-#| msgid "Frames per secons"
 msgid "Frames per seconds"
 msgstr "Frames per seconde"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:216
-#, fuzzy
-#| msgid "Duration in secons"
 msgid "Duration in seconds"
 msgstr "Tijdsduur in seconden"
 
