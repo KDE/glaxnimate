@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-14 01:46+0000\n"
+"POT-Creation-Date: 2024-08-15 01:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: German <LL@li.org>\n"
@@ -906,7 +906,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QToolButton, btn_clear)
 #. i18n: ectx: property (text), widget (QPushButton, button_clear)
 #: src/android/sticker_pack_builder_dialog.ui:135
-#: src/gui/widgets/docks/script_console.ui:57
+#: src/gui/widgets/docks/script_console.ui:61
 #: src/gui/widgets/shape_style/color_selector.ui:693
 #, kde-format
 msgid "Clear"
@@ -2034,7 +2034,7 @@ msgid "Fonts"
 msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_assets)
-#: src/core/model/assets/assets.hpp:207 src/gui/widgets/docks/assets.ui:22
+#: src/core/model/assets/assets.hpp:208 src/gui/widgets/docks/assets.ui:22
 #, kde-format
 msgid "Assets"
 msgstr ""
@@ -2615,7 +2615,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QToolButton, btn_reload)
 #. i18n: ectx: property (text), widget (QToolButton, button_google_refresh)
 #: src/gui/emoji/emoji_set_dialog.ui:107
-#: src/gui/widgets/docks/script_console.ui:87
+#: src/gui/widgets/docks/script_console.ui:91
 #: src/gui/widgets/docks/snippet_list_widget.ui:98
 #: src/gui/widgets/font/google_fonts_widget.ui:36
 #, fuzzy, kde-format
@@ -2780,8 +2780,8 @@ msgstr ""
 msgid "Drag Gradient"
 msgstr ""
 
-#: src/gui/graphics/transform_graphics_item.cpp:421
-#: src/gui/graphics/transform_graphics_item.cpp:480
+#: src/gui/graphics/transform_graphics_item.cpp:429
+#: src/gui/graphics/transform_graphics_item.cpp:499
 #, kde-format
 msgid "Drag anchor point"
 msgstr ""
@@ -4978,31 +4978,31 @@ msgid "Could not find an interpreter"
 msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, ScriptConsole)
-#: src/gui/widgets/docks/script_console.ui:18
+#: src/gui/widgets/docks/script_console.ui:22
 #, kde-format
 msgid "Script Console"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_clear_console)
-#: src/gui/widgets/docks/script_console.ui:54
+#: src/gui/widgets/docks/script_console.ui:58
 #, kde-format
 msgid "Clear Output"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, check_persist)
-#: src/gui/widgets/docks/script_console.ui:67
+#: src/gui/widgets/docks/script_console.ui:71
 #, kde-format
 msgid "Persist Logs"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QToolButton, check_persist)
-#: src/gui/widgets/docks/script_console.ui:70
+#: src/gui/widgets/docks/script_console.ui:74
 #, kde-format
 msgid "Persist"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_reload)
-#: src/gui/widgets/docks/script_console.ui:84
+#: src/gui/widgets/docks/script_console.ui:88
 #, kde-format
 msgid "Reload Script Modules"
 msgstr ""

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-14 01:46+0000\n"
-"PO-Revision-Date: 2024-08-10 08:56+0300\n"
+"POT-Creation-Date: 2024-08-15 01:50+0000\n"
+"PO-Revision-Date: 2024-08-12 09:27+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -912,7 +912,7 @@ msgstr "Відкрити наліпку"
 #. i18n: ectx: property (text), widget (QToolButton, btn_clear)
 #. i18n: ectx: property (text), widget (QPushButton, button_clear)
 #: src/android/sticker_pack_builder_dialog.ui:135
-#: src/gui/widgets/docks/script_console.ui:57
+#: src/gui/widgets/docks/script_console.ui:61
 #: src/gui/widgets/shape_style/color_selector.ui:693
 #, kde-format
 msgid "Clear"
@@ -935,10 +935,9 @@ msgid "(c) 2019-2023"
 msgstr "© 2019-2023"
 
 #: src/core/app_info.cpp:66
-#, fuzzy, kde-format
-#| msgid "Mattia \"Glax\" Basaglie"
+#, kde-format
 msgid "Mattia \"Glax\" Basaglia"
-msgstr "Mattia \"Glax\" Basaglie"
+msgstr "Mattia \"Glax\" Basaglia"
 
 #: src/core/app_info.cpp:66
 #, kde-format
@@ -2055,7 +2054,7 @@ msgid "Fonts"
 msgstr "Шрифти"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_assets)
-#: src/core/model/assets/assets.hpp:207 src/gui/widgets/docks/assets.ui:22
+#: src/core/model/assets/assets.hpp:208 src/gui/widgets/docks/assets.ui:22
 #, kde-format
 msgid "Assets"
 msgstr "Активи"
@@ -2636,7 +2635,7 @@ msgstr "Отримано"
 #. i18n: ectx: property (text), widget (QToolButton, btn_reload)
 #. i18n: ectx: property (text), widget (QToolButton, button_google_refresh)
 #: src/gui/emoji/emoji_set_dialog.ui:107
-#: src/gui/widgets/docks/script_console.ui:87
+#: src/gui/widgets/docks/script_console.ui:91
 #: src/gui/widgets/docks/snippet_list_widget.ui:98
 #: src/gui/widgets/font/google_fonts_widget.ui:36
 #, kde-format
@@ -2793,8 +2792,8 @@ msgstr "Змінити розміри полотна"
 msgid "Drag Gradient"
 msgstr "Перетягніть градієнт"
 
-#: src/gui/graphics/transform_graphics_item.cpp:421
-#: src/gui/graphics/transform_graphics_item.cpp:480
+#: src/gui/graphics/transform_graphics_item.cpp:429
+#: src/gui/graphics/transform_graphics_item.cpp:499
 #, kde-format
 msgid "Drag anchor point"
 msgstr "Перетягніть точку прив'язки"
@@ -5089,31 +5088,31 @@ msgid "Could not find an interpreter"
 msgstr "Не вдалося знайти інтерпретатор"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, ScriptConsole)
-#: src/gui/widgets/docks/script_console.ui:18
+#: src/gui/widgets/docks/script_console.ui:22
 #, kde-format
 msgid "Script Console"
 msgstr "Консоль скриптів"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_clear_console)
-#: src/gui/widgets/docks/script_console.ui:54
+#: src/gui/widgets/docks/script_console.ui:58
 #, kde-format
 msgid "Clear Output"
 msgstr "Очистити вивід"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, check_persist)
-#: src/gui/widgets/docks/script_console.ui:67
+#: src/gui/widgets/docks/script_console.ui:71
 #, kde-format
 msgid "Persist Logs"
 msgstr "Сталі журнали"
 
 #. i18n: ectx: property (text), widget (QToolButton, check_persist)
-#: src/gui/widgets/docks/script_console.ui:70
+#: src/gui/widgets/docks/script_console.ui:74
 #, kde-format
 msgid "Persist"
 msgstr "Сталі"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_reload)
-#: src/gui/widgets/docks/script_console.ui:84
+#: src/gui/widgets/docks/script_console.ui:88
 #, kde-format
 msgid "Reload Script Modules"
 msgstr "Перезавантажити модулі скриптів"
@@ -5721,32 +5720,19 @@ msgid "Services"
 msgstr "Служби"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:199
-#, fuzzy
-#| msgctxt "@title settings group"
-#| msgid "User Interface"
 msgctxt "Settings"
 msgid "User Interface"
 msgstr "Інтерфейс користувача"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:200
-#, fuzzy
-#| msgid "Show at startup"
 msgid "Show startup dialog"
-msgstr "Показувати на початку"
+msgstr "Показувати вікно запуску"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:203
-#, fuzzy
-#| msgctxt "@option:check"
-#| msgid "Horizontal Timeline Scroll"
 msgid "Horizontal Timeline Scroll"
 msgstr "Горизонтальне гортання монтажного столу"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:204
-#, fuzzy
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "If enabled, the timeline will scroll horizontally by default and "
-#| "vertically with Shift or Alt"
 msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
@@ -5758,73 +5744,48 @@ msgstr ""
 #, kde-format
 msgctxt "Seconds suffix"
 msgid "s"
-msgstr ""
+msgstr "с"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:212
-#, fuzzy
-#| msgctxt "@title settings group"
-#| msgid "New Animation Defaults"
 msgctxt "Settings"
 msgid "New Animation Defaults"
 msgstr "Нові типові параметри анімацій"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:213
-#, fuzzy
-#| msgid "Canvas"
 msgid "Canvas Width"
-msgstr "Полотно"
+msgstr "Ширина полотна"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:214
-#, fuzzy
-#| msgid "Frame Height"
 msgid "Canvas Height"
-msgstr "Висота кадру"
+msgstr "Висота полотна"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:215
-#, fuzzy
-#| msgctxt "@info:tooltip"
-#| msgid "Frames per second"
 msgid "Frames per seconds"
 msgstr "Кадрів в секунду"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:216
-#, fuzzy
-#| msgctxt "@info:tooltip"
-#| msgid "Duration in seconds"
 msgid "Duration in seconds"
 msgstr "Тривалість (у секундах)"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:220
-#, fuzzy
-#| msgctxt "@title settings group"
-#| msgid "Open / Save"
 msgctxt "Settings"
 msgid "Open / Save"
 msgstr "Відкриття/Збереження"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:221
-#, fuzzy
-#| msgctxt "@label:spinbox"
-#| msgid "Max Recent Files"
 msgid "Max Recent Files"
 msgstr "Максимальна кількість нещодавніх файлів"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:221
 #: src/gui/widgets/settings/settings_dialog.cpp:222
 msgid "Number of items to show in the recent files menu"
-msgstr ""
+msgstr "Кількість пунктів, які слід показувати у меню нещодавніх файлів"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:222
-#, fuzzy
-#| msgctxt "@label:spinbox"
-#| msgid "Backup Frequency"
 msgid "Backup Frequency"
 msgstr "Частота резервного копіювання"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:223
-#, fuzzy
-#| msgctxt "@option:check"
-#| msgid "Use system file dialog"
 msgid "Use system file dialog"
 msgstr "Використовувати вікно роботи з файлами системи"
 

@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-14 01:46+0000\n"
-"PO-Revision-Date: 2024-04-26 10:56+0200\n"
-"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
+"POT-Creation-Date: 2024-08-15 01:50+0000\n"
+"PO-Revision-Date: 2024-08-14 11:31+0200\n"
+"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -873,7 +873,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QToolButton, btn_clear)
 #. i18n: ectx: property (text), widget (QPushButton, button_clear)
 #: src/android/sticker_pack_builder_dialog.ui:135
-#: src/gui/widgets/docks/script_console.ui:57
+#: src/gui/widgets/docks/script_console.ui:61
 #: src/gui/widgets/shape_style/color_selector.ui:693
 #, kde-format
 msgid "Clear"
@@ -903,7 +903,7 @@ msgstr ""
 #: src/core/app_info.cpp:66
 #, kde-format
 msgid "Maintainer"
-msgstr ""
+msgstr "Správce"
 
 #: src/core/app_info.cpp:68
 #, kde-format
@@ -948,7 +948,7 @@ msgstr ""
 #: src/core/app_info.cpp:77
 #, kde-format
 msgid "Inkscape"
-msgstr ""
+msgstr "Inkscape"
 
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
@@ -1997,7 +1997,7 @@ msgid "Fonts"
 msgstr "Písma"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_assets)
-#: src/core/model/assets/assets.hpp:207 src/gui/widgets/docks/assets.ui:22
+#: src/core/model/assets/assets.hpp:208 src/gui/widgets/docks/assets.ui:22
 #, kde-format
 msgid "Assets"
 msgstr "Aktiva"
@@ -2558,7 +2558,7 @@ msgstr "Staženo"
 #. i18n: ectx: property (text), widget (QToolButton, btn_reload)
 #. i18n: ectx: property (text), widget (QToolButton, button_google_refresh)
 #: src/gui/emoji/emoji_set_dialog.ui:107
-#: src/gui/widgets/docks/script_console.ui:87
+#: src/gui/widgets/docks/script_console.ui:91
 #: src/gui/widgets/docks/snippet_list_widget.ui:98
 #: src/gui/widgets/font/google_fonts_widget.ui:36
 #, kde-format
@@ -2607,24 +2607,21 @@ msgstr "Nástroje"
 
 #. i18n: ectx: Menu (views_menu)
 #: src/gui/glaxnimateui.rc:66
-#, fuzzy, kde-format
-#| msgid "&Views"
+#, kde-format
 msgid "Views"
-msgstr "Po&hledy"
+msgstr "Pohledy"
 
 #. i18n: ectx: Menu (layout_menu)
 #: src/gui/glaxnimateui.rc:70
-#, fuzzy, kde-format
-#| msgid "&Layout"
+#, kde-format
 msgid "Layout"
-msgstr "&Uspořádání"
+msgstr "Rozvržení"
 
 #. i18n: ectx: Menu (document)
 #: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:455
-#, fuzzy, kde-format
-#| msgid "&Document"
+#, kde-format
 msgid "Document"
-msgstr "&Dokument"
+msgstr "Dokument"
 
 #. i18n: ectx: Menu (render_frame_menu)
 #: src/gui/glaxnimateui.rc:88
@@ -2642,17 +2639,15 @@ msgstr ""
 
 #. i18n: ectx: Menu (playback)
 #: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:499
-#, fuzzy, kde-format
-#| msgid "&Playback"
+#, kde-format
 msgid "Playback"
-msgstr "&Přehrávání"
+msgstr "Přehrávání"
 
 #. i18n: ectx: Menu (object)
 #: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:607
-#, fuzzy, kde-format
-#| msgid "&Object"
+#, kde-format
 msgid "Object"
-msgstr "&Objekt"
+msgstr "Objekt"
 
 #. i18n: ectx: Menu (align_menu)
 #: src/gui/glaxnimateui.rc:154
@@ -2675,17 +2670,15 @@ msgstr "Hlavní panel nástrojů"
 
 #. i18n: ectx: ToolBar (toolsToolBar)
 #: src/gui/glaxnimateui.rc:242
-#, fuzzy, kde-format
-#| msgid "Toolbars"
+#, kde-format
 msgid "Tools Toolbar"
-msgstr "Panely nástrojů"
+msgstr "Panel s nástroji"
 
 #. i18n: ectx: ToolBar (nodeToolBar)
 #: src/gui/glaxnimateui.rc:258
-#, fuzzy, kde-format
-#| msgid "Toolbars"
+#, kde-format
 msgid "Node Toolbar"
-msgstr "Panely nástrojů"
+msgstr ""
 
 #: src/gui/graphics/bezier_item.cpp:239
 #, kde-format
@@ -2722,8 +2715,8 @@ msgstr "Změnit velikost plátna"
 msgid "Drag Gradient"
 msgstr ""
 
-#: src/gui/graphics/transform_graphics_item.cpp:421
-#: src/gui/graphics/transform_graphics_item.cpp:480
+#: src/gui/graphics/transform_graphics_item.cpp:429
+#: src/gui/graphics/transform_graphics_item.cpp:499
 #, kde-format
 msgid "Drag anchor point"
 msgstr ""
@@ -3842,10 +3835,9 @@ msgid "Remove text from path"
 msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:122
-#, fuzzy, kde-format
-#| msgid "Convert to Path"
+#, kde-format
 msgid "Put on Path"
-msgstr "Převést na cestu"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:125
 #: src/gui/widgets/menus/node_menu.cpp:396
@@ -3854,29 +3846,25 @@ msgid "Remove from Path"
 msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:139
-#, fuzzy, kde-format
-#| msgid "Information"
+#, kde-format
 msgid "Copy Debug Information"
-msgstr "Informace"
+msgstr "Kopírovat ladicí informace"
 
 #. i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:265
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File"
-msgstr "&Soubor"
+msgstr "Soubor"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:270
-#, fuzzy, kde-format
-#| msgid "Add &Image..."
+#, kde-format
 msgid "Add Image…"
-msgstr "Př&idat obrázek..."
+msgstr "Přidat obrázek…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:273
-#, fuzzy, kde-format
-#| msgid "Import"
+#, kde-format
 msgid "Import…"
-msgstr "Importovat"
+msgstr "Importovat…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:276
 #, kde-format
@@ -3901,22 +3889,19 @@ msgid "Could not save template"
 msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:323
-#, fuzzy, kde-format
-#| msgid "Export"
+#, kde-format
 msgid "Export…"
-msgstr "Exportovat"
+msgstr "Exportovat…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:326
-#, fuzzy, kde-format
-#| msgid "E&xport As..."
+#, kde-format
 msgid "Export As…"
-msgstr "E&xportovat jako..."
+msgstr "Exportovat jako…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:329
-#, fuzzy, kde-format
-#| msgid "Export as Image Sequence"
+#, kde-format
 msgid "Export as Image Sequence…"
-msgstr "Exportovat jako sekvenci obrázků"
+msgstr "Exportovat jako sekvenci obrázků…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:356
 #, kde-format
@@ -3934,10 +3919,9 @@ msgid "Duplicate"
 msgstr "Duplikovat"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:410
-#, fuzzy, kde-format
-#| msgid "&View"
+#, kde-format
 msgid "View"
-msgstr "Po&hled"
+msgstr "Pohled"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:421
 #, kde-format
@@ -3990,7 +3974,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:462
 #, kde-format
 msgid "Lottie (SVG)"
-msgstr ""
+msgstr "Lottie (SVG)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:465
 #, kde-format
@@ -4008,10 +3992,9 @@ msgid "RIVE (canvas)"
 msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:480
-#, fuzzy, kde-format
-#| msgid "Resize"
+#, kde-format
 msgid "Resize…"
-msgstr "Změnit velikost"
+msgstr "Změnit velikost…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:483
 #, kde-format
@@ -4019,16 +4002,14 @@ msgid "Cleanup"
 msgstr "Úklid"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:486
-#, fuzzy, kde-format
-#| msgid "Timing"
+#, kde-format
 msgid "Timing…"
-msgstr "Časování"
+msgstr "Časování…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:491
-#, fuzzy, kde-format
-#| msgid "Metadata..."
+#, kde-format
 msgid "Metadata…"
-msgstr "Metadata..."
+msgstr "Metadata…"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:502
@@ -4046,10 +4027,9 @@ msgid "Loop"
 msgstr "Smyčka"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
-#, fuzzy, kde-format
-#| msgid "Remove Keyframe"
+#, kde-format
 msgid "Record Keyframes"
-msgstr "Odstranit klíčový snímek"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:508
 #, kde-format
@@ -4062,16 +4042,14 @@ msgid "Jump to End"
 msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
-#, fuzzy, kde-format
-#| msgid "&Next Frame"
+#, kde-format
 msgid "Next Frame"
-msgstr "&Následující rámec"
+msgstr "Následující rámec"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:514
-#, fuzzy, kde-format
-#| msgid "Pre&vious Frame"
+#, kde-format
 msgid "Previous Frame"
-msgstr "Předchozí ráme&c"
+msgstr "Předchozí rámec"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:522
 #, kde-format
@@ -4079,46 +4057,39 @@ msgid "Pause"
 msgstr "Pozastavit"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:577
-#, fuzzy, kde-format
-#| msgid "compositions"
+#, kde-format
 msgid "Precompose Selection"
-msgstr "kompozice"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:581
-#, fuzzy, kde-format
-#| msgid "New &Composition"
+#, kde-format
 msgid "New Composition"
-msgstr "Nová kompozi&ce"
+msgstr "Nová kompozice"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:596
-#, fuzzy, kde-format
-#| msgid "Emoji"
+#, kde-format
 msgid "Emoji…"
-msgstr "Emotikon"
+msgstr "Emotikon…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:609
-#, fuzzy, kde-format
-#| msgid "Move to Top"
+#, kde-format
 msgid "Raise to Top"
-msgstr "Přesunout nahoru"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:618
-#, fuzzy, kde-format
-#| msgid "Move to Bottom"
+#, kde-format
 msgid "Lower to Bottom"
-msgstr "Přesunout dolů"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:621
-#, fuzzy, kde-format
-#| msgid "Move to..."
+#, kde-format
 msgid "Move to…"
-msgstr "Přesunout do..."
+msgstr "Přesunout do…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:627
-#, fuzzy, kde-format
-#| msgid "&Ungroup"
+#, kde-format
 msgid "Ungroup"
-msgstr "Zr&ušit seskupení"
+msgstr "Zrušit seskupení"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:630
 #: src/gui/widgets/docks/aligndock.cpp:46
@@ -4191,10 +4162,9 @@ msgid "Outside Bottom"
 msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:678
-#, fuzzy, kde-format
-#| msgid "Convert to Path"
+#, kde-format
 msgid "Object to Path"
-msgstr "Převést na cestu"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:681
 #, kde-format
@@ -4202,34 +4172,29 @@ msgid "Trace Bitmap…"
 msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
-#, fuzzy, kde-format
-#| msgid "&Union"
+#, kde-format
 msgid "Union"
-msgstr "S&jednocení"
+msgstr "Unie"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
-#, fuzzy, kde-format
-#| msgid "&Difference"
+#, kde-format
 msgid "Difference"
-msgstr "&Rozdíl"
+msgstr "Rozdíl"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:690
-#, fuzzy, kde-format
-#| msgid "&Intersect"
+#, kde-format
 msgid "Intersect"
-msgstr "&Průnik"
+msgstr "Průnik"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
-#, fuzzy, kde-format
-#| msgid "Extensions"
+#, kde-format
 msgid "Exclusion"
-msgstr "Rozšíření"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:695
-#, fuzzy, kde-format
-#| msgid "Re&verse"
+#, kde-format
 msgid "Reverse"
-msgstr "Obrátit s&měr"
+msgstr "Obrátit směr"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:699
 #, kde-format
@@ -4242,16 +4207,14 @@ msgid "Join Nodes"
 msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:703
-#, fuzzy, kde-format
-#| msgid "Delete Nodes"
+#, kde-format
 msgid "Split Nodes"
-msgstr "Smazat uzly"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:708
-#, fuzzy, kde-format
-#| msgid "Sy&mmetric"
+#, kde-format
 msgid "Symmetric"
-msgstr "Sy&metrické"
+msgstr "Symetrické"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:709
 #, kde-format
@@ -4884,31 +4847,31 @@ msgid "Could not find an interpreter"
 msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, ScriptConsole)
-#: src/gui/widgets/docks/script_console.ui:18
+#: src/gui/widgets/docks/script_console.ui:22
 #, kde-format
 msgid "Script Console"
 msgstr "Konzole skriptu"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_clear_console)
-#: src/gui/widgets/docks/script_console.ui:54
+#: src/gui/widgets/docks/script_console.ui:58
 #, kde-format
 msgid "Clear Output"
 msgstr "Vyprázdnit výstup"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, check_persist)
-#: src/gui/widgets/docks/script_console.ui:67
+#: src/gui/widgets/docks/script_console.ui:71
 #, kde-format
 msgid "Persist Logs"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QToolButton, check_persist)
-#: src/gui/widgets/docks/script_console.ui:70
+#: src/gui/widgets/docks/script_console.ui:74
 #, kde-format
 msgid "Persist"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_reload)
-#: src/gui/widgets/docks/script_console.ui:84
+#: src/gui/widgets/docks/script_console.ui:88
 #, kde-format
 msgid "Reload Script Modules"
 msgstr ""
@@ -4975,24 +4938,21 @@ msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_time_slider)
 #: src/gui/widgets/docks/time_slider.ui:22
-#, fuzzy, kde-format
-#| msgid "Timeline"
+#, kde-format
 msgid "Compact Timeline"
-msgstr "Časová osa"
+msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_timeline)
 #: src/gui/widgets/docks/timeline.ui:22
-#, fuzzy, kde-format
-#| msgid "Timeline"
+#, kde-format
 msgid "&Timeline"
-msgstr "Časová osa"
+msgstr "Ča&sová osa"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_tool_options)
 #: src/gui/widgets/docks/tooloptions.ui:22
-#, fuzzy, kde-format
-#| msgid "Tool Options"
+#, kde-format
 msgid "&Tool Options"
-msgstr "Možnosti nástrojů"
+msgstr "Možnosti nás&trojů"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_undo)
 #: src/gui/widgets/docks/undo.ui:22
@@ -5516,9 +5476,6 @@ msgid "Services"
 msgstr "Služby"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:199
-#, fuzzy
-#| msgctxt "@title settings group"
-#| msgid "User Interface"
 msgctxt "Settings"
 msgid "User Interface"
 msgstr "Uživatelské rozhraní"
@@ -5549,34 +5506,22 @@ msgid "New Animation Defaults"
 msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:213
-#, fuzzy
-#| msgid "Canvas"
 msgid "Canvas Width"
-msgstr "Plátno"
+msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:214
-#, fuzzy
-#| msgid "Height"
 msgid "Canvas Height"
-msgstr "Výška"
+msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:215
-#, fuzzy
-#| msgctxt "@info:tooltip"
-#| msgid "Frames per second"
 msgid "Frames per seconds"
-msgstr "Snímků za sekundu"
+msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:216
-#, fuzzy
-#| msgid "Duration"
 msgid "Duration in seconds"
-msgstr "Trvání"
+msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:220
-#, fuzzy
-#| msgctxt "@title settings group"
-#| msgid "Open / Save"
 msgctxt "Settings"
 msgid "Open / Save"
 msgstr "Otevřít/Uložit"
@@ -5591,10 +5536,8 @@ msgid "Number of items to show in the recent files menu"
 msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:222
-#, fuzzy
-#| msgid "Min Frequency"
 msgid "Backup Frequency"
-msgstr "Minimální frekvence"
+msgstr "Frekvence zálohování"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:223
 msgid "Use system file dialog"
@@ -6313,272 +6256,3 @@ msgstr "Úhel"
 #, kde-format
 msgid "°"
 msgstr "°"
-
-#~ msgctxt "@label:spinbox"
-#~ msgid "Width"
-#~ msgstr "Šířka"
-
-#~ msgctxt "@label:spinbox"
-#~ msgid "Height"
-#~ msgstr "Výška"
-
-#~ msgctxt "@label:spinbox"
-#~ msgid "FPS"
-#~ msgstr "FPS"
-
-#~ msgctxt "@label:spinbox"
-#~ msgid "Duration"
-#~ msgstr "Trvání"
-
-#~ msgctxt "@title settings group"
-#~ msgid "Scripting"
-#~ msgstr "Skriptování"
-
-#~ msgctxt "@title settings group"
-#~ msgid "Tools"
-#~ msgstr "Nástroje"
-
-#~ msgctxt "@label:listbox"
-#~ msgid "Language"
-#~ msgstr "Jazyk"
-
-#~ msgctxt "@label:listbox"
-#~ msgid "Icon Theme"
-#~ msgstr "Motiv ikon"
-
-#~ msgid "F7"
-#~ msgstr "F7"
-
-#~ msgid "F3"
-#~ msgstr "F3"
-
-#~ msgid "F2"
-#~ msgstr "F2"
-
-#~ msgid "F5"
-#~ msgstr "F5"
-
-#~ msgid "F8"
-#~ msgstr "F8"
-
-#~ msgid "F6"
-#~ msgstr "F6"
-
-#~ msgid "F4"
-#~ msgstr "F4"
-
-#~ msgid "F1"
-#~ msgstr "F1"
-
-#~ msgid "*"
-#~ msgstr "*"
-
-#~ msgid "About"
-#~ msgstr "O aplikaci"
-
-#~ msgid "Credits"
-#~ msgstr "Poděkování"
-
-#~ msgid "Kernel"
-#~ msgstr "Jádro"
-
-#~ msgid "CPU"
-#~ msgstr "CPU"
-
-#~ msgid "About Qt"
-#~ msgstr "O &Qt"
-
-#~ msgid "Open &Recent"
-#~ msgstr "Otevřít ne&dávný"
-
-#~ msgid "&Tools"
-#~ msgstr "Nás&troje"
-
-#~ msgid "&Layers"
-#~ msgstr "&Vrstvy"
-
-#~ msgid "&New"
-#~ msgstr "&Nový"
-
-#~ msgid "&Composition"
-#~ msgstr "Kompozi&ce"
-
-#~ msgid "&Path"
-#~ msgstr "&Cesta"
-
-#~ msgid "&Edit"
-#~ msgstr "&Upravit"
-
-#~ msgid "Tool&bars"
-#~ msgstr "Pane&ly nástrojů"
-
-#~ msgid "&Help"
-#~ msgstr "Nápo&věda"
-
-#~ msgid "Plu&gins"
-#~ msgstr "Mod&uly"
-
-#~ msgid "&Text"
-#~ msgstr "&Text"
-
-#~ msgid "&Settings"
-#~ msgstr "Na&stavení"
-
-#~ msgid "&Open..."
-#~ msgstr "&Otevřít..."
-
-#~ msgid "&Save"
-#~ msgstr "&Uložit"
-
-#~ msgid "Save &As..."
-#~ msgstr "Uložit j&ako..."
-
-#~ msgid "&Close"
-#~ msgstr "&Zavřít"
-
-#~ msgid "&Quit"
-#~ msgstr "U&končit"
-
-#~ msgid "&Select"
-#~ msgstr "&Vybrat"
-
-#~ msgid "&Rectangle"
-#~ msgstr "&Obdélník"
-
-#~ msgid "&Ellipse"
-#~ msgstr "&Elipsa"
-
-#~ msgid "S&tar"
-#~ msgstr "Hvězda"
-
-#~ msgid "&Group"
-#~ msgstr "S&kupina"
-
-#~ msgid "&Smooth"
-#~ msgstr "&Hladké"
-
-#~ msgid "&Copy"
-#~ msgstr "&Kopírovat"
-
-#~ msgid "Cu&t"
-#~ msgstr "Vyjmou&t"
-
-#~ msgid "&Paste"
-#~ msgstr "V&ložit"
-
-#~ msgid "&Select All"
-#~ msgstr "Vybr&at vše"
-
-#~ msgid "Home"
-#~ msgstr "Domů"
-
-#~ msgid "&Raise"
-#~ msgstr "&Do popředí"
-
-#~ msgid "PgUp"
-#~ msgstr "PgUp"
-
-#~ msgid "&Lower"
-#~ msgstr "Dát do &pozadí"
-
-#~ msgid "PgDown"
-#~ msgstr "PgDown"
-
-#~ msgid "Re&load"
-#~ msgstr "Znovu načís&t"
-
-#~ msgid "Re&set View"
-#~ msgstr "Přena&stavit pohled"
-
-#~ msgid "&Reset Rotation"
-#~ msgstr "&Vrátit otočení"
-
-#~ msgid "Zoom &In"
-#~ msgstr "Přiblíž&it"
-
-#~ msgid "Zoom &Out"
-#~ msgstr "&Oddálit"
-
-#~ msgid "Reset &Zoom"
-#~ msgstr "Původní při&blížení"
-
-#~ msgid "Pr&eferences..."
-#~ msgstr "Př&edvolby..."
-
-#~ msgid "About..."
-#~ msgstr "O aplikaci..."
-
-#~ msgid "S&VG..."
-#~ msgstr "S&VG..."
-
-#~ msgid "Report &Issue..."
-#~ msgstr "Nahlásit &problém..."
-
-#~ msgid "&Move to..."
-#~ msgstr "&Přesunout do..."
-
-#~ msgid "Re&size..."
-#~ msgstr "Změnit veliko&st..."
-
-#~ msgid "Donate..."
-#~ msgstr "Přispějte..."
-
-#~ msgid "&Fill"
-#~ msgstr "&Vyplnit"
-
-#~ msgid "&Stroke"
-#~ msgstr "&Tah"
-
-#~ msgid "&Layer"
-#~ msgstr "&Vrstva"
-
-#~ msgid "&Delete"
-#~ msgstr "&Smazat"
-
-#~ msgid "&Export..."
-#~ msgstr "&Exportovat..."
-
-#~ msgid "Timing..."
-#~ msgstr "Časování..."
-
-#~ msgid "&Play"
-#~ msgstr "&Přehrát"
-
-#~ msgid "&Loop"
-#~ msgstr "&Smyčka"
-
-#~ msgid "Horizontal"
-#~ msgstr "Vodorovně"
-
-#~ msgid "Vertical"
-#~ msgstr "Svisle"
-
-#~ msgid "&Import..."
-#~ msgstr "&Importovat..."
-
-#~ msgid "F&lip View"
-#~ msgstr "Otočit pohled"
-
-#~ msgid "Emo&ji..."
-#~ msgstr "Emotikon..."
-
-#~ msgid "Export as Image Sequence..."
-#~ msgstr "Exportovat jako sekvenci obrázků..."
-
-#~ msgid "Configure &Keyboard Shortcuts..."
-#~ msgstr "Nastavit &klávesové zkratky..."
-
-#~ msgid "Ctrl+Alt+,"
-#~ msgstr "Ctrl+Alt+,"
-
-#~ msgid "Icon"
-#~ msgstr "Ikona"
-
-#~ msgid "Text beside Icon"
-#~ msgstr "Text vedle ikony"
-
-#~ msgid "Text under Icon"
-#~ msgstr "Text pod ikonou"
-
-#~ msgid "Icon Size"
-#~ msgstr "Text pod ikonou"
