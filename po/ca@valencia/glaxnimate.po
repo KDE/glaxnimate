@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-15 01:50+0000\n"
-"PO-Revision-Date: 2024-08-10 10:45+0200\n"
+"PO-Revision-Date: 2024-08-13 10:36+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -941,10 +941,9 @@ msgid "(c) 2019-2023"
 msgstr "(c) 2019-2023"
 
 #: src/core/app_info.cpp:66
-#, fuzzy, kde-format
-#| msgid "Mattia \"Glax\" Basaglie"
+#, kde-format
 msgid "Mattia \"Glax\" Basaglia"
-msgstr "Mattia \"Glax\" Basaglie"
+msgstr "Mattia \"Glax\" Basaglia"
 
 #: src/core/app_info.cpp:66
 #, kde-format
@@ -5721,32 +5720,19 @@ msgid "Services"
 msgstr "Serveis"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:199
-#, fuzzy
-#| msgctxt "@title settings group"
-#| msgid "User Interface"
 msgctxt "Settings"
 msgid "User Interface"
 msgstr "Interfície d'usuari"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:200
-#, fuzzy
-#| msgid "Show at startup"
 msgid "Show startup dialog"
-msgstr "Mostra a l'inici"
+msgstr "Mostra el diàleg d'inici"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:203
-#, fuzzy
-#| msgctxt "@option:check"
-#| msgid "Horizontal Timeline Scroll"
 msgid "Horizontal Timeline Scroll"
 msgstr "Desplaçament horitzontal de la línia de temps"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:204
-#, fuzzy
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "If enabled, the timeline will scroll horizontally by default and "
-#| "vertically with Shift or Alt"
 msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
@@ -5758,73 +5744,48 @@ msgstr ""
 #, kde-format
 msgctxt "Seconds suffix"
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:212
-#, fuzzy
-#| msgctxt "@title settings group"
-#| msgid "New Animation Defaults"
 msgctxt "Settings"
 msgid "New Animation Defaults"
 msgstr "Valors predeterminats d'animació nova"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:213
-#, fuzzy
-#| msgid "Canvas"
 msgid "Canvas Width"
-msgstr "Llenç"
+msgstr "Amplària del llenç"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:214
-#, fuzzy
-#| msgid "Frame Height"
 msgid "Canvas Height"
-msgstr "Alçària del fotograma"
+msgstr "Alçària del llenç"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:215
-#, fuzzy
-#| msgctxt "@info:tooltip"
-#| msgid "Frames per second"
 msgid "Frames per seconds"
 msgstr "Fotogrames per segon"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:216
-#, fuzzy
-#| msgctxt "@info:tooltip"
-#| msgid "Duration in seconds"
 msgid "Duration in seconds"
 msgstr "Duració en segons"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:220
-#, fuzzy
-#| msgctxt "@title settings group"
-#| msgid "Open / Save"
 msgctxt "Settings"
 msgid "Open / Save"
 msgstr "Obri/Guarda"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:221
-#, fuzzy
-#| msgctxt "@label:spinbox"
-#| msgid "Max Recent Files"
 msgid "Max Recent Files"
 msgstr "Nombre màxim de fitxers recents"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:221
 #: src/gui/widgets/settings/settings_dialog.cpp:222
 msgid "Number of items to show in the recent files menu"
-msgstr ""
+msgstr "Nombre d'elements a mostrar al menú de fitxers recents"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:222
-#, fuzzy
-#| msgctxt "@label:spinbox"
-#| msgid "Backup Frequency"
 msgid "Backup Frequency"
 msgstr "Freqüència de les còpies de seguretat"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:223
-#, fuzzy
-#| msgctxt "@option:check"
-#| msgid "Use system file dialog"
 msgid "Use system file dialog"
 msgstr "Utilitza el diàleg de fitxer del sistema"
 
@@ -6541,31 +6502,3 @@ msgstr "Angle"
 #, kde-format
 msgid "°"
 msgstr "°"
-
-#~ msgctxt "@label:spinbox"
-#~ msgid "Width"
-#~ msgstr "Amplària"
-
-#~ msgctxt "@label:spinbox"
-#~ msgid "Height"
-#~ msgstr "Alçària"
-
-#~ msgctxt "@label:spinbox"
-#~ msgid "FPS"
-#~ msgstr "FPS"
-
-#~ msgctxt "@label:spinbox"
-#~ msgid "Duration"
-#~ msgstr "Duració"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "How often to save a backup copy (in minutes)"
-#~ msgstr "Amb quina freqüència es guarda una còpia de seguretat (en minuts)"
-
-#~ msgctxt "@title settings group"
-#~ msgid "Scripting"
-#~ msgstr "Creació de scripts"
-
-#~ msgctxt "@title settings group"
-#~ msgid "Tools"
-#~ msgstr "Eines"
