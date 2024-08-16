@@ -28,12 +28,12 @@ LayersDock::LayersDock(GlaxnimateWindow *parent, item_models::DocumentModelBase*
 
     d->ui.view_document_node->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(d->ui.view_document_node, &QWidget::customContextMenuRequested, parent,
-                     [&, this](const QPoint& pos){
-                         auto index = d->ui.view_document_node->indexAt(pos);
-                         if ( auto node = d->ui.view_document_node->node(index) )
-                             NodeMenu(node, parent, parent).exec(d->ui.view_document_node->mapToGlobal(pos));
-                     }
-                );
+        [parent, this](const QPoint& pos){
+            auto index = d->ui.view_document_node->indexAt(pos);
+            if ( auto node = d->ui.view_document_node->node(index) )
+                NodeMenu(node, parent, parent).exec(d->ui.view_document_node->mapToGlobal(pos));
+        }
+    );
 
     d->ui.btn_layer_add->setMenu(menu_new_layer);
 
