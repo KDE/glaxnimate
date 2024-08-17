@@ -11,6 +11,7 @@
 #include <QDir>
 #include <QStandardPaths>
 #include "glaxnimate_settings.hpp"
+#include "settings/icon_settings.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
@@ -125,4 +126,12 @@ QString GlaxnimateApp::backup_path() const
         + QLatin1String("/stalefiles/")
         + QCoreApplication::instance()->applicationName()
     ;
+}
+
+bool GlaxnimateApp::event(QEvent *event)
+{
+    if ( event->type() == QEvent::ApplicationPaletteChange )
+        gui::settings::IconSettings::instance().palette_change();
+
+    return app::Application::event(event);
 }

@@ -23,6 +23,7 @@
 
 #include "app/widgets/no_close_on_enter.hpp"
 #include "glaxnimate_settings.hpp"
+#include "settings/icon_settings.hpp"
 
 using namespace glaxnimate::gui;
 
@@ -68,12 +69,13 @@ public:
 
         QWidget* wid = make_setting_widget(item);
         if ( wid )
-            add_item_widget(item, wid, label_text, tooltip);
+            add_item_widget(item, wid, label_text, tooltip, true);
     }
 
-    void add_item_widget(const KConfigSkeletonItem* item, QWidget* widget, const KLazyLocalizedString& label_text, const KLazyLocalizedString& tooltip)
+    void add_item_widget(const KConfigSkeletonItem* item, QWidget* widget, const KLazyLocalizedString& label_text, const KLazyLocalizedString& tooltip, bool auto_name)
     {
-        widget->setObjectName(QStringLiteral("kcfg_%1").arg(item->name()));
+        if ( auto_name )
+            widget->setObjectName(QStringLiteral("kcfg_%1").arg(item->name()));
         add_widget(widget, label_text, tooltip);
     }
 
@@ -150,9 +152,9 @@ public:
     {
     }
 
-    AutoConfigBuilder& add_item_widget(const char* name, QWidget* widget, const KLazyLocalizedString& label, const KLazyLocalizedString& tooltip = {})
+    AutoConfigBuilder& add_item_widget(const char* name, QWidget* widget, const KLazyLocalizedString& label, const KLazyLocalizedString& tooltip = {}, bool auto_name = true)
     {
-        page->add_item_widget(skeleton->findItem(QString::fromLatin1(name)), widget, label, tooltip);
+        page->add_item_widget(skeleton->findItem(QString::fromLatin1(name)), widget, label, tooltip, auto_name);
         return *this;
     }
 
@@ -185,6 +187,7 @@ public:
     QComboBox* color_scheme_view = nullptr;
     std::map<KPageWidgetItem*, settings::CustomSettingsGroup*> custom_pages;
     app::widgets::NoCloseOnEnter ncoe;
+    QComboBox* icon_combo = nullptr;
 };
 
 SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
@@ -196,6 +199,9 @@ SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
 
     KCoreConfigSkeleton* skeleton = GlaxnimateSettings::self();
 
+    d->icon_combo = new QComboBox();
+    d->icon_combo->setModel(gui::settings::IconSettings::instance().item_model());
+
     d->ui_page = AutoConfigBuilder(kli18nc("Settings", "User Interface"), "preferences-desktop-theme", skeleton, this)
         .add_item("startup_dialog", kli18n("Show startup dialog"))
         .add_item(
@@ -203,6 +209,7 @@ SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
             kli18n("Horizontal Timeline Scroll"),
             kli18n("If enabled, the timeline will scroll horizontally by default and vertically with Shift or Alt")
         )
+        .add_item_widget("icon_theme", d->icon_combo, kli18n("FPS"), kli18n("Frames per seconds"), false)
         .commit()
     ;
 
@@ -240,4 +247,6 @@ void glaxnimate::gui::SettingsDialog::updateSettings()
         iter->second->save(*GlaxnimateSettings::self()->config());
 
     KConfigDialog::updateSettings();
+
+    gui::settings::IconSettings::instance().set_icon_theme(d->icon_combo->itemData(d->icon_combo->currentIndex(), Qt::UserRole).toString());
 }

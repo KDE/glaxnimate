@@ -26,7 +26,7 @@ item_models/document_model_base.cpp
 item_models/comp_filter_model.cpp
 
 settings/clipboard_settings.cpp
-
+settings/icon_settings.cpp
 settings/document_templates.cpp
 settings/api_credentials.cpp
 

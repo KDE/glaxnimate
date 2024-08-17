@@ -29,6 +29,7 @@
 #include "io/lottie/lottie_html_format.hpp"
 
 #include "widgets/dialogs/glaxnimate_window.hpp"
+#include "settings/icon_settings.hpp"
 
 using namespace glaxnimate;
 
@@ -72,6 +73,8 @@ int main(int argc, char *argv[])
 
     if ( args.return_value )
         return *args.return_value;
+
+    gui::settings::IconSettings::instance().initialize();
 
 #ifdef Q_OS_WIN
     auto pyhome = app::Environment::Variable("PYTHONHOME");
