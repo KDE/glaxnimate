@@ -23,6 +23,7 @@ public:
 protected:
     void updateSettings() override;
     void updateWidgets() override;
+    bool hasChanged() override;
 
 private:
     class Private;

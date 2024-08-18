@@ -26,6 +26,7 @@
 #include "app/widgets/no_close_on_enter.hpp"
 #include "glaxnimate_settings.hpp"
 #include "settings/icon_settings.hpp"
+#include "utils/pseudo_mutex.hpp"
 
 using namespace glaxnimate::gui;
 
@@ -190,6 +191,8 @@ public:
     std::map<KPageWidgetItem*, settings::CustomSettingsGroup*> custom_pages;
     app::widgets::NoCloseOnEnter ncoe;
     QTableView* icon_view = nullptr;
+    bool has_changed = false;
+    utils::PseudoMutex internal_change;
 };
 
 SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
@@ -211,6 +214,15 @@ SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
     d->icon_view->setSelectionMode(QAbstractItemView::SingleSelection);
     d->icon_view->setSelectionBehavior(QAbstractItemView::SelectRows);
     d->icon_view->setShowGrid(false);
+    connect(d->icon_view->selectionModel(), &QItemSelectionModel::currentChanged, this,
+        [this](){
+            if ( !d->internal_change )
+            {
+                d->has_changed = true;
+                settingsChangedSlot();
+            }
+        }
+    );
 
     d->ui_page = AutoConfigBuilder(kli18nc("Settings", "User Interface"), "preferences-desktop-theme", skeleton, this)
         .add_item("startup_dialog", kli18n("Show startup dialog"))
@@ -259,9 +271,16 @@ void glaxnimate::gui::SettingsDialog::updateSettings()
     KConfigDialog::updateSettings();
 
     gui::settings::IconSettings::instance().set_current_item_index(d->icon_view->currentIndex());
+    d->has_changed = false;
 }
 
 void glaxnimate::gui::SettingsDialog::updateWidgets()
 {
+    auto lock = d->internal_change.get_lock();
     d->icon_view->setCurrentIndex(settings::IconSettings::instance().current_item_index());
+}
+
+bool glaxnimate::gui::SettingsDialog::hasChanged()
+{
+    return KConfigDialog::hasChanged() || d->has_changed;
 }
