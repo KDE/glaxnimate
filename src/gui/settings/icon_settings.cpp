@@ -8,6 +8,7 @@
 
 #include "glaxnimate_settings.hpp"
 
+#include <QtGlobal>
 #include <QGuiApplication>
 #include <QPalette>
 #include <QStandardItemModel>
@@ -23,7 +24,8 @@ public:
         {
             theme = system_theme;
         }
-        else if ( theme == default_theme_name )
+        // No `else` to allow system_theme to be the same as default_theme_name
+        if ( theme == default_theme_name )
         {
             theme = get_default_theme_name();
         }
@@ -83,7 +85,11 @@ glaxnimate::gui::settings::IconSettings::IconSettings() : d(std::make_unique<Pri
 
 void glaxnimate::gui::settings::IconSettings::initialize()
 {
+#if defined(Q_OS_ANDROID) || defined(Q_OS_WIN) || defined(Q_OS_DARWIN)
+    d->system_theme = d->default_theme_name;
+#else
     d->system_theme = KIconTheme::current();
+#endif
     QString theme = GlaxnimateSettings::icon_theme();
     d->set_theme(theme);
 }
