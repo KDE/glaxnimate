@@ -10,6 +10,7 @@
 #include <QString>
 
 class QAbstractItemModel;
+class QModelIndex;
 
 
 namespace glaxnimate::gui::settings {
@@ -28,8 +29,12 @@ public:
 
     QString icon_theme() const;
     void set_icon_theme(const QString& theme);
-    QAbstractItemModel* item_model() const;
     void palette_change() const;
+
+
+    QAbstractItemModel* item_model() const;
+    QModelIndex current_item_index() const;
+    void set_current_item_index(const QModelIndex& index);
 
 private:
     class Private;

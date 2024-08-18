@@ -15,6 +15,8 @@
 #include <QComboBox>
 #include <QListView>
 #include <QPushButton>
+#include <QTableView>
+#include <QHeaderView>
 
 #include <KConfigSkeleton>
 #include <KLazyLocalizedString>
@@ -187,7 +189,7 @@ public:
     QComboBox* color_scheme_view = nullptr;
     std::map<KPageWidgetItem*, settings::CustomSettingsGroup*> custom_pages;
     app::widgets::NoCloseOnEnter ncoe;
-    QComboBox* icon_combo = nullptr;
+    QTableView* icon_view = nullptr;
 };
 
 SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
@@ -199,8 +201,16 @@ SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
 
     KCoreConfigSkeleton* skeleton = GlaxnimateSettings::self();
 
-    d->icon_combo = new QComboBox();
-    d->icon_combo->setModel(gui::settings::IconSettings::instance().item_model());
+    d->icon_view = new QTableView();
+    d->icon_view->setModel(gui::settings::IconSettings::instance().item_model());
+    d->icon_view->horizontalHeader()->setVisible(false);
+    d->icon_view->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
+    d->icon_view->horizontalHeader()->setDefaultSectionSize(32);
+    d->icon_view->setIconSize(QSize(32, 32));
+    d->icon_view->verticalHeader()->setVisible(false);
+    d->icon_view->setSelectionMode(QAbstractItemView::SingleSelection);
+    d->icon_view->setSelectionBehavior(QAbstractItemView::SelectRows);
+    d->icon_view->setShowGrid(false);
 
     d->ui_page = AutoConfigBuilder(kli18nc("Settings", "User Interface"), "preferences-desktop-theme", skeleton, this)
         .add_item("startup_dialog", kli18n("Show startup dialog"))
@@ -209,7 +219,7 @@ SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
             kli18n("Horizontal Timeline Scroll"),
             kli18n("If enabled, the timeline will scroll horizontally by default and vertically with Shift or Alt")
         )
-        .add_item_widget("icon_theme", d->icon_combo, kli18n("FPS"), kli18n("Frames per seconds"), false)
+        .add_item_widget("icon_theme", d->icon_view, kli18n("Icon Theme"), kli18n("Icon theme for the application"), false)
         .commit()
     ;
 
@@ -248,5 +258,10 @@ void glaxnimate::gui::SettingsDialog::updateSettings()
 
     KConfigDialog::updateSettings();
 
-    gui::settings::IconSettings::instance().set_icon_theme(d->icon_combo->itemData(d->icon_combo->currentIndex(), Qt::UserRole).toString());
+    gui::settings::IconSettings::instance().set_current_item_index(d->icon_view->currentIndex());
+}
+
+void glaxnimate::gui::SettingsDialog::updateWidgets()
+{
+    d->icon_view->setCurrentIndex(settings::IconSettings::instance().current_item_index());
 }

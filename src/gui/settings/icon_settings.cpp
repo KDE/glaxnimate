@@ -47,30 +47,56 @@ public:
         if ( model )
             return model.get();
 
-        QStringList themes = KIconTheme::list();
-        model = std::make_unique<QStandardItemModel>(themes.size() + 2, 1);
-        model->setItem(0, 0, item(i18n("System Default"), QString(), system_theme));
-        model->setItem(1, 0, item(i18n("Glaxnimate Default"), default_theme_name, get_default_theme_name()));
-        int i = 2;
+        themes = KIconTheme::list();
+        model = std::make_unique<QStandardItemModel>(themes.size() + 2, 6);
+        int i = 0;
+        item(i++, i18n("System Default"), QString(), system_theme);
+        item(i++, i18n("Glaxnimate Default"), default_theme_name, get_default_theme_name());
         for ( const auto& theme : themes )
-            model->setItem(i++, 0, item(theme, theme, theme));
+            item(i++, theme, theme, theme);
 
         return model.get();
     }
 
-    QStandardItem* item(const QString& display, const QString& value, const QString& preview_theme)
+    void item(int row, const QString& display, const QString& value, const QString& preview_theme)
     {
         QStandardItem* item = new QStandardItem();
         item->setText(display);
         item->setData(value, Qt::UserRole);
-        item->setIcon(QIcon(KIconTheme(preview_theme).iconPathByName(preview_icon, 32, KIconLoader::MatchBest)));
-        return item;
+        int col = 0;
+        // item->setIcon(QIcon(KIconTheme(preview_theme).iconPathByName(preview_icon, 32, KIconLoader::MatchBest)));
+        model->setItem(row, col++, item);
+        KIconTheme theme(preview_theme);
+        model->setItem(row, col++, preview_icon(theme, QStringLiteral("document-open")));
+        model->setItem(row, col++, preview_icon(theme, QStringLiteral("document-save")));
+        model->setItem(row, col++, preview_icon(theme, QStringLiteral("draw-bezier-curves")));
+        model->setItem(row, col++, preview_icon(theme, QStringLiteral("draw-polygon-star")));
+        model->setItem(row, col++, preview_icon(theme, QStringLiteral("layer-raise")));
+        model->setItem(row, col++, preview_icon(theme, QStringLiteral("align-horizontal-center")));
+    }
+
+    QStandardItem* preview_icon(const KIconTheme& theme, const QString& icon)
+    {
+        QString path = theme.iconPathByName(icon, 32, KIconLoader::MatchBest);
+        if ( path.isEmpty() )
+        {
+            for ( const auto& inh : theme.inherits() )
+            {
+                path = KIconTheme(inh).iconPathByName(icon, 32, KIconLoader::MatchBest);
+                if ( !path.isEmpty() )
+                    break;
+            }
+            if ( path.isEmpty() )
+                path = KIconTheme(QStringLiteral("breeze")).iconPathByName(icon, 32, KIconLoader::MatchBest);
+        }
+
+        return new QStandardItem(QIcon(path), QString());
     }
 
     std::unique_ptr<QStandardItemModel> model;
     QString default_theme_name = QStringLiteral("Glaxnimate");
-    QString preview_icon = QStringLiteral("document-open");
     QString system_theme;
+    QStringList themes;
 };
 
 glaxnimate::gui::settings::IconSettings & glaxnimate::gui::settings::IconSettings::instance()
@@ -115,4 +141,31 @@ void glaxnimate::gui::settings::IconSettings::palette_change() const
 {
     if ( GlaxnimateSettings::icon_theme() == d->default_theme_name )
         d->set_theme(d->get_default_theme_name());
+}
+
+QModelIndex glaxnimate::gui::settings::IconSettings::current_item_index() const
+{
+    auto model = d->get_model();
+    int row;
+    QString theme = icon_theme();
+    if ( theme.isEmpty() )
+        row = 0;
+    else if ( theme == d->default_theme_name )
+        row = 1;
+    else
+        row = d->themes.indexOf(theme) + 2;
+    return model->index(row, 0);
+}
+
+void glaxnimate::gui::settings::IconSettings::set_current_item_index(const QModelIndex& index)
+{
+    int row = index.row();
+    if ( row < 0 || row >= d->themes.size() + 2 )
+        return;
+    if ( row == 0 )
+        set_icon_theme({});
+    else if ( row == 1 )
+        set_icon_theme(d->default_theme_name);
+    else
+        set_icon_theme(d->themes[row - 2]);
 }
