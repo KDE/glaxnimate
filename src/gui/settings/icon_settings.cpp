@@ -17,15 +17,17 @@
 class glaxnimate::gui::settings::IconSettings::Private
 {
 public:
-    void set_theme(const QString& theme)
+    void set_theme(QString theme)
     {
-        if ( theme == default_theme_name )
+        if ( theme.isEmpty() )
         {
-            set_theme(get_default_theme_name());
-            return;
+            theme = system_theme;
+        }
+        else if ( theme == default_theme_name )
+        {
+            theme = get_default_theme_name();
         }
 
-        KIconTheme::forceThemeForTests(theme);
         QIcon::setThemeName(theme);
     }
 
@@ -36,13 +38,6 @@ public:
             return QStringLiteral("breeze-dark");
         else
             return QStringLiteral("breeze");
-    }
-
-    void clear_theme()
-    {
-        KIconTheme::forceThemeForTests(QString());
-        QIcon::setThemeName(KIconTheme::current());
-        qDebug() << KIconTheme::current();
     }
 
     QStandardItemModel* get_model()
@@ -57,7 +52,6 @@ public:
         int i = 2;
         for ( const auto& theme : themes )
             model->setItem(i++, 0, item(theme, theme, theme));
-
 
         return model.get();
     }
@@ -91,17 +85,12 @@ void glaxnimate::gui::settings::IconSettings::initialize()
 {
     d->system_theme = KIconTheme::current();
     QString theme = GlaxnimateSettings::icon_theme();
-    if ( !theme.isEmpty() )
-        d->set_theme(theme);
+    d->set_theme(theme);
 }
 
 void glaxnimate::gui::settings::IconSettings::set_icon_theme(const QString& theme)
 {
-    if ( theme.isEmpty() )
-        d->clear_theme();
-    else
-        d->set_theme(theme);
-
+    d->set_theme(theme);
     GlaxnimateSettings::setIcon_theme(theme);
 }
 
