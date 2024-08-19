@@ -100,14 +100,10 @@ glaxnimate::gui::settings::IconSettings::IconSettings() : d(std::make_unique<Pri
 
 void glaxnimate::gui::settings::IconSettings::initialize()
 {
-
-#if defined(Q_OS_ANDROID) || defined(Q_OS_WIN) || defined(Q_OS_DARWIN)
-    d->system_theme = d->default_theme_name;
-#else
-    d->system_theme = KIconTheme::current();
-#endif
+#if HAS_FREEDESKTOP_ICONS
     QString theme = GlaxnimateSettings::icon_theme();
     d->set_theme(theme);
+#endif
 }
 
 void glaxnimate::gui::settings::IconSettings::set_icon_theme(const QString& theme)

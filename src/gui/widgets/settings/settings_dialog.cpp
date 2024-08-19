@@ -204,6 +204,7 @@ SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
 
     KCoreConfigSkeleton* skeleton = GlaxnimateSettings::self();
 
+#if HAS_FREEDESKTOP_ICONS
     d->icon_view = new QTableView();
     d->icon_view->setModel(gui::settings::IconSettings::instance().item_model());
     d->icon_view->horizontalHeader()->setVisible(false);
@@ -223,6 +224,7 @@ SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
             }
         }
     );
+#endif
 
     d->ui_page = AutoConfigBuilder(kli18nc("Settings", "User Interface"), "preferences-desktop-theme", skeleton, this)
         .add_item("startup_dialog", kli18n("Show startup dialog"))
@@ -231,7 +233,9 @@ SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
             kli18n("Horizontal Timeline Scroll"),
             kli18n("If enabled, the timeline will scroll horizontally by default and vertically with Shift or Alt")
         )
+#if HAS_FREEDESKTOP_ICONS
         .add_item_widget("icon_theme", d->icon_view, kli18n("Icon Theme"), kli18n("Icon theme for the application"), false)
+#endif
         .commit()
     ;
 
@@ -270,14 +274,18 @@ void glaxnimate::gui::SettingsDialog::updateSettings()
 
     KConfigDialog::updateSettings();
 
+#if HAS_FREEDESKTOP_ICONS
     gui::settings::IconSettings::instance().set_current_item_index(d->icon_view->currentIndex());
     d->has_changed = false;
+#endif
 }
 
 void glaxnimate::gui::SettingsDialog::updateWidgets()
 {
+#if HAS_FREEDESKTOP_ICONS
     auto lock = d->internal_change.get_lock();
     d->icon_view->setCurrentIndex(settings::IconSettings::instance().current_item_index());
+#endif
 }
 
 bool glaxnimate::gui::SettingsDialog::hasChanged()

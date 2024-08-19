@@ -8,9 +8,16 @@
 
 #include <memory>
 #include <QString>
+#include <QtGlobal>
 
 class QAbstractItemModel;
 class QModelIndex;
+
+#if defined(Q_OS_ANDROID) || defined(Q_OS_WIN) || defined(Q_OS_DARWIN)
+#   define HAS_FREEDESKTOP_ICONS false
+#else
+#   define HAS_FREEDESKTOP_ICONS true
+#endif
 
 
 namespace glaxnimate::gui::settings {
