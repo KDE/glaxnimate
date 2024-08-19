@@ -24,22 +24,11 @@ public:
         {
             theme = system_theme;
         }
-        // No `else` to allow system_theme to be the same as default_theme_name
-        if ( theme == default_theme_name )
-        {
-            theme = get_default_theme_name();
-        }
 
-        QIcon::setThemeName(theme);
-    }
-
-    QString get_default_theme_name()
-    {
-        QPalette palette = QGuiApplication::palette();
-        if ( palette.color(QPalette::Button).value() < 100 )
-            return QStringLiteral("breeze-dark");
-        else
-            return QStringLiteral("breeze");
+        KConfigGroup(config, "Icons").writeEntry("Theme", theme);
+        KIconTheme::forceThemeForTests(theme);
+        KIconTheme::reconfigure();
+        KIconLoader::global()->reconfigure({}, {});
     }
 
     QStandardItemModel* get_model()
@@ -48,10 +37,9 @@ public:
             return model.get();
 
         themes = KIconTheme::list();
-        model = std::make_unique<QStandardItemModel>(themes.size() + 2, 6);
+        model = std::make_unique<QStandardItemModel>(themes.size() + 1, 6);
         int i = 0;
         item(i++, i18n("System Default"), QString(), system_theme);
-        item(i++, i18n("Glaxnimate Default"), default_theme_name, get_default_theme_name());
         for ( const auto& theme : themes )
             item(i++, theme, theme, theme);
 
@@ -94,9 +82,9 @@ public:
     }
 
     std::unique_ptr<QStandardItemModel> model;
-    QString default_theme_name = QStringLiteral("Glaxnimate");
     QString system_theme;
     QStringList themes;
+    QExplicitlySharedDataPointer<KSharedConfig> config;
 };
 
 glaxnimate::gui::settings::IconSettings & glaxnimate::gui::settings::IconSettings::instance()
@@ -107,10 +95,12 @@ glaxnimate::gui::settings::IconSettings & glaxnimate::gui::settings::IconSetting
 
 glaxnimate::gui::settings::IconSettings::IconSettings() : d(std::make_unique<Private>())
 {
+    d->config = KSharedConfig::openConfig();
 }
 
 void glaxnimate::gui::settings::IconSettings::initialize()
 {
+
 #if defined(Q_OS_ANDROID) || defined(Q_OS_WIN) || defined(Q_OS_DARWIN)
     d->system_theme = d->default_theme_name;
 #else
@@ -139,8 +129,6 @@ QString glaxnimate::gui::settings::IconSettings::icon_theme() const
 
 void glaxnimate::gui::settings::IconSettings::palette_change() const
 {
-    if ( GlaxnimateSettings::icon_theme() == d->default_theme_name )
-        d->set_theme(d->get_default_theme_name());
 }
 
 QModelIndex glaxnimate::gui::settings::IconSettings::current_item_index() const
@@ -150,22 +138,18 @@ QModelIndex glaxnimate::gui::settings::IconSettings::current_item_index() const
     QString theme = icon_theme();
     if ( theme.isEmpty() )
         row = 0;
-    else if ( theme == d->default_theme_name )
-        row = 1;
     else
-        row = d->themes.indexOf(theme) + 2;
+        row = d->themes.indexOf(theme) + 1;
     return model->index(row, 0);
 }
 
 void glaxnimate::gui::settings::IconSettings::set_current_item_index(const QModelIndex& index)
 {
     int row = index.row();
-    if ( row < 0 || row >= d->themes.size() + 2 )
+    if ( row < 0 || row >= d->themes.size() + 1 )
         return;
     if ( row == 0 )
         set_icon_theme({});
-    else if ( row == 1 )
-        set_icon_theme(d->default_theme_name);
     else
-        set_icon_theme(d->themes[row - 2]);
+        set_icon_theme(d->themes[row - 1]);
 }
