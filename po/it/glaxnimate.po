@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-15 01:50+0000\n"
-"PO-Revision-Date: 2024-08-11 20:19+0200\n"
+"PO-Revision-Date: 2024-08-17 21:34+0200\n"
 "Last-Translator: Valter Mura <valtermura@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -119,7 +119,7 @@ msgstr "multipla"
 #. i18n: Property name
 #, kde-format
 msgid "path"
-msgstr "percorso"
+msgstr "tracciato"
 
 #. i18n: file: src/core/model/shapes/fill.hpp
 #. i18n: Property name
@@ -945,7 +945,7 @@ msgstr "(c) 2019-2023"
 #: src/core/app_info.cpp:66
 #, kde-format
 msgid "Mattia \"Glax\" Basaglia"
-msgstr ""
+msgstr "Mattia \"Glax\" Basaglia"
 
 #: src/core/app_info.cpp:66
 #, kde-format
@@ -1554,7 +1554,7 @@ msgstr "Inflate/Deflate non è supportato"
 #: src/core/io/lottie/tgs_format.cpp:73
 #, kde-format
 msgid "Offset Path is not supported"
-msgstr "Offset Path non è supportato"
+msgstr "Scostamento tracciato non è supportato"
 
 #: src/core/io/lottie/tgs_format.cpp:77
 #, kde-format
@@ -2220,7 +2220,7 @@ msgstr "Livello"
 #: src/core/model/shapes/offset_path.cpp:342
 #, kde-format
 msgid "Offset Path"
-msgstr "Compensa percorso"
+msgstr "Scostamento tracciato"
 
 #. i18n: ectx: Menu (path)
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -2288,7 +2288,7 @@ msgstr "Testo"
 #: src/core/model/shapes/trim.cpp:24
 #, kde-format
 msgid "Trim Path"
-msgstr "Percorso di ritaglio"
+msgstr "Ritaglia tracciato"
 
 #: src/core/model/shapes/zig_zag.cpp:139
 #, kde-format
@@ -2769,7 +2769,7 @@ msgstr "Rimuovi tangenti nodo"
 #: src/gui/graphics/bezier_item.cpp:351
 #, kde-format
 msgid "Update path"
-msgstr "Aggiorna il percorso"
+msgstr "Aggiorna tracciato"
 
 #: src/gui/graphics/bezier_item.cpp:368
 #, kde-format
@@ -2973,7 +2973,7 @@ msgstr "Selettore di colore"
 #: src/gui/tools/draw_tool.cpp:183
 #, kde-format
 msgid "Extend Path"
-msgstr "Estendi percorso"
+msgstr "Estendi tracciato"
 
 #: src/gui/tools/draw_tool.cpp:206
 #, kde-format
@@ -3221,7 +3221,7 @@ msgstr "Cartella dei dati:"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:164
 #, kde-format
 msgid "Icon Theme Paths:"
-msgstr "Percorsi dei temi di icone:"
+msgstr "Percorsi dei temi delle icone:"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_4)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:189
@@ -3975,12 +3975,12 @@ msgstr "Rimosse %1 risorse"
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:308
 #, kde-format
 msgid "Convert to path"
-msgstr "Converti in percorso"
+msgstr "Converti in tracciato"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:310
 #, kde-format
 msgid "Convert %1 to path"
-msgstr "Converti %1 in percorso"
+msgstr "Converti %1 in tracciato"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:492
 #, kde-format
@@ -4000,23 +4000,23 @@ msgstr "Rilascia"
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:818
 #, kde-format
 msgid "Put text on path"
-msgstr "Inserisci testo su percorso"
+msgstr "Inserisci testo su tracciato"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:840
 #, kde-format
 msgid "Remove text from path"
-msgstr "Rimuovi testo da percorso"
+msgstr "Rimuovi testo da tracciato"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:122
 #, kde-format
 msgid "Put on Path"
-msgstr "Inserisci su percorso"
+msgstr "Inserisci su tracciato"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:125
 #: src/gui/widgets/menus/node_menu.cpp:396
 #, kde-format
 msgid "Remove from Path"
-msgstr "Rimuovi da percorso"
+msgstr "Rimuovi da tracciato"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:139
 #, kde-format
@@ -4337,7 +4337,7 @@ msgstr "Fuori in fondo"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:678
 #, kde-format
 msgid "Object to Path"
-msgstr "Converti oggetto in percorso"
+msgstr "Converti oggetto in tracciato"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:681
 #, kde-format
@@ -5542,7 +5542,7 @@ msgstr "Converti in livello"
 #: src/gui/widgets/menus/node_menu.cpp:309
 #, kde-format
 msgid "Convert to Path"
-msgstr "Converti in percorso"
+msgstr "Converti in tracciato"
 
 #: src/gui/widgets/menus/node_menu.cpp:314
 #, kde-format
@@ -5632,7 +5632,7 @@ msgstr "Sposta in..."
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Convert to Path"
-msgstr "Converti in percorso"
+msgstr "Converti in tracciato"
 
 #: src/gui/widgets/menus/node_menu.cpp:496
 #, kde-format
@@ -5722,9 +5722,6 @@ msgid "Services"
 msgstr "Servizi"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:199
-#, fuzzy
-#| msgctxt "@title settings group"
-#| msgid "User Interface"
 msgctxt "Settings"
 msgid "User Interface"
 msgstr "Interfaccia utente"
@@ -5734,18 +5731,10 @@ msgid "Show startup dialog"
 msgstr "Mostra dialogo di avvio"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:203
-#, fuzzy
-#| msgctxt "@option:check"
-#| msgid "Horizontal Timeline Scroll"
 msgid "Horizontal Timeline Scroll"
 msgstr "Scorrimento orizzontale della linea temporale"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:204
-#, fuzzy
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "If enabled, the timeline will scroll horizontally by default and "
-#| "vertically with Shift or Alt"
 msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
@@ -5757,75 +5746,50 @@ msgstr ""
 #, kde-format
 msgctxt "Seconds suffix"
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:212
-#, fuzzy
-#| msgctxt "@title settings group"
-#| msgid "New Animation Defaults"
 msgctxt "Settings"
 msgid "New Animation Defaults"
 msgstr "Impostazioni predefinite per una nuova animazione"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:213
-#, fuzzy
-#| msgid "Canvas"
 msgid "Canvas Width"
-msgstr "Tela"
+msgstr "Larghezza tela"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:214
-#, fuzzy
-#| msgid "Frame Height"
 msgid "Canvas Height"
-msgstr "Altezza"
+msgstr "Altezza tela"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:215
-#, fuzzy
-#| msgctxt "@info:tooltip"
-#| msgid "Frames per second"
 msgid "Frames per seconds"
 msgstr "Fotogrammi al secondo"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:216
-#, fuzzy
-#| msgctxt "@info:tooltip"
-#| msgid "Duration in seconds"
 msgid "Duration in seconds"
 msgstr "Durata in secondi"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:220
-#, fuzzy
-#| msgctxt "@title settings group"
-#| msgid "Open / Save"
 msgctxt "Settings"
 msgid "Open / Save"
 msgstr "Apri / Salva"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:221
-#, fuzzy
-#| msgctxt "@label:spinbox"
-#| msgid "Max Recent Files"
 msgid "Max Recent Files"
-msgstr "Massimo numero di file recenti"
+msgstr "Numero massimo di file recenti"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:221
 #: src/gui/widgets/settings/settings_dialog.cpp:222
 msgid "Number of items to show in the recent files menu"
-msgstr ""
+msgstr "Numero di elementi da mostrare nel menu dei file recenti"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:222
-#, fuzzy
-#| msgctxt "@label:spinbox"
-#| msgid "Backup Frequency"
 msgid "Backup Frequency"
-msgstr "Frequenza del backup"
+msgstr "Frequenza della copia di sicurezza"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:223
-#, fuzzy
-#| msgctxt "@option:check"
-#| msgid "Use system file dialog"
 msgid "Use system file dialog"
-msgstr "Usa finestre di dialogo file di sistema"
+msgstr "Usa finestra di dialogo del sistema per i file"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:30
@@ -6135,10 +6099,9 @@ msgid "Unlink fill"
 msgstr "Scollega riempimento"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:433
-#, fuzzy, kde-format
-#| msgid "Unlink stroke"
+#, kde-format
 msgid "Unlink stroke"
-msgstr "Scollega bordo"
+msgstr "Scollega tratto"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:447
 #, kde-format
@@ -6161,10 +6124,9 @@ msgid "Set as fill"
 msgstr "Imposta come riempimento"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:511
-#, fuzzy, kde-format
-#| msgid "Set as stroke"
+#, kde-format
 msgid "Set as stroke"
-msgstr "Imposta come bordo"
+msgstr "Imposta come tratto"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:72
@@ -6236,10 +6198,9 @@ msgid "Preset"
 msgstr "Preimpostazione"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:139
-#, fuzzy, kde-format
-#| msgid "Update Stroke Color"
+#, kde-format
 msgid "Update Stroke Color"
-msgstr "Aggiorna colore bordo"
+msgstr "Aggiorna colore tratto"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:225
 #, kde-format
@@ -6275,10 +6236,9 @@ msgstr "Stile"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_stroke_width)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:59
-#, fuzzy, kde-format
-#| msgid "Stroke Width"
+#, kde-format
 msgid "Stroke Width"
-msgstr "Spessore bordo"
+msgstr "Spessore tratto"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:69
@@ -6366,7 +6326,7 @@ msgstr " f"
 #: src/gui/widgets/timeline/frame_controls_widget.ui:60
 #, kde-format
 msgid "Loop animation"
-msgstr "Cicla animazione"
+msgstr "Animazione ciclica"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_first)
 #. i18n: ectx: property (text), widget (QToolButton, button_first)
@@ -6485,10 +6445,9 @@ msgstr "Trascina fotogrammi chiave"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_both)
 #: src/gui/widgets/tools/fill_tool_widget.ui:49
-#, fuzzy, kde-format
-#| msgid "Fill and Stroke"
+#, kde-format
 msgid "Fill and Stroke"
-msgstr "Bordo e riempimento"
+msgstr "Tratto e riempimento"
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_box)
 #: src/gui/widgets/tools/shape_tool_widget.ui:24
