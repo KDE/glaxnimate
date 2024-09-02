@@ -1,18 +1,19 @@
-# SPDX-FileCopyrightText: 2024 Eloy Cuadra <ecuadra@eloihr.net>
-# Víctor Rodrigo Córdoba <vrcordoba@gmail.com>, 2024, %Y.
+# Translation of glaxnimate to Spanish
+#
+# SPDX-FileCopyrightText: 2024 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-15 01:50+0000\n"
-"PO-Revision-Date: 2024-08-13 12:16+0100\n"
+"POT-Creation-Date: 2024-09-02 01:45+0000\n"
+"PO-Revision-Date: 2024-08-31 17:24+0200\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -2935,6 +2936,12 @@ msgstr "Plantilla"
 msgid "%1 %2"
 msgstr "%1 %2"
 
+#: src/gui/settings/icon_settings.cpp:42
+#, fuzzy, kde-format
+#| msgid "System"
+msgid "System Default"
+msgstr "Sistema"
+
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_preview_zoom)
@@ -3650,7 +3657,7 @@ msgstr "Seguir ruta"
 #: src/gui/widgets/dialogs/startup_dialog.ui:68
 #: src/gui/widgets/dialogs/startup_dialog.ui:82
 #: src/gui/widgets/dialogs/timing_dialog.ui:52
-#: src/gui/widgets/settings/settings_dialog.cpp:216
+#: src/gui/widgets/settings/settings_dialog.cpp:249
 #, kde-format
 msgid "Duration"
 msgstr "Duración"
@@ -4642,7 +4649,7 @@ msgstr "Cambiar Propiedades de Animación"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
-#: src/gui/widgets/settings/settings_dialog.cpp:215
+#: src/gui/widgets/settings/settings_dialog.cpp:248
 #, kde-format
 msgid "FPS"
 msgstr "FPS"
@@ -5711,30 +5718,20 @@ msgstr "Versión"
 msgid "Services"
 msgstr "Servicios"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:199
+#: src/gui/widgets/settings/settings_dialog.cpp:229
 msgctxt "Settings"
 msgid "User Interface"
 msgstr "Interfaz de usuario"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:200
-#, fuzzy
-#| msgid "Show at startup"
+#: src/gui/widgets/settings/settings_dialog.cpp:230
 msgid "Show startup dialog"
-msgstr "Mostrar al inicio"
+msgstr "Mostrar diálogo de inicio"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:203
-#, fuzzy
-#| msgctxt "@option:check"
-#| msgid "Horizontal Timeline Scroll"
+#: src/gui/widgets/settings/settings_dialog.cpp:233
 msgid "Horizontal Timeline Scroll"
 msgstr "Desplazamiento de la línea del tiempo horizontal"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:204
-#, fuzzy
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "If enabled, the timeline will scroll horizontally by default and "
-#| "vertically with Shift or Alt"
+#: src/gui/widgets/settings/settings_dialog.cpp:234
 msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
@@ -5742,68 +5739,64 @@ msgstr ""
 "Si está activa, la línea del tiempo se desplazará horizontalmente por "
 "omisión y verticalmente con Mayús o Alt"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:210
+#: src/gui/widgets/settings/settings_dialog.cpp:237
+#, fuzzy
+#| msgid "Icon Theme Paths:"
+msgid "Icon Theme"
+msgstr "Rutas de Temas de Íconos:"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:237
+#, fuzzy
+#| msgid "Open with External Application"
+msgid "Icon theme for the application"
+msgstr "Abrir con Aplicación Externa"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:243
 #, kde-format
 msgctxt "Seconds suffix"
 msgid "s"
-msgstr ""
+msgstr "s"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:212
-#, fuzzy
-#| msgctxt "@title settings group"
-#| msgid "New Animation Defaults"
+#: src/gui/widgets/settings/settings_dialog.cpp:245
 msgctxt "Settings"
 msgid "New Animation Defaults"
 msgstr "Nuevos predeterminados de animación"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:213
-#, fuzzy
-#| msgid "Canvas"
+#: src/gui/widgets/settings/settings_dialog.cpp:246
 msgid "Canvas Width"
-msgstr "Lienzo"
+msgstr "Anchura del lienzo"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:214
-#, fuzzy
-#| msgid "Frame Height"
+#: src/gui/widgets/settings/settings_dialog.cpp:247
 msgid "Canvas Height"
-msgstr "Altura del fotograma"
+msgstr "Altura del lienzo"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:215
+#: src/gui/widgets/settings/settings_dialog.cpp:248
 msgid "Frames per seconds"
 msgstr "Fotogramas por segundo"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:216
+#: src/gui/widgets/settings/settings_dialog.cpp:249
 msgid "Duration in seconds"
 msgstr "Duración en segundos"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:220
-#, fuzzy
-#| msgctxt "@title settings group"
-#| msgid "Open / Save"
+#: src/gui/widgets/settings/settings_dialog.cpp:253
 msgctxt "Settings"
 msgid "Open / Save"
 msgstr "Abrir / Guardar"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:221
-#, fuzzy
-#| msgctxt "@label:spinbox"
-#| msgid "Max Recent Files"
+#: src/gui/widgets/settings/settings_dialog.cpp:254
 msgid "Max Recent Files"
 msgstr "Archivos recientes máximos"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:221
-#: src/gui/widgets/settings/settings_dialog.cpp:222
+#: src/gui/widgets/settings/settings_dialog.cpp:254
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Number of items to show in the recent files menu"
-msgstr ""
+msgstr "Número de elementos para mostrar en el menú de archivos recientes"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:222
-#, fuzzy
-#| msgctxt "@label:spinbox"
-#| msgid "Backup Frequency"
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Backup Frequency"
 msgstr "Frecuencia de respaldos"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:223
+#: src/gui/widgets/settings/settings_dialog.cpp:256
 msgid "Use system file dialog"
 msgstr "Usar el diálogo de archivos del sistema"
 
@@ -6520,31 +6513,3 @@ msgstr "Ángulo"
 #, kde-format
 msgid "°"
 msgstr "°"
-
-#~ msgctxt "@label:spinbox"
-#~ msgid "Width"
-#~ msgstr "Anchura"
-
-#~ msgctxt "@label:spinbox"
-#~ msgid "Height"
-#~ msgstr "Altura"
-
-#~ msgctxt "@label:spinbox"
-#~ msgid "FPS"
-#~ msgstr "FPS"
-
-#~ msgctxt "@label:spinbox"
-#~ msgid "Duration"
-#~ msgstr "Duración"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "How often to save a backup copy (in minutes)"
-#~ msgstr "Cada cuanto guardar copia de respaldo (en minutos)"
-
-#~ msgctxt "@title settings group"
-#~ msgid "Scripting"
-#~ msgstr "Guión"
-
-#~ msgctxt "@title settings group"
-#~ msgid "Tools"
-#~ msgstr "Herramientas"

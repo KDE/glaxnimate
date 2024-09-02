@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-15 01:50+0000\n"
+"POT-Creation-Date: 2024-09-02 01:45+0000\n"
 "PO-Revision-Date: 2024-08-12 09:27+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -2945,6 +2945,12 @@ msgstr "Шаблон"
 msgid "%1 %2"
 msgstr "%1 %2"
 
+#: src/gui/settings/icon_settings.cpp:42
+#, fuzzy, kde-format
+#| msgid "System Qt"
+msgid "System Default"
+msgstr "Системна Qt"
+
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_preview_zoom)
@@ -3659,7 +3665,7 @@ msgstr "Розташувати за контуром"
 #: src/gui/widgets/dialogs/startup_dialog.ui:68
 #: src/gui/widgets/dialogs/startup_dialog.ui:82
 #: src/gui/widgets/dialogs/timing_dialog.ui:52
-#: src/gui/widgets/settings/settings_dialog.cpp:216
+#: src/gui/widgets/settings/settings_dialog.cpp:249
 #, kde-format
 msgid "Duration"
 msgstr "Тривалість"
@@ -4655,7 +4661,7 @@ msgstr "Зміна властивостей анімації"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
-#: src/gui/widgets/settings/settings_dialog.cpp:215
+#: src/gui/widgets/settings/settings_dialog.cpp:248
 #, kde-format
 msgid "FPS"
 msgstr "Частота кадрів"
@@ -5719,20 +5725,20 @@ msgstr "Версія"
 msgid "Services"
 msgstr "Служби"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:199
+#: src/gui/widgets/settings/settings_dialog.cpp:229
 msgctxt "Settings"
 msgid "User Interface"
 msgstr "Інтерфейс користувача"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:200
+#: src/gui/widgets/settings/settings_dialog.cpp:230
 msgid "Show startup dialog"
 msgstr "Показувати вікно запуску"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:203
+#: src/gui/widgets/settings/settings_dialog.cpp:233
 msgid "Horizontal Timeline Scroll"
 msgstr "Горизонтальне гортання монтажного столу"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:204
+#: src/gui/widgets/settings/settings_dialog.cpp:234
 msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
@@ -5740,52 +5746,65 @@ msgstr ""
 "Якщо увімкнено, гортання монтажного столу типово відбуватиметься у "
 "горизонтальному напрямку, а у вертикальному — з Shift або Alt"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:210
+#: src/gui/widgets/settings/settings_dialog.cpp:237
+#, fuzzy
+#| msgctxt "@label:listbox"
+#| msgid "Icon Theme"
+msgid "Icon Theme"
+msgstr "Тема піктограм"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:237
+#, fuzzy
+#| msgid "Open with External Application"
+msgid "Icon theme for the application"
+msgstr "Відкрити за допомогою зовнішньої програми"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:243
 #, kde-format
 msgctxt "Seconds suffix"
 msgid "s"
 msgstr "с"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:212
+#: src/gui/widgets/settings/settings_dialog.cpp:245
 msgctxt "Settings"
 msgid "New Animation Defaults"
 msgstr "Нові типові параметри анімацій"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:213
+#: src/gui/widgets/settings/settings_dialog.cpp:246
 msgid "Canvas Width"
 msgstr "Ширина полотна"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:214
+#: src/gui/widgets/settings/settings_dialog.cpp:247
 msgid "Canvas Height"
 msgstr "Висота полотна"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:215
+#: src/gui/widgets/settings/settings_dialog.cpp:248
 msgid "Frames per seconds"
 msgstr "Кадрів в секунду"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:216
+#: src/gui/widgets/settings/settings_dialog.cpp:249
 msgid "Duration in seconds"
 msgstr "Тривалість (у секундах)"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:220
+#: src/gui/widgets/settings/settings_dialog.cpp:253
 msgctxt "Settings"
 msgid "Open / Save"
 msgstr "Відкриття/Збереження"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:221
+#: src/gui/widgets/settings/settings_dialog.cpp:254
 msgid "Max Recent Files"
 msgstr "Максимальна кількість нещодавніх файлів"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:221
-#: src/gui/widgets/settings/settings_dialog.cpp:222
+#: src/gui/widgets/settings/settings_dialog.cpp:254
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Number of items to show in the recent files menu"
 msgstr "Кількість пунктів, які слід показувати у меню нещодавніх файлів"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:222
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Backup Frequency"
 msgstr "Частота резервного копіювання"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:223
+#: src/gui/widgets/settings/settings_dialog.cpp:256
 msgid "Use system file dialog"
 msgstr "Використовувати вікно роботи з файлами системи"
 
@@ -6542,10 +6561,6 @@ msgstr "°"
 #~ msgid "Interface Language"
 #~ msgstr "Мова інтерфейсу"
 
-#~ msgctxt "@label:listbox"
-#~ msgid "Icon Theme"
-#~ msgstr "Тема піктограм"
-
 #~ msgid "F7"
 #~ msgstr "F7"
 
@@ -6590,9 +6605,6 @@ msgstr "°"
 
 #~ msgid "Application Qt"
 #~ msgstr "Qt програми"
-
-#~ msgid "System Qt"
-#~ msgstr "Системна Qt"
 
 #~ msgid "About Qt"
 #~ msgstr "Про Qt"

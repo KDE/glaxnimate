@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-15 01:50+0000\n"
+"POT-Creation-Date: 2024-09-02 01:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: German <LL@li.org>\n"
@@ -2935,6 +2935,11 @@ msgstr ""
 msgid "%1 %2"
 msgstr ""
 
+#: src/gui/settings/icon_settings.cpp:42
+#, kde-format
+msgid "System Default"
+msgstr ""
+
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_preview_zoom)
@@ -3570,7 +3575,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/startup_dialog.ui:68
 #: src/gui/widgets/dialogs/startup_dialog.ui:82
 #: src/gui/widgets/dialogs/timing_dialog.ui:52
-#: src/gui/widgets/settings/settings_dialog.cpp:216
+#: src/gui/widgets/settings/settings_dialog.cpp:249
 #, fuzzy, kde-format
 msgid "Duration"
 msgstr "Sättigungswert"
@@ -4602,7 +4607,7 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
-#: src/gui/widgets/settings/settings_dialog.cpp:215
+#: src/gui/widgets/settings/settings_dialog.cpp:248
 #, kde-format
 msgid "FPS"
 msgstr ""
@@ -5616,32 +5621,40 @@ msgstr ""
 msgid "Services"
 msgstr ""
 
-#: src/gui/widgets/settings/settings_dialog.cpp:199
+#: src/gui/widgets/settings/settings_dialog.cpp:229
 msgctxt "Settings"
 msgid "User Interface"
 msgstr ""
 
-#: src/gui/widgets/settings/settings_dialog.cpp:200
+#: src/gui/widgets/settings/settings_dialog.cpp:230
 msgid "Show startup dialog"
 msgstr ""
 
-#: src/gui/widgets/settings/settings_dialog.cpp:203
+#: src/gui/widgets/settings/settings_dialog.cpp:233
 msgid "Horizontal Timeline Scroll"
 msgstr ""
 
-#: src/gui/widgets/settings/settings_dialog.cpp:204
+#: src/gui/widgets/settings/settings_dialog.cpp:234
 msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
 msgstr ""
 
-#: src/gui/widgets/settings/settings_dialog.cpp:210
+#: src/gui/widgets/settings/settings_dialog.cpp:237
+msgid "Icon Theme"
+msgstr ""
+
+#: src/gui/widgets/settings/settings_dialog.cpp:237
+msgid "Icon theme for the application"
+msgstr ""
+
+#: src/gui/widgets/settings/settings_dialog.cpp:243
 #, kde-format
 msgctxt "Seconds suffix"
 msgid "s"
 msgstr ""
 
-#: src/gui/widgets/settings/settings_dialog.cpp:212
+#: src/gui/widgets/settings/settings_dialog.cpp:245
 #, fuzzy
 #| msgctxt "GlaxnimateWindow#105"
 #| msgid "&Fit Animation"
@@ -5649,42 +5662,42 @@ msgctxt "Settings"
 msgid "New Animation Defaults"
 msgstr "&Animation einpassen"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:213
+#: src/gui/widgets/settings/settings_dialog.cpp:246
 msgid "Canvas Width"
 msgstr ""
 
-#: src/gui/widgets/settings/settings_dialog.cpp:214
+#: src/gui/widgets/settings/settings_dialog.cpp:247
 msgid "Canvas Height"
 msgstr ""
 
-#: src/gui/widgets/settings/settings_dialog.cpp:215
+#: src/gui/widgets/settings/settings_dialog.cpp:248
 msgid "Frames per seconds"
 msgstr ""
 
-#: src/gui/widgets/settings/settings_dialog.cpp:216
+#: src/gui/widgets/settings/settings_dialog.cpp:249
 #, fuzzy
 msgid "Duration in seconds"
 msgstr "Sättigungswert"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:220
+#: src/gui/widgets/settings/settings_dialog.cpp:253
 msgctxt "Settings"
 msgid "Open / Save"
 msgstr ""
 
-#: src/gui/widgets/settings/settings_dialog.cpp:221
+#: src/gui/widgets/settings/settings_dialog.cpp:254
 msgid "Max Recent Files"
 msgstr ""
 
-#: src/gui/widgets/settings/settings_dialog.cpp:221
-#: src/gui/widgets/settings/settings_dialog.cpp:222
+#: src/gui/widgets/settings/settings_dialog.cpp:254
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Number of items to show in the recent files menu"
 msgstr ""
 
-#: src/gui/widgets/settings/settings_dialog.cpp:222
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Backup Frequency"
 msgstr ""
 
-#: src/gui/widgets/settings/settings_dialog.cpp:223
+#: src/gui/widgets/settings/settings_dialog.cpp:256
 msgid "Use system file dialog"
 msgstr ""
 

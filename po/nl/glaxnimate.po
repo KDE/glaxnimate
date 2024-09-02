@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-15 01:50+0000\n"
+"POT-Creation-Date: 2024-09-02 01:45+0000\n"
 "PO-Revision-Date: 2024-08-13 14:35+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -2937,6 +2937,12 @@ msgstr "Sjabloon"
 msgid "%1 %2"
 msgstr "%1 %2"
 
+#: src/gui/settings/icon_settings.cpp:42
+#, fuzzy, kde-format
+#| msgid "System Qt"
+msgid "System Default"
+msgstr "Systeem-Qt"
+
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_preview_zoom)
@@ -3650,7 +3656,7 @@ msgstr "Volg pad"
 #: src/gui/widgets/dialogs/startup_dialog.ui:68
 #: src/gui/widgets/dialogs/startup_dialog.ui:82
 #: src/gui/widgets/dialogs/timing_dialog.ui:52
-#: src/gui/widgets/settings/settings_dialog.cpp:216
+#: src/gui/widgets/settings/settings_dialog.cpp:249
 #, kde-format
 msgid "Duration"
 msgstr "Tijdsduur"
@@ -4642,7 +4648,7 @@ msgstr "Animatie-eigenschappen wijzigen"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
-#: src/gui/widgets/settings/settings_dialog.cpp:215
+#: src/gui/widgets/settings/settings_dialog.cpp:248
 #, kde-format
 msgid "FPS"
 msgstr "FPS"
@@ -5708,20 +5714,20 @@ msgstr "Versie"
 msgid "Services"
 msgstr "Services"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:199
+#: src/gui/widgets/settings/settings_dialog.cpp:229
 msgctxt "Settings"
 msgid "User Interface"
 msgstr "Gebruikersinterface"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:200
+#: src/gui/widgets/settings/settings_dialog.cpp:230
 msgid "Show startup dialog"
 msgstr "Opstartdialoog tonen"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:203
+#: src/gui/widgets/settings/settings_dialog.cpp:233
 msgid "Horizontal Timeline Scroll"
 msgstr "Horizontaal tijdlijn verschuiven"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:204
+#: src/gui/widgets/settings/settings_dialog.cpp:234
 msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
@@ -5729,52 +5735,65 @@ msgstr ""
 "Indien geactiveerd zal de tijdlijn standaard horizontaal verschuiven en "
 "verticaal met Shift of Alt"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:210
+#: src/gui/widgets/settings/settings_dialog.cpp:237
+#, fuzzy
+#| msgctxt "@label:listbox"
+#| msgid "Icon Theme"
+msgid "Icon Theme"
+msgstr "Pictogramthema"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:237
+#, fuzzy
+#| msgid "Open with External Application"
+msgid "Icon theme for the application"
+msgstr "Met externe applicatie openen"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:243
 #, kde-format
 msgctxt "Seconds suffix"
 msgid "s"
 msgstr "s"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:212
+#: src/gui/widgets/settings/settings_dialog.cpp:245
 msgctxt "Settings"
 msgid "New Animation Defaults"
 msgstr "Nieuwe animatie standaarden"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:213
+#: src/gui/widgets/settings/settings_dialog.cpp:246
 msgid "Canvas Width"
 msgstr "Breedte van werkveld"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:214
+#: src/gui/widgets/settings/settings_dialog.cpp:247
 msgid "Canvas Height"
 msgstr "Hoogte van werkveld"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:215
+#: src/gui/widgets/settings/settings_dialog.cpp:248
 msgid "Frames per seconds"
 msgstr "Frames per seconde"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:216
+#: src/gui/widgets/settings/settings_dialog.cpp:249
 msgid "Duration in seconds"
 msgstr "Tijdsduur in seconden"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:220
+#: src/gui/widgets/settings/settings_dialog.cpp:253
 msgctxt "Settings"
 msgid "Open / Save"
 msgstr "Openen / opslaan"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:221
+#: src/gui/widgets/settings/settings_dialog.cpp:254
 msgid "Max Recent Files"
 msgstr "Maximum recente bestanden"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:221
-#: src/gui/widgets/settings/settings_dialog.cpp:222
+#: src/gui/widgets/settings/settings_dialog.cpp:254
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Number of items to show in the recent files menu"
 msgstr "Aantal te tonen items in het menu recente bestanden "
 
-#: src/gui/widgets/settings/settings_dialog.cpp:222
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Backup Frequency"
 msgstr "Frequentie van reservekopie maken"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:223
+#: src/gui/widgets/settings/settings_dialog.cpp:256
 msgid "Use system file dialog"
 msgstr "Systeembestandsdialoog gebruiken"
 
@@ -6531,10 +6550,6 @@ msgstr "°"
 #~ msgid "Interface Language"
 #~ msgstr "Taal van interface"
 
-#~ msgctxt "@label:listbox"
-#~ msgid "Icon Theme"
-#~ msgstr "Pictogramthema"
-
 #~ msgid "F7"
 #~ msgstr "F7"
 
@@ -6579,9 +6594,6 @@ msgstr "°"
 
 #~ msgid "Application Qt"
 #~ msgstr "Toepassing Qt"
-
-#~ msgid "System Qt"
-#~ msgstr "Systeem-Qt"
 
 #~ msgid "About Qt"
 #~ msgstr "Info over Qt"

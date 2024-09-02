@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-15 01:50+0000\n"
+"POT-Creation-Date: 2024-09-02 01:45+0000\n"
 "PO-Revision-Date: 2024-08-13 13:47+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -2921,6 +2921,12 @@ msgstr "Şablon"
 msgid "%1 %2"
 msgstr "%1 %2"
 
+#: src/gui/settings/icon_settings.cpp:42
+#, fuzzy, kde-format
+#| msgid "System Qt"
+msgid "System Default"
+msgstr "Sistem Qt’si"
+
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_preview_zoom)
@@ -3632,7 +3638,7 @@ msgstr "Yolu İzle"
 #: src/gui/widgets/dialogs/startup_dialog.ui:68
 #: src/gui/widgets/dialogs/startup_dialog.ui:82
 #: src/gui/widgets/dialogs/timing_dialog.ui:52
-#: src/gui/widgets/settings/settings_dialog.cpp:216
+#: src/gui/widgets/settings/settings_dialog.cpp:249
 #, kde-format
 msgid "Duration"
 msgstr "Süre"
@@ -4624,7 +4630,7 @@ msgstr "Canlandırma Özelliklerini Değiştir"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
-#: src/gui/widgets/settings/settings_dialog.cpp:215
+#: src/gui/widgets/settings/settings_dialog.cpp:248
 #, kde-format
 msgid "FPS"
 msgstr "FPS"
@@ -5686,20 +5692,20 @@ msgstr "Sürüm"
 msgid "Services"
 msgstr "Hizmetler"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:199
+#: src/gui/widgets/settings/settings_dialog.cpp:229
 msgctxt "Settings"
 msgid "User Interface"
 msgstr "Kullanıcı Arayüzü"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:200
+#: src/gui/widgets/settings/settings_dialog.cpp:230
 msgid "Show startup dialog"
 msgstr "Başlangıç iletişim kutusunu göster"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:203
+#: src/gui/widgets/settings/settings_dialog.cpp:233
 msgid "Horizontal Timeline Scroll"
 msgstr "Yatay Zaman Akışı Sarımı"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:204
+#: src/gui/widgets/settings/settings_dialog.cpp:234
 msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
@@ -5707,52 +5713,65 @@ msgstr ""
 "Etkinleştirilirse zaman akışı öntanımlı olarak yatay olarak sarılır ve Üst "
 "Karakter veya Seçenek ile dikeye geçiş yapılabilir"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:210
+#: src/gui/widgets/settings/settings_dialog.cpp:237
+#, fuzzy
+#| msgctxt "@label:listbox"
+#| msgid "Icon Theme"
+msgid "Icon Theme"
+msgstr "Simge teması"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:237
+#, fuzzy
+#| msgid "Open with External Application"
+msgid "Icon theme for the application"
+msgstr "Dış Uygulamayla Aç"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:243
 #, kde-format
 msgctxt "Seconds suffix"
 msgid "s"
 msgstr "sn"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:212
+#: src/gui/widgets/settings/settings_dialog.cpp:245
 msgctxt "Settings"
 msgid "New Animation Defaults"
 msgstr "Yeni Canlandırma Öntanımlıları"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:213
+#: src/gui/widgets/settings/settings_dialog.cpp:246
 msgid "Canvas Width"
 msgstr "Tuval Genişliği"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:214
+#: src/gui/widgets/settings/settings_dialog.cpp:247
 msgid "Canvas Height"
 msgstr "Tuval Yüksekliği"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:215
+#: src/gui/widgets/settings/settings_dialog.cpp:248
 msgid "Frames per seconds"
 msgstr "Saniye başına kare sayısı"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:216
+#: src/gui/widgets/settings/settings_dialog.cpp:249
 msgid "Duration in seconds"
 msgstr "Saniye olarak süre"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:220
+#: src/gui/widgets/settings/settings_dialog.cpp:253
 msgctxt "Settings"
 msgid "Open / Save"
 msgstr "Aç/Kaydet"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:221
+#: src/gui/widgets/settings/settings_dialog.cpp:254
 msgid "Max Recent Files"
 msgstr "En Çok Son Kullanılan Dosya Sayısı"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:221
-#: src/gui/widgets/settings/settings_dialog.cpp:222
+#: src/gui/widgets/settings/settings_dialog.cpp:254
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Number of items to show in the recent files menu"
 msgstr "Son kullanılan dosyalar menüsünde gösterilecek ögelerin sayısı"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:222
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Backup Frequency"
 msgstr "Yedek Sıklığı"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:223
+#: src/gui/widgets/settings/settings_dialog.cpp:256
 msgid "Use system file dialog"
 msgstr "Sistem dosya iletişim kutularını kullan"
 
@@ -6509,10 +6528,6 @@ msgstr "°"
 #~ msgid "Interface Language"
 #~ msgstr "Arayüz Dili"
 
-#~ msgctxt "@label:listbox"
-#~ msgid "Icon Theme"
-#~ msgstr "Simge teması"
-
 #~ msgid "F7"
 #~ msgstr "F7"
 
@@ -6557,9 +6572,6 @@ msgstr "°"
 
 #~ msgid "Application Qt"
 #~ msgstr "Uygulama Qt’si"
-
-#~ msgid "System Qt"
-#~ msgstr "Sistem Qt’si"
 
 #~ msgid "About Qt"
 #~ msgstr "Qt Hakkında"

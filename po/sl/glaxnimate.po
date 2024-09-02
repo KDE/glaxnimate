@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-15 01:50+0000\n"
+"POT-Creation-Date: 2024-09-02 01:45+0000\n"
 "PO-Revision-Date: 2024-08-13 06:22+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -2928,6 +2928,12 @@ msgstr "Predloga"
 msgid "%1 %2"
 msgstr "%1 %2"
 
+#: src/gui/settings/icon_settings.cpp:42
+#, fuzzy, kde-format
+#| msgid "System Qt"
+msgid "System Default"
+msgstr "Sistemski Qt"
+
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_preview_zoom)
@@ -3637,7 +3643,7 @@ msgstr "Sledi poti"
 #: src/gui/widgets/dialogs/startup_dialog.ui:68
 #: src/gui/widgets/dialogs/startup_dialog.ui:82
 #: src/gui/widgets/dialogs/timing_dialog.ui:52
-#: src/gui/widgets/settings/settings_dialog.cpp:216
+#: src/gui/widgets/settings/settings_dialog.cpp:249
 #, kde-format
 msgid "Duration"
 msgstr "Trajanje"
@@ -4630,7 +4636,7 @@ msgstr "Spremeni lastnosti animacije"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
-#: src/gui/widgets/settings/settings_dialog.cpp:215
+#: src/gui/widgets/settings/settings_dialog.cpp:248
 #, kde-format
 msgid "FPS"
 msgstr "sl/s"
@@ -5694,20 +5700,20 @@ msgstr "Različica"
 msgid "Services"
 msgstr "Storitve"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:199
+#: src/gui/widgets/settings/settings_dialog.cpp:229
 msgctxt "Settings"
 msgid "User Interface"
 msgstr "Uporabniški vmesnik"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:200
+#: src/gui/widgets/settings/settings_dialog.cpp:230
 msgid "Show startup dialog"
 msgstr "Prikaži zagonsko pogovorno okno"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:203
+#: src/gui/widgets/settings/settings_dialog.cpp:233
 msgid "Horizontal Timeline Scroll"
 msgstr "Vodoravno drsenje časovnice"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:204
+#: src/gui/widgets/settings/settings_dialog.cpp:234
 msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
@@ -5715,52 +5721,65 @@ msgstr ""
 "Če je omogočeno, bo časovnica privzeto drsela vodoravno in navpično z "
 "dvigalko ali izmenjalko"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:210
+#: src/gui/widgets/settings/settings_dialog.cpp:237
+#, fuzzy
+#| msgctxt "@label:listbox"
+#| msgid "Icon Theme"
+msgid "Icon Theme"
+msgstr "Tema ikon"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:237
+#, fuzzy
+#| msgid "Open with External Application"
+msgid "Icon theme for the application"
+msgstr "Odpri zunanjim programom"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:243
 #, kde-format
 msgctxt "Seconds suffix"
 msgid "s"
 msgstr "s"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:212
+#: src/gui/widgets/settings/settings_dialog.cpp:245
 msgctxt "Settings"
 msgid "New Animation Defaults"
 msgstr "Nove privzete vrednosti za animacijo"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:213
+#: src/gui/widgets/settings/settings_dialog.cpp:246
 msgid "Canvas Width"
 msgstr "Širina platna"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:214
+#: src/gui/widgets/settings/settings_dialog.cpp:247
 msgid "Canvas Height"
 msgstr "Višina platna"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:215
+#: src/gui/widgets/settings/settings_dialog.cpp:248
 msgid "Frames per seconds"
 msgstr "Sličic na sekundo"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:216
+#: src/gui/widgets/settings/settings_dialog.cpp:249
 msgid "Duration in seconds"
 msgstr "Trajanje v sekundah"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:220
+#: src/gui/widgets/settings/settings_dialog.cpp:253
 msgctxt "Settings"
 msgid "Open / Save"
 msgstr "Odpri / shrani"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:221
+#: src/gui/widgets/settings/settings_dialog.cpp:254
 msgid "Max Recent Files"
 msgstr "Največ nedavnih datotek"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:221
-#: src/gui/widgets/settings/settings_dialog.cpp:222
+#: src/gui/widgets/settings/settings_dialog.cpp:254
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Number of items to show in the recent files menu"
 msgstr "Število elementov za prikaz v meniju nedavnih datotek"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:222
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Backup Frequency"
 msgstr "Frekvenca varnostnega kopiranja"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:223
+#: src/gui/widgets/settings/settings_dialog.cpp:256
 msgid "Use system file dialog"
 msgstr "Uporabi pogovorno okno sistemske datoteke"
 
@@ -6517,10 +6536,6 @@ msgstr "°"
 #~ msgid "Interface Language"
 #~ msgstr "Jezik uporabniškega vmesnika"
 
-#~ msgctxt "@label:listbox"
-#~ msgid "Icon Theme"
-#~ msgstr "Tema ikon"
-
 #~ msgid "F7"
 #~ msgstr "F7"
 
@@ -6565,9 +6580,6 @@ msgstr "°"
 
 #~ msgid "Application Qt"
 #~ msgstr "Qt programa"
-
-#~ msgid "System Qt"
-#~ msgstr "Sistemski Qt"
 
 #~ msgid "About Qt"
 #~ msgstr "O Qt"

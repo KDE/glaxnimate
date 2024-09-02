@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-15 01:50+0000\n"
+"POT-Creation-Date: 2024-09-02 01:45+0000\n"
 "PO-Revision-Date: 2024-05-08 04:42+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -2889,6 +2889,12 @@ msgstr "樣本"
 msgid "%1 %2"
 msgstr "%1 %2"
 
+#: src/gui/settings/icon_settings.cpp:42
+#, fuzzy, kde-format
+#| msgid "System Qt"
+msgid "System Default"
+msgstr "系統 Qt"
+
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_preview_zoom)
@@ -3517,7 +3523,7 @@ msgstr "跟隨路徑"
 #: src/gui/widgets/dialogs/startup_dialog.ui:68
 #: src/gui/widgets/dialogs/startup_dialog.ui:82
 #: src/gui/widgets/dialogs/timing_dialog.ui:52
-#: src/gui/widgets/settings/settings_dialog.cpp:216
+#: src/gui/widgets/settings/settings_dialog.cpp:249
 #, kde-format
 msgid "Duration"
 msgstr "時長"
@@ -4545,7 +4551,7 @@ msgstr "變更動畫屬性"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
-#: src/gui/widgets/settings/settings_dialog.cpp:215
+#: src/gui/widgets/settings/settings_dialog.cpp:248
 #, kde-format
 msgid "FPS"
 msgstr "FPS"
@@ -5569,7 +5575,7 @@ msgstr "版本"
 msgid "Services"
 msgstr "服務"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:199
+#: src/gui/widgets/settings/settings_dialog.cpp:229
 #, fuzzy
 #| msgctxt "@title settings group"
 #| msgid "User Interface"
@@ -5577,20 +5583,20 @@ msgctxt "Settings"
 msgid "User Interface"
 msgstr "使用者介面"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:200
+#: src/gui/widgets/settings/settings_dialog.cpp:230
 #, fuzzy
 #| msgid "Show at startup"
 msgid "Show startup dialog"
 msgstr "啟動時顯示"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:203
+#: src/gui/widgets/settings/settings_dialog.cpp:233
 #, fuzzy
 #| msgctxt "@option:check"
 #| msgid "Horizontal Timeline Scroll"
 msgid "Horizontal Timeline Scroll"
 msgstr "水平時間軸捲動"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:204
+#: src/gui/widgets/settings/settings_dialog.cpp:234
 #, fuzzy
 #| msgctxt "@info:tooltip"
 #| msgid ""
@@ -5601,13 +5607,26 @@ msgid ""
 "with Shift or Alt"
 msgstr "啟用時，時間軸預設會水平捲動，而在按下 Shift 或 Alt 時垂直捲動"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:210
+#: src/gui/widgets/settings/settings_dialog.cpp:237
+#, fuzzy
+#| msgctxt "@label:listbox"
+#| msgid "Icon Theme"
+msgid "Icon Theme"
+msgstr "圖示主題"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:237
+#, fuzzy
+#| msgid "Open with External Application"
+msgid "Icon theme for the application"
+msgstr "在外部應用程式開啟"
+
+#: src/gui/widgets/settings/settings_dialog.cpp:243
 #, kde-format
 msgctxt "Seconds suffix"
 msgid "s"
 msgstr ""
 
-#: src/gui/widgets/settings/settings_dialog.cpp:212
+#: src/gui/widgets/settings/settings_dialog.cpp:245
 #, fuzzy
 #| msgctxt "@title settings group"
 #| msgid "New Animation Defaults"
@@ -5615,33 +5634,33 @@ msgctxt "Settings"
 msgid "New Animation Defaults"
 msgstr "新動畫預設值"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:213
+#: src/gui/widgets/settings/settings_dialog.cpp:246
 #, fuzzy
 #| msgid "Canvas"
 msgid "Canvas Width"
 msgstr "畫布"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:214
+#: src/gui/widgets/settings/settings_dialog.cpp:247
 #, fuzzy
 #| msgid "Frame Height"
 msgid "Canvas Height"
 msgstr "影格高度"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:215
+#: src/gui/widgets/settings/settings_dialog.cpp:248
 #, fuzzy
 #| msgctxt "@info:tooltip"
 #| msgid "Frames per second"
 msgid "Frames per seconds"
 msgstr "每秒影格數"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:216
+#: src/gui/widgets/settings/settings_dialog.cpp:249
 #, fuzzy
 #| msgctxt "@info:tooltip"
 #| msgid "Duration in seconds"
 msgid "Duration in seconds"
 msgstr "時長（秒）"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:220
+#: src/gui/widgets/settings/settings_dialog.cpp:253
 #, fuzzy
 #| msgctxt "@title settings group"
 #| msgid "Open / Save"
@@ -5649,26 +5668,26 @@ msgctxt "Settings"
 msgid "Open / Save"
 msgstr "開啟 / 儲存"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:221
+#: src/gui/widgets/settings/settings_dialog.cpp:254
 #, fuzzy
 #| msgctxt "@label:spinbox"
 #| msgid "Max Recent Files"
 msgid "Max Recent Files"
 msgstr "記住幾個最近檔案"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:221
-#: src/gui/widgets/settings/settings_dialog.cpp:222
+#: src/gui/widgets/settings/settings_dialog.cpp:254
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Number of items to show in the recent files menu"
 msgstr ""
 
-#: src/gui/widgets/settings/settings_dialog.cpp:222
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 #, fuzzy
 #| msgctxt "@label:spinbox"
 #| msgid "Backup Frequency"
 msgid "Backup Frequency"
 msgstr "備份頻率"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:223
+#: src/gui/widgets/settings/settings_dialog.cpp:256
 #, fuzzy
 #| msgctxt "@option:check"
 #| msgid "Use system file dialog"
@@ -6428,10 +6447,6 @@ msgstr "°"
 #~ msgid "Interface Language"
 #~ msgstr "介面語言"
 
-#~ msgctxt "@label:listbox"
-#~ msgid "Icon Theme"
-#~ msgstr "圖示主題"
-
 #~ msgid "F7"
 #~ msgstr "F7"
 
@@ -6476,9 +6491,6 @@ msgstr "°"
 
 #~ msgid "Application Qt"
 #~ msgstr "應用程式 Qt"
-
-#~ msgid "System Qt"
-#~ msgstr "系統 Qt"
 
 #~ msgid "About Qt"
 #~ msgstr "關於 Qt"
