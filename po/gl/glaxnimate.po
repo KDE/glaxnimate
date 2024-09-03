@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2024-08-19 16:14+0200\n"
+"PO-Revision-Date: 2024-09-02 17:49+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -2940,10 +2940,9 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: src/gui/settings/icon_settings.cpp:42
-#, fuzzy, kde-format
-#| msgid "System Qt"
+#, kde-format
 msgid "System Default"
-msgstr "Qt do sistema"
+msgstr "Predeterminada do sistema"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
@@ -5733,17 +5732,12 @@ msgstr ""
 "predeterminada e verticalmente con Maiús ou Alt."
 
 #: src/gui/widgets/settings/settings_dialog.cpp:237
-#, fuzzy
-#| msgctxt "@label:listbox"
-#| msgid "Icon Theme"
 msgid "Icon Theme"
 msgstr "Tema de iconas"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:237
-#, fuzzy
-#| msgid "Open with External Application"
 msgid "Icon theme for the application"
-msgstr "Abrir cunha aplicación externa"
+msgstr "Tema de iconas da aplicación"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 #, kde-format

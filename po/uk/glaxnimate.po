@@ -7,9 +7,9 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2024-08-12 09:27+0300\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
+"PO-Revision-Date: 2024-09-02 09:42+0300\n"
+"Last-Translator: Fracture dept <yurchor@ukr.net>\n"
+"Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2946,10 +2946,9 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: src/gui/settings/icon_settings.cpp:42
-#, fuzzy, kde-format
-#| msgid "System Qt"
+#, kde-format
 msgid "System Default"
-msgstr "Системна Qt"
+msgstr "Типова для системи"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
@@ -5747,17 +5746,12 @@ msgstr ""
 "горизонтальному напрямку, а у вертикальному — з Shift або Alt"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:237
-#, fuzzy
-#| msgctxt "@label:listbox"
-#| msgid "Icon Theme"
 msgid "Icon Theme"
 msgstr "Тема піктограм"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:237
-#, fuzzy
-#| msgid "Open with External Application"
 msgid "Icon theme for the application"
-msgstr "Відкрити за допомогою зовнішньої програми"
+msgstr "Тема піктограм для програми"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 #, kde-format

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2024-08-13 14:35+0200\n"
+"PO-Revision-Date: 2024-09-02 12:15+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2938,10 +2938,9 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: src/gui/settings/icon_settings.cpp:42
-#, fuzzy, kde-format
-#| msgid "System Qt"
+#, kde-format
 msgid "System Default"
-msgstr "Systeem-Qt"
+msgstr "Systeemstandaard"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
@@ -5736,17 +5735,12 @@ msgstr ""
 "verticaal met Shift of Alt"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:237
-#, fuzzy
-#| msgctxt "@label:listbox"
-#| msgid "Icon Theme"
 msgid "Icon Theme"
 msgstr "Pictogramthema"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:237
-#, fuzzy
-#| msgid "Open with External Application"
 msgid "Icon theme for the application"
-msgstr "Met externe applicatie openen"
+msgstr "Pictogramthema voor de toepassing"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 #, kde-format
