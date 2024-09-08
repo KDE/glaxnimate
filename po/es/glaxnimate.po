@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2024-08-31 17:24+0200\n"
+"PO-Revision-Date: 2024-09-07 18:54+0200\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -2937,10 +2937,9 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: src/gui/settings/icon_settings.cpp:42
-#, fuzzy, kde-format
-#| msgid "System"
+#, kde-format
 msgid "System Default"
-msgstr "Sistema"
+msgstr "Sistema predeterminado"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
@@ -3213,7 +3212,7 @@ msgstr "Directorios de Datos:"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:164
 #, kde-format
 msgid "Icon Theme Paths:"
-msgstr "Rutas de Temas de Íconos:"
+msgstr "Rutas de temas de iconos:"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_4)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:189
@@ -5740,16 +5739,12 @@ msgstr ""
 "omisión y verticalmente con Mayús o Alt"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:237
-#, fuzzy
-#| msgid "Icon Theme Paths:"
 msgid "Icon Theme"
-msgstr "Rutas de Temas de Íconos:"
+msgstr "Tema de iconos"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:237
-#, fuzzy
-#| msgid "Open with External Application"
 msgid "Icon theme for the application"
-msgstr "Abrir con Aplicación Externa"
+msgstr "Tema de iconos para la aplicación"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 #, kde-format
