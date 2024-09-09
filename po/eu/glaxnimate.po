@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2024-09-07 11:16+0200\n"
+"PO-Revision-Date: 2024-09-08 11:23+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -42,7 +42,7 @@ msgstr "eraldatu"
 #. i18n: Property name
 #, kde-format
 msgid "start_opacity"
-msgstr ""
+msgstr "hasiera_opakutasuna"
 
 #. i18n: file: src/core/model/shapes/stroke.hpp
 #. i18n: Property name
@@ -60,7 +60,7 @@ msgstr ""
 #. i18n: Property name
 #, kde-format
 msgid "reversed"
-msgstr ""
+msgstr "alderantzikatua"
 
 #. i18n: file: src/core/model/shapes/rect.hpp
 #. i18n: Property name
@@ -120,13 +120,13 @@ msgstr "anizkoitza"
 #. i18n: Property name
 #, kde-format
 msgid "path"
-msgstr "bidea"
+msgstr "ibilbidea"
 
 #. i18n: file: src/core/model/shapes/fill.hpp
 #. i18n: Property name
 #, kde-format
 msgid "fill_rule"
-msgstr ""
+msgstr "bete_araua"
 
 #. i18n: file: src/core/model/shapes/polystar.hpp
 #. i18n: Property name
@@ -152,7 +152,7 @@ msgstr "angelua"
 #. i18n: Property name
 #, kde-format
 msgid "outer_roundness"
-msgstr ""
+msgstr "kanpo_biribiltasuna"
 
 #. i18n: file: src/core/model/shapes/styler.hpp
 #. i18n: Property name
@@ -444,36 +444,41 @@ msgid ""
 "If your Telegram version is too old, you can Export the file to TGS and "
 "upload that on Telegram."
 msgstr ""
+"Telegram-era esportatzeko eranskailu pakete bat sortzen du.\n"
+"Kontuan izan, hori, Telegram-en azken aldiko bertsioek bakarrik onartzen "
+"dutela.\n"
+"Telegram-en zure bertsioa zaharregia bada, fitxategia TGSra esportatu eta "
+"hori Telegram-era zama-igo dezakezu."
 
 #: src/android/help_dialog.cpp:86
 #, kde-format
 msgid "Cuts the selection into the clipboard."
-msgstr ""
+msgstr "Hautapena arbelera ebakitzen du."
 
 #: src/android/help_dialog.cpp:90
 #, kde-format
 msgid "Copies the selection into the clipboard."
-msgstr ""
+msgstr "Hautapena arbelera kopiatzen du."
 
 #: src/android/help_dialog.cpp:94
 #, kde-format
 msgid "Pastes from the clipboard into the current document."
-msgstr ""
+msgstr "Arbeletik uneko dokumentuan itsasten du."
 
 #: src/android/help_dialog.cpp:98
 #, kde-format
 msgid "Removes the selected item."
-msgstr ""
+msgstr "Hautatutako elementua kentzen du."
 
 #: src/android/help_dialog.cpp:102
 #, kde-format
 msgid "Undoes the last action."
-msgstr ""
+msgstr "Azken ekintza desegiten du."
 
 #: src/android/help_dialog.cpp:106
 #, kde-format
 msgid "Redoes the last undone action."
-msgstr ""
+msgstr "Desegindako azken ekintza berregiten du."
 
 #: src/android/help_dialog.cpp:110
 #, kde-format
@@ -481,32 +486,36 @@ msgid ""
 "Opens the side pane used to change the advanced properties for the selected "
 "object."
 msgstr ""
+"Hautatutako objektuaren propietate aurreratuak aldatzeko alboko beiratea "
+"irekitzen du."
 
 #: src/android/help_dialog.cpp:114
 #, kde-format
 msgid "Shows the timeline and playback controls."
-msgstr ""
+msgstr "Denbora-lerroa eta atzera-jotzeko aginteak erakusten ditu."
 
 #: src/android/help_dialog.cpp:118
 #, kde-format
 msgid "Opens the side pane used to select the fill color."
-msgstr ""
+msgstr "Betegarriaren kolorea hautatzeko beiratea irekitzen du."
 
 #: src/android/help_dialog.cpp:122
 #, kde-format
 msgid "Opens the side pane used to select the stroke color and style."
-msgstr ""
+msgstr "Trazuaren kolorea eta estiloa hautatzeko alboko beiratea irekitzen du."
 
 #: src/android/help_dialog.cpp:126
 #, kde-format
 msgid "Shows this help."
-msgstr ""
+msgstr "Laguntza hau erakusten du."
 
 #: src/android/help_dialog.cpp:130
 #, kde-format
 msgid ""
 "Select tool, you can use it to select objects and change their transform."
 msgstr ""
+"Hautapen tresna, objektuak hautatzeko eta haien eraldatzea aldatzeko erabil "
+"dezakezu."
 
 #: src/android/help_dialog.cpp:134
 #, kde-format
@@ -520,7 +529,7 @@ msgstr ""
 #: src/android/help_dialog.cpp:138
 #, kde-format
 msgid "Shows a tray with the curve drawing tools."
-msgstr ""
+msgstr "Kurbak marrazteko tresnak dituen erretilu bat marrazten du."
 
 #: src/android/help_dialog.cpp:142
 #, kde-format
@@ -530,22 +539,22 @@ msgstr "Sortu Bézier kurbak nodoak eta heldulekuak erabiliz."
 #: src/android/help_dialog.cpp:146
 #, kde-format
 msgid "Draw curves freehand."
-msgstr ""
+msgstr "Marraztu kurbak esku hutsez."
 
 #: src/android/help_dialog.cpp:150
 #, kde-format
 msgid "Shows a tray with the shape drawing tools."
-msgstr ""
+msgstr "Formak marrazteko tresnak dituen erretilu bat erakusten du."
 
 #: src/android/help_dialog.cpp:154
 #, kde-format
 msgid "Draws rectangles."
-msgstr ""
+msgstr "Laukizuzenak marrazten ditu."
 
 #: src/android/help_dialog.cpp:158
 #, kde-format
 msgid "Draws ellipses."
-msgstr ""
+msgstr "Elipseak marrazten ditu."
 
 #: src/android/help_dialog.cpp:162
 #, kde-format
@@ -553,46 +562,48 @@ msgid ""
 "Draws a star, after it's been created you can change it into a regular "
 "polygon and change the number of sides from the properties pane."
 msgstr ""
+"Izar bat marrazten du, sortu ondoren, poligono erregular batean alda "
+"dezakezu, eta propietateak beiratetik, alde kopurua alda dezakezu."
 
 #: src/android/help_dialog.cpp:166
 #, kde-format
 msgid "Create and edit text shapes."
-msgstr ""
+msgstr "Testu formak sortu eta editatu."
 
 #: src/android/help_dialog.cpp:170
 #, kde-format
 msgid "Toggles the menu showing non-drawing buttons."
-msgstr ""
+msgstr "Menua txandakatzen du marrazteko ez diren botoiak erakutsiz."
 
 #: src/android/help_dialog.cpp:174
 #, kde-format
 msgid "Starts playback."
-msgstr ""
+msgstr "Atzera-jotzea abiatzen du."
 
 #: src/android/help_dialog.cpp:178
 #, kde-format
 msgid "Toggles looping for the playback (on by default)."
-msgstr ""
+msgstr "Atzera-jotzeko begizta txandakatzen du (piztuta lehenetsita)."
 
 #: src/android/help_dialog.cpp:182
 #, kde-format
 msgid "Jumps to the first frame."
-msgstr ""
+msgstr "Lehen fotogramara jauzi egiten du."
 
 #: src/android/help_dialog.cpp:186
 #, kde-format
 msgid "Goes to the previous frame."
-msgstr ""
+msgstr "Aurreko fotogramara joaten da."
 
 #: src/android/help_dialog.cpp:190
 #, kde-format
 msgid "Goes to the next frame."
-msgstr ""
+msgstr "Hurrengo fotogramara joaten da."
 
 #: src/android/help_dialog.cpp:194
 #, kde-format
 msgid "Jumps to the last frame."
-msgstr ""
+msgstr "Azken fotogramara jauzi egiten du."
 
 #: src/android/help_dialog.cpp:198
 #, kde-format
@@ -600,16 +611,19 @@ msgid ""
 "When enabled (which is the default) whenever you change an object property, "
 "a new keyframe is added for that property."
 msgstr ""
+"Gaituta dagoenean (eta lehenetsita dago), objektu baten propietate bat "
+"aldatzen duzun bakoitzean, propietate horretarako gako-fotograma berri bat "
+"gehitzen da."
 
 #: src/android/help_dialog.cpp:202
 #, kde-format
 msgid "Push the selection further back."
-msgstr ""
+msgstr "Bultzatu hautapena atzerantz."
 
 #: src/android/help_dialog.cpp:206
 #, kde-format
 msgid "Brings the selection further to the front."
-msgstr ""
+msgstr "Hautapena aitzinago ekartzen du."
 
 #: src/android/main_window.cpp:412
 #, kde-format
@@ -900,7 +914,7 @@ msgstr "Gehitu unekoa"
 #: src/android/telegram_intent.cpp:45
 #, kde-format
 msgid "Could not start activity, is Telegram installed?"
-msgstr ""
+msgstr "Jarduera ezin izan da abiatu, Telegram instalatuta dago?"
 
 #: src/core/app_info.cpp:57
 #, kde-format
@@ -965,27 +979,27 @@ msgstr "Inkscape"
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
 msgid "Update %1 keyframe at %2"
-msgstr ""
+msgstr "Eguneratu %1 gako-fotograma %2(e)(a)n"
 
 #: src/core/command/animation_commands.cpp:86
 #, kde-format
 msgid "Remove %1 keyframe at %2"
-msgstr ""
+msgstr "Kendu %1 gako-fotograma %2(e)(a)n"
 
 #: src/core/command/animation_commands.cpp:117
-#, fuzzy, kde-format
+#, kde-format
 msgid "Remove %1 keyframe %2"
-msgstr "Kendu gako-fotograma"
+msgstr "Kendu %1 gako-fotograma %2"
 
 #: src/core/command/animation_commands.cpp:289
 #, kde-format
 msgid "Add keyframe for %1 at %2"
-msgstr ""
+msgstr "Gehitu %1(e)rako gako-fotograma %2(e)(a)n"
 
 #: src/core/command/animation_commands.cpp:292
 #, kde-format
 msgid "Update %1 at %2"
-msgstr ""
+msgstr "Eguneratu %1 %2(e)(a)n"
 
 #: src/core/command/animation_commands.cpp:294
 #: src/core/command/property_commands.hpp:24
@@ -1018,7 +1032,7 @@ msgstr "Eguneratu animazioaren bidea"
 #: src/core/command/animation_commands.hpp:242
 #, kde-format
 msgid "Stretch Time"
-msgstr ""
+msgstr "Luzapen denbora"
 
 #: src/core/command/object_list_commands.hpp:26
 #, kde-format
@@ -1080,7 +1094,7 @@ msgstr "Kanpoko aktiboa ez du aurkitu: %1"
 #: src/core/io/aep/aep_loader.cpp:117
 #, kde-format
 msgid "Unknown property \"%1\" of \"%2\""
-msgstr ""
+msgstr "\"%2\"(e)ren \"%1\" propietate ezezaguna"
 
 #: src/core/io/aep/aep_loader.cpp:404
 #, kde-format
@@ -1098,7 +1112,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:926
 #, kde-format
 msgid "Invalid value for %1"
-msgstr ""
+msgstr "%1(e)rako balio baliogabea"
 
 #: src/core/io/aep/aep_loader.cpp:510
 #, kde-format
@@ -1106,14 +1120,14 @@ msgid "Expected property group for transform"
 msgstr ""
 
 #: src/core/io/aep/aep_loader.cpp:559
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unknown property \"%1\""
-msgstr "Propietate ezezaguna"
+msgstr "Propietate ezezaguna \"%1\""
 
 #: src/core/io/aep/aep_loader.cpp:1103
 #, kde-format
 msgid "Unknown shape %1"
-msgstr ""
+msgstr "Forma ezezaguna %1"
 
 #: src/core/io/aep/aep_loader.cpp:1162
 #: src/core/io/lottie/lottie_importer.hpp:390
@@ -1125,7 +1139,7 @@ msgstr "Klipa"
 #: src/core/io/aep/aep_loader.cpp:1267
 #, kde-format
 msgid "Unknown asset type for %1"
-msgstr ""
+msgstr "%1(e)rako aktibo mota ezezaguna"
 
 #: src/core/io/aep/aep_parser.hpp:49
 #, kde-format
@@ -1140,53 +1154,53 @@ msgstr "%s elementu-mota ezezaguna"
 #: src/core/io/aep/aep_parser.hpp:137
 #, kde-format
 msgid "Missing composition data"
-msgstr ""
+msgstr "Konposizio datuak falta dira"
 
 #: src/core/io/aep/aep_parser.hpp:214
 #, kde-format
 msgid "Unknown encoding for %1"
-msgstr ""
+msgstr "%1(e)rako kodeketa ezezaguna"
 
 #: src/core/io/aep/aep_parser.hpp:230
 #, kde-format
 msgid "Missing asset data"
-msgstr ""
+msgstr "Aktiboaren datuak falta dira"
 
 #: src/core/io/aep/aep_parser.hpp:288
 #, kde-format
 msgid "Missing layer data"
-msgstr ""
+msgstr "Geruzaren datuak falta dira"
 
 #: src/core/io/aep/aep_parser.hpp:372 src/core/io/aep/aep_parser.hpp:377
 #, kde-format
 msgid "Missing mask properties"
-msgstr ""
+msgstr "Maskararen datuak falta dira"
 
 #: src/core/io/aep/aep_parser.hpp:424
 #, kde-format
 msgid "Unknown property type: %1"
-msgstr ""
+msgstr "Propietate mota ezezaguna: %1"
 
 #: src/core/io/aep/aep_parser.hpp:645
 #, kde-format
 msgid "Missing list data"
-msgstr ""
+msgstr "Zerrendaren datuak falta dira"
 
 #: src/core/io/aep/aep_parser.hpp:657
 #, kde-format
 msgid "Not enough data in list"
-msgstr ""
+msgstr "Zerrendan ez dago behar adina datu"
 
 #: src/core/io/aep/aep_parser.hpp:791
 #, kde-format
 msgid "Invalid text document: %1"
-msgstr ""
+msgstr "Testu-dokumentu baliogabea: %1"
 
 #: src/core/io/aep/riff.hpp:220 src/core/io/aep/riff.hpp:233
 #: src/core/io/aep/riff.hpp:254 src/core/io/aep/riff.hpp:292
 #, kde-format
 msgid "Not enough data"
-msgstr ""
+msgstr "Datu nahikorik ez"
 
 #: src/core/io/aep/riff.hpp:528
 #, kde-format
@@ -1196,17 +1210,17 @@ msgstr "%1 formatu ezezaguna"
 #: src/core/io/avd/avd_format.hpp:21
 #, kde-format
 msgid "Android Vector Drawable"
-msgstr ""
+msgstr "Android Marrazgarri bektoriala"
 
 #: src/core/io/avd/avd_parser.cpp:223
 #, kde-format
 msgid "Unknown interpolator %s"
-msgstr ""
+msgstr "Interpolatzaile ezezaguna %s"
 
 #: src/core/io/avd/avd_parser.cpp:650
 #, kde-format
 msgid "Unknown resource id %1"
-msgstr ""
+msgstr "Baliabide ID ezezaguna %1"
 
 #: src/core/io/avd/avd_parser.cpp:658
 #, kde-format
@@ -1216,12 +1230,12 @@ msgstr "Ezin izan du %1 fitxategia irakurri"
 #: src/core/io/avd/avd_parser.cpp:659 src/core/io/avd/avd_parser.cpp:668
 #, kde-format
 msgid "Could not load resource %1"
-msgstr ""
+msgstr "Ezin du baliabidea zamatu %1"
 
 #: src/core/io/avd/avd_renderer.cpp:159
 #, kde-format
 msgid "%s should be in a group"
-msgstr ""
+msgstr "%s talde batean egon beharko litzateke"
 
 #: src/core/io/avd/avd_renderer.cpp:163
 #, kde-format
@@ -1236,19 +1250,19 @@ msgstr ""
 #: src/core/io/avd/avd_renderer.cpp:518
 #, kde-format
 msgid "%s cannot be a clip path"
-msgstr ""
+msgstr "%s ezin da klip baten bide-izen bat izan"
 
 #: src/core/io/base.cpp:22 src/core/io/svg/svg_renderer.cpp:823
 #: src/gui/tools/base.cpp:162
 #, kde-format
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: src/core/io/glaxnimate/glaxnimate_format.hpp:26
 #: src/core/io/glaxnimate/glaxnimate_mime.hpp:21
 #, kde-format
 msgid "Glaxnimate Animation"
-msgstr ""
+msgstr "Glaxnimate Animazioa"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:21
 #: src/core/io/glaxnimate/glaxnimate_mime.cpp:88
@@ -1287,12 +1301,12 @@ msgstr ""
 #: src/core/io/glaxnimate/import_state.hpp:128
 #, kde-format
 msgid "Object %1 is invalid"
-msgstr ""
+msgstr "%1 objektua baliogabea da"
 
 #: src/core/io/glaxnimate/import_state.hpp:317
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
-msgstr ""
+msgstr "Objektu mota okerra: '%1' espero zen baina '%2' lortu du"
 
 #: src/core/io/glaxnimate/import_state.hpp:323
 #, kde-format
@@ -1317,22 +1331,22 @@ msgstr ""
 #: src/core/io/glaxnimate/import_state.hpp:409
 #, kde-format
 msgid "Keyframe must specify a time"
-msgstr ""
+msgstr "Gako-fotogramak denbora bat zehaztu behar du"
 
 #: src/core/io/glaxnimate/import_state.hpp:414
 #, kde-format
 msgid "Keyframe must specify a value"
-msgstr ""
+msgstr "Gako-fotogramak balio bat zehaztu behar du"
 
 #: src/core/io/glaxnimate/import_state.hpp:424
 #, kde-format
 msgid "Could not add keyframe"
-msgstr ""
+msgstr "Ezin izan du gako-fotograma bat gehitu"
 
 #: src/core/io/glaxnimate/import_state.hpp:608
 #, kde-format
 msgid "Unknown object of type '%1'"
-msgstr ""
+msgstr "'%1' motako objektu ezezaguna"
 
 #: src/core/io/lottie/lottie_exporter.hpp:559
 #, kde-format
@@ -1348,6 +1362,8 @@ msgstr ""
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
+"Irudiak ezin dira beste formekin taldekatu, geruza baten barruan egon behar "
+"dute"
 
 #: src/core/io/lottie/lottie_exporter.hpp:612
 #, kde-format
@@ -1355,6 +1371,8 @@ msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
 "a layer"
 msgstr ""
+"Konposizio geruzak ezin dira beste formekin taldekatu, geruza baten barruan "
+"egon behar dute"
 
 #: src/core/io/lottie/lottie_format.cpp:59
 #, fuzzy, kde-format
@@ -1389,22 +1407,22 @@ msgstr ""
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
 msgid "Legacy Keyframes"
-msgstr ""
+msgstr "Ondare gako-fotogramak"
 
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
 msgid "Compatibility with lottie-web versions prior to 5.0.0"
-msgstr ""
+msgstr "5.0.0 aurreko lottie-web bertsioekin bateragarria"
 
 #: src/core/io/lottie/lottie_format.hpp:22
 #, kde-format
 msgid "Lottie Animation"
-msgstr ""
+msgstr "Lottie Animazioa"
 
 #: src/core/io/lottie/lottie_html_format.hpp:20
 #, kde-format
 msgid "Lottie HTML Preview"
-msgstr ""
+msgstr "Lottie HTML aurreikuspegia"
 
 #: src/core/io/lottie/lottie_importer.hpp:185
 #, kde-format
@@ -1419,28 +1437,28 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:332
 #, kde-format
 msgid "Invalid parent layer %1"
-msgstr ""
+msgstr "Guraso geruza baliogabea %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:457
 #, kde-format
 msgid "Unsupported layer of type %1"
-msgstr ""
+msgstr "%1 motako euskarririk gabeko geruza"
 
 #: src/core/io/lottie/lottie_importer.hpp:482
 #, kde-format
 msgid "Missing shape type"
-msgstr ""
+msgstr "Forma mota falta da"
 
 #: src/core/io/lottie/lottie_importer.hpp:495
 #: src/core/io/lottie/lottie_importer.hpp:505
 #, kde-format
 msgid "Unsupported shape type %1"
-msgstr ""
+msgstr "Euskarririk gabeko forma mota %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:528
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unknown field %2%1"
-msgstr "Eremu ezezaguna"
+msgstr "Eremu ezezaguna %2%1"
 
 #: src/core/io/lottie/lottie_importer.hpp:852
 #, kde-format
@@ -1453,12 +1471,12 @@ msgid "Invalid keyframes for %1"
 msgstr ""
 
 #: src/core/io/lottie/lottie_importer.hpp:984
-#, fuzzy, kde-format
+#, kde-format
 msgid "(null)"
-msgstr "NULL"
+msgstr "(nulua)"
 
 #: src/core/io/lottie/lottie_importer.hpp:990
-#, fuzzy, kde-format
+#, kde-format
 msgid "(empty)"
 msgstr "(hutsik)"
 
@@ -1475,12 +1493,12 @@ msgstr "Bikoiztu bit-maparen ID: %1"
 #: src/core/io/lottie/lottie_importer.hpp:1085
 #, kde-format
 msgid "Duplicate Composition ID: %1"
-msgstr ""
+msgstr "Konposizio ID bikoiztua: %1"
 
 #: src/core/io/lottie/tgs_format.cpp:47
 #, kde-format
 msgid "Star Shapes are not officially supported"
-msgstr ""
+msgstr "Izar formek ez dute euskarri ofizialik"
 
 #: src/core/io/lottie/tgs_format.cpp:51 src/core/io/lottie/validation.cpp:71
 #, kde-format
@@ -1520,32 +1538,32 @@ msgstr ""
 #: src/core/io/lottie/tgs_format.cpp:110
 #, kde-format
 msgid "File too large: %1k, should be under 64k"
-msgstr ""
+msgstr "Fitxategi handiegia: %1k, 64k azpitik egon beharko litzateke"
 
 #: src/core/io/lottie/tgs_format.hpp:19
 #, kde-format
 msgid "Telegram Animated Sticker"
-msgstr ""
+msgstr "Telegram-erako Eranskailu Animatua"
 
 #: src/core/io/lottie/validation.cpp:25
 #, kde-format
 msgid "Invalid width: %1, should be %2"
-msgstr ""
+msgstr "Zabalera baliogabea: %1, %2 izan beharko litzateke"
 
 #: src/core/io/lottie/validation.cpp:29
 #, kde-format
 msgid "Invalid height: %1, should be %2"
-msgstr ""
+msgstr "Altuera baliogabea: %1, %2 izan beharko litzateke"
 
 #: src/core/io/lottie/validation.cpp:41
 #, kde-format
 msgid "Invalid fps: %1, should be %2"
-msgstr ""
+msgstr "FPS baliogabea: %1; %2 izan beharko litzateke"
 
 #: src/core/io/lottie/validation.cpp:49
 #, kde-format
 msgid "Too many frames: %1, should be less than %2"
-msgstr ""
+msgstr "Fotograma gehiegi: %1, %2 baina gutxiago izan beharko litzateke"
 
 #: src/core/io/lottie/validation.hpp:22
 #, kde-format
@@ -1591,22 +1609,24 @@ msgstr "Zutabeak"
 #: src/core/io/raster/spritesheet_format.cpp:34
 #, kde-format
 msgid "Number of columns in the sheet"
-msgstr ""
+msgstr "Orriko zutabe kopurua"
 
 #: src/core/io/raster/spritesheet_format.cpp:35
-#, fuzzy, kde-format
+#, kde-format
 msgid "Time Step"
-msgstr "Dengora urratsa:"
+msgstr "Denbora urratsa"
 
 #: src/core/io/raster/spritesheet_format.cpp:35
 #, kde-format
 msgid "By how much each rendered frame should increase time (in frames)"
 msgstr ""
+"Errendatutako fotograma bakoitzak denbora zenbatean handiagotu beharko "
+"lukeen (fotogramatan)"
 
 #: src/core/io/raster/spritesheet_format.hpp:23
 #, kde-format
 msgid "Sprite Sheet"
-msgstr ""
+msgstr "Iratxoen orria"
 
 #: src/core/io/rive/rive_exporter.hpp:359
 #, kde-format
@@ -1624,9 +1644,9 @@ msgid "Unknown keyframe type for property %1 of %2 (%3, %4)"
 msgstr ""
 
 #: src/core/io/rive/rive_format.cpp:24
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unsupported format"
-msgstr "Onartu gabeko formatua: %1"
+msgstr "Euskarririk gabeko formatua"
 
 #: src/core/io/rive/rive_format.cpp:34
 #, kde-format
@@ -2651,7 +2671,7 @@ msgstr ""
 
 #. i18n: ectx: Menu (playback)
 #: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:499
-#, fuzzy, kde-format
+#, kde-format
 msgid "Playback"
 msgstr "Atzera-jo"
 
