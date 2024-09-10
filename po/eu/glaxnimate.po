@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2024-09-08 11:23+0200\n"
+"PO-Revision-Date: 2024-09-09 22:16+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -80,7 +80,7 @@ msgstr "biribilduta"
 #. i18n: Property name
 #, fuzzy, kde-format
 msgid "timing"
-msgstr "Denbora-neurtzea"
+msgstr "Denboralizazioa"
 
 #. i18n: file: src/core/model/shapes/precomp_layer.hpp
 #. i18n: Property name
@@ -114,7 +114,7 @@ msgstr "amaitu"
 #. i18n: Property name
 #, fuzzy, kde-format
 msgid "multiple"
-msgstr "anizkoitza"
+msgstr "Multiploa"
 
 #. i18n: file: src/core/model/shapes/text.hpp
 #. i18n: Property name
@@ -1634,9 +1634,9 @@ msgid "Bezier has mismatching number of points"
 msgstr "Bézierrak puntu kopuru okerra du"
 
 #: src/core/io/rive/rive_exporter.hpp:422
-#, kde-format
+#, fuzzy, kde-format
 msgid "Unknown property %1 of %2 (%3, %4)"
-msgstr ""
+msgstr "\"%2\"(e)ren \"%1\" propietate ezezaguna"
 
 #: src/core/io/rive/rive_exporter.hpp:457
 #, kde-format
@@ -1651,28 +1651,30 @@ msgstr "Euskarririk gabeko formatua"
 #: src/core/io/rive/rive_format.cpp:34
 #, kde-format
 msgid "Could not read header"
-msgstr ""
+msgstr "Ezin izan du goiburua irakurri"
 
 #: src/core/io/rive/rive_format.cpp:40
 #, kde-format
 msgid ""
 "Loading unsupported rive file version %1.%2, the only supported version is %3"
 msgstr ""
+"Euskarririk gabeko %1.%2 bertsioko «rive» fitxategia zamatzen, euskarria "
+"duen bertsio bakarra %3 da"
 
 #: src/core/io/rive/rive_format.cpp:46 src/core/io/rive/rive_loader.cpp:750
 #, kde-format
 msgid "Could not read property table"
-msgstr ""
+msgstr "Ezin izan du propietateen taula irakurri"
 
 #: src/core/io/rive/rive_format.hpp:24
 #, kde-format
 msgid "Rive Animation"
-msgstr ""
+msgstr "Rive animazioa"
 
 #: src/core/io/rive/rive_html_format.hpp:20
 #, kde-format
 msgid "RIVE HTML Preview"
-msgstr ""
+msgstr "RIVE HTML aurreikuspegia"
 
 #: src/core/io/rive/rive_loader.cpp:179
 #, kde-format
@@ -1697,7 +1699,7 @@ msgstr ""
 #: src/core/io/rive/rive_loader.cpp:215
 #, kde-format
 msgid "Unexpected Animation"
-msgstr ""
+msgstr "Ustekabeko animazioa"
 
 #: src/core/io/rive/rive_loader.cpp:231
 #, kde-format
@@ -1707,42 +1709,42 @@ msgstr ""
 #: src/core/io/rive/rive_loader.cpp:242
 #, kde-format
 msgid "Invalid Image Data"
-msgstr ""
+msgstr "Irudi-datu baliogabeak"
 
 #: src/core/io/rive/rive_loader.cpp:253
 #, kde-format
 msgid "Unexpected Keyframe"
-msgstr ""
+msgstr "Ustekabeko gako-fotograma"
 
 #: src/core/io/rive/rive_loader.cpp:268
 #, kde-format
 msgid "Could not find parent with id %1"
-msgstr ""
+msgstr "Ezin izan du ID %1 duen gurasoa aurkitu"
 
 #: src/core/io/rive/rive_loader.cpp:318
 #, kde-format
 msgid "Parent circular reference detected"
-msgstr ""
+msgstr "Guraso erreferentzia zirkularra hauteman da"
 
 #: src/core/io/rive/rive_loader.cpp:746
 #, kde-format
 msgid "Unknown object of type %1"
-msgstr ""
+msgstr "%1 motako objektu ezezaguna"
 
 #: src/core/io/rive/rive_loader.cpp:791
 #, kde-format
 msgid "Could not load object type ID"
-msgstr ""
+msgstr "Ezin izan du objektu motaren ID zamatu"
 
 #: src/core/io/rive/rive_loader.cpp:806
 #, kde-format
 msgid "Could not load property ID in %1 (%2)"
-msgstr ""
+msgstr "Ezin izan du %1(e)ko (%2) propietatea zamatu"
 
 #: src/core/io/rive/rive_loader.cpp:823
-#, kde-format
+#, fuzzy, kde-format
 msgid "Unknown property %1 of %2 (%3)"
-msgstr ""
+msgstr "\"%2\"(e)ren \"%1\" propietate ezezaguna"
 
 #: src/core/io/rive/rive_loader.cpp:833
 #, kde-format
@@ -1757,7 +1759,7 @@ msgstr ""
 #: src/core/io/svg/svg_format.cpp:67
 #, kde-format
 msgid "External Stylesheet"
-msgstr ""
+msgstr "Kanpoko estilo-orria"
 
 #: src/core/io/svg/svg_format.cpp:69
 #, kde-format
@@ -1767,28 +1769,28 @@ msgstr ""
 #: src/core/io/svg/svg_format.cpp:71
 #, kde-format
 msgid "Embedded data"
-msgstr ""
+msgstr "Txertatutako datuak"
 
 #: src/core/io/svg/svg_format.cpp:72
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:961
-#, fuzzy, kde-format
+#, kde-format
 msgid "Ignore"
-msgstr "Ez ikusi egin"
+msgstr "Ezikusi"
 
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
 msgid "External Fonts"
-msgstr ""
+msgstr "Kanpoko letra-tipoak"
 
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
 msgid "How to include external font"
-msgstr ""
+msgstr "Kanpoko letra-tipoa nola barneratu"
 
 #: src/core/io/svg/svg_format.cpp:92
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not write to file"
-msgstr "Ezin izan du %1 fitxategian idatzi."
+msgstr "Ezin izan du fitxategian idatzi"
 
 #: src/core/io/svg/svg_format.hpp:21 src/core/io/svg/svg_mime.hpp:20
 #, kde-format
@@ -1798,119 +1800,121 @@ msgstr "SVG"
 #: src/core/io/svg/svg_html_format.hpp:18
 #, kde-format
 msgid "SVG Preview"
-msgstr ""
+msgstr "SVG aurreikuspegia"
 
 #: src/core/io/video/video_format.cpp:73
 #, kde-format
 msgid "Could not find encoder for '%1'"
-msgstr ""
+msgstr "Ezin izan du '%1'(e)rako kodetzailea aurkitu"
 
 #: src/core/io/video/video_format.cpp:77
 #, kde-format
 msgid "Could not allocate stream"
-msgstr ""
+msgstr "Ezin izan du korrontea esleitu"
 
 #: src/core/io/video/video_format.cpp:82
 #, kde-format
 msgid "Could not alloc an encoding context"
-msgstr ""
+msgstr "Ezin izan du kodetzeko testuinguru bat esleitu"
 
 #: src/core/io/video/video_format.cpp:110
 #, kde-format
 msgid "Error encoding a frame: %1"
-msgstr ""
+msgstr "Errorea fotograma bat kodetzean: %1"
 
 #: src/core/io/video/video_format.cpp:120
 #, kde-format
 msgid "Error while writing output packet: %1"
-msgstr ""
+msgstr "Errorea irteerako paketea idaztean: %1"
 
 #: src/core/io/video/video_format.cpp:131
 #, kde-format
 msgid "Error sending a frame to the encoder: %1"
-msgstr ""
+msgstr "Errorea kodetzaileari fotograma bat bidaltzean: %1"
 
 #: src/core/io/video/video_format.cpp:187
 #: src/core/io/video/video_format.cpp:201
 #, kde-format
 msgid "Could not set dict key `%1`: %2"
-msgstr ""
+msgstr "Ezin izan du hiztegiaren '%1' gakoa ezarri: %2"
 
 #: src/core/io/video/video_format.cpp:246
 #, kde-format
 msgid "Could not erase dict key `%1`: %2"
-msgstr ""
+msgstr "Ezin izan du hiztegiaren '%1' gakoa kendu: %2"
 
 #: src/core/io/video/video_format.cpp:267
 #, kde-format
 msgid "Could not copy dict: %1"
-msgstr ""
+msgstr "Ezin izan du hiztegia kopiatu: %1"
 
 #: src/core/io/video/video_format.cpp:280
 #, kde-format
 msgid "Could not copy dict `%1`: %2"
-msgstr ""
+msgstr "Ezin izan du '%1' hiztegia kopiatu: %2"
 
 #: src/core/io/video/video_format.cpp:318
 #, kde-format
 msgid "Could not allocate frame data."
-msgstr ""
+msgstr "Ezin izan ditu fotogramaren datuak esleitu."
 
 #: src/core/io/video/video_format.cpp:403
 #: src/core/io/video/video_format.cpp:782
 #, kde-format
 msgid "No video codec"
-msgstr ""
+msgstr "Bideo-kodekik ez"
 
 #: src/core/io/video/video_format.cpp:431
 #, kde-format
 msgid "Could not determine pixel format"
-msgstr ""
+msgstr "Ezin izan du pixel-formatua zehaztu"
 
 #: src/core/io/video/video_format.cpp:441
 #, kde-format
 msgid "Could not open video codec: %1"
-msgstr ""
+msgstr "Ezin izan du bideo-kodeka ireki: %1"
 
 #: src/core/io/video/video_format.cpp:446
 #, kde-format
 msgid "Could not allocate video frame"
-msgstr ""
+msgstr "Ezin izan du bideo-fotograma esleitu"
 
 #: src/core/io/video/video_format.cpp:453
 #, kde-format
 msgid "Could not copy the stream parameters"
-msgstr ""
+msgstr "Ezin izan ditu korrontearen parametroak kopiatu"
 
 #: src/core/io/video/video_format.cpp:473
 #, kde-format
 msgid "Error while creating video frame"
-msgstr ""
+msgstr "Errorea bideo-fotograma sortzean"
 
 #: src/core/io/video/video_format.cpp:497
 #, kde-format
 msgid "Could not initialize the conversion context"
-msgstr ""
+msgstr "Ezin izan du bihurketa testuingurua hasieratu"
 
 #: src/core/io/video/video_format.cpp:503
 #, kde-format
 msgid "Could not allocate temporary picture"
-msgstr ""
+msgstr "Ezin izan du aldi baterako argazkia esleitu"
 
 #: src/core/io/video/video_format.cpp:750
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
 msgstr ""
+"Fitxategi-luzapenetik ezin izan du irteerako formatua ondorioztatu: MPEG "
+"erabiliko da."
 
 #: src/core/io/video/video_format.cpp:754
 #, kde-format
 msgid "Could not find output format"
-msgstr ""
+msgstr "Ezin izan du irteerako formatua aurkitu"
 
 #: src/core/io/video/video_format.cpp:827
 #, kde-format
 msgid "Error occurred when opening output file: %1"
-msgstr ""
+msgstr "Errorea gertatu da irteerako fitxategia irekitzean: %1"
 
 #: src/core/io/video/video_format.cpp:862
 #, kde-format
@@ -1934,7 +1938,7 @@ msgstr "Zabalera"
 #: src/core/io/video/video_format.cpp:864
 #, kde-format
 msgid "If not 0, it will overwrite the size"
-msgstr ""
+msgstr "0 ez bada, neurria gainidatziko du"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/core/io/video/video_format.cpp:864
@@ -1960,7 +1964,7 @@ msgstr "Bideoa"
 
 #: src/core/model/animation/animatable.cpp:271
 #: src/core/model/animation/animatable_path.cpp:30
-#, fuzzy, kde-format
+#, kde-format
 msgid "Split Segment"
 msgstr "Zatitu segmentua"
 
@@ -1981,12 +1985,12 @@ msgstr "Gehitu gako-fotograma"
 #: src/core/model/animation/animatable_path.cpp:139
 #, kde-format
 msgid "Extend Shape"
-msgstr ""
+msgstr "Hedatu forma"
 
 #: src/core/model/animation_container.cpp:54
 #, kde-format
 msgid "Animation Timing"
-msgstr ""
+msgstr "Animazioaren denboralizazioa"
 
 #: src/core/model/assets/assets.hpp:34
 msgid "values"
@@ -2071,7 +2075,7 @@ msgstr "Gradientea"
 #: src/core/model/assets/gradient.cpp:133
 #, kde-format
 msgid "Add color to %1"
-msgstr ""
+msgstr "Gehitu kolorea %1(e)an"
 
 #: src/core/model/assets/gradient.cpp:152
 #, kde-format
@@ -2156,7 +2160,7 @@ msgstr "Elipsea"
 #: src/gui/widgets/tools/color_picker_widget.ui:24
 #: src/gui/widgets/tools/fill_tool_widget.ui:24
 #: src/gui/widgets/tools/shape_tool_widget.ui:66
-#, fuzzy, kde-format
+#, kde-format
 msgid "Fill"
 msgstr "Bete"
 
@@ -2177,7 +2181,7 @@ msgstr "Irudia"
 #: src/core/model/shapes/inflate_deflate.cpp:18
 #, kde-format
 msgid "Inflate and Deflate"
-msgstr ""
+msgstr "Puztu eta hustu"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/model/shapes/layer.hpp:81
@@ -2190,7 +2194,7 @@ msgstr "Geruza"
 #: src/core/model/shapes/offset_path.cpp:342
 #, kde-format
 msgid "Offset Path"
-msgstr ""
+msgstr "Jatorri-aldaketaren ibilbidea"
 
 #. i18n: ectx: Menu (path)
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -2205,27 +2209,27 @@ msgstr "Bidea"
 #: src/core/model/shapes/polystar.hpp:48
 #, kde-format
 msgid "PolyStar"
-msgstr ""
+msgstr "IzanPoligonoa"
 
 #: src/core/model/shapes/precomp_layer.cpp:30
 #, kde-format
 msgid "Composition Layer"
-msgstr ""
+msgstr "Konposatzeko geruza"
 
 #: src/core/model/shapes/rect.hpp:31 src/gui/tools/rectangle_tool.hpp:20
-#, fuzzy, kde-format
+#, kde-format
 msgid "Rectangle"
 msgstr "Laukizuzena"
 
 #: src/core/model/shapes/repeater.cpp:25
-#, fuzzy, kde-format
+#, kde-format
 msgid "Repeater"
-msgstr "Errepikagailua"
+msgstr "Errepikatzailea"
 
 #: src/core/model/shapes/round_corners.cpp:20
-#, fuzzy, kde-format
+#, kde-format
 msgid "Round Corners"
-msgstr "Izkinak biribildu"
+msgstr "Izkinak biribilduak"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_stroke)
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -2239,48 +2243,48 @@ msgstr "Izkinak biribildu"
 #: src/gui/widgets/tools/color_picker_widget.ui:37
 #: src/gui/widgets/tools/fill_tool_widget.ui:38
 #: src/gui/widgets/tools/shape_tool_widget.ui:80
-#, fuzzy, kde-format
+#, kde-format
 msgid "Stroke"
 msgstr "Trazua"
 
 #: src/core/model/shapes/text.cpp:255
-#, fuzzy, kde-format
+#, kde-format
 msgid "Change Font"
 msgstr "Aldatu letra-tipoa"
 
 #. i18n: ectx: Menu (text)
 #: src/core/model/shapes/text.cpp:489 src/gui/glaxnimateui.rc:200
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:120
-#, fuzzy, kde-format
+#, kde-format
 msgid "Text"
 msgstr "Testua"
 
 #: src/core/model/shapes/trim.cpp:24
 #, kde-format
 msgid "Trim Path"
-msgstr ""
+msgstr "Kimatu ibilbidea"
 
 #: src/core/model/shapes/zig_zag.cpp:139
-#, fuzzy, kde-format
+#, kde-format
 msgid "Zig Zag"
-msgstr "Zig-zag-a"
+msgstr "Sigi-saga"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TimingDialog)
 #: src/core/model/stretchable_time.cpp:28
 #: src/gui/widgets/dialogs/timing_dialog.ui:21
-#, fuzzy, kde-format
+#, kde-format
 msgid "Timing"
-msgstr "Denbora-neurtzea"
+msgstr "Denboralizazioa"
 
 #: src/core/model/transform.hpp:29
-#, fuzzy, kde-format
+#, kde-format
 msgid "Transform"
 msgstr "Eraldatu"
 
 #: src/core/plugin/snippet.hpp:93
 #, kde-format
 msgid "# Glaxnimate snippet"
-msgstr ""
+msgstr "# Glaxnimate testu-zatiak"
 
 #: src/core/plugin/snippet.hpp:95
 #, kde-format
@@ -2299,39 +2303,39 @@ msgstr ""
 #: src/core/utils/gzip.cpp:30
 #, kde-format
 msgid "Could not decompress data"
-msgstr ""
+msgstr "Ezin izan ditu datuak deskonprimatu"
 
 #: src/core/utils/trace_wrapper.cpp:160
 #, kde-format
 msgid "Traced %1"
-msgstr ""
+msgstr "%1 trazatua"
 
 #: src/gui/cli.cpp:27
 #, kde-format
 msgctxt "@info:shell"
 msgid "Informational Options"
-msgstr ""
+msgstr "Informazio aukerak"
 
 #: src/gui/cli.cpp:28
 #, kde-format
 msgctxt "@info:shell"
 msgid "Show this help and exit"
-msgstr ""
+msgstr "Erakutsi laguntza hau eta irten"
 
 #: src/gui/cli.cpp:29
 #, kde-format
 msgctxt "@info:shell"
 msgid "Show version information and exit"
-msgstr ""
+msgstr "Erakutsi bertsioaren informazioa eta irten"
 
 #: src/gui/cli.cpp:31
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Options"
 msgstr "Aukerak"
 
 #: src/gui/cli.cpp:32
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "File to open"
 msgstr "Ireki beharreko fitxategia"
@@ -2340,13 +2344,13 @@ msgstr "Ireki beharreko fitxategia"
 #, kde-format
 msgctxt "@info:shell"
 msgid "When opening image files, trace them instead of embedding"
-msgstr ""
+msgstr "Irudi-fitxategiak irekitzean, txertatu ordez, haiek trazatu"
 
 #: src/gui/cli.cpp:35
 #, kde-format
 msgctxt "@info:shell"
 msgid "GUI Options"
-msgstr ""
+msgstr "EIGren aukerak"
 
 #: src/gui/cli.cpp:36
 #, kde-format
@@ -2372,16 +2376,16 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Print the window id"
-msgstr ""
+msgstr "Inprimatu leihoaren ID"
 
 #: src/gui/cli.cpp:57
 #, kde-format
 msgctxt "@info:shell"
 msgid "Enables the debug menu"
-msgstr ""
+msgstr "Arazteko menua gaitzen du"
 
 #: src/gui/cli.cpp:60
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Export Options"
 msgstr "Esportatzeko aukerak"
@@ -2390,15 +2394,15 @@ msgstr "Esportatzeko aukerak"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Export the input file to the given file instead of starting the GUI"
-msgstr ""
+msgstr "EIG abiatu ordez, esportatu sarrerako fitxategia emandako fitxategira"
 
 #: src/gui/cli.cpp:70
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Specify the format for --export. If omitted it's determined based on the "
 "file name. See --export-format-list for a list of supported formats."
-msgstr ""
+msgstr "Zehaztu «--export»ekin erabiltzeko formatu. "
 
 #: src/gui/cli.cpp:77
 #, kde-format
@@ -2455,25 +2459,25 @@ msgstr "Ezin izan du interprete bat aurkitu"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Unknown importer"
-msgstr ""
+msgstr "Inportatzaile ezezaguna"
 
 #: src/gui/cli.cpp:232
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not open input file for reading"
-msgstr ""
+msgstr "Ezin izan du sarrerako fitxategia irakurtzeko ireki"
 
 #: src/gui/cli.cpp:246
 #, kde-format
 msgctxt "@info:shell"
 msgid "Error loading input file"
-msgstr ""
+msgstr "Errorea sarrerako fitxategia zamatzean"
 
 #: src/gui/cli.cpp:260
 #, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to export"
-msgstr ""
+msgstr "Esportatu beharreko fitxategi bat zehaztu behar duzu"
 
 #: src/gui/cli.cpp:275
 #, kde-format
@@ -2486,68 +2490,68 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not open output file for writing"
-msgstr ""
+msgstr "Ezin izan du irteerako fitxategia idazteko ireki"
 
 #: src/gui/cli.cpp:295
 #, kde-format
 msgctxt "@info:shell"
 msgid "Error converting to the output format"
-msgstr ""
+msgstr "Errorea irteerako formatura bihurtzean"
 
 #: src/gui/cli.cpp:315 src/gui/cli.cpp:335
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not save to %1"
-msgstr ""
+msgstr "Ezin izan du %1(e)an gorde"
 
 #: src/gui/cli.cpp:344
 #, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to render"
-msgstr ""
+msgstr "Errendatu beharreko fitxategi bat zehaztu behar duzu"
 
 #: src/gui/emoji/emoji_dialog.cpp:32
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Emoji"
-msgstr ""
+msgstr "Hautatu Emoji"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:154
 #: src/gui/emoji/emoji_set_dialog.cpp:207
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Package install status"
 msgid "Installed"
 msgstr "Instalatuta"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:156
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Package install status"
 msgid "Not Installed"
-msgstr "Ez instalatua"
+msgstr "Ez dago instalatua"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:175
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Package install status"
 msgid "Downloading"
 msgstr "Zama-jaisten"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:186
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Package install status, %1 reason"
 msgid "Could not download: %1"
-msgstr "Ezin izan da %1 zama-jaitsi"
+msgstr "Ezin izan du zama-jaitsi: %1"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:205
 #, kde-format
 msgctxt "Package install status"
 msgid "Didn't download any files"
-msgstr ""
+msgstr "Ezin du fitxategirik zama-jaitsi"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, EmojiSetDialog)
 #: src/gui/emoji/emoji_set_dialog.ui:21
 #, kde-format
 msgid "Emoji Set"
-msgstr ""
+msgstr "Emoji multzoa"
 
 #. i18n: ectx: property (text), widget (QTableWidget, emoji_set_view)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
@@ -2569,19 +2573,19 @@ msgstr ""
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:391
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:451
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:89
-#, fuzzy, kde-format
+#, kde-format
 msgid "Name"
 msgstr "Izena"
 
 #. i18n: ectx: property (text), widget (QTableWidget, emoji_set_view)
 #: src/gui/emoji/emoji_set_dialog.ui:55
-#, fuzzy, kde-format
+#, kde-format
 msgid "License"
 msgstr "Lizentzia"
 
 #. i18n: ectx: property (text), widget (QTableWidget, emoji_set_view)
 #: src/gui/emoji/emoji_set_dialog.ui:90
-#, fuzzy, kde-format
+#, kde-format
 msgid "Downloaded"
 msgstr "Zama-jaitsita"
 
@@ -2593,7 +2597,7 @@ msgstr "Zama-jaitsita"
 #: src/gui/widgets/docks/script_console.ui:91
 #: src/gui/widgets/docks/snippet_list_widget.ui:98
 #: src/gui/widgets/font/google_fonts_widget.ui:36
-#, fuzzy, kde-format
+#, kde-format
 msgid "Reload"
 msgstr "Birzamatu"
 
@@ -2601,57 +2605,57 @@ msgstr "Birzamatu"
 #: src/gui/emoji/emoji_set_dialog.ui:121
 #, kde-format
 msgid "View Website"
-msgstr ""
+msgstr "Ikusi webgunea"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_download)
 #: src/gui/emoji/emoji_set_dialog.ui:135
-#, fuzzy, kde-format
+#, kde-format
 msgid "Download"
 msgstr "Zama-jaitsi"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_add_emoji)
 #: src/gui/emoji/emoji_set_dialog.ui:149
-#, fuzzy, kde-format
+#, kde-format
 msgid "Add Emoji..."
-msgstr "Gehitu Emoji..."
+msgstr "Gehitu Emojia..."
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_close)
 #: src/gui/emoji/emoji_set_dialog.ui:173
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:80
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:171
-#, fuzzy, kde-format
+#, kde-format
 msgid "Close"
 msgstr "Itxi"
 
 #. i18n: ectx: Menu (file_new_from_template)
 #: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1258
-#, fuzzy, kde-format
+#, kde-format
 msgid "New from Template"
-msgstr "Berria txantiloitik..."
+msgstr "Berria txantiloitik"
 
 #. i18n: ectx: Menu (edit_tools)
 #: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:379
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:754
-#, fuzzy, kde-format
+#, kde-format
 msgid "Tools"
 msgstr "Tresnak"
 
 #. i18n: ectx: Menu (views_menu)
 #: src/gui/glaxnimateui.rc:66
-#, fuzzy, kde-format
+#, kde-format
 msgid "Views"
 msgstr "Ikuspegiak"
 
 #. i18n: ectx: Menu (layout_menu)
 #: src/gui/glaxnimateui.rc:70
-#, fuzzy, kde-format
+#, kde-format
 msgid "Layout"
-msgstr "Antolamendua"
+msgstr "Antolaera"
 
 #. i18n: ectx: Menu (document)
 #: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:455
-#, fuzzy, kde-format
+#, kde-format
 msgid "Document"
 msgstr "Dokumentua"
 
@@ -2659,7 +2663,7 @@ msgstr "Dokumentua"
 #: src/gui/glaxnimateui.rc:88
 #, kde-format
 msgid "Render Single Frame"
-msgstr ""
+msgstr "Errendatu fotograma bakarra"
 
 #. i18n: ectx: Menu (web_preview_menu)
 #: src/gui/glaxnimateui.rc:93 src/gui/widgets/dialogs/gw_impl_document.cpp:529
@@ -2667,7 +2671,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:557
 #, kde-format
 msgid "Web Preview"
-msgstr ""
+msgstr "Web aurreikuspegia"
 
 #. i18n: ectx: Menu (playback)
 #: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:499
@@ -2677,7 +2681,7 @@ msgstr "Atzera-jo"
 
 #. i18n: ectx: Menu (object)
 #: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:607
-#, fuzzy, kde-format
+#, kde-format
 msgid "Object"
 msgstr "Objektua"
 
@@ -2685,24 +2689,24 @@ msgstr "Objektua"
 #: src/gui/glaxnimateui.rc:154
 #, kde-format
 msgid "Align and Distribute"
-msgstr ""
+msgstr "Lerrokatu eta banatu"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:205 src/gui/settings/plugin_settings_group.hpp:23
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1482
-#, fuzzy, kde-format
+#, kde-format
 msgid "Plugins"
 msgstr "Pluginak"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: src/gui/glaxnimateui.rc:219
-#, fuzzy, kde-format
+#, kde-format
 msgid "Main Toolbar"
 msgstr "Tresna-barra nagusia"
 
 #. i18n: ectx: ToolBar (toolsToolBar)
 #: src/gui/glaxnimateui.rc:242
-#, fuzzy, kde-format
+#, kde-format
 msgid "Tools Toolbar"
 msgstr "Tresnen tresna-barra"
 
@@ -2710,7 +2714,7 @@ msgstr "Tresnen tresna-barra"
 #: src/gui/glaxnimateui.rc:258
 #, kde-format
 msgid "Node Toolbar"
-msgstr ""
+msgstr "Nodoen tresna-barra"
 
 #: src/gui/graphics/bezier_item.cpp:239
 #, kde-format
@@ -2728,7 +2732,7 @@ msgid "Remove Point"
 msgstr "Kendu puntua"
 
 #: src/gui/graphics/bezier_item.cpp:392
-#, fuzzy, kde-format
+#, kde-format
 msgid "Set Start"
 msgstr "Ezarri hasiera"
 
@@ -2738,42 +2742,42 @@ msgid "Update shape"
 msgstr "Eguneratu forma"
 
 #: src/gui/graphics/composition_item.hpp:113
-#, fuzzy, kde-format
+#, kde-format
 msgid "Resize Canvas"
-msgstr "Neurria aldatu oihalari"
+msgstr "Mihisearen neurria aldatu"
 
 #: src/gui/graphics/gradient_editor.cpp:109
 #, kde-format
 msgid "Drag Gradient"
-msgstr ""
+msgstr "Arrastatu gradientea"
 
 #: src/gui/graphics/transform_graphics_item.cpp:429
 #: src/gui/graphics/transform_graphics_item.cpp:499
 #, kde-format
 msgid "Drag anchor point"
-msgstr ""
+msgstr "Arrastatu aingura-puntua"
 
 #: src/gui/item_models/document_model_base.cpp:101
 #, kde-format
 msgid "Move Layers"
-msgstr ""
+msgstr "Mugitu geruzak"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_3)
 #: src/gui/item_models/document_node_model.cpp:253
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:279
-#, fuzzy, kde-format
+#, kde-format
 msgid "Color"
 msgstr "Kolorea"
 
 #: src/gui/item_models/document_node_model.cpp:257
 #: src/gui/item_models/property_model_full.cpp:257
-#, fuzzy, kde-format
+#, kde-format
 msgid "Visible"
 msgstr "Ikusgai"
 
 #: src/gui/item_models/document_node_model.cpp:259
 #: src/gui/item_models/property_model_full.cpp:291
-#, fuzzy, kde-format
+#, kde-format
 msgid "Locked"
 msgstr "Giltzatuta"
 
@@ -2781,57 +2785,57 @@ msgstr "Giltzatuta"
 #: src/gui/item_models/gradient_list_model.cpp:179
 #, kde-format
 msgid "#"
-msgstr ""
+msgstr "zk."
 
 #: src/gui/item_models/gradient_list_model.cpp:181
-#, fuzzy, kde-format
+#, kde-format
 msgid "Number of users"
 msgstr "Erabiltzaile-kopurua"
 
 #: src/gui/item_models/property_model_base.cpp:247
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%%1"
 
 #: src/gui/item_models/property_model_full.cpp:208
 #, kde-format
 msgid "Group Color"
-msgstr ""
+msgstr "Taldearen kolorea"
 
 #: src/gui/item_models/property_model_full.cpp:215
 #, kde-format
 msgid "Jump to previous keyframe"
-msgstr ""
+msgstr "Jauzi aurreko gako-fotogramara"
 
 #: src/gui/item_models/property_model_full.cpp:258
-#, fuzzy, kde-format
+#, kde-format
 msgid "Hidden"
 msgstr "Ezkutuan"
 
 #: src/gui/item_models/property_model_full.cpp:265
 #, kde-format
 msgid "Toggle Keyframe"
-msgstr ""
+msgstr "Txandakatu gako-fotograma"
 
 #: src/gui/item_models/property_model_full.cpp:292
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unlocked"
 msgstr "Giltzatik aske"
 
 #: src/gui/item_models/property_model_full.cpp:300
 #, kde-format
 msgid "Jump to next keyframe"
-msgstr ""
+msgstr "Jauzi hurrengo gako-fotogramara"
 
 #: src/gui/item_models/property_model_full.cpp:394
 #, kde-format
 msgid "Parent Layer"
-msgstr ""
+msgstr "Guraso-geruza"
 
 #: src/gui/item_models/property_model_full.cpp:400
 #, kde-format
 msgid "(No Parent)"
-msgstr ""
+msgstr "(Gurasorik gabe)"
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_3)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_hsv_value)
@@ -2843,45 +2847,44 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:96
 #: src/gui/widgets/shape_style/color_selector.ui:113
 #: src/gui/widgets/shape_style/color_selector.ui:153
-#, fuzzy, kde-format
+#, kde-format
 msgid "Value"
 msgstr "Balioa"
 
 #: src/gui/item_models/python_snippet_model.hpp:35
-#, fuzzy, kde-format
+#, kde-format
 msgid "New Snippet %1"
-msgstr "Testu-zati berria"
+msgstr "Testu-zati berria %1"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_google)
 #: src/gui/settings/api_credentials.cpp:28
 #: src/gui/widgets/font/font_style_dialog.ui:52
 #, kde-format
 msgid "Google Fonts"
-msgstr ""
+msgstr "Google letra-tipoak"
 
 #: src/gui/settings/api_credentials.cpp:89
-#, fuzzy, kde-format
+#, kde-format
 msgid "Information"
 msgstr "Informazioa"
 
 #: src/gui/settings/api_credentials.hpp:42
 msgid "API Credentials"
-msgstr ""
+msgstr "API egiaztagiriak"
 
 #: src/gui/settings/clipboard_settings.hpp:18
-#, fuzzy
 msgid "Clipboard"
 msgstr "Arbela"
 
 #: src/gui/settings/document_templates.cpp:52
-#, fuzzy, kde-format
+#, kde-format
 msgid "Unnamed"
 msgstr "Izengabea"
 
 #: src/gui/settings/document_templates.cpp:118
 #, kde-format
 msgid "%1"
-msgstr ""
+msgstr "%1"
 
 #: src/gui/settings/document_templates.cpp:125
 #, kde-format
@@ -2889,23 +2892,22 @@ msgctxt ""
 "%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
 msgid "%5 - %1x%2 %3 %4fps"
-msgstr ""
+msgstr "%5 - %1x%2 %3 %4fps"
 
 #: src/gui/settings/document_templates.cpp:180
-#, fuzzy, kde-format
+#, kde-format
 msgid "Template"
 msgstr "Txantiloia"
 
 #: src/gui/settings/document_templates.cpp:184
 #, kde-format
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: src/gui/settings/icon_settings.cpp:42
-#, fuzzy, kde-format
-#| msgid "System"
+#, kde-format
 msgid "System Default"
-msgstr "Sistema"
+msgstr "Sistemaren lehenespena"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
@@ -2920,12 +2922,12 @@ msgstr "Sistema"
 #: src/gui/widgets/view_transform_widget.ui:60
 #, no-c-format, kde-format
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: src/gui/tools/color_picker.cpp:19
-#, fuzzy, kde-format
+#, kde-format
 msgid "Color Picker"
-msgstr "Kolore-hautatzailea"
+msgstr "Kolore hautatzailea"
 
 #: src/gui/tools/draw_tool.cpp:183
 #, kde-format
@@ -2960,12 +2962,12 @@ msgstr "Arrastatu nodoak"
 #: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:706
 #, kde-format
 msgid "Cusp"
-msgstr ""
+msgstr "Goierpina"
 
 #: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:707
-#, fuzzy, kde-format
+#, kde-format
 msgid "Smooth"
-msgstr "Leundu"
+msgstr "Leuna"
 
 #: src/gui/tools/edit_tool.cpp:284
 #, kde-format
@@ -3012,7 +3014,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Add Stop"
-msgstr ""
+msgstr "Gehitu kolorea"
 
 #: src/gui/tools/edit_tool.cpp:385
 #, fuzzy, kde-format
@@ -3365,7 +3367,7 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:189
-#, fuzzy, kde-format
+#, kde-format
 msgid "Min Frequency"
 msgstr "Gutxieneko maiztasuna"
 
@@ -3556,7 +3558,7 @@ msgstr "Forma"
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:55
 #, fuzzy, kde-format
 msgid "End Time"
-msgstr "Bukaerako ordua/denbora?"
+msgstr "Bukaerako ordua"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_units)
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -3586,7 +3588,7 @@ msgstr "Hautatu..."
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:97
 #, fuzzy, kde-format
 msgid "Start Time"
-msgstr "Hasierako ordua/denbora?"
+msgstr "Hasierako ordua"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:27
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:35
@@ -4047,9 +4049,9 @@ msgid "Cleanup"
 msgstr "Txukundu"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:486
-#, fuzzy, kde-format
+#, kde-format
 msgid "Timing…"
-msgstr "Denbora-neurtzea"
+msgstr "Denboralizazioa..."
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:491
 #, kde-format
@@ -4274,7 +4276,7 @@ msgstr "Segmentuak kurbatu"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:845
 #, kde-format
 msgid "Recording Keyframes"
-msgstr ""
+msgstr "Gako-fotogramak grabatzea"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1258
 #, kde-format
@@ -4298,7 +4300,7 @@ msgstr "Hautatu irudi bat bakarrik"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1462
 #, kde-format
 msgid "You need to select an image to trace"
-msgstr ""
+msgstr "Trazatzeko irudi bat hautatu behar duzu"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1469
 #, kde-format
@@ -4381,7 +4383,7 @@ msgstr "/zure/fitxategirako/bidea/hemen.txe"
 #: src/gui/widgets/dialogs/io_status_dialog.ui:84
 #, kde-format
 msgid "Issues"
-msgstr ""
+msgstr "Auziak"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ResizeDialog)
 #: src/gui/widgets/dialogs/resize_dialog.cpp:28
@@ -4604,9 +4606,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: src/gui/widgets/dialogs/trace_dialog.ui:164
-#, kde-format
+#, fuzzy, kde-format
 msgid "Posterization Level"
-msgstr ""
+msgstr "Posterizazio maila"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_2)
 #: src/gui/widgets/dialogs/trace_dialog.ui:198
@@ -5175,7 +5177,7 @@ msgstr "Kategoria"
 #: src/gui/widgets/font/google_fonts_model.cpp:278
 #, fuzzy, kde-format
 msgid "Rank"
-msgstr "Postua"
+msgstr "Sailkapena"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:280
 #, kde-format
@@ -6056,7 +6058,7 @@ msgstr "Trazuaren zabalera"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:69
 #, fuzzy, kde-format
 msgid "Cap"
-msgstr "Caph"
+msgstr "txanoa"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:157
@@ -6068,7 +6070,7 @@ msgstr "Elkartu"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:263
 #, fuzzy, kde-format
 msgid "Miter Limit"
-msgstr "Inglete muga"
+msgstr "Inglete-muga"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:338
