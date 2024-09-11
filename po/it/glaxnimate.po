@@ -1,7 +1,7 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the glaxnimate package.
 # SPDX-FileCopyrightText: 2022, 2023 Mattia Basaglia <glax@dragon.best>
-# SPDX-FileCopyrightText: 2023 Vincenzo Reale <smart2128vr@gmail.com>
+# SPDX-FileCopyrightText: 2023, 2024 Vincenzo Reale <smart2128vr@gmail.com>
 # SPDX-FileCopyrightText: 2024 Paolo Zamponi <feus73@gmail.com>
 # SPDX-FileCopyrightText: 2024 Valter Mura <valtermura@gmail.com>
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2024-08-17 21:34+0200\n"
+"PO-Revision-Date: 2024-09-07 19:35+0200\n"
 "Last-Translator: Valter Mura <valtermura@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -27,7 +27,7 @@ msgstr "Valter Mura"
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "valtermura@gmail.com,"
+msgstr "valtermura@gmail.com"
 
 #. i18n: file: src/core/model/shapes/repeater.hpp
 #. i18n: Property name
@@ -5748,17 +5748,12 @@ msgstr ""
 "predefinita, e verticalmente con Maiusc o con Alt"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:237
-#, fuzzy
-#| msgctxt "@label:listbox"
-#| msgid "Icon Theme"
 msgid "Icon Theme"
 msgstr "Tema di icone"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:237
-#, fuzzy
-#| msgid "Open with External Application"
 msgid "Icon theme for the application"
-msgstr "Apri con applicazione esterna"
+msgstr "Tema di icone per l'applicazione"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 #, kde-format
