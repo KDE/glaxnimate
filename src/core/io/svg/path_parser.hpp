@@ -69,7 +69,7 @@ private:
             {
                 if ( cmds.contains(ch.toUpper()) )
                 {
-                    tokens.emplace_back(qreal(ch.unicode()));
+                    tokens.emplace_back(ushort(ch.unicode()));
                     next();
                 }
                 else if ( ch.isSpace() || ch == ',')
