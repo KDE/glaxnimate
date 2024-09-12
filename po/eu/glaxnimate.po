@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2024-09-09 22:16+0200\n"
+"PO-Revision-Date: 2024-09-11 00:27+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -78,9 +78,9 @@ msgstr "biribilduta"
 
 #. i18n: file: src/core/model/shapes/precomp_layer.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
+#, kde-format
 msgid "timing"
-msgstr "Denboralizazioa"
+msgstr "denboralizazioa"
 
 #. i18n: file: src/core/model/shapes/precomp_layer.hpp
 #. i18n: Property name
@@ -106,15 +106,15 @@ msgstr "formak"
 
 #. i18n: file: src/core/model/shapes/trim.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
+#, kde-format
 msgid "end"
-msgstr "amaitu"
+msgstr "bukaera"
 
 #. i18n: file: src/core/model/shapes/trim.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
+#, kde-format
 msgid "multiple"
-msgstr "Multiploa"
+msgstr "anizkoitza"
 
 #. i18n: file: src/core/model/shapes/text.hpp
 #. i18n: Property name
@@ -306,6 +306,14 @@ msgid ""
 "Then layers are created that appear in and out at uniform time intervals. "
 "You can use these layers for frame-by-frame animation."
 msgstr ""
+"Elkarrizketa-koadro honek fotogramaz fotograma animazioekin laguntzeko "
+"geruza sortzen du.\n"
+"\n"
+"Fotogramatan zatitu nahi duzun denbora-tartea, eta nahi duzun fotograma "
+"kopurua zehazten duzu.\n"
+"\n"
+"Gero, geruzak sortzen dira, denbora tarte uniformeetan sartu-irteten "
+"direnak. Geruza horiek erabil ditzakezu fotogramaz-fotograma animaziorako."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: data/plugins/FrameByFrame/create_frames.ui:43
@@ -412,16 +420,20 @@ msgid ""
 "Prompts the user to select a document to append as an object to the current "
 "one."
 msgstr ""
+"Erabiltzaileari dokumentu bat hautatzeko eskatzen dio, unekoari objektu gisa "
+"eransteko."
 
 #: src/android/help_dialog.cpp:66
 #, kde-format
 msgid "Save the current document, prompting to select a file for new documents"
 msgstr ""
+"Gorde uneko dokumentua, dokumentu berrietarako fitxategi bat hautatzeko "
+"eskatuz"
 
 #: src/android/help_dialog.cpp:70
 #, kde-format
 msgid "Save the current document, always prompting to select a file."
-msgstr ""
+msgstr "Gorde uneko dokumentua, beti fitxategi bat hautatzeko eskatuz."
 
 #: src/android/help_dialog.cpp:74
 #, kde-format
@@ -430,11 +442,15 @@ msgid ""
 "Currently the following formats are supported:\n"
 "%1"
 msgstr ""
+"Gorde uneko dokumentuaren kopia bat, formatu bat eta fitxategi bat "
+"hautatzeko eskatuz.\n"
+"Une honetan ondoko formatuak onartzen dira:\n"
+"%1"
 
 #: src/android/help_dialog.cpp:78
 #, kde-format
 msgid "Saves the current frame as a still image"
-msgstr ""
+msgstr "Uneko fotograma irudi geldi gisa gordetzen du"
 
 #: src/android/help_dialog.cpp:82
 #, kde-format
@@ -1099,12 +1115,12 @@ msgstr "\"%2\"(e)ren \"%1\" propietate ezezaguna"
 #: src/core/io/aep/aep_loader.cpp:404
 #, kde-format
 msgid "Expected property for %1"
-msgstr ""
+msgstr "%1(e)rako esperotako propietatea"
 
 #: src/core/io/aep/aep_loader.cpp:411
 #, kde-format
 msgid "Could convert %1"
-msgstr ""
+msgstr "%1 bihurtu ahal izan du"
 
 #: src/core/io/aep/aep_loader.cpp:415
 #: src/core/io/lottie/lottie_importer.hpp:897
@@ -1117,7 +1133,7 @@ msgstr "%1(e)rako balio baliogabea"
 #: src/core/io/aep/aep_loader.cpp:510
 #, kde-format
 msgid "Expected property group for transform"
-msgstr ""
+msgstr "Eraldatzeko esperotako propietate taldea"
 
 #: src/core/io/aep/aep_loader.cpp:559
 #, kde-format
@@ -1240,12 +1256,12 @@ msgstr "%s talde batean egon beharko litzateke"
 #: src/core/io/avd/avd_renderer.cpp:163
 #, kde-format
 msgid "%s is not supported"
-msgstr ""
+msgstr "%s ez da onartzen"
 
 #: src/core/io/avd/avd_renderer.cpp:252
 #, kde-format
 msgid "%s are not supported"
-msgstr ""
+msgstr "%s ez dira onartzen"
 
 #: src/core/io/avd/avd_renderer.cpp:518
 #, kde-format
@@ -1276,12 +1292,12 @@ msgstr ""
 #: src/core/io/lottie/lottie_format.cpp:40
 #, kde-format
 msgid "No JSON object found"
-msgstr ""
+msgstr "Ez da JSON objekturik aurkitu"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:35
 #, kde-format
 msgid "Opening a file from a newer version of Glaxnimate"
-msgstr ""
+msgstr "Glaxnimate-ren bertsio berriago bateko fitxategi bat irekitzen"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:43
 #, kde-format
@@ -1316,7 +1332,7 @@ msgstr ""
 #: src/core/io/glaxnimate/import_state.hpp:332
 #, kde-format
 msgid "Could not set property %1"
-msgstr ""
+msgstr "Ezin izan du %1 propietatea ezarri"
 
 #: src/core/io/glaxnimate/import_state.hpp:358
 #, kde-format
@@ -1351,7 +1367,7 @@ msgstr "'%1' motako objektu ezezaguna"
 #: src/core/io/lottie/lottie_exporter.hpp:559
 #, kde-format
 msgid "Lottie only supports layers in the top level"
-msgstr ""
+msgstr "Lottie-k, geruzak goiko mailan bakarrik onartzen ditu"
 
 #: src/core/io/lottie/lottie_exporter.hpp:561
 #, kde-format
@@ -1395,14 +1411,14 @@ msgid "Strip unused properties"
 msgstr ""
 
 #: src/core/io/lottie/lottie_format.cpp:61
-#, fuzzy, kde-format
+#, kde-format
 msgid "Embed Images"
-msgstr "Txertatu irudiak"
+msgstr "Txertatutako irudiak"
 
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
 msgid "Automatically embed non-embedded images"
-msgstr ""
+msgstr "Automatikoki txertatu txertatu gabeko irudiak"
 
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
@@ -1503,22 +1519,22 @@ msgstr "Izar formek ez dute euskarri ofizialik"
 #: src/core/io/lottie/tgs_format.cpp:51 src/core/io/lottie/validation.cpp:71
 #, kde-format
 msgid "Images are not supported"
-msgstr ""
+msgstr "Irudiak ez dira onartzen"
 
 #: src/core/io/lottie/tgs_format.cpp:56
 #, kde-format
 msgid "Gradient strokes are not officially supported"
-msgstr ""
+msgstr "Gradiente-trazuak ez dira ofizialki onartzen"
 
 #: src/core/io/lottie/tgs_format.cpp:61
 #, kde-format
 msgid "Masks are not supported"
-msgstr ""
+msgstr "Maskarak ez dira onartzen"
 
 #: src/core/io/lottie/tgs_format.cpp:65
 #, kde-format
 msgid "Repeaters are not officially supported"
-msgstr ""
+msgstr "Errepikatzaileak ez dira ofizialki onartzen"
 
 #: src/core/io/lottie/tgs_format.cpp:69
 #, kde-format
@@ -1533,7 +1549,7 @@ msgstr ""
 #: src/core/io/lottie/tgs_format.cpp:77
 #, kde-format
 msgid "ZigZag is not supported"
-msgstr ""
+msgstr "Sigi-saga ez da onartzen"
 
 #: src/core/io/lottie/tgs_format.cpp:110
 #, kde-format
@@ -1704,7 +1720,7 @@ msgstr "Ustekabeko animazioa"
 #: src/core/io/rive/rive_loader.cpp:231
 #, kde-format
 msgid "Unexpected Asset Contents"
-msgstr ""
+msgstr "Ustekabeko aktibo edukiak"
 
 #: src/core/io/rive/rive_loader.cpp:242
 #, kde-format
@@ -2370,7 +2386,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Use a specific size for the main window"
-msgstr ""
+msgstr "Erabili neurri zehatz bat leiho nagusirako"
 
 #: src/gui/cli.cpp:54
 #, kde-format
@@ -2414,7 +2430,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Render Frame Options"
-msgstr ""
+msgstr "Fotograma errendatzeko aukerak"
 
 #: src/gui/cli.cpp:84
 #, kde-format
@@ -2436,21 +2452,23 @@ msgstr ""
 msgctxt "@info:shell"
 msgid "Frame number to render, use `all` to render all frames"
 msgstr ""
+"Errendatu beharreko fotograma kopurua, erabili 'dena' fotograma denak "
+"errendatzeko"
 
 #: src/gui/cli.cpp:105
 #, kde-format
 msgctxt "@info:shell"
 msgid "Shows possible values for --render-format"
-msgstr ""
+msgstr "«--render-format»en balio posibleak erakusten ditu"
 
 #: src/gui/cli.cpp:159
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Could not run the plugin"
 msgstr "Ezin izan du plugina exekutatu"
 
 #: src/gui/cli.cpp:168
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:shell"
 msgid "Could not find an interpreter"
 msgstr "Ezin izan du interprete bat aurkitu"
@@ -2485,6 +2503,8 @@ msgctxt "@info:shell"
 msgid ""
 "Unknown exporter. Use --export-format-list for a list of available formats"
 msgstr ""
+"Esportatzaile ezezaguna. Erabili  «--export-format-list»  formatu "
+"erabilgarrien zerrenda bat erakusteko"
 
 #: src/gui/cli.cpp:286
 #, kde-format
@@ -3401,13 +3421,13 @@ msgstr ""
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:21
 #, kde-format
 msgid "Document Metadata"
-msgstr ""
+msgstr "Dokumentuaren metadatuak"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:38
-#, fuzzy, kde-format
+#, kde-format
 msgid "Common"
-msgstr "Orokorra"
+msgstr "Arrunta"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -3556,9 +3576,9 @@ msgstr "Forma"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:55
-#, fuzzy, kde-format
+#, kde-format
 msgid "End Time"
-msgstr "Bukaerako ordua"
+msgstr "Bukaera ordua"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_units)
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -3586,9 +3606,9 @@ msgstr "Hautatu..."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:97
-#, fuzzy, kde-format
+#, kde-format
 msgid "Start Time"
-msgstr "Hasierako ordua"
+msgstr "Hasiera ordua"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:27
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:35
@@ -5109,7 +5129,7 @@ msgstr "Datu baliogabeen URLa"
 #: src/gui/widgets/font/font_loader.cpp:138
 #, kde-format
 msgid "Font format not supported for %1"
-msgstr ""
+msgstr "%1(e)rako euskarririk gabeko letra-tipo formatua"
 
 #: src/gui/widgets/font/font_preview_widget.cpp:25
 #, kde-format
@@ -5852,7 +5872,7 @@ msgstr "Bildu dokumentuaren lagina"
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:121
 #, kde-format
 msgid "Link Shapes to Swatch"
-msgstr ""
+msgstr "Estekatu formak laginera"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:236
 #, kde-format
@@ -6244,7 +6264,7 @@ msgstr "Leuna"
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:98
 #, kde-format
 msgid "Anticipate"
-msgstr ""
+msgstr "Aurrea hartu"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:100
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:103
