@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2024-08-14 11:31+0200\n"
+"PO-Revision-Date: 2024-09-03 08:48+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2869,10 +2869,9 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: src/gui/settings/icon_settings.cpp:42
-#, fuzzy, kde-format
-#| msgid "System"
+#, kde-format
 msgid "System Default"
-msgstr "Systém"
+msgstr "Výchozí systémový"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
@@ -6154,7 +6153,7 @@ msgstr "Nahrávat"
 #: src/gui/widgets/timeline/keyframe_editor_widget.ui:37
 #, kde-format
 msgid "Presets"
-msgstr "Předvolby"
+msgstr "Přednastavení"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/timeline/keyframe_editor_widget.ui:43
