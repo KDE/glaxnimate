@@ -7,15 +7,16 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2024-09-20 17:08+0300\n"
+"PO-Revision-Date: 2024-09-21 10:03+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
+"n % 10 == 0) ? 2 : 3));\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -433,6 +434,9 @@ msgid ""
 "Currently the following formats are supported:\n"
 "%1"
 msgstr ""
+"שמירת עותק של המסמך הנוכחי, תוך הצגת בקשה לבחור תסדיר וקובץ.\n"
+"אלו התסדירים שנתמכים נכון לעכשיו:\n"
+"%1"
 
 #: src/android/help_dialog.cpp:78
 #, kde-format
@@ -1175,7 +1179,7 @@ msgstr "מאפייני המסכה חסרים"
 #: src/core/io/aep/aep_parser.hpp:424
 #, kde-format
 msgid "Unknown property type: %1"
-msgstr ""
+msgstr "סוג המאפיין לא ידוע: %1"
 
 #: src/core/io/aep/aep_parser.hpp:645
 #, kde-format
@@ -1190,7 +1194,7 @@ msgstr "אין מספיק נתונים ברשימה"
 #: src/core/io/aep/aep_parser.hpp:791
 #, kde-format
 msgid "Invalid text document: %1"
-msgstr ""
+msgstr "מסמך טקסט שגוי: %1"
 
 #: src/core/io/aep/riff.hpp:220 src/core/io/aep/riff.hpp:233
 #: src/core/io/aep/riff.hpp:254 src/core/io/aep/riff.hpp:292
@@ -1206,78 +1210,78 @@ msgstr "התסדיר %1 לא ידוע"
 #: src/core/io/avd/avd_format.hpp:21
 #, kde-format
 msgid "Android Vector Drawable"
-msgstr ""
+msgstr "Android Vector Drawable"
 
 #: src/core/io/avd/avd_parser.cpp:223
 #, kde-format
 msgid "Unknown interpolator %s"
-msgstr ""
+msgstr "המביין %s לא ידוע"
 
 #: src/core/io/avd/avd_parser.cpp:650
 #, kde-format
 msgid "Unknown resource id %1"
-msgstr ""
+msgstr "מזהה המשאב %1 לא ידוע"
 
 #: src/core/io/avd/avd_parser.cpp:658
 #, kde-format
 msgid "Could not read file %1"
-msgstr ""
+msgstr "לא ניתן לקרוא את הקובץ %1"
 
 #: src/core/io/avd/avd_parser.cpp:659 src/core/io/avd/avd_parser.cpp:668
 #, kde-format
 msgid "Could not load resource %1"
-msgstr ""
+msgstr "לא ניתן לטעון את המשאב %1"
 
 #: src/core/io/avd/avd_renderer.cpp:159
 #, kde-format
 msgid "%s should be in a group"
-msgstr ""
+msgstr "%s אמור להיות בקבוצה"
 
 #: src/core/io/avd/avd_renderer.cpp:163
 #, kde-format
 msgid "%s is not supported"
-msgstr ""
+msgstr "אין תמיכה ב־%s"
 
 #: src/core/io/avd/avd_renderer.cpp:252
 #, kde-format
 msgid "%s are not supported"
-msgstr ""
+msgstr "אין תמיכה ב־%s"
 
 #: src/core/io/avd/avd_renderer.cpp:518
 #, kde-format
 msgid "%s cannot be a clip path"
-msgstr ""
+msgstr "%s לא יכול להיות נתיב חיתוך"
 
 #: src/core/io/base.cpp:22 src/core/io/svg/svg_renderer.cpp:823
 #: src/gui/tools/base.cpp:162
 #, kde-format
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: src/core/io/glaxnimate/glaxnimate_format.hpp:26
 #: src/core/io/glaxnimate/glaxnimate_mime.hpp:21
 #, kde-format
 msgid "Glaxnimate Animation"
-msgstr ""
+msgstr "הנפשת Glaxnimate"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:21
 #: src/core/io/glaxnimate/glaxnimate_mime.cpp:88
 #: src/core/io/lottie/lottie_format.cpp:34
 #, kde-format
 msgid "Could not parse JSON: %1"
-msgstr ""
+msgstr "לא ניתן לפענח JSON‏: %1"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:27
 #: src/core/io/glaxnimate/glaxnimate_mime.cpp:94
 #: src/core/io/lottie/lottie_format.cpp:40
 #, kde-format
 msgid "No JSON object found"
-msgstr ""
+msgstr "לא נמצא פריט JSON"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:35
 #, kde-format
 msgid "Opening a file from a newer version of Glaxnimate"
-msgstr ""
+msgstr "פתיחת קובץ מגרסה חדשה יותר של Glaxnimate"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:43
 #, kde-format
@@ -1287,77 +1291,77 @@ msgstr "תרכובת חסרה"
 #: src/core/io/glaxnimate/import_state.hpp:108
 #, kde-format
 msgid "Property %1 of %2 refers to unexisting object %3"
-msgstr ""
+msgstr "המאפיין %1 של %2 מפנה לפריט %3 שאינו קיים"
 
 #: src/core/io/glaxnimate/import_state.hpp:117
 #, kde-format
 msgid "Could not load %1 for %2: uuid refers to an unacceptable object"
-msgstr ""
+msgstr "לא ניתן לטעון את %1 עבור %2: המזהה הייחודי מפנה לפריט לא מקובל"
 
 #: src/core/io/glaxnimate/import_state.hpp:128
 #, kde-format
 msgid "Object %1 is invalid"
-msgstr ""
+msgstr "הפריט %1 שגוי"
 
 #: src/core/io/glaxnimate/import_state.hpp:317
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
-msgstr ""
+msgstr "סוג הפריט שגוי: אמור להיות ‚%1’ אבל התקבל ‚%2’"
 
 #: src/core/io/glaxnimate/import_state.hpp:323
 #, kde-format
 msgid "Could not load %1 for %2"
-msgstr ""
+msgstr "לא ניתן לטעון את %1 עבור %2"
 
 #: src/core/io/glaxnimate/import_state.hpp:332
 #, kde-format
 msgid "Could not set property %1"
-msgstr ""
+msgstr "לא ניתן להגדיר את המאפיין %1"
 
 #: src/core/io/glaxnimate/import_state.hpp:358
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
-msgstr ""
+msgstr "הפריט %1 עבור %2 ב־%3 אינו מסוג פריט"
 
 #: src/core/io/glaxnimate/import_state.hpp:370
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
-msgstr ""
+msgstr "הפריט %1 עבור %2 ב־%3 אינו מקובל"
 
 #: src/core/io/glaxnimate/import_state.hpp:409
 #, kde-format
 msgid "Keyframe must specify a time"
-msgstr ""
+msgstr "תמונית המפתח חייבת לציין זמן"
 
 #: src/core/io/glaxnimate/import_state.hpp:414
 #, kde-format
 msgid "Keyframe must specify a value"
-msgstr ""
+msgstr "תמונית המפתח חייבת לציין ערך"
 
 #: src/core/io/glaxnimate/import_state.hpp:424
 #, kde-format
 msgid "Could not add keyframe"
-msgstr ""
+msgstr "לא ניתן להוסיף תמונית מפתח"
 
 #: src/core/io/glaxnimate/import_state.hpp:608
 #, kde-format
 msgid "Unknown object of type '%1'"
-msgstr ""
+msgstr "פריט לא ידוע מסוג ‚%1’"
 
 #: src/core/io/lottie/lottie_exporter.hpp:559
 #, kde-format
 msgid "Lottie only supports layers in the top level"
-msgstr ""
+msgstr "Lottie תומך בשכבות ברמה העליונה בלבד"
 
 #: src/core/io/lottie/lottie_exporter.hpp:561
 #, kde-format
 msgid "Lottie only supports auto-orient layers in the top level"
-msgstr ""
+msgstr "Lottie תומך בכיוון שכבות אוטומטי ברמה העליונה"
 
 #: src/core/io/lottie/lottie_exporter.hpp:610
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
-msgstr ""
+msgstr "אי אפשר לקבץ תמונות עם צורות אחרות, הן חייבות להיות בתוך שכבה"
 
 #: src/core/io/lottie/lottie_exporter.hpp:612
 #, kde-format
@@ -1369,118 +1373,118 @@ msgstr "אי אפשר לקבץ שכבות עם צורות אחרות, הן חי�
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
 msgid "Pretty"
-msgstr ""
+msgstr "קריא"
 
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
 msgid "Pretty print the JSON"
-msgstr ""
+msgstr "הצגת ה־JSON באופן קריא"
 
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
 msgid "Strip"
-msgstr ""
+msgstr "סילוק"
 
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
 msgid "Strip unused properties"
-msgstr ""
+msgstr "סילוק מאפיינים שאינם בשימוש"
 
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
 msgid "Embed Images"
-msgstr ""
+msgstr "הטמעת תמונות"
 
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
 msgid "Automatically embed non-embedded images"
-msgstr ""
+msgstr "הטמעה אוטומטית של תמונות שלא ניתן להטמיע"
 
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
 msgid "Legacy Keyframes"
-msgstr ""
+msgstr "תמוניות מפתח מיושנות"
 
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
 msgid "Compatibility with lottie-web versions prior to 5.0.0"
-msgstr ""
+msgstr "תאימות מול גרסאות lottie-web שקדמו ל־5.0.0"
 
 #: src/core/io/lottie/lottie_format.hpp:22
 #, kde-format
 msgid "Lottie Animation"
-msgstr ""
+msgstr "הנפשת Lottie"
 
 #: src/core/io/lottie/lottie_html_format.hpp:20
 #, kde-format
 msgid "Lottie HTML Preview"
-msgstr ""
+msgstr "תצוגת Lottie HTML מקדימה"
 
 #: src/core/io/lottie/lottie_importer.hpp:185
 #, kde-format
 msgid "Missing layer type for %1"
-msgstr ""
+msgstr "סוג השכבה של %1 חסר"
 
 #: src/core/io/lottie/lottie_importer.hpp:322
 #, kde-format
 msgid "Cannot use %1 as parent as it couldn't be loaded"
-msgstr ""
+msgstr "לא ניתן להשתמש ב־%1 כהורה כיוון שלא נטען לטעון אותו"
 
 #: src/core/io/lottie/lottie_importer.hpp:332
 #, kde-format
 msgid "Invalid parent layer %1"
-msgstr ""
+msgstr "שכבת הורה שגויה %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:457
 #, kde-format
 msgid "Unsupported layer of type %1"
-msgstr ""
+msgstr "שכבה לא נתמכת לסוג %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:482
 #, kde-format
 msgid "Missing shape type"
-msgstr ""
+msgstr "סוג הצורה לא נתמך"
 
 #: src/core/io/lottie/lottie_importer.hpp:495
 #: src/core/io/lottie/lottie_importer.hpp:505
 #, kde-format
 msgid "Unsupported shape type %1"
-msgstr ""
+msgstr "סוג הצורה %1 לא נתמך"
 
 #: src/core/io/lottie/lottie_importer.hpp:528
 #, kde-format
 msgid "Unknown field %2%1"
-msgstr ""
+msgstr "השדה %2%1 לא ידוע"
 
 #: src/core/io/lottie/lottie_importer.hpp:852
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
-msgstr ""
+msgstr "נקודת בזייה שגויה %1 ב־%2"
 
 #: src/core/io/lottie/lottie_importer.hpp:934
 #, kde-format
 msgid "Invalid keyframes for %1"
-msgstr ""
+msgstr "תמוניות מפתח שגויות עבור %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:984
 #, kde-format
 msgid "(null)"
-msgstr ""
+msgstr "(אפס)"
 
 #: src/core/io/lottie/lottie_importer.hpp:990
 #, kde-format
 msgid "(empty)"
-msgstr ""
+msgstr "(ריק)"
 
 #: src/core/io/lottie/lottie_importer.hpp:999
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
-msgstr ""
+msgstr "לא ניתן לטעון את תמונית המפתח %1 עבור %2 עם הערך %3"
 
 #: src/core/io/lottie/lottie_importer.hpp:1053
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
-msgstr ""
+msgstr "מזהה מפת סיביות כפול: %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:1085
 #, kde-format
@@ -1490,77 +1494,77 @@ msgstr "מזהה תרכובת כפול: %1"
 #: src/core/io/lottie/tgs_format.cpp:47
 #, kde-format
 msgid "Star Shapes are not officially supported"
-msgstr ""
+msgstr "אין תמיכה רשמית בצורות כוכבים"
 
 #: src/core/io/lottie/tgs_format.cpp:51 src/core/io/lottie/validation.cpp:71
 #, kde-format
 msgid "Images are not supported"
-msgstr ""
+msgstr "אין תמיכה בתמונות"
 
 #: src/core/io/lottie/tgs_format.cpp:56
 #, kde-format
 msgid "Gradient strokes are not officially supported"
-msgstr ""
+msgstr "אין תמיכה רשמית בקווי מתאר צבועים במדרג"
 
 #: src/core/io/lottie/tgs_format.cpp:61
 #, kde-format
 msgid "Masks are not supported"
-msgstr ""
+msgstr "אין תמיכה במסכות"
 
 #: src/core/io/lottie/tgs_format.cpp:65
 #, kde-format
 msgid "Repeaters are not officially supported"
-msgstr ""
+msgstr "אין תמיכה רשמית במחזירים"
 
 #: src/core/io/lottie/tgs_format.cpp:69
 #, kde-format
 msgid "Inflate/Deflate is not supported"
-msgstr ""
+msgstr "אין תמיכה בניפוח וצמצום"
 
 #: src/core/io/lottie/tgs_format.cpp:73
 #, kde-format
 msgid "Offset Path is not supported"
-msgstr ""
+msgstr "אין תמיכה בנתיב היסט"
 
 #: src/core/io/lottie/tgs_format.cpp:77
 #, kde-format
 msgid "ZigZag is not supported"
-msgstr ""
+msgstr "אין תמיכה בזיגזג"
 
 #: src/core/io/lottie/tgs_format.cpp:110
 #, kde-format
 msgid "File too large: %1k, should be under 64k"
-msgstr ""
+msgstr "הקובץ גדול מדי: %1 ק״ב, אמור להיות קטן מ־64 ק״ב"
 
 #: src/core/io/lottie/tgs_format.hpp:19
 #, kde-format
 msgid "Telegram Animated Sticker"
-msgstr ""
+msgstr "מדבקה מונפשת של טלגרם"
 
 #: src/core/io/lottie/validation.cpp:25
 #, kde-format
 msgid "Invalid width: %1, should be %2"
-msgstr ""
+msgstr "רוחב שגוי: %1, אמור להיות %2"
 
 #: src/core/io/lottie/validation.cpp:29
 #, kde-format
 msgid "Invalid height: %1, should be %2"
-msgstr ""
+msgstr "גובה שגוי: %1, אמור להיות %2"
 
 #: src/core/io/lottie/validation.cpp:41
 #, kde-format
 msgid "Invalid fps: %1, should be %2"
-msgstr ""
+msgstr "כמות תמוניות לשנייה שגויה: %1, אמורה להיות %2"
 
 #: src/core/io/lottie/validation.cpp:49
 #, kde-format
 msgid "Too many frames: %1, should be less than %2"
-msgstr ""
+msgstr "יותר מדי תמוניות: %1, אמורות להיות פחות מ־%2"
 
 #: src/core/io/lottie/validation.hpp:22
 #, kde-format
 msgid "%1: %2"
-msgstr ""
+msgstr "%1: %2"
 
 #: src/core/io/mime/json_mime.hpp:18
 #, kde-format
@@ -1571,7 +1575,7 @@ msgstr "JSON"
 #: src/core/io/raster/raster_mime.hpp:25
 #, kde-format
 msgid "Raster Image"
-msgstr ""
+msgstr "תמונת מפת סיביות"
 
 #: src/core/io/raster/spritesheet_format.cpp:32
 #, kde-format
@@ -1611,43 +1615,43 @@ msgstr "צעד זמן"
 #: src/core/io/raster/spritesheet_format.cpp:35
 #, kde-format
 msgid "By how much each rendered frame should increase time (in frames)"
-msgstr ""
+msgstr "בכמה כל תמונית מתוצגת אמורה לקדם את הזמן (בתמוניות)"
 
 #: src/core/io/raster/spritesheet_format.hpp:23
 #, kde-format
 msgid "Sprite Sheet"
-msgstr ""
+msgstr "גיליון דמות"
 
 #: src/core/io/rive/rive_exporter.hpp:359
 #, kde-format
 msgid "Bezier has mismatching number of points"
-msgstr ""
+msgstr "מספר הנקודות לא תואם לבזייה"
 
 #: src/core/io/rive/rive_exporter.hpp:422
 #, kde-format
 msgid "Unknown property %1 of %2 (%3, %4)"
-msgstr ""
+msgstr "המאפיין %1 של %2 (%3, %4)  לא ידוע"
 
 #: src/core/io/rive/rive_exporter.hpp:457
 #, kde-format
 msgid "Unknown keyframe type for property %1 of %2 (%3, %4)"
-msgstr ""
+msgstr "סוג תמונית מפתח לא ידוע למאפיין %1 של %2 (%3, %4)"
 
 #: src/core/io/rive/rive_format.cpp:24
 #, kde-format
 msgid "Unsupported format"
-msgstr ""
+msgstr "התבנית לא נתמכת"
 
 #: src/core/io/rive/rive_format.cpp:34
 #, kde-format
 msgid "Could not read header"
-msgstr ""
+msgstr "לא ניתן לקרוא את הכותרת"
 
 #: src/core/io/rive/rive_format.cpp:40
 #, kde-format
 msgid ""
 "Loading unsupported rive file version %1.%2, the only supported version is %3"
-msgstr ""
+msgstr "קובץ ה־rive בגרסה %1.%2 שאינה נתמכת נטען, הגרסה הנתמכת היחידה היא %3"
 
 #: src/core/io/rive/rive_format.cpp:46 src/core/io/rive/rive_loader.cpp:750
 #, kde-format
@@ -1662,37 +1666,37 @@ msgstr "הנפשת Rive"
 #: src/core/io/rive/rive_html_format.hpp:20
 #, kde-format
 msgid "RIVE HTML Preview"
-msgstr ""
+msgstr "תצוגת HTML RIVE מקדימה"
 
 #: src/core/io/rive/rive_loader.cpp:179
 #, kde-format
 msgid "Unexpected Keyed Object"
-msgstr ""
+msgstr "פריט מפתיע סודר במפתח"
 
 #: src/core/io/rive/rive_loader.cpp:187
 #, kde-format
 msgid "Invalid Keyed Object id %1"
-msgstr ""
+msgstr "מזהה פריט שגוי שסודר במפתח %1"
 
 #: src/core/io/rive/rive_loader.cpp:195
 #, kde-format
 msgid "Unexpected Keyed Property"
-msgstr ""
+msgstr "מאפיין מפתיע שסודר במפתח"
 
 #: src/core/io/rive/rive_loader.cpp:204
 #, kde-format
 msgid "Unknown Keyed Property id %1"
-msgstr ""
+msgstr "מזהה המאפיין שסודר במפתח %1 לא ידוע"
 
 #: src/core/io/rive/rive_loader.cpp:215
 #, kde-format
 msgid "Unexpected Animation"
-msgstr ""
+msgstr "הנפשה מפתיעה"
 
 #: src/core/io/rive/rive_loader.cpp:231
 #, kde-format
 msgid "Unexpected Asset Contents"
-msgstr ""
+msgstr "תוכן המשאב מפתיע"
 
 #: src/core/io/rive/rive_loader.cpp:242
 #, kde-format
@@ -1732,17 +1736,17 @@ msgstr "לא ניתן לטעון את מזהה המאפיין ב־%1 (%2)"
 #: src/core/io/rive/rive_loader.cpp:823
 #, kde-format
 msgid "Unknown property %1 of %2 (%3)"
-msgstr ""
+msgstr "המאפיין %1 של %2 (%3)  לא ידוע"
 
 #: src/core/io/rive/rive_loader.cpp:833
 #, kde-format
 msgid "Skipping unknown property %1 of %2 (%3)"
-msgstr ""
+msgstr "המאפיין הלא ידוע %1 של %2 (%3) נפסח"
 
 #: src/core/io/rive/rive_loader.cpp:846
 #, kde-format
 msgid "Error loading property %1 (%2) of %3 (%4)"
-msgstr ""
+msgstr "שגיאה בטעינת המאפיין %1 (%2) של %3 (%4)"
 
 #: src/core/io/svg/svg_format.cpp:67
 #, kde-format
@@ -1839,12 +1843,12 @@ msgstr "לא ניתן להעתיק מילון/dict‏: %1"
 #: src/core/io/video/video_format.cpp:280
 #, kde-format
 msgid "Could not copy dict `%1`: %2"
-msgstr ""
+msgstr "לא ניתן להעתיק את המילון/dict‏ `%1`‏: %2"
 
 #: src/core/io/video/video_format.cpp:318
 #, kde-format
 msgid "Could not allocate frame data."
-msgstr ""
+msgstr "לא ניתן להקצות נתוני תמונית."
 
 #: src/core/io/video/video_format.cpp:403
 #: src/core/io/video/video_format.cpp:782
@@ -1855,52 +1859,52 @@ msgstr "אין מפענח וידאו"
 #: src/core/io/video/video_format.cpp:431
 #, kde-format
 msgid "Could not determine pixel format"
-msgstr ""
+msgstr "לא ניתן לאתר את תסדיר הפיקסלים"
 
 #: src/core/io/video/video_format.cpp:441
 #, kde-format
 msgid "Could not open video codec: %1"
-msgstr ""
+msgstr "לא ניתן לפתוח מפענח וידאו: %1"
 
 #: src/core/io/video/video_format.cpp:446
 #, kde-format
 msgid "Could not allocate video frame"
-msgstr ""
+msgstr "לא ניתן להקצות תמונית וידאו"
 
 #: src/core/io/video/video_format.cpp:453
 #, kde-format
 msgid "Could not copy the stream parameters"
-msgstr ""
+msgstr "לא ניתן להעתיק את משתני התזרים"
 
 #: src/core/io/video/video_format.cpp:473
 #, kde-format
 msgid "Error while creating video frame"
-msgstr ""
+msgstr "שגיאה ביצירת תמונית וידאו"
 
 #: src/core/io/video/video_format.cpp:497
 #, kde-format
 msgid "Could not initialize the conversion context"
-msgstr ""
+msgstr "לא ניתן לאתחל את הקשר ההמרה"
 
 #: src/core/io/video/video_format.cpp:503
 #, kde-format
 msgid "Could not allocate temporary picture"
-msgstr ""
+msgstr "לא ניתן להקצות תמונה זמנית"
 
 #: src/core/io/video/video_format.cpp:750
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
-msgstr ""
+msgstr "לא ניתן להסיק את תסדיר הפלט מסיומת הקובץ: ייעשה שימוש ב־MPEG."
 
 #: src/core/io/video/video_format.cpp:754
 #, kde-format
 msgid "Could not find output format"
-msgstr ""
+msgstr "לא ניתן למצוא את תסדיר הפלט"
 
 #: src/core/io/video/video_format.cpp:827
 #, kde-format
 msgid "Error occurred when opening output file: %1"
-msgstr ""
+msgstr "אירעה שגיאה בפתיחת קובץ הפלט: %1"
 
 #: src/core/io/video/video_format.cpp:862
 #, kde-format
@@ -1990,7 +1994,7 @@ msgstr "ערכים"
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:48
 #, kde-format
 msgid "Swatch"
-msgstr ""
+msgstr "מקבץ צבעים"
 
 #: src/core/model/assets/assets.hpp:117
 #, kde-format
@@ -2180,7 +2184,7 @@ msgstr "שכבה"
 #: src/core/model/shapes/offset_path.cpp:342
 #, kde-format
 msgid "Offset Path"
-msgstr ""
+msgstr "נתיב היסט"
 
 #. i18n: ectx: Menu (path)
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -2195,7 +2199,7 @@ msgstr "נתיב"
 #: src/core/model/shapes/polystar.hpp:48
 #, kde-format
 msgid "PolyStar"
-msgstr ""
+msgstr "כוכב רב־צלעות"
 
 #: src/core/model/shapes/precomp_layer.cpp:30
 #, kde-format
@@ -2210,7 +2214,7 @@ msgstr "מרובע"
 #: src/core/model/shapes/repeater.cpp:25
 #, kde-format
 msgid "Repeater"
-msgstr ""
+msgstr "מחזיר"
 
 #: src/core/model/shapes/round_corners.cpp:20
 #, kde-format
@@ -2248,7 +2252,7 @@ msgstr "טקסט"
 #: src/core/model/shapes/trim.cpp:24
 #, kde-format
 msgid "Trim Path"
-msgstr ""
+msgstr "נתיב גזירה"
 
 #: src/core/model/shapes/zig_zag.cpp:139
 #, kde-format
@@ -2270,7 +2274,7 @@ msgstr "התמרה"
 #: src/core/plugin/snippet.hpp:93
 #, kde-format
 msgid "# Glaxnimate snippet"
-msgstr ""
+msgstr "# קטע של Glaxnimate"
 
 #: src/core/plugin/snippet.hpp:95
 #, kde-format
@@ -2278,6 +2282,7 @@ msgid ""
 "# You have access to the `window` and `document` global variables and the "
 "`glaxnimate` module"
 msgstr ""
+"# יש לך גישה למשתנים הכלליים `window` ו־`document` ולמודול `glaxnimate`"
 
 #: src/core/plugin/snippet.hpp:97
 #, kde-format
@@ -2285,6 +2290,7 @@ msgid ""
 "# For documentation see https://glaxnimate.mattbas.org/contributing/"
 "scripting/"
 msgstr ""
+"# לתיעוד יש לפנות אל https://glaxnimate.mattbas.org/contributing/scripting/"
 
 #: src/core/utils/gzip.cpp:30
 #, kde-format
@@ -2294,7 +2300,7 @@ msgstr "לא ניתן לחלץ נתונים"
 #: src/core/utils/trace_wrapper.cpp:160
 #, kde-format
 msgid "Traced %1"
-msgstr ""
+msgstr "%1 נעקב"
 
 #: src/gui/cli.cpp:27
 #, kde-format
@@ -2330,7 +2336,7 @@ msgstr "קובץ לפתיחה"
 #, kde-format
 msgctxt "@info:shell"
 msgid "When opening image files, trace them instead of embedding"
-msgstr ""
+msgstr "בעת פתיחת קובצי תמונות, לעקוב אחריהן (הסבה וקטורית) במקום להטמיע אותן"
 
 #: src/gui/cli.cpp:35
 #, kde-format
@@ -2342,7 +2348,7 @@ msgstr "אפשרויות ממשק משתמש"
 #, kde-format
 msgctxt "@info:shell"
 msgid "If present, doesn't restore the main window state"
-msgstr ""
+msgstr "אם קיים, מצב החלון הראשי לא ישוחזר"
 
 #: src/gui/cli.cpp:39
 #, kde-format
@@ -2350,37 +2356,37 @@ msgctxt "@info:shell"
 msgid ""
 "Specify the name of the local socket/named pipe to connect to a host "
 "application."
-msgstr ""
+msgstr "נא לציין את שם צינור השקע/הצינור השמי להתחברות ליישום מארח."
 
 #: src/gui/cli.cpp:46
 #, kde-format
 msgctxt "@info:shell"
 msgid "Use a specific size for the main window"
-msgstr ""
+msgstr "להשתמש בגודל מסוים לחלון הראשי"
 
 #: src/gui/cli.cpp:54
 #, kde-format
 msgctxt "@info:shell"
 msgid "Print the window id"
-msgstr ""
+msgstr "הצגת מזהה החלון"
 
 #: src/gui/cli.cpp:57
 #, kde-format
 msgctxt "@info:shell"
 msgid "Enables the debug menu"
-msgstr ""
+msgstr "הפעלת תפריט ניפוי השגיאות"
 
 #: src/gui/cli.cpp:60
 #, kde-format
 msgctxt "@info:shell"
 msgid "Export Options"
-msgstr ""
+msgstr "אפשרויות ייצוא"
 
 #: src/gui/cli.cpp:63
 #, kde-format
 msgctxt "@info:shell"
 msgid "Export the input file to the given file instead of starting the GUI"
-msgstr ""
+msgstr "ייצוא קובץ הקלט לקובץ שסופק במקום להפעיל את ממשק המשתמש"
 
 #: src/gui/cli.cpp:70
 #, kde-format
@@ -2389,25 +2395,27 @@ msgid ""
 "Specify the format for --export. If omitted it's determined based on the "
 "file name. See --export-format-list for a list of supported formats."
 msgstr ""
+"ציון התסדיר עבור ‎--export. אם יושמט הוא ייקבע לפי שם הקובץ. ניתן לפנות אל ‎--"
+"export-format-list לרשימת התסדירים הנתמכים."
 
 #: src/gui/cli.cpp:77
 #, kde-format
 msgctxt "@info:shell"
 msgid "Shows possible values for --export-format"
-msgstr ""
+msgstr "הצגת הערכים האפשריים ל־‎--export-format"
 
 #: src/gui/cli.cpp:81
 #, kde-format
 msgctxt "@info:shell"
 msgid "Render Frame Options"
-msgstr ""
+msgstr "אפשרויות תיצוג תמונית"
 
 #: src/gui/cli.cpp:84
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Render frames the input file to the given file instead of starting the GUI"
-msgstr ""
+msgstr "תיצוג תמוניות קובץ הקלט לקובץ שסופק במקום להפעיל את ממשק המשתמש"
 
 #: src/gui/cli.cpp:91
 #, kde-format
@@ -2416,18 +2424,20 @@ msgid ""
 "Specify the format for --render. If omitted it's determined based on the "
 "file name. See --render-format-list for a list of supported formats."
 msgstr ""
+"ציון התסדיר עבור ‎--render אם יושמט הוא ייקבע לפי שם הקובץ. ניתן לפנות אל ‎--"
+"render-format-list לרשימת התסדירים הנתמכים."
 
 #: src/gui/cli.cpp:98
 #, kde-format
 msgctxt "@info:shell"
 msgid "Frame number to render, use `all` to render all frames"
-msgstr ""
+msgstr "מספר התמונית לתיצוג, יש להשתמש ב־`all` כדי לתצג את כל התמוניות"
 
 #: src/gui/cli.cpp:105
 #, kde-format
 msgctxt "@info:shell"
 msgid "Shows possible values for --render-format"
-msgstr ""
+msgstr "הצגת ערכים אפשריים עבור ‎--render-format"
 
 #: src/gui/cli.cpp:159
 #, kde-format
@@ -2451,7 +2461,7 @@ msgstr "מייבא לא ידוע"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not open input file for reading"
-msgstr ""
+msgstr "לא ניתן לפתוח את קובץ הקלט לקריאה"
 
 #: src/gui/cli.cpp:246
 #, kde-format
@@ -2471,18 +2481,19 @@ msgctxt "@info:shell"
 msgid ""
 "Unknown exporter. Use --export-format-list for a list of available formats"
 msgstr ""
+"מייצא לא ידוע: יש להשתמש ב־‎--export-format-list לקבלת רשימת תסדירים זמינים"
 
 #: src/gui/cli.cpp:286
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not open output file for writing"
-msgstr ""
+msgstr "לא ניתן לפתוח את קובץ הפלט לכתיבה"
 
 #: src/gui/cli.cpp:295
 #, kde-format
 msgctxt "@info:shell"
 msgid "Error converting to the output format"
-msgstr ""
+msgstr "שגיאה בהמרה לתסדיר הפלט"
 
 #: src/gui/cli.cpp:315 src/gui/cli.cpp:335
 #, kde-format
@@ -2771,7 +2782,7 @@ msgstr "נעול"
 #: src/gui/item_models/gradient_list_model.cpp:179
 #, kde-format
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: src/gui/item_models/gradient_list_model.cpp:181
 #, kde-format
@@ -2840,7 +2851,7 @@ msgstr "ערך"
 #: src/gui/item_models/python_snippet_model.hpp:35
 #, kde-format
 msgid "New Snippet %1"
-msgstr ""
+msgstr "קטע חדש %1"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_google)
 #: src/gui/settings/api_credentials.cpp:28
@@ -2878,7 +2889,7 @@ msgctxt ""
 "%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
 msgid "%5 - %1x%2 %3 %4fps"
-msgstr ""
+msgstr "%5 - %1x%2 %3 %4 תמוניות לשנייה"
 
 #: src/gui/settings/document_templates.cpp:180
 #, kde-format
@@ -3218,37 +3229,37 @@ msgstr "אלגוריתם"
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:44
 #, kde-format
 msgid "k-Means"
-msgstr ""
+msgstr "k-Means"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:49
 #, kde-format
 msgid "k-Modes"
-msgstr ""
+msgstr "k-Modes"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:54
 #, kde-format
 msgid "Octree"
-msgstr ""
+msgstr "Octree"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:59
 #, kde-format
 msgid "Edge Exclusion Modes"
-msgstr ""
+msgstr "מצבי החרגת קצוות"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:76
 #, kde-format
 msgid "Match"
-msgstr ""
+msgstr "התאמה"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:83
 #, kde-format
 msgid "Max Iterations"
-msgstr ""
+msgstr "כמות חזרות מרבית"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
@@ -3257,13 +3268,13 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:59
 #, kde-format
 msgid "None"
-msgstr ""
+msgstr "ללא"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:112
 #, kde-format
 msgid "Most Frequent"
-msgstr ""
+msgstr "התדיר ביותר"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:117
@@ -3319,6 +3330,49 @@ msgid ""
 "weight:600;\">Most Frequent</span>: Find the color in the cluster that "
 "appears most often in the source image</li></ul></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"body { direction: rtl; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">k-Means מחלק את הצבעים "
+"לאשכולות ומעדן את ההקצאה לכל סבב.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">זאת האפשרות הטובה ביותר "
+"בעת מעקב אחר תמונות עם הרבה צבעים או הצללות.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">לתמונות עם הרבה צבעים כמות "
+"הסבבים תגדל כדי לספק תוצאות טובות יותר אבל זה עלול להיות איטי יותר.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">אפשרות ה<span style=\" "
+"font-style:italic;\">התאמה</span> מבצעת עיבוד סופי:</p>\n"
+"<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
+"right: 0px; -qt-list-indent: 1;\"><li style=\"\" style=\" margin-top:12px; "
+"margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+"text-indent:0px;\"><span style=\" font-weight:600;\">ללא</span>: לא לבצע אף "
+"עיבוד סופי  ולהחזיר את הממוצעים (נא לשים לב שזה יכול לגרום לכך שיתווספו "
+"צבעים שלא היו בתמונה המקורית)</li>\n"
+"<li style=\"\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">הקרובה ביותר</span>: איתור הצבע של התמונה המקורית שהוא הכי "
+"קרוב לממוצע</li>\n"
+"<li style=\"\" style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">התדירה ביותר</span>: איתור הצבע באשכול שמופיע הכי הרבה בתמונת "
+"המקור</li></ul></body></html>"
 
 #. i18n: ectx: property (plainText), widget (QPlainTextEdit, plainTextEdit)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:159
@@ -3330,6 +3384,11 @@ msgid ""
 "\n"
 "This is the best option when tracing images with flat colors."
 msgstr ""
+"k-Modes מספק לך את הצבעים שמופיעים בתדירות הגבוהה ביותר בתמונה המקורית.\n"
+"\n"
+"השיטה מאוד מהירה אבל לא מספקת צבעים מדויקים בתמונות מורכבות.\n"
+"\n"
+"זאת האפשרות הטובה ביותר למעקב אחר תמונות עם צבעים אחידים."
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_2)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:178
@@ -3350,6 +3409,21 @@ msgid ""
 "colors for complex images but it might result into colors that are not "
 "present in the source image.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"body { direction: rtl; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">אלגוריתם Octree ממזג צבעים "
+"דומים מלמטה למעלה.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">הוא מעניק צבעים מדויקים "
+"יותר לתמונות מורכבות אך הוא עלול להוביל להופעת צבעים שאינם קיימים בתמונת "
+"המקור.</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:189
@@ -3382,6 +3456,26 @@ msgid ""
 "that a color must have to be considered (as a percentage of the total number "
 "of pixels in the image).</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"body { direction: rtl; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">מצבי החרגת קצוות לוקחים את "
+"הצבע הנפוץ ביותר (מצב) בתמונה ואז מחריג את כל הפיקסלים שסביב האזור המיועד "
+"ואז חוזר על התהליך עד שמספר הצבעים המתאים נמצא.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">הגישה הזאת מסירה קצוות "
+"שאינם מוחלקים אבל היא עלול לגרום לאיבוד של פרטים קטנים.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">תדירות מזערית</span> מתייחסת לכמות המזערית של פיקסלים שחייבים "
+"להיות בצבע מסוים כדי שיקבל חשיבות (כאחוז מכלל מספר הפיקסלים בתמונה).</p></"
+"body></html>"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, DocumentMetadataDialog)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:21
@@ -3500,14 +3594,14 @@ msgstr "בחירה…"
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:40
 #, kde-format
 msgid "f"
-msgstr ""
+msgstr "ת"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_seconds)
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:51
 #: src/gui/widgets/dialogs/timing_dialog.ui:65
 #, kde-format
 msgid "\""
-msgstr ""
+msgstr "\""
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::FollowPathDialog)
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:118
@@ -3627,6 +3721,8 @@ msgid ""
 "Looks like this file is being edited by another Glaxnimate instance or it "
 "was being edited when Glaxnimate crashed."
 msgstr ""
+"נראה שהקובץ הזה נערך על ידי עותק אחר של Glaxnimate או ש־Glaxnimate קרס בזמן "
+"עריכתו."
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:238
 #, kde-format
@@ -4294,7 +4390,7 @@ msgstr "בחרת תמונה בלי נתונים"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1539
 #, kde-format
 msgid "X: %1 Y: %2"
-msgstr ""
+msgstr "X: %1 Y: %2"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1558
 #, kde-format
@@ -4355,13 +4451,13 @@ msgstr "הפעולה נכשלה"
 #: src/gui/widgets/dialogs/io_status_dialog.ui:21
 #, kde-format
 msgid "IoStatusDialog"
-msgstr ""
+msgstr "מצב חלונית קלט/פלט"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/io_status_dialog.ui:50
 #, kde-format
 msgid "/path/to/your/file/in.here"
-msgstr ""
+msgstr "/hanativ/lakovetz/haratzuy.kan"
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_box)
 #: src/gui/widgets/dialogs/io_status_dialog.ui:84
@@ -4492,7 +4588,7 @@ msgstr "הגדרות"
 #: src/gui/widgets/dialogs/startup_dialog.ui:113
 #, kde-format
 msgid " fps"
-msgstr ""
+msgstr " תמוניות לשנייה"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_open_browse)
 #: src/gui/widgets/dialogs/startup_dialog.ui:158
@@ -4516,7 +4612,7 @@ msgstr "החלפת מאפייני הנפשה"
 #: src/gui/widgets/settings/settings_dialog.cpp:248
 #, kde-format
 msgid "FPS"
-msgstr ""
+msgstr "תמוניות לשנייה"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer_keep)
 #: src/gui/widgets/dialogs/timing_dialog.ui:97
@@ -4528,13 +4624,13 @@ msgstr "שמירת התזמון ההתחלתי"
 #: src/gui/widgets/dialogs/timing_dialog.ui:104
 #, kde-format
 msgid "Trim Extra Frames"
-msgstr ""
+msgstr "קיצוץ התמוניות הנוספות"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer_scale)
 #: src/gui/widgets/dialogs/timing_dialog.ui:114
 #, kde-format
 msgid "Scale Timing"
-msgstr ""
+msgstr "שינוי קנה מידה לתזמון"
 
 #. i18n: ectx: property (text), item, widget (QListWidget, list_presets)
 #: src/gui/widgets/dialogs/trace_dialog.ui:89
@@ -4587,12 +4683,39 @@ msgid ""
 "\"https://linktr.ee/FellFallow\"><span style=\" text-decoration: underline; "
 "color:#2980b9;\">FellFallow</span></a>)</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"body { direction: rtl; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">זאת האפשרות המתאימה ביותר "
+"לתמונות, ציורים ואיורים מפורטים.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">מספר הצבעים מופחת בהתאם "
+"ל<span style=\" font-weight:600;\">רמת חידוד הפיקסלים</span> שלהלן.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">נא לשים לב שיש הפחתה "
+"משמעותית באיכות התמונה בעת המרת סוג כזה של תמונות לגרפיקה וקטורית.</p>\n"
+"<p style=\" margin-top:37px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">(התמונה מאת <a href="
+"\"https://linktr.ee/FellFallow\"><span style=\" text-decoration: underline; "
+"color:#2980b9;\">FellFallow</span></a>)</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: src/gui/widgets/dialogs/trace_dialog.ui:164
 #, kde-format
 msgid "Posterization Level"
-msgstr ""
+msgstr "רמת חידוד פיקסלים"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_2)
 #: src/gui/widgets/dialogs/trace_dialog.ui:198
@@ -4622,6 +4745,29 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">Very small details might "
 "get lost in the process.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"body { direction: rtl; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">האפשרות הזאת הכי טובה "
+"לתמונות דיגיטליות, מדבקות ואיורים עם צל שטוח.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">מספר הצבעים יפחת אוטומטית, "
+"תוך בחירת הצבעים הנפוצים ביותר בתמונת המקור.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">פרטים קטנים מאוד עלולים "
+"ללכת לאיבוד בדרך.</p></body></html>"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_3)
 #: src/gui/widgets/dialogs/trace_dialog.ui:233
@@ -4645,6 +4791,24 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">This is only suitable for "
 "fairly small images with a low number of colors.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"body { direction: rtl; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">מתאים לאומנות פיקסלים. "
+"הווקטורים שנעקבו ישמרו על כל הצבעים כמות התמונה המקורית כולל הקצוות המשוננים "
+"בפיקסלים.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">מתאים רק לתמונות קטנות "
+"יחסית עם מספר מועט של צבעים.</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/trace_dialog.ui:254
@@ -4746,13 +4910,13 @@ msgstr "הסרה"
 #: src/gui/widgets/dialogs/trace_dialog.ui:453
 #, kde-format
 msgid "Tolerance"
-msgstr ""
+msgstr "סבילות"
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: src/gui/widgets/dialogs/trace_dialog.ui:460
 #, kde-format
 msgid "Outline"
-msgstr ""
+msgstr "מתאר"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_detect_colors)
 #: src/gui/widgets/dialogs/trace_dialog.ui:483
@@ -4910,7 +5074,7 @@ msgstr "רענון מודולי סקריפטים"
 #: src/gui/widgets/docks/snippet_list_widget.cpp:50
 #, kde-format
 msgid "Snippets need a name"
-msgstr ""
+msgstr "קטעים צריכים שם"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_snippets)
 #: src/gui/widgets/docks/snippet_list_widget.cpp:50
@@ -4918,24 +5082,24 @@ msgstr ""
 #: src/gui/widgets/docks/snippets.ui:22
 #, kde-format
 msgid "Snippets"
-msgstr ""
+msgstr "קטעים"
 
 #: src/gui/widgets/docks/snippet_list_widget.cpp:56
 #, kde-format
 msgid "Could not create snippet: `%1`"
-msgstr ""
+msgstr "לא ניתן ליצור קטע: `%1`"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 #: src/gui/widgets/docks/snippet_list_widget.ui:26
 #, kde-format
 msgid "New Snippet"
-msgstr ""
+msgstr "קטע חדש"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/docks/snippet_list_widget.ui:40
 #, kde-format
 msgid "Edit the selected snippet"
-msgstr ""
+msgstr "עריכת הקטע הנבחר"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/docks/snippet_list_widget.ui:43
@@ -4947,13 +5111,13 @@ msgstr "עריכה…"
 #: src/gui/widgets/docks/snippet_list_widget.ui:54
 #, kde-format
 msgid "Delete selected snippet"
-msgstr ""
+msgstr "מחיקת הקטע הנבחר"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_4)
 #: src/gui/widgets/docks/snippet_list_widget.ui:68
 #, kde-format
 msgid "Run selected snippet"
-msgstr ""
+msgstr "הרצת הקטע הנבחר"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_4)
 #: src/gui/widgets/docks/snippet_list_widget.ui:71
@@ -4965,13 +5129,13 @@ msgstr "הרצה"
 #: src/gui/widgets/docks/snippet_list_widget.ui:95
 #, kde-format
 msgid "Reload snippets"
-msgstr ""
+msgstr "רענון קטעים"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_time_slider)
 #: src/gui/widgets/docks/time_slider.ui:22
 #, kde-format
 msgid "Compact Timeline"
-msgstr ""
+msgstr "ציר זמן מצומצם"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_timeline)
 #: src/gui/widgets/docks/timeline.ui:22
@@ -4989,7 +5153,7 @@ msgstr "אפשרויות &כלי"
 #: src/gui/widgets/docks/undo.ui:22
 #, kde-format
 msgid "Undo History"
-msgstr ""
+msgstr "היסטוריית הסגה"
 
 #: src/gui/widgets/enum_combo.cpp:56
 #, kde-format
@@ -5093,7 +5257,7 @@ msgstr "כתובת הנתונים שגויה"
 #: src/gui/widgets/font/font_loader.cpp:138
 #, kde-format
 msgid "Font format not supported for %1"
-msgstr ""
+msgstr "תבנית הגופן לא נתמכת עבור %1"
 
 #: src/gui/widgets/font/font_preview_widget.cpp:25
 #, kde-format
@@ -5104,7 +5268,7 @@ msgstr "דג סקרן שט לו בים זך ולפתע מצא חבורה נחמ�
 #: src/gui/widgets/font/font_preview_widget.ui:42
 #, kde-format
 msgid "Preview Scale"
-msgstr ""
+msgstr "קנה מידה לתצוגה מקדימה"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_system)
 #: src/gui/widgets/font/font_style_dialog.ui:35
@@ -5346,7 +5510,7 @@ msgstr "פתיחה ביישום חיצוני"
 #: src/gui/widgets/menus/node_menu.cpp:320
 #, kde-format
 msgid "Could not find suitable application, check your system settings."
-msgstr ""
+msgstr "לא ניתן למצוא יישום מתאים, נא לבדוק שהגדרת המערכת שלך תקינות."
 
 #: src/gui/widgets/menus/node_menu.cpp:324
 #, kde-format
@@ -5519,13 +5683,15 @@ msgstr "הצגת חלונית פתיחה"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:233
 msgid "Horizontal Timeline Scroll"
-msgstr ""
+msgstr "גלילה אופקית בציר הזמן"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:234
 msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
 msgstr ""
+"אם האפשרות פעילה, ציר הזמן יגלול את עצמו אופקית כברירת מחדל ואנכית עם Shift "
+"או Alt"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:237
 msgid "Icon Theme"
@@ -5637,7 +5803,7 @@ msgstr "רוויה"
 #: src/gui/widgets/shape_style/color_selector.ui:297
 #, kde-format
 msgid "S"
-msgstr ""
+msgstr "S"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::HueSlider, slider_hsv_hue)
 #. i18n: ectx: property (toolTip), widget (QLabel, label)
@@ -5661,19 +5827,19 @@ msgstr "גוון"
 #: src/gui/widgets/shape_style/color_selector.ui:227
 #, kde-format
 msgid "H"
-msgstr ""
+msgstr "H"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/shape_style/color_selector.ui:156
 #, kde-format
 msgid "V"
-msgstr ""
+msgstr "V"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: src/gui/widgets/shape_style/color_selector.ui:304
 #, kde-format
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_rgb_b)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_10)
@@ -5689,7 +5855,7 @@ msgstr "כחול"
 #: src/gui/widgets/shape_style/color_selector.ui:340
 #, kde-format
 msgid "B"
-msgstr ""
+msgstr "B"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_rgb_g)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_9)
@@ -5715,13 +5881,13 @@ msgstr "אדום"
 #: src/gui/widgets/shape_style/color_selector.ui:360
 #, kde-format
 msgid "R"
-msgstr ""
+msgstr "R"
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: src/gui/widgets/shape_style/color_selector.ui:370
 #, kde-format
 msgid "G"
-msgstr ""
+msgstr "G"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_11)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_c)
@@ -5737,7 +5903,7 @@ msgstr "ציאן"
 #: src/gui/widgets/shape_style/color_selector.ui:436
 #, kde-format
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_13)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_m)
@@ -5753,7 +5919,7 @@ msgstr "ארגמן"
 #: src/gui/widgets/shape_style/color_selector.ui:466
 #, kde-format
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_12)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_y)
@@ -5769,7 +5935,7 @@ msgstr "צהוב"
 #: src/gui/widgets/shape_style/color_selector.ui:496
 #, kde-format
 msgid "Y"
-msgstr ""
+msgstr "Y"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_14)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_k)
@@ -5785,7 +5951,7 @@ msgstr "שחור"
 #: src/gui/widgets/shape_style/color_selector.ui:526
 #, kde-format
 msgid "K"
-msgstr ""
+msgstr "K"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_alpha)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_4)
@@ -5801,7 +5967,7 @@ msgstr "אלפא (שקיפות)"
 #: src/gui/widgets/shape_style/color_selector.ui:586
 #, kde-format
 msgid "A"
-msgstr ""
+msgstr "A"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::ColorSelector, color_preview)
 #: src/gui/widgets/shape_style/color_selector.ui:637
@@ -5826,37 +5992,37 @@ msgstr "החלפה"
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:49
 #, kde-format
 msgid "Gather Document Swatch"
-msgstr ""
+msgstr "איסוף מקבצי הצבע של המסמך"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:121
 #, kde-format
 msgid "Link Shapes to Swatch"
-msgstr ""
+msgstr "קישור צורות למקבצי צבעים"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:236
 #, kde-format
 msgid "Modify Palette Color"
-msgstr ""
+msgstr "שינוי צבע לוח הצבעים"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:315
 #, kde-format
 msgid "Load from Palette"
-msgstr ""
+msgstr "טעינה מלוח צבעים"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:316
 #, kde-format
 msgid "No palettes are installed"
-msgstr ""
+msgstr "לא מותקנים לוחות צבעים"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:322
 #, kde-format
 msgid "Swatch from Palette"
-msgstr ""
+msgstr "מקבץ צבעים מלוח צבעים"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:331
 #, kde-format
 msgid "Overwrite on save"
-msgstr ""
+msgstr "שכתוב עם השמירה"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:335
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:522
@@ -5904,7 +6070,7 @@ msgstr "שינוי שם…"
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:451
 #, kde-format
 msgid "Rename Swatch Color"
-msgstr ""
+msgstr "שינוי שם צבע במקבץ צבעים"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:459
 #, kde-format
@@ -5937,7 +6103,7 @@ msgstr "יצירה"
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:106
 #, kde-format
 msgid "Generate Swatch from the open Document"
-msgstr ""
+msgstr "יצירת מקבץ צבעים מהמסמך הפתוח"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:124
@@ -6229,7 +6395,7 @@ msgstr "ציפייה"
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:103
 #, kde-format
 msgid "Overshoot"
-msgstr ""
+msgstr "ריכוך עצירה"
 
 #: src/gui/widgets/timeline/timeline_items.cpp:142
 #, kde-format
