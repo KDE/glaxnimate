@@ -1,66 +1,59 @@
+# SPDX-FileCopyrightText: 2024 Olesya Gerasimenko <translation-team@basealt.ru>
 msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Russian <LL@li.org>\n"
+"PO-Revision-Date: 2024-10-11 17:23+0300\n"
+"Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
+"Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 3.11.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#, fuzzy, kde-format
-#| msgctxt "TimingDialog#5TimingDialog#5"
-#| msgid "Frames"
+#, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Кадров"
+msgstr "Олеся Герасименко"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "translation-team@basealt.ru"
 
 #. i18n: file: src/core/model/shapes/repeater.hpp
 #. i18n: Property name
 #. i18n: file: src/core/model/shapes/image.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Transform"
+#, kde-format
 msgid "transform"
-msgstr "Трансформация"
+msgstr "трансформация"
 
 #. i18n: file: src/core/model/shapes/repeater.hpp
 #. i18n: Property name
 #, kde-format
 msgid "start_opacity"
-msgstr ""
+msgstr "начальная_непрозрачность"
 
 #. i18n: file: src/core/model/shapes/stroke.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgctxt "StrokeStyleWidget#4"
-#| msgid "Cap"
+#, kde-format
 msgid "cap"
-msgstr "Завершение"
+msgstr "завершение"
 
 #. i18n: file: src/core/model/shapes/stroke.hpp
 #. i18n: Property name
 #, fuzzy, kde-format
-#| msgctxt "StrokeStyleWidget#11"
-#| msgid "Miter Limit"
 msgid "miter_limit"
 msgstr "Предел фацета"
 
 #. i18n: file: src/core/model/shapes/shape.hpp
 #. i18n: Property name
 #, fuzzy, kde-format
-#| msgid "Re&verse"
 msgid "reversed"
 msgstr "В обратном &направлении"
 
@@ -69,24 +62,18 @@ msgstr "В обратном &направлении"
 #. i18n: file: src/core/model/shapes/text.hpp
 #. i18n: Property name
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::model::Composition#1"
-#| msgid "Composition"
 msgid "position"
 msgstr "Композиция"
 
 #. i18n: file: src/core/model/shapes/rect.hpp
 #. i18n: Property name
 #, fuzzy, kde-format
-#| msgctxt "StrokeStyleWidget#6StrokeStyleWidget#6"
-#| msgid "Round"
 msgid "rounded"
 msgstr "Скруглённое"
 
 #. i18n: file: src/core/model/shapes/precomp_layer.hpp
 #. i18n: Property name
 #, fuzzy, kde-format
-#| msgctxt "TimingDialog#1"
-#| msgid "Timing"
 msgid "timing"
 msgstr "Параметры времени"
 
@@ -94,10 +81,9 @@ msgstr "Параметры времени"
 #. i18n: Property name
 #. i18n: file: src/core/model/shapes/ellipse.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Resize"
+#, kde-format
 msgid "size"
-msgstr "Изменить размер"
+msgstr "размер"
 
 #. i18n: file: src/core/model/shapes/precomp_layer.hpp
 #. i18n: Property name
@@ -105,19 +91,17 @@ msgstr "Изменить размер"
 #. i18n: Property name
 #, kde-format
 msgid "opacity"
-msgstr ""
+msgstr "непрозрачность"
 
 #. i18n: file: src/core/model/shapes/group.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Shape"
+#, kde-format
 msgid "shapes"
-msgstr "Фигура"
+msgstr "фигуры"
 
 #. i18n: file: src/core/model/shapes/trim.hpp
 #. i18n: Property name
 #, fuzzy, kde-format
-#| msgid "End"
 msgid "end"
 msgstr "End"
 
@@ -125,19 +109,19 @@ msgstr "End"
 #. i18n: Property name
 #, kde-format
 msgid "multiple"
-msgstr ""
+msgstr "несколько"
 
 #. i18n: file: src/core/model/shapes/text.hpp
 #. i18n: Property name
 #, kde-format
 msgid "path"
-msgstr ""
+msgstr "путь"
 
 #. i18n: file: src/core/model/shapes/fill.hpp
 #. i18n: Property name
 #, kde-format
 msgid "fill_rule"
-msgstr ""
+msgstr "правило_заливки"
 
 #. i18n: file: src/core/model/shapes/polystar.hpp
 #. i18n: Property name
@@ -145,39 +129,35 @@ msgstr ""
 #. i18n: Property name
 #, kde-format
 msgid "type"
-msgstr ""
+msgstr "тип"
 
 #. i18n: file: src/core/model/shapes/polystar.hpp
 #. i18n: Property name
 #, kde-format
 msgid "outer_radius"
-msgstr ""
+msgstr "внешний_радиус"
 
 #. i18n: file: src/core/model/shapes/polystar.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Angle"
+#, kde-format
 msgid "angle"
-msgstr "Угол"
+msgstr "угол"
 
 #. i18n: file: src/core/model/shapes/polystar.hpp
 #. i18n: Property name
 #, kde-format
 msgid "outer_roundness"
-msgstr ""
+msgstr "внешнее_скругление"
 
 #. i18n: file: src/core/model/shapes/styler.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgctxt "StrokeStyleWidget#12StrokeStyleWidget#12"
-#| msgid "Color"
+#, kde-format
 msgid "color"
-msgstr "Цвет"
+msgstr "цвет"
 
 #. i18n: file: src/core/model/shapes/styler.hpp
 #. i18n: Property name
 #, fuzzy, kde-format
-#| msgid "Pause"
 msgid "use"
 msgstr "Пауза"
 
@@ -185,46 +165,43 @@ msgstr "Пауза"
 #. i18n: Property name
 #, kde-format
 msgid "amount"
-msgstr ""
+msgstr "количество"
 
 #. i18n: file: src/core/model/shapes/offset_path.hpp
 #. i18n: Property name
 #, kde-format
 msgid "join"
-msgstr ""
+msgstr "соединение"
 
 #. i18n: file: src/core/model/shapes/layer.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Animation"
+#, kde-format
 msgid "animation"
-msgstr "Animation"
+msgstr "анимация"
 
 #. i18n: file: src/core/model/shapes/layer.hpp
 #. i18n: Property name
 #, kde-format
 msgid "mask"
-msgstr ""
+msgstr "маска"
 
 #. i18n: file: src/core/model/shapes/zig_zag.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Min Frequency"
+#, kde-format
 msgid "frequency"
-msgstr "Минимальная частотность"
+msgstr "частотность"
 
 #. i18n: file: src/core/model/transform.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Drag anchor point"
+#, kde-format
 msgid "anchor_point"
-msgstr "Перетащить опорную точку"
+msgstr "опорная_точка"
 
 #. i18n: file: src/core/model/transform.hpp
 #. i18n: Property name
 #, kde-format
 msgid "scale"
-msgstr ""
+msgstr "масштаб"
 
 #. i18n: file: src/core/model/assets/bitmap.hpp
 #. i18n: Property name
@@ -232,35 +209,31 @@ msgstr ""
 #. i18n: Property name
 #, kde-format
 msgid "data"
-msgstr ""
+msgstr "данные"
 
 #. i18n: file: src/core/model/assets/bitmap.hpp
 #. i18n: Property name
 #, kde-format
 msgid "url"
-msgstr ""
+msgstr "url-адрес"
 
 #. i18n: file: src/core/model/assets/bitmap.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgctxt "Settings#9Settings#9Settings#9Settings#9"
-#| msgid "Width"
+#, kde-format
 msgid "width"
-msgstr "Ширина"
+msgstr "ширина"
 
 #. i18n: file: src/core/model/assets/embedded_font.hpp
 #. i18n: Property name
 #, kde-format
 msgid "css_url"
-msgstr ""
+msgstr "url-адрес_css-файла"
 
 #. i18n: file: src/core/model/assets/gradient.hpp
 #. i18n: Property name
 #. i18n: file: src/core/model/assets/assets.hpp
 #. i18n: Property name
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#18"
-#| msgid "Colors"
 msgid "colors"
 msgstr "Цвета"
 
@@ -268,28 +241,25 @@ msgstr "Цвета"
 #. i18n: Property name
 #, kde-format
 msgid "start_point"
-msgstr ""
+msgstr "начальная_точка"
 
 #. i18n: file: src/core/model/assets/assets.hpp
 #. i18n: Property name
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::tools::EditTool#1"
-#| msgid "Gradient Colors"
 msgid "gradient_colors"
 msgstr "Цвета градиента"
 
 #. i18n: file: src/core/model/assets/assets.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Compositions"
+#, kde-format
 msgid "compositions"
-msgstr "Композиции"
+msgstr "композиции"
 
 #. i18n: file: src/core/model/animation_container.hpp
 #. i18n: Property name
 #, kde-format
 msgid "first_frame"
-msgstr ""
+msgstr "первый_кадр"
 
 #. i18n: file: src/core/model/property/option_list_property.hpp
 #. i18n: Property name
@@ -298,31 +268,26 @@ msgstr ""
 #. i18n: file: src/core/model/property/property.hpp
 #. i18n: Property name
 #, fuzzy, kde-format
-#| msgid "Rename"
 msgid "name"
 msgstr "Переименовать"
 
 #. i18n: file: src/core/model/stretchable_time.hpp
 #. i18n: Property name
 #, fuzzy, kde-format
-#| msgid "Stretch Time"
 msgid "stretch"
 msgstr "Растянуть время"
 
 #. i18n: file: src/core/model/mask_settings.hpp
 #. i18n: Property name
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#16"
-#| msgid "Invert"
 msgid "inverted"
 msgstr "Инвертировать"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, Dialog)
 #: data/plugins/FrameByFrame/create_frames.ui:18
-#, fuzzy, kde-format
-#| msgid "Create a new palette"
+#, kde-format
 msgid "Create frame layers"
-msgstr "Создать новую палитру"
+msgstr "Создать слои кадров"
 
 #. i18n: ectx: property (plainText), widget (QPlainTextEdit, plainTextEdit)
 #: data/plugins/FrameByFrame/create_frames.ui:34
@@ -336,12 +301,20 @@ msgid ""
 "Then layers are created that appear in and out at uniform time intervals. "
 "You can use these layers for frame-by-frame animation."
 msgstr ""
+"Этот диалог создаёт слой для покадровой анимации.\n"
+"\n"
+"Требуется указать временной диапазон для разделения на кадры и желаемое "
+"количество кадров.\n"
+"\n"
+"После этого создаются слои, которые появляются внутри и снаружи с "
+"равнымиинтервалами времени. Эти слои можно использовать для покадровой "
+"анимации.  "
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: data/plugins/FrameByFrame/create_frames.ui:43
 #, kde-format
 msgid "Begin"
-msgstr ""
+msgstr "Начало"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: data/plugins/FrameByFrame/create_frames.ui:60
@@ -351,10 +324,9 @@ msgstr "End"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: data/plugins/FrameByFrame/create_frames.ui:77
-#, fuzzy, kde-format
-#| msgid "Number of users"
+#, kde-format
 msgid "Number of frames"
-msgstr "Количество пользователей"
+msgstr "Количество кадров"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QPushButton, pushButton_4)
@@ -368,7 +340,7 @@ msgstr "Поиск"
 #: data/plugins/ReplaceColor/replace.ui:28
 #, kde-format
 msgid "Replace"
-msgstr ""
+msgstr "Заменить"
 
 #: src/android/document_opener.cpp:35 src/android/document_opener.cpp:128
 #: src/android/document_opener.cpp:154 src/android/document_opener.cpp:193
@@ -377,9 +349,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:453
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:182
 #: src/gui/widgets/font/external_font_widget.cpp:126
-#, fuzzy, kde-format
-#| msgctxt "QObject#112QObject#112"
-#| msgid "Open File"
+#, kde-format
 msgid "Open File"
 msgstr "Открытие файла"
 
@@ -390,9 +360,7 @@ msgstr "Растровые изображения необходимо прео�
 
 #: src/android/document_opener.cpp:106
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "QObject#114"
-#| msgid "Save File"
+#, kde-format
 msgid "Save File"
 msgstr "Сохранение файла"
 
@@ -666,9 +634,7 @@ msgid "Brings the selection further to the front."
 msgstr "Перемещает выделение на слой выше."
 
 #: src/android/main_window.cpp:412
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::android::MainWindow#2"
-#| msgid "Timeline"
+#, kde-format
 msgid "Timeline"
 msgstr "Монтажный стол"
 
@@ -684,42 +650,32 @@ msgstr "Стиль обводки"
 
 #: src/android/main_window.cpp:452 src/gui/widgets/dialogs/gw_impl_ui.cpp:612
 #: src/gui/widgets/menus/node_menu.cpp:105
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::android::MainWindow#5"
-#| msgid "Raise"
+#, kde-format
 msgid "Raise"
 msgstr "Поднять"
 
 #: src/android/main_window.cpp:457 src/gui/widgets/dialogs/gw_impl_ui.cpp:615
 #: src/gui/widgets/menus/node_menu.cpp:109
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::android::MainWindow#6"
-#| msgid "Lower"
+#, kde-format
 msgid "Lower"
 msgstr "Опустить"
 
 #: src/android/main_window.cpp:464 src/gui/tools/select_tool.cpp:409
 #: src/gui/widgets/dialogs/selection_manager.cpp:85
-#, fuzzy, kde-format
-#| msgctxt "GlaxnimateWindow#3GlaxnimateWindow#3GlaxnimateWindow#3"
-#| msgid "Cut"
+#, kde-format
 msgid "Cut"
-msgstr "Cut"
+msgstr "Вырезать"
 
 #: src/android/main_window.cpp:467 src/gui/tools/select_tool.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "GlaxnimateWindow#4GlaxnimateWindow#4GlaxnimateWindow#4"
-#| msgid "Copy"
+#, kde-format
 msgid "Copy"
-msgstr "Copy"
+msgstr "Копировать"
 
 #: src/android/main_window.cpp:470 src/gui/tools/select_tool.cpp:413
 #: src/gui/widgets/dialogs/selection_manager.cpp:166
-#, fuzzy, kde-format
-#| msgctxt "GlaxnimateWindow#5GlaxnimateWindow#5GlaxnimateWindow#5"
-#| msgid "Paste"
+#, kde-format
 msgid "Paste"
-msgstr "Paste"
+msgstr "Вставить"
 
 #: src/android/main_window.cpp:474
 #, kde-format
@@ -752,18 +708,14 @@ msgstr "Повторить"
 #: src/android/main_window.cpp:506 src/gui/glaxnimateui.rc:122
 #: src/gui/widgets/docks/snippet_list_widget.ui:29
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:45
-#, fuzzy, kde-format
-#| msgctxt "GradientListWidget#2GradientListWidget#2GradientListWidget#2GradientListWidget#2"
-#| msgid "New"
+#, kde-format
 msgid "New"
-msgstr "Новый"
+msgstr "Создать"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 #: src/android/main_window.cpp:509
 #: src/gui/widgets/font/external_font_widget.ui:47
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::android::MainWindow#16"
-#| msgid "Open..."
+#, kde-format
 msgid "Open..."
 msgstr "Открыть…"
 
@@ -786,9 +738,7 @@ msgstr "Открыть…"
 #: src/gui/widgets/dialogs/startup_dialog.ui:149
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:136
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
-#, fuzzy, kde-format
-#| msgctxt "LottieFilesSearchDialog#7LottieFilesSearchDialog#7LottieFilesSearchDialog#7LottieFilesSearchDialog#7"
-#| msgid "Open"
+#, kde-format
 msgid "Open"
 msgstr "Открыть"
 
@@ -803,9 +753,7 @@ msgid "Save..."
 msgstr "Сохранить…"
 
 #: src/android/main_window.cpp:519
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::android::MainWindow#20"
-#| msgid "Save"
+#, kde-format
 msgid "Save"
 msgstr "Сохранить"
 
@@ -817,11 +765,9 @@ msgstr "Сохранить как"
 #. i18n: ectx: property (text), widget (QPushButton, button_export)
 #: src/android/main_window.cpp:525
 #: src/android/sticker_pack_builder_dialog.ui:154
-#, fuzzy, kde-format
-#| msgctxt "StickerPackBuilderDialog#4"
-#| msgid "Export"
+#, kde-format
 msgid "Export"
-msgstr "Экспортировать"
+msgstr "Экспорт"
 
 #: src/android/main_window.cpp:528
 #, kde-format
@@ -840,9 +786,7 @@ msgstr "Отправить в Telegram"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:568
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #: src/gui/widgets/docks/layers.ui:29
-#, fuzzy, kde-format
-#| msgctxt "TimingDialog#6TimingDialog#6"
-#| msgid "Layers"
+#, kde-format
 msgid "Layers"
 msgstr "Слои"
 
@@ -885,8 +829,6 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:856
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:868
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::android::MainWindow#29"
-#| msgid "Import File"
 msgid "Import File"
 msgstr "Импортировать файл"
 
@@ -913,9 +855,7 @@ msgstr "Удалить ключевой кадр"
 #: src/android/main_window.cpp:1004
 #: src/gui/widgets/menus/animated_property_menu.cpp:55
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
-#, fuzzy, kde-format
-#| msgctxt "QMenu#4QMenu#4QMenu#4"
-#| msgid "Clear Animations"
+#, kde-format
 msgid "Clear Animations"
 msgstr "Очистить анимации"
 
@@ -927,8 +867,6 @@ msgstr "Эмодзи"
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
 #: src/android/main_window.ui:21 src/core/app_info.cpp:21
 #, fuzzy, kde-format
-#| msgctxt "QObject#110"
-#| msgid "Glaxnimate"
 msgid "Glaxnimate"
 msgstr "Glaxnimate"
 
@@ -972,8 +910,6 @@ msgstr "Открыть стикер"
 #: src/gui/widgets/docks/script_console.ui:61
 #: src/gui/widgets/shape_style/color_selector.ui:693
 #, fuzzy, kde-format
-#| msgctxt "ClearableKeysequenceEdit#2ClearableKeysequenceEdit#2ClearableKeysequenceEdit#2"
-#| msgid "Clear"
 msgid "Clear"
 msgstr "Очистить"
 
@@ -991,34 +927,32 @@ msgstr "Не удалось запустить действие. Убедите�
 #: src/core/app_info.cpp:57
 #, kde-format
 msgid "(c) 2019-2023"
-msgstr ""
+msgstr "© 2019-2023"
 
 #: src/core/app_info.cpp:66
 #, kde-format
 msgid "Mattia \"Glax\" Basaglia"
-msgstr ""
+msgstr "Mattia «Glax» Basaglia"
 
 #: src/core/app_info.cpp:66
 #, kde-format
 msgid "Maintainer"
-msgstr ""
+msgstr "Сопровождающий"
 
 #: src/core/app_info.cpp:68
 #, fuzzy, kde-format
-#| msgid "Potrace"
 msgid "potrace"
 msgstr "Potrace"
 
 #: src/core/app_info.cpp:68
 #, kde-format
 msgid "Used by the bitmap tracing feature."
-msgstr ""
+msgstr "Используется функцией трассировки растровых изображений."
 
 #: src/core/app_info.cpp:70
-#, fuzzy, kde-format
-#| msgid "Libav"
+#, kde-format
 msgid "libav"
-msgstr "Libav"
+msgstr "libav"
 
 #: src/core/app_info.cpp:71
 #, kde-format
@@ -1028,27 +962,27 @@ msgstr "libarchive"
 #: src/core/app_info.cpp:72
 #, kde-format
 msgid "zlib"
-msgstr ""
+msgstr "zlib"
 
 #: src/core/app_info.cpp:74
 #, kde-format
 msgid "pybind11"
-msgstr ""
+msgstr "pybind11"
 
 #: src/core/app_info.cpp:74 src/core/app_info.cpp:75
 #, kde-format
 msgid "Used by the plugin system."
-msgstr ""
+msgstr "Используется системой подключаемых модулей."
 
 #: src/core/app_info.cpp:75
 #, kde-format
 msgid "CPython"
-msgstr ""
+msgstr "CPython"
 
 #: src/core/app_info.cpp:77
 #, kde-format
 msgid "Inkscape"
-msgstr ""
+msgstr "Inkscape"
 
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
@@ -1079,18 +1013,14 @@ msgstr "Обновить %1 на %2"
 #: src/core/command/property_commands.hpp:24
 #: src/core/model/animation/animatable.cpp:171
 #, fuzzy, kde-format
-#| msgctxt "QObject#39"
-#| msgid "Update %1"
 msgid "Update %1"
 msgstr "Обновить %1"
 
 #: src/core/command/animation_commands.cpp:307
 #: src/gui/widgets/timeline/timeline_items.cpp:537
-#, fuzzy, kde-format
-#| msgctxt "QObject#107"
-#| msgid "Update keyframe transition"
+#, kde-format
 msgid "Update keyframe transition"
-msgstr "Обновить переход ключевых кадров"
+msgstr "Обновить переход между ключевыми кадрами"
 
 #: src/core/command/animation_commands.cpp:358
 #, kde-format
@@ -1129,18 +1059,14 @@ msgid "Move Object"
 msgstr "Переместить объект"
 
 #: src/core/command/shape_commands.cpp:120 src/gui/tools/select_tool.cpp:422
-#, fuzzy, kde-format
-#| msgctxt "GlaxnimateWindow#7GlaxnimateWindow#7"
-#| msgid "Group Shapes"
+#, kde-format
 msgid "Group Shapes"
-msgstr "Group Shapes"
+msgstr "Группировать фигуры"
 
 #: src/core/command/shape_commands.cpp:153 src/gui/tools/select_tool.cpp:425
-#, fuzzy, kde-format
-#| msgctxt "GlaxnimateWindow#8GlaxnimateWindow#8"
-#| msgid "Ungroup Shapes"
+#, kde-format
 msgid "Ungroup Shapes"
-msgstr "Ungroup Shapes"
+msgstr "Разгруппировать фигуры"
 
 #: src/core/command/shape_commands.cpp:178
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:82
@@ -1161,7 +1087,7 @@ msgstr "Не удалось загрузить файл: %1"
 #: src/core/io/aep/aep_format.hpp:21
 #, kde-format
 msgid "Adobe After Effects Project"
-msgstr "Проект Adobe After Effects"
+msgstr "Adobe After Effects Project"
 
 #: src/core/io/aep/aep_format.hpp:42
 #, kde-format
@@ -1193,8 +1119,6 @@ msgstr "Не удалось преобразовать %1"
 #: src/core/io/lottie/lottie_importer.hpp:919
 #: src/core/io/lottie/lottie_importer.hpp:926
 #, fuzzy, kde-format
-#| msgctxt "QObject#33"
-#| msgid "Invalid value for %1"
 msgid "Invalid value for %1"
 msgstr "Недопустимая величина для %1"
 
@@ -1303,7 +1227,6 @@ msgstr "Неизвестный интерполятор %s"
 
 #: src/core/io/avd/avd_parser.cpp:650
 #, fuzzy, kde-format
-#| msgid "Unkown resource id %1"
 msgid "Unknown resource id %1"
 msgstr "Неизвестный идентификатор ресурса %1"
 
@@ -1335,13 +1258,11 @@ msgstr "%s не поддерживаются"
 #: src/core/io/avd/avd_renderer.cpp:518
 #, kde-format
 msgid "%s cannot be a clip path"
-msgstr "%s не может быть контуром клипа"
+msgstr "%s не может быть путём клипа"
 
 #: src/core/io/base.cpp:22 src/core/io/svg/svg_renderer.cpp:823
 #: src/gui/tools/base.cpp:162
 #, fuzzy, kde-format
-#| msgctxt "QObject#80QObject#80"
-#| msgid "%1 (%2)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
@@ -1355,8 +1276,6 @@ msgstr "Анимация Glaxnimate"
 #: src/core/io/glaxnimate/glaxnimate_mime.cpp:88
 #: src/core/io/lottie/lottie_format.cpp:34
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::io::glaxnimate::GlaxnimateFormat#15"
-#| msgid "Could not parse JSON: %1"
 msgid "Could not parse JSON: %1"
 msgstr "Не удалось выполнить разбор JSON: %1"
 
@@ -1364,8 +1283,6 @@ msgstr "Не удалось выполнить разбор JSON: %1"
 #: src/core/io/glaxnimate/glaxnimate_mime.cpp:94
 #: src/core/io/lottie/lottie_format.cpp:40
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::io::glaxnimate::GlaxnimateFormat#16"
-#| msgid "No JSON object found"
 msgid "No JSON object found"
 msgstr "Не удалось найти объект JSON"
 
@@ -1594,9 +1511,7 @@ msgid "Star Shapes are not officially supported"
 msgstr "Фигуры в форме звёзд официально не поддерживаются"
 
 #: src/core/io/lottie/tgs_format.cpp:51 src/core/io/lottie/validation.cpp:71
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::io::lottie::LottieFormat#22"
-#| msgid "Images are not supported"
+#, kde-format
 msgid "Images are not supported"
 msgstr "Изображения не поддерживаются"
 
@@ -1623,7 +1538,7 @@ msgstr "Раздувание/Сдувание не поддерживается"
 #: src/core/io/lottie/tgs_format.cpp:73
 #, kde-format
 msgid "Offset Path is not supported"
-msgstr "Смещение контура не поддерживается"
+msgstr "Смещение пути не поддерживается"
 
 #: src/core/io/lottie/tgs_format.cpp:77
 #, kde-format
@@ -1661,9 +1576,7 @@ msgid "Too many frames: %1, should be less than %2"
 msgstr "Слишком много кадров: %1, должно быть менее %2"
 
 #: src/core/io/lottie/validation.hpp:22
-#, fuzzy, kde-format
-#| msgctxt "QApplication#38"
-#| msgid "%1: %2"
+#, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
@@ -1674,9 +1587,7 @@ msgstr "JSON"
 
 #: src/core/io/raster/raster_format.hpp:25
 #: src/core/io/raster/raster_mime.hpp:25
-#, fuzzy, kde-format
-#| msgctxt "QObject#22"
-#| msgid "Raster Image"
+#, kde-format
 msgid "Raster Image"
 msgstr "Растровое изображение"
 
@@ -1759,9 +1670,7 @@ msgstr ""
 "версия %3"
 
 #: src/core/io/rive/rive_format.cpp:46 src/core/io/rive/rive_loader.cpp:750
-#, fuzzy, kde-format
-#| msgctxt "QObject#154"
-#| msgid "Could not read property table"
+#, kde-format
 msgid "Could not read property table"
 msgstr "Не удалось прочитать таблицу свойств"
 
@@ -1872,9 +1781,7 @@ msgstr "Встроенные данные"
 
 #: src/core/io/svg/svg_format.cpp:72
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:961
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::WindowMessageWidget#1"
-#| msgid "Ignore"
+#, kde-format
 msgid "Ignore"
 msgstr "Игнорировать"
 
@@ -1889,15 +1796,12 @@ msgid "How to include external font"
 msgstr "Как использовать внешний шрифт"
 
 #: src/core/io/svg/svg_format.cpp:92
-#, fuzzy, kde-format
-#| msgid "Could not create file"
+#, kde-format
 msgid "Could not write to file"
-msgstr "Не удалось создать файл"
+msgstr "Не удалось выполнить запись в файл"
 
 #: src/core/io/svg/svg_format.hpp:21 src/core/io/svg/svg_mime.hpp:20
-#, fuzzy, kde-format
-#| msgctxt "QObject#21"
-#| msgid "SVG"
+#, kde-format
 msgid "SVG"
 msgstr "SVG"
 
@@ -1964,9 +1868,7 @@ msgstr "Не удалось разместить данные кадра."
 
 #: src/core/io/video/video_format.cpp:403
 #: src/core/io/video/video_format.cpp:782
-#, fuzzy, kde-format
-#| msgctxt "QObject#91"
-#| msgid "No video codec"
+#, kde-format
 msgid "No video codec"
 msgstr "Нет видеокодека"
 
@@ -2008,12 +1910,13 @@ msgstr "Не удалось разместить временное изобра
 #: src/core/io/video/video_format.cpp:750
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
-msgstr "Не удалось определить формат по расширению файла: используется MPEG."
+msgstr ""
+"Не удалось определить выходной формат по расширению файла: используется MPEG."
 
 #: src/core/io/video/video_format.cpp:754
 #, kde-format
 msgid "Could not find output format"
-msgstr "Не удалось найти формат вывода"
+msgstr "Не удалось найти выходной формат"
 
 #: src/core/io/video/video_format.cpp:827
 #, kde-format
@@ -2034,9 +1937,7 @@ msgstr "Цвет фона"
 #: src/core/io/video/video_format.cpp:863
 #: src/gui/widgets/dialogs/resize_dialog.ui:56
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:46
-#, fuzzy, kde-format
-#| msgctxt "Settings#9Settings#9Settings#9Settings#9"
-#| msgid "Width"
+#, kde-format
 msgid "Width"
 msgstr "Ширина"
 
@@ -2049,9 +1950,7 @@ msgstr "При значении отличном от 0 перезаписыва
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/core/io/video/video_format.cpp:864
 #: src/gui/widgets/dialogs/resize_dialog.ui:33
-#, fuzzy, kde-format
-#| msgctxt "Settings#10Settings#10"
-#| msgid "Height"
+#, kde-format
 msgid "Height"
 msgstr "Высота"
 
@@ -2073,28 +1972,22 @@ msgstr "Видео"
 #: src/core/model/animation/animatable.cpp:271
 #: src/core/model/animation/animatable_path.cpp:30
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::model::detail::AnimatedPropertyBezier#1"
-#| msgid "Split Segment"
 msgid "Split Segment"
 msgstr "Отделение сегмента"
 
 #: src/core/model/animation/animatable.cpp:340
 #: src/core/model/animation/animatable_path.cpp:60
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::model::detail::AnimatedPropertyBezier#2"
-#| msgid "Remove Nodes"
+#, kde-format
 msgid "Remove Nodes"
-msgstr "Удаление точек"
+msgstr "Удалить точки"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/core/model/animation/animatable.cpp:418
 #: src/gui/widgets/menus/animated_property_menu.cpp:59
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:196
-#, fuzzy, kde-format
-#| msgctxt "CompoundTimelineWidget#1CompoundTimelineWidget#1CompoundTimelineWidget#1CompoundTimelineWidget#1"
-#| msgid "Add Keyframe"
+#, kde-format
 msgid "Add Keyframe"
-msgstr "Add Keyframe"
+msgstr "Добавить ключевой кадр"
 
 #: src/core/model/animation/animatable_path.cpp:139
 #, kde-format
@@ -2107,11 +2000,8 @@ msgid "Animation Timing"
 msgstr "Параметры времени анимации"
 
 #: src/core/model/assets/assets.hpp:34
-#, fuzzy
-#| msgctxt "ColorDialog#6ColorDialog#6ColorDialog#6ColorDialog#6ColorDialog#6"
-#| msgid "Value"
 msgid "values"
-msgstr "Значение"
+msgstr "значения"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_swatches)
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_extra)
@@ -2120,10 +2010,6 @@ msgstr "Значение"
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:45
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:48
 #, fuzzy, kde-format
-#| msgctxt ""
-#| "glaxnimate::gui::DocumentSwatchWidget#1glaxnimate::gui::"
-#| "DocumentSwatchWidget#1"
-#| msgid "Swatch"
 msgid "Swatch"
 msgstr "Образец"
 
@@ -2133,17 +2019,13 @@ msgid "Images"
 msgstr "Изображения"
 
 #: src/core/model/assets/assets.hpp:127 src/gui/tools/edit_tool.cpp:352
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::tools::EditTool#1"
-#| msgid "Gradient Colors"
+#, kde-format
 msgid "Gradient Colors"
 msgstr "Цвета градиента"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_gradients)
 #: src/core/model/assets/assets.hpp:137 src/gui/widgets/docks/gradients.ui:22
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::GlaxnimateWindow#43"
-#| msgid "Gradients"
+#, kde-format
 msgid "Gradients"
 msgstr "Градиенты"
 
@@ -2160,8 +2042,6 @@ msgstr "Шрифты"
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_assets)
 #: src/core/model/assets/assets.hpp:208 src/gui/widgets/docks/assets.ui:22
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::GlaxnimateWindow#45"
-#| msgid "Assets"
 msgid "Assets"
 msgstr "Активы"
 
@@ -2177,9 +2057,7 @@ msgstr "Растр"
 
 #. i18n: ectx: Menu (new_comp_layer_menu)
 #: src/core/model/assets/composition.cpp:24 src/gui/glaxnimateui.rc:124
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::model::Composition#1"
-#| msgid "Composition"
+#, kde-format
 msgid "Composition"
 msgstr "Композиция"
 
@@ -2190,23 +2068,14 @@ msgstr "Композиция"
 #: src/gui/widgets/font/external_font_widget.ui:69
 #: src/gui/widgets/font/font_style_widget.ui:24
 #: src/gui/widgets/font/google_fonts_widget.ui:68
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "glaxnimate::gui::font::ExternalFontWidget#4glaxnimate::gui::font::"
-#| "ExternalFontWidget#4glaxnimate::gui::font::"
-#| "ExternalFontWidget#4glaxnimate::gui::font::ExternalFontWidget#4"
-#| msgid "Font"
+#, kde-format
 msgid "Font"
 msgstr "Шрифт"
 
 #: src/core/model/assets/gradient.cpp:83
 #: src/gui/item_models/gradient_list_model.cpp:175
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:232
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "glaxnimate::gui::GradientListWidget#12glaxnimate::gui::"
-#| "GradientListWidget#12"
-#| msgid "Gradient"
+#, kde-format
 msgid "Gradient"
 msgstr "Градиент"
 
@@ -2235,9 +2104,7 @@ msgstr "%1 градиент"
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:154
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:157
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:60
-#, fuzzy, kde-format
-#| msgctxt "GradientListWidget#9GradientListWidget#9GradientListWidget#9GradientListWidget#9GradientListWidget#9GradientListWidget#9"
-#| msgid "Linear"
+#, kde-format
 msgid "Linear"
 msgstr "Линейная"
 
@@ -2251,8 +2118,6 @@ msgstr "Линейная"
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:174
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:177
 #, fuzzy, kde-format
-#| msgctxt "GradientListWidget#8GradientListWidget#8GradientListWidget#8"
-#| msgid "Radial"
 msgid "Radial"
 msgstr "Радиальная"
 
@@ -2266,8 +2131,6 @@ msgstr "Радиальная"
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:223
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:226
 #, fuzzy, kde-format
-#| msgctxt "GradientListWidget#11GradientListWidget#11"
-#| msgid "Conical"
 msgid "Conical"
 msgstr "Коническая"
 
@@ -2287,9 +2150,7 @@ msgid "Unknown Object"
 msgstr "Неизвестный объект"
 
 #: src/core/model/shapes/ellipse.cpp:19 src/gui/tools/ellipse_tool.cpp:17
-#, fuzzy, kde-format
-#| msgctxt "QObject#60"
-#| msgid "Ellipse"
+#, kde-format
 msgid "Ellipse"
 msgstr "Эллипс"
 
@@ -2307,8 +2168,6 @@ msgstr "Эллипс"
 #: src/gui/widgets/tools/fill_tool_widget.ui:24
 #: src/gui/widgets/tools/shape_tool_widget.ui:66
 #, fuzzy, kde-format
-#| msgctxt "GradientListWidget#10GradientListWidget#10GradientListWidget#10GradientListWidget#10GradientListWidget#10GradientListWidget#10GradientListWidget#10"
-#| msgid "Fill"
 msgid "Fill"
 msgstr "Заливка"
 
@@ -2317,16 +2176,12 @@ msgstr "Заливка"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:587
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:624
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::ShapeToolWidget#3"
-#| msgid "Group"
+#, kde-format
 msgid "Group"
 msgstr "Группа"
 
 #: src/core/model/shapes/image.cpp:85 src/gui/widgets/menus/node_menu.cpp:352
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::NodeMenu#24"
-#| msgid "Image"
+#, kde-format
 msgid "Image"
 msgstr "Изображение"
 
@@ -2339,16 +2194,14 @@ msgstr "Раздувание и сдувание"
 #: src/core/model/shapes/layer.hpp:81
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:584
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::ShapeToolWidget#4"
-#| msgid "Layer"
+#, kde-format
 msgid "Layer"
 msgstr "Слой"
 
 #: src/core/model/shapes/offset_path.cpp:342
 #, kde-format
 msgid "Offset Path"
-msgstr "Смещение контура"
+msgstr "Смещение пути"
 
 #. i18n: ectx: Menu (path)
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -2356,11 +2209,7 @@ msgstr "Смещение контура"
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:676
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "glaxnimate::gui::ExportImageSequenceDialog#8glaxnimate::gui::"
-#| "ExportImageSequenceDialog#8"
-#| msgid "Path"
+#, kde-format
 msgid "Path"
 msgstr "Путь"
 
@@ -2375,9 +2224,7 @@ msgid "Composition Layer"
 msgstr "Слой композиции"
 
 #: src/core/model/shapes/rect.hpp:31 src/gui/tools/rectangle_tool.hpp:20
-#, fuzzy, kde-format
-#| msgctxt "QObject#7"
-#| msgid "Rectangle"
+#, kde-format
 msgid "Rectangle"
 msgstr "Прямоугольник"
 
@@ -2403,9 +2250,7 @@ msgstr "Скругление углов"
 #: src/gui/widgets/tools/color_picker_widget.ui:37
 #: src/gui/widgets/tools/fill_tool_widget.ui:38
 #: src/gui/widgets/tools/shape_tool_widget.ui:80
-#, fuzzy, kde-format
-#| msgctxt "GradientListWidget#7GradientListWidget#7GradientListWidget#7GradientListWidget#7GradientListWidget#7GradientListWidget#7GradientListWidget#7"
-#| msgid "Stroke"
+#, kde-format
 msgid "Stroke"
 msgstr "Обводка"
 
@@ -2418,15 +2263,13 @@ msgstr "Изменить шрифт"
 #: src/core/model/shapes/text.cpp:489 src/gui/glaxnimateui.rc:200
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:120
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::ToolbarSettingsWidget#2"
-#| msgid "Text"
 msgid "Text"
 msgstr "Текст"
 
 #: src/core/model/shapes/trim.cpp:24
 #, kde-format
 msgid "Trim Path"
-msgstr "Обрезка контура"
+msgstr "Обрезка пути"
 
 #: src/core/model/shapes/zig_zag.cpp:139
 #, kde-format
@@ -2437,8 +2280,6 @@ msgstr "Зигзаг"
 #: src/core/model/stretchable_time.cpp:28
 #: src/gui/widgets/dialogs/timing_dialog.ui:21
 #, fuzzy, kde-format
-#| msgctxt "TimingDialog#1"
-#| msgid "Timing"
 msgid "Timing"
 msgstr "Параметры времени"
 
@@ -2472,69 +2313,58 @@ msgstr ""
 
 #: src/core/utils/gzip.cpp:30
 #, fuzzy, kde-format
-#| msgid "Could not copy dict: %1"
 msgid "Could not decompress data"
 msgstr "Не удалось скопировать словарь: %1"
 
 #: src/core/utils/trace_wrapper.cpp:160
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::TraceDialog#30"
-#| msgid "Traced %1"
 msgid "Traced %1"
 msgstr "Traced %1"
 
 #: src/gui/cli.cpp:27
-#, fuzzy, kde-format
-#| msgid "Informational Options"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Informational Options"
 msgstr "Информационные параметры"
 
 #: src/gui/cli.cpp:28
-#, fuzzy, kde-format
-#| msgid "Show this help and exit"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Show this help and exit"
 msgstr "Показать эту справку и выйти"
 
 #: src/gui/cli.cpp:29
 #, fuzzy, kde-format
-#| msgid "Show version information and exit"
 msgctxt "@info:shell"
 msgid "Show version information and exit"
 msgstr "Показать информацию о версии и выйти"
 
 #: src/gui/cli.cpp:31
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Options"
 msgstr "Параметры"
 
 #: src/gui/cli.cpp:32
-#, fuzzy, kde-format
-#| msgid "File to open"
+#, kde-format
 msgctxt "@info:shell"
 msgid "File to open"
-msgstr "Отрываемый файл"
+msgstr "Файл для открытия"
 
 #: src/gui/cli.cpp:33
-#, fuzzy, kde-format
-#| msgid "When opening image files, trace them instead of embedding"
+#, kde-format
 msgctxt "@info:shell"
 msgid "When opening image files, trace them instead of embedding"
 msgstr "При открытии файлов изображений трассировать их вместо вставки"
 
 #: src/gui/cli.cpp:35
-#, fuzzy, kde-format
-#| msgid "GUI Options"
+#, kde-format
 msgctxt "@info:shell"
 msgid "GUI Options"
 msgstr "Параметры графического интерфейса"
 
 #: src/gui/cli.cpp:36
 #, fuzzy, kde-format
-#| msgid "If present, doesn't restore the main window state"
 msgctxt "@info:shell"
 msgid "If present, doesn't restore the main window state"
 msgstr ""
@@ -2543,9 +2373,6 @@ msgstr ""
 
 #: src/gui/cli.cpp:39
 #, fuzzy, kde-format
-#| msgid ""
-#| "Specify the name of the local socket/named pipe to connect to a host "
-#| "application."
 msgctxt "@info:shell"
 msgid ""
 "Specify the name of the local socket/named pipe to connect to a host "
@@ -2555,36 +2382,31 @@ msgstr ""
 "приложением."
 
 #: src/gui/cli.cpp:46
-#, fuzzy, kde-format
-#| msgid "Use a specific size for the main window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Use a specific size for the main window"
 msgstr "Использовать указанный размер для главного окна"
 
 #: src/gui/cli.cpp:54
-#, fuzzy, kde-format
-#| msgid "Print the window id"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Print the window id"
 msgstr "Вывести идентификатор окна"
 
 #: src/gui/cli.cpp:57
-#, fuzzy, kde-format
-#| msgid "Enables the debug menu"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Enables the debug menu"
 msgstr "Включает меню отладки"
 
 #: src/gui/cli.cpp:60
 #, fuzzy, kde-format
-#| msgid "Export Options"
 msgctxt "@info:shell"
 msgid "Export Options"
 msgstr "Параметры экспорта"
 
 #: src/gui/cli.cpp:63
 #, fuzzy, kde-format
-#| msgid "Export the input file to the given file instead of starting the GUI"
 msgctxt "@info:shell"
 msgid "Export the input file to the given file instead of starting the GUI"
 msgstr ""
@@ -2592,9 +2414,6 @@ msgstr ""
 
 #: src/gui/cli.cpp:70
 #, fuzzy, kde-format
-#| msgid ""
-#| "Specify the format for --export. If omitted it's determined based on the "
-#| "file name. See --export-format-list for a list of supported formats."
 msgctxt "@info:shell"
 msgid ""
 "Specify the format for --export. If omitted it's determined based on the "
@@ -2605,23 +2424,19 @@ msgstr ""
 "получен с помощью аргумента --export-format-list."
 
 #: src/gui/cli.cpp:77
-#, fuzzy, kde-format
-#| msgid "Shows possible values for --export-format"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Shows possible values for --export-format"
-msgstr "Выводит возможные значения для аргумента --export-format"
+msgstr "Выводит возможные значения аргумента --export-format"
 
 #: src/gui/cli.cpp:81
 #, fuzzy, kde-format
-#| msgid "Render Frame Options"
 msgctxt "@info:shell"
 msgid "Render Frame Options"
 msgstr "Параметры рендеринга кадров"
 
 #: src/gui/cli.cpp:84
 #, fuzzy, kde-format
-#| msgid ""
-#| "Render frames the input file to the given file instead of starting the GUI"
 msgctxt "@info:shell"
 msgid ""
 "Render frames the input file to the given file instead of starting the GUI"
@@ -2631,9 +2446,6 @@ msgstr ""
 
 #: src/gui/cli.cpp:91
 #, fuzzy, kde-format
-#| msgid ""
-#| "Specify the format for --render. If omitted it's determined based on the "
-#| "file name. See --render-format-list for a list of supported formats."
 msgctxt "@info:shell"
 msgid ""
 "Specify the format for --render. If omitted it's determined based on the "
@@ -2645,7 +2457,6 @@ msgstr ""
 
 #: src/gui/cli.cpp:98
 #, fuzzy, kde-format
-#| msgid "Frame number to render, use `all` to render all frames"
 msgctxt "@info:shell"
 msgid "Frame number to render, use `all` to render all frames"
 msgstr ""
@@ -2653,60 +2464,49 @@ msgstr ""
 "рендеринг всех кадров"
 
 #: src/gui/cli.cpp:105
-#, fuzzy, kde-format
-#| msgid "Shows possible values for --render-format"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Shows possible values for --render-format"
 msgstr "Выводит возможные значения аргумента --render-format"
 
 #: src/gui/cli.cpp:159
-#, fuzzy, kde-format
-#| msgctxt "QApplication#24"
-#| msgid "Could not run the plugin"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Could not run the plugin"
 msgstr "Не удалось запустить подключаемый модуль"
 
 #: src/gui/cli.cpp:168
-#, fuzzy, kde-format
-#| msgctxt "QApplication#25"
-#| msgid "Could not find an interpreter"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Could not find an interpreter"
 msgstr "Не удалось найти интерпретатор"
 
 #: src/gui/cli.cpp:225
-#, fuzzy, kde-format
-#| msgid "Unknown importer"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Unknown importer"
 msgstr "Неизвестный модуль импорта"
 
 #: src/gui/cli.cpp:232
-#, fuzzy, kde-format
-#| msgid "Could not open input file for reading"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Could not open input file for reading"
 msgstr "Не удалось открыть входной файл для чтения"
 
 #: src/gui/cli.cpp:246
-#, fuzzy, kde-format
-#| msgid "Error loading input file"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Error loading input file"
 msgstr "Ошибка загрузки входного файла"
 
 #: src/gui/cli.cpp:260
-#, fuzzy, kde-format
-#| msgid "You need to specify a file to export"
+#, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to export"
 msgstr "Необходимо указать файл для экспорта"
 
 #: src/gui/cli.cpp:275
-#, fuzzy, kde-format
-#| msgid ""
-#| "Unknown exporter. use --export-format-list for a list of available formats"
+#, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Unknown exporter. Use --export-format-list for a list of available formats"
@@ -2715,36 +2515,31 @@ msgstr ""
 "просмотра списка доступных форматов"
 
 #: src/gui/cli.cpp:286
-#, fuzzy, kde-format
-#| msgid "Could not open output file for writing"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Could not open output file for writing"
 msgstr "Не удалось открыть выходной файл для записи"
 
 #: src/gui/cli.cpp:295
-#, fuzzy, kde-format
-#| msgid "Error converting to the output format"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Error converting to the output format"
-msgstr "Ошибка конвертирования в выходной формат"
+msgstr "Ошибка преобразования в выходной формат"
 
 #: src/gui/cli.cpp:315 src/gui/cli.cpp:335
-#, fuzzy, kde-format
-#| msgid "Could not save to %1"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Could not save to %1"
 msgstr "Не удалось сохранить в %1"
 
 #: src/gui/cli.cpp:344
-#, fuzzy, kde-format
-#| msgid "You need to specify a file to render"
+#, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to render"
 msgstr "Необходимо указать файл для рендеринга"
 
 #: src/gui/emoji/emoji_dialog.cpp:32
 #, fuzzy, kde-format
-#| msgid "Select Emoji"
 msgctxt "@title:window"
 msgid "Select Emoji"
 msgstr "Выбрать эмодзи"
@@ -2752,35 +2547,30 @@ msgstr "Выбрать эмодзи"
 #: src/gui/emoji/emoji_set_dialog.cpp:154
 #: src/gui/emoji/emoji_set_dialog.cpp:207
 #, fuzzy, kde-format
-#| msgid "Installed"
 msgctxt "Package install status"
 msgid "Installed"
 msgstr "Установлено"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:156
 #, fuzzy, kde-format
-#| msgid "Not Installed"
 msgctxt "Package install status"
 msgid "Not Installed"
 msgstr "Не установлено"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:175
 #, fuzzy, kde-format
-#| msgid "Downloading"
 msgctxt "Package install status"
 msgid "Downloading"
 msgstr "Загружается"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:186
 #, fuzzy, kde-format
-#| msgid "Could not download: %1"
 msgctxt "Package install status, %1 reason"
 msgid "Could not download: %1"
 msgstr "Не удалось загрузить: %1"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:205
 #, fuzzy, kde-format
-#| msgid "Didn't download any files"
 msgctxt "Package install status"
 msgid "Didn't download any files"
 msgstr "Не удалось загрузить файлы"
@@ -2811,9 +2601,7 @@ msgstr "Набор эмодзи"
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:391
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:451
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:89
-#, fuzzy, kde-format
-#| msgctxt "DocumentMetadataDialog#8DocumentMetadataDialog#8DocumentMetadataDialog#8DocumentMetadataDialog#8DocumentMetadataDialog#8DocumentMetadataDialog#8DocumentMetadataDialog#8DocumentMetadataDialog#8DocumentMetadataDialog#8DocumentMetadataDialog#8DocumentMetadataDialog#8DocumentMetadataDialog#8DocumentMetadataDialog#8DocumentMetadataDialog#8DocumentMetadataDialog#8"
-#| msgid "Name"
+#, kde-format
 msgid "Name"
 msgstr "Имя"
 
@@ -2838,8 +2626,6 @@ msgstr "Загружено"
 #: src/gui/widgets/docks/snippet_list_widget.ui:98
 #: src/gui/widgets/font/google_fonts_widget.ui:36
 #, fuzzy, kde-format
-#| msgctxt "EmojiSetDialog#5EmojiSetDialog#5EmojiSetDialog#5"
-#| msgid "Reload"
 msgid "Reload"
 msgstr "Обновить"
 
@@ -2867,8 +2653,6 @@ msgstr "Добавить эмодзи…"
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:80
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:171
 #, fuzzy, kde-format
-#| msgctxt "EmojiSetDialog#9"
-#| msgid "Close"
 msgid "Close"
 msgstr "Закрыть"
 
@@ -2881,37 +2665,31 @@ msgstr "Новый из шаблона"
 #. i18n: ectx: Menu (edit_tools)
 #: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:379
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:754
-#, fuzzy, kde-format
-#| msgctxt "Settings#20"
-#| msgid "Tools"
+#, kde-format
 msgid "Tools"
 msgstr "Инструменты"
 
 #. i18n: ectx: Menu (views_menu)
 #: src/gui/glaxnimateui.rc:66
 #, fuzzy, kde-format
-#| msgid "&Views"
 msgid "Views"
 msgstr "&Виды"
 
 #. i18n: ectx: Menu (layout_menu)
 #: src/gui/glaxnimateui.rc:70
 #, fuzzy, kde-format
-#| msgid "&Layout"
 msgid "Layout"
 msgstr "&Компоновка"
 
 #. i18n: ectx: Menu (document)
 #: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:455
 #, fuzzy, kde-format
-#| msgid "&Document"
 msgid "Document"
 msgstr "&Документ"
 
 #. i18n: ectx: Menu (render_frame_menu)
 #: src/gui/glaxnimateui.rc:88
 #, fuzzy, kde-format
-#| msgid "Render Single &Frame"
 msgid "Render Single Frame"
 msgstr "Рендеринг одного &кадра"
 
@@ -2926,21 +2704,18 @@ msgstr "Предварительный просмотр в веб-браузер
 #. i18n: ectx: Menu (playback)
 #: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:499
 #, fuzzy, kde-format
-#| msgid "&Playback"
 msgid "Playback"
 msgstr "&Воспроизведение"
 
 #. i18n: ectx: Menu (object)
 #: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:607
 #, fuzzy, kde-format
-#| msgid "&Object"
 msgid "Object"
 msgstr "&Объект"
 
 #. i18n: ectx: Menu (align_menu)
 #: src/gui/glaxnimateui.rc:154
 #, fuzzy, kde-format
-#| msgid "&Align and Distribute"
 msgid "Align and Distribute"
 msgstr "&Выравнивание и компоновка"
 
@@ -2959,17 +2734,15 @@ msgstr "Основная панель инструментов"
 
 #. i18n: ectx: ToolBar (toolsToolBar)
 #: src/gui/glaxnimateui.rc:242
-#, fuzzy, kde-format
-#| msgid "Toolbars"
+#, kde-format
 msgid "Tools Toolbar"
-msgstr "Панели инструментов"
+msgstr "Панель инструментов «Инструменты»"
 
 #. i18n: ectx: ToolBar (nodeToolBar)
 #: src/gui/glaxnimateui.rc:258
-#, fuzzy, kde-format
-#| msgid "Toolbars"
+#, kde-format
 msgid "Node Toolbar"
-msgstr "Панели инструментов"
+msgstr "Панель инструментов «Точка»"
 
 #: src/gui/graphics/bezier_item.cpp:239
 #, kde-format
@@ -2979,7 +2752,7 @@ msgstr "Удалить управляющую линию точки"
 #: src/gui/graphics/bezier_item.cpp:351
 #, kde-format
 msgid "Update path"
-msgstr "Обновить контур"
+msgstr "Обновить путь"
 
 #: src/gui/graphics/bezier_item.cpp:368
 #, kde-format
@@ -3020,33 +2793,25 @@ msgstr "Перемещение слоёв"
 #. i18n: ectx: attribute (title), widget (QWidget, tab_3)
 #: src/gui/item_models/document_node_model.cpp:253
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:279
-#, fuzzy, kde-format
-#| msgctxt "StrokeStyleWidget#12StrokeStyleWidget#12"
-#| msgid "Color"
+#, kde-format
 msgid "Color"
 msgstr "Цвет"
 
 #: src/gui/item_models/document_node_model.cpp:257
 #: src/gui/item_models/property_model_full.cpp:257
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::NodeMenu#29glaxnimate::gui::NodeMenu#29"
-#| msgid "Visible"
 msgid "Visible"
 msgstr "Видимый"
 
 #: src/gui/item_models/document_node_model.cpp:259
 #: src/gui/item_models/property_model_full.cpp:291
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::NodeMenu#30glaxnimate::gui::NodeMenu#30"
-#| msgid "Locked"
 msgid "Locked"
 msgstr "Заблокирован"
 
 #: src/gui/item_models/document_node_model.cpp:261
 #: src/gui/item_models/gradient_list_model.cpp:179
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::item_models::DocumentNodeModel#5"
-#| msgid "#"
 msgid "#"
 msgstr "#"
 
@@ -3111,8 +2876,6 @@ msgstr "(Нет родителя)"
 #: src/gui/widgets/shape_style/color_selector.ui:113
 #: src/gui/widgets/shape_style/color_selector.ui:153
 #, fuzzy, kde-format
-#| msgctxt "ColorDialog#6ColorDialog#6ColorDialog#6ColorDialog#6ColorDialog#6"
-#| msgid "Value"
 msgid "Value"
 msgstr "Значение"
 
@@ -3143,26 +2906,22 @@ msgstr "Буфер обмена"
 
 #: src/gui/settings/document_templates.cpp:52
 #, fuzzy, kde-format
-#| msgctxt "QObject#160QObject#160"
-#| msgid "Unnamed"
 msgid "Unnamed"
 msgstr "Без имени"
 
 #: src/gui/settings/document_templates.cpp:118
 #, fuzzy, kde-format
-#| msgid "%1%"
 msgid "%1"
 msgstr "%1%"
 
 # %5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the frame rate
 #: src/gui/settings/document_templates.cpp:125
-#, fuzzy, kde-format
-#| msgid "%5 - %1x%2 %3 %4fps"
+#, kde-format
 msgctxt ""
 "%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
 msgid "%5 - %1x%2 %3 %4fps"
-msgstr "%5 - %1x%2 %3 %4 к/сек"
+msgstr "%5 — %1x%2 %3 %4 к/сек"
 
 #: src/gui/settings/document_templates.cpp:180
 #, kde-format
@@ -3170,9 +2929,7 @@ msgid "Template"
 msgstr "Шаблон"
 
 #: src/gui/settings/document_templates.cpp:184
-#, fuzzy, kde-format
-#| msgctxt "WidgetPaletteEditor#19"
-#| msgid "%1 %2"
+#, kde-format
 msgid "%1 %2"
 msgstr "%1 %2"
 
@@ -3192,9 +2949,7 @@ msgstr "Системный по умолчанию"
 #: src/gui/widgets/font/font_preview_widget.ui:45
 #: src/gui/widgets/spin2d.cpp:114 src/gui/widgets/spin2d.cpp:115
 #: src/gui/widgets/view_transform_widget.ui:60
-#, fuzzy, no-c-format, kde-format
-#| msgctxt "ColorQuantizationDialog#17ColorQuantizationDialog#17ColorQuantizationDialog#17ColorQuantizationDialog#17ColorQuantizationDialog#17ColorQuantizationDialog#17"
-#| msgid "%"
+#, no-c-format, kde-format
 msgid "%"
 msgstr "%"
 
@@ -3206,7 +2961,7 @@ msgstr "Выбор цвета"
 #: src/gui/tools/draw_tool.cpp:183
 #, kde-format
 msgid "Extend Path"
-msgstr "Удлинение контура"
+msgstr "Удлинение пути"
 
 #: src/gui/tools/draw_tool.cpp:206
 #, kde-format
@@ -3279,37 +3034,30 @@ msgid "Remove Tangent"
 msgstr "Удалить управляющую линию"
 
 #: src/gui/tools/edit_tool.cpp:369
-#, fuzzy, kde-format
-#| msgid "Stop Color..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Stop Color..."
 msgstr "Цвет ограничения…"
 
 #: src/gui/tools/edit_tool.cpp:381
-#, fuzzy, kde-format
-#| msgid "Add Stop"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Add Stop"
 msgstr "Добавить ограничение"
 
 #: src/gui/tools/edit_tool.cpp:385
-#, fuzzy, kde-format
-#| msgid "Remove Stop"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "Удалить ограничение"
 
 #: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:711
-#, fuzzy, kde-format
-#| msgctxt "QObject#73"
-#| msgid "Dissolve Nodes"
+#, kde-format
 msgid "Dissolve Nodes"
 msgstr "Убрать точки"
 
 #: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:698
-#, fuzzy, kde-format
-#| msgctxt "QObject#74"
-#| msgid "Delete Nodes"
+#, kde-format
 msgid "Delete Nodes"
 msgstr "Удалить точки"
 
@@ -3330,8 +3078,6 @@ msgstr "Скругление сегментов"
 
 #: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:338
 #, fuzzy, kde-format
-#| msgctxt "QObject#10"
-#| msgid "Edit"
 msgid "Edit"
 msgstr "Изменить"
 
@@ -3363,8 +3109,6 @@ msgstr "Рисовать от руки"
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_properties)
 #: src/gui/tools/handle_menu.hpp:33 src/gui/widgets/docks/properties.ui:28
 #, fuzzy, kde-format
-#| msgctxt "QMenu#1"
-#| msgid "Properties"
 msgid "Properties"
 msgstr "Свойства"
 
@@ -3375,8 +3119,6 @@ msgstr "Рисовать прямоугольник"
 
 #: src/gui/tools/select_tool.cpp:29
 #, fuzzy, kde-format
-#| msgctxt "QObject#54"
-#| msgid "Select"
 msgid "Select"
 msgstr "Выбрать"
 
@@ -3387,15 +3129,11 @@ msgstr "Перетащить"
 
 #: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:343
 #, fuzzy, kde-format
-#| msgctxt "GlaxnimateWindow#1"
-#| msgid "Undo %1"
 msgid "Undo %1"
 msgstr "Undo %1"
 
 #: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:349
 #, fuzzy, kde-format
-#| msgctxt "GlaxnimateWindow#2"
-#| msgid "Redo %1"
 msgid "Redo %1"
 msgstr "Redo %1"
 
@@ -3406,23 +3144,17 @@ msgstr "Redo %1"
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:46
 #: src/gui/widgets/docks/snippet_list_widget.ui:57
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:66
-#, fuzzy, kde-format
-#| msgctxt "GlaxnimateWindow#6GlaxnimateWindow#6GlaxnimateWindow#6GlaxnimateWindow#6GlaxnimateWindow#6"
-#| msgid "Delete"
+#, kde-format
 msgid "Delete"
-msgstr "Delete"
+msgstr "Удалить"
 
 #: src/gui/tools/select_tool.cpp:429
-#, fuzzy, kde-format
-#| msgctxt "GlaxnimateWindow#9GlaxnimateWindow#9"
-#| msgid "Move to..."
+#, kde-format
 msgid "Move to..."
-msgstr "Move to..."
+msgstr "Переместить в…"
 
 #: src/gui/tools/star_tool.cpp:19 src/gui/widgets/enum_combo.cpp:90
-#, fuzzy, kde-format
-#| msgctxt "QObject#51"
-#| msgid "Star"
+#, kde-format
 msgid "Star"
 msgstr "Звезда"
 
@@ -3441,7 +3173,7 @@ msgstr "Рисовать текст"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:143
 #, kde-format
 msgid "About Environment"
-msgstr ""
+msgstr "Об окружении"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:30
@@ -3516,40 +3248,30 @@ msgstr "Выходные форматы "
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:21
 #, fuzzy, kde-format
-#| msgctxt "ColorQuantizationDialog#1"
-#| msgid "Configure color detection"
 msgid "Configure color detection"
 msgstr "Настройка определения цвета"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:33
 #, fuzzy, kde-format
-#| msgctxt "ColorQuantizationDialog#2"
-#| msgid "Algorithm"
 msgid "Algorithm"
 msgstr "Алгоритм"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:44
-#, fuzzy, kde-format
-#| msgctxt "ColorQuantizationDialog#3"
-#| msgid "k-Means"
+#, kde-format
 msgid "k-Means"
-msgstr "k-Средние"
+msgstr "k-средние"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:49
-#, fuzzy, kde-format
-#| msgctxt "ColorQuantizationDialog#4"
-#| msgid "k-Modes"
+#, kde-format
 msgid "k-Modes"
-msgstr "k-Моды"
+msgstr "k-моды"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:54
 #, fuzzy, kde-format
-#| msgctxt "ColorQuantizationDialog#5"
-#| msgid "Octree"
 msgid "Octree"
 msgstr "Октодерево"
 
@@ -3562,16 +3284,12 @@ msgstr "Моды с исключением периферии"
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:76
 #, fuzzy, kde-format
-#| msgctxt "ColorQuantizationDialog#7"
-#| msgid "Match"
 msgid "Match"
 msgstr "Совпадение"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:83
 #, fuzzy, kde-format
-#| msgctxt "ColorQuantizationDialog#8"
-#| msgid "Max Iterations"
 msgid "Max Iterations"
 msgstr "Максимум итераций"
 
@@ -3580,77 +3298,25 @@ msgstr "Максимум итераций"
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:107
 #: src/gui/widgets/menus/node_menu.cpp:77
 #: src/gui/widgets/shape_style/color_selector.ui:59
-#, fuzzy, kde-format
-#| msgctxt "ColorQuantizationDialog#9ColorQuantizationDialog#9ColorQuantizationDialog#9"
-#| msgid "None"
+#, kde-format
 msgid "None"
 msgstr "Нет"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:112
 #, fuzzy, kde-format
-#| msgctxt "ColorQuantizationDialog#10"
-#| msgid "Most Frequent"
 msgid "Most Frequent"
 msgstr "Распространённое"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:117
 #, fuzzy, kde-format
-#| msgctxt "ColorQuantizationDialog#11"
-#| msgid "Closest"
 msgid "Closest"
 msgstr "Ближайшее"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:141
-#, fuzzy, kde-format
-#| msgctxt "ColorQuantizationDialog#12"
-#| msgid ""
-#| "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#| "REC-html40/strict.dtd\">\n"
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; "
-#| "font-weight:400; font-style:normal;\">\n"
-#| "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">k-Means divides the "
-#| "colors into clusters and refines the assignment at every iteration.</p>\n"
-#| "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#| "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
-#| "\"><br /></p>\n"
-#| "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">This is the best option "
-#| "when tracing images with a lot of colors or shading.</p>\n"
-#| "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#| "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
-#| "\"><br /></p>\n"
-#| "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">For pictures with a lot "
-#| "of colors increasing the number of iterations will yield better results "
-#| "but it might be slower.</p>\n"
-#| "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#| "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
-#| "\"><br /></p>\n"
-#| "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">The <span style=\" font-"
-#| "style:italic;\">Match</span> option performs some post-processing:</p>\n"
-#| "<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
-#| "right: 0px; -qt-list-indent: 1;\"><li style=\"\" style=\" margin-"
-#| "top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-"
-#| "indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">None</"
-#| "span>: Don't perform any post-processing and return the means (note this "
-#| "might result in colors not present in the original image)</li>\n"
-#| "<li style=\"\" style=\" margin-top:0px; margin-bottom:0px; margin-"
-#| "left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span "
-#| "style=\" font-weight:600;\">Closest</span>: Find the color in the "
-#| "original image the is the closest to the mean</li>\n"
-#| "<li style=\"\" style=\" margin-top:0px; margin-bottom:12px; margin-"
-#| "left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span "
-#| "style=\" font-weight:600;\">Most Frequent</span>: Find the color in the "
-#| "cluster that appears most often in the source image</li></ul></body></"
-#| "html>"
+#, kde-format
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -3704,7 +3370,7 @@ msgstr ""
 "</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">k-Средние подразделяет "
+"right:0px; -qt-block-indent:0; text-indent:0px;\">k-средние подразделяет "
 "цвета на кластеры и уточняет значение на каждой итерации.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
@@ -3744,14 +3410,7 @@ msgstr ""
 
 #. i18n: ectx: property (plainText), widget (QPlainTextEdit, plainTextEdit)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:159
-#, fuzzy, kde-format
-#| msgctxt "ColorQuantizationDialog#13"
-#| msgid ""
-#| "k-Modes gives you the colors that appear most often in the source image.\n"
-#| "\n"
-#| "It's very fast but it does not give accurate colors for complex images.\n"
-#| "\n"
-#| "This is the best option when tracing images with flat colors."
+#, kde-format
 msgid ""
 "k-Modes gives you the colors that appear most often in the source image.\n"
 "\n"
@@ -3759,7 +3418,7 @@ msgid ""
 "\n"
 "This is the best option when tracing images with flat colors."
 msgstr ""
-"k-Моды определяет цвета, чаще всего использующиеся на исходном изображении.\n"
+"k-моды определяет цвета, чаще всего использующиеся на исходном изображении.\n"
 "\n"
 "Обеспечивает высокую производительность, но неточно определяет цвета при "
 "трассировке сложных изображений.\n"
@@ -3768,23 +3427,7 @@ msgstr ""
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_2)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:178
-#, fuzzy, kde-format
-#| msgctxt "ColorQuantizationDialog#14"
-#| msgid ""
-#| "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#| "REC-html40/strict.dtd\">\n"
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; "
-#| "font-weight:400; font-style:normal;\">\n"
-#| "<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">The Octree algorithm "
-#| "merges similar colors from the bottom up.</p>\n"
-#| "<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">It gives more accurate "
-#| "colors for complex images but it might result into colors that are not "
-#| "present in the source image.</p></body></html>"
+#, kde-format
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -3873,8 +3516,6 @@ msgstr ""
 #. i18n: ectx: property (windowTitle), widget (QDialog, DocumentMetadataDialog)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:21
 #, fuzzy, kde-format
-#| msgctxt "DocumentMetadataDialog#1"
-#| msgid "Document Metadata"
 msgid "Document Metadata"
 msgstr "Метаданные документа"
 
@@ -3889,8 +3530,6 @@ msgstr "Общие"
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:44
 #: src/gui/widgets/settings/plugin_settings_widget.ui:200
 #, fuzzy, kde-format
-#| msgctxt "DocumentMetadataDialog#4"
-#| msgid "Author"
 msgid "Author"
 msgstr "Автор"
 
@@ -3899,8 +3538,6 @@ msgstr "Автор"
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:57
 #: src/gui/widgets/settings/plugin_settings_widget.ui:214
 #, fuzzy, kde-format
-#| msgctxt "DocumentMetadataDialog#5"
-#| msgid "Description"
 msgid "Description"
 msgstr "Описание"
 
@@ -3917,23 +3554,17 @@ msgstr "Ключевые слова"
 #: src/gui/widgets/font/font_style_dialog.ui:77
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:69
 #, fuzzy, kde-format
-#| msgctxt "DocumentMetadataDialog#7DocumentMetadataDialog#7DocumentMetadataDialog#7DocumentMetadataDialog#7DocumentMetadataDialog#7"
-#| msgid "Custom"
 msgid "Custom"
 msgstr "Дополнительные"
 
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Ошибка"
 
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:72
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not create directory\n"
-#| "%1"
+#, kde-format
 msgctxt "%1 path"
 msgid ""
 "Could not create directory\n"
@@ -3943,8 +3574,7 @@ msgstr ""
 "%1"
 
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:114
-#, fuzzy, kde-format
-#| msgid "Choose directory"
+#, kde-format
 msgctxt "@title:window"
 msgid "Choose directory"
 msgstr "Выбор каталога"
@@ -4006,8 +3636,6 @@ msgstr "к"
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:51
 #: src/gui/widgets/dialogs/timing_dialog.ui:65
 #, fuzzy, kde-format
-#| msgctxt "TimingDialog#4"
-#| msgid "\""
 msgid "\""
 msgstr "\""
 
@@ -4016,7 +3644,7 @@ msgstr "\""
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:18
 #, kde-format
 msgid "Follow Path"
-msgstr "Следование по контуру"
+msgstr "Следование по пути"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -4026,9 +3654,7 @@ msgstr "Следование по контуру"
 #: src/gui/widgets/dialogs/startup_dialog.ui:82
 #: src/gui/widgets/dialogs/timing_dialog.ui:52
 #: src/gui/widgets/settings/settings_dialog.cpp:249
-#, fuzzy, kde-format
-#| msgctxt "Settings#13Settings#13Settings#13"
-#| msgid "Duration"
+#, kde-format
 msgid "Duration"
 msgstr "Длительность"
 
@@ -4056,19 +3682,15 @@ msgstr "Время завершения"
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:63
 #: src/gui/widgets/dialogs/startup_dialog.ui:130
 #: src/gui/widgets/dialogs/timing_dialog.ui:72
-#, fuzzy, kde-format
-#| msgctxt "TimingDialog#5TimingDialog#5"
-#| msgid "Frames"
+#, kde-format
 msgid "Frames"
-msgstr "Кадров"
+msgstr "Кадры"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_units)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_time_units)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:68
 #: src/gui/widgets/dialogs/startup_dialog.ui:135
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::FollowPathDialog#7"
-#| msgid "Seconds"
+#, kde-format
 msgid "Seconds"
 msgstr "Секунды"
 
@@ -4126,7 +3748,6 @@ msgstr "Экспорт…"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:150
 #, fuzzy, kde-format
-#| msgid "Rive Animation"
 msgid "Unsaved Animation"
 msgstr "Анимация Rive"
 
@@ -4254,20 +3875,19 @@ msgid "Validate Telegram Sticker"
 msgstr "Проверка стикера Telegram"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:693
-#, fuzzy, kde-format
-#| msgid "Could not open file"
+#, kde-format
 msgid "Could not open the backup file"
-msgstr "Не удалось открыть файл"
+msgstr "Не удалось открыть файл резервной копии"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:772
 #, kde-format
 msgid "Unlink %1 Color"
-msgstr "%1: Отмена привязки цвета"
+msgstr "Отменить привязку цвета %1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:782
 #, kde-format
 msgid "Link %1 Color"
-msgstr "%1: Привязка цвета"
+msgstr "Выполнить привязку цвета %1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:894
 #, kde-format
@@ -4281,9 +3901,7 @@ msgstr "Ошибка HTTP %1 %2"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:936
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.cpp:213
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::GlaxnimateWindow#242"
-#| msgid "Network Error"
+#, kde-format
 msgid "Network Error"
 msgstr "Сетевая ошибка"
 
@@ -4301,12 +3919,12 @@ msgstr "Не удалось загрузить %1: %2"
 #, kde-format
 msgid "There are %1 auto-save files that can be restored."
 msgstr ""
+"Имеются файлы автосохранения (%1), из которых можно выполнить восстановление."
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:965
-#, fuzzy, kde-format
-#| msgid "Load Backup"
+#, kde-format
 msgid "Load Backup..."
-msgstr "Загрузить резервную копию"
+msgstr "Загрузить резервную копию…"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:89
 #, kde-format
@@ -4373,7 +3991,7 @@ msgstr "Перетаскивание"
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:818
 #, kde-format
 msgid "Put text on path"
-msgstr "Размещение текста по контуру"
+msgstr "Размещение текста по пути"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:840
 #, kde-format
@@ -4381,10 +3999,9 @@ msgid "Remove text from path"
 msgstr "Удаление текста из пути"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:122
-#, fuzzy, kde-format
-#| msgid "&Put on Path"
+#, kde-format
 msgid "Put on Path"
-msgstr "&Разместить по контуру"
+msgstr "Разместить по пути"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:125
 #: src/gui/widgets/menus/node_menu.cpp:396
@@ -4393,33 +4010,28 @@ msgid "Remove from Path"
 msgstr "Удалить из пути"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:139
-#, fuzzy, kde-format
-#| msgid "Information"
+#, kde-format
 msgid "Copy Debug Information"
-msgstr "Информация"
+msgstr "Копировать отладочную информацию"
 
 #. i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:265
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File"
-msgstr "&Файл"
+msgstr "Файл"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:270
-#, fuzzy, kde-format
-#| msgid "Add &Image..."
+#, kde-format
 msgid "Add Image…"
-msgstr "Добавить &изображение…"
+msgstr "Добавить изображение…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:273
 #, fuzzy, kde-format
-#| msgid "Import"
 msgid "Import…"
 msgstr "Импортировать"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:276
 #, fuzzy, kde-format
-#| msgid "Import From LottieFiles"
 msgid "Import from LottieFiles…"
 msgstr "Импорт из LottieFiles"
 
@@ -4441,23 +4053,19 @@ msgid "Could not save template"
 msgstr "Не удалось сохранить шаблон"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:323
-#, fuzzy, kde-format
-#| msgctxt "StickerPackBuilderDialog#4"
-#| msgid "Export"
+#, kde-format
 msgid "Export…"
-msgstr "Экспортировать"
+msgstr "Экспорт…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:326
-#, fuzzy, kde-format
-#| msgid "E&xport As..."
+#, kde-format
 msgid "Export As…"
-msgstr "Э&кспортировать как…"
+msgstr "Экспорт как…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:329
-#, fuzzy, kde-format
-#| msgid "Export as Image Sequence"
+#, kde-format
 msgid "Export as Image Sequence…"
-msgstr "Экспорт в виде последовательности изображений"
+msgstr "Экспорт в виде последовательности изображений…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:356
 #, kde-format
@@ -4470,17 +4078,12 @@ msgstr "Вставить как композицию"
 #: src/gui/widgets/docks/layers.ui:80 src/gui/widgets/docks/layers.ui:83
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:486
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:69
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "glaxnimate::gui::CompositionTabBar#2glaxnimate::gui::"
-#| "CompositionTabBar#2glaxnimate::gui::CompositionTabBar#2"
-#| msgid "Duplicate"
+#, kde-format
 msgid "Duplicate"
 msgstr "Дублировать"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:410
 #, fuzzy, kde-format
-#| msgid "&View"
 msgid "View"
 msgstr "&Вид"
 
@@ -4524,18 +4127,16 @@ msgstr "Отразить вид"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:457
 #, fuzzy, kde-format
-#| msgid "&Raster..."
 msgid "Raster…"
 msgstr "&Растровый…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:459
 #, kde-format
 msgid "SVG…"
-msgstr ""
+msgstr "SVG…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:462
 #, fuzzy, kde-format
-#| msgid "&Lottie (SVG)"
 msgid "Lottie (SVG)"
 msgstr "&Lottie (SVG)"
 
@@ -4546,7 +4147,6 @@ msgstr "Lottie (холст)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:468
 #, fuzzy, kde-format
-#| msgid "&SVG (SMIL)"
 msgid "SVG (SMIL)"
 msgstr "&SVG (SMIL)"
 
@@ -4556,10 +4156,9 @@ msgid "RIVE (canvas)"
 msgstr "RIVE (холст)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:480
-#, fuzzy, kde-format
-#| msgid "Resize"
+#, kde-format
 msgid "Resize…"
-msgstr "Изменить размер"
+msgstr "Изменить размер…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:483
 #, kde-format
@@ -4568,14 +4167,11 @@ msgstr "Очистить"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:486
 #, fuzzy, kde-format
-#| msgctxt "TimingDialog#1"
-#| msgid "Timing"
 msgid "Timing…"
 msgstr "Параметры времени"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:491
 #, fuzzy, kde-format
-#| msgid "Metadata..."
 msgid "Metadata…"
 msgstr "Метаданные…"
 
@@ -4583,9 +4179,7 @@ msgstr "Метаданные…"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:502
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:526
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::FrameControlsWidget#3"
-#| msgid "Play"
+#, kde-format
 msgid "Play"
 msgstr "Воспроизвести"
 
@@ -4597,34 +4191,29 @@ msgid "Loop"
 msgstr "Зациклить"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
-#, fuzzy, kde-format
-#| msgid "&Record Keyframes"
+#, kde-format
 msgid "Record Keyframes"
-msgstr "&Записывать ключевые кадры"
+msgstr "Записывать ключевые кадры"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:508
-#, fuzzy, kde-format
-#| msgid "Jump to &Start"
+#, kde-format
 msgid "Jump to Start"
-msgstr "Перейти в &начало"
+msgstr "Перейти в начало"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:510
-#, fuzzy, kde-format
-#| msgid "Jump to &End"
+#, kde-format
 msgid "Jump to End"
-msgstr "Перейти в &конец"
+msgstr "Перейти в конец"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
-#, fuzzy, kde-format
-#| msgid "&Next Frame"
+#, kde-format
 msgid "Next Frame"
-msgstr "&Следующий кадр"
+msgstr "Следующий кадр"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:514
-#, fuzzy, kde-format
-#| msgid "Pre&vious Frame"
+#, kde-format
 msgid "Previous Frame"
-msgstr "Пре&дыдущий кадр"
+msgstr "Предыдущий кадр"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:522
 #, kde-format
@@ -4632,47 +4221,39 @@ msgid "Pause"
 msgstr "Пауза"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:577
-#, fuzzy, kde-format
-#| msgid "&Precompose Selection"
+#, kde-format
 msgid "Precompose Selection"
-msgstr "&Предкомпозиция из выделения"
+msgstr "Предкомпозиция из выделения"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:581
-#, fuzzy, kde-format
-#| msgid "New &Composition"
+#, kde-format
 msgid "New Composition"
-msgstr "Новая &композиция"
+msgstr "Новая композиция"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:596
-#, fuzzy, kde-format
-#| msgid "Emoji"
+#, kde-format
 msgid "Emoji…"
-msgstr "Эмодзи"
+msgstr "Эмодзи…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:609
-#, fuzzy, kde-format
-#| msgid "Raise to &Top"
+#, kde-format
 msgid "Raise to Top"
-msgstr "Переместить &наверх"
+msgstr "Переместить наверх"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:618
-#, fuzzy, kde-format
-#| msgid "Lower to &Bottom"
+#, kde-format
 msgid "Lower to Bottom"
-msgstr "Переместить вни&з"
+msgstr "Переместить вниз"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:621
-#, fuzzy, kde-format
-#| msgctxt "GlaxnimateWindow#9GlaxnimateWindow#9"
-#| msgid "Move to..."
+#, kde-format
 msgid "Move to…"
-msgstr "Move to..."
+msgstr "Переместить в…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:627
-#, fuzzy, kde-format
-#| msgid "&Ungroup"
+#, kde-format
 msgid "Ungroup"
-msgstr "&Разгруппировать"
+msgstr "Разгруппировать"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:630
 #: src/gui/widgets/docks/aligndock.cpp:46
@@ -4745,69 +4326,57 @@ msgid "Outside Bottom"
 msgstr "Наружу вниз"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:678
-#, fuzzy, kde-format
-#| msgid "Object to &Path"
+#, kde-format
 msgid "Object to Path"
-msgstr "Объект в &контур"
+msgstr "Объект в путь"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:681
-#, fuzzy, kde-format
-#| msgctxt "TraceDialog#1TraceDialog#1"
-#| msgid "Trace Bitmap"
+#, kde-format
 msgid "Trace Bitmap…"
-msgstr "Трассировка растрового изображения"
+msgstr "Трассировка растрового изображения…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
 #, fuzzy, kde-format
-#| msgid "&Union"
 msgid "Union"
 msgstr "&Объединение"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
-#, fuzzy, kde-format
-#| msgid "&Difference"
+#, kde-format
 msgid "Difference"
-msgstr "&Разница"
+msgstr "Разница"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:690
-#, fuzzy, kde-format
-#| msgid "&Intersect"
+#, kde-format
 msgid "Intersect"
-msgstr "&Пересечение"
+msgstr "Пересечение"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
-#, fuzzy, kde-format
-#| msgid "E&xclusion"
+#, kde-format
 msgid "Exclusion"
-msgstr "И&сключение"
+msgstr "Исключение"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:695
 #, fuzzy, kde-format
-#| msgid "Re&verse"
 msgid "Reverse"
 msgstr "В обратном &направлении"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:699
-#, fuzzy, kde-format
-#| msgid "Add &Node..."
+#, kde-format
 msgid "Add Node…"
-msgstr "Добавить &точку…"
+msgstr "Добавить точку…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:701
-#, fuzzy, kde-format
-#| msgid "&Join Nodes"
+#, kde-format
 msgid "Join Nodes"
-msgstr "&Объединить точки"
+msgstr "Объединить точки"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:703
-#, fuzzy, kde-format
-#| msgid "S&plit Nodes"
+#, kde-format
 msgid "Split Nodes"
-msgstr "Раз&делить точки"
+msgstr "Разделить точки"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:708
 #, fuzzy, kde-format
-#| msgid "Sy&mmetric"
 msgid "Symmetric"
 msgstr "Сим&метрическая точка"
 
@@ -4836,9 +4405,7 @@ msgstr "Не удалось загрузить шаблон"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1462
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1469
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
-#, fuzzy, kde-format
-#| msgctxt "TraceDialog#1TraceDialog#1"
-#| msgid "Trace Bitmap"
+#, kde-format
 msgid "Trace Bitmap"
 msgstr "Трассировка растрового изображения"
 
@@ -4993,8 +4560,6 @@ msgstr "Переместить"
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::StalefilesDialog)
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:18
 #, fuzzy, kde-format
-#| msgctxt "QObject#114"
-#| msgid "Save File"
 msgid "Autosave Files"
 msgstr "Сохранение файла"
 
@@ -5009,7 +4574,6 @@ msgstr "Загрузить"
 #. i18n: ectx: property (text), widget (QPushButton, button_delete_all)
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:57
 #, fuzzy, kde-format
-#| msgid "&Select All"
 msgid "Delete All"
 msgstr "Вы&делить всё"
 
@@ -5033,11 +4597,7 @@ msgstr "Создать новый"
 #: src/gui/widgets/font/external_font_widget.ui:83
 #: src/gui/widgets/font/font_style_widget.ui:38
 #: src/gui/widgets/font/google_fonts_widget.ui:75
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "glaxnimate::gui::StartupDialog#4glaxnimate::gui::"
-#| "StartupDialog#4glaxnimate::gui::StartupDialog#4"
-#| msgid "Size"
+#, kde-format
 msgid "Size"
 msgstr "Размер"
 
@@ -5058,8 +4618,6 @@ msgstr "Соотношение"
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 #: src/gui/widgets/dialogs/startup_dialog.ui:76
 #, fuzzy, kde-format
-#| msgctxt "app::SettingsDialog#1"
-#| msgid "Settings"
 msgid "Settings"
 msgstr "Параметры"
 
@@ -5089,9 +4647,7 @@ msgstr "Изменение свойств анимации"
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
 #: src/gui/widgets/settings/settings_dialog.cpp:248
-#, fuzzy, kde-format
-#| msgctxt "Settings#11"
-#| msgid "FPS"
+#, kde-format
 msgid "FPS"
 msgstr "к/сек"
 
@@ -5116,60 +4672,24 @@ msgstr "Масштабировать время"
 #. i18n: ectx: property (text), item, widget (QListWidget, list_presets)
 #: src/gui/widgets/dialogs/trace_dialog.ui:89
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#2"
-#| msgid "Detailed"
 msgid "Detailed"
 msgstr "Детализированное"
 
 #. i18n: ectx: property (text), item, widget (QListWidget, list_presets)
 #: src/gui/widgets/dialogs/trace_dialog.ui:94
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#3"
-#| msgid "Flat"
 msgid "Flat"
 msgstr "Однотонное"
 
 #. i18n: ectx: property (text), item, widget (QListWidget, list_presets)
 #: src/gui/widgets/dialogs/trace_dialog.ui:99
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#4"
-#| msgid "Pixel Art"
 msgid "Pixel Art"
 msgstr "Пиксельная графика"
 
 #. i18n: ectx: property (html), widget (QTextBrowser, textBrowser)
 #: src/gui/widgets/dialogs/trace_dialog.ui:151
-#, fuzzy, kde-format
-#| msgctxt "TraceDialog#5"
-#| msgid ""
-#| "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#| "REC-html40/strict.dtd\">\n"
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; "
-#| "font-weight:400; font-style:normal;\">\n"
-#| "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">This option is best "
-#| "suited for photos, paintings and detailed illustrations.</p>\n"
-#| "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#| "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
-#| "\"><br /></p>\n"
-#| "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">The number of colors is "
-#| "reduced based on <span style=\" font-weight:600;\">Posterization Level</"
-#| "span> below.</p>\n"
-#| "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#| "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
-#| "\"><br /></p>\n"
-#| "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">Note that there is a "
-#| "significant reduction in image quality when converting this kind of "
-#| "images to vector graphics.</p>\n"
-#| "<p style=\" margin-top:37px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">(Image by <a href="
-#| "\"https://linktr.ee/FellFallow\"><span style=\" text-decoration: "
-#| "underline; color:#2980b9;\">FellFallow</span></a>)</p></body></html>"
+#, kde-format
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -5232,39 +4752,12 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: src/gui/widgets/dialogs/trace_dialog.ui:164
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#6"
-#| msgid "Posterization Level"
 msgid "Posterization Level"
 msgstr "Уровень постеризации"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_2)
 #: src/gui/widgets/dialogs/trace_dialog.ui:198
-#, fuzzy, kde-format
-#| msgctxt "TraceDialog#7"
-#| msgid ""
-#| "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#| "REC-html40/strict.dtd\">\n"
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; "
-#| "font-weight:400; font-style:normal;\">\n"
-#| "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">This option is best "
-#| "suited for flat-shaded digital images, stickers, and cartoons.</p>\n"
-#| "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#| "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
-#| "\"><br /></p>\n"
-#| "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">The number of colors "
-#| "will be reduced automatically, picking the most common colors in the "
-#| "source image.</p>\n"
-#| "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#| "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
-#| "\"><br /></p>\n"
-#| "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">Very small details "
-#| "might get lost in the process.</p></body></html>"
+#, kde-format
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -5317,26 +4810,7 @@ msgstr ""
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_3)
 #: src/gui/widgets/dialogs/trace_dialog.ui:233
-#, fuzzy, kde-format
-#| msgctxt "TraceDialog#8"
-#| msgid ""
-#| "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#| "REC-html40/strict.dtd\">\n"
-#| "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#| "css\">\n"
-#| "p, li { white-space: pre-wrap; }\n"
-#| "</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; "
-#| "font-weight:400; font-style:normal;\">\n"
-#| "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">This is suited for "
-#| "pixel art. The traced vector will retain all colors in the original image "
-#| "as well the pixelated edges.</p>\n"
-#| "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#| "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
-#| "\"><br /></p>\n"
-#| "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#| "right:0px; -qt-block-indent:0; text-indent:0px;\">This is only suitable "
-#| "for fairly small images with a low number of colors.</p></body></html>"
+#, kde-format
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -5378,88 +4852,66 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/trace_dialog.ui:254
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#9"
-#| msgid "Mode"
 msgid "Mode"
 msgstr "Режим"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_mode)
 #: src/gui/widgets/dialogs/trace_dialog.ui:262
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#10"
-#| msgid "Transparency"
 msgid "Transparency"
 msgstr "Прозрачность"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_mode)
 #: src/gui/widgets/dialogs/trace_dialog.ui:267
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#11"
-#| msgid "Closest Color"
 msgid "Closest Color"
 msgstr "Ближайший цвет"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_mode)
 #: src/gui/widgets/dialogs/trace_dialog.ui:272
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#12"
-#| msgid "Extract Colors"
 msgid "Extract Colors"
 msgstr "Извлечение цветов"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_mode)
 #: src/gui/widgets/dialogs/trace_dialog.ui:277
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#13"
-#| msgid "Pixel"
 msgid "Pixel"
 msgstr "Пиксел"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #: src/gui/widgets/dialogs/trace_dialog.ui:288
-#, fuzzy, kde-format
-#| msgctxt "TraceDialog#14"
-#| msgid "Image Options"
+#, kde-format
 msgid "Image Options"
 msgstr "Параметры изображения"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/dialogs/trace_dialog.ui:307
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#15"
-#| msgid "Output Color"
 msgid "Output Color"
 msgstr "Выходной цвет"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/trace_dialog.ui:331
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#16"
-#| msgid "Invert"
 msgid "Invert"
 msgstr "Инвертировать"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: src/gui/widgets/dialogs/trace_dialog.ui:345
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#17"
-#| msgid "Threshold"
 msgid "Threshold"
 msgstr "Порог"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: src/gui/widgets/dialogs/trace_dialog.ui:372
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#18"
-#| msgid "Colors"
 msgid "Colors"
 msgstr "Цвета"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 #: src/gui/widgets/dialogs/trace_dialog.ui:394
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#19TraceDialog#19"
-#| msgid "Add Color"
 msgid "Add Color"
 msgstr "Добавить цвет"
 
@@ -5471,16 +4923,12 @@ msgstr "Добавить цвет"
 #: src/gui/widgets/menus/node_menu.cpp:238
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:75
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#20TraceDialog#20TraceDialog#20TraceDialog#20"
-#| msgid "Add"
 msgid "Add"
 msgstr "Добавить"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/dialogs/trace_dialog.ui:421
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#21TraceDialog#21"
-#| msgid "Remove Color"
 msgid "Remove Color"
 msgstr "Удалить цвет"
 
@@ -5494,88 +4942,66 @@ msgstr "Удалить цвет"
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:86
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:86
 #, fuzzy, kde-format
-#| msgctxt "AbstractWidgetList#4AbstractWidgetList#4AbstractWidgetList#4AbstractWidgetList#4AbstractWidgetList#4AbstractWidgetList#4AbstractWidgetList#4"
-#| msgid "Remove"
 msgid "Remove"
 msgstr "Удалить"
 
 #. i18n: ectx: property (text), widget (QLabel, label_tolerance)
 #: src/gui/widgets/dialogs/trace_dialog.ui:453
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#23"
-#| msgid "Tolerance"
 msgid "Tolerance"
 msgstr "Погрешность"
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: src/gui/widgets/dialogs/trace_dialog.ui:460
-#, fuzzy, kde-format
-#| msgctxt "TraceDialog#24"
-#| msgid "Outline"
+#, kde-format
 msgid "Outline"
 msgstr "Контур"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_detect_colors)
 #: src/gui/widgets/dialogs/trace_dialog.ui:483
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#25"
-#| msgid "Detect Colors"
 msgid "Detect Colors"
 msgstr "Определить цветов"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_quantize_options)
 #: src/gui/widgets/dialogs/trace_dialog.ui:490
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#26"
-#| msgid "Configure Color Detection"
 msgid "Configure Color Detection"
 msgstr "Настроить параметры определения цветов"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_quantize_options)
 #: src/gui/widgets/dialogs/trace_dialog.ui:493
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#27"
-#| msgid "Configure..."
 msgid "Configure..."
 msgstr "Настройка…"
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_potrace)
 #: src/gui/widgets/dialogs/trace_dialog.ui:514
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#28"
-#| msgid "Curve Options"
 msgid "Curve Options"
 msgstr "Параметры кривой"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/trace_dialog.ui:520
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#29"
-#| msgid "Smoothness"
 msgid "Smoothness"
 msgstr "Сглаживание"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/trace_dialog.ui:559
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#31"
-#| msgid "Minimum Area"
 msgid "Minimum Area"
 msgstr "Минимальная площадь"
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_preview)
 #: src/gui/widgets/dialogs/trace_dialog.ui:573
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#32TraceDialog#32"
-#| msgid "Preview"
 msgid "Preview"
 msgstr "Предпросмотр"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_update_preview)
 #: src/gui/widgets/dialogs/trace_dialog.ui:608
 #, fuzzy, kde-format
-#| msgctxt "TraceDialog#33"
-#| msgid "Update"
 msgid "Update"
 msgstr "Обновить"
 
@@ -5583,33 +5009,25 @@ msgstr "Обновить"
 #. i18n: ectx: property (text), widget (QLabel, label_preview_zoom)
 #: src/gui/widgets/dialogs/trace_dialog.ui:632
 #: src/gui/widgets/view_transform_widget.ui:50
-#, fuzzy, kde-format
-#| msgctxt "TraceDialog#34TraceDialog#34"
-#| msgid "Zoom"
+#, kde-format
 msgid "Zoom"
 msgstr "Масштаб"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_help)
 #: src/gui/widgets/dialogs/trace_dialog.ui:670
-#, fuzzy, kde-format
-#| msgctxt "TraceDialog#35"
-#| msgid "Help..."
+#, kde-format
 msgid "Help..."
 msgstr "Справка…"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_defaults)
 #: src/gui/widgets/dialogs/trace_dialog.ui:681
-#, fuzzy, kde-format
-#| msgctxt "TraceDialog#36"
-#| msgid "Revert to Defaults"
+#, kde-format
 msgid "Revert to Defaults"
 msgstr "Восстановить значения по умолчанию"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_advanced)
 #: src/gui/widgets/dialogs/trace_dialog.ui:692
-#, fuzzy, kde-format
-#| msgctxt "TraceDialog#37"
-#| msgid "Advanced"
+#, kde-format
 msgid "Advanced"
 msgstr "Дополнительно"
 
@@ -5623,20 +5041,16 @@ msgstr "Переместить наверх"
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_up)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_up)
 #: src/gui/widgets/docks/layers.ui:135 src/gui/widgets/docks/layers.ui:138
-#, fuzzy, kde-format
-#| msgctxt "AbstractWidgetList#2"
-#| msgid "Move Up"
+#, kde-format
 msgid "Move Up"
-msgstr "Переместить вверх"
+msgstr "Переместить выше"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_down)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_down)
 #: src/gui/widgets/docks/layers.ui:149 src/gui/widgets/docks/layers.ui:152
-#, fuzzy, kde-format
-#| msgctxt "AbstractWidgetList#3"
-#| msgid "Move Down"
+#, kde-format
 msgid "Move Down"
-msgstr "Переместить вниз"
+msgstr "Переместить ниже"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_bottom)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_bottom)
@@ -5652,9 +5066,7 @@ msgid "Logs"
 msgstr "Журналы"
 
 #: src/gui/widgets/docks/script_console.cpp:61
-#, fuzzy, kde-format
-#| msgctxt "QApplication#24"
-#| msgid "Could not run the plugin"
+#, kde-format
 msgid "Could not run the plugin"
 msgstr "Не удалось запустить подключаемый модуль"
 
@@ -5665,8 +5077,6 @@ msgstr "Подключаемый модуль вызвал исключение"
 
 #: src/gui/widgets/docks/script_console.cpp:72
 #, fuzzy, kde-format
-#| msgctxt "QApplication#25"
-#| msgid "Could not find an interpreter"
 msgid "Could not find an interpreter"
 msgstr "Не удалось найти интерпретатор"
 
@@ -5710,8 +5120,6 @@ msgstr "Фрагменту необходимо присвоить имя"
 #: src/gui/widgets/docks/snippet_list_widget.cpp:56
 #: src/gui/widgets/docks/snippets.ui:22
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::GlaxnimateWindow#46"
-#| msgid "Snippets"
 msgid "Snippets"
 msgstr "Фрагменты"
 
@@ -5764,25 +5172,21 @@ msgstr "Перезагрузить фрагменты"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_time_slider)
 #: src/gui/widgets/docks/time_slider.ui:22
-#, fuzzy, kde-format
-#| msgid "Compact Timelime"
+#, kde-format
 msgid "Compact Timeline"
 msgstr "Компактный монтажный стол"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_timeline)
 #: src/gui/widgets/docks/timeline.ui:22
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::android::MainWindow#2"
-#| msgid "Timeline"
+#, kde-format
 msgid "&Timeline"
-msgstr "Монтажный стол"
+msgstr "&Монтажный стол"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_tool_options)
 #: src/gui/widgets/docks/tooloptions.ui:22
-#, fuzzy, kde-format
-#| msgid "Tool Options"
+#, kde-format
 msgid "&Tool Options"
-msgstr "Параметры инструмента"
+msgstr "&Параметры инструмента"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_undo)
 #: src/gui/widgets/docks/undo.ui:22
@@ -5806,8 +5210,6 @@ msgstr "Even Odd"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:78
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:81
 #, fuzzy, kde-format
-#| msgctxt "StrokeStyleWidget#5StrokeStyleWidget#5"
-#| msgid "Butt"
 msgid "Butt"
 msgstr "Встык"
 
@@ -5821,8 +5223,6 @@ msgstr "Встык"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:196
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:199
 #, fuzzy, kde-format
-#| msgctxt "StrokeStyleWidget#6StrokeStyleWidget#6"
-#| msgid "Round"
 msgid "Round"
 msgstr "Скруглённое"
 
@@ -5832,8 +5232,6 @@ msgstr "Скруглённое"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:138
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:141
 #, fuzzy, kde-format
-#| msgctxt "StrokeStyleWidget#7StrokeStyleWidget#7"
-#| msgid "Square"
 msgid "Square"
 msgstr "Прямоугольное"
 
@@ -5843,8 +5241,6 @@ msgstr "Прямоугольное"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:226
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:229
 #, fuzzy, kde-format
-#| msgctxt "StrokeStyleWidget#10StrokeStyleWidget#10"
-#| msgid "Miter"
 msgid "Miter"
 msgstr "Фацетное"
 
@@ -5854,8 +5250,6 @@ msgstr "Фацетное"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:166
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:169
 #, fuzzy, kde-format
-#| msgctxt "StrokeStyleWidget#9StrokeStyleWidget#9"
-#| msgid "Bevel"
 msgid "Bevel"
 msgstr "Скошенное"
 
@@ -5885,13 +5279,9 @@ msgstr "Файл/URL-адрес"
 #: src/gui/widgets/font/font_style_dialog.ui:21
 #: src/gui/widgets/font/font_style_widget.ui:31
 #: src/gui/widgets/font/google_fonts_widget.ui:82
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "glaxnimate::gui::font::ExternalFontWidget#5glaxnimate::gui::font::"
-#| "ExternalFontWidget#5glaxnimate::gui::font::ExternalFontWidget#5"
-#| msgid "Font Style"
+#, kde-format
 msgid "Font Style"
-msgstr "Стиль шрифта"
+msgstr "Начертание"
 
 #: src/gui/widgets/font/font_loader.cpp:47
 #, kde-format
@@ -5901,7 +5291,7 @@ msgstr "Не удалось открыть файл %1"
 #: src/gui/widgets/font/font_loader.cpp:58
 #, kde-format
 msgid "Invalid data URL"
-msgstr "Недопустимые данные URL-адреса"
+msgstr "Некорректный URL-адрес данных"
 
 #: src/gui/widgets/font/font_loader.cpp:138
 #, kde-format
@@ -5921,36 +5311,28 @@ msgstr "Масштаб предпросмотра"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_system)
 #: src/gui/widgets/font/font_style_dialog.ui:35
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::AboutDialog#12"
-#| msgid "System"
+#, kde-format
 msgid "System"
 msgstr "Система"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/gui/widgets/font/font_style_widget.ui:53
 #: src/gui/widgets/font/google_fonts_widget.ui:97
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::font::FontStyleWidget#4"
-#| msgid "Filters"
+#, kde-format
 msgid "Filters"
 msgstr "Фильтры"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/font/font_style_widget.ui:59
 #: src/gui/widgets/font/google_fonts_widget.ui:103
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::font::FontStyleWidget#5"
-#| msgid "Writing System"
+#, kde-format
 msgid "Writing System"
-msgstr "Письменность"
+msgstr "Система письма"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/font/font_style_widget.ui:76
 #: src/gui/widgets/font/google_fonts_model.cpp:396
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::font::FontStyleWidget#6"
-#| msgid "Monospace"
 msgid "Monospace"
 msgstr "Моноширный"
 
@@ -5974,8 +5356,6 @@ msgstr "Семейство"
 #: src/gui/widgets/font/google_fonts_model.cpp:276
 #: src/gui/widgets/font/google_fonts_widget.ui:120
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::font::GoogleFontsModel#3"
-#| msgid "Category"
 msgid "Category"
 msgstr "Категория"
 
@@ -6066,29 +5446,23 @@ msgstr "Посмотреть на LottieFiles…"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:56
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::AnimatedPropertyMenu#2"
-#| msgid "Paste Keyframe"
+#, kde-format
 msgid "Paste Keyframe"
 msgstr "Вставить ключевой кадр"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:57
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::AnimatedPropertyMenu#3"
-#| msgid "Loop Animation"
 msgid "Loop Animation"
 msgstr "Зациклить анимацию"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:58
 #, kde-format
 msgid "Follow Path..."
-msgstr "Следовать по контуру…"
+msgstr "Следовать по пути…"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:172
-#, fuzzy, kde-format
-#| msgctxt "QMenu#2QMenu#2"
-#| msgid "Remove Keyframe"
+#, kde-format
 msgid "Remove Keyframe"
 msgstr "Удалить ключевой кадр"
 
@@ -6189,11 +5563,9 @@ msgid "Update Image"
 msgstr "Обновить изображение"
 
 #: src/gui/widgets/menus/node_menu.cpp:356
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::GlaxnimateWindow#140"
-#| msgid "Trace Bitmap..."
+#, kde-format
 msgid "Trace Bitmap..."
-msgstr "Трассировать растр…"
+msgstr "Трассировка растрового изображения"
 
 #: src/gui/widgets/menus/node_menu.cpp:367
 #, kde-format
@@ -6218,56 +5590,42 @@ msgstr "Коэффициент скорости"
 
 #: src/gui/widgets/menus/node_menu.cpp:428
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::NodeMenu#29glaxnimate::gui::NodeMenu#29"
-#| msgid "Visible"
 msgctxt "@option:check"
 msgid "Visible"
 msgstr "Видимый"
 
 #: src/gui/widgets/menus/node_menu.cpp:429
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::NodeMenu#30glaxnimate::gui::NodeMenu#30"
-#| msgid "Locked"
 msgctxt "@option:check"
 msgid "Locked"
 msgstr "Заблокирован"
 
 #: src/gui/widgets/menus/node_menu.cpp:434
 #, fuzzy, kde-format
-#| msgctxt "GlaxnimateWindow#6GlaxnimateWindow#6GlaxnimateWindow#6GlaxnimateWindow#6GlaxnimateWindow#6"
-#| msgid "Delete"
 msgctxt "@action:inmenu"
 msgid "Delete"
 msgstr "Delete"
 
 #: src/gui/widgets/menus/node_menu.cpp:438
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "glaxnimate::gui::CompositionTabBar#2glaxnimate::gui::"
-#| "CompositionTabBar#2glaxnimate::gui::CompositionTabBar#2"
-#| msgid "Duplicate"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Duplicate"
 msgstr "Дублировать"
 
 #: src/gui/widgets/menus/node_menu.cpp:451
-#, fuzzy, kde-format
-#| msgctxt "GlaxnimateWindow#9GlaxnimateWindow#9"
-#| msgid "Move to..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Move to..."
-msgstr "Move to..."
+msgstr "Переместить в…"
 
 #: src/gui/widgets/menus/node_menu.cpp:479
 #, fuzzy, kde-format
-#| msgid "Convert to Path"
 msgctxt "@action:inmenu"
 msgid "Convert to Path"
 msgstr "Преобразовать в путь"
 
 #: src/gui/widgets/menus/node_menu.cpp:496
-#, fuzzy, kde-format
-#| msgid "Change speed"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Change speed"
 msgstr "Изменить скорость"
@@ -6343,9 +5701,7 @@ msgstr "Тип"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:207
-#, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::AboutDialog#21"
-#| msgid "Version"
+#, kde-format
 msgid "Version"
 msgstr "Версия"
 
@@ -6356,27 +5712,19 @@ msgid "Services"
 msgstr "Службы"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:229
-#, fuzzy
-#| msgid "User Interface"
 msgctxt "Settings"
 msgid "User Interface"
-msgstr "Пользовательский интерфейс"
+msgstr "Интерфейс пользователя"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:230
 msgid "Show startup dialog"
 msgstr "Выводить диалоговое окно запуска"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:233
-#, fuzzy
-#| msgid "Horizontal Timeline Scroll"
 msgid "Horizontal Timeline Scroll"
 msgstr "Горизонтальная прокрутка монтажного стола"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:234
-#, fuzzy
-#| msgid ""
-#| "If enabled, the timeline will scroll horizontally by default and "
-#| "vertically with Shift or Alt"
 msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
@@ -6385,81 +5733,61 @@ msgstr ""
 "прокрутка монтажного стола, а вертикальная — при нажатии Shift или Alt"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:237
-#, fuzzy
-#| msgid "Icon Theme"
 msgid "Icon Theme"
 msgstr "Тема значков"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:237
-#, fuzzy
-#| msgid "Open with External Application"
 msgid "Icon theme for the application"
-msgstr "Открыть с помощью внешнего приложения"
+msgstr "Тема значков для приложения"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 #, kde-format
 msgctxt "Seconds suffix"
 msgid "s"
-msgstr ""
+msgstr "с"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:245
-#, fuzzy
-#| msgid "New Animation Defaults"
 msgctxt "Settings"
 msgid "New Animation Defaults"
 msgstr "Параметры по умолчанию для новой анимации"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:246
-#, fuzzy
-#| msgid "Canvas"
 msgid "Canvas Width"
-msgstr "Холст"
+msgstr "Ширина холста"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:247
-#, fuzzy
-#| msgid "Frame Height"
 msgid "Canvas Height"
-msgstr "Высота кадра"
+msgstr "Высота холста"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:248
-#, fuzzy
-#| msgid "Frames per second"
 msgid "Frames per seconds"
 msgstr "Кадров в секунду"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:249
-#, fuzzy
-#| msgid "Duration in seconds"
 msgid "Duration in seconds"
 msgstr "Длительность в секундах"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:253
 #, fuzzy
-#| msgid "Open / Save"
 msgctxt "Settings"
 msgid "Open / Save"
 msgstr "Открыть / Сохранить"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:254
-#, fuzzy
-#| msgid "Max Recent Files"
 msgid "Max Recent Files"
 msgstr "Максимальное количество последних файлов"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:254
 #: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Number of items to show in the recent files menu"
-msgstr ""
+msgstr "Количество элементов для показа в меню последних файлов"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:255
-#, fuzzy
-#| msgid "Backup Frequency"
 msgid "Backup Frequency"
 msgstr "Интервал резервного копирования"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:256
 #, fuzzy
-#| msgid "Use system file dialog"
 msgid "Use system file dialog"
 msgstr "Использовать стандартное диалоговое окно системы при выбора файлов"
 
@@ -6497,8 +5825,6 @@ msgstr "CMYK"
 #: src/gui/widgets/shape_style/color_selector.ui:54
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:381
 #, fuzzy, kde-format
-#| msgctxt "glaxnimate::gui::ColorSelector#6"
-#| msgid "Palette"
 msgid "Palette"
 msgstr "Палитра"
 
@@ -6509,8 +5835,6 @@ msgstr "Палитра"
 #: src/gui/widgets/shape_style/color_selector.ui:123
 #: src/gui/widgets/shape_style/color_selector.ui:163
 #, fuzzy, kde-format
-#| msgctxt "ColorDialog#2"
-#| msgid "Saturation"
 msgid "Saturation"
 msgstr "Насыщенность"
 
@@ -6535,8 +5859,6 @@ msgstr "Н"
 #: src/gui/widgets/shape_style/color_selector.ui:224
 #: src/gui/widgets/shape_style/color_selector.ui:241
 #, fuzzy, kde-format
-#| msgctxt "ColorDialog#3"
-#| msgid "Hue"
 msgid "Hue"
 msgstr "Оттенок"
 
@@ -6567,16 +5889,12 @@ msgstr "Я"
 #: src/gui/widgets/shape_style/color_selector.ui:337
 #: src/gui/widgets/shape_style/color_selector.ui:407
 #, fuzzy, kde-format
-#| msgctxt "ColorDialog#5"
-#| msgid "Blue"
 msgid "Blue"
 msgstr "Синий"
 
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 #: src/gui/widgets/shape_style/color_selector.ui:340
 #, fuzzy, kde-format
-#| msgctxt "WidgetPaletteEditor#13"
-#| msgid "B"
 msgid "B"
 msgstr "B"
 
@@ -6587,8 +5905,6 @@ msgstr "B"
 #: src/gui/widgets/shape_style/color_selector.ui:367
 #: src/gui/widgets/shape_style/color_selector.ui:397
 #, fuzzy, kde-format
-#| msgctxt "ColorDialog#7"
-#| msgid "Green"
 msgid "Green"
 msgstr "Зелёный"
 
@@ -6599,8 +5915,6 @@ msgstr "Зелёный"
 #: src/gui/widgets/shape_style/color_selector.ui:377
 #: src/gui/widgets/shape_style/color_selector.ui:387
 #, fuzzy, kde-format
-#| msgctxt "ColorDialog#9"
-#| msgid "Red"
 msgid "Red"
 msgstr "Красный"
 
@@ -6629,8 +5943,6 @@ msgstr "Бирюзовый"
 #. i18n: ectx: property (text), widget (QLabel, label_11)
 #: src/gui/widgets/shape_style/color_selector.ui:436
 #, fuzzy, kde-format
-#| msgctxt "WidgetPaletteEditor#14"
-#| msgid "C"
 msgid "C"
 msgstr "C"
 
@@ -6695,8 +6007,6 @@ msgstr "Альфа-канал (Прозрачность)"
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/shape_style/color_selector.ui:586
 #, fuzzy, kde-format
-#| msgctxt "WidgetPaletteEditor#12"
-#| msgid "A"
 msgid "A"
 msgstr "A"
 
@@ -6805,8 +6115,6 @@ msgstr "Переименование образца цвета"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:459
 #, fuzzy, kde-format
-#| msgctxt "color_widgets::GradientEditor#3"
-#| msgid "Edit Color..."
 msgid "Edit Color..."
 msgstr "Изменить цвет…"
 
@@ -6862,9 +6170,7 @@ msgstr "Установка градиента %1"
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_remove)
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:212
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:83
-#, fuzzy, kde-format
-#| msgctxt "GradientListWidget#5"
-#| msgid "Remove Gradient"
+#, kde-format
 msgid "Remove Gradient"
 msgstr "Удалить градиент"
 
@@ -6875,25 +6181,19 @@ msgstr "Предустановки градиента"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_new)
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:42
-#, fuzzy, kde-format
-#| msgctxt "GradientListWidget#1"
-#| msgid "Add Gradient"
+#, kde-format
 msgid "Add Gradient"
 msgstr "Добавить градиент"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_preset)
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:56
-#, fuzzy, kde-format
-#| msgctxt "GradientListWidget#3"
-#| msgid "Add from Preset"
+#, kde-format
 msgid "Add from Preset"
 msgstr "Добавить из предустановки"
 
 #. i18n: ectx: property (text), widget (QToolButton, btn_preset)
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:59
-#, fuzzy, kde-format
-#| msgctxt "GradientListWidget#4"
-#| msgid "Preset"
+#, kde-format
 msgid "Preset"
 msgstr "Предустановка"
 
@@ -6905,23 +6205,23 @@ msgstr "Обновить цвет обводки"
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:225
 #, kde-format
 msgid "Set Line Cap"
-msgstr "Установка завершения линии"
+msgstr "Установить завершение линии"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:240
 #, kde-format
 msgid "Set Line Join"
-msgstr "Установка соединения линий"
+msgstr "Установить соединение линии"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:332
 #, kde-format
 msgid "Set Miter Limit"
-msgstr "Установка предела фацета"
+msgstr "Установить предел фацета"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:340
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:355
 #, kde-format
 msgid "Set Line Width"
-msgstr "Установка ширины линии"
+msgstr "Установить ширину линии"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:387
 #, kde-format
@@ -6930,49 +6230,37 @@ msgstr "Очистить цвет линии"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:40
-#, fuzzy, kde-format
-#| msgctxt "StrokeStyleWidget#1StrokeStyleWidget#1"
-#| msgid "Style"
+#, kde-format
 msgid "Style"
 msgstr "Стиль"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_stroke_width)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:59
-#, fuzzy, kde-format
-#| msgctxt "StrokeStyleWidget#3"
-#| msgid "Stroke Width"
+#, kde-format
 msgid "Stroke Width"
 msgstr "Ширина обводки"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:69
-#, fuzzy, kde-format
-#| msgctxt "StrokeStyleWidget#4"
-#| msgid "Cap"
+#, kde-format
 msgid "Cap"
 msgstr "Завершение"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:157
-#, fuzzy, kde-format
-#| msgctxt "StrokeStyleWidget#8"
-#| msgid "Join"
+#, kde-format
 msgid "Join"
 msgstr "Соединение"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_miter)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:263
-#, fuzzy, kde-format
-#| msgctxt "StrokeStyleWidget#11"
-#| msgid "Miter Limit"
+#, kde-format
 msgid "Miter Limit"
 msgstr "Предел фацета"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:338
-#, fuzzy, kde-format
-#| msgctxt "StrokeStyleWidget#13"
-#| msgid "Dashes"
+#, kde-format
 msgid "Dashes"
 msgstr "Штрихи"
 
@@ -7018,11 +6306,9 @@ msgstr "Копировать ключевой кадр"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:201
-#, fuzzy, kde-format
-#| msgctxt "CompoundTimelineWidget#2"
-#| msgid "&Clear Animations"
+#, kde-format
 msgid "&Clear Animations"
-msgstr "&Clear Animations"
+msgstr "&Очистить анимации"
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spin_frame)
 #: src/gui/widgets/timeline/frame_controls_widget.ui:33
@@ -7118,8 +6404,6 @@ msgstr "Завершение"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:58
 #, fuzzy, kde-format
-#| msgctxt "QObject#161QObject#161"
-#| msgid "Hold"
 msgid "Hold"
 msgstr "Задержка"
 
@@ -7130,22 +6414,16 @@ msgstr "Быстрый"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:84
 #, fuzzy, kde-format
-#| msgctxt "QObject#165"
-#| msgid "Ease In"
 msgid "Ease In"
 msgstr "Замедление в начале"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:86
 #, fuzzy, kde-format
-#| msgctxt "QObject#166"
-#| msgid "Ease Out"
 msgid "Ease Out"
 msgstr "Замедление в конце"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:89
 #, fuzzy, kde-format
-#| msgctxt "QObject#167"
-#| msgid "Ease"
 msgid "Ease"
 msgstr "Замедление"
 
@@ -7228,66 +6506,50 @@ msgid "°"
 msgstr "°"
 
 #, fuzzy
-#~| msgctxt "Settings#9Settings#9Settings#9Settings#9"
-#~| msgid "Width"
 #~ msgctxt "@label:spinbox"
 #~ msgid "Width"
 #~ msgstr "Ширина"
 
 #, fuzzy
-#~| msgctxt "Settings#10Settings#10"
-#~| msgid "Height"
 #~ msgctxt "@label:spinbox"
 #~ msgid "Height"
 #~ msgstr "Высота"
 
 #, fuzzy
-#~| msgctxt "Settings#11"
-#~| msgid "FPS"
 #~ msgctxt "@label:spinbox"
 #~ msgid "FPS"
 #~ msgstr "к/сек"
 
 #, fuzzy
-#~| msgctxt "Settings#13Settings#13Settings#13"
-#~| msgid "Duration"
 #~ msgctxt "@label:spinbox"
 #~ msgid "Duration"
 #~ msgstr "Длительность"
 
 #, fuzzy
-#~| msgid "How often to save a backup copy (in minutes)"
 #~ msgctxt "@info:tooltip"
 #~ msgid "How often to save a backup copy (in minutes)"
 #~ msgstr "Как часто выполняется сохранение резервной копии (в минутах)"
 
 #, fuzzy
-#~| msgid "Scripting"
 #~ msgctxt "@title settings group"
 #~ msgid "Scripting"
 #~ msgstr "Сценарии"
 
 #, fuzzy
-#~| msgctxt "Settings#20"
-#~| msgid "Tools"
 #~ msgctxt "@title settings group"
 #~ msgid "Tools"
 #~ msgstr "Инструменты"
 
 #, fuzzy
-#~| msgctxt "Settings#21"
-#~| msgid "Glaxnimate Default"
 #~ msgid "Glaxnimate Default"
 #~ msgstr "Параметры Glaxnimate по умолчанию"
 
 #, fuzzy
-#~| msgid "Language"
 #~ msgctxt "@label:listbox"
 #~ msgid "Language"
 #~ msgstr "Язык"
 
 #, fuzzy
-#~| msgid "Interface Language"
 #~ msgctxt "@info:tooltip"
 #~ msgid "Interface Language"
 #~ msgstr "Язык интерфейса"
@@ -7296,20 +6558,14 @@ msgstr "°"
 #~ msgstr "F7"
 
 #, fuzzy
-#~| msgctxt "QObject#15"
-#~| msgid "F3"
 #~ msgid "F3"
 #~ msgstr "F3"
 
 #, fuzzy
-#~| msgctxt "QObject#11"
-#~| msgid "F2"
 #~ msgid "F2"
 #~ msgstr "F2"
 
 #, fuzzy
-#~| msgctxt "QObject#61"
-#~| msgid "F5"
 #~ msgid "F5"
 #~ msgstr "F5"
 
@@ -7317,26 +6573,18 @@ msgstr "°"
 #~ msgstr "F8"
 
 #, fuzzy
-#~| msgctxt "QObject#57"
-#~| msgid "F6"
 #~ msgid "F6"
 #~ msgstr "F6"
 
 #, fuzzy
-#~| msgctxt "QObject#8"
-#~| msgid "F4"
 #~ msgid "F4"
 #~ msgstr "F4"
 
 #, fuzzy
-#~| msgctxt "QObject#55"
-#~| msgid "F1"
 #~ msgid "F1"
 #~ msgstr "F1"
 
 #, fuzzy
-#~| msgctxt "QObject#52"
-#~| msgid "*"
 #~ msgid "*"
 #~ msgstr "*"
 
@@ -7401,8 +6649,6 @@ msgstr "°"
 #~ msgstr "&Текст"
 
 #, fuzzy
-#~| msgctxt "app::SettingsDialog#1"
-#~| msgid "Settings"
 #~ msgid "&Settings"
 #~ msgstr "Параметры"
 
@@ -7611,7 +6857,6 @@ msgstr "°"
 #~ msgstr "Меньше «Широкой», но больше «Компактной»"
 
 #, fuzzy
-#~| msgid "Keyboard Shortcuts"
 #~ msgid "Configure &Keyboard Shortcuts..."
 #~ msgstr "Клавиши быстрого доступа"
 
