@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2024-09-02 17:49+0200\n"
+"PO-Revision-Date: 2024-12-13 23:16+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1399,6 +1399,7 @@ msgstr "Formatar"
 msgid "Pretty print the JSON"
 msgstr "Formatar o JSON"
 
+# skip-rule: trasno-clean_reverse
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
 msgid "Strip"
@@ -5627,7 +5628,7 @@ msgstr "Converter en ruta"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Change speed"
-msgstr "Modificar velocidade"
+msgstr "Cambiar a velocidade"
 
 #: src/gui/widgets/settings/plugin_settings_widget.cpp:62
 #, kde-format
