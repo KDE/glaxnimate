@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2024-12-14 01:48+0530\n"
+"PO-Revision-Date: 2024-12-20 22:01+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -1260,7 +1260,7 @@ msgstr "%s क्लिप् मार्गः न भवितुम् अ�
 #: src/gui/tools/base.cpp:162
 #, kde-format
 msgid "%1 (%2)"
-msgstr "%1 (%2) २."
+msgstr "%1 (%2)"
 
 #: src/core/io/glaxnimate/glaxnimate_format.hpp:26
 #: src/core/io/glaxnimate/glaxnimate_mime.hpp:21
@@ -2797,7 +2797,7 @@ msgstr "उपयोक्तृणां संख्या"
 #: src/gui/item_models/property_model_base.cpp:247
 #, kde-format
 msgid "%1%"
-msgstr "%1% २."
+msgstr "%1%"
 
 #: src/gui/item_models/property_model_full.cpp:208
 #, kde-format
@@ -2837,7 +2837,7 @@ msgstr "मातापितृस्तर"
 #: src/gui/item_models/property_model_full.cpp:400
 #, kde-format
 msgid "(No Parent)"
-msgstr "(कोऽपि मातापिता नास्ति) २."
+msgstr "(कोऽपि मातापिता नास्ति)"
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_3)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_hsv_value)
@@ -3158,31 +3158,31 @@ msgstr "पथाः"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:51
 #, kde-format
 msgid "User Data Directory:"
-msgstr "उपयोक्तृदत्तांशनिर्देशिका : १."
+msgstr "उपयोक्तृदत्तांशनिर्देशिका :"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:82
 #, kde-format
 msgid "Settings File:"
-msgstr "सेटिंग्स् सञ्चिका : १."
+msgstr "सेटिंग्स् सञ्चिका :"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:113
 #, kde-format
 msgid "Backup Directory:"
-msgstr "बैकअप निर्देशिका : १."
+msgstr "बैकअप निर्देशिका :"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:144
 #, kde-format
 msgid "Data Directories:"
-msgstr "दत्तांशनिर्देशिकाः : १."
+msgstr "दत्तांशनिर्देशिकाः :"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:164
 #, kde-format
 msgid "Icon Theme Paths:"
-msgstr "चिह्न विषयमार्गाः : १."
+msgstr "चिह्न विषयमार्गाः :"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_4)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:189
@@ -3562,7 +3562,7 @@ msgstr "फ्रेमसङ्ख्यां प्रतिनिधित�
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:59
 #, kde-format
 msgid "Frame {frame}"
-msgstr "फ्रेम {फ्रेम} २."
+msgstr "फ्रेम {फ्रेम}"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:73
@@ -4092,22 +4092,22 @@ msgstr "एसवीजी…"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:462
 #, kde-format
 msgid "Lottie (SVG)"
-msgstr "लोट्टी (SVG) ९."
+msgstr "लोट्टी (SVG)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:465
 #, kde-format
 msgid "Lottie (canvas)"
-msgstr "लोट्टी (कैनवास) ९."
+msgstr "लोट्टी (कैनवास)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:468
 #, kde-format
 msgid "SVG (SMIL)"
-msgstr "एसवीजी (SMILE) ९."
+msgstr "एसवीजी (SMILE)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:471
 #, kde-format
 msgid "RIVE (canvas)"
-msgstr "RIVE (कैनवास) ९."
+msgstr "RIVE (कैनवास)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:480
 #, kde-format
@@ -4228,7 +4228,7 @@ msgstr "कैनवासः"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:636
 #, kde-format
 msgid "Canvas (as Group)"
-msgstr "कैनवास (समूहरूपेण) २."
+msgstr "कैनवास (समूहरूपेण)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:639
 #, kde-format
@@ -5939,7 +5939,7 @@ msgstr "के"
 #: src/gui/widgets/shape_style/color_selector.ui:593
 #, kde-format
 msgid "Alpha (Transparency)"
-msgstr "अल्फा (पारदर्शिता) ९."
+msgstr "अल्फा (पारदर्शिता)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/shape_style/color_selector.ui:586
