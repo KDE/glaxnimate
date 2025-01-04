@@ -1,15 +1,15 @@
 # Translation of glaxnimate.po to Catalan (Valencian)
-# Copyright (C) 2023-2024 This_file_is_part_of_KDE
+# Copyright (C) 2023-2025 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# SPDX-FileCopyrightText: 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2024-09-02 12:39+0200\n"
+"PO-Revision-Date: 2025-01-02 20:42+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1108,7 +1108,7 @@ msgstr "XML de projecte After Effects d'Adobe"
 #: src/core/io/aep/aep_loader.cpp:75
 #, kde-format
 msgid "External asset not found: %1"
-msgstr "No s'ha trobat el recurs extern: %1"
+msgstr "No s'ha trobat l'actiu extern: %1"
 
 #: src/core/io/aep/aep_loader.cpp:117
 #, kde-format
@@ -1158,7 +1158,7 @@ msgstr "Clip"
 #: src/core/io/aep/aep_loader.cpp:1267
 #, kde-format
 msgid "Unknown asset type for %1"
-msgstr "Tipus de recurs desconegut per a %1"
+msgstr "Tipus d'actiu desconegut per a %1"
 
 #: src/core/io/aep/aep_parser.hpp:49
 #, kde-format
@@ -1183,7 +1183,7 @@ msgstr "Codificació desconeguda per a %1"
 #: src/core/io/aep/aep_parser.hpp:230
 #, kde-format
 msgid "Missing asset data"
-msgstr "Falten les dades de recurs"
+msgstr "Falten les dades de l'actiu"
 
 #: src/core/io/aep/aep_parser.hpp:288
 #, kde-format
@@ -1239,7 +1239,7 @@ msgstr "Interpolador %s desconegut"
 #: src/core/io/avd/avd_parser.cpp:650
 #, kde-format
 msgid "Unknown resource id %1"
-msgstr "ID de recurs desconegut %1"
+msgstr "ID d'actiu desconegut %1"
 
 #: src/core/io/avd/avd_parser.cpp:658
 #, kde-format
@@ -1249,7 +1249,7 @@ msgstr "No s'ha pogut llegir el fitxer %1"
 #: src/core/io/avd/avd_parser.cpp:659 src/core/io/avd/avd_parser.cpp:668
 #, kde-format
 msgid "Could not load resource %1"
-msgstr "No s'ha pogut carregar el recurs %1"
+msgstr "No s'ha pogut carregar l'actiu %1"
 
 #: src/core/io/avd/avd_renderer.cpp:159
 #, kde-format
@@ -1726,7 +1726,7 @@ msgstr "Animació inesperada"
 #: src/core/io/rive/rive_loader.cpp:231
 #, kde-format
 msgid "Unexpected Asset Contents"
-msgstr "Contingut de recurs inesperat"
+msgstr "Contingut d'actiu inesperat"
 
 #: src/core/io/rive/rive_loader.cpp:242
 #, kde-format
@@ -2061,7 +2061,7 @@ msgstr "Lletres"
 #: src/core/model/assets/assets.hpp:208 src/gui/widgets/docks/assets.ui:22
 #, kde-format
 msgid "Assets"
-msgstr "Recursos"
+msgstr "Actius"
 
 #: src/core/model/assets/bitmap.cpp:205
 #, kde-format
@@ -3973,7 +3973,7 @@ msgstr "Neteja el document"
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:300
 #, kde-format
 msgid "Removed %1 assets"
-msgstr "S'han eliminat %1 recursos"
+msgstr "S'han eliminat %1 actius"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:308
 #, kde-format
