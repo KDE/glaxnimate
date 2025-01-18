@@ -18,8 +18,13 @@ if ( MOBILE_UI )
 else()
     add_executable(${PROJECT_SLUG} WIN32)
     kde_target_enable_exceptions(${PROJECT_SLUG} PUBLIC)
+
     target_link_libraries(${PROJECT_SLUG} ${LIB_NAME_CORE} ${LIB_NAME_GUI} ${LIB_NAME_PYTHON} QtAppSetup)
     install(TARGETS ${PROJECT_SLUG} DESTINATION bin)
+
+    ## Icon for Windows and OSX
+    #file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../data/images/logo.svg")
+    ecm_add_app_icon(${PROJECT_SLUG} ICONS "${CMAKE_CURRENT_SOURCE_DIR}/../data/images/logo.svg") # icon name = variable name
 
     if (APPLE)
     # Apple app package
