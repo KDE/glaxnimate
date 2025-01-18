@@ -47,7 +47,7 @@ elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     set(WHEEL_CMD "--plat-name" "win32")
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     execute_process(
-        COMMAND echo "from distutils.util import get_platform; print(get_platform().replace('.', '_').replace('-', '_')).replace('x_11_x', 'x_11_0_x')"
+        COMMAND echo "from distutils.util import get_platform; print(get_platform().replace('.', '_').replace('-', '_').replace('x_11_x', 'x_11_0_x'))"
         COMMAND python3
         OUTPUT_VARIABLE MAC_PY_PLATFORM_TAG
         OUTPUT_STRIP_TRAILING_WHITESPACE
