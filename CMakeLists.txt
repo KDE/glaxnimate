@@ -148,6 +148,7 @@ include(KDECompilerSettings)
 if (QT_MAJOR_VERSION STREQUAL "6")
     include(ECMAddAndroidApk)
 endif()
+include(ECMAddAppIcon)
 
 # TODO: The following definitons should be enabled
 remove_definitions(
