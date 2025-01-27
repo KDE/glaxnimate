@@ -1,16 +1,16 @@
 # Translation for glaxnimate.po to Euskara/Basque (eu).
-# Copyright (C) 2024 This file is copyright:
+# Copyright (C) 2024-2025 This file is copyright:
 # This file is distributed under the same license as the glaxnimate package.
 # SPDX-FileCopyrightText: 2024, 2025 KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>
 #
 # Translators:
-# SPDX-FileCopyrightText: 2024 Iñigo Salvador Azurmendi <xalba@ni.eus>
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2025-01-11 10:40+0100\n"
+"PO-Revision-Date: 2025-01-26 22:14+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -46,15 +46,15 @@ msgstr "hasiera_opakutasuna"
 
 #. i18n: file: src/core/model/shapes/stroke.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
+#, kde-format
 msgid "cap"
-msgstr "txanoa"
+msgstr "muturra"
 
 #. i18n: file: src/core/model/shapes/stroke.hpp
 #. i18n: Property name
 #, kde-format
 msgid "miter_limit"
-msgstr ""
+msgstr "inglete_muga"
 
 #. i18n: file: src/core/model/shapes/shape.hpp
 #. i18n: Property name
@@ -74,7 +74,7 @@ msgstr "kokapena"
 #. i18n: Property name
 #, kde-format
 msgid "rounded"
-msgstr "biribilduta"
+msgstr "biribildua"
 
 #. i18n: file: src/core/model/shapes/precomp_layer.hpp
 #. i18n: Property name
@@ -1543,12 +1543,12 @@ msgstr "Errepikatzaileak ez dira ofizialki onartzen"
 #: src/core/io/lottie/tgs_format.cpp:69
 #, kde-format
 msgid "Inflate/Deflate is not supported"
-msgstr ""
+msgstr "Puztea/Hustea ez da onartzen"
 
 #: src/core/io/lottie/tgs_format.cpp:73
 #, kde-format
 msgid "Offset Path is not supported"
-msgstr ""
+msgstr "Bidearen jatorri-aldaketa ez da onartzen"
 
 #: src/core/io/lottie/tgs_format.cpp:77
 #, kde-format
@@ -2249,7 +2249,7 @@ msgstr "Errepikatzailea"
 #: src/core/model/shapes/round_corners.cpp:20
 #, kde-format
 msgid "Round Corners"
-msgstr "Izkinak biribilduak"
+msgstr "Izkina biribilak"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_stroke)
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -2451,6 +2451,8 @@ msgctxt "@info:shell"
 msgid ""
 "Render frames the input file to the given file instead of starting the GUI"
 msgstr ""
+"Sarrera-fitxategiko fotogramak emaniko fitxategian errendatzen ditu EIG "
+"abiatu ordez"
 
 #: src/gui/cli.cpp:91
 #, kde-format
@@ -2459,6 +2461,9 @@ msgid ""
 "Specify the format for --render. If omitted it's determined based on the "
 "file name. See --render-format-list for a list of supported formats."
 msgstr ""
+"Zehatu «--render»ren formatua. Ematen ez bada, fitxategi-izenaren arabera "
+"zehaztuko da. Begiratu «--render-format-list» onartutako formatuen zerrenda "
+"lortzeko."
 
 #: src/gui/cli.cpp:98
 #, kde-format
@@ -3030,7 +3035,7 @@ msgstr "Erakutsi tangenteak"
 #: src/gui/tools/edit_tool.cpp:326
 #, kde-format
 msgid "Make First Node"
-msgstr "Egin lehenengo nodoa"
+msgstr "Egin lehen nodoa"
 
 #: src/gui/tools/edit_tool.cpp:334
 #, kde-format
@@ -3041,19 +3046,19 @@ msgstr "Kendu tangentea"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Stop Color..."
-msgstr ""
+msgstr "Kolore geldialdia..."
 
 #: src/gui/tools/edit_tool.cpp:381
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Add Stop"
-msgstr "Gehitu kolorea"
+msgstr "Gehitu geldialdia"
 
 #: src/gui/tools/edit_tool.cpp:385
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Remove Stop"
-msgstr "Kendu puntua"
+msgstr "Kendu geldialdia"
 
 #: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:711
 #, kde-format
@@ -3265,37 +3270,37 @@ msgstr "Algoritmoa"
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:44
 #, kde-format
 msgid "k-Means"
-msgstr ""
+msgstr "k-Means"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:49
 #, kde-format
 msgid "k-Modes"
-msgstr ""
+msgstr "k-Modes"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:54
 #, kde-format
 msgid "Octree"
-msgstr ""
+msgstr "Octree"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:59
 #, kde-format
 msgid "Edge Exclusion Modes"
-msgstr ""
+msgstr "Ertzak baztertzeko moduak"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:76
-#, fuzzy, kde-format
+#, kde-format
 msgid "Match"
-msgstr "Parekatu"
+msgstr "Bat-etorri"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:83
-#, fuzzy, kde-format
+#, kde-format
 msgid "Max Iterations"
-msgstr "Iterazio max.:"
+msgstr "Iterazio gehienez"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
@@ -3366,6 +3371,50 @@ msgid ""
 "weight:600;\">Most Frequent</span>: Find the color in the cluster that "
 "appears most often in the source image</li></ul></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">«k-Means»ek koloreak "
+"multzotan banatzen ditu eta iterazio bakoitzean esleipena hobetzen du.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Hau da kolore edo itzal "
+"asko dituzten irudiak trazatzeko aukerarik onena.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Kolore asko dituzten "
+"argazkien kasuan, iterazio kopurua handituz emaitza hobeak lortuko dira, "
+"baina motelagoa izan daiteke.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-style:"
+"italic;\">Bat-etorri</span> aukerak osteko prozesaketa batzuk egiten ditu.</"
+"p>\n"
+"<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
+"right: 0px; -qt-list-indent: 1;\"><li style=\"\" style=\" margin-top:12px; "
+"margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+"text-indent:0px;\"><span style=\" font-weight:600;\">Bat ere ez</span>: Ez "
+"du osteko prozesaketarik egiten eta bataz-bestekoak itzultze ditu (konturatu "
+"zaitez horrek jatorrizko irudian ez dauden koloreak eman ditzakeela)</li>\n"
+"<li style=\"\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">Hurbilena</span>: Aurkitu jatorrizko irudian bataz-"
+"bestekotikhurbilen dagoen kolorea</li>\n"
+"<li style=\"\" style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">Ohikoena</span>: Aurkitu sorburu-irudian gehien agertzen den "
+"klusterreko kolorea</li></ul></body></html>"
 
 #. i18n: ectx: property (plainText), widget (QPlainTextEdit, plainTextEdit)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:159
@@ -3377,6 +3426,11 @@ msgid ""
 "\n"
 "This is the best option when tracing images with flat colors."
 msgstr ""
+"«k-Modes»ek sorburu-irudian gehien agertzen diren koloreak ematen dizkizu.\n"
+"\n"
+"Oso azkarra da, baina ez ditu irudi konplexuetarako kolore zehatzak ematen.\n"
+"\n"
+"Hau da, kolore lauak dituzten irudiak trazatzeko aukerarik onena."
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_2)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:178
@@ -3397,6 +3451,20 @@ msgid ""
 "colors for complex images but it might result into colors that are not "
 "present in the source image.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Octree algoritmoak, "
+"behetik gora, antzeko koloreak bateratzen ditu.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Irudi konplexuetarako "
+"kolore zehatzagoak ematen ditu, baina sorburu-irudian ez dauden irudiak eman "
+"ditzake.</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:189
@@ -3429,6 +3497,27 @@ msgid ""
 "that a color must have to be considered (as a percentage of the total number "
 "of pixels in the image).</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Ertzak baztertzeko moduek "
+"irudiaren kolore (modu) ohikoena hartzen dute; ondoren, azalera hori ukitzen "
+"duten pixel guztiak baztertzen ditu, ondoren prozesua errepikatzen du kolore-"
+"kopurua egokia aurkitu arte.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Hurbilketa honek "
+"leundutako ertzak kentzen ditu, baina xehetasun txikiak ez antzematea eragin "
+"dezake.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">Gutxieneko maiztasuna</span> kolore bat kontuan hartua izateko "
+"izan behar duen pixel kopuruari (irudiko pixel kopuru osoaren ehuneko gisa) "
+"egiten dio erreferentzia.</p></body></html>"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, DocumentMetadataDialog)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:21
@@ -3528,9 +3617,9 @@ msgstr "Fotograma {frame}"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:73
-#, fuzzy, kde-format
+#, kde-format
 msgid "Frame Step"
-msgstr "Fotograma urratsa:"
+msgstr "Fotograma urratsa"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:112
@@ -4404,7 +4493,7 @@ msgstr "Eragiketak huts egin du"
 #: src/gui/widgets/dialogs/io_status_dialog.ui:21
 #, kde-format
 msgid "IoStatusDialog"
-msgstr ""
+msgstr "SiEgoeraElkarrizketa"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/io_status_dialog.ui:50
@@ -4558,7 +4647,7 @@ msgstr "Erakutsi abiatzean"
 #: src/gui/widgets/dialogs/timing_dialog.cpp:73
 #, kde-format
 msgid "Change Animation Properties"
-msgstr "Aldatu animazio-propietateak"
+msgstr "Aldatu animazioaren propietateak"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
@@ -4571,7 +4660,7 @@ msgstr "FPS"
 #: src/gui/widgets/dialogs/timing_dialog.ui:97
 #, kde-format
 msgid "Keep Initial Timing"
-msgstr ""
+msgstr "Mantendu hasierako tenporizazioa"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer_trim)
 #: src/gui/widgets/dialogs/timing_dialog.ui:104
@@ -4583,7 +4672,7 @@ msgstr "Kimatu fotograma gehigarriak"
 #: src/gui/widgets/dialogs/timing_dialog.ui:114
 #, kde-format
 msgid "Scale Timing"
-msgstr ""
+msgstr "Eskalatu tenporizazioa"
 
 #. i18n: ectx: property (text), item, widget (QListWidget, list_presets)
 #: src/gui/widgets/dialogs/trace_dialog.ui:89
@@ -4636,10 +4725,39 @@ msgid ""
 "\"https://linktr.ee/FellFallow\"><span style=\" text-decoration: underline; "
 "color:#2980b9;\">FellFallow</span></a>)</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Aukera hau hobekien "
+"egokitzen da argazkietarako, pinturetarako eta ilustrazio zehatzetarako.</"
+"p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Kolore kopurua beheko "
+"<span style=\" font-weight:600;\">Posterizazio mailan</span> oinarrituta "
+"murrizten da.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Kontuan izan irudiaren "
+"kalitatea nabarmen murrizten dela irudi-mota hau bektore-grafikoetara "
+"bihurtzean.</p>\n"
+"<p style=\" margin-top:37px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">(<a href=\"https://linktr."
+"ee/FellFallow\"><span style=\" text-decoration: underline; color:#2980b9;"
+"\">FellFallow</span></a>ren irudia)</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: src/gui/widgets/dialogs/trace_dialog.ui:164
-#, fuzzy, kde-format
+#, kde-format
 msgid "Posterization Level"
 msgstr "Posterizazio maila"
 
@@ -4671,6 +4789,29 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">Very small details might "
 "get lost in the process.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Aukera hau hobekien "
+"egokitzen da itzal lauko irudi digitaletarako, eranskailuetarako, eta "
+"marrazki bizidunetarako.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Kolore kopurua "
+"automatikoki murriztuko da, sorburu-irudiko kolore ohikoenak aukeratuz.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Baliteke prozesuan "
+"xehetasun oso txikiak galtzea.</p></body></html>"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_3)
 #: src/gui/widgets/dialogs/trace_dialog.ui:233
@@ -4694,6 +4835,23 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">This is only suitable for "
 "fairly small images with a low number of colors.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Hau pixel-arterako egokia "
+"da. Trazatutako bektoreak jatorrizko irudiko kolore guztiak gordeko ditu, "
+"baita pixelatutako ertzak ere.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Hau kolore kopuru txikia "
+"duten irudi nahiko txikietarako bakarrik da egokia.</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/trace_dialog.ui:254
@@ -4942,13 +5100,13 @@ msgstr "Garbitu irteera"
 #: src/gui/widgets/docks/script_console.ui:71
 #, kde-format
 msgid "Persist Logs"
-msgstr ""
+msgstr "Iraun egunkariak"
 
 #. i18n: ectx: property (text), widget (QToolButton, check_persist)
 #: src/gui/widgets/docks/script_console.ui:74
 #, kde-format
 msgid "Persist"
-msgstr ""
+msgstr "Iraun"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_reload)
 #: src/gui/widgets/docks/script_console.ui:88
@@ -5057,7 +5215,7 @@ msgstr "Bikoiti Bakoiti"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:81
 #, kde-format
 msgid "Butt"
-msgstr "Muturra"
+msgstr "Zuzena"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_cap_round)
 #. i18n: ectx: property (text), widget (QToolButton, button_cap_round)
@@ -5070,7 +5228,7 @@ msgstr "Muturra"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:199
 #, kde-format
 msgid "Round"
-msgstr "Biribildua"
+msgstr "Biribila"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_cap_square)
 #. i18n: ectx: property (text), widget (QToolButton, button_cap_square)
@@ -5088,7 +5246,7 @@ msgstr "Karratua"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:229
 #, kde-format
 msgid "Miter"
-msgstr ""
+msgstr "Ingletea"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_join_bevel)
 #. i18n: ectx: property (text), widget (QToolButton, button_join_bevel)
@@ -5208,7 +5366,7 @@ msgid "Category"
 msgstr "Kategoria"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:278
-#, fuzzy, kde-format
+#, kde-format
 msgid "Rank"
 msgstr "Sailkapena"
 
@@ -5233,7 +5391,7 @@ msgid "Serif"
 msgstr "Serif"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:398
-#, fuzzy, kde-format
+#, kde-format
 msgid "Display"
 msgstr "Azaldu"
 
@@ -5340,13 +5498,13 @@ msgstr "%1 %2 bihurtu"
 #: src/gui/widgets/menus/node_menu.cpp:257
 #, kde-format
 msgid "Auto Orient"
-msgstr ""
+msgstr "Orientazio automatikoa"
 
 #: src/gui/widgets/menus/node_menu.cpp:266
 #: src/gui/widgets/menus/node_menu.cpp:267
 #, kde-format
 msgid "Span All Frames"
-msgstr ""
+msgstr "Fotograma guztiak zabaldu"
 
 #: src/gui/widgets/menus/node_menu.cpp:277
 #, kde-format
@@ -5632,7 +5790,7 @@ msgstr "Azkenaldiko fitxategien menuan erakusteko elementu kopurua"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Backup Frequency"
-msgstr "Babeskopia egiteko maiztasuna"
+msgstr "Babeskopia maiztasuna"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:256
 msgid "Use system file dialog"
@@ -6052,17 +6210,17 @@ msgstr "Eguneratu trazuaren kolorea"
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:225
 #, kde-format
 msgid "Set Line Cap"
-msgstr ""
+msgstr "Ezarri lerroren muturra"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:240
 #, kde-format
 msgid "Set Line Join"
-msgstr ""
+msgstr "Ezarri lerro juntura"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:332
 #, kde-format
 msgid "Set Miter Limit"
-msgstr ""
+msgstr "Ezarri ingletearen muga"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:340
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:355
@@ -6089,21 +6247,21 @@ msgstr "Trazuaren zabalera"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:69
-#, fuzzy, kde-format
+#, kde-format
 msgid "Cap"
-msgstr "txanoa"
+msgstr "Muturra"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:157
-#, fuzzy, kde-format
+#, kde-format
 msgid "Join"
-msgstr "Elkartu"
+msgstr "Juntura"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_miter)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:263
-#, fuzzy, kde-format
+#, kde-format
 msgid "Miter Limit"
-msgstr "Inglete-muga"
+msgstr "Ingletearen muga"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:338
@@ -6283,7 +6441,7 @@ msgstr "Aurrea hartu"
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:103
 #, kde-format
 msgid "Overshoot"
-msgstr ""
+msgstr "Marra gainditu"
 
 #: src/gui/widgets/timeline/timeline_items.cpp:142
 #, kde-format
