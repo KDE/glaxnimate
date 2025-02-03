@@ -6,7 +6,7 @@ cmake_minimum_required (VERSION 3.16 FATAL_ERROR)
 cmake_policy(SET CMP0077 NEW)
 
 
-project(Glaxnimate VERSION 0.5.80 LANGUAGES CXX)
+project(Glaxnimate VERSION 0.6.70 LANGUAGES CXX)
 include(FeatureSummary)
 
 set(PROJECT_SLUG "glaxnimate")
