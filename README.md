@@ -53,7 +53,7 @@ It will produce the executable `bin/glaxnimate` relative to the build directory
 
 Install the dependencies:
 
-    apt-get install -y g++ cmake qtbase5-dev qttools5-dev libqt5svg5-dev \
+    apt-get install -y g++ cmake extra-cmake-modules qtbase5-dev qttools5-dev libqt5svg5-dev \
     qt5-image-formats-plugins libpython3-dev libpotrace-dev \
     libarchive-dev libavformat-dev libswscale-dev libavcodec-dev libavutil-dev \
     libkf5coreaddons-dev libkf5crash-dev libkf5widgetsaddons-dev libkf5xmlgui-dev \
@@ -66,7 +66,7 @@ The generic `cmake` commands listed above should work.
 
 Install the dependencies:
 
-    pacman -S git base-devel cmake python zlib hicolor-icon-theme \
+    pacman -S git base-devel cmake extra-cmake-modules python zlib hicolor-icon-theme \
     potrace ffmpeg qt5-base qt5-tools qt5-imageformats qt5-svg
 
 The generic `cmake` commands listed above should work.
@@ -76,7 +76,7 @@ The generic `cmake` commands listed above should work.
 
 Install the dependencies with homebrew:
 
-    brew install cmake qt python potrace ffmpeg libarchive
+    brew install cmake extra-cmake-modules qt python potrace ffmpeg libarchive
 
 Build with `cmake`, specifying the Qt installation path:
 
