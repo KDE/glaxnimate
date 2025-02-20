@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2025-02-18 18:06-0300\n"
+"PO-Revision-Date: 2025-02-19 22:06-0300\n"
 "Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -40,7 +40,7 @@ msgstr "transformar"
 #. i18n: Property name
 #, kde-format
 msgid "start_opacity"
-msgstr ""
+msgstr "opacidade_inicial"
 
 #. i18n: file: src/core/model/shapes/stroke.hpp
 #. i18n: Property name
@@ -52,7 +52,7 @@ msgstr "ponta"
 #. i18n: Property name
 #, kde-format
 msgid "miter_limit"
-msgstr ""
+msgstr "limite_da_interseção"
 
 #. i18n: file: src/core/model/shapes/shape.hpp
 #. i18n: Property name
@@ -124,7 +124,7 @@ msgstr "caminho"
 #. i18n: Property name
 #, kde-format
 msgid "fill_rule"
-msgstr ""
+msgstr "regra_de_preenchimento"
 
 #. i18n: file: src/core/model/shapes/polystar.hpp
 #. i18n: Property name
@@ -138,7 +138,7 @@ msgstr "tipo"
 #. i18n: Property name
 #, kde-format
 msgid "outer_radius"
-msgstr ""
+msgstr "raio_exterior"
 
 #. i18n: file: src/core/model/shapes/polystar.hpp
 #. i18n: Property name
@@ -150,7 +150,7 @@ msgstr "ângulo"
 #. i18n: Property name
 #, kde-format
 msgid "outer_roundness"
-msgstr ""
+msgstr "arredondamento_exterior"
 
 #. i18n: file: src/core/model/shapes/styler.hpp
 #. i18n: Property name
@@ -198,7 +198,7 @@ msgstr "frequência"
 #. i18n: Property name
 #, kde-format
 msgid "anchor_point"
-msgstr ""
+msgstr "ponto_de_âncora"
 
 #. i18n: file: src/core/model/transform.hpp
 #. i18n: Property name
@@ -230,7 +230,7 @@ msgstr "largura"
 #. i18n: Property name
 #, kde-format
 msgid "css_url"
-msgstr ""
+msgstr "url_css"
 
 #. i18n: file: src/core/model/assets/gradient.hpp
 #. i18n: Property name
@@ -244,13 +244,13 @@ msgstr "cores"
 #. i18n: Property name
 #, kde-format
 msgid "start_point"
-msgstr ""
+msgstr "ponto_inicial"
 
 #. i18n: file: src/core/model/assets/assets.hpp
 #. i18n: Property name
 #, kde-format
 msgid "gradient_colors"
-msgstr ""
+msgstr "cores_de_gradiente"
 
 #. i18n: file: src/core/model/assets/assets.hpp
 #. i18n: Property name
@@ -262,7 +262,7 @@ msgstr "composições"
 #. i18n: Property name
 #, kde-format
 msgid "first_frame"
-msgstr ""
+msgstr "primeiro_quadro"
 
 #. i18n: file: src/core/model/property/option_list_property.hpp
 #. i18n: Property name
@@ -304,6 +304,14 @@ msgid ""
 "Then layers are created that appear in and out at uniform time intervals. "
 "You can use these layers for frame-by-frame animation."
 msgstr ""
+"Esta caixa de diálogo cria uma camada para ajudar com animação quadro a "
+"quadro.\n"
+"\n"
+"Você especifica o intervalo de tempo que deseja dividir em quadros e o "
+"número de quadros que deseja.\n"
+"\n"
+"Em seguida, são criadas camadas que aparecem e desaparecem em intervalos de "
+"tempo uniformes. Você pode usar essas camadas para animação quadro a quadro."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: data/plugins/FrameByFrame/create_frames.ui:43
@@ -351,7 +359,7 @@ msgstr "Abrir arquivo"
 #: src/android/document_opener.cpp:36
 #, kde-format
 msgid "Raster images need to be traced into vectors"
-msgstr ""
+msgstr "Imagens rasterizadas precisam ser transformadas em vetores"
 
 #: src/android/document_opener.cpp:106
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:183
@@ -362,7 +370,7 @@ msgstr "Salvar arquivo"
 #: src/android/document_opener.cpp:106
 #, kde-format
 msgid "Could not save the file"
-msgstr ""
+msgstr "Não foi possível salvar o arquivo"
 
 #: src/android/document_opener.cpp:128
 #, kde-format
@@ -372,7 +380,7 @@ msgstr "Tipo de arquivo desconhecido"
 #: src/android/document_opener.cpp:154
 #, kde-format
 msgid "Could not unzip the file"
-msgstr ""
+msgstr "Não foi possível descompactar o arquivo"
 
 #: src/android/document_opener.cpp:193
 #, kde-format
@@ -380,16 +388,18 @@ msgid ""
 "Unknown file type. Supported files:\n"
 "%1"
 msgstr ""
+"Tipo de arquivo desconhecido. Arquivos suportados:\n"
+"%1"
 
 #: src/android/document_opener.cpp:201
 #, kde-format
 msgid "Error loading %1 file"
-msgstr ""
+msgstr "Erro ao carregar arquivo %1"
 
 #: src/android/help_dialog.cpp:54
 #, kde-format
 msgid "Clears the current document and creates a new empty one"
-msgstr ""
+msgstr "Limpa o documento atual e cria um novo vazio"
 
 #: src/android/help_dialog.cpp:58
 #, kde-format
@@ -398,6 +408,9 @@ msgid ""
 "Currently the following formats are supported:\n"
 "%1"
 msgstr ""
+"Pede ao usuário para selecionar um documento a ser aberto.\n"
+"Atualmente, os seguintes formatos são suportados:\n"
+"%1"
 
 #: src/android/help_dialog.cpp:62
 #, kde-format
@@ -405,16 +418,19 @@ msgid ""
 "Prompts the user to select a document to append as an object to the current "
 "one."
 msgstr ""
+"Pede que o usuário selecione um documento para anexar como objeto ao atual."
 
 #: src/android/help_dialog.cpp:66
 #, kde-format
 msgid "Save the current document, prompting to select a file for new documents"
 msgstr ""
+"Salva o documento atual, pedindo para selecionar um arquivo para novos "
+"documentos."
 
 #: src/android/help_dialog.cpp:70
 #, kde-format
 msgid "Save the current document, always prompting to select a file."
-msgstr ""
+msgstr "Salva o documento atual, sempre pedindo para selecionar um arquivo."
 
 #: src/android/help_dialog.cpp:74
 #, kde-format
@@ -423,11 +439,15 @@ msgid ""
 "Currently the following formats are supported:\n"
 "%1"
 msgstr ""
+"Salva a cópia do documento atual, pedindo para selecionar o formato e um "
+"arquivo.\n"
+"Atualmente, os seguintes formatos são suportados:\n"
+"%1"
 
 #: src/android/help_dialog.cpp:78
 #, kde-format
 msgid "Saves the current frame as a still image"
-msgstr ""
+msgstr "Salva o quadro atual como uma imagem parada."
 
 #: src/android/help_dialog.cpp:82
 #, kde-format
@@ -437,36 +457,40 @@ msgid ""
 "If your Telegram version is too old, you can Export the file to TGS and "
 "upload that on Telegram."
 msgstr ""
+"Cria um pacote de stickers para exportar para o Telegram.\n"
+"Note que apenas versões recentes do Telegram suportam isto.\n"
+"Se a versão do Telegram for muito velha, é possível Exportar o arquivo para "
+"TGS e fazer o upload dele para o Telegram."
 
 #: src/android/help_dialog.cpp:86
 #, kde-format
 msgid "Cuts the selection into the clipboard."
-msgstr ""
+msgstr "Corta a seleção para a área de transferência."
 
 #: src/android/help_dialog.cpp:90
 #, kde-format
 msgid "Copies the selection into the clipboard."
-msgstr ""
+msgstr "Copia a seleção para a área de transferência."
 
 #: src/android/help_dialog.cpp:94
 #, kde-format
 msgid "Pastes from the clipboard into the current document."
-msgstr ""
+msgstr "Cola da área de transferência para o documento atual."
 
 #: src/android/help_dialog.cpp:98
 #, kde-format
 msgid "Removes the selected item."
-msgstr ""
+msgstr "Remove o item selecionado."
 
 #: src/android/help_dialog.cpp:102
 #, kde-format
 msgid "Undoes the last action."
-msgstr ""
+msgstr "Desfaz a última ação."
 
 #: src/android/help_dialog.cpp:106
 #, kde-format
 msgid "Redoes the last undone action."
-msgstr ""
+msgstr "Refaz a última ação desfeita."
 
 #: src/android/help_dialog.cpp:110
 #, kde-format
@@ -474,32 +498,36 @@ msgid ""
 "Opens the side pane used to change the advanced properties for the selected "
 "object."
 msgstr ""
+"Abre o painel lateral usado para modificar propriedades avançadas para o "
+"objeto selecionado."
 
 #: src/android/help_dialog.cpp:114
 #, kde-format
 msgid "Shows the timeline and playback controls."
-msgstr ""
+msgstr "Mostra a linha do tempo e controles de reprodução."
 
 #: src/android/help_dialog.cpp:118
 #, kde-format
 msgid "Opens the side pane used to select the fill color."
-msgstr ""
+msgstr "Abre o painel lateral usado para selecionar a cor de preenchimento."
 
 #: src/android/help_dialog.cpp:122
 #, kde-format
 msgid "Opens the side pane used to select the stroke color and style."
-msgstr ""
+msgstr "Abre o painel lateral usado para selecionar a cor de traço e estilo."
 
 #: src/android/help_dialog.cpp:126
 #, kde-format
 msgid "Shows this help."
-msgstr ""
+msgstr "Mostra esta ajuda."
 
 #: src/android/help_dialog.cpp:130
 #, kde-format
 msgid ""
 "Select tool, you can use it to select objects and change their transform."
 msgstr ""
+"Ferramenta de seleção. Pode ser usada para selecionar objetos e mudar suas "
+"transformações."
 
 #: src/android/help_dialog.cpp:134
 #, kde-format
@@ -507,36 +535,38 @@ msgid ""
 "Edit tool, used to edit existing items (eg: moving, bezier nodes, setting "
 "rounded corners on a rectangle, etc.)"
 msgstr ""
+"Ferramenta de edição, usada para editar itens (ex.: mover, nós Bezier, "
+"definir cantos arredondados em um retângulo, etc.)"
 
 #: src/android/help_dialog.cpp:138
 #, kde-format
 msgid "Shows a tray with the curve drawing tools."
-msgstr ""
+msgstr "Exibe uma bandeja com ferramentas de desenho de curvas."
 
 #: src/android/help_dialog.cpp:142
 #, kde-format
 msgid "Create Bezier curves using nodes and handles."
-msgstr ""
+msgstr "Cria curvas de Bezier usando nós e alças."
 
 #: src/android/help_dialog.cpp:146
 #, kde-format
 msgid "Draw curves freehand."
-msgstr ""
+msgstr "Desenha curvas em linha livre."
 
 #: src/android/help_dialog.cpp:150
 #, kde-format
 msgid "Shows a tray with the shape drawing tools."
-msgstr ""
+msgstr "Mostra uma bandeja com as ferramentas de desenho de formas."
 
 #: src/android/help_dialog.cpp:154
 #, kde-format
 msgid "Draws rectangles."
-msgstr ""
+msgstr "Desenha retângulos."
 
 #: src/android/help_dialog.cpp:158
 #, kde-format
 msgid "Draws ellipses."
-msgstr ""
+msgstr "Desenha elipses."
 
 #: src/android/help_dialog.cpp:162
 #, kde-format
@@ -544,46 +574,48 @@ msgid ""
 "Draws a star, after it's been created you can change it into a regular "
 "polygon and change the number of sides from the properties pane."
 msgstr ""
+"Desenha uma estrela. Depois de criada, é possível transformá-la em um "
+"polígono comum e mudar o número de lados a partir do painel de propriedades."
 
 #: src/android/help_dialog.cpp:166
 #, kde-format
 msgid "Create and edit text shapes."
-msgstr ""
+msgstr "Cria e edita formas de texto."
 
 #: src/android/help_dialog.cpp:170
 #, kde-format
 msgid "Toggles the menu showing non-drawing buttons."
-msgstr ""
+msgstr "Alterna o menu exibindo botões que não são de desenho."
 
 #: src/android/help_dialog.cpp:174
 #, kde-format
 msgid "Starts playback."
-msgstr ""
+msgstr "Inicia a reprodução."
 
 #: src/android/help_dialog.cpp:178
 #, kde-format
 msgid "Toggles looping for the playback (on by default)."
-msgstr ""
+msgstr "Alterna a repetição para a reprodução (ativo por padrão)."
 
 #: src/android/help_dialog.cpp:182
 #, kde-format
 msgid "Jumps to the first frame."
-msgstr ""
+msgstr "Pula para o primeiro quadro."
 
 #: src/android/help_dialog.cpp:186
 #, kde-format
 msgid "Goes to the previous frame."
-msgstr ""
+msgstr "Vai para o quadro anterior."
 
 #: src/android/help_dialog.cpp:190
 #, kde-format
 msgid "Goes to the next frame."
-msgstr ""
+msgstr "Vai para o próximo quadro."
 
 #: src/android/help_dialog.cpp:194
 #, kde-format
 msgid "Jumps to the last frame."
-msgstr ""
+msgstr "Pula para o último quadro."
 
 #: src/android/help_dialog.cpp:198
 #, kde-format
@@ -591,16 +623,18 @@ msgid ""
 "When enabled (which is the default) whenever you change an object property, "
 "a new keyframe is added for that property."
 msgstr ""
+"Quando habilitado (que é o padrão), toda vez que uma propriedade de objeto "
+"for modificada, um novo quadro-chave é adicionado para tal propriedade."
 
 #: src/android/help_dialog.cpp:202
 #, kde-format
 msgid "Push the selection further back."
-msgstr ""
+msgstr "Empurra a seleção mais para trás."
 
 #: src/android/help_dialog.cpp:206
 #, kde-format
 msgid "Brings the selection further to the front."
-msgstr ""
+msgstr "Traz a seleção mais para frente."
 
 #: src/android/main_window.cpp:412
 #, kde-format
@@ -610,12 +644,12 @@ msgstr "Linha do tempo"
 #: src/android/main_window.cpp:417
 #, kde-format
 msgid "Fill Style"
-msgstr ""
+msgstr "Estilo de preenchimento"
 
 #: src/android/main_window.cpp:422
 #, kde-format
 msgid "Stroke Style"
-msgstr ""
+msgstr "Estilo de traço"
 
 #: src/android/main_window.cpp:452 src/gui/widgets/dialogs/gw_impl_ui.cpp:612
 #: src/gui/widgets/menus/node_menu.cpp:105
@@ -627,7 +661,7 @@ msgstr "Elevar"
 #: src/gui/widgets/menus/node_menu.cpp:109
 #, kde-format
 msgid "Lower"
-msgstr "De baixo"
+msgstr "Descer"
 
 #: src/android/main_window.cpp:464 src/gui/tools/select_tool.cpp:409
 #: src/gui/widgets/dialogs/selection_manager.cpp:85
@@ -654,12 +688,12 @@ msgstr "Excluir selecionado"
 #: src/android/main_window.cpp:482
 #, kde-format
 msgid "Raise Above"
-msgstr ""
+msgstr "Elevar acima"
 
 #: src/android/main_window.cpp:486
 #, kde-format
 msgid "Lower Below"
-msgstr ""
+msgstr "Descer abaixo"
 
 #: src/android/main_window.cpp:490
 #, kde-format
@@ -714,7 +748,7 @@ msgstr "Abrir"
 #: src/android/main_window.cpp:514
 #, kde-format
 msgid "Import as Composition"
-msgstr ""
+msgstr "Importar como composição"
 
 #: src/android/main_window.cpp:517
 #, kde-format
@@ -741,7 +775,7 @@ msgstr "Exportar"
 #: src/android/main_window.cpp:528
 #, kde-format
 msgid "Save Frame as PNG"
-msgstr ""
+msgstr "Salvar quadro como PNG"
 
 #: src/android/main_window.cpp:532
 #, kde-format
@@ -778,7 +812,7 @@ msgstr "Animação.%1"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:293
 #, kde-format
 msgid "Closing Animation"
-msgstr ""
+msgstr "Fechando a animação"
 
 #: src/android/main_window.cpp:666
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:294
@@ -787,6 +821,8 @@ msgid ""
 "The animation has unsaved changes.\n"
 "Do you want to save your changes?"
 msgstr ""
+"A animação tem mudanças não salvas.\n"
+"Deseja salvar as mudanças?"
 
 #: src/android/main_window.cpp:750 src/android/main_window.cpp:754
 #: src/android/main_window.cpp:889
@@ -802,7 +838,7 @@ msgstr "Importar arquivo"
 #: src/android/main_window.cpp:750
 #, kde-format
 msgid "Could not import file"
-msgstr ""
+msgstr "Não foi possível importar arquivo"
 
 #: src/android/main_window.cpp:789
 #, kde-format
@@ -840,7 +876,7 @@ msgstr "Glaxnimate"
 #: src/android/sticker_pack_builder_dialog.cpp:156
 #, kde-format
 msgid "Too many stickers"
-msgstr ""
+msgstr "Existem muitos stickers"
 
 #: src/android/sticker_pack_builder_dialog.cpp:162
 #: src/android/sticker_pack_builder_dialog.cpp:171
@@ -851,24 +887,24 @@ msgstr "Não foi possível abrir o arquivo"
 #: src/android/sticker_pack_builder_dialog.cpp:222
 #, kde-format
 msgid "Cannot save as TGS"
-msgstr ""
+msgstr "Não é possível salvar como TGS"
 
 #: src/android/sticker_pack_builder_dialog.cpp:263
 #, kde-format
 msgid "Are you sure you want to remove all stickers from the pack?"
-msgstr ""
+msgstr "Tem certeza que deseja remover todos os stickers do pacote?"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, StickerPackBuilderDialog)
 #: src/android/sticker_pack_builder_dialog.ui:21
 #, kde-format
 msgid "Export Stickers"
-msgstr ""
+msgstr "Exportar stickers"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_add)
 #: src/android/sticker_pack_builder_dialog.ui:116
 #, kde-format
 msgid "Open Sticker"
-msgstr ""
+msgstr "Abrir sticker"
 
 #. i18n: ectx: property (text), widget (QToolButton, btn_clear_console)
 #. i18n: ectx: property (text), widget (QToolButton, btn_clear)
@@ -884,12 +920,12 @@ msgstr "Limpar"
 #: src/android/sticker_pack_builder_dialog.ui:173
 #, kde-format
 msgid "Add Current"
-msgstr ""
+msgstr "Adicionar atual"
 
 #: src/android/telegram_intent.cpp:45
 #, kde-format
 msgid "Could not start activity, is Telegram installed?"
-msgstr ""
+msgstr "Não foi possível iniciar a atividade. O Telegram está instalado?"
 
 #: src/core/app_info.cpp:57
 #, kde-format
@@ -899,7 +935,7 @@ msgstr "(C) 2019-2023"
 #: src/core/app_info.cpp:66
 #, kde-format
 msgid "Mattia \"Glax\" Basaglia"
-msgstr ""
+msgstr "Mattia \"Glax\" Basaglia"
 
 #: src/core/app_info.cpp:66
 #, kde-format
@@ -909,42 +945,42 @@ msgstr "Mantenedor"
 #: src/core/app_info.cpp:68
 #, kde-format
 msgid "potrace"
-msgstr ""
+msgstr "potrace"
 
 #: src/core/app_info.cpp:68
 #, kde-format
 msgid "Used by the bitmap tracing feature."
-msgstr ""
+msgstr "Usado pela funcionalidade de traçamento de bitmap."
 
 #: src/core/app_info.cpp:70
 #, kde-format
 msgid "libav"
-msgstr ""
+msgstr "libav"
 
 #: src/core/app_info.cpp:71
 #, kde-format
 msgid "libarchive"
-msgstr ""
+msgstr "libarchive"
 
 #: src/core/app_info.cpp:72
 #, kde-format
 msgid "zlib"
-msgstr ""
+msgstr "zlib"
 
 #: src/core/app_info.cpp:74
 #, kde-format
 msgid "pybind11"
-msgstr ""
+msgstr "pybind11"
 
 #: src/core/app_info.cpp:74 src/core/app_info.cpp:75
 #, kde-format
 msgid "Used by the plugin system."
-msgstr ""
+msgstr "Usado pelo sistema de extensões."
 
 #: src/core/app_info.cpp:75
 #, kde-format
 msgid "CPython"
-msgstr ""
+msgstr "CPython"
 
 #: src/core/app_info.cpp:77
 #, kde-format
@@ -954,12 +990,12 @@ msgstr "Inkscape"
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
 msgid "Update %1 keyframe at %2"
-msgstr ""
+msgstr "Atualizar %1 quadro-chave em %2"
 
 #: src/core/command/animation_commands.cpp:86
 #, kde-format
 msgid "Remove %1 keyframe at %2"
-msgstr ""
+msgstr "Remover %1 quadro-chave em %2"
 
 #: src/core/command/animation_commands.cpp:117
 #, kde-format
@@ -969,12 +1005,12 @@ msgstr "Remover %1 quadro-chave %2"
 #: src/core/command/animation_commands.cpp:289
 #, kde-format
 msgid "Add keyframe for %1 at %2"
-msgstr ""
+msgstr "Adicionar quadro-chave para %1 em %2"
 
 #: src/core/command/animation_commands.cpp:292
 #, kde-format
 msgid "Update %1 at %2"
-msgstr ""
+msgstr "Atualizar %1 em %2"
 
 #: src/core/command/animation_commands.cpp:294
 #: src/core/command/property_commands.hpp:24
@@ -987,7 +1023,7 @@ msgstr "Atualizar %1"
 #: src/gui/widgets/timeline/timeline_items.cpp:537
 #, kde-format
 msgid "Update keyframe transition"
-msgstr ""
+msgstr "Atualizar transição de quadros-chave"
 
 #: src/core/command/animation_commands.cpp:358
 #, kde-format
@@ -997,12 +1033,12 @@ msgstr "Mover quadro-chave"
 #: src/core/command/animation_commands.cpp:381
 #, kde-format
 msgid "Remove animations from %1"
-msgstr ""
+msgstr "Remover animações de %1"
 
 #: src/core/command/animation_commands.cpp:432
 #, kde-format
 msgid "Update animation path"
-msgstr ""
+msgstr "Atualizar caminho da animação"
 
 #: src/core/command/animation_commands.hpp:242
 #, kde-format
@@ -1023,17 +1059,17 @@ msgstr "Remover %1"
 #: src/core/command/object_list_commands.hpp:101
 #, kde-format
 msgid "Move Object"
-msgstr ""
+msgstr "Mover objeto"
 
 #: src/core/command/shape_commands.cpp:120 src/gui/tools/select_tool.cpp:422
 #, kde-format
 msgid "Group Shapes"
-msgstr ""
+msgstr "Agrupar formas"
 
 #: src/core/command/shape_commands.cpp:153 src/gui/tools/select_tool.cpp:425
 #, kde-format
 msgid "Ungroup Shapes"
-msgstr ""
+msgstr "Desagrupar formas"
 
 #: src/core/command/shape_commands.cpp:178
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:82
@@ -1054,32 +1090,32 @@ msgstr "Não foi possível carregar o arquivo: %1"
 #: src/core/io/aep/aep_format.hpp:21
 #, kde-format
 msgid "Adobe After Effects Project"
-msgstr ""
+msgstr "Projeto do Adobe After Effects"
 
 #: src/core/io/aep/aep_format.hpp:42
 #, kde-format
 msgid "Adobe After Effects Project XML"
-msgstr ""
+msgstr "Projeto XML do Adobe After Effects"
 
 #: src/core/io/aep/aep_loader.cpp:75
 #, kde-format
 msgid "External asset not found: %1"
-msgstr ""
+msgstr "Recurso externo não encontrado: %1"
 
 #: src/core/io/aep/aep_loader.cpp:117
 #, kde-format
 msgid "Unknown property \"%1\" of \"%2\""
-msgstr ""
+msgstr "Propriedade desconhecida \"%1 de \"%2\""
 
 #: src/core/io/aep/aep_loader.cpp:404
 #, kde-format
 msgid "Expected property for %1"
-msgstr ""
+msgstr "Propriedade esperada para %1"
 
 #: src/core/io/aep/aep_loader.cpp:411
 #, kde-format
 msgid "Could convert %1"
-msgstr ""
+msgstr "Poderia converter %1"
 
 #: src/core/io/aep/aep_loader.cpp:415
 #: src/core/io/lottie/lottie_importer.hpp:897
@@ -1087,22 +1123,22 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:926
 #, kde-format
 msgid "Invalid value for %1"
-msgstr ""
+msgstr "Valor inválido para %1"
 
 #: src/core/io/aep/aep_loader.cpp:510
 #, kde-format
 msgid "Expected property group for transform"
-msgstr ""
+msgstr "Grupo de propriedades esperado para transformação"
 
 #: src/core/io/aep/aep_loader.cpp:559
 #, kde-format
 msgid "Unknown property \"%1\""
-msgstr ""
+msgstr "Propriedade desconhecida \"%1\""
 
 #: src/core/io/aep/aep_loader.cpp:1103
 #, kde-format
 msgid "Unknown shape %1"
-msgstr ""
+msgstr "Forma desconhecida %1"
 
 #: src/core/io/aep/aep_loader.cpp:1162
 #: src/core/io/lottie/lottie_importer.hpp:390
@@ -1114,88 +1150,88 @@ msgstr "Clipe"
 #: src/core/io/aep/aep_loader.cpp:1267
 #, kde-format
 msgid "Unknown asset type for %1"
-msgstr ""
+msgstr "Tipo de recurso desconhecido para %1"
 
 #: src/core/io/aep/aep_parser.hpp:49
 #, kde-format
 msgid "Not an AEP file"
-msgstr ""
+msgstr "Não é um arquivo AEP"
 
 #: src/core/io/aep/aep_parser.hpp:123
 #, kde-format
 msgid "Unknown Item type %s"
-msgstr ""
+msgstr "Tipo %s de item desconhecido"
 
 #: src/core/io/aep/aep_parser.hpp:137
 #, kde-format
 msgid "Missing composition data"
-msgstr ""
+msgstr "Dados de composição ausentes"
 
 #: src/core/io/aep/aep_parser.hpp:214
 #, kde-format
 msgid "Unknown encoding for %1"
-msgstr ""
+msgstr "Codificação desconhecida para %1"
 
 #: src/core/io/aep/aep_parser.hpp:230
 #, kde-format
 msgid "Missing asset data"
-msgstr ""
+msgstr "Dados de recursos ausentes"
 
 #: src/core/io/aep/aep_parser.hpp:288
 #, kde-format
 msgid "Missing layer data"
-msgstr ""
+msgstr "Dados de camada ausentes"
 
 #: src/core/io/aep/aep_parser.hpp:372 src/core/io/aep/aep_parser.hpp:377
 #, kde-format
 msgid "Missing mask properties"
-msgstr ""
+msgstr "Propriedades de máscara ausentes"
 
 #: src/core/io/aep/aep_parser.hpp:424
 #, kde-format
 msgid "Unknown property type: %1"
-msgstr ""
+msgstr "Tipo de propriedade desconhecido: %1"
 
 #: src/core/io/aep/aep_parser.hpp:645
 #, kde-format
 msgid "Missing list data"
-msgstr ""
+msgstr "Dados ausentes na lista"
 
 #: src/core/io/aep/aep_parser.hpp:657
 #, kde-format
 msgid "Not enough data in list"
-msgstr ""
+msgstr "Não há dados o suficiente na lista"
 
 #: src/core/io/aep/aep_parser.hpp:791
 #, kde-format
 msgid "Invalid text document: %1"
-msgstr ""
+msgstr "Documento de texto inválido: %1"
 
 #: src/core/io/aep/riff.hpp:220 src/core/io/aep/riff.hpp:233
 #: src/core/io/aep/riff.hpp:254 src/core/io/aep/riff.hpp:292
 #, kde-format
 msgid "Not enough data"
-msgstr ""
+msgstr "Não há dados o suficiente"
 
 #: src/core/io/aep/riff.hpp:528
 #, kde-format
 msgid "Unknown format %1"
-msgstr ""
+msgstr "Formato desconhecido %1"
 
 #: src/core/io/avd/avd_format.hpp:21
 #, kde-format
 msgid "Android Vector Drawable"
-msgstr ""
+msgstr "Desenho vetorial do Android"
 
 #: src/core/io/avd/avd_parser.cpp:223
 #, kde-format
 msgid "Unknown interpolator %s"
-msgstr ""
+msgstr "Interpolador %s desconhecido"
 
 #: src/core/io/avd/avd_parser.cpp:650
 #, kde-format
 msgid "Unknown resource id %1"
-msgstr ""
+msgstr "ID %1 de recurso desconhecida"
 
 #: src/core/io/avd/avd_parser.cpp:658
 #, kde-format
@@ -1205,138 +1241,142 @@ msgstr "Não foi possível ler o arquivo '%1"
 #: src/core/io/avd/avd_parser.cpp:659 src/core/io/avd/avd_parser.cpp:668
 #, kde-format
 msgid "Could not load resource %1"
-msgstr ""
+msgstr "Não foi possível carregar recurso %1"
 
 #: src/core/io/avd/avd_renderer.cpp:159
 #, kde-format
 msgid "%s should be in a group"
-msgstr ""
+msgstr "%s deve estar em um grupo"
 
 #: src/core/io/avd/avd_renderer.cpp:163
 #, kde-format
 msgid "%s is not supported"
-msgstr ""
+msgstr "%s não é suportado"
 
 #: src/core/io/avd/avd_renderer.cpp:252
 #, kde-format
 msgid "%s are not supported"
-msgstr ""
+msgstr "%s não são suportados"
 
 #: src/core/io/avd/avd_renderer.cpp:518
 #, kde-format
 msgid "%s cannot be a clip path"
-msgstr ""
+msgstr "%s não pode ser o caminho de um clipe"
 
 #: src/core/io/base.cpp:22 src/core/io/svg/svg_renderer.cpp:823
 #: src/gui/tools/base.cpp:162
 #, kde-format
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: src/core/io/glaxnimate/glaxnimate_format.hpp:26
 #: src/core/io/glaxnimate/glaxnimate_mime.hpp:21
 #, kde-format
 msgid "Glaxnimate Animation"
-msgstr ""
+msgstr "Animação Glaxnimate"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:21
 #: src/core/io/glaxnimate/glaxnimate_mime.cpp:88
 #: src/core/io/lottie/lottie_format.cpp:34
 #, kde-format
 msgid "Could not parse JSON: %1"
-msgstr ""
+msgstr "Não foi possível analisar o JSON: %1"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:27
 #: src/core/io/glaxnimate/glaxnimate_mime.cpp:94
 #: src/core/io/lottie/lottie_format.cpp:40
 #, kde-format
 msgid "No JSON object found"
-msgstr ""
+msgstr "Nenhum objeto JSON encontrado"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:35
 #, kde-format
 msgid "Opening a file from a newer version of Glaxnimate"
-msgstr ""
+msgstr "Abrir um arquivo de uma versão mais nova do Glaxnimate"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:43
 #, kde-format
 msgid "Missing composition"
-msgstr ""
+msgstr "Composição ausente"
 
 #: src/core/io/glaxnimate/import_state.hpp:108
 #, kde-format
 msgid "Property %1 of %2 refers to unexisting object %3"
-msgstr ""
+msgstr "Propriedade %1 de %2 refere para um objeto inexistente %3"
 
 #: src/core/io/glaxnimate/import_state.hpp:117
 #, kde-format
 msgid "Could not load %1 for %2: uuid refers to an unacceptable object"
 msgstr ""
+"Não foi possível carregar %1 para %2: a uuid refere para um objeto "
+"inaceitável"
 
 #: src/core/io/glaxnimate/import_state.hpp:128
 #, kde-format
 msgid "Object %1 is invalid"
-msgstr ""
+msgstr "O objeto %1 é inválido"
 
 #: src/core/io/glaxnimate/import_state.hpp:317
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
-msgstr ""
+msgstr "Tipo de objeto errado: esperava '%1' mas recebeu '%2'"
 
 #: src/core/io/glaxnimate/import_state.hpp:323
 #, kde-format
 msgid "Could not load %1 for %2"
-msgstr ""
+msgstr "Não foi possível carregar %1 para %2"
 
 #: src/core/io/glaxnimate/import_state.hpp:332
 #, kde-format
 msgid "Could not set property %1"
-msgstr ""
+msgstr "Não foi possível definir a propriedade %1"
 
 #: src/core/io/glaxnimate/import_state.hpp:358
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
-msgstr ""
+msgstr "Item %1 para %2 em %3 não é um objeto"
 
 #: src/core/io/glaxnimate/import_state.hpp:370
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
-msgstr ""
+msgstr "Item %1 para %2 em %3 não é aceitável"
 
 #: src/core/io/glaxnimate/import_state.hpp:409
 #, kde-format
 msgid "Keyframe must specify a time"
-msgstr ""
+msgstr "O quadro-chave deve especificar um tempo"
 
 #: src/core/io/glaxnimate/import_state.hpp:414
 #, kde-format
 msgid "Keyframe must specify a value"
-msgstr ""
+msgstr "O quadro-chave deve especificar um valor"
 
 #: src/core/io/glaxnimate/import_state.hpp:424
 #, kde-format
 msgid "Could not add keyframe"
-msgstr ""
+msgstr "Não foi possível adicionar quadro-chave"
 
 #: src/core/io/glaxnimate/import_state.hpp:608
 #, kde-format
 msgid "Unknown object of type '%1'"
-msgstr ""
+msgstr "Objeto desconhecido do tipo '%1'"
 
 #: src/core/io/lottie/lottie_exporter.hpp:559
 #, kde-format
 msgid "Lottie only supports layers in the top level"
-msgstr ""
+msgstr "O Lottie só suporta camadas no nível superior"
 
 #: src/core/io/lottie/lottie_exporter.hpp:561
 #, kde-format
 msgid "Lottie only supports auto-orient layers in the top level"
-msgstr ""
+msgstr "O Lottie só suporta camadas auto-orientadas no nível superior"
 
 #: src/core/io/lottie/lottie_exporter.hpp:610
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
+"Imagens não podem ser agrupadas com outras formas, elas devem estar dentro "
+"de uma camada"
 
 #: src/core/io/lottie/lottie_exporter.hpp:612
 #, kde-format
@@ -1344,6 +1384,8 @@ msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
 "a layer"
 msgstr ""
+"Camadas de composição não podem ser agrupadas com outras formas, elas deve "
+"estar dentro de uma camada"
 
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
@@ -1353,7 +1395,7 @@ msgstr "Bonito"
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
 msgid "Pretty print the JSON"
-msgstr ""
+msgstr "Exibir o JSON formatado"
 
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
@@ -1363,7 +1405,7 @@ msgstr "Remover"
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
 msgid "Strip unused properties"
-msgstr ""
+msgstr "Remover propriedades não usadas"
 
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
@@ -1373,73 +1415,73 @@ msgstr "Adicionar imagem"
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
 msgid "Automatically embed non-embedded images"
-msgstr ""
+msgstr "Automaticamente embute imagens não-embutidas"
 
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
 msgid "Legacy Keyframes"
-msgstr ""
+msgstr "Quadros-chave legados"
 
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
 msgid "Compatibility with lottie-web versions prior to 5.0.0"
-msgstr ""
+msgstr "Compatibilidade com versões lottie-web anteriores a 5.0.0"
 
 #: src/core/io/lottie/lottie_format.hpp:22
 #, kde-format
 msgid "Lottie Animation"
-msgstr ""
+msgstr "Animação Lottie"
 
 #: src/core/io/lottie/lottie_html_format.hpp:20
 #, kde-format
 msgid "Lottie HTML Preview"
-msgstr ""
+msgstr "Prévia Lottie HTML"
 
 #: src/core/io/lottie/lottie_importer.hpp:185
 #, kde-format
 msgid "Missing layer type for %1"
-msgstr ""
+msgstr "Tipo de camada ausente para %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:322
 #, kde-format
 msgid "Cannot use %1 as parent as it couldn't be loaded"
-msgstr ""
+msgstr "Não é possível usar %1 como pai pois não pôde ser carregada"
 
 #: src/core/io/lottie/lottie_importer.hpp:332
 #, kde-format
 msgid "Invalid parent layer %1"
-msgstr ""
+msgstr "Camada pai inválida %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:457
 #, kde-format
 msgid "Unsupported layer of type %1"
-msgstr ""
+msgstr "Tipo de camada não suportada %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:482
 #, kde-format
 msgid "Missing shape type"
-msgstr ""
+msgstr "Tipo de forma ausente"
 
 #: src/core/io/lottie/lottie_importer.hpp:495
 #: src/core/io/lottie/lottie_importer.hpp:505
 #, kde-format
 msgid "Unsupported shape type %1"
-msgstr ""
+msgstr "Tipo de forma não suportada %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:528
 #, kde-format
 msgid "Unknown field %2%1"
-msgstr ""
+msgstr "Campo desconhecido %2%1"
 
 #: src/core/io/lottie/lottie_importer.hpp:852
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
-msgstr ""
+msgstr "Ponto de Bezier %1 inválido em %2"
 
 #: src/core/io/lottie/lottie_importer.hpp:934
 #, kde-format
 msgid "Invalid keyframes for %1"
-msgstr ""
+msgstr "Quadros-chave inválidos para %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:984
 #, kde-format
@@ -1454,92 +1496,92 @@ msgstr "(vazio)"
 #: src/core/io/lottie/lottie_importer.hpp:999
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
-msgstr ""
+msgstr "Não foi possível carregar quadro-chave em %1 para %2 com valor %3"
 
 #: src/core/io/lottie/lottie_importer.hpp:1053
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
-msgstr ""
+msgstr "ID de bitmap duplicado: %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:1085
 #, kde-format
 msgid "Duplicate Composition ID: %1"
-msgstr ""
+msgstr "ID de composição duplicado: %1"
 
 #: src/core/io/lottie/tgs_format.cpp:47
 #, kde-format
 msgid "Star Shapes are not officially supported"
-msgstr ""
+msgstr "Formas de estrela não são oficialmente suportadas"
 
 #: src/core/io/lottie/tgs_format.cpp:51 src/core/io/lottie/validation.cpp:71
 #, kde-format
 msgid "Images are not supported"
-msgstr ""
+msgstr "Imagens não são suportadas"
 
 #: src/core/io/lottie/tgs_format.cpp:56
 #, kde-format
 msgid "Gradient strokes are not officially supported"
-msgstr ""
+msgstr "Traços de gradiente não são oficialmente suportados"
 
 #: src/core/io/lottie/tgs_format.cpp:61
 #, kde-format
 msgid "Masks are not supported"
-msgstr ""
+msgstr "Máscaras não são suportadas"
 
 #: src/core/io/lottie/tgs_format.cpp:65
 #, kde-format
 msgid "Repeaters are not officially supported"
-msgstr ""
+msgstr "Repetidores não são oficialmente suportados"
 
 #: src/core/io/lottie/tgs_format.cpp:69
 #, kde-format
 msgid "Inflate/Deflate is not supported"
-msgstr ""
+msgstr "Inflar/desinflar não é suportado"
 
 #: src/core/io/lottie/tgs_format.cpp:73
 #, kde-format
 msgid "Offset Path is not supported"
-msgstr ""
+msgstr "Caminho deslocado não é suportado"
 
 #: src/core/io/lottie/tgs_format.cpp:77
 #, kde-format
 msgid "ZigZag is not supported"
-msgstr ""
+msgstr "Zigue-zague não é suportado"
 
 #: src/core/io/lottie/tgs_format.cpp:110
 #, kde-format
 msgid "File too large: %1k, should be under 64k"
-msgstr ""
+msgstr "Arquivo muito grande: %1k, deve ter menos que 64k"
 
 #: src/core/io/lottie/tgs_format.hpp:19
 #, kde-format
 msgid "Telegram Animated Sticker"
-msgstr ""
+msgstr "Sticker animado do Telegram"
 
 #: src/core/io/lottie/validation.cpp:25
 #, kde-format
 msgid "Invalid width: %1, should be %2"
-msgstr ""
+msgstr "Largura inválida: %1, deve ser %2"
 
 #: src/core/io/lottie/validation.cpp:29
 #, kde-format
 msgid "Invalid height: %1, should be %2"
-msgstr ""
+msgstr "Altura inválida: %1, deve ser %2"
 
 #: src/core/io/lottie/validation.cpp:41
 #, kde-format
 msgid "Invalid fps: %1, should be %2"
-msgstr ""
+msgstr "FPS inválido: %1, deve ser %2"
 
 #: src/core/io/lottie/validation.cpp:49
 #, kde-format
 msgid "Too many frames: %1, should be less than %2"
-msgstr ""
+msgstr "Muitos quadros: %1, deve ser menos que %2"
 
 #: src/core/io/lottie/validation.hpp:22
 #, kde-format
 msgid "%1: %2"
-msgstr ""
+msgstr "%1: %2"
 
 #: src/core/io/mime/json_mime.hpp:18
 #, kde-format
@@ -1555,22 +1597,22 @@ msgstr "Imagem Rasterizada"
 #: src/core/io/raster/spritesheet_format.cpp:32
 #, kde-format
 msgid "Frame Width"
-msgstr ""
+msgstr "Largura do quadro"
 
 #: src/core/io/raster/spritesheet_format.cpp:32
 #, kde-format
 msgid "Width of each frame"
-msgstr ""
+msgstr "Largura de cada quadro"
 
 #: src/core/io/raster/spritesheet_format.cpp:33
 #, kde-format
 msgid "Frame Height"
-msgstr ""
+msgstr "Altura do quadro"
 
 #: src/core/io/raster/spritesheet_format.cpp:33
 #, kde-format
 msgid "Height of each frame"
-msgstr ""
+msgstr "Altura de cada quadro"
 
 #: src/core/io/raster/spritesheet_format.cpp:34
 #, kde-format
@@ -1580,7 +1622,7 @@ msgstr "Colunas"
 #: src/core/io/raster/spritesheet_format.cpp:34
 #, kde-format
 msgid "Number of columns in the sheet"
-msgstr ""
+msgstr "Número de colunas na folha"
 
 #: src/core/io/raster/spritesheet_format.cpp:35
 #, kde-format
@@ -1590,153 +1632,155 @@ msgstr "Passo de tempo"
 #: src/core/io/raster/spritesheet_format.cpp:35
 #, kde-format
 msgid "By how much each rendered frame should increase time (in frames)"
-msgstr ""
+msgstr "Por quanto cada quadro renderizado deve aumentar o tempo (em quadros)"
 
 #: src/core/io/raster/spritesheet_format.hpp:23
 #, kde-format
 msgid "Sprite Sheet"
-msgstr ""
+msgstr "Folha de sprites"
 
 #: src/core/io/rive/rive_exporter.hpp:359
 #, kde-format
 msgid "Bezier has mismatching number of points"
-msgstr ""
+msgstr "O Bezier tem um número de pontos não correspondentes"
 
 #: src/core/io/rive/rive_exporter.hpp:422
 #, kde-format
 msgid "Unknown property %1 of %2 (%3, %4)"
-msgstr ""
+msgstr "Propriedade desconhecida %1 de %2 (%3, %4)"
 
 #: src/core/io/rive/rive_exporter.hpp:457
 #, kde-format
 msgid "Unknown keyframe type for property %1 of %2 (%3, %4)"
-msgstr ""
+msgstr "Tipo de quadro-chave desconhecido para a propriedade %1 de %2 (%3, %4)"
 
 #: src/core/io/rive/rive_format.cpp:24
 #, kde-format
 msgid "Unsupported format"
-msgstr ""
+msgstr "Formato não suportado"
 
 #: src/core/io/rive/rive_format.cpp:34
 #, kde-format
 msgid "Could not read header"
-msgstr ""
+msgstr "Não foi possível ler o cabeçalho"
 
 #: src/core/io/rive/rive_format.cpp:40
 #, kde-format
 msgid ""
 "Loading unsupported rive file version %1.%2, the only supported version is %3"
 msgstr ""
+"Carregando uma versão não suportada do arquivo rive, versão %1.%2. A única "
+"versão suportada é a %3"
 
 #: src/core/io/rive/rive_format.cpp:46 src/core/io/rive/rive_loader.cpp:750
 #, kde-format
 msgid "Could not read property table"
-msgstr ""
+msgstr "Não foi possível ler a tabela de propriedades"
 
 #: src/core/io/rive/rive_format.hpp:24
 #, kde-format
 msgid "Rive Animation"
-msgstr ""
+msgstr "Animação Rive"
 
 #: src/core/io/rive/rive_html_format.hpp:20
 #, kde-format
 msgid "RIVE HTML Preview"
-msgstr ""
+msgstr "Prévia RIVE HTML"
 
 #: src/core/io/rive/rive_loader.cpp:179
 #, kde-format
 msgid "Unexpected Keyed Object"
-msgstr ""
+msgstr "Objeto chaveado inesperado"
 
 #: src/core/io/rive/rive_loader.cpp:187
 #, kde-format
 msgid "Invalid Keyed Object id %1"
-msgstr ""
+msgstr "Objeto chaveado inválido com ID %1"
 
 #: src/core/io/rive/rive_loader.cpp:195
 #, kde-format
 msgid "Unexpected Keyed Property"
-msgstr ""
+msgstr "Propriedade chaveada desconhecida"
 
 #: src/core/io/rive/rive_loader.cpp:204
 #, kde-format
 msgid "Unknown Keyed Property id %1"
-msgstr ""
+msgstr "Propriedade chaveada desconhecida com ID %1"
 
 #: src/core/io/rive/rive_loader.cpp:215
 #, kde-format
 msgid "Unexpected Animation"
-msgstr ""
+msgstr "Animação inesperada"
 
 #: src/core/io/rive/rive_loader.cpp:231
 #, kde-format
 msgid "Unexpected Asset Contents"
-msgstr ""
+msgstr "Conteúdo de recurso inesperado"
 
 #: src/core/io/rive/rive_loader.cpp:242
 #, kde-format
 msgid "Invalid Image Data"
-msgstr ""
+msgstr "Dados de imagem inválidos"
 
 #: src/core/io/rive/rive_loader.cpp:253
 #, kde-format
 msgid "Unexpected Keyframe"
-msgstr ""
+msgstr "Quadro-chave inesperado"
 
 #: src/core/io/rive/rive_loader.cpp:268
 #, kde-format
 msgid "Could not find parent with id %1"
-msgstr ""
+msgstr "Não foi possível encontrar pai com ID %1"
 
 #: src/core/io/rive/rive_loader.cpp:318
 #, kde-format
 msgid "Parent circular reference detected"
-msgstr ""
+msgstr "Referência circular de pai detectada"
 
 #: src/core/io/rive/rive_loader.cpp:746
 #, kde-format
 msgid "Unknown object of type %1"
-msgstr ""
+msgstr "Objeto desconhecido do tipo %1"
 
 #: src/core/io/rive/rive_loader.cpp:791
 #, kde-format
 msgid "Could not load object type ID"
-msgstr ""
+msgstr "Não foi possível carregar o ID do tipo de objeto"
 
 #: src/core/io/rive/rive_loader.cpp:806
 #, kde-format
 msgid "Could not load property ID in %1 (%2)"
-msgstr ""
+msgstr "Não foi possível carregar ID da propriedade em %1 (%2)"
 
 #: src/core/io/rive/rive_loader.cpp:823
 #, kde-format
 msgid "Unknown property %1 of %2 (%3)"
-msgstr ""
+msgstr "Propriedade desconhecida %1 de %2 (%3)"
 
 #: src/core/io/rive/rive_loader.cpp:833
 #, kde-format
 msgid "Skipping unknown property %1 of %2 (%3)"
-msgstr ""
+msgstr "Pulando propriedade desconhecida %1 de %2 (%3)"
 
 #: src/core/io/rive/rive_loader.cpp:846
 #, kde-format
 msgid "Error loading property %1 (%2) of %3 (%4)"
-msgstr ""
+msgstr "Erro ao carregar propriedade %1 (%2) de %3 (%4)"
 
 #: src/core/io/svg/svg_format.cpp:67
 #, kde-format
 msgid "External Stylesheet"
-msgstr ""
+msgstr "Folha de estilo externa"
 
 #: src/core/io/svg/svg_format.cpp:69
 #, kde-format
 msgid "Font face with external url"
-msgstr ""
+msgstr "Definição de estilo de fonte com URL externa"
 
 #: src/core/io/svg/svg_format.cpp:71
 #, kde-format
 msgid "Embedded data"
-msgstr ""
+msgstr "Dados embutidos"
 
 #: src/core/io/svg/svg_format.cpp:72
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:961
@@ -1747,12 +1791,12 @@ msgstr "Ignorar"
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
 msgid "External Fonts"
-msgstr ""
+msgstr "Fontes externas"
 
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
 msgid "How to include external font"
-msgstr ""
+msgstr "Como incluir fontes externas"
 
 #: src/core/io/svg/svg_format.cpp:92
 #, kde-format
@@ -1767,119 +1811,121 @@ msgstr "SVG"
 #: src/core/io/svg/svg_html_format.hpp:18
 #, kde-format
 msgid "SVG Preview"
-msgstr ""
+msgstr "Prévia do SVG"
 
 #: src/core/io/video/video_format.cpp:73
 #, kde-format
 msgid "Could not find encoder for '%1'"
-msgstr ""
+msgstr "Não foi possível encontrar codificador para '%1'"
 
 #: src/core/io/video/video_format.cpp:77
 #, kde-format
 msgid "Could not allocate stream"
-msgstr ""
+msgstr "Não foi possível alocar fluxo"
 
 #: src/core/io/video/video_format.cpp:82
 #, kde-format
 msgid "Could not alloc an encoding context"
-msgstr ""
+msgstr "Não foi possível alocar um contexto de codificação"
 
 #: src/core/io/video/video_format.cpp:110
 #, kde-format
 msgid "Error encoding a frame: %1"
-msgstr ""
+msgstr "Erro ao codificar um quadro: %1"
 
 #: src/core/io/video/video_format.cpp:120
 #, kde-format
 msgid "Error while writing output packet: %1"
-msgstr ""
+msgstr "Erro ao gravar pacote de saída: %1"
 
 #: src/core/io/video/video_format.cpp:131
 #, kde-format
 msgid "Error sending a frame to the encoder: %1"
-msgstr ""
+msgstr "Erro ao enviar quadro para o codificador: %1"
 
 #: src/core/io/video/video_format.cpp:187
 #: src/core/io/video/video_format.cpp:201
 #, kde-format
 msgid "Could not set dict key `%1`: %2"
-msgstr ""
+msgstr "Não foi possível definir chave de dicionário `%1`: %2"
 
 #: src/core/io/video/video_format.cpp:246
 #, kde-format
 msgid "Could not erase dict key `%1`: %2"
-msgstr ""
+msgstr "Não foi possível excluir chave de dicionário `%1`: %2"
 
 #: src/core/io/video/video_format.cpp:267
 #, kde-format
 msgid "Could not copy dict: %1"
-msgstr ""
+msgstr "Não foi possível copiar dicionário: %1"
 
 #: src/core/io/video/video_format.cpp:280
 #, kde-format
 msgid "Could not copy dict `%1`: %2"
-msgstr ""
+msgstr "Não foi possível copiar dicionário `%1`: %2"
 
 #: src/core/io/video/video_format.cpp:318
 #, kde-format
 msgid "Could not allocate frame data."
-msgstr ""
+msgstr "Não foi possível alocar dados do quadro."
 
 #: src/core/io/video/video_format.cpp:403
 #: src/core/io/video/video_format.cpp:782
 #, kde-format
 msgid "No video codec"
-msgstr ""
+msgstr "Nenhum codec de vídeo"
 
 #: src/core/io/video/video_format.cpp:431
 #, kde-format
 msgid "Could not determine pixel format"
-msgstr ""
+msgstr "Não foi possível determinar o formato de pixel"
 
 #: src/core/io/video/video_format.cpp:441
 #, kde-format
 msgid "Could not open video codec: %1"
-msgstr ""
+msgstr "Não foi possível abrir o codec de vídeo: %1"
 
 #: src/core/io/video/video_format.cpp:446
 #, kde-format
 msgid "Could not allocate video frame"
-msgstr ""
+msgstr "Não foi possível alocar quadro de vídeo"
 
 #: src/core/io/video/video_format.cpp:453
 #, kde-format
 msgid "Could not copy the stream parameters"
-msgstr ""
+msgstr "Não foi possível copiar os parâmetros de fluxo"
 
 #: src/core/io/video/video_format.cpp:473
 #, kde-format
 msgid "Error while creating video frame"
-msgstr ""
+msgstr "Erro ao criar quadro de vídeo"
 
 #: src/core/io/video/video_format.cpp:497
 #, kde-format
 msgid "Could not initialize the conversion context"
-msgstr ""
+msgstr "Não foi possível inicializar o contexto de conversão"
 
 #: src/core/io/video/video_format.cpp:503
 #, kde-format
 msgid "Could not allocate temporary picture"
-msgstr ""
+msgstr "Não foi possível alocar a imagem temporária"
 
 #: src/core/io/video/video_format.cpp:750
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
 msgstr ""
+"Não foi possível deduzir o formato de saída da extensão do arquivo: usando "
+"MPEG."
 
 #: src/core/io/video/video_format.cpp:754
 #, kde-format
 msgid "Could not find output format"
-msgstr ""
+msgstr "Não foi possível encontrar formato de saída"
 
 #: src/core/io/video/video_format.cpp:827
 #, kde-format
 msgid "Error occurred when opening output file: %1"
-msgstr ""
+msgstr "Um erro ocorreu ao abrir o arquivo de saída: %1"
 
 #: src/core/io/video/video_format.cpp:862
 #, kde-format
@@ -1903,7 +1949,7 @@ msgstr "Largura"
 #: src/core/io/video/video_format.cpp:864
 #, kde-format
 msgid "If not 0, it will overwrite the size"
-msgstr ""
+msgstr "Caso não seja 0, o tamanho será sobrescrito"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/core/io/video/video_format.cpp:864
@@ -1920,7 +1966,7 @@ msgstr "Descritivo"
 #: src/core/io/video/video_format.cpp:865
 #, kde-format
 msgid "Show verbose information on the conversion"
-msgstr ""
+msgstr "Exibir informação adicional durante a conversão"
 
 #: src/core/io/video/video_format.hpp:21
 #, kde-format
@@ -1931,13 +1977,13 @@ msgstr "Vídeo"
 #: src/core/model/animation/animatable_path.cpp:30
 #, kde-format
 msgid "Split Segment"
-msgstr ""
+msgstr "Dividir segmento"
 
 #: src/core/model/animation/animatable.cpp:340
 #: src/core/model/animation/animatable_path.cpp:60
 #, kde-format
 msgid "Remove Nodes"
-msgstr ""
+msgstr "Remover nós"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/core/model/animation/animatable.cpp:418
@@ -1950,12 +1996,12 @@ msgstr "Adicionar quadro-chave"
 #: src/core/model/animation/animatable_path.cpp:139
 #, kde-format
 msgid "Extend Shape"
-msgstr ""
+msgstr "Estender forma"
 
 #: src/core/model/animation_container.cpp:54
 #, kde-format
 msgid "Animation Timing"
-msgstr ""
+msgstr "Temporização da animação"
 
 #: src/core/model/assets/assets.hpp:34
 msgid "values"
@@ -1969,7 +2015,7 @@ msgstr "valores"
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:48
 #, kde-format
 msgid "Swatch"
-msgstr ""
+msgstr "Amostra"
 
 #: src/core/model/assets/assets.hpp:117
 #, kde-format
@@ -1979,13 +2025,13 @@ msgstr "Imagens"
 #: src/core/model/assets/assets.hpp:127 src/gui/tools/edit_tool.cpp:352
 #, kde-format
 msgid "Gradient Colors"
-msgstr ""
+msgstr "Cores de gradiente"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_gradients)
 #: src/core/model/assets/assets.hpp:137 src/gui/widgets/docks/gradients.ui:22
 #, kde-format
 msgid "Gradients"
-msgstr ""
+msgstr "Gradientes"
 
 #: src/core/model/assets/assets.hpp:151
 #, kde-format
@@ -2001,23 +2047,23 @@ msgstr "Fontes"
 #: src/core/model/assets/assets.hpp:208 src/gui/widgets/docks/assets.ui:22
 #, kde-format
 msgid "Assets"
-msgstr ""
+msgstr "Recursos"
 
 #: src/core/model/assets/bitmap.cpp:205
 #, kde-format
 msgid "Embedded image"
-msgstr ""
+msgstr "Imagem embutida"
 
 #: src/core/model/assets/bitmap.hpp:41
 #, kde-format
 msgid "Bitmap"
-msgstr ""
+msgstr "Bitmap"
 
 #. i18n: ectx: Menu (new_comp_layer_menu)
 #: src/core/model/assets/composition.cpp:24 src/gui/glaxnimateui.rc:124
 #, kde-format
 msgid "Composition"
-msgstr ""
+msgstr "Composição"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -2040,12 +2086,12 @@ msgstr "Gradiente"
 #: src/core/model/assets/gradient.cpp:133
 #, kde-format
 msgid "Add color to %1"
-msgstr ""
+msgstr "Adicionar cor para %1"
 
 #: src/core/model/assets/gradient.cpp:152
 #, kde-format
 msgid "Remove color from %1"
-msgstr ""
+msgstr "Remover cor de %1"
 
 #: src/core/model/assets/gradient.cpp:211
 #, kde-format
@@ -2090,12 +2136,12 @@ msgstr "Raio"
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:226
 #, kde-format
 msgid "Conical"
-msgstr ""
+msgstr "Cônico"
 
 #: src/core/model/assets/named_color.cpp:17
 #, kde-format
 msgid "Unnamed Color"
-msgstr ""
+msgstr "Cor sem nome"
 
 #: src/core/model/mask_settings.cpp:13
 #, kde-format
@@ -2105,7 +2151,7 @@ msgstr "Máscara"
 #: src/core/model/object.hpp:90
 #, kde-format
 msgid "Unknown Object"
-msgstr ""
+msgstr "Objeto desconhecido"
 
 #: src/core/model/shapes/ellipse.cpp:19 src/gui/tools/ellipse_tool.cpp:17
 #, kde-format
@@ -2146,7 +2192,7 @@ msgstr "Imagem"
 #: src/core/model/shapes/inflate_deflate.cpp:18
 #, kde-format
 msgid "Inflate and Deflate"
-msgstr ""
+msgstr "Inflar e desinflar"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/model/shapes/layer.hpp:81
@@ -2159,7 +2205,7 @@ msgstr "Camada"
 #: src/core/model/shapes/offset_path.cpp:342
 #, kde-format
 msgid "Offset Path"
-msgstr ""
+msgstr "Caminho deslocado"
 
 #. i18n: ectx: Menu (path)
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -2174,12 +2220,12 @@ msgstr "Caminho"
 #: src/core/model/shapes/polystar.hpp:48
 #, kde-format
 msgid "PolyStar"
-msgstr ""
+msgstr "PolyStar"
 
 #: src/core/model/shapes/precomp_layer.cpp:30
 #, kde-format
 msgid "Composition Layer"
-msgstr ""
+msgstr "Camada de composição"
 
 #: src/core/model/shapes/rect.hpp:31 src/gui/tools/rectangle_tool.hpp:20
 #, kde-format
@@ -2227,7 +2273,7 @@ msgstr "Texto"
 #: src/core/model/shapes/trim.cpp:24
 #, kde-format
 msgid "Trim Path"
-msgstr ""
+msgstr "Aparar caminho"
 
 #: src/core/model/shapes/zig_zag.cpp:139
 #, kde-format
@@ -2249,7 +2295,7 @@ msgstr "Transformar"
 #: src/core/plugin/snippet.hpp:93
 #, kde-format
 msgid "# Glaxnimate snippet"
-msgstr ""
+msgstr "# Trecho Glaxnimate"
 
 #: src/core/plugin/snippet.hpp:95
 #, kde-format
@@ -2257,6 +2303,8 @@ msgid ""
 "# You have access to the `window` and `document` global variables and the "
 "`glaxnimate` module"
 msgstr ""
+"# Você tem acesso às variáveis globais `window` e `document` e ao módulo "
+"`glaxnimate`"
 
 #: src/core/plugin/snippet.hpp:97
 #, kde-format
@@ -2264,34 +2312,36 @@ msgid ""
 "# For documentation see https://glaxnimate.mattbas.org/contributing/"
 "scripting/"
 msgstr ""
+"# Para documentação, veja: https://glaxnimate.mattbas.org/contributing/"
+"scripting/ (em inglês)"
 
 #: src/core/utils/gzip.cpp:30
 #, kde-format
 msgid "Could not decompress data"
-msgstr ""
+msgstr "Não foi possível descomprimir dados"
 
 #: src/core/utils/trace_wrapper.cpp:160
 #, kde-format
 msgid "Traced %1"
-msgstr ""
+msgstr "Traçou %1"
 
 #: src/gui/cli.cpp:27
 #, kde-format
 msgctxt "@info:shell"
 msgid "Informational Options"
-msgstr ""
+msgstr "Opções informacionais"
 
 #: src/gui/cli.cpp:28
 #, kde-format
 msgctxt "@info:shell"
 msgid "Show this help and exit"
-msgstr ""
+msgstr "Mostrar esta ajuda e sair"
 
 #: src/gui/cli.cpp:29
 #, kde-format
 msgctxt "@info:shell"
 msgid "Show version information and exit"
-msgstr ""
+msgstr "Mostrar informações da versão e sair"
 
 #: src/gui/cli.cpp:31
 #, kde-format
@@ -2309,19 +2359,19 @@ msgstr "Arquivo a ser aberto"
 #, kde-format
 msgctxt "@info:shell"
 msgid "When opening image files, trace them instead of embedding"
-msgstr ""
+msgstr "Ao abrir arquivos de imagem, traçá-los ao invés de embutir"
 
 #: src/gui/cli.cpp:35
 #, kde-format
 msgctxt "@info:shell"
 msgid "GUI Options"
-msgstr ""
+msgstr "Opções da interface gráfica"
 
 #: src/gui/cli.cpp:36
 #, kde-format
 msgctxt "@info:shell"
 msgid "If present, doesn't restore the main window state"
-msgstr ""
+msgstr "Se presente, não restaura o estado da janela principal"
 
 #: src/gui/cli.cpp:39
 #, kde-format
@@ -2330,24 +2380,26 @@ msgid ""
 "Specify the name of the local socket/named pipe to connect to a host "
 "application."
 msgstr ""
+"Especifica o nome do socket/pipe com nome para conectar a um aplicativo "
+"hospedeiro."
 
 #: src/gui/cli.cpp:46
 #, kde-format
 msgctxt "@info:shell"
 msgid "Use a specific size for the main window"
-msgstr ""
+msgstr "Usa um tamanho específico para a janela principal"
 
 #: src/gui/cli.cpp:54
 #, kde-format
 msgctxt "@info:shell"
 msgid "Print the window id"
-msgstr ""
+msgstr "Exibe o ID da janela"
 
 #: src/gui/cli.cpp:57
 #, kde-format
 msgctxt "@info:shell"
 msgid "Enables the debug menu"
-msgstr ""
+msgstr "Habilita o menu de depuração"
 
 #: src/gui/cli.cpp:60
 #, kde-format
@@ -2360,6 +2412,8 @@ msgstr "Opções de exportação"
 msgctxt "@info:shell"
 msgid "Export the input file to the given file instead of starting the GUI"
 msgstr ""
+"Exporta os quadros do arquivo de entrada para o arquivo especificado ao "
+"invés de iniciar a interface gráfica"
 
 #: src/gui/cli.cpp:70
 #, kde-format
@@ -2368,18 +2422,21 @@ msgid ""
 "Specify the format for --export. If omitted it's determined based on the "
 "file name. See --export-format-list for a list of supported formats."
 msgstr ""
+"Especifica o formato para --export. Se omitido, ele será determinado baseado "
+"no nome do arquivo. Veja --export-format-list para uma lista de formatos "
+"suportados."
 
 #: src/gui/cli.cpp:77
 #, kde-format
 msgctxt "@info:shell"
 msgid "Shows possible values for --export-format"
-msgstr ""
+msgstr "Mostra valores possíveis para o --export-format"
 
 #: src/gui/cli.cpp:81
 #, kde-format
 msgctxt "@info:shell"
 msgid "Render Frame Options"
-msgstr ""
+msgstr "Opções de renderização dos quadros"
 
 #: src/gui/cli.cpp:84
 #, kde-format
@@ -2387,6 +2444,8 @@ msgctxt "@info:shell"
 msgid ""
 "Render frames the input file to the given file instead of starting the GUI"
 msgstr ""
+"Renderiza os quadros do arquivo de entrada para o arquivo especificado ao "
+"invés de iniciar a interface gráfica"
 
 #: src/gui/cli.cpp:91
 #, kde-format
@@ -2395,18 +2454,22 @@ msgid ""
 "Specify the format for --render. If omitted it's determined based on the "
 "file name. See --render-format-list for a list of supported formats."
 msgstr ""
+"Especifica o formato para --render. Se omitido, ele será determinado baseado "
+"no nome do arquivo. Veja --render-format-list para uma lista de formatos "
+"suportados."
 
 #: src/gui/cli.cpp:98
 #, kde-format
 msgctxt "@info:shell"
 msgid "Frame number to render, use `all` to render all frames"
 msgstr ""
+"Número de quadros para renderizar. Use `all` para renderizar todos os quadros"
 
 #: src/gui/cli.cpp:105
 #, kde-format
 msgctxt "@info:shell"
 msgid "Shows possible values for --render-format"
-msgstr ""
+msgstr "Mostra valores possíveis para o --render-format"
 
 #: src/gui/cli.cpp:159
 #, kde-format
@@ -2424,25 +2487,25 @@ msgstr "Não foi possível encontrar um interpretador"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Unknown importer"
-msgstr ""
+msgstr "Importador desconhecido"
 
 #: src/gui/cli.cpp:232
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not open input file for reading"
-msgstr ""
+msgstr "Não foi possível abrir o arquivo de entrada para leitura"
 
 #: src/gui/cli.cpp:246
 #, kde-format
 msgctxt "@info:shell"
 msgid "Error loading input file"
-msgstr ""
+msgstr "Erro ao carregar arquivo de entrada"
 
 #: src/gui/cli.cpp:260
 #, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to export"
-msgstr ""
+msgstr "É necessário que um arquivo seja especificado para a exportação"
 
 #: src/gui/cli.cpp:275
 #, kde-format
@@ -2450,36 +2513,38 @@ msgctxt "@info:shell"
 msgid ""
 "Unknown exporter. Use --export-format-list for a list of available formats"
 msgstr ""
+"Exportador desconhecido. Use --export-format-list para uma lista de formatos "
+"disponíveis"
 
 #: src/gui/cli.cpp:286
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not open output file for writing"
-msgstr ""
+msgstr "Não foi possível abrir o arquivo para gravação"
 
 #: src/gui/cli.cpp:295
 #, kde-format
 msgctxt "@info:shell"
 msgid "Error converting to the output format"
-msgstr ""
+msgstr "Erro ao converter para o formato de saída"
 
 #: src/gui/cli.cpp:315 src/gui/cli.cpp:335
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not save to %1"
-msgstr ""
+msgstr "Não foi possível salvar para %1"
 
 #: src/gui/cli.cpp:344
 #, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to render"
-msgstr ""
+msgstr "Você precisa especificar um arquivo para renderizar"
 
 #: src/gui/emoji/emoji_dialog.cpp:32
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Emoji"
-msgstr ""
+msgstr "Selecionar emoji"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:154
 #: src/gui/emoji/emoji_set_dialog.cpp:207
@@ -2504,19 +2569,19 @@ msgstr "Baixando"
 #, kde-format
 msgctxt "Package install status, %1 reason"
 msgid "Could not download: %1"
-msgstr ""
+msgstr "Não foi possível baixar: %1"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:205
 #, kde-format
 msgctxt "Package install status"
 msgid "Didn't download any files"
-msgstr ""
+msgstr "Não baixou nenhum arquivo"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, EmojiSetDialog)
 #: src/gui/emoji/emoji_set_dialog.ui:21
 #, kde-format
 msgid "Emoji Set"
-msgstr ""
+msgstr "Conjunto de emojis"
 
 #. i18n: ectx: property (text), widget (QTableWidget, emoji_set_view)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
@@ -2570,7 +2635,7 @@ msgstr "Recarregar"
 #: src/gui/emoji/emoji_set_dialog.ui:121
 #, kde-format
 msgid "View Website"
-msgstr ""
+msgstr "Visualizar website"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_download)
 #: src/gui/emoji/emoji_set_dialog.ui:135
@@ -2582,7 +2647,7 @@ msgstr "Baixar"
 #: src/gui/emoji/emoji_set_dialog.ui:149
 #, kde-format
 msgid "Add Emoji..."
-msgstr ""
+msgstr "Adicionar emoji..."
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_close)
@@ -2628,7 +2693,7 @@ msgstr "Documento"
 #: src/gui/glaxnimateui.rc:88
 #, kde-format
 msgid "Render Single Frame"
-msgstr ""
+msgstr "Renderizar apenas um quadro"
 
 #. i18n: ectx: Menu (web_preview_menu)
 #: src/gui/glaxnimateui.rc:93 src/gui/widgets/dialogs/gw_impl_document.cpp:529
@@ -2636,7 +2701,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:557
 #, kde-format
 msgid "Web Preview"
-msgstr ""
+msgstr "Prévia na Web"
 
 #. i18n: ectx: Menu (playback)
 #: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:499
@@ -2654,7 +2719,7 @@ msgstr "Objeto"
 #: src/gui/glaxnimateui.rc:154
 #, kde-format
 msgid "Align and Distribute"
-msgstr ""
+msgstr "Alinhar e distribuir"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:205 src/gui/settings/plugin_settings_group.hpp:23
@@ -2673,23 +2738,23 @@ msgstr "Barra de ferramentas principal"
 #: src/gui/glaxnimateui.rc:242
 #, kde-format
 msgid "Tools Toolbar"
-msgstr ""
+msgstr "Barra de ferramentas"
 
 #. i18n: ectx: ToolBar (nodeToolBar)
 #: src/gui/glaxnimateui.rc:258
 #, kde-format
 msgid "Node Toolbar"
-msgstr ""
+msgstr "Barra de ferramentas do nó"
 
 #: src/gui/graphics/bezier_item.cpp:239
 #, kde-format
 msgid "Remove node tangent"
-msgstr ""
+msgstr "Remover tangente do nó"
 
 #: src/gui/graphics/bezier_item.cpp:351
 #, kde-format
 msgid "Update path"
-msgstr ""
+msgstr "Atualizar caminho"
 
 #: src/gui/graphics/bezier_item.cpp:368
 #, kde-format
@@ -2699,33 +2764,33 @@ msgstr "Remover ponto"
 #: src/gui/graphics/bezier_item.cpp:392
 #, kde-format
 msgid "Set Start"
-msgstr ""
+msgstr "Definir início"
 
 #: src/gui/graphics/bezier_item.cpp:421
 #, kde-format
 msgid "Update shape"
-msgstr ""
+msgstr "Atualizar forma"
 
 #: src/gui/graphics/composition_item.hpp:113
 #, kde-format
 msgid "Resize Canvas"
-msgstr ""
+msgstr "Redimensionar tela"
 
 #: src/gui/graphics/gradient_editor.cpp:109
 #, kde-format
 msgid "Drag Gradient"
-msgstr ""
+msgstr "Arrastar gradiente"
 
 #: src/gui/graphics/transform_graphics_item.cpp:429
 #: src/gui/graphics/transform_graphics_item.cpp:499
 #, kde-format
 msgid "Drag anchor point"
-msgstr ""
+msgstr "Arrastar ponto de âncora"
 
 #: src/gui/item_models/document_model_base.cpp:101
 #, kde-format
 msgid "Move Layers"
-msgstr ""
+msgstr "Mover camadas"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_3)
 #: src/gui/item_models/document_node_model.cpp:253
@@ -2750,7 +2815,7 @@ msgstr "Bloqueado"
 #: src/gui/item_models/gradient_list_model.cpp:179
 #, kde-format
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: src/gui/item_models/gradient_list_model.cpp:181
 #, kde-format
@@ -2760,17 +2825,17 @@ msgstr "Número de usuários"
 #: src/gui/item_models/property_model_base.cpp:247
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%1%"
 
 #: src/gui/item_models/property_model_full.cpp:208
 #, kde-format
 msgid "Group Color"
-msgstr ""
+msgstr "Cor do grupo"
 
 #: src/gui/item_models/property_model_full.cpp:215
 #, kde-format
 msgid "Jump to previous keyframe"
-msgstr ""
+msgstr "Pular para o quadro-chave anterior"
 
 #: src/gui/item_models/property_model_full.cpp:258
 #, kde-format
@@ -2780,27 +2845,27 @@ msgstr "Oculto"
 #: src/gui/item_models/property_model_full.cpp:265
 #, kde-format
 msgid "Toggle Keyframe"
-msgstr ""
+msgstr "Alternar quadro-chave"
 
 #: src/gui/item_models/property_model_full.cpp:292
 #, kde-format
 msgid "Unlocked"
-msgstr ""
+msgstr "Desbloqueado"
 
 #: src/gui/item_models/property_model_full.cpp:300
 #, kde-format
 msgid "Jump to next keyframe"
-msgstr ""
+msgstr "Pular para o próximo quadro-chave"
 
 #: src/gui/item_models/property_model_full.cpp:394
 #, kde-format
 msgid "Parent Layer"
-msgstr ""
+msgstr "Camada pai"
 
 #: src/gui/item_models/property_model_full.cpp:400
 #, kde-format
 msgid "(No Parent)"
-msgstr ""
+msgstr "(Sem pai)"
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_3)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_hsv_value)
@@ -2826,7 +2891,7 @@ msgstr "Novo trecho %1"
 #: src/gui/widgets/font/font_style_dialog.ui:52
 #, kde-format
 msgid "Google Fonts"
-msgstr ""
+msgstr "Google Fonts"
 
 #: src/gui/settings/api_credentials.cpp:89
 #, kde-format
@@ -2835,7 +2900,7 @@ msgstr "Informações"
 
 #: src/gui/settings/api_credentials.hpp:42
 msgid "API Credentials"
-msgstr ""
+msgstr "Credenciais de API"
 
 #: src/gui/settings/clipboard_settings.hpp:18
 msgid "Clipboard"
@@ -2849,7 +2914,7 @@ msgstr "Sem nome"
 #: src/gui/settings/document_templates.cpp:118
 #, kde-format
 msgid "%1"
-msgstr ""
+msgstr "%1"
 
 #: src/gui/settings/document_templates.cpp:125
 #, kde-format
@@ -2857,7 +2922,7 @@ msgctxt ""
 "%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
 msgid "%5 - %1x%2 %3 %4fps"
-msgstr ""
+msgstr "%5 - %1x%2 %3 %4fps"
 
 #: src/gui/settings/document_templates.cpp:180
 #, kde-format
@@ -2867,7 +2932,7 @@ msgstr "Modelo"
 #: src/gui/settings/document_templates.cpp:184
 #, kde-format
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: src/gui/settings/icon_settings.cpp:42
 #, kde-format
@@ -2887,7 +2952,7 @@ msgstr "Padrão do sistema"
 #: src/gui/widgets/view_transform_widget.ui:60
 #, no-c-format, kde-format
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: src/gui/tools/color_picker.cpp:19
 #, kde-format
@@ -2897,37 +2962,37 @@ msgstr "Seletor de cores"
 #: src/gui/tools/draw_tool.cpp:183
 #, kde-format
 msgid "Extend Path"
-msgstr ""
+msgstr "Estender caminho"
 
 #: src/gui/tools/draw_tool.cpp:206
 #, kde-format
 msgid "Draw Shape"
-msgstr ""
+msgstr "Desenhar forma"
 
 #: src/gui/tools/draw_tool.cpp:317
 #, kde-format
 msgid "Delete curve point"
-msgstr ""
+msgstr "Excluir ponto da curva"
 
 #: src/gui/tools/draw_tool.cpp:424
 #, kde-format
 msgid "Add curve point"
-msgstr ""
+msgstr "Adicionar ponto da curva"
 
 #: src/gui/tools/draw_tool.hpp:25
 #, kde-format
 msgid "Draw Bezier"
-msgstr ""
+msgstr "Desenhar Bezier"
 
 #: src/gui/tools/edit_tool.cpp:169
 #, kde-format
 msgid "Drag nodes"
-msgstr ""
+msgstr "Arrastar nós"
 
 #: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:706
 #, kde-format
 msgid "Cusp"
-msgstr ""
+msgstr "Cúspide"
 
 #: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:707
 #, kde-format
@@ -2937,12 +3002,12 @@ msgstr "Suave"
 #: src/gui/tools/edit_tool.cpp:284
 #, kde-format
 msgid "Symmetrical"
-msgstr ""
+msgstr "Simétrico"
 
 #: src/gui/tools/edit_tool.cpp:291
 #, kde-format
 msgid "Set %1 Node"
-msgstr ""
+msgstr "Definir %1 nó"
 
 #: src/gui/tools/edit_tool.cpp:305
 #, kde-format
@@ -2952,34 +3017,34 @@ msgstr "Nó"
 #: src/gui/tools/edit_tool.cpp:315
 #, kde-format
 msgid "Remove Node"
-msgstr ""
+msgstr "Remover nó"
 
 #: src/gui/tools/edit_tool.cpp:319
 #, kde-format
 msgid "Show Tangents"
-msgstr ""
+msgstr "Mostrar tangentes"
 
 #: src/gui/tools/edit_tool.cpp:326
 #, kde-format
 msgid "Make First Node"
-msgstr ""
+msgstr "Criar primeiro nó"
 
 #: src/gui/tools/edit_tool.cpp:334
 #, kde-format
 msgid "Remove Tangent"
-msgstr ""
+msgstr "Remover tangente"
 
 #: src/gui/tools/edit_tool.cpp:369
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Stop Color..."
-msgstr ""
+msgstr "Cor de parada..."
 
 #: src/gui/tools/edit_tool.cpp:381
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Add Stop"
-msgstr ""
+msgstr "Adicionar parada"
 
 #: src/gui/tools/edit_tool.cpp:385
 #, kde-format
@@ -2990,27 +3055,27 @@ msgstr "Remover parada"
 #: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:711
 #, kde-format
 msgid "Dissolve Nodes"
-msgstr ""
+msgstr "Dissolver nós"
 
 #: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:698
 #, kde-format
 msgid "Delete Nodes"
-msgstr ""
+msgstr "Excluir nós"
 
 #: src/gui/tools/edit_tool.cpp:886
 #, kde-format
 msgid "Set node type"
-msgstr ""
+msgstr "Definir tipo de nó"
 
 #: src/gui/tools/edit_tool.cpp:914
 #, kde-format
 msgid "Straighten segments"
-msgstr ""
+msgstr "Endireitar segmentos"
 
 #: src/gui/tools/edit_tool.cpp:962
 #, kde-format
 msgid "Curve segments"
-msgstr ""
+msgstr "Curvar segmentos"
 
 #: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:338
 #, kde-format
@@ -3020,12 +3085,12 @@ msgstr "Editar"
 #: src/gui/tools/ellipse_tool.cpp:29
 #, kde-format
 msgid "Draw Ellipse"
-msgstr ""
+msgstr "Desenhar elipse"
 
 #: src/gui/tools/fill_tool.cpp:54
 #, kde-format
 msgid "Apply Style"
-msgstr ""
+msgstr "Aplicar estilo"
 
 #: src/gui/tools/fill_tool.cpp:89
 #, kde-format
@@ -3040,7 +3105,7 @@ msgstr "%1 Traço"
 #: src/gui/tools/freehand.cpp:18 src/gui/tools/freehand.cpp:48
 #, kde-format
 msgid "Draw Freehand"
-msgstr ""
+msgstr "Desenhar em linha livre"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_properties)
 #: src/gui/tools/handle_menu.hpp:33 src/gui/widgets/docks/properties.ui:28
@@ -3051,7 +3116,7 @@ msgstr "Propriedades"
 #: src/gui/tools/rectangle_tool.hpp:43
 #, kde-format
 msgid "Draw Rectangle"
-msgstr ""
+msgstr "Desenhar retângulo"
 
 #: src/gui/tools/select_tool.cpp:29
 #, kde-format
@@ -3097,7 +3162,7 @@ msgstr "Estrela"
 #: src/gui/tools/star_tool.cpp:48
 #, kde-format
 msgid "Draw Star"
-msgstr ""
+msgstr "Desenhar estrela"
 
 #: src/gui/tools/text_tool.cpp:28 src/gui/tools/text_tool.cpp:158
 #, kde-format
@@ -3109,7 +3174,7 @@ msgstr "Desenhar texto"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:143
 #, kde-format
 msgid "About Environment"
-msgstr ""
+msgstr "Sobre o ambiente"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:30
@@ -3121,7 +3186,7 @@ msgstr "Caminhos"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:51
 #, kde-format
 msgid "User Data Directory:"
-msgstr ""
+msgstr "Pasta de dados do usuário:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:82
@@ -3139,25 +3204,25 @@ msgstr "Pasta de backup"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:144
 #, kde-format
 msgid "Data Directories:"
-msgstr ""
+msgstr "Pastas de dados:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:164
 #, kde-format
 msgid "Icon Theme Paths:"
-msgstr ""
+msgstr "Caminhos dos temas de ícones:"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_4)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:189
 #, kde-format
 msgid "Formats"
-msgstr ""
+msgstr "Formatos"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:225
 #, kde-format
 msgid "Input Formats"
-msgstr ""
+msgstr "Formatos de entrada"
 
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_output)
@@ -3179,7 +3244,7 @@ msgstr "Extensões"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:266
 #, kde-format
 msgid "Output Formats "
-msgstr ""
+msgstr "Formatos de saída"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:21
@@ -3197,37 +3262,37 @@ msgstr "Algoritmo"
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:44
 #, kde-format
 msgid "k-Means"
-msgstr ""
+msgstr "k-Means"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:49
 #, kde-format
 msgid "k-Modes"
-msgstr ""
+msgstr "k-Modes"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:54
 #, kde-format
 msgid "Octree"
-msgstr ""
+msgstr "Octree"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_algo)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:59
 #, kde-format
 msgid "Edge Exclusion Modes"
-msgstr ""
+msgstr "Modos de Exclusão de Borda"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:76
 #, kde-format
 msgid "Match"
-msgstr "Combinação"
+msgstr "Combinar"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:83
 #, kde-format
 msgid "Max Iterations"
-msgstr ""
+msgstr "Iterações máximas"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
@@ -3242,13 +3307,13 @@ msgstr "Nenhum"
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:112
 #, kde-format
 msgid "Most Frequent"
-msgstr ""
+msgstr "Mais frequente"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:117
 #, kde-format
 msgid "Closest"
-msgstr ""
+msgstr "Mais próximo"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:141
@@ -3298,6 +3363,49 @@ msgid ""
 "weight:600;\">Most Frequent</span>: Find the color in the cluster that "
 "appears most often in the source image</li></ul></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">k-Means divide as cores em "
+"aglomerados e refina a atribuição a cada iteração.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">É a melhor opção para "
+"imagens com muitas cores ou sombreamento.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Para imagens com muitas "
+"cores, aumentar o número de iterações produzirá melhores resultados, mas "
+"pode ser mais lento.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">A opção <span style=\" "
+"font-style:italic;\">Combinar</span> faz pós-processamento:</p>\n"
+"<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
+"right: 0px; -qt-list-indent: 1;\"><li style=\"\" style=\" margin-top:12px; "
+"margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+"text-indent:0px;\"><span style=\" font-weight:600;\">Nenhum</span>: Não faz "
+"nenhum pós-processamento e retorna a média (note que isto pode resultar em "
+"cores que não estavam presentes na imagem original).</li>\n"
+"<li style=\"\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">Mais próximo</span>: Encontra a cor na imagem original que é a "
+"mais próxima da média</li>\n"
+"<li style=\"\" style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">Mais frequente</span>: Encontra a cor no agrupamento que "
+"aparece mais frequentemente na imagem original</li></ul></body></html>"
 
 #. i18n: ectx: property (plainText), widget (QPlainTextEdit, plainTextEdit)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:159
@@ -3309,6 +3417,12 @@ msgid ""
 "\n"
 "This is the best option when tracing images with flat colors."
 msgstr ""
+"k-Modes mostram as cores que aparecem mais frequentemente na imagem "
+"original.\n"
+"\n"
+"É muito rápido, mas não fornece cores precisas para imagens complexas.\n"
+"\n"
+"É a melhor opção ao traçar imagens com cores chapadas."
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_2)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:178
@@ -3329,6 +3443,20 @@ msgid ""
 "colors for complex images but it might result into colors that are not "
 "present in the source image.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">O algoritmo Octree funde "
+"cores similares de baixo pra cima.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Para imagens complexas "
+"melhora a precisão das cores, no entanto, pode resultar em cores que não "
+"estavam presentes na imagem original.</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:189
@@ -3361,6 +3489,26 @@ msgid ""
 "that a color must have to be considered (as a percentage of the total number "
 "of pixels in the image).</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Os Modos de Exclusão de "
+"Borda selecionam a cor mais frequente na imagem (modo) e excluem todos os "
+"pixels que tocam tal área, então, repetem o processo até que um número "
+"apropriado de cores tenha sido encontrado.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Essa abordagem remove "
+"bordas anti-serrilhadas, mas pode não detectar detalhes pequenos.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">Frequência mínima</span> se refere a um número mínimo de "
+"pixels que uma cor deve ter para ser considerada (como porcentagem do número "
+"total de pixels na imagem).</p></body></html>"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, DocumentMetadataDialog)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:21
@@ -4087,7 +4235,7 @@ msgstr "Emoji…"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:609
 #, kde-format
 msgid "Raise to Top"
-msgstr "Levantar para o topo"
+msgstr "Elevar para o topo"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:618
 #, kde-format
@@ -4157,22 +4305,22 @@ msgstr "Fundo"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:661
 #, kde-format
 msgid "Outside Left"
-msgstr "Parte esquerda externa"
+msgstr "Esquerda externa"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:664
 #, kde-format
 msgid "Outside Right"
-msgstr "Parte direita externa"
+msgstr "Direita externa"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:667
 #, kde-format
 msgid "Outside Top"
-msgstr "Parte superior externa"
+msgstr "Topo externo"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
 #, kde-format
 msgid "Outside Bottom"
-msgstr "Parte inferior externa"
+msgstr "Inferior externo"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:678
 #, kde-format
