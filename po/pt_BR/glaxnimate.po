@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-17 00:39+0000\n"
-"PO-Revision-Date: 2025-02-19 21:49-0300\n"
+"PO-Revision-Date: 2025-02-19 22:06-0300\n"
 "Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -39,7 +39,7 @@ msgstr "transformar"
 #. i18n: Property name
 #, kde-format
 msgid "start_opacity"
-msgstr "start_opacity"
+msgstr "opacidade_inicial"
 
 #. i18n: file: src/core/model/shapes/stroke.hpp
 #. i18n: Property name
@@ -51,7 +51,7 @@ msgstr "ponta"
 #. i18n: Property name
 #, kde-format
 msgid "miter_limit"
-msgstr "miter_limit"
+msgstr "limite_da_interseção"
 
 #. i18n: file: src/core/model/shapes/shape.hpp
 #. i18n: Property name
@@ -123,7 +123,7 @@ msgstr "caminho"
 #. i18n: Property name
 #, kde-format
 msgid "fill_rule"
-msgstr "fill_rule"
+msgstr "regra_de_preenchimento"
 
 #. i18n: file: src/core/model/shapes/polystar.hpp
 #. i18n: Property name
@@ -137,7 +137,7 @@ msgstr "tipo"
 #. i18n: Property name
 #, kde-format
 msgid "outer_radius"
-msgstr "outer_radius"
+msgstr "raio_exterior"
 
 #. i18n: file: src/core/model/shapes/polystar.hpp
 #. i18n: Property name
@@ -149,7 +149,7 @@ msgstr "ângulo"
 #. i18n: Property name
 #, kde-format
 msgid "outer_roundness"
-msgstr "outer_roundness"
+msgstr "arredondamento_exterior"
 
 #. i18n: file: src/core/model/shapes/styler.hpp
 #. i18n: Property name
@@ -197,7 +197,7 @@ msgstr "frequência"
 #. i18n: Property name
 #, kde-format
 msgid "anchor_point"
-msgstr "anchor_point"
+msgstr "ponto_de_âncora"
 
 #. i18n: file: src/core/model/transform.hpp
 #. i18n: Property name
@@ -229,7 +229,7 @@ msgstr "largura"
 #. i18n: Property name
 #, kde-format
 msgid "css_url"
-msgstr "css_url"
+msgstr "url_css"
 
 #. i18n: file: src/core/model/assets/gradient.hpp
 #. i18n: Property name
@@ -243,13 +243,13 @@ msgstr "cores"
 #. i18n: Property name
 #, kde-format
 msgid "start_point"
-msgstr "start_point"
+msgstr "ponto_inicial"
 
 #. i18n: file: src/core/model/assets/assets.hpp
 #. i18n: Property name
 #, kde-format
 msgid "gradient_colors"
-msgstr "gradient_colors"
+msgstr "cores_de_gradiente"
 
 #. i18n: file: src/core/model/assets/assets.hpp
 #. i18n: Property name
@@ -261,7 +261,7 @@ msgstr "composições"
 #. i18n: Property name
 #, kde-format
 msgid "first_frame"
-msgstr "first_frame"
+msgstr "primeiro_quadro"
 
 #. i18n: file: src/core/model/property/option_list_property.hpp
 #. i18n: Property name
@@ -303,15 +303,14 @@ msgid ""
 "Then layers are created that appear in and out at uniform time intervals. "
 "You can use these layers for frame-by-frame animation."
 msgstr ""
-"Esta caixa de diálogo cria uma camada para ajudar com animação quadro a quadro"
-".\n"
+"Esta caixa de diálogo cria uma camada para ajudar com animação quadro a "
+"quadro.\n"
 "\n"
-"Você especifica o intervalo de tempo que deseja dividir em quadros e o número "
-"de quadros que deseja.\n"
+"Você especifica o intervalo de tempo que deseja dividir em quadros e o "
+"número de quadros que deseja.\n"
 "\n"
-"Em seguida, são criadas camadas que aparecem e desaparecem em intervalos de te"
-"mpo uniformes. "
-"Você pode usar essas camadas para animação quadro a quadro."
+"Em seguida, são criadas camadas que aparecem e desaparecem em intervalos de "
+"tempo uniformes. Você pode usar essas camadas para animação quadro a quadro."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: data/plugins/FrameByFrame/create_frames.ui:43
@@ -424,8 +423,8 @@ msgstr ""
 #, kde-format
 msgid "Save the current document, prompting to select a file for new documents"
 msgstr ""
-"Salva o documento atual, pedindo para selecionar um arquivo para novos documen"
-"tos."
+"Salva o documento atual, pedindo para selecionar um arquivo para novos "
+"documentos."
 
 #: src/android/help_dialog.cpp:70
 #, kde-format
@@ -439,8 +438,8 @@ msgid ""
 "Currently the following formats are supported:\n"
 "%1"
 msgstr ""
-"Salva a cópia do documento atual, pedindo para selecionar o formato e um arqui"
-"vo.\n"
+"Salva a cópia do documento atual, pedindo para selecionar o formato e um "
+"arquivo.\n"
 "Atualmente, os seguintes formatos são suportados:\n"
 "%1"
 
@@ -459,9 +458,8 @@ msgid ""
 msgstr ""
 "Cria um pacote de stickers para exportar para o Telegram.\n"
 "Note que apenas versões recentes do Telegram suportam isto.\n"
-"Se a versão do Telegram for muito velha, é possível Exportar o arquivo para TG"
-"S e fazer "
-"o upload dele para o Telegram."
+"Se a versão do Telegram for muito velha, é possível Exportar o arquivo para "
+"TGS e fazer o upload dele para o Telegram."
 
 #: src/android/help_dialog.cpp:86
 #, kde-format
@@ -499,8 +497,8 @@ msgid ""
 "Opens the side pane used to change the advanced properties for the selected "
 "object."
 msgstr ""
-"Abre o painel lateral usado para modificar propriedades avançadas para o objet"
-"o selecionado."
+"Abre o painel lateral usado para modificar propriedades avançadas para o "
+"objeto selecionado."
 
 #: src/android/help_dialog.cpp:114
 #, kde-format
@@ -527,8 +525,8 @@ msgstr "Mostra esta ajuda."
 msgid ""
 "Select tool, you can use it to select objects and change their transform."
 msgstr ""
-"Ferramenta de seleção. Pode ser usada para selecionar objetos e mudar suas tra"
-"nsformações."
+"Ferramenta de seleção. Pode ser usada para selecionar objetos e mudar suas "
+"transformações."
 
 #: src/android/help_dialog.cpp:134
 #, kde-format
@@ -536,8 +534,8 @@ msgid ""
 "Edit tool, used to edit existing items (eg: moving, bezier nodes, setting "
 "rounded corners on a rectangle, etc.)"
 msgstr ""
-"Ferramenta de edição, usada para editar itens (ex.: mover, nós Bezier, definir"
-" cantos arredondados em um retângulo, etc.)"
+"Ferramenta de edição, usada para editar itens (ex.: mover, nós Bezier, "
+"definir cantos arredondados em um retângulo, etc.)"
 
 #: src/android/help_dialog.cpp:138
 #, kde-format
@@ -575,9 +573,8 @@ msgid ""
 "Draws a star, after it's been created you can change it into a regular "
 "polygon and change the number of sides from the properties pane."
 msgstr ""
-"Desenha uma estrela. Depois de criada, é possível transformá-la em um polígono"
-" comum "
-"e mudar o número de lados a partir do painel de propriedades."
+"Desenha uma estrela. Depois de criada, é possível transformá-la em um "
+"polígono comum e mudar o número de lados a partir do painel de propriedades."
 
 #: src/android/help_dialog.cpp:166
 #, kde-format
@@ -625,9 +622,8 @@ msgid ""
 "When enabled (which is the default) whenever you change an object property, "
 "a new keyframe is added for that property."
 msgstr ""
-"Quando habilitado (que é o padrão), toda vez que uma propriedade de objeto for"
-" modificada, um novo "
-"quadro-chave é adicionado para tal propriedade."
+"Quando habilitado (que é o padrão), toda vez que uma propriedade de objeto "
+"for modificada, um novo quadro-chave é adicionado para tal propriedade."
 
 #: src/android/help_dialog.cpp:202
 #, kde-format
@@ -1311,7 +1307,8 @@ msgstr "Propriedade %1 de %2 refere para um objeto inexistente %3"
 #, kde-format
 msgid "Could not load %1 for %2: uuid refers to an unacceptable object"
 msgstr ""
-"Não foi possível carregar %1 para %2: a uuid refere para um objeto inaceitável"
+"Não foi possível carregar %1 para %2: a uuid refere para um objeto "
+"inaceitável"
 
 #: src/core/io/glaxnimate/import_state.hpp:128
 #, kde-format
@@ -1377,8 +1374,8 @@ msgstr "O Lottie só suporta camadas auto-orientadas no nível superior"
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
-"Imagens não podem ser agrupadas com outras formas, elas devem estar dentro de "
-"uma camada"
+"Imagens não podem ser agrupadas com outras formas, elas devem estar dentro "
+"de uma camada"
 
 #: src/core/io/lottie/lottie_exporter.hpp:612
 #, kde-format
@@ -1386,9 +1383,8 @@ msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
 "a layer"
 msgstr ""
-"Camadas de composição não podem ser agrupadas com outras formas, elas deve est"
-"ar "
-"dentro de uma camada"
+"Camadas de composição não podem ser agrupadas com outras formas, elas deve "
+"estar dentro de uma camada"
 
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
@@ -1672,8 +1668,8 @@ msgstr "Não foi possível ler o cabeçalho"
 msgid ""
 "Loading unsupported rive file version %1.%2, the only supported version is %3"
 msgstr ""
-"Carregando uma versão não suportada do arquivo rive, versão %1.%2. A única ver"
-"são suportada é a %3"
+"Carregando uma versão não suportada do arquivo rive, versão %1.%2. A única "
+"versão suportada é a %3"
 
 #: src/core/io/rive/rive_format.cpp:46 src/core/io/rive/rive_loader.cpp:750
 #, kde-format
@@ -1917,8 +1913,8 @@ msgstr "Não foi possível alocar a imagem temporária"
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
 msgstr ""
-"Não foi possível deduzir o formato de saída da extensão do arquivo: usando MPE"
-"G."
+"Não foi possível deduzir o formato de saída da extensão do arquivo: usando "
+"MPEG."
 
 #: src/core/io/video/video_format.cpp:754
 #, kde-format
@@ -2306,8 +2302,8 @@ msgid ""
 "# You have access to the `window` and `document` global variables and the "
 "`glaxnimate` module"
 msgstr ""
-"# Você tem acesso às variáveis globais `window` e `document` e ao módulo `glax"
-"nimate`"
+"# Você tem acesso às variáveis globais `window` e `document` e ao módulo "
+"`glaxnimate`"
 
 #: src/core/plugin/snippet.hpp:97
 #, kde-format
@@ -2383,8 +2379,8 @@ msgid ""
 "Specify the name of the local socket/named pipe to connect to a host "
 "application."
 msgstr ""
-"Especifica o nome do socket/pipe com nome para conectar a um aplicativo hosped"
-"eiro."
+"Especifica o nome do socket/pipe com nome para conectar a um aplicativo "
+"hospedeiro."
 
 #: src/gui/cli.cpp:46
 #, kde-format
@@ -2415,8 +2411,8 @@ msgstr "Opções de exportação"
 msgctxt "@info:shell"
 msgid "Export the input file to the given file instead of starting the GUI"
 msgstr ""
-"Exporta os quadros do arquivo de entrada para o arquivo especificado ao invés "
-"de iniciar a interface gráfica"
+"Exporta os quadros do arquivo de entrada para o arquivo especificado ao "
+"invés de iniciar a interface gráfica"
 
 #: src/gui/cli.cpp:70
 #, kde-format
@@ -2425,9 +2421,9 @@ msgid ""
 "Specify the format for --export. If omitted it's determined based on the "
 "file name. See --export-format-list for a list of supported formats."
 msgstr ""
-"Especifica o formato para --export. Se omitido, ele será determinado baseado n"
-"o nome do arquivo. "
-"Veja --export-format-list para uma lista de formatos suportados."
+"Especifica o formato para --export. Se omitido, ele será determinado baseado "
+"no nome do arquivo. Veja --export-format-list para uma lista de formatos "
+"suportados."
 
 #: src/gui/cli.cpp:77
 #, kde-format
@@ -2447,8 +2443,8 @@ msgctxt "@info:shell"
 msgid ""
 "Render frames the input file to the given file instead of starting the GUI"
 msgstr ""
-"Renderiza os quadros do arquivo de entrada para o arquivo especificado ao invé"
-"s de iniciar a interface gráfica"
+"Renderiza os quadros do arquivo de entrada para o arquivo especificado ao "
+"invés de iniciar a interface gráfica"
 
 #: src/gui/cli.cpp:91
 #, kde-format
@@ -2457,9 +2453,9 @@ msgid ""
 "Specify the format for --render. If omitted it's determined based on the "
 "file name. See --render-format-list for a list of supported formats."
 msgstr ""
-"Especifica o formato para --render. Se omitido, ele será determinado baseado n"
-"o nome do arquivo. "
-"Veja --render-format-list para uma lista de formatos suportados."
+"Especifica o formato para --render. Se omitido, ele será determinado baseado "
+"no nome do arquivo. Veja --render-format-list para uma lista de formatos "
+"suportados."
 
 #: src/gui/cli.cpp:98
 #, kde-format
@@ -2516,8 +2512,8 @@ msgctxt "@info:shell"
 msgid ""
 "Unknown exporter. Use --export-format-list for a list of available formats"
 msgstr ""
-"Exportador desconhecido. Use --export-format-list para uma lista de formatos d"
-"isponíveis"
+"Exportador desconhecido. Use --export-format-list para uma lista de formatos "
+"disponíveis"
 
 #: src/gui/cli.cpp:286
 #, kde-format
@@ -3374,41 +3370,41 @@ msgstr ""
 "</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">k-Means divide as cores em a"
-"glomerados e refina a atribuição a cada iteração.</p>\n"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">k-Means divide as cores em "
+"aglomerados e refina a atribuição a cada iteração.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
 "\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">É a melhor opção para imagen"
-"s com muitas cores ou sombreamento.</p>\n"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">É a melhor opção para "
+"imagens com muitas cores ou sombreamento.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
 "\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">Para imagens com muitas core"
-"s, aumentar o número de iterações produzirá melhores resultados, mas pode ser "
-"mais lento.</p>\n"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Para imagens com muitas "
+"cores, aumentar o número de iterações produzirá melhores resultados, mas "
+"pode ser mais lento.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
 "\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">A opção <span style=\" font-"
-"style:italic;\">Combinar</span> faz pós-processamento:</p>\n"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">A opção <span style=\" "
+"font-style:italic;\">Combinar</span> faz pós-processamento:</p>\n"
 "<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
 "right: 0px; -qt-list-indent: 1;\"><li style=\"\" style=\" margin-top:12px; "
 "margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
-"text-indent:0px;\"><span style=\" font-weight:600;\">Nenhum</span>: Não faz ne"
-"nhum pós-processamento e retorna a média (note que isto pode resultar em cores"
-" que não estavam presentes na imagem original).</li>\n"
+"text-indent:0px;\"><span style=\" font-weight:600;\">Nenhum</span>: Não faz "
+"nenhum pós-processamento e retorna a média (note que isto pode resultar em "
+"cores que não estavam presentes na imagem original).</li>\n"
 "<li style=\"\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
 "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"weight:600;\">Mais próximo</span>: Encontra a cor na imagem original que é a m"
-"ais próxima da média</li>\n"
+"weight:600;\">Mais próximo</span>: Encontra a cor na imagem original que é a "
+"mais próxima da média</li>\n"
 "<li style=\"\" style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; "
 "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"weight:600;\">Mais frequente</span>: Encontra a cor no agrupamento que aparece"
-" mais frequentemente na imagem original</li></ul></body></html>"
+"weight:600;\">Mais frequente</span>: Encontra a cor no agrupamento que "
+"aparece mais frequentemente na imagem original</li></ul></body></html>"
 
 #. i18n: ectx: property (plainText), widget (QPlainTextEdit, plainTextEdit)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:159
@@ -3420,8 +3416,8 @@ msgid ""
 "\n"
 "This is the best option when tracing images with flat colors."
 msgstr ""
-"k-Modes mostram as cores que aparecem mais frequentemente na imagem original."
-"\n"
+"k-Modes mostram as cores que aparecem mais frequentemente na imagem "
+"original.\n"
 "\n"
 "É muito rápido, mas não fornece cores precisas para imagens complexas.\n"
 "\n"
@@ -3454,12 +3450,12 @@ msgstr ""
 "</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">O algoritmo Octree funde cor"
-"es similares de baixo pra cima.</p>\n"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">O algoritmo Octree funde "
+"cores similares de baixo pra cima.</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">Para imagens complexas melho"
-"ra a precisão das cores, no entanto, pode resultar em cores que não estavam pr"
-"esentes na imagem original.</p></body></html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Para imagens complexas "
+"melhora a precisão das cores, no entanto, pode resultar em cores que não "
+"estavam presentes na imagem original.</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:189
@@ -3500,18 +3496,18 @@ msgstr ""
 "</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">Os Modos de Exclusão de Bord"
-"a selecionam a cor mais frequente na imagem (modo) e excluem todos os pixels q"
-"ue tocam tal área, então, repetem o processo até que um número apropriado de c"
-"ores tenha sido encontrado.</p>\n"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Os Modos de Exclusão de "
+"Borda selecionam a cor mais frequente na imagem (modo) e excluem todos os "
+"pixels que tocam tal área, então, repetem o processo até que um número "
+"apropriado de cores tenha sido encontrado.</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">Essa abordagem remove bordas"
-" anti-serrilhadas, mas pode não detectar detalhes pequenos.</p>\n"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Essa abordagem remove "
+"bordas anti-serrilhadas, mas pode não detectar detalhes pequenos.</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
 "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"weight:600;\">Frequência mínima</span> se refere a um número mínimo de pixels "
-"que uma cor deve ter para ser considerada (como porcentagem do número total de"
-" pixels na imagem).</p></body></html>"
+"weight:600;\">Frequência mínima</span> se refere a um número mínimo de "
+"pixels que uma cor deve ter para ser considerada (como porcentagem do número "
+"total de pixels na imagem).</p></body></html>"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, DocumentMetadataDialog)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:21
@@ -5263,9 +5259,8 @@ msgid ""
 "All supported files (*.ttf, *.otf, *.css); CSS files (*.css); Font files (*."
 "ttf, *.otf); All files (*)"
 msgstr ""
-"Todos os arquivos suportados (*.ttf, *.otf, *.css); CSS files (*.css); Arquivo"
-"s de fontes (*."
-"ttf, *.otf); Todos os arquivos (*)"
+"Todos os arquivos suportados (*.ttf, *.otf, *.css); CSS files (*.css); "
+"Arquivos de fontes (*.ttf, *.otf); Todos os arquivos (*)"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/font/external_font_widget.ui:26
