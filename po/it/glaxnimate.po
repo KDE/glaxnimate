@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2025-02-06 23:02+0100\n"
+"PO-Revision-Date: 2025-04-21 13:20+0200\n"
 "Last-Translator: Valter Mura <valtermura@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.12.1\n"
+"X-Generator: Lokalize 24.12.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #, kde-format
@@ -543,7 +543,7 @@ msgid ""
 "rounded corners on a rectangle, etc.)"
 msgstr ""
 "Strumento di modifica, usato per modificare gli elementi esistenti (ad es in "
-"movimento, nodi di bezier, per impostare gli angoli arrotondati di un "
+"movimento, nodi di bézier, per impostare gli angoli arrotondati di un "
 "rettangolo, ecc.)"
 
 #: src/android/help_dialog.cpp:138
@@ -554,7 +554,7 @@ msgstr "Mostra un vassoio con gli strumenti di disegno delle curve."
 #: src/android/help_dialog.cpp:142
 #, kde-format
 msgid "Create Bezier curves using nodes and handles."
-msgstr "Crea delle curve di Bezier usando nodi e maniglie."
+msgstr "Crea delle curve di Bézier usando nodi e maniglie."
 
 #: src/android/help_dialog.cpp:146
 #, kde-format
@@ -1489,7 +1489,7 @@ msgstr "Campo sconosciuto %2%1"
 #: src/core/io/lottie/lottie_importer.hpp:852
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
-msgstr "Punto bezier %1 non valido in %2"
+msgstr "Punto bézier %1 non valido in %2"
 
 #: src/core/io/lottie/lottie_importer.hpp:934
 #, kde-format
@@ -1656,7 +1656,7 @@ msgstr "Foglio sprite"
 #: src/core/io/rive/rive_exporter.hpp:359
 #, kde-format
 msgid "Bezier has mismatching number of points"
-msgstr "Beziér ha un numero di punti che non corrispondono"
+msgstr "Bézier ha un numero di punti che non corrispondono"
 
 #: src/core/io/rive/rive_exporter.hpp:422
 #, kde-format
@@ -2288,7 +2288,7 @@ msgstr "Testo"
 #: src/core/model/shapes/trim.cpp:24
 #, kde-format
 msgid "Trim Path"
-msgstr "Ritaglia tracciato"
+msgstr "Percorso di ritaglio"
 
 #: src/core/model/shapes/zig_zag.cpp:139
 #, kde-format
@@ -2998,7 +2998,7 @@ msgstr "Aggiungi punto alla curva"
 #: src/gui/tools/draw_tool.hpp:25
 #, kde-format
 msgid "Draw Bezier"
-msgstr "Disegna curva di Bezier"
+msgstr "Disegna curva di Bézier"
 
 #: src/gui/tools/edit_tool.cpp:169
 #, kde-format
@@ -3013,7 +3013,7 @@ msgstr "Cuspide"
 #: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:707
 #, kde-format
 msgid "Smooth"
-msgstr "Liscio"
+msgstr "Smussa"
 
 #: src/gui/tools/edit_tool.cpp:284
 #, kde-format
@@ -5733,7 +5733,7 @@ msgstr "Interfaccia utente"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:230
 msgid "Show startup dialog"
-msgstr "Mostra dialogo di avvio"
+msgstr "Mostra finestra di dialogo di avvio"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:233
 msgid "Horizontal Timeline Scroll"
