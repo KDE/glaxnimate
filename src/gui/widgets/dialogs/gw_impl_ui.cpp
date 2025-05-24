@@ -1236,6 +1236,7 @@ void GlaxnimateWindow::Private::init_menus()
         act->setIcon(wid->windowIcon());
         view_actions.append(act);
         wid->setStyle(&dock_style);
+        wid->setWindowTitle(KLocalizedString::removeAcceleratorMarker(wid->windowTitle()));
     }
     parent->unplugActionList( "view_actionlist" );
     parent->plugActionList( "view_actionlist", view_actions );
