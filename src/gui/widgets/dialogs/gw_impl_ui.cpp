@@ -97,6 +97,7 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
 
     canvas = new Canvas(centralWidget);
     canvas->setAcceptDrops(true);
+    parent->setAcceptDrops(true);
 
     message_widget = new WindowMessageWidget(centralWidget);
     tab_bar = new CompositionTabBar(centralWidget);
