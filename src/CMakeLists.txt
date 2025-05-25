@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+# SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
 # SPDX-License-Identifier: BSD-2-Clause
 
 include_directories(${CMAKE_SOURCE_DIR}/external/QtAppSetup/src)

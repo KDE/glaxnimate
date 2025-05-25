@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -54,7 +54,7 @@ void glaxnimate::AppInfo::init_qapplication() const
         version(),
         QStringLiteral(PROJECT_DESCRIPTION),
         KAboutLicense::GPL,
-        i18n("(c) 2019-2023"),
+        i18n("(c) 2019-2025"),
         // Optional text shown in the About box.
         QStringLiteral(""),
         QStringLiteral(URL_DOCS)
