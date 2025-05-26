@@ -190,16 +190,22 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/logo/file-icon.svg ${CMAKE_CURRENT_BI
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/images/${PROJECT_SLUG}.svg DESTINATION share/icons/hicolor/scalable/apps/ )
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/images/${PROJECT_SLUG}.svg DESTINATION share/icons/hicolor/scalable/apps/ RENAME ${PROJECT_ID}.svg )
 
+set(PNG_ICON ${CMAKE_CURRENT_SOURCE_DIR}/images/${PROJECT_SLUG}.png)
 add_custom_command(
-    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/images/${PROJECT_SLUG}.png
-    COMMAND inkscape ${CMAKE_CURRENT_SOURCE_DIR}/logo/logo.svg -o ${CMAKE_CURRENT_SOURCE_DIR}/images/${PROJECT_SLUG}.png
+    OUTPUT ${PNG_ICON}
+    COMMAND inkscape ${CMAKE_CURRENT_SOURCE_DIR}/logo/logo.svg -o ${PNG_ICON}
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/logo/logo.svg
 )
 add_custom_target(
     logo_png
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/images/${PROJECT_SLUG}.png
+    DEPENDS ${PNG_ICON}
 )
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/images/${PROJECT_SLUG}.png DESTINATION share/icons/hicolor/512x512/apps )
+if ( NOT EXISTS ${PNG_ICON} )
+    execute_process(
+        COMMAND inkscape ${CMAKE_CURRENT_SOURCE_DIR}/logo/logo.svg -o ${PNG_ICON}
+    )
+endif()
+install(FILES ${PNG_ICON} DESTINATION share/icons/hicolor/512x512/apps )
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/images/${PROJECT_SLUG}.svg DESTINATION share/icons/hicolor/512x512/apps/ RENAME ${PROJECT_ID}.png )
 
 # Plugins
