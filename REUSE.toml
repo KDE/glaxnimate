@@ -1,0 +1,52 @@
+version = 1
+SPDX-PackageName = "Glaxnimate"
+SPDX-PackageSupplier = "Mattia Basaglia <dev@dragon.best>"
+SPDX-PackageDownloadLocation = "https://glaxnimate.mattbas.org/"
+
+[[annotations]]
+path = ["README.md", "CONTRIBUTING.md", "src/python/README.md"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2019 Mattia Basaglia <dev@dragon.best>"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+[[annotations]]
+path = ["AUTHORS.md", "CHANGELOG.md"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "none"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["src/python/MANIFEST.in.in", "src/python/build-requirements.txt", ".github/**", ".gitlab/**", "deploy/**", "data/emoji/sets.json", "data/**.desktop", "data/**.gpl", "data/templates/**", "data/themes/**", "REUSE.toml"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "none"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["src/android/android/res/drawable-**/**.png", "docs/docs/**", "docs/**.md", "docs/**.html", "data/**.rawr", "data/**.jpg", "data/**.svg", "data/**.png", "data/**.ico"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2019-2023 Mattia Basaglia <dev@dragon.best>"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+[[annotations]]
+path = "src/gui/emoji/tools/emoji-test.txt"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2020 Unicode®, Inc."
+SPDX-License-Identifier = "LicenseRef-UnicodeTermsOfUse"
+
+[[annotations]]
+path = "external/potrace/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2001-2019 Peter Selinger"
+SPDX-License-Identifier = "GPL-2.0-or-later"
+
+[[annotations]]
+path = ["data/plugins/**.json", "data/translations/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2019-2023 Mattia Basaglia <dev@dragon.best>"
+SPDX-License-Identifier = "GPL-3.0-or-later"
+
+[[annotations]]
+path = ["po/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "KDE translators (see each file for details)"
+SPDX-License-Identifier = "GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL"
