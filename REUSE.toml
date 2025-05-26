@@ -44,3 +44,9 @@ path = ["data/plugins/**.json", "data/translations/**"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2019-2023 Mattia Basaglia <dev@dragon.best>"
 SPDX-License-Identifier = "GPL-3.0-or-later"
+
+[[annotations]]
+path = ["po/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Kdenlive translators (see each file for details)"
+SPDX-License-Identifier = "GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL"
