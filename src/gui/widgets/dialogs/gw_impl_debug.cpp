@@ -257,11 +257,9 @@ void GlaxnimateWindow::Private::init_debug()
     });
     menu_debug->addAction("Fonts", []{
         qDebug() << "---- Fonts ----";
-#if QT_VERSION_MAJOR < 6
-        auto families = QFontDatabase().families();
-#else
+
         auto families = QFontDatabase::families();
-#endif
+
         for ( const auto& family : families )
             qDebug() << family;
 

@@ -29,11 +29,7 @@ public:
     void refresh_styles()
     {
         info = QFontInfo(font);
-#if QT_VERSION_MAJOR < 6
-        QStringList styles = database.styles(info.family());
-#else
         QStringList styles = QFontDatabase::styles(info.family());
-#endif
         style_model.setStringList(styles);
         ui.view_style->setCurrentIndex(style_model.index(styles.indexOf(info.styleName()), 0));
     }
@@ -52,10 +48,6 @@ public:
 
     QFont font;
     QFontInfo info{font};
-
-#if QT_VERSION_MAJOR < 6
-    QFontDatabase database;
-#endif
 
     QStringListModel style_model;
 };
