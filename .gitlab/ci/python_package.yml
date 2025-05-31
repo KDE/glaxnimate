@@ -4,10 +4,10 @@ python_build_wheel:
     tags:
         - Linux
     variables:
-        KDECI_CC_CACHE: /mnt/caches/suse-qt6.8/
-        KDECI_CACHE_PATH: /mnt/artifacts/suse-qt6.8/
+        KDECI_CC_CACHE: /mnt/caches/suse-qt6.9/
+        KDECI_CACHE_PATH: /mnt/artifacts/suse-qt6.9/
         KDECI_GITLAB_SERVER: https://invent.kde.org/
-        KDECI_PACKAGE_PROJECT: teams/ci-artifacts/suse-qt6.8
+        KDECI_PACKAGE_PROJECT: teams/ci-artifacts/suse-qt6.9
     before_script:
         - python3 --version
         - git clone https://invent.kde.org/sysadmin/ci-utilities.git --depth=1
@@ -37,7 +37,7 @@ python_build_wheel:
 
 pypi_deploy_gitlab:
     stage: deploy
-    image: invent-registry.kde.org/sysadmin/ci-images/suse-qt68:latest
+    image: invent-registry.kde.org/sysadmin/ci-images/suse-qt69:latest
     needs:
         - job: python_build_wheel
           artifacts: true
@@ -53,7 +53,7 @@ pypi_deploy_gitlab:
 
 pypi_deploy_pypiorg:
     stage: deploy
-    image: invent-registry.kde.org/sysadmin/ci-images/suse-qt68:latest
+    image: invent-registry.kde.org/sysadmin/ci-images/suse-qt69:latest
     needs:
         - job: python_build_wheel
           artifacts: true
