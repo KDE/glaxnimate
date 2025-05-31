@@ -11,18 +11,6 @@ variables:
     # DEBIAN_FRONTEND: noninteractive
     GIT_SUBMODULE_STRATEGY: recursive
 
-craft_appimage_qt515_x86_64:
-  rules:
-  - when: manual
-    # we don't want the manual job to block the pipeline
-    allow_failure: true
-
-craft_windows_qt515_x86_64:
-  rules:
-  - when: manual
-    # we don't want the manual job to block the pipeline
-    allow_failure: true
-
 include:
     # - .gitlab/ci/documentation.yml
     - .gitlab/ci/python_package.yml
@@ -34,21 +22,16 @@ include:
     # - .gitlab/ci/test-files.yml
     - project: sysadmin/ci-utilities
       file:
-        # CI Qt5
+        # CI
         - /gitlab-templates/reuse-lint.yml
-        - /gitlab-templates/linux.yml
-        - /gitlab-templates/freebsd.yml
-        - /gitlab-templates/windows.yml
-        # CI Qt6
+        ## CI Qt6
         - /gitlab-templates/freebsd-qt6.yml
         - /gitlab-templates/linux-qt6.yml
         - /gitlab-templates/windows-qt6.yml
         - /gitlab-templates/android-qt6.yml
-        # CD Qt5
+        # CD
         - /gitlab-templates/flatpak.yml
-        - /gitlab-templates/craft-appimage.yml
-        - /gitlab-templates/craft-windows-x86-64.yml
-        # CD Qt6
+        ## CD Qt6
         - /gitlab-templates/craft-android-qt6-apks.yml
         - /gitlab-templates/craft-appimage-qt6.yml
         - /gitlab-templates/snap-snapcraft-lxd.yml

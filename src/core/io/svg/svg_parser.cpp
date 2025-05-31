@@ -375,13 +375,7 @@ private:
     {
         Style style = parent_style;
 
-        auto class_names_list = element.attribute("class").split(" ",
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-        Qt::SkipEmptyParts
-#else
-        QString::SkipEmptyParts
-#endif
-        );
+        auto class_names_list = element.attribute("class").split(" ", Qt::SkipEmptyParts);
         std::unordered_set<QString> class_names(class_names_list.begin(), class_names_list.end());
         for ( const auto& rule : css_blocks )
         {
@@ -706,13 +700,7 @@ private:
         if ( paint_order == "normal" )
             paint_order = "fill stroke";
 
-        for ( const auto& sr : paint_order.split(' ',
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-        Qt::SkipEmptyParts
-#else
-        QString::SkipEmptyParts
-#endif
-        ) )
+        for ( const auto& sr : paint_order.split(' ',  Qt::SkipEmptyParts) )
         {
             if ( sr == "fill" )
                 add_fill(args, shapes, style);
@@ -1333,12 +1321,7 @@ private:
         qfont.setFamily(style.family);
         qfont.setWeight(QFont::Weight(WeightConverter::convert(style.weight, WeightConverter::css, WeightConverter::qt)));
         qfont.setStyle(style.style);
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
         QString style_string = QFontDatabase::styleString(qfont);
-#else
-        QFontDatabase db;
-        QString style_string = db.styleString(qfont);
-#endif
         font->style.set(style_string);
     }
 

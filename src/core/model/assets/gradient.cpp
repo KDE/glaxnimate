@@ -51,11 +51,7 @@ std::optional<QGradientStops> glaxnimate::model::detail::variant_cast<QGradientS
     }
 
     QVariant converted = val;
-#if QT_VERSION_MAJOR < 6
-    if ( !converted.convert(qMetaTypeId<QGradientStops>()) )
-#else
     if ( !converted.convert(QMetaType::fromType<QGradientStops>()) )
-#endif
         return {};
     return converted.value<QGradientStops>();
 }

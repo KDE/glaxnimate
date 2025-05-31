@@ -290,13 +290,7 @@ void GlaxnimateWindow::Private::setup_file_actions()
     m_recentFilesAction = KStandardAction::openRecent(parent, &GlaxnimateWindow::document_open_recent, fileActions);
     fileActions->addAction(KStandardAction::name(KStandardAction::OpenRecent), m_recentFilesAction);
     openLast->setEnabled(false);
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     connect(m_recentFilesAction, &KRecentFilesAction::enabledChanged, openLast, &QAction::setEnabled);
-#else
-    connect(m_recentFilesAction, &KRecentFilesAction::changed, [this, openLast](){
-        openLast->setEnabled(m_recentFilesAction->isEnabled());
-    });
-#endif
 
     m_recentFilesAction->loadEntries(KConfigGroup(KSharedConfig::openConfig(), QString()));
 

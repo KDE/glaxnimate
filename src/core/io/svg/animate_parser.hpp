@@ -97,13 +97,7 @@ public:
             return {};
         }
 
-        auto split = ::utils::split_ref(v, separator,
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-        Qt::SkipEmptyParts
-#else
-        QString::SkipEmptyParts
-#endif
-        );
+        auto split = ::utils::split_ref(v, separator, Qt::SkipEmptyParts );
         std::vector<qreal> values;
         values.reserve(split.size());
         for ( const auto& r : split )
@@ -168,13 +162,7 @@ public:
 
         if ( animate.hasAttribute("values") )
         {
-            auto val_str = animate.attribute("values").split(frame_separator_re,
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-        Qt::SkipEmptyParts
-#else
-        QString::SkipEmptyParts
-#endif
-            );
+            auto val_str = animate.attribute("values").split(frame_separator_re, Qt::SkipEmptyParts);
             values.reserve(val_str.size());
             for ( const auto& val : val_str )
                 values.push_back(parse_value(val, type));
@@ -356,13 +344,7 @@ public:
 
         if ( animate.hasAttribute("keyTimes") )
         {
-            auto strings = animate.attribute("keyTimes").split(frame_separator_re,
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-        Qt::SkipEmptyParts
-#else
-        QString::SkipEmptyParts
-#endif
-            );
+            auto strings = animate.attribute("keyTimes").split(frame_separator_re, Qt::SkipEmptyParts);
             if ( strings.size() != int(values.size()) )
             {
                 warning(QString("`keyTimes` (%1) and `values` (%2) mismatch").arg(strings.size()).arg(int(values.size())));
@@ -388,13 +370,7 @@ public:
                 return;
             }
 
-            auto splines = animate.attribute("keySplines").split(frame_separator_re,
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-        Qt::SkipEmptyParts
-#else
-        QString::SkipEmptyParts
-#endif
-            );
+            auto splines = animate.attribute("keySplines").split(frame_separator_re, Qt::SkipEmptyParts);
             if ( splines.size() != int(values.size()) - 1 )
             {
                 warning("Wrong number of `keySplines` values");

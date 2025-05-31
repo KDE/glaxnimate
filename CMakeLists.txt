@@ -123,15 +123,8 @@ else()
 endif()
 
 # QT_MAJOR_VERSION is the common name in KDE apps and infrastructure.
-# BUILD_WITH_QT6 is another thing on KDE infrastructure.
 # However some third-party submodules use QT_VERSION_MAJOR so we need to set that too.
-if (NOT DEFINED QT_MAJOR_VERSION)
-    if(BUILD_WITH_QT6)
-        set(QT_MAJOR_VERSION 6)
-    else()
-        set(QT_MAJOR_VERSION 5)
-    endif()
-endif()
+set(QT_MAJOR_VERSION 6)
 set(QT_VERSION_MAJOR ${QT_MAJOR_VERSION})
 
 # Qt
@@ -139,15 +132,13 @@ find_package(Qt${QT_MAJOR_VERSION} COMPONENTS Core Widgets Xml UiTools Concurren
 message(STATUS "Using Qt ${QT_MAJOR_VERSION}")
 
 # KF
-set(KF_DEP_VERSION "5.92.0")
+set(KF_DEP_VERSION "6.3.0")
 find_package(ECM ${KF_DEP_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_MODULE_PATH})
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings)
-if (QT_MAJOR_VERSION STREQUAL "6")
-    include(ECMAddAndroidApk)
-endif()
+include(ECMAddAndroidApk)
 include(ECMAddAppIcon)
 
 # TODO: The following definitons should be enabled
@@ -157,10 +148,6 @@ remove_definitions(
 
 if (NOT DEFINED KF_MAJOR)
   set(KF_MAJOR ${QT_MAJOR_VERSION})
-endif()
-
-if (KF_MAJOR STREQUAL "6")
-  set(KF_DEP_VERSION "5.240.0")
 endif()
 
 find_package(KF6BreezeIcons ${KF_DEP_VERSION} QUIET)

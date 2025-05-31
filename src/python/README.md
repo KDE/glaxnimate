@@ -122,7 +122,7 @@ with glaxnimate.environment.Headless():
 
 This module depends on the following system libraries
 
-* Qt5 (widgets, xml)
+* Qt6 (widgets, xml)
 * potrace
 * libav / ffmpeg
 * libarchive
@@ -130,5 +130,5 @@ This module depends on the following system libraries
 To install them on Ubuntu and similar:
 
 ```bash
-apt install libqt5widgets5 libqt5xml5 potrace ffmpeg libarchive13
+apt install libqt6widgets6 libqt6xml6 potrace ffmpeg libarchive13
 ```

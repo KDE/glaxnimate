@@ -234,8 +234,6 @@ configure_file(resources/glaxnimate.in.qrc resources/glaxnimate.qrc)
 
 if(COMMAND qt_add_resources)
     qt_add_resources(SOURCES ${CMAKE_CURRENT_BINARY_DIR}/resources/glaxnimate.qrc)
-else()
-    qt5_add_resources(SOURCES ${CMAKE_CURRENT_BINARY_DIR}/resources/glaxnimate.qrc)
 endif()
 
 set(API_KEY_GOOGLE_FONTS "$ENV{API_KEY_GOOGLE_FONTS}" CACHE STRING "API key for Google Fonts")

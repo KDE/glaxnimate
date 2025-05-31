@@ -389,9 +389,6 @@ public:
         if ( !qGuiApp )
         {
             QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
-#if QT_VERSION_MAJOR < 6
-            QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
             app = std::make_unique<QGuiApplication>(fake_argc, (char**)fake_argv);
             AppInfo::instance().init_qapplication();
         }

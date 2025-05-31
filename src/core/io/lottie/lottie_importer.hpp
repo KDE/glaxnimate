@@ -989,11 +989,7 @@ private:
                         if ( value == "" )
                             value = i18n("(empty)");
                         value += " ";
-#if QT_VERSION_MAJOR >= 6
                         value += QMetaType(v->userType()).name();
-#else
-                        value += QMetaType::typeName(v->userType());
-#endif
                     }
                     Q_EMIT format->warning(i18n(
                         "Cannot load keyframe at %1 for %2 with value %3",

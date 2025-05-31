@@ -50,10 +50,6 @@ void math::bezier::register_meta()
 {
     qRegisterMetaType<Bezier>("glaxnimate::math::bezier::Bezier");
     qRegisterMetaType<Point>("glaxnimate::math::bezier::Point");
-#if QT_VERSION_MAJOR < 6
-    qRegisterMetaTypeStreamOperators<Bezier>("glaxnimate::math::bezier::Bezier");
-    qRegisterMetaTypeStreamOperators<Point>("glaxnimate::math::bezier::Point");
-#endif
     QMetaType::registerConverter<Point, QPointF>(&Point::position);
     QMetaType::registerConverter<QPointF, Point>([](const QPointF& p) { return Point{p, p, p}; });
 }
