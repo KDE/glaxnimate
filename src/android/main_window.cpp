@@ -304,23 +304,7 @@ public:
 
     QToolButton* action_button_exclusive_opt(QAction* action)
     {
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-        auto btn = new QToolButton;
-        btn->setIcon(action->icon());
-        btn->setText(action->text());
-        btn->setCheckable(action->isCheckable());
-        connect(action, &QAction::toggled, btn, &QAbstractButton::setChecked);
-
-        connect(btn, &QAbstractButton::clicked, action, [action](bool b){
-            if ( b )
-                action->trigger();
-            else
-                action->setChecked(false);
-        });
-        return btn;
-#else
         return action_button(action);
-#endif
     }
 
     QMenu* action_menu(const QIcon& icon, const QString& label, QHBoxLayout* container)
@@ -401,9 +385,7 @@ public:
         view_actions = new QActionGroup(parent);
         view_actions->setExclusive(true);
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
         view_actions->setExclusionPolicy(QActionGroup::ExclusionPolicy::ExclusiveOptional);
-#endif
 
         toolbar_spacers.push_back(new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum));
         layout_tools->addItem(toolbar_spacers.back());

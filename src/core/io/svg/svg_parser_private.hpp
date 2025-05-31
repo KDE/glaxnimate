@@ -189,13 +189,7 @@ protected:
 
     QStringList split_attr(const QDomElement& e, const QString& name)
     {
-        return e.attribute(name).split(AnimateParser::separator,
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-        Qt::SkipEmptyParts
-#else
-        QString::SkipEmptyParts
-#endif
-        );
+        return e.attribute(name).split(AnimateParser::separator, Qt::SkipEmptyParts);
     }
 
     void parse_children(const ParseFuncArgs& args)
@@ -274,13 +268,7 @@ protected:
 
     std::vector<qreal> double_args(const QString& str)
     {
-        auto args_s = ::utils::split_ref(str, AnimateParser::separator,
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-            Qt::SkipEmptyParts
-#else
-            QString::SkipEmptyParts
-#endif
-        );
+        auto args_s = ::utils::split_ref(str, AnimateParser::separator, Qt::SkipEmptyParts);
         std::vector<qreal> args;
         args.reserve(args_s.size());
         std::transform(args_s.begin(), args_s.end(), std::back_inserter(args),

@@ -714,13 +714,7 @@ static void get_formats()
         if ( format_skip(format) )
             continue;
 
-        out_ext += QString(format->extensions).split(',',
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-            Qt::SkipEmptyParts
-#else
-            QString::SkipEmptyParts
-#endif
-        );
+        out_ext += QString(format->extensions).split(',', Qt::SkipEmptyParts);
     }
 }
 

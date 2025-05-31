@@ -60,11 +60,7 @@ int SmallerSpinBox::get_spin_size(const QAbstractSpinBox* box)
     {
         const QFontMetrics fm(box->fontMetrics());
         QString s = "999.99";
-#if QT_VERSION < QT_VERSION_CHECK(5, 11, 0)
-        int w = qMax(0, fm.boundingRect(s).width());
-#else
         int w = qMax(0, fm.horizontalAdvance(s));
-#endif
         w += 2; // cursor blinking space
 
         QStyleOptionSpinBox option;

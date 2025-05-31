@@ -94,11 +94,7 @@ static QFontDatabase::WritingSystem writingSystemFromLocale()
 
 static QFontDatabase::WritingSystem writingSystemForFont(const QFont &font, bool *hasLatin)
 {
-#if QT_VERSION_MAJOR < 6
-    QList<QFontDatabase::WritingSystem> writingSystems = QFontDatabase().writingSystems(font.family());
-#else
     QList<QFontDatabase::WritingSystem> writingSystems = QFontDatabase::writingSystems(font.family());
-#endif
 
     // this just confuses the algorithm below. Vietnamese is Latin with lots of special chars
     writingSystems.removeOne(QFontDatabase::Vietnamese);
@@ -216,11 +212,7 @@ void font::FontDelegate::paint(QPainter *painter,
         int w = painter->fontMetrics().horizontalAdvance(text + QLatin1String("  "));
         painter->setFont(font2);
 
-#if QT_VERSION_MAJOR < 6
-        QString sample = QFontDatabase().writingSystemSample(system);
-#else
         QString sample = QFontDatabase::writingSystemSample(system);
-#endif
         if (option.direction == Qt::RightToLeft)
             r.setRight(r.right() - w);
         else
