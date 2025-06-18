@@ -1,13 +1,15 @@
-# Translation of glaxnimate to Spanish
+# Spanish translations for glaxnimate.po package.
+# Copyright (C) 2024-2025 This file is copyright:
+# This file is distributed under the same license as the glaxnimate package.
 #
-# SPDX-FileCopyrightText: 2024 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2025 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
 # SPDX-FileCopyrightText: 2024 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-02 01:45+0000\n"
-"PO-Revision-Date: 2024-09-07 19:59+0100\n"
+"PO-Revision-Date: 2025-06-18 01:39+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -722,7 +724,7 @@ msgstr "Nuevo"
 #: src/gui/widgets/font/external_font_widget.ui:47
 #, kde-format
 msgid "Open..."
-msgstr "Abrir..."
+msgstr "Abrir…"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
@@ -755,7 +757,7 @@ msgstr "Importar como composición"
 #: src/android/main_window.cpp:517
 #, kde-format
 msgid "Save..."
-msgstr "Guardar..."
+msgstr "Guardar…"
 
 #: src/android/main_window.cpp:519
 #, kde-format
@@ -2649,7 +2651,7 @@ msgstr "Descargar"
 #: src/gui/emoji/emoji_set_dialog.ui:149
 #, kde-format
 msgid "Add Emoji..."
-msgstr "Añadir Emoji..."
+msgstr "Añadir Emoji…"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_close)
@@ -3041,7 +3043,7 @@ msgstr "Quitar Tangentes"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Stop Color..."
-msgstr "Color de parada..."
+msgstr "Color de parada…"
 
 #: src/gui/tools/edit_tool.cpp:381
 #, kde-format
@@ -3155,7 +3157,7 @@ msgstr "Borrar"
 #: src/gui/tools/select_tool.cpp:429
 #, kde-format
 msgid "Move to..."
-msgstr "Mover a..."
+msgstr "Mover a…"
 
 #: src/gui/tools/star_tool.cpp:19 src/gui/widgets/enum_combo.cpp:90
 #, kde-format
@@ -3629,7 +3631,7 @@ msgstr "Desde el fotograma"
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:132
 #, kde-format
 msgid "Select..."
-msgstr "Seleccionar..."
+msgstr "Seleccionar…"
 
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:40
 #, kde-format
@@ -3748,7 +3750,7 @@ msgstr "Advertencia"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:138
 #, kde-format
 msgid "Export..."
-msgstr "Exportar..."
+msgstr "Exportar…"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:150
 #, kde-format
@@ -4026,17 +4028,17 @@ msgstr "Archivo"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:270
 #, kde-format
 msgid "Add Image…"
-msgstr "Añadir imagen..."
+msgstr "Añadir imagen…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:273
 #, kde-format
 msgid "Import…"
-msgstr "Importar..."
+msgstr "Importar…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:276
 #, kde-format
 msgid "Import from LottieFiles…"
-msgstr "Importar desde LottieFiles..."
+msgstr "Importar desde LottieFiles…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:279
 #, kde-format
@@ -4058,17 +4060,17 @@ msgstr "No se pudo guardar plantilla"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:323
 #, kde-format
 msgid "Export…"
-msgstr "Exportar..."
+msgstr "Exportar…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:326
 #, kde-format
 msgid "Export As…"
-msgstr "Exportar Como..."
+msgstr "Exportar Como…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:329
 #, kde-format
 msgid "Export as Image Sequence…"
-msgstr "Exportar como secuencia de imágenes..."
+msgstr "Exportar como secuencia de imágenes…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:356
 #, kde-format
@@ -4131,7 +4133,7 @@ msgstr "Voltear Vista"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:457
 #, kde-format
 msgid "Raster…"
-msgstr "Ráster..."
+msgstr "Ráster…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:459
 #, kde-format
@@ -4161,7 +4163,7 @@ msgstr "RIVE (lienzo)"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:480
 #, kde-format
 msgid "Resize…"
-msgstr "Cambiar Tamaño..."
+msgstr "Cambiar Tamaño…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:483
 #, kde-format
@@ -4171,12 +4173,12 @@ msgstr "Limpiar"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:486
 #, kde-format
 msgid "Timing…"
-msgstr "Tiempo..."
+msgstr "Tiempo…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:491
 #, kde-format
 msgid "Metadata…"
-msgstr "Metadatos..."
+msgstr "Metadatos…"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:502
@@ -4236,7 +4238,7 @@ msgstr "Composición Nueva"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:596
 #, kde-format
 msgid "Emoji…"
-msgstr "Emoji..."
+msgstr "Emoji…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:609
 #, kde-format
@@ -4251,7 +4253,7 @@ msgstr "Llevar al fondo"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:621
 #, kde-format
 msgid "Move to…"
-msgstr "Mover a..."
+msgstr "Mover a…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:627
 #, kde-format
@@ -4336,7 +4338,7 @@ msgstr "Objeto a trayecto"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:681
 #, kde-format
 msgid "Trace Bitmap…"
-msgstr "Trazar mapa de bits..."
+msgstr "Trazar mapa de bits…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
 #, kde-format
@@ -4366,7 +4368,7 @@ msgstr "Revertir"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:699
 #, kde-format
 msgid "Add Node…"
-msgstr "Añadir Nodo..."
+msgstr "Añadir Nodo…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:701
 #, kde-format
@@ -4634,7 +4636,7 @@ msgstr " fps"
 #: src/gui/widgets/dialogs/startup_dialog.ui:158
 #, kde-format
 msgid "Browse..."
-msgstr "Explorar..."
+msgstr "Explorar…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_show_at_startup)
 #: src/gui/widgets/dialogs/startup_dialog.ui:176
@@ -4976,7 +4978,7 @@ msgstr "Configurar detección de colores"
 #: src/gui/widgets/dialogs/trace_dialog.ui:493
 #, kde-format
 msgid "Configure..."
-msgstr "Configurar..."
+msgstr "Configurar…"
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_potrace)
 #: src/gui/widgets/dialogs/trace_dialog.ui:514
@@ -5020,7 +5022,7 @@ msgstr "Acercar"
 #: src/gui/widgets/dialogs/trace_dialog.ui:670
 #, kde-format
 msgid "Help..."
-msgstr "Ayuda..."
+msgstr "Ayuda…"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_defaults)
 #: src/gui/widgets/dialogs/trace_dialog.ui:681
@@ -5147,7 +5149,7 @@ msgstr "Editar el fragmento seleccionado"
 #: src/gui/widgets/docks/snippet_list_widget.ui:43
 #, kde-format
 msgid "Edit..."
-msgstr "Editar..."
+msgstr "Editar…"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_3)
 #: src/gui/widgets/docks/snippet_list_widget.ui:54
@@ -5447,7 +5449,7 @@ msgstr "Comentarios"
 #: src/gui/widgets/lottiefiles/search_result.cpp:67
 #, kde-format
 msgid "View on LottieFiles..."
-msgstr "Ver en LottieFiles..."
+msgstr "Ver en LottieFiles…"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:56
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
@@ -5561,7 +5563,7 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:324
 #, kde-format
 msgid "From File..."
-msgstr "Desde Archivo..."
+msgstr "Desde Archivo…"
 
 #: src/gui/widgets/menus/node_menu.cpp:325
 #: src/gui/widgets/menus/node_menu.cpp:329
@@ -5572,7 +5574,7 @@ msgstr "Actualizar Imagen"
 #: src/gui/widgets/menus/node_menu.cpp:356
 #, kde-format
 msgid "Trace Bitmap..."
-msgstr "Trazar mapa de bits..."
+msgstr "Trazar mapa de bits…"
 
 #: src/gui/widgets/menus/node_menu.cpp:367
 #, kde-format
@@ -5623,7 +5625,7 @@ msgstr "Duplicar"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Move to..."
-msgstr "Mover a..."
+msgstr "Mover a…"
 
 #: src/gui/widgets/menus/node_menu.cpp:479
 #, kde-format
@@ -5674,7 +5676,7 @@ msgstr "Instalar desde archivo"
 #: src/gui/widgets/settings/plugin_settings_widget.ui:61
 #, kde-format
 msgid "Install..."
-msgstr "Instalar..."
+msgstr "Instalar…"
 
 #. i18n: ectx: property (text), widget (QLineEdit, line_version)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:90
@@ -6111,7 +6113,7 @@ msgstr "Desenlazar trazo"
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:447
 #, kde-format
 msgid "Rename..."
-msgstr "Renombrar..."
+msgstr "Renombrar…"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:451
 #, kde-format
@@ -6121,7 +6123,7 @@ msgstr "Renombrar Color de Muestra"
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:459
 #, kde-format
 msgid "Edit Color..."
-msgstr "Editar color..."
+msgstr "Editar color…"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:502
 #, kde-format
@@ -6155,7 +6157,7 @@ msgstr "Generar Muestra de Color desde el Documento abierto"
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:124
 #, kde-format
 msgid "From Palette..."
-msgstr "Desde Paleta..."
+msgstr "Desde Paleta…"
 
 #: src/gui/widgets/shape_style/fill_style_widget.cpp:102
 #, kde-format
@@ -6302,7 +6304,7 @@ msgstr "Transición A Siguiente"
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:162
 #, kde-format
 msgid "Custom..."
-msgstr "Personalizado..."
+msgstr "Personalizado…"
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:175
 #, kde-format
