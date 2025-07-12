@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-17 00:39+0000\n"
-"PO-Revision-Date: 2025-06-04 17:29+0300\n"
+"PO-Revision-Date: 2025-07-10 19:36+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -420,12 +420,12 @@ msgstr ""
 #: src/android/help_dialog.cpp:66
 #, kde-format
 msgid "Save the current document, prompting to select a file for new documents"
-msgstr ""
+msgstr "Tallenna nykyinen tiedosto ja pyydä uusille tiedostoille nimi"
 
 #: src/android/help_dialog.cpp:70
 #, kde-format
 msgid "Save the current document, always prompting to select a file."
-msgstr ""
+msgstr "Tallenna nykyinen tiedosto ja pyydä aina valitsemaan nimi."
 
 #: src/android/help_dialog.cpp:74
 #, kde-format
@@ -434,6 +434,9 @@ msgid ""
 "Currently the following formats are supported:\n"
 "%1"
 msgstr ""
+"Tallenna kopio nykyisestä tiedostosta ja pyydä valitsemaan tiedostomuoto ja\n"
+" -nimi. Toistaiseksi tuetaan seuraavia tiedostomuotoja:\n"
+"%1"
 
 #: src/android/help_dialog.cpp:78
 #, kde-format
@@ -543,7 +546,7 @@ msgstr "Piirtää vapaan käden käyriä."
 #: src/android/help_dialog.cpp:150
 #, kde-format
 msgid "Shows a tray with the shape drawing tools."
-msgstr ""
+msgstr "Näytä kuvionpiirtotyökalujen telakka"
 
 #: src/android/help_dialog.cpp:154
 #, kde-format
@@ -572,12 +575,12 @@ msgstr "Luo ja muokkaa tekstikuvioita."
 #: src/android/help_dialog.cpp:170
 #, kde-format
 msgid "Toggles the menu showing non-drawing buttons."
-msgstr ""
+msgstr "Näyttää tai piilottaa ei-piirtopainikkeiden valikon."
 
 #: src/android/help_dialog.cpp:174
 #, kde-format
 msgid "Starts playback."
-msgstr ""
+msgstr "Käynnistää toiston."
 
 #: src/android/help_dialog.cpp:178
 #, kde-format
@@ -1118,12 +1121,12 @@ msgstr ""
 #: src/core/io/aep/aep_loader.cpp:559
 #, kde-format
 msgid "Unknown property \"%1\""
-msgstr ""
+msgstr "Odotettiin ominaisuutta ”%1”"
 
 #: src/core/io/aep/aep_loader.cpp:1103
 #, kde-format
 msgid "Unknown shape %1"
-msgstr ""
+msgstr "Tuntematon kuvio ”%1”"
 
 #: src/core/io/aep/aep_loader.cpp:1162
 #: src/core/io/lottie/lottie_importer.hpp:390
@@ -1140,7 +1143,7 @@ msgstr ""
 #: src/core/io/aep/aep_parser.hpp:49
 #, kde-format
 msgid "Not an AEP file"
-msgstr ""
+msgstr "Ei ole AEP-tiedosto"
 
 #: src/core/io/aep/aep_parser.hpp:123
 #, kde-format
@@ -1465,7 +1468,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:984
 #, kde-format
 msgid "(null)"
-msgstr ""
+msgstr "(tyhjä)"
 
 #: src/core/io/lottie/lottie_importer.hpp:990
 #, kde-format
@@ -1850,7 +1853,7 @@ msgstr ""
 #: src/core/io/video/video_format.cpp:782
 #, kde-format
 msgid "No video codec"
-msgstr ""
+msgstr "Ei videokoodekkia"
 
 #: src/core/io/video/video_format.cpp:431
 #, kde-format
@@ -1890,12 +1893,12 @@ msgstr ""
 #: src/core/io/video/video_format.cpp:750
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
-msgstr ""
+msgstr "Tulosmuotoa ei voitu päätellä tiedoston päätteestä: käytetään MPEGiä."
 
 #: src/core/io/video/video_format.cpp:754
 #, kde-format
 msgid "Could not find output format"
-msgstr ""
+msgstr "Tulosmuotoa ei löytynyt"
 
 #: src/core/io/video/video_format.cpp:827
 #, kde-format
@@ -2116,22 +2119,22 @@ msgstr ""
 #: src/core/model/assets/named_color.cpp:17
 #, kde-format
 msgid "Unnamed Color"
-msgstr ""
+msgstr "Nimetön väri"
 
 #: src/core/model/mask_settings.cpp:13
 #, kde-format
 msgid "Mask"
-msgstr ""
+msgstr "Peite"
 
 #: src/core/model/object.hpp:90
 #, kde-format
 msgid "Unknown Object"
-msgstr ""
+msgstr "Tuntematon olio"
 
 #: src/core/model/shapes/ellipse.cpp:19 src/gui/tools/ellipse_tool.cpp:17
 #, kde-format
 msgid "Ellipse"
-msgstr ""
+msgstr "Ellipsi"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_colors)
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -2148,7 +2151,7 @@ msgstr ""
 #: src/gui/widgets/tools/shape_tool_widget.ui:66
 #, kde-format
 msgid "Fill"
-msgstr ""
+msgstr "Täytä"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/model/shapes/group.hpp:42
@@ -2157,12 +2160,12 @@ msgstr ""
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
 #, kde-format
 msgid "Group"
-msgstr ""
+msgstr "Ryhmä"
 
 #: src/core/model/shapes/image.cpp:85 src/gui/widgets/menus/node_menu.cpp:352
 #, kde-format
 msgid "Image"
-msgstr ""
+msgstr "Kuva"
 
 #: src/core/model/shapes/inflate_deflate.cpp:18
 #, kde-format
@@ -2175,7 +2178,7 @@ msgstr ""
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
 #, kde-format
 msgid "Layer"
-msgstr ""
+msgstr "Taso"
 
 #: src/core/model/shapes/offset_path.cpp:342
 #, kde-format
@@ -2190,7 +2193,7 @@ msgstr ""
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
-msgstr ""
+msgstr "Polku"
 
 #: src/core/model/shapes/polystar.hpp:48
 #, kde-format
@@ -2205,17 +2208,17 @@ msgstr ""
 #: src/core/model/shapes/rect.hpp:31 src/gui/tools/rectangle_tool.hpp:20
 #, kde-format
 msgid "Rectangle"
-msgstr ""
+msgstr "Suorakaide"
 
 #: src/core/model/shapes/repeater.cpp:25
 #, kde-format
 msgid "Repeater"
-msgstr ""
+msgstr "Toistin"
 
 #: src/core/model/shapes/round_corners.cpp:20
 #, kde-format
 msgid "Round Corners"
-msgstr ""
+msgstr "Pyöristä kulmat"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_stroke)
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -2231,19 +2234,19 @@ msgstr ""
 #: src/gui/widgets/tools/shape_tool_widget.ui:80
 #, kde-format
 msgid "Stroke"
-msgstr ""
+msgstr "Veto"
 
 #: src/core/model/shapes/text.cpp:255
 #, kde-format
 msgid "Change Font"
-msgstr ""
+msgstr "Vaihda fontti"
 
 #. i18n: ectx: Menu (text)
 #: src/core/model/shapes/text.cpp:489 src/gui/glaxnimateui.rc:200
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:120
 #, kde-format
 msgid "Text"
-msgstr ""
+msgstr "Teksti"
 
 #: src/core/model/shapes/trim.cpp:24
 #, kde-format
@@ -2253,14 +2256,14 @@ msgstr ""
 #: src/core/model/shapes/zig_zag.cpp:139
 #, kde-format
 msgid "Zig Zag"
-msgstr ""
+msgstr "Siksak"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TimingDialog)
 #: src/core/model/stretchable_time.cpp:28
 #: src/gui/widgets/dialogs/timing_dialog.ui:21
 #, kde-format
 msgid "Timing"
-msgstr ""
+msgstr "Ajoitus"
 
 #: src/core/model/transform.hpp:29
 #, kde-format
@@ -2500,7 +2503,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Emoji"
-msgstr ""
+msgstr "Valitse emoji"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:154
 #: src/gui/emoji/emoji_set_dialog.cpp:207
@@ -2591,7 +2594,7 @@ msgstr "Lataa uudelleen"
 #: src/gui/emoji/emoji_set_dialog.ui:121
 #, kde-format
 msgid "View Website"
-msgstr ""
+msgstr "Siirry sivustolle"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_download)
 #: src/gui/emoji/emoji_set_dialog.ui:135
@@ -2643,7 +2646,7 @@ msgstr "Asettelu"
 #: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:455
 #, kde-format
 msgid "Document"
-msgstr ""
+msgstr "Tiedosto"
 
 #. i18n: ectx: Menu (render_frame_menu)
 #: src/gui/glaxnimateui.rc:88
@@ -2663,7 +2666,7 @@ msgstr ""
 #: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:499
 #, kde-format
 msgid "Playback"
-msgstr ""
+msgstr "Toisto"
 
 #. i18n: ectx: Menu (object)
 #: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:607
@@ -3026,27 +3029,27 @@ msgstr ""
 #: src/gui/tools/edit_tool.cpp:914
 #, kde-format
 msgid "Straighten segments"
-msgstr ""
+msgstr "Suorista segmentit"
 
 #: src/gui/tools/edit_tool.cpp:962
 #, kde-format
 msgid "Curve segments"
-msgstr ""
+msgstr "Käyristä segmentit"
 
 #: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:338
 #, kde-format
 msgid "Edit"
-msgstr ""
+msgstr "Muokkaa"
 
 #: src/gui/tools/ellipse_tool.cpp:29
 #, kde-format
 msgid "Draw Ellipse"
-msgstr ""
+msgstr "Piirrä ellipsi"
 
 #: src/gui/tools/fill_tool.cpp:54
 #, kde-format
 msgid "Apply Style"
-msgstr ""
+msgstr "Käytä tyyliä"
 
 #: src/gui/tools/fill_tool.cpp:89
 #, kde-format
@@ -3387,7 +3390,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:21
 #, kde-format
 msgid "Document Metadata"
-msgstr ""
+msgstr "Tiedoston metatiedot"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:38
@@ -3568,7 +3571,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:88
 #, kde-format
 msgid "Choose..."
-msgstr ""
+msgstr "Valitse…"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:97
@@ -3663,7 +3666,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:868
 #, kde-format
 msgid "Could not import %1"
-msgstr ""
+msgstr "Ei voitu tuoda: %1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:518
 #, kde-format
@@ -4230,17 +4233,17 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:699
 #, kde-format
 msgid "Add Node…"
-msgstr ""
+msgstr "Lisää solmu…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:701
 #, kde-format
 msgid "Join Nodes"
-msgstr ""
+msgstr "Yhdistä solmut"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:703
 #, kde-format
 msgid "Split Nodes"
-msgstr ""
+msgstr "Jaa solmut"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:708
 #, kde-format
@@ -4274,12 +4277,12 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
-msgstr ""
+msgstr "Jäljitä bittikartta"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1453
 #, kde-format
 msgid "Only select one image"
-msgstr ""
+msgstr "Valitse vain yksi kuva"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1462
 #, kde-format
@@ -4375,7 +4378,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/resize_dialog.ui:21
 #, kde-format
 msgid "Resize Document"
-msgstr ""
+msgstr "Muuta tiedoston kokoa"
 
 #: src/gui/widgets/dialogs/resize_dialog.cpp:83
 #, kde-format
@@ -4994,12 +4997,12 @@ msgstr "Kumoamishistoria"
 #: src/gui/widgets/enum_combo.cpp:56
 #, kde-format
 msgid "NonZero"
-msgstr ""
+msgstr "Ei-nolla"
 
 #: src/gui/widgets/enum_combo.cpp:58
 #, kde-format
 msgid "Even Odd"
-msgstr ""
+msgstr "Parillinen-pariton"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_cap_butt)
 #. i18n: ectx: property (text), widget (QToolButton, button_cap_butt)
@@ -5008,7 +5011,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:81
 #, kde-format
 msgid "Butt"
-msgstr ""
+msgstr "Pääty"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_cap_round)
 #. i18n: ectx: property (text), widget (QToolButton, button_cap_round)
@@ -5021,7 +5024,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:199
 #, kde-format
 msgid "Round"
-msgstr ""
+msgstr "Pyöreä"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_cap_square)
 #. i18n: ectx: property (text), widget (QToolButton, button_cap_square)
@@ -5030,7 +5033,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:141
 #, kde-format
 msgid "Square"
-msgstr ""
+msgstr "Nelikulmainen"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_join_miter)
 #. i18n: ectx: property (text), widget (QToolButton, button_join_miter)
@@ -5039,7 +5042,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:229
 #, kde-format
 msgid "Miter"
-msgstr ""
+msgstr "Hiippaliitos"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_join_bevel)
 #. i18n: ectx: property (text), widget (QToolButton, button_join_bevel)
@@ -5048,12 +5051,12 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:169
 #, kde-format
 msgid "Bevel"
-msgstr ""
+msgstr "Viisteliitos"
 
 #: src/gui/widgets/enum_combo.cpp:92
 #, kde-format
 msgid "Polygon"
-msgstr ""
+msgstr "Monikulmio"
 
 #: src/gui/widgets/font/external_font_widget.cpp:127
 #, kde-format
@@ -5061,6 +5064,8 @@ msgid ""
 "All supported files (*.ttf, *.otf, *.css); CSS files (*.css); Font files (*."
 "ttf, *.otf); All files (*)"
 msgstr ""
+"Kaikki tuetut tiedostot (*.ttf, *.otf, *.css); CSS-tiedostot (*.css); "
+"Fonttitiedostot (*.ttf, *.otf); Kaikki tiedostot (*)"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/font/external_font_widget.ui:26
@@ -5076,7 +5081,7 @@ msgstr ""
 #: src/gui/widgets/font/google_fonts_widget.ui:82
 #, kde-format
 msgid "Font Style"
-msgstr ""
+msgstr "Fonttityyli"
 
 #: src/gui/widgets/font/font_loader.cpp:47
 #, kde-format
