@@ -69,7 +69,15 @@ public:
     void load(QIODevice* device)
     {
         SvgParseError err;
-        if ( !dom.setContent(device, true, &err.message, &err.line, &err.column) )
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+        auto result = dom.setContent(device, QDomDocument::ParseOption::UseNamespaceProcessing);
+        err.message = result.errorMessage;
+        err.line = result.errorLine;
+        err.column = result.errorColumn;
+#else
+        bool result = dom.setContent(device, true, &err.message, &err.line, &err.column);
+#endif
+        if ( !result )
             throw err;
     }
 

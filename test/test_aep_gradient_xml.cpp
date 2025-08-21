@@ -32,7 +32,14 @@ class TestCase: public QObject
         QDomDocument dom;
         QString error;
         int line = 0, col = 0;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+        auto result = dom.setContent(xml.trimmed());
+        error = result.errorMessage;
+        line = result.errorLine;
+        col = result.errorColumn;
+#else
         dom.setContent(xml.trimmed(), false, &error, &line, &col);
+#endif
         if ( error != "" )
         {
             auto msg = QString("%1:%2: %3").arg(line).arg(col).arg(error);
