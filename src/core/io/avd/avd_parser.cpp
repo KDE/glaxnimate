@@ -662,7 +662,16 @@ private:
 
         SvgParseError err;
         QDomDocument resource_dom;
-        if ( !resource_dom.setContent(&resource_file, true, &err.message, &err.line, &err.column) )
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+        auto result = resource_dom.setContent(&resource_file, QDomDocument::ParseOption::UseNamespaceProcessing);
+        err.message = result.errorMessage;
+        err.line = result.errorLine;
+        err.column = result.errorColumn;
+#else
+        bool result = resource_dom.setContent(&resource_file, true, &err.message, &err.line, &err.column);
+#endif
+        if ( !result )
         {
             warning(err.formatted(path));
             warning(i18n("Could not load resource %1", id));
