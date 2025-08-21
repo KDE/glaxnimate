@@ -75,7 +75,7 @@ public:
         err.line = result.errorLine;
         err.column = result.errorColumn;
 #else
-        bool result = dom.setContent(&resource_file, true, &err.message, &err.line, &err.column);
+        bool result = dom.setContent(device, true, &err.message, &err.line, &err.column);
 #endif
         if ( !result )
             throw err;
