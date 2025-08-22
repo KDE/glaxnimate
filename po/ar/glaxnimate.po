@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-17 00:39+0000\n"
-"PO-Revision-Date: 2025-08-04 14:38+0400\n"
+"PO-Revision-Date: 2025-08-21 10:33+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -817,7 +817,7 @@ msgstr "أضف إطارًا رئيساً"
 #: src/android/main_window.cpp:989
 #, kde-format
 msgid "Remove keyframe"
-msgstr "إزالة الإطار الرئيس"
+msgstr "أزل الإطار الرئيس"
 
 #: src/android/main_window.cpp:1004
 #: src/gui/widgets/menus/animated_property_menu.cpp:55
@@ -1945,7 +1945,7 @@ msgstr ""
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:196
 #, kde-format
 msgid "Add Keyframe"
-msgstr "إضافة مشهد مفتاحي"
+msgstr "أضف إطارًا رئيساً"
 
 #: src/core/model/animation/animatable_path.cpp:139
 #, kde-format
@@ -6179,12 +6179,14 @@ msgid "Fast"
 msgstr "سريع"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:84
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Ease In"
 msgid "Ease In"
 msgstr "إرخاء"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:86
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Ease Out"
 msgid "Ease Out"
 msgstr "إرخاء"
 
@@ -6207,7 +6209,7 @@ msgstr ""
 #: src/gui/widgets/timeline/timeline_items.cpp:142
 #, kde-format
 msgid "Drag Keyframes"
-msgstr ""
+msgstr "اسحب الإطار الرئيس"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_both)
 #: src/gui/widgets/tools/fill_tool_widget.ui:49
