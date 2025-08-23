@@ -121,6 +121,8 @@ if ( PYTHON_SCRIPTING_ENABLED )
 
     find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
     message(STATUS ${Python3_EXECUTABLE})
+
+    set(PythonLibsNew_FIND_VERSION ${Python3_VERSION})
 else()
     message(STATUS "Python Disabled")
 endif()
