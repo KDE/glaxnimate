@@ -123,6 +123,7 @@ if ( PYTHON_SCRIPTING_ENABLED )
     message(STATUS ${Python3_EXECUTABLE})
 
     set(PythonLibsNew_FIND_VERSION ${Python3_VERSION})
+    set(PythonLibsNew_FIND_QUIETLY ON)
 else()
     message(STATUS "Python Disabled")
 endif()
