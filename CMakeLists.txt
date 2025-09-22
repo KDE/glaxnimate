@@ -150,7 +150,7 @@ if (QT_MAJOR_VERSION STREQUAL "6")
 endif()
 include(ECMAddAppIcon)
 
-# TODO: The following definitons should be enabled
+# TODO: The following definitions should be enabled
 remove_definitions(
     -DQT_NO_CAST_FROM_ASCII
 )
@@ -190,7 +190,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Potrace
-option(GLAXNIMATE_SYSTEM_POTRACE "Use the system potrace libarary" ON)
+option(GLAXNIMATE_SYSTEM_POTRACE "Use the system potrace library" ON)
 if (NOT GLAXNIMATE_SYSTEM_POTRACE)
     message(STATUS "Using bundled potrace")
     set(CMAKE_C_COMPILE_OBJECT ${CMAKE_CXX_COMPILE_OBJECT})
