@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-17 00:39+0000\n"
-"PO-Revision-Date: 2025-08-23 09:33+0300\n"
+"PO-Revision-Date: 2025-10-17 11:22+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -590,17 +590,17 @@ msgstr ""
 #: src/android/help_dialog.cpp:182
 #, kde-format
 msgid "Jumps to the first frame."
-msgstr ""
+msgstr "Hyppää ensimmäiseen kuvaan."
 
 #: src/android/help_dialog.cpp:186
 #, kde-format
 msgid "Goes to the previous frame."
-msgstr ""
+msgstr "Siirtyy edelliseen kuvaan."
 
 #: src/android/help_dialog.cpp:190
 #, kde-format
 msgid "Goes to the next frame."
-msgstr ""
+msgstr "Siirtyy seuraavaan kuvaan."
 
 #: src/android/help_dialog.cpp:194
 #, kde-format
@@ -1005,7 +1005,7 @@ msgstr ""
 #: src/core/model/animation/animatable.cpp:171
 #, kde-format
 msgid "Update %1"
-msgstr ""
+msgstr "Päivitä %1"
 
 #: src/core/command/animation_commands.cpp:307
 #: src/gui/widgets/timeline/timeline_items.cpp:537
@@ -1103,7 +1103,7 @@ msgstr ""
 #: src/core/io/aep/aep_loader.cpp:411
 #, kde-format
 msgid "Could convert %1"
-msgstr ""
+msgstr "Ei voitu muuntaa: %1"
 
 #: src/core/io/aep/aep_loader.cpp:415
 #: src/core/io/lottie/lottie_importer.hpp:897
@@ -1111,7 +1111,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:926
 #, kde-format
 msgid "Invalid value for %1"
-msgstr ""
+msgstr "Virheellinen arvo: %1"
 
 #: src/core/io/aep/aep_loader.cpp:510
 #, kde-format
@@ -1178,17 +1178,17 @@ msgstr ""
 #: src/core/io/aep/aep_parser.hpp:424
 #, kde-format
 msgid "Unknown property type: %1"
-msgstr ""
+msgstr "Tuntematon ominaisuuden tyyppi: %1"
 
 #: src/core/io/aep/aep_parser.hpp:645
 #, kde-format
 msgid "Missing list data"
-msgstr ""
+msgstr "Luettelotieto puuttuu"
 
 #: src/core/io/aep/aep_parser.hpp:657
 #, kde-format
 msgid "Not enough data in list"
-msgstr ""
+msgstr "Luettelossa ei ole tarpeeksi tietoa"
 
 #: src/core/io/aep/aep_parser.hpp:791
 #, kde-format
@@ -1255,13 +1255,13 @@ msgstr ""
 #: src/gui/tools/base.cpp:162
 #, kde-format
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: src/core/io/glaxnimate/glaxnimate_format.hpp:26
 #: src/core/io/glaxnimate/glaxnimate_mime.hpp:21
 #, kde-format
 msgid "Glaxnimate Animation"
-msgstr ""
+msgstr "Glaxnimate-animaatio"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:21
 #: src/core/io/glaxnimate/glaxnimate_mime.cpp:88
@@ -1300,7 +1300,7 @@ msgstr ""
 #: src/core/io/glaxnimate/import_state.hpp:128
 #, kde-format
 msgid "Object %1 is invalid"
-msgstr ""
+msgstr "Olio %1 on virheellinen"
 
 #: src/core/io/glaxnimate/import_state.hpp:317
 #, kde-format
@@ -1432,17 +1432,17 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:332
 #, kde-format
 msgid "Invalid parent layer %1"
-msgstr ""
+msgstr "Virheellinen emotaso %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:457
 #, kde-format
 msgid "Unsupported layer of type %1"
-msgstr ""
+msgstr "Ei-tuettu tyypin %1 taso"
 
 #: src/core/io/lottie/lottie_importer.hpp:482
 #, kde-format
 msgid "Missing shape type"
-msgstr ""
+msgstr "Kuviotyyppi puuttuu"
 
 #: src/core/io/lottie/lottie_importer.hpp:495
 #: src/core/io/lottie/lottie_importer.hpp:505
@@ -1453,7 +1453,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:528
 #, kde-format
 msgid "Unknown field %2%1"
-msgstr ""
+msgstr "Tuntematon kenttä %2%1"
 
 #: src/core/io/lottie/lottie_importer.hpp:852
 #, kde-format
@@ -1538,7 +1538,7 @@ msgstr "Liian suuri tiedosto (%1 kt), tulisi olla alle 64 kt"
 #: src/core/io/lottie/tgs_format.hpp:19
 #, kde-format
 msgid "Telegram Animated Sticker"
-msgstr ""
+msgstr "Telegramin animoitu tarra"
 
 #: src/core/io/lottie/validation.cpp:25
 #, kde-format
@@ -1558,7 +1558,7 @@ msgstr "Virheellinen FPS %1, tulisi olla %2"
 #: src/core/io/lottie/validation.cpp:49
 #, kde-format
 msgid "Too many frames: %1, should be less than %2"
-msgstr ""
+msgstr "Liikaa kuvia: %1; tulisi olla alle %2"
 
 #: src/core/io/lottie/validation.hpp:22
 #, kde-format
@@ -1604,7 +1604,7 @@ msgstr "Sarakkeita"
 #: src/core/io/raster/spritesheet_format.cpp:34
 #, kde-format
 msgid "Number of columns in the sheet"
-msgstr ""
+msgstr "Arkin sarakkeiden määrä"
 
 #: src/core/io/raster/spritesheet_format.cpp:35
 #, kde-format
@@ -1639,12 +1639,12 @@ msgstr ""
 #: src/core/io/rive/rive_format.cpp:24
 #, kde-format
 msgid "Unsupported format"
-msgstr ""
+msgstr "Ei-tuettu muoto"
 
 #: src/core/io/rive/rive_format.cpp:34
 #, kde-format
 msgid "Could not read header"
-msgstr ""
+msgstr "Otsaketta ei voitu lukea"
 
 #: src/core/io/rive/rive_format.cpp:40
 #, kde-format
@@ -1655,7 +1655,7 @@ msgstr ""
 #: src/core/io/rive/rive_format.cpp:46 src/core/io/rive/rive_loader.cpp:750
 #, kde-format
 msgid "Could not read property table"
-msgstr ""
+msgstr "Ominaisuustaulukkoa ei voitu lukea"
 
 #: src/core/io/rive/rive_format.hpp:24
 #, kde-format
@@ -1690,7 +1690,7 @@ msgstr ""
 #: src/core/io/rive/rive_loader.cpp:215
 #, kde-format
 msgid "Unexpected Animation"
-msgstr ""
+msgstr "Odottamaton animaatio"
 
 #: src/core/io/rive/rive_loader.cpp:231
 #, kde-format
@@ -1700,7 +1700,7 @@ msgstr ""
 #: src/core/io/rive/rive_loader.cpp:242
 #, kde-format
 msgid "Invalid Image Data"
-msgstr ""
+msgstr "Virheellistä kuvatietoa"
 
 #: src/core/io/rive/rive_loader.cpp:253
 #, kde-format
@@ -1710,7 +1710,7 @@ msgstr ""
 #: src/core/io/rive/rive_loader.cpp:268
 #, kde-format
 msgid "Could not find parent with id %1"
-msgstr ""
+msgstr "Emoa tunnisteella %1 ei löytynyt"
 
 #: src/core/io/rive/rive_loader.cpp:318
 #, kde-format
@@ -1750,38 +1750,38 @@ msgstr ""
 #: src/core/io/svg/svg_format.cpp:67
 #, kde-format
 msgid "External Stylesheet"
-msgstr ""
+msgstr "Ulkoinen tyylisivu"
 
 #: src/core/io/svg/svg_format.cpp:69
 #, kde-format
 msgid "Font face with external url"
-msgstr ""
+msgstr "Kirjasinleikkaus ulkoisesta verkko-osoitteesta"
 
 #: src/core/io/svg/svg_format.cpp:71
 #, kde-format
 msgid "Embedded data"
-msgstr ""
+msgstr "Upotettu tieto"
 
 #: src/core/io/svg/svg_format.cpp:72
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:961
 #, kde-format
 msgid "Ignore"
-msgstr ""
+msgstr "Sivuuta"
 
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
 msgid "External Fonts"
-msgstr ""
+msgstr "Ulkoiset fontit"
 
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
 msgid "How to include external font"
-msgstr ""
+msgstr "Kuinka sisällyttää ulkoinen fontti"
 
 #: src/core/io/svg/svg_format.cpp:92
 #, kde-format
 msgid "Could not write to file"
-msgstr ""
+msgstr "Tiedostoon ei voitu kirjoittaa"
 
 #: src/core/io/svg/svg_format.hpp:21 src/core/io/svg/svg_mime.hpp:20
 #, kde-format
@@ -1796,32 +1796,32 @@ msgstr "SVG-esikatselu"
 #: src/core/io/video/video_format.cpp:73
 #, kde-format
 msgid "Could not find encoder for '%1'"
-msgstr ""
+msgstr "Kohteelle ”%1” ei löytynyt koodainta"
 
 #: src/core/io/video/video_format.cpp:77
 #, kde-format
 msgid "Could not allocate stream"
-msgstr ""
+msgstr "Virtaa ei voitu osoittaa"
 
 #: src/core/io/video/video_format.cpp:82
 #, kde-format
 msgid "Could not alloc an encoding context"
-msgstr ""
+msgstr "Koodauskontekstia ei voitu osoittaa"
 
 #: src/core/io/video/video_format.cpp:110
 #, kde-format
 msgid "Error encoding a frame: %1"
-msgstr ""
+msgstr "Virhe koodattaessa kuvaa: %1"
 
 #: src/core/io/video/video_format.cpp:120
 #, kde-format
 msgid "Error while writing output packet: %1"
-msgstr ""
+msgstr "Virhe kirjoitettaessa tulospakettia: %1"
 
 #: src/core/io/video/video_format.cpp:131
 #, kde-format
 msgid "Error sending a frame to the encoder: %1"
-msgstr ""
+msgstr "Virhe lähetettäessä kuvaa koodaimeen: %1"
 
 #: src/core/io/video/video_format.cpp:187
 #: src/core/io/video/video_format.cpp:201
@@ -1979,7 +1979,7 @@ msgstr "Laajenna kuviota"
 #: src/core/model/animation_container.cpp:54
 #, kde-format
 msgid "Animation Timing"
-msgstr ""
+msgstr "Animaation ajastus"
 
 #: src/core/model/assets/assets.hpp:34
 msgid "values"
@@ -2014,7 +2014,7 @@ msgstr "Liu’ut"
 #: src/core/model/assets/assets.hpp:151
 #, kde-format
 msgid "Compositions"
-msgstr ""
+msgstr "Kompositiot"
 
 #: src/core/model/assets/assets.hpp:173
 #, kde-format
@@ -3360,7 +3360,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:189
 #, kde-format
 msgid "Min Frequency"
-msgstr ""
+msgstr "Vähimmäistaajuus"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_3)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:205
@@ -3654,7 +3654,7 @@ msgstr "Vie tiedostoon %1"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:448
 #, kde-format
 msgid "No importer found for %1"
-msgstr ""
+msgstr "Kohteelle %1 ei löytynyt tuontia"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:453
 #, kde-format
@@ -3673,7 +3673,7 @@ msgstr "Ei voitu tuoda: %1"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:518
 #, kde-format
 msgid "No file to reload from"
-msgstr ""
+msgstr "Ei tiedostoa, josta ladata uudelleen"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:551
 #, kde-format
