@@ -395,7 +395,7 @@ msgstr ""
 #: src/android/document_opener.cpp:201
 #, kde-format
 msgid "Error loading %1 file"
-msgstr "S'ha produït un error en carregar el fitxer %1"
+msgstr "S'ha produït un error mentre es carregava el fitxer %1"
 
 #: src/android/help_dialog.cpp:54
 #, kde-format
@@ -1775,7 +1775,8 @@ msgstr "S'ha omés la propietat desconeguda %1 de %2 (%3)"
 #: src/core/io/rive/rive_loader.cpp:846
 #, kde-format
 msgid "Error loading property %1 (%2) of %3 (%4)"
-msgstr "S'ha produït un error en carregar la propietat %1 (%2) de %3 (%4)"
+msgstr ""
+"S'ha produït un error mentre es carregava la propietat %1 (%2) de %3 (%4)"
 
 #: src/core/io/svg/svg_format.cpp:67
 #, kde-format
@@ -1841,17 +1842,17 @@ msgstr "No s'ha pogut assignar un context de codificació"
 #: src/core/io/video/video_format.cpp:110
 #, kde-format
 msgid "Error encoding a frame: %1"
-msgstr "S'ha produït un error en codificar un fotograma: %1"
+msgstr "S'ha produït un error mentre es codificava un fotograma: %1"
 
 #: src/core/io/video/video_format.cpp:120
 #, kde-format
 msgid "Error while writing output packet: %1"
-msgstr "S'ha produït un error en escriure el paquet d'eixida: %1"
+msgstr "S'ha produït un error mentre s'escrivia el paquet d'eixida: %1"
 
 #: src/core/io/video/video_format.cpp:131
 #, kde-format
 msgid "Error sending a frame to the encoder: %1"
-msgstr "S'ha produït un error en enviar un fotograma al codificador: %1"
+msgstr "S'ha produït un error mentre s'enviava un fotograma al codificador: %1"
 
 # skip-rule: t-acc_obe
 #: src/core/io/video/video_format.cpp:187
@@ -1911,7 +1912,7 @@ msgstr "No s'han pogut copiar els paràmetres del flux"
 #: src/core/io/video/video_format.cpp:473
 #, kde-format
 msgid "Error while creating video frame"
-msgstr "S'ha produït un error en crear el fotograma de vídeo"
+msgstr "S'ha produït un error mentre es creava el fotograma de vídeo"
 
 #: src/core/io/video/video_format.cpp:497
 #, kde-format
@@ -1938,7 +1939,7 @@ msgstr "No s'ha pogut trobar el format d'eixida"
 #: src/core/io/video/video_format.cpp:827
 #, kde-format
 msgid "Error occurred when opening output file: %1"
-msgstr "S'ha produït un error en obrir el fitxer d'eixida: %1"
+msgstr "S'ha produït un error mentre s'obria el fitxer d'eixida: %1"
 
 #: src/core/io/video/video_format.cpp:862
 #, kde-format
@@ -2512,7 +2513,7 @@ msgstr "No s'ha pogut obrir el fitxer d'entrada per a lectura"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Error loading input file"
-msgstr "S'ha produït un error en carregar el fitxer d'entrada"
+msgstr "S'ha produït un error mentre es carregava el fitxer d'entrada"
 
 #: src/gui/cli.cpp:260
 #, kde-format
@@ -2539,7 +2540,7 @@ msgstr "No s'ha pogut obrir el fitxer d'eixida per a escriptura"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Error converting to the output format"
-msgstr "S'ha produït un error en convertir al format d'eixida"
+msgstr "S'ha produït un error mentre es convertia al format d'eixida"
 
 #: src/gui/cli.cpp:315 src/gui/cli.cpp:335
 #, kde-format
@@ -5742,7 +5743,7 @@ msgid ""
 "with Shift or Alt"
 msgstr ""
 "Si està habilitada, la línia de temps es desplaçarà horitzontalment de "
-"manera predeterminada i verticalment amb «Majús» o Alt"
+"manera predeterminada i verticalment amb «Majús» o «Alt»"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:237
 msgid "Icon Theme"
