@@ -11,7 +11,7 @@ Dependencies
 ---------------------------------------
 
 * C++17 compliant compiler
-* Qt5 >= 5.12
+* Qt5 >= 5.12; or Qt6 >= 6.2
 * CMake >= 3.5
 * Python3
 * Potrace
@@ -76,16 +76,36 @@ The generic `cmake` commands listed above should work.
 
 Install the dependencies with homebrew:
 
-    brew install cmake extra-cmake-modules qt python potrace ffmpeg libarchive
+    brew install cmake extra-cmake-modules qt@5 python potrace ffmpeg libarchive 
+    # for kf5 (for now) see: https://github.com/KDE/homebrew-kde
+
+    brew untap kde-mac/kde 2> /dev/null
+    brew tap kde-mac/kde https://invent.kde.org/packaging/homebrew-kde.git --force-auto-update
+    "$(brew --repo kde-mac/kde)/tools/do-caveats.sh"
+
+    brew tap homebrew/core --force
+    brew tap-new $USER/local-kde-mac
+    brew extract --version=5.115 ki18n $USER/homebrew-local-kde-mac
+    brew extract --version=5.115 karchive $USER/homebrew-local-kde-mac
+
+
+replace the contents of the generated formula for ki18n with the one from [here](https://gist.githubusercontent.com/zeyus/18d4fea6b2957bd174d12e79bd4d77ef/raw/130286f047bdf3df8a2c6c0951f479ef49ea05d6/ki18n@5.115.rb)
+    replace the contents of the generated formula for karchive with the one from [here](https://gist.githubusercontent.com/zeyus/18d4fea6b2957bd174d12e79bd4d77ef/raw/f2843bc6ce28b0073076e160db4f5f4517b307e9/ki18n@5.115.rb)
+
+    brew install --HEAD $USER/local-kde-mac/ki18n@5.115
+    brew install --HEAD $USER/local-kde-mac/karchive@5.115
+    
+    brew install kde-mac/kde/kf5-kcoreaddons kde-mac/kde/kf5-kwidgetsaddons kde-mac/kde/kf5-kxmlgui kde-mac/kde/kf5-kcompletion kde-mac/kde/kf5-kiconthemes kde-mac/kde/kf5-kconfig kde-mac/kde/kf5-kcrash
+    $(brew --repo kde-mac/kde)/tools/do-caveats.sh
 
 Build with `cmake`, specifying the Qt installation path:
 
     mkdir build
     cd build
-    cmake .. -DQt5_DIR="$(brew --prefix qt@5)/lib/cmake/Qt5" -DCMAKE_PREFIX_PATH="$(brew --prefix qt@5)/lib/cmake/Qt5Designer"
+    cmake .. -DKF_MAJOR=5 -DQT_MAJOR_VERSION=5 -DQT_VERSION_MAJOR=5 -DQt5_DIR="$(brew --prefix qt@5)/lib/cmake/Qt5" -DCMAKE_PREFIX_PATH="$(brew --prefix qt@5)/lib/cmake/Qt5Designer"
     make
 
-To simplify the build process, you can also use the provided scripts:
+To simplify the build process, you can also use the provided scripts (currently not completely working with homebrew Qt5 / Apple Silicon, so prefer the above method):
 
     ./deploy/mac_build.sh deps
     ./deploy/mac_build.sh configure
