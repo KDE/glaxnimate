@@ -7,7 +7,6 @@ python_build_wheel:
     stage: build
     extends: .suse_tumbleweed_qt6stable
     variables:
-        KDECI_PLATFORM_PATH:
         KDECI_CC_CACHE: /mnt/$KDECI_PLATFORM_PATH/caches/
         KDECI_CACHE_PATH: /mnt/$KDECI_PLATFORM_PATH/artifacts/
         KDECI_GITLAB_SERVER: https://invent.kde.org/
