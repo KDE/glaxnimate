@@ -11,13 +11,13 @@ Dependencies
 ---------------------------------------
 
 * C++17 compliant compiler
-* Qt5 >= 5.12; or Qt6 >= 6.2
+* Qt6 >= 6.2
 * CMake >= 3.5
 * Python3
 * Potrace
 * libav (libavformat, libswscale, libavcodec, libavutil) >= 59
 * libarchive
-* KF5 or KF6
+* KF6
 
 
 Getting the Latest Code
@@ -53,11 +53,11 @@ It will produce the executable `bin/glaxnimate` relative to the build directory
 
 Install the dependencies:
 
-    apt-get install -y g++ cmake extra-cmake-modules qtbase5-dev qttools5-dev libqt5svg5-dev \
-    qt5-image-formats-plugins libpython3-dev libpotrace-dev \
+    apt-get install -y g++ cmake extra-cmake-modules qt6-base-dev qt6-tools-dev qt6-svg-dev \
+    qt6-image-formats-plugins libpython3-dev libpotrace-dev \
     libarchive-dev libavformat-dev libswscale-dev libavcodec-dev libavutil-dev \
-    libkf5coreaddons-dev libkf5crash-dev libkf5widgetsaddons-dev libkf5xmlgui-dev \
-    libkf5archive-dev libkf5completion-dev
+    libkf6coreaddons-dev libkf6crash-dev libkf6widgetsaddons-dev libkf6xmlgui-dev \
+    libkf6archive-dev libkf6completion-dev
 
 The generic `cmake` commands listed above should work.
 
@@ -67,7 +67,7 @@ The generic `cmake` commands listed above should work.
 Install the dependencies:
 
     pacman -S git base-devel cmake extra-cmake-modules python zlib hicolor-icon-theme \
-    potrace ffmpeg qt5-base qt5-tools qt5-imageformats qt5-svg
+    potrace ffmpeg qt6-base qt6-tools qt6-imageformats qt6-svg
 
 The generic `cmake` commands listed above should work.
 
@@ -76,8 +76,8 @@ The generic `cmake` commands listed above should work.
 
 Install the dependencies with homebrew:
 
-    brew install cmake extra-cmake-modules qt@5 python potrace ffmpeg libarchive 
-    # for kf5 (for now) see: https://github.com/KDE/homebrew-kde
+    brew install cmake extra-cmake-modules qt@6 python potrace ffmpeg libarchive 
+    # for kf6 (for now) see: https://github.com/KDE/homebrew-kde
 
     brew untap kde-mac/kde 2> /dev/null
     brew tap kde-mac/kde https://invent.kde.org/packaging/homebrew-kde.git --force-auto-update
@@ -85,24 +85,20 @@ Install the dependencies with homebrew:
 
     brew tap homebrew/core --force
     brew tap-new $USER/local-kde-mac
-    brew extract --version=5.115 ki18n $USER/homebrew-local-kde-mac
-    brew extract --version=5.115 karchive $USER/homebrew-local-kde-mac
+    brew extract --version=6.22.0 ki18n $USER/homebrew-local-kde-mac
+    brew extract --version=6.22.0 karchive $USER/homebrew-local-kde-mac
 
-
-replace the contents of the generated formula for ki18n with the one from [here](https://gist.githubusercontent.com/zeyus/18d4fea6b2957bd174d12e79bd4d77ef/raw/130286f047bdf3df8a2c6c0951f479ef49ea05d6/ki18n@5.115.rb)
-    replace the contents of the generated formula for karchive with the one from [here](https://gist.githubusercontent.com/zeyus/18d4fea6b2957bd174d12e79bd4d77ef/raw/f2843bc6ce28b0073076e160db4f5f4517b307e9/ki18n@5.115.rb)
-
-    brew install --HEAD $USER/local-kde-mac/ki18n@5.115
-    brew install --HEAD $USER/local-kde-mac/karchive@5.115
+    brew install --HEAD $USER/local-kde-mac/ki18n@6.22.0 
+    brew install --HEAD $USER/local-kde-mac/karchive@6.22.0
     
-    brew install kde-mac/kde/kf5-kcoreaddons kde-mac/kde/kf5-kwidgetsaddons kde-mac/kde/kf5-kxmlgui kde-mac/kde/kf5-kcompletion kde-mac/kde/kf5-kiconthemes kde-mac/kde/kf5-kconfig kde-mac/kde/kf5-kcrash
+    brew install kde-mac/kde/kf6-kcoreaddons kde-mac/kde/kf6-kwidgetsaddons kde-mac/kde/kf6-kxmlgui kde-mac/kde/kf6-kcompletion kde-mac/kde/kf6-kiconthemes kde-mac/kde/kf6-kconfig kde-mac/kde/kf6-kcrash
     $(brew --repo kde-mac/kde)/tools/do-caveats.sh
 
 Build with `cmake`, specifying the Qt installation path:
 
     mkdir build
     cd build
-    cmake .. -DKF_MAJOR=5 -DQT_MAJOR_VERSION=5 -DQT_VERSION_MAJOR=5 -DQt5_DIR="$(brew --prefix qt@5)/lib/cmake/Qt5" -DCMAKE_PREFIX_PATH="$(brew --prefix qt@5)/lib/cmake/Qt5Designer"
+    cmake .. -DKF_MAJOR=6 -DQT_MAJOR_VERSION=6 -DQT_VERSION_MAJOR=6 -DQt6_DIR="$(brew --prefix qt@6)/lib/cmake/Qt6" -DCMAKE_PREFIX_PATH="$(brew --prefix qt@6)/lib/cmake/Qt6Designer"
     make
 
 To simplify the build process, you can also use the provided scripts (currently not completely working with homebrew Qt5 / Apple Silicon, so prefer the above method):
@@ -125,64 +121,7 @@ To simplify the build process, you can use the provided scripts:
 
 ### Android
 
-Note that these instructions have been tested on an Ubuntu host, on different
-systems things might vary.
-
-#### Setting up Java
-
-Ensure you have the JVM and JDK installed on your system.
-
-    sudo apt install default-jdk
-
-#### Installing Qt
-
-See also <https://doc.qt.io/qt-5/android-getting-started.html>.
-
-Download the Qt Installer for the open source edition 
-<https://www.qt.io/download-open-source>.
-
-For some reason Qt wants you to have an account even if you install 
-the open source version so you might have to set that up;
-
-Install Qt Creator and Qt 5 Android. 
-Qt versions in the 5.12.* line should work, some newer Qt versions have issues with the
-android build tools so it's better to stick with 5.12.
-
-Select "Custom Installation", then on the following page check
-Qt > Qt 5.12.11 (or whatever version you prefer) > Android.
-You can also install additional components such as Qt for Desktop and such.
-
-Accept the licenses and proceed to install.
-
-#### Setting up Qt for Android
-
-Once Qt is installed, you can download and install the Android development tools
-from Qt Creator.
-
-You can follow the instructions from here:
-<https://doc.qt.io/qtcreator/creator-developing-android.html#specifying-android-device-settings>.
-
-From Qt Creator:
-
-* Tools > Options... > Devices > Android
-* Click "Setup SDK"
-* Install additional packages if prompted (you might need to accept some licenses)
-* Wait for everything to be downloaded and installed
-* Under "SDK Manager" (which is at the bottom of the dialog) 
-    * click the "Install" checkbox for one of the available images
-        (eg: Android 11 > Google API Atom x86 System Image)
-    * click "Apply" on the side (not the one at the bottom that closes the dialog)
-    * after it's downloaded, you can click OK to close the dialog
-
-#### Building
-
-You need to know the paths for Qt and Android stuff, or use `cmake_helper.py` to simplify the process
-
-    mkdir build
-    cd build
-
-    ../src/android/tools/cmake_helper.py --abi x86 --qt 5.12.11 ..
-    make -j8
+See https://develop.kde.org/docs/packaging/android/
 
 #### Running
 

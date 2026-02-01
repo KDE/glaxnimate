@@ -68,7 +68,7 @@ if ( ANDROID )
             # first time config?
             if (NOT EXISTS ${_BREEZEICONS_DIR})
                 find_package(Git)
-                execute_process(COMMAND ${GIT_EXECUTABLE} clone --depth 1 --branch kf5 https://invent.kde.org/frameworks/breeze-icons.git ${_BREEZEICONS_DIR})
+                execute_process(COMMAND ${GIT_EXECUTABLE} clone --depth 1 --branch master https://invent.kde.org/frameworks/breeze-icons.git ${_BREEZEICONS_DIR})
             endif()
 
             # external projects are only pulled at make time, not configure time
