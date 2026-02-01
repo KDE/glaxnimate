@@ -1,11 +1,17 @@
 include:
     - project: sysadmin/ci-utilities
       file: 
-         - /gitlab-templates/linux-qt6.yml
+         - /gitlab-templates/blocks/ci-linux-base.yml
 
 python_build_wheel:
     stage: build
     extends: .suse_tumbleweed_qt6stable
+    variables:
+        KDECI_PLATFORM_PATH:
+        KDECI_CC_CACHE: /mnt/$KDECI_PLATFORM_PATH/caches/
+        KDECI_CACHE_PATH: /mnt/$KDECI_PLATFORM_PATH/artifacts/
+        KDECI_GITLAB_SERVER: https://invent.kde.org/
+        KDECI_PACKAGE_PROJECT: teams/ci-artifacts/$KDECI_PLATFORM_PATH
     before_script:
         - python3 --version
         - git clone https://invent.kde.org/sysadmin/ci-utilities.git --depth=1
