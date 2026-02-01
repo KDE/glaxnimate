@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-17 00:39+0000\n"
-"PO-Revision-Date: 2025-07-21 19:06+0300\n"
+"POT-Creation-Date: 2025-11-17 11:50+0000\n"
+"PO-Revision-Date: 2025-10-17 11:22+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -590,17 +590,17 @@ msgstr ""
 #: src/android/help_dialog.cpp:182
 #, kde-format
 msgid "Jumps to the first frame."
-msgstr ""
+msgstr "Hyppää ensimmäiseen kuvaan."
 
 #: src/android/help_dialog.cpp:186
 #, kde-format
 msgid "Goes to the previous frame."
-msgstr ""
+msgstr "Siirtyy edelliseen kuvaan."
 
 #: src/android/help_dialog.cpp:190
 #, kde-format
 msgid "Goes to the next frame."
-msgstr ""
+msgstr "Siirtyy seuraavaan kuvaan."
 
 #: src/android/help_dialog.cpp:194
 #, kde-format
@@ -1005,7 +1005,7 @@ msgstr ""
 #: src/core/model/animation/animatable.cpp:171
 #, kde-format
 msgid "Update %1"
-msgstr ""
+msgstr "Päivitä %1"
 
 #: src/core/command/animation_commands.cpp:307
 #: src/gui/widgets/timeline/timeline_items.cpp:537
@@ -1103,7 +1103,7 @@ msgstr ""
 #: src/core/io/aep/aep_loader.cpp:411
 #, kde-format
 msgid "Could convert %1"
-msgstr ""
+msgstr "Ei voitu muuntaa: %1"
 
 #: src/core/io/aep/aep_loader.cpp:415
 #: src/core/io/lottie/lottie_importer.hpp:897
@@ -1111,7 +1111,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:926
 #, kde-format
 msgid "Invalid value for %1"
-msgstr ""
+msgstr "Virheellinen arvo: %1"
 
 #: src/core/io/aep/aep_loader.cpp:510
 #, kde-format
@@ -1178,17 +1178,17 @@ msgstr ""
 #: src/core/io/aep/aep_parser.hpp:424
 #, kde-format
 msgid "Unknown property type: %1"
-msgstr ""
+msgstr "Tuntematon ominaisuuden tyyppi: %1"
 
 #: src/core/io/aep/aep_parser.hpp:645
 #, kde-format
 msgid "Missing list data"
-msgstr ""
+msgstr "Luettelotieto puuttuu"
 
 #: src/core/io/aep/aep_parser.hpp:657
 #, kde-format
 msgid "Not enough data in list"
-msgstr ""
+msgstr "Luettelossa ei ole tarpeeksi tietoa"
 
 #: src/core/io/aep/aep_parser.hpp:791
 #, kde-format
@@ -1255,13 +1255,13 @@ msgstr ""
 #: src/gui/tools/base.cpp:162
 #, kde-format
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: src/core/io/glaxnimate/glaxnimate_format.hpp:26
 #: src/core/io/glaxnimate/glaxnimate_mime.hpp:21
 #, kde-format
 msgid "Glaxnimate Animation"
-msgstr ""
+msgstr "Glaxnimate-animaatio"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:21
 #: src/core/io/glaxnimate/glaxnimate_mime.cpp:88
@@ -1300,7 +1300,7 @@ msgstr ""
 #: src/core/io/glaxnimate/import_state.hpp:128
 #, kde-format
 msgid "Object %1 is invalid"
-msgstr ""
+msgstr "Olio %1 on virheellinen"
 
 #: src/core/io/glaxnimate/import_state.hpp:317
 #, kde-format
@@ -1432,17 +1432,17 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:332
 #, kde-format
 msgid "Invalid parent layer %1"
-msgstr ""
+msgstr "Virheellinen emotaso %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:457
 #, kde-format
 msgid "Unsupported layer of type %1"
-msgstr ""
+msgstr "Ei-tuettu tyypin %1 taso"
 
 #: src/core/io/lottie/lottie_importer.hpp:482
 #, kde-format
 msgid "Missing shape type"
-msgstr ""
+msgstr "Kuviotyyppi puuttuu"
 
 #: src/core/io/lottie/lottie_importer.hpp:495
 #: src/core/io/lottie/lottie_importer.hpp:505
@@ -1453,7 +1453,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:528
 #, kde-format
 msgid "Unknown field %2%1"
-msgstr ""
+msgstr "Tuntematon kenttä %2%1"
 
 #: src/core/io/lottie/lottie_importer.hpp:852
 #, kde-format
@@ -1538,7 +1538,7 @@ msgstr "Liian suuri tiedosto (%1 kt), tulisi olla alle 64 kt"
 #: src/core/io/lottie/tgs_format.hpp:19
 #, kde-format
 msgid "Telegram Animated Sticker"
-msgstr ""
+msgstr "Telegramin animoitu tarra"
 
 #: src/core/io/lottie/validation.cpp:25
 #, kde-format
@@ -1558,7 +1558,7 @@ msgstr "Virheellinen FPS %1, tulisi olla %2"
 #: src/core/io/lottie/validation.cpp:49
 #, kde-format
 msgid "Too many frames: %1, should be less than %2"
-msgstr ""
+msgstr "Liikaa kuvia: %1; tulisi olla alle %2"
 
 #: src/core/io/lottie/validation.hpp:22
 #, kde-format
@@ -1604,7 +1604,7 @@ msgstr "Sarakkeita"
 #: src/core/io/raster/spritesheet_format.cpp:34
 #, kde-format
 msgid "Number of columns in the sheet"
-msgstr ""
+msgstr "Arkin sarakkeiden määrä"
 
 #: src/core/io/raster/spritesheet_format.cpp:35
 #, kde-format
@@ -1639,12 +1639,12 @@ msgstr ""
 #: src/core/io/rive/rive_format.cpp:24
 #, kde-format
 msgid "Unsupported format"
-msgstr ""
+msgstr "Ei-tuettu muoto"
 
 #: src/core/io/rive/rive_format.cpp:34
 #, kde-format
 msgid "Could not read header"
-msgstr ""
+msgstr "Otsaketta ei voitu lukea"
 
 #: src/core/io/rive/rive_format.cpp:40
 #, kde-format
@@ -1655,7 +1655,7 @@ msgstr ""
 #: src/core/io/rive/rive_format.cpp:46 src/core/io/rive/rive_loader.cpp:750
 #, kde-format
 msgid "Could not read property table"
-msgstr ""
+msgstr "Ominaisuustaulukkoa ei voitu lukea"
 
 #: src/core/io/rive/rive_format.hpp:24
 #, kde-format
@@ -1690,7 +1690,7 @@ msgstr ""
 #: src/core/io/rive/rive_loader.cpp:215
 #, kde-format
 msgid "Unexpected Animation"
-msgstr ""
+msgstr "Odottamaton animaatio"
 
 #: src/core/io/rive/rive_loader.cpp:231
 #, kde-format
@@ -1700,7 +1700,7 @@ msgstr ""
 #: src/core/io/rive/rive_loader.cpp:242
 #, kde-format
 msgid "Invalid Image Data"
-msgstr ""
+msgstr "Virheellistä kuvatietoa"
 
 #: src/core/io/rive/rive_loader.cpp:253
 #, kde-format
@@ -1710,7 +1710,7 @@ msgstr ""
 #: src/core/io/rive/rive_loader.cpp:268
 #, kde-format
 msgid "Could not find parent with id %1"
-msgstr ""
+msgstr "Emoa tunnisteella %1 ei löytynyt"
 
 #: src/core/io/rive/rive_loader.cpp:318
 #, kde-format
@@ -1750,38 +1750,38 @@ msgstr ""
 #: src/core/io/svg/svg_format.cpp:67
 #, kde-format
 msgid "External Stylesheet"
-msgstr ""
+msgstr "Ulkoinen tyylisivu"
 
 #: src/core/io/svg/svg_format.cpp:69
 #, kde-format
 msgid "Font face with external url"
-msgstr ""
+msgstr "Kirjasinleikkaus ulkoisesta verkko-osoitteesta"
 
 #: src/core/io/svg/svg_format.cpp:71
 #, kde-format
 msgid "Embedded data"
-msgstr ""
+msgstr "Upotettu tieto"
 
 #: src/core/io/svg/svg_format.cpp:72
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:961
 #, kde-format
 msgid "Ignore"
-msgstr ""
+msgstr "Sivuuta"
 
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
 msgid "External Fonts"
-msgstr ""
+msgstr "Ulkoiset fontit"
 
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
 msgid "How to include external font"
-msgstr ""
+msgstr "Kuinka sisällyttää ulkoinen fontti"
 
 #: src/core/io/svg/svg_format.cpp:92
 #, kde-format
 msgid "Could not write to file"
-msgstr ""
+msgstr "Tiedostoon ei voitu kirjoittaa"
 
 #: src/core/io/svg/svg_format.hpp:21 src/core/io/svg/svg_mime.hpp:20
 #, kde-format
@@ -1796,32 +1796,32 @@ msgstr "SVG-esikatselu"
 #: src/core/io/video/video_format.cpp:73
 #, kde-format
 msgid "Could not find encoder for '%1'"
-msgstr ""
+msgstr "Kohteelle ”%1” ei löytynyt koodainta"
 
 #: src/core/io/video/video_format.cpp:77
 #, kde-format
 msgid "Could not allocate stream"
-msgstr ""
+msgstr "Virtaa ei voitu osoittaa"
 
 #: src/core/io/video/video_format.cpp:82
 #, kde-format
 msgid "Could not alloc an encoding context"
-msgstr ""
+msgstr "Koodauskontekstia ei voitu osoittaa"
 
 #: src/core/io/video/video_format.cpp:110
 #, kde-format
 msgid "Error encoding a frame: %1"
-msgstr ""
+msgstr "Virhe koodattaessa kuvaa: %1"
 
 #: src/core/io/video/video_format.cpp:120
 #, kde-format
 msgid "Error while writing output packet: %1"
-msgstr ""
+msgstr "Virhe kirjoitettaessa tulospakettia: %1"
 
 #: src/core/io/video/video_format.cpp:131
 #, kde-format
 msgid "Error sending a frame to the encoder: %1"
-msgstr ""
+msgstr "Virhe lähetettäessä kuvaa koodaimeen: %1"
 
 #: src/core/io/video/video_format.cpp:187
 #: src/core/io/video/video_format.cpp:201
@@ -1939,12 +1939,12 @@ msgstr "Korkeus"
 #: src/core/io/video/video_format.cpp:865
 #, kde-format
 msgid "Verbose"
-msgstr ""
+msgstr "Yksityiskohtainen"
 
 #: src/core/io/video/video_format.cpp:865
 #, kde-format
 msgid "Show verbose information on the conversion"
-msgstr ""
+msgstr "Näytä muunnoksesta yksityiskohtaista tietoa"
 
 #: src/core/io/video/video_format.hpp:21
 #, kde-format
@@ -1961,7 +1961,7 @@ msgstr ""
 #: src/core/model/animation/animatable_path.cpp:60
 #, kde-format
 msgid "Remove Nodes"
-msgstr ""
+msgstr "Poista solmut"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/core/model/animation/animatable.cpp:418
@@ -1979,7 +1979,7 @@ msgstr "Laajenna kuviota"
 #: src/core/model/animation_container.cpp:54
 #, kde-format
 msgid "Animation Timing"
-msgstr ""
+msgstr "Animaation ajastus"
 
 #: src/core/model/assets/assets.hpp:34
 msgid "values"
@@ -2014,7 +2014,7 @@ msgstr "Liu’ut"
 #: src/core/model/assets/assets.hpp:151
 #, kde-format
 msgid "Compositions"
-msgstr ""
+msgstr "Kompositiot"
 
 #: src/core/model/assets/assets.hpp:173
 #, kde-format
@@ -2424,13 +2424,13 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Frame number to render, use `all` to render all frames"
-msgstr ""
+msgstr "Hahmonnettavan kuvan numero; hahmonna kaikki arvolla ”all”"
 
 #: src/gui/cli.cpp:105
 #, kde-format
 msgctxt "@info:shell"
 msgid "Shows possible values for --render-format"
-msgstr ""
+msgstr "Näytä --render-format-valitsimen mahdolliset arvot"
 
 #: src/gui/cli.cpp:159
 #, kde-format
@@ -2442,31 +2442,31 @@ msgstr "Liitännäistä ei löytynyt"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not find an interpreter"
-msgstr ""
+msgstr "Tulkkia ei löytynyt"
 
 #: src/gui/cli.cpp:225
 #, kde-format
 msgctxt "@info:shell"
 msgid "Unknown importer"
-msgstr ""
+msgstr "Tuntematon tuoja"
 
 #: src/gui/cli.cpp:232
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not open input file for reading"
-msgstr ""
+msgstr "Syötetiedostoa ei voitu avata luettavaksi"
 
 #: src/gui/cli.cpp:246
 #, kde-format
 msgctxt "@info:shell"
 msgid "Error loading input file"
-msgstr ""
+msgstr "Virhe ladattaessa syötetiedostoa"
 
 #: src/gui/cli.cpp:260
 #, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to export"
-msgstr ""
+msgstr "Vietävä tiedosto on määritettävä"
 
 #: src/gui/cli.cpp:275
 #, kde-format
@@ -2474,6 +2474,8 @@ msgctxt "@info:shell"
 msgid ""
 "Unknown exporter. Use --export-format-list for a list of available formats"
 msgstr ""
+"Tuntematon viejä. Käytettävissä olevat muodot saa valitsimella --export-"
+"format-list"
 
 #: src/gui/cli.cpp:286
 #, kde-format
@@ -2809,7 +2811,7 @@ msgstr ""
 #: src/gui/item_models/property_model_full.cpp:292
 #, kde-format
 msgid "Unlocked"
-msgstr ""
+msgstr "Ei lukittu"
 
 #: src/gui/item_models/property_model_full.cpp:300
 #, kde-format
@@ -2859,7 +2861,7 @@ msgstr "Tietoa"
 
 #: src/gui/settings/api_credentials.hpp:42
 msgid "API Credentials"
-msgstr ""
+msgstr "API-tunnistustiedot"
 
 #: src/gui/settings/clipboard_settings.hpp:18
 msgid "Clipboard"
@@ -2997,13 +2999,13 @@ msgstr "Poista tangentti"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Stop Color..."
-msgstr ""
+msgstr "Pysähdysväri…"
 
 #: src/gui/tools/edit_tool.cpp:381
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Add Stop"
-msgstr ""
+msgstr "Lisää pysähdys"
 
 #: src/gui/tools/edit_tool.cpp:385
 #, kde-format
@@ -3358,7 +3360,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:189
 #, kde-format
 msgid "Min Frequency"
-msgstr ""
+msgstr "Vähimmäistaajuus"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_3)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:205
@@ -3652,7 +3654,7 @@ msgstr "Vie tiedostoon %1"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:448
 #, kde-format
 msgid "No importer found for %1"
-msgstr ""
+msgstr "Kohteelle %1 ei löytynyt tuontia"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:453
 #, kde-format
@@ -3671,7 +3673,7 @@ msgstr "Ei voitu tuoda: %1"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:518
 #, kde-format
 msgid "No file to reload from"
-msgstr ""
+msgstr "Ei tiedostoa, josta ladata uudelleen"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:551
 #, kde-format
@@ -3687,7 +3689,7 @@ msgstr "Selainta ei voitu avata"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:609
 #, kde-format
 msgid "Save Frame Image"
-msgstr ""
+msgstr "Tallenna yksittäinen kuva"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:585
 #, kde-format
@@ -3725,30 +3727,30 @@ msgstr "SVG (*.svg)"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:477
 #, kde-format
 msgid "Validate Discord Sticker"
-msgstr ""
+msgstr "Kelpuuta Discord-tarra"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:641
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:651
 #, kde-format
 msgid "No issues found"
-msgstr ""
+msgstr "Ongelmia ei löytynyt"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:641
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:651
 #, kde-format
 msgid "Some issues detected"
-msgstr ""
+msgstr "Havaittiin ongelmia"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:649
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:474
 #, kde-format
 msgid "Validate Telegram Sticker"
-msgstr ""
+msgstr "Kelpuuta Telegram-tarra"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:693
 #, kde-format
 msgid "Could not open the backup file"
-msgstr ""
+msgstr "Varmuuskopiotiedostoa ei voitu avata"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:772
 #, kde-format
@@ -3841,7 +3843,7 @@ msgstr "Muunna poluksi"
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:310
 #, kde-format
 msgid "Convert %1 to path"
-msgstr ""
+msgstr "Muunna %1 poluksi"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:492
 #, kde-format
@@ -3993,12 +3995,12 @@ msgstr "Palauta kierto"
 #: src/gui/widgets/view_transform_widget.ui:167
 #, kde-format
 msgid "Flip View"
-msgstr ""
+msgstr "Pyöräytä näkymä"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:457
 #, kde-format
 msgid "Raster…"
-msgstr ""
+msgstr "Rasteroi…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:459
 #, kde-format
@@ -4208,12 +4210,12 @@ msgstr "Jäljitä bittikartta…"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
 #, kde-format
 msgid "Union"
-msgstr ""
+msgstr "Yhdiste"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
 #, kde-format
 msgid "Difference"
-msgstr ""
+msgstr "Erotus"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:690
 #, kde-format
@@ -4364,7 +4366,7 @@ msgstr "IoStatusDialog"
 #: src/gui/widgets/dialogs/io_status_dialog.ui:50
 #, kde-format
 msgid "/path/to/your/file/in.here"
-msgstr ""
+msgstr "/tähän/kansiopolku/tiedostoihin"
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_box)
 #: src/gui/widgets/dialogs/io_status_dialog.ui:84
@@ -4395,7 +4397,7 @@ msgstr "Lukitse kuvasuhde"
 #: src/gui/widgets/dialogs/resize_dialog.ui:93
 #, kde-format
 msgid "Scale Layers"
-msgstr ""
+msgstr "Skaalaa tasot"
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_layer_ratio)
 #: src/gui/widgets/dialogs/resize_dialog.ui:103
@@ -4537,7 +4539,7 @@ msgstr "Leikkaa ylimääräiset kuvat"
 #: src/gui/widgets/dialogs/timing_dialog.ui:114
 #, kde-format
 msgid "Scale Timing"
-msgstr ""
+msgstr "Skaalaa ajoitus"
 
 #. i18n: ectx: property (text), item, widget (QListWidget, list_presets)
 #: src/gui/widgets/dialogs/trace_dialog.ui:89
@@ -4549,7 +4551,7 @@ msgstr "Yksityiskohtainen"
 #: src/gui/widgets/dialogs/trace_dialog.ui:94
 #, kde-format
 msgid "Flat"
-msgstr ""
+msgstr "Lattea"
 
 #. i18n: ectx: property (text), item, widget (QListWidget, list_presets)
 #: src/gui/widgets/dialogs/trace_dialog.ui:99
@@ -5091,7 +5093,7 @@ msgstr "Ei voitu avata tiedostoa %1"
 #: src/gui/widgets/font/font_loader.cpp:58
 #, kde-format
 msgid "Invalid data URL"
-msgstr ""
+msgstr "Virheellinen dataosoite"
 
 #: src/gui/widgets/font/font_loader.cpp:138
 #, kde-format
@@ -5242,7 +5244,7 @@ msgstr "Kommentit"
 #: src/gui/widgets/lottiefiles/search_result.cpp:67
 #, kde-format
 msgid "View on LottieFiles..."
-msgstr ""
+msgstr "Katsele LottieFilesissa…"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:56
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
@@ -6070,32 +6072,32 @@ msgstr "Lukitse suhde"
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:86
 #, kde-format
 msgid "Rename"
-msgstr ""
+msgstr "Muuta nimeä"
 
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:89
 #, kde-format
 msgid "Rename Composition"
-msgstr ""
+msgstr "Muuta komposition nimeä"
 
 #: src/gui/widgets/tab_bar/tab_bar_close_button.cpp:60
 #, kde-format
 msgid "Delete Composition"
-msgstr ""
+msgstr "Poista kompositio"
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:154
 #, kde-format
 msgid "Transition From Previous"
-msgstr ""
+msgstr "Siirtymä edellisestä"
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:155
 #, kde-format
 msgid "Transition To Next"
-msgstr ""
+msgstr "Siirtymä seuraavaan"
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:162
 #, kde-format
 msgid "Custom..."
-msgstr ""
+msgstr "Mukauta…"
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:175
 #, kde-format
@@ -6106,13 +6108,13 @@ msgstr ""
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:201
 #, kde-format
 msgid "&Clear Animations"
-msgstr ""
+msgstr "T&yhjennä animoinnit"
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spin_frame)
 #: src/gui/widgets/timeline/frame_controls_widget.ui:33
 #, kde-format
 msgid "Frame number"
-msgstr ""
+msgstr "Kuvan numero"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spin_frame)
 #: src/gui/widgets/timeline/frame_controls_widget.ui:39
@@ -6132,7 +6134,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:83
 #, kde-format
 msgid "Go To First Frame"
-msgstr ""
+msgstr "Siirry ensimmäiseen kuvaan"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_prev_kf)
 #. i18n: ectx: property (text), widget (QToolButton, button_prev_kf)
@@ -6148,7 +6150,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:114
 #, kde-format
 msgid "Go To Previous Frame"
-msgstr ""
+msgstr "Siirry edelliseen kuvaan"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_next)
 #. i18n: ectx: property (text), widget (QToolButton, button_next)
@@ -6156,7 +6158,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:128
 #, kde-format
 msgid "Go To Next Frame"
-msgstr ""
+msgstr "Siirry seuraavaan kuvaan"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_next_kf)
 #. i18n: ectx: property (text), widget (QToolButton, button_next_kf)
@@ -6172,7 +6174,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:159
 #, kde-format
 msgid "Go To Last Frame"
-msgstr ""
+msgstr "Siirry viimeiseen kuvaan"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_record)
 #. i18n: ectx: property (text), widget (QToolButton, button_record)
@@ -6180,35 +6182,35 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:173
 #, kde-format
 msgid "Record"
-msgstr ""
+msgstr "Nauhoita"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/gui/widgets/timeline/keyframe_editor_widget.ui:37
 #, kde-format
 msgid "Presets"
-msgstr ""
+msgstr "Esiasetukset"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/timeline/keyframe_editor_widget.ui:43
 #, kde-format
 msgid "Start"
-msgstr ""
+msgstr "Aloita"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/timeline/keyframe_editor_widget.ui:66
 #, kde-format
 msgid "Finish"
-msgstr ""
+msgstr "Lopeta"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:58
 #, kde-format
 msgid "Hold"
-msgstr ""
+msgstr "Pidä"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:64
 #, kde-format
 msgid "Fast"
-msgstr ""
+msgstr "Nopea"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:84
 #, kde-format
@@ -6228,7 +6230,7 @@ msgstr ""
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:98
 #, kde-format
 msgid "Anticipate"
-msgstr ""
+msgstr "Ennakoi"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:100
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:103
@@ -6265,7 +6267,7 @@ msgstr "Raaka kuvio"
 #: src/gui/widgets/view_transform_widget.ui:39
 #, kde-format
 msgid "Fit View"
-msgstr ""
+msgstr "Sovita näkymään"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_zoom_in)
 #. i18n: ectx: property (text), widget (QToolButton, btn_zoom_in)
@@ -6273,7 +6275,7 @@ msgstr ""
 #: src/gui/widgets/view_transform_widget.ui:82
 #, kde-format
 msgid "Zoom In"
-msgstr ""
+msgstr "Lähennä"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_zoom_out)
 #. i18n: ectx: property (text), widget (QToolButton, btn_zoom_out)
@@ -6281,7 +6283,7 @@ msgstr ""
 #: src/gui/widgets/view_transform_widget.ui:96
 #, kde-format
 msgid "Zoom Out"
-msgstr ""
+msgstr "Loitonna"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_zoom_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_zoom_reset)
@@ -6289,16 +6291,16 @@ msgstr ""
 #: src/gui/widgets/view_transform_widget.ui:110
 #, kde-format
 msgid "Reset Zoom"
-msgstr ""
+msgstr "Palauta lähennys"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/view_transform_widget.ui:121
 #, kde-format
 msgid "Angle"
-msgstr ""
+msgstr "Kulma"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_angle)
 #: src/gui/widgets/view_transform_widget.ui:131
 #, kde-format
 msgid "°"
-msgstr ""
+msgstr "°"

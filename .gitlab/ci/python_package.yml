@@ -1,13 +1,13 @@
 python_build_wheel:
     stage: build
-    image: invent-registry.kde.org/sysadmin/ci-images/suse-qt68:latest
+    image: invent-registry.kde.org/sysadmin/ci-images/suse-qt610:latest
     tags:
         - Linux
     variables:
-        KDECI_CC_CACHE: /mnt/caches/suse-qt6.9/
-        KDECI_CACHE_PATH: /mnt/artifacts/suse-qt6.9/
+        KDECI_CC_CACHE: /mnt/caches/suse-qt6.10/
+        KDECI_CACHE_PATH: /mnt/artifacts/suse-qt6.10/
         KDECI_GITLAB_SERVER: https://invent.kde.org/
-        KDECI_PACKAGE_PROJECT: teams/ci-artifacts/suse-qt6.9
+        KDECI_PACKAGE_PROJECT: teams/ci-artifacts/suse-qt6.10
     before_script:
         - python3 --version
         - git clone https://invent.kde.org/sysadmin/ci-utilities.git --depth=1
@@ -24,12 +24,12 @@ python_build_wheel:
             if [ -z "$CI_COMMIT_TAG" ] ; then
                 version="$(../deploy/pypi_version_tail.sh)"; else version="git.`date +%Y%m%d%H%M%S`.$CI_COMMIT_BRANCH.$CI_COMMIT_SHORT_SHA";
             fi
-        - cmake -DCMAKE_INSTALL_PREFIX=$CI_PROJECT_DIR/_install -DVERSION_SUFFIX=$version -DBUILD_WITH_QT6=ON ..
+        - cmake -DCMAKE_INSTALL_PREFIX=$CI_PROJECT_DIR/_install -DVERSION_SUFFIX=$version -DBUILD_WITH_QT6=ON -GNinja ..
         #- pip install -r src/python/build-requirements.txt
-        - make glaxnimate_python_depends_install
+        - ninja glaxnimate_python_depends_install
         - ls bin/python/build/lib
-        - make glaxnimate_python
-        - make glaxnimate_python_wheel
+        - ninja glaxnimate_python
+        - ninja glaxnimate_python_wheel
     artifacts:
         paths:
             - _build/bin/python/build/lib/
@@ -37,7 +37,7 @@ python_build_wheel:
 
 pypi_deploy_gitlab:
     stage: deploy
-    image: invent-registry.kde.org/sysadmin/ci-images/suse-qt69:latest
+    image: invent-registry.kde.org/sysadmin/ci-images/suse-qt610:latest
     needs:
         - job: python_build_wheel
           artifacts: true
@@ -53,7 +53,7 @@ pypi_deploy_gitlab:
 
 pypi_deploy_pypiorg:
     stage: deploy
-    image: invent-registry.kde.org/sysadmin/ci-images/suse-qt69:latest
+    image: invent-registry.kde.org/sysadmin/ci-images/suse-qt610:latest
     needs:
         - job: python_build_wheel
           artifacts: true

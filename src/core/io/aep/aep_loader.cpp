@@ -585,7 +585,7 @@ void load_transform(io::ImportExport* io, model::Transform* tf, const PropertyBa
     if ( is_3d )
     {
         /// \todo figure a way of determining whether the transform is actually 3D
-        /// as layer transfoms seem to often have the 3D properties
+        /// as layer transforms seem to often have the 3D properties
         (void)is_3d;
 //         warning(i18n("3D transforms are not supported"));
     }

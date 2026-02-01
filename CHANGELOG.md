@@ -105,7 +105,7 @@
     * Remove extra items from the "Move To" dialog
     * Tweaked the "Wide" layout preset
     * Added a "Medium" layout preset
-    * Option to choose whether the timeline scolls vertically or horizontally without modifiers
+    * Option to choose whether the timeline scrolls vertically or horizontally without modifiers
 * I/O:
     * Various fixes to the SVG parser
     * Added support for Android Vector Drawables
@@ -350,7 +350,7 @@
     * Custom keyboard shortcuts are saved properly
     * Fixed values blowing up when changed from the property tree
     * Fixed crash caused by stale model indices
-    * Precompositions correctly update whhen the current frame is changed
+    * Precompositions correctly update when the current frame is changed
     * Clicking on the checkboxes in the plugin settings properly toggles the plugins
     * Lottie precomposition dependencies are correctly resolved on import
     * Fixed parenting transforms for imported lottie precomp layers

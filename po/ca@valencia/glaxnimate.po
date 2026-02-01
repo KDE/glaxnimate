@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-17 00:39+0000\n"
+"POT-Creation-Date: 2025-11-17 11:50+0000\n"
 "PO-Revision-Date: 2025-04-01 09:34+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -305,8 +305,7 @@ msgid ""
 "Then layers are created that appear in and out at uniform time intervals. "
 "You can use these layers for frame-by-frame animation."
 msgstr ""
-"Este diàleg crea una capa per a ajudar amb l'animació fotograma a "
-"fotograma.\n"
+"Este diàleg crea una capa per ajudar amb l'animació fotograma a fotograma.\n"
 "\n"
 "Especifiqueu l'interval de temps que voleu dividir en fotogrames i el nombre "
 "de fotogrames que voleu.\n"
@@ -396,7 +395,7 @@ msgstr ""
 #: src/android/document_opener.cpp:201
 #, kde-format
 msgid "Error loading %1 file"
-msgstr "S'ha produït un error en carregar el fitxer %1"
+msgstr "S'ha produït un error mentre es carregava el fitxer %1"
 
 #: src/android/help_dialog.cpp:54
 #, kde-format
@@ -533,8 +532,8 @@ msgstr "Mostra esta ajuda."
 msgid ""
 "Select tool, you can use it to select objects and change their transform."
 msgstr ""
-"Selecciona l'eina, podeu utilitzar-la per a seleccionar objectes i canviar-"
-"ne la transformació."
+"Tria l'eina, podeu utilitzar-la per a seleccionar objectes i canviar-ne la "
+"transformació."
 
 #: src/android/help_dialog.cpp:134
 #, kde-format
@@ -1776,7 +1775,8 @@ msgstr "S'ha omés la propietat desconeguda %1 de %2 (%3)"
 #: src/core/io/rive/rive_loader.cpp:846
 #, kde-format
 msgid "Error loading property %1 (%2) of %3 (%4)"
-msgstr "S'ha produït un error en carregar la propietat %1 (%2) de %3 (%4)"
+msgstr ""
+"S'ha produït un error mentre es carregava la propietat %1 (%2) de %3 (%4)"
 
 #: src/core/io/svg/svg_format.cpp:67
 #, kde-format
@@ -1842,17 +1842,17 @@ msgstr "No s'ha pogut assignar un context de codificació"
 #: src/core/io/video/video_format.cpp:110
 #, kde-format
 msgid "Error encoding a frame: %1"
-msgstr "S'ha produït un error en codificar un fotograma: %1"
+msgstr "S'ha produït un error mentre es codificava un fotograma: %1"
 
 #: src/core/io/video/video_format.cpp:120
 #, kde-format
 msgid "Error while writing output packet: %1"
-msgstr "S'ha produït un error en escriure el paquet d'eixida: %1"
+msgstr "S'ha produït un error mentre s'escrivia el paquet d'eixida: %1"
 
 #: src/core/io/video/video_format.cpp:131
 #, kde-format
 msgid "Error sending a frame to the encoder: %1"
-msgstr "S'ha produït un error en enviar un fotograma al codificador: %1"
+msgstr "S'ha produït un error mentre s'enviava un fotograma al codificador: %1"
 
 # skip-rule: t-acc_obe
 #: src/core/io/video/video_format.cpp:187
@@ -1912,7 +1912,7 @@ msgstr "No s'han pogut copiar els paràmetres del flux"
 #: src/core/io/video/video_format.cpp:473
 #, kde-format
 msgid "Error while creating video frame"
-msgstr "S'ha produït un error en crear el fotograma de vídeo"
+msgstr "S'ha produït un error mentre es creava el fotograma de vídeo"
 
 #: src/core/io/video/video_format.cpp:497
 #, kde-format
@@ -1939,7 +1939,7 @@ msgstr "No s'ha pogut trobar el format d'eixida"
 #: src/core/io/video/video_format.cpp:827
 #, kde-format
 msgid "Error occurred when opening output file: %1"
-msgstr "S'ha produït un error en obrir el fitxer d'eixida: %1"
+msgstr "S'ha produït un error mentre s'obria el fitxer d'eixida: %1"
 
 #: src/core/io/video/video_format.cpp:862
 #, kde-format
@@ -2396,7 +2396,7 @@ msgid ""
 "application."
 msgstr ""
 "Especifiqueu el nom del sòcol local/canonada amb nom per a connectar-vos a "
-"una aplicació de l'amfitrió."
+"una aplicació pare."
 
 #: src/gui/cli.cpp:46
 #, kde-format
@@ -2513,7 +2513,7 @@ msgstr "No s'ha pogut obrir el fitxer d'entrada per a lectura"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Error loading input file"
-msgstr "S'ha produït un error en carregar el fitxer d'entrada"
+msgstr "S'ha produït un error mentre es carregava el fitxer d'entrada"
 
 #: src/gui/cli.cpp:260
 #, kde-format
@@ -2540,7 +2540,7 @@ msgstr "No s'ha pogut obrir el fitxer d'eixida per a escriptura"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Error converting to the output format"
-msgstr "S'ha produït un error en convertir al format d'eixida"
+msgstr "S'ha produït un error mentre es convertia al format d'eixida"
 
 #: src/gui/cli.cpp:315 src/gui/cli.cpp:335
 #, kde-format
@@ -2558,7 +2558,7 @@ msgstr "Heu d'especificar un fitxer a renderitzar"
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Emoji"
-msgstr "Seleccioneu emoji"
+msgstr "Trieu els emoji"
 
 #: src/gui/emoji/emoji_set_dialog.cpp:154
 #: src/gui/emoji/emoji_set_dialog.cpp:207
@@ -3135,7 +3135,7 @@ msgstr "Dibuixa un rectangle"
 #: src/gui/tools/select_tool.cpp:29
 #, kde-format
 msgid "Select"
-msgstr "Selecciona"
+msgstr "Tria"
 
 #: src/gui/tools/select_tool.cpp:134
 #, kde-format
@@ -3590,7 +3590,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Choose directory"
-msgstr "Seleccioneu un directori"
+msgstr "Trieu un directori"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::ExportImageSequenceDialog)
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:21
@@ -3638,7 +3638,7 @@ msgstr "Des del fotograma"
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:132
 #, kde-format
 msgid "Select..."
-msgstr "Selecciona…"
+msgstr "Tria…"
 
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:40
 #, kde-format
@@ -3711,7 +3711,7 @@ msgstr "Segons"
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:88
 #, kde-format
 msgid "Choose..."
-msgstr "Trieu…"
+msgstr "Tria…"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:97
@@ -4424,7 +4424,7 @@ msgstr "Traçat de mapa de bits"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1453
 #, kde-format
 msgid "Only select one image"
-msgstr "Selecciona només una imatge"
+msgstr "Tria només una imatge"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1462
 #, kde-format
@@ -5743,7 +5743,7 @@ msgid ""
 "with Shift or Alt"
 msgstr ""
 "Si està habilitada, la línia de temps es desplaçarà horitzontalment de "
-"manera predeterminada i verticalment amb «Majús» o Alt"
+"manera predeterminada i verticalment amb «Majús» o «Alt»"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:237
 msgid "Icon Theme"
