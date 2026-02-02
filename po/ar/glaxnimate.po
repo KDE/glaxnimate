@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 14:39+0000\n"
+"POT-Creation-Date: 2026-02-02 02:38+0000\n"
 "PO-Revision-Date: 2025-09-21 19:08+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -348,7 +348,7 @@ msgstr "استبدل"
 #: src/android/document_opener.cpp:201
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:448
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:453
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:182
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:183
 #: src/gui/widgets/font/external_font_widget.cpp:126
 #, kde-format
 msgid "Open File"
@@ -360,7 +360,7 @@ msgid "Raster images need to be traced into vectors"
 msgstr "يجب تتبع الصور النقطية وتحويلها إلى متجهات"
 
 #: src/android/document_opener.cpp:106
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:183
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:184
 #, kde-format
 msgid "Save File"
 msgstr "احفظ الملفّ"
@@ -641,13 +641,13 @@ msgstr "نمط التعبئة"
 msgid "Stroke Style"
 msgstr "نمط الحد"
 
-#: src/android/main_window.cpp:452 src/gui/widgets/dialogs/gw_impl_ui.cpp:612
+#: src/android/main_window.cpp:452 src/gui/widgets/dialogs/gw_impl_ui.cpp:613
 #: src/gui/widgets/menus/node_menu.cpp:105
 #, kde-format
 msgid "Raise"
 msgstr "ارفع"
 
-#: src/android/main_window.cpp:457 src/gui/widgets/dialogs/gw_impl_ui.cpp:615
+#: src/android/main_window.cpp:457 src/gui/widgets/dialogs/gw_impl_ui.cpp:616
 #: src/gui/widgets/menus/node_menu.cpp:109
 #, kde-format
 msgid "Lower"
@@ -727,7 +727,7 @@ msgstr "افتح..."
 #: src/gui/widgets/dialogs/about_env_dialog.ui:101
 #: src/gui/widgets/dialogs/about_env_dialog.ui:129
 #: src/gui/widgets/dialogs/about_env_dialog.ui:132
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1587
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1589
 #: src/gui/widgets/dialogs/startup_dialog.ui:149
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:136
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
@@ -776,7 +776,7 @@ msgstr "أرسل إلى تلغرام"
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/android/main_window.cpp:544 src/gui/glaxnimateui.rc:120
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:568
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:569
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #: src/gui/widgets/docks/layers.ui:29
 #, kde-format
@@ -918,8 +918,9 @@ msgid "Could not start activity, is Telegram installed?"
 msgstr "تعذر بدء النشاط، هل تلغرام مثبت؟"
 
 #: src/core/app_info.cpp:57
-#, kde-format
-msgid "(c) 2019-2023"
+#, fuzzy, kde-format
+#| msgid "(c) 2019-2023"
+msgid "(c) 2019-2025"
 msgstr "© 2019-2023"
 
 #: src/core/app_info.cpp:66
@@ -1228,7 +1229,7 @@ msgstr "معرّف مورد غير معروف %1"
 msgid "Could not read file %1"
 msgstr "تعذّرت قراءة الملفّ %1"
 
-#: src/core/io/avd/avd_parser.cpp:659 src/core/io/avd/avd_parser.cpp:668
+#: src/core/io/avd/avd_parser.cpp:659 src/core/io/avd/avd_parser.cpp:677
 #, kde-format
 msgid "Could not load resource %1"
 msgstr "تعذر تحميل المورد %1"
@@ -1852,98 +1853,98 @@ msgid "Could not allocate frame data."
 msgstr "لا يمكن تخصيص بيانات الإطار."
 
 #: src/core/io/video/video_format.cpp:403
-#: src/core/io/video/video_format.cpp:782
+#: src/core/io/video/video_format.cpp:789
 #, kde-format
 msgid "No video codec"
 msgstr "لا يوجد ترميز مرئي"
 
-#: src/core/io/video/video_format.cpp:431
+#: src/core/io/video/video_format.cpp:438
 #, kde-format
 msgid "Could not determine pixel format"
 msgstr "لا يمكن تحديد صيغة البكسل"
 
-#: src/core/io/video/video_format.cpp:441
+#: src/core/io/video/video_format.cpp:448
 #, kde-format
 msgid "Could not open video codec: %1"
 msgstr "لا يمكن فتح ترميز الفيديو: %1"
 
-#: src/core/io/video/video_format.cpp:446
+#: src/core/io/video/video_format.cpp:453
 #, kde-format
 msgid "Could not allocate video frame"
 msgstr "لا يمكن تخصيص إطار فيديو"
 
-#: src/core/io/video/video_format.cpp:453
+#: src/core/io/video/video_format.cpp:460
 #, kde-format
 msgid "Could not copy the stream parameters"
 msgstr "لا يمكن نسخ معاملات الدفق"
 
-#: src/core/io/video/video_format.cpp:473
+#: src/core/io/video/video_format.cpp:480
 #, kde-format
 msgid "Error while creating video frame"
 msgstr "خطأ أثناء إنشاء إطار الفيديو"
 
-#: src/core/io/video/video_format.cpp:497
+#: src/core/io/video/video_format.cpp:504
 #, kde-format
 msgid "Could not initialize the conversion context"
 msgstr "لا يمكن تهيئة سياق التحويل"
 
-#: src/core/io/video/video_format.cpp:503
+#: src/core/io/video/video_format.cpp:510
 #, kde-format
 msgid "Could not allocate temporary picture"
 msgstr "لا يمكن تخصيص صورة مؤقتة"
 
-#: src/core/io/video/video_format.cpp:750
+#: src/core/io/video/video_format.cpp:757
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
 msgstr "لا يمكن استنتاج صيغة الخرج من امتداد الملف: استخدم MPEG."
 
-#: src/core/io/video/video_format.cpp:754
+#: src/core/io/video/video_format.cpp:761
 #, kde-format
 msgid "Could not find output format"
 msgstr "لا أجد صيغة الخرج"
 
-#: src/core/io/video/video_format.cpp:827
+#: src/core/io/video/video_format.cpp:834
 #, kde-format
 msgid "Error occurred when opening output file: %1"
 msgstr "حدث خطأ عند فتح ملف الخرج: %1"
 
-#: src/core/io/video/video_format.cpp:862
+#: src/core/io/video/video_format.cpp:869
 #, kde-format
 msgid "Background"
 msgstr "الخلفية"
 
-#: src/core/io/video/video_format.cpp:862
+#: src/core/io/video/video_format.cpp:869
 #, kde-format
 msgid "Background color"
 msgstr "لون الخلفية"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/core/io/video/video_format.cpp:863
+#: src/core/io/video/video_format.cpp:870
 #: src/gui/widgets/dialogs/resize_dialog.ui:56
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:46
 #, kde-format
 msgid "Width"
 msgstr "العرض"
 
-#: src/core/io/video/video_format.cpp:863
-#: src/core/io/video/video_format.cpp:864
+#: src/core/io/video/video_format.cpp:870
+#: src/core/io/video/video_format.cpp:871
 #, kde-format
 msgid "If not 0, it will overwrite the size"
 msgstr "إن لم يكن 0، سيتجاوز الحجم"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/core/io/video/video_format.cpp:864
+#: src/core/io/video/video_format.cpp:871
 #: src/gui/widgets/dialogs/resize_dialog.ui:33
 #, kde-format
 msgid "Height"
 msgstr "الارتفاع"
 
-#: src/core/io/video/video_format.cpp:865
+#: src/core/io/video/video_format.cpp:872
 #, kde-format
 msgid "Verbose"
 msgstr "مطنب"
 
-#: src/core/io/video/video_format.cpp:865
+#: src/core/io/video/video_format.cpp:872
 #, kde-format
 msgid "Show verbose information on the conversion"
 msgstr "اعرض معلومات مفصّلة عن التحويل"
@@ -2145,7 +2146,7 @@ msgstr "بيضاوي"
 #: src/core/model/shapes/fill.hpp:48 src/gui/tools/draw_tool_base.cpp:114
 #: src/gui/tools/fill_tool.cpp:25
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:763
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:590
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:591
 #: src/gui/widgets/docks/colors.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:191
 #: src/gui/widgets/tools/color_picker_widget.ui:24
@@ -2157,8 +2158,8 @@ msgstr "تعبئة"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/model/shapes/group.hpp:42
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:587
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:624
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:588
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:625
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
 #, kde-format
 msgid "Group"
@@ -2176,7 +2177,7 @@ msgstr "تضخيم و انكماش"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/model/shapes/layer.hpp:81
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:584
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:585
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
 #, kde-format
 msgid "Layer"
@@ -2191,7 +2192,7 @@ msgstr "إزاحة المسار"
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/model/shapes/path.hpp:38 src/gui/glaxnimateui.rc:174
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:676
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:677
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
@@ -2228,7 +2229,7 @@ msgstr "تدوير الحواف"
 #. i18n: ectx: property (text), widget (QRadioButton, check_stroke)
 #: src/core/model/shapes/stroke.hpp:68 src/gui/tools/draw_tool_base.cpp:126
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:758
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:593
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:594
 #: src/gui/widgets/docks/stroke.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:101
 #: src/gui/widgets/tools/color_picker_widget.ui:37
@@ -2245,7 +2246,7 @@ msgstr "تغيير الخط"
 
 #. i18n: ectx: Menu (text)
 #: src/core/model/shapes/text.cpp:489 src/gui/glaxnimateui.rc:200
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:120
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:121
 #, kde-format
 msgid "Text"
 msgstr "النص"
@@ -2564,7 +2565,7 @@ msgstr "مجموعة الرموز التعبيرية"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:248
 #: src/gui/widgets/dialogs/about_env_dialog.ui:289
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:109
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:313
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:314
 #: src/gui/widgets/dialogs/startup_dialog.ui:48
 #: src/gui/widgets/settings/plugin_settings_widget.ui:168
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:391
@@ -2626,14 +2627,14 @@ msgid "Close"
 msgstr "أغلق"
 
 #. i18n: ectx: Menu (file_new_from_template)
-#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1258
+#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1260
 #, kde-format
 msgid "New from Template"
 msgstr "جديد من القالب"
 
 #. i18n: ectx: Menu (edit_tools)
-#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:379
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:754
+#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:380
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:755
 #, kde-format
 msgid "Tools"
 msgstr "أدوات"
@@ -2651,7 +2652,7 @@ msgid "Layout"
 msgstr "التخطيط"
 
 #. i18n: ectx: Menu (document)
-#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:455
+#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:456
 #, kde-format
 msgid "Document"
 msgstr "مستند"
@@ -2671,13 +2672,13 @@ msgid "Web Preview"
 msgstr "معاينة على الويب"
 
 #. i18n: ectx: Menu (playback)
-#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:499
+#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:500
 #, kde-format
 msgid "Playback"
 msgstr "تشغيل"
 
 #. i18n: ectx: Menu (object)
-#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:607
+#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:608
 #, kde-format
 msgid "Object"
 msgstr "كائن"
@@ -2690,7 +2691,7 @@ msgstr "محاذاة وتوزيع"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:205 src/gui/settings/plugin_settings_group.hpp:23
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1482
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1484
 #, kde-format
 msgid "Plugins"
 msgstr "الملحقات"
@@ -2956,12 +2957,12 @@ msgstr "ارسم منحنى بيزييه"
 msgid "Drag nodes"
 msgstr "اسحب العقد"
 
-#: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:706
+#: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:707
 #, kde-format
 msgid "Cusp"
 msgstr "عطفة"
 
-#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:707
+#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:708
 #, kde-format
 msgid "Smooth"
 msgstr "متجانس"
@@ -3019,12 +3020,12 @@ msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "أزل التوقف"
 
-#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:711
+#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:712
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr "اذب العقد"
 
-#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:698
+#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:699
 #, kde-format
 msgid "Delete Nodes"
 msgstr "احذف العقد"
@@ -3044,7 +3045,7 @@ msgstr "قوّم المقاطع"
 msgid "Curve segments"
 msgstr "اقوس المقاطع"
 
-#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:338
+#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:339
 #, kde-format
 msgid "Edit"
 msgstr "حرّر"
@@ -3095,19 +3096,19 @@ msgstr "اختر"
 msgid "Drag"
 msgstr "تحريك"
 
-#: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:343
+#: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:344
 #, kde-format
 msgid "Undo %1"
 msgstr "تراجع %1"
 
-#: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:349
+#: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:350
 #, kde-format
 msgid "Redo %1"
 msgstr "كرّر %1"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_delete)
-#: src/gui/tools/select_tool.cpp:417 src/gui/widgets/dialogs/gw_impl_ui.cpp:364
+#: src/gui/tools/select_tool.cpp:417 src/gui/widgets/dialogs/gw_impl_ui.cpp:365
 #: src/gui/widgets/dialogs/selection_manager.cpp:90
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:46
 #: src/gui/widgets/docks/snippet_list_widget.ui:57
@@ -3138,7 +3139,7 @@ msgstr "ارسم نصًا"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::AboutEnvironmentDialog)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:20
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:143
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:144
 #, kde-format
 msgid "About Environment"
 msgstr "عن البيئة"
@@ -3512,7 +3513,7 @@ msgstr "الكلمات المفتاحيّة"
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #. i18n: ectx: attribute (title), widget (QWidget, tab_custom)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:84
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:415
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:416
 #: src/gui/widgets/font/font_style_dialog.ui:77
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:69
 #, kde-format
@@ -3813,7 +3814,7 @@ msgid "Scalable Vector Graphics (*.svg)"
 msgstr "رسوميات متجهية متدرجة (*.svg)"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:639
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:477
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:478
 #, kde-format
 msgid "Validate Discord Sticker"
 msgstr "تحقق من ملصق دسكورد"
@@ -3831,7 +3832,7 @@ msgid "Some issues detected"
 msgstr "اكتشف بعض المشاكل"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:649
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:474
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:475
 #, kde-format
 msgid "Validate Telegram Sticker"
 msgstr "تحقق من ملصق تليغرام"
@@ -3959,83 +3960,83 @@ msgstr "ضع النص على المسار"
 msgid "Remove text from path"
 msgstr "أزل النص من المسار"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:122
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:123
 #, kde-format
 msgid "Put on Path"
 msgstr "ضع على المسار"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:125
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:126
 #: src/gui/widgets/menus/node_menu.cpp:396
 #, kde-format
 msgid "Remove from Path"
 msgstr "أزل من المسار"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:139
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:140
 #, kde-format
 msgid "Copy Debug Information"
 msgstr "انسخ معلومات التنقيح"
 
 #. i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:265
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:266
 #, kde-format
 msgid "File"
 msgstr "ملف"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:270
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:271
 #, kde-format
 msgid "Add Image…"
 msgstr "أضف صورة..."
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:273
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:274
 #, kde-format
 msgid "Import…"
 msgstr "استورد…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:276
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:277
 #, kde-format
 msgid "Import from LottieFiles…"
 msgstr "استورد من LottieFiles…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:279
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:280
 #, kde-format
 msgid "Open Most Recent"
 msgstr "افتح الأحدث"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:308
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:313
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:319
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:309
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:314
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:320
 #, kde-format
 msgid "Save as Template"
 msgstr "احفظ كقالب"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:319
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:320
 #, kde-format
 msgid "Could not save template"
 msgstr "لا أستطيع حفظ القالب"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:323
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:324
 #, kde-format
 msgid "Export…"
 msgstr "صدر…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:326
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:327
 #, kde-format
 msgid "Export As…"
 msgstr "صدّر بصيغة…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:329
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:330
 #, kde-format
 msgid "Export as Image Sequence…"
 msgstr "صدّر كسلسلة صور…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:356
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:357
 #, kde-format
 msgid "Paste as Composition"
 msgstr "ألصق كتركيب"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_duplicate)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:359
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:360
 #: src/gui/widgets/docks/layers.ui:80 src/gui/widgets/docks/layers.ui:83
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:486
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:69
@@ -4043,34 +4044,34 @@ msgstr "ألصق كتركيب"
 msgid "Duplicate"
 msgstr "كرّر"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:410
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:411
 #, kde-format
 msgid "View"
 msgstr "عرض"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:421
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:422
 #, kde-format
 msgid "Automatic"
 msgstr "آليّ"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:426
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:427
 #, kde-format
 msgid "Wide"
 msgstr "عريض"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:431
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:432
 #, kde-format
 msgid "Medium"
 msgstr "متوسط"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:436
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:437
 #, kde-format
 msgid "Compact"
 msgstr "مُدمج"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_angle_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_angle_reset)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:447
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:448
 #: src/gui/widgets/view_transform_widget.ui:150
 #: src/gui/widgets/view_transform_widget.ui:153
 #, kde-format
@@ -4079,186 +4080,186 @@ msgstr "صفّر الدوران"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_flip_view)
 #. i18n: ectx: property (text), widget (QToolButton, btn_flip_view)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:449
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:450
 #: src/gui/widgets/view_transform_widget.ui:164
 #: src/gui/widgets/view_transform_widget.ui:167
 #, kde-format
 msgid "Flip View"
 msgstr "اقلب العرض"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:457
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:458
 #, kde-format
 msgid "Raster…"
 msgstr "نقطي…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:459
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:460
 #, kde-format
 msgid "SVG…"
 msgstr "SVG…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:462
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:463
 #, kde-format
 msgid "Lottie (SVG)"
 msgstr "Lottie (SVG)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:465
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:466
 #, kde-format
 msgid "Lottie (canvas)"
 msgstr "Lottie (لوحة رسم)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:468
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:469
 #, kde-format
 msgid "SVG (SMIL)"
 msgstr "SVG (SMIL)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:471
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:472
 #, kde-format
 msgid "RIVE (canvas)"
 msgstr "RIVE (لوحة رسم)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:480
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:481
 #, kde-format
 msgid "Resize…"
 msgstr "غيّر الحجم…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:483
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:484
 #, kde-format
 msgid "Cleanup"
 msgstr "نظف"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:486
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:487
 #, kde-format
 msgid "Timing…"
 msgstr "توقيت…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:491
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:492
 #, kde-format
 msgid "Metadata…"
 msgstr "البيانات الوصفيّة…"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:502
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:526
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:503
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:527
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
 #, kde-format
 msgid "Play"
 msgstr "شغّل"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_loop)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:504
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:505
 #: src/gui/widgets/timeline/frame_controls_widget.ui:63
 #, kde-format
 msgid "Loop"
 msgstr "حلقة"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:507
 #, kde-format
 msgid "Record Keyframes"
 msgstr "سجّل الإطارات الرئيسة"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:508
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:509
 #, kde-format
 msgid "Jump to Start"
 msgstr "اقفز إلى البداية"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:510
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:511
 #, kde-format
 msgid "Jump to End"
 msgstr "اقفز إلى النهاية"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:513
 #, kde-format
 msgid "Next Frame"
 msgstr "الإطار التالي"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:514
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:515
 #, kde-format
 msgid "Previous Frame"
 msgstr "الإطار السابق"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:522
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:523
 #, kde-format
 msgid "Pause"
 msgstr "ألبث"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:577
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:578
 #, kde-format
 msgid "Precompose Selection"
 msgstr "جهز التركيبة المحددة"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:581
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:582
 #, kde-format
 msgid "New Composition"
 msgstr "تركيبة جديدة"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:596
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:597
 #, kde-format
 msgid "Emoji…"
 msgstr "صورة تعبيرية…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:609
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:610
 #, kde-format
 msgid "Raise to Top"
 msgstr "ارفع إلى الأعلى"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:618
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:619
 #, kde-format
 msgid "Lower to Bottom"
 msgstr "اخفض إلى الأسفل"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:621
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:622
 #, kde-format
 msgid "Move to…"
 msgstr "انقل إلى…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:627
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:628
 #, kde-format
 msgid "Ungroup"
 msgstr "فك التجميع"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:630
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:631
 #: src/gui/widgets/docks/aligndock.cpp:46
 #, kde-format
 msgid "Align"
 msgstr "محاذاة"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:632
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:633
 #, kde-format
 msgid "Selection"
 msgstr "اختيار"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:634
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:635
 #, kde-format
 msgid "Canvas"
 msgstr "الرقع"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:636
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:637
 #, kde-format
 msgid "Canvas (as Group)"
 msgstr "لوحة الرسم (كمجموعة)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:639
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:640
 #, kde-format
 msgid "Left"
 msgstr "يسار"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:642
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:651
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:643
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:652
 #, kde-format
 msgid "Center"
 msgstr "وسط"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:645
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:646
 #, kde-format
 msgid "Right"
 msgstr "يمين"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:648
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:649
 #, kde-format
 msgid "Top"
 msgstr "أعلى"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:654
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:655
 #, kde-format
 msgid "Bottom"
 msgstr "أسفل"
@@ -4266,146 +4267,146 @@ msgstr "أسفل"
 #. i18n("Relative To"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_horizontal"), i18n("Horizontal"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_vertical"), i18n("Vertical"), QStringLiteral(""));
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:661
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:662
 #, kde-format
 msgid "Outside Left"
 msgstr "خارج اليسار"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:664
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:665
 #, kde-format
 msgid "Outside Right"
 msgstr "خارج اليمين"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:667
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:668
 #, kde-format
 msgid "Outside Top"
 msgstr "خارج الأعلى"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:671
 #, kde-format
 msgid "Outside Bottom"
 msgstr "خارج الأسفل"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:678
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:679
 #, kde-format
 msgid "Object to Path"
 msgstr "حول الكائن إلى مسار"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:681
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:682
 #, kde-format
 msgid "Trace Bitmap…"
 msgstr "اقتف الأثر النقطي…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:687
 #, kde-format
 msgid "Union"
 msgstr "اتحاد"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:689
 #, kde-format
 msgid "Difference"
 msgstr "الفرق"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:690
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:691
 #, kde-format
 msgid "Intersect"
 msgstr "تقاطع"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:693
 #, kde-format
 msgid "Exclusion"
 msgstr "استبعاد"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:695
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:696
 #, kde-format
 msgid "Reverse"
 msgstr "اعكس"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:699
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:700
 #, kde-format
 msgid "Add Node…"
 msgstr "أضف عقدة…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:701
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:702
 #, kde-format
 msgid "Join Nodes"
 msgstr "ضمّ العقد"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:703
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:704
 #, kde-format
 msgid "Split Nodes"
 msgstr "اقسم العقد"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:708
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:709
 #, kde-format
 msgid "Symmetric"
 msgstr "متماثل"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:709
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:710
 #, kde-format
 msgid "Make segments straight"
 msgstr "اجعل القطع مستقيمة"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:710
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:711
 #, kde-format
 msgid "Make segments curved"
 msgstr "اجعل القطع منحنية"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:845
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:846
 #, kde-format
 msgid "Recording Keyframes"
 msgstr "سجّل الإطارات الرئيسة"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1258
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1260
 #, kde-format
 msgid "Could not load template"
 msgstr "لا أستطيع تحميل القالب"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1453
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1462
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1469
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1455
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1464
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1471
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
 msgstr "اقتف الأثر النقطي"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1453
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1455
 #, kde-format
 msgid "Only select one image"
 msgstr "اختر صورة واحدة فقط"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1462
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1464
 #, kde-format
 msgid "You need to select an image to trace"
 msgstr "يجب عليك اختيار صورة لاقتفاء أثرها"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1469
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1471
 #, kde-format
 msgid "You selected an image with no data"
 msgstr "لقد اخترت صورة لا تحتوي على بيانات"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1539
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1541
 #, kde-format
 msgid "X: %1 Y: %2"
 msgstr "س: %1 ص: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1558
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1560
 #, kde-format
 msgid "Drop File"
 msgstr "أسقط الملف"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1569
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1571
 #, kde-format
 msgid "Add to current file?"
 msgstr "أضف إلى الملف الحالي؟"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1575
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1577
 #, kde-format
 msgid "Add as Object"
 msgstr "أضف ككائن"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1581
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1583
 #, kde-format
 msgid "Add as Composition"
 msgstr "أضف كتركيبة"
