@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include <KLocalizedString>
 #include <QAbstractListModel>
 #include "plugin/snippet.hpp"
 
@@ -32,7 +33,7 @@ public:
     QModelIndex append()
     {
         beginInsertRows({}, snippets.size(), snippets.size());
-        QString name_template = i18n("New Snippet %1");
+        QString name_template = i18n("New Snippet %1", snippets.size() + 1);
         QString name = name_template.arg("").trimmed();
         for ( int i = 1; name_used(name); i++ )
             name = name_template.arg(i);
