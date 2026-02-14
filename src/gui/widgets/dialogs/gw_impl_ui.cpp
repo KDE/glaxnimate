@@ -19,6 +19,8 @@
 #include <QDialogButtonBox>
 #include <QStatusBar>
 #include <QClipboard>
+#include <QKeySequence>
+#include <QList>
 
 #include <KHelpMenu>
 #include <KActionCategory>
@@ -38,6 +40,7 @@
 #if HAVE_STYLE_MANAGER
 #include <KStyleManager>
 #endif
+#include <KXMLGUIFactory>
 
 #include "glaxnimate_settings.hpp"
 
@@ -228,6 +231,23 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     // Debug menu
     if ( debug )
         init_debug();
+
+    // Redirect help entry to our own function
+    // First delete the default help action
+    QAction *officialHelp = parent->actionCollection()->action(KStandardAction::name(KStandardAction::HelpContents));
+    // Save and later restore any custom shortcuts
+    QList<QKeySequence> helpShortcuts = officialHelp->shortcuts();
+    parent->actionCollection()->removeAction(officialHelp);
+    // Now recreate our own
+    KStandardAction::helpContents(parent, &GlaxnimateWindow::help_manual, parent->actionCollection());
+    officialHelp = parent->actionCollection()->action(KStandardAction::name(KStandardAction::HelpContents));
+    officialHelp->setShortcuts(helpShortcuts);
+    // Replug it in the Help menu
+    QMenu *helpMenu = static_cast<QMenu *>(parent->factory()->container(QStringLiteral("help"), parent));
+    if (helpMenu) {
+        QAction *whatsThis = parent->actionCollection()->action(KStandardAction::name(KStandardAction::WhatsThis));
+        helpMenu->insertAction(whatsThis, officialHelp);
+    }
 
     // Restore state
     // NOTE: keep at the end so we do this once all the widgets are in their default spots
