@@ -344,7 +344,7 @@ void GlaxnimateWindow::Private::setup_edit_actions()
         undo->setText(i18n("Undo %1", s));
     });
 
-    QAction *redo = editActions->addAction(KStandardAction::Redo, &parent->undo_group(), SLOT(undo()));
+    QAction *redo = editActions->addAction(KStandardAction::Redo, &parent->undo_group(), SLOT(redo()));
     QObject::connect(&parent->undo_group(), &QUndoGroup::canRedoChanged, redo, &QAction::setEnabled);
     QObject::connect(&parent->undo_group(), &QUndoGroup::redoTextChanged, redo, [this, redo](const QString& s){
         redo->setText(i18n("Redo %1", s));
