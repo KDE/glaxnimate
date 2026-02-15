@@ -19,6 +19,7 @@ namespace glaxnimate::model {
 class Assets;
 struct PendingAsset;
 class Composition;
+class NodeMap;
 
 class Document : public QObject
 {
@@ -54,9 +55,6 @@ public:
 
     DocumentInfo& info();
 
-    Composition* current_comp();
-    void set_current_comp(Composition* comp);
-
     QUndoStack& undo_stack();
 
     const io::Options& io_options() const;
@@ -85,6 +83,8 @@ public:
     Q_INVOKABLE void set_best_name(glaxnimate::model::DocumentNode* node, const QString& suggestion={}) const;
 
     model::Assets* assets() const;
+
+    NodeMap& node_map() const;
 
     model::CompGraph& comp_graph();
 

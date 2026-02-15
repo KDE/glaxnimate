@@ -31,7 +31,7 @@ public:
     /**
      * @brief Unique identifier for the node
      */
-    GLAXNIMATE_PROPERTY_RO(QUuid, uuid, {})
+    GLAXNIMATE_PROPERTY(QUuid, uuid, {}, &DocumentNode::on_uuid_changed, {}, PropertyTraits::ReadOnly)
     /**
      * @brief Name of the node, used to display it in the UI
      */
@@ -111,17 +111,6 @@ public:
     }
 
     template<class T=DocumentNode>
-    T* docnode_find_by_uuid(const QUuid& uuid)
-    {
-        if ( this->uuid.get() == uuid && qobject_cast<T*>(this) )
-            return this;
-        for ( DocumentNode* child : docnode_children() )
-            if ( auto found = child->docnode_find_by_uuid<T>(uuid) )
-                return found;
-        return nullptr;
-    }
-
-    template<class T=DocumentNode>
     T* docnode_find_by_name(const QString& name)
     {
         if ( this->name.get() == name && qobject_cast<T*>(this) )
@@ -151,7 +140,7 @@ public:
     bool docnode_is_instance(const QString& type_name) const;
 
     Q_INVOKABLE glaxnimate::model::DocumentNode* find_by_name(const QString& name) { return docnode_find_by_name(name); }
-    Q_INVOKABLE glaxnimate::model::DocumentNode* find_by_uuid(const QUuid& uuid) { return docnode_find_by_uuid(uuid); }
+    Q_INVOKABLE glaxnimate::model::DocumentNode* find_by_uuid(const QUuid& uuid);
     Q_INVOKABLE QVariantList find_by_type_name(const QString& type_name)
     {
         auto ob = docnode_find_by_type_name(type_name);
@@ -233,6 +222,7 @@ private:
     void added_to_list(DocumentNode* new_parent);
 
     void on_name_changed(const QString& name, const QString& old_name);
+    void on_uuid_changed(const QUuid& uuid, const QUuid& old_uuid);
 
 Q_SIGNALS:
     void docnode_child_add_begin(int row);

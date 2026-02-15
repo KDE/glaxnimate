@@ -11,6 +11,7 @@
 #include "io/glaxnimate/glaxnimate_format.hpp"
 #include "model/assets/assets.hpp"
 #include "model/assets/pending_asset.hpp"
+#include "model/node_map.hpp"
 
 
 class glaxnimate::model::Document::Private
@@ -18,8 +19,7 @@ class glaxnimate::model::Document::Private
 public:
     using NameIndex = unsigned long long;
 
-    Private(Document* doc)
-        : assets(doc)
+    Private()
     {
         io_options.format = io::glaxnimate::GlaxnimateFormat::instance();
     }
@@ -88,7 +88,8 @@ public:
     io::Options io_options;
     FrameTime current_time = 0;
     bool record_to_keyframe = false;
-    Assets assets;
+    NodeMap node_map;
+    std::unique_ptr<Assets> assets;
     glaxnimate::model::CompGraph comp_graph;
     std::unordered_map<QString, NameIndex> name_indices;
     std::map<int, PendingAsset> pending_assets;
@@ -99,10 +100,11 @@ public:
 
 
 glaxnimate::model::Document::Document(const QString& filename)
-    : d ( std::make_unique<glaxnimate::model::Document::Private>(this) )
+    : d ( std::make_unique<glaxnimate::model::Document::Private>() )
 {
     d->io_options.filename = filename;
     d->uuid = QUuid::createUuid();
+    d->assets = std::make_unique<Assets>(this);
 }
 
 glaxnimate::model::Document::~Document() = default;
@@ -142,17 +144,17 @@ void glaxnimate::model::Document::set_io_options(const io::Options& opt)
 
 glaxnimate::model::DocumentNode * glaxnimate::model::Document::find_by_uuid(const QUuid& n) const
 {
-    return d->assets.docnode_find_by_uuid(n);
+    return d->node_map.node_from_uuid<>(n);
 }
 
 glaxnimate::model::DocumentNode * glaxnimate::model::Document::find_by_name(const QString& name) const
 {
-    return d->assets.docnode_find_by_name(name);
+    return d->assets->docnode_find_by_name(name);
 }
 
 QVariantList glaxnimate::model::Document::find_by_type_name(const QString& type_name) const
 {
-    return d->assets.find_by_type_name(type_name);
+    return d->assets->find_by_type_name(type_name);
 }
 
 bool glaxnimate::model::Document::redo()
@@ -178,7 +180,7 @@ glaxnimate::model::FrameTime glaxnimate::model::Document::current_time() const
 
 void glaxnimate::model::Document::set_current_time(glaxnimate::model::FrameTime t)
 {
-    d->assets.set_time(t);
+    d->assets->set_time(t);
     Q_EMIT current_time_changed(d->current_time = t);
 }
 
@@ -218,7 +220,7 @@ void glaxnimate::model::Document::set_best_name(glaxnimate::model::DocumentNode*
 
 glaxnimate::model::Assets * glaxnimate::model::Document::assets() const
 {
-    return &d->assets;
+    return d->assets.get();
 }
 
 glaxnimate::model::Object * glaxnimate::model::Document::assets_obj() const
@@ -252,7 +254,7 @@ void glaxnimate::model::Document::increase_node_name(const QString& new_name)
 void glaxnimate::model::Document::stretch_time(qreal multiplier)
 {
     qreal time = d->current_time;
-    d->assets.stretch_time(multiplier);
+    d->assets->stretch_time(multiplier);
     set_current_time(qRound(time * multiplier));
 }
 
@@ -298,4 +300,9 @@ void glaxnimate::model::Document::clear_pending_assets()
 glaxnimate::model::Document::DocumentInfo & glaxnimate::model::Document::info()
 {
     return d->info;
+}
+
+glaxnimate::model::NodeMap& glaxnimate::model::Document::node_map() const
+{
+    return d->node_map;
 }

@@ -13,6 +13,7 @@
 #include "model/shapes/shape.hpp"
 #include "model/property/reference_property.hpp"
 #include "model/property/sub_object_property.hpp"
+#include "model/node_map.hpp"
 #include "utils/pseudo_mutex.hpp"
 
 class glaxnimate::model::DocumentNode::Private
@@ -26,16 +27,21 @@ public:
 glaxnimate::model::DocumentNode::DocumentNode(glaxnimate::model::Document* document)
     : DocumentNode(document, std::make_unique<Private>())
 {
+    this->document()->node_map().add(this, false, false);
 }
 
 glaxnimate::model::DocumentNode::DocumentNode(glaxnimate::model::Document* document, std::unique_ptr<Private> d)
     : Object ( document ), d(std::move(d))
 {
-    uuid.set_value(QUuid::createUuid());
+    // uuid.set_value(QUuid::createUuid());
+    this->document()->node_map().add(this, false, false);
 }
 
 
-glaxnimate::model::DocumentNode::~DocumentNode() = default;
+glaxnimate::model::DocumentNode::~DocumentNode()
+{
+    document()->node_map().remove(uuid.get());
+}
 
 void glaxnimate::model::DocumentNode::removed_from_list()
 {
@@ -83,6 +89,11 @@ bool glaxnimate::model::DocumentNode::docnode_is_instance(const QString& type_na
     return false;
 }
 
+glaxnimate::model::DocumentNode* glaxnimate::model::DocumentNode::find_by_uuid(const QUuid& uuid)
+{
+    return document()->node_map().node_from_uuid<>(uuid);
+}
+
 void glaxnimate::model::DocumentNode::recursive_rename()
 {
     document()->set_best_name(this, name.get());
@@ -93,27 +104,21 @@ void glaxnimate::model::DocumentNode::recursive_rename()
 
 void glaxnimate::model::DocumentNode::refresh_uuid()
 {
-    uuid.set_value(QUuid::createUuid());
-    for ( auto prop : properties() )
+    return document()->node_map().add(this, true, true);
+}
+
+void glaxnimate::model::DocumentNode::on_uuid_changed(const QUuid& uuid, const QUuid& old_uuid)
+{
+    if ( uuid != old_uuid )
     {
-        if ( prop->traits().type == PropertyTraits::Object )
-        {
-            if ( prop->traits().flags & PropertyTraits::List )
-            {
-                for ( auto v : prop->value().toList() )
-                {
-                    if ( auto obj = v.value<glaxnimate::model::DocumentNode*>() )
-                        obj->refresh_uuid();
-                }
-            }
-            else
-            {
-                if ( auto obj = qobject_cast<DocumentNode*>(static_cast<glaxnimate::model::SubObjectPropertyBase*>(prop)->sub_object()) )
-                    obj->refresh_uuid();
-            }
-        }
+        if ( !old_uuid.isNull() )
+            document()->node_map().remove(old_uuid);
+
+        if ( !uuid.isNull() )
+            document()->node_map().add(this, false, false);
     }
 }
+
 
 QString glaxnimate::model::DocumentNode::object_name() const
 {
