@@ -30,19 +30,12 @@ class TestCase: public QObject
     QDomDocument xml(QString xml, int local_line = 0)
     {
         QDomDocument dom;
-        QString error;
-        int line = 0, col = 0;
-#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
         auto result = dom.setContent(xml.trimmed());
-        error = result.errorMessage;
-        line = result.errorLine;
-        col = result.errorColumn;
-#else
-        dom.setContent(xml.trimmed(), false, &error, &line, &col);
-#endif
-        if ( error != "" )
+        if ( !result )
         {
-            auto msg = QString("%1:%2: %3").arg(line).arg(col).arg(error);
+            int line = result.errorLine;
+            int col = result.errorColumn;
+            auto msg = QString("%1:%2: %3").arg(line).arg(col).arg(result.errorMessage);
             auto lines = xml.split("\n");
             int li = line - 1;
             if ( li >= 0 && li < lines.size() )
