@@ -68,9 +68,15 @@ public:
 
     void load(QIODevice* device)
     {
+
         SvgParseError err;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+        if ( !(err = dom.setContent(device, QDomDocument::ParseOption::UseNamespaceProcessing)) )
+            throw err;
+#else
         if ( !dom.setContent(device, true, &err.message, &err.line, &err.column) )
             throw err;
+#endif
     }
 
     virtual ~SvgParserPrivate() = default;
