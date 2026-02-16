@@ -26,7 +26,7 @@ settings::DocumentTemplate::DocumentTemplate(const QString& filename, bool* load
 QSize settings::DocumentTemplate::size() const
 {
     if ( auto comp = main_comp() )
-        return comp->size();
+        return comp->size().toSize();
     return {};
 }
 
