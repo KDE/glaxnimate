@@ -51,7 +51,7 @@ bool glaxnimate::io::raster::SpritesheetFormat::on_save(QIODevice& file, const Q
     int first_frame = comp->animation->first_frame.get();
     int last_frame = comp->animation->last_frame.get();
     int frames = (last_frame - first_frame) / frame_step;
-    int rows = frames / columns;
+    int rows = qCeil(float(frames) / columns);
 
     qreal scale_x = qreal(frame_w) / comp->width.get();
     qreal scale_y = qreal(frame_h) / comp->height.get();
