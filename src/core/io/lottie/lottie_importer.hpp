@@ -687,10 +687,13 @@ private:
             transform.remove("ty");
             load_transform(transform, repeater->transform.get(), nullptr);
         }
-        else if ( version[0] < 5 && type_name == "Path" && json.contains("closed") )
+        else if ( type_name == "Path" )
         {
             auto path = static_cast<model::Path*>(shape);
-            path->shape.set_closed(json["closed"].toBool());
+            if ( version[0] < 5 && json.contains("closed") )
+                path->shape.set_closed(json["closed"].toBool());
+
+            path->closed.set_value(path->shape.closed());
         }
     }
 
