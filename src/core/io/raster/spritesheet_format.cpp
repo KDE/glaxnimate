@@ -57,6 +57,7 @@ bool glaxnimate::io::raster::SpritesheetFormat::on_save(QIODevice& file, const Q
     qreal scale_y = qreal(frame_h) / comp->height.get();
 
     QImage bmp(frame_w * columns, frame_h * rows, QImage::Format_ARGB32);
+    bmp.fill(Qt::transparent);
     QPainter painter(&bmp);
     for ( int i = first_frame; i <= last_frame; i += frame_step )
     {
