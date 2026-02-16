@@ -23,10 +23,10 @@ class Composition : public VisualNode, public AssetBase
 
     //                  type    name    default  notify                       validate
     GLAXNIMATE_PROPERTY(float,  fps,         60, &Composition::fps_changed,     &Composition::validate_fps)
-    GLAXNIMATE_PROPERTY(int,    width,      512, &Composition::width_changed,   &Composition::validate_nonzero, PropertyTraits::Visual)
-    GLAXNIMATE_PROPERTY(int,    height,     512, &Composition::height_changed,  &Composition::validate_nonzero, PropertyTraits::Visual)
+    GLAXNIMATE_PROPERTY(float,  width,      512, &Composition::width_changed,   &Composition::validate_nonzero, PropertyTraits::Visual)
+    GLAXNIMATE_PROPERTY(float,  height,     512, &Composition::height_changed,  &Composition::validate_nonzero, PropertyTraits::Visual)
 
-    Q_PROPERTY(QSize size READ size)
+    Q_PROPERTY(QSizeF size READ size)
     Q_PROPERTY(QRectF rect READ rect)
 
 public:
@@ -58,7 +58,7 @@ public:
     QString type_name_human() const override;
     bool remove_if_unused(bool clean_lists) override;
     DocumentNode* docnode_parent() const override;
-    QSize size() const { return {width.get(), height.get()}; }
+    QSizeF size() const { return QSizeF(width.get(), height.get()); }
     QRectF rect() const { return QRectF(QPointF(0, 0), size()); }
 
     Q_INVOKABLE QImage render_image(float time, QSize size = {}, const QColor& background = {}) const;
@@ -66,8 +66,8 @@ public:
 
 Q_SIGNALS:
     void fps_changed(float fps);
-    void width_changed(int);
-    void height_changed(int);
+    void width_changed(float);
+    void height_changed(float);
 
 private:
     bool validate_nonzero(int size) const

@@ -865,11 +865,11 @@ bool glaxnimate::io::video::VideoFormat::on_save(QIODevice& dev, const QString& 
 std::unique_ptr<app::settings::SettingsGroup> glaxnimate::io::video::VideoFormat::save_settings(model::Composition* comp) const
 {
     return std::make_unique<app::settings::SettingsGroup>(app::settings::SettingList{
-        //                      slug            label             description                                           default             min max
-        app::settings::Setting{"background",    i18n("Background"), i18n("Background color"),                               QColor(0, 0, 0, 0)},
-        app::settings::Setting{"width",         i18n("Width"),      i18n("If not 0, it will overwrite the size"),           comp->width.get(),  0, 99999},
-        app::settings::Setting{"height",        i18n("Height"),     i18n("If not 0, it will overwrite the size"),           comp->height.get(), 0, 99999},
-        app::settings::Setting{"verbose",       i18n("Verbose"),    i18n("Show verbose information on the conversion"),     false},
+        //                      slug            label             description                                           default                 min max
+        app::settings::Setting{"background",    i18n("Background"), i18n("Background color"),                           QColor(0, 0, 0, 0)},
+        app::settings::Setting{"width",         i18n("Width"),      i18n("If not 0, it will overwrite the size"),       int(comp->width.get()),  0, 99999},
+        app::settings::Setting{"height",        i18n("Height"),     i18n("If not 0, it will overwrite the size"),       int(comp->height.get()), 0, 99999},
+        app::settings::Setting{"verbose",       i18n("Verbose"),    i18n("Show verbose information on the conversion"), false},
     });
 }
 

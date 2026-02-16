@@ -77,5 +77,5 @@ QImage glaxnimate::model::Composition::render_image(float time, QSize image_size
 
 QImage glaxnimate::model::Composition::render_image() const
 {
-    return render_image(document()->current_time(), size());
+    return render_image(document()->current_time(), size().toSize());
 }
