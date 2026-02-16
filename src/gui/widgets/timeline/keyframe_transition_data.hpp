@@ -29,20 +29,9 @@ struct KeyframeTransitionData
     const char* icon_slug;
     model::KeyframeTransition::Descriptive value;
 
-    QIcon icon(Side side) const
-    {
-        const char* side_path = "";
-        if ( side == Start )
-            side_path = "/start";
-        else if ( side == Finish )
-            side_path = "/finish";
-
-        return QIcon(GlaxnimateApp::instance()->data_file(QString("images/keyframe%1/%2.svg").arg(side_path).arg(icon_slug)));
-    }
-
     QIcon icon() const
     {
-        return icon(side);
+        return QIcon(GlaxnimateApp::instance()->data_file(QString("images/keyframe/%1.svg").arg(icon_slug)));
     }
 
     QVariant variant() const

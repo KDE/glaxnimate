@@ -40,6 +40,7 @@ void timeline::KeyframeSplitItem::set_exit(model::KeyframeTransition::Descriptiv
 
 void timeline::KeyframeSplitItem::paint(QPainter * painter, const QStyleOptionGraphicsItem *, QWidget * widget)
 {
+    auto rect = boundingRect();
     if ( isSelected() )
     {
         QColor sel_border = widget->palette().color(QPalette::Highlight);
@@ -49,11 +50,14 @@ void timeline::KeyframeSplitItem::paint(QPainter * painter, const QStyleOptionGr
         sel_fill.setAlpha(128);
         painter->setPen(QPen(sel_border, pen));
         painter->setBrush(sel_fill);
-        painter->drawRect(boundingRect());
+        painter->drawRect(rect);
     }
 
-    painter->drawPixmap(-icon_size/2, -icon_size/2, half_icon_size.width(), half_icon_size.height(), pix_enter);
-    painter->drawPixmap(0, -icon_size/2, half_icon_size.width(), half_icon_size.height(), pix_exit);
+    QPoint offset(-icon_size / 2, -icon_size / 2);
+    QPoint half_off(icon_size / 2, 0);
+    painter->drawPixmap(QRect(offset, half_icon_size), pix_enter, QRect(QPoint(0, 0), half_icon_size));
+    painter->drawPixmap(QRect(offset + half_off, half_icon_size), pix_exit, QRect(half_off, half_icon_size));
+
 }
 
 void timeline::KeyframeSplitItem::mousePressEvent(QGraphicsSceneMouseEvent * event)
