@@ -325,3 +325,7 @@ inline bezier::Bezier lerp(const math::bezier::Bezier& a, const math::bezier::Be
 } // namespace glaxnimate::math
 
 Q_DECLARE_METATYPE(glaxnimate::math::bezier::Bezier)
+
+QDataStream &operator<<(QDataStream &out, const glaxnimate::math::bezier::Bezier& val);
+
+QDataStream &operator>>(QDataStream &in, glaxnimate::math::bezier::Bezier &val);
