@@ -160,7 +160,6 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     parent->setupGUI();
 
     parent->setDockOptions(parent->dockOptions() | QMainWindow::AllowNestedDocks | QMainWindow::AllowTabbedDocks);
-    parent->setDockOptions(parent->dockOptions() | QMainWindow::GroupedDragging);
 
     parent->setCentralWidget(centralWidget);
 
