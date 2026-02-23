@@ -628,7 +628,7 @@ void GlaxnimateWindow::Private::save_frame_svg()
     }
 
     io::svg::SvgRenderer rend(io::svg::NotAnimated, io::svg::CssFontType::FontFace);
-    rend.write_main(comp);
+    rend.write_main(comp, frame);
     rend.write(&file, true);
 }
 

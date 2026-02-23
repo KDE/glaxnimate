@@ -77,7 +77,7 @@ static QByteArray frame_to_svg(model::Composition* comp)
     file.open(QIODevice::WriteOnly);
 
     io::svg::SvgRenderer rend(io::svg::NotAnimated, io::svg::CssFontType::FontFace);
-    rend.write_main(comp);
+    rend.write_main(comp, comp->document()->current_time());
     rend.write(&file, true);
 
     return data;

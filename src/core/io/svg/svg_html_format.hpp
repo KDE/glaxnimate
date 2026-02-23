@@ -26,7 +26,7 @@ private:
         file.write(lottie::LottieHtmlFormat::html_head(this, comp, {}));
         file.write("<body><div id='animation'>");
         SvgRenderer rend(SMIL, CssFontType::FontFace);
-        rend.write_main(comp);
+        rend.write_main(comp, comp->document()->current_time());
         rend.write(&file, true);
         file.write("</div></body></html>");
         return true;

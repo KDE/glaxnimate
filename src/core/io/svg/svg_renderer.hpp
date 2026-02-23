@@ -37,10 +37,10 @@ public:
     SvgRenderer(AnimationType animated, CssFontType font_type);
     ~SvgRenderer();
 
-    void write_composition(model::Composition* comp);
-    void write_main(model::Composition* comp);
-    void write_shape(model::ShapeElement* shape);
-    void write_node(model::DocumentNode* node);
+    void write_composition(model::Composition* comp, model::FrameTime t);
+    void write_main(model::Composition* comp, model::FrameTime t);
+    void write_shape(model::ShapeElement* shape, model::FrameTime t);
+    void write_node(model::DocumentNode* node, model::FrameTime t);
 
     QDomDocument dom() const;
 
