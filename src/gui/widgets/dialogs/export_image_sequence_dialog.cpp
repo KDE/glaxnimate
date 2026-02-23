@@ -48,9 +48,10 @@ glaxnimate::gui::ExportImageSequenceDialog::ExportImageSequenceDialog(
             d->ui.input_format->addItem("." + QString::fromUtf8(ext), QVariant(ext));
     }
 
-    d->ui.input_format->setCurrentText(".png");
-
     d->ui.input_format->addItem(".svg", QVariant(QByteArrayLiteral("svg")));
+    d->ui.input_format->model()->sort(0);
+
+    d->ui.input_format->setCurrentText(".png");
 
     d->ui.progress_bar->hide();
 }
