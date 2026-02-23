@@ -12,6 +12,7 @@
 #include <QFileDialog>
 
 #include "io/raster/raster_mime.hpp"
+#include "io/svg/svg_renderer.hpp"
 #include "math/math.hpp"
 
 class glaxnimate::gui::ExportImageSequenceDialog::Private
@@ -49,6 +50,8 @@ glaxnimate::gui::ExportImageSequenceDialog::ExportImageSequenceDialog(
 
     d->ui.input_format->setCurrentText(".png");
 
+    d->ui.input_format->addItem(".svg", QVariant(QByteArrayLiteral("svg")));
+
     d->ui.progress_bar->hide();
 }
 
@@ -77,6 +80,7 @@ void glaxnimate::gui::ExportImageSequenceDialog::render()
     auto name_template = d->ui.input_name->text();
     auto ext = d->ui.input_format->currentText();
     auto format = d->ui.input_format->currentData().toByteArray();
+    bool is_svg = format == "svg";
 
     auto frame_from = d->ui.input_frame_from->value();
     auto frame_to = d->ui.input_frame_to->value();
@@ -97,12 +101,25 @@ void glaxnimate::gui::ExportImageSequenceDialog::render()
         basename.append(ext);
         basename.replace("{frame}", frame_name);
 
-        QImageWriter(path.filePath(basename), format).write(
-            io::raster::RasterMime::frame_to_image(d->comp, f)
-        );
+        if ( is_svg )
+        {
+            io::svg::SvgRenderer rend(io::svg::NotAnimated, io::svg::CssFontType::FontFace);
+            QFile file(path.filePath(basename));
+            if ( file.open(QFile::WriteOnly) )
+            {
+                rend.write_main(d->comp, f);
+                rend.write(&file, true);
+            }
+        }
+        else
+        {
+            QImageWriter(path.filePath(basename), format).write(
+                io::raster::RasterMime::frame_to_image(d->comp, f)
+            );
+        }
 
         d->ui.progress_bar->setValue(f);
-    }
+    };
 
     accept();
 }

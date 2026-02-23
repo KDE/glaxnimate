@@ -8,6 +8,7 @@
     * The import image dialog now allows importing multiple images at once
 * I/O:
     * Added support for SVG text-anchor
+    * Image sequence export now supports SVG
 * UI:
     * Middle mouse drag now pans the timeline
     * There is an icon on the timeline to quickly toggle keyframes
