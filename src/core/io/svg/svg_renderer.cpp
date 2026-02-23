@@ -648,8 +648,14 @@ public:
 
     void write_precomp_layer(model::PreCompLayer* layer, QDomElement& parent, model::FrameTime t)
     {
-        if ( layer->composition.get() )
+        auto comp = layer->composition.get();
+        if ( comp )
         {
+            auto inner_time = layer->timing.get()->time_to_local(t);
+
+            if ( !animated && !comp->animation.get()->time_visible(inner_time) )
+                return;
+
             timing.push_back(layer->timing.get());
             auto clip = element(defs, "clipPath");
             set_attribute(clip, "id", "clip_" + id(layer));
@@ -666,8 +672,8 @@ public:
             write_visibility_attributes(parent, layer);
             time_stretch = layer->timing->stretch.get();
             time_start = layer->timing->start_time.get();
-            auto inner_time = layer->timing.get()->time_to_local(t);
-            write_composition(e, layer->composition.get(), inner_time);
+
+            write_composition(e, comp, inner_time);
             time_stretch = 1;
             time_start = 0;
             timing.pop_back();
