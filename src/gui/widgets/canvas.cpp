@@ -312,7 +312,7 @@ void Canvas::keyReleaseEvent(QKeyEvent* event)
 
 void Canvas::wheelEvent(QWheelEvent* event)
 {
-    if ( event->angleDelta().y() < 0 )
+    if ( event->angleDelta().y() < 0 || (event->angleDelta().y() == 0 && event->angleDelta().x() < 0) )
         zoom_out();
     else
         zoom_in();
