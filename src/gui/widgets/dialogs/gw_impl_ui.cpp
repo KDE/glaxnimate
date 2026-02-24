@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  * SPDX-FileCopyrightText: 2024 Julius Künzel <julius.kuenzel@kde.org>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -54,6 +54,8 @@
 #include "model/shapes/offset_path.hpp"
 #include "model/shapes/zig_zag.hpp"
 #include "io/io_registry.hpp"
+
+#include "command/undo_macro_guard.hpp"
 
 #include "widgets/dialogs/io_status_dialog.hpp"
 #include "widgets/dialogs/about_env_dialog.hpp"
@@ -691,6 +693,17 @@ void GlaxnimateWindow::Private::setup_object_actions()
     connect(alignVertBottomOut, &QAction::triggered, parent, [this]{align(AlignDirection::Vertical, AlignPosition::End, true);});
 }
 
+void recursive_reverse_path(model::DocumentNode* node)
+{
+    if ( auto shape = qobject_cast<model::Shape*>(node) )
+    {
+        shape->reversed.set_undoable(!shape->reversed.get());
+    }
+
+    for ( const auto& child : node->docnode_children() )
+        recursive_reverse_path(child);
+}
+
 void GlaxnimateWindow::Private::setup_path_actions()
 {
     KActionCategory *pathActions = new KActionCategory(i18n("Path"), parent->actionCollection());
@@ -717,7 +730,7 @@ void GlaxnimateWindow::Private::setup_path_actions()
     pathXor->setVisible(false);
 
     QAction *pathReverse = add_action(pathActions, QStringLiteral("path_reverse"), i18n("Reverse"), QStringLiteral("path-reverse"));
-    pathReverse->setEnabled(false);
+    pathReverse->setEnabled(true);
 
     QAction *nodeRemove = add_action(pathActions, QStringLiteral("node_remove"), i18n("Delete Nodes"), QStringLiteral("format-remove-node"));
     QAction *nodeAdd = add_action(pathActions, QStringLiteral("node_add"), i18n("Add Node…"), QStringLiteral("format-insert-node"));
@@ -770,6 +783,15 @@ void GlaxnimateWindow::Private::setup_path_actions()
     });
     connect(nodeDissolve, &QAction::triggered, parent, [edit_tool]{
         edit_tool->selection_dissolve();
+    });
+    connect(pathReverse, &QAction::triggered, parent, [this]{
+
+        model::DocumentNode* curr = current_document_node();
+        if ( !curr )
+            return;
+
+        command::UndoMacroGuard guard(i18n("Reverse path"), current_document.get());
+        recursive_reverse_path(curr);
     });
 }
 
