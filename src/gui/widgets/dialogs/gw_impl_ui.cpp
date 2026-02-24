@@ -705,12 +705,16 @@ void GlaxnimateWindow::Private::setup_path_actions()
 
     QAction *pathAdd = add_action(pathActions, QStringLiteral("path_add"), i18n("Union"), QStringLiteral("path-union"));
     pathAdd->setEnabled(false);
+    pathAdd->setVisible(false);
     QAction *pathSubstract = add_action(pathActions, QStringLiteral("path_subtract"), i18n("Difference"), QStringLiteral("path-difference"));
     pathSubstract->setEnabled(false);
+    pathSubstract->setVisible(false);
     QAction *pathIntersect = add_action(pathActions, QStringLiteral("path_intersect"), i18n("Intersect"), QStringLiteral("path-intersection"));
     pathIntersect->setEnabled(false);
+    pathIntersect->setVisible(false);
     QAction *pathXor = add_action(pathActions, QStringLiteral("path_xor"), i18n("Exclusion"), QStringLiteral("path-exclusion"));
     pathXor->setEnabled(false);
+    pathXor->setVisible(false);
 
     QAction *pathReverse = add_action(pathActions, QStringLiteral("path_reverse"), i18n("Reverse"), QStringLiteral("path-reverse"));
     pathReverse->setEnabled(false);
