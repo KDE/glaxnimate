@@ -118,8 +118,10 @@ io::mime::DeserializedData io::glaxnimate::GlaxnimateMime::deserialize(const QBy
         }
         else if ( auto composition = qobject_cast<model::Composition*>(obj) )
         {
+            state.load_object(composition, json_object);
             output.main->assign_from(composition);
             delete composition;
+            continue;
         }
         else if ( auto color = qobject_cast<model::NamedColor*>(obj) )
         {
