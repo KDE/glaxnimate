@@ -62,7 +62,7 @@ QString pretty_xml(const QByteArray& xml)
     tempf.setAutoRemove(false);
     tempf.open();
     QDomDocument doc;
-    doc.setContent(xml, false);
+    doc.setContent(xml);
     tempf.write(doc.toByteArray(4));
     return tempf.fileName();
 }

@@ -130,7 +130,7 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     connect(textRemovePath, &QAction::triggered, parent, [this]{text_remove_from_path();});
 
     // Load themes
-    KColorSchemeManager *manager = new KColorSchemeManager(parent);
+    KColorSchemeManager *manager = KColorSchemeManager::instance();
     auto *colorSelectionMenu = KColorSchemeMenu::createMenu(manager, parent);
     parent->actionCollection()->addAction(QStringLiteral("colorscheme_menu"), colorSelectionMenu);
 
