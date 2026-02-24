@@ -75,7 +75,6 @@ QJsonDocument io::glaxnimate::GlaxnimateMime::serialize_json(const std::vector<m
 
 QByteArray io::glaxnimate::GlaxnimateMime::serialize(const std::vector<model::DocumentNode*>& objects) const
 {
-    qDebug() << qUtf8Printable(QString::fromUtf8(serialize_json(objects).toJson(QJsonDocument::Indented)));
     return serialize_json(objects).toJson(QJsonDocument::Compact);
 }
 
