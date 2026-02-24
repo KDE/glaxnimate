@@ -672,7 +672,7 @@ public:
             write_visibility_attributes(parent, layer);
             time_stretch = layer->timing->stretch.get();
             time_start = layer->timing->start_time.get();
-
+            write_time_range_display(e, layer, comp->animation.get());
             write_composition(e, comp, inner_time);
             time_stretch = 1;
             time_start = 0;
@@ -849,6 +849,51 @@ public:
         return start_layer_recurse_parents(recurse_parents(parent, ancestor->parent.get(), descendant, t), ancestor, descendant, t);
     }
 
+    void write_time_range_display(QDomElement& parent, model::ShapeElement* layer, model::AnimationContainer* lay_range)
+    {
+        if ( animated && layer->visible.get() )
+        {
+            auto* doc_range = layer->owner_composition()->animation.get();
+            auto lay_first = time_to_global(lay_range->first_frame.get());
+            auto lay_end = time_to_global(lay_range->last_frame.get());
+            bool has_start = lay_first > doc_range->first_frame.get();
+            bool has_end = lay_end < doc_range->last_frame.get();
+
+            if ( has_start || has_end )
+            {
+                QDomElement animation = element(parent, "animate");
+                animation.setAttribute("begin", clock(ip));
+                animation.setAttribute("dur", clock(op-ip));
+                animation.setAttribute("calcMode", "discrete");
+                animation.setAttribute("attributeName", "display");
+                animation.setAttribute("repeatCount", "indefinite");
+                QString times;
+                QString vals;
+
+                times += "0;";
+
+                if ( has_start )
+                {
+                    vals += "none;inline;";
+                    times += unlerp_time(lay_first) + ";";
+                }
+                else
+                {
+                    vals += "inline;";
+                }
+
+                if ( has_end )
+                {
+                    vals += "none;";
+                    times += unlerp_time(lay_end) + ";";
+                }
+
+                animation.setAttribute("values", vals);
+                animation.setAttribute("keyTimes", times);
+            }
+        }
+    }
+
     void write_group_shape(QDomElement& parent, model::Group* group, model::FrameTime t)
     {
         QDomElement g;
@@ -882,46 +927,7 @@ public:
                 g.setAttribute("mask", "url(#" + mask_id + ")");
             }
 
-            if ( animated && layer->visible.get() )
-            {
-                auto* lay_range = layer->animation.get();
-                auto* doc_range = layer->owner_composition()->animation.get();
-                bool has_start = lay_range->first_frame.get() > doc_range->first_frame.get();
-                bool has_end = lay_range->last_frame.get() < doc_range->last_frame.get();
-
-                if ( has_start || has_end )
-                {
-                    QDomElement animation = element(g, "animate");
-                    animation.setAttribute("begin", clock(ip));
-                    animation.setAttribute("dur", clock(op-ip));
-                    animation.setAttribute("calcMode", "discrete");
-                    animation.setAttribute("attributeName", "display");
-                    animation.setAttribute("repeatCount", "indefinite");
-                    QString times;
-                    QString vals;
-
-                    times += "0;";
-
-                    if ( has_start )
-                    {
-                        vals += "none;inline;";
-                        times += unlerp_time(lay_range->first_frame.get()) + ";";
-                    }
-                    else
-                    {
-                        vals += "inline;";
-                    }
-
-                    if ( has_end )
-                    {
-                        vals += "none;";
-                        times += unlerp_time(lay_range->last_frame.get()) + ";";
-                    }
-
-                    animation.setAttribute("values", vals);
-                    animation.setAttribute("keyTimes", times);
-                }
-            }
+            write_time_range_display(g, layer, layer->animation.get());
         }
         else
         {
