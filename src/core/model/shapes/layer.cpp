@@ -108,7 +108,7 @@ bool glaxnimate::model::Layer::is_top_level() const
     return qobject_cast<Composition*>(docnode_parent());
 }
 
-void glaxnimate::model::Layer::paint(QPainter* painter, FrameTime time, PaintMode mode, glaxnimate::model::Modifier* modifier) const
+void glaxnimate::model::Layer::paint(renderer::Renderer* painter, FrameTime time, PaintMode mode, glaxnimate::model::Modifier* modifier) const
 {
     if ( !visible.get() || (mode == Render && !render.get()) )
         return;
@@ -123,9 +123,9 @@ void glaxnimate::model::Layer::paint(QPainter* painter, FrameTime time, PaintMod
         if ( n_shapes <= 1 )
             return;
 
-        painter->save();
+        painter->layer_start();
         auto transform = group_transform_matrix(time);
-        painter->setTransform(transform, true);
+        painter->transform(transform);
 
         if ( shapes[0]->visible.get() )
         {
@@ -139,7 +139,7 @@ void glaxnimate::model::Layer::paint(QPainter* painter, FrameTime time, PaintMod
                 );
                 clip = outer_clip.subtracted(clip);
             }
-            painter->setClipPath(clip, Qt::IntersectClip);
+            painter->clip_path(clip, Qt::IntersectClip);
         }
 
 
@@ -148,7 +148,7 @@ void glaxnimate::model::Layer::paint(QPainter* painter, FrameTime time, PaintMod
         for ( int i = 1; i < n_shapes; i++ )
             docnode_visual_child(i)->paint(painter, time, mode);
 
-        painter->restore();
+        painter->layer_end();
     }
     else
     {

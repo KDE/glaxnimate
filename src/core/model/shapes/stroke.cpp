@@ -7,15 +7,13 @@
 #include "stroke.hpp"
 GLAXNIMATE_OBJECT_IMPL(glaxnimate::model::Stroke)
 
-void glaxnimate::model::Stroke::on_paint(QPainter* p, glaxnimate::model::FrameTime t, glaxnimate::model::VisualNode::PaintMode, glaxnimate::model::Modifier* modifier) const
+void glaxnimate::model::Stroke::on_paint(renderer::Renderer* p, glaxnimate::model::FrameTime t, glaxnimate::model::VisualNode::PaintMode, glaxnimate::model::Modifier* modifier) const
 {
     QPen pen(brush(t), width.get_at(t));
     pen.setCapStyle(Qt::PenCapStyle(cap.get()));
     pen.setJoinStyle(Qt::PenJoinStyle(join.get()));
     pen.setMiterLimit(miter_limit.get());
-    p->setBrush(Qt::NoBrush);
-    p->setPen(pen);
-    p->setOpacity(p->opacity() * opacity.get_at(t));
+    p->set_stroke({pen, opacity.get_at(t)});
 
     math::bezier::MultiBezier bez;
     if ( modifier )
@@ -23,7 +21,7 @@ void glaxnimate::model::Stroke::on_paint(QPainter* p, glaxnimate::model::FrameTi
     else
         bez = collect_shapes(t, {});
 
-    p->drawPath(bez.painter_path());
+    p->draw_path(bez);
 }
 
 void glaxnimate::model::Stroke::set_pen_style ( const QPen& pen_style )

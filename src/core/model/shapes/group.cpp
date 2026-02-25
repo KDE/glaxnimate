@@ -21,11 +21,9 @@ glaxnimate::model::Group::Group(Document* document)
             this, &Group::on_transform_matrix_changed);
 }
 
-void glaxnimate::model::Group::on_paint(QPainter* painter, glaxnimate::model::FrameTime time, glaxnimate::model::VisualNode::PaintMode, glaxnimate::model::Modifier*) const
+void glaxnimate::model::Group::on_paint(renderer::Renderer* painter, glaxnimate::model::FrameTime time, glaxnimate::model::VisualNode::PaintMode, glaxnimate::model::Modifier*) const
 {
-    painter->setOpacity(
-        painter->opacity() * opacity.get_at(time)
-    );
+    painter->set_opacity(opacity.get_at(time));
 }
 
 void glaxnimate::model::Group::on_transform_matrix_changed()

@@ -55,15 +55,13 @@ bool glaxnimate::model::PreCompLayer::is_valid_precomp(glaxnimate::model::Docume
     return false;
 }
 
-void glaxnimate::model::PreCompLayer::on_paint(QPainter* painter, glaxnimate::model::FrameTime time, glaxnimate::model::VisualNode::PaintMode mode, glaxnimate::model::Modifier*) const
+void glaxnimate::model::PreCompLayer::on_paint(renderer::Renderer* painter, glaxnimate::model::FrameTime time, glaxnimate::model::VisualNode::PaintMode mode, glaxnimate::model::Modifier*) const
 {
     if ( composition.get() )
     {
         time = timing->time_to_local(time);
-        painter->setOpacity(
-            painter->opacity() * opacity.get_at(time)
-        );
-        painter->setClipRect(QRectF(QPointF(0, 0), size.get()), Qt::IntersectClip);
+        painter->set_opacity(opacity.get_at(time));
+        painter->clip_rect(QRectF(QPointF(0, 0), size.get()), Qt::IntersectClip);
         composition->paint(painter, time, mode);
     }
 }

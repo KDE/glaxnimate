@@ -23,7 +23,7 @@ public:
     std::unique_ptr<ShapeElement> to_path() const override;
 
 protected:
-    void on_paint(QPainter* painter, FrameTime t, PaintMode mode, model::Modifier* modifier) const override;
+    void on_paint(renderer::Renderer* painter, FrameTime t, PaintMode mode, model::Modifier* modifier) const override;
 
 };
 

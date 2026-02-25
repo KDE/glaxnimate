@@ -6,6 +6,7 @@
 
 #include "spritesheet_format.hpp"
 #include "model/assets/composition.hpp"
+#include "renderer/qpainter_renderer.hpp"
 
 #include <QImage>
 #include <QPainter>
@@ -58,18 +59,20 @@ bool glaxnimate::io::raster::SpritesheetFormat::on_save(QIODevice& file, const Q
 
     QImage bmp(frame_w * columns, frame_h * rows, QImage::Format_ARGB32);
     bmp.fill(Qt::transparent);
-    QPainter painter(&bmp);
+
+    renderer::QPainterRenderer renderer;
+    renderer.set_image_surface(&bmp);
+    renderer.render_start();
     for ( int i = first_frame; i <= last_frame; i += frame_step )
     {
-        painter.save();
-        painter.scale(scale_x, scale_y);
-        painter.translate((i % columns) * frame_w, (i / columns) * frame_h);
-        painter.setClipRect(0, 0, frame_w, frame_h);
-        comp->paint(&painter, i, model::VisualNode::Render);
-        painter.restore();
+        renderer.layer_start();
+        renderer.scale(scale_x, scale_y);
+        renderer.translate((i % columns) * frame_w, (i / columns) * frame_h);
+        renderer.clip_rect(QRectF(0, 0, frame_w, frame_h));
+        comp->paint(&renderer, i, model::VisualNode::Render);
+        renderer.layer_end();
     }
-
-    painter.end();
+    renderer.render_end();
 
 
     QImageWriter writer(&file, {});

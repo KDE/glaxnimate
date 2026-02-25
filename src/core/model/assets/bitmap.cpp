@@ -18,9 +18,9 @@
 
 GLAXNIMATE_OBJECT_IMPL(glaxnimate::model::Bitmap)
 
-void glaxnimate::model::Bitmap::paint(QPainter* painter) const
+void glaxnimate::model::Bitmap::paint(renderer::Renderer* painter) const
 {
-    painter->drawPixmap(0, 0, image);
+    painter->draw_pixmap(image);
 }
 
 void glaxnimate::model::Bitmap::refresh(bool rebuild_embedded)

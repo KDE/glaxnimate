@@ -15,6 +15,7 @@
 #include "graphics/handle.hpp"
 #include "graphics/document_node_graphics_item.hpp"
 #include "graphics/transform_graphics_item.hpp"
+#include "renderer/qpainter_renderer.hpp"
 
 namespace glaxnimate::gui::graphics {
 
@@ -34,7 +35,10 @@ public:
 
     void paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*) override
     {
-        node()->paint(painter, node()->time(), model::VisualNode::Canvas);
+        renderer::QPainterRenderer renderer(painter);
+        renderer.render_start();
+        node()->paint(&renderer, node()->time(), model::VisualNode::Canvas);
+        renderer.render_end();
     }
 
     void refresh()

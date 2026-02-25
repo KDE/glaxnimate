@@ -54,7 +54,7 @@ Q_SIGNALS:
 
 protected:
     QPainterPath to_painter_path_impl(model::FrameTime t) const override;
-    void on_paint(QPainter*, FrameTime, PaintMode, model::Modifier*) const override;
+    void on_paint(renderer::Renderer*, FrameTime, PaintMode, model::Modifier*) const override;
     void on_composition_changed(model::Composition* old_comp, model::Composition* new_comp) override;
 
 private Q_SLOTS:

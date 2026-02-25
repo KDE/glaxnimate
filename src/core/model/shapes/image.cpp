@@ -35,7 +35,7 @@ QRectF glaxnimate::model::Image::local_bounding_rect(glaxnimate::model::FrameTim
     return QRectF(0, 0, image->width.get(), image->height.get());
 }
 
-void glaxnimate::model::Image::on_paint(QPainter* p, glaxnimate::model::FrameTime, glaxnimate::model::VisualNode::PaintMode, glaxnimate::model::Modifier*) const
+void glaxnimate::model::Image::on_paint(renderer::Renderer* p, glaxnimate::model::FrameTime, glaxnimate::model::VisualNode::PaintMode, glaxnimate::model::Modifier*) const
 {
     if ( image.get() )
         image->paint(p);

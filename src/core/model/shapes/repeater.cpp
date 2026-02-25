@@ -45,7 +45,7 @@ bool glaxnimate::model::Repeater::process_collected() const
     return true;
 }
 
-void glaxnimate::model::Repeater::on_paint(QPainter* painter, glaxnimate::model::FrameTime t, glaxnimate::model::VisualNode::PaintMode mode, glaxnimate::model::Modifier*) const
+void glaxnimate::model::Repeater::on_paint(renderer::Renderer* painter, glaxnimate::model::FrameTime t, glaxnimate::model::VisualNode::PaintMode mode, glaxnimate::model::Modifier*) const
 {
     QTransform matrix = transform->transform_matrix(t);
     auto alpha_s = start_opacity.get_at(t);
@@ -58,7 +58,7 @@ void glaxnimate::model::Repeater::on_paint(QPainter* painter, glaxnimate::model:
     {
         float alpha_lerp = float(i) / (n_copies == 1 ? 1 : n_copies - 1);
         auto alpha = math::lerp(alpha_s, alpha_e, alpha_lerp);
-        painter->setOpacity(alpha * initial_opacity);
+        painter->set_opacity(alpha * initial_opacity);
 
         for ( auto sib : affected() )
         {
@@ -66,7 +66,7 @@ void glaxnimate::model::Repeater::on_paint(QPainter* painter, glaxnimate::model:
                 sib->paint(painter, t, mode);
         }
 
-        painter->setTransform(matrix, true);
+        painter->transform(matrix);
     }
 }
 

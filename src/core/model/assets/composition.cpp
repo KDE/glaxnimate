@@ -8,7 +8,7 @@
 #include "model/document.hpp"
 #include "model/assets/assets.hpp"
 #include "command/object_list_commands.hpp"
-#include <QPainter>
+#include "renderer/qpainter_renderer.hpp"
 
 using namespace glaxnimate;
 
@@ -64,13 +64,15 @@ QImage glaxnimate::model::Composition::render_image(float time, QSize image_size
     else
         image.fill(background);
 
-    QPainter painter(&image);
-    painter.setRenderHint(QPainter::Antialiasing);
-    painter.scale(
+    renderer::QPainterRenderer renderer;
+    renderer.set_image_surface(&image);
+    renderer.render_start();
+    renderer.scale(
         image_size.width() / real_size.width(),
         image_size.height() / real_size.height()
     );
-    paint(&painter, time, VisualNode::Render);
+    paint(&renderer, time, VisualNode::Render);
+    renderer.render_end();
 
     return image;
 }

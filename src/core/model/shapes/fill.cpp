@@ -8,11 +8,9 @@
 
 GLAXNIMATE_OBJECT_IMPL(glaxnimate::model::Fill)
 
-void glaxnimate::model::Fill::on_paint(QPainter* p, glaxnimate::model::FrameTime t, glaxnimate::model::VisualNode::PaintMode, glaxnimate::model::Modifier* modifier) const
+void glaxnimate::model::Fill::on_paint(renderer::Renderer* p, glaxnimate::model::FrameTime t, glaxnimate::model::VisualNode::PaintMode, glaxnimate::model::Modifier* modifier) const
 {
-    p->setBrush(brush(t));
-    p->setOpacity(p->opacity() * opacity.get_at(t));
-    p->setPen(Qt::NoPen);
+    p->set_fill({brush(t), opacity.get_at(t), Qt::FillRule(fill_rule.get())});
 
     math::bezier::MultiBezier bez;
     if ( modifier )
@@ -20,10 +18,7 @@ void glaxnimate::model::Fill::on_paint(QPainter* p, glaxnimate::model::FrameTime
     else
         bez = collect_shapes(t, {});
 
-    QPainterPath path = bez.painter_path();
-
-    path.setFillRule(Qt::FillRule(fill_rule.get()));
-    p->drawPath(path);
+    p->draw_path(bez);
 }
 
 QPainterPath glaxnimate::model::Fill::to_painter_path_impl(glaxnimate::model::FrameTime t) const

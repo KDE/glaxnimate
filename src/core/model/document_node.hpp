@@ -14,6 +14,7 @@
 
 #include "model/animation/animatable.hpp"
 #include "model/object.hpp"
+#include "renderer/renderer.hpp"
 
 namespace glaxnimate::model {
 
@@ -342,7 +343,7 @@ public:
     virtual QTransform local_transform_matrix(FrameTime) const { return QTransform(); }
 
 
-    virtual void paint(QPainter* painter, FrameTime time, PaintMode mode, model::Modifier* modifier = nullptr) const;
+    virtual void paint(renderer::Renderer* painter, FrameTime time, PaintMode mode, model::Modifier* modifier = nullptr) const;
 
     QIcon instance_icon() const override;
 
@@ -369,7 +370,7 @@ protected:
     bool docnode_valid_color() const;
     void propagate_transform_matrix_changed(const QTransform& t_global, const QTransform& t_group);
     void propagate_bounding_rect_changed();
-    virtual void on_paint(QPainter*, FrameTime, PaintMode, model::Modifier*) const {}
+    virtual void on_paint(renderer::Renderer*, FrameTime, PaintMode, model::Modifier*) const {}
 
 private:
     void on_visible_changed(bool visible);

@@ -102,7 +102,7 @@ std::unique_ptr<glaxnimate::model::ShapeElement> glaxnimate::model::PathModifier
 
 }
 
-void glaxnimate::model::PathModifier::on_paint(QPainter* painter, glaxnimate::model::FrameTime t, glaxnimate::model::VisualNode::PaintMode mode, glaxnimate::model::Modifier*) const
+void glaxnimate::model::PathModifier::on_paint(renderer::Renderer* painter, glaxnimate::model::FrameTime t, glaxnimate::model::VisualNode::PaintMode mode, glaxnimate::model::Modifier*) const
 {
     for ( auto sib : affected() )
         sib->paint(painter, t, mode, const_cast<glaxnimate::model::PathModifier*>(this));

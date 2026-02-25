@@ -300,13 +300,13 @@ bool glaxnimate::model::VisualNode::docnode_locked_recursive() const
     return false;
 }
 
-void glaxnimate::model::VisualNode::paint(QPainter* painter, FrameTime time, PaintMode mode, glaxnimate::model::Modifier* modifier) const
+void glaxnimate::model::VisualNode::paint(renderer::Renderer* painter, FrameTime time, PaintMode mode, glaxnimate::model::Modifier* modifier) const
 {
     if ( !visible.get() )
         return;
 
-    painter->save();
-    painter->setTransform(group_transform_matrix(time), true);
+    painter->layer_start();
+    painter->transform(group_transform_matrix(time));
 
     on_paint(painter, time, mode, modifier);
     for ( auto c : docnode_visual_children() )
@@ -315,7 +315,7 @@ void glaxnimate::model::VisualNode::paint(QPainter* painter, FrameTime time, Pai
         if ( c->is_instance<glaxnimate::model::Modifier>() && c->visible.get() )
             break;
     }
-    painter->restore();
+    painter->layer_end();
 }
 
 bool glaxnimate::model::VisualNode::docnode_selectable() const

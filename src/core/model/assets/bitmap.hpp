@@ -30,7 +30,7 @@ class Bitmap : public Asset
 public:
     using Asset::Asset;
 
-    void paint(QPainter* painter) const;
+    void paint(renderer::Renderer* painter) const;
 
     bool embedded() const;
 
