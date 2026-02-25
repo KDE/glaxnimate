@@ -9,6 +9,7 @@
 #include <vector>
 #include <cstring>
 #include "io/aep/gradient_xml.hpp"
+#include "io/svg/parse_error.hpp"
 
 using namespace glaxnimate::io::aep;
 
@@ -30,12 +31,18 @@ class TestCase: public QObject
     QDomDocument xml(QString xml, int local_line = 0)
     {
         QDomDocument dom;
+        glaxnimate::io::svg::SvgParseError err;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
         auto result = dom.setContent(xml.trimmed());
+        err = glaxnimate::io::svg::SvgParseError(result);
+#else
+        bool result = dom.setContent(xml.trimmed(), false, &err.message, &err.line, &err.column);
+#endif
         if ( !result )
         {
-            int line = result.errorLine;
-            int col = result.errorColumn;
-            auto msg = QString("%1:%2: %3").arg(line).arg(col).arg(result.errorMessage);
+            int line = err.line;
+            int col = err.column;
+            auto msg = QString("%1:%2: %3").arg(line).arg(col).arg(err.message);
             auto lines = xml.split("\n");
             int li = line - 1;
             if ( li >= 0 && li < lines.size() )
