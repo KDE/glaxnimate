@@ -16,6 +16,7 @@
 #include "graphics/document_node_graphics_item.hpp"
 #include "graphics/transform_graphics_item.hpp"
 #include "renderer/qpainter_renderer.hpp"
+#include "renderer/skia_renderer.hpp"
 
 namespace glaxnimate::gui::graphics {
 

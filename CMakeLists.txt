@@ -214,6 +214,25 @@ endif()
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -pedantic -Wextra")
 message(STATUS "${CMAKE_BUILD_TYPE} build")
 
+# Skia
+option(GLAXNIMATE_RENDERER_SKIA "Enable the Skia-based renderer" ON)
+if ( GLAXNIMATE_RENDERER_SKIA )
+    include(ExternalProject)
+    set(SKIA_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/skia)
+    ExternalProject_Add(skia_project
+        SOURCE_DIR ${SKIA_DIR}
+        CONFIGURE_COMMAND echo foo
+        # CONFIGURE_COMMAND bin/fetch-gn && tools/git-sync-deps && bin/gn gen out/Static --args='is_official_build=true skia_use_gl=false skia_use_egl=false skia_use_webgl=false skia_enable_gpu=false skia_enable_tools=false skia_enable_tests=false skia_use_fontconfig=false skia_use_freetype=true skia_use_system_freetype2=false skia_use_icu=false skia_use_system_icu=false skia_enable_skunicode=false'
+        BUILD_COMMAND ninja -C out/Release skia
+        INSTALL_COMMAND ""
+        BUILD_IN_SOURCE 1
+    )
+    add_library(skia STATIC IMPORTED)
+    set_target_properties(skia PROPERTIES IMPORTED_LOCATION ${SKIA_DIR}/out/Release/libskia.a)
+    add_dependencies(skia skia_project)
+    target_include_directories(skia INTERFACE ${SKIA_DIR}/include/core ${SKIA_DIR})
+endif()
+
 # sub projects and stuff
 
 SET(BUILD_STATIC_LIBS ON CACHE BOOL "")
