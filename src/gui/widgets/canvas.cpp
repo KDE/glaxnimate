@@ -176,8 +176,8 @@ void Canvas::mousePressEvent(QMouseEvent* event)
     d->press_button = event->button();
     d->move_press_scene = scene_pos;
 #if QT_VERSION_MAJOR < 6
-    d->move_press_screen = event->screenPos().toPoint();
-    d->move_last_screen = event->screenPos().toPoint();
+    d->move_press_screen = event->screenPos();
+    d->move_last_screen = event->screenPos();
 #else
     d->move_press_screen = event->globalPosition().toPoint();
     d->move_last_screen = event->globalPosition().toPoint();
@@ -259,7 +259,7 @@ void Canvas::mouseMoveEvent(QMouseEvent* event)
     d->move_last = mpos;
     d->move_last_scene = scene_pos;
 #if QT_VERSION_MAJOR < 6
-    d->move_last_screen = event->globalPos().toPoint();
+    d->move_last_screen = event->globalPos();
 #else
     d->move_last_screen = event->globalPosition().toPoint();
 #endif
