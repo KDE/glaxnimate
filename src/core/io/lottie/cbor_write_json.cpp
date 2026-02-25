@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -18,7 +18,9 @@
  ******************************************************************************/
 
 #ifndef __cpp_char8_t
-enum char8_t : uchar {};
+enum qchar8_t : uchar {};
+#else
+using qchar8_t = char8_t;
 #endif
 
 
@@ -36,25 +38,25 @@ struct QUtf8BaseTraits
     static void appendByte(uchar *&ptr, uchar b)
     { *ptr++ = b; }
 
-    static void appendByte(char8_t *&ptr, char8_t b)
+    static void appendByte(qchar8_t *&ptr, qchar8_t b)
     { *ptr++ = b; }
 
     static uchar peekByte(const uchar *ptr, qsizetype n = 0)
     { return ptr[n]; }
 
-    static uchar peekByte(const char8_t *ptr, int n = 0)
+    static uchar peekByte(const qchar8_t *ptr, int n = 0)
     { return ptr[n]; }
 
     static qptrdiff availableBytes(const uchar *ptr, const uchar *end)
     { return end - ptr; }
 
-    static qptrdiff availableBytes(const char8_t *ptr, const char8_t *end)
+    static qptrdiff availableBytes(const qchar8_t *ptr, const qchar8_t *end)
     { return end - ptr; }
 
     static void advanceByte(const uchar *&ptr, qsizetype n = 1)
     { ptr += n; }
 
-    static void advanceByte(const char8_t *&ptr, int n = 1)
+    static void advanceByte(const qchar8_t *&ptr, int n = 1)
     { ptr += n; }
 
     static void appendUtf16(ushort *&ptr, ushort uc)
