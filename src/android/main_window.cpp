@@ -905,7 +905,7 @@ public:
 
         if ( export_opts && exporting_png )
         {
-            QImage pix(comp->size(), QImage::Format_RGBA8888);
+            QImage pix(comp->size().toSize(), QImage::Format_RGBA8888);
             pix.fill(Qt::transparent);
             QPainter painter(&pix);
             painter.setRenderHint(QPainter::Antialiasing);

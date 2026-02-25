@@ -114,6 +114,7 @@ else()
 endif()
 
 if ( PYTHON_SCRIPTING_ENABLED )
+    add_definitions(-DPYTHON_SCRIPTING_ENABLED)
     find_program(PYTHON_PIP pip3)
     if(NOT PYTHON_PIP)
         find_program(PYTHON_PIP pip)

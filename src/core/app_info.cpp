@@ -71,10 +71,11 @@ void glaxnimate::AppInfo::init_qapplication() const
     aboutData.addComponent(i18n("libarchive"), {}, utils::tar::libarchive_version());
     aboutData.addComponent(i18n("zlib"), {}, {}, QStringLiteral("https://www.zlib.net/"));
 
+    aboutData.addComponent(i18n("Inkscape"), {}, {}, QStringLiteral("https://inkscape.org/"), KAboutLicense::GPL_V2);
+#endif
+#ifdef PYTHON_SCRIPTING_ENABLED
     aboutData.addComponent(i18n("pybind11"), i18n("Used by the plugin system."), app::scripting::python::PythonEngine::pybind_version(), QStringLiteral("https://pybind11.readthedocs.io/en/stable/"));
     aboutData.addComponent(i18n("CPython"), i18n("Used by the plugin system."), app::scripting::python::PythonEngine::python_version(), QStringLiteral("hhttps://python.org/"));
-
-    aboutData.addComponent(i18n("Inkscape"), {}, {}, QStringLiteral("https://inkscape.org/"), KAboutLicense::GPL_V2);
 #endif
 
     KAboutData::setApplicationData(aboutData);
