@@ -113,6 +113,8 @@ widgets/font/external_font_widget.cpp
 widgets/font/font_loader.cpp
 
 widgets/menus/animated_property_menu.cpp
+
+widgets/render_widget.cpp
 )
 
 set(SOURCES_UIS

@@ -99,17 +99,20 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     QWidget *centralWidget = new QWidget(parent);
     QVBoxLayout *centralLayout = new QVBoxLayout(centralWidget);
     centralWidget->setLayout(centralLayout);
+    centralLayout->setContentsMargins(0, 0, 0, 0);
 
-    canvas = new Canvas(centralWidget);
+    render_widget = RenderWidget(centralWidget);
+    canvas = new Canvas(render_widget.widget());
     canvas->setAcceptDrops(true);
     parent->setAcceptDrops(true);
+    render_widget.set_overlay(canvas);
 
     message_widget = new WindowMessageWidget(centralWidget);
     tab_bar = new CompositionTabBar(centralWidget);
 
     centralLayout->addWidget(message_widget);
     centralLayout->addWidget(tab_bar);
-    centralLayout->addWidget(canvas);
+    centralLayout->addWidget(render_widget.widget());
 
     // Actions
     setup_file_actions();

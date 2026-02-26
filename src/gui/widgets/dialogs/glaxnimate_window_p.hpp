@@ -57,6 +57,7 @@
 #include "widgets/window_message_widget.hpp"
 #include "widgets/tab_bar/composition_tab_bar.hpp"
 #include "widgets/canvas.hpp"
+#include "widgets/render_widget.hpp"
 
 
 
@@ -140,6 +141,7 @@ public:
     };
 
     Canvas *canvas;
+    RenderWidget render_widget;
 
     CompositionTabBar *tab_bar;
     WindowMessageWidget *message_widget;

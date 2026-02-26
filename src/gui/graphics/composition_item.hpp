@@ -39,12 +39,12 @@ public:
 
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget*) override
     {
-        /*
-        renderer::QPainterRenderer renderer(painter);
+
+        /*renderer::QPainterRenderer renderer(painter);
         renderer.render_start();
         node()->paint(&renderer, node()->time(), model::VisualNode::Canvas);
-        renderer.render_end();
-        */
+        renderer.render_end();*/
+
 
         // TODO setting for the render quality
         auto renderer = renderer::default_renderer(5);
