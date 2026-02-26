@@ -7,6 +7,7 @@
 
 #include <QPainter>
 
+#include "utils/maybe_ptr.hpp"
 #include "renderer/renderer.hpp"
 
 namespace glaxnimate::renderer {
@@ -18,37 +19,22 @@ namespace glaxnimate::renderer {
 class QPainterRenderer : public Renderer
 {
 private:
-    enum Mode { NothingMode = 0, FillMode = 1, StrokeMode = 2 };
-
-    QPainter* painter = nullptr;
-    bool owns = false;
+    utils::maybe_ptr<QPainter> painter;
     Fill fill;
     Stroke stroke;
-    int mode = NothingMode;
+    int mode = ShapeMode::NothingMode;
 
-    void reset() noexcept
-    {
-        if ( owns && painter )
-            delete painter;
-    }
 
 public:
     explicit QPainterRenderer(QPainter* painter)
-        : painter(painter), owns(false)
+        : painter(painter, false)
     {}
 
     QPainterRenderer() = default;
 
-    ~QPainterRenderer() noexcept
-    {
-        reset();
-    }
-
     void set_image_surface(QImage * destination) override
     {
-        reset();
-        owns = true;
-        painter = new QPainter(destination);
+        painter.reset(new QPainter(destination), true);
         painter->setRenderHint(QPainter::Antialiasing);
     }
 
@@ -56,14 +42,13 @@ public:
     {
         if ( !painter )
         {
-            owns = true;
-            painter = new QPainter();
+            painter.reset(new QPainter(), true);
         }
     }
 
     void render_end() override
     {
-        if ( owns )
+        if ( painter.owns_pointer() )
             painter->end();
     }
 

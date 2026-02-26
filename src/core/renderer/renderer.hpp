@@ -23,12 +23,17 @@ struct Stroke
     qreal opacity = 1;
 };
 
+enum ShapeMode { NothingMode = 0, FillMode = 1, StrokeMode = 2 };
+
 /**
  * Abstracted renderer interface
  */
 class Renderer
 {
 public:
+    Renderer() = default;
+    Renderer(const Renderer&) = delete;
+    Renderer& operator=(const Renderer&) = delete;
     virtual ~Renderer() noexcept = default;
 
 // Surface setup
