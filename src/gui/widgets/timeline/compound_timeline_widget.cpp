@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -128,6 +128,7 @@ public:
 
         action_kf_paste.setIcon(QIcon::fromTheme("edit-paste"));
         menu_keyframe.addAction(&action_kf_paste);
+        connect(&action_kf_paste, &QAction::triggered, parent, &CompoundTimelineWidget::paste_keyframe);
 
         menu_keyframe.addSeparator();
 
@@ -490,6 +491,31 @@ void CompoundTimelineWidget::copy_keyframe()
     QGuiApplication::clipboard()->setMimeData(data);
 }
 
+void CompoundTimelineWidget::paste_keyframe()
+{
+    if ( !d->menu_property.property() )
+        return;
+
+    const QMimeData* data = QGuiApplication::clipboard()->mimeData();
+    if ( !data->hasFormat("application/x.glaxnimate-keyframe") )
+        return;
+
+    QByteArray encoded = data->data("application/x.glaxnimate-keyframe");
+    QDataStream stream(&encoded, QIODevice::ReadOnly);
+    int type = model::PropertyTraits::Unknown;
+    stream >> type;
+    if ( type != d->menu_property.property()->traits().type )
+        return;
+
+    QVariant value;
+    stream >> value;
+
+    auto time = d->menu_kf_exit ? d->menu_kf_exit->time() : d->menu_property.property()->time();
+
+    d->menu_property.property()->object()->push_command(
+        new command::SetKeyframe(d->menu_property.property(), time, value, true)
+    );
+}
 
 void CompoundTimelineWidget::collapse_index(const QModelIndex& index)
 {

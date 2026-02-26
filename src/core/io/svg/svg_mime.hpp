@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -24,7 +24,7 @@ public:
     {
         io::svg::SvgRenderer svg_rend(io::svg::NotAnimated, io::svg::CssFontType::FontFace);
         for ( auto node : selection )
-            svg_rend.write_node(node);
+            svg_rend.write_node(node, node->document()->current_time());
         return svg_rend.dom().toByteArray(0);
     }
 

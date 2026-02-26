@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -155,21 +155,32 @@ public:
         {
             QJsonObject precomps;
             QJsonArray values;
+            QJsonObject main;
+            bool has_main = false;
+
+            if ( top_level["animation"].isObject() )
+            {
+                main = top_level["animation"].toObject();
+                has_main = true;
+                top_level.remove("animation");
+                values.push_front(main);
+            }
+
             if ( assets.contains("precompositions") )
             {
                 precomps = assets["precompositions"].toObject();
-                values = precomps["values"].toArray();
+
+                for ( const QJsonValue& value : precomps["values"].toArray() )
+                {
+                    auto precomp = value.toObject();
+                    if ( has_main )
+                        precomp["animation"] = main["animation"];
+                    values.push_back(precomp);
+                }
             }
             else
             {
                 precomps["__type__"] = "CompositionList";
-            }
-
-            if ( top_level["animation"].isObject() )
-            {
-                QJsonObject main = top_level["animation"].toObject();
-                top_level.remove("animation");
-                values.push_front(main);
             }
 
             precomps["values"] = values;

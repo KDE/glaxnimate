@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -699,7 +699,7 @@ static QImage convert_with_palette(const QImage &src, const QVector<QRgb> &clut)
 
     for (int y=0; y<h; ++y)
     {
-        const QRgb *src_pixels = (const QRgb *) src.scanLine(y);
+        const QRgb *src_pixels = reinterpret_cast<const QRgb *>(src.scanLine(y));
         uchar *dest_pixels = (uchar *) dest.scanLine(y);
         for (int x = 0; x < w; ++x)
         {

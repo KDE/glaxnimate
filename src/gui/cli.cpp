@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -323,8 +323,7 @@ void render_frame_svg(glaxnimate::model::Composition* comp, glaxnimate::model::F
 {
     using namespace glaxnimate;
     io::svg::SvgRenderer rend(io::svg::NotAnimated, io::svg::CssFontType::FontFace);
-    comp->set_time(time);
-    rend.write_main(comp);
+    rend.write_main(comp, time);
     rend.write(&file, true);
 }
 

@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+# SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
 # SPDX-License-Identifier: BSD-2-Clause
 
 include_directories(${CMAKE_SOURCE_DIR}/external/QtAppSetup/src)
@@ -19,12 +19,14 @@ else()
     add_executable(${PROJECT_SLUG} WIN32)
     kde_target_enable_exceptions(${PROJECT_SLUG} PUBLIC)
 
-    target_link_libraries(${PROJECT_SLUG} ${LIB_NAME_CORE} ${LIB_NAME_GUI} ${LIB_NAME_PYTHON} QtAppSetup)
+    target_link_libraries(${PROJECT_SLUG} ${LIB_NAME_CORE} ${LIB_NAME_GUI} ${LIB_NAME_PYTHON} QtAppSetup QtColorWidgets)
     install(TARGETS ${PROJECT_SLUG} DESTINATION bin)
 
     ## Icon for Windows and OSX
     #file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../data/images/logo.svg")
-    ecm_add_app_icon(${PROJECT_SLUG} ICONS "${CMAKE_CURRENT_SOURCE_DIR}/../data/images/logo.svg") # icon name = variable name
+    file(COPY_FILE "${CMAKE_CURRENT_SOURCE_DIR}/../data/images/logo.svg" "${CMAKE_CURRENT_BINARY_DIR}/sc-${PROJECT_SLUG}.svg")
+    file(COPY_FILE "${PROJECT_SOURCE_DIR}/data/images/${PROJECT_SLUG}.png" "${CMAKE_CURRENT_BINARY_DIR}/512-${PROJECT_SLUG}.png")
+    ecm_add_app_icon(${PROJECT_SLUG} ICONS "${CMAKE_CURRENT_BINARY_DIR}/sc-${PROJECT_SLUG}.svg" "${CMAKE_CURRENT_BINARY_DIR}/512-${PROJECT_SLUG}.png") # icon name = variable name
 
     if (APPLE)
     # Apple app package
@@ -35,7 +37,7 @@ else()
         MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
         MACOSX_BUNDLE_BUNDLE_VERSION "${RELEASE_SERVICE_VERSION}"
         MACOSX_BUNDLE_GUI_IDENTIFIER "org.kde.glaxnimate"
-        MACOSX_BUNDLE_COPYRIGHT "2019-2024 The ${PROJECT_NAME} Authors")
+        MACOSX_BUNDLE_COPYRIGHT "2019-2025 The ${PROJECT_NAME} Authors")
 
     endif()
 

@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -425,7 +425,14 @@ public:
         ost.codec_context->gop_size = 12;
 
         // get_format() for some reason returns an invalid value
-        ost.codec_context->pix_fmt = best_pixel_format(ost.codec->pix_fmts);
+#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(61, 19, 100)
+        const AVPixelFormat* pix_fmts = ost.codec->pix_fmts;
+#else
+        const AVPixelFormat* pix_fmts;
+        int num_pix_fmts = 0;
+        avcodec_get_supported_config(ost.codec_context, nullptr, AV_CODEC_CONFIG_PIX_FORMAT, 0, (const void**)&pix_fmts, &num_pix_fmts);
+#endif
+        ost.codec_context->pix_fmt = best_pixel_format(pix_fmts);
 
         if ( ost.codec_context->pix_fmt == AV_PIX_FMT_NONE )
                 throw av::Error(i18n("Could not determine pixel format"));
@@ -852,11 +859,11 @@ bool glaxnimate::io::video::VideoFormat::on_save(QIODevice& dev, const QString& 
 std::unique_ptr<app::settings::SettingsGroup> glaxnimate::io::video::VideoFormat::save_settings(model::Composition* comp) const
 {
     return std::make_unique<app::settings::SettingsGroup>(app::settings::SettingList{
-        //                      slug            label             description                                           default             min max
-        app::settings::Setting{"background",    i18n("Background"), i18n("Background color"),                               QColor(0, 0, 0, 0)},
-        app::settings::Setting{"width",         i18n("Width"),      i18n("If not 0, it will overwrite the size"),           comp->width.get(),  0, 99999},
-        app::settings::Setting{"height",        i18n("Height"),     i18n("If not 0, it will overwrite the size"),           comp->height.get(), 0, 99999},
-        app::settings::Setting{"verbose",       i18n("Verbose"),    i18n("Show verbose information on the conversion"),     false},
+        //                      slug            label             description                                           default                 min max
+        app::settings::Setting{"background",    i18n("Background"), i18n("Background color"),                           QColor(0, 0, 0, 0)},
+        app::settings::Setting{"width",         i18n("Width"),      i18n("If not 0, it will overwrite the size"),       int(comp->width.get()),  0, 99999},
+        app::settings::Setting{"height",        i18n("Height"),     i18n("If not 0, it will overwrite the size"),       int(comp->height.get()), 0, 99999},
+        app::settings::Setting{"verbose",       i18n("Verbose"),    i18n("Show verbose information on the conversion"), false},
     });
 }
 

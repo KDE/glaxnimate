@@ -1,9 +1,10 @@
-# SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+# SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
 # SPDX-License-Identifier: BSD-2-Clause
 
 cmake_minimum_required (VERSION 3.16 FATAL_ERROR)
 # cmake_policy(SET CMP0076 NEW)
 cmake_policy(SET CMP0077 NEW)
+cmake_policy(SET CMP0153 NEW)
 
 
 project(Glaxnimate VERSION 0.6.70 LANGUAGES CXX)
@@ -64,9 +65,11 @@ if (VERSION_SUFFIX STREQUAL "-git-" AND EXISTS ${CMAKE_SOURCE_DIR}/.git)
     # Probably a Git workspace; determine the revision.
     find_package(Git QUIET)
     if(GIT_FOUND)
-        exec_program(${GIT_EXECUTABLE} ${CMAKE_SOURCE_DIR}
-                ARGS "log -n 1 --pretty=format:\"%h\""
-            OUTPUT_VARIABLE GIT_REVISION)
+        execute_process(
+            COMMAND ${GIT_EXECUTABLE} log "-n" 1 "--pretty=format:%h"
+            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+            OUTPUT_VARIABLE GIT_REVISION
+        )
         message(STATUS "Git revision: ${GIT_REVISION}")
         set(PROJECT_VERSION "${PROJECT_VERSION}-git-${GIT_REVISION}")
     else()
@@ -111,6 +114,7 @@ else()
 endif()
 
 if ( PYTHON_SCRIPTING_ENABLED )
+    add_definitions(-DPYTHON_SCRIPTING_ENABLED)
     find_program(PYTHON_PIP pip3)
     if(NOT PYTHON_PIP)
         find_program(PYTHON_PIP pip)
@@ -118,6 +122,8 @@ if ( PYTHON_SCRIPTING_ENABLED )
 
     find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
     message(STATUS ${Python3_EXECUTABLE})
+
+    set(PYBIND11_FINDPYTHON ON)
 else()
     message(STATUS "Python Disabled")
 endif()
@@ -203,15 +209,16 @@ add_definitions(-DQTCOLORWIDGETS_STATICALLY_LINKED)
 
 add_subdirectory(external/QtAppSetup)
 
+add_subdirectory(data ${DATA_INSTALL})
+
 add_subdirectory(src bin)
 
 set(QTCOLORWIDGETS_DESIGNER_PLUGIN ON)
+set(QTCOLORWIDGETS_BUILD_STATIC_LIBS ON)
 add_subdirectory(external/Qt-Color-Widgets EXCLUDE_FROM_ALL)
 
 set(ALL_SOURCE_DIRECTORIES src)
 find_sources(ALL_SOURCES *.cpp *.hpp)
-
-add_subdirectory(data ${DATA_INSTALL})
 
 if(BUILD_TESTING)
     find_package(Qt${QT_MAJOR_VERSION}Test REQUIRED)

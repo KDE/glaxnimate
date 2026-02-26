@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -8,6 +8,7 @@
 
 #include <QPointF>
 #include <QTransform>
+#include <QDataStream>
 #include "math/vector.hpp"
 #include "math/math.hpp"
 
@@ -127,3 +128,6 @@ struct Point
 } // namespace glaxnimate::math::bezier
 
 Q_DECLARE_METATYPE(glaxnimate::math::bezier::Point)
+
+QDataStream &operator<<(QDataStream &out, const glaxnimate::math::bezier::Point& val);
+QDataStream &operator>>(QDataStream &in, glaxnimate::math::bezier::Point &val);

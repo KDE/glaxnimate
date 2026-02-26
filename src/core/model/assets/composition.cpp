@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -77,5 +77,5 @@ QImage glaxnimate::model::Composition::render_image(float time, QSize image_size
 
 QImage glaxnimate::model::Composition::render_image() const
 {
-    return render_image(document()->current_time(), size());
+    return render_image(document()->current_time(), size().toSize());
 }

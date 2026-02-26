@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -118,8 +118,10 @@ io::mime::DeserializedData io::glaxnimate::GlaxnimateMime::deserialize(const QBy
         }
         else if ( auto composition = qobject_cast<model::Composition*>(obj) )
         {
+            state.load_object(composition, json_object);
             output.main->assign_from(composition);
             delete composition;
+            continue;
         }
         else if ( auto color = qobject_cast<model::NamedColor*>(obj) )
         {

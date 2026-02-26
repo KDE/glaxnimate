@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -253,8 +253,11 @@ void Canvas::mouseMoveEvent(QMouseEvent* event)
 
     d->move_last = mpos;
     d->move_last_scene = scene_pos;
-    // TODO use globalPosition()
-    d->move_last_screen = event->screenPos().toPoint();
+#if QT_VERSION_MAJOR < 6
+    d->move_last_screen = event->globalPos();
+#else
+    d->move_last_screen = event->globalPosition().toPoint();
+#endif
 //     scene()->invalidate();
     viewport()->update();
 }
@@ -307,7 +310,7 @@ void Canvas::keyReleaseEvent(QKeyEvent* event)
 
 void Canvas::wheelEvent(QWheelEvent* event)
 {
-    if ( event->angleDelta().y() < 0 )
+    if ( event->angleDelta().y() < 0 || (event->angleDelta().y() == 0 && event->angleDelta().x() < 0) )
         zoom_out();
     else
         zoom_in();
@@ -595,8 +598,11 @@ bool Canvas::viewportEvent(QEvent *event)
                     if ( math::abs(distance - initial_distance) > travel_distance )
                     {
                         // scenePos() lies...
-                        // TODO use position()
+#if QT_VERSION_MAJOR < 6
                         QPointF center = (d->map_to_scene(p0.pos()) + d->map_to_scene(p1.pos())) / 2;
+#else
+                        QPointF center = (d->map_to_scene(p0.position()) + d->map_to_scene(p1.position())) / 2;
+#endif
                         qreal scale_by = distance / initial_distance;
 
                         if ( touch_event->touchPointStates() & Qt::TouchPointReleased )

@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -628,7 +628,7 @@ void GlaxnimateWindow::Private::save_frame_svg()
     }
 
     io::svg::SvgRenderer rend(io::svg::NotAnimated, io::svg::CssFontType::FontFace);
-    rend.write_main(comp);
+    rend.write_main(comp, frame);
     rend.write(&file, true);
 }
 

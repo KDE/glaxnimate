@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -47,7 +47,8 @@ public:
     DragMode drag_mode = DragMode::None;
     model::AnimationContainer* limit = nullptr;
     bool keep_highlight = false;
-    QPointF drag_start;
+    QPoint drag_start;
+    QPoint drag_scroll;
 
     LineItem* root = nullptr;
     std::unordered_map<quintptr, LineItem*> line_items;
@@ -584,7 +585,8 @@ void TimelineWidget::mousePressEvent(QMouseEvent* event)
     {
         setCursor(Qt::ClosedHandCursor);
         d->drag_mode = Private::DragMode::Pan;
-        d->drag_start = mapToScene(event->pos());
+        d->drag_start = event->pos();
+        d->drag_scroll = QPoint(horizontalScrollBar()->value(), d->scroll_row());
     }
     else if ( event->position().y() > d->header_height )
     {
@@ -602,6 +604,7 @@ void TimelineWidget::mousePressEvent(QMouseEvent* event)
 
 }
 
+
 void TimelineWidget::mouseMoveEvent(QMouseEvent* event)
 {
     d->mouse_frame = d->frame_at_point(event->pos());
@@ -609,26 +612,18 @@ void TimelineWidget::mouseMoveEvent(QMouseEvent* event)
     if ( d->drag_mode == Private::DragMode::Pan )
     {
         QPointF scene_pos = mapToScene(event->pos());
-        QPointF drag_delta = scene_pos - d->drag_start;
-        if ( d->horizontal_scroll(event->modifiers()) )
+        QPointF drag_delta = scene_pos - mapToScene(d->drag_start);
+
+        int scroll_x = d->drag_scroll.x() - drag_delta.x() * transform().m11();
+        horizontalScrollBar()->setValue(scroll_x);
+
+        int scroll_y_amount = qRound(drag_delta.y() / d->row_height);
+        if ( scroll_y_amount != 0 )
         {
-            int scroll_by = scene_pos.x() - d->drag_start.x();
-            int scroll = horizontalScrollBar()->value() - scroll_by * transform().m11();
-            horizontalScrollBar()->setValue(scroll);
-            d->drag_start = scene_pos;
-        }
-        else
-        {
-            int scroll_by = qRound(drag_delta.y() / d->row_height);
-            if ( scroll_by != 0 )
+            int row = d->drag_scroll.y() - scroll_y_amount;
+            if ( row >= 0 && row <= d->max_scroll_row() )
             {
-                d->drag_start = scene_pos;
-                int row = d->scroll_row() - scroll_by;
-                if ( row >= 0 && row <= d->max_scroll_row() )
-                {
-                    Q_EMIT scrolled(row);
-                    d->drag_start.setY(scene_pos.y() - scroll_by *  d->row_height);
-                }
+                Q_EMIT scrolled(row);
             }
         }
     }

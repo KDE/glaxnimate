@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -20,7 +20,7 @@ class LottieFormat : public ImportExport
 public:
     QString slug() const override { return "lottie"; }
     QString name() const override { return i18n("Lottie Animation"); }
-    QStringList extensions() const override { return {"json"}; }
+    QStringList extensions() const override { return {"lot", "json"}; }
     bool can_save() const override { return true; }
     bool can_open() const override { return true; }
     std::unique_ptr<app::settings::SettingsGroup> save_settings(model::Composition*) const override;

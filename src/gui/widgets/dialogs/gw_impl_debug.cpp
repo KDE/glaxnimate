@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -62,7 +62,7 @@ QString pretty_xml(const QByteArray& xml)
     tempf.setAutoRemove(false);
     tempf.open();
     QDomDocument doc;
-    doc.setContent(xml, false);
+    doc.setContent(xml);
     tempf.write(doc.toByteArray(4));
     return tempf.fileName();
 }

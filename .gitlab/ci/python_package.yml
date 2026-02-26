@@ -1,13 +1,16 @@
+include:
+    - project: sysadmin/ci-utilities
+      file: 
+         - /gitlab-templates/blocks/ci-linux-base.yml
+
 python_build_wheel:
     stage: build
-    image: invent-registry.kde.org/sysadmin/ci-images/suse-qt610:latest
-    tags:
-        - Linux
+    extends: .suse_tumbleweed_qt6stable
     variables:
-        KDECI_CC_CACHE: /mnt/caches/suse-qt6.10/
-        KDECI_CACHE_PATH: /mnt/artifacts/suse-qt6.10/
+        KDECI_CC_CACHE: /mnt/$KDECI_PLATFORM_PATH/caches/
+        KDECI_CACHE_PATH: /mnt/$KDECI_PLATFORM_PATH/artifacts/
         KDECI_GITLAB_SERVER: https://invent.kde.org/
-        KDECI_PACKAGE_PROJECT: teams/ci-artifacts/suse-qt6.10
+        KDECI_PACKAGE_PROJECT: teams/ci-artifacts/$KDECI_PLATFORM_PATH
     before_script:
         - python3 --version
         - git clone https://invent.kde.org/sysadmin/ci-utilities.git --depth=1
@@ -37,10 +40,11 @@ python_build_wheel:
 
 pypi_deploy_gitlab:
     stage: deploy
-    image: invent-registry.kde.org/sysadmin/ci-images/suse-qt610:latest
+    extends: .suse_tumbleweed_qt6stable
     needs:
         - job: python_build_wheel
           artifacts: true
+    before_script:
     script:
         - TWINE_PASSWORD=$CI_JOB_TOKEN TWINE_USERNAME=gitlab-ci-token python3 -m twine upload bin/python/dist/*.whl --repository-url $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/pypi --verbose
     rules:
@@ -53,10 +57,11 @@ pypi_deploy_gitlab:
 
 pypi_deploy_pypiorg:
     stage: deploy
-    image: invent-registry.kde.org/sysadmin/ci-images/suse-qt610:latest
+    extends: .suse_tumbleweed_qt6stable
     needs:
         - job: python_build_wheel
           artifacts: true
+    before_script:
     script:
         - python3 -u ci-notary-service/publishonpypi.py --config ci-utilities/signing/publishonpypi.ini --repository pypi dist
     rules:

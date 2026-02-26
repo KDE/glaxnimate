@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  * SPDX-FileCopyrightText: 2024 Julius Künzel <julius.kuenzel@kde.org>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -19,6 +19,8 @@
 #include <QDialogButtonBox>
 #include <QStatusBar>
 #include <QClipboard>
+#include <QKeySequence>
+#include <QList>
 
 #include <KHelpMenu>
 #include <KActionCategory>
@@ -38,6 +40,7 @@
 #if HAVE_STYLE_MANAGER
 #include <KStyleManager>
 #endif
+#include <KXMLGUIFactory>
 
 #include "glaxnimate_settings.hpp"
 
@@ -51,6 +54,8 @@
 #include "model/shapes/offset_path.hpp"
 #include "model/shapes/zig_zag.hpp"
 #include "io/io_registry.hpp"
+
+#include "command/undo_macro_guard.hpp"
 
 #include "widgets/dialogs/io_status_dialog.hpp"
 #include "widgets/dialogs/about_env_dialog.hpp"
@@ -97,6 +102,7 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
 
     canvas = new Canvas(centralWidget);
     canvas->setAcceptDrops(true);
+    parent->setAcceptDrops(true);
 
     message_widget = new WindowMessageWidget(centralWidget);
     tab_bar = new CompositionTabBar(centralWidget);
@@ -126,7 +132,11 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     connect(textRemovePath, &QAction::triggered, parent, [this]{text_remove_from_path();});
 
     // Load themes
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+    KColorSchemeManager *manager = KColorSchemeManager::instance();
+#else
     KColorSchemeManager *manager = new KColorSchemeManager(parent);
+#endif
     auto *colorSelectionMenu = KColorSchemeMenu::createMenu(manager, parent);
     parent->actionCollection()->addAction(QStringLiteral("colorscheme_menu"), colorSelectionMenu);
 
@@ -156,7 +166,6 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     parent->setupGUI();
 
     parent->setDockOptions(parent->dockOptions() | QMainWindow::AllowNestedDocks | QMainWindow::AllowTabbedDocks);
-    parent->setDockOptions(parent->dockOptions() | QMainWindow::GroupedDragging);
 
     parent->setCentralWidget(centralWidget);
 
@@ -227,6 +236,23 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     // Debug menu
     if ( debug )
         init_debug();
+
+    // Redirect help entry to our own function
+    // First delete the default help action
+    QAction *officialHelp = parent->actionCollection()->action(KStandardAction::name(KStandardAction::HelpContents));
+    // Save and later restore any custom shortcuts
+    QList<QKeySequence> helpShortcuts = officialHelp->shortcuts();
+    parent->actionCollection()->removeAction(officialHelp);
+    // Now recreate our own
+    KStandardAction::helpContents(parent, &GlaxnimateWindow::help_manual, parent->actionCollection());
+    officialHelp = parent->actionCollection()->action(KStandardAction::name(KStandardAction::HelpContents));
+    officialHelp->setShortcuts(helpShortcuts);
+    // Replug it in the Help menu
+    QMenu *helpMenu = static_cast<QMenu *>(parent->factory()->container(QStringLiteral("help"), parent));
+    if (helpMenu) {
+        QAction *whatsThis = parent->actionCollection()->action(KStandardAction::name(KStandardAction::WhatsThis));
+        helpMenu->insertAction(whatsThis, officialHelp);
+    }
 
     // Restore state
     // NOTE: keep at the end so we do this once all the widgets are in their default spots
@@ -337,7 +363,7 @@ void GlaxnimateWindow::Private::setup_edit_actions()
         undo->setText(i18n("Undo %1", s));
     });
 
-    QAction *redo = editActions->addAction(KStandardAction::Redo, &parent->undo_group(), SLOT(undo()));
+    QAction *redo = editActions->addAction(KStandardAction::Redo, &parent->undo_group(), SLOT(redo()));
     QObject::connect(&parent->undo_group(), &QUndoGroup::canRedoChanged, redo, &QAction::setEnabled);
     QObject::connect(&parent->undo_group(), &QUndoGroup::redoTextChanged, redo, [this, redo](const QString& s){
         redo->setText(i18n("Redo %1", s));
@@ -665,6 +691,17 @@ void GlaxnimateWindow::Private::setup_object_actions()
     connect(alignVertBottomOut, &QAction::triggered, parent, [this]{align(AlignDirection::Vertical, AlignPosition::End, true);});
 }
 
+void recursive_reverse_path(model::DocumentNode* node)
+{
+    if ( auto shape = qobject_cast<model::Shape*>(node) )
+    {
+        shape->reversed.set_undoable(!shape->reversed.get());
+    }
+
+    for ( const auto& child : node->docnode_children() )
+        recursive_reverse_path(child);
+}
+
 void GlaxnimateWindow::Private::setup_path_actions()
 {
     KActionCategory *pathActions = new KActionCategory(i18n("Path"), parent->actionCollection());
@@ -679,15 +716,19 @@ void GlaxnimateWindow::Private::setup_path_actions()
 
     QAction *pathAdd = add_action(pathActions, QStringLiteral("path_add"), i18n("Union"), QStringLiteral("path-union"));
     pathAdd->setEnabled(false);
+    pathAdd->setVisible(false);
     QAction *pathSubstract = add_action(pathActions, QStringLiteral("path_subtract"), i18n("Difference"), QStringLiteral("path-difference"));
     pathSubstract->setEnabled(false);
+    pathSubstract->setVisible(false);
     QAction *pathIntersect = add_action(pathActions, QStringLiteral("path_intersect"), i18n("Intersect"), QStringLiteral("path-intersection"));
     pathIntersect->setEnabled(false);
+    pathIntersect->setVisible(false);
     QAction *pathXor = add_action(pathActions, QStringLiteral("path_xor"), i18n("Exclusion"), QStringLiteral("path-exclusion"));
     pathXor->setEnabled(false);
+    pathXor->setVisible(false);
 
     QAction *pathReverse = add_action(pathActions, QStringLiteral("path_reverse"), i18n("Reverse"), QStringLiteral("path-reverse"));
-    pathReverse->setEnabled(false);
+    pathReverse->setEnabled(true);
 
     QAction *nodeRemove = add_action(pathActions, QStringLiteral("node_remove"), i18n("Delete Nodes"), QStringLiteral("format-remove-node"));
     QAction *nodeAdd = add_action(pathActions, QStringLiteral("node_add"), i18n("Add Node…"), QStringLiteral("format-insert-node"));
@@ -740,6 +781,15 @@ void GlaxnimateWindow::Private::setup_path_actions()
     });
     connect(nodeDissolve, &QAction::triggered, parent, [edit_tool]{
         edit_tool->selection_dissolve();
+    });
+    connect(pathReverse, &QAction::triggered, parent, [this]{
+
+        model::DocumentNode* curr = current_document_node();
+        if ( !curr )
+            return;
+
+        command::UndoMacroGuard guard(i18n("Reverse path"), current_document.get());
+        recursive_reverse_path(curr);
     });
 }
 
@@ -1230,6 +1280,7 @@ void GlaxnimateWindow::Private::init_menus()
         act->setIcon(wid->windowIcon());
         view_actions.append(act);
         wid->setStyle(&dock_style);
+        wid->setWindowTitle(KLocalizedString::removeAcceleratorMarker(wid->windowTitle()));
     }
     parent->unplugActionList( "view_actionlist" );
     parent->plugActionList( "view_actionlist", view_actions );

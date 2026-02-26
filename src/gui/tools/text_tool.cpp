@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -26,7 +26,7 @@ public:
     QString id() const override { return "text"; }
     QIcon icon() const override { return QIcon::fromTheme("draw-text"); }
     QString name() const override { return i18n("Draw Text"); }
-    QString action_name() const override { return QStringLiteral("tool_textg"); }
+    QString action_name() const override { return QStringLiteral("tool_draw_text"); }
     QKeySequence key_sequence() const override { return Qt::Key_F9; }
     static int static_group() noexcept { return Registry::Shape; }
     int group() const noexcept override { return static_group(); }

@@ -61,6 +61,19 @@ Install the dependencies:
 
 The generic `cmake` commands listed above should work.
 
+To use Qt6 install these instead:
+
+    apt install -y g++ cmake extra-cmake-modules \
+    qt6-base-dev qt6-tools-dev qt6-svg-dev qt6-image-formats-plugins \
+    libpython3-dev libpotrace-dev \
+    libarchive-dev libavformat-dev libswscale-dev libavcodec-dev libavutil-dev \
+    libkf6coreaddons-dev libkf6crash-dev libkf6widgetsaddons-dev libkf6xmlgui-dev \
+    libkf6archive-dev libkf6completion-dev libkf6iconthemes-dev
+
+Then enable Qt6 with cmake:
+
+    cmake .. -DQT_VERSION_MAJOR=6
+
 
 ### Arch-based systems
 

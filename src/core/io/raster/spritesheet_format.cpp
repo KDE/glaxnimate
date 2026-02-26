@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -29,8 +29,8 @@ std::unique_ptr<app::settings::SettingsGroup> glaxnimate::io::raster::Spriteshee
     int last_frame = comp->animation->last_frame.get();
     int frames = last_frame - first_frame;
     return std::make_unique<app::settings::SettingsGroup>(app::settings::SettingList{
-        app::settings::Setting("frame_width", i18n("Frame Width"), i18n("Width of each frame"), comp->width.get(), 1, 999'999),
-        app::settings::Setting("frame_height", i18n("Frame Height"), i18n("Height of each frame"), comp->height.get(), 1, 999'999),
+        app::settings::Setting("frame_width", i18n("Frame Width"), i18n("Width of each frame"), int(comp->width.get()), 1, 999'999),
+        app::settings::Setting("frame_height", i18n("Frame Height"), i18n("Height of each frame"), int(comp->height.get()), 1, 999'999),
         app::settings::Setting("columns", i18n("Columns"), i18n("Number of columns in the sheet"), std::ceil(math::sqrt(frames)), 1, 64),
         app::settings::Setting("frame_step", i18n("Time Step"), i18n("By how much each rendered frame should increase time (in frames)"), 1, 1, 16),
     });
@@ -51,12 +51,13 @@ bool glaxnimate::io::raster::SpritesheetFormat::on_save(QIODevice& file, const Q
     int first_frame = comp->animation->first_frame.get();
     int last_frame = comp->animation->last_frame.get();
     int frames = (last_frame - first_frame) / frame_step;
-    int rows = frames / columns;
+    int rows = qCeil(float(frames) / columns);
 
     qreal scale_x = qreal(frame_w) / comp->width.get();
     qreal scale_y = qreal(frame_h) / comp->height.get();
 
     QImage bmp(frame_w * columns, frame_h * rows, QImage::Format_ARGB32);
+    bmp.fill(Qt::transparent);
     QPainter painter(&bmp);
     for ( int i = first_frame; i <= last_frame; i += frame_step )
     {

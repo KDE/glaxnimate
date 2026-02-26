@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -544,6 +544,7 @@ void GlaxnimateWindow::Private::on_remove_precomp(int index)
     }
 
     delete new_comp_actions[index];
+    new_comp_actions.erase(new_comp_actions.begin() + index);
     comp_selections.erase(comp_selections.begin()+index);
 }
 

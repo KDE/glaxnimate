@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -120,7 +120,7 @@ public:
 
             case Image:
             {
-                auto name = image_slug.slug(emoji.hex_slug) + image_suffix;
+                QString name = image_slug.slug(emoji.hex_slug) + image_suffix;
                 if ( !image_path.exists(name) )
                     return nullptr;
 

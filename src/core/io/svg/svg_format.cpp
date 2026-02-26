@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -80,7 +80,7 @@ std::unique_ptr<app::settings::SettingsGroup> glaxnimate::io::svg::SvgFormat::sa
 bool glaxnimate::io::svg::SvgFormat::on_save(QIODevice& file, const QString& filename, model::Composition* comp, const QVariantMap& options)
 {
     SvgRenderer rend(SMIL, CssFontType(options["font_type"].toInt()));
-    rend.write_main(comp);
+    rend.write_main(comp, comp->document()->current_time());
     if ( filename.endsWith(".svgz") || options.value("compressed", false).toBool() )
     {
         KCompressionDevice compressed(&file, false, KCompressionDevice::GZip);

@@ -11,6 +11,11 @@ variables:
     # DEBIAN_FRONTEND: noninteractive
     GIT_SUBMODULE_STRATEGY: recursive
 
+reuse:
+    # Overwrite reuse script step to NOT delete po/ dir (its covered in our REUSE.toml)
+    script:
+        - reuse lint
+
 include:
     # - .gitlab/ci/documentation.yml
     - .gitlab/ci/python_package.yml
