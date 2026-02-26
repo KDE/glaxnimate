@@ -7,7 +7,7 @@ cmake_policy(SET CMP0077 NEW)
 cmake_policy(SET CMP0153 NEW)
 
 
-project(Glaxnimate VERSION 0.5.80 LANGUAGES CXX)
+project(Glaxnimate VERSION 0.5.80 LANGUAGES CXX C)
 include(FeatureSummary)
 
 set(PROJECT_SLUG "glaxnimate")
@@ -213,6 +213,11 @@ if(CMAKE_BUILD_TYPE STREQUAL "")
 endif()
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -pedantic -Wextra")
 message(STATUS "${CMAKE_BUILD_TYPE} build")
+
+# Renderer
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(CAIRO REQUIRED cairo)
+set(RENDERER_LIBRARIES ${CAIRO_LIBRARIES})
 
 # sub projects and stuff
 

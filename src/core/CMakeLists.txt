@@ -156,3 +156,7 @@ target_include_directories(${LIB_NAME_CORE} PUBLIC $<BUILD_INTERFACE:${CMAKE_CUR
 if ( NOT ANDROID )
     target_link_libraries(${LIB_NAME_CORE} PUBLIC ${Libav_LIBRARIES} ${LibArchive_LIBRARIES} )
 endif()
+
+if ( RENDERER_LIBRARIES )
+    target_link_libraries(${LIB_NAME_CORE} PUBLIC ${RENDERER_LIBRARIES})
+endif()

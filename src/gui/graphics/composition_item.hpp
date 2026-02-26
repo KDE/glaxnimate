@@ -14,6 +14,7 @@
 #include "graphics/document_node_graphics_item.hpp"
 #include "graphics/transform_graphics_item.hpp"
 #include "renderer/qpainter_renderer.hpp"
+#include "renderer/cairo_renderer.hpp"
 
 #include <QGraphicsScene>
 #include <QStyleOptionGraphicsItem>
@@ -40,7 +41,7 @@ public:
         // renderer::QPainterRenderer renderer(painter);
         // render(renderer);
 
-        renderer::QPainterRenderer renderer;
+        renderer::CairoRenderer renderer;
         QRectF scene_rect = mapRectToScene(option->exposedRect);
         offscreen_render(renderer, painter, scene_rect);
     }
@@ -64,14 +65,20 @@ private:
         qreal scale = std::sqrt(t.m11() * t.m11() + t.m21() * t.m21());
 
         QImage img(qCeil(rect.width() * scale), qCeil(rect.height() * scale), QImage::Format_ARGB32_Premultiplied);
-        // img.fill(Qt::transparent);
-        img.fill(QColor(100, 0, 0, 100));
+        img.fill(Qt::transparent);
+        // img.fill(QColor(100, 0, 0, 100));
         img.setDevicePixelRatio(scale);
 
         // Render onto the image
         renderer.set_image_surface(&img);
         renderer.render_start();
+        // Take into account the world transform
+        // NOTE: Shouldn't be used with QPainterRenderer as that already includes it
+        QTransform render_t = t;
+        render_t.setMatrix(t.m11(), t.m12(), t.m13(), t.m21(), t.m22(), t.m23(), 0, 0, t.m33());
+        renderer.transform(render_t);
         renderer.translate(-rect.left(), -rect.top());
+        // renderer.scale(1/scale, 1/scale);
         node()->paint(&renderer, node()->time(), model::VisualNode::Canvas);
         renderer.render_end();
 
