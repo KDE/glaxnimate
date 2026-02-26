@@ -24,11 +24,7 @@ public:
         {
             theme = system_theme;
         }
-
-        KConfigGroup(config, "Icons").writeEntry("Theme", theme);
-        KIconTheme::forceThemeForTests(theme);
-        KIconTheme::reconfigure();
-        KIconLoader::global()->reconfigure({}, {});
+        QIcon::setThemeName(theme);
     }
 
     QStandardItemModel* get_model()
