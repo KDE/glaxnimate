@@ -36,6 +36,9 @@ public:
     Renderer& operator=(const Renderer&) = delete;
     virtual ~Renderer() noexcept = default;
 
+// Query
+    virtual bool needs_world_transform() const { return true; }
+
 // Surface setup
     /**
      * \brief Sets \p destination as the destination surface
@@ -96,5 +99,11 @@ public:
     virtual void translate(qreal x, qreal y) = 0;
     virtual void transform(const QTransform& matrix) = 0;
 };
+
+/**
+ * \brief Creates the default renderer for the given quality
+ * \param quality number from 0 to 10
+ */
+std::unique_ptr<Renderer> default_renderer(int quality);
 
 } // namespace glaxnimate::renderer

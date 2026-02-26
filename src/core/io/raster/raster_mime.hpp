@@ -15,7 +15,7 @@
 #include "model/document.hpp"
 #include "model/shapes/image.hpp"
 #include "model/assets/assets.hpp"
-#include "renderer/qpainter_renderer.hpp"
+#include "renderer/renderer.hpp"
 
 namespace glaxnimate::io::raster {
 
@@ -62,15 +62,15 @@ public:
         QImage image(box.size().toSize(), QImage::Format_ARGB32);
         image.fill(Qt::transparent);
 
-        renderer::QPainterRenderer renderer;
-        renderer.set_image_surface(&image);
-        renderer.render_start();
-        renderer.translate(-box.left(), -box.top());
+        auto renderer = renderer::default_renderer(10);
+        renderer->set_image_surface(&image);
+        renderer->render_start();
+        renderer->translate(-box.left(), -box.top());
         for ( auto visual : visual_nodes )
         {
-            visual->paint(&renderer, visual->time(), model::VisualNode::Render);
+            visual->paint(renderer.get(), visual->time(), model::VisualNode::Render);
         }
-        renderer.render_end();
+        renderer->render_end();
         return image;
     }
 
@@ -81,11 +81,11 @@ public:
 
         QImage image(node->local_bounding_rect(time).size().toSize(), QImage::Format_ARGB32);
         image.fill(Qt::transparent);
-        renderer::QPainterRenderer renderer;
-        renderer.set_image_surface(&image);
-        renderer.render_start();
-        node->paint(&renderer, time, model::VisualNode::Render);
-        renderer.render_end();
+        auto renderer = renderer::default_renderer(10);
+        renderer->set_image_surface(&image);
+        renderer->render_start();
+        node->paint(renderer.get(), time, model::VisualNode::Render);
+        renderer->render_end();
         return image;
     }
 

@@ -13,9 +13,10 @@
 #include "graphics/handle.hpp"
 #include "graphics/document_node_graphics_item.hpp"
 #include "graphics/transform_graphics_item.hpp"
-#include "renderer/qpainter_renderer.hpp"
-#include "renderer/cairo_renderer.hpp"
+// #include "renderer/qpainter_renderer.hpp"
+#include "renderer/renderer.hpp"
 
+#include <QPainter>
 #include <QGraphicsScene>
 #include <QStyleOptionGraphicsItem>
 
@@ -38,12 +39,17 @@ public:
 
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget*) override
     {
-        // renderer::QPainterRenderer renderer(painter);
-        // render(renderer);
+        /*
+        renderer::QPainterRenderer renderer(painter);
+        renderer.render_start();
+        node()->paint(&renderer, node()->time(), model::VisualNode::Canvas);
+        renderer.render_end();
+        */
 
-        renderer::CairoRenderer renderer;
+        // TODO setting for the render quality
+        auto renderer = renderer::default_renderer(5);
         QRectF scene_rect = mapRectToScene(option->exposedRect);
-        offscreen_render(renderer, painter, scene_rect);
+        offscreen_render(*renderer, painter, scene_rect);
     }
 
     void refresh()
@@ -72,11 +78,14 @@ private:
         // Render onto the image
         renderer.set_image_surface(&img);
         renderer.render_start();
-        // Take into account the world transform
-        // NOTE: Shouldn't be used with QPainterRenderer as that already includes it
-        QTransform render_t = t;
-        render_t.setMatrix(t.m11(), t.m12(), t.m13(), t.m21(), t.m22(), t.m23(), 0, 0, t.m33());
-        renderer.transform(render_t);
+        if ( renderer.needs_world_transform() )
+        {
+            // Take into account the world transform
+            // NOTE: Shouldn't be used with QPainterRenderer as that already includes it
+            QTransform render_t = t;
+            render_t.setMatrix(t.m11(), t.m12(), t.m13(), t.m21(), t.m22(), t.m23(), 0, 0, t.m33());
+            renderer.transform(render_t);
+        }
         renderer.translate(-rect.left(), -rect.top());
         // renderer.scale(1/scale, 1/scale);
         node()->paint(&renderer, node()->time(), model::VisualNode::Canvas);
@@ -84,13 +93,6 @@ private:
 
         // Render the image to the item
         painter->drawImage(rect.topLeft(), img);
-    }
-
-    void render(renderer::Renderer& renderer)
-    {
-        renderer.render_start();
-        node()->paint(&renderer, node()->time(), model::VisualNode::Canvas);
-        renderer.render_end();
     }
 
 private Q_SLOTS:

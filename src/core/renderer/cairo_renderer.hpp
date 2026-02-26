@@ -18,6 +18,7 @@ namespace glaxnimate::renderer {
 class CairoRenderer : public Renderer
 {
 private:
+    int quality;
     int width = 0;
     int height = 0;
     Fill fill;
@@ -108,6 +109,11 @@ private:
     }
 
 public:
+    CairoRenderer() : CairoRenderer(5) {}
+    explicit CairoRenderer(int quality) : quality(quality)
+    {
+    }
+
     void set_image_surface(QImage * destination) override
     {
         target = destination;
@@ -119,8 +125,13 @@ public:
 
     void render_start() override
     {
-        // TODO should use good antialias for rendering to image
-        cairo_set_antialias(canvas, CAIRO_ANTIALIAS_FAST);
+        cairo_antialias_t anti;
+        if ( quality < 1 ) anti = CAIRO_ANTIALIAS_NONE;
+        else if ( quality < 4 ) anti = CAIRO_ANTIALIAS_FAST;
+        else if ( quality < 8 ) anti = CAIRO_ANTIALIAS_GOOD;
+        else anti = CAIRO_ANTIALIAS_BEST;
+
+        cairo_set_antialias(canvas, anti);
         layer_alpha.push_back(1);
     }
 

@@ -32,6 +32,8 @@ public:
 
     QPainterRenderer() = default;
 
+    bool needs_world_transform() const override { return false; }
+
     void set_image_surface(QImage * destination) override
     {
         painter.reset(new QPainter(destination), true);

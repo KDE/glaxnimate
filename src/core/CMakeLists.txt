@@ -106,6 +106,8 @@ plugin/plugin.cpp
 plugin/action.cpp
 plugin/io.cpp
 
+renderer/renderer.cpp
+
 utils/gzip.cpp
 utils/quantize.cpp
 utils/trace.cpp
