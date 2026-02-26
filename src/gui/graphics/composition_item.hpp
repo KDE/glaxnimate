@@ -22,9 +22,10 @@ namespace glaxnimate::gui::graphics {
 
 class CompositionItem : public DocumentNodeGraphicsItem
 {
+    model::Composition* comp;
 public:
     explicit CompositionItem (model::Composition* animation)
-        : DocumentNodeGraphicsItem(animation)
+        : DocumentNodeGraphicsItem(animation), comp(animation)
     {
         setFlag(QGraphicsItem::ItemIsSelectable, false);
         setFlag(QGraphicsItem::ItemHasNoContents, false);
@@ -36,10 +37,18 @@ public:
 
     void paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*) override
     {
-        renderer::QPainterRenderer renderer(painter);
+        QImage img(comp->width.get(), comp->height.get(), QImage::Format_ARGB32_Premultiplied);
+        img.fill(Qt::transparent);
+        renderer::SkiaRenderer renderer;
+        renderer.set_image_surface(&img);
+
+        // renderer::QPainterRenderer renderer(painter);
+
         renderer.render_start();
         node()->paint(&renderer, node()->time(), model::VisualNode::Canvas);
         renderer.render_end();
+
+        painter->drawImage(0, 0, img);
     }
 
     void refresh()
