@@ -56,10 +56,16 @@ private:
         QGraphicsScene* scene = this->scene();
         QRectF rect = scene->sceneRect();
 
-        QImage img(rect.width(), rect.height(), QImage::Format_ARGB32_Premultiplied);
-        img.fill(Qt::transparent);
+        QTransform t = painter->worldTransform();
+        // x scale but they should always be the same
+        qreal scale = std::sqrt(t.m11() * t.m11() + t.m21() * t.m21());
 
-        // Render into the image
+        QImage img(rect.width() * scale, rect.height() * scale, QImage::Format_ARGB32_Premultiplied);
+        // img.fill(Qt::transparent);
+        img.fill(QColor(100, 0, 0, 100));
+        img.setDevicePixelRatio(scale);
+
+        // Render onto the image
         renderer.set_image_surface(&img);
         renderer.render_start();
         renderer.translate(-rect.left(), -rect.top());
@@ -67,7 +73,7 @@ private:
         renderer.render_end();
 
         // Render the image to the item
-        painter->drawImage(rect.left(), rect.top(), img);
+        painter->drawImage(rect.topLeft(), img);
     }
 
     void render(renderer::Renderer& renderer)
