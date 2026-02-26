@@ -1,10 +1,8 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
-
-#pragma once
 
 #pragma once
 
@@ -17,13 +15,17 @@
 #include "graphics/transform_graphics_item.hpp"
 #include "renderer/qpainter_renderer.hpp"
 
+#include <QGraphicsScene>
+#include <QGraphicsView>
+
 namespace glaxnimate::gui::graphics {
 
 class CompositionItem : public DocumentNodeGraphicsItem
 {
+    model::Composition* comp;
 public:
     explicit CompositionItem (model::Composition* animation)
-        : DocumentNodeGraphicsItem(animation)
+        : DocumentNodeGraphicsItem(animation), comp(animation)
     {
         setFlag(QGraphicsItem::ItemIsSelectable, false);
         setFlag(QGraphicsItem::ItemHasNoContents, false);
@@ -35,15 +37,44 @@ public:
 
     void paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*) override
     {
-        renderer::QPainterRenderer renderer(painter);
-        renderer.render_start();
-        node()->paint(&renderer, node()->time(), model::VisualNode::Canvas);
-        renderer.render_end();
+        // renderer::QPainterRenderer renderer(painter);
+        // render(renderer);
+
+        renderer::QPainterRenderer renderer;
+        offscreen_render(renderer, painter);
     }
 
     void refresh()
     {
         update();
+    }
+
+private:
+    void offscreen_render(renderer::Renderer& renderer, QPainter* painter)
+    {
+        // Prepare the image
+        QGraphicsScene* scene = this->scene();
+        QRectF rect = scene->sceneRect();
+
+        QImage img(rect.width(), rect.height(), QImage::Format_ARGB32_Premultiplied);
+        img.fill(Qt::transparent);
+
+        // Render into the image
+        renderer.set_image_surface(&img);
+        renderer.render_start();
+        renderer.translate(-rect.left(), -rect.top());
+        node()->paint(&renderer, node()->time(), model::VisualNode::Canvas);
+        renderer.render_end();
+
+        // Render the image to the item
+        painter->drawImage(rect.left(), rect.top(), img);
+    }
+
+    void render(renderer::Renderer& renderer)
+    {
+        renderer.render_start();
+        node()->paint(&renderer, node()->time(), model::VisualNode::Canvas);
+        renderer.render_end();
     }
 
 private Q_SLOTS:
