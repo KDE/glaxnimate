@@ -48,6 +48,14 @@ int glaxnimate::model::Composition::docnode_child_index(glaxnimate::model::Docum
     return shapes.index_of(static_cast<ShapeElement*>(dn));
 }
 
+QRectF glaxnimate::model::Composition::content_rect() const
+{
+    if ( shapes.empty() )
+        return rect();
+    return shapes.bounding_rect(time());
+}
+
+
 QRectF glaxnimate::model::Composition::local_bounding_rect(FrameTime) const
 {
     return rect();

@@ -28,6 +28,7 @@ class Composition : public VisualNode, public AssetBase
 
     Q_PROPERTY(QSizeF size READ size)
     Q_PROPERTY(QRectF rect READ rect)
+    Q_PROPERTY(QRectF content_rect READ content_rect)
 
 public:
     using VisualNode::VisualNode;
@@ -60,6 +61,7 @@ public:
     DocumentNode* docnode_parent() const override;
     QSizeF size() const { return QSizeF(width.get(), height.get()); }
     QRectF rect() const { return QRectF(QPointF(0, 0), size()); }
+    QRectF content_rect() const;
 
     Q_INVOKABLE QImage render_image(float time, QSize size = {}, const QColor& background = {}) const;
     Q_INVOKABLE QImage render_image() const;

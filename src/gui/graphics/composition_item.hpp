@@ -16,32 +16,33 @@
 #include "renderer/qpainter_renderer.hpp"
 
 #include <QGraphicsScene>
-#include <QGraphicsView>
+#include <QStyleOptionGraphicsItem>
 
 namespace glaxnimate::gui::graphics {
 
 class CompositionItem : public DocumentNodeGraphicsItem
 {
-    model::Composition* comp;
 public:
     explicit CompositionItem (model::Composition* animation)
-        : DocumentNodeGraphicsItem(animation), comp(animation)
+        : DocumentNodeGraphicsItem(animation)
     {
         setFlag(QGraphicsItem::ItemIsSelectable, false);
         setFlag(QGraphicsItem::ItemHasNoContents, false);
+        setFlag(QGraphicsItem::ItemUsesExtendedStyleOption, true);
         set_selection_mode(None);
         connect(animation->document(), &model::Document::graphics_invalidated, this, [this]{refresh();});
         connect(animation, &model::Composition::width_changed, this, &CompositionItem::size_changed);
         connect(animation, &model::Composition::height_changed, this, &CompositionItem::size_changed);
     }
 
-    void paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*) override
+    void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget*) override
     {
         // renderer::QPainterRenderer renderer(painter);
         // render(renderer);
 
         renderer::QPainterRenderer renderer;
-        offscreen_render(renderer, painter);
+        QRectF scene_rect = mapRectToScene(option->exposedRect);
+        offscreen_render(renderer, painter, scene_rect);
     }
 
     void refresh()
@@ -49,18 +50,20 @@ public:
         update();
     }
 
+    QRectF boundingRect() const override
+    {
+        return static_cast<model::Composition*>(node())->content_rect();
+    }
+
 private:
-    void offscreen_render(renderer::Renderer& renderer, QPainter* painter)
+    void offscreen_render(renderer::Renderer& renderer, QPainter* painter, const QRectF& rect)
     {
         // Prepare the image
-        QGraphicsScene* scene = this->scene();
-        QRectF rect = scene->sceneRect();
-
         QTransform t = painter->worldTransform();
         // x scale but they should always be the same
         qreal scale = std::sqrt(t.m11() * t.m11() + t.m21() * t.m21());
 
-        QImage img(rect.width() * scale, rect.height() * scale, QImage::Format_ARGB32_Premultiplied);
+        QImage img(qCeil(rect.width() * scale), qCeil(rect.height() * scale), QImage::Format_ARGB32_Premultiplied);
         // img.fill(Qt::transparent);
         img.fill(QColor(100, 0, 0, 100));
         img.setDevicePixelRatio(scale);
