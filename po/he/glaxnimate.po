@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-15 02:57+0000\n"
+"POT-Creation-Date: 2026-02-26 02:42+0000\n"
 "PO-Revision-Date: 2026-02-02 21:09+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -348,7 +348,7 @@ msgstr "החלפה"
 #: src/android/document_opener.cpp:201
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:448
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:453
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:186
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:191
 #: src/gui/widgets/font/external_font_widget.cpp:126
 #, kde-format
 msgid "Open File"
@@ -360,7 +360,7 @@ msgid "Raster images need to be traced into vectors"
 msgstr "יש להמיר תמונות מפות סיביות לווקטורים"
 
 #: src/android/document_opener.cpp:106
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:187
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:192
 #, kde-format
 msgid "Save File"
 msgstr "שמירת הקובץ"
@@ -640,13 +640,13 @@ msgstr "סגנון מילוי"
 msgid "Stroke Style"
 msgstr "סגנון קו המתאר"
 
-#: src/android/main_window.cpp:452 src/gui/widgets/dialogs/gw_impl_ui.cpp:633
+#: src/android/main_window.cpp:452 src/gui/widgets/dialogs/gw_impl_ui.cpp:638
 #: src/gui/widgets/menus/node_menu.cpp:105
 #, kde-format
 msgid "Raise"
 msgstr "הגבהה"
 
-#: src/android/main_window.cpp:457 src/gui/widgets/dialogs/gw_impl_ui.cpp:636
+#: src/android/main_window.cpp:457 src/gui/widgets/dialogs/gw_impl_ui.cpp:641
 #: src/gui/widgets/menus/node_menu.cpp:109
 #, kde-format
 msgid "Lower"
@@ -726,7 +726,7 @@ msgstr "פתיחה…"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:101
 #: src/gui/widgets/dialogs/about_env_dialog.ui:129
 #: src/gui/widgets/dialogs/about_env_dialog.ui:132
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1609
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1638
 #: src/gui/widgets/dialogs/startup_dialog.ui:149
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:136
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
@@ -775,7 +775,7 @@ msgstr "שליחה לטלגרם"
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/android/main_window.cpp:544 src/gui/glaxnimateui.rc:120
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:589
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:594
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #: src/gui/widgets/docks/layers.ui:29
 #, kde-format
@@ -846,7 +846,7 @@ msgstr "הסרת תמונית מפתח"
 
 #: src/android/main_window.cpp:1004
 #: src/gui/widgets/menus/animated_property_menu.cpp:55
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:174
 #, kde-format
 msgid "Clear Animations"
 msgstr "פינוי הנפשות"
@@ -958,23 +958,23 @@ msgstr "zlib"
 
 #: src/core/app_info.cpp:74
 #, kde-format
+msgid "Inkscape"
+msgstr "אינקסקייפ"
+
+#: src/core/app_info.cpp:77
+#, kde-format
 msgid "pybind11"
 msgstr "pybind11"
 
-#: src/core/app_info.cpp:74 src/core/app_info.cpp:75
+#: src/core/app_info.cpp:77 src/core/app_info.cpp:78
 #, kde-format
 msgid "Used by the plugin system."
 msgstr "משמש את מערכת התוספים."
 
-#: src/core/app_info.cpp:75
+#: src/core/app_info.cpp:78
 #, kde-format
 msgid "CPython"
 msgstr "CPython"
-
-#: src/core/app_info.cpp:77
-#, kde-format
-msgid "Inkscape"
-msgstr "אינקסקייפ"
 
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
@@ -1009,7 +1009,7 @@ msgid "Update %1"
 msgstr "עדכון %1"
 
 #: src/core/command/animation_commands.cpp:307
-#: src/gui/widgets/timeline/timeline_items.cpp:537
+#: src/gui/widgets/timeline/timeline_items.cpp:541
 #, kde-format
 msgid "Update keyframe transition"
 msgstr "עדכון מעברון תמונית מפתח"
@@ -1107,9 +1107,9 @@ msgid "Could convert %1"
 msgstr "אפשר להמיר לכדי %1"
 
 #: src/core/io/aep/aep_loader.cpp:415
-#: src/core/io/lottie/lottie_importer.hpp:897
-#: src/core/io/lottie/lottie_importer.hpp:919
-#: src/core/io/lottie/lottie_importer.hpp:926
+#: src/core/io/lottie/lottie_importer.hpp:900
+#: src/core/io/lottie/lottie_importer.hpp:922
+#: src/core/io/lottie/lottie_importer.hpp:929
 #, kde-format
 msgid "Invalid value for %1"
 msgstr "ערך שגוי עבור %1"
@@ -1252,7 +1252,7 @@ msgstr "אין תמיכה ב־%s"
 msgid "%s cannot be a clip path"
 msgstr "%s לא יכול להיות נתיב חיתוך"
 
-#: src/core/io/base.cpp:22 src/core/io/svg/svg_renderer.cpp:823
+#: src/core/io/base.cpp:22 src/core/io/svg/svg_renderer.cpp:833
 #: src/gui/tools/base.cpp:162
 #, kde-format
 msgid "%1 (%2)"
@@ -1303,47 +1303,47 @@ msgstr "לא ניתן לטעון את %1 עבור %2: המזהה הייחודי 
 msgid "Object %1 is invalid"
 msgstr "הפריט %1 שגוי"
 
-#: src/core/io/glaxnimate/import_state.hpp:317
+#: src/core/io/glaxnimate/import_state.hpp:328
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
 msgstr "סוג הפריט שגוי: אמור להיות ‚%1’ אבל התקבל ‚%2’"
 
-#: src/core/io/glaxnimate/import_state.hpp:323
+#: src/core/io/glaxnimate/import_state.hpp:334
 #, kde-format
 msgid "Could not load %1 for %2"
 msgstr "לא ניתן לטעון את %1 עבור %2"
 
-#: src/core/io/glaxnimate/import_state.hpp:332
+#: src/core/io/glaxnimate/import_state.hpp:343
 #, kde-format
 msgid "Could not set property %1"
 msgstr "לא ניתן להגדיר את המאפיין %1"
 
-#: src/core/io/glaxnimate/import_state.hpp:358
+#: src/core/io/glaxnimate/import_state.hpp:369
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
 msgstr "הפריט %1 עבור %2 ב־%3 אינו מסוג פריט"
 
-#: src/core/io/glaxnimate/import_state.hpp:370
+#: src/core/io/glaxnimate/import_state.hpp:381
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
 msgstr "הפריט %1 עבור %2 ב־%3 אינו מקובל"
 
-#: src/core/io/glaxnimate/import_state.hpp:409
+#: src/core/io/glaxnimate/import_state.hpp:420
 #, kde-format
 msgid "Keyframe must specify a time"
 msgstr "תמונית המפתח חייבת לציין זמן"
 
-#: src/core/io/glaxnimate/import_state.hpp:414
+#: src/core/io/glaxnimate/import_state.hpp:425
 #, kde-format
 msgid "Keyframe must specify a value"
 msgstr "תמונית המפתח חייבת לציין ערך"
 
-#: src/core/io/glaxnimate/import_state.hpp:424
+#: src/core/io/glaxnimate/import_state.hpp:435
 #, kde-format
 msgid "Could not add keyframe"
 msgstr "לא ניתן להוסיף תמונית מפתח"
 
-#: src/core/io/glaxnimate/import_state.hpp:608
+#: src/core/io/glaxnimate/import_state.hpp:619
 #, kde-format
 msgid "Unknown object of type '%1'"
 msgstr "פריט לא ידוע מסוג ‚%1’"
@@ -1456,37 +1456,37 @@ msgstr "סוג הצורה %1 לא נתמך"
 msgid "Unknown field %2%1"
 msgstr "השדה %2%1 לא ידוע"
 
-#: src/core/io/lottie/lottie_importer.hpp:852
+#: src/core/io/lottie/lottie_importer.hpp:855
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
 msgstr "נקודת בזייה שגויה %1 ב־%2"
 
-#: src/core/io/lottie/lottie_importer.hpp:934
+#: src/core/io/lottie/lottie_importer.hpp:937
 #, kde-format
 msgid "Invalid keyframes for %1"
 msgstr "תמוניות מפתח שגויות עבור %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:984
+#: src/core/io/lottie/lottie_importer.hpp:987
 #, kde-format
 msgid "(null)"
 msgstr "(אפס)"
 
-#: src/core/io/lottie/lottie_importer.hpp:990
+#: src/core/io/lottie/lottie_importer.hpp:993
 #, kde-format
 msgid "(empty)"
 msgstr "(ריק)"
 
-#: src/core/io/lottie/lottie_importer.hpp:999
+#: src/core/io/lottie/lottie_importer.hpp:1002
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
 msgstr "לא ניתן לטעון את תמונית המפתח %1 עבור %2 עם הערך %3"
 
-#: src/core/io/lottie/lottie_importer.hpp:1053
+#: src/core/io/lottie/lottie_importer.hpp:1056
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
 msgstr "מזהה מפת סיביות כפול: %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:1085
+#: src/core/io/lottie/lottie_importer.hpp:1088
 #, kde-format
 msgid "Duplicate Composition ID: %1"
 msgstr "מזהה תרכובת כפול: %1"
@@ -1967,7 +1967,7 @@ msgstr "הסרת נקודות"
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/core/model/animation/animatable.cpp:418
 #: src/gui/widgets/menus/animated_property_menu.cpp:59
-#: src/gui/widgets/timeline/compound_timeline_widget.ui:196
+#: src/gui/widgets/timeline/compound_timeline_widget.ui:194
 #, kde-format
 msgid "Add Keyframe"
 msgstr "הוספת תמונית מפתח"
@@ -2086,7 +2086,7 @@ msgstr "מדרג %1"
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:137
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:154
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:157
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:60
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:49
 #, kde-format
 msgid "Linear"
 msgstr "קווי"
@@ -2144,7 +2144,7 @@ msgstr "אליפסה"
 #: src/core/model/shapes/fill.hpp:48 src/gui/tools/draw_tool_base.cpp:114
 #: src/gui/tools/fill_tool.cpp:25
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:763
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:611
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:616
 #: src/gui/widgets/docks/colors.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:191
 #: src/gui/widgets/tools/color_picker_widget.ui:24
@@ -2156,8 +2156,8 @@ msgstr "מילוי"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/model/shapes/group.hpp:42
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:608
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:645
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:613
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:650
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
 #, kde-format
 msgid "Group"
@@ -2175,7 +2175,7 @@ msgstr "ניפוח וצמצום"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/model/shapes/layer.hpp:81
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:605
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:610
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
 #, kde-format
 msgid "Layer"
@@ -2190,7 +2190,7 @@ msgstr "נתיב היסט"
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/model/shapes/path.hpp:38 src/gui/glaxnimateui.rc:174
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:697
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:713
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
@@ -2227,7 +2227,7 @@ msgstr "עיגול פינות"
 #. i18n: ectx: property (text), widget (QRadioButton, check_stroke)
 #: src/core/model/shapes/stroke.hpp:68 src/gui/tools/draw_tool_base.cpp:126
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:758
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:614
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:619
 #: src/gui/widgets/docks/stroke.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:101
 #: src/gui/widgets/tools/color_picker_widget.ui:37
@@ -2244,7 +2244,7 @@ msgstr "החלפת גופן"
 
 #. i18n: ectx: Menu (text)
 #: src/core/model/shapes/text.cpp:489 src/gui/glaxnimateui.rc:200
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:124
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:126
 #, kde-format
 msgid "Text"
 msgstr "טקסט"
@@ -2495,13 +2495,13 @@ msgctxt "@info:shell"
 msgid "Error converting to the output format"
 msgstr "שגיאה בהמרה לתסדיר הפלט"
 
-#: src/gui/cli.cpp:315 src/gui/cli.cpp:335
+#: src/gui/cli.cpp:315 src/gui/cli.cpp:334
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not save to %1"
 msgstr "לא ניתן לשמור אל %1"
 
-#: src/gui/cli.cpp:344
+#: src/gui/cli.cpp:343
 #, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to render"
@@ -2564,7 +2564,7 @@ msgstr "ערכת אמוג׳י"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:248
 #: src/gui/widgets/dialogs/about_env_dialog.ui:289
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:109
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:334
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:339
 #: src/gui/widgets/dialogs/startup_dialog.ui:48
 #: src/gui/widgets/settings/plugin_settings_widget.ui:168
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:391
@@ -2626,14 +2626,14 @@ msgid "Close"
 msgstr "סגירה"
 
 #. i18n: ectx: Menu (file_new_from_template)
-#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1280
+#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1309
 #, kde-format
 msgid "New from Template"
 msgstr "חדש מתבנית"
 
 #. i18n: ectx: Menu (edit_tools)
-#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:400
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:775
+#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:405
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:804
 #, kde-format
 msgid "Tools"
 msgstr "כלים"
@@ -2651,7 +2651,7 @@ msgid "Layout"
 msgstr "פריסה"
 
 #. i18n: ectx: Menu (document)
-#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:476
+#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:481
 #, kde-format
 msgid "Document"
 msgstr "מסמך"
@@ -2671,13 +2671,13 @@ msgid "Web Preview"
 msgstr "תצוגה מקדימה לאתר"
 
 #. i18n: ectx: Menu (playback)
-#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:520
+#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:525
 #, kde-format
 msgid "Playback"
 msgstr "נגינה"
 
 #. i18n: ectx: Menu (object)
-#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:628
+#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:633
 #, kde-format
 msgid "Object"
 msgstr "פריט"
@@ -2690,7 +2690,7 @@ msgstr "יישור ופיזור"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:205 src/gui/settings/plugin_settings_group.hpp:23
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1504
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1533
 #, kde-format
 msgid "Plugins"
 msgstr "תוספים"
@@ -2956,12 +2956,12 @@ msgstr "ציור בזייה"
 msgid "Drag nodes"
 msgstr "גרירת נקודות"
 
-#: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:727
+#: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:747
 #, kde-format
 msgid "Cusp"
 msgstr "חד"
 
-#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:728
+#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:748
 #, kde-format
 msgid "Smooth"
 msgstr "חלק"
@@ -3019,12 +3019,12 @@ msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "הסרת עצירה"
 
-#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:732
+#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:752
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr "התמוססות נקודות"
 
-#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:719
+#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:739
 #, kde-format
 msgid "Delete Nodes"
 msgstr "מחיקת נקודות"
@@ -3044,7 +3044,7 @@ msgstr "שיטוח מקטעים"
 msgid "Curve segments"
 msgstr "עיקול מקטעים"
 
-#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:359
+#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:364
 #, kde-format
 msgid "Edit"
 msgstr "עריכה"
@@ -3095,19 +3095,19 @@ msgstr "בחירה"
 msgid "Drag"
 msgstr "גרירה"
 
-#: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:364
+#: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:369
 #, kde-format
 msgid "Undo %1"
 msgstr "הסגת %1"
 
-#: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:370
+#: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:375
 #, kde-format
 msgid "Redo %1"
 msgstr "ביצוע %1 מחדש"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_delete)
-#: src/gui/tools/select_tool.cpp:417 src/gui/widgets/dialogs/gw_impl_ui.cpp:385
+#: src/gui/tools/select_tool.cpp:417 src/gui/widgets/dialogs/gw_impl_ui.cpp:390
 #: src/gui/widgets/dialogs/selection_manager.cpp:90
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:46
 #: src/gui/widgets/docks/snippet_list_widget.ui:57
@@ -3138,7 +3138,7 @@ msgstr "ציור טקסט"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::AboutEnvironmentDialog)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:20
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:147
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:153
 #, kde-format
 msgid "About Environment"
 msgstr "על הסביבה"
@@ -3514,20 +3514,20 @@ msgstr "מילות מפתח"
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #. i18n: ectx: attribute (title), widget (QWidget, tab_custom)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:84
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:436
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:441
 #: src/gui/widgets/font/font_style_dialog.ui:77
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:69
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:58
 #, kde-format
 msgid "Custom"
 msgstr "מותאם אישית"
 
-#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:72
+#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "שגיאה"
 
-#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:72
+#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:76
 #, kde-format
 msgctxt "%1 path"
 msgid ""
@@ -3537,7 +3537,7 @@ msgstr ""
 "לא ניתן ליצור תיקייה\n"
 "%1"
 
-#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:114
+#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:132
 #, kde-format
 msgctxt "@title:window"
 msgid "Choose directory"
@@ -3815,7 +3815,7 @@ msgid "Scalable Vector Graphics (*.svg)"
 msgstr "גרפיקת וקטורים נמתחת (‎*.svg)"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:639
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:498
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:503
 #, kde-format
 msgid "Validate Discord Sticker"
 msgstr "אימות מדבקות Discord"
@@ -3833,7 +3833,7 @@ msgid "Some issues detected"
 msgstr "התגלו כמה תקלות"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:649
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:495
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:500
 #, kde-format
 msgid "Validate Telegram Sticker"
 msgstr "אימות מדבקות טלגרם"
@@ -3941,103 +3941,103 @@ msgstr "המרת %1 לנתיב"
 msgid "New Composition from Selection"
 msgstr "תרכובת חדשה מהבחירה"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:680
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:681
 #, kde-format
 msgid "Align Selection"
 msgstr "יישור הבחירה"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:722
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:723
 #, kde-format
 msgid "Drop"
 msgstr "השמטה"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:818
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:819
 #, kde-format
 msgid "Put text on path"
 msgstr "הצבת טקסט על נתיב"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:840
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:841
 #, kde-format
 msgid "Remove text from path"
 msgstr "הסרת טקסט מנתיב"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:126
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:128
 #, kde-format
 msgid "Put on Path"
 msgstr "הצבה על נתיב"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:129
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:131
 #: src/gui/widgets/menus/node_menu.cpp:396
 #, kde-format
 msgid "Remove from Path"
 msgstr "הסרה מנתיב"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:143
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:149
 #, kde-format
 msgid "Copy Debug Information"
 msgstr "העתקת פרטי ניפוי שגיאות"
 
 #. i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:286
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:291
 #, kde-format
 msgid "File"
 msgstr "קובץ"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:291
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:296
 #, kde-format
 msgid "Add Image…"
 msgstr "הוספת תמונה…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:294
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:299
 #, kde-format
 msgid "Import…"
 msgstr "ייבוא…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:297
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:302
 #, kde-format
 msgid "Import from LottieFiles…"
 msgstr "ייבוא מ־LottieFiles…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:300
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:305
 #, kde-format
 msgid "Open Most Recent"
 msgstr "פתיחת האחרונים"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:329
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:334
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:340
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:339
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:345
 #, kde-format
 msgid "Save as Template"
 msgstr "שמירה כתבנית"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:340
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:345
 #, kde-format
 msgid "Could not save template"
 msgstr "לא ניתן לשמור תבנית"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:344
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:349
 #, kde-format
 msgid "Export…"
 msgstr "ייצוא…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:347
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:352
 #, kde-format
 msgid "Export As…"
 msgstr "ייצוא בתור…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:350
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:355
 #, kde-format
 msgid "Export as Image Sequence…"
 msgstr "ייצוא כרצף תמונות…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:377
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:382
 #, kde-format
 msgid "Paste as Composition"
 msgstr "הדבקה כתרכובת"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_duplicate)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:380
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:385
 #: src/gui/widgets/docks/layers.ui:80 src/gui/widgets/docks/layers.ui:83
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:486
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:69
@@ -4045,34 +4045,34 @@ msgstr "הדבקה כתרכובת"
 msgid "Duplicate"
 msgstr "שכפול"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:431
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:436
 #, kde-format
 msgid "View"
 msgstr "תצוגה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:442
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:447
 #, kde-format
 msgid "Automatic"
 msgstr "אוטומטי"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:447
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:452
 #, kde-format
 msgid "Wide"
 msgstr "רחב"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:452
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:457
 #, kde-format
 msgid "Medium"
 msgstr "בינוני"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:457
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:462
 #, kde-format
 msgid "Compact"
 msgstr "מצומצם"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_angle_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_angle_reset)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:468
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:473
 #: src/gui/widgets/view_transform_widget.ui:150
 #: src/gui/widgets/view_transform_widget.ui:153
 #, kde-format
@@ -4081,186 +4081,186 @@ msgstr "איפוס ההטייה"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_flip_view)
 #. i18n: ectx: property (text), widget (QToolButton, btn_flip_view)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:470
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:475
 #: src/gui/widgets/view_transform_widget.ui:164
 #: src/gui/widgets/view_transform_widget.ui:167
 #, kde-format
 msgid "Flip View"
 msgstr "היפוך התצוגה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:478
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:483
 #, kde-format
 msgid "Raster…"
 msgstr "תיצוג…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:480
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:485
 #, kde-format
 msgid "SVG…"
 msgstr "SVG…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:483
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:488
 #, kde-format
 msgid "Lottie (SVG)"
 msgstr "Lottie (SVG)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:486
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:491
 #, kde-format
 msgid "Lottie (canvas)"
 msgstr "Lottie (משטח ציור)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:489
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:494
 #, kde-format
 msgid "SVG (SMIL)"
 msgstr "SVG (SMIL)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:492
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
 #, kde-format
 msgid "RIVE (canvas)"
 msgstr "RIVE (משטח ציור)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:501
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
 #, kde-format
 msgid "Resize…"
 msgstr "שינוי גודל…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:504
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:509
 #, kde-format
 msgid "Cleanup"
 msgstr "ניקוי"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:507
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
 #, kde-format
 msgid "Timing…"
 msgstr "תזמון…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:517
 #, kde-format
 msgid "Metadata…"
 msgstr "נתוני־על…"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:523
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:547
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:528
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:552
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
 #, kde-format
 msgid "Play"
 msgstr "נגינה"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_loop)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:525
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:530
 #: src/gui/widgets/timeline/frame_controls_widget.ui:63
 #, kde-format
 msgid "Loop"
 msgstr "חזרה בלולאה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:527
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:532
 #, kde-format
 msgid "Record Keyframes"
 msgstr "הקלטת תמוניות מפתח"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:529
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:534
 #, kde-format
 msgid "Jump to Start"
 msgstr "קפיצה להתחלה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:531
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:536
 #, kde-format
 msgid "Jump to End"
 msgstr "קפיצה לסוף"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:533
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:538
 #, kde-format
 msgid "Next Frame"
 msgstr "התמונית הבאה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:535
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:540
 #, kde-format
 msgid "Previous Frame"
 msgstr "התמונית הקודמת"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:543
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:548
 #, kde-format
 msgid "Pause"
 msgstr "השהיה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:598
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:603
 #, kde-format
 msgid "Precompose Selection"
 msgstr "הרכבת הבחירה מראש"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:602
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:607
 #, kde-format
 msgid "New Composition"
 msgstr "תרכובת חדשה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:617
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:622
 #, kde-format
 msgid "Emoji…"
 msgstr "אמוג׳י…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:630
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:635
 #, kde-format
 msgid "Raise to Top"
 msgstr "הגבהה לראש"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:639
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:644
 #, kde-format
 msgid "Lower to Bottom"
 msgstr "הנמכה לתחתית"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:642
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:647
 #, kde-format
 msgid "Move to…"
 msgstr "העברה אל…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:648
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:653
 #, kde-format
 msgid "Ungroup"
 msgstr "פירוק"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:651
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:656
 #: src/gui/widgets/docks/aligndock.cpp:46
 #, kde-format
 msgid "Align"
 msgstr "יישור"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:653
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:658
 #, kde-format
 msgid "Selection"
 msgstr "בחירה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:655
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:660
 #, kde-format
 msgid "Canvas"
 msgstr "משטח ציור"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:657
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:662
 #, kde-format
 msgid "Canvas (as Group)"
 msgstr "משטח ציור (כקבוצה)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:660
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:665
 #, kde-format
 msgid "Left"
 msgstr "שמאל"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:663
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:672
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:668
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:677
 #, kde-format
 msgid "Center"
 msgstr "מרכז"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:666
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:671
 #, kde-format
 msgid "Right"
 msgstr "ימין"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:669
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:674
 #, kde-format
 msgid "Top"
 msgstr "למעלה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:675
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:680
 #, kde-format
 msgid "Bottom"
 msgstr "למטה"
@@ -4268,146 +4268,152 @@ msgstr "למטה"
 #. i18n("Relative To"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_horizontal"), i18n("Horizontal"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_vertical"), i18n("Vertical"), QStringLiteral(""));
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:682
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:687
 #, kde-format
 msgid "Outside Left"
 msgstr "מחוץ משמאל"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:685
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:690
 #, kde-format
 msgid "Outside Right"
 msgstr "מחוץ מימין"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:693
 #, kde-format
 msgid "Outside Top"
 msgstr "מחוץ למעלה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:691
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:696
 #, kde-format
 msgid "Outside Bottom"
 msgstr "מחוץ למטה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:699
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:715
 #, kde-format
 msgid "Object to Path"
 msgstr "פריט לנתיב"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:702
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:718
 #, kde-format
 msgid "Trace Bitmap…"
 msgstr "מעקב אחר מפת סיביות…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:707
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:723
 #, kde-format
 msgid "Union"
 msgstr "איחוד"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:709
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:726
 #, kde-format
 msgid "Difference"
 msgstr "הבדל"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:711
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:729
 #, kde-format
 msgid "Intersect"
 msgstr "חצייה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:713
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:732
 #, kde-format
 msgid "Exclusion"
 msgstr "החרגה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:716
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:736
 #, kde-format
 msgid "Reverse"
 msgstr "היפוך"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:720
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:740
 #, kde-format
 msgid "Add Node…"
 msgstr "הוספת נקודה…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:722
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:742
 #, kde-format
 msgid "Join Nodes"
 msgstr "צירוף נקודות"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:724
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:744
 #, kde-format
 msgid "Split Nodes"
 msgstr "פיצול נקודות"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:729
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:749
 #, kde-format
 msgid "Symmetric"
 msgstr "סימטרית"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:730
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:750
 #, kde-format
 msgid "Make segments straight"
 msgstr "יישור מקטעים"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:731
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:751
 #, kde-format
 msgid "Make segments curved"
 msgstr "עיגול מקטעים"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:866
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:797
+#, fuzzy, kde-format
+#| msgid "Reverse"
+msgid "Reverse path"
+msgstr "היפוך"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:895
 #, kde-format
 msgid "Recording Keyframes"
 msgstr "הקלטת תמוניות מפתח"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1280
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1309
 #, kde-format
 msgid "Could not load template"
 msgstr "לא ניתן לטעון תבנית"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1475
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1484
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1491
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1504
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1513
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1520
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
 msgstr "מעקב אחר מפת סיביות"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1475
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1504
 #, kde-format
 msgid "Only select one image"
 msgstr "יש לבחור תמונה אחת בלבד"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1484
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1513
 #, kde-format
 msgid "You need to select an image to trace"
 msgstr "יש לבחור תמונה למעקב אחריה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1491
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1520
 #, kde-format
 msgid "You selected an image with no data"
 msgstr "בחרת תמונה בלי נתונים"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1561
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1590
 #, kde-format
 msgid "X: %1 Y: %2"
 msgstr "X: %1 Y: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1580
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1609
 #, kde-format
 msgid "Drop File"
 msgstr "השמטת קובץ"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1591
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1620
 #, kde-format
 msgid "Add to current file?"
 msgstr "להוסיף לקובץ הנוכחי?"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1597
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1626
 #, kde-format
 msgid "Add as Object"
 msgstr "הוספה כפריט"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1603
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1632
 #, kde-format
 msgid "Add as Composition"
 msgstr "הוספה כתרכובת"
@@ -5406,7 +5412,7 @@ msgid "View on LottieFiles..."
 msgstr "הצגה ב־LottieFiles…"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:56
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:177
 #, kde-format
 msgid "Paste Keyframe"
 msgstr "הדבקת תמונית מפתח"
@@ -5422,7 +5428,7 @@ msgid "Follow Path..."
 msgstr "מעקב אחר נתיב…"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:172
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
 #, kde-format
 msgid "Remove Keyframe"
 msgstr "הסרת תמונית מפתח‏"
@@ -6243,28 +6249,28 @@ msgstr "שינוי שם תרכובת"
 msgid "Delete Composition"
 msgstr "מחיקת תרכובת"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:154
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:155
 #, kde-format
 msgid "Transition From Previous"
 msgstr "מעברון מהקודמת"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:155
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:156
 #, kde-format
 msgid "Transition To Next"
 msgstr "מעברון לבאה"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:162
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:163
 #, kde-format
 msgid "Custom..."
 msgstr "התאמה אישית…"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:175
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
 #, kde-format
 msgid "Copy Keyframe"
 msgstr "העתקת תמונית מפתח"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
-#: src/gui/widgets/timeline/compound_timeline_widget.ui:201
+#: src/gui/widgets/timeline/compound_timeline_widget.ui:199
 #, kde-format
 msgid "&Clear Animations"
 msgstr "&פינוי הנפשות"
@@ -6361,43 +6367,43 @@ msgstr "התחלה"
 msgid "Finish"
 msgstr "סיום"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:58
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:47
 #, kde-format
 msgid "Hold"
 msgstr "החזקה"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:64
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:53
 #, kde-format
 msgid "Fast"
 msgstr "מהר"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:84
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:73
 #, kde-format
 msgid "Ease In"
 msgstr "כניסה ברוגע"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:86
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:75
 #, kde-format
 msgid "Ease Out"
 msgstr "יציאה ברוגע"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:89
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:78
 #, kde-format
 msgid "Ease"
 msgstr "ברוגע"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:98
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:87
 #, kde-format
 msgid "Anticipate"
 msgstr "ציפייה"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:100
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:103
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:89
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:92
 #, kde-format
 msgid "Overshoot"
 msgstr "ריכוך עצירה"
 
-#: src/gui/widgets/timeline/timeline_items.cpp:142
+#: src/gui/widgets/timeline/timeline_items.cpp:146
 #, kde-format
 msgid "Drag Keyframes"
 msgstr "גרירת תמוניות מפתח"

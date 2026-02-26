@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-15 02:57+0000\n"
+"POT-Creation-Date: 2026-02-26 02:42+0000\n"
 "PO-Revision-Date: 2024-09-14 11:22+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
@@ -349,7 +349,7 @@ msgstr "Anstataŭigi"
 #: src/android/document_opener.cpp:201
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:448
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:453
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:186
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:191
 #: src/gui/widgets/font/external_font_widget.cpp:126
 #, kde-format
 msgid "Open File"
@@ -361,7 +361,7 @@ msgid "Raster images need to be traced into vectors"
 msgstr "Rastrumaj bildoj devas esti spuritaj en vektorojn"
 
 #: src/android/document_opener.cpp:106
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:187
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:192
 #, kde-format
 msgid "Save File"
 msgstr "Konservi dosieron"
@@ -649,13 +649,13 @@ msgstr "Plenigi Stilon"
 msgid "Stroke Style"
 msgstr "Stilo de Bato"
 
-#: src/android/main_window.cpp:452 src/gui/widgets/dialogs/gw_impl_ui.cpp:633
+#: src/android/main_window.cpp:452 src/gui/widgets/dialogs/gw_impl_ui.cpp:638
 #: src/gui/widgets/menus/node_menu.cpp:105
 #, kde-format
 msgid "Raise"
 msgstr "Levi"
 
-#: src/android/main_window.cpp:457 src/gui/widgets/dialogs/gw_impl_ui.cpp:636
+#: src/android/main_window.cpp:457 src/gui/widgets/dialogs/gw_impl_ui.cpp:641
 #: src/gui/widgets/menus/node_menu.cpp:109
 #, kde-format
 msgid "Lower"
@@ -735,7 +735,7 @@ msgstr "Malfermi..."
 #: src/gui/widgets/dialogs/about_env_dialog.ui:101
 #: src/gui/widgets/dialogs/about_env_dialog.ui:129
 #: src/gui/widgets/dialogs/about_env_dialog.ui:132
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1609
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1638
 #: src/gui/widgets/dialogs/startup_dialog.ui:149
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:136
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
@@ -784,7 +784,7 @@ msgstr "Sendi al Telegram"
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/android/main_window.cpp:544 src/gui/glaxnimateui.rc:120
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:589
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:594
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #: src/gui/widgets/docks/layers.ui:29
 #, kde-format
@@ -855,7 +855,7 @@ msgstr "Forigi ŝlosilkadron"
 
 #: src/android/main_window.cpp:1004
 #: src/gui/widgets/menus/animated_property_menu.cpp:55
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:174
 #, kde-format
 msgid "Clear Animations"
 msgstr "Viŝi Animaciojn"
@@ -968,23 +968,23 @@ msgstr "zlib"
 
 #: src/core/app_info.cpp:74
 #, kde-format
+msgid "Inkscape"
+msgstr "Inkscape"
+
+#: src/core/app_info.cpp:77
+#, kde-format
 msgid "pybind11"
 msgstr "pybind11"
 
-#: src/core/app_info.cpp:74 src/core/app_info.cpp:75
+#: src/core/app_info.cpp:77 src/core/app_info.cpp:78
 #, kde-format
 msgid "Used by the plugin system."
 msgstr "Uzita de la kromprograma sistemo."
 
-#: src/core/app_info.cpp:75
+#: src/core/app_info.cpp:78
 #, kde-format
 msgid "CPython"
 msgstr "CPython"
-
-#: src/core/app_info.cpp:77
-#, kde-format
-msgid "Inkscape"
-msgstr "Inkscape"
 
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
@@ -1019,7 +1019,7 @@ msgid "Update %1"
 msgstr "Ĝisdatigi %1"
 
 #: src/core/command/animation_commands.cpp:307
-#: src/gui/widgets/timeline/timeline_items.cpp:537
+#: src/gui/widgets/timeline/timeline_items.cpp:541
 #, kde-format
 msgid "Update keyframe transition"
 msgstr "Ĝisdatigi la transiron de ŝlosilkadroj"
@@ -1117,9 +1117,9 @@ msgid "Could convert %1"
 msgstr "Povus konverti %1"
 
 #: src/core/io/aep/aep_loader.cpp:415
-#: src/core/io/lottie/lottie_importer.hpp:897
-#: src/core/io/lottie/lottie_importer.hpp:919
-#: src/core/io/lottie/lottie_importer.hpp:926
+#: src/core/io/lottie/lottie_importer.hpp:900
+#: src/core/io/lottie/lottie_importer.hpp:922
+#: src/core/io/lottie/lottie_importer.hpp:929
 #, kde-format
 msgid "Invalid value for %1"
 msgstr "Nevalida valoro por %1"
@@ -1262,7 +1262,7 @@ msgstr "%s ne estas subtenataj"
 msgid "%s cannot be a clip path"
 msgstr "%s ne povas esti tranĉvojo"
 
-#: src/core/io/base.cpp:22 src/core/io/svg/svg_renderer.cpp:823
+#: src/core/io/base.cpp:22 src/core/io/svg/svg_renderer.cpp:833
 #: src/gui/tools/base.cpp:162
 #, kde-format
 msgid "%1 (%2)"
@@ -1313,47 +1313,47 @@ msgstr "Ne eblis ŝargi %1 por %2: uuid rilatas al neakceptebla objekto"
 msgid "Object %1 is invalid"
 msgstr "Objekto %1 estas malvalida"
 
-#: src/core/io/glaxnimate/import_state.hpp:317
+#: src/core/io/glaxnimate/import_state.hpp:328
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
 msgstr "Malĝusta objektotipo: atendita '%1' sed ricevis '%2'"
 
-#: src/core/io/glaxnimate/import_state.hpp:323
+#: src/core/io/glaxnimate/import_state.hpp:334
 #, kde-format
 msgid "Could not load %1 for %2"
 msgstr "Ne eblis ŝargi %1 por %2"
 
-#: src/core/io/glaxnimate/import_state.hpp:332
+#: src/core/io/glaxnimate/import_state.hpp:343
 #, kde-format
 msgid "Could not set property %1"
 msgstr "Ne eblis agordi proprecon %1"
 
-#: src/core/io/glaxnimate/import_state.hpp:358
+#: src/core/io/glaxnimate/import_state.hpp:369
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
 msgstr "Ero %1 por %2 en %3 ne estas objekto"
 
-#: src/core/io/glaxnimate/import_state.hpp:370
+#: src/core/io/glaxnimate/import_state.hpp:381
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
 msgstr "Ero %1 por %2 en %3 ne estas akceptebla"
 
-#: src/core/io/glaxnimate/import_state.hpp:409
+#: src/core/io/glaxnimate/import_state.hpp:420
 #, kde-format
 msgid "Keyframe must specify a time"
 msgstr "Ŝlosilkadro devas specifi tempon"
 
-#: src/core/io/glaxnimate/import_state.hpp:414
+#: src/core/io/glaxnimate/import_state.hpp:425
 #, kde-format
 msgid "Keyframe must specify a value"
 msgstr "Ŝlosilkadro devas specifi valoron"
 
-#: src/core/io/glaxnimate/import_state.hpp:424
+#: src/core/io/glaxnimate/import_state.hpp:435
 #, kde-format
 msgid "Could not add keyframe"
 msgstr "Ne eblis aldoni ŝlosilkadron"
 
-#: src/core/io/glaxnimate/import_state.hpp:608
+#: src/core/io/glaxnimate/import_state.hpp:619
 #, kde-format
 msgid "Unknown object of type '%1'"
 msgstr "Nekonata objekto de tipo '%1'"
@@ -1470,37 +1470,37 @@ msgstr "Nesubtenata formo tipo %1"
 msgid "Unknown field %2%1"
 msgstr "Nekonata kampo %2%1"
 
-#: src/core/io/lottie/lottie_importer.hpp:852
+#: src/core/io/lottie/lottie_importer.hpp:855
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
 msgstr "Nevalida bezier-punkto %1 en %2"
 
-#: src/core/io/lottie/lottie_importer.hpp:934
+#: src/core/io/lottie/lottie_importer.hpp:937
 #, kde-format
 msgid "Invalid keyframes for %1"
 msgstr "Nevalidaj ŝlosilkadroj por %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:984
+#: src/core/io/lottie/lottie_importer.hpp:987
 #, kde-format
 msgid "(null)"
 msgstr "(nula)"
 
-#: src/core/io/lottie/lottie_importer.hpp:990
+#: src/core/io/lottie/lottie_importer.hpp:993
 #, kde-format
 msgid "(empty)"
 msgstr "(malplena)"
 
-#: src/core/io/lottie/lottie_importer.hpp:999
+#: src/core/io/lottie/lottie_importer.hpp:1002
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
 msgstr "Ne povas ŝargi ŝlosilkadron ĉe %1 por %2 kun valoro %3"
 
-#: src/core/io/lottie/lottie_importer.hpp:1053
+#: src/core/io/lottie/lottie_importer.hpp:1056
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
 msgstr "Duobligi Bitmap-ID: %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:1085
+#: src/core/io/lottie/lottie_importer.hpp:1088
 #, kde-format
 msgid "Duplicate Composition ID: %1"
 msgstr "Duobliga Komponita ID: %1"
@@ -1983,7 +1983,7 @@ msgstr "Forigi Nodojn"
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/core/model/animation/animatable.cpp:418
 #: src/gui/widgets/menus/animated_property_menu.cpp:59
-#: src/gui/widgets/timeline/compound_timeline_widget.ui:196
+#: src/gui/widgets/timeline/compound_timeline_widget.ui:194
 #, kde-format
 msgid "Add Keyframe"
 msgstr "Aldoni Ŝlosilkadron"
@@ -2102,7 +2102,7 @@ msgstr "%1 Gradiento"
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:137
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:154
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:157
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:60
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:49
 #, kde-format
 msgid "Linear"
 msgstr "Lineara"
@@ -2160,7 +2160,7 @@ msgstr "Elipso"
 #: src/core/model/shapes/fill.hpp:48 src/gui/tools/draw_tool_base.cpp:114
 #: src/gui/tools/fill_tool.cpp:25
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:763
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:611
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:616
 #: src/gui/widgets/docks/colors.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:191
 #: src/gui/widgets/tools/color_picker_widget.ui:24
@@ -2172,8 +2172,8 @@ msgstr "Plenigi"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/model/shapes/group.hpp:42
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:608
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:645
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:613
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:650
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
 #, kde-format
 msgid "Group"
@@ -2191,7 +2191,7 @@ msgstr "Ŝveligi kaj Malŝveligi"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/model/shapes/layer.hpp:81
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:605
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:610
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
 #, kde-format
 msgid "Layer"
@@ -2206,7 +2206,7 @@ msgstr "Deŝova Vojo"
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/model/shapes/path.hpp:38 src/gui/glaxnimateui.rc:174
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:697
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:713
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
@@ -2243,7 +2243,7 @@ msgstr "Rondaj Anguloj"
 #. i18n: ectx: property (text), widget (QRadioButton, check_stroke)
 #: src/core/model/shapes/stroke.hpp:68 src/gui/tools/draw_tool_base.cpp:126
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:758
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:614
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:619
 #: src/gui/widgets/docks/stroke.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:101
 #: src/gui/widgets/tools/color_picker_widget.ui:37
@@ -2260,7 +2260,7 @@ msgstr "Ŝanĝi tiparon"
 
 #. i18n: ectx: Menu (text)
 #: src/core/model/shapes/text.cpp:489 src/gui/glaxnimateui.rc:200
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:124
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:126
 #, kde-format
 msgid "Text"
 msgstr "Teksto"
@@ -2517,13 +2517,13 @@ msgctxt "@info:shell"
 msgid "Error converting to the output format"
 msgstr "Eraro konvertante al la eligoformato"
 
-#: src/gui/cli.cpp:315 src/gui/cli.cpp:335
+#: src/gui/cli.cpp:315 src/gui/cli.cpp:334
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not save to %1"
 msgstr "Ne eblis konservi al %1"
 
-#: src/gui/cli.cpp:344
+#: src/gui/cli.cpp:343
 #, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to render"
@@ -2586,7 +2586,7 @@ msgstr "Emoji Aro"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:248
 #: src/gui/widgets/dialogs/about_env_dialog.ui:289
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:109
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:334
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:339
 #: src/gui/widgets/dialogs/startup_dialog.ui:48
 #: src/gui/widgets/settings/plugin_settings_widget.ui:168
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:391
@@ -2648,14 +2648,14 @@ msgid "Close"
 msgstr "Fermi"
 
 #. i18n: ectx: Menu (file_new_from_template)
-#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1280
+#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1309
 #, kde-format
 msgid "New from Template"
 msgstr "Nova de Ŝablono"
 
 #. i18n: ectx: Menu (edit_tools)
-#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:400
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:775
+#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:405
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:804
 #, kde-format
 msgid "Tools"
 msgstr "Iloj"
@@ -2673,7 +2673,7 @@ msgid "Layout"
 msgstr "Aranĝo"
 
 #. i18n: ectx: Menu (document)
-#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:476
+#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:481
 #, kde-format
 msgid "Document"
 msgstr "Dokumento"
@@ -2693,13 +2693,13 @@ msgid "Web Preview"
 msgstr "Reteja Antaŭrigardo"
 
 #. i18n: ectx: Menu (playback)
-#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:520
+#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:525
 #, kde-format
 msgid "Playback"
 msgstr "Reproduktado"
 
 #. i18n: ectx: Menu (object)
-#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:628
+#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:633
 #, kde-format
 msgid "Object"
 msgstr "Objekto"
@@ -2712,7 +2712,7 @@ msgstr "Ĝisrandigi kaj Distribui"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:205 src/gui/settings/plugin_settings_group.hpp:23
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1504
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1533
 #, kde-format
 msgid "Plugins"
 msgstr "Kromprogramoj"
@@ -2978,12 +2978,12 @@ msgstr "Desegni Bezier"
 msgid "Drag nodes"
 msgstr "Treni nodojn"
 
-#: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:727
+#: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:747
 #, kde-format
 msgid "Cusp"
 msgstr "Kusp"
 
-#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:728
+#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:748
 #, kde-format
 msgid "Smooth"
 msgstr "Glata"
@@ -3041,12 +3041,12 @@ msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "Forigi Halton"
 
-#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:732
+#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:752
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr "Solvi Nodojn"
 
-#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:719
+#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:739
 #, kde-format
 msgid "Delete Nodes"
 msgstr "Forigi Nodojn"
@@ -3066,7 +3066,7 @@ msgstr "Rektigi segmentojn"
 msgid "Curve segments"
 msgstr "Kurbaj segmentoj"
 
-#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:359
+#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:364
 #, kde-format
 msgid "Edit"
 msgstr "Redakti"
@@ -3117,19 +3117,19 @@ msgstr "Elekti"
 msgid "Drag"
 msgstr "Treni"
 
-#: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:364
+#: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:369
 #, kde-format
 msgid "Undo %1"
 msgstr "Malfari %1"
 
-#: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:370
+#: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:375
 #, kde-format
 msgid "Redo %1"
 msgstr "Refari %1"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_delete)
-#: src/gui/tools/select_tool.cpp:417 src/gui/widgets/dialogs/gw_impl_ui.cpp:385
+#: src/gui/tools/select_tool.cpp:417 src/gui/widgets/dialogs/gw_impl_ui.cpp:390
 #: src/gui/widgets/dialogs/selection_manager.cpp:90
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:46
 #: src/gui/widgets/docks/snippet_list_widget.ui:57
@@ -3160,7 +3160,7 @@ msgstr "Desegni Tekston"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::AboutEnvironmentDialog)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:20
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:147
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:153
 #, kde-format
 msgid "About Environment"
 msgstr "Pri Medio"
@@ -3537,20 +3537,20 @@ msgstr "Ŝlosilvortoj"
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #. i18n: ectx: attribute (title), widget (QWidget, tab_custom)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:84
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:436
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:441
 #: src/gui/widgets/font/font_style_dialog.ui:77
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:69
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:58
 #, kde-format
 msgid "Custom"
 msgstr "Propra"
 
-#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:72
+#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Eraro"
 
-#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:72
+#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:76
 #, kde-format
 msgctxt "%1 path"
 msgid ""
@@ -3560,7 +3560,7 @@ msgstr ""
 "Ne eblis krei dosierujon\n"
 "%1"
 
-#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:114
+#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:132
 #, kde-format
 msgctxt "@title:window"
 msgid "Choose directory"
@@ -3838,7 +3838,7 @@ msgid "Scalable Vector Graphics (*.svg)"
 msgstr "Skaleblaj Vektoraj Grafikoj (*.svg)"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:639
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:498
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:503
 #, kde-format
 msgid "Validate Discord Sticker"
 msgstr "Valigi Discord Glubildon"
@@ -3856,7 +3856,7 @@ msgid "Some issues detected"
 msgstr "Kelkaj problemoj detektitaj"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:649
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:495
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:500
 #, kde-format
 msgid "Validate Telegram Sticker"
 msgstr "Valigi Telegram-Glubildon"
@@ -3964,103 +3964,103 @@ msgstr "Konverti %1 al vojo"
 msgid "New Composition from Selection"
 msgstr "Nova Komponado el Elekto"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:680
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:681
 #, kde-format
 msgid "Align Selection"
 msgstr "Vicigi Elekton"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:722
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:723
 #, kde-format
 msgid "Drop"
 msgstr "Drop"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:818
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:819
 #, kde-format
 msgid "Put text on path"
 msgstr "Metu tekston sur vojon"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:840
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:841
 #, kde-format
 msgid "Remove text from path"
 msgstr "Forigi tekston de la vojo"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:126
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:128
 #, kde-format
 msgid "Put on Path"
 msgstr "Meti en Padon"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:129
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:131
 #: src/gui/widgets/menus/node_menu.cpp:396
 #, kde-format
 msgid "Remove from Path"
 msgstr "Forigi de Pado"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:143
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:149
 #, kde-format
 msgid "Copy Debug Information"
 msgstr "Kopii Sencimig-Informon"
 
 #. i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:286
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:291
 #, kde-format
 msgid "File"
 msgstr "Dosiero"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:291
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:296
 #, kde-format
 msgid "Add Image…"
 msgstr "Aldoni Bildon…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:294
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:299
 #, kde-format
 msgid "Import…"
 msgstr "Importi…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:297
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:302
 #, kde-format
 msgid "Import from LottieFiles…"
 msgstr "Importi El LottieFiles…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:300
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:305
 #, kde-format
 msgid "Open Most Recent"
 msgstr "Malfermi Plej Lastan"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:329
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:334
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:340
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:339
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:345
 #, kde-format
 msgid "Save as Template"
 msgstr "Konservu kiel Ŝablono"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:340
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:345
 #, kde-format
 msgid "Could not save template"
 msgstr "Ne eblis konservi ŝablonon"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:344
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:349
 #, kde-format
 msgid "Export…"
 msgstr "Eksporti…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:347
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:352
 #, kde-format
 msgid "Export As…"
 msgstr "Eksporti Kiel…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:350
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:355
 #, kde-format
 msgid "Export as Image Sequence…"
 msgstr "Eksporti kiel Bildsekvenco…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:377
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:382
 #, kde-format
 msgid "Paste as Composition"
 msgstr "Algluu kiel Kunmetaĵo"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_duplicate)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:380
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:385
 #: src/gui/widgets/docks/layers.ui:80 src/gui/widgets/docks/layers.ui:83
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:486
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:69
@@ -4068,34 +4068,34 @@ msgstr "Algluu kiel Kunmetaĵo"
 msgid "Duplicate"
 msgstr "Duobligi"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:431
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:436
 #, kde-format
 msgid "View"
 msgstr "Vido"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:442
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:447
 #, kde-format
 msgid "Automatic"
 msgstr "Aŭtomata"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:447
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:452
 #, kde-format
 msgid "Wide"
 msgstr "Larĝa"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:452
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:457
 #, kde-format
 msgid "Medium"
 msgstr "Ujo"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:457
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:462
 #, kde-format
 msgid "Compact"
 msgstr "Kompakta"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_angle_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_angle_reset)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:468
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:473
 #: src/gui/widgets/view_transform_widget.ui:150
 #: src/gui/widgets/view_transform_widget.ui:153
 #, kde-format
@@ -4104,186 +4104,186 @@ msgstr "Restarigi Rotacion"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_flip_view)
 #. i18n: ectx: property (text), widget (QToolButton, btn_flip_view)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:470
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:475
 #: src/gui/widgets/view_transform_widget.ui:164
 #: src/gui/widgets/view_transform_widget.ui:167
 #, kde-format
 msgid "Flip View"
 msgstr "Flip Vido"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:478
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:483
 #, kde-format
 msgid "Raster…"
 msgstr "Rastrumo…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:480
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:485
 #, kde-format
 msgid "SVG…"
 msgstr "SVG…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:483
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:488
 #, kde-format
 msgid "Lottie (SVG)"
 msgstr "Lottie (SVG)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:486
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:491
 #, kde-format
 msgid "Lottie (canvas)"
 msgstr "Lottie (kanvaso)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:489
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:494
 #, kde-format
 msgid "SVG (SMIL)"
 msgstr "SVG (SMIL)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:492
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
 #, kde-format
 msgid "RIVE (canvas)"
 msgstr "RIVE (kanvaso)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:501
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
 #, kde-format
 msgid "Resize…"
 msgstr "Aligrandigi…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:504
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:509
 #, kde-format
 msgid "Cleanup"
 msgstr "Purigado"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:507
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
 #, kde-format
 msgid "Timing…"
 msgstr "Tempigo…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:517
 #, kde-format
 msgid "Metadata…"
 msgstr "Metadatenoj…"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:523
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:547
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:528
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:552
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
 #, kde-format
 msgid "Play"
 msgstr "Ludi"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_loop)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:525
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:530
 #: src/gui/widgets/timeline/frame_controls_widget.ui:63
 #, kde-format
 msgid "Loop"
 msgstr "Buklo"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:527
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:532
 #, kde-format
 msgid "Record Keyframes"
 msgstr "Registri Ŝlosilkadrojn"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:529
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:534
 #, kde-format
 msgid "Jump to Start"
 msgstr "Salti al Komenco"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:531
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:536
 #, kde-format
 msgid "Jump to End"
 msgstr "Salti al Fino"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:533
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:538
 #, kde-format
 msgid "Next Frame"
 msgstr "Sekva Kadro"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:535
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:540
 #, kde-format
 msgid "Previous Frame"
 msgstr "Antaŭa Kadro"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:543
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:548
 #, kde-format
 msgid "Pause"
 msgstr "Paŭzi"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:598
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:603
 #, kde-format
 msgid "Precompose Selection"
 msgstr "Antaŭkomponi Elekton"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:602
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:607
 #, kde-format
 msgid "New Composition"
 msgstr "Nova Kompono"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:617
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:622
 #, kde-format
 msgid "Emoji…"
 msgstr "Emoji…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:630
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:635
 #, kde-format
 msgid "Raise to Top"
 msgstr "Levi al Supro"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:639
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:644
 #, kde-format
 msgid "Lower to Bottom"
 msgstr "Mallevi al Malsupro"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:642
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:647
 #, kde-format
 msgid "Move to…"
 msgstr "Movi al…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:648
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:653
 #, kde-format
 msgid "Ungroup"
 msgstr "Malgrupigi"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:651
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:656
 #: src/gui/widgets/docks/aligndock.cpp:46
 #, kde-format
 msgid "Align"
 msgstr "Vicigi"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:653
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:658
 #, kde-format
 msgid "Selection"
 msgstr "Elekto"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:655
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:660
 #, kde-format
 msgid "Canvas"
 msgstr "Kanvaso"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:657
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:662
 #, kde-format
 msgid "Canvas (as Group)"
 msgstr "Kanvaso (kiel grupo)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:660
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:665
 #, kde-format
 msgid "Left"
 msgstr "Maldekstren"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:663
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:672
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:668
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:677
 #, kde-format
 msgid "Center"
 msgstr "Centro"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:666
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:671
 #, kde-format
 msgid "Right"
 msgstr "Ĝuste"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:669
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:674
 #, kde-format
 msgid "Top"
 msgstr "Supro"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:675
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:680
 #, kde-format
 msgid "Bottom"
 msgstr "Malsupro"
@@ -4291,146 +4291,152 @@ msgstr "Malsupro"
 #. i18n("Relative To"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_horizontal"), i18n("Horizontal"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_vertical"), i18n("Vertical"), QStringLiteral(""));
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:682
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:687
 #, kde-format
 msgid "Outside Left"
 msgstr "Ekstere Maldekstre"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:685
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:690
 #, kde-format
 msgid "Outside Right"
 msgstr "Ekstere Dekstre"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:693
 #, kde-format
 msgid "Outside Top"
 msgstr "Ekster Supre"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:691
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:696
 #, kde-format
 msgid "Outside Bottom"
 msgstr "Ekstere Fundo"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:699
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:715
 #, kde-format
 msgid "Object to Path"
 msgstr "Objekto al Pado"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:702
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:718
 #, kde-format
 msgid "Trace Bitmap…"
 msgstr "Spuri Bitmapon…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:707
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:723
 #, kde-format
 msgid "Union"
 msgstr "Unio"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:709
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:726
 #, kde-format
 msgid "Difference"
 msgstr "Diferenco"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:711
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:729
 #, kde-format
 msgid "Intersect"
 msgstr "Intersekcio"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:713
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:732
 #, kde-format
 msgid "Exclusion"
 msgstr "Ekskludo"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:716
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:736
 #, kde-format
 msgid "Reverse"
 msgstr "Renverso"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:720
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:740
 #, kde-format
 msgid "Add Node…"
 msgstr "Aldoni Nodon…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:722
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:742
 #, kde-format
 msgid "Join Nodes"
 msgstr "Kuniĝi Nodojn"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:724
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:744
 #, kde-format
 msgid "Split Nodes"
 msgstr "Disigi Nodojn"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:729
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:749
 #, kde-format
 msgid "Symmetric"
 msgstr "Simetria"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:730
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:750
 #, kde-format
 msgid "Make segments straight"
 msgstr "Igi segmentojn rektaj"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:731
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:751
 #, kde-format
 msgid "Make segments curved"
 msgstr "Igi segmentojn kurbigitaj"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:866
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:797
+#, fuzzy, kde-format
+#| msgid "Reverse"
+msgid "Reverse path"
+msgstr "Renverso"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:895
 #, kde-format
 msgid "Recording Keyframes"
 msgstr "Registrado de Ŝlosilkadroj"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1280
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1309
 #, kde-format
 msgid "Could not load template"
 msgstr "Ne eblis ŝargi ŝablonon"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1475
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1484
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1491
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1504
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1513
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1520
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
 msgstr "Spuru Bitmapon"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1475
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1504
 #, kde-format
 msgid "Only select one image"
 msgstr "Elektu nur unu bildon"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1484
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1513
 #, kde-format
 msgid "You need to select an image to trace"
 msgstr "Vi devas elekti bildon por spuri"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1491
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1520
 #, kde-format
 msgid "You selected an image with no data"
 msgstr "Vi elektis bildon sen datumoj"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1561
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1590
 #, kde-format
 msgid "X: %1 Y: %2"
 msgstr "X: %1 Y: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1580
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1609
 #, kde-format
 msgid "Drop File"
 msgstr "Faligi Dosieron"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1591
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1620
 #, kde-format
 msgid "Add to current file?"
 msgstr "Ĉu aldoni al nuna dosiero?"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1597
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1626
 #, kde-format
 msgid "Add as Object"
 msgstr "Aldonu kiel Objekton"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1603
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1632
 #, kde-format
 msgid "Add as Composition"
 msgstr "Aldonu kiel Komponaĵon"
@@ -5428,7 +5434,7 @@ msgid "View on LottieFiles..."
 msgstr "Vidu sur LottieFiles..."
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:56
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:177
 #, kde-format
 msgid "Paste Keyframe"
 msgstr "Algluu Ŝlosilkadron"
@@ -5444,7 +5450,7 @@ msgid "Follow Path..."
 msgstr "Sekvu Vojon..."
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:172
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
 #, kde-format
 msgid "Remove Keyframe"
 msgstr "Forigi Ŝlosilkadron"
@@ -6265,28 +6271,28 @@ msgstr "Alinomi Komponaĵon"
 msgid "Delete Composition"
 msgstr "Forigi Komponaĵon"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:154
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:155
 #, kde-format
 msgid "Transition From Previous"
 msgstr "Transiro De Antaŭa"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:155
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:156
 #, kde-format
 msgid "Transition To Next"
 msgstr "Transiro Al Sekva"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:162
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:163
 #, kde-format
 msgid "Custom..."
 msgstr "Propra..."
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:175
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
 #, kde-format
 msgid "Copy Keyframe"
 msgstr "Kopiu Ŝlosilkadron"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
-#: src/gui/widgets/timeline/compound_timeline_widget.ui:201
+#: src/gui/widgets/timeline/compound_timeline_widget.ui:199
 #, kde-format
 msgid "&Clear Animations"
 msgstr "&Klara Animacioj"
@@ -6383,43 +6389,43 @@ msgstr "Lanĉi"
 msgid "Finish"
 msgstr "Fini"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:58
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:47
 #, kde-format
 msgid "Hold"
 msgstr "Tenu"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:64
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:53
 #, kde-format
 msgid "Fast"
 msgstr "Rapida"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:84
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:73
 #, kde-format
 msgid "Ease In"
 msgstr "Facileco En"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:86
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:75
 #, kde-format
 msgid "Ease Out"
 msgstr "Ease Out"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:89
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:78
 #, kde-format
 msgid "Ease"
 msgstr "Facileco"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:98
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:87
 #, kde-format
 msgid "Anticipate"
 msgstr "Antaŭvidi"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:100
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:103
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:89
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:92
 #, kde-format
 msgid "Overshoot"
 msgstr "Overshoot"
 
-#: src/gui/widgets/timeline/timeline_items.cpp:142
+#: src/gui/widgets/timeline/timeline_items.cpp:146
 #, kde-format
 msgid "Drag Keyframes"
 msgstr "Trenu Ŝlosilkadrojn"
