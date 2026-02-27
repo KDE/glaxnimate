@@ -325,6 +325,7 @@ bool GlaxnimateWindow::Private::close_document()
     timeline_dock->clear_document();
     swatches_dock->clear_document();
     gradients_dock->clear_document();
+    render_widget.set_composition(nullptr);
     layers_dock->layer_view()->set_composition(nullptr);
     tab_bar->set_document(nullptr);
 
