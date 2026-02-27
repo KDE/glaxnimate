@@ -8,6 +8,8 @@
 
 using namespace glaxnimate;
 
+namespace {
+
 class RenderWidgetUtil
 {
 public:
@@ -45,14 +47,13 @@ public:
 };
 
 
-template<class BaseWidget>
-class BasicRenderWidget : public BaseWidget, public RenderWidgetUtil
+class BasicRenderWidget : public QWidget, public RenderWidgetUtil
 {
 public:
     QBrush back;
 
     BasicRenderWidget(QWidget* widget, std::unique_ptr<renderer::Renderer> renderer) :
-        BaseWidget(widget), RenderWidgetUtil(std::move(renderer))
+        QWidget(widget), RenderWidgetUtil(std::move(renderer))
     {
         back.setTexture(QPixmap(app::Application::instance()->data_file("images/widgets/background.png")));
     }
@@ -82,6 +83,8 @@ protected:
 
 };
 
+} // namespace
+
 class glaxnimate::gui::RenderWidget::Private
 {
 public:
@@ -93,7 +96,7 @@ public:
     {
         // TODO setting for the render quality
         auto renderer = renderer::default_renderer(5);
-        auto wid = new BasicRenderWidget<QWidget>(parent, std::move(renderer));
+        auto wid = new BasicRenderWidget(parent, std::move(renderer));
         this->widget = wid;
         this->util = wid;
 
