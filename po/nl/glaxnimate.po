@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-02 00:41+0000\n"
+"POT-Creation-Date: 2026-02-27 00:41+0000\n"
 "PO-Revision-Date: 2026-02-02 12:39+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -348,7 +348,7 @@ msgstr "Vervangen"
 #: src/android/document_opener.cpp:201
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:448
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:453
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:182
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:191
 #: src/gui/widgets/font/external_font_widget.cpp:126
 #, kde-format
 msgid "Open File"
@@ -360,7 +360,7 @@ msgid "Raster images need to be traced into vectors"
 msgstr "Rasterafbeeldingen moeten omgezet worden in vectoren"
 
 #: src/android/document_opener.cpp:106
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:183
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:192
 #, kde-format
 msgid "Save File"
 msgstr "Bestand opslaan"
@@ -654,13 +654,13 @@ msgstr "Vulstijl"
 msgid "Stroke Style"
 msgstr "Streekstijl"
 
-#: src/android/main_window.cpp:434 src/gui/widgets/dialogs/gw_impl_ui.cpp:606
+#: src/android/main_window.cpp:434 src/gui/widgets/dialogs/gw_impl_ui.cpp:632
 #: src/gui/widgets/menus/node_menu.cpp:105
 #, kde-format
 msgid "Raise"
 msgstr "Naar voren"
 
-#: src/android/main_window.cpp:439 src/gui/widgets/dialogs/gw_impl_ui.cpp:609
+#: src/android/main_window.cpp:439 src/gui/widgets/dialogs/gw_impl_ui.cpp:635
 #: src/gui/widgets/menus/node_menu.cpp:109
 #, kde-format
 msgid "Lower"
@@ -740,7 +740,7 @@ msgstr "Openen..."
 #: src/gui/widgets/dialogs/about_env_dialog.ui:101
 #: src/gui/widgets/dialogs/about_env_dialog.ui:129
 #: src/gui/widgets/dialogs/about_env_dialog.ui:132
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1581
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1632
 #: src/gui/widgets/dialogs/startup_dialog.ui:149
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:136
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
@@ -789,7 +789,7 @@ msgstr "Naar Telegram verzenden"
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/android/main_window.cpp:526 src/gui/glaxnimateui.rc:120
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:562
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:588
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #: src/gui/widgets/docks/layers.ui:29
 #, kde-format
@@ -860,7 +860,7 @@ msgstr "Keyframe verwijderen"
 
 #: src/android/main_window.cpp:986
 #: src/gui/widgets/menus/animated_property_menu.cpp:55
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:174
 #, kde-format
 msgid "Clear Animations"
 msgstr "Animaties wissen"
@@ -931,8 +931,9 @@ msgid "Could not start activity, is Telegram installed?"
 msgstr "Kon activiteit niet starten, is Telgram geïnstalleerd?"
 
 #: src/core/app_info.cpp:57
-#, kde-format
-msgid "(c) 2019-2023"
+#, fuzzy, kde-format
+#| msgid "(c) 2019-2023"
+msgid "(c) 2019-2025"
 msgstr "(c) 2019-2023"
 
 #: src/core/app_info.cpp:66
@@ -972,23 +973,23 @@ msgstr "zlib"
 
 #: src/core/app_info.cpp:74
 #, kde-format
+msgid "Inkscape"
+msgstr "Inkscape"
+
+#: src/core/app_info.cpp:77
+#, kde-format
 msgid "pybind11"
 msgstr "pybind11"
 
-#: src/core/app_info.cpp:74 src/core/app_info.cpp:75
+#: src/core/app_info.cpp:77 src/core/app_info.cpp:78
 #, kde-format
 msgid "Used by the plugin system."
 msgstr "Gebruikt door het plug-in-systeem."
 
-#: src/core/app_info.cpp:75
+#: src/core/app_info.cpp:78
 #, kde-format
 msgid "CPython"
 msgstr "CPython"
-
-#: src/core/app_info.cpp:77
-#, kde-format
-msgid "Inkscape"
-msgstr "Inkscape"
 
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
@@ -1023,7 +1024,7 @@ msgid "Update %1"
 msgstr "%1 bijwerken"
 
 #: src/core/command/animation_commands.cpp:307
-#: src/gui/widgets/timeline/timeline_items.cpp:537
+#: src/gui/widgets/timeline/timeline_items.cpp:541
 #, kde-format
 msgid "Update keyframe transition"
 msgstr "Overgang van keyframe bijwerken"
@@ -1121,9 +1122,9 @@ msgid "Could convert %1"
 msgstr "Kon %1 converteren"
 
 #: src/core/io/aep/aep_loader.cpp:415
-#: src/core/io/lottie/lottie_importer.hpp:897
-#: src/core/io/lottie/lottie_importer.hpp:919
-#: src/core/io/lottie/lottie_importer.hpp:926
+#: src/core/io/lottie/lottie_importer.hpp:900
+#: src/core/io/lottie/lottie_importer.hpp:922
+#: src/core/io/lottie/lottie_importer.hpp:929
 #, kde-format
 msgid "Invalid value for %1"
 msgstr "Ongeldige waarde voor %1"
@@ -1241,7 +1242,7 @@ msgstr "Onbekende hulpbron-id %1"
 msgid "Could not read file %1"
 msgstr "Kon bestand %1 niet lezen"
 
-#: src/core/io/avd/avd_parser.cpp:659 src/core/io/avd/avd_parser.cpp:668
+#: src/core/io/avd/avd_parser.cpp:659 src/core/io/avd/avd_parser.cpp:677
 #, kde-format
 msgid "Could not load resource %1"
 msgstr "Kon hulpbron %1 niet laden"
@@ -1266,7 +1267,7 @@ msgstr "%s worden niet ondersteund"
 msgid "%s cannot be a clip path"
 msgstr "%s kan geen pad van een clip zijn"
 
-#: src/core/io/base.cpp:22 src/core/io/svg/svg_renderer.cpp:817
+#: src/core/io/base.cpp:22 src/core/io/svg/svg_renderer.cpp:827
 #: src/gui/tools/base.cpp:158
 #, kde-format
 msgid "%1 (%2)"
@@ -1318,47 +1319,47 @@ msgstr ""
 msgid "Object %1 is invalid"
 msgstr "Object %1 is ongeldig"
 
-#: src/core/io/glaxnimate/import_state.hpp:317
+#: src/core/io/glaxnimate/import_state.hpp:328
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
 msgstr "Verkeerd type object: verwacht '%1' maar kreeg '%2'"
 
-#: src/core/io/glaxnimate/import_state.hpp:323
+#: src/core/io/glaxnimate/import_state.hpp:334
 #, kde-format
 msgid "Could not load %1 for %2"
 msgstr "Kon %1 voor %2 niet laden"
 
-#: src/core/io/glaxnimate/import_state.hpp:332
+#: src/core/io/glaxnimate/import_state.hpp:343
 #, kde-format
 msgid "Could not set property %1"
 msgstr "Kon eigenschap %1 niet instellen"
 
-#: src/core/io/glaxnimate/import_state.hpp:358
+#: src/core/io/glaxnimate/import_state.hpp:369
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
 msgstr "Item %1 voor %2 in %3 is geen object"
 
-#: src/core/io/glaxnimate/import_state.hpp:370
+#: src/core/io/glaxnimate/import_state.hpp:381
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
 msgstr "Item %1 voor %2 in %3 is niet acceptabel"
 
-#: src/core/io/glaxnimate/import_state.hpp:409
+#: src/core/io/glaxnimate/import_state.hpp:420
 #, kde-format
 msgid "Keyframe must specify a time"
 msgstr "Keyframe moet een tijd specificeren"
 
-#: src/core/io/glaxnimate/import_state.hpp:414
+#: src/core/io/glaxnimate/import_state.hpp:425
 #, kde-format
 msgid "Keyframe must specify a value"
 msgstr "Keyframe moet een waarde specificeren"
 
-#: src/core/io/glaxnimate/import_state.hpp:424
+#: src/core/io/glaxnimate/import_state.hpp:435
 #, kde-format
 msgid "Could not add keyframe"
 msgstr "Kon keyframe niet toevoegen"
 
-#: src/core/io/glaxnimate/import_state.hpp:608
+#: src/core/io/glaxnimate/import_state.hpp:619
 #, kde-format
 msgid "Unknown object of type '%1'"
 msgstr "Onbekend object van het type '%1'"
@@ -1476,37 +1477,37 @@ msgstr "Niet-ondersteund type vorm %1"
 msgid "Unknown field %2%1"
 msgstr "Onbekend veld %2%1"
 
-#: src/core/io/lottie/lottie_importer.hpp:852
+#: src/core/io/lottie/lottie_importer.hpp:855
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
 msgstr "Ongeldige bezierpunt %1 in %2"
 
-#: src/core/io/lottie/lottie_importer.hpp:934
+#: src/core/io/lottie/lottie_importer.hpp:937
 #, kde-format
 msgid "Invalid keyframes for %1"
 msgstr "Ongeldige keyframes voor %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:984
+#: src/core/io/lottie/lottie_importer.hpp:987
 #, kde-format
 msgid "(null)"
 msgstr "(nul)"
 
-#: src/core/io/lottie/lottie_importer.hpp:990
+#: src/core/io/lottie/lottie_importer.hpp:993
 #, kde-format
 msgid "(empty)"
 msgstr "(leeg)"
 
-#: src/core/io/lottie/lottie_importer.hpp:995
+#: src/core/io/lottie/lottie_importer.hpp:998
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
 msgstr "Kan keyframe op %1 voor %2 met waarde %3 niet laden"
 
-#: src/core/io/lottie/lottie_importer.hpp:1049
+#: src/core/io/lottie/lottie_importer.hpp:1052
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
 msgstr "Dubbele bitmap-ID: %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:1081
+#: src/core/io/lottie/lottie_importer.hpp:1084
 #, kde-format
 msgid "Duplicate Composition ID: %1"
 msgstr "Dubbele compositie-ID: %1"
@@ -1875,99 +1876,99 @@ msgid "Could not allocate frame data."
 msgstr "Kon framegegevens niet toewijzen."
 
 #: src/core/io/video/video_format.cpp:403
-#: src/core/io/video/video_format.cpp:776
+#: src/core/io/video/video_format.cpp:783
 #, kde-format
 msgid "No video codec"
 msgstr "Geen video-codec"
 
-#: src/core/io/video/video_format.cpp:431
+#: src/core/io/video/video_format.cpp:438
 #, kde-format
 msgid "Could not determine pixel format"
 msgstr "Kon pixelformaat niet bepalen"
 
-#: src/core/io/video/video_format.cpp:441
+#: src/core/io/video/video_format.cpp:448
 #, kde-format
 msgid "Could not open video codec: %1"
 msgstr "Kon video-codec niet openen: %1"
 
-#: src/core/io/video/video_format.cpp:446
+#: src/core/io/video/video_format.cpp:453
 #, kde-format
 msgid "Could not allocate video frame"
 msgstr "Kon videoframe niet toewijzen"
 
-#: src/core/io/video/video_format.cpp:453
+#: src/core/io/video/video_format.cpp:460
 #, kde-format
 msgid "Could not copy the stream parameters"
 msgstr "Kon de streamparameters niet kopiëren"
 
-#: src/core/io/video/video_format.cpp:473
+#: src/core/io/video/video_format.cpp:480
 #, kde-format
 msgid "Error while creating video frame"
 msgstr "Fout bij aanmaken van videoframe"
 
-#: src/core/io/video/video_format.cpp:497
+#: src/core/io/video/video_format.cpp:504
 #, kde-format
 msgid "Could not initialize the conversion context"
 msgstr "Kon de conversiecontext niet initialiseren"
 
-#: src/core/io/video/video_format.cpp:503
+#: src/core/io/video/video_format.cpp:510
 #, kde-format
 msgid "Could not allocate temporary picture"
 msgstr "Kon tijdelijk plaatje niet toewijzen"
 
-#: src/core/io/video/video_format.cpp:744
+#: src/core/io/video/video_format.cpp:751
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
 msgstr ""
 "Kon uitvoerformaat niet opmaken uit bestandsextensie: MPEG wordt gebruikt."
 
-#: src/core/io/video/video_format.cpp:748
+#: src/core/io/video/video_format.cpp:755
 #, kde-format
 msgid "Could not find output format"
 msgstr "Kon uitvoerformaat niet vinden"
 
-#: src/core/io/video/video_format.cpp:821
+#: src/core/io/video/video_format.cpp:828
 #, kde-format
 msgid "Error occurred when opening output file: %1"
 msgstr "Er deed zich een fout voor bij openen van uitvoerbestand: %1"
 
-#: src/core/io/video/video_format.cpp:856
+#: src/core/io/video/video_format.cpp:863
 #, kde-format
 msgid "Background"
 msgstr "Achtergrond"
 
-#: src/core/io/video/video_format.cpp:856
+#: src/core/io/video/video_format.cpp:863
 #, kde-format
 msgid "Background color"
 msgstr "Achtergrondkleur"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/core/io/video/video_format.cpp:857
+#: src/core/io/video/video_format.cpp:864
 #: src/gui/widgets/dialogs/resize_dialog.ui:56
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:46
 #, kde-format
 msgid "Width"
 msgstr "Breedte"
 
-#: src/core/io/video/video_format.cpp:857
-#: src/core/io/video/video_format.cpp:858
+#: src/core/io/video/video_format.cpp:864
+#: src/core/io/video/video_format.cpp:865
 #, kde-format
 msgid "If not 0, it will overwrite the size"
 msgstr "Indien niet 0, zal het de grootte overschrijven"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/core/io/video/video_format.cpp:858
+#: src/core/io/video/video_format.cpp:865
 #: src/gui/widgets/dialogs/resize_dialog.ui:33
 #, kde-format
 msgid "Height"
 msgstr "Hoogte"
 
-#: src/core/io/video/video_format.cpp:859
+#: src/core/io/video/video_format.cpp:866
 #, kde-format
 msgid "Verbose"
 msgstr "Uitvoerig"
 
-#: src/core/io/video/video_format.cpp:859
+#: src/core/io/video/video_format.cpp:866
 #, kde-format
 msgid "Show verbose information on the conversion"
 msgstr "Uitgebreide informatie tonen van de conversatie"
@@ -1992,7 +1993,7 @@ msgstr "Knooppunten verwijderen"
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/core/model/animation/animatable.cpp:418
 #: src/gui/widgets/menus/animated_property_menu.cpp:59
-#: src/gui/widgets/timeline/compound_timeline_widget.ui:196
+#: src/gui/widgets/timeline/compound_timeline_widget.ui:194
 #, kde-format
 msgid "Add Keyframe"
 msgstr "Keyframe toevoegen"
@@ -2111,7 +2112,7 @@ msgstr "%1 kleurverloop"
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:137
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:154
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:157
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:60
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:49
 #, kde-format
 msgid "Linear"
 msgstr "Lineair"
@@ -2169,7 +2170,7 @@ msgstr "Ellips"
 #: src/core/model/shapes/fill.hpp:48 src/gui/tools/draw_tool_base.cpp:114
 #: src/gui/tools/fill_tool.cpp:25
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:763
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:584
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:610
 #: src/gui/widgets/docks/colors.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:191
 #: src/gui/widgets/tools/color_picker_widget.ui:24
@@ -2181,8 +2182,8 @@ msgstr "Vullen"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/model/shapes/group.hpp:42
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:581
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:618
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:607
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:644
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
 #, kde-format
 msgid "Group"
@@ -2200,7 +2201,7 @@ msgstr "Compressie en decompressie"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/model/shapes/layer.hpp:81
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:578
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:604
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
 #, kde-format
 msgid "Layer"
@@ -2215,7 +2216,7 @@ msgstr "Offsetpad"
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/model/shapes/path.hpp:38 src/gui/glaxnimateui.rc:174
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:707
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
@@ -2252,7 +2253,7 @@ msgstr "Hoeken afronden"
 #. i18n: ectx: property (text), widget (QRadioButton, check_stroke)
 #: src/core/model/shapes/stroke.hpp:68 src/gui/tools/draw_tool_base.cpp:126
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:758
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:587
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:613
 #: src/gui/widgets/docks/stroke.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:101
 #: src/gui/widgets/tools/color_picker_widget.ui:37
@@ -2269,7 +2270,7 @@ msgstr "Lettertype wijzigen"
 
 #. i18n: ectx: Menu (text)
 #: src/core/model/shapes/text.cpp:474 src/gui/glaxnimateui.rc:200
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:120
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:126
 #, kde-format
 msgid "Text"
 msgstr "Tekst"
@@ -2531,13 +2532,13 @@ msgctxt "@info:shell"
 msgid "Error converting to the output format"
 msgstr "Fout bij converteren naar het uitvoerformaat"
 
-#: src/gui/cli.cpp:315 src/gui/cli.cpp:335
+#: src/gui/cli.cpp:315 src/gui/cli.cpp:334
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not save to %1"
 msgstr "Kon niet opslaan naar %1"
 
-#: src/gui/cli.cpp:344
+#: src/gui/cli.cpp:343
 #, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to render"
@@ -2600,7 +2601,7 @@ msgstr "Emoji-set"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:248
 #: src/gui/widgets/dialogs/about_env_dialog.ui:289
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:109
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:307
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:333
 #: src/gui/widgets/dialogs/startup_dialog.ui:48
 #: src/gui/widgets/settings/plugin_settings_widget.ui:168
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:391
@@ -2662,14 +2663,14 @@ msgid "Close"
 msgstr "Sluiten"
 
 #. i18n: ectx: Menu (file_new_from_template)
-#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1252
+#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1303
 #, kde-format
 msgid "New from Template"
 msgstr "Nieuw ui sjabloon"
 
 #. i18n: ectx: Menu (edit_tools)
-#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:373
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:748
+#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:399
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:798
 #, kde-format
 msgid "Tools"
 msgstr "Hulpmiddelen"
@@ -2687,7 +2688,7 @@ msgid "Layout"
 msgstr "Indeling"
 
 #. i18n: ectx: Menu (document)
-#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:449
+#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:475
 #, kde-format
 msgid "Document"
 msgstr "Document"
@@ -2707,13 +2708,13 @@ msgid "Web Preview"
 msgstr "Web-voorbeeld"
 
 #. i18n: ectx: Menu (playback)
-#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:493
+#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:519
 #, kde-format
 msgid "Playback"
 msgstr "Afspelen"
 
 #. i18n: ectx: Menu (object)
-#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:601
+#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:627
 #, kde-format
 msgid "Object"
 msgstr "Object"
@@ -2726,7 +2727,7 @@ msgstr "Uitlijnen en verdelen"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:205 src/gui/settings/plugin_settings_group.hpp:23
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1476
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1527
 #, kde-format
 msgid "Plugins"
 msgstr "Plug-ins"
@@ -2884,7 +2885,7 @@ msgstr "(Geen ouder)"
 msgid "Value"
 msgstr "Waarde"
 
-#: src/gui/item_models/python_snippet_model.hpp:35
+#: src/gui/item_models/python_snippet_model.hpp:36
 #, kde-format
 msgid "New Snippet %1"
 msgstr "Nieuw fragment %1"
@@ -2992,12 +2993,12 @@ msgstr "Bezier tekenen"
 msgid "Drag nodes"
 msgstr "Knooppunten verslepen"
 
-#: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:700
+#: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:741
 #, kde-format
 msgid "Cusp"
 msgstr "Keerpunt"
 
-#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:701
+#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:742
 #, kde-format
 msgid "Smooth"
 msgstr "Vloeiend"
@@ -3055,12 +3056,12 @@ msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "Stop verwijderen"
 
-#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:705
+#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:746
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr "Knooppunten oplossen"
 
-#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:692
+#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:733
 #, kde-format
 msgid "Delete Nodes"
 msgstr "Knooppunten verwijderen"
@@ -3080,7 +3081,7 @@ msgstr "Segmenten rechttrekken"
 msgid "Curve segments"
 msgstr "Segmenten van krommen"
 
-#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:332
+#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:358
 #, kde-format
 msgid "Edit"
 msgstr "Bewerken"
@@ -3131,19 +3132,19 @@ msgstr "Selecteren"
 msgid "Drag"
 msgstr "Verslepen"
 
-#: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:337
+#: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:363
 #, kde-format
 msgid "Undo %1"
 msgstr "%1 ongedaan maken"
 
-#: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:343
+#: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:369
 #, kde-format
 msgid "Redo %1"
 msgstr "%1 opnieuw doen"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_delete)
-#: src/gui/tools/select_tool.cpp:417 src/gui/widgets/dialogs/gw_impl_ui.cpp:358
+#: src/gui/tools/select_tool.cpp:417 src/gui/widgets/dialogs/gw_impl_ui.cpp:384
 #: src/gui/widgets/dialogs/selection_manager.cpp:90
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:46
 #: src/gui/widgets/docks/snippet_list_widget.ui:57
@@ -3174,7 +3175,7 @@ msgstr "Tekst tekenen"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::AboutEnvironmentDialog)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:20
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:143
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:153
 #, kde-format
 msgid "About Environment"
 msgstr "Over omgeving"
@@ -3552,20 +3553,20 @@ msgstr "Trefwoorden"
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #. i18n: ectx: attribute (title), widget (QWidget, tab_custom)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:84
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:409
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:435
 #: src/gui/widgets/font/font_style_dialog.ui:77
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:69
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:58
 #, kde-format
 msgid "Custom"
 msgstr "Aangepast"
 
-#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:72
+#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Fout"
 
-#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:72
+#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:76
 #, kde-format
 msgctxt "%1 path"
 msgid ""
@@ -3575,7 +3576,7 @@ msgstr ""
 "Kon map niet aanmaken\n"
 "%1"
 
-#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:114
+#: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:132
 #, kde-format
 msgctxt "@title:window"
 msgid "Choose directory"
@@ -3853,7 +3854,7 @@ msgid "Scalable Vector Graphics (*.svg)"
 msgstr "Schaalbare Vector Graphics (*.svg)"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:639
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:471
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
 #, kde-format
 msgid "Validate Discord Sticker"
 msgstr "Meningsverschilsticker valideren"
@@ -3871,7 +3872,7 @@ msgid "Some issues detected"
 msgstr "Enige problemen gedetecteerd"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:649
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:468
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:494
 #, kde-format
 msgid "Validate Telegram Sticker"
 msgstr "Telegramsticker valideren"
@@ -3979,103 +3980,103 @@ msgstr "%1 naar pad converteren"
 msgid "New Composition from Selection"
 msgstr "Nieuwe compositie uit selectie"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:680
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:681
 #, kde-format
 msgid "Align Selection"
 msgstr "Selectie uitlijnen"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:722
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:723
 #, kde-format
 msgid "Drop"
 msgstr "Laten vallen"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:818
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:819
 #, kde-format
 msgid "Put text on path"
 msgstr "Tekst op een pad zetten"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:840
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:841
 #, kde-format
 msgid "Remove text from path"
 msgstr "Tekst van een pad verwijderen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:122
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:128
 #, kde-format
 msgid "Put on Path"
 msgstr "Op pad zetten"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:125
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:131
 #: src/gui/widgets/menus/node_menu.cpp:396
 #, kde-format
 msgid "Remove from Path"
 msgstr "Uit pad verwijderen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:139
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:149
 #, kde-format
 msgid "Copy Debug Information"
 msgstr "Debuginformatie kopiëren"
 
 #. i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:265
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:291
 #, kde-format
 msgid "File"
 msgstr "Bestand"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:270
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:296
 #, kde-format
 msgid "Add Image…"
 msgstr "Afbeelding toevoegen…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:273
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:299
 #, kde-format
 msgid "Import…"
 msgstr "Importeren…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:276
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:302
 #, kde-format
 msgid "Import from LottieFiles…"
 msgstr "Uit Lottie-bestanden importeren…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:279
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:305
 #, kde-format
 msgid "Open Most Recent"
 msgstr "Meest recent openen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:302
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:307
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:313
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:328
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:333
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:339
 #, kde-format
 msgid "Save as Template"
 msgstr "Als sjabloon opslaan"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:313
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:339
 #, kde-format
 msgid "Could not save template"
 msgstr "Kon sjabloon niet opslaan"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:317
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:343
 #, kde-format
 msgid "Export…"
 msgstr "Exporteren…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:320
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:346
 #, kde-format
 msgid "Export As…"
 msgstr "Exporteren als…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:323
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:349
 #, kde-format
 msgid "Export as Image Sequence…"
 msgstr "Als afbeeldingensequentie exporteren…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:350
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:376
 #, kde-format
 msgid "Paste as Composition"
 msgstr "Als compositie plakken"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_duplicate)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:353
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:379
 #: src/gui/widgets/docks/layers.ui:80 src/gui/widgets/docks/layers.ui:83
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:486
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:69
@@ -4083,34 +4084,34 @@ msgstr "Als compositie plakken"
 msgid "Duplicate"
 msgstr "Dupliceren"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:404
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:430
 #, kde-format
 msgid "View"
 msgstr "Beeld"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:415
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:441
 #, kde-format
 msgid "Automatic"
 msgstr "Automatisch"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:420
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:446
 #, kde-format
 msgid "Wide"
 msgstr "Breed"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:425
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:451
 #, kde-format
 msgid "Medium"
 msgstr "Middelgroot"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:430
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:456
 #, kde-format
 msgid "Compact"
 msgstr "Compact"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_angle_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_angle_reset)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:441
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:467
 #: src/gui/widgets/view_transform_widget.ui:150
 #: src/gui/widgets/view_transform_widget.ui:153
 #, kde-format
@@ -4119,186 +4120,186 @@ msgstr "Reset rotatie"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_flip_view)
 #. i18n: ectx: property (text), widget (QToolButton, btn_flip_view)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:443
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:469
 #: src/gui/widgets/view_transform_widget.ui:164
 #: src/gui/widgets/view_transform_widget.ui:167
 #, kde-format
 msgid "Flip View"
 msgstr "Beeld omklappen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:451
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:477
 #, kde-format
 msgid "Raster…"
 msgstr "Raster…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:453
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:479
 #, kde-format
 msgid "SVG…"
 msgstr "SVG…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:456
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:482
 #, kde-format
 msgid "Lottie (SVG)"
 msgstr "Lottie (SVG)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:459
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:485
 #, kde-format
 msgid "Lottie (canvas)"
 msgstr "Lottie (werkveld)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:462
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:488
 #, kde-format
 msgid "SVG (SMIL)"
 msgstr "SVG (SMIL)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:465
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:491
 #, kde-format
 msgid "RIVE (canvas)"
 msgstr "RIVE (werkveld)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:474
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:500
 #, kde-format
 msgid "Resize…"
 msgstr "Grootte wijzigen…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:477
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:503
 #, kde-format
 msgid "Cleanup"
 msgstr "Opruimen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:480
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
 #, kde-format
 msgid "Timing…"
 msgstr "Timing…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:485
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:511
 #, kde-format
 msgid "Metadata…"
 msgstr "Metagegevens…"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:496
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:520
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:522
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:546
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
 #, kde-format
 msgid "Play"
 msgstr "Afspelen"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_loop)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:498
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:524
 #: src/gui/widgets/timeline/frame_controls_widget.ui:63
 #, kde-format
 msgid "Loop"
 msgstr "Lus"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:500
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:526
 #, kde-format
 msgid "Record Keyframes"
 msgstr "Keyframes opnemen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:502
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:528
 #, kde-format
 msgid "Jump to Start"
 msgstr "Naar het begin springen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:504
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:530
 #, kde-format
 msgid "Jump to End"
 msgstr "Naar het eind springen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:532
 #, kde-format
 msgid "Next Frame"
 msgstr "Volgende frame"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:508
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:534
 #, kde-format
 msgid "Previous Frame"
 msgstr "Vorige frame"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:516
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:542
 #, kde-format
 msgid "Pause"
 msgstr "Pauzeren"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:571
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:597
 #, kde-format
 msgid "Precompose Selection"
 msgstr "Selectie vooraf samenstellen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:575
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:601
 #, kde-format
 msgid "New Composition"
 msgstr "Nieuwe compositie"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:590
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:616
 #, kde-format
 msgid "Emoji…"
 msgstr "Emoji…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:603
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:629
 #, kde-format
 msgid "Raise to Top"
 msgstr "Naar de top brengen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:612
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:638
 #, kde-format
 msgid "Lower to Bottom"
 msgstr "Naar onder brengen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:615
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:641
 #, kde-format
 msgid "Move to…"
 msgstr "Verplaatsen naar…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:621
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:647
 #, kde-format
 msgid "Ungroup"
 msgstr "Groepering opheffen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:624
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:650
 #: src/gui/widgets/docks/aligndock.cpp:46
 #, kde-format
 msgid "Align"
 msgstr "Uitlijnen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:626
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:652
 #, kde-format
 msgid "Selection"
 msgstr "Selectie"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:628
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:654
 #, kde-format
 msgid "Canvas"
 msgstr "Werkveld"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:630
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:656
 #, kde-format
 msgid "Canvas (as Group)"
 msgstr "Werkveld (als groep)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:633
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:659
 #, kde-format
 msgid "Left"
 msgstr "Links"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:636
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:645
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:662
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:671
 #, kde-format
 msgid "Center"
 msgstr "Midden"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:639
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:665
 #, kde-format
 msgid "Right"
 msgstr "Rechts"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:642
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:668
 #, kde-format
 msgid "Top"
 msgstr "Boven"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:648
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:674
 #, kde-format
 msgid "Bottom"
 msgstr "Onder"
@@ -4306,146 +4307,152 @@ msgstr "Onder"
 #. i18n("Relative To"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_horizontal"), i18n("Horizontal"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_vertical"), i18n("Vertical"), QStringLiteral(""));
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:655
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:681
 #, kde-format
 msgid "Outside Left"
 msgstr "Links er buiten"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:658
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:684
 #, kde-format
 msgid "Outside Right"
 msgstr "Rechts er buiten"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:661
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:687
 #, kde-format
 msgid "Outside Top"
 msgstr "Bovenaan er buiten"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:664
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:690
 #, kde-format
 msgid "Outside Bottom"
 msgstr "Onderaan er buien"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:672
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:709
 #, kde-format
 msgid "Object to Path"
 msgstr "Object naar pad"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:675
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:712
 #, kde-format
 msgid "Trace Bitmap…"
 msgstr "Bitmap volgen…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:680
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:717
 #, kde-format
 msgid "Union"
 msgstr "Verenigen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:682
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:720
 #, kde-format
 msgid "Difference"
 msgstr "Verschil"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:684
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:723
 #, kde-format
 msgid "Intersect"
 msgstr "Doorsnijden"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:726
 #, kde-format
 msgid "Exclusion"
 msgstr "Uitsluiting"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:689
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:730
 #, kde-format
 msgid "Reverse"
 msgstr "Omgekeerd"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:693
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:734
 #, kde-format
 msgid "Add Node…"
 msgstr "Knooppunt toevoegen..."
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:695
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:736
 #, kde-format
 msgid "Join Nodes"
 msgstr "Knooppunten samenvoegen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:697
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:738
 #, kde-format
 msgid "Split Nodes"
 msgstr "Knooppunten splitsen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:702
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:743
 #, kde-format
 msgid "Symmetric"
 msgstr "Symmetrisch"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:703
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:744
 #, kde-format
 msgid "Make segments straight"
 msgstr "Segmenten recht maken"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:704
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:745
 #, kde-format
 msgid "Make segments curved"
 msgstr "Segmenten gekromd maken"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:839
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:791
+#, fuzzy, kde-format
+#| msgid "Reverse"
+msgid "Reverse path"
+msgstr "Omgekeerd"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:889
 #, kde-format
 msgid "Recording Keyframes"
 msgstr "Keyframes opnemen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1252
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1303
 #, kde-format
 msgid "Could not load template"
 msgstr "Kon sjabloon niet laden"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1447
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1456
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1463
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1498
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1507
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1514
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
 msgstr "Bitmap volgen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1447
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1498
 #, kde-format
 msgid "Only select one image"
 msgstr "Slechts één afbeelding selecteren"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1456
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1507
 #, kde-format
 msgid "You need to select an image to trace"
 msgstr "U moet een te volgen afbeelding selecteren"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1463
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1514
 #, kde-format
 msgid "You selected an image with no data"
 msgstr "U selecteerde een afbeelding zonder gegevens"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1533
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1584
 #, kde-format
 msgid "X: %1 Y: %2"
 msgstr "X: %1 Y: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1552
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1603
 #, kde-format
 msgid "Drop File"
 msgstr "Bestand loslaten"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1563
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1614
 #, kde-format
 msgid "Add to current file?"
 msgstr "Aan het huidige bestand toevoegen?"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1569
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1620
 #, kde-format
 msgid "Add as Object"
 msgstr "Als object toevoegen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1575
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1626
 #, kde-format
 msgid "Add as Composition"
 msgstr "Als compositie toevoegen"
@@ -5446,7 +5453,7 @@ msgid "View on LottieFiles..."
 msgstr "Zicht op Lottie-bestanden..."
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:56
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:177
 #, kde-format
 msgid "Paste Keyframe"
 msgstr "Keyframe plakken"
@@ -5462,7 +5469,7 @@ msgid "Follow Path..."
 msgstr "Volg pad..."
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:172
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
 #, kde-format
 msgid "Remove Keyframe"
 msgstr "Keyframe verwijderen"
@@ -6284,28 +6291,28 @@ msgstr "Compositie hernoemen"
 msgid "Delete Composition"
 msgstr "Compositie verwijderen"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:154
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:155
 #, kde-format
 msgid "Transition From Previous"
 msgstr "Overgang naar vorige"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:155
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:156
 #, kde-format
 msgid "Transition To Next"
 msgstr "Overgang naar volgende"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:162
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:163
 #, kde-format
 msgid "Custom..."
 msgstr "Aangepast..."
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:175
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
 #, kde-format
 msgid "Copy Keyframe"
 msgstr "Keyframe kopiëren"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
-#: src/gui/widgets/timeline/compound_timeline_widget.ui:201
+#: src/gui/widgets/timeline/compound_timeline_widget.ui:199
 #, kde-format
 msgid "&Clear Animations"
 msgstr "Animaties &wissen"
@@ -6402,43 +6409,43 @@ msgstr "Begin"
 msgid "Finish"
 msgstr "Einde"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:58
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:47
 #, kde-format
 msgid "Hold"
 msgstr "In wacht"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:64
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:53
 #, kde-format
 msgid "Fast"
 msgstr "Snel"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:84
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:73
 #, kde-format
 msgid "Ease In"
 msgstr "Vertragend in"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:86
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:75
 #, kde-format
 msgid "Ease Out"
 msgstr "Vertragend uit"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:89
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:78
 #, kde-format
 msgid "Ease"
 msgstr "Vertragen"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:98
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:87
 #, kde-format
 msgid "Anticipate"
 msgstr "Anticiperen"
 
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:100
-#: src/gui/widgets/timeline/keyframe_transition_data.hpp:103
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:89
+#: src/gui/widgets/timeline/keyframe_transition_data.hpp:92
 #, kde-format
 msgid "Overshoot"
 msgstr "Overshoot"
 
-#: src/gui/widgets/timeline/timeline_items.cpp:142
+#: src/gui/widgets/timeline/timeline_items.cpp:146
 #, kde-format
 msgid "Drag Keyframes"
 msgstr "Keyframes slepen"
