@@ -6,7 +6,7 @@
 #pragma once
 
 #include <memory>
-#include <QWidget>
+#include <QGraphicsView>
 
 #include "model/assets/composition.hpp"
 
@@ -22,9 +22,9 @@ public:
     ~RenderWidget() noexcept;
 
     QWidget* widget() const;
-    void set_overlay(QWidget* view);
+    void set_overlay(QGraphicsView* view);
     void set_composition(model::Composition* comp);
-    void render(const QRectF& exposed_rect, const QTransform& world_tf);
+    void render();
     // TODO IPC image stuff
 
 private:

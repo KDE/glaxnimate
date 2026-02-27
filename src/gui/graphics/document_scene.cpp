@@ -96,7 +96,7 @@ public:
     EditorMap node_to_editors;
     std::vector<model::VisualNode*> selection;
     tools::Tool* tool = nullptr;
-    QBrush back;
+    // QBrush back;
     model::Composition* comp = nullptr;
     bool show_masks = false;
 };
@@ -105,7 +105,7 @@ graphics::DocumentScene::DocumentScene()
     : d(std::make_unique<Private>())
 {
     setItemIndexMethod(QGraphicsScene::ItemIndexMethod::NoIndex);
-    d->back.setTexture(QPixmap(app::Application::instance()->data_file("images/widgets/background.png")));
+    // d->back.setTexture(QPixmap(app::Application::instance()->data_file("images/widgets/background.png")));
 }
 
 graphics::DocumentScene::~DocumentScene()
@@ -467,9 +467,9 @@ void graphics::DocumentScene::node_locked(bool locked)
 
 void graphics::DocumentScene::drawBackground(QPainter* painter, const QRectF& rect)
 {
-    painter->fillRect(rect, palette().base());
+    /*painter->fillRect(rect, palette().base());
     if ( d->comp )
-        painter->fillRect(rect.intersected(QRectF(QPointF(0, 0), d->comp->size())), d->back);
+        painter->fillRect(rect.intersected(QRectF(QPointF(0, 0), d->comp->size())), d->back);*/
     Q_EMIT drawing_background(painter, rect);
 }
 

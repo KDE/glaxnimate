@@ -409,6 +409,7 @@ void GlaxnimateWindow::Private::switch_composition(model::Composition* new_comp,
     layers_dock->layer_view()->set_composition(comp);
     timeline_dock->timelineWidget()->set_composition(comp);
     scene.set_composition(comp);
+    render_widget.set_composition(comp);
     scene.user_select(comp_selections[i].selection, graphics::DocumentScene::Replace);
     auto current = comp_selections[i].current;
     layers_dock->layer_view()->set_current_node(current);

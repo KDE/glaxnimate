@@ -46,10 +46,10 @@ public:
         renderer.render_end();*/
 
 
-        // TODO setting for the render quality
+        /*// TODO setting for the render quality
         auto renderer = renderer::default_renderer(5);
         QRectF scene_rect = mapRectToScene(option->exposedRect);
-        offscreen_render(*renderer, painter, scene_rect);
+        offscreen_render(*renderer, painter, scene_rect);*/
     }
 
     void refresh()

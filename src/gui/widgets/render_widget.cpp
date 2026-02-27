@@ -2,6 +2,9 @@
 
 #include <QPainter>
 #include <QVBoxLayout>
+#include <QScrollBar>
+
+#include "app/application.hpp"
 
 using namespace glaxnimate;
 
@@ -10,12 +13,24 @@ class RenderWidgetUtil
 public:
     model::Composition* composition = nullptr;
     std::unique_ptr<renderer::Renderer> renderer;
-    QRectF rect;
     QTransform world_transform;
+    QPointF offset;
+    QGraphicsView* view = nullptr;
 
     RenderWidgetUtil(std::unique_ptr<renderer::Renderer> renderer) :
         renderer(std::move(renderer))
     {}
+
+    void update_transform()
+    {
+        if ( !view )
+            return;
+        world_transform.reset();
+        QScrollBar* hb = view->horizontalScrollBar();
+        QScrollBar* vb = view->verticalScrollBar();
+        world_transform.translate(-hb->value(), -vb->value());
+        world_transform = view->transform() * world_transform;
+    }
 
     void render_composition()
     {
@@ -23,11 +38,7 @@ public:
             return;
 
         renderer->render_start();
-        QTransform render_t = world_transform;
-        const QTransform& t = world_transform;
-        render_t.setMatrix(t.m11(), t.m12(), t.m13(), t.m21(), t.m22(), t.m23(), 0, 0, t.m33());
-        renderer->transform(render_t);
-        renderer->translate(-rect.left(), -rect.top());
+        renderer->transform(world_transform);
         composition->paint(renderer.get(), composition->time(), model::VisualNode::Canvas);
         renderer->render_end();
     }
@@ -38,32 +49,37 @@ template<class BaseWidget>
 class BasicRenderWidget : public BaseWidget, public RenderWidgetUtil
 {
 public:
+    QBrush back;
+
     BasicRenderWidget(QWidget* widget, std::unique_ptr<renderer::Renderer> renderer) :
         BaseWidget(widget), RenderWidgetUtil(std::move(renderer))
-    {}
+    {
+        back.setTexture(QPixmap(app::Application::instance()->data_file("images/widgets/background.png")));
+    }
 
 protected:
     void paintEvent(QPaintEvent* ) override
     {
         QPainter painter(this);
         painter.setRenderHint(QPainter::Antialiasing);
-        painter.fillRect(0, 0, this->width(), this->height(), Qt::black);
-/*
-        const QTransform& t = world_transform;
-        // x scale but they should always be the same
-        qreal scale = std::sqrt(t.m11() * t.m11() + t.m21() * t.m21());
+        painter.fillRect(0, 0, this->width(), this->height(), this->palette().base());
 
-        QImage img(qCeil(rect.width() * scale), qCeil(rect.height() * scale), QImage::Format_ARGB32_Premultiplied);
+        if ( !composition )
+            return;
+
+        update_transform();
+
+        painter.setTransform(world_transform);
+        painter.fillRect(QRectF(QPointF(0, 0), composition->size()), back);
+        painter.setTransform({});
+
+        QImage img(this->width(), this->height(), QImage::Format_ARGB32_Premultiplied);
         img.fill(Qt::transparent);
-        // img.fill(QColor(100, 0, 0, 100));
-        img.setDevicePixelRatio(scale);
-
-        // Render onto the image
         renderer->set_image_surface(&img);
         render_composition();
-
-        painter.drawImage(rect.topLeft(), img);*/
+        painter.drawImage(0, 0, img);
     }
+
 };
 
 class glaxnimate::gui::RenderWidget::Private
@@ -111,14 +127,14 @@ void glaxnimate::gui::RenderWidget::set_composition(model::Composition* comp)
     d->util->composition = comp;
 }
 
-void glaxnimate::gui::RenderWidget::render(const QRectF& exposed_rect, const QTransform& world_tf)
+void glaxnimate::gui::RenderWidget::render()
 {
-    d->util->rect = exposed_rect;
-    d->util->world_transform = world_tf;
+    d->widget->update();
 }
 
-void glaxnimate::gui::RenderWidget::set_overlay(QWidget* view)
+void glaxnimate::gui::RenderWidget::set_overlay(QGraphicsView* view)
 {
+    d->util->view = view;
     d->layout->addWidget(view);
 }
 

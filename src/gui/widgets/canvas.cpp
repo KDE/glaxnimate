@@ -162,6 +162,8 @@ Canvas::Canvas(QWidget* parent)
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFrameStyle(QFrame::NoFrame);
+    // setBackgroundBrush(Qt::transparent);
+    setStyleSheet("background: transparent");
 }
 
 Canvas::~Canvas() = default;

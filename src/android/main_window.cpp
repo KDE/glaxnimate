@@ -248,6 +248,7 @@ public:
         // Views
         layer_view->set_composition(comp);
         scene.set_composition(comp);
+        render_widget.set_composition(comp);
 
     }
 
@@ -1226,6 +1227,7 @@ void MainWindow::set_current_composition(model::Composition* comp)
     d->comp = comp ? comp : d->comp;
     d->scene.set_composition(comp);
     d->layer_view->set_composition(comp);
+    d->render_widget.set_composition(comp);
 }
 
 void MainWindow::switch_tool(gui::tools::Tool* tool)
