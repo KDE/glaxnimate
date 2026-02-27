@@ -217,7 +217,9 @@ message(STATUS "${CMAKE_BUILD_TYPE} build")
 # Renderer
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(CAIRO REQUIRED cairo)
-set(RENDERER_LIBRARIES ${CAIRO_LIBRARIES})
+
+add_subdirectory(external/thorvg/)
+set(RENDERER_LIBRARIES ${CAIRO_LIBRARIES} thorvg)
 
 # sub projects and stuff
 

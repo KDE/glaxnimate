@@ -39,11 +39,19 @@ public:
 // Query
     virtual bool needs_world_transform() const { return true; }
 
+    virtual bool supports_gl() const { return false; }
+
 // Surface setup
     /**
      * \brief Sets \p destination as the destination surface
      */
     virtual void set_image_surface(QImage* destination) = 0;
+
+    /**
+     * \brief Sets the given OpenGL context as the destination surface
+     * \returns \b true on success
+     */
+    virtual bool set_gl_surface(void* context, int framebuffer, int width, int height) = 0;
 
     /**
      * \brief Performs any operation needed to begin the rendering
@@ -67,6 +75,21 @@ public:
      * \brief Draws the path based on the last specified fill or stroke
      */
     virtual void draw_path(const math::bezier::MultiBezier& bez) = 0;
+
+    /**
+     * \brief Fills a rectangle with a brusj
+     */
+    virtual void fill_rect(const QRectF& rect, const QBrush& brush)
+    {
+        set_fill({brush});
+        math::bezier::MultiBezier bez;
+        bez.move_to(QPointF(rect.left(), rect.top()));
+        bez.line_to(QPointF(rect.right(), rect.top()));
+        bez.line_to(QPointF(rect.right(), rect.bottom()));
+        bez.line_to(QPointF(rect.left(), rect.bottom()));
+        bez.close();
+        draw_path(bez);
+    }
 
 // Compositing ops
     /**
