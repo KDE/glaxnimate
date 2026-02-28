@@ -5,7 +5,6 @@ file(
     ${CMAKE_CURRENT_SOURCE_DIR}/thorvg/src/common/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/thorvg/src/renderer/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/thorvg/src/renderer/sw_engine/*.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/thorvg/src/renderer/gl_engine/*.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/thorvg/src/loaders/raw/*.cpp
 )
@@ -14,6 +13,12 @@ file(
 if ( OPENGL_ENABLED )
     set(THORVG_GL_RASTER_SUPPORT ON)
     set(THORVG_GL_TARGET_GL ON)
+
+    file(
+        GLOB GL_SOURCES
+        ${CMAKE_CURRENT_SOURCE_DIR}/thorvg/src/renderer/gl_engine/*.cpp
+    )
+    list(APPEND SOURCES ${GL_SOURCES})
 endif()
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h ${CMAKE_CURRENT_BINARY_DIR}/config.h)
