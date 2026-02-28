@@ -50,3 +50,9 @@ path = ["po/**"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "KDE translators (see each file for details)"
 SPDX-License-Identifier = "GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL"
+
+[[annotations]]
+path = ["external/thorvg/thorvg/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2020-2026 ThorVG Project"
+SPDX-License-Identifier = "MIT"
