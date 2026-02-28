@@ -73,7 +73,7 @@ public:
 
 
 protected:
-    QPainterPath to_painter_path_impl(FrameTime t) const override;
+    glaxnimate::math::bezier::MultiBezier to_painter_path_impl(FrameTime t) const override;
     void on_paint(renderer::Renderer* p, FrameTime t, PaintMode, model::Modifier* modifier) const override;
 };
 

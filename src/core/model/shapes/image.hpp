@@ -32,7 +32,7 @@ public:
     QTransform local_transform_matrix(model::FrameTime t) const override;
 
 protected:
-    QPainterPath to_painter_path_impl(FrameTime t) const override;
+    glaxnimate::math::bezier::MultiBezier to_painter_path_impl(FrameTime t) const override;
     void on_paint(renderer::Renderer* p, FrameTime t, PaintMode, model::Modifier*) const override;
 
 private Q_SLOTS:

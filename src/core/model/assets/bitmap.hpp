@@ -52,14 +52,14 @@ public:
 
     QFileInfo file_info() const;
 
-    const QPixmap& pixmap() const { return image; }
+    QPixmap pixmap() const { return QPixmap::fromImage(image); }
     void set_pixmap(const QImage& qimage, const QString& format);
 
     bool remove_if_unused(bool clean_lists) override;
 
-    QImage get_image() const
+    const QImage& get_image() const
     {
-        return image.toImage();
+        return image;
     }
 
     /**
@@ -84,7 +84,7 @@ Q_SIGNALS:
     void loaded();
 
 private:
-    QPixmap image;
+    QImage image;
 
 };
 

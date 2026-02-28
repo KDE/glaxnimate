@@ -74,37 +74,30 @@ private:
         cairo_set_source(canvas, pattern);
     }
 
-    void draw_path(const QPainterPath& path)
+    void create_path(const math::bezier::MultiBezier& path)
     {
         cairo_new_path(canvas);
 
-        int count = path.elementCount();
-        for ( int i = 0; i < count; i++ )
+        for ( const auto& bez : path.beziers() )
         {
-            auto el = path.elementAt(i);
-            switch (el.type)
+            if ( bez.size() == 0 )
+                continue;
+
+            cairo_move_to(canvas, bez[0].pos.x(), bez[0].pos.y());
+            for ( int i = 0; i < bez.size() - 1; i++ )
             {
-                case QPainterPath::MoveToElement:
-                    cairo_move_to(canvas, el.x, el.y);
-                    break;
-
-                case QPainterPath::LineToElement:
-                    cairo_line_to(canvas, el.x, el.y);
-                    break;
-
-                case QPainterPath::CurveToElement:
-                {
-                    const QPainterPath::Element& cp2 = path.elementAt(i + 1);
-                    const QPainterPath::Element& end = path.elementAt(i + 2);
-                    cairo_curve_to(canvas, el.x, el.y, cp2.x, cp2.y, end.x, end.y);
-
-                    i += 2;
-                    break;
-                }
-
-                default:
-                    break;
+                const auto& before = bez[i];
+                const auto& after = bez[i+1];
+                cairo_curve_to(
+                    canvas,
+                    before.tan_out.x(), before.tan_out.y(),
+                    after.tan_in.x(), after.tan_in.y(),
+                    after.pos.x(), after.pos.y()
+                );
             }
+
+            if ( bez.closed() )
+                cairo_close_path(canvas);
         }
     }
 
@@ -114,6 +107,8 @@ public:
     {
     }
 
+    int supported_surfaces() const override { return 0; }
+
     void set_image_surface(QImage * destination) override
     {
         target = destination;
@@ -122,6 +117,9 @@ public:
         surface = cairo_image_surface_create_for_data((unsigned char*)target->bits(), CAIRO_FORMAT_ARGB32, target->width(), target->height(), target->bytesPerLine());
         canvas = cairo_create(surface);
     }
+
+    bool set_gl_surface(void *, int, int, int) override { return false; }
+    bool set_painter_surface(QPainter *, int, int) override  { return false; }
 
     void render_start() override
     {
@@ -154,13 +152,12 @@ public:
         mode |= StrokeMode;
     }
 
-    void draw_path(const math::bezier::MultiBezier & bez) override
+    void draw_path(const math::bezier::MultiBezier & path) override
     {
-        QPainterPath path = bez.painter_path();
         if ( mode & FillMode )
         {
             set_brush(fill.brush, fill.opacity);
-            draw_path(path);
+            create_path(path);
             cairo_set_fill_rule(canvas, fill.rule == Qt::OddEvenFill ? CAIRO_FILL_RULE_EVEN_ODD : CAIRO_FILL_RULE_WINDING);
             cairo_fill(canvas);
             if ( pattern )
@@ -193,7 +190,7 @@ public:
             ;
             cairo_set_line_join(canvas, join);
             cairo_set_miter_limit(canvas, stroke.pen.miterLimit());
-            draw_path(path);
+            create_path(path);
             cairo_stroke(canvas);
             if ( pattern )
             {
@@ -238,20 +235,20 @@ public:
         cairo_clip(canvas);
     }
 
-    void clip_path(const QPainterPath & path, Qt::ClipOperation op = Qt::ReplaceClip) override
+    void clip_path(const math::bezier::MultiBezier& path, Qt::ClipOperation op = Qt::ReplaceClip) override
     {
         if ( op == Qt::ReplaceClip )
             cairo_reset_clip(canvas);
-        draw_path(path);
+        create_path(path);
         cairo_clip(canvas);
     }
 
-    void draw_pixmap(const QPixmap & pixmap) override
+    void draw_image(const QImage & image) override
     {
-        QImage image = pixmap.toImage().convertToFormat(QImage::Format_ARGB32_Premultiplied);
+        // QImage image = pixmap.toImage().convertToFormat(QImage::Format_ARGB32_Premultiplied);
 
         cairo_surface_t *surface = cairo_image_surface_create_for_data(
-            image.bits(),
+            const_cast<uchar*>(image.bits()),
             CAIRO_FORMAT_ARGB32,
             image.width(),
             image.height(),

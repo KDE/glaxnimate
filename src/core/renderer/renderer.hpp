@@ -25,6 +25,12 @@ struct Stroke
 
 enum ShapeMode { NothingMode = 0, FillMode = 1, StrokeMode = 2 };
 
+enum SurfaceType
+{
+    OpenGL  = 0x10,
+    Painter = 0x20,
+};
+
 /**
  * Abstracted renderer interface
  */
@@ -37,9 +43,9 @@ public:
     virtual ~Renderer() noexcept = default;
 
 // Query
-    virtual bool needs_world_transform() const { return true; }
+    virtual int supported_surfaces() const = 0;
 
-    virtual bool supports_gl() const { return false; }
+    bool supports_surface(int type) const { return (supported_surfaces() & type) == type; }
 
 // Surface setup
     /**
@@ -52,6 +58,11 @@ public:
      * \returns \b true on success
      */
     virtual bool set_gl_surface(void* context, int framebuffer, int width, int height) = 0;
+
+    /**
+     * \brief Sets a QPainter as the render target
+     */
+    virtual bool set_painter_surface(QPainter* painter, int width, int height) = 0;
 
     /**
      * \brief Performs any operation needed to begin the rendering
@@ -113,9 +124,9 @@ public:
      * \brief Sets a clipping rect
      */
     virtual void clip_rect(const QRectF& rect, Qt::ClipOperation op = Qt::ReplaceClip) = 0;
-    virtual void clip_path(const QPainterPath& path, Qt::ClipOperation op = Qt::ReplaceClip) = 0;
+    virtual void clip_path(const math::bezier::MultiBezier& path, Qt::ClipOperation op = Qt::ReplaceClip) = 0;
 
-    virtual void draw_pixmap(const QPixmap& image) = 0;
+    virtual void draw_image(const QImage& image) = 0;
 
 // Transform
     virtual void scale(qreal x, qreal y) = 0;

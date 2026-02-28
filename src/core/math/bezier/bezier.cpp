@@ -297,9 +297,64 @@ void math::bezier::MultiBezier::transform(const QTransform& t)
         bez.transform(t);
 }
 
+glaxnimate::math::bezier::MultiBezier glaxnimate::math::bezier::MultiBezier::transformed(const QTransform& matrix) const
+{
+    auto copy = *this;
+    copy.transform(matrix);
+    return copy;
+}
+
+void glaxnimate::math::bezier::MultiBezier::translate(const QPointF& p)
+{
+    for ( auto& bez : beziers_ )
+    {
+        for ( Point& pt : bez )
+        {
+            pt.pos += p;
+            pt.tan_in += p;
+            pt.tan_out += p;
+        }
+    }
+}
+
+glaxnimate::math::bezier::MultiBezier glaxnimate::math::bezier::MultiBezier::translated(const QPointF& p) const
+{
+    auto copy = *this;
+    copy.translate(p);
+    return copy;
+
+}
+
 math::bezier::MultiBezier math::bezier::MultiBezier::from_painter_path(const QPainterPath& path)
 {
     math::bezier::MultiBezier bez;
     bez.append(path);
     return bez;
 }
+
+void glaxnimate::math::bezier::MultiBezier::append(const QPolygonF& path)
+{
+    if ( path.empty() )
+        return;
+
+    move_to(path[0]);
+    for ( int i = 1; i < path.size(); i++ )
+        line_to(path[i]);
+    close();
+}
+
+void glaxnimate::math::bezier::MultiBezier::reverse()
+{
+    for ( auto& bez : beziers_ )
+        bez.reverse();
+}
+
+glaxnimate::math::bezier::MultiBezier glaxnimate::math::bezier::MultiBezier::reversed() const
+{
+    auto copy = *this;
+    copy.reverse();
+    return copy;
+}
+
+
+

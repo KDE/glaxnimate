@@ -68,8 +68,8 @@ public:
     Composition* owner_composition() const;
     void clear_owner();
 
-    virtual QPainterPath to_clip(FrameTime t) const;
-    QPainterPath to_painter_path(FrameTime t) const;
+    virtual glaxnimate::math::bezier::MultiBezier to_clip(FrameTime t) const;
+    glaxnimate::math::bezier::MultiBezier to_painter_path(FrameTime t) const;
     virtual std::unique_ptr<ShapeElement> to_path() const;
 
 Q_SIGNALS:
@@ -87,7 +87,7 @@ protected:
         Q_UNUSED(new_comp);
     }
 
-    virtual QPainterPath to_painter_path_impl(FrameTime t) const = 0;
+    virtual glaxnimate::math::bezier::MultiBezier to_painter_path_impl(FrameTime t) const = 0;
     void on_graphics_changed() override;
 
 private:
@@ -166,7 +166,7 @@ public:
     std::unique_ptr<ShapeElement> to_path() const override;
 
 protected:
-    QPainterPath to_painter_path_impl(FrameTime t) const override;
+    glaxnimate::math::bezier::MultiBezier to_painter_path_impl(FrameTime t) const override;
 };
 
 /**
@@ -218,7 +218,7 @@ public:
     virtual math::bezier::MultiBezier process(FrameTime t, const math::bezier::MultiBezier& mbez) const = 0;
 
 protected:
-    QPainterPath to_painter_path_impl(FrameTime t) const override;
+    glaxnimate::math::bezier::MultiBezier to_painter_path_impl(FrameTime t) const override;
 
     /**
      * \brief Whether to process on the whole thing (or individual objects)

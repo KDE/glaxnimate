@@ -55,22 +55,22 @@ QTransform glaxnimate::model::Group::local_transform_matrix(glaxnimate::model::F
 }
 
 
-QPainterPath glaxnimate::model::Group::to_painter_path_impl(glaxnimate::model::FrameTime t) const
+glaxnimate::math::bezier::MultiBezier glaxnimate::model::Group::to_painter_path_impl(glaxnimate::model::FrameTime t) const
 {
-    QPainterPath path;
+    glaxnimate::math::bezier::MultiBezier path;
     for ( const auto& ch : utils::Range(shapes.begin(), shapes.past_first_modifier()) )
     {
         if ( ch->is_instance<glaxnimate::model::Styler>() || ch->is_instance<glaxnimate::model::Group>()  )
-            path.addPath(ch->to_clip(t));
+            path.append(ch->to_clip(t));
     }
 
     return path;
 }
 
 
-QPainterPath glaxnimate::model::Group::to_clip(FrameTime t) const
+glaxnimate::math::bezier::MultiBezier glaxnimate::model::Group::to_clip(FrameTime t) const
 {
-    return transform.get()->transform_matrix(t, auto_orient.get()).map(to_painter_path(t));
+    return to_painter_path(t).transformed(transform.get()->transform_matrix(t, auto_orient.get()));
 }
 
 std::unique_ptr<glaxnimate::model::ShapeElement> glaxnimate::model::Group::to_path() const

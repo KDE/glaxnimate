@@ -34,10 +34,26 @@ public:
 
     bool needs_world_transform() const override { return false; }
 
+    int supported_surfaces() const override
+    {
+        return SurfaceType::Painter;
+    }
+
     void set_image_surface(QImage * destination) override
     {
         painter.reset(new QPainter(destination), true);
         painter->setRenderHint(QPainter::Antialiasing);
+    }
+
+    bool set_gl_surface(void *, int, int, int) override
+    {
+        return false;
+    }
+
+    bool set_painter_surface(QPainter * painter, int, int) override
+    {
+        this->painter.reset(painter, false);
+        return true;
     }
 
     void render_start() override
@@ -114,14 +130,14 @@ public:
         painter->setClipRect(rect, op);
     }
 
-    void clip_path(const QPainterPath & path, Qt::ClipOperation op = Qt::ReplaceClip) override
+    void clip_path(const math::bezier::MultiBezier & path, Qt::ClipOperation op = Qt::ReplaceClip) override
     {
-        painter->setClipPath(path, op);
+        painter->setClipPath(path.painter_path(), op);
     }
 
-    void draw_pixmap(const QPixmap & image) override
+    void draw_bitmap(const QImage & image) override
     {
-        painter->drawPixmap(0, 0, image);
+        painter->drawImage(0, 0, image);
     }
 
     void scale(qreal x, qreal y) override

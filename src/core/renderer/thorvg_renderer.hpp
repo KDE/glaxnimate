@@ -25,9 +25,11 @@ private:
     std::unique_ptr<tvg::Canvas> canvas;
     std::vector<tvg::Scene*> layers;
 
-    /*void set_brush(const QBrush& brush, qreal opacity)
+    tvg::Fill* make_brush(const QBrush& brush, qreal opacity)
     {
-        auto gradient = brush.gradient();
+        // TODO
+        return nullptr;
+        /*auto gradient = brush.gradient();
         if ( !gradient )
         {
             auto color = brush.color();
@@ -66,38 +68,31 @@ private:
             const auto& color = stop.second;
             cairo_pattern_add_color_stop_rgba(pattern, stop.first, color.redF(), color.greenF(), color.blueF(), color.alphaF() * opacity);
         }
-        cairo_set_source(canvas, pattern);
-    }*/
+        cairo_set_source(canvas, pattern);*/
+    }
 
-    void draw_path(const QPainterPath& path, tvg::Shape* shape)
+    void draw_path(const math::bezier::MultiBezier& path, tvg::Shape* shape)
     {
-        int count = path.elementCount();
-        for ( int i = 0; i < count; i++ )
+
+        for ( const auto& bez : path.beziers() )
         {
-            auto el = path.elementAt(i);
-            switch (el.type)
+            if ( bez.size() == 0 )
+                continue;
+
+            shape->moveTo(bez[0].pos.x(), bez[0].pos.y());
+            for ( int i = 0; i < bez.size() - 1; i++ )
             {
-                case QPainterPath::MoveToElement:
-                    shape->moveTo(el.x, el.y);
-                    break;
-
-                case QPainterPath::LineToElement:
-                    shape->lineTo(el.x, el.y);
-                    break;
-
-                case QPainterPath::CurveToElement:
-                {
-                    const QPainterPath::Element& cp2 = path.elementAt(i + 1);
-                    const QPainterPath::Element& end = path.elementAt(i + 2);
-                    shape->cubicTo(el.x, el.y, cp2.x, cp2.y, end.x, end.y);
-
-                    i += 2;
-                    break;
-                }
-
-                default:
-                    break;
+                const auto& before = bez[i];
+                const auto& after = bez[i+1];
+                shape->cubicTo(
+                    before.tan_out.x(), before.tan_out.y(),
+                    after.tan_in.x(), after.tan_in.y(),
+                    after.pos.x(), after.pos.y()
+                );
             }
+
+            if ( bez.closed() )
+                shape->close();
         }
     }
 
@@ -111,6 +106,11 @@ public:
     ~ThorvgRenderer()
     {
         tvg::Initializer::term();
+    }
+
+    int supported_surfaces() const override
+    {
+        return SurfaceType::OpenGL;
     }
 
     void set_image_surface(QImage * destination) override
@@ -134,6 +134,11 @@ public:
             return false;
         canvas.reset(gl_canvas);
         return gl_canvas->target(nullptr, nullptr, context, framebuffer, width, height, tvg::ColorSpace::ABGR8888S) == tvg::Result::Success;
+    }
+
+    bool set_painter_surface(QPainter*, int, int) override
+    {
+        return false;
     }
 
     void render_start() override
@@ -161,28 +166,56 @@ public:
         mode |= StrokeMode;
     }
 
-    void draw_path(const math::bezier::MultiBezier & bez) override
+    void fill_rect(const QRectF & rect, const QBrush & brush) override
+    {
+        auto shape = tvg::Shape::gen();
+        shape->appendRect(rect.left(), rect.top(), rect.width(), rect.height(), 0, 0);
+        if ( auto fill = make_brush(brush, 1) )
+        {
+            shape->fill(fill);
+        }
+        else
+        {
+            QColor col = brush.color();
+            shape->fill(col.red(), col.green(), col.blue(), col.alpha());
+        }
+        layers.back()->add(shape);
+
+    }
+
+    void draw_path(const math::bezier::MultiBezier & path) override
     {
         if ( !mode )
             return;
 
-        QPainterPath path = bez.painter_path();
         auto shape = tvg::Shape::gen();
         draw_path(path, shape);
 
         if ( mode & FillMode )
         {
-            // set_brush(fill.brush, fill.opacity);
-            QColor col = fill.brush.color();
-            shape->fill(col.red(), col.green(), col.blue(), col.alpha() * fill.opacity);
+            if ( auto tfill = make_brush(fill.brush, fill.opacity) )
+            {
+                shape->fill(tfill);
+            }
+            else
+            {
+                QColor col = fill.brush.color();
+                shape->fill(col.red(), col.green(), col.blue(), col.alpha() * fill.opacity);
+            }
             shape->fillRule(fill.rule == Qt::OddEvenFill ? tvg::FillRule::EvenOdd : tvg::FillRule::NonZero);
         }
 
         if ( mode & StrokeMode )
         {
-            // set_brush(stroke.pen.brush(), stroke.opacity);
-            QColor col = stroke.pen.brush().color();
-            shape->strokeFill(col.red(), col.green(), col.blue(), col.alpha() * stroke.opacity);
+            if ( auto tfill = make_brush(stroke.pen.brush(), stroke.opacity) )
+            {
+                shape->strokeFill(tfill);
+            }
+            else
+            {
+                QColor col = stroke.pen.brush().color();
+                shape->strokeFill(col.red(), col.green(), col.blue(), col.alpha() * stroke.opacity);
+            }
 
             shape->strokeWidth(stroke.pen.width());
             auto qcap = stroke.pen.capStyle();
@@ -242,7 +275,7 @@ public:
         layers.back()->clip(shape);
     }
 
-    void clip_path(const QPainterPath & path, Qt::ClipOperation op = Qt::ReplaceClip) override
+    void clip_path(const math::bezier::MultiBezier & path, Qt::ClipOperation op = Qt::ReplaceClip) override
     {
         // TODO if ( op == Qt::ReplaceClip )
         auto shape = tvg::Shape::gen();
@@ -250,7 +283,7 @@ public:
         layers.back()->clip(shape);
     }
 
-    void draw_pixmap(const QPixmap & pixmap) override
+    void draw_image(const QImage & image) override
     {
         /*QImage image = pixmap.toImage().convertToFormat(QImage::Format_ARGB32_Premultiplied);
 

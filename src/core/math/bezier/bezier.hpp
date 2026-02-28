@@ -221,6 +221,8 @@ private:
 class MultiBezier
 {
 public:
+    MultiBezier() {}
+    MultiBezier(const QPainterPath& path) { append(path); }
     const std::vector<Bezier>& beziers() const { return beziers_; }
     std::vector<Bezier>& beziers() { return beziers_; }
 
@@ -280,12 +282,34 @@ public:
 
     void append(const QPainterPath& path);
 
-    void transform(const QTransform& t);
+    void append(const QPolygonF& path);
+
+    void append(const Bezier& path)
+    {
+        if ( path.size() > 1 )
+            beziers_.push_back(path);
+    }
+
+    template<class T>
+    MultiBezier& operator+= (const T& val)
+    {
+        append(val);
+        return *this;
+    }
 
     static MultiBezier from_painter_path(const QPainterPath& path);
 
     int size() const { return beziers_.size(); }
     bool empty() const { return beziers_.empty(); }
+    void clear() { beziers_.clear(); }
+
+
+    auto begin() { return beziers_.begin(); }
+    auto begin() const { return beziers_.begin(); }
+    auto cbegin() const { return beziers_.begin(); }
+    auto end() { return beziers_.end(); }
+    auto end() const { return beziers_.end(); }
+    auto cend() const { return beziers_.end(); }
 
     const Bezier& operator[](int index) const
     {
@@ -296,6 +320,15 @@ public:
     {
         return beziers_[index];
     }
+
+    void transform(const QTransform& t);
+    glaxnimate::math::bezier::MultiBezier transformed(const QTransform& matrix) const;
+
+    void translate(const QPointF& p);
+    glaxnimate::math::bezier::MultiBezier translated(const QPointF& p) const;
+
+    void reverse();
+    glaxnimate::math::bezier::MultiBezier reversed() const;
 
 private:
     void handle_end()

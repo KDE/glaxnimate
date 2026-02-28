@@ -96,14 +96,14 @@ public:
 
     void paint(renderer::Renderer*, FrameTime, PaintMode, model::Modifier* modifier) const override;
 
-    QPainterPath to_clip(model::FrameTime t) const override;
+    glaxnimate::math::bezier::MultiBezier to_clip(model::FrameTime t) const override;
 
     std::unique_ptr<ShapeElement> to_path() const override;
 
     bool is_valid_parent(DocumentNode* node) const;
 
 protected:
-    QPainterPath to_painter_path_impl(model::FrameTime t) const override;
+    glaxnimate::math::bezier::MultiBezier to_painter_path_impl(model::FrameTime t) const override;
 
 private:
     std::vector<DocumentNode*> valid_parents() const;

@@ -104,19 +104,19 @@ void glaxnimate::model::PreCompLayer::on_composition_changed(model::Composition*
     }
 }
 
-QPainterPath glaxnimate::model::PreCompLayer::to_painter_path_impl(glaxnimate::model::FrameTime time) const
+glaxnimate::math::bezier::MultiBezier glaxnimate::model::PreCompLayer::to_painter_path_impl(glaxnimate::model::FrameTime time) const
 {
-    QPainterPath p;
+    glaxnimate::math::bezier::MultiBezier p;
     if ( composition.get() )
     {
         time = timing->time_to_local(time);
         for ( const auto& sh : composition->shapes )
-            p.addPath(sh->to_clip(time));
+            p.append(sh->to_clip(time));
     }
     return p;
 }
 
-QPainterPath glaxnimate::model::PreCompLayer::to_clip(glaxnimate::model::FrameTime time) const
+glaxnimate::math::bezier::MultiBezier glaxnimate::model::PreCompLayer::to_clip(glaxnimate::model::FrameTime time) const
 {
-    return transform.get()->transform_matrix(time).map(to_painter_path(time));
+    return to_painter_path(time).transformed(transform.get()->transform_matrix(time));
 }

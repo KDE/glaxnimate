@@ -18,7 +18,7 @@ public:
     ShapeListProperty* property = nullptr;
     int position = -1;
     glaxnimate::model::Composition* owner_composition = nullptr;
-    PathCache<QPainterPath> cached_path;
+    PathCache<glaxnimate::math::bezier::MultiBezier> cached_path;
 
     void update_comp(glaxnimate::model::Composition* comp, ShapeElement* parent)
     {
@@ -124,12 +124,12 @@ math::bezier::MultiBezier glaxnimate::model::ShapeElement::shapes(glaxnimate::mo
     return bez;
 }
 
-QPainterPath glaxnimate::model::ShapeElement::to_clip(FrameTime t) const
+glaxnimate::math::bezier::MultiBezier glaxnimate::model::ShapeElement::to_clip(FrameTime t) const
 {
     return to_painter_path(t);
 }
 
-QPainterPath glaxnimate::model::ShapeElement::to_painter_path(FrameTime t) const
+glaxnimate::math::bezier::MultiBezier glaxnimate::model::ShapeElement::to_painter_path(FrameTime t) const
 {
     if ( d->cached_path.is_dirty(t) )
         d->cached_path.set_path(t, to_painter_path_impl(t));
@@ -204,10 +204,10 @@ std::unique_ptr<glaxnimate::model::ShapeElement> glaxnimate::model::Shape::to_pa
     return path;
 }
 
-QPainterPath glaxnimate::model::Shape::to_painter_path_impl(FrameTime t) const
+glaxnimate::math::bezier::MultiBezier glaxnimate::model::Shape::to_painter_path_impl(FrameTime t) const
 {
-    QPainterPath p;
-    to_bezier(t).add_to_painter_path(p);
+    glaxnimate::math::bezier::MultiBezier p;
+    p.append(to_bezier(t));
     return p;
 }
 
@@ -317,16 +317,16 @@ void glaxnimate::model::Modifier::do_collect_shapes(const std::vector<ShapeEleme
     }
 }
 
-QPainterPath glaxnimate::model::Modifier::to_painter_path_impl(glaxnimate::model::FrameTime t) const
+glaxnimate::math::bezier::MultiBezier glaxnimate::model::Modifier::to_painter_path_impl(glaxnimate::model::FrameTime t) const
 {
     math::bezier::MultiBezier bez;
     add_shapes(t, bez, {});
-    return bez.painter_path();
+    return bez;
 }
 
 QRectF glaxnimate::model::Modifier::local_bounding_rect(glaxnimate::model::FrameTime t) const
 {
-    return to_painter_path(t).boundingRect();
+    return to_painter_path(t).bounding_box();
 }
 
 

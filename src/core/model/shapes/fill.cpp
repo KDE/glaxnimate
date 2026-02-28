@@ -21,8 +21,8 @@ void glaxnimate::model::Fill::on_paint(renderer::Renderer* p, glaxnimate::model:
     p->draw_path(bez);
 }
 
-QPainterPath glaxnimate::model::Fill::to_painter_path_impl(glaxnimate::model::FrameTime t) const
+glaxnimate::math::bezier::MultiBezier glaxnimate::model::Fill::to_painter_path_impl(glaxnimate::model::FrameTime t) const
 {
-    return collect_shapes(t, {}).painter_path();
+    return collect_shapes(t, {});
 }
 

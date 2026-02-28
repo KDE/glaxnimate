@@ -115,7 +115,7 @@ public:
         raw_scaled = QRawFont::fromFont(font);
     }
 
-    QPainterPath path_for_glyph(quint32  glyph, bool fix_paint)
+    glaxnimate::math::bezier::MultiBezier path_for_glyph(quint32  glyph, bool fix_paint)
     {
         QPainterPath path = raw_scaled.pathForGlyph(glyph);
 
@@ -125,7 +125,7 @@ public:
         if ( raw_scaled.pixelSize() == 0 )
             return path;
 
-        QPainterPath dest;
+        glaxnimate::math::bezier::MultiBezier dest;
         qreal mult = raw.pixelSize() / raw_scaled.pixelSize();
 
         std::array<QPointF, 3> data;
@@ -137,10 +137,10 @@ public:
             switch ( element.type )
             {
                 case QPainterPath::MoveToElement:
-                    dest.moveTo(p);
+                    dest.move_to(p);
                     break;
                 case QPainterPath::LineToElement:
-                    dest.lineTo(p);
+                    dest.line_to(p);
                     break;
                 case QPainterPath::CurveToElement:
                     data_i = 0;
@@ -151,7 +151,7 @@ public:
                     data[data_i] = p;
                     if ( data_i == 2 )
                     {
-                        dest.cubicTo(data[0], data[1], data[2]);
+                        dest.cubic_to(data[0], data[1], data[2]);
                         data_i = -1;
                     }
                     break;
@@ -238,14 +238,14 @@ QString glaxnimate::model::Font::type_name_human() const
     return i18n("Font");
 }
 
-QPainterPath glaxnimate::model::Font::path_for_glyph(quint32 glyph, glaxnimate::model::Font::CharDataCache& cache, bool fix_paint) const
+glaxnimate::math::bezier::MultiBezier glaxnimate::model::Font::path_for_glyph(quint32 glyph, glaxnimate::model::Font::CharDataCache& cache, bool fix_paint) const
 {
     auto it = cache.find(glyph);
 
     if ( it != cache.end() )
         return it->second;
 
-    QPainterPath path = d->path_for_glyph(glyph, fix_paint);
+    glaxnimate::math::bezier::MultiBezier path = d->path_for_glyph(glyph, fix_paint);
     cache.emplace(glyph, path);
     return path;
 }
@@ -385,7 +385,7 @@ void glaxnimate::model::TextShape::on_text_changed()
 #if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
     shape_cache.clear();
 #else
-    shape_cache = QPainterPath();
+    shape_cache = glaxnimate::math::bezier::MultiBezier();
 #endif
     propagate_bounding_rect_changed();
 }
@@ -396,9 +396,9 @@ void glaxnimate::model::TextShape::on_font_changed()
     on_text_changed();
 }
 
-const QPainterPath & glaxnimate::model::TextShape::untranslated_path(FrameTime t) const
+const glaxnimate::math::bezier::MultiBezier & glaxnimate::model::TextShape::untranslated_path(FrameTime t) const
 {
-    if ( shape_cache.isEmpty() )
+    if ( shape_cache.empty() )
     {
         if ( path.get() )
         {
@@ -417,7 +417,7 @@ const QPainterPath & glaxnimate::model::TextShape::untranslated_path(FrameTime t
                         continue;
 
                     auto glyph_shape = font->path_for_glyph(glyph.glyph, cache, true);
-                    auto glyph_rect = glyph_shape.boundingRect();
+                    auto glyph_rect = glyph_shape.bounding_box();
 
                     auto start1 = length_data.at_length(x);
                     auto start2 = start1.descend();
@@ -430,7 +430,7 @@ const QPainterPath & glaxnimate::model::TextShape::untranslated_path(FrameTime t
                     QTransform mat;
                     mat.translate(start_p.pos.x(), start_p.pos.y());
                     mat.rotate(qRadiansToDegrees(math::atan2(end_p.pos.y() - start_p.pos.y(), end_p.pos.x() - start_p.pos.x())));
-                    shape_cache += mat.map(glyph_shape);
+                    shape_cache += glyph_shape.transformed(mat);
                 }
             }
         }
@@ -450,7 +450,7 @@ void glaxnimate::model::TextShape::add_shapes(glaxnimate::model::FrameTime t, ma
 {
     if ( !transform.isIdentity() )
     {
-        auto mb = math::bezier::MultiBezier::from_painter_path(shape_data(t));
+        auto mb = shape_data(t);
         mb.transform(transform);
         bez.append(mb);
     }
@@ -460,12 +460,12 @@ void glaxnimate::model::TextShape::add_shapes(glaxnimate::model::FrameTime t, ma
     }
 }
 
-QPainterPath glaxnimate::model::TextShape::to_painter_path_impl(glaxnimate::model::FrameTime) const
+glaxnimate::math::bezier::MultiBezier glaxnimate::model::TextShape::to_painter_path_impl(glaxnimate::model::FrameTime) const
 {
     return {};
 }
 
-QPainterPath glaxnimate::model::TextShape::shape_data(FrameTime t) const
+glaxnimate::math::bezier::MultiBezier glaxnimate::model::TextShape::shape_data(FrameTime t) const
 {
     // Ignore position if we have a path, it can still be moved from the group
     if ( path.get() )
@@ -481,7 +481,7 @@ QIcon glaxnimate::model::TextShape::tree_icon() const
 
 QRectF glaxnimate::model::TextShape::local_bounding_rect(glaxnimate::model::FrameTime t) const
 {
-    return shape_data(t).boundingRect();
+    return shape_data(t).bounding_box();
 }
 
 QString glaxnimate::model::TextShape::type_name_human() const
@@ -505,9 +505,7 @@ std::unique_ptr<glaxnimate::model::ShapeElement> glaxnimate::model::TextShape::t
 
         for ( const auto& glyph : line.glyphs )
         {
-            QPainterPath p = font->path_for_glyph(glyph.glyph, local_cache, false).translated(glyph.position);
-            math::bezier::MultiBezier bez;
-            bez.append(p);
+            math::bezier::MultiBezier bez = font->path_for_glyph(glyph.glyph, local_cache, false).translated(glyph.position);
 
             if ( bez.beziers().size() == 1 )
             {

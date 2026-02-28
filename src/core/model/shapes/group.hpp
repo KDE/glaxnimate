@@ -48,7 +48,7 @@ public:
 
     QTransform local_transform_matrix(model::FrameTime t) const override;
 
-    QPainterPath to_clip(model::FrameTime t) const override;
+    glaxnimate::math::bezier::MultiBezier to_clip(model::FrameTime t) const override;
 
     std::unique_ptr<ShapeElement> to_path() const override;
 
@@ -56,7 +56,7 @@ Q_SIGNALS:
     void opacity_changed(float op);
 
 protected:
-    QPainterPath to_painter_path_impl(model::FrameTime t) const override;
+    glaxnimate::math::bezier::MultiBezier to_painter_path_impl(model::FrameTime t) const override;
     void on_paint(renderer::Renderer*, FrameTime, PaintMode, model::Modifier*) const override;
     void on_graphics_changed() override;
     void on_composition_changed(model::Composition* old_comp, model::Composition* new_comp) override;

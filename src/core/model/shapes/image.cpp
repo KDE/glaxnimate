@@ -85,10 +85,10 @@ QString glaxnimate::model::Image::type_name_human() const
     return i18n("Image");
 }
 
-QPainterPath glaxnimate::model::Image::to_painter_path_impl(FrameTime time) const
+glaxnimate::math::bezier::MultiBezier glaxnimate::model::Image::to_painter_path_impl(FrameTime time) const
 {
     auto trans = transform.get()->transform_matrix(time);
-    QPainterPath p;
-    p.addPolygon(trans.map(QRectF(QPointF(0, 0), image.get() ? image->pixmap().size() : QSize(0, 0))));
+    glaxnimate::math::bezier::MultiBezier p;
+    p.append(trans.map(QRectF(QPointF(0, 0), image.get() ? image->pixmap().size() : QSize(0, 0))));
     return p;
 }

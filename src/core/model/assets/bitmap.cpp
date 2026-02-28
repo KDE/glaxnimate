@@ -20,7 +20,7 @@ GLAXNIMATE_OBJECT_IMPL(glaxnimate::model::Bitmap)
 
 void glaxnimate::model::Bitmap::paint(renderer::Renderer* painter) const
 {
-    painter->draw_pixmap(image);
+    painter->draw_image(image);
 }
 
 void glaxnimate::model::Bitmap::refresh(bool rebuild_embedded)
@@ -54,10 +54,11 @@ void glaxnimate::model::Bitmap::refresh(bool rebuild_embedded)
                 reader.setDevice(&buf);
                 format.set(reader.format());
                 qimage = reader.read();
-                if ( rebuild_embedded && embedded() )
-                    data.set(build_embedded(qimage));
+                image = qimage.convertToFormat(QImage::Format_ARGB32_Premultiplied);
 
-                image = QPixmap::fromImage(qimage);
+                if ( rebuild_embedded && embedded() )
+                    data.set(build_embedded(image));
+
                 width.set(image.width());
                 height.set(image.height());
 
@@ -76,8 +77,8 @@ void glaxnimate::model::Bitmap::refresh(bool rebuild_embedded)
         format.set(reader.format());
         qimage = reader.read();
     }
+    image = qimage.convertToFormat(QImage::Format_ARGB32_Premultiplied);
 
-    image = QPixmap::fromImage(qimage);
     width.set(image.width());
     height.set(image.height());
 
@@ -107,7 +108,7 @@ void glaxnimate::model::Bitmap::embed(bool embedded)
     if ( !embedded )
         data.set_undoable({});
     else
-        data.set_undoable(build_embedded(image.toImage()));
+        data.set_undoable(build_embedded(image));
 }
 
 void glaxnimate::model::Bitmap::on_refresh()
@@ -117,7 +118,7 @@ void glaxnimate::model::Bitmap::on_refresh()
 
 QIcon glaxnimate::model::Bitmap::instance_icon() const
 {
-    return image;
+    return pixmap();
 }
 
 bool glaxnimate::model::Bitmap::from_url(const QUrl& url)
@@ -240,7 +241,7 @@ QByteArray glaxnimate::model::Bitmap::image_data() const
     if ( image.isNull() )
         return {};
 
-    return build_embedded(image.toImage());
+    return build_embedded(image);
 }
 
 QSize glaxnimate::model::Bitmap::size() const

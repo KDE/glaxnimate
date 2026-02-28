@@ -63,7 +63,7 @@ public:
     }
 
 private:
-    void offscreen_render(renderer::Renderer& renderer, QPainter* painter, const QRectF& rect)
+    /*void offscreen_render(renderer::Renderer& renderer, QPainter* painter, const QRectF& rect)
     {
         // Prepare the image
         QTransform t = painter->worldTransform();
@@ -78,7 +78,7 @@ private:
         // Render onto the image
         renderer.set_image_surface(&img);
         renderer.render_start();
-        if ( renderer.needs_world_transform() )
+        if ( !renderer.supports_surface(renderer::Painter) )
         {
             // Take into account the world transform
             // NOTE: Shouldn't be used with QPainterRenderer as that already includes it
@@ -93,7 +93,7 @@ private:
 
         // Render the image to the item
         painter->drawImage(rect.topLeft(), img);
-    }
+    }*/
 
 private Q_SLOTS:
     void size_changed()

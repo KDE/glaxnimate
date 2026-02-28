@@ -45,7 +45,7 @@ public:
 
     using ParagraphData = std::vector<LineData>;
 
-    using CharDataCache = std::unordered_map<quint32, QPainterPath>;
+    using CharDataCache = std::unordered_map<quint32, glaxnimate::math::bezier::MultiBezier>;
 
     explicit Font(Document* doc);
     ~Font();
@@ -74,7 +74,7 @@ public:
      */
     qreal line_spacing_unscaled() const;
 
-    QPainterPath path_for_glyph(quint32 glyph, CharDataCache& cache, bool fix_paint) const;
+    glaxnimate::math::bezier::MultiBezier path_for_glyph(quint32 glyph, CharDataCache& cache, bool fix_paint) const;
 
 Q_SIGNALS:
     void font_changed();
@@ -106,7 +106,7 @@ public:
 
     void add_shapes(FrameTime t, math::bezier::MultiBezier& bez, const QTransform& transform) const override;
 
-    QPainterPath shape_data(FrameTime t) const;
+    glaxnimate::math::bezier::MultiBezier shape_data(FrameTime t) const;
 
     QIcon tree_icon() const override;
     QRectF local_bounding_rect(FrameTime t) const override;
@@ -121,19 +121,19 @@ public:
     QPointF offset_to_next_character() const;
 
 protected:
-    QPainterPath to_painter_path_impl(FrameTime t) const override;
+    glaxnimate::math::bezier::MultiBezier to_painter_path_impl(FrameTime t) const override;
 
 private:
     void on_font_changed();
     void on_text_changed();
-    const QPainterPath& untranslated_path(FrameTime t) const;
+    const glaxnimate::math::bezier::MultiBezier& untranslated_path(FrameTime t) const;
 
     std::vector<DocumentNode*> valid_paths() const;
     bool is_valid_path(DocumentNode* node) const;
     void path_changed(model::ShapeElement* new_path, model::ShapeElement* old_path);
 
     mutable Font::CharDataCache cache;
-    mutable QPainterPath shape_cache;
+    mutable glaxnimate::math::bezier::MultiBezier shape_cache;
 };
 
 } // namespace glaxnimate::model

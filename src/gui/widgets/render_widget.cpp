@@ -52,6 +52,14 @@ public:
     {}
 
 protected:
+    void render_composition()
+    {
+        renderer->render_start();
+        renderer->transform(world_transform);
+        composition->paint(renderer.get(), composition->time(), model::VisualNode::Canvas);
+        renderer->render_end();
+    }
+
     void paintEvent(QPaintEvent* ) override
     {
         QPainter painter(this);
@@ -67,17 +75,18 @@ protected:
         painter.fillRect(QRectF(QPointF(0, 0), composition->size()), back);
         painter.setTransform({});
 
-        QImage img(this->width(), this->height(), QImage::Format_ARGB32_Premultiplied);
-        img.fill(Qt::transparent);
-        renderer->set_image_surface(&img);
-
-
-        renderer->render_start();
-        renderer->transform(world_transform);
-        composition->paint(renderer.get(), composition->time(), model::VisualNode::Canvas);
-        renderer->render_end();
-
-        painter.drawImage(0, 0, img);
+        if ( renderer->set_painter_surface(&painter, width(), height()) )
+        {
+            render_composition();
+        }
+        else
+        {
+            QImage img(this->width(), this->height(), QImage::Format_ARGB32_Premultiplied);
+            img.fill(Qt::transparent);
+            renderer->set_image_surface(&img);
+            render_composition();
+            painter.drawImage(0, 0, img);
+        }
     }
 
 };
@@ -161,8 +170,6 @@ protected:
 
 };
 
-
-
 } // namespace
 
 class glaxnimate::gui::RenderWidget::Private
@@ -172,15 +179,27 @@ public:
     RenderWidgetUtil* util;
     QVBoxLayout* layout;
 
-    Private(QWidget* parent)
+    void init_renderer(QWidget* parent)
     {
         // TODO setting for the render quality
         auto renderer = renderer::default_renderer(5);
-        // auto wid = new BasicRenderWidget(parent, std::move(renderer));
-        auto wid = new OpenGlRenderWidget(parent, std::move(renderer));
-        this->widget = wid;
-        this->util = wid;
+        if ( renderer->supports_surface(renderer::OpenGL) )
+        {
+            auto wid = new OpenGlRenderWidget(parent, std::move(renderer));
+            widget = wid;
+            util = wid;
+        }
+        else
+        {
+            auto wid = new BasicRenderWidget(parent, std::move(renderer));
+            widget = wid;
+            util = wid;
+        }
+    }
 
+    Private(QWidget* parent)
+    {
+        init_renderer(parent);
         layout = new QVBoxLayout(widget);
         layout->setContentsMargins(0, 0, 0, 0);
     }

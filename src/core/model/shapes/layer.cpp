@@ -129,15 +129,17 @@ void glaxnimate::model::Layer::paint(renderer::Renderer* painter, FrameTime time
 
         if ( shapes[0]->visible.get() )
         {
-            QPainterPath clip = shapes[0]->to_clip(time);
-            clip.setFillRule(Qt::WindingFill);
+            glaxnimate::math::bezier::MultiBezier clip = shapes[0]->to_clip(time);
+            // clip.setFillRule(Qt::WindingFill);
             if ( mask->inverted.get() )
             {
-                QPainterPath outer_clip;
-                outer_clip.addPolygon(
+                glaxnimate::math::bezier::MultiBezier outer_clip;
+                outer_clip.append(
                     transform.inverted().map(owner_composition()->rect())
                 );
-                clip = outer_clip.subtracted(clip);
+                // TODO check fill rule
+                outer_clip.append(clip);
+                std::swap(clip, outer_clip);
             }
             painter->clip_path(clip, Qt::IntersectClip);
         }
@@ -156,7 +158,7 @@ void glaxnimate::model::Layer::paint(renderer::Renderer* painter, FrameTime time
     }
 }
 
-QPainterPath glaxnimate::model::Layer::to_clip(glaxnimate::model::FrameTime time) const
+glaxnimate::math::bezier::MultiBezier glaxnimate::model::Layer::to_clip(glaxnimate::model::FrameTime time) const
 {
     time = relative_time(time);
     if ( !animation->time_visible(time) || !render.get() )
@@ -165,7 +167,7 @@ QPainterPath glaxnimate::model::Layer::to_clip(glaxnimate::model::FrameTime time
     return Group::to_clip(time);
 }
 
-QPainterPath glaxnimate::model::Layer::to_painter_path_impl(glaxnimate::model::FrameTime time) const
+glaxnimate::math::bezier::MultiBezier glaxnimate::model::Layer::to_painter_path_impl(glaxnimate::model::FrameTime time) const
 {
     time = relative_time(time);
     if ( !animation->time_visible(time) || !render.get() )
