@@ -32,8 +32,6 @@ public:
 
     QPainterRenderer() = default;
 
-    bool needs_world_transform() const override { return false; }
-
     int supported_surfaces() const override
     {
         return SurfaceType::Painter;
@@ -147,7 +145,7 @@ public:
         painter->setClipPath(path.painter_path(), op);
     }
 
-    void draw_bitmap(const QImage & image) override
+    void draw_image(const QImage & image) override
     {
         painter->drawImage(0, 0, image);
     }

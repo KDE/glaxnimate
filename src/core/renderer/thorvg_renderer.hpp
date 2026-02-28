@@ -220,6 +220,10 @@ public:
         canvas.reset(gl_canvas);
         return gl_canvas->target(nullptr, nullptr, context, framebuffer, width, height, tvg::ColorSpace::ABGR8888S) == tvg::Result::Success;
 #else
+        Q_UNUSED(context);
+        Q_UNUSED(framebuffer);
+        Q_UNUSED(width);
+        Q_UNUSED(height);
         return false;
 #endif
     }
@@ -399,7 +403,7 @@ public:
     }
 
 
-    void scale(qreal x, qreal y) override
+    void scale(qreal x, qreal) override
     {
         layers.back()->scale(x);
     }

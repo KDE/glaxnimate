@@ -3,11 +3,13 @@
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
-#include "cairo_renderer.hpp"
+// #include "qpainter_renderer.hpp"
 #include "thorvg_renderer.hpp"
 
 std::unique_ptr<glaxnimate::renderer::Renderer> glaxnimate::renderer::default_renderer(int quality)
 {
+    Q_UNUSED(quality);
+    // if ( quality == 0 )
+        // return std::make_unique<glaxnimate::renderer::QPainterRenderer>();
     return std::make_unique<glaxnimate::renderer::ThorvgRenderer>();
-    // return std::make_unique<glaxnimate::renderer::CairoRenderer>(quality);
 }
