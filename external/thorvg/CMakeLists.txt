@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
+# SPDX-License-Identifier: BSD-2-Clause
 file(
     GLOB SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/thorvg/src/common/*.cpp
