@@ -23,12 +23,11 @@ public:
     QTransform world_transform;
     QPointF offset;
     QGraphicsView* view = nullptr;
-    QBrush back;
 
     RenderWidgetUtil(std::unique_ptr<renderer::Renderer> renderer) :
         renderer(std::move(renderer))
     {
-        back.setTexture(QPixmap(app::Application::instance()->data_file("images/widgets/background.png")));
+
     }
 
     void update_transform()
@@ -47,10 +46,13 @@ public:
 class BasicRenderWidget : public QWidget, public RenderWidgetUtil
 {
 public:
+    QBrush back;
 
     BasicRenderWidget(QWidget* parent, std::unique_ptr<renderer::Renderer> renderer) :
         QWidget(parent), RenderWidgetUtil(std::move(renderer))
-    {}
+    {
+        back.setTexture(QPixmap(app::Application::instance()->data_file("images/widgets/background.png")));
+    }
 
 protected:
     void render_composition()
@@ -105,11 +107,13 @@ namespace {
 
 class OpenGlRenderWidget : public QOpenGLWidget, public QOpenGLFunctions, public RenderWidgetUtil
 {
+    QImage back;
 public:
     explicit OpenGlRenderWidget(QWidget* parent, std::unique_ptr<renderer::Renderer> renderer) :
         QOpenGLWidget(parent), RenderWidgetUtil(std::move(renderer))
     {
         setUpdatesEnabled(true);
+        back = QImage(app::Application::instance()->data_file("images/widgets/background.png")).convertedTo(QImage::Format_ARGB32_Premultiplied);
     }
 
     void* native_gl_context()
@@ -158,10 +162,10 @@ protected:
 
         // Background
         renderer->fill_rect(QRectF(0, 0, width(), height()), palette().base());
-        // TODO checkered pattern
 
         renderer->layer_start();
         renderer->transform(world_transform);
+        renderer->fill_pattern(QRectF(0, 0, composition->width.get(), composition->height.get()), back);
         composition->paint(renderer.get(), composition->time(), model::VisualNode::Canvas);
         renderer->layer_end();
         renderer->render_end();

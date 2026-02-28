@@ -88,19 +88,14 @@ public:
     virtual void draw_path(const math::bezier::MultiBezier& bez) = 0;
 
     /**
-     * \brief Fills a rectangle with a brusj
+     * \brief Fills a rectangle with a brush
      */
-    virtual void fill_rect(const QRectF& rect, const QBrush& brush)
-    {
-        set_fill({brush});
-        math::bezier::MultiBezier bez;
-        bez.move_to(QPointF(rect.left(), rect.top()));
-        bez.line_to(QPointF(rect.right(), rect.top()));
-        bez.line_to(QPointF(rect.right(), rect.bottom()));
-        bez.line_to(QPointF(rect.left(), rect.bottom()));
-        bez.close();
-        draw_path(bez);
-    }
+    virtual void fill_rect(const QRectF& rect, const QBrush& brush) = 0;
+
+    /**
+     * \brief Fills a rectangle with a repeating image
+     */
+    virtual void fill_pattern(const QRectF& rect, const QImage& pattern) = 0;
 
 // Compositing ops
     /**

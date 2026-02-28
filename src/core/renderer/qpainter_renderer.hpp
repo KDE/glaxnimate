@@ -105,6 +105,18 @@ public:
         mode = NothingMode;
     }
 
+    void fill_rect(const QRectF & rect, const QBrush & brush) override
+    {
+        painter->fillRect(rect, brush);
+    }
+
+    void fill_pattern(const QRectF & rect, const QImage & pattern) override
+    {
+        QBrush brush;
+        brush.setTexture(QPixmap::fromImage(pattern));
+        painter->fillRect(rect, brush);
+    }
+
     void layer_start() override
     {
         painter->save();

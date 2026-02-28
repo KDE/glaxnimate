@@ -7,8 +7,8 @@
 
 #include <thorvg.h>
 
-#include "utils/maybe_ptr.hpp"
 #include "renderer/renderer.hpp"
+
 
 namespace glaxnimate::renderer {
 
@@ -143,6 +143,41 @@ private:
                 shape->close();
             }
         }
+    }
+
+    tvg::ColorSpace convert_image_format(QImage::Format fmt) const
+    {
+        switch ( fmt )
+        {
+            case QImage::Format_ARGB32:
+                return tvg::ColorSpace::ARGB8888S;
+            case QImage::Format_ARGB32_Premultiplied:
+                return tvg::ColorSpace::ARGB8888;
+            case QImage::Format_Grayscale8:
+                return tvg::ColorSpace::Grayscale8;
+            default:
+                return tvg::ColorSpace::Unknown;
+        }
+    }
+
+    tvg::Picture* convert_image(const QImage & image)
+    {
+        auto picture = tvg::Picture::gen();
+
+        auto result = picture->load(
+            reinterpret_cast<const uint32_t*>(image.constBits()),
+            image.width(),
+            image.height(),
+            convert_image_format(image.format()),
+            false
+        );
+        if ( result != tvg::Result::Success )
+        {
+            picture->unref();
+            return nullptr;
+        }
+
+        return picture;
     }
 
 public:
@@ -336,35 +371,33 @@ public:
         layers.back()->clip(shape);
     }
 
-    tvg::ColorSpace convert_image_format(QImage::Format fmt) const
+    void draw_image(const QImage & image) override
     {
-        switch ( fmt )
+        if ( auto picture = convert_image(image) )
+            layers.back()->add(picture);
+    }
+
+    void fill_pattern(const QRectF& rect, const QImage& pattern) override
+    {
+        if ( auto picture = convert_image(pattern) )
         {
-            case QImage::Format_ARGB32:
-                return tvg::ColorSpace::ARGB8888S;
-            case QImage::Format_ARGB32_Premultiplied:
-                return tvg::ColorSpace::ARGB8888;
-            case QImage::Format_Grayscale8:
-                return tvg::ColorSpace::Grayscale8;
-            default:
-                return tvg::ColorSpace::Unknown;
+            layer_start();
+            clip_rect(rect);
+            for ( int y = rect.top(); y < rect.bottom(); y += pattern.height() )
+            {
+                for ( int x = rect.left(); x < rect.right(); x += pattern.width() )
+                {
+                    auto copy = picture->duplicate();
+                    copy->translate(x, y);
+                    layers.back()->add(copy);
+                }
+            }
+            layer_end();
+
+            picture->unref();
         }
     }
 
-    void draw_image(const QImage & image) override
-    {
-        auto picture = tvg::Picture::gen();
-
-        tvg::Result result = picture->load(
-            reinterpret_cast<const uint32_t*>(image.constBits()),
-            image.width(),
-            image.height(),
-            convert_image_format(image.format()),
-            false
-        );
-        if ( result == tvg::Result::Success )
-            layers.back()->add(picture);
-    }
 
     void scale(qreal x, qreal y) override
     {
