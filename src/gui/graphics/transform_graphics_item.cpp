@@ -74,6 +74,7 @@ public:
     qreal angle_from_anchor;
     TransformGraphicsItem* parent;
     Canvas* canvas = nullptr;
+    bool block_updates = false;
 
     QPointF get_tl() const { return cache.topLeft(); }
     QPointF get_tr() const { return cache.topRight(); }
@@ -254,6 +255,13 @@ graphics::TransformGraphicsItem::TransformGraphicsItem(
     connect(target, &model::VisualNode::bounding_rect_changed, this, &TransformGraphicsItem::update_handles);
     connect(target, &model::VisualNode::transform_matrix_changed, this, &TransformGraphicsItem::update_offshoots);
     connect(transform, &model::Object::property_changed, this, &TransformGraphicsItem::update_transform);
+    connect(target->document(), &model::Document::current_time_changing, this, [this]{
+        d->block_updates = true;
+    });
+    connect(target->document(), &model::Document::current_time_changed, this, [this]{
+        d->block_updates = false;
+        update_handles();
+    });
 
     update_transform();
     update_handles();
@@ -313,6 +321,8 @@ void glaxnimate::gui::graphics::TransformGraphicsItem::update_offshoots()
 
 void graphics::TransformGraphicsItem::update_handles()
 {
+    if ( d->block_updates )
+        return;
     prepareGeometryChange();
     d->cache = d->target->local_bounding_rect(d->target->time());
     for ( const auto& h : d->handles )
