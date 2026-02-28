@@ -12,6 +12,7 @@
 #include "math/bezier/solver.hpp"
 #include "math/bezier/point.hpp"
 #include "math/bezier/segment.hpp"
+#include "utils/value_cache.hpp"
 
 namespace glaxnimate::math::bezier {
 
@@ -36,22 +37,22 @@ public:
     int size() const { return points_.size(); }
     int closed_size() const { return points_.size() + (closed_ ? 1 : 0); }
     bool empty() const { return points_.empty(); }
-    auto begin() { return points_.begin(); }
+    auto begin() { cache.mark_dirty(); return points_.begin(); }
     auto begin() const { return points_.begin(); }
     auto cbegin() const { return points_.begin(); }
-    auto end() { return points_.end(); }
+    auto end() { cache.mark_dirty(); return points_.end(); }
     auto end() const { return points_.end(); }
     auto cend() const { return points_.end(); }
-    void push_back(const Point& p) { points_.push_back(p); }
-    void clear() { points_.clear(); closed_ = false; }
+    void push_back(const Point& p) { cache.mark_dirty(); points_.push_back(p); }
+    void clear() { cache.mark_dirty(); points_.clear(); closed_ = false; }
     const Point& back() const { return points_.back(); }
-    Point& back() { return points_.back(); }
+    Point& back() { cache.mark_dirty(); return points_.back(); }
 
     const Point& operator[](int index) const { return points_[index % points_.size()]; }
-    Point& operator[](int index) { return points_[index % points_.size()]; }
+    Point& operator[](int index) { cache.mark_dirty(); return points_[index % points_.size()]; }
 
     bool closed() const { return closed_; }
-    void set_closed(bool closed) { closed_ = closed; }
+    void set_closed(bool closed) { cache.mark_dirty(); closed_ = closed; }
 
     /**
      * \brief Inserts a point at the given index
@@ -61,6 +62,7 @@ public:
      */
     Bezier& insert_point(int index, const Point& p)
     {
+        cache.mark_dirty();
         points_.insert(points_.begin() + qBound(0, index, size()), p);
         return *this;
     }
@@ -71,6 +73,7 @@ public:
      */
     Bezier& add_point(const QPointF& p, const QPointF& in_t = {0, 0}, const QPointF& out_t = {0, 0})
     {
+        cache.mark_dirty();
         points_.push_back(Point::from_relative(p, in_t, out_t));
         return *this;
     }
@@ -81,6 +84,7 @@ public:
      */
     Bezier& add_smooth_point(const QPointF& p, const QPointF& in_t)
     {
+        cache.mark_dirty();
         points_.push_back(Point::from_relative(p, in_t, -in_t, Smooth));
         return *this;
     }
@@ -91,6 +95,7 @@ public:
      */
     Bezier& close()
     {
+        cache.mark_dirty();
         closed_ = true;
         return *this;
     }
@@ -101,6 +106,7 @@ public:
      */
     Bezier& line_to(const QPointF& p)
     {
+        cache.mark_dirty();
         if ( !empty() )
             points_.back().tan_out = points_.back().pos;
         points_.push_back(p);
@@ -115,6 +121,7 @@ public:
      */
     Bezier& quadratic_to(const QPointF& handle, const QPointF& dest)
     {
+        cache.mark_dirty();
         if ( !empty() )
             points_.back().tan_out = points_.back().pos + 2.0/3.0 * (handle - points_.back().pos);
 
@@ -133,6 +140,7 @@ public:
      */
     Bezier& cubic_to(const QPointF& handle1, const QPointF& handle2, const QPointF& dest)
     {
+        cache.mark_dirty();
         if ( !empty() )
             points_.back().tan_out = handle1;
 
@@ -164,6 +172,7 @@ public:
 
     void remove_point(int index)
     {
+        cache.mark_dirty();
         if ( index >= 0 && index < size() )
             points_.erase(points_.begin() + index);
     }
@@ -174,6 +183,7 @@ public:
 
     void set_point(int index, const math::bezier::Point& p)
     {
+        cache.mark_dirty();
         if ( index >= 0 && index < size() )
             points_[index] = p;
     }
@@ -215,6 +225,7 @@ private:
 
     std::vector<Point> points_;
     bool closed_ = false;
+    mutable util::ValueCache<QRectF> cache;
 };
 
 
@@ -226,69 +237,30 @@ public:
     const std::vector<Bezier>& beziers() const { return beziers_; }
     std::vector<Bezier>& beziers() { return beziers_; }
 
-    Bezier& back() { return beziers_.back(); }
+    Bezier& back() { cache.mark_dirty(); return beziers_.back(); }
     const Bezier& back() const { return beziers_.back(); }
 
-    MultiBezier& move_to(const QPointF& p)
-    {
-        beziers_.push_back(Bezier(p));
-        at_end = false;
-        return *this;
-    }
+    MultiBezier& move_to(const QPointF& p);
 
-    MultiBezier& line_to(const QPointF& p)
-    {
-        handle_end();
-        beziers_.back().line_to(p);
-        return *this;
-    }
+    MultiBezier& line_to(const QPointF& p);
 
-    MultiBezier& quadratic_to(const QPointF& handle, const QPointF& dest)
-    {
-        handle_end();
-        beziers_.back().quadratic_to(handle, dest);
-        return *this;
-    }
+    MultiBezier& quadratic_to(const QPointF& handle, const QPointF& dest);
 
-    MultiBezier& cubic_to(const QPointF& handle1, const QPointF& handle2, const QPointF& dest)
-    {
-        handle_end();
-        beziers_.back().cubic_to(handle1, handle2, dest);
-        return *this;
-    }
+    MultiBezier& cubic_to(const QPointF& handle1, const QPointF& handle2, const QPointF& dest);
 
-    MultiBezier& close()
-    {
-        if ( !beziers_.empty() )
-            beziers_.back().close();
-        at_end = true;
-        return *this;
-    }
+    MultiBezier& close();
 
     QRectF bounding_box() const;
 
-    QPainterPath painter_path() const
-    {
-        QPainterPath p;
-        for ( const Bezier& bez : beziers_ )
-            bez.add_to_painter_path(p);
-        return p;
-    }
+    QPainterPath painter_path() const;
 
-    void append(const MultiBezier& other)
-    {
-        beziers_.insert(beziers_.end(), other.beziers_.begin(), other.beziers_.end());
-    }
+    void append(const MultiBezier& other);
 
     void append(const QPainterPath& path);
 
     void append(const QPolygonF& path);
 
-    void append(const Bezier& path)
-    {
-        if ( path.size() > 1 )
-            beziers_.push_back(path);
-    }
+    void append(const Bezier& path);
 
     template<class T>
     MultiBezier& operator+= (const T& val)
@@ -301,13 +273,12 @@ public:
 
     int size() const { return beziers_.size(); }
     bool empty() const { return beziers_.empty(); }
-    void clear() { beziers_.clear(); }
+    void clear() { cache.mark_dirty(); beziers_.clear(); }
 
-
-    auto begin() { return beziers_.begin(); }
+    auto begin() { cache.mark_dirty(); return beziers_.begin(); }
     auto begin() const { return beziers_.begin(); }
     auto cbegin() const { return beziers_.begin(); }
-    auto end() { return beziers_.end(); }
+    auto end() { cache.mark_dirty(); return beziers_.end(); }
     auto end() const { return beziers_.end(); }
     auto cend() const { return beziers_.end(); }
 
@@ -318,6 +289,7 @@ public:
 
     Bezier& operator[](int index)
     {
+        cache.mark_dirty();
         return beziers_[index];
     }
 
@@ -344,6 +316,7 @@ private:
 
     std::vector<Bezier> beziers_;
     bool at_end = true;
+    mutable util::ValueCache<QRectF> cache;
 };
 
 } // namespace glaxnimate::math

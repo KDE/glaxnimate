@@ -10,6 +10,9 @@ using namespace glaxnimate;
 
 QRectF math::bezier::Bezier::bounding_box() const
 {
+    if ( cache.is_clean() )
+        return cache.value();
+
     if ( size() < 2 )
         return {};
 
@@ -26,6 +29,9 @@ QRectF math::bezier::Bezier::bounding_box() const
         pair = solver_for_point(size()-1).bounds();
         box |= QRectF(pair.first, pair.second);
     }
+
+
+    cache.set_value(box);
 
     return box;
 }
@@ -130,6 +136,7 @@ math::bezier::Bezier math::bezier::Bezier::lerp(const math::bezier::Bezier& othe
 
 void math::bezier::Bezier::reverse()
 {
+    cache.mark_dirty();
     std::reverse(points_.begin(), points_.end());
 
     if ( closed_ && points_.size() > 1 )
@@ -165,6 +172,7 @@ math::bezier::BezierSegment math::bezier::Bezier::inverted_segment(int index) co
 
 void math::bezier::Bezier::set_segment(int index, const math::bezier::BezierSegment& s)
 {
+    cache.mark_dirty();
     points_[index].pos = s[0];
     points_[index].drag_tan_out(s[1]);
     points_[(index+1) % points_.size()].pos = s[3];
@@ -180,6 +188,7 @@ math::bezier::Bezier math::bezier::Bezier::transformed(const QTransform& t) cons
 
 void math::bezier::Bezier::transform(const QTransform& t)
 {
+    cache.mark_dirty();
     for ( auto& p : points_ )
         p.transform(t);
 }
@@ -203,6 +212,7 @@ math::bezier::Bezier math::bezier::Bezier::removed_points(const std::set<int>& i
 
 void glaxnimate::math::bezier::Bezier::add_close_point()
 {
+    cache.mark_dirty();
     if ( closed_ && !points_.empty() && !math::fuzzy_compare(points_[0].pos, points_.back().pos) )
     {
         points_.push_back(points_[0]);
@@ -242,8 +252,14 @@ glaxnimate::math::bezier::Point glaxnimate::math::bezier::Bezier::point_with_typ
 
 QRectF math::bezier::MultiBezier::bounding_box() const
 {
+    if ( cache.is_clean() )
+        return cache.value();
+
     if ( beziers_.empty() )
+    {
+        cache.set_value({});
         return {};
+    }
 
     QRectF box;
     for ( const Bezier& bez : beziers_ )
@@ -254,11 +270,76 @@ QRectF math::bezier::MultiBezier::bounding_box() const
         else if ( !bb.isNull() )
             box |= bb;
     }
+    cache.set_value(box);
     return box;
+}
+
+
+math::bezier::MultiBezier& math::bezier::MultiBezier::move_to(const QPointF& p)
+{
+    cache.mark_dirty();
+    beziers_.push_back(Bezier(p));
+    at_end = false;
+    return *this;
+}
+
+math::bezier::MultiBezier& math::bezier::MultiBezier::line_to(const QPointF& p)
+{
+    cache.mark_dirty();
+    handle_end();
+    beziers_.back().line_to(p);
+    return *this;
+}
+
+math::bezier::MultiBezier& math::bezier::MultiBezier::quadratic_to(const QPointF& handle, const QPointF& dest)
+{
+    cache.mark_dirty();
+    handle_end();
+    beziers_.back().quadratic_to(handle, dest);
+    return *this;
+}
+
+math::bezier::MultiBezier& math::bezier::MultiBezier::cubic_to(const QPointF& handle1, const QPointF& handle2, const QPointF& dest)
+{
+    cache.mark_dirty();
+    handle_end();
+    beziers_.back().cubic_to(handle1, handle2, dest);
+    return *this;
+}
+
+math::bezier::MultiBezier& math::bezier::MultiBezier::close()
+{
+    cache.mark_dirty();
+    if ( !beziers_.empty() )
+        beziers_.back().close();
+    at_end = true;
+    return *this;
+}
+
+QPainterPath math::bezier::MultiBezier::painter_path() const
+{
+    QPainterPath p;
+    for ( const Bezier& bez : beziers_ )
+        bez.add_to_painter_path(p);
+    return p;
+}
+
+void math::bezier::MultiBezier::append(const MultiBezier& other)
+{
+    cache.mark_dirty();
+    beziers_.insert(beziers_.end(), other.beziers_.begin(), other.beziers_.end());
+}
+
+void math::bezier::MultiBezier::append(const Bezier& path)
+{
+    cache.mark_dirty();
+    if ( path.size() > 1 )
+        beziers_.push_back(path);
 }
 
 void math::bezier::MultiBezier::append(const QPainterPath& path)
 {
+    cache.mark_dirty();
     std::array<QPointF, 3> data;
     int data_i = 0;
     for ( int i = 0; i < path.elementCount(); i++ )
@@ -293,6 +374,7 @@ void math::bezier::MultiBezier::append(const QPainterPath& path)
 
 void math::bezier::MultiBezier::transform(const QTransform& t)
 {
+    cache.mark_dirty();
     for ( auto& bez : beziers_ )
         bez.transform(t);
 }
@@ -306,6 +388,7 @@ glaxnimate::math::bezier::MultiBezier glaxnimate::math::bezier::MultiBezier::tra
 
 void glaxnimate::math::bezier::MultiBezier::translate(const QPointF& p)
 {
+    cache.mark_dirty();
     for ( auto& bez : beziers_ )
     {
         for ( Point& pt : bez )
@@ -337,6 +420,7 @@ void glaxnimate::math::bezier::MultiBezier::append(const QPolygonF& path)
     if ( path.empty() )
         return;
 
+    cache.mark_dirty();
     move_to(path[0]);
     for ( int i = 1; i < path.size(); i++ )
         line_to(path[i]);
@@ -345,6 +429,7 @@ void glaxnimate::math::bezier::MultiBezier::append(const QPolygonF& path)
 
 void glaxnimate::math::bezier::MultiBezier::reverse()
 {
+    cache.mark_dirty();
     for ( auto& bez : beziers_ )
         bez.reverse();
 }
