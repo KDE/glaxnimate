@@ -206,7 +206,7 @@ public:
             destination->width(),
             destination->width(),
             destination->height(),
-            tvg::ColorSpace::ABGR8888
+            convert_image_format(destination->format())
         );
         canvas.reset(sw_canvas);
     }
