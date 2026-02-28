@@ -11,7 +11,12 @@ file(
 )
 
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h ${CMAKE_CURRENT_BINARY_DIR}/config.h COPYONLY)
+if ( OPENGL_ENABLED )
+    set(THORVG_GL_RASTER_SUPPORT ON)
+    set(THORVG_GL_TARGET_GL ON)
+endif()
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 add_library(thorvg SHARED ${SOURCES})
 target_include_directories(
     thorvg PUBLIC
@@ -24,7 +29,7 @@ target_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/thorvg/src/loaders/raw
 )
 
-find_package(OpenGL REQUIRED)
-target_link_libraries(thorvg PUBLIC ${OPENGL_gl_LIBRARY})
-# target_include_directories(thorvg PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
-
+if ( OPENGL_ENABLED )
+    find_package(OpenGL REQUIRED)
+    target_link_libraries(thorvg PUBLIC ${OPENGL_gl_LIBRARY})
+endif()

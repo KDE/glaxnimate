@@ -9,10 +9,6 @@
 #include <QVBoxLayout>
 #include <QScrollBar>
 
-#include <QOpenGLWidget>
-#include <QOpenGLFunctions>
-#include <QPaintEvent>
-
 #include "app/application.hpp"
 
 using namespace glaxnimate;
@@ -96,6 +92,17 @@ protected:
 
 };
 
+} // namespace
+
+#ifdef OPENGL_ENABLED
+
+
+#include <QOpenGLWidget>
+#include <QOpenGLFunctions>
+#include <QPaintEvent>
+
+namespace {
+
 class OpenGlRenderWidget : public QOpenGLWidget, public QOpenGLFunctions, public RenderWidgetUtil
 {
 public:
@@ -176,6 +183,11 @@ protected:
 };
 
 } // namespace
+#else
+
+using OpenGlRenderWidget = BasicRenderWidget;
+
+#endif
 
 class glaxnimate::gui::RenderWidget::Private
 {

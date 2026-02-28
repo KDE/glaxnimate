@@ -46,6 +46,42 @@ QString glaxnimate::AppInfo::description() const
     return PROJECT_DESCRIPTION;
 }
 
+#ifdef OPENGL_ENABLED
+
+#include <QOffscreenSurface>
+#include <QOpenGLContext>
+#include <QOpenGLFunctions>
+static void gl_version(KAboutData& aboutData)
+{
+    QOffscreenSurface surface;
+    surface.create();
+
+    QOpenGLContext context;
+    if ( !context.create() )
+        return;
+    context.makeCurrent(&surface);
+
+    QOpenGLFunctions *f = context.functions();
+    f->initializeOpenGLFunctions();
+
+    aboutData.addComponent(
+        i18n("OpenGL"),
+        i18n("Hardware-accelerated graphics."),
+        (const char*)f->glGetString(GL_VERSION),
+        QStringLiteral("https://www.opengl.org/")
+    );
+
+    aboutData.addComponent(
+        i18n("OpenGL Renderer"),
+        {},
+        (const char*)f->glGetString(GL_RENDERER),
+        QStringLiteral("https://www.opengl.org/")
+    );
+
+    context.doneCurrent();
+}
+#endif
+
 void glaxnimate::AppInfo::init_qapplication() const
 {
     KAboutData aboutData(
@@ -54,7 +90,7 @@ void glaxnimate::AppInfo::init_qapplication() const
         version(),
         QStringLiteral(PROJECT_DESCRIPTION),
         KAboutLicense::GPL,
-        i18n("(c) 2019-2025"),
+        i18n("(c) 2019-2026"),
         // Optional text shown in the About box.
         QStringLiteral(""),
         QStringLiteral(URL_DOCS)
@@ -76,6 +112,9 @@ void glaxnimate::AppInfo::init_qapplication() const
 #ifdef PYTHON_SCRIPTING_ENABLED
     aboutData.addComponent(i18n("pybind11"), i18n("Used by the plugin system."), app::scripting::python::PythonEngine::pybind_version(), QStringLiteral("https://pybind11.readthedocs.io/en/stable/"));
     aboutData.addComponent(i18n("CPython"), i18n("Used by the plugin system."), app::scripting::python::PythonEngine::python_version(), QStringLiteral("hhttps://python.org/"));
+#endif
+#ifdef OPENGL_ENABLED
+    gl_version(aboutData);
 #endif
 
     KAboutData::setApplicationData(aboutData);

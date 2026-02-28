@@ -140,4 +140,6 @@ public:
  */
 std::unique_ptr<Renderer> default_renderer(int quality);
 
+QString gl_version();
+
 } // namespace glaxnimate::renderer

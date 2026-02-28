@@ -11,4 +11,3 @@ std::unique_ptr<glaxnimate::renderer::Renderer> glaxnimate::renderer::default_re
     return std::make_unique<glaxnimate::renderer::ThorvgRenderer>();
     // return std::make_unique<glaxnimate::renderer::CairoRenderer>(quality);
 }
-

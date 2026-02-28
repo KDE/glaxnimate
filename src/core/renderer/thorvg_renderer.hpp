@@ -129,11 +129,15 @@ public:
 
     bool set_gl_surface(void * context, int framebuffer, int width, int height) override
     {
+#ifdef OPENGL_ENABLED
         auto gl_canvas = tvg::GlCanvas::gen();
         if ( !gl_canvas )
             return false;
         canvas.reset(gl_canvas);
         return gl_canvas->target(nullptr, nullptr, context, framebuffer, width, height, tvg::ColorSpace::ABGR8888S) == tvg::Result::Success;
+#else
+        return false;
+#endif
     }
 
     bool set_painter_surface(QPainter*, int, int) override
