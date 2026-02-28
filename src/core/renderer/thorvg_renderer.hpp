@@ -21,6 +21,7 @@ private:
     Fill fill;
     Stroke stroke;
     int mode = ShapeMode::NothingMode;
+    int effect_quality;
 
     std::unique_ptr<tvg::Canvas> canvas;
     std::vector<tvg::Scene*> layers;
@@ -181,7 +182,7 @@ private:
     }
 
 public:
-    ThorvgRenderer()
+    explicit ThorvgRenderer(int quality): effect_quality(quality * 10)
     {
         // 4 threads
         tvg::Initializer::init(4);

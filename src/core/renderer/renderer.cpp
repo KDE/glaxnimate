@@ -11,5 +11,5 @@ std::unique_ptr<glaxnimate::renderer::Renderer> glaxnimate::renderer::default_re
     Q_UNUSED(quality);
     // if ( quality == 0 )
         // return std::make_unique<glaxnimate::renderer::QPainterRenderer>();
-    return std::make_unique<glaxnimate::renderer::ThorvgRenderer>();
+    return std::make_unique<glaxnimate::renderer::ThorvgRenderer>(quality);
 }
