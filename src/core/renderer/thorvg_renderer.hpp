@@ -336,21 +336,34 @@ public:
         layers.back()->clip(shape);
     }
 
+    tvg::ColorSpace convert_image_format(QImage::Format fmt) const
+    {
+        switch ( fmt )
+        {
+            case QImage::Format_ARGB32:
+                return tvg::ColorSpace::ARGB8888S;
+            case QImage::Format_ARGB32_Premultiplied:
+                return tvg::ColorSpace::ARGB8888;
+            case QImage::Format_Grayscale8:
+                return tvg::ColorSpace::Grayscale8;
+            default:
+                return tvg::ColorSpace::Unknown;
+        }
+    }
+
     void draw_image(const QImage & image) override
     {
-        /*QImage image = pixmap.toImage().convertToFormat(QImage::Format_ARGB32_Premultiplied);
+        auto picture = tvg::Picture::gen();
 
-        cairo_surface_t *surface = cairo_image_surface_create_for_data(
-            image.bits(),
-            CAIRO_FORMAT_ARGB32,
+        tvg::Result result = picture->load(
+            reinterpret_cast<const uint32_t*>(image.constBits()),
             image.width(),
             image.height(),
-            image.bytesPerLine()
+            convert_image_format(image.format()),
+            false
         );
-
-        cairo_set_source_surface(canvas, surface, 0, 0);
-        cairo_paint(canvas);
-        cairo_surface_destroy(surface);*/
+        if ( result == tvg::Result::Success )
+            layers.back()->add(picture);
     }
 
     void scale(qreal x, qreal y) override
