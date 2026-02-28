@@ -51,6 +51,7 @@ public:
         bool expand_referenced = false;
         /// When showing children directly, offset by this much
         int merged_children_offset = 0;
+        std::set<QObject*> connected_subobjects;
     };
 
     using ReferencedPropertiesMap = std::unordered_map<model::BaseProperty*, std::vector<id_type>>;

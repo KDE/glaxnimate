@@ -269,7 +269,7 @@ void item_models::PropertyModelBase::Private::connect_subobject(model::Object* o
 {
     this_node->expand_referenced = true;
 
-    if ( !object )
+    if ( !object || this_node->connected_subobjects.count(object) )
         return;
 
     QObject::connect(object, &model::Object::property_changed, model, &PropertyModelBase::property_changed);
@@ -279,6 +279,7 @@ void item_models::PropertyModelBase::Private::connect_subobject(model::Object* o
         referenced = &referenced_properties[object];
 
     on_connect(object, this_node, insert_row, referenced);
+    this_node->connected_subobjects.insert(object);
 }
 
 void item_models::PropertyModelBase::Private::disconnect_recursive(Subtree* node)
@@ -303,6 +304,7 @@ void item_models::PropertyModelBase::Private::disconnect_recursive(Subtree* node
     }
 
     node->children.clear();
+    node->connected_subobjects.clear();
 }
 
 item_models::PropertyModelBase::Private::Subtree* item_models::PropertyModelBase::Private::object_tree(model::Object* obj)
