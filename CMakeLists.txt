@@ -215,15 +215,12 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -pedantic -Wextra")
 message(STATUS "${CMAKE_BUILD_TYPE} build")
 
 # Renderer
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(CAIRO REQUIRED cairo)
-
 option(OPENGL_ENABLED "Whether to enable OpenGL features" OFF)
 if ( OPENGL_ENABLED )
     add_definitions(-DOPENGL_ENABLED)
 endif()
 add_subdirectory(external/thorvg/)
-set(RENDERER_LIBRARIES ${CAIRO_LIBRARIES} thorvg)
+set(RENDERER_LIBRARIES thorvg)
 
 # sub projects and stuff
 
