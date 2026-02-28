@@ -6,6 +6,7 @@
 #pragma once
 
 #include <thorvg.h>
+#include <QPainter>
 
 #include "renderer/renderer.hpp"
 
@@ -58,21 +59,6 @@ private:
                 lin->start().y(),
                 lin->finalStop().x(),
                 lin->finalStop().y()
-            );
-        }
-        else if ( gradient->type() == QGradient::ConicalGradient )
-        {
-            // TODO
-            const QConicalGradient* conic = static_cast<const QConicalGradient*>(gradient);
-            auto radial = tvg::RadialGradient::gen();
-            fill = radial;
-            radial->radial(
-                conic->center().x(),
-                conic->center().y(),
-                1000,
-                conic->center().x(),
-                conic->center().y(),
-                0
             );
         }
 
@@ -161,7 +147,7 @@ private:
         }
     }
 
-    tvg::Picture* convert_image(const QImage & image)
+    tvg::Picture* convert_image(const QImage & image, bool copy = false)
     {
         auto picture = tvg::Picture::gen();
 
@@ -170,7 +156,7 @@ private:
             image.width(),
             image.height(),
             convert_image_format(image.format()),
-            false
+            copy
         );
         if ( result != tvg::Result::Success )
         {
@@ -281,6 +267,7 @@ public:
         if ( !mode )
             return;
 
+        std::optional<QBrush> mask_brush;
         auto shape = tvg::Shape::gen();
         draw_path(path, shape);
 
@@ -289,6 +276,11 @@ public:
             if ( auto tfill = make_fill(fill.brush, fill.opacity) )
             {
                 shape->fill(tfill);
+            }
+            else if ( fill.brush.gradient() && fill.brush.gradient()->type() == QGradient::ConicalGradient )
+            {
+                mask_brush = fill.brush;
+                shape->fill(255, 255, 255, 255);
             }
             else
             {
@@ -303,6 +295,11 @@ public:
             if ( auto tfill = make_fill(stroke.pen.brush(), stroke.opacity) )
             {
                 shape->strokeFill(tfill);
+            }
+            else if ( stroke.pen.brush().gradient() && stroke.pen.brush().gradient()->type() == QGradient::ConicalGradient )
+            {
+                mask_brush = stroke.pen.brush();
+                shape->strokeFill(255, 255, 255, 255);
             }
             else
             {
@@ -332,7 +329,37 @@ public:
             shape->strokeMiterlimit(stroke.pen.miterLimit());
         }
 
-        layers.back()->add(shape);
+        if ( mask_brush )
+        {
+            // Bit of a hack and very slow but should be fine for now
+            auto rect = path.bounding_box();
+            if ( mode & StrokeMode )
+            {
+                auto margin = stroke.pen.width() / 2;
+                rect.adjust(-margin, -margin, margin, margin);
+            }
+            QImage image(rect.width(), rect.height(), QImage::Format_ARGB32);
+            QPainter painter(&image);
+            auto tr = mask_brush->transform();
+            tr.translate(-rect.left(), -rect.top());
+            mask_brush->setTransform(tr);
+            painter.fillRect(0, 0, rect.width(), rect.height(), *mask_brush);
+            painter.end();
+            if ( auto picture = convert_image(image, true) )
+            {
+                auto scene = tvg::Scene::gen();
+                scene->mask(shape, tvg::MaskMethod::Alpha);
+                picture->translate(rect.left(), rect.top());
+                picture->clip(shape);
+                // layers.back()->add(picture);
+                scene->add(picture);
+                layers.back()->add(scene);
+            }
+        }
+        else
+        {
+            layers.back()->add(shape);
+        }
 
         mode = NothingMode;
     }
