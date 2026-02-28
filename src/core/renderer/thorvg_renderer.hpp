@@ -25,22 +25,20 @@ private:
     std::unique_ptr<tvg::Canvas> canvas;
     std::vector<tvg::Scene*> layers;
 
-    tvg::Fill* make_brush(const QBrush& brush, qreal opacity)
+    tvg::Fill* make_fill(const QBrush& brush, qreal opacity)
     {
-        // TODO
-        return nullptr;
-        /*auto gradient = brush.gradient();
+        auto gradient = brush.gradient();
         if ( !gradient )
-        {
-            auto color = brush.color();
-            cairo_set_source_rgba(canvas, color.redF(), color.greenF(), color.blueF(), color.alphaF() * opacity);
-            return;
-        }
+            return nullptr;
+
+        tvg::Fill* fill = nullptr;
 
         if ( gradient->type() == QGradient::RadialGradient )
         {
             const QRadialGradient* rad = static_cast<const QRadialGradient*>(gradient);
-            pattern = cairo_pattern_create_radial(
+            auto radial = tvg::RadialGradient::gen();
+            fill = radial;
+            radial->radial(
                 rad->center().x(),
                 rad->center().y(),
                 rad->centerRadius(),
@@ -52,23 +50,65 @@ private:
         else if ( gradient->type() == QGradient::LinearGradient )
         {
             const QLinearGradient* lin = static_cast<const QLinearGradient*>(gradient);
-            pattern = cairo_pattern_create_linear(
+            auto linear = tvg::LinearGradient::gen();
+            fill = linear;
+            linear->linear(
                 lin->start().x(),
                 lin->start().y(),
                 lin->finalStop().x(),
                 lin->finalStop().y()
             );
         }
+        else if ( gradient->type() == QGradient::ConicalGradient )
+        {
+            // TODO
+            const QConicalGradient* conic = static_cast<const QConicalGradient*>(gradient);
+            auto radial = tvg::RadialGradient::gen();
+            fill = radial;
+            radial->radial(
+                conic->center().x(),
+                conic->center().y(),
+                1000,
+                conic->center().x(),
+                conic->center().y(),
+                0
+            );
+        }
 
-        if ( !pattern )
-            return;
+        if ( !fill )
+            return nullptr;
 
+        std::vector<tvg::Fill::ColorStop> stops;
         for ( const auto& stop : gradient->stops() )
         {
             const auto& color = stop.second;
-            cairo_pattern_add_color_stop_rgba(pattern, stop.first, color.redF(), color.greenF(), color.blueF(), color.alphaF() * opacity);
+            stops.push_back({float(stop.first), uint8_t(color.red()), uint8_t(color.green()), uint8_t(color.blue()), uint8_t(color.alpha() * opacity)});
         }
-        cairo_set_source(canvas, pattern);*/
+
+        fill->colorStops(stops.data(), stops.size());
+
+        fill->spread(
+            gradient->spread() == QGradient::PadSpread ?
+                tvg::FillSpread::Pad :
+                (gradient->spread() == QGradient::ReflectSpread ?
+                    tvg::FillSpread::Reflect :
+                    tvg::FillSpread::Repeat
+                )
+        );
+
+        fill->transform(convert_transform(brush.transform()));
+
+        return fill;
+
+    }
+
+    tvg::Matrix convert_transform(const QTransform& matrix)
+    {
+        return tvg::Matrix {
+            float(matrix.m11()), float(matrix.m21()), float(matrix.m31()),
+            float(matrix.m12()), float(matrix.m22()), float(matrix.m32()),
+            float(matrix.m13()), float(matrix.m23()), float(matrix.m33()),
+        };
     }
 
     void draw_path(const math::bezier::MultiBezier& path, tvg::Shape* shape)
@@ -92,7 +132,16 @@ private:
             }
 
             if ( bez.closed() )
+            {
+                const auto& before = bez.back();
+                const auto& after = bez[0];
+                shape->cubicTo(
+                    before.tan_out.x(), before.tan_out.y(),
+                    after.tan_in.x(), after.tan_in.y(),
+                    after.pos.x(), after.pos.y()
+                );
                 shape->close();
+            }
         }
     }
 
@@ -174,7 +223,7 @@ public:
     {
         auto shape = tvg::Shape::gen();
         shape->appendRect(rect.left(), rect.top(), rect.width(), rect.height(), 0, 0);
-        if ( auto fill = make_brush(brush, 1) )
+        if ( auto fill = make_fill(brush, 1) )
         {
             shape->fill(fill);
         }
@@ -197,7 +246,7 @@ public:
 
         if ( mode & FillMode )
         {
-            if ( auto tfill = make_brush(fill.brush, fill.opacity) )
+            if ( auto tfill = make_fill(fill.brush, fill.opacity) )
             {
                 shape->fill(tfill);
             }
@@ -211,7 +260,7 @@ public:
 
         if ( mode & StrokeMode )
         {
-            if ( auto tfill = make_brush(stroke.pen.brush(), stroke.opacity) )
+            if ( auto tfill = make_fill(stroke.pen.brush(), stroke.opacity) )
             {
                 shape->strokeFill(tfill);
             }
@@ -316,12 +365,7 @@ public:
 
     void transform(const QTransform & matrix) override
     {
-        tvg::Matrix cm {
-            float(matrix.m11()), float(matrix.m21()), float(matrix.m31()),
-            float(matrix.m12()), float(matrix.m22()), float(matrix.m32()),
-            float(matrix.m13()), float(matrix.m23()), float(matrix.m33()),
-        };
-        layers.back()->transform(cm);
+        layers.back()->transform(convert_transform(matrix));
     }
 };
 
