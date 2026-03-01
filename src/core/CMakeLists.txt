@@ -154,7 +154,7 @@ else()
     message(STATUS "Building Glaxnimate core without KDE")
 endif()
 
-add_library(${LIB_NAME_CORE} OBJECT ${SOURCES})
+add_library(${LIB_NAME_CORE} STATIC ${SOURCES})
 kde_target_enable_exceptions(${LIB_NAME_CORE} PUBLIC)
 target_link_libraries(${LIB_NAME_CORE} PUBLIC
     QtAppSetup
