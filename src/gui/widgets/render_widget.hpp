@@ -12,8 +12,9 @@
 
 namespace glaxnimate::gui {
 
-class RenderWidget
+class RenderWidget : public QObject
 {
+    Q_OBJECT
 public:
     RenderWidget();
     explicit RenderWidget(QWidget* parent);
@@ -25,11 +26,15 @@ public:
     void set_overlay(QGraphicsView* view);
     void set_composition(model::Composition* comp);
     void render();
-    // TODO IPC image stuff
+    void set_background(QImage image, const QRectF& target);
+    void clear_background();
 
-private:
     class Private;
+private:
     std::unique_ptr<Private> d;
+
+Q_SIGNALS:
+    void request_background();
 };
 
 } // namespace glaxnimate::gui

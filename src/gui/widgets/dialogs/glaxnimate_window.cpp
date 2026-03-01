@@ -438,10 +438,11 @@ void GlaxnimateWindow::ipc_signal_connections(bool enable)
 {
     if (enable) {
         connect(document(), &model::Document::current_time_changed, this, &GlaxnimateWindow::ipc_write_time);
-        connect(&d->scene, &graphics::DocumentScene::drawing_background, this, &GlaxnimateWindow::ipc_draw_background);
+        connect(&d->render_widget, &RenderWidget::request_background, this, &GlaxnimateWindow::ipc_draw_background);
     } else {
+        d->render_widget.clear_background();
         disconnect(document(), &model::Document::current_time_changed, this, &GlaxnimateWindow::ipc_write_time);
-        disconnect(&d->scene, &graphics::DocumentScene::drawing_background, this, &GlaxnimateWindow::ipc_draw_background);
+        disconnect(&d->render_widget, &RenderWidget::request_background, this, &GlaxnimateWindow::ipc_draw_background);
     }
 }
 
@@ -510,7 +511,7 @@ void GlaxnimateWindow::ipc_write_time(model::FrameTime t)
     }
 }
 
-void GlaxnimateWindow::ipc_draw_background(QPainter *painter)
+void GlaxnimateWindow::ipc_draw_background()
 {
     // This is the shared memory portion of the IPC: a single QImage
     if (d->ipc_memory && d->ipc_memory->attach(QSharedMemory::ReadOnly)) {
@@ -518,19 +519,19 @@ void GlaxnimateWindow::ipc_draw_background(QPainter *painter)
 
         uchar *from = (uchar *) d->ipc_memory->data();
         // Get the width of the image and move the pointer forward
-        qint32 image_width = *(qint32 *)from;
+        qint32 image_width = *reinterpret_cast<qint32 *>(from);
         from += sizeof(image_width);
 
         // Get the height of the image and move the pointer forward
-        qint32 image_height = *(qint32 *)from;
+        qint32 image_height = *reinterpret_cast<qint32 *>(from);
         from += sizeof(image_height);
 
         // Get the image format of the image and move the pointer forward
-        qint32 image_format = *(qint32 *)from;
+        qint32 image_format = *reinterpret_cast<qint32 *>(from);
         from += sizeof(image_format);
 
         // Get the bytes per line of the image and move the pointer forward
-        qint32 bytes_per_line = *(qint32 *)from;
+        qint32 bytes_per_line = *reinterpret_cast<qint32 *>(from);
         from += sizeof(bytes_per_line);
 
         // Generate an image using the raw data and move the pointer forward
@@ -552,7 +553,8 @@ void GlaxnimateWindow::ipc_draw_background(QPainter *painter)
             height = width / image_aspect;
             draw_rect = {0.0, (d->comp->height.get() - height) / 2.0, width, height};
         }
-        painter->drawImage(draw_rect, image);
+
+        d->render_widget.set_background(std::move(image), draw_rect);
     }
 }
 

@@ -13,22 +13,32 @@
 
 using namespace glaxnimate;
 
-namespace {
 
-class RenderWidgetUtil
+class glaxnimate::gui::RenderWidget::Private
 {
 public:
     model::Composition* composition = nullptr;
     std::unique_ptr<renderer::Renderer> renderer;
     QTransform world_transform;
     QPointF offset;
+    QImage background;
+    QRectF background_target;
+    RenderWidget* emitter;
+
+    QWidget* widget;
     QGraphicsView* view = nullptr;
+    QVBoxLayout* layout;
 
-    RenderWidgetUtil(std::unique_ptr<renderer::Renderer> renderer) :
-        renderer(std::move(renderer))
+    Private(RenderWidget* emitter, QWidget* parent)
+        : emitter(emitter)
     {
-
+        init_renderer(parent);
+        layout = new QVBoxLayout(widget);
+        layout->setContentsMargins(0, 0, 0, 0);
     }
+
+    void init_renderer(QWidget* parent);
+
 
     void update_transform()
     {
@@ -43,13 +53,16 @@ public:
 };
 
 
-class BasicRenderWidget : public QWidget, public RenderWidgetUtil
+namespace {
+
+class BasicRenderWidget : public QWidget
 {
 public:
     QBrush back;
+    glaxnimate::gui::RenderWidget::Private* d;
 
-    BasicRenderWidget(QWidget* parent, std::unique_ptr<renderer::Renderer> renderer) :
-        QWidget(parent), RenderWidgetUtil(std::move(renderer))
+    BasicRenderWidget(QWidget* parent, glaxnimate::gui::RenderWidget::Private* d) :
+        QWidget(parent), d(d)
     {
         back.setTexture(QPixmap(app::Application::instance()->data_file("images/widgets/background.png")));
     }
@@ -57,28 +70,32 @@ public:
 protected:
     void render_composition()
     {
-        renderer->render_start();
-        renderer->transform(world_transform);
-        composition->paint(renderer.get(), composition->time(), model::VisualNode::Canvas);
-        renderer->render_end();
+        d->renderer->render_start();
+        d->renderer->transform(d->world_transform);
+        d->composition->paint(d->renderer.get(), d->composition->time(), model::VisualNode::Canvas);
+        d->renderer->render_end();
     }
 
     void paintEvent(QPaintEvent* ) override
     {
+        Q_EMIT d->emitter->request_background();
+
         QPainter painter(this);
         painter.setRenderHint(QPainter::Antialiasing);
         painter.fillRect(0, 0, this->width(), this->height(), this->palette().base());
 
-        if ( !composition )
+        if ( !d->composition )
             return;
 
-        update_transform();
+        d->update_transform();
 
-        painter.setTransform(world_transform);
-        painter.fillRect(QRectF(QPointF(0, 0), composition->size()), back);
+        painter.setTransform(d->world_transform);
+        painter.fillRect(QRectF(QPointF(0, 0), d->composition->size()), back);
+        if ( !d->background.isNull() )
+            painter.drawImage(d->background_target, d->background);
         painter.setTransform({});
 
-        if ( renderer->set_painter_surface(&painter, width(), height()) )
+        if ( d->renderer->set_painter_surface(&painter, width(), height()) )
         {
             render_composition();
         }
@@ -86,7 +103,7 @@ protected:
         {
             QImage img(this->width(), this->height(), QImage::Format_ARGB32_Premultiplied);
             img.fill(Qt::transparent);
-            renderer->set_image_surface(&img);
+            d->renderer->set_image_surface(&img);
             render_composition();
             painter.drawImage(0, 0, img);
         }
@@ -105,12 +122,14 @@ protected:
 
 namespace {
 
-class OpenGlRenderWidget : public QOpenGLWidget, public QOpenGLFunctions, public RenderWidgetUtil
+class OpenGlRenderWidget : public QOpenGLWidget
 {
     QImage back;
+    glaxnimate::gui::RenderWidget::Private* d;
+
 public:
-    explicit OpenGlRenderWidget(QWidget* parent, std::unique_ptr<renderer::Renderer> renderer) :
-        QOpenGLWidget(parent), RenderWidgetUtil(std::move(renderer))
+    explicit OpenGlRenderWidget(QWidget* parent, glaxnimate::gui::RenderWidget::Private* d) :
+        QOpenGLWidget(parent), d(d)
     {
         setUpdatesEnabled(true);
         back = QImage(app::Application::instance()->data_file("images/widgets/background.png")).convertedTo(QImage::Format_ARGB32_Premultiplied);
@@ -138,37 +157,42 @@ public:
     }
 
 protected:
-    void initializeGL() override
+    /*void initializeGL() override
     {
         initializeOpenGLFunctions();
-    }
+    }*/
 
     void resizeGL(int w, int h) override
     {
-        renderer->set_gl_surface(native_gl_context(), defaultFramebufferObject(), w, h);
+        d->renderer->set_gl_surface(native_gl_context(), defaultFramebufferObject(), w, h);
     }
 
     void paintGL() override
     {
-        if ( !composition )
-            return;
+        Q_EMIT d->emitter->request_background();
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-        update_transform();
-
-
-        renderer->render_start();
+        d->renderer->render_start();
 
         // Background
-        renderer->fill_rect(QRectF(0, 0, width(), height()), palette().base());
+        d->renderer->fill_rect(QRectF(0, 0, width(), height()), palette().base());
 
-        renderer->layer_start();
-        renderer->transform(world_transform);
-        renderer->fill_pattern(QRectF(0, 0, composition->width.get(), composition->height.get()), back);
-        composition->paint(renderer.get(), composition->time(), model::VisualNode::Canvas);
-        renderer->layer_end();
-        renderer->render_end();
+        if ( !d->composition )
+        {
+            d->renderer->render_end();
+            return;
+        }
+
+        d->renderer->layer_start();
+        d->update_transform();
+        d->renderer->transform(d->world_transform);
+        d->renderer->fill_pattern(QRectF(0, 0, d->composition->width.get(), d->composition->height.get()), back);
+        if ( !d->background.isNull() )
+            d->renderer->draw_image(d->background, d->background_target);
+        d->composition->paint(d->renderer.get(), d->composition->time(), model::VisualNode::Canvas);
+        d->renderer->layer_end();
+        d->renderer->render_end();
     }
 
     bool force_paint = false;
@@ -193,50 +217,35 @@ using OpenGlRenderWidget = BasicRenderWidget;
 
 #endif
 
-class glaxnimate::gui::RenderWidget::Private
+void glaxnimate::gui::RenderWidget::Private::init_renderer(QWidget* parent)
 {
-public:
-    QWidget* widget;
-    RenderWidgetUtil* util;
-    QVBoxLayout* layout;
-
-    void init_renderer(QWidget* parent)
+    // TODO setting for the render quality
+    renderer = renderer::default_renderer(5);
+    if ( renderer->supports_surface(renderer::OpenGL) )
     {
-        // TODO setting for the render quality
-        auto renderer = renderer::default_renderer(5);
-        if ( renderer->supports_surface(renderer::OpenGL) )
-        {
-            auto wid = new OpenGlRenderWidget(parent, std::move(renderer));
-            widget = wid;
-            util = wid;
-        }
-        else
-        {
-            auto wid = new BasicRenderWidget(parent, std::move(renderer));
-            widget = wid;
-            util = wid;
-        }
+        widget = new OpenGlRenderWidget(parent, this);
     }
-
-    Private(QWidget* parent)
+    else
     {
-        init_renderer(parent);
-        layout = new QVBoxLayout(widget);
-        layout->setContentsMargins(0, 0, 0, 0);
+        widget = new BasicRenderWidget(parent, this);
     }
-};
+}
 
 
 glaxnimate::gui::RenderWidget::RenderWidget(QWidget* parent)
-    : d(std::make_unique<Private>(parent))
+    : d(std::make_unique<Private>(this, parent))
 {
 }
 
 glaxnimate::gui::RenderWidget::RenderWidget() = default;
-glaxnimate::gui::RenderWidget::RenderWidget(RenderWidget&& o) : d(std::move(o.d)) {}
+glaxnimate::gui::RenderWidget::RenderWidget(RenderWidget&& o) : d(std::move(o.d))
+{
+    d->emitter = this;
+}
 glaxnimate::gui::RenderWidget& glaxnimate::gui::RenderWidget::operator=(RenderWidget&& o)
 {
     std::swap(o.d, d);
+    d->emitter = this;
     return *this;
 }
 
@@ -248,7 +257,7 @@ QWidget * glaxnimate::gui::RenderWidget::widget() const
 
 void glaxnimate::gui::RenderWidget::set_composition(model::Composition* comp)
 {
-    d->util->composition = comp;
+    d->composition = comp;
 }
 
 void glaxnimate::gui::RenderWidget::render()
@@ -258,11 +267,22 @@ void glaxnimate::gui::RenderWidget::render()
 
 void glaxnimate::gui::RenderWidget::set_overlay(QGraphicsView* view)
 {
-    d->util->view = view;
+    d->view = view;
     d->layout->addWidget(view);
     view->installEventFilter(d->widget);
 }
 
 
 glaxnimate::gui::RenderWidget::~RenderWidget() noexcept = default;
+
+void glaxnimate::gui::RenderWidget::set_background(QImage image, const QRectF& target)
+{
+    d->background = std::move(image);
+    d->background_target = target;
+}
+
+void glaxnimate::gui::RenderWidget::clear_background()
+{
+    d->background = {};
+}
 

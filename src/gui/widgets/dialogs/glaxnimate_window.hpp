@@ -209,7 +209,7 @@ private Q_SLOTS:
     void ipc_error(QLocalSocket::LocalSocketError socketError);
     void ipc_read();
     void ipc_write_time(model::FrameTime t);
-    void ipc_draw_background(QPainter *painter);
+    void ipc_draw_background();
 
 protected:
     void showEvent(QShowEvent * event) override;
