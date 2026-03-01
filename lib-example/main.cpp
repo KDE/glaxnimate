@@ -24,8 +24,10 @@ int main(int argc, char *argv[])
     float frame = std::stof(argv[2]);
     QString out_filename = argv[3];
 
-    // Load file
+    // Initialize default format loaders
     io::IoRegistry::load_formats();
+
+    // Load file
     auto importer = io::IoRegistry::instance().from_filename(in_filename, io::ImportExport::Import);
     if ( !importer )
     {
