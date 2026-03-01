@@ -1,3 +1,8 @@
+## 0.6.70
+
+* Misc
+    * New rendering system
+
 ## 0.6.0
 
 * Editing:
