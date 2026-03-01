@@ -107,10 +107,13 @@ renderer/renderer.cpp
 utils/gzip.cpp
 )
 
+set(GLAXNIMATE_TAR_ENABLED ON)
+
 if ( GLAXNIMATE_CORE_MINIMAL )
     set(VIDEO_ENABLED OFF)
     set(PYTHON_SCRIPTING_ENABLED OFF)
     set(GLAXNIMATE_CORE_KDE OFF)
+    set(GLAXNIMATE_TAR_ENABLED OFF)
     set(LIB_NAME_CORE glaxnimate_lib)
     add_definitions(-DWITHOUT_POTRACE)
 
@@ -134,7 +137,11 @@ else()
     )
 endif()
 
-if ( NOT ANDROID )
+if ( ANDROID )
+    set(GLAXNIMATE_TAR_ENABLED OFF)
+endif()
+
+if ( GLAXNIMATE_TAR_ENABLED )
     list(APPEND SOURCES
         utils/tar.cpp
     )
@@ -183,7 +190,7 @@ target_link_libraries(${LIB_NAME_CORE} PUBLIC
 set_property(TARGET ${LIB_NAME_CORE} APPEND PROPERTY AUTOMOC_MACRO_NAMES "GLAXNIMATE_OBJECT")
 target_include_directories(${LIB_NAME_CORE} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> ${CMAKE_CURRENT_SOURCE_DIR}/../../external/QtAppSetup/src)
 
-if ( NOT ANDROID )
+if ( GLAXNIMATE_TAR_ENABLED )
     target_link_libraries(${LIB_NAME_CORE} PUBLIC ${LibArchive_LIBRARIES} )
 endif()
 
