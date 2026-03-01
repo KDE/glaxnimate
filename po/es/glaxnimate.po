@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-27 02:45+0000\n"
-"PO-Revision-Date: 2026-02-02 11:50+0100\n"
+"POT-Creation-Date: 2026-03-01 02:43+0000\n"
+"PO-Revision-Date: 2026-03-01 01:17+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 25.04.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -931,8 +931,9 @@ msgid "Could not start activity, is Telegram installed?"
 msgstr "No se pudo iniciar la actividad, ¿Está Telegram instalado?"
 
 #: src/core/app_info.cpp:57
-#, kde-format
-msgid "(c) 2019-2025"
+#, fuzzy, kde-format
+#| msgid "(c) 2019-2025"
+msgid "(c) 2019-2026"
 msgstr "© 2019-2025"
 
 #: src/core/app_info.cpp:66
@@ -2784,8 +2785,8 @@ msgstr "Redimensionar Lienzo"
 msgid "Drag Gradient"
 msgstr "Arrastrar Gradiente"
 
-#: src/gui/graphics/transform_graphics_item.cpp:429
-#: src/gui/graphics/transform_graphics_item.cpp:499
+#: src/gui/graphics/transform_graphics_item.cpp:439
+#: src/gui/graphics/transform_graphics_item.cpp:509
 #, kde-format
 msgid "Drag anchor point"
 msgstr "Arrastrar punto de anclaje"
@@ -2938,7 +2939,7 @@ msgstr "Plantilla"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: src/gui/settings/icon_settings.cpp:38
+#: src/gui/settings/icon_settings.cpp:39
 #, kde-format
 msgid "System Default"
 msgstr "Sistema predeterminado"
@@ -4395,10 +4396,9 @@ msgid "Make segments curved"
 msgstr "Curvar segmentos"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:799
-#, fuzzy, kde-format
-#| msgid "Reverse"
+#, kde-format
 msgid "Reverse path"
-msgstr "Revertir"
+msgstr "Invertir ruta"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:897
 #, kde-format

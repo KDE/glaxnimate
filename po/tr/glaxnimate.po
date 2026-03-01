@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-27 02:45+0000\n"
+"POT-Creation-Date: 2026-03-01 02:43+0000\n"
 "PO-Revision-Date: 2026-02-27 07:57+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -927,8 +927,9 @@ msgid "Could not start activity, is Telegram installed?"
 msgstr "Etkinlik başlatılamadı, Telegram kurulu mu?"
 
 #: src/core/app_info.cpp:57
-#, kde-format
-msgid "(c) 2019-2025"
+#, fuzzy, kde-format
+#| msgid "(c) 2019-2025"
+msgid "(c) 2019-2026"
 msgstr "© 2019–2025"
 
 #: src/core/app_info.cpp:66
@@ -2768,8 +2769,8 @@ msgstr "Tuvali Yeniden Boyutlandır"
 msgid "Drag Gradient"
 msgstr "Gradyanı Sürükle"
 
-#: src/gui/graphics/transform_graphics_item.cpp:429
-#: src/gui/graphics/transform_graphics_item.cpp:499
+#: src/gui/graphics/transform_graphics_item.cpp:439
+#: src/gui/graphics/transform_graphics_item.cpp:509
 #, kde-format
 msgid "Drag anchor point"
 msgstr "Tutturma Noktasını Sürükle"
@@ -2921,7 +2922,7 @@ msgstr "Şablon"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: src/gui/settings/icon_settings.cpp:38
+#: src/gui/settings/icon_settings.cpp:39
 #, kde-format
 msgid "System Default"
 msgstr "Sistem Öntanımlısı"

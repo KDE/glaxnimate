@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-27 02:45+0000\n"
+"POT-Creation-Date: 2026-03-01 02:43+0000\n"
 "PO-Revision-Date: 2026-02-10 10:21+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -926,8 +926,9 @@ msgid "Could not start activity, is Telegram installed?"
 msgstr "Не удалось запустить действие. Убедитесь в наличии Telegram."
 
 #: src/core/app_info.cpp:57
-#, kde-format
-msgid "(c) 2019-2025"
+#, fuzzy, kde-format
+#| msgid "(c) 2019-2025"
+msgid "(c) 2019-2026"
 msgstr "(c) 2019-2025"
 
 #: src/core/app_info.cpp:66
@@ -2780,8 +2781,8 @@ msgstr "Изменить размер холста"
 msgid "Drag Gradient"
 msgstr "Перетащить градиент"
 
-#: src/gui/graphics/transform_graphics_item.cpp:429
-#: src/gui/graphics/transform_graphics_item.cpp:499
+#: src/gui/graphics/transform_graphics_item.cpp:439
+#: src/gui/graphics/transform_graphics_item.cpp:509
 #, kde-format
 msgid "Drag anchor point"
 msgstr "Перетащить опорную точку"
@@ -2934,7 +2935,7 @@ msgstr "Шаблон"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: src/gui/settings/icon_settings.cpp:38
+#: src/gui/settings/icon_settings.cpp:39
 #, kde-format
 msgid "System Default"
 msgstr "Системный по умолчанию"

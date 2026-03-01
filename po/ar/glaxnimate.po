@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-27 02:45+0000\n"
-"PO-Revision-Date: 2026-02-05 11:07+0400\n"
+"POT-Creation-Date: 2026-03-01 02:43+0000\n"
+"PO-Revision-Date: 2026-02-28 12:40+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -918,8 +918,9 @@ msgid "Could not start activity, is Telegram installed?"
 msgstr "تعذر بدء النشاط، هل تلغرام مثبت؟"
 
 #: src/core/app_info.cpp:57
-#, kde-format
-msgid "(c) 2019-2025"
+#, fuzzy, kde-format
+#| msgid "(c) 2019-2025"
+msgid "(c) 2019-2026"
 msgstr "© 2019-2025"
 
 #: src/core/app_info.cpp:66
@@ -2748,8 +2749,8 @@ msgstr "تغيير حجم اللوحة"
 msgid "Drag Gradient"
 msgstr "اسحب التدرج"
 
-#: src/gui/graphics/transform_graphics_item.cpp:429
-#: src/gui/graphics/transform_graphics_item.cpp:499
+#: src/gui/graphics/transform_graphics_item.cpp:439
+#: src/gui/graphics/transform_graphics_item.cpp:509
 #, kde-format
 msgid "Drag anchor point"
 msgstr "اسحب نقطة إرساء"
@@ -2901,7 +2902,7 @@ msgstr "القالب"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: src/gui/settings/icon_settings.cpp:38
+#: src/gui/settings/icon_settings.cpp:39
 #, kde-format
 msgid "System Default"
 msgstr "مبدئي النظام"
@@ -4352,10 +4353,9 @@ msgid "Make segments curved"
 msgstr "اجعل القطع منحنية"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:799
-#, fuzzy, kde-format
-#| msgid "Reverse"
+#, kde-format
 msgid "Reverse path"
-msgstr "اعكس"
+msgstr "اعكس المسار"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:897
 #, kde-format
