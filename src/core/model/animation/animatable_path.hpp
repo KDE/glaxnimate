@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -20,7 +20,7 @@ class AnimatedPropertyBezier : public detail::AnimatedProperty<math::bezier::Bez
 {
     Q_OBJECT
 public:
-    AnimatedPropertyBezier(Object* object, const KLazyLocalizedString& name,
+    AnimatedPropertyBezier(Object* object, const util::LazyLocalizedString& name,
                    PropertyCallback<void, math::bezier::Bezier> emitter = {})
     : detail::AnimatedProperty<math::bezier::Bezier>(object, name, {}, std::move(emitter))
     {}

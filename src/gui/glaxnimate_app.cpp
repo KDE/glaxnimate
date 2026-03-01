@@ -216,7 +216,6 @@ void GlaxnimateApp::init_qapplication()
 
 #ifndef Q_OS_ANDROID
     aboutData.addComponent(i18n("libarchive"), {}, utils::tar::libarchive_version());
-    aboutData.addComponent(i18n("zlib"), {}, {}, QStringLiteral("https://www.zlib.net/"));
 
     aboutData.addComponent(i18n("Inkscape"), {}, {}, QStringLiteral("https://inkscape.org/"), KAboutLicense::GPL_V2);
 #endif

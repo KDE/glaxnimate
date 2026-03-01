@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -21,7 +21,7 @@ namespace glaxnimate::model {
 class SubObjectPropertyBase : public BaseProperty
 {
 public:
-    SubObjectPropertyBase(Object* obj, const KLazyLocalizedString& name)
+    SubObjectPropertyBase(Object* obj, const util::LazyLocalizedString& name)
         : BaseProperty(obj, name, {PropertyTraits::Object})
     {}
 
@@ -33,7 +33,7 @@ template<class Type>
 class SubObjectProperty : public SubObjectPropertyBase
 {
 public:
-    SubObjectProperty(Object* obj, const KLazyLocalizedString& name)
+    SubObjectProperty(Object* obj, const util::LazyLocalizedString& name)
         : SubObjectPropertyBase(obj, name),
         sub_obj(obj->document())
     {}

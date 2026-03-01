@@ -15,7 +15,7 @@
 #include <QSysInfo>
 #include <QBuffer>
 
-#include <KLocalizedString>
+#include "utils/i18n.hpp"
 
 namespace glaxnimate::io::aep {
 

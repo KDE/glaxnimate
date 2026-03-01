@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -12,8 +12,7 @@
 #include <QFile>
 #include <QApplication>
 #include <QBuffer>
-#include <KCompressionDevice>
-#include <KLocalizedString>
+#include "utils/i18n.hpp"
 
 
 using namespace glaxnimate;

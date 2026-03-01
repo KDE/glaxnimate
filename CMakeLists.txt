@@ -190,6 +190,13 @@ if ( NOT ANDROID )
 endif()
 
 
+option(GLAXNIMATE_CORE_KDE "Use KDE libraries for Glaxnimate core" ON)
+
+if ( GLAXNIMATE_CORE_KDE )
+    add_definitions(-DGLAXNIMATE_CORE_KDE)
+endif()
+
+
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)

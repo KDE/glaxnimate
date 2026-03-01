@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -31,7 +31,7 @@ class ReferencePropertyBase : public BaseProperty
 public:
     ReferencePropertyBase(
         Object* obj,
-        const KLazyLocalizedString& name,
+        const util::LazyLocalizedString& name,
         PropertyCallback<std::vector<DocumentNode*>> valid_options,
         PropertyCallback<bool, DocumentNode*> is_valid_option,
         PropertyTraits::Flags flags = PropertyTraits::Visual)
@@ -88,7 +88,7 @@ public:
 
     ReferenceProperty(
         Object* obj,
-        const KLazyLocalizedString& name,
+        const util::LazyLocalizedString& name,
         PropertyCallback<std::vector<DocumentNode*>> valid_options,
         PropertyCallback<bool, DocumentNode*> is_valid_option,
         PropertyCallback<void, Type*, Type*> on_changed = {},

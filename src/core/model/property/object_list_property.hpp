@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -35,7 +35,7 @@ namespace glaxnimate::model {
 class ObjectListPropertyBase : public BaseProperty
 {
 public:
-    ObjectListPropertyBase(Object* obj, const KLazyLocalizedString& name)
+    ObjectListPropertyBase(Object* obj, const util::LazyLocalizedString& name)
         : BaseProperty(obj, name, {PropertyTraits::Object, PropertyTraits::List|PropertyTraits::Visual})
     {}
 
@@ -120,7 +120,7 @@ public:
 
     ObjectListProperty(
         Object* obj,
-        const KLazyLocalizedString& name,
+        const util::LazyLocalizedString& name,
         PropertyCallback<void, Type*, int> callback_insert = &DocumentNode::docnode_child_add_end,
         PropertyCallback<void, Type*, int> callback_remove = &DocumentNode::docnode_child_remove_end,
         PropertyCallback<void, int> callback_insert_begin = &DocumentNode::docnode_child_add_begin,

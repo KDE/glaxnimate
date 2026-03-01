@@ -1,13 +1,12 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 #include "app_info.hpp"
 
-#include <KLocalizedString>
-
+#include "utils/i18n.hpp"
 #include "application_info_generated.hpp"
 
 QString glaxnimate::AppInfo::name() const

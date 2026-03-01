@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -621,7 +621,7 @@ public:
 
     AnimatedProperty(
         Object* object,
-        const KLazyLocalizedString& name,
+        const util::LazyLocalizedString& name,
         reference default_value,
         PropertyCallback<void, Type> emitter = {},
         int flags = 0
@@ -968,7 +968,7 @@ class AnimatedPropertyPosition: public detail::AnimatedProperty<QPointF>
 public:
     AnimatedPropertyPosition(
         Object* object,
-        const KLazyLocalizedString& name,
+        const util::LazyLocalizedString& name,
         reference default_value,
         PropertyCallback<void, QPointF> emitter = {},
         int flags = 0
@@ -1026,7 +1026,7 @@ class AnimatedProperty<float> : public detail::AnimatedProperty<float>
 public:
     AnimatedProperty(
         Object* object,
-        const KLazyLocalizedString& name,
+        const util::LazyLocalizedString& name,
         reference default_value,
         PropertyCallback<void, float> emitter = {},
         float min = std::numeric_limits<float>::lowest(),

@@ -18,7 +18,6 @@ io/glaxnimate/glaxnimate_mime.cpp
 io/lottie/cbor_write_json.cpp
 io/lottie/lottie_format.cpp
 io/lottie/lottie_html_format.cpp
-io/lottie/tgs_format.cpp
 io/lottie/validation.cpp
 io/mime/mime_serializer.cpp
 io/raster/raster_format.cpp
@@ -145,17 +144,23 @@ if ( GLAXNIMATE_SYSTEM_POTRACE )
     include_directories(${Potrace_INCLUDE_DIRS})
 endif()
 
+# KDE provides gzip support
+if ( GLAXNIMATE_CORE_KDE )
+    list(APPEND SOURCES
+        io/lottie/tgs_format.cpp
+    )
+    add_definitions(-DGLAXNIMATE_CORE_KDE)
+else()
+    message(STATUS "Building Glaxnimate core without KDE")
+endif()
+
 add_library(${LIB_NAME_CORE} OBJECT ${SOURCES})
 kde_target_enable_exceptions(${LIB_NAME_CORE} PUBLIC)
 target_link_libraries(${LIB_NAME_CORE} PUBLIC
     QtAppSetup
-    ZLIB::ZLIB
     Qt${QT_MAJOR_VERSION}::Xml
     Qt${QT_MAJOR_VERSION}::Network
     ${Potrace_LIBRARIES}
-    KF${KF_MAJOR}::CoreAddons
-    KF${KF_MAJOR}::Archive
-    KF${KF_MAJOR}::I18n
 )
 set_property(TARGET ${LIB_NAME_CORE} APPEND PROPERTY AUTOMOC_MACRO_NAMES "GLAXNIMATE_OBJECT")
 target_include_directories(${LIB_NAME_CORE} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
@@ -170,4 +175,12 @@ endif ()
 
 if ( RENDERER_LIBRARIES )
     target_link_libraries(${LIB_NAME_CORE} PUBLIC ${RENDERER_LIBRARIES})
+endif()
+
+if ( GLAXNIMATE_CORE_KDE )
+target_link_libraries(${LIB_NAME_CORE} PUBLIC
+    KF${KF_MAJOR}::CoreAddons
+    KF${KF_MAJOR}::Archive
+    KF${KF_MAJOR}::I18n
+)
 endif()

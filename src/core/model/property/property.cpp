@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -8,7 +8,7 @@
 #include "model/object.hpp"
 #include "command/property_commands.hpp"
 
-glaxnimate::model::BaseProperty::BaseProperty(Object* object, const KLazyLocalizedString& name, PropertyTraits traits)
+glaxnimate::model::BaseProperty::BaseProperty(Object* object, const util::LazyLocalizedString& name, PropertyTraits traits)
     : object_(object), name_(name), traits_(traits)
 {
     if ( object )

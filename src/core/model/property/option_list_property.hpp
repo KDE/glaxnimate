@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -52,7 +52,7 @@ class OptionListProperty : public detail::PropertyTemplate<OptionListPropertyBas
 public:
     OptionListProperty(
         Object* obj,
-        const KLazyLocalizedString& name,
+        const util::LazyLocalizedString& name,
         Type default_value,
         PropertyCallback<Container> option_list,
         PropertyCallback<void, Type, Type> emitter = {},

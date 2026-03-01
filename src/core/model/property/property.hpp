@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -19,9 +19,8 @@
 #include <QVariant>
 #include <QGradient>
 
-#include <KLazyLocalizedString>
-
 #include "model/animation/frame_time.hpp"
+#include "utils/i18n.hpp"
 
 namespace glaxnimate::math::bezier { class Bezier; }
 
@@ -171,7 +170,7 @@ class BaseProperty
     Q_GADGET
 
 public:
-    BaseProperty(Object* object, const KLazyLocalizedString& name, PropertyTraits traits);
+    BaseProperty(Object* object, const util::LazyLocalizedString& name, PropertyTraits traits);
 
     virtual ~BaseProperty() = default;
 
@@ -217,7 +216,7 @@ protected:
 
 private:
     Object* object_;
-    KLazyLocalizedString name_;
+    util::LazyLocalizedString name_;
     PropertyTraits traits_;
 };
 
@@ -319,7 +318,7 @@ public:
     using reference = const Type&;
 
     PropertyTemplate(Object* obj,
-             const KLazyLocalizedString& name,
+             const util::LazyLocalizedString& name,
              Type default_value = Type(),
              PropertyCallback<void, Type, Type> emitter = {},
              PropertyCallback<bool, Type> validator = {},
