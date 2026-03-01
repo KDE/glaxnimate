@@ -255,11 +255,7 @@ void Canvas::mouseMoveEvent(QMouseEvent* event)
 
     d->move_last = mpos;
     d->move_last_scene = scene_pos;
-#if QT_VERSION_MAJOR < 6
-    d->move_last_screen = event->globalPos();
-#else
     d->move_last_screen = event->globalPosition().toPoint();
-#endif
 //     scene()->invalidate();
     viewport()->update();
 }
@@ -600,11 +596,7 @@ bool Canvas::viewportEvent(QEvent *event)
                     if ( math::abs(distance - initial_distance) > travel_distance )
                     {
                         // scenePos() lies...
-#if QT_VERSION_MAJOR < 6
-                        QPointF center = (d->map_to_scene(p0.pos()) + d->map_to_scene(p1.pos())) / 2;
-#else
                         QPointF center = (d->map_to_scene(p0.position()) + d->map_to_scene(p1.position())) / 2;
-#endif
                         qreal scale_by = distance / initial_distance;
 
                         if ( touch_event->touchPointStates() & Qt::TouchPointReleased )
