@@ -25,6 +25,7 @@ include:
     # - .gitlab/ci/tarball.yml
     # - .gitlab/ci/release.yml
     # - .gitlab/ci/test-files.yml
+    - .gitlab/ci/renderer-lib.yml
     - project: sysadmin/ci-utilities
       file:
         - /gitlab-templates/reuse-lint.yml
