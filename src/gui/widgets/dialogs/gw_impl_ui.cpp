@@ -99,6 +99,8 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
     QWidget *centralWidget = new QWidget(parent);
     QVBoxLayout *centralLayout = new QVBoxLayout(centralWidget);
     centralWidget->setLayout(centralLayout);
+    centralLayout->setContentsMargins(0, 0, 0, 0);
+    centralLayout->setSpacing(0);
 
     canvas = new Canvas(centralWidget);
     canvas->setAcceptDrops(true);

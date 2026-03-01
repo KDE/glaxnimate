@@ -100,6 +100,7 @@ public:
 
 Q_SIGNALS:
     void filename_changed(const QString& n);
+    void current_time_changing(FrameTime t);
     void current_time_changed(FrameTime t);
     void record_to_keyframe_changed(bool r);
     void graphics_invalidated();

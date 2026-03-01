@@ -7,6 +7,7 @@
 #include "icon_settings.hpp"
 
 #include "glaxnimate_settings.hpp"
+#include "glaxnimate_app.hpp"
 
 #include <QtGlobal>
 #include <QGuiApplication>
@@ -24,11 +25,7 @@ public:
         {
             theme = system_theme;
         }
-
-        KConfigGroup(config, "Icons").writeEntry("Theme", theme);
-        KIconTheme::forceThemeForTests(theme);
-        KIconTheme::reconfigure();
-        KIconLoader::global()->reconfigure({}, {});
+        QIcon::setThemeName(theme);
     }
 
     QStandardItemModel* get_model()
@@ -102,6 +99,7 @@ void glaxnimate::gui::settings::IconSettings::initialize()
 {
 #if HAS_FREEDESKTOP_ICONS
     QString theme = GlaxnimateSettings::icon_theme();
+    QIcon::setFallbackSearchPaths(app::Application::instance()->data_paths("images/icons"));
     d->set_theme(theme);
 #endif
 }

@@ -178,6 +178,7 @@ glaxnimate::model::FrameTime glaxnimate::model::Document::current_time() const
 
 void glaxnimate::model::Document::set_current_time(glaxnimate::model::FrameTime t)
 {
+    Q_EMIT current_time_changing(t);
     d->assets.set_time(t);
     Q_EMIT current_time_changed(d->current_time = t);
 }

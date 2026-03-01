@@ -53,8 +53,8 @@ void glaxnimate::AppInfo::init_qapplication() const
         name(),
         version(),
         QStringLiteral(PROJECT_DESCRIPTION),
-        KAboutLicense::GPL,
-        i18n("(c) 2019-2025"),
+        KAboutLicense::GPL_V3,
+        i18n("(c) 2019-2026"),
         // Optional text shown in the About box.
         QStringLiteral(""),
         QStringLiteral(URL_DOCS)
