@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+# SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
 # SPDX-License-Identifier: BSD-2-Clause
 
 set(SOURCES
@@ -40,6 +40,7 @@ io/aep/aep_format.cpp
 io/aep/aep_loader.cpp
 io/aep/string_decoder.cpp
 io/aep/gradient_xml.cpp
+io/io_registry.cpp
 
 math/geom.cpp
 math/polynomial.cpp
@@ -115,15 +116,26 @@ utils/trace_wrapper.cpp
 )
 
 if ( NOT ANDROID )
+    set(GLAXNIMATE_VIDEO_DEFAULT ON)
+    list(APPEND SOURCES
+        utils/tar.cpp
+    )
+    find_package(LibArchive REQUIRED)
+    include_directories(${LibArchive_INCLUDE_DIRS})
+else()
+    set(GLAXNIMATE_VIDEO_DEFAULT OFF)
+endif()
+
+option(GLAXNIMATE_VIDEO_ENABLED "Toggles support for video format I/O" ${GLAXNIMATE_VIDEO_DEFAULT})
+
+if ( GLAXNIMATE_VIDEO_ENABLED )
+    add_definitions(-DGLAXNIMATE_VIDEO_ENABLED)
     list(APPEND SOURCES
         io/video/video_format.cpp
-        utils/tar.cpp
     )
     find_package(Libav COMPONENTS codec util format swscale REQUIRED)
     include_directories(${Libav_INCLUDE_DIRS})
 
-    find_package(LibArchive REQUIRED)
-    include_directories(${LibArchive_INCLUDE_DIRS})
 endif()
 
 find_package(ZLIB REQUIRED)
@@ -156,8 +168,12 @@ set_property(TARGET ${LIB_NAME_CORE} APPEND PROPERTY AUTOMOC_MACRO_NAMES "GLAXNI
 target_include_directories(${LIB_NAME_CORE} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 
 if ( NOT ANDROID )
-    target_link_libraries(${LIB_NAME_CORE} PUBLIC ${Libav_LIBRARIES} ${LibArchive_LIBRARIES} )
+    target_link_libraries(${LIB_NAME_CORE} PUBLIC ${LibArchive_LIBRARIES} )
 endif()
+
+if ( GLAXNIMATE_VIDEO_ENABLED )
+    target_link_libraries(${LIB_NAME_CORE} PUBLIC ${Libav_LIBRARIES} )
+endif ()
 
 if ( RENDERER_LIBRARIES )
     target_link_libraries(${LIB_NAME_CORE} PUBLIC ${RENDERER_LIBRARIES})

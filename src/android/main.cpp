@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -15,6 +15,7 @@
 #include "app_info.hpp"
 #include "android_style.hpp"
 #include "android_intent_handler.hpp"
+#include "io/io_registry.hpp"
 
 // #include "android_file_picker.hpp"
 // #include <QDebug>
@@ -30,6 +31,8 @@ int main(int argc, char *argv[])
     gui::GlaxnimateApp app(argc, argv);
 
     AppInfo::instance().init_qapplication();
+
+    io::IoRegistry::load_formats();
 
     app.setStyle(new AndroidStyle);
     app.setStyleSheet(R"(

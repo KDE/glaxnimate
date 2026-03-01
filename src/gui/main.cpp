@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -66,6 +66,8 @@ int main(int argc, char *argv[])
     AppInfo::instance().init_qapplication();
 
     app::scripting::python::PythonEngine::add_module_search_paths(app.data_paths("lib/"));
+
+    io::IoRegistry::load_formats();
 
     auto args = gui::parse_cli(app.arguments());
 

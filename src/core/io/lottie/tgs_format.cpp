@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -117,6 +117,3 @@ void glaxnimate::io::lottie::TgsFormat::validate(model::Document* document, mode
 {
     TgsVisitor(this).visit(document, comp);
 }
-
-
-glaxnimate::io::Autoreg<glaxnimate::io::lottie::TgsFormat> glaxnimate::io::lottie::TgsFormat::autoreg = {};

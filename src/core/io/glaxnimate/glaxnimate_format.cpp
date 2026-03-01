@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -15,8 +15,6 @@
 #include "app/utils/string_view.hpp"
 
 using namespace glaxnimate;
-
-io::Autoreg<io::glaxnimate::GlaxnimateFormat> io::glaxnimate::GlaxnimateFormat::autoreg;
 
 const int glaxnimate::io::glaxnimate::GlaxnimateFormat::format_version = 8;
 

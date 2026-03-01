@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -9,8 +9,6 @@
 #include "avd_parser.hpp"
 #include "io/svg/parse_error.hpp"
 #include "avd_renderer.hpp"
-
-glaxnimate::io::Autoreg<glaxnimate::io::avd::AvdFormat> glaxnimate::io::avd::AvdFormat::autoreg;
 
 
 bool glaxnimate::io::avd::AvdFormat::on_open(QIODevice& file, const QString& filename, model::Document* document, const QVariantMap& options)

@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -28,9 +28,6 @@ public:
 
 protected:
     bool on_save(QIODevice& dev, const QString&, model::Composition* comp, const QVariantMap&) override;
-
-private:
-    static Autoreg<VideoFormat> autoreg;
 };
 
 } // namespace glaxnimate::io::video

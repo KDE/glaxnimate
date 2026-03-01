@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -8,8 +8,6 @@
 
 #include "lottie_importer.hpp"
 #include "lottie_exporter.hpp"
-
-glaxnimate::io::Autoreg<glaxnimate::io::lottie::LottieFormat> glaxnimate::io::lottie::LottieFormat::autoreg;
 
 bool glaxnimate::io::lottie::LottieFormat::on_save(QIODevice& file, const QString&,
                                                    model::Composition* comp, const QVariantMap& setting_values)

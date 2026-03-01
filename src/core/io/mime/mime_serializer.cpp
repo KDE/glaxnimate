@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -9,14 +9,8 @@
 #include "app/log/log.hpp"
 
 #include "model/object.hpp"
-#include "json_mime.hpp"
-#include "io/svg/svg_mime.hpp"
 #include "model/document.hpp"
 #include "model/assets/assets.hpp"
-
-
-glaxnimate::io::Autoreg<glaxnimate::io::mime::JsonMime> glaxnimate::io::mime::JsonMime::autoreg;
-glaxnimate::io::Autoreg<glaxnimate::io::svg::SvgMime> glaxnimate::io::svg::SvgMime::autoreg;
 
 
 glaxnimate::io::mime::DeserializedData glaxnimate::io::mime::MimeSerializer::from_mime_data(const QMimeData& data) const

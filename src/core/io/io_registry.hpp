@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -131,6 +131,19 @@ public:
         return nullptr;
     }
 
+    /**
+     * \brief Registers all the built-in formats
+     */
+    static void load_formats();
+
+    template<class Class, class... Args>
+    Class* register_class(Args&&... args)
+    {
+        return static_cast<Class*>(
+            IoRegistry::instance().register_object(std::make_unique<Class>(std::forward<Args>(args)...))
+        );
+    }
+
 private:
     std::vector<std::unique_ptr<ImportExport>> object_list;
     std::vector<ImportExport*> importers_;
@@ -140,20 +153,6 @@ private:
 
     IoRegistry() = default;
     ~IoRegistry() = default;
-};
-
-
-template<class Derived>
-class Autoreg
-{
-public:
-    template<class... Args>
-    Autoreg(Args&&... args)
-    : registered { static_cast<Derived*>(
-        IoRegistry::instance().register_object(std::make_unique<Derived>(std::forward<Args>(args)...))
-    ) } {}
-
-    Derived* const registered;
 };
 
 } // namespace glaxnimate::io

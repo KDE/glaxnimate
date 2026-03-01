@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -33,8 +33,6 @@ private:
 
     bool on_open(QIODevice& file, const QString& filename,
                  model::Document* document, const QVariantMap& setting_values) override;
-private:
-    static Autoreg<LottieFormat> autoreg;
 };
 
 

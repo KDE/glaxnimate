@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -27,9 +27,6 @@ protected:
     bool on_open(QIODevice& file, const QString&, model::Document* document, const QVariantMap& options) override;
 
     bool riff_to_document(const RiffChunk& chunk, model::Document* document, const QString& filename);
-
-private:
-    static Autoreg<AepFormat> autoreg;
 };
 
 
@@ -46,9 +43,6 @@ public:
 
 protected:
     bool on_open(QIODevice& file, const QString&, model::Document* document, const QVariantMap& options) override;
-
-private:
-    static Autoreg<AepxFormat> autoreg;
 };
 
 } // namespace glaxnimate::io::aep

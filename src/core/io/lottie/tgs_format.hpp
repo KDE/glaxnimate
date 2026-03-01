@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -30,9 +30,6 @@ private:
 
     bool on_open(QIODevice& file, const QString&,
                  model::Document* document, const QVariantMap&) override;
-
-
-    static Autoreg<TgsFormat> autoreg;
 };
 
 } // namespace glaxnimate::io::lottie

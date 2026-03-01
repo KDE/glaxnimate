@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -692,9 +692,6 @@ private:
 };
 
 } // namespace glaxnimate::av
-
-glaxnimate::io::Autoreg<glaxnimate::io::video::VideoFormat> glaxnimate::io::video::VideoFormat::autoreg;
-
 
 static QStringList out_ext;
 

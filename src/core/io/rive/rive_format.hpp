@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -26,16 +26,11 @@ public:
     bool can_save() const override { return true; }
     bool can_open() const override { return true; }
 
-    static RiveFormat* instance() { return autoreg.registered; }
-
     QJsonDocument to_json(const QByteArray& binary_data);
 
 protected:
     bool on_save(QIODevice& file, const QString&, model::Composition* comp, const QVariantMap&) override;
     bool on_open(QIODevice& file, const QString&, model::Document* document, const QVariantMap&) override;
-
-private:
-    static Autoreg<RiveFormat> autoreg;
 };
 
 

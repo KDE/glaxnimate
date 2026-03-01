@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -48,8 +48,6 @@ public:
     /// \todo show in settings
     io::svg::SvgParser::GroupMode deserialize_group_mode = io::svg::SvgParser::Inkscape;
 
-private:
-    static Autoreg<SvgMime> autoreg;
 };
 
 } // namespace glaxnimate::io::svg
