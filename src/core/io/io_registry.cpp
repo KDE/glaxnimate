@@ -10,7 +10,10 @@
 #include "io/glaxnimate/glaxnimate_mime.hpp"
 #include "io/mime/json_mime.hpp"
 #include "io/lottie/lottie_format.hpp"
-#include "io/lottie/tgs_format.hpp"
+
+#ifdef GLAXNIMATE_CORE_KDE
+#   include "io/lottie/tgs_format.hpp"
+#endif
 
 // Raster
 #include "io/raster/raster_format.hpp"
@@ -60,7 +63,6 @@ void glaxnimate::io::IoRegistry::load_formats()
         glaxnimate::GlaxnimateMime,
         mime::JsonMime,
         lottie::LottieFormat,
-        lottie::TgsFormat,
         raster::RasterFormat,
         raster::RasterMime,
         raster::SpritesheetFormat,
@@ -68,6 +70,12 @@ void glaxnimate::io::IoRegistry::load_formats()
         svg::SvgFormat,
         svg::SvgMime
     >();
+
+#ifdef GLAXNIMATE_CORE_KDE
+    register_classes<
+        lottie::TgsFormat
+    >();
+#endif
 
 #ifdef VIDEO_ENABLED
     register_classes<

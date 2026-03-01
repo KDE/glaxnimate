@@ -30,7 +30,7 @@ target_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/thorvg/src/renderer
     ${CMAKE_CURRENT_SOURCE_DIR}/thorvg/src/renderer/sw_engine/
     ${CMAKE_CURRENT_SOURCE_DIR}/thorvg/src/renderer/gl_engine/
-
+    ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/thorvg/src/loaders/raw
 )
 

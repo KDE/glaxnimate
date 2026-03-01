@@ -21,7 +21,6 @@ public:
     virtual QIcon icon() const = 0;
     virtual void load(QSettings& settings) = 0;
     virtual void save(QSettings& settings) = 0;
-    virtual QWidget* make_widget(QWidget* parent) = 0;
     virtual bool has_visible_settings() const { return true; }
     virtual QVariant get_variant(const QString& setting) const
     {

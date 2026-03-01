@@ -102,17 +102,37 @@ model/shapes/round_corners.cpp
 model/shapes/offset_path.cpp
 model/shapes/zig_zag.cpp
 
-plugin/plugin.cpp
-plugin/action.cpp
-plugin/io.cpp
-
 renderer/renderer.cpp
 
 utils/gzip.cpp
-utils/quantize.cpp
-utils/trace.cpp
-utils/trace_wrapper.cpp
 )
+
+if ( GLAXNIMATE_CORE_MINIMAL )
+    set(VIDEO_ENABLED OFF)
+    set(PYTHON_SCRIPTING_ENABLED OFF)
+    set(GLAXNIMATE_CORE_KDE OFF)
+    set(LIB_NAME_CORE glaxnimate_lib)
+    add_definitions(-DWITHOUT_POTRACE)
+
+    add_subdirectory(../../external/thorvg/ ${CMAKE_CURRENT_BINARY_DIR}/thorvg)
+    set(RENDERER_LIBRARIES thorvg)
+    list(APPEND SOURCES
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../external/QtAppSetup/src/app/log/logger.cpp
+        # ${CMAKE_CURRENT_SOURCE_DIR}/../../external/QtAppSetup/src/app/settings/settings.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../external/QtAppSetup/src/app/settings/settings_group.cpp
+    )
+
+else()
+    list(APPEND SOURCES
+        plugin/plugin.cpp
+        plugin/action.cpp
+        plugin/io.cpp
+
+        utils/quantize.cpp
+        utils/trace.cpp
+        utils/trace_wrapper.cpp
+    )
+endif()
 
 if ( NOT ANDROID )
     list(APPEND SOURCES
@@ -130,15 +150,12 @@ if ( VIDEO_ENABLED )
     include_directories(${Libav_INCLUDE_DIRS})
 endif()
 
-find_package(ZLIB REQUIRED)
-
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/application_info_generated.in.hpp
     ${CMAKE_CURRENT_BINARY_DIR}/application_info_generated.hpp
 )
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-include_directories(${CMAKE_SOURCE_DIR}/external/QtAppSetup/src)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 
 if ( GLAXNIMATE_SYSTEM_POTRACE )
     include_directories(${Potrace_INCLUDE_DIRS})
@@ -155,15 +172,16 @@ else()
 endif()
 
 add_library(${LIB_NAME_CORE} STATIC ${SOURCES})
-kde_target_enable_exceptions(${LIB_NAME_CORE} PUBLIC)
+
 target_link_libraries(${LIB_NAME_CORE} PUBLIC
-    QtAppSetup
+    Qt${QT_MAJOR_VERSION}::Core
+    Qt${QT_MAJOR_VERSION}::Gui # Needed for QColor / QUndoCommand
     Qt${QT_MAJOR_VERSION}::Xml
     Qt${QT_MAJOR_VERSION}::Network
     ${Potrace_LIBRARIES}
 )
 set_property(TARGET ${LIB_NAME_CORE} APPEND PROPERTY AUTOMOC_MACRO_NAMES "GLAXNIMATE_OBJECT")
-target_include_directories(${LIB_NAME_CORE} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
+target_include_directories(${LIB_NAME_CORE} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> ${CMAKE_CURRENT_SOURCE_DIR}/../../external/QtAppSetup/src)
 
 if ( NOT ANDROID )
     target_link_libraries(${LIB_NAME_CORE} PUBLIC ${LibArchive_LIBRARIES} )
@@ -178,9 +196,14 @@ if ( RENDERER_LIBRARIES )
 endif()
 
 if ( GLAXNIMATE_CORE_KDE )
+kde_target_enable_exceptions(${LIB_NAME_CORE} PUBLIC)
 target_link_libraries(${LIB_NAME_CORE} PUBLIC
     KF${KF_MAJOR}::CoreAddons
     KF${KF_MAJOR}::Archive
     KF${KF_MAJOR}::I18n
 )
 endif()
+
+if ( NOT GLAXNIMATE_CORE_MINIMAL )
+    target_link_libraries(${LIB_NAME_CORE} PUBLIC QtAppSetup)
+endif ()

@@ -7,9 +7,6 @@
 #include "document_node.hpp"
 #include "document.hpp"
 
-#include <QPainter>
-#include <QGraphicsItem>
-
 #include "model/shapes/shape.hpp"
 #include "model/property/reference_property.hpp"
 #include "model/property/sub_object_property.hpp"

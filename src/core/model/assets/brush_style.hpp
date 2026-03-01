@@ -40,7 +40,7 @@ protected:
     }
 
 private:
-    mutable QPixmap icon;
+    mutable std::unique_ptr<QPixmap> icon;
 };
 
 } // namespace glaxnimate::model

@@ -19,13 +19,41 @@ using LazyLocalizedString = KLazyLocalizedString;
 
 #include <QString>
 
+namespace {
 
-#define i18n(x) x
+
+inline const QString& arg_spread(const QString& str)
+{
+    return str;
+}
+
+template<class Head, class... Args>
+QString arg_spread(const QString& str, Head&& head, Args&&... args)
+{
+    return arg_spread(str.arg(std::forward<Head>(head)), std::forward<Args>(args)...);
+}
+
+
+} // namespace
+
+template<class Initializer, class... Args>
+QString i18n(Initializer&& init, Args&&... args)
+{
+  return arg_spread(QString(std::forward<Initializer>(init)), std::forward<Args>(args)...);
+}
+
 #define kli18n(x) x
 
 namespace glaxnimate::util {
 
-using LazyLocalizedString = QString;
+class LazyLocalizedString
+{
+    const char * text;
+public:
+    constexpr LazyLocalizedString(const char* text = "") : text(text) {}
+    constexpr inline const char *untranslatedText() const { return text; }
+    QString toString() const { return text; }
+};
 
 } // namespace glaxnimate::util
 #endif

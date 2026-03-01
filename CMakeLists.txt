@@ -7,7 +7,7 @@ cmake_policy(SET CMP0077 NEW)
 cmake_policy(SET CMP0153 NEW)
 
 
-project(Glaxnimate VERSION 0.5.80 LANGUAGES CXX C)
+project(Glaxnimate VERSION 0.5.80 LANGUAGES CXX)
 include(FeatureSummary)
 
 set(PROJECT_SLUG "glaxnimate")

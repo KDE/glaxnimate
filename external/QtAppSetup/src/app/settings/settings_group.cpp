@@ -8,7 +8,6 @@
 
 #include <set>
 
-#include "app/settings/widget_builder.hpp"
 
 app::settings::SettingsGroup::SettingsGroup(QString slug, utils::TranslatedString label, const QString& icon, SettingList settings)
     : slug_(std::move(slug)),
@@ -59,11 +58,6 @@ void app::settings::SettingsGroup::save(QSettings& settings)
 {
     for ( const Setting& setting : settings_ )
         settings.setValue(setting.slug, setting.get_variant(values_));
-}
-
-QWidget* app::settings::SettingsGroup::make_widget(QWidget* parent)
-{
-    return new SettingsGroupWidget(this, parent);
 }
 
 bool app::settings::SettingsGroup::has_visible_settings() const

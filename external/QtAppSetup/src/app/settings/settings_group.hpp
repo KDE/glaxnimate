@@ -34,8 +34,6 @@ public:
 
     void save(QSettings& settings) override;
 
-    QWidget* make_widget(QWidget* parent) override;
-
     bool has_visible_settings() const override;
 
     QVariant get_variant(const QString& setting_slug) const override;

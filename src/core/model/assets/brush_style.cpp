@@ -8,12 +8,12 @@
 
 QIcon glaxnimate::model::BrushStyle::instance_icon() const
 {
-    if ( icon.isNull() )
+    if ( !icon )
     {
-        icon = QPixmap(32, 32);
-        fill_icon(icon);
+        icon = std::make_unique<QPixmap>(32, 32);
+        fill_icon(*icon);
     }
-    return icon;
+    return *icon;
 }
 
 QBrush glaxnimate::model::BrushStyle::constrained_brush_style(FrameTime t, const QRectF& ) const
