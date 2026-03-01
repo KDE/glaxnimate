@@ -5,7 +5,7 @@
  */
 
 #pragma once
-#include <QtTest/QtTest>
+#include <QTest>
 
 #include"math/bezier/bezier.hpp"
 

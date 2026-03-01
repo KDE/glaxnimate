@@ -143,7 +143,7 @@ def open_dotlottie(window, document, file, fname, import_export, settings):
         lottie = animations[chosen_id]
 
         for asset in lottie.get("assets", []):
-            # .lottie is very werid on how it handles assets so we can't
+            # .lottie is very weird about how it handles assets so we can't
             # rely on `e` or `p`...
             if asset.get("p", "").startswith("data:"):
                 continue

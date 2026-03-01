@@ -84,11 +84,7 @@ protected:
     void scrollContentsBy(int dx, int dy) override;
     void mouseMoveEvent(QMouseEvent * event) override;
     void leaveEvent(QEvent * event) override;
-#if QT_VERSION_MAJOR < 6
-    void enterEvent(QEvent * event) override;
-#else
     void enterEvent(QEnterEvent * event) override;
-#endif
     void keyPressEvent(QKeyEvent * event) override;
     
 Q_SIGNALS:

@@ -17,7 +17,7 @@ set -ex
 case "$ACTION" in
     deps)
         brew list cmake || brew install cmake
-        brew list qt@5 || brew install qt@5
+        brew list qt@6 || brew install qt@6
         brew upgrade python@3.9 || true
         brew list potrace || brew install potrace
         brew list ffmpeg || brew install ffmpeg
@@ -29,8 +29,8 @@ case "$ACTION" in
         mkdir -p "$ROOT/build"
         cd "$ROOT/build"
         cmake .. \
-            -DQt5_DIR="$(brew --prefix qt@5)/lib/cmake/Qt5" \
-            -DCMAKE_PREFIX_PATH="$(brew --prefix qt@5)/lib/cmake/Qt5Designer" \
+            -DQt6_DIR="$(brew --prefix qt@6)/lib/cmake/Qt6" \
+            -DCMAKE_PREFIX_PATH="$(brew --prefix qt@6)/lib/cmake/Qt6Designer" \
             -DLibArchive_INCLUDE_DIR="$(brew --prefix libarchive)/include" \
             -DVERSION_SUFFIX="$SUFFIX"
         ;;

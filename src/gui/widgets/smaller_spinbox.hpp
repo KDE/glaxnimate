@@ -24,10 +24,8 @@ public:
         setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         resize(sizeHint());
         
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         if ( adaptive )
             setStepType(QAbstractSpinBox::AdaptiveDecimalStepType);
-#endif
     }
     
     QSize sizeHint() const override

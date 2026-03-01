@@ -29,9 +29,7 @@ ViewTransformWidget::ViewTransformWidget(QWidget* parent)
     connect(d->btn_view_fit, &QAbstractButton::clicked, this, &ViewTransformWidget::view_fit);
     connect(d->btn_flip_view, &QAbstractButton::clicked, this, &ViewTransformWidget::flip_view);
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
     d->spin_zoom->setStepType(QAbstractSpinBox::AdaptiveDecimalStepType);
-#endif
 
 }
 

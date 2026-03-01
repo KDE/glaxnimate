@@ -10,6 +10,7 @@
 #include <vector>
 #include <cstring>
 #include <memory>
+#include <stdexcept>
 
 #include <QByteArray>
 #include <QSysInfo>

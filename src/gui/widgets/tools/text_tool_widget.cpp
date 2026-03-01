@@ -69,11 +69,7 @@ public:
         combo_font->setEditable(true);
         combo_font->view()->setMinimumWidth(combo_font->view()->sizeHintForColumn(0));
         connect(combo_font,
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
                 &QComboBox::textActivated,
-#else
-                QOverload<const QString&>::of(&QComboBox::activated),
-#endif
                 parent, [this, parent](const QString& family){
             update_styles(family);
             parent->on_font_changed();
@@ -163,11 +159,7 @@ public:
     void update_styles(const QString& family)
     {
         combo_style->clear();
-#if QT_VERSION_MAJOR < 6
-        combo_style->insertItems(0, db.styles(family));
-#else
         combo_style->insertItems(0, QFontDatabase::styles(family));
-#endif
         font_.setFamily(family);
         combo_style->setCurrentText(QFontInfo(font_).styleName());
     }
@@ -185,9 +177,6 @@ public:
     font::FontStyleDialog* dialog;
 
     QFont font_;
-#if QT_VERSION_MAJOR < 6
-    QFontDatabase db;
-#endif
 
     font::FontModel model;
     font::FontDelegate delegate;

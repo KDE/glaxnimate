@@ -588,11 +588,7 @@ void TimelineWidget::mousePressEvent(QMouseEvent* event)
         d->drag_start = event->pos();
         d->drag_scroll = QPoint(horizontalScrollBar()->value(), d->scroll_row());
     }
-#if QT_VERSION_MAJOR >= 6
     else if ( event->position().y() > d->header_height )
-#else
-    else if ( event->y() > d->header_height )
-#endif
     {
         QGraphicsView::mousePressEvent(event);
         auto selection = d->scene.selectedItems();
@@ -635,11 +631,7 @@ void TimelineWidget::mouseMoveEvent(QMouseEvent* event)
     {
         Q_EMIT frame_clicked(d->mouse_frame);
     }
-#if QT_VERSION_MAJOR >= 6
     else if ( event->position().y() > d->header_height )
-#else
-    else if ( event->y() > d->header_height )
-#endif
     {
         QGraphicsView::mouseMoveEvent(event);
     }
@@ -676,11 +668,7 @@ void TimelineWidget::leaveEvent(QEvent* event)
     d->keep_highlight = false;
 }
 
-#if QT_VERSION_MAJOR < 6
-void TimelineWidget::enterEvent(QEvent* event)
-#else
 void TimelineWidget::enterEvent(QEnterEvent* event)
-#endif
 {
     QGraphicsView::enterEvent(event);
     d->keep_highlight = false;
