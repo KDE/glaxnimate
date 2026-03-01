@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -393,7 +393,7 @@ public:
             QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
             app = std::make_unique<QGuiApplication>(fake_argc, (char**)fake_argv);
-            AppInfo::instance().init_qapplication();
+            // glaxnimate::gui::GlaxnimateApp::init_qapplication();
         }
     }
 

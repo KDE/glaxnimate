@@ -116,26 +116,19 @@ utils/trace_wrapper.cpp
 )
 
 if ( NOT ANDROID )
-    set(GLAXNIMATE_VIDEO_DEFAULT ON)
     list(APPEND SOURCES
         utils/tar.cpp
     )
     find_package(LibArchive REQUIRED)
     include_directories(${LibArchive_INCLUDE_DIRS})
-else()
-    set(GLAXNIMATE_VIDEO_DEFAULT OFF)
 endif()
 
-option(GLAXNIMATE_VIDEO_ENABLED "Toggles support for video format I/O" ${GLAXNIMATE_VIDEO_DEFAULT})
-
-if ( GLAXNIMATE_VIDEO_ENABLED )
-    add_definitions(-DGLAXNIMATE_VIDEO_ENABLED)
+if ( VIDEO_ENABLED )
     list(APPEND SOURCES
         io/video/video_format.cpp
     )
     find_package(Libav COMPONENTS codec util format swscale REQUIRED)
     include_directories(${Libav_INCLUDE_DIRS})
-
 endif()
 
 find_package(ZLIB REQUIRED)
@@ -171,7 +164,7 @@ if ( NOT ANDROID )
     target_link_libraries(${LIB_NAME_CORE} PUBLIC ${LibArchive_LIBRARIES} )
 endif()
 
-if ( GLAXNIMATE_VIDEO_ENABLED )
+if ( VIDEO_ENABLED )
     target_link_libraries(${LIB_NAME_CORE} PUBLIC ${Libav_LIBRARIES} )
 endif ()
 

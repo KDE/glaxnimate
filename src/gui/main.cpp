@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
     KCrash::initialize();
 #endif
 
-    AppInfo::instance().init_qapplication();
+    gui::GlaxnimateApp::init_qapplication();
 
     app::scripting::python::PythonEngine::add_module_search_paths(app.data_paths("lib/"));
 

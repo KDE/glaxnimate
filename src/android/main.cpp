@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
     gui::GlaxnimateApp app(argc, argv);
 
-    AppInfo::instance().init_qapplication();
+    gui::GlaxnimateApp::init_qapplication();
 
     io::IoRegistry::load_formats();
 

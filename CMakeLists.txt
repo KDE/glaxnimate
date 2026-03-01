@@ -222,6 +222,20 @@ endif()
 add_subdirectory(external/thorvg/)
 set(RENDERER_LIBRARIES thorvg)
 
+
+if ( NOT ANDROID )
+    set(GLAXNIMATE_VIDEO_DEFAULT ON)
+else()
+    set(GLAXNIMATE_VIDEO_DEFAULT OFF)
+endif()
+
+option(VIDEO_ENABLED "Toggles support for video format I/O" ${GLAXNIMATE_VIDEO_DEFAULT})
+
+if ( VIDEO_ENABLED )
+    add_definitions(-DVIDEO_ENABLED)
+endif()
+
+
 # sub projects and stuff
 
 SET(BUILD_STATIC_LIBS ON CACHE BOOL "")
