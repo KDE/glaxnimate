@@ -93,7 +93,7 @@ Install the dependencies with homebrew:
     # for kf6 (for now) see: https://github.com/KDE/homebrew-kde
 
     brew untap kde-mac/kde 2> /dev/null
-    brew tap kde-mac/kde https://invent.kde.org/packaging/homebrew-kde.git --force-auto-update
+    brew tap kde-mac/kde https://invent.kde.org/packaging/homebrew-kde.git
     "$(brew --repo kde-mac/kde)/tools/do-caveats.sh"
 
     brew tap homebrew/core --force
