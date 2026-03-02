@@ -117,33 +117,21 @@ void glaxnimate::model::Layer::paint(renderer::Renderer* painter, FrameTime time
     if ( !animation->time_visible(time) )
         return;
 
-    if ( mask->has_mask() )
+    auto n_shapes = shapes.size();
+    auto mask_mode = mask->mask.get();
+    if ( mask->has_mask() && n_shapes > 1 && shapes[0]->visible.get() )
     {
-        auto n_shapes = shapes.size();
-        if ( n_shapes <= 1 )
-            return;
+        int renderer_mask_mode = mask_mode;
+        if ( mask->inverted.get() )
+            renderer_mask_mode |= renderer::MaskInverted;
 
         painter->layer_start();
         auto transform = group_transform_matrix(time);
         painter->transform(transform);
 
-        if ( shapes[0]->visible.get() )
-        {
-            glaxnimate::math::bezier::MultiBezier clip = shapes[0]->to_clip(time);
-            // clip.setFillRule(Qt::WindingFill);
-            if ( mask->inverted.get() )
-            {
-                glaxnimate::math::bezier::MultiBezier outer_clip;
-                outer_clip.append(
-                    transform.inverted().map(owner_composition()->rect())
-                );
-                // TODO check fill rule
-                outer_clip.append(clip);
-                std::swap(clip, outer_clip);
-            }
-            painter->clip_path(clip, Qt::IntersectClip);
-        }
-
+        painter->mask_start(renderer_mask_mode);
+        shapes[0]->paint(painter, time, mode);
+        painter->mask_end();
 
         on_paint(painter, time, mode, modifier);
 
@@ -178,7 +166,17 @@ glaxnimate::math::bezier::MultiBezier glaxnimate::model::Layer::to_painter_path_
 
 QIcon glaxnimate::model::Layer::tree_icon() const
 {
-    return mask->has_mask() ? QIcon::fromTheme("path-clip-edit") : QIcon::fromTheme("folder");
+    auto mask_mode = mask->mask.get();
+    switch ( mask_mode )
+    {
+        case MaskSettings::Luma:
+            return QIcon::fromTheme("mask-luma");
+        case MaskSettings::Alpha:
+            return QIcon::fromTheme("mask-alpha");
+        case MaskSettings::NoMask:
+        default:
+            return QIcon::fromTheme("folder");
+    }
 }
 
 QIcon glaxnimate::model::Layer::static_tree_icon()

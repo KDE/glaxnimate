@@ -104,6 +104,19 @@ std::pair<QString, const char*> EnumCombo::data_for(const QMetaEnum& meta_enum, 
                 return {i18n("Conical"), "paint-gradient-conical"};
         }
     }
+    else if ( std::strcmp(meta_enum.name(), "MaskMode") == 0 )
+    {
+        switch ( model::MaskSettings::MaskMode(value) )
+        {
+            // TODO better icons
+            case model::MaskSettings::NoMask:
+                return {i18n("No Mask"), "edit-none"};
+            case model::MaskSettings::Alpha:
+                return {i18n("Alpha"), "mask-alpha"};
+            case model::MaskSettings::Luma:
+                return {i18n("Luma"), "mask-luma"};
+        }
+    }
 
     return {meta_enum.valueToKey(value), "paint-unknown"};
 }

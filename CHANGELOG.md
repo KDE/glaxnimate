@@ -1,5 +1,7 @@
 ## 0.6.70
 
+* Editing:
+    * Added luma mask mode
 * Misc
     * New rendering system
 

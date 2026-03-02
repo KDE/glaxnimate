@@ -21,7 +21,8 @@ public:
     enum MaskMode
     {
         NoMask = 0,
-        Alpha = 1,
+        Alpha = renderer::MaskSourceAlpha,
+        Luma = renderer::MaskSourceLuma,
     };
     Q_ENUM(MaskMode)
 

@@ -22,6 +22,7 @@ private:
     Fill fill;
     Stroke stroke;
     int mode = ShapeMode::NothingMode;
+    int mask_flags = 0;
     int effect_quality;
 
     std::unique_ptr<tvg::Canvas> canvas;
@@ -231,6 +232,7 @@ public:
         layers.clear();
         canvas->draw(true);
         canvas->sync();
+        mask_flags = 0;
     }
 
     void set_fill(const Fill & fill) override
@@ -445,8 +447,29 @@ public:
     {
         layers.back()->transform(convert_transform(matrix));
     }
+
+
+    void mask_start(int mask_flags) override
+    {
+        layer_start();
+        this->mask_flags = mask_flags;
+    }
+
+    void mask_end() override
+    {
+        auto mask = layers.back();
+        layers.pop_back();
+        if ( !mask_flags )
+            return;
+        tvg::MaskMethod method = tvg::MaskMethod::None;
+        bool inverted = mask_flags & MaskFlags::MaskInverted;
+        if ( mask_flags & MaskFlags::MaskSourceLuma )
+            method = inverted ? tvg::MaskMethod::InvLuma : tvg::MaskMethod::Luma;
+        else
+            method = inverted ? tvg::MaskMethod::InvAlpha : tvg::MaskMethod::Alpha;
+        layers.back()->mask(mask, method);
+        mask_flags = 0;
+    }
 };
 
 } // namespace glaxnimate::renderer
-
-

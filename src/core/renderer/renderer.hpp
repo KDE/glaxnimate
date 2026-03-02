@@ -31,6 +31,14 @@ enum SurfaceType
     Painter = 0x20,
 };
 
+enum MaskFlags
+{
+    MaskSourceAlpha = 0x0001, ///< Use mask Alpha to determine what is shown
+    MaskSourceLuma  = 0x0002, ///< Use mask Luma to determine what is shown
+
+    MaskInverted    = 0x0100, ///< Invert masking
+};
+
 /**
  * Abstracted renderer interface
  */
@@ -106,6 +114,15 @@ public:
      * \brief Applies the layer to the current surface
      */
     virtual void layer_end() = 0;
+
+    /**
+     * \brief Starts a new masking layer
+     */
+    virtual void mask_start(int mask_flags) = 0;
+    /**
+     * \brief Applies the mask to the current surface
+     */
+    virtual void mask_end() = 0;
 
     /**
      * \brief Sets layer opacity
