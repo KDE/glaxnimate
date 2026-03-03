@@ -85,7 +85,7 @@ public:
         void rebuild_preview(model::FrameTime t)
         {
             auto main = document->assets()->compositions->values[0];
-            pixmap = QPixmap::fromImage(main->render_image(t, pixmap_size, Qt::white))
+            pixmap = QPixmap::fromImage(main->render_image(t, pixmap_size, Qt::white));
             preview.setPixmap(pixmap);
         }
 
