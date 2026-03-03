@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-01 02:43+0000\n"
-"PO-Revision-Date: 2024-09-13 06:24+0200\n"
+"POT-Creation-Date: 2026-03-02 00:42+0000\n"
+"PO-Revision-Date: 2026-03-02 03:22+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.8\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -144,7 +144,7 @@ msgstr "გარე_რადიუსი"
 #. i18n: Property name
 #, kde-format
 msgid "angle"
-msgstr "angle"
+msgstr "კუთხე"
 
 #. i18n: file: src/core/model/shapes/polystar.hpp
 #. i18n: Property name
@@ -204,7 +204,7 @@ msgstr "მიმაგრების_წერტილი"
 #. i18n: Property name
 #, kde-format
 msgid "scale"
-msgstr "მასშტაბი"
+msgstr "სასწორი"
 
 #. i18n: file: src/core/model/assets/bitmap.hpp
 #. i18n: Property name
@@ -638,71 +638,71 @@ msgstr "მონიშნულის კიდევ უფრო უკან
 msgid "Brings the selection further to the front."
 msgstr "მონიშნულის კიდევ უფრო წინ გადმოტანა."
 
-#: src/android/main_window.cpp:412
+#: src/android/main_window.cpp:394
 #, kde-format
 msgid "Timeline"
 msgstr "დროის ხაზი"
 
-#: src/android/main_window.cpp:417
+#: src/android/main_window.cpp:399
 #, kde-format
 msgid "Fill Style"
 msgstr "შევსება: სტილი"
 
-#: src/android/main_window.cpp:422
+#: src/android/main_window.cpp:404
 #, kde-format
 msgid "Stroke Style"
 msgstr "შემოსაზღვრის სტილი"
 
-#: src/android/main_window.cpp:452 src/gui/widgets/dialogs/gw_impl_ui.cpp:640
+#: src/android/main_window.cpp:434 src/gui/widgets/dialogs/gw_impl_ui.cpp:634
 #: src/gui/widgets/menus/node_menu.cpp:105
 #, kde-format
 msgid "Raise"
 msgstr "აწევა"
 
-#: src/android/main_window.cpp:457 src/gui/widgets/dialogs/gw_impl_ui.cpp:643
+#: src/android/main_window.cpp:439 src/gui/widgets/dialogs/gw_impl_ui.cpp:637
 #: src/gui/widgets/menus/node_menu.cpp:109
 #, kde-format
 msgid "Lower"
 msgstr "დაწევა"
 
-#: src/android/main_window.cpp:464 src/gui/tools/select_tool.cpp:409
+#: src/android/main_window.cpp:446 src/gui/tools/select_tool.cpp:409
 #: src/gui/widgets/dialogs/selection_manager.cpp:85
 #, kde-format
 msgid "Cut"
 msgstr "ამოჭრა"
 
-#: src/android/main_window.cpp:467 src/gui/tools/select_tool.cpp:411
+#: src/android/main_window.cpp:449 src/gui/tools/select_tool.cpp:411
 #, kde-format
 msgid "Copy"
 msgstr "კოპირება"
 
-#: src/android/main_window.cpp:470 src/gui/tools/select_tool.cpp:413
+#: src/android/main_window.cpp:452 src/gui/tools/select_tool.cpp:413
 #: src/gui/widgets/dialogs/selection_manager.cpp:166
 #, kde-format
 msgid "Paste"
 msgstr "ჩასმა"
 
-#: src/android/main_window.cpp:474
+#: src/android/main_window.cpp:456
 #, kde-format
 msgid "Delete Selected"
 msgstr "მონიშნულის წაშლა"
 
-#: src/android/main_window.cpp:482
+#: src/android/main_window.cpp:464
 #, kde-format
 msgid "Raise Above"
 msgstr "აწევა"
 
-#: src/android/main_window.cpp:486
+#: src/android/main_window.cpp:468
 #, kde-format
 msgid "Lower Below"
 msgstr "ჩამოწევა"
 
-#: src/android/main_window.cpp:490
+#: src/android/main_window.cpp:472
 #, kde-format
 msgid "Undo"
-msgstr "დაბრუნება"
+msgstr "გაუქმება"
 
-#: src/android/main_window.cpp:492
+#: src/android/main_window.cpp:474
 #, kde-format
 msgid "Redo"
 msgstr "გამეორება"
@@ -710,7 +710,7 @@ msgstr "გამეორება"
 #. i18n: ectx: Menu (new_layer_menu)
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #. i18n: ectx: property (text), widget (QToolButton, btn_new)
-#: src/android/main_window.cpp:506 src/gui/glaxnimateui.rc:122
+#: src/android/main_window.cpp:488 src/gui/glaxnimateui.rc:122
 #: src/gui/widgets/docks/snippet_list_widget.ui:29
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:45
 #, kde-format
@@ -718,7 +718,7 @@ msgid "New"
 msgstr "ახალი"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
-#: src/android/main_window.cpp:509
+#: src/android/main_window.cpp:491
 #: src/gui/widgets/font/external_font_widget.ui:47
 #, kde-format
 msgid "Open..."
@@ -732,14 +732,14 @@ msgstr "გახსნა..."
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #. i18n: ectx: property (text), widget (QPushButton, button_open)
-#: src/android/main_window.cpp:511
+#: src/android/main_window.cpp:493
 #: src/gui/widgets/dialogs/about_env_dialog.ui:67
 #: src/gui/widgets/dialogs/about_env_dialog.ui:70
 #: src/gui/widgets/dialogs/about_env_dialog.ui:98
 #: src/gui/widgets/dialogs/about_env_dialog.ui:101
 #: src/gui/widgets/dialogs/about_env_dialog.ui:129
 #: src/gui/widgets/dialogs/about_env_dialog.ui:132
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1640
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1634
 #: src/gui/widgets/dialogs/startup_dialog.ui:149
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:136
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
@@ -747,39 +747,39 @@ msgstr "გახსნა..."
 msgid "Open"
 msgstr "გახსნა"
 
-#: src/android/main_window.cpp:514
+#: src/android/main_window.cpp:496
 #, kde-format
 msgid "Import as Composition"
 msgstr "შემოტანა კომპოზიციის სახით"
 
-#: src/android/main_window.cpp:517
+#: src/android/main_window.cpp:499
 #, kde-format
 msgid "Save..."
 msgstr "შენახვა..."
 
-#: src/android/main_window.cpp:519
+#: src/android/main_window.cpp:501
 #, kde-format
 msgid "Save"
 msgstr "შენახვა"
 
-#: src/android/main_window.cpp:522
+#: src/android/main_window.cpp:504
 #, kde-format
 msgid "Save As"
 msgstr "შენახვა, როგორც"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_export)
-#: src/android/main_window.cpp:525
+#: src/android/main_window.cpp:507
 #: src/android/sticker_pack_builder_dialog.ui:154
 #, kde-format
 msgid "Export"
 msgstr "გატანa"
 
-#: src/android/main_window.cpp:528
+#: src/android/main_window.cpp:510
 #, kde-format
 msgid "Save Frame as PNG"
 msgstr "კადრის შენახვა PNG ფორმატში"
 
-#: src/android/main_window.cpp:532
+#: src/android/main_window.cpp:514
 #, kde-format
 msgid "Send to Telegram"
 msgstr "გაგზავნა Telegram-ში"
@@ -787,36 +787,36 @@ msgstr "გაგზავნა Telegram-ში"
 #. i18n: ectx: Menu (layers)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/android/main_window.cpp:544 src/gui/glaxnimateui.rc:120
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:596
+#: src/android/main_window.cpp:526 src/gui/glaxnimateui.rc:120
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:590
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #: src/gui/widgets/docks/layers.ui:29
 #, kde-format
 msgid "Layers"
 msgstr "ფენები"
 
-#: src/android/main_window.cpp:550
+#: src/android/main_window.cpp:532
 #, kde-format
 msgid "Advanced Properties"
 msgstr "დამატებითი პარამეტრები"
 
-#: src/android/main_window.cpp:555
+#: src/android/main_window.cpp:537
 #, kde-format
 msgid "Help"
 msgstr "დახმარება"
 
-#: src/android/main_window.cpp:623
+#: src/android/main_window.cpp:605
 #, kde-format
 msgid "Animation.%1"
 msgstr "ანიმაცია. %1"
 
-#: src/android/main_window.cpp:665
+#: src/android/main_window.cpp:647
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:293
 #, kde-format
 msgid "Closing Animation"
 msgstr "ანიმაციის დახურვა"
 
-#: src/android/main_window.cpp:666
+#: src/android/main_window.cpp:648
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:294
 #, kde-format
 msgid ""
@@ -826,8 +826,8 @@ msgstr ""
 "ანიმაციას შეუნახავი ცვლილებები გააჩნია.\n"
 "გნებავთ, შეინახოთ ეს ცვლილებები?"
 
-#: src/android/main_window.cpp:750 src/android/main_window.cpp:754
-#: src/android/main_window.cpp:889
+#: src/android/main_window.cpp:732 src/android/main_window.cpp:736
+#: src/android/main_window.cpp:871
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:507
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:511
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:851
@@ -837,34 +837,34 @@ msgstr ""
 msgid "Import File"
 msgstr "ფაილის შემოტანა"
 
-#: src/android/main_window.cpp:750
+#: src/android/main_window.cpp:732
 #, kde-format
 msgid "Could not import file"
 msgstr "ფაილის შემოტანა შეუძლებელია"
 
-#: src/android/main_window.cpp:789
+#: src/android/main_window.cpp:771
 #, kde-format
 msgid "Frame %1.png"
 msgstr "კადრი %1.png"
 
-#: src/android/main_window.cpp:980
+#: src/android/main_window.cpp:962
 #, kde-format
 msgid "Add keyframe"
 msgstr "ძირითადი კადრის დამატება"
 
-#: src/android/main_window.cpp:989
+#: src/android/main_window.cpp:971
 #, kde-format
 msgid "Remove keyframe"
 msgstr "ძირითადი კადრის წაშლა"
 
-#: src/android/main_window.cpp:1004
+#: src/android/main_window.cpp:986
 #: src/gui/widgets/menus/animated_property_menu.cpp:55
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:174
 #, kde-format
 msgid "Clear Animations"
 msgstr "ანიმაციების გასუფთავება"
 
-#: src/android/main_window.cpp:1069
+#: src/android/main_window.cpp:1051
 #, kde-format
 msgid "Emoji"
 msgstr "ემოჯი"
@@ -884,7 +884,7 @@ msgstr "მეტისმეტად ბევრი სტიკერი"
 #: src/android/sticker_pack_builder_dialog.cpp:171
 #, kde-format
 msgid "Could not open file"
-msgstr "ფაილის გახსნის შეცდომა"
+msgstr "ფაილის გახსნა შეუძლებელია"
 
 #: src/android/sticker_pack_builder_dialog.cpp:222
 #, kde-format
@@ -930,10 +930,9 @@ msgid "Could not start activity, is Telegram installed?"
 msgstr "აქტივობის დაწყება შეუძლებელია. Telegram დაყენებული გაქვთ?"
 
 #: src/core/app_info.cpp:57
-#, fuzzy, kde-format
-#| msgid "(c) 2019-2023"
+#, kde-format
 msgid "(c) 2019-2026"
-msgstr "(c) 2019-2023"
+msgstr "(c) 2019-2026"
 
 #: src/core/app_info.cpp:66
 #, kde-format
@@ -1210,13 +1209,13 @@ msgstr "სიაში მონაცემები საკმარის�
 msgid "Invalid text document: %1"
 msgstr "არასწორი ტექსტური დოკუმენტი: %1"
 
-#: src/core/io/aep/riff.hpp:220 src/core/io/aep/riff.hpp:233
-#: src/core/io/aep/riff.hpp:254 src/core/io/aep/riff.hpp:292
+#: src/core/io/aep/riff.hpp:221 src/core/io/aep/riff.hpp:234
+#: src/core/io/aep/riff.hpp:255 src/core/io/aep/riff.hpp:293
 #, kde-format
 msgid "Not enough data"
 msgstr "არასაკმარისი მონაცემები"
 
-#: src/core/io/aep/riff.hpp:528
+#: src/core/io/aep/riff.hpp:529
 #, kde-format
 msgid "Unknown format %1"
 msgstr "უცნობი ფორმატი %1"
@@ -1266,8 +1265,8 @@ msgstr "%s მხარდაჭერილები არაა"
 msgid "%s cannot be a clip path"
 msgstr "%s კლიპის ბილიკი ვერ იქნება"
 
-#: src/core/io/base.cpp:22 src/core/io/svg/svg_renderer.cpp:833
-#: src/gui/tools/base.cpp:162
+#: src/core/io/base.cpp:22 src/core/io/svg/svg_renderer.cpp:827
+#: src/gui/tools/base.cpp:158
 #, kde-format
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
@@ -1487,24 +1486,24 @@ msgstr "არასწორი საკვანძო კადრები 
 #: src/core/io/lottie/lottie_importer.hpp:987
 #, kde-format
 msgid "(null)"
-msgstr "(null)"
+msgstr "(ნული)"
 
 #: src/core/io/lottie/lottie_importer.hpp:993
 #, kde-format
 msgid "(empty)"
 msgstr "(ცარიელი)"
 
-#: src/core/io/lottie/lottie_importer.hpp:1002
+#: src/core/io/lottie/lottie_importer.hpp:998
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
 msgstr "ვერ ჩავტვირთე საკვანძო კადრი %1-ზე %2-სთვის მნიშვნელობით %3"
 
-#: src/core/io/lottie/lottie_importer.hpp:1056
+#: src/core/io/lottie/lottie_importer.hpp:1052
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
 msgstr "გამეორებული ბიტური რუკის ID: %1"
 
-#: src/core/io/lottie/lottie_importer.hpp:1088
+#: src/core/io/lottie/lottie_importer.hpp:1084
 #, kde-format
 msgid "Duplicate Composition ID: %1"
 msgstr "გამეორებული კომპოზიციის ID: %1"
@@ -1784,10 +1783,10 @@ msgid "Embedded data"
 msgstr "ჩაშენებული მონაცემები"
 
 #: src/core/io/svg/svg_format.cpp:72
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:961
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:959
 #, kde-format
 msgid "Ignore"
-msgstr "იგნორი"
+msgstr "იგნორირება"
 
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
@@ -1871,7 +1870,7 @@ msgid "Could not allocate frame data."
 msgstr "კადრის მონაცემების გამოყოფის შეცდომა."
 
 #: src/core/io/video/video_format.cpp:403
-#: src/core/io/video/video_format.cpp:789
+#: src/core/io/video/video_format.cpp:783
 #, kde-format
 msgid "No video codec"
 msgstr "ვიდეოკოდეკის გარეშე"
@@ -1911,59 +1910,59 @@ msgstr "გადაყვანის კონტექსტის ინი�
 msgid "Could not allocate temporary picture"
 msgstr "დროებითი სურათის გამოყოფა შეუძლბელია"
 
-#: src/core/io/video/video_format.cpp:757
+#: src/core/io/video/video_format.cpp:751
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
 msgstr ""
 "ფაილის გაფართოებიდან გამოტანის ფორმატის დადგენა შეუძლებელია: ვიყენებ MPEG-ს."
 
-#: src/core/io/video/video_format.cpp:761
+#: src/core/io/video/video_format.cpp:755
 #, kde-format
 msgid "Could not find output format"
 msgstr "ვერ ვიპოვე გამოტანის ფორმატი"
 
-#: src/core/io/video/video_format.cpp:834
+#: src/core/io/video/video_format.cpp:828
 #, kde-format
 msgid "Error occurred when opening output file: %1"
 msgstr "შეცდომა გამოტანის ფაილის გახსნისას: %1"
 
-#: src/core/io/video/video_format.cpp:869
+#: src/core/io/video/video_format.cpp:863
 #, kde-format
 msgid "Background"
 msgstr "ფონი"
 
-#: src/core/io/video/video_format.cpp:869
+#: src/core/io/video/video_format.cpp:863
 #, kde-format
 msgid "Background color"
 msgstr "ფონის ფერი"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/core/io/video/video_format.cpp:870
+#: src/core/io/video/video_format.cpp:864
 #: src/gui/widgets/dialogs/resize_dialog.ui:56
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:46
 #, kde-format
 msgid "Width"
 msgstr "სიგანე"
 
-#: src/core/io/video/video_format.cpp:870
-#: src/core/io/video/video_format.cpp:871
+#: src/core/io/video/video_format.cpp:864
+#: src/core/io/video/video_format.cpp:865
 #, kde-format
 msgid "If not 0, it will overwrite the size"
 msgstr "თუ 0 არაა, ზომას თავზე გადააწერს"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/core/io/video/video_format.cpp:871
+#: src/core/io/video/video_format.cpp:865
 #: src/gui/widgets/dialogs/resize_dialog.ui:33
 #, kde-format
 msgid "Height"
 msgstr "სიმაღლე"
 
-#: src/core/io/video/video_format.cpp:872
+#: src/core/io/video/video_format.cpp:866
 #, kde-format
 msgid "Verbose"
 msgstr "დამატებითი შეტყობინებები"
 
-#: src/core/io/video/video_format.cpp:872
+#: src/core/io/video/video_format.cpp:866
 #, kde-format
 msgid "Show verbose information on the conversion"
 msgstr "დამატებითი შეტყობინებების ჩვენება გადაყვანისას"
@@ -2068,32 +2067,32 @@ msgstr "შემადგენლობა"
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/core/model/assets/embedded_font.cpp:42
-#: src/core/model/shapes/text.cpp:238
+#: src/core/model/shapes/text.cpp:231
 #: src/gui/widgets/font/external_font_widget.ui:69
 #: src/gui/widgets/font/font_style_widget.ui:24
 #: src/gui/widgets/font/google_fonts_widget.ui:68
 #, kde-format
 msgid "Font"
-msgstr "ფონტი"
+msgstr "შრიფტი"
 
-#: src/core/model/assets/gradient.cpp:83
+#: src/core/model/assets/gradient.cpp:79
 #: src/gui/item_models/gradient_list_model.cpp:175
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:232
 #, kde-format
 msgid "Gradient"
 msgstr "გრადაცია"
 
-#: src/core/model/assets/gradient.cpp:133
+#: src/core/model/assets/gradient.cpp:129
 #, kde-format
 msgid "Add color to %1"
 msgstr "ფერის დამატება %1-ზე"
 
-#: src/core/model/assets/gradient.cpp:152
+#: src/core/model/assets/gradient.cpp:148
 #, kde-format
 msgid "Remove color from %1"
 msgstr "ფერის წაშლა %1-დან"
 
-#: src/core/model/assets/gradient.cpp:211
+#: src/core/model/assets/gradient.cpp:207
 #, kde-format
 msgid "%1 Gradient"
 msgstr "%1 გრადიენტი"
@@ -2102,7 +2101,7 @@ msgstr "%1 გრადიენტი"
 #. i18n: ectx: property (text), widget (QToolButton, btn_fill_linear)
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_stroke_linear)
 #. i18n: ectx: property (text), widget (QToolButton, btn_stroke_linear)
-#: src/core/model/assets/gradient.cpp:285 src/gui/widgets/enum_combo.cpp:100
+#: src/core/model/assets/gradient.cpp:281 src/gui/widgets/enum_combo.cpp:100
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:134
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:137
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:154
@@ -2110,13 +2109,13 @@ msgstr "%1 გრადიენტი"
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:49
 #, kde-format
 msgid "Linear"
-msgstr "ხაზოვანი"
+msgstr "წრფივი"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_fill_radial)
 #. i18n: ectx: property (text), widget (QToolButton, btn_fill_radial)
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_stroke_radial)
 #. i18n: ectx: property (text), widget (QToolButton, btn_stroke_radial)
-#: src/core/model/assets/gradient.cpp:287 src/gui/widgets/enum_combo.cpp:102
+#: src/core/model/assets/gradient.cpp:283 src/gui/widgets/enum_combo.cpp:102
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:114
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:117
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:174
@@ -2129,7 +2128,7 @@ msgstr "რადიალური"
 #. i18n: ectx: property (text), widget (QToolButton, btn_fill_conical)
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_stroke_conical)
 #. i18n: ectx: property (text), widget (QToolButton, btn_stroke_conical)
-#: src/core/model/assets/gradient.cpp:289 src/gui/widgets/enum_combo.cpp:104
+#: src/core/model/assets/gradient.cpp:285 src/gui/widgets/enum_combo.cpp:104
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:204
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:207
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:223
@@ -2165,7 +2164,7 @@ msgstr "ოვალი"
 #: src/core/model/shapes/fill.hpp:48 src/gui/tools/draw_tool_base.cpp:114
 #: src/gui/tools/fill_tool.cpp:25
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:763
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:618
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:612
 #: src/gui/widgets/docks/colors.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:191
 #: src/gui/widgets/tools/color_picker_widget.ui:24
@@ -2177,8 +2176,8 @@ msgstr "შევსება"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/model/shapes/group.hpp:42
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:615
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:652
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:609
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:646
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
 #, kde-format
 msgid "Group"
@@ -2196,7 +2195,7 @@ msgstr "შებერვა და გაბერვა"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/model/shapes/layer.hpp:81
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:612
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:606
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
 #, kde-format
 msgid "Layer"
@@ -2211,11 +2210,11 @@ msgstr "წანაცვლების ბილიკი"
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/model/shapes/path.hpp:38 src/gui/glaxnimateui.rc:174
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:715
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:709
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
-msgstr "ბილიკი"
+msgstr "კონტური"
 
 #: src/core/model/shapes/polystar.hpp:48
 #, kde-format
@@ -2248,7 +2247,7 @@ msgstr "მრგვალი კუთხეები"
 #. i18n: ectx: property (text), widget (QRadioButton, check_stroke)
 #: src/core/model/shapes/stroke.hpp:68 src/gui/tools/draw_tool_base.cpp:126
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:758
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:621
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:615
 #: src/gui/widgets/docks/stroke.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:101
 #: src/gui/widgets/tools/color_picker_widget.ui:37
@@ -2258,13 +2257,13 @@ msgstr "მრგვალი კუთხეები"
 msgid "Stroke"
 msgstr "გამოძრავება"
 
-#: src/core/model/shapes/text.cpp:255
+#: src/core/model/shapes/text.cpp:248
 #, kde-format
 msgid "Change Font"
 msgstr "ფონტის შეცვლა"
 
 #. i18n: ectx: Menu (text)
-#: src/core/model/shapes/text.cpp:489 src/gui/glaxnimateui.rc:200
+#: src/core/model/shapes/text.cpp:474 src/gui/glaxnimateui.rc:200
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:128
 #, kde-format
 msgid "Text"
@@ -2595,7 +2594,7 @@ msgstr "ემოჯიების სეტი"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:248
 #: src/gui/widgets/dialogs/about_env_dialog.ui:289
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:109
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:341
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:335
 #: src/gui/widgets/dialogs/startup_dialog.ui:48
 #: src/gui/widgets/settings/plugin_settings_widget.ui:168
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:391
@@ -2657,14 +2656,14 @@ msgid "Close"
 msgstr "დახურვა"
 
 #. i18n: ectx: Menu (file_new_from_template)
-#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1311
+#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1305
 #, kde-format
 msgid "New from Template"
 msgstr "შაბლონიდან ახლის შექმნა"
 
 #. i18n: ectx: Menu (edit_tools)
-#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:407
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:806
+#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:401
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
 #, kde-format
 msgid "Tools"
 msgstr "ხელსაწყოები"
@@ -2682,7 +2681,7 @@ msgid "Layout"
 msgstr "განლაგება"
 
 #. i18n: ectx: Menu (document)
-#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:483
+#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:477
 #, kde-format
 msgid "Document"
 msgstr "დოკუმენტი"
@@ -2702,13 +2701,13 @@ msgid "Web Preview"
 msgstr "ბრაუზერში ნახვა"
 
 #. i18n: ectx: Menu (playback)
-#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:527
+#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:521
 #, kde-format
 msgid "Playback"
 msgstr "დაკვრა"
 
 #. i18n: ectx: Menu (object)
-#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:635
+#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:629
 #, kde-format
 msgid "Object"
 msgstr "ობიექტი"
@@ -2721,7 +2720,7 @@ msgstr "სწორება და განაწილება"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:205 src/gui/settings/plugin_settings_group.hpp:23
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1535
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1529
 #, kde-format
 msgid "Plugins"
 msgstr "დამატებები"
@@ -2925,7 +2924,7 @@ msgstr "%5 - %1x%2 %3 %4კადრი/წმ"
 #: src/gui/settings/document_templates.cpp:180
 #, kde-format
 msgid "Template"
-msgstr "ნიმუში"
+msgstr "შაბლონი"
 
 #: src/gui/settings/document_templates.cpp:184
 #, kde-format
@@ -2946,7 +2945,7 @@ msgstr "სისტემის ნაგულისხმევი"
 #: src/gui/widgets/dialogs/trace_dialog.ui:533
 #: src/gui/widgets/dialogs/trace_dialog.ui:639
 #: src/gui/widgets/font/font_preview_widget.ui:45
-#: src/gui/widgets/spin2d.cpp:114 src/gui/widgets/spin2d.cpp:115
+#: src/gui/widgets/spin2d.cpp:110 src/gui/widgets/spin2d.cpp:111
 #: src/gui/widgets/view_transform_widget.ui:60
 #, no-c-format, kde-format
 msgid "%"
@@ -2987,12 +2986,12 @@ msgstr "ბეზიეს დახატვა"
 msgid "Drag nodes"
 msgstr "გადაათრიეთ წერტილები"
 
-#: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:749
+#: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:743
 #, kde-format
 msgid "Cusp"
 msgstr "კუთხით"
 
-#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:750
+#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:744
 #, kde-format
 msgid "Smooth"
 msgstr "გლუვი"
@@ -3050,12 +3049,12 @@ msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "გაჩერების წაშლა"
 
-#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:754
+#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:748
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr "წერტილების დაშლა"
 
-#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:741
+#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:735
 #, kde-format
 msgid "Delete Nodes"
 msgstr "კვანძების წაშლა"
@@ -3075,7 +3074,7 @@ msgstr "სეგმენტების გასწორება"
 msgid "Curve segments"
 msgstr "სეგმენტების გამრუდება"
 
-#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:366
+#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:360
 #, kde-format
 msgid "Edit"
 msgstr "ჩასწორება"
@@ -3119,26 +3118,26 @@ msgstr "მართკუთხედის დახაზვა"
 #: src/gui/tools/select_tool.cpp:29
 #, kde-format
 msgid "Select"
-msgstr "არჩევა"
+msgstr "აირჩიეთ"
 
 #: src/gui/tools/select_tool.cpp:134
 #, kde-format
 msgid "Drag"
 msgstr "გადათრევა"
 
-#: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:371
+#: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:365
 #, kde-format
 msgid "Undo %1"
 msgstr "%1-ის დაბრუნება"
 
-#: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:377
+#: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:371
 #, kde-format
 msgid "Redo %1"
 msgstr "%1-ის გამეორება"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_delete)
-#: src/gui/tools/select_tool.cpp:417 src/gui/widgets/dialogs/gw_impl_ui.cpp:392
+#: src/gui/tools/select_tool.cpp:417 src/gui/widgets/dialogs/gw_impl_ui.cpp:386
 #: src/gui/widgets/dialogs/selection_manager.cpp:90
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:46
 #: src/gui/widgets/docks/snippet_list_widget.ui:57
@@ -3150,7 +3149,7 @@ msgstr "წაშლა"
 #: src/gui/tools/select_tool.cpp:429
 #, kde-format
 msgid "Move to..."
-msgstr "გადატანა…"
+msgstr "გადატანა..."
 
 #: src/gui/tools/star_tool.cpp:19 src/gui/widgets/enum_combo.cpp:90
 #, kde-format
@@ -3546,12 +3545,12 @@ msgstr "საკვანძო სიტყვები"
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #. i18n: ectx: attribute (title), widget (QWidget, tab_custom)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:84
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:443
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:437
 #: src/gui/widgets/font/font_style_dialog.ui:77
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:58
 #, kde-format
 msgid "Custom"
-msgstr "განსხვავებული"
+msgstr "ხელით"
 
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.cpp:76
 #, kde-format
@@ -3621,7 +3620,7 @@ msgstr "კადრიდან"
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:132
 #, kde-format
 msgid "Select..."
-msgstr "აირჩიეთ..."
+msgstr "&მონიშნეთ..."
 
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:40
 #, kde-format
@@ -3694,13 +3693,13 @@ msgstr "წამი"
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:88
 #, kde-format
 msgid "Choose..."
-msgstr "არჩიეთ..."
+msgstr "აირჩიეთ..."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:97
 #, kde-format
 msgid "Start Time"
-msgstr "გაშვების დრო"
+msgstr "დაწყების თარიღი"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:27
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:35
@@ -3735,7 +3734,7 @@ msgstr "ფაილის გატანის შეცდომა"
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:169
 #, kde-format
 msgid "Warning"
-msgstr "გაფრთხილება"
+msgstr "გაფთხილება"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:138
 #, kde-format
@@ -3847,7 +3846,7 @@ msgid "Scalable Vector Graphics (*.svg)"
 msgstr "გადიდებადი ვექტორული გრაფიკა (*.svg *.SVG)"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:639
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:505
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:499
 #, kde-format
 msgid "Validate Discord Sticker"
 msgstr "Discord-ის სტიკერის დადასტურება"
@@ -3865,7 +3864,7 @@ msgid "Some issues detected"
 msgstr "აღმოჩენილია პრობლემები"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:649
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:502
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:496
 #, kde-format
 msgid "Validate Telegram Sticker"
 msgstr "Telegram-ის სტიკერის დადასტურება"
@@ -3885,38 +3884,38 @@ msgstr "%1 ფერის მოხსნა"
 msgid "Link %1 Color"
 msgstr "%1 ფერის მიმაგრება"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:894
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:892
 #, kde-format
 msgid "Download fonts"
 msgstr "ფონტების გადმოწერა"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:932
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:930
 #, kde-format
 msgid "HTTP Error %1 %2"
 msgstr "HTTP შეცდომა %1 %2"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:936
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:934
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.cpp:213
 #, kde-format
 msgid "Network Error"
 msgstr "ქსელის შეცდომა"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:939
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:937
 #, kde-format
 msgid "Load URL"
 msgstr "URL-ის ჩატვირთვა"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:939
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:937
 #, kde-format
 msgid "Could not load %1: %2"
 msgstr "%1-ის ჩატვირთვა შეუძლებელია: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:957
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:955
 #, kde-format
 msgid "There are %1 auto-save files that can be restored."
 msgstr "%1 ავტოშენახვა, რომლის აღდგენაც შესაძლებელია."
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:965
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:963
 #, kde-format
 msgid "Load Backup..."
 msgstr "მარქაფის ჩატვირთვა..."
@@ -4035,41 +4034,41 @@ msgstr "შემოტანა LottieFile-ებიდან…"
 msgid "Open Most Recent"
 msgstr "უახლესის გახსნა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:336
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:330
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:335
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:341
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:347
 #, kde-format
 msgid "Save as Template"
 msgstr "შაბლონად შენახვა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:347
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:341
 #, kde-format
 msgid "Could not save template"
 msgstr "შაბლონის შენახვა შეუძლებელია"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:351
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:345
 #, kde-format
 msgid "Export…"
 msgstr "გატანა…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:354
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:348
 #, kde-format
 msgid "Export As…"
 msgstr "გატანა, როგორც…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:357
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:351
 #, kde-format
 msgid "Export as Image Sequence…"
 msgstr "გამოსახულებების მიმდევრობის სახით გატანა…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:384
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:378
 #, kde-format
 msgid "Paste as Composition"
 msgstr "ჩასმა კომპოზიციის სახით"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_duplicate)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:387
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:381
 #: src/gui/widgets/docks/layers.ui:80 src/gui/widgets/docks/layers.ui:83
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:486
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:69
@@ -4077,34 +4076,34 @@ msgstr "ჩასმა კომპოზიციის სახით"
 msgid "Duplicate"
 msgstr "დუბლირება"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:438
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:432
 #, kde-format
 msgid "View"
-msgstr "ნახვა"
+msgstr "ხედი"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:449
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:443
 #, kde-format
 msgid "Automatic"
 msgstr "ავტომატური"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:454
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:448
 #, kde-format
 msgid "Wide"
 msgstr "ფართო"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:459
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:453
 #, kde-format
 msgid "Medium"
 msgstr "საშუალო"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:464
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:458
 #, kde-format
 msgid "Compact"
 msgstr "დაპატარავება"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_angle_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_angle_reset)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:475
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:469
 #: src/gui/widgets/view_transform_widget.ui:150
 #: src/gui/widgets/view_transform_widget.ui:153
 #, kde-format
@@ -4113,339 +4112,338 @@ msgstr "მობრუნების განულება"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_flip_view)
 #. i18n: ectx: property (text), widget (QToolButton, btn_flip_view)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:477
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:471
 #: src/gui/widgets/view_transform_widget.ui:164
 #: src/gui/widgets/view_transform_widget.ui:167
 #, kde-format
 msgid "Flip View"
 msgstr "ხედის გადაბრუნება"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:485
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:479
 #, kde-format
 msgid "Raster…"
 msgstr "რასტრული…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:487
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:481
 #, kde-format
 msgid "SVG…"
 msgstr "SVG…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:490
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:484
 #, kde-format
 msgid "Lottie (SVG)"
 msgstr "Lottie (SVG)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:493
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:487
 #, kde-format
 msgid "Lottie (canvas)"
-msgstr "Lottie (ტილო)"
+msgstr "Lottie (canvas)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:496
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:490
 #, kde-format
 msgid "SVG (SMIL)"
 msgstr "SVG (SMIL)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:499
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:493
 #, kde-format
 msgid "RIVE (canvas)"
-msgstr "RIVE (ტილო)"
+msgstr "RIVE (canvas)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:508
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:502
 #, kde-format
 msgid "Resize…"
 msgstr "ზომის შეცვლა…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:511
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:505
 #, kde-format
 msgid "Cleanup"
 msgstr "გასუფთავება"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:514
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:508
 #, kde-format
 msgid "Timing…"
 msgstr "ქრონომეტრაჟი…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:519
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:513
 #, kde-format
 msgid "Metadata…"
 msgstr "მეტამონაცემები…"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:530
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:554
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:524
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:548
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
 #, kde-format
 msgid "Play"
 msgstr "დაკვრა"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_loop)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:532
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:526
 #: src/gui/widgets/timeline/frame_controls_widget.ui:63
 #, kde-format
 msgid "Loop"
 msgstr "მარყუჟი"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:534
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:528
 #, kde-format
 msgid "Record Keyframes"
 msgstr "საკვანძო კადრების ჩაწერა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:536
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:530
 #, kde-format
 msgid "Jump to Start"
 msgstr "დასაწყისში გადახტომა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:538
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:532
 #, kde-format
 msgid "Jump to End"
 msgstr "ბოლოში გადახტომა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:540
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:534
 #, kde-format
 msgid "Next Frame"
 msgstr "შედმეგი კადრი"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:542
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:536
 #, kde-format
 msgid "Previous Frame"
 msgstr "წინა კადრი"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:550
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:544
 #, kde-format
 msgid "Pause"
 msgstr "შეჩერება"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:605
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:599
 #, kde-format
 msgid "Precompose Selection"
 msgstr "მონიშნულის პრეკომპოზიცია"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:609
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:603
 #, kde-format
 msgid "New Composition"
 msgstr "ახალი კომპოზიცია"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:624
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:618
 #, kde-format
 msgid "Emoji…"
 msgstr "ემოჯი…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:637
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:631
 #, kde-format
 msgid "Raise to Top"
 msgstr "თავში აწევა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:646
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:640
 #, kde-format
 msgid "Lower to Bottom"
 msgstr "ბოლომდე დაწევა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:649
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:643
 #, kde-format
 msgid "Move to…"
 msgstr "გადატანა…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:655
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:649
 #, kde-format
 msgid "Ungroup"
 msgstr "განჯგუფება"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:658
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:652
 #: src/gui/widgets/docks/aligndock.cpp:46
 #, kde-format
 msgid "Align"
 msgstr "სწორება"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:660
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:654
 #, kde-format
 msgid "Selection"
 msgstr "მონიშნული"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:662
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:656
 #, kde-format
 msgid "Canvas"
 msgstr "ტილო"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:664
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:658
 #, kde-format
 msgid "Canvas (as Group)"
 msgstr "ტილო (როგორც ჯგუფი)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:667
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:661
 #, kde-format
 msgid "Left"
-msgstr "მარცხენა"
+msgstr "მარცხნივ"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:679
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:664
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:673
 #, kde-format
 msgid "Center"
 msgstr "ცენტრი"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:673
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:667
 #, kde-format
 msgid "Right"
-msgstr "მარჯვენა"
+msgstr "მარჯვნივ"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
+#, kde-format
+msgid "Top"
+msgstr "ზემოთ"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:676
 #, kde-format
-msgid "Top"
-msgstr "თავში"
-
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:682
-#, kde-format
 msgid "Bottom"
-msgstr "ბოლოში"
+msgstr "ქვემოთ"
 
 #. i18n("Relative To"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_horizontal"), i18n("Horizontal"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_vertical"), i18n("Vertical"), QStringLiteral(""));
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:689
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:683
 #, kde-format
 msgid "Outside Left"
 msgstr "გარე მარცხენა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
 #, kde-format
 msgid "Outside Right"
 msgstr "გარე მარჯვენა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:695
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:689
 #, kde-format
 msgid "Outside Top"
 msgstr "გარე ზედა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:698
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
 #, kde-format
 msgid "Outside Bottom"
 msgstr "გარე ქვედა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:717
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:711
 #, kde-format
 msgid "Object to Path"
 msgstr "ობიექტიდან ბილიკზე"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:720
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:714
 #, kde-format
 msgid "Trace Bitmap…"
 msgstr "ბიტური რუკის ტრასირება…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:725
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:719
 #, kde-format
 msgid "Union"
 msgstr "გაერთიანება"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:728
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:722
 #, kde-format
 msgid "Difference"
 msgstr "სხვაობა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:731
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:725
 #, kde-format
 msgid "Intersect"
 msgstr "გადაკვეთა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:734
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:728
 #, kde-format
 msgid "Exclusion"
 msgstr "გამორიცხვა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:738
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:732
 #, kde-format
 msgid "Reverse"
 msgstr "აღდგენა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:742
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:736
 #, kde-format
 msgid "Add Node…"
 msgstr "წერტილის დამატება…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:744
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:738
 #, kde-format
 msgid "Join Nodes"
 msgstr "წერტილების შეერთება"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:746
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:740
 #, kde-format
 msgid "Split Nodes"
 msgstr "წერტილების დაყოფა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:751
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:745
 #, kde-format
 msgid "Symmetric"
 msgstr "სიმეტრიული"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:752
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:746
 #, kde-format
 msgid "Make segments straight"
 msgstr "სეგმენტების გასწორება"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:753
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:747
 #, kde-format
 msgid "Make segments curved"
 msgstr "სეგმენტების გაღუნვა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:799
-#, fuzzy, kde-format
-#| msgid "Reverse"
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:793
+#, kde-format
 msgid "Reverse path"
-msgstr "აღდგენა"
+msgstr "ბილიკის შებრუნება"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:897
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:891
 #, kde-format
 msgid "Recording Keyframes"
 msgstr "საკვანძო კადრების ჩაწერა"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1311
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1305
 #, kde-format
 msgid "Could not load template"
 msgstr "შაბლონის ჩატვირთვის შეცდომა"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1506
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1515
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1522
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1500
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1509
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1516
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
 msgstr "ბიტური რუკის ტრასირება"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1506
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1500
 #, kde-format
 msgid "Only select one image"
 msgstr "აირჩიეთ მხოლოდ ერთი გამოსახულება"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1515
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1509
 #, kde-format
 msgid "You need to select an image to trace"
 msgstr "ტრასირებისთვის სურათი უნდა აირჩიოთ"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1522
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1516
 #, kde-format
 msgid "You selected an image with no data"
 msgstr "აირჩეთ გამოსახულება მონაცემების გარეშე"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1592
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1586
 #, kde-format
 msgid "X: %1 Y: %2"
 msgstr "X: %1 Y: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1611
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1605
 #, kde-format
 msgid "Drop File"
 msgstr "დააგდეთ ფაილი"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1622
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1616
 #, kde-format
 msgid "Add to current file?"
 msgstr "დავამატო მიმდინარე ფაილს?"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1628
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1622
 #, kde-format
 msgid "Add as Object"
 msgstr "დამატება ობიექტად"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1634
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1628
 #, kde-format
 msgid "Add as Composition"
 msgstr "დამატება კომპოზიციად"
@@ -4495,7 +4493,7 @@ msgstr "IoStatusDialog"
 #: src/gui/widgets/dialogs/io_status_dialog.ui:50
 #, kde-format
 msgid "/path/to/your/file/in.here"
-msgstr "/აქ/შეიყვანეთ/ბილიკი/თქვენს.ფაილამდე"
+msgstr "/path/to/your/file/in.here"
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_box)
 #: src/gui/widgets/dialogs/io_status_dialog.ui:84
@@ -4544,7 +4542,7 @@ msgstr "აირჩიეთ ფორმა"
 #: src/gui/widgets/dialogs/shape_parent_dialog.ui:21
 #, kde-format
 msgid "Destination"
-msgstr "სამიზნე"
+msgstr "დანიშნულების წერტილი"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 #: src/gui/widgets/dialogs/shape_parent_dialog.ui:48
@@ -4632,7 +4630,7 @@ msgstr " კადრი/წმ"
 #: src/gui/widgets/dialogs/startup_dialog.ui:158
 #, kde-format
 msgid "Browse..."
-msgstr "მოძებნა..."
+msgstr "პოვნა..."
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_show_at_startup)
 #: src/gui/widgets/dialogs/startup_dialog.ui:176
@@ -4792,21 +4790,22 @@ msgstr ""
 "</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">ეს არჩევანი საუკეთესოა "
-"ციფრული კამერებისთვის, სტიკერებისთვის და მულტფილმებისთვის.</p>\n"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">ეს ვარიანტი საუკეთესოა "
+"ბრტყლად დაჩრდილული ციფრული ფოტოებისთვის, სტიკეტებისთვის და მულტფილმებისთვის."
+"</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
 "\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
 "right:0px; -qt-block-indent:0; text-indent:0px;\">ფერების რაოდენობა "
-"ავტომატურად შემცირდება, წყარო გამოსახულების ყველაზე გავრცელებული ფერის "
-"მიხედვით.</p>\n"
+"შემცირდება ავტომატურად, წყარო გამოსახულებაზე არსებულ ყველაზე ხშირად "
+"გამოყენებულ ფერებამდე.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
 "\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">მიმდინარეობისას, შეიძლება, "
-"პატარა დეტალები დაიკარგოს.</p></body></html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">მიმდინარეობისას, ალბათ, "
+"ძალიან პატარა დეტალები დაიკარგება.</p></body></html>"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_3)
 #: src/gui/widgets/dialogs/trace_dialog.ui:233
@@ -4972,7 +4971,7 @@ msgstr "ფერების დადგენის მორგება"
 #: src/gui/widgets/dialogs/trace_dialog.ui:493
 #, kde-format
 msgid "Configure..."
-msgstr "გამართვა..."
+msgstr "კონფიგურაცია..."
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_potrace)
 #: src/gui/widgets/dialogs/trace_dialog.ui:514
@@ -5010,7 +5009,7 @@ msgstr "განახლება"
 #: src/gui/widgets/view_transform_widget.ui:50
 #, kde-format
 msgid "Zoom"
-msgstr "მასშტაბი"
+msgstr "გადიდება"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_help)
 #: src/gui/widgets/dialogs/trace_dialog.ui:670
@@ -5028,7 +5027,7 @@ msgstr "ჩამოყრა ნაგულისხმევებზე"
 #: src/gui/widgets/dialogs/trace_dialog.ui:692
 #, kde-format
 msgid "Advanced"
-msgstr "დამატებითი"
+msgstr "დამატებით"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_top)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_top)
@@ -5285,7 +5284,7 @@ msgstr "ფონტის სტილი"
 #: src/gui/widgets/font/font_loader.cpp:47
 #, kde-format
 msgid "Could not open file %1"
-msgstr "ფაილის გახსნის შეცდომა: %1"
+msgstr "ვერ გავხსენი ფაილი %1"
 
 #: src/gui/widgets/font/font_loader.cpp:58
 #, kde-format
@@ -5386,7 +5385,7 @@ msgstr "Serif"
 #: src/gui/widgets/font/google_fonts_model.cpp:398
 #, kde-format
 msgid "Display"
-msgstr "ჩვენება"
+msgstr "ეკრანი"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:400
 #, kde-format
@@ -5426,7 +5425,7 @@ msgstr "შემოტანა"
 #: src/gui/widgets/lottiefiles/search_result.cpp:33
 #, kde-format
 msgid "by %1"
-msgstr "ავტორი: %1"
+msgstr "%1-სგან"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:49
 #, kde-format
@@ -5543,7 +5542,7 @@ msgstr "ჩაშენება"
 #: src/gui/widgets/menus/node_menu.cpp:318
 #, kde-format
 msgid "Open with External Application"
-msgstr "გარე აპლიკაციაში გახსნა"
+msgstr "გახსნა გარე აპლიკაციაში"
 
 #: src/gui/widgets/menus/node_menu.cpp:320
 #, kde-format
@@ -5611,7 +5610,7 @@ msgstr "წაშლა"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Duplicate"
-msgstr "დუბლიკაცია"
+msgstr "დუბლირება"
 
 #: src/gui/widgets/menus/node_menu.cpp:451
 #, kde-format
@@ -5692,7 +5691,7 @@ msgstr "გამორთვა"
 #: src/gui/widgets/settings/plugin_settings_widget.ui:134
 #, kde-format
 msgid "Uninstall"
-msgstr "წაშლა"
+msgstr "ამოშლა"
 
 #. i18n: ectx: property (text), widget (QTableWidget, list_services)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:163
@@ -5843,7 +5842,7 @@ msgstr "გაჯერებულობა"
 #: src/gui/widgets/shape_style/color_selector.ui:297
 #, kde-format
 msgid "S"
-msgstr "პატ"
+msgstr "S"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::HueSlider, slider_hsv_hue)
 #. i18n: ectx: property (toolTip), widget (QLabel, label)
@@ -5867,7 +5866,7 @@ msgstr "ჰუე"
 #: src/gui/widgets/shape_style/color_selector.ui:227
 #, kde-format
 msgid "H"
-msgstr "სიგ"
+msgstr "სიმ"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/shape_style/color_selector.ui:156
@@ -5879,7 +5878,7 @@ msgstr "V"
 #: src/gui/widgets/shape_style/color_selector.ui:304
 #, kde-format
 msgid "L"
-msgstr "დიდ"
+msgstr "L"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_rgb_b)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_10)
@@ -5895,7 +5894,7 @@ msgstr "ლურჯი"
 #: src/gui/widgets/shape_style/color_selector.ui:340
 #, kde-format
 msgid "B"
-msgstr "ბ"
+msgstr "B"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_rgb_g)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_9)
@@ -5927,7 +5926,7 @@ msgstr "R"
 #: src/gui/widgets/shape_style/color_selector.ui:370
 #, kde-format
 msgid "G"
-msgstr "სოლ"
+msgstr "გ"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_11)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_c)
@@ -5959,7 +5958,7 @@ msgstr "ალისფერი"
 #: src/gui/widgets/shape_style/color_selector.ui:466
 #, kde-format
 msgid "M"
-msgstr "M"
+msgstr "მ"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label_12)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_y)
@@ -5991,7 +5990,7 @@ msgstr "შავი"
 #: src/gui/widgets/shape_style/color_selector.ui:526
 #, kde-format
 msgid "K"
-msgstr "K"
+msgstr "კ"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_alpha)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_4)
@@ -6271,7 +6270,7 @@ msgstr "კოეციფიენტის ჩაკეტვა"
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:86
 #, kde-format
 msgid "Rename"
-msgstr "გადარქმევა"
+msgstr "სახელის გადარქმევა"
 
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:89
 #, kde-format
@@ -6393,7 +6392,7 @@ msgstr "პრესეტები"
 #: src/gui/widgets/timeline/keyframe_editor_widget.ui:43
 #, kde-format
 msgid "Start"
-msgstr "გაშვება"
+msgstr "დაწყება"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/timeline/keyframe_editor_widget.ui:66
