@@ -110,11 +110,11 @@ std::pair<QString, const char*> EnumCombo::data_for(const QMetaEnum& meta_enum, 
         {
             // TODO better icons
             case model::MaskSettings::NoMask:
-                return {i18n("No Mask"), "edit-none"};
+                return {i18n("No Mask"), "mask-off"};
             case model::MaskSettings::Alpha:
-                return {i18n("Alpha"), "mask-alpha"};
+                return {i18n("Alpha Mask"), "mask-alpha"};
             case model::MaskSettings::Luma:
-                return {i18n("Luma"), "mask-luma"};
+                return {i18n("Luma Mask"), "mask-luma"};
         }
     }
 

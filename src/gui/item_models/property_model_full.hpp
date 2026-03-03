@@ -22,6 +22,7 @@ public:
         ColumnColor,
         ColumnVisible,
         ColumnLocked,
+        ColumnMask,
 
         ColumnCount,
 

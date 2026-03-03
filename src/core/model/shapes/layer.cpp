@@ -166,17 +166,7 @@ glaxnimate::math::bezier::MultiBezier glaxnimate::model::Layer::to_painter_path_
 
 QIcon glaxnimate::model::Layer::tree_icon() const
 {
-    auto mask_mode = mask->mask.get();
-    switch ( mask_mode )
-    {
-        case MaskSettings::Luma:
-            return QIcon::fromTheme("mask-luma");
-        case MaskSettings::Alpha:
-            return QIcon::fromTheme("mask-alpha");
-        case MaskSettings::NoMask:
-        default:
-            return QIcon::fromTheme("folder");
-    }
+    return QIcon::fromTheme("folder");
 }
 
 QIcon glaxnimate::model::Layer::static_tree_icon()

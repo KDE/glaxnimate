@@ -2,6 +2,8 @@
 
 * Editing:
     * Added luma mask mode
+* UI:
+    * Timeline now allows to cycle through mask modes for layers
 * Misc
     * New rendering system
 

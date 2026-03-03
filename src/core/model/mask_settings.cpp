@@ -12,3 +12,17 @@ QString glaxnimate::model::MaskSettings::type_name_human() const
 {
     return i18n("Mask");
 }
+
+glaxnimate::model::MaskSettings::MaskMode glaxnimate::model::MaskSettings::next_mode(MaskMode previous)
+{
+    switch ( previous )
+    {
+        case NoMask:
+            return Alpha;
+        case Alpha:
+            return Luma;
+        case Luma:
+        default:
+            return NoMask;
+    }
+}

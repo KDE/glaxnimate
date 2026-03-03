@@ -26,8 +26,8 @@ public:
     };
     Q_ENUM(MaskMode)
 
-    GLAXNIMATE_PROPERTY(MaskMode, mask, NoMask, {}, {}, PropertyTraits::Visual)
-    GLAXNIMATE_PROPERTY(bool, inverted, false, {}, {}, PropertyTraits::Visual)
+    GLAXNIMATE_PROPERTY(MaskMode, mask, NoMask, &MaskSettings::mask_changed, {}, PropertyTraits::Visual)
+    GLAXNIMATE_PROPERTY(bool, inverted, false, &MaskSettings::inverted_changed, {}, PropertyTraits::Visual)
 
 public:
     using Object::Object;
@@ -35,6 +35,17 @@ public:
     QString type_name_human() const override;
 
     bool has_mask() const { return mask.get(); }
+
+    /**
+     * \brief Returns all modes in a cycle
+     */
+    static MaskMode next_mode(MaskMode previous);
+
+Q_SIGNALS:
+    void mask_changed();
+    void inverted_changed();
+
 };
+
 
 } // namespace glaxnimate::model

@@ -32,6 +32,7 @@
 #include "command/property_commands.hpp"
 #include "command/shape_commands.hpp"
 #include "command/undo_macro_guard.hpp"
+#include "widgets/enum_combo.hpp"
 
 #include "widgets/dialogs/shape_parent_dialog.hpp"
 
@@ -233,6 +234,18 @@ void add_child_action(QMenu* menu, model::Group* group)
     });
 }
 
+template<class ValueT, class Callback>
+QAction* add_enum_action(QMenu* parent, ValueT value, ValueT current, const Callback& callback)
+{
+    auto meta = QMetaEnum::fromType<ValueT>();
+    auto data = EnumCombo::data_for(meta, value);
+    QAction* action = parent->addAction(QIcon::fromTheme(data.second), data.first);
+    action->setCheckable(true);
+    action->setChecked(value == current);
+    QObject::connect(action, &QAction::triggered, parent, callback);
+    return action;
+}
+
 void actions_group(QMenu* menu, GlaxnimateWindow* window, model::Group* group)
 {
     QMenu* menu_add = new QMenu(i18n("Add"), menu);
@@ -280,18 +293,27 @@ void actions_group(QMenu* menu, GlaxnimateWindow* window, model::Group* group)
             window->shape_to_composition(lay);
         });
 
-        if ( !lay->mask->has_mask() )
-        {
-            menu->addAction(QIcon::fromTheme("path-mask-edit"), i18n("Convert to Mask"), menu, [lay]{
-                lay->mask->mask.set_undoable(true);
-            });
-        }
-        else
-        {
-            menu->addAction(QIcon::fromTheme("path-mask-edit"), i18n("Remove Mask"), menu, [lay]{
-                lay->mask->mask.set_undoable(false);
-            });
-        }
+        auto mask_menu = menu->addMenu(QIcon::fromTheme("mask-alpha"), i18n("Mask"));
+        auto act_inverted = mask_menu->addAction(QIcon::fromTheme("mask-invert"), i18n("Inverted"));
+        act_inverted->setCheckable(true);
+        act_inverted->setChecked(lay->mask->inverted.get());
+        QObject::connect(act_inverted, &QAction::triggered, lay, [lay](bool inverted){
+            lay->mask->inverted.set_undoable(inverted);
+        });
+
+        mask_menu->addSeparator();
+        auto mask_mode = new QActionGroup(mask_menu);
+        mask_mode->setExclusive(true);
+        auto current_mode = lay->mask->mask.get();
+        std::array<model::MaskSettings::MaskMode, 3> modes = {
+            model::MaskSettings::NoMask,
+            model::MaskSettings::Alpha,
+            model::MaskSettings::Luma
+        };
+        for ( model::MaskSettings::MaskMode mode : modes )
+            mask_mode->addAction(add_enum_action(mask_menu, mode, current_mode, [lay, mode]{
+                lay->mask->mask.set_undoable(mode);
+            }));
     }
     else
     {

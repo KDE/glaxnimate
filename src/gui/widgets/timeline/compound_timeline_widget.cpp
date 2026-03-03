@@ -72,9 +72,11 @@ public:
         ui.properties->header()->setSectionResizeMode(item_models::PropertyModelFull::ColumnColor, QHeaderView::ResizeToContents);
         ui.properties->header()->setSectionResizeMode(item_models::PropertyModelFull::ColumnLocked, QHeaderView::ResizeToContents);
         ui.properties->header()->setSectionResizeMode(item_models::PropertyModelFull::ColumnVisible, QHeaderView::ResizeToContents);
+        ui.properties->header()->setSectionResizeMode(item_models::PropertyModelFull::ColumnMask, QHeaderView::ResizeToContents);
         ui.properties->header()->moveSection(item_models::PropertyModelFull::ColumnColor, 0);
         ui.properties->header()->moveSection(item_models::PropertyModelFull::ColumnVisible, 1);
         ui.properties->header()->moveSection(item_models::PropertyModelFull::ColumnLocked, 2);
+        ui.properties->header()->moveSection(item_models::PropertyModelFull::ColumnMask, 3);
 
         ui.properties->setUniformRowHeights(true);
         ui.properties->header()->setFixedHeight(ui.timeline->header_height());
@@ -537,6 +539,14 @@ void CompoundTimelineWidget::click_index ( const QModelIndex& index )
             node->visible.set_undoable(!node->visible.get());
         else if ( index.column() == item_models::PropertyModelFull::ColumnLocked )
             node->locked.set_undoable(!node->locked.get());
+        else if ( index.column() == item_models::PropertyModelFull::ColumnMask )
+        {
+            if ( auto layer = node->cast<model::Layer>() )
+            {
+                int mode = model::MaskSettings::next_mode(layer->mask->mask.get());
+                layer->mask->mask.set_undoable(mode);
+            }
+        }
     }
     else if ( auto anprop = d->property_model.animatable(source_index) )
     {

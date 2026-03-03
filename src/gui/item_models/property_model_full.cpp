@@ -40,6 +40,14 @@ public:
         connect_docnode(node, prop_node);
     }
 
+    void mark_column_changed(model::DocumentNode* node, int column, const QList<int>& roles)
+    {
+        QModelIndex ind = node_index(node);
+        QModelIndex par = node_index(node->docnode_parent());
+        QModelIndex changed = model->index(ind.row(), column, par);
+        model->dataChanged(changed, changed, roles);
+    }
+
     void on_connect(model::Object* object, Subtree* tree, bool insert_row, ReferencedPropertiesMap* referenced) override
     {
         model::VisualNode* visual = object->cast<model::VisualNode>();
@@ -49,18 +57,13 @@ public:
         if ( visual )
         {
             connect(visual, &model::VisualNode::docnode_visible_changed, model, [this, visual]() {
-                QModelIndex ind = node_index(visual);
-                QModelIndex par = node_index(visual->docnode_parent());
-                QModelIndex changed = model->index(ind.row(), ColumnVisible, par);
-                model->dataChanged(changed, changed, {Qt::DecorationRole, Qt::ToolTipRole});
+                mark_column_changed(visual, ColumnVisible, {Qt::DecorationRole, Qt::ToolTipRole});
             });
             connect(visual, &model::VisualNode::docnode_locked_changed, model, [this, visual]() {
-                QModelIndex ind = node_index(visual);
-                QModelIndex par = node_index(visual->docnode_parent());
-                QModelIndex changed = model->index(ind.row(), ColumnLocked, par);
-                model->dataChanged(changed, changed, {Qt::DecorationRole, Qt::ToolTipRole});
+                mark_column_changed(visual, ColumnLocked, {Qt::DecorationRole, Qt::ToolTipRole});
             });
             connect(visual, &model::VisualNode::docnode_group_color_changed, model, [this, visual]() {
+                mark_column_changed(visual, ColumnColor, {Qt::BackgroundRole, Qt::EditRole, Qt::DisplayRole});
                 QModelIndex ind = node_index(visual);
                 QModelIndex par = node_index(visual->docnode_parent());
                 QModelIndex changed = model->index(ind.row(), ColumnColor, par);
@@ -68,6 +71,13 @@ public:
             });
 
             node = visual;
+
+            if ( auto layer = visual->cast<model::Layer>() )
+            {
+                connect(layer->mask.get(), &model::MaskSettings::mask_changed, model, [this, visual]{
+                    mark_column_changed(visual, ColumnMask, {Qt::DecorationRole, Qt::ToolTipRole});
+                });
+            }
         }
         else
         {
@@ -78,10 +88,7 @@ public:
         if ( node )
         {
             connect(node, &model::DocumentNode::name_changed, model, [this, node]() {
-                QModelIndex ind = node_index(node);
-                QModelIndex par = node_index(node->docnode_parent());
-                QModelIndex changed = model->index(ind.row(), ColumnName, par);
-                model->dataChanged(changed, changed, {Qt::EditRole, Qt::DisplayRole});
+                mark_column_changed(node, ColumnName, {Qt::EditRole, Qt::DisplayRole});
             });
         }
 
@@ -241,6 +248,22 @@ public:
         return out;
     }
 
+    QVariant data_mask(Subtree* tree, int role)
+    {
+        if ( !tree->visual_node )
+            return {};
+        auto layer = tree->visual_node->cast<model::Layer>();
+        if ( !layer || (role != Qt::DecorationRole && role != Qt::ToolTipRole) )
+            return {};
+        auto mask_mode = layer->mask->mask.value();
+        auto data = EnumCombo::data_for(mask_mode);
+        if ( role == Qt::DecorationRole )
+            return QIcon::fromTheme(data.second);
+        else if ( role == Qt::ToolTipRole )
+            return data.first;
+        return {};
+    }
+
     QVariant data_visible(Subtree* tree, int role)
     {
         if ( tree->visual_node )
@@ -345,9 +368,9 @@ Qt::ItemFlags item_models::PropertyModelFull::flags(const QModelIndex& index) co
             return flags;
         case ColumnLocked:
         case ColumnVisible:
+        case ColumnMask:
             return flags;
         case ColumnValue:
-
             if ( auto lay = qobject_cast<model::Layer*>(tree->visual_node) )
                 if ( lay->is_top_level() )
                     return flags | Qt::ItemIsEditable;
@@ -409,6 +432,7 @@ QVariant item_models::PropertyModelFull::data(const QModelIndex& index, int role
         case ColumnColor: return dd()->data_color(tree, role);
         case ColumnLocked: return dd()->data_locked(tree, role);
         case ColumnVisible: return dd()->data_visible(tree, role);
+        case ColumnMask: return dd()->data_mask(tree, role);
     }
     return {};
 }
@@ -460,6 +484,12 @@ QVariant item_models::PropertyModelFull::headerData(int section, Qt::Orientation
             case ColumnColor:
             case ColumnLocked:
             case ColumnVisible:
+                break;
+            case ColumnMask:
+                if ( role == Qt::DecorationRole )
+                    return QIcon::fromTheme("mask-alpha");
+                else if ( role == Qt::ToolTipRole )
+                    return i18n("Mask Mode");
                 break;
         }
     }
