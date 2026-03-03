@@ -135,14 +135,9 @@ public:
         return painter->opacity();
     }
 
-    void clip_rect(const QRectF & rect, Qt::ClipOperation op = Qt::ReplaceClip) override
+    void clip_rect(const QRectF & rect) override
     {
-        painter->setClipRect(rect, op);
-    }
-
-    void clip_path(const math::bezier::MultiBezier & path, Qt::ClipOperation op = Qt::ReplaceClip) override
-    {
-        painter->setClipPath(path.painter_path(), op);
+        painter->setClipRect(rect, Qt::IntersectClip);
     }
 
     void draw_image(const QImage & image) override

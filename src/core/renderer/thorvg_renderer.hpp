@@ -389,19 +389,10 @@ public:
         return layers.back()->opacity() / 255.;
     }
 
-    void clip_rect(const QRectF & rect, Qt::ClipOperation op = Qt::ReplaceClip) override
+    void clip_rect(const QRectF & rect) override
     {
         auto shape = tvg::Shape::gen();
         shape->appendRect(rect.left(), rect.top(), rect.width(), rect.height(), 0, 0);
-        // TODO if ( op == Qt::ReplaceClip )
-        layers.back()->clip(shape);
-    }
-
-    void clip_path(const math::bezier::MultiBezier & path, Qt::ClipOperation op = Qt::ReplaceClip) override
-    {
-        // TODO if ( op == Qt::ReplaceClip )
-        auto shape = tvg::Shape::gen();
-        draw_path(path, shape);
         layers.back()->clip(shape);
     }
 

@@ -75,7 +75,6 @@ bool glaxnimate::io::raster::SpritesheetFormat::on_save(QIODevice& file, const Q
     }
     renderer->render_end();
 
-
     QImageWriter writer(&file, {});
     writer.setOptimizedWrite(true);
     if ( writer.write(bmp) )

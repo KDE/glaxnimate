@@ -135,8 +135,7 @@ public:
     /**
      * \brief Sets a clipping rect
      */
-    virtual void clip_rect(const QRectF& rect, Qt::ClipOperation op = Qt::ReplaceClip) = 0;
-    virtual void clip_path(const math::bezier::MultiBezier& path, Qt::ClipOperation op = Qt::ReplaceClip) = 0;
+    virtual void clip_rect(const QRectF& rect) = 0;
 
     virtual void draw_image(const QImage& image) = 0;
 
