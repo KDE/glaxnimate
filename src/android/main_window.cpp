@@ -35,6 +35,8 @@
 #include "utils/pseudo_mutex.hpp"
 #include "style/scroll_area_event_filter.hpp"
 #include "emoji/emoji_set.hpp"
+#include "widgets/canvas.hpp"
+#include "widgets/render_widget.hpp"
 
 
 #include "android_file_picker.hpp"
@@ -56,6 +58,8 @@ public:
     gui::graphics::DocumentScene scene;
     std::unique_ptr<model::Document> current_document;
     gui::tools::Tool* active_tool = nullptr;
+    gui::Canvas* canvas;
+    gui::RenderWidget render_widget;
 
     QPointer<model::BrushStyle> main_brush;
     QPointer<model::BrushStyle> secondary_brush;
@@ -91,6 +95,12 @@ public:
     {
         ui.setupUi(parent);
 
+        render_widget = gui::RenderWidget(ui.centralwidget);
+        canvas = new gui::Canvas(render_widget.widget());
+        ui.gridLayout->addWidget(render_widget.widget(), 1, 1, 1, 1);
+        render_widget.set_overlay(canvas);
+
+
         timeline_slider = new TimelineSlider(ui.time_container);
         ui.time_container_layout->insertWidget(1, timeline_slider);
 
@@ -104,8 +114,8 @@ public:
         init_toolbar_actions();
         init_toolbar_edit();
 
-        ui.canvas->set_tool_target(parent);
-        ui.canvas->setScene(&scene);
+        canvas->set_tool_target(parent);
+        canvas->setScene(&scene);
 
         ui.fill_style_widget->set_current_color(QColor("#3250b0"));
         ui.stroke_style_widget->set_color(QColor("#1d2848"));
@@ -195,7 +205,7 @@ public:
     void clear_document()
     {
         if ( active_tool )
-            active_tool->close_document_event({ui.canvas, &scene, parent});
+            active_tool->close_document_event({canvas, &scene, parent});
         ui.play_controls->pause();
         document_node_model.set_document(nullptr);
         scene.set_document(nullptr);
@@ -288,7 +298,7 @@ public:
 */
         active_tool = tool;
         scene.set_active_tool(tool);
-        ui.canvas->set_active_tool(tool);
+        canvas->set_active_tool(tool);
         /*
         ui.tool_settings_widget->setCurrentWidget(tool->get_settings_widget());
         if ( active_tool->group() == tools::Registry::Draw || active_tool->group() == tools::Registry::Shape )
@@ -353,7 +363,7 @@ public:
         QActionGroup *tool_actions_grp = new QActionGroup(parent);
         tool_actions_grp->setExclusive(true);
 
-        gui::tools::Event event{ui.canvas, &scene, parent};
+        gui::tools::Event event{canvas, &scene, parent};
         gui::tools::Tool* to_activate = nullptr;
 
         for ( auto action: tool_actions(gui::tools::Registry::instance()[gui::tools::Registry::Core], tool_actions_grp, to_activate, event) )
@@ -668,7 +678,7 @@ public:
         }
 
         if ( active_tool )
-            active_tool->close_document_event({ui.canvas, &scene, parent});
+            active_tool->close_document_event({canvas, &scene, parent});
 
         clear_document();
 
@@ -888,12 +898,7 @@ public:
 
         if ( export_opts && exporting_png )
         {
-            QImage pix(comp->size().toSize(), QImage::Format_RGBA8888);
-            pix.fill(Qt::transparent);
-            QPainter painter(&pix);
-            painter.setRenderHint(QPainter::Antialiasing);
-            comp->paint(&painter, current_document->current_time(), model::VisualNode::Render);
-            painter.end();
+            QImage pix = comp->render_image();
             QByteArray data;
             QBuffer buf(&data);
             buf.open(QIODevice::WriteOnly);
@@ -1151,7 +1156,7 @@ QPen MainWindow::current_pen_style() const
 
 qreal MainWindow::current_zoom() const
 {
-    return d->ui.canvas->get_zoom_factor();
+    return d->canvas->get_zoom_factor();
 }
 
 glaxnimate::model::BrushStyle* MainWindow::linked_brush_style(bool secondary) const

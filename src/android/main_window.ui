@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
-
-SPDX-License-Identifier: GPL-3.0-or-later
--->
-
 <ui version="4.0">
  <class>glaxnimate::android::MainWindow</class>
  <widget class="QMainWindow" name="glaxnimate::android::MainWindow">
@@ -46,9 +39,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <item row="1" column="4" rowspan="2">
      <widget class="glaxnimate::gui::FillStyleWidget" name="fill_style_widget" native="true"/>
     </item>
-    <item row="1" column="1">
-     <widget class="glaxnimate::gui::Canvas" name="canvas"/>
-    </item>
     <item row="1" column="2" rowspan="2">
      <widget class="QScrollArea" name="property_widget">
       <property name="sizePolicy">
@@ -58,13 +48,13 @@ SPDX-License-Identifier: GPL-3.0-or-later
        </sizepolicy>
       </property>
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Shape::NoFrame</enum>
       </property>
       <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
       </property>
       <property name="horizontalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
       </property>
       <property name="widgetResizable">
        <bool>true</bool>
@@ -74,8 +64,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>68</width>
-         <height>861</height>
+         <width>144</width>
+         <height>295</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -99,7 +89,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
           <item>
            <spacer name="verticalSpacer">
             <property name="orientation">
-             <enum>Qt::Vertical</enum>
+             <enum>Qt::Orientation::Vertical</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -184,17 +174,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
  </widget>
  <customwidgets>
   <customwidget>
-   <class>glaxnimate::gui::Canvas</class>
-   <extends>QGraphicsView</extends>
-   <header>widgets/canvas.hpp</header>
-   <slots>
-    <slot>reset_rotation()</slot>
-    <slot>reset_zoom()</slot>
-    <slot>zoom_in()</slot>
-    <slot>zoom_out()</slot>
-   </slots>
-  </customwidget>
-  <customwidget>
    <class>glaxnimate::gui::FrameControlsWidget</class>
    <extends>QWidget</extends>
    <header>widgets/timeline/frame_controls_widget.hpp</header>
@@ -221,9 +200,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
    </slots>
   </customwidget>
  </customwidgets>
- <tabstops>
-  <tabstop>canvas</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>
