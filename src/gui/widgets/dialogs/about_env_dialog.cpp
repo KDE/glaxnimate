@@ -17,7 +17,6 @@
 #include "glaxnimate_settings.hpp"
 #include "glaxnimate_app.hpp"
 #include "utils/trace.hpp"
-#include "utils/tar.hpp"
 #include "io/video/video_format.hpp"
 #include "io/io_registry.hpp"
 

@@ -107,13 +107,11 @@ renderer/renderer.cpp
 utils/gzip.cpp
 )
 
-set(GLAXNIMATE_TAR_ENABLED ON)
 
 if ( GLAXNIMATE_CORE_MINIMAL )
     set(VIDEO_ENABLED OFF)
     set(PYTHON_SCRIPTING_ENABLED OFF)
     set(GLAXNIMATE_CORE_KDE OFF)
-    set(GLAXNIMATE_TAR_ENABLED OFF)
     set(LIB_NAME_CORE glaxnimate_lib)
     add_definitions(-DWITHOUT_POTRACE)
 
@@ -135,18 +133,6 @@ else()
         utils/trace.cpp
         utils/trace_wrapper.cpp
     )
-endif()
-
-if ( ANDROID )
-    set(GLAXNIMATE_TAR_ENABLED OFF)
-endif()
-
-if ( GLAXNIMATE_TAR_ENABLED )
-    list(APPEND SOURCES
-        utils/tar.cpp
-    )
-    find_package(LibArchive REQUIRED)
-    include_directories(${LibArchive_INCLUDE_DIRS})
 endif()
 
 if ( VIDEO_ENABLED )

@@ -18,10 +18,12 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QDesktopServices>
+#include <QBuffer>
 
 #include <KLocalizedContext>
+#include <KTar>
+#include <KCompressionDevice>
 
-#include "utils/tar.hpp"
 #include "emoji/emoji_set.hpp"
 #include "glaxnimate_app.hpp"
 #include "emoji_dialog.hpp"
@@ -159,6 +161,49 @@ void glaxnimate::emoji::EmojiSetDialog::reload_sets()
     }
 }
 
+static const KArchiveDirectory* enter_tar_dir(const KArchiveDirectory* dir, const QString& path)
+{
+    auto entry = dir->entry(path);
+    if ( entry && entry->isDirectory() )
+        return static_cast<const KArchiveDirectory*>(entry);
+    return nullptr;
+}
+
+static bool extract_all(const KArchiveDirectory* dir, QDir output, const QString& prefix)
+{
+    for ( const auto& chunk : prefix.split("/") )
+    {
+        if ( chunk.length() )
+        {
+            dir = enter_tar_dir(dir, chunk);
+            if ( !dir )
+                return false;
+        }
+    }
+
+    if ( !output.mkpath(prefix) )
+        return false;
+
+    if ( !output.cd(prefix) )
+        return false;
+
+    bool ok = true;
+    for ( const auto& path : dir->entries() )
+    {
+        if ( auto entry = dir->file(path) )
+        {
+            // entry->copyTo doesn't work
+            QFile file(output.absoluteFilePath(path));
+            if ( file.open(QFile::WriteOnly) )
+                file.write(entry->data());
+            else
+                ok = false;
+        }
+    }
+    return ok;
+
+}
+
 void glaxnimate::emoji::EmojiSetDialog::download_selected()
 {
     int row = d->ui.emoji_set_view->currentRow();
@@ -166,6 +211,7 @@ void glaxnimate::emoji::EmojiSetDialog::download_selected()
         return;
 
     QNetworkRequest request(d->sets[row].download.url);
+
     request.setMaximumRedirectsAllowed(3);
     request.setAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy);
     auto reply = d->downloader.get(request);
@@ -192,17 +238,41 @@ void glaxnimate::emoji::EmojiSetDialog::download_selected()
 
         QByteArray data = reply->readAll();
         reply->close();
-        QDir output = d->sets[row].path;
-        glaxnimate::utils::tar::TapeArchive tar(data);
-        for ( const auto& entry : tar )
+
+        // Without this extra step reading everything into a buffer, KTar hangs
         {
-            if ( entry.path().startsWith(prefix_scalable) || entry.path().startsWith(prefix_raster) )
-                tar.extract(entry, output);
+            QBuffer buf(&data);
+            buf.open(QIODevice::ReadOnly);
+
+            KCompressionDevice compressed(&buf, false, KCompressionDevice::GZip);
+            compressed.open(QIODevice::ReadOnly);
+
+            data = compressed.readAll();
         }
-        if ( !tar.error().isEmpty() )
-            d->set_download_status(row, "package-broken", tar.error());
+
+        QBuffer buf1(&data);
+        // buf1.open(QIODevice::ReadOnly);
+
+        QDir output = d->sets[row].path;
+        KTar tar(&buf1);
+        bool has_error = !tar.open(QIODevice::ReadOnly);
+        bool extract_failed = false;
+        auto dir = tar.directory();
+        if ( !dir )
+        {
+            has_error = true;
+        }
+        else
+        {
+            extract_failed = !extract_all(dir, output, prefix_scalable);
+            extract_failed = !extract_all(dir, output, prefix_raster) || extract_failed;
+        }
+        if ( has_error )
+            d->set_download_status(row, "package-broken", tar.errorString());
         else if ( !output.exists() )
             d->set_download_status(row, "package-broken", i18nc("Package install status", "Didn't download any files"));
+        else if ( extract_failed )
+            d->set_download_status(row, "package-broken", i18nc("Package install status", "Some files failed to extract"));
         else
             d->set_download_status(row, "package-installed-updated", i18nc("Package install status", "Installed"));
 

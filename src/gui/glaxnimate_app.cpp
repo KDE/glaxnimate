@@ -180,10 +180,6 @@ static void gl_version(KAboutData& aboutData)
 #   include "io/video/video_format.hpp"
 #endif
 
-#ifndef Q_OS_ANDROID
-#   include "utils/tar.hpp"
-#endif
-
 #ifdef PYTHON_SCRIPTING_ENABLED
 #   include "app/scripting/python/python_engine.hpp"
 #endif
@@ -215,8 +211,6 @@ void GlaxnimateApp::init_qapplication()
 #endif
 
 #ifndef Q_OS_ANDROID
-    aboutData.addComponent(i18n("libarchive"), {}, utils::tar::libarchive_version());
-
     aboutData.addComponent(i18n("Inkscape"), {}, {}, QStringLiteral("https://inkscape.org/"), KAboutLicense::GPL_V2);
 #endif
 #ifdef PYTHON_SCRIPTING_ENABLED
