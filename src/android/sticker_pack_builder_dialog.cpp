@@ -85,13 +85,7 @@ public:
         void rebuild_preview(model::FrameTime t)
         {
             auto main = document->assets()->compositions->values[0];
-            pixmap.fill(Qt::white);
-            QPainter painter(&pixmap);
-            painter.setRenderHint(QPainter::Antialiasing);
-            auto scale = qreal(pixmap.width()) / main->width.get();
-            painter.scale(scale, scale);
-            main->paint(&painter, t, model::VisualNode::Render);
-            painter.end();
+            pixmap = QPixmap::fromImage(main->render_image(t, pixamp_size, Qt::white))
             preview.setPixmap(pixmap);
         }
 
@@ -105,12 +99,14 @@ public:
             button_emoji.setFixedSize(size);
             button_delete.setFixedSize(size);
             button_delete.setIconSize(QSize(width*0.8, width*0.8));
-            pixmap = QPixmap(size);
+            pixmap_size = size;
+            pixmap = {};
             rebuild_preview();
         }
 
         std::unique_ptr<model::Document> document;
         QPixmap pixmap;
+        QSize pixmap_size;
         QString emoji;
 
         QLabel preview;
