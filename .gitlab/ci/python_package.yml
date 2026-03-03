@@ -66,7 +66,7 @@ pypi_deploy_pypiorg:
         - git clone https://invent.kde.org/sysadmin/ci-utilities.git --depth=1
         - git clone https://invent.kde.org/sysadmin/ci-notary-service.git
     script:
-        - python3 -u ci-notary-service/publishonpypi.py --config ci-utilities/signing/publishonpypi.ini --repository pypi bin/python/dist
+        - python3 -u ci-notary-service/publishonpypi.py --config ci-utilities/signing/publishonpypi.ini --repository pypi _build/bin/python/dist
     rules:
         # allow to run the job only on mainline branches of mainline repositories
         - if: $KDECI_SECURE_SERVICES_KEY
