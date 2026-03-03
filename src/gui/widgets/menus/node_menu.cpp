@@ -239,7 +239,7 @@ QAction* add_enum_action(QMenu* parent, ValueT value, ValueT current, const Call
 {
     auto meta = QMetaEnum::fromType<ValueT>();
     auto data = EnumCombo::data_for(meta, value);
-    QAction* action = parent->addAction(QIcon::fromTheme(data.second), data.first);
+    QAction* action = parent->addAction(data.second, data.first);
     action->setCheckable(true);
     action->setChecked(value == current);
     QObject::connect(action, &QAction::triggered, parent, callback);

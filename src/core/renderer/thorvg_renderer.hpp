@@ -24,6 +24,7 @@ private:
     int mode = ShapeMode::NothingMode;
     int mask_flags = 0;
     int effect_quality;
+    BlendMode blend_mode = BlendMode::Normal;
 
     std::unique_ptr<tvg::Canvas> canvas;
     std::vector<tvg::Scene*> layers;
@@ -460,6 +461,11 @@ public:
             method = inverted ? tvg::MaskMethod::InvAlpha : tvg::MaskMethod::Alpha;
         layers.back()->mask(mask, method);
         mask_flags = 0;
+    }
+
+    void set_blend_mode(BlendMode mode) override
+    {
+        layers.back()->blend(tvg::BlendMethod(mode));
     }
 };
 

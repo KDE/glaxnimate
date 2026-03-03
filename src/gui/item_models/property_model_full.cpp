@@ -258,7 +258,7 @@ public:
         auto mask_mode = layer->mask->mask.value();
         auto data = EnumCombo::data_for(mask_mode);
         if ( role == Qt::DecorationRole )
-            return QIcon::fromTheme(data.second);
+            return data.second;
         else if ( role == Qt::ToolTipRole )
             return data.first;
         return {};

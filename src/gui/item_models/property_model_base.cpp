@@ -238,7 +238,7 @@ QVariant item_models::PropertyModelBase::Private::data_value(model::BaseProperty
         if ( role == Qt::EditRole )
             return prop->value();
         if ( role == Qt::DecorationRole )
-            return QIcon::fromTheme(EnumCombo::data_for(prop->value()).second);
+            return EnumCombo::data_for(prop->value()).second;
         return {};
     }
     else

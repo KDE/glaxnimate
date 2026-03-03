@@ -10,6 +10,8 @@
 
 namespace glaxnimate::renderer {
 
+Q_NAMESPACE
+
 struct Fill
 {
     QBrush brush = {};
@@ -38,6 +40,29 @@ enum MaskFlags
 
     MaskInverted    = 0x0100, ///< Invert masking
 };
+
+enum class BlendMode
+{
+    Normal = 0,
+    Multiply,
+    Screen,
+    Overlay,
+    Darken,
+    Lighten,
+    ColorDodge,
+    ColorBurn,
+    HardLight,
+    SoftLight,
+    Difference,
+    Exclusion,
+    Hue,
+    Saturation,
+    Color,
+    Luminosity,
+    //Add, // in lottie but not in svg
+};
+
+Q_ENUM_NS(BlendMode)
 
 /**
  * Abstracted renderer interface
@@ -114,6 +139,10 @@ public:
      * \brief Applies the layer to the current surface
      */
     virtual void layer_end() = 0;
+    /**
+     * \brief Sets the blend mode for the current layer
+     */
+    virtual void set_blend_mode(BlendMode mode) = 0;
 
     /**
      * \brief Starts a new masking layer

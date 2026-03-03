@@ -20,10 +20,12 @@ class Group : public StaticOverrides<Group, ShapeElement>
     GLAXNIMATE_OBJECT(Group)
 
 public:
+
     GLAXNIMATE_PROPERTY_LIST(ShapeElement, shapes)
     GLAXNIMATE_SUBOBJECT(Transform, transform)
     GLAXNIMATE_ANIMATABLE(float, opacity, 1, &Group::opacity_changed, 0, 1, false, PropertyTraits::Percent)
     GLAXNIMATE_PROPERTY(bool, auto_orient, false, &Group::on_transform_matrix_changed, {}, PropertyTraits::Visual|PropertyTraits::Hidden)
+    GLAXNIMATE_PROPERTY(renderer::BlendMode, blend_mode, renderer::BlendMode::Normal, &Group::blend_mode_changed, {}, PropertyTraits::Visual|PropertyTraits::Hidden)
 
 public:
     Group(Document* document);
@@ -54,6 +56,7 @@ public:
 
 Q_SIGNALS:
     void opacity_changed(float op);
+    void blend_mode_changed(renderer::BlendMode mode);
 
 protected:
     glaxnimate::math::bezier::MultiBezier to_painter_path_impl(model::FrameTime t) const override;

@@ -32,10 +32,12 @@ public:
     bool set_data_from_qvariant(const QVariant& var);
 
 
-    static std::pair<QString, const char*> data_for(const QVariant& data);
-    static std::pair<QString, const char*> data_for(const QMetaEnum& meta_enum, int value);
+    static std::pair<QString, QIcon> data_for(const QVariant& data);
+    static std::pair<QString, QIcon> data_for(const QMetaEnum& meta_enum, int value);
 
 private:
+    static std::pair<QString, const char*> raw_data_for(const QMetaEnum& meta_enum, int value);
+
     static bool inspect_qvariant(const QVariant& data, QMetaEnum& meta_enum, int& value);
 
     void populate(int current_value);

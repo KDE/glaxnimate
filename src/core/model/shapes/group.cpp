@@ -23,6 +23,7 @@ glaxnimate::model::Group::Group(Document* document)
 
 void glaxnimate::model::Group::on_paint(renderer::Renderer* painter, glaxnimate::model::FrameTime time, glaxnimate::model::VisualNode::PaintMode, glaxnimate::model::Modifier*) const
 {
+    painter->set_blend_mode(blend_mode.get());
     painter->set_opacity(opacity.get_at(time));
 }
 

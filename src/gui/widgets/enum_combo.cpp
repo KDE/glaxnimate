@@ -40,13 +40,13 @@ void EnumCombo::populate(int current_value)
     for ( int i = 0; i < meta_enum.keyCount(); i++ )
     {
         auto data = data_for(meta_enum, meta_enum.value(i));
-        addItem(QIcon::fromTheme(data.second), data.first, meta_enum.value(i));
+        addItem(data.second, data.first, meta_enum.value(i));
         if ( meta_enum.value(i) == current_value )
             setCurrentIndex(count() - 1);
     }
 }
 
-std::pair<QString, const char*> EnumCombo::data_for(const QMetaEnum& meta_enum, int value)
+std::pair<QString, const char*> EnumCombo::raw_data_for(const QMetaEnum& meta_enum, int value)
 {
     if ( std::strcmp(meta_enum.name(), "Rule") == 0 )
     {
@@ -117,8 +117,46 @@ std::pair<QString, const char*> EnumCombo::data_for(const QMetaEnum& meta_enum, 
                 return {i18n("Luma Mask"), "mask-luma"};
         }
     }
+    else if ( std::strcmp(meta_enum.name(), "BlendMode") == 0 )
+    {
+        switch ( renderer::BlendMode(value) )
+        {
+            case renderer::BlendMode::Normal:
+                return {i18n("Normal"), nullptr};
+            case renderer::BlendMode::Multiply:
+                return {i18n("Multiply"), nullptr};
+            case renderer::BlendMode::Screen:
+                return {i18n("Screen"), nullptr};
+            case renderer::BlendMode::Overlay:
+                return {i18n("Overlay"), nullptr};
+            case renderer::BlendMode::Darken:
+                return {i18n("Darken"), nullptr};
+            case renderer::BlendMode::Lighten:
+                return {i18n("Lighten"), nullptr};
+            case renderer::BlendMode::ColorDodge:
+                return {i18n("Color Dodge"), nullptr};
+            case renderer::BlendMode::ColorBurn:
+                return {i18n("Color Burn"), nullptr};
+            case renderer::BlendMode::HardLight:
+                return {i18n("Hard Light"), nullptr};
+            case renderer::BlendMode::SoftLight:
+                return {i18n("Soft Light"), nullptr};
+            case renderer::BlendMode::Difference:
+                return {i18n("Difference"), nullptr};
+            case renderer::BlendMode::Exclusion:
+                return {i18n("Exclusion"), nullptr};
+            case renderer::BlendMode::Hue:
+                return {i18n("Hue"), nullptr};
+            case renderer::BlendMode::Saturation:
+                return {i18n("Saturation"), nullptr};
+            case renderer::BlendMode::Color:
+                return {i18n("Color"), nullptr};
+            case renderer::BlendMode::Luminosity:
+                return {i18n("Luminosity"), nullptr};
+        }
+    }
 
-    return {meta_enum.valueToKey(value), "paint-unknown"};
+    return {meta_enum.valueToKey(value), nullptr};
 }
 
 int EnumCombo::current_value() const
@@ -166,12 +204,22 @@ bool EnumCombo::inspect_qvariant(const QVariant& data, QMetaEnum& meta_enum, int
 }
 
 
-std::pair<QString, const char *> EnumCombo::data_for(const QVariant& data)
+std::pair<QString, QIcon> EnumCombo::data_for(const QVariant& data)
 {
     QMetaEnum meta_enum;
     int value = 0;
     if ( inspect_qvariant(data, meta_enum, value) )
         return data_for(meta_enum, value);
 
-    return {"", "paint-unknown"};
+    return {QStringLiteral(""), {}};
+}
+
+std::pair<QString, QIcon> EnumCombo::data_for(const QMetaEnum& meta_enum, int value)
+{
+    std::pair<QString, QIcon> result;
+    const char* name;
+    std::tie(result.first, name) = raw_data_for(meta_enum, value);
+    if ( name )
+        result.second = QIcon::fromTheme(name);
+    return result;
 }
