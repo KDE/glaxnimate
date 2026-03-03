@@ -29,7 +29,7 @@ bool glaxnimate::io::raster::RasterFormat::on_open(QIODevice& dev, const QString
     model::FrameTime default_time = settings["default_time"].toFloat();
     main->animation->last_frame.set(default_time == 0 ? default_time : 180);
 
-#ifndef WITHOUT_POTRACE
+#ifdef GLAXNIMATE_POTRACE_ENABLED
     if ( settings.value("trace", {}).toBool() )
     {
         QImageReader reader;

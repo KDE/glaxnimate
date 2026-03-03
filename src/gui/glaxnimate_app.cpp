@@ -176,7 +176,7 @@ static void gl_version(KAboutData& aboutData)
 }
 #endif
 
-#ifdef VIDEO_ENABLED
+#ifdef GLAXNIMATE_VIDEO_ENABLED
 #   include "io/video/video_format.hpp"
 #endif
 
@@ -206,7 +206,7 @@ void GlaxnimateApp::init_qapplication()
 
     aboutData.addComponent(i18n("potrace"), i18n("Used by the bitmap tracing feature."), utils::trace::Tracer::potrace_version(), QStringLiteral("http://potrace.sourceforge.net/"), KAboutLicense::GPL_V2);
 
-#ifdef VIDEO_ENABLED
+#ifdef GLAXNIMATE_VIDEO_ENABLED
     aboutData.addComponent(i18n("libav"), {}, io::video::VideoFormat::library_version(), QStringLiteral("https://libav.org/"), KAboutLicense::LGPL);
 #endif
 

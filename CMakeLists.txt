@@ -177,27 +177,25 @@ if ( NOT ANDROID )
 endif()
 
 
-option(GLAXNIMATE_CORE_KDE "Use KDE libraries for Glaxnimate core" ON)
-
-if ( GLAXNIMATE_CORE_KDE )
-    add_definitions(-DGLAXNIMATE_CORE_KDE)
-endif()
-
-
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Potrace
+option(GLAXNIMATE_POTRACE_ENABLED "Enable potrace" ON)
 option(GLAXNIMATE_SYSTEM_POTRACE "Use the system potrace library" ON)
-if (NOT GLAXNIMATE_SYSTEM_POTRACE)
+if ( NOT GLAXNIMATE_POTRACE_ENABLED )
+    # No potrace
+elseif (NOT GLAXNIMATE_SYSTEM_POTRACE)
+    # Custom potrace
     message(STATUS "Using bundled potrace")
     set(CMAKE_C_COMPILE_OBJECT ${CMAKE_CXX_COMPILE_OBJECT})
     add_subdirectory(external/potrace/)
     set(Potrace_LIBRARIES potrace)
-    include_directories(external/potrace/src/)
+    set(Potrace_INCLUDE_DIRS external/potrace/src/)
 else()
+    # system potrace
     find_package(Potrace REQUIRED)
 endif()
 
@@ -213,22 +211,6 @@ option(OPENGL_ENABLED "Whether to enable OpenGL features" OFF)
 if ( OPENGL_ENABLED )
     add_definitions(-DOPENGL_ENABLED)
 endif()
-add_subdirectory(external/thorvg/)
-set(RENDERER_LIBRARIES thorvg)
-
-
-if ( NOT ANDROID )
-    set(GLAXNIMATE_VIDEO_DEFAULT ON)
-else()
-    set(GLAXNIMATE_VIDEO_DEFAULT OFF)
-endif()
-
-option(VIDEO_ENABLED "Toggles support for video format I/O" ${GLAXNIMATE_VIDEO_DEFAULT})
-
-if ( VIDEO_ENABLED )
-    add_definitions(-DVIDEO_ENABLED)
-endif()
-
 
 # sub projects and stuff
 

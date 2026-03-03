@@ -30,7 +30,7 @@
 #include "io/svg/svg_mime.hpp"
 
 // Video
-#ifdef VIDEO_ENABLED
+#ifdef GLAXNIMATE_VIDEO_ENABLED
 #   include "io/video/video_format.hpp"
 #endif
 
@@ -77,7 +77,7 @@ void glaxnimate::io::IoRegistry::load_formats()
     >();
 #endif
 
-#ifdef VIDEO_ENABLED
+#ifdef GLAXNIMATE_VIDEO_ENABLED
     register_classes<
         video::VideoFormat
     >();

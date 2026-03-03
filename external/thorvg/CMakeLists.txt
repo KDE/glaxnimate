@@ -39,3 +39,18 @@ if ( OPENGL_ENABLED )
     find_package(OpenGL REQUIRED)
     target_link_libraries(thorvg PUBLIC ${OPENGL_gl_LIBRARY})
 endif()
+
+# Disable warnings
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(thorvg PRIVATE
+        -Wno-unused-parameter
+        -Wno-zero-as-null-pointer-constant
+        -Wno-sized-deallocation
+    )
+endif()
+
+
+find_package(OpenMP)
+if(OpenMP_FOUND)
+    target_link_libraries(thorvg PRIVATE OpenMP::OpenMP_CXX)
+endif()

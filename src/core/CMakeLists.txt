@@ -108,8 +108,10 @@ utils/gzip.cpp
 )
 
 
+set(GLAXNIMATE_CORE_KDE ON)
+
 if ( GLAXNIMATE_CORE_MINIMAL )
-    set(VIDEO_ENABLED OFF)
+    set(GLAXNIMATE_VIDEO_ENABLED OFF)
     set(PYTHON_SCRIPTING_ENABLED OFF)
     set(GLAXNIMATE_CORE_KDE OFF)
     set(LIB_NAME_CORE glaxnimate_lib)
@@ -135,12 +137,27 @@ else()
     )
 endif()
 
-if ( VIDEO_ENABLED )
+
+add_library(${LIB_NAME_CORE} STATIC)
+
+
+# Video
+if ( NOT ANDROID )
+    set(GLAXNIMATE_VIDEO_DEFAULT ON)
+else()
+    set(GLAXNIMATE_VIDEO_DEFAULT OFF)
+endif()
+
+option(GLAXNIMATE_VIDEO_ENABLED "Toggles support for video format I/O" ${GLAXNIMATE_VIDEO_DEFAULT})
+
+if ( GLAXNIMATE_VIDEO_ENABLED )
+    target_compile_definitions(${LIB_NAME_CORE} PUBLIC -DGLAXNIMATE_VIDEO_ENABLED)
     list(APPEND SOURCES
         io/video/video_format.cpp
     )
     find_package(Libav COMPONENTS codec util format swscale REQUIRED)
     include_directories(${Libav_INCLUDE_DIRS})
+    target_link_libraries(${LIB_NAME_CORE} PUBLIC ${Libav_LIBRARIES} )
 endif()
 
 configure_file(
@@ -148,10 +165,12 @@ configure_file(
     ${CMAKE_CURRENT_BINARY_DIR}/application_info_generated.hpp
 )
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
-
-if ( GLAXNIMATE_SYSTEM_POTRACE )
-    include_directories(${Potrace_INCLUDE_DIRS})
+# Potrace
+if ( GLAXNIMATE_POTRACE_ENABLED )
+    target_compile_definitions(${LIB_NAME_CORE} PUBLIC -DGLAXNIMATE_POTRACE_ENABLED)
+    if ( GLAXNIMATE_SYSTEM_POTRACE )
+        target_include_directories(${LIB_NAME_CORE} PUBLIC ${Potrace_INCLUDE_DIRS})
+    endif()
 endif()
 
 # KDE provides gzip support
@@ -159,12 +178,27 @@ if ( GLAXNIMATE_CORE_KDE )
     list(APPEND SOURCES
         io/lottie/tgs_format.cpp
     )
-    add_definitions(-DGLAXNIMATE_CORE_KDE)
+    target_compile_definitions(${LIB_NAME_CORE} PUBLIC -DGLAXNIMATE_CORE_KDE)
+
+    kde_target_enable_exceptions(${LIB_NAME_CORE} PUBLIC)
+    target_link_libraries(${LIB_NAME_CORE} PUBLIC
+        KF${KF_MAJOR}::CoreAddons
+        KF${KF_MAJOR}::Archive
+        KF${KF_MAJOR}::I18n
+    )
 else()
     message(STATUS "Building Glaxnimate core without KDE")
 endif()
 
-add_library(${LIB_NAME_CORE} STATIC ${SOURCES})
+# Renderer
+add_subdirectory(../../external/thorvg/ ${CMAKE_CURRENT_BINARY_DIR}/thorvg EXCLUDE_FROM_ALL)
+set(RENDERER_LIBRARIES thorvg)
+target_link_libraries(${LIB_NAME_CORE} PUBLIC ${RENDERER_LIBRARIES})
+
+# Common
+
+target_include_directories(${LIB_NAME_CORE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(${LIB_NAME_CORE} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 
 target_link_libraries(${LIB_NAME_CORE} PUBLIC
     Qt${QT_MAJOR_VERSION}::Core
@@ -176,27 +210,8 @@ target_link_libraries(${LIB_NAME_CORE} PUBLIC
 set_property(TARGET ${LIB_NAME_CORE} APPEND PROPERTY AUTOMOC_MACRO_NAMES "GLAXNIMATE_OBJECT")
 target_include_directories(${LIB_NAME_CORE} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> ${CMAKE_CURRENT_SOURCE_DIR}/../../external/QtAppSetup/src)
 
-if ( GLAXNIMATE_TAR_ENABLED )
-    target_link_libraries(${LIB_NAME_CORE} PUBLIC ${LibArchive_LIBRARIES} )
-endif()
-
-if ( VIDEO_ENABLED )
-    target_link_libraries(${LIB_NAME_CORE} PUBLIC ${Libav_LIBRARIES} )
-endif ()
-
-if ( RENDERER_LIBRARIES )
-    target_link_libraries(${LIB_NAME_CORE} PUBLIC ${RENDERER_LIBRARIES})
-endif()
-
-if ( GLAXNIMATE_CORE_KDE )
-kde_target_enable_exceptions(${LIB_NAME_CORE} PUBLIC)
-target_link_libraries(${LIB_NAME_CORE} PUBLIC
-    KF${KF_MAJOR}::CoreAddons
-    KF${KF_MAJOR}::Archive
-    KF${KF_MAJOR}::I18n
-)
-endif()
-
 if ( NOT GLAXNIMATE_CORE_MINIMAL )
     target_link_libraries(${LIB_NAME_CORE} PUBLIC QtAppSetup)
 endif ()
+
+target_sources(${LIB_NAME_CORE} PRIVATE ${SOURCES})
