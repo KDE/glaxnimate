@@ -234,6 +234,30 @@ void add_child_action(QMenu* menu, model::Group* group)
     });
 }
 
+template<class ValueT>
+void add_enum_actions(QMenu* menu, model::Property<ValueT>* prop)
+{
+    auto meta_enum = QMetaEnum::fromType<ValueT>();
+    auto group = new QActionGroup(menu);
+    group->setExclusive(true);
+
+    for ( int i = 0; i < meta_enum.keyCount(); i++ )
+    {
+        int ivalue = meta_enum.value(i);
+        ValueT evalue = ValueT(ivalue);
+        auto data = EnumCombo::data_for(meta_enum, ivalue);
+
+        QAction* action = menu->addAction(data.second, data.first);
+        action->setCheckable(true);
+        action->setChecked(evalue == prop->get());
+        QObject::connect(action, &QAction::triggered, prop->object(), [prop, evalue]{
+            prop->set_undoable(QVariant::fromValue(evalue));
+        });
+        group->addAction(action);
+    }
+
+}
+
 template<class ValueT, class Callback>
 QAction* add_enum_action(QMenu* parent, ValueT value, ValueT current, const Callback& callback)
 {
@@ -273,6 +297,10 @@ void actions_group(QMenu* menu, GlaxnimateWindow* window, model::Group* group)
     ao->setCheckable(true);
     ao->setChecked(group->auto_orient.get());
 
+
+    auto menu_blend = menu->addMenu(QIcon::fromTheme("edit-opacity"), i18n("Blend Mode"));
+    add_enum_actions(menu_blend, &group->blend_mode);
+
     model::Layer* lay = qobject_cast<model::Layer*>(group);
     if ( lay )
     {
@@ -302,18 +330,7 @@ void actions_group(QMenu* menu, GlaxnimateWindow* window, model::Group* group)
         });
 
         mask_menu->addSeparator();
-        auto mask_mode = new QActionGroup(mask_menu);
-        mask_mode->setExclusive(true);
-        auto current_mode = lay->mask->mask.get();
-        std::array<model::MaskSettings::MaskMode, 3> modes = {
-            model::MaskSettings::NoMask,
-            model::MaskSettings::Alpha,
-            model::MaskSettings::Luma
-        };
-        for ( model::MaskSettings::MaskMode mode : modes )
-            mask_mode->addAction(add_enum_action(mask_menu, mode, current_mode, [lay, mode]{
-                lay->mask->mask.set_undoable(mode);
-            }));
+        add_enum_actions(mask_menu, &lay->mask->mask);
     }
     else
     {

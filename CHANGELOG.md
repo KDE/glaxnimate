@@ -2,6 +2,7 @@
 
 * Editing:
     * Added luma mask mode
+    * Added blend modes for groups and layers
 * UI:
     * Timeline now allows to cycle through mask modes for layers
 * Misc
