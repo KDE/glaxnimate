@@ -66,8 +66,10 @@ bool glaxnimate::io::raster::SpritesheetFormat::on_save(QIODevice& file, const Q
     {
         renderer->layer_start();
         renderer->scale(scale_x, scale_y);
-        renderer->translate((i % columns) * frame_w, (i / columns) * frame_h);
-        renderer->clip_rect(QRectF(0, 0, frame_w, frame_h));
+        qreal x = (i % columns) * frame_w;
+        qreal y = (i / columns) * frame_h;
+        renderer->translate(x, y);
+        renderer->clip_rect(QRectF(x, y, frame_w, frame_h));
         comp->paint(renderer.get(), i, model::VisualNode::Render);
         renderer->layer_end();
     }
