@@ -22,7 +22,7 @@ if ( OPENGL_ENABLED )
 endif()
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h ${CMAKE_CURRENT_BINARY_DIR}/config.h)
-add_library(thorvg SHARED ${SOURCES})
+add_library(thorvg STATIC ${SOURCES})
 target_include_directories(
     thorvg PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/thorvg/inc
@@ -33,6 +33,7 @@ target_include_directories(
     ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/thorvg/src/loaders/raw
 )
+target_compile_definitions(thorvg PUBLIC -DTVG_STATIC)
 
 if ( OPENGL_ENABLED )
     find_package(OpenGL REQUIRED)
