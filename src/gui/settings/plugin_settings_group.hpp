@@ -8,7 +8,7 @@
 
 #include "settings/custom_settings_group.hpp"
 #include "widgets/settings/plugin_settings_widget.hpp"
-#include "plugin/plugin.hpp"
+#include "glaxnimate/plugin/plugin.hpp"
 
 namespace glaxnimate::gui::settings {
 

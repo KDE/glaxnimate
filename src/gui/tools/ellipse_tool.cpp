@@ -5,7 +5,7 @@
  */
 
 #include "rectangle_tool.hpp"
-#include "model/shapes/ellipse.hpp"
+#include "glaxnimate/model/shapes/ellipse.hpp"
 
 namespace glaxnimate::gui::tools {
 

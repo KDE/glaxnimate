@@ -9,8 +9,8 @@
 
 #include <QPainter>
 
-#include "model/stretchable_time.hpp"
-#include "model/assets/assets.hpp"
+#include "glaxnimate/model/stretchable_time.hpp"
+#include "glaxnimate/model/assets/assets.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;

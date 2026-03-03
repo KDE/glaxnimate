@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "model/shapes/text.hpp"
+#include "glaxnimate/model/shapes/text.hpp"
 
 #include "shape_tool_widget.hpp"
 

@@ -7,7 +7,7 @@
 # pragma once
 
 #include "QtColorWidgets/color_palette_model.hpp"
-#include "model/shapes/fill.hpp"
+#include "glaxnimate/model/shapes/fill.hpp"
 #include "widgets/dialogs/glaxnimate_window.hpp"
 #include <QDockWidget>
 #include <QObject>

@@ -5,8 +5,8 @@
  */
 
 #include "draw_tool_base.hpp"
-#include "model/shapes/path.hpp"
-#include "math/bezier/operations.hpp"
+#include "glaxnimate/model/shapes/path.hpp"
+#include "glaxnimate/math/bezier/operations.hpp"
 
 namespace glaxnimate::gui::tools {
 

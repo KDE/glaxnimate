@@ -8,10 +8,10 @@
 
 #include <QShortcut>
 
-#include "model/shapes/path.hpp"
+#include "glaxnimate/model/shapes/path.hpp"
 #include "glaxnimate_app.hpp"
-#include "math/geom.hpp"
-#include "math/vector.hpp"
+#include "glaxnimate/math/geom.hpp"
+#include "glaxnimate/math/vector.hpp"
 
 class glaxnimate::gui::tools::DrawTool::Private
 {

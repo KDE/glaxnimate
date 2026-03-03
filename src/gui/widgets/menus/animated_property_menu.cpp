@@ -10,8 +10,8 @@
 #include <QMimeData>
 
 #include "widgets/dialogs/follow_path_dialog.hpp"
-#include "command/animation_commands.hpp"
-#include "command/undo_macro_guard.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
 #include "glaxnimate_app.hpp"
 #include "widgets/dialogs/glaxnimate_window.hpp"
 

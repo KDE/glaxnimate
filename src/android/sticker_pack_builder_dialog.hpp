@@ -10,7 +10,7 @@
 #include <memory>
 
 #include "base_dialog.hpp"
-#include "model/document.hpp"
+#include "glaxnimate/model/document.hpp"
 
 #include "emoji/emoji_dialog.hpp"
 

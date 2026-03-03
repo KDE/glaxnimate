@@ -14,10 +14,10 @@
 #include <QSignalBlocker>
 #include <QActionGroup>
 
-#include "math/bezier/meta.hpp"
-#include "model/shapes/precomp_layer.hpp"
-#include "command/animation_commands.hpp"
-#include "command/undo_macro_guard.hpp"
+#include "glaxnimate/math/bezier/meta.hpp"
+#include "glaxnimate/model/shapes/precomp_layer.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
 
 #include "item_models/property_model_full.hpp"
 #include "item_models/comp_filter_model.hpp"

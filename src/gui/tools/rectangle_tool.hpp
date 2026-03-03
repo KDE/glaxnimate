@@ -8,7 +8,7 @@
 #include "base.hpp"
 
 #include "draw_tool_drag.hpp"
-#include "model/shapes/rect.hpp"
+#include "glaxnimate/model/shapes/rect.hpp"
 
 namespace glaxnimate::gui::tools {
 

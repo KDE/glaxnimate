@@ -19,16 +19,16 @@
 
 #include "app/settings/widget_builder.hpp"
 
-#include "command/shape_commands.hpp"
-#include "command/structure_commands.hpp"
-#include "command/undo_macro_guard.hpp"
+#include "glaxnimate/command/shape_commands.hpp"
+#include "glaxnimate/command/structure_commands.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
 
-#include "model/shapes/image.hpp"
-#include "model/shapes/group.hpp"
-#include "model/shapes/path.hpp"
-#include "model/shapes/precomp_layer.hpp"
-#include "model/simple_visitor.hpp"
-#include "model/shapes/text.hpp"
+#include "glaxnimate/model/shapes/image.hpp"
+#include "glaxnimate/model/shapes/group.hpp"
+#include "glaxnimate/model/shapes/path.hpp"
+#include "glaxnimate/model/shapes/precomp_layer.hpp"
+#include "glaxnimate/model/simple_visitor.hpp"
+#include "glaxnimate/model/shapes/text.hpp"
 
 #include "settings/clipboard_settings.hpp"
 #include "widgets/dialogs/shape_parent_dialog.hpp"

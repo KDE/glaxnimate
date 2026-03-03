@@ -9,7 +9,7 @@
 #include <memory>
 #include <QWidget>
 
-#include "model/document.hpp"
+#include "glaxnimate/model/document.hpp"
 
 class QAbstractItemModel;
 class QItemSelection;

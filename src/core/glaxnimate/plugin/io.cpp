@@ -1,0 +1,63 @@
+/*
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+#include "glaxnimate/plugin/io.hpp"
+#include "glaxnimate/plugin/plugin.hpp"
+#include "glaxnimate/model/assets/composition.hpp"
+
+using namespace glaxnimate;
+
+void plugin::IoService::enable()
+{
+    if ( registered )
+        disable();
+    registered = io::IoRegistry::instance().register_object(std::make_unique<IoFormat>(this));
+}
+
+void plugin::IoService::disable()
+{
+    if ( registered )
+        io::IoRegistry::instance().unregister(registered);
+    registered = nullptr;
+}
+
+    bool plugin::IoFormat::on_open(QIODevice& file, const QString& name, model::Document* document, const QVariantMap& settings)
+{
+    return service->plugin()->run_script(service->open, {
+        PluginRegistry::instance().global_parameter("window"),
+        QVariant::fromValue(document),
+        QVariant::fromValue(&file),
+        name,
+        QVariant::fromValue(this),
+        settings
+    });
+}
+
+bool plugin::IoFormat::on_save(QIODevice& file, const QString& name, model::Composition* comp, const QVariantMap& settings)
+{
+    return service->plugin()->run_script(service->save, {
+        PluginRegistry::instance().global_parameter("window"),
+        QVariant::fromValue(comp->document()),
+        QVariant::fromValue(comp),
+        QVariant::fromValue(&file),
+        name,
+        QVariant::fromValue(this),
+        settings
+    });
+}
+
+
+
+std::unique_ptr<app::settings::SettingsGroup> glaxnimate::plugin::IoFormat::open_settings() const
+{
+    return std::make_unique<app::settings::SettingsGroup>(service->open.settings);
+}
+
+std::unique_ptr<app::settings::SettingsGroup> glaxnimate::plugin::IoFormat::save_settings(model::Composition*) const
+{
+    return std::make_unique<app::settings::SettingsGroup>(service->save.settings);
+}
+

@@ -8,8 +8,8 @@
 #include "ui_follow_path_dialog.h"
 #include <QEvent>
 
-#include "command/undo_macro_guard.hpp"
-#include "command/animation_commands.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
 #include "item_models/node_type_proxy_model.hpp"
 #include "widgets/dialogs/select_shape_dialog.hpp"
 

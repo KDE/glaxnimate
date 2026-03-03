@@ -8,13 +8,13 @@
 
 #include "base.hpp"
 
-#include "model/shapes/fill.hpp"
-#include "model/shapes/group.hpp"
-#include "model/shapes/stroke.hpp"
-#include "command/shape_commands.hpp"
+#include "glaxnimate/model/shapes/fill.hpp"
+#include "glaxnimate/model/shapes/group.hpp"
+#include "glaxnimate/model/shapes/stroke.hpp"
+#include "glaxnimate/command/shape_commands.hpp"
 
 #include "widgets/tools/shape_tool_widget.hpp"
-#include "command/undo_macro_guard.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
 
 
 namespace glaxnimate::gui::tools {

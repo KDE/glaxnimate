@@ -18,14 +18,14 @@
 #include <QtColorWidgets/gradient_delegate.hpp>
 #include <QtColorWidgets/gradient_list_model.hpp>
 
-#include "model/document.hpp"
-#include "model/assets/assets.hpp"
-#include "model/shapes/fill.hpp"
-#include "model/shapes/stroke.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/model/assets/assets.hpp"
+#include "glaxnimate/model/shapes/fill.hpp"
+#include "glaxnimate/model/shapes/stroke.hpp"
 
-#include "command/undo_macro_guard.hpp"
-#include "command/object_list_commands.hpp"
-#include "command/property_commands.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
+#include "glaxnimate/command/object_list_commands.hpp"
+#include "glaxnimate/command/property_commands.hpp"
 
 #include "item_models/gradient_list_model.hpp"
 

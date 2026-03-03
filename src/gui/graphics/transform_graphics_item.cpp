@@ -12,9 +12,9 @@
 
 #include <KLocalizedString>
 
-#include "model/document.hpp"
-#include "command/animation_commands.hpp"
-#include "math/math.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
+#include "glaxnimate/math/math.hpp"
 #include "glaxnimate_app.hpp"
 #include "widgets/canvas.hpp"
 

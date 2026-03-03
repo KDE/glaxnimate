@@ -3,108 +3,108 @@
 
 set(SOURCES
 
-app_info.cpp
+glaxnimate/app_info.cpp
 
-command/structure_commands.cpp
-command/shape_commands.cpp
-command/animation_commands.cpp
+glaxnimate/command/structure_commands.cpp
+glaxnimate/command/shape_commands.cpp
+glaxnimate/command/animation_commands.cpp
 
-io/base.cpp
-io/binary_stream.cpp
-io/utils.cpp
-io/glaxnimate/glaxnimate_format.cpp
-io/glaxnimate/glaxnimate_importer.cpp
-io/glaxnimate/glaxnimate_mime.cpp
-io/lottie/cbor_write_json.cpp
-io/lottie/lottie_format.cpp
-io/lottie/lottie_html_format.cpp
-io/lottie/validation.cpp
-io/mime/mime_serializer.cpp
-io/raster/raster_format.cpp
-io/raster/spritesheet_format.cpp
-io/rive/rive_format.cpp
-io/rive/rive_html_format.cpp
-io/rive/rive_loader.cpp
-io/rive/rive_serializer.cpp
-io/rive/type_def.cpp
-io/rive/type_system.cpp
-io/svg/detail.cpp
-io/svg/svg_format.cpp
-io/svg/svg_parser.cpp
-io/svg/svg_renderer.cpp
-io/avd/avd_parser.cpp
-io/avd/avd_format.cpp
-io/avd/avd_renderer.cpp
-io/aep/aep_format.cpp
-io/aep/aep_loader.cpp
-io/aep/string_decoder.cpp
-io/aep/gradient_xml.cpp
-io/io_registry.cpp
+glaxnimate/io/base.cpp
+glaxnimate/io/binary_stream.cpp
+glaxnimate/io/utils.cpp
+glaxnimate/io/glaxnimate/glaxnimate_format.cpp
+glaxnimate/io/glaxnimate/glaxnimate_importer.cpp
+glaxnimate/io/glaxnimate/glaxnimate_mime.cpp
+glaxnimate/io/lottie/cbor_write_json.cpp
+glaxnimate/io/lottie/lottie_format.cpp
+glaxnimate/io/lottie/lottie_html_format.cpp
+glaxnimate/io/lottie/validation.cpp
+glaxnimate/io/mime/mime_serializer.cpp
+glaxnimate/io/raster/raster_format.cpp
+glaxnimate/io/raster/spritesheet_format.cpp
+glaxnimate/io/rive/rive_format.cpp
+glaxnimate/io/rive/rive_html_format.cpp
+glaxnimate/io/rive/rive_loader.cpp
+glaxnimate/io/rive/rive_serializer.cpp
+glaxnimate/io/rive/type_def.cpp
+glaxnimate/io/rive/type_system.cpp
+glaxnimate/io/svg/detail.cpp
+glaxnimate/io/svg/svg_format.cpp
+glaxnimate/io/svg/svg_parser.cpp
+glaxnimate/io/svg/svg_renderer.cpp
+glaxnimate/io/avd/avd_parser.cpp
+glaxnimate/io/avd/avd_format.cpp
+glaxnimate/io/avd/avd_renderer.cpp
+glaxnimate/io/aep/aep_format.cpp
+glaxnimate/io/aep/aep_loader.cpp
+glaxnimate/io/aep/string_decoder.cpp
+glaxnimate/io/aep/gradient_xml.cpp
+glaxnimate/io/io_registry.cpp
 
-math/geom.cpp
-math/polynomial.cpp
-math/ellipse_solver.cpp
-math/bezier/bezier.cpp
-math/bezier/point.cpp
-math/bezier/operations.cpp
-math/bezier/cubic_struts.cpp
-math/bezier/meta.cpp
-math/bezier/bezier_length.cpp
+glaxnimate/math/geom.cpp
+glaxnimate/math/polynomial.cpp
+glaxnimate/math/ellipse_solver.cpp
+glaxnimate/math/bezier/bezier.cpp
+glaxnimate/math/bezier/point.cpp
+glaxnimate/math/bezier/operations.cpp
+glaxnimate/math/bezier/cubic_struts.cpp
+glaxnimate/math/bezier/meta.cpp
+glaxnimate/math/bezier/bezier_length.cpp
 
-model/document.cpp
-model/document_node.cpp
-model/object.cpp
-model/transform.cpp
-model/factory.cpp
-model/animation_container.cpp
-model/stretchable_time.cpp
-model/comp_graph.cpp
-model/mask_settings.cpp
-model/visitor.cpp
-model/custom_font.cpp
+glaxnimate/model/document.cpp
+glaxnimate/model/document_node.cpp
+glaxnimate/model/object.cpp
+glaxnimate/model/transform.cpp
+glaxnimate/model/factory.cpp
+glaxnimate/model/animation_container.cpp
+glaxnimate/model/stretchable_time.cpp
+glaxnimate/model/comp_graph.cpp
+glaxnimate/model/mask_settings.cpp
+glaxnimate/model/visitor.cpp
+glaxnimate/model/custom_font.cpp
 
-model/animation/keyframe_transition.cpp
-model/animation/animatable.cpp
-model/animation/animatable_path.cpp
-model/property/property.cpp
-model/property/reference_property.cpp
-model/property/option_list_property.cpp
+glaxnimate/model/animation/keyframe_transition.cpp
+glaxnimate/model/animation/animatable.cpp
+glaxnimate/model/animation/animatable_path.cpp
+glaxnimate/model/property/property.cpp
+glaxnimate/model/property/reference_property.cpp
+glaxnimate/model/property/option_list_property.cpp
 
-model/assets/assets.cpp
-model/assets/brush_style.cpp
-model/assets/named_color.cpp
-model/assets/bitmap.cpp
-model/assets/gradient.cpp
-model/assets/asset_base.cpp
-model/assets/asset.cpp
-model/assets/composition.cpp
-model/assets/embedded_font.cpp
-model/assets/network_downloader.cpp
+glaxnimate/model/assets/assets.cpp
+glaxnimate/model/assets/brush_style.cpp
+glaxnimate/model/assets/named_color.cpp
+glaxnimate/model/assets/bitmap.cpp
+glaxnimate/model/assets/gradient.cpp
+glaxnimate/model/assets/asset_base.cpp
+glaxnimate/model/assets/asset.cpp
+glaxnimate/model/assets/composition.cpp
+glaxnimate/model/assets/embedded_font.cpp
+glaxnimate/model/assets/network_downloader.cpp
 
-model/shapes/shape.cpp
-model/shapes/fill.cpp
-model/shapes/rect.cpp
-model/shapes/group.cpp
-model/shapes/ellipse.cpp
-model/shapes/path.cpp
-model/shapes/stroke.cpp
-model/shapes/polystar.cpp
-model/shapes/styler.cpp
-model/shapes/layer.cpp
-model/shapes/image.cpp
-model/shapes/precomp_layer.cpp
-model/shapes/text.cpp
-model/shapes/repeater.cpp
-model/shapes/trim.cpp
-model/shapes/inflate_deflate.cpp
-model/shapes/path_modifier.cpp
-model/shapes/round_corners.cpp
-model/shapes/offset_path.cpp
-model/shapes/zig_zag.cpp
+glaxnimate/model/shapes/shape.cpp
+glaxnimate/model/shapes/fill.cpp
+glaxnimate/model/shapes/rect.cpp
+glaxnimate/model/shapes/group.cpp
+glaxnimate/model/shapes/ellipse.cpp
+glaxnimate/model/shapes/path.cpp
+glaxnimate/model/shapes/stroke.cpp
+glaxnimate/model/shapes/polystar.cpp
+glaxnimate/model/shapes/styler.cpp
+glaxnimate/model/shapes/layer.cpp
+glaxnimate/model/shapes/image.cpp
+glaxnimate/model/shapes/precomp_layer.cpp
+glaxnimate/model/shapes/text.cpp
+glaxnimate/model/shapes/repeater.cpp
+glaxnimate/model/shapes/trim.cpp
+glaxnimate/model/shapes/inflate_deflate.cpp
+glaxnimate/model/shapes/path_modifier.cpp
+glaxnimate/model/shapes/round_corners.cpp
+glaxnimate/model/shapes/offset_path.cpp
+glaxnimate/model/shapes/zig_zag.cpp
 
-renderer/renderer.cpp
+glaxnimate/renderer/renderer.cpp
 
-utils/gzip.cpp
+glaxnimate/utils/gzip.cpp
 )
 
 
@@ -127,13 +127,13 @@ if ( GLAXNIMATE_CORE_MINIMAL )
 
 else()
     list(APPEND SOURCES
-        plugin/plugin.cpp
-        plugin/action.cpp
-        plugin/io.cpp
+        glaxnimate/plugin/plugin.cpp
+        glaxnimate/plugin/action.cpp
+        glaxnimate/plugin/io.cpp
 
-        utils/quantize.cpp
-        utils/trace.cpp
-        utils/trace_wrapper.cpp
+        glaxnimate/utils/quantize.cpp
+        glaxnimate/utils/trace.cpp
+        glaxnimate/utils/trace_wrapper.cpp
     )
 endif()
 
@@ -153,7 +153,7 @@ option(GLAXNIMATE_VIDEO_ENABLED "Toggles support for video format I/O" ${GLAXNIM
 if ( GLAXNIMATE_VIDEO_ENABLED )
     target_compile_definitions(${LIB_NAME_CORE} PUBLIC -DGLAXNIMATE_VIDEO_ENABLED)
     list(APPEND SOURCES
-        io/video/video_format.cpp
+        glaxnimate/io/video/video_format.cpp
     )
     find_package(Libav COMPONENTS codec util format swscale REQUIRED)
     include_directories(${Libav_INCLUDE_DIRS})
@@ -161,8 +161,8 @@ if ( GLAXNIMATE_VIDEO_ENABLED )
 endif()
 
 configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/application_info_generated.in.hpp
-    ${CMAKE_CURRENT_BINARY_DIR}/application_info_generated.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/glaxnimate/application_info_generated.in.hpp
+    ${CMAKE_CURRENT_BINARY_DIR}/glaxnimate/application_info_generated.hpp
 )
 
 # Potrace
@@ -176,7 +176,7 @@ endif()
 # KDE provides gzip support
 if ( GLAXNIMATE_CORE_KDE )
     list(APPEND SOURCES
-        io/lottie/tgs_format.cpp
+        glaxnimate/io/lottie/tgs_format.cpp
     )
     target_compile_definitions(${LIB_NAME_CORE} PUBLIC -DGLAXNIMATE_CORE_KDE)
 
@@ -209,6 +209,7 @@ target_link_libraries(${LIB_NAME_CORE} PUBLIC
 )
 set_property(TARGET ${LIB_NAME_CORE} APPEND PROPERTY AUTOMOC_MACRO_NAMES "GLAXNIMATE_OBJECT")
 target_include_directories(${LIB_NAME_CORE} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> ${CMAKE_CURRENT_SOURCE_DIR}/../../external/QtAppSetup/src)
+
 
 if ( NOT GLAXNIMATE_CORE_MINIMAL )
     target_link_libraries(${LIB_NAME_CORE} PUBLIC QtAppSetup)

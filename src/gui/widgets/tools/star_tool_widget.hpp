@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "model/shapes/polystar.hpp"
+#include "glaxnimate/model/shapes/polystar.hpp"
 
 #include "shape_tool_widget.hpp"
 

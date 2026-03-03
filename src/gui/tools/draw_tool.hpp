@@ -7,8 +7,8 @@
 #pragma once
 
 #include "draw_tool_base.hpp"
-#include "math/bezier/bezier.hpp"
-#include "model/shapes/path.hpp"
+#include "glaxnimate/math/bezier/bezier.hpp"
+#include "glaxnimate/model/shapes/path.hpp"
 
 
 namespace glaxnimate::gui::tools {

@@ -10,7 +10,7 @@
 #include <QDialog>
 #include <memory>
 
-#include "model/assets/composition.hpp"
+#include "glaxnimate/model/assets/composition.hpp"
 
 namespace glaxnimate::gui {
 

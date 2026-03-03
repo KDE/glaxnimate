@@ -40,24 +40,24 @@ ecm_add_tests(
 
 ecm_add_test(
     test_bezier_length.cpp
-    ../src/core/math/bezier/bezier.cpp
-    ../src/core/math/bezier/point.cpp
-    ../src/core/math/bezier/bezier_length.cpp
+    ../src/core/glaxnimate/math/bezier/bezier.cpp
+    ../src/core/glaxnimate/math/bezier/point.cpp
+    ../src/core/glaxnimate/math/bezier/bezier_length.cpp
     TEST_NAME test_bezier_length
     LINK_LIBRARIES ${TESTS_LINK_LIBS}
 )
 
 ecm_add_test(
     test_keyframe_transition.cpp
-    ../src/core/model/animation/keyframe_transition.cpp
-    ../src/core/math/polynomial.cpp
+    ../src/core/glaxnimate/model/animation/keyframe_transition.cpp
+    ../src/core/glaxnimate/math/polynomial.cpp
     TEST_NAME test_keyframe_transition
     LINK_LIBRARIES ${TESTS_LINK_LIBS}
 )
 
 ecm_add_test(
     test_cos_parser.cpp
-    ../src/core/io/aep/string_decoder.cpp
+    ../src/core/glaxnimate/io/aep/string_decoder.cpp
     TEST_NAME test_cos_parser
     LINK_LIBRARIES ${TESTS_LINK_LIBS}
 )

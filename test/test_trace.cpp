@@ -7,7 +7,7 @@
 #include <QTest>
 #include <filesystem>
 
-#include "utils/quantize.hpp"
+#include "glaxnimate/utils/quantize.hpp"
 
 using namespace glaxnimate::utils::quantize;
 

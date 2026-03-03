@@ -10,10 +10,10 @@
 #include <QDataStream>
 #include <QSet>
 
-#include "command/property_commands.hpp"
+#include "glaxnimate/command/property_commands.hpp"
 
-#include "model/shapes/shape.hpp"
-#include "model/assets/assets.hpp"
+#include "glaxnimate/model/shapes/shape.hpp"
+#include "glaxnimate/model/assets/assets.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;

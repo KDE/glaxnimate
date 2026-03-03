@@ -9,8 +9,8 @@
 #include <QGraphicsObject>
 #include <list>
 
-#include "model/shapes/styler.hpp"
-#include "model/assets/gradient.hpp"
+#include "glaxnimate/model/shapes/styler.hpp"
+#include "glaxnimate/model/assets/gradient.hpp"
 
 #include "handle.hpp"
 

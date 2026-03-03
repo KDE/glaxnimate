@@ -8,7 +8,7 @@
 
 #include <QMenu>
 
-#include "model/animation/animatable.hpp"
+#include "glaxnimate/model/animation/animatable.hpp"
 
 namespace glaxnimate::gui {
 

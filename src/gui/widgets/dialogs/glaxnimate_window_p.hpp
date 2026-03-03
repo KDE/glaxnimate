@@ -20,8 +20,8 @@
 
 #include "glaxnimate_window.hpp"
 
-#include "model/document.hpp"
-#include "command/structure_commands.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/command/structure_commands.hpp"
 
 #include "graphics/document_scene.hpp"
 #include "item_models/document_node_model.hpp"
@@ -36,8 +36,8 @@
 #include "app/log/log_model.hpp"
 #include "glaxnimate_settings.hpp"
 
-#include "plugin/plugin.hpp"
-#include "utils/pseudo_mutex.hpp"
+#include "glaxnimate/plugin/plugin.hpp"
+#include "glaxnimate/utils/pseudo_mutex.hpp"
 #include "widgets/docks/aligndock.h"
 #include "widgets/docks/assetsdock.h"
 #include "widgets/docks/colorsdock.h"

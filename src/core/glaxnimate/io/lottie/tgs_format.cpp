@@ -1,0 +1,119 @@
+/*
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+#include "glaxnimate/io/lottie/tgs_format.hpp"
+
+#include <set>
+
+#include <KCompressionDevice>
+
+#include "glaxnimate/io/lottie/cbor_write_json.hpp"
+#include "glaxnimate/model/shapes/polystar.hpp"
+#include "glaxnimate/model/shapes/image.hpp"
+#include "glaxnimate/model/shapes/stroke.hpp"
+#include "glaxnimate/model/shapes/repeater.hpp"
+#include "glaxnimate/model/shapes/inflate_deflate.hpp"
+#include "glaxnimate/model/shapes/offset_path.hpp"
+#include "glaxnimate/model/shapes/zig_zag.hpp"
+#include "glaxnimate/io/lottie/validation.hpp"
+
+
+using namespace glaxnimate;
+using namespace glaxnimate::io::lottie;
+
+namespace {
+
+class TgsVisitor : public ValidationVisitor
+{
+
+public:
+    explicit TgsVisitor(LottieFormat* fmt)
+        : ValidationVisitor(fmt)
+    {
+        allowed_fps.push_back(30);
+        allowed_fps.push_back(60);
+        fixed_size = QSize(512, 512);
+        max_frames = 180;
+    }
+
+private:
+    void on_visit(model::DocumentNode * node) override
+    {
+        if ( qobject_cast<model::PolyStar*>(node) )
+        {
+            show_error(node, i18n("Star Shapes are not officially supported"), app::log::Info);
+        }
+        else if ( qobject_cast<model::Image*>(node) || qobject_cast<model::Bitmap*>(node) )
+        {
+            show_error(node, i18n("Images are not supported"), app::log::Error);
+        }
+        else if ( auto st = qobject_cast<model::Stroke*>(node) )
+        {
+            if ( qobject_cast<model::Gradient*>(st->use.get()) )
+                show_error(node, i18n("Gradient strokes are not officially supported"), app::log::Info);
+        }
+        else if ( auto layer = qobject_cast<model::Layer*>(node) )
+        {
+            if ( layer->mask->has_mask() )
+                show_error(node, i18n("Masks are not supported"), app::log::Error);
+        }
+        else if ( qobject_cast<model::Repeater*>(node) )
+        {
+            show_error(node, i18n("Repeaters are not officially supported"), app::log::Info);
+        }
+        else if ( qobject_cast<model::InflateDeflate*>(node) )
+        {
+            show_error(node, i18n("Inflate/Deflate is not supported"), app::log::Warning);
+        }
+        else if ( qobject_cast<model::OffsetPath*>(node) )
+        {
+            show_error(node, i18n("Offset Path is not supported"), app::log::Warning);
+        }
+        else if ( qobject_cast<model::ZigZag*>(node) )
+        {
+            show_error(node, i18n("ZigZag is not supported"), app::log::Warning);
+        }
+    }
+};
+
+} // namespace
+
+bool glaxnimate::io::lottie::TgsFormat::on_open(QIODevice& file, const QString&, model::Document* document, const QVariantMap&)
+{
+    KCompressionDevice compressed(&file, false, KCompressionDevice::GZip);
+    compressed.open(QIODevice::ReadOnly);
+    QByteArray json = compressed.readAll();
+    return load_json(json, document);
+}
+
+bool glaxnimate::io::lottie::TgsFormat::on_save(QIODevice& file, const QString&, model::Composition* comp, const QVariantMap&)
+{
+    validate(comp->document(), comp);
+
+    QCborMap json = LottieFormat::to_json(comp, true, true);
+    json[QLatin1String("tgs")] = 1;
+    QByteArray data = cbor_write_json(json, true);
+
+    {
+        KCompressionDevice compressed(&file, false, KCompressionDevice::GZip);
+        compressed.open(QIODevice::WriteOnly);
+        compressed.write(data);
+    }
+
+    quint32 compressed_size = file.pos();
+
+    qreal size_k = compressed_size / 1024.0;
+    if ( size_k > 64 )
+        error(i18n("File too large: %1k, should be under 64k", size_k));
+
+    return true;
+}
+
+
+void glaxnimate::io::lottie::TgsFormat::validate(model::Document* document, model::Composition* comp)
+{
+    TgsVisitor(this).visit(document, comp);
+}

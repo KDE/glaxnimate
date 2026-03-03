@@ -10,9 +10,9 @@
 #include <QPainter>
 
 #include "handle.hpp"
-#include "model/document.hpp"
-#include "command/animation_commands.hpp"
-#include "math/geom.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
+#include "glaxnimate/math/geom.hpp"
 
 namespace glaxnimate::gui::graphics {
 

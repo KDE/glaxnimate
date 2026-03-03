@@ -7,8 +7,8 @@
 #pragma once
 
 #include "graphics/handle.hpp"
-#include "model/transform.hpp"
-#include "model/document_node.hpp"
+#include "glaxnimate/model/transform.hpp"
+#include "glaxnimate/model/document_node.hpp"
 
 
 namespace glaxnimate::gui::graphics {

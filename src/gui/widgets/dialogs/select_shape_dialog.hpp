@@ -11,7 +11,7 @@
 #include <QDialog>
 
 
-#include "model/shapes/shape.hpp"
+#include "glaxnimate/model/shapes/shape.hpp"
 #include "item_models/document_node_model.hpp"
 
 namespace glaxnimate {

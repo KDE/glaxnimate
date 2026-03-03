@@ -9,7 +9,7 @@
 #include <QIcon>
 
 #include "glaxnimate_app.hpp"
-#include "model/animation/keyframe_transition.hpp"
+#include "glaxnimate/model/animation/keyframe_transition.hpp"
 
 namespace glaxnimate::gui {
 

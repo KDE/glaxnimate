@@ -8,10 +8,10 @@
 
 #include <QMessageBox>
 
-#include "io/glaxnimate/glaxnimate_format.hpp"
-#include "utils/gzip.hpp"
-#include "model/assets/assets.hpp"
-#include "model/shapes/image.hpp"
+#include "glaxnimate/io/glaxnimate/glaxnimate_format.hpp"
+#include "glaxnimate/utils/gzip.hpp"
+#include "glaxnimate/model/assets/assets.hpp"
+#include "glaxnimate/model/shapes/image.hpp"
 
 #include "widgets/dialogs/trace_dialog.hpp"
 

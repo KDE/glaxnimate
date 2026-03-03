@@ -13,9 +13,9 @@
 #include <QGraphicsSceneMouseEvent>
 
 #include "app/application.hpp"
-#include "command/animation_commands.hpp"
-#include "model/document.hpp"
-#include "model/shapes/precomp_layer.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/model/shapes/precomp_layer.hpp"
 
 #include "graphics/handle.hpp"
 #include "item_models/property_model_full.hpp"

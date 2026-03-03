@@ -11,10 +11,10 @@
 
 #include <KLocalizedString>
 
-#include "math/geom.hpp"
-#include "command/animation_commands.hpp"
+#include "glaxnimate/math/geom.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
 #include "item_data.hpp"
-#include "utils/sort_gradient.hpp"
+#include "glaxnimate/utils/sort_gradient.hpp"
 
 using namespace glaxnimate::gui;
 

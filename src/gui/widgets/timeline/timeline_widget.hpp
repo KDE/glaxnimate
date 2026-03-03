@@ -10,7 +10,7 @@
 
 #include <QGraphicsView>
 
-#include "model/document.hpp"
+#include "glaxnimate/model/document.hpp"
 #include "item_models/property_model_full.hpp"
 #include "item_models/comp_filter_model.hpp"
 

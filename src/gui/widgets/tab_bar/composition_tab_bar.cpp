@@ -11,8 +11,8 @@
 #include <QSignalBlocker>
 #include <QInputDialog>
 
-#include "model/assets/assets.hpp"
-#include "command/object_list_commands.hpp"
+#include "glaxnimate/model/assets/assets.hpp"
+#include "glaxnimate/command/object_list_commands.hpp"
 
 #include "widgets/tab_bar/tab_bar_close_button.hpp"
 

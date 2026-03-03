@@ -11,7 +11,7 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QStyleOptionGraphicsItem>
 
-#include "model/animation/animatable.hpp"
+#include "glaxnimate/model/animation/animatable.hpp"
 #include "glaxnimate_app.hpp"
 
 using namespace glaxnimate::gui;

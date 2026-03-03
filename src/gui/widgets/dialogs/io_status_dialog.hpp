@@ -10,7 +10,7 @@
 
 #include <QDialog>
 
-#include "io/base.hpp"
+#include "glaxnimate/io/base.hpp"
 
 namespace glaxnimate::gui {
 

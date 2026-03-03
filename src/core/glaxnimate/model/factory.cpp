@@ -1,0 +1,12 @@
+/*
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+#include "glaxnimate/model/factory.hpp"
+
+glaxnimate::model::Object* glaxnimate::model::Factory::static_build(const QString& name, glaxnimate::model::Document* doc)
+{
+    return instance().build(name, doc);
+}

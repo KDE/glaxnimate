@@ -8,7 +8,7 @@
 
 #include <set>
 
-#include "model/document.hpp"
+#include "glaxnimate/model/document.hpp"
 
 class QAction;
 

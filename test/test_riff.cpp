@@ -7,7 +7,7 @@
 #include <QTest>
 
 #include <vector>
-#include "io/aep/riff.hpp"
+#include "glaxnimate/io/aep/riff.hpp"
 
 using namespace glaxnimate::io::aep;
 

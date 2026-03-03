@@ -6,7 +6,7 @@
 
 #include <QTest>
 
-#include "model/animation/keyframe_transition.hpp"
+#include "glaxnimate/model/animation/keyframe_transition.hpp"
 
 using namespace glaxnimate;
 

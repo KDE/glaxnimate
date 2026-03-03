@@ -8,7 +8,7 @@
 
 #include <QGraphicsObject>
 
-#include "model/document_node.hpp"
+#include "glaxnimate/model/document_node.hpp"
 
 namespace glaxnimate::gui::graphics {
 

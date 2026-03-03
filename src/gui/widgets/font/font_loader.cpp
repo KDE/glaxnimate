@@ -14,9 +14,9 @@
 #include <QNetworkAccessManager>
 #include <QRegularExpression>
 
-#include "io/svg/css_parser.hpp"
-#include "model/document.hpp"
-#include "model/assets/pending_asset.hpp"
+#include "glaxnimate/io/svg/css_parser.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/model/assets/pending_asset.hpp"
 
 
 

@@ -1,0 +1,73 @@
+/*
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+#include "glaxnimate/model/animation_container.hpp"
+#include "glaxnimate/model/factory.hpp"
+#include "glaxnimate/model/document.hpp"
+
+GLAXNIMATE_OBJECT_IMPL(glaxnimate::model::AnimationContainer)
+
+bool glaxnimate::model::AnimationContainer::time_visible(glaxnimate::model::FrameTime time) const
+{
+    return first_frame.get() <= time && time < last_frame.get();
+}
+
+bool glaxnimate::model::AnimationContainer::time_visible() const
+{
+    return time_visible(time());
+}
+
+void glaxnimate::model::AnimationContainer::set_time(glaxnimate::model::FrameTime t)
+{
+    bool old_visible = time_visible();
+    Object::set_time(t);
+    bool new_visible = time_visible();
+    if ( old_visible != new_visible )
+    {
+        Q_EMIT time_visible_changed(new_visible);
+        Q_EMIT document()->graphics_invalidated();
+    }
+}
+
+void glaxnimate::model::AnimationContainer::on_first_frame_changed(float x)
+{
+    Q_EMIT time_visible_changed(time_visible());
+    Q_EMIT first_frame_changed(x);
+}
+
+void glaxnimate::model::AnimationContainer::on_last_frame_changed(float x)
+{
+    Q_EMIT time_visible_changed(time_visible());
+    Q_EMIT last_frame_changed(x);
+}
+
+float glaxnimate::model::AnimationContainer::duration() const
+{
+    return last_frame.get() - first_frame.get();
+}
+
+QString glaxnimate::model::AnimationContainer::type_name_human() const
+{
+    return i18n("Animation Timing");
+}
+
+void glaxnimate::model::AnimationContainer::stretch_time(qreal multiplier)
+{
+    Object::stretch_time(multiplier);
+    first_frame.set(first_frame.get() * multiplier);
+    last_frame.set(last_frame.get() * multiplier);
+}
+
+
+bool glaxnimate::model::AnimationContainer::validate_first_frame(int f) const
+{
+    return f >= 0 && (last_frame.get() == -1 || f < last_frame.get());
+}
+
+bool glaxnimate::model::AnimationContainer::validate_last_frame(int f) const
+{
+    return f >= 0 && f > first_frame.get();
+}

@@ -9,7 +9,7 @@
 
 #include <memory>
 #include <QDialog>
-#include "model/document.hpp"
+#include "glaxnimate/model/document.hpp"
 
 namespace glaxnimate::gui {
 

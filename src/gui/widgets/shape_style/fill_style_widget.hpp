@@ -6,8 +6,8 @@
 
 #pragma once
 #include "color_selector.hpp"
-#include "model/shapes/fill.hpp"
-#include "utils/pseudo_mutex.hpp"
+#include "glaxnimate/model/shapes/fill.hpp"
+#include "glaxnimate/utils/pseudo_mutex.hpp"
 
 namespace glaxnimate::gui {
 

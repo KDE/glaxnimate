@@ -7,7 +7,7 @@
 #include <QtTest/QtTest>
 
 #include <vector>
-#include "math/bezier/bezier_length.hpp"
+#include "glaxnimate/math/bezier/bezier_length.hpp"
 
 using namespace glaxnimate::math::bezier;
 

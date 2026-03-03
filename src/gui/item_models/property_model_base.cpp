@@ -5,7 +5,7 @@
  */
 
 #include "property_model_private.hpp"
-#include "model/assets/assets.hpp"
+#include "glaxnimate/model/assets/assets.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;

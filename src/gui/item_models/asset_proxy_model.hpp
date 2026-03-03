@@ -7,7 +7,7 @@
 #pragma once
 
 #include "proxy_base.hpp"
-#include "model/assets/bitmap.hpp"
+#include "glaxnimate/model/assets/bitmap.hpp"
 
 #include <QMimeData>
 

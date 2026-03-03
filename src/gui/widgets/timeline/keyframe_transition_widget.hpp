@@ -8,7 +8,7 @@
 
 #include <memory>
 #include <QWidget>
-#include "model/animation/keyframe_transition.hpp"
+#include "glaxnimate/model/animation/keyframe_transition.hpp"
 
 namespace glaxnimate::gui {
 

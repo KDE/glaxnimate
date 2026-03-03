@@ -21,26 +21,26 @@
 
 #include <KRecentFilesAction>
 
-#include "io/lottie/lottie_html_format.hpp"
-#include "io/svg/svg_renderer.hpp"
-#include "io/svg/svg_html_format.hpp"
-#include "io/glaxnimate/glaxnimate_format.hpp"
-#include "io/raster/raster_mime.hpp"
-#include "io/lottie/tgs_format.hpp"
-#include "io/lottie/validation.hpp"
-#include "io/rive/rive_html_format.hpp"
-#include "plugin/io.hpp"
+#include "glaxnimate/io/lottie/lottie_html_format.hpp"
+#include "glaxnimate/io/svg/svg_renderer.hpp"
+#include "glaxnimate/io/svg/svg_html_format.hpp"
+#include "glaxnimate/io/glaxnimate/glaxnimate_format.hpp"
+#include "glaxnimate/io/raster/raster_mime.hpp"
+#include "glaxnimate/io/lottie/tgs_format.hpp"
+#include "glaxnimate/io/lottie/validation.hpp"
+#include "glaxnimate/io/rive/rive_html_format.hpp"
+#include "glaxnimate/plugin/io.hpp"
 
-#include "model/visitor.hpp"
+#include "glaxnimate/model/visitor.hpp"
 #include "widgets/font/font_loader.hpp"
 
-#include "command/undo_macro_guard.hpp"
-#include "command/undo_macro_guard.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
 
 #include "tools/base.hpp"
 
 #include "glaxnimate_app.hpp"
-#include "app_info.hpp"
+#include "glaxnimate/app_info.hpp"
 #include "widgets/dialogs/import_export_dialog.hpp"
 #include "widgets/dialogs/io_status_dialog.hpp"
 #include "widgets/shape_style/shape_style_preview_widget.hpp"

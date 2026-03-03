@@ -8,10 +8,10 @@
 
 #include <variant>
 
-#include "model/shapes/path.hpp"
-#include "command/structure_commands.hpp"
-#include "command/animation_commands.hpp"
-#include "math/geom.hpp"
+#include "glaxnimate/model/shapes/path.hpp"
+#include "glaxnimate/command/structure_commands.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
+#include "glaxnimate/math/geom.hpp"
 
 #ifndef Q_OS_ANDROID
     #include "widgets/dialogs/glaxnimate_window.hpp"

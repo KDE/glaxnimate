@@ -14,16 +14,16 @@
 #include <QMenu>
 #include <QStandardPaths>
 
-#include "model/document.hpp"
-#include "model/shapes/fill.hpp"
-#include "model/shapes/stroke.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/model/shapes/fill.hpp"
+#include "glaxnimate/model/shapes/stroke.hpp"
 
-#include "io/glaxnimate/glaxnimate_format.hpp"
-#include "io/lottie/tgs_format.hpp"
+#include "glaxnimate/io/glaxnimate/glaxnimate_format.hpp"
+#include "glaxnimate/io/lottie/tgs_format.hpp"
 
-#include "command/undo_macro_guard.hpp"
-#include "command/structure_commands.hpp"
-#include "command/animation_commands.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
+#include "glaxnimate/command/structure_commands.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
 
 #include "graphics/document_scene.hpp"
 #include "tools/base.hpp"
@@ -32,7 +32,7 @@
 #include "widgets/flow_layout.hpp"
 #include "widgets/docks/layer_view.hpp"
 #include "style/property_delegate.hpp"
-#include "utils/pseudo_mutex.hpp"
+#include "glaxnimate/utils/pseudo_mutex.hpp"
 #include "style/scroll_area_event_filter.hpp"
 #include "emoji/emoji_set.hpp"
 #include "widgets/canvas.hpp"

@@ -8,9 +8,9 @@
 #include <QPoint>
 #include <QMetaProperty>
 
-#include "model/property/object_list_property.hpp"
-#include "model/property/reference_property.hpp"
-#include "model/document.hpp"
+#include "glaxnimate/model/property/object_list_property.hpp"
+#include "glaxnimate/model/property/reference_property.hpp"
+#include "glaxnimate/model/document.hpp"
 
 #define fake_i18n kli18n
 

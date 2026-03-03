@@ -6,7 +6,7 @@
 
 #pragma once
 #include "base.hpp"
-#include "math/bezier/point.hpp"
+#include "glaxnimate/math/bezier/point.hpp"
 
 namespace glaxnimate::model {
 class Styler;

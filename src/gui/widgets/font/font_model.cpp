@@ -10,7 +10,7 @@
 
 #include <QIcon>
 
-#include "model/assets/assets.hpp"
+#include "glaxnimate/model/assets/assets.hpp"
 
 class glaxnimate::gui::font::FontModel::Private
 {

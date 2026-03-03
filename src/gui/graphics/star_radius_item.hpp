@@ -9,10 +9,10 @@
 #include <QPen>
 
 #include "handle.hpp"
-#include "model/document.hpp"
-#include "command/animation_commands.hpp"
-#include "model/shapes/polystar.hpp"
-#include "math/math.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
+#include "glaxnimate/model/shapes/polystar.hpp"
+#include "glaxnimate/math/math.hpp"
 
 namespace glaxnimate::gui::graphics {
 

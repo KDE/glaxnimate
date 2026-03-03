@@ -15,7 +15,7 @@
 #include <QSharedMemory>
 #include <QMenu>
 
-#include "app_info.hpp"
+#include "glaxnimate/app_info.hpp"
 #include "settings/clipboard_settings.hpp"
 #include "export_image_sequence_dialog.hpp"
 

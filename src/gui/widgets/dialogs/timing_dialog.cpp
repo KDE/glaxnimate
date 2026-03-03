@@ -11,10 +11,10 @@
 
 #include <QEvent>
 
-#include "command/undo_macro_guard.hpp"
-#include "command/animation_commands.hpp"
-#include "model/simple_visitor.hpp"
-#include "model/assets/composition.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
+#include "glaxnimate/model/simple_visitor.hpp"
+#include "glaxnimate/model/assets/composition.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;

@@ -7,7 +7,7 @@
 #pragma once
 #include "document_node_graphics_item.hpp"
 
-#include "model/shapes/shape.hpp"
+#include "glaxnimate/model/shapes/shape.hpp"
 
 namespace glaxnimate::gui::graphics {
 

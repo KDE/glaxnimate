@@ -5,8 +5,8 @@
  */
 
 #include "draw_tool_drag.hpp"
-#include "model/shapes/polystar.hpp"
-#include "math/math.hpp"
+#include "glaxnimate/model/shapes/polystar.hpp"
+#include "glaxnimate/math/math.hpp"
 #include "widgets/tools/star_tool_widget.hpp"
 
 namespace glaxnimate::gui::tools {

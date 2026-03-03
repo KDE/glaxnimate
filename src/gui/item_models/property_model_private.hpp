@@ -12,7 +12,7 @@
 #include <QFont>
 #include <QPalette>
 
-#include "model/property/option_list_property.hpp"
+#include "glaxnimate/model/property/option_list_property.hpp"
 
 #include "app/application.hpp"
 

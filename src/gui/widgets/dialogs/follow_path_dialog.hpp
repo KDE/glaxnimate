@@ -10,7 +10,7 @@
 #include <memory>
 #include <QDialog>
 
-#include "model/animation/animatable.hpp"
+#include "glaxnimate/model/animation/animatable.hpp"
 #include "item_models/document_node_model.hpp"
 
 namespace glaxnimate {

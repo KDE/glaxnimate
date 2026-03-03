@@ -11,8 +11,8 @@
 #include <QPointer>
 #include <QResizeEvent>
 
-#include "model/assets/brush_style.hpp"
-#include "model/assets/gradient.hpp"
+#include "glaxnimate/model/assets/brush_style.hpp"
+#include "glaxnimate/model/assets/gradient.hpp"
 
 namespace glaxnimate::gui {
 

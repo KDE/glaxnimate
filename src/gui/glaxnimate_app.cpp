@@ -6,7 +6,7 @@
 
 #include "glaxnimate_app.hpp"
 
-#include "app_info.hpp"
+#include "glaxnimate/app_info.hpp"
 
 #include <QDir>
 #include <QStandardPaths>
@@ -15,7 +15,7 @@
 #include <KLocalizedString>
 #include "glaxnimate_settings.hpp"
 #include "settings/icon_settings.hpp"
-#include "utils/trace.hpp"
+#include "glaxnimate/utils/trace.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
@@ -177,7 +177,7 @@ static void gl_version(KAboutData& aboutData)
 #endif
 
 #ifdef GLAXNIMATE_VIDEO_ENABLED
-#   include "io/video/video_format.hpp"
+#   include "glaxnimate/io/video/video_format.hpp"
 #endif
 
 #ifdef PYTHON_SCRIPTING_ENABLED

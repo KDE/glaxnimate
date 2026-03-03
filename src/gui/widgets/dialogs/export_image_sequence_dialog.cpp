@@ -11,9 +11,9 @@
 #include <QMessageBox>
 #include <QFileDialog>
 
-#include "io/raster/raster_mime.hpp"
-#include "io/svg/svg_renderer.hpp"
-#include "math/math.hpp"
+#include "glaxnimate/io/raster/raster_mime.hpp"
+#include "glaxnimate/io/svg/svg_renderer.hpp"
+#include "glaxnimate/math/math.hpp"
 
 class glaxnimate::gui::ExportImageSequenceDialog::Private
 {

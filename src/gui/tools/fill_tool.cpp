@@ -9,10 +9,10 @@
 #include "base.hpp"
 #include "widgets/tools/fill_tool_widget.hpp"
 
-#include "model/shapes/fill.hpp"
-#include "model/shapes/stroke.hpp"
-#include "command/undo_macro_guard.hpp"
-#include "command/shape_commands.hpp"
+#include "glaxnimate/model/shapes/fill.hpp"
+#include "glaxnimate/model/shapes/stroke.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
+#include "glaxnimate/command/shape_commands.hpp"
 
 
 namespace glaxnimate::gui::tools {

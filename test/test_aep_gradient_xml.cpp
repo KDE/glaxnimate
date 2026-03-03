@@ -8,8 +8,8 @@
 
 #include <vector>
 #include <cstring>
-#include "io/aep/gradient_xml.hpp"
-#include "io/svg/parse_error.hpp"
+#include "glaxnimate/io/aep/gradient_xml.hpp"
+#include "glaxnimate/io/svg/parse_error.hpp"
 
 using namespace glaxnimate::io::aep;
 

@@ -18,15 +18,15 @@
 #include <QtColorWidgets/color_palette_model.hpp>
 #include <QtColorWidgets/ColorDialog>
 
-#include "model/assets/assets.hpp"
-#include "model/document.hpp"
-#include "command/object_list_commands.hpp"
-#include "command/animation_commands.hpp"
-#include "utils/pseudo_mutex.hpp"
-#include "model/visitor.hpp"
-#include "model/shapes/styler.hpp"
-#include "model/assets/named_color.hpp"
-#include "command/undo_macro_guard.hpp"
+#include "glaxnimate/model/assets/assets.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/command/object_list_commands.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
+#include "glaxnimate/utils/pseudo_mutex.hpp"
+#include "glaxnimate/model/visitor.hpp"
+#include "glaxnimate/model/shapes/styler.hpp"
+#include "glaxnimate/model/assets/named_color.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;

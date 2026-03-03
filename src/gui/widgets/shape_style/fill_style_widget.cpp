@@ -6,9 +6,9 @@
 
 #include "fill_style_widget.hpp"
 
-#include "model/assets/named_color.hpp"
-#include "model/document.hpp"
-#include "command/animation_commands.hpp"
+#include "glaxnimate/model/assets/named_color.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;

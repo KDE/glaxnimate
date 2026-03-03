@@ -8,9 +8,9 @@
 
 #include <cstring>
 
-#include "model/shapes/fill.hpp"
-#include "model/shapes/stroke.hpp"
-#include "model/shapes/polystar.hpp"
+#include "glaxnimate/model/shapes/fill.hpp"
+#include "glaxnimate/model/shapes/stroke.hpp"
+#include "glaxnimate/model/shapes/polystar.hpp"
 
 #include "glaxnimate_app.hpp"
 

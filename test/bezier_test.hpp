@@ -7,7 +7,7 @@
 #pragma once
 #include <QTest>
 
-#include"math/bezier/bezier.hpp"
+#include "glaxnimate/math/bezier/bezier.hpp"
 
 #define COMPARE_MULTIBEZIER(actual, expected) \
     compare_multibez(actual, expected, #actual, #expected, __FILE__, __LINE__)

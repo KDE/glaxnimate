@@ -12,8 +12,8 @@
 #include <QStyleOptionGraphicsItem>
 
 #include "handle.hpp"
-#include "model/shapes/path.hpp"
-#include "utils/pseudo_mutex.hpp"
+#include "glaxnimate/model/shapes/path.hpp"
+#include "glaxnimate/utils/pseudo_mutex.hpp"
 #include "typed_item.hpp"
 
 namespace glaxnimate::gui::graphics {

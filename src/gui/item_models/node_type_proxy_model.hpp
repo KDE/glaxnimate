@@ -8,7 +8,7 @@
 
 #include "document_node_model.hpp"
 
-#include "model/assets/assets.hpp"
+#include "glaxnimate/model/assets/assets.hpp"
 
 namespace glaxnimate::gui::item_models {
 

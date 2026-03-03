@@ -6,8 +6,8 @@
 
 #include "bezier_test.hpp"
 
-#include "model/document.hpp"
-#include "model/shapes/trim.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/model/shapes/trim.hpp"
 
 
 using namespace glaxnimate;

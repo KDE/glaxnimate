@@ -12,7 +12,7 @@
 #include <QtMath>
 #include <QTouchEvent>
 
-#include "command/undo_macro_guard.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
 #include "tools/base.hpp"
 #include "graphics/document_scene.hpp"
 

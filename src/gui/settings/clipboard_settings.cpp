@@ -12,7 +12,7 @@
 #include <QSpacerItem>
 
 #include "app/application.hpp"
-#include "io/io_registry.hpp"
+#include "glaxnimate/io/io_registry.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;

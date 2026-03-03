@@ -11,7 +11,7 @@
 #include <QAbstractListModel>
 #include <QFontDatabase>
 
-#include "model/document.hpp"
+#include "glaxnimate/model/document.hpp"
 
 namespace glaxnimate::gui::font {
 

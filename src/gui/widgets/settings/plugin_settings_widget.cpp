@@ -7,7 +7,7 @@
 #include "plugin_settings_widget.hpp"
 #include "ui_plugin_settings_widget.h"
 
-#include "plugin/plugin.hpp"
+#include "glaxnimate/plugin/plugin.hpp"
 
 #include <QEvent>
 

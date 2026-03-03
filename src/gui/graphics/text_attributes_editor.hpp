@@ -9,11 +9,11 @@
 #include <QStyleOptionGraphicsItem>
 #include <QPainter>
 
-#include "math/geom.hpp"
-#include "math/vector.hpp"
-#include "model/document.hpp"
-#include "model/shapes/text.hpp"
-#include "command/animation_commands.hpp"
+#include "glaxnimate/math/geom.hpp"
+#include "glaxnimate/math/vector.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/model/shapes/text.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
 
 #include "handle.hpp"
 

@@ -12,8 +12,8 @@
 #include <QTreeView>
 
 #include "timeline_items.hpp"
-#include "model/shapes/precomp_layer.hpp"
-#include "model/shapes/styler.hpp"
+#include "glaxnimate/model/shapes/precomp_layer.hpp"
+#include "glaxnimate/model/shapes/styler.hpp"
 #include "glaxnimate_settings.hpp"
 
 using namespace glaxnimate::gui;

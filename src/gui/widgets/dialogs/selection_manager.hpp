@@ -12,12 +12,12 @@
 #include <QObject>
 #include <QUndoGroup>
 
-#include "model/document.hpp"
-#include "model/shapes/shape.hpp"
-#include "model/assets/brush_style.hpp"
-#include "model/assets/composition.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/model/shapes/shape.hpp"
+#include "glaxnimate/model/assets/brush_style.hpp"
+#include "glaxnimate/model/assets/composition.hpp"
 
-#include "io/mime/mime_serializer.hpp"
+#include "glaxnimate/io/mime/mime_serializer.hpp"
 
 class QWidget;
 

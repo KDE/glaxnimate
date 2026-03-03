@@ -9,8 +9,8 @@
 
 #include <QAbstractItemModel>
 
-#include "model/document.hpp"
-#include "model/shapes/shape.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/model/shapes/shape.hpp"
 
 namespace glaxnimate::gui::item_models {
 

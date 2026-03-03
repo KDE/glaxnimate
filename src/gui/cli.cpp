@@ -12,13 +12,13 @@
 
 #include "app/scripting/script_engine.hpp"
 
-#include "app_info.hpp"
-#include "io/io_registry.hpp"
-#include "io/svg/svg_renderer.hpp"
-#include "io/raster/raster_mime.hpp"
+#include "glaxnimate/app_info.hpp"
+#include "glaxnimate/io/io_registry.hpp"
+#include "glaxnimate/io/svg/svg_renderer.hpp"
+#include "glaxnimate/io/raster/raster_mime.hpp"
 
-#include "plugin/executor.hpp"
-#include "plugin/plugin.hpp"
+#include "glaxnimate/plugin/executor.hpp"
+#include "glaxnimate/plugin/plugin.hpp"
 
 app::cli::ParsedArguments glaxnimate::gui::parse_cli(const QStringList& args)
 {

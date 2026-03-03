@@ -12,7 +12,7 @@
 #include <QDataStream>
 #include <QSet>
 
-#include "model/document.hpp"
+#include "glaxnimate/model/document.hpp"
 
 namespace glaxnimate::gui::item_models {
 

@@ -7,8 +7,8 @@
 #pragma once
 
 #include <QByteArray>
-#include "model/custom_font.hpp"
-#include "model/document.hpp"
+#include "glaxnimate/model/custom_font.hpp"
+#include "glaxnimate/model/document.hpp"
 
 namespace glaxnimate::gui::font {
 

@@ -15,7 +15,7 @@
 #include "graphics/graphics_editor.hpp"
 #include "graphics/item_data.hpp"
 #include "tools/base.hpp"
-#include "model/assets/composition.hpp"
+#include "glaxnimate/model/assets/composition.hpp"
 
 using namespace glaxnimate::gui;
 

@@ -12,7 +12,7 @@
 #include <QInputDialog>
 
 #include "draw_tool_base.hpp"
-#include "model/shapes/text.hpp"
+#include "glaxnimate/model/shapes/text.hpp"
 #include "widgets/tools/text_tool_widget.hpp"
 #include "glaxnimate_app.hpp"
 

@@ -24,9 +24,9 @@
 #include "app/log/log.hpp"
 
 #include "cli.hpp"
-#include "app_info.hpp"
-#include "io/io_registry.hpp"
-#include "io/lottie/lottie_html_format.hpp"
+#include "glaxnimate/app_info.hpp"
+#include "glaxnimate/io/io_registry.hpp"
+#include "glaxnimate/io/lottie/lottie_html_format.hpp"
 
 #include "widgets/dialogs/glaxnimate_window.hpp"
 #include "settings/icon_settings.hpp"

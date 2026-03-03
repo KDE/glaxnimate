@@ -1,0 +1,35 @@
+/*
+ * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+#include "glaxnimate/model/visitor.hpp"
+
+#include "glaxnimate/model/document_node.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/model/assets/assets.hpp"
+#include "glaxnimate/model/assets/composition.hpp"
+
+
+void glaxnimate::model::Visitor::visit(glaxnimate::model::Document* doc, model::Composition* main, bool skip_locked)
+{
+    on_visit_document(doc, main);
+    visit(doc->assets(), skip_locked);
+    on_visit_document_end(doc, main);
+}
+
+void glaxnimate::model::Visitor::visit(glaxnimate::model::DocumentNode* node, bool skip_locked)
+{
+    if ( skip_locked )
+    {
+        auto visual = node->cast<VisualNode>();
+        if ( visual && visual->locked.get() )
+            return;
+    }
+
+    on_visit(node);
+    for ( auto ch : node->docnode_children() )
+        visit(ch, skip_locked);
+    on_visit_end(node);
+}

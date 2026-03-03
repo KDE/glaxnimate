@@ -8,7 +8,7 @@
 
 #include <QGraphicsScene>
 
-#include "model/document.hpp"
+#include "glaxnimate/model/document.hpp"
 
 namespace glaxnimate::gui::tools { class Tool; }
 

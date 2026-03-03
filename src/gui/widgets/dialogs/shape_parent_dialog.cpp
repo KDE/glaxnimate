@@ -7,7 +7,7 @@
 #include "shape_parent_dialog.hpp"
 #include "ui_shape_parent_dialog.h"
 #include <QtColorWidgets/ColorDelegate>
-#include "model/shapes/group.hpp"
+#include "glaxnimate/model/shapes/group.hpp"
 #include "item_models/node_type_proxy_model.hpp"
 
 using namespace glaxnimate::gui;

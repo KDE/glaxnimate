@@ -10,7 +10,7 @@
 #include <memory>
 #include <QDockWidget>
 
-#include "plugin/executor.hpp"
+#include "glaxnimate/plugin/executor.hpp"
 
 namespace glaxnimate::gui {
 

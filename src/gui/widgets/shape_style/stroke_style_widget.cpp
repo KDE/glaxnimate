@@ -15,9 +15,9 @@
 
 #include "glaxnimate_app.hpp"
 #include "glaxnimate_settings.hpp"
-#include "model/document.hpp"
-#include "command/animation_commands.hpp"
-#include "utils/pseudo_mutex.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
+#include "glaxnimate/utils/pseudo_mutex.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;

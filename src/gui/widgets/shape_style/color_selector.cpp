@@ -10,12 +10,12 @@
 #include "app/application.hpp"
 #include "glaxnimate_settings.hpp"
 
-#include "model/assets/named_color.hpp"
-#include "model/assets/gradient.hpp"
-#include "model/shapes/styler.hpp"
-#include "command/animation_commands.hpp"
-#include "command/undo_macro_guard.hpp"
-#include "utils/pseudo_mutex.hpp"
+#include "glaxnimate/model/assets/named_color.hpp"
+#include "glaxnimate/model/assets/gradient.hpp"
+#include "glaxnimate/model/shapes/styler.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
+#include "glaxnimate/utils/pseudo_mutex.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;

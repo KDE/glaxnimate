@@ -11,8 +11,8 @@
 #include <QMessageBox>
 #include <QApplication>
 
-#include "io/io_registry.hpp"
-#include "model/document.hpp"
+#include "glaxnimate/io/io_registry.hpp"
+#include "glaxnimate/model/document.hpp"
 #include "app/settings/widget_builder.hpp"
 #include "glaxnimate_settings.hpp"
 

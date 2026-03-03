@@ -8,7 +8,7 @@
 
 #include <QMenu>
 
-#include "model/document_node.hpp"
+#include "glaxnimate/model/document_node.hpp"
 #include "widgets/dialogs/glaxnimate_window.hpp"
 
 namespace glaxnimate::gui {

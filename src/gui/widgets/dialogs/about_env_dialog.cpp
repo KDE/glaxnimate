@@ -16,9 +16,9 @@
 
 #include "glaxnimate_settings.hpp"
 #include "glaxnimate_app.hpp"
-#include "utils/trace.hpp"
-#include "io/video/video_format.hpp"
-#include "io/io_registry.hpp"
+#include "glaxnimate/utils/trace.hpp"
+#include "glaxnimate/io/video/video_format.hpp"
+#include "glaxnimate/io/io_registry.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;

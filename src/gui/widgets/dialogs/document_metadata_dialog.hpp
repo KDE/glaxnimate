@@ -12,7 +12,7 @@
 #include <QTableWidgetItem>
 #include <QAbstractButton>
 
-#include "model/document.hpp"
+#include "glaxnimate/model/document.hpp"
 
 namespace glaxnimate::gui {
 

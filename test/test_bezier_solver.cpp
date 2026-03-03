@@ -7,7 +7,7 @@
 #include <QTest>
 
 #include <vector>
-#include "math/bezier/solver.hpp"
+#include "glaxnimate/math/bezier/solver.hpp"
 
 using namespace glaxnimate;
 

@@ -12,8 +12,8 @@
 
 #include "app/application.hpp"
 
-#include "io/glaxnimate/glaxnimate_format.hpp"
-#include "model/assets/assets.hpp"
+#include "glaxnimate/io/glaxnimate/glaxnimate_format.hpp"
+#include "glaxnimate/model/assets/assets.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;

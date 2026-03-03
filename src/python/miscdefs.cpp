@@ -19,10 +19,10 @@
 #include <QGuiApplication>
 
 #include "app/log/log.hpp"
-#include "math/bezier/bezier.hpp"
-#include "app_info.hpp"
-#include "utils/trace.hpp"
-#include "utils/quantize.hpp"
+#include "glaxnimate/math/bezier/bezier.hpp"
+#include "glaxnimate/app_info.hpp"
+#include "glaxnimate/utils/trace.hpp"
+#include "glaxnimate/utils/quantize.hpp"
 
 using namespace glaxnimate;
 

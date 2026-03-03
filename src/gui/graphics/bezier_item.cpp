@@ -8,9 +8,9 @@
 
 #include "bezier_item.hpp"
 
-#include "math/geom.hpp"
+#include "glaxnimate/math/geom.hpp"
 
-#include "command/animation_commands.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
 
 using namespace glaxnimate;
 using namespace glaxnimate::gui;

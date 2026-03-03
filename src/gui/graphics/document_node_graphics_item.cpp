@@ -6,7 +6,7 @@
 
 #include "document_node_graphics_item.hpp"
 
-#include "model/document.hpp"
+#include "glaxnimate/model/document.hpp"
 
 using namespace glaxnimate::gui;
 

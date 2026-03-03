@@ -15,7 +15,7 @@
 #include <QRawFont>
 
 #include "app/utils/qstring_hash.hpp"
-#include "model/assets/embedded_font.hpp"
+#include "glaxnimate/model/assets/embedded_font.hpp"
 
 
 namespace glaxnimate::gui::font {

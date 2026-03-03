@@ -13,10 +13,10 @@
 #include <QUndoGroup>
 #include <QLocalSocket>
 
-#include "model/document.hpp"
-#include "model/shapes/shape.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/model/shapes/shape.hpp"
 
-#include "plugin/executor.hpp"
+#include "glaxnimate/plugin/executor.hpp"
 
 #include "selection_manager.hpp"
 #include "item_models/document_node_model.hpp"

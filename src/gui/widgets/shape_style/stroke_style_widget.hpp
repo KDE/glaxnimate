@@ -10,7 +10,7 @@
 #include <memory>
 #include <QWidget>
 
-#include "model/shapes/stroke.hpp"
+#include "glaxnimate/model/shapes/stroke.hpp"
 
 
 namespace color_widgets {

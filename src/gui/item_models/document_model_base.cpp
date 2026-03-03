@@ -10,8 +10,8 @@
 #include <QDataStream>
 #include <QSet>
 
-#include "command/object_list_commands.hpp"
-#include "command/undo_macro_guard.hpp"
+#include "glaxnimate/command/object_list_commands.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
 
 #include "drag_data.hpp"
 

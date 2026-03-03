@@ -6,7 +6,7 @@
 
 #include "timeline_items.hpp"
 
-#include "command/undo_macro_guard.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
 #include "keyframe_transition_data.hpp"
 
 using namespace glaxnimate::gui;

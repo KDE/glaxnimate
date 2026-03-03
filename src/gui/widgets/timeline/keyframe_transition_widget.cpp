@@ -10,7 +10,7 @@
 #include <QMouseEvent>
 #include <QPainterPath>
 
-#include "math/math.hpp"
+#include "glaxnimate/math/math.hpp"
 
 #include <QDebug>
 

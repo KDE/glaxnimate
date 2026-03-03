@@ -8,7 +8,7 @@
 
 #include <QAbstractProxyModel>
 
-#include "model/document_node.hpp"
+#include "glaxnimate/model/document_node.hpp"
 #include "item_models/document_model_base.hpp"
 #include "custom_treeview.hpp"
 

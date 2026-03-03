@@ -8,8 +8,8 @@
 
 #include "clickable_tab_bar.hpp"
 
-#include "model/document.hpp"
-#include "model/assets/composition.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/model/assets/composition.hpp"
 
 namespace glaxnimate::gui {
 

@@ -26,7 +26,7 @@
 #include "app/widgets/no_close_on_enter.hpp"
 #include "glaxnimate_settings.hpp"
 #include "settings/icon_settings.hpp"
-#include "utils/pseudo_mutex.hpp"
+#include "glaxnimate/utils/pseudo_mutex.hpp"
 
 using namespace glaxnimate::gui;
 

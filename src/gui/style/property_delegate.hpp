@@ -8,8 +8,8 @@
 
 #include <QtColorWidgets/ColorDelegate>
 
-#include "math/vector.hpp"
-#include "model/property/property.hpp"
+#include "glaxnimate/math/vector.hpp"
+#include "glaxnimate/model/property/property.hpp"
 
 namespace glaxnimate::gui::style {
 

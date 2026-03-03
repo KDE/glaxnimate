@@ -8,7 +8,7 @@
 #include <memory>
 #include <QGraphicsView>
 
-#include "model/assets/composition.hpp"
+#include "glaxnimate/model/assets/composition.hpp"
 
 namespace glaxnimate::gui {
 

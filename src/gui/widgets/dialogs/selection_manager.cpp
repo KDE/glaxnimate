@@ -10,13 +10,13 @@
 #include <QMimeData>
 #include <QClipboard>
 
-#include "model/assets/assets.hpp"
-#include "model/shapes/precomp_layer.hpp"
-#include "model/assets/pending_asset.hpp"
+#include "glaxnimate/model/assets/assets.hpp"
+#include "glaxnimate/model/shapes/precomp_layer.hpp"
+#include "glaxnimate/model/assets/pending_asset.hpp"
 
-#include "command/shape_commands.hpp"
-#include "command/structure_commands.hpp"
-#include "command/undo_macro_guard.hpp"
+#include "glaxnimate/command/shape_commands.hpp"
+#include "glaxnimate/command/structure_commands.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
 
 #include "glaxnimate_app.hpp"
 

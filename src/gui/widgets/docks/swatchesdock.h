@@ -6,9 +6,9 @@
 
 # pragma once
 
-#include "model/assets/gradient.hpp"
-#include "model/shapes/fill.hpp"
-#include "model/shapes/stroke.hpp"
+#include "glaxnimate/model/assets/gradient.hpp"
+#include "glaxnimate/model/shapes/fill.hpp"
+#include "glaxnimate/model/shapes/stroke.hpp"
 
 #include "widgets/dialogs/glaxnimate_window.hpp"
 #include <QDockWidget>

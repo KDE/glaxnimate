@@ -15,7 +15,7 @@
 #include "app_info.hpp"
 #include "android_style.hpp"
 #include "android_intent_handler.hpp"
-#include "io/io_registry.hpp"
+#include "glaxnimate/io/io_registry.hpp"
 
 // #include "android_file_picker.hpp"
 // #include <QDebug>

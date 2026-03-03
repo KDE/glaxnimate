@@ -4,9 +4,9 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 #include <iostream>
-#include "io/io_registry.hpp"
-#include "renderer/renderer.hpp"
-#include "model/assets/assets.hpp"
+#include "glaxnimate/io/io_registry.hpp"
+#include "glaxnimate/renderer/renderer.hpp"
+#include "glaxnimate/model/assets/assets.hpp"
 
 
 using namespace glaxnimate;

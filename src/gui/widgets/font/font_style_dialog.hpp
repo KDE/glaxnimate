@@ -10,7 +10,7 @@
 #include <memory>
 #include <QDialog>
 
-#include "model/assets/embedded_font.hpp"
+#include "glaxnimate/model/assets/embedded_font.hpp"
 
 namespace glaxnimate::gui::font {
 

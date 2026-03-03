@@ -6,15 +6,15 @@
 
 #pragma once
 
-#include "model/document.hpp"
-#include "model/assets/composition.hpp"
-#include "command/property_commands.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/model/assets/composition.hpp"
+#include "glaxnimate/command/property_commands.hpp"
 
 #include "graphics/handle.hpp"
 #include "graphics/document_node_graphics_item.hpp"
 #include "graphics/transform_graphics_item.hpp"
 // #include "renderer/qpainter_renderer.hpp"
-#include "renderer/renderer.hpp"
+#include "glaxnimate/renderer/renderer.hpp"
 
 #include <QPainter>
 #include <QGraphicsScene>

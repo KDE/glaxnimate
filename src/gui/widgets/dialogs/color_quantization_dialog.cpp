@@ -9,7 +9,7 @@
 
 #include <QEvent>
 
-#include "utils/quantize.hpp"
+#include "glaxnimate/utils/quantize.hpp"
 
 #include "app/settings/widget.hpp"
 

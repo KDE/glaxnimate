@@ -15,9 +15,9 @@
 #include <QStandardPaths>
 #include <QPointer>
 
-#include "io/lottie/tgs_format.hpp"
-#include "io/glaxnimate/glaxnimate_format.hpp"
-#include "model/assets/assets.hpp"
+#include "glaxnimate/io/lottie/tgs_format.hpp"
+#include "glaxnimate/io/glaxnimate/glaxnimate_format.hpp"
+#include "glaxnimate/model/assets/assets.hpp"
 
 #include "emoji/emoji_set.hpp"
 #include "emoji/emoji_dialog.hpp"

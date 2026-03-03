@@ -6,9 +6,9 @@
 
 #pragma once
 
-#include "model/shapes/rect.hpp"
-#include "model/document.hpp"
-#include "command/animation_commands.hpp"
+#include "glaxnimate/model/shapes/rect.hpp"
+#include "glaxnimate/model/document.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
 #include "handle.hpp"
 
 namespace glaxnimate::gui::graphics {

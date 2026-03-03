@@ -9,8 +9,8 @@
 #include <QGraphicsSceneMouseEvent>
 
 #include "graphics/item_data.hpp"
-#include "model/shapes/precomp_layer.hpp"
-#include "model/shapes/text.hpp"
+#include "glaxnimate/model/shapes/precomp_layer.hpp"
+#include "glaxnimate/model/shapes/text.hpp"
 
 
 using namespace glaxnimate::gui;

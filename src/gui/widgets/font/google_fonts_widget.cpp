@@ -10,7 +10,7 @@
 #include <QEvent>
 #include <QSortFilterProxyModel>
 
-#include "io/svg/font_weight.hpp"
+#include "glaxnimate/io/svg/font_weight.hpp"
 
 namespace  {
 

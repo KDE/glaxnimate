@@ -14,7 +14,7 @@
 
 #include "glaxnimate_settings.hpp"
 #include "app/scripting/script_engine.hpp"
-#include "plugin/plugin.hpp"
+#include "glaxnimate/plugin/plugin.hpp"
 #include "widgets/dialogs/plugin_ui_dialog.hpp"
 
 using namespace glaxnimate::gui;

@@ -10,7 +10,7 @@
 #include <memory>
 #include <QWidget>
 
-#include "model/custom_font.hpp"
+#include "glaxnimate/model/custom_font.hpp"
 
 namespace glaxnimate::gui::font {
 

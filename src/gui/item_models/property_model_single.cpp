@@ -8,9 +8,9 @@
 #include "property_model_private.hpp"
 
 
-#include "command/property_commands.hpp"
-#include "model/shapes/styler.hpp"
-#include "model/stretchable_time.hpp"
+#include "glaxnimate/command/property_commands.hpp"
+#include "glaxnimate/model/shapes/styler.hpp"
+#include "glaxnimate/model/stretchable_time.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
