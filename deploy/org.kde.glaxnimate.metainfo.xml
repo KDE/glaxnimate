@@ -584,6 +584,14 @@
       <caption xml:lang="zh-TW">Glaxnimate 主視窗</caption>
       <image>https://cdn.kde.org/screenshots/glaxnimate/glaxnimate.png</image>
     </screenshot>
+    <screenshot environment="windows">
+      <caption>Light mode</caption>
+      <image>https://origin.cdn.kde.org/screenshots/glaxnimate/glaxnimate-windows-light.png</image>
+    </screenshot>
+    <screenshot environment="windows">
+      <caption>Dark mode</caption>
+      <image>https://origin.cdn.kde.org/screenshots/glaxnimate/glaxnimate-windows-dark.png</image>
+    </screenshot>
   </screenshots>
   <provides>
     <id>org.mattbas.Glaxnimate.desktop</id>
@@ -592,6 +600,9 @@
     <mediatype>application/vnd.glaxnimate.rawr+json</mediatype>
   </provides>
   <launchable type="desktop-id">org.kde.glaxnimate.desktop</launchable>
+  <custom>
+    <value key="KDE::windows_store">https://apps.microsoft.com/detail/9N27TDZHS3XC</value>
+  </custom>
   <content_rating type="oars-1.1"/>
   <releases>
     <release version="0.6.0" date="2026-03-01">
