@@ -20,7 +20,7 @@ class AnimatedPropertyBezier : public detail::AnimatedProperty<math::bezier::Bez
 {
     Q_OBJECT
 public:
-    AnimatedPropertyBezier(Object* object, const util::LazyLocalizedString& name,
+    AnimatedPropertyBezier(Object* object, const utils::LazyLocalizedString& name,
                    PropertyCallback<void, math::bezier::Bezier> emitter = {})
     : detail::AnimatedProperty<math::bezier::Bezier>(object, name, {}, std::move(emitter))
     {}

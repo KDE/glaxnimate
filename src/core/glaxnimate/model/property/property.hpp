@@ -170,7 +170,7 @@ class BaseProperty
     Q_GADGET
 
 public:
-    BaseProperty(Object* object, const util::LazyLocalizedString& name, PropertyTraits traits);
+    BaseProperty(Object* object, const utils::LazyLocalizedString& name, PropertyTraits traits);
 
     virtual ~BaseProperty() = default;
 
@@ -216,7 +216,7 @@ protected:
 
 private:
     Object* object_;
-    util::LazyLocalizedString name_;
+    utils::LazyLocalizedString name_;
     PropertyTraits traits_;
 };
 
@@ -314,7 +314,7 @@ public:
     using reference = const Type&;
 
     PropertyTemplate(Object* obj,
-             const util::LazyLocalizedString& name,
+             const utils::LazyLocalizedString& name,
              Type default_value = Type(),
              PropertyCallback<void, Type, Type> emitter = {},
              PropertyCallback<bool, Type> validator = {},

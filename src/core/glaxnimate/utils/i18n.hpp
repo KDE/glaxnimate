@@ -9,7 +9,7 @@
 
 #include <KLazyLocalizedString>
 
-namespace glaxnimate::util {
+namespace glaxnimate::utils {
 
 using LazyLocalizedString = KLazyLocalizedString;
 
@@ -55,5 +55,5 @@ public:
     QString toString() const { return text; }
 };
 
-} // namespace glaxnimate::util
+} // namespace glaxnimate::utils
 #endif

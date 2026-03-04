@@ -8,7 +8,7 @@
 #include "glaxnimate/model/object.hpp"
 #include "glaxnimate/command/property_commands.hpp"
 
-glaxnimate::model::BaseProperty::BaseProperty(Object* object, const util::LazyLocalizedString& name, PropertyTraits traits)
+glaxnimate::model::BaseProperty::BaseProperty(Object* object, const utils::LazyLocalizedString& name, PropertyTraits traits)
     : object_(object), name_(name), traits_(traits)
 {
     if ( object )

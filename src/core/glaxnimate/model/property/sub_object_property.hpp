@@ -21,7 +21,7 @@ namespace glaxnimate::model {
 class SubObjectPropertyBase : public BaseProperty
 {
 public:
-    SubObjectPropertyBase(Object* obj, const util::LazyLocalizedString& name)
+    SubObjectPropertyBase(Object* obj, const utils::LazyLocalizedString& name)
         : BaseProperty(obj, name, {PropertyTraits::Object})
     {}
 
@@ -33,7 +33,7 @@ template<class Type>
 class SubObjectProperty : public SubObjectPropertyBase
 {
 public:
-    SubObjectProperty(Object* obj, const util::LazyLocalizedString& name)
+    SubObjectProperty(Object* obj, const utils::LazyLocalizedString& name)
         : SubObjectPropertyBase(obj, name),
         sub_obj(obj->document())
     {}

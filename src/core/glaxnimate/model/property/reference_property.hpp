@@ -31,7 +31,7 @@ class ReferencePropertyBase : public BaseProperty
 public:
     ReferencePropertyBase(
         Object* obj,
-        const util::LazyLocalizedString& name,
+        const utils::LazyLocalizedString& name,
         PropertyCallback<std::vector<DocumentNode*>> valid_options,
         PropertyCallback<bool, DocumentNode*> is_valid_option,
         PropertyTraits::Flags flags = PropertyTraits::Visual)
@@ -88,7 +88,7 @@ public:
 
     ReferenceProperty(
         Object* obj,
-        const util::LazyLocalizedString& name,
+        const utils::LazyLocalizedString& name,
         PropertyCallback<std::vector<DocumentNode*>> valid_options,
         PropertyCallback<bool, DocumentNode*> is_valid_option,
         PropertyCallback<void, Type*, Type*> on_changed = {},
