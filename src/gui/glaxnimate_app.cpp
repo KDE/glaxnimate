@@ -31,19 +31,12 @@ static qreal get_mult()
 {
 #ifndef Q_OS_ANDROID
     return 1;
-}
 #else
     auto sz = QApplication::primaryScreen()->size();
     return qMin(sz.width(), sz.height()) / 240.;
-
 }
-
-QString GlaxnimateApp::data_file(const QString &name) const
-{
-    return "assets:/share/glaxnimate/glaxnimate/" + name;
-}
-
 #endif
+
 
 qreal GlaxnimateApp::handle_size_multiplier()
 {
@@ -89,6 +82,16 @@ void GlaxnimateApp::on_initialize_settings()
 #include "trace/trace.hpp"
 
 
+qreal GlaxnimateApp::handle_size_multiplier()
+{
+    return 1;
+}
+
+qreal GlaxnimateApp::handle_distance_multiplier()
+{
+    return 1;
+}
+
 void GlaxnimateApp::on_initialize()
 {
     log::Logger::instance().add_listener<log::ListenerFile>(utils::writable_data_path("log.txt"));
@@ -120,6 +123,18 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
 {
     return QGuiApplication::clipboard()->mimeData();
 }
+
+#endif
+
+
+#ifdef Q_OS_ANDROID
+
+QString GlaxnimateApp::data_file(const QString &name) const
+{
+    return "assets:/share/glaxnimate/glaxnimate/" + name;
+}
+
+#else
 
 QString GlaxnimateApp::data_file(const QString& name) const
 {

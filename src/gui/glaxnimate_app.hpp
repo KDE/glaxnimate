@@ -49,8 +49,8 @@ public:
 
     static QString temp_path();
 
-    static qreal handle_size_multiplier() { return 1; }
-    static qreal handle_distance_multiplier() { return 1; }
+    static qreal handle_size_multiplier();
+    static qreal handle_distance_multiplier();
 
 
     void set_clipboard_data(QMimeData* data);
