@@ -30,13 +30,13 @@ python_build_wheel:
         - cmake -DCMAKE_INSTALL_PREFIX=$CI_PROJECT_DIR/_install -DVERSION_SUFFIX=$version -DBUILD_WITH_QT6=ON -GNinja ..
         #- pip install -r src/python/build-requirements.txt
         - ninja glaxnimate_python_depends_install
-        - ls bin/python/build/lib
+        - ls bin/plugin/python/build/lib
         - ninja glaxnimate_python
         - ninja glaxnimate_python_wheel
     artifacts:
         paths:
-            - _build/bin/python/build/lib/
-            - _build/bin/python/dist/*.whl
+            - _build/bin/plugin/python/build/lib/
+            - _build/bin/plugin/python/dist/*.whl
 
 pypi_deploy_gitlab:
     stage: deploy
@@ -46,7 +46,7 @@ pypi_deploy_gitlab:
           artifacts: true
     before_script:
     script:
-        - TWINE_PASSWORD=$CI_JOB_TOKEN TWINE_USERNAME=gitlab-ci-token python3 -m twine upload bin/python/dist/*.whl --repository-url $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/pypi --verbose
+        - TWINE_PASSWORD=$CI_JOB_TOKEN TWINE_USERNAME=gitlab-ci-token python3 -m twine upload _build/bin/plugin/python/dist/*.whl --repository-url $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/pypi --verbose
     rules:
         # allow to run the job only on master branch
         - if: $CI_COMMIT_REF_NAME == "master"
@@ -66,7 +66,7 @@ pypi_deploy_pypiorg:
         - git clone https://invent.kde.org/sysadmin/ci-utilities.git --depth=1
         - git clone https://invent.kde.org/sysadmin/ci-notary-service.git
     script:
-        - python3 -u ci-notary-service/publishonpypi.py --config ci-utilities/signing/publishonpypi.ini --repository pypi _build/bin/python/dist
+        - python3 -u ci-notary-service/publishonpypi.py --config ci-utilities/signing/publishonpypi.ini --repository pypi _build/bin/plugin/python/dist
     rules:
         # allow to run the job only on mainline branches of mainline repositories
         - if: $KDECI_SECURE_SERVICES_KEY
