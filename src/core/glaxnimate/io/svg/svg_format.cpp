@@ -48,7 +48,7 @@ bool glaxnimate::io::svg::SvgFormat::on_open(QIODevice& file, const QString& fil
     }
 }
 
-std::unique_ptr<app::settings::SettingsGroup> glaxnimate::io::svg::SvgFormat::save_settings(model::Composition* comp) const
+std::unique_ptr<glaxnimate::settings::SettingsGroup> glaxnimate::io::svg::SvgFormat::save_settings(model::Composition* comp) const
 {
     CssFontType max = CssFontType::None;
     for ( const auto & font : comp->document()->assets()->fonts->values )
@@ -70,9 +70,9 @@ std::unique_ptr<app::settings::SettingsGroup> glaxnimate::io::svg::SvgFormat::sa
         choices[i18n("Embedded data")] = int(CssFontType::Embedded);
     choices[i18n("Ignore")] = int(CssFontType::None);
 
-    return std::make_unique<app::settings::SettingsGroup>(app::settings::SettingList{
-        app::settings::Setting("font_type", i18n("External Fonts"), i18n("How to include external font"),
-                               app::settings::Setting::Int, int(qMin(max, CssFontType::FontFace)), choices)
+    return std::make_unique<glaxnimate::settings::SettingsGroup>(glaxnimate::settings::SettingList{
+        glaxnimate::settings::Setting("font_type", i18n("External Fonts"), i18n("How to include external font"),
+                               glaxnimate::settings::Setting::Int, int(qMin(max, CssFontType::FontFace)), choices)
     });
 }
 

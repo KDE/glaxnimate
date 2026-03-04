@@ -11,7 +11,7 @@
 #include <QAction>
 #include <QIcon>
 
-#include "app/settings/setting.hpp"
+#include "glaxnimate/settings/setting.hpp"
 
 namespace glaxnimate::plugin {
 
@@ -21,7 +21,7 @@ class PluginScript
 public:
     QString module;
     QString function;
-    app::settings::SettingList settings;
+    glaxnimate::settings::SettingList settings;
 
     bool valid() const
     {

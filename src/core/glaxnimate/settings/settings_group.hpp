@@ -11,17 +11,17 @@
 #include <QIcon>
 
 #include "app/utils/translated_string.hpp"
-#include "app/settings/setting.hpp"
+#include "glaxnimate/settings/setting.hpp"
 #include "custom_settings_group.hpp"
 
-namespace app::settings {
+namespace glaxnimate::settings {
 
 class SettingsGroup : public CustomSettingsGroupBase
 {
 public:
     using iterator = SettingList::const_iterator;
 
-    SettingsGroup(QString slug, utils::TranslatedString label, const QString& icon, SettingList settings);
+    SettingsGroup(QString slug, QString label, const QString& icon, SettingList settings);
     SettingsGroup(SettingList settings);
 
     QString slug() const override;
@@ -53,11 +53,11 @@ public:
 
 private:
     QString slug_;
-    utils::TranslatedString label_;
+    QString label_;
     QString icon_;
     SettingList settings_;
     QVariantMap values_;
 };
 
-} // namespace app::settings
+} // namespace glaxnimate::settings
 

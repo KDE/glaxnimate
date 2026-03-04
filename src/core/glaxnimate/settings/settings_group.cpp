@@ -9,7 +9,7 @@
 #include <set>
 
 
-app::settings::SettingsGroup::SettingsGroup(QString slug, utils::TranslatedString label, const QString& icon, SettingList settings)
+glaxnimate::settings::SettingsGroup::SettingsGroup(QString slug, QString label, const QString& icon, SettingList settings)
     : slug_(std::move(slug)),
     label_(std::move(label)),
     icon_(std::move(icon)),
@@ -17,27 +17,27 @@ app::settings::SettingsGroup::SettingsGroup(QString slug, utils::TranslatedStrin
 {
 }
 
-app::settings::SettingsGroup::SettingsGroup(SettingList settings)
+glaxnimate::settings::SettingsGroup::SettingsGroup(SettingList settings)
     : settings_(std::move(settings))
 {
 }
 
-QString app::settings::SettingsGroup::slug() const
+QString glaxnimate::settings::SettingsGroup::slug() const
 {
     return slug_;
 }
 
-QString app::settings::SettingsGroup::label() const
+QString glaxnimate::settings::SettingsGroup::label() const
 {
     return label_;
 }
 
-QIcon app::settings::SettingsGroup::icon() const
+QIcon glaxnimate::settings::SettingsGroup::icon() const
 {
     return QIcon::fromTheme(icon_);
 }
 
-void app::settings::SettingsGroup::load(QSettings& settings)
+void glaxnimate::settings::SettingsGroup::load(QSettings& settings)
 {
     auto avail_keys = settings.childKeys();
     std::set<QString> unprocessed_keys(avail_keys.begin(), avail_keys.end());
@@ -54,13 +54,13 @@ void app::settings::SettingsGroup::load(QSettings& settings)
         values_[key] = settings.value(key);
 }
 
-void app::settings::SettingsGroup::save(QSettings& settings)
+void glaxnimate::settings::SettingsGroup::save(QSettings& settings)
 {
     for ( const Setting& setting : settings_ )
         settings.setValue(setting.slug, setting.get_variant(values_));
 }
 
-bool app::settings::SettingsGroup::has_visible_settings() const
+bool glaxnimate::settings::SettingsGroup::has_visible_settings() const
 {
     for ( const auto& set : settings_ )
         if ( set.type != Setting::Internal )
@@ -68,7 +68,7 @@ bool app::settings::SettingsGroup::has_visible_settings() const
     return false;
 }
 
-QVariant app::settings::SettingsGroup::get_variant(const QString& setting_slug) const
+QVariant glaxnimate::settings::SettingsGroup::get_variant(const QString& setting_slug) const
 {
     for ( const Setting& setting : settings_ )
         if ( setting.slug == setting_slug )
@@ -76,7 +76,7 @@ QVariant app::settings::SettingsGroup::get_variant(const QString& setting_slug) 
     return {};
 }
 
-bool app::settings::SettingsGroup::set_variant(const QString& setting_slug, const QVariant& value)
+bool glaxnimate::settings::SettingsGroup::set_variant(const QString& setting_slug, const QVariant& value)
 {
     for ( const Setting& setting : settings_ )
     {
@@ -93,7 +93,7 @@ bool app::settings::SettingsGroup::set_variant(const QString& setting_slug, cons
     return false;
 }
 
-QVariant app::settings::SettingsGroup::get_default(const QString& setting_slug) const
+QVariant glaxnimate::settings::SettingsGroup::get_default(const QString& setting_slug) const
 {
     for ( const Setting& setting : settings_ )
         if ( setting.slug == setting_slug )
@@ -101,7 +101,7 @@ QVariant app::settings::SettingsGroup::get_default(const QString& setting_slug) 
     return {};
 }
 
-QVariant app::settings::SettingsGroup::define(const QString& setting_slug, const QVariant& default_value)
+QVariant glaxnimate::settings::SettingsGroup::define(const QString& setting_slug, const QVariant& default_value)
 {
     for ( const Setting& setting : settings_ )
         if ( setting.slug == setting_slug )

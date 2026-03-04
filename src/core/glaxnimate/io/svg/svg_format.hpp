@@ -22,7 +22,7 @@ public:
     QStringList extensions() const override;
     bool can_save() const override { return true; }
     bool can_open() const override { return true; }
-    std::unique_ptr<app::settings::SettingsGroup> save_settings(model::Composition*) const override;
+    std::unique_ptr<settings::SettingsGroup> save_settings(model::Composition*) const override;
 
 protected:
     bool on_open(QIODevice& file, const QString&, model::Document* document, const QVariantMap&) override;

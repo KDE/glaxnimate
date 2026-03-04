@@ -45,8 +45,8 @@ public:
     bool can_save() const override { return service->save.valid(); }
     bool can_open() const override { return service->open.valid(); }
 
-    std::unique_ptr<app::settings::SettingsGroup> open_settings() const override;
-    std::unique_ptr<app::settings::SettingsGroup> save_settings(model::Composition*) const override;
+    std::unique_ptr<glaxnimate::settings::SettingsGroup> open_settings() const override;
+    std::unique_ptr<glaxnimate::settings::SettingsGroup> save_settings(model::Composition*) const override;
 
 protected:
     bool auto_open() const override { return service->auto_open; }

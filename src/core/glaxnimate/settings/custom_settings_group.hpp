@@ -10,7 +10,7 @@
 #include <QSettings>
 #include <QIcon>
 
-namespace app::settings {
+namespace glaxnimate::settings {
 
 class CustomSettingsGroupBase
 {
@@ -51,4 +51,4 @@ public:
 
 using CustomSettingsGroup = std::unique_ptr<CustomSettingsGroupBase>;
 
-} // namespace app::settings
+} // namespace glaxnimate::settings

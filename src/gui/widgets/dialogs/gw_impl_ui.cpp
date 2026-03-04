@@ -88,6 +88,7 @@
 #include "emoji/emoji_set_dialog.hpp"
 
 #include "widgets/docks/layersdock.h"
+#include "settings/widget_builder.hpp"
 
 
 using namespace glaxnimate::gui;
@@ -1542,6 +1543,18 @@ void GlaxnimateWindow::Private::init_plugins()
         QAction* qaction = par.make_qaction(act);
         plugin_actions.append(qaction);
         plugin_category->addAction(qaction->objectName(), qaction);
+        connect(qaction, &QAction::triggered, act, [act]{
+            QVariantMap settings_value;
+            if ( !act->script.settings.empty() )
+            {
+                if ( !glaxnimate::gui::WidgetBuilder().show_dialog(
+                    act->script.settings, settings_value, act->plugin()->data().name
+                ) )
+                    return;
+            }
+
+            act->trigger(settings_value);
+        });
     }
 
     parent->unplugActionList("plugins_actionlist");

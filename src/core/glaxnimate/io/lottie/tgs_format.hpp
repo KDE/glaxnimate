@@ -20,7 +20,7 @@ public:
     QStringList extensions() const override { return {"tgs"}; }
     bool can_save() const override { return true; }
     bool can_open() const override { return true; }
-    std::unique_ptr<app::settings::SettingsGroup> save_settings(model::Composition*) const override { return {}; }
+    std::unique_ptr<settings::SettingsGroup> save_settings(model::Composition*) const override { return {}; }
 
     void validate(model::Document* document, model::Composition* comp);
 

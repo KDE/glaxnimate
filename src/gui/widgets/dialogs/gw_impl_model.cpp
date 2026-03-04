@@ -17,7 +17,7 @@
 
 #include "glaxnimate_settings.hpp"
 
-#include "app/settings/widget_builder.hpp"
+#include "settings/widget_builder.hpp"
 
 #include "glaxnimate/command/shape_commands.hpp"
 #include "glaxnimate/command/structure_commands.hpp"

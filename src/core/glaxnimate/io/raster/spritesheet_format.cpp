@@ -23,16 +23,16 @@ QStringList glaxnimate::io::raster::SpritesheetFormat::extensions() const
     return formats;
 }
 
-std::unique_ptr<app::settings::SettingsGroup> glaxnimate::io::raster::SpritesheetFormat::save_settings(model::Composition* comp) const
+std::unique_ptr<glaxnimate::settings::SettingsGroup> glaxnimate::io::raster::SpritesheetFormat::save_settings(model::Composition* comp) const
 {
     int first_frame = comp->animation->first_frame.get();
     int last_frame = comp->animation->last_frame.get();
     int frames = last_frame - first_frame;
-    return std::make_unique<app::settings::SettingsGroup>(app::settings::SettingList{
-        app::settings::Setting("frame_width", i18n("Frame Width"), i18n("Width of each frame"), int(comp->width.get()), 1, 999'999),
-        app::settings::Setting("frame_height", i18n("Frame Height"), i18n("Height of each frame"), int(comp->height.get()), 1, 999'999),
-        app::settings::Setting("columns", i18n("Columns"), i18n("Number of columns in the sheet"), std::ceil(math::sqrt(frames)), 1, 64),
-        app::settings::Setting("frame_step", i18n("Time Step"), i18n("By how much each rendered frame should increase time (in frames)"), 1, 1, 16),
+    return std::make_unique<glaxnimate::settings::SettingsGroup>(glaxnimate::settings::SettingList{
+        glaxnimate::settings::Setting("frame_width", i18n("Frame Width"), i18n("Width of each frame"), int(comp->width.get()), 1, 999'999),
+        glaxnimate::settings::Setting("frame_height", i18n("Frame Height"), i18n("Height of each frame"), int(comp->height.get()), 1, 999'999),
+        glaxnimate::settings::Setting("columns", i18n("Columns"), i18n("Number of columns in the sheet"), std::ceil(math::sqrt(frames)), 1, 64),
+        glaxnimate::settings::Setting("frame_step", i18n("Time Step"), i18n("By how much each rendered frame should increase time (in frames)"), 1, 1, 16),
     });
 }
 

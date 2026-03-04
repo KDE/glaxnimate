@@ -17,26 +17,25 @@
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
 
-
-settings::DocumentTemplate::DocumentTemplate(const QString& filename, bool* loaded)
+gui::settings::DocumentTemplate::DocumentTemplate(const QString& filename, bool* loaded)
 : filename(filename), document(load(loaded))
 {}
 
-QSize settings::DocumentTemplate::size() const
+QSize gui::settings::DocumentTemplate::size() const
 {
     if ( auto comp = main_comp() )
         return comp->size().toSize();
     return {};
 }
 
-model::Composition* settings::DocumentTemplate::main_comp() const
+model::Composition* gui::settings::DocumentTemplate::main_comp() const
 {
     if ( document->assets()->compositions->values.empty() )
         return nullptr;
     return document->assets()->compositions->values[0];
 }
 
-model::FrameTime settings::DocumentTemplate::duration() const
+model::FrameTime gui::settings::DocumentTemplate::duration() const
 {
     if ( auto comp = main_comp() )
         return comp->animation->last_frame.get() - comp->animation->first_frame.get();
@@ -44,19 +43,19 @@ model::FrameTime settings::DocumentTemplate::duration() const
     return 0;
 }
 
-QString settings::DocumentTemplate::name() const
+QString gui::settings::DocumentTemplate::name() const
 {
     if ( auto comp = main_comp() )
         return comp->name.get();
     return i18n("Unnamed");
 }
 
-QString settings::DocumentTemplate::long_name() const
+QString gui::settings::DocumentTemplate::long_name() const
 {
     return name_template(main_comp()).subs(name()).toString();
 }
 
-float settings::DocumentTemplate::fps() const
+float gui::settings::DocumentTemplate::fps() const
 {
     if ( auto comp = main_comp() )
         return comp->fps.get();
@@ -64,7 +63,7 @@ float settings::DocumentTemplate::fps() const
     return 60;
 }
 
-std::unique_ptr<model::Document> settings::DocumentTemplate::create(bool* ok) const
+std::unique_ptr<model::Document> gui::settings::DocumentTemplate::create(bool* ok) const
 {
     std::unique_ptr<model::Document> document;
     document = load(ok);
@@ -74,7 +73,7 @@ std::unique_ptr<model::Document> settings::DocumentTemplate::create(bool* ok) co
     return document;
 }
 
-std::unique_ptr<model::Document> settings::DocumentTemplate::load(bool* ok) const
+std::unique_ptr<model::Document> gui::settings::DocumentTemplate::load(bool* ok) const
 {
     std::unique_ptr<model::Document> document = std::make_unique<model::Document>("");
     QFile file(filename);
@@ -82,7 +81,7 @@ std::unique_ptr<model::Document> settings::DocumentTemplate::load(bool* ok) cons
     return document;
 }
 
-bool settings::DocumentTemplate::operator<(const settings::DocumentTemplate& other) const
+bool gui::settings::DocumentTemplate::operator<(const gui::settings::DocumentTemplate& other) const
 {
     QString n1 = name();
     QString n2 = other.name();
@@ -95,12 +94,12 @@ bool settings::DocumentTemplate::operator<(const settings::DocumentTemplate& oth
     return n1 < n2;
 }
 
-QString settings::DocumentTemplate::aspect_ratio() const
+QString gui::settings::DocumentTemplate::aspect_ratio() const
 {
     return aspect_ratio(size());
 }
 
-QString settings::DocumentTemplate::aspect_ratio(const QSize& size)
+QString gui::settings::DocumentTemplate::aspect_ratio(const QSize& size)
 {
     if ( size.width() > 0 && size.height() > 0 )
     {
@@ -111,7 +110,7 @@ QString settings::DocumentTemplate::aspect_ratio(const QSize& size)
     return {};
 }
 
-KLocalizedString settings::DocumentTemplate::name_template(model::Composition* comp)
+KLocalizedString gui::settings::DocumentTemplate::name_template(model::Composition* comp)
 {
     if ( !comp )
         return ki18n("%1");
@@ -129,7 +128,7 @@ KLocalizedString settings::DocumentTemplate::name_template(model::Composition* c
     ;
 }
 
-QAction* settings::DocumentTemplates::create_action(const DocumentTemplate& templ, QObject *parent)
+QAction* gui::settings::DocumentTemplates::create_action(const DocumentTemplate& templ, QObject *parent)
 {
     QAction* action = new QAction(QIcon::fromTheme("document-new-from-template"), templ.long_name(), parent);
     connect(action, &QAction::triggered, this, [&templ, this]{
@@ -138,7 +137,7 @@ QAction* settings::DocumentTemplates::create_action(const DocumentTemplate& temp
     return action;
 }
 
-void settings::DocumentTemplates::load()
+void gui::settings::DocumentTemplates::load()
 {
     templates_.clear();
     names.clear();
@@ -162,12 +161,12 @@ void settings::DocumentTemplates::load()
     Q_EMIT loaded(templates_);
 }
 
-settings::DocumentTemplates::DocumentTemplates()
+gui::settings::DocumentTemplates::DocumentTemplates()
 {
     load();
 }
 
-bool settings::DocumentTemplates::save_as_template(model::Document* document)
+bool gui::settings::DocumentTemplates::save_as_template(model::Document* document)
 {
     if ( document->assets()->compositions->values.empty() )
         return false;
@@ -228,13 +227,13 @@ bool settings::DocumentTemplates::save_as_template(model::Document* document)
     return true;
 }
 
-settings::DocumentTemplates & settings::DocumentTemplates::instance()
+gui::settings::DocumentTemplates & gui::settings::DocumentTemplates::instance()
 {
-    static settings::DocumentTemplates instance;
+    static gui::settings::DocumentTemplates instance;
     return instance;
 }
 
-const std::vector<settings::DocumentTemplate> & settings::DocumentTemplates::templates() const
+const std::vector<gui::settings::DocumentTemplate> & gui::settings::DocumentTemplates::templates() const
 {
     return templates_;
 }

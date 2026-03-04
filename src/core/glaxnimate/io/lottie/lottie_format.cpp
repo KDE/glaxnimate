@@ -51,12 +51,12 @@ bool glaxnimate::io::lottie::LottieFormat::on_open(QIODevice& file, const QStrin
     return load_json(file.readAll(), document);
 }
 
-std::unique_ptr<app::settings::SettingsGroup> glaxnimate::io::lottie::LottieFormat::save_settings(model::Composition*) const
+std::unique_ptr<glaxnimate::settings::SettingsGroup> glaxnimate::io::lottie::LottieFormat::save_settings(model::Composition*) const
 {
-    return std::make_unique<app::settings::SettingsGroup>(app::settings::SettingList{
-        app::settings::Setting("pretty", i18n("Pretty"), i18n("Pretty print the JSON"), false),
-        app::settings::Setting("strip", i18n("Strip"), i18n("Strip unused properties"), false),
-        app::settings::Setting("auto_embed", i18n("Embed Images"), i18n("Automatically embed non-embedded images"), false),
-        app::settings::Setting("old_kf", i18n("Legacy Keyframes"), i18n("Compatibility with lottie-web versions prior to 5.0.0"), false),
+    return std::make_unique<glaxnimate::settings::SettingsGroup>(glaxnimate::settings::SettingList{
+        glaxnimate::settings::Setting("pretty", i18n("Pretty"), i18n("Pretty print the JSON"), false),
+        glaxnimate::settings::Setting("strip", i18n("Strip"), i18n("Strip unused properties"), false),
+        glaxnimate::settings::Setting("auto_embed", i18n("Embed Images"), i18n("Automatically embed non-embedded images"), false),
+        glaxnimate::settings::Setting("old_kf", i18n("Legacy Keyframes"), i18n("Compatibility with lottie-web versions prior to 5.0.0"), false),
     });
 }

@@ -7,8 +7,6 @@
 #include "plugin/action.hpp"
 #include "plugin/plugin.hpp"
 
-#include "app/settings/widget_builder.hpp"
-
 using namespace glaxnimate;
 
 const std::vector<plugin::ActionService *> & plugin::PluginActionRegistry::enabled() const
@@ -26,7 +24,6 @@ QAction * plugin::PluginActionRegistry::make_qaction ( plugin::ActionService* ac
     else
         act->setText(action->label);
     act->setToolTip(action->tooltip);
-    connect(act, &QAction::triggered, action, &ActionService::trigger);
     connect(action, &ActionService::disabled, act, &QAction::deleteLater);
     act->setData(QVariant::fromValue(action));
     act->setObjectName(qaction_name(action));
@@ -85,17 +82,8 @@ QIcon plugin::ActionService::service_icon() const
 }
 
 
-void plugin::ActionService::trigger() const
+void plugin::ActionService::trigger(const QVariantMap& settings_value) const
 {
-    QVariantMap settings_value;
-    if ( !script.settings.empty() )
-    {
-        if ( !app::settings::WidgetBuilder().show_dialog(
-            script.settings, settings_value, plugin()->data().name
-        ) )
-            return;
-    }
-
     plugin()->run_script(script, {
         PluginRegistry::instance().global_parameter("window"),
         PluginRegistry::instance().global_parameter("document"),

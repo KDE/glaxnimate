@@ -23,7 +23,6 @@
 #include <QtColorWidgets/ColorDelegate>
 
 #include "glaxnimate_settings.hpp"
-#include "app/settings/widget.hpp"
 #include "glaxnimate/app_info.hpp"
 
 #include "glaxnimate/model/assets/bitmap.hpp"

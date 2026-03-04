@@ -20,24 +20,24 @@
 #include "QtColorWidgets/ColorSelector"
 #endif
 
-#include "app/settings/setting.hpp"
+#include "glaxnimate/settings/setting.hpp"
 
 #include <QEvent>
-#include "app/settings/settings_group.hpp"
+#include "glaxnimate/settings/settings_group.hpp"
 
-namespace app::settings {
+namespace glaxnimate::gui {
 
 
 class WidgetBuilder
 {
 public:
-    void add_widgets(const SettingList& settings_list, QWidget* parent,
+    void add_widgets(const glaxnimate::settings::SettingList& settings_list, QWidget* parent,
                      QFormLayout* layout, QVariantMap& target,
                      const QString& name_infix = {}) const
     {
-        for ( const Setting& opt : settings_list )
+        for ( const glaxnimate::settings::Setting& opt : settings_list )
         {
-            if ( opt.type == Setting::Internal )
+            if ( opt.type == glaxnimate::settings::Setting::Internal )
                 continue;
 
             target[opt.slug] = opt.get_variant(target);
@@ -56,11 +56,11 @@ public:
         }
     }
 
-    void translate_widgets(const SettingList& settings_list, QWidget* parent, const QString& name_infix = {})
+    void translate_widgets(const glaxnimate::settings::SettingList& settings_list, QWidget* parent, const QString& name_infix = {})
     {
-        for ( const Setting& opt : settings_list )
+        for ( const glaxnimate::settings::Setting& opt : settings_list )
         {
-            if ( opt.type == Setting::Internal )
+            if ( opt.type == glaxnimate::settings::Setting::Internal )
                 continue;
 
             if ( QWidget* wid = parent->findChild<QWidget*>(object_name("widget", name_infix, opt.slug)) )
@@ -77,7 +77,7 @@ public:
         }
     }
 
-    bool show_dialog(const SettingList& settings_list, QVariantMap& target,
+    bool show_dialog(const glaxnimate::settings::SettingList& settings_list, QVariantMap& target,
                      const QString& title, QWidget* parent = nullptr)
     {
         QDialog dialog(parent);
@@ -105,7 +105,7 @@ private:
         return QString("__settings_%1__%2%3").arg(labwid).arg(name_infix).arg(slug);
     }
 
-    QWidget* make_setting_widget(const Setting& opt, QVariantMap& target) const
+    QWidget* make_setting_widget(const glaxnimate::settings::Setting& opt, QVariantMap& target) const
     {
         if ( !opt.choices.isEmpty() )
         {
@@ -127,18 +127,18 @@ private:
             });
             return wid;
         }
-        else if ( opt.type == Setting::Info )
+        else if ( opt.type == glaxnimate::settings::Setting::Info )
         {
             return new QLabel(opt.description);
         }
-        else if ( opt.type == Setting::Bool )
+        else if ( opt.type == glaxnimate::settings::Setting::Bool )
         {
             auto wid = new QCheckBox();
             wid->setChecked(opt.get<bool>(target));
             QObject::connect(wid, &QCheckBox::toggled, SettingSetter<bool>{opt.slug, &target, opt.side_effects});
             return wid;
         }
-        else if ( opt.type == Setting::Int )
+        else if ( opt.type == glaxnimate::settings::Setting::Int )
         {
             auto wid = new QSpinBox();
             if ( opt.min == opt.max && opt.max == -1 )
@@ -156,7 +156,7 @@ private:
                              SettingSetter<int>{opt.slug, &target, opt.side_effects});
             return wid;
         }
-        else if ( opt.type == Setting::Float )
+        else if ( opt.type == glaxnimate::settings::Setting::Float )
         {
             auto wid = new QDoubleSpinBox();
             if ( opt.min == opt.max && opt.max == -1 )
@@ -174,7 +174,7 @@ private:
                              SettingSetter<float>{opt.slug, &target, opt.side_effects});
             return wid;
         }
-        else if ( opt.type == Setting::String )
+        else if ( opt.type == glaxnimate::settings::Setting::String )
         {
             auto wid = new QLineEdit();
             wid->setText(opt.get<QString>(target));
@@ -182,7 +182,7 @@ private:
             return wid;
         }
 #ifndef WITHOUT_QT_COLOR_WIDGETS
-        else if ( opt.type == Setting::Color )
+        else if ( opt.type == glaxnimate::settings::Setting::Color )
         {
             auto wid = new color_widgets::ColorSelector();
             wid->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
@@ -211,31 +211,5 @@ private:
     };
 };
 
-class SettingsGroupWidget : public QWidget
-{
-public:
-    SettingsGroupWidget(SettingsGroup* group, QWidget* parent = nullptr)
-    : QWidget(parent),
-      group(group)
-    {
-        QFormLayout* lay = new QFormLayout(this);
-        this->setLayout(lay);
-        bob.add_widgets(group->settings(), this, lay, group->values(), group->slug() + "__");
-    }
 
-    void changeEvent(QEvent *e) override
-    {
-        QWidget::changeEvent(e);
-
-        if ( e->type() == QEvent::LanguageChange)
-        {
-            bob.translate_widgets(group->settings(), this, group->slug() + "__");
-        }
-    }
-
-private:
-    app::settings::WidgetBuilder bob;
-    SettingsGroup* group;
-};
-
-} // namespace app::settings
+} // namespace glaxnimate::gui

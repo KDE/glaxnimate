@@ -10,7 +10,7 @@
 #include <QObject>
 #include <QBuffer>
 
-#include "app/settings/settings_group.hpp"
+#include "glaxnimate/settings/settings_group.hpp"
 #include "glaxnimate/log/log_line.hpp"
 
 #include "glaxnimate/model/document.hpp"
@@ -85,8 +85,8 @@ public:
     virtual QString name() const = 0;
     virtual QString slug() const = 0;
     virtual QStringList extensions() const = 0;
-    virtual std::unique_ptr<app::settings::SettingsGroup> open_settings() const { return {}; }
-    virtual std::unique_ptr<app::settings::SettingsGroup> save_settings(model::Composition* ) const { return {}; }
+    virtual std::unique_ptr<settings::SettingsGroup> open_settings() const { return {}; }
+    virtual std::unique_ptr<settings::SettingsGroup> save_settings(model::Composition* ) const { return {}; }
     virtual bool can_open() const = 0;
     virtual bool can_save() const = 0;
     /**

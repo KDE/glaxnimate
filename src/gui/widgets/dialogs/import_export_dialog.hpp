@@ -13,7 +13,7 @@
 
 #include "glaxnimate/io/io_registry.hpp"
 #include "glaxnimate/model/document.hpp"
-#include "app/settings/widget_builder.hpp"
+#include "settings/widget_builder.hpp"
 #include "glaxnimate_settings.hpp"
 
 namespace glaxnimate::gui {
@@ -89,7 +89,7 @@ public:
         return false;
     }
 
-    bool options_dialog(std::unique_ptr<app::settings::SettingsGroup> settings)
+    bool options_dialog(std::unique_ptr<glaxnimate::settings::SettingsGroup> settings)
     {
         if ( !io_options_.format )
             return false;
@@ -97,7 +97,7 @@ public:
         if ( !settings || settings->settings().empty() )
             return true;
 
-        app::settings::WidgetBuilder widget_builder;
+        glaxnimate::gui::WidgetBuilder widget_builder;
         QString title = i18n("%1 Options", io_options_.format->name());
         return widget_builder.show_dialog(settings->settings(), io_options_.settings, title, parent);
     }

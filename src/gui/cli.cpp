@@ -193,7 +193,7 @@ private:
 };
 
 
-QVariantMap io_settings(std::unique_ptr<app::settings::SettingsGroup> group)
+QVariantMap io_settings(std::unique_ptr<glaxnimate::settings::SettingsGroup> group)
 {
     QVariantMap vals;
     if ( group )

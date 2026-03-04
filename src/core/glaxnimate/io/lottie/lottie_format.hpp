@@ -23,7 +23,7 @@ public:
     QStringList extensions() const override { return {"lot", "json"}; }
     bool can_save() const override { return true; }
     bool can_open() const override { return true; }
-    std::unique_ptr<app::settings::SettingsGroup> save_settings(model::Composition*) const override;
+    std::unique_ptr<settings::SettingsGroup> save_settings(model::Composition*) const override;
 
     QCborMap to_json(model::Composition* comp, bool strip = false, bool strip_raster = false, const QVariantMap& settings = {});
     bool load_json(const QByteArray& data, model::Document* document);

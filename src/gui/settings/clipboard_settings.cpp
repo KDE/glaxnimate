@@ -17,9 +17,9 @@
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
 
-static std::vector<settings::ClipboardSettings::MimeSettings>& mutable_mime_types()
+static std::vector<gui::settings::ClipboardSettings::MimeSettings>& mutable_mime_types()
 {
-    static std::vector<settings::ClipboardSettings::MimeSettings> settings {
+    static std::vector<gui::settings::ClipboardSettings::MimeSettings> settings {
         {io::IoRegistry::instance().serializer_from_slug("glaxnimate"), true, QIcon(GlaxnimateApp::instance()->data_file("images/logo.svg"))},
         {io::IoRegistry::instance().serializer_from_slug("svg"),        true, QIcon::fromTheme("image-svg+xml")},
         {io::IoRegistry::instance().serializer_from_slug("raster"),     true, QIcon::fromTheme("image-png")},
@@ -28,12 +28,12 @@ static std::vector<settings::ClipboardSettings::MimeSettings>& mutable_mime_type
     return settings;
 }
 
-const std::vector<settings::ClipboardSettings::MimeSettings>& settings::ClipboardSettings::mime_types()
+const std::vector<gui::settings::ClipboardSettings::MimeSettings>& gui::settings::ClipboardSettings::mime_types()
 {
     return mutable_mime_types();
 }
 
-void settings::ClipboardSettings::load(KConfig & settings)
+void gui::settings::ClipboardSettings::load(KConfig & settings)
 {
     auto group = settings.group(slug());
     for ( auto& set : mutable_mime_types() )
@@ -41,7 +41,7 @@ void settings::ClipboardSettings::load(KConfig & settings)
             set.enabled = group.readEntry(set.serializer->slug(), set.enabled);
 }
 
-void settings::ClipboardSettings::save(KConfig & settings)
+void gui::settings::ClipboardSettings::save(KConfig & settings)
 {
     auto group = settings.group(slug());
     for ( auto& set : mutable_mime_types() )
@@ -49,7 +49,7 @@ void settings::ClipboardSettings::save(KConfig & settings)
             group.writeEntry(set.serializer->slug(), set.enabled);
 }
 
-QWidget * settings::ClipboardSettings::make_widget(QWidget* parent)
+QWidget * gui::settings::ClipboardSettings::make_widget(QWidget* parent)
 {
     QWidget* wid = new QWidget(parent);
     QVBoxLayout* lay = new QVBoxLayout(wid);

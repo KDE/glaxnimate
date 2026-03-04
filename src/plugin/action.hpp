@@ -65,8 +65,7 @@ public:
     QString icon;
     PluginScript script;
 
-public Q_SLOTS:
-    void trigger() const;
+    void trigger(const QVariantMap& settings_value) const;
 
 Q_SIGNALS:
     void disabled();

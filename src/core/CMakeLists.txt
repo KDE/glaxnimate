@@ -106,6 +106,8 @@ glaxnimate/model/shapes/zig_zag.cpp
 
 glaxnimate/renderer/renderer.cpp
 
+glaxnimate/settings/settings_group.cpp
+
 glaxnimate/utils/gzip.cpp
 glaxnimate/utils/data_paths.cpp
 )
