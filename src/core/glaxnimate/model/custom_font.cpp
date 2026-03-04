@@ -11,7 +11,7 @@
 #include <QFontDatabase>
 #include <QCryptographicHash>
 
-#include "app/utils/qbytearray_hash.hpp"
+#include "glaxnimate/utils/qbytearray_hash.hpp"
 
 
 glaxnimate::model::FontFileFormat glaxnimate::model::CustomFontDatabase::font_data_format(const QByteArray& data)

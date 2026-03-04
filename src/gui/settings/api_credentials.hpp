@@ -10,7 +10,7 @@
 #include <QUrl>
 #include <KLocalizedString>
 
-#include "app/utils/qstring_hash.hpp"
+#include "glaxnimate/utils/qstring_hash.hpp"
 #include "settings/custom_settings_group.hpp"
 
 

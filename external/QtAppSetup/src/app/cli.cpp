@@ -12,8 +12,6 @@
 #include <QSize>
 #include <QApplication>
 
-#include "utils/string_view.hpp"
-
 QString app::cli::Argument::get_slug(const QStringList& names)
 {
     if ( names.empty() )
@@ -52,7 +50,7 @@ QVariant app::cli::Argument::arg_to_value(const QString& v, bool* ok) const
                 return {};
             }
 
-            auto vec = utils::split_ref(v, 'x');
+            auto vec = QStringView{v}.split('x');
             if ( vec.size() != 2 )
             {
                 *ok = false;
@@ -361,7 +359,7 @@ QString app::cli::Parser::wrap_text(const QString& names, int name_max, const QS
         if (breakAt != -1) {
             const int numChars = breakAt - lineStart;
             text += indentation + nextNameSection().leftJustified(name_max) + QLatin1Char(' ');
-            text += utils::mid_ref(description, lineStart, numChars);
+            text += QStringView{description}.mid(lineStart, numChars);
             text += '\n';
             x = 0;
             lastBreakable = -1;

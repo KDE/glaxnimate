@@ -6,7 +6,7 @@
 
 #pragma once
 #include "glaxnimate/io/rive/type_def.hpp"
-#include "app/utils/qstring_hash.hpp"
+#include "glaxnimate/utils/qstring_hash.hpp"
 
 namespace glaxnimate::io::rive {
 

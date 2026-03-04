@@ -25,7 +25,6 @@
 #include "glaxnimate/model/assets/named_color.hpp"
 
 #include "glaxnimate/math/math.hpp"
-#include "app/utils/string_view.hpp"
 
 #include "glaxnimate/io/svg/path_parser.hpp"
 #include "glaxnimate/io/svg/animate_parser.hpp"
@@ -276,11 +275,11 @@ protected:
 
     std::vector<qreal> double_args(const QString& str)
     {
-        auto args_s = ::utils::split_ref(str, AnimateParser::separator, Qt::SkipEmptyParts);
+        auto args_s = QStringView{str}.split(AnimateParser::separator, Qt::SkipEmptyParts);
         std::vector<qreal> args;
         args.reserve(args_s.size());
         std::transform(args_s.begin(), args_s.end(), std::back_inserter(args),
-                        [](const ::utils::StringView& s){ return s.toDouble(); });
+                        [](const QStringView& s){ return s.toDouble(); });
         return args;
     }
 
@@ -288,7 +287,7 @@ protected:
     static double percent_1(const QString& s)
     {
         if ( s.contains('%') )
-            return ::utils::mid_ref(s, 0, s.size()-1).toDouble() / 100;
+            return QStringView{s}.mid(0, s.size()-1).toDouble() / 100;
         return s.toDouble();
     }
 

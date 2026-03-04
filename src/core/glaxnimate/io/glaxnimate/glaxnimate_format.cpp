@@ -12,7 +12,6 @@
 #include "glaxnimate/app_info.hpp"
 #include "glaxnimate/math/bezier/bezier.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
-#include "app/utils/string_view.hpp"
 
 using namespace glaxnimate;
 
@@ -250,7 +249,7 @@ QJsonValue io::glaxnimate::GlaxnimateFormat::to_json ( const QVariant& value )
             auto v = value.value<QColor>();
             QString col = v.name();
             if ( v.alpha() != 255 )
-                col += ::utils::right_ref(QString::number(v.alpha()|0x100, 16), 2);
+                col += QStringView(QString::number(v.alpha()|0x100, 16)).right(2);
             return col;
         }
     }

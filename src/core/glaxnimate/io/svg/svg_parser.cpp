@@ -387,7 +387,7 @@ private:
         {
             for ( const auto& item : element.attribute("style").split(';') )
             {
-                auto split = ::utils::split_ref(item, ':');
+                auto split = QStringView{item}.split(':');
                 if ( split.size() == 2 )
                 {
                     QString name = split[0].trimmed().toString();
@@ -1492,7 +1492,7 @@ void glaxnimate::io::svg::SvgParser::parse_to_document()
 
 static qreal hex(const QString& s, int start, int size)
 {
-    return utils::mid_ref(s, start, size).toInt(nullptr, 16) / (size == 2 ? 255.0 : 15.0);
+    return QStringView{s}.mid(start, size).toInt(nullptr, 16) / (size == 2 ? 255.0 : 15.0);
 }
 
 QColor glaxnimate::io::svg::parse_color(const QString& string)

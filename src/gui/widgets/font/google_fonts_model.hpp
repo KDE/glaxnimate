@@ -14,7 +14,7 @@
 #include <QUrl>
 #include <QRawFont>
 
-#include "app/utils/qstring_hash.hpp"
+#include "glaxnimate/utils/qstring_hash.hpp"
 #include "glaxnimate/model/assets/embedded_font.hpp"
 
 

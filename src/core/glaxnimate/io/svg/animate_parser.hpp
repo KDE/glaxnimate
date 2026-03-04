@@ -15,7 +15,6 @@
 #include "glaxnimate/model/animation/frame_time.hpp"
 #include "glaxnimate/model/animation/join_animatables.hpp"
 #include "glaxnimate/math/bezier/bezier.hpp"
-#include "app/utils/string_view.hpp"
 
 #include "glaxnimate/io/svg/path_parser.hpp"
 #include "glaxnimate/io/svg/detail.hpp"
@@ -97,7 +96,7 @@ public:
             return {};
         }
 
-        auto split = ::utils::split_ref(v, separator, Qt::SkipEmptyParts );
+        auto split = QStringView{v}.split(separator, Qt::SkipEmptyParts );
         std::vector<qreal> values;
         values.reserve(split.size());
         for ( const auto& r : split )
