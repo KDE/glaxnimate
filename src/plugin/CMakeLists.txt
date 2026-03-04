@@ -12,7 +12,6 @@ add_library(GlaxnimatePlugin OBJECT ${SOURCES})
 add_library(Glaxnimate::Plugin ALIAS GlaxnimatePlugin)
 
 
-option(GLAXNIMATE_PYTHON_ENABLED "Enable Python scripting" ON)
 if(GLAXNIMATE_PYTHON_ENABLED)
     find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
     message(STATUS "Python3 enabled")
@@ -24,8 +23,7 @@ if(GLAXNIMATE_PYTHON_ENABLED)
     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../external/pybind11/include)
     add_compile_definitions(GLAXNIMATE_PYTHON_ENABLED)
     add_subdirectory(python)
-    target_link_libraries(GlaxnimatePlugin PUBLIC ${GLAXNIMATE_PYTHON_LIBS})
-    target_sources(GlaxnimatePlugin PRIVATE ${GLAXNIMATE_PYTHON_SOURCES})
+    # target_sources(GlaxnimatePlugin PRIVATE ${GLAXNIMATE_PYTHON_SOURCES})
 endif()
 
 target_link_libraries(

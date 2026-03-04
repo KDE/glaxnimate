@@ -206,7 +206,7 @@ static void gl_version(KAboutData& aboutData)
 #endif
 
 #ifdef GLAXNIMATE_PYTHON_ENABLED
-#   include "plugin/python/python_engine.hpp"
+#   include "gui_python/python_engine.hpp"
 #endif
 
 void GlaxnimateApp::init_qapplication()

@@ -21,6 +21,7 @@
 #include "glaxnimate/log/log.hpp"
 #include "glaxnimate/math/bezier/bezier.hpp"
 #include "glaxnimate/app_info.hpp"
+#include "glaxnimate/io/io_registry.hpp"
 #include "trace/trace.hpp"
 #include "trace/quantize.hpp"
 
@@ -391,6 +392,7 @@ public:
             QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
             app = std::make_unique<QGuiApplication>(fake_argc, (char**)fake_argv);
             // glaxnimate::gui::GlaxnimateApp::init_qapplication();
+            glaxnimate::io::IoRegistry::load_formats();
         }
     }
 

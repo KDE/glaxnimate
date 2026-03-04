@@ -13,7 +13,7 @@ namespace glaxnimate::utils {
 
 using LazyLocalizedString = KLazyLocalizedString;
 
-} // namespace glaxnimate::util
+} // namespace glaxnimate::utils
 
 #else
 
@@ -44,7 +44,7 @@ QString i18n(Initializer&& init, Args&&... args)
 
 #define kli18n(x) x
 
-namespace glaxnimate::util {
+namespace glaxnimate::utils {
 
 class LazyLocalizedString
 {

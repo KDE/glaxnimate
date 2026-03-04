@@ -7,26 +7,28 @@ set(SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/register_machinery.cpp
 )
 
-set(GLAXNIMATE_PYTHON_SOURCES
-    ${SOURCES}
+set(LIB_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/embed.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/python_engine.cpp
-    PARENT_SCOPE
 )
-set(GLAXNIMATE_PYTHON_LIBS ${Python3_LIBRARIES} PARENT_SCOPE)
+
 
 
 message(STATUS "Python3_INCLUDE_DIRS ${Python3_INCLUDE_DIRS}")
 message(STATUS "Python3_LIBRARIES ${Python3_LIBRARIES}")
 message(STATUS "Python3_EXECUTABLE ${Python3_EXECUTABLE}")
 
+
+include_directories(${Python3_INCLUDE_DIRS})
+add_library(GlaxnimatePythonEmbed OBJECT ${SOURCES} embed.cpp)
+target_link_libraries(GlaxnimatePythonEmbed PUBLIC ${Python3_LIBRARIES} Glaxnimate::Core Glaxnimate::Plugin Glaxnimate::Trace)
+
 pybind11_add_module(glaxnimate_python EXCLUDE_FROM_ALL ${SOURCES} module.cpp)
+target_link_libraries(glaxnimate_python PUBLIC ${Python3_LIBRARIES} Glaxnimate::Core Glaxnimate::Plugin Glaxnimate::Trace)
 set_target_properties(
     glaxnimate_python PROPERTIES
     OUTPUT_NAME ${PROJECT_SLUG}
     LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/build/lib"
 )
-target_link_libraries(glaxnimate_python PUBLIC Glaxnimate::Core Glaxnimate::Plugin Glaxnimate::Trace ${Python3_LIBRARIES})
 add_custom_command(TARGET glaxnimate_python PRE_BUILD COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_BINARY_DIR}/build/lib")
 
 

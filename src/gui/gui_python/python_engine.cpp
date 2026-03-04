@@ -6,7 +6,7 @@
 
 #include "python_engine.hpp"
 
-#include "register_machinery.hpp"
+#include "plugin/python/register_machinery.hpp"
 #include "glaxnimate/log/log.hpp"
 #include "cli_utils/env.hpp"
 

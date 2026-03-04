@@ -223,7 +223,8 @@ endif()
 
 if ( GLAXNIMATE_PYTHON_ENABLED )
     list(APPEND SOURCES
-        gui_python.cpp
+        gui_python/gui_python.cpp
+        gui_python/python_engine.cpp
         widgets/docks/script_console.cpp
         widgets/docks/snippet_list_widget.cpp
     )
@@ -285,5 +286,12 @@ if ( NOT ANDROID )
         GlaxnimateGui PUBLIC
         KF${KF_MAJOR}::Crash
         Glaxnimate::Trace
+    )
+endif()
+
+if ( GLAXNIMATE_PYTHON_ENABLED )
+    target_link_libraries(
+        GlaxnimateGui PUBLIC
+        GlaxnimatePythonEmbed
     )
 endif()

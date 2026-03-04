@@ -20,7 +20,7 @@
 #include <KIconTheme>
 
 #include "cli_utils/env.hpp"
-#include "plugin/python/python_engine.hpp"
+#include "gui_python/python_engine.hpp"
 #include "glaxnimate/log/log.hpp"
 
 #include "cli.hpp"
