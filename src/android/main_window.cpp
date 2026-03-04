@@ -37,6 +37,7 @@
 #include "emoji/emoji_set.hpp"
 #include "widgets/canvas.hpp"
 #include "widgets/render_widget.hpp"
+#include "widgets/tools/shape_tool_widget.hpp"
 
 
 #include "android_file_picker.hpp"
@@ -299,7 +300,7 @@ public:
 
         if ( active_tool )
         {
-            if ( auto widget = qobject_cast<ToolWidgetBase*>(active_tool->get_settings_widget()) )
+            if ( auto widget = qobject_cast<gui::ToolWidgetBase*>(active_tool->get_settings_widget()) )
                 widget->save_settings();
         }
 

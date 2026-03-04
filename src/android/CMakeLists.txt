@@ -41,6 +41,8 @@ kde_target_enable_exceptions(${PROJECT_SLUG}_mobile PUBLIC)
 target_link_libraries(${PROJECT_SLUG}_mobile PUBLIC
     Glaxnimate::Core
     Glaxnimate::Gui
+    Glaxnimate::Plugin
+    Glaxnimate::Trace
     QtColorWidgets
     #QtHistoryLineEdit
     Qt${QT_VERSION_MAJOR}::Core

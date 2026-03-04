@@ -6,9 +6,8 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/gui/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 add_subdirectory(core)
-if ( NOT ANDROID )
-    add_subdirectory(trace)
-else()
+add_subdirectory(trace)
+if ( ANDROID )
     set(GLAXNIMATE_PYTHON_ENABLED OFF)
 endif()
 
@@ -27,9 +26,7 @@ else()
     if ( GLAXNIMATE_PYTHON_ENABLED )
         target_link_libraries(${PROJECT_SLUG} GlaxnimatePythonEmbed)
     endif()
-    if ( NOT ANDROID )
-        target_link_libraries(${PROJECT_SLUG} Glaxnimate::Trace)
-    endif()
+    target_link_libraries(${PROJECT_SLUG} Glaxnimate::Trace)
 
     install(TARGETS ${PROJECT_SLUG} DESTINATION bin)
 

@@ -221,6 +221,7 @@ if ( NOT MOBILE_UI )
     )
 endif()
 
+
 if ( GLAXNIMATE_PYTHON_ENABLED )
     list(APPEND SOURCES
         gui_python/gui_python.cpp
@@ -261,6 +262,7 @@ target_link_libraries(
     QtColorWidgets
     Glaxnimate::Core
     Glaxnimate::Plugin
+    Glaxnimate::Trace
     Qt${QT_MAJOR_VERSION}::Widgets
     Qt${QT_MAJOR_VERSION}::UiTools
     Qt${QT_MAJOR_VERSION}::Concurrent
@@ -285,7 +287,6 @@ if ( NOT ANDROID )
     target_link_libraries(
         GlaxnimateGui PUBLIC
         KF${KF_MAJOR}::Crash
-        Glaxnimate::Trace
     )
 endif()
 

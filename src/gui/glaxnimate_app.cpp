@@ -19,6 +19,7 @@
 #include "glaxnimate/utils/data_paths.hpp"
 #include "glaxnimate/log/log.hpp"
 #include "glaxnimate/app_info.hpp"
+#include "trace/trace.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
@@ -34,8 +35,8 @@ static qreal get_mult()
 #else
     auto sz = QApplication::primaryScreen()->size();
     return qMin(sz.width(), sz.height()) / 240.;
-}
 #endif
+}
 
 
 qreal GlaxnimateApp::handle_size_multiplier()
@@ -79,7 +80,6 @@ void GlaxnimateApp::on_initialize_settings()
 #include "settings/plugin_settings_group.hpp"
 #include "settings/clipboard_settings.hpp"
 #include "settings/api_credentials.hpp"
-#include "trace/trace.hpp"
 
 
 qreal GlaxnimateApp::handle_size_multiplier()
@@ -249,8 +249,9 @@ void GlaxnimateApp::init_qapplication()
     aboutData.addComponent(i18n("libav"), {}, io::video::VideoFormat::library_version(), QStringLiteral("https://libav.org/"), KAboutLicense::LGPL);
 #endif
 
-#ifndef Q_OS_ANDROID
     aboutData.addComponent(i18n("potrace"), i18n("Used by the bitmap tracing feature."), utils::trace::Tracer::potrace_version(), QStringLiteral("http://potrace.sourceforge.net/"), KAboutLicense::GPL_V2);
+
+#ifndef Q_OS_ANDROID
     aboutData.addComponent(i18n("Inkscape"), {}, {}, QStringLiteral("https://inkscape.org/"), KAboutLicense::GPL_V2);
 #endif
 #ifdef GLAXNIMATE_PYTHON_ENABLED
