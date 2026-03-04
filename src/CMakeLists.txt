@@ -9,10 +9,12 @@ add_subdirectory(core)
 if ( NOT ANDROID )
     add_subdirectory(trace)
 endif()
-add_subdirectory(plugin)
-add_subdirectory(gui)
 
 option(GLAXNIMATE_PYTHON_ENABLED "Enable Python scripting" ON)
+add_subdirectory(plugin)
+
+add_subdirectory(gui)
+
 if ( MOBILE_UI )
     add_subdirectory(android)
 else()
