@@ -15,7 +15,7 @@
 #include <QNetworkReply>
 #include <QImageReader>
 
-#include "app/log/log.hpp"
+#include "glaxnimate/log/log.hpp"
 #include "search_result.hpp"
 #include "graphql.hpp"
 
@@ -181,7 +181,7 @@ public:
             for ( const auto& errv : response["errors"].toArray() )
             {
                 auto err = errv.toObject();
-                auto stream = app::log::Log("lottiefiles", "graphql").stream(app::log::Warning);
+                auto stream = log::Log("lottiefiles", "graphql").stream(log::Warning);
                 stream << err["message"].toString();
                 if ( err.contains("locations") )
                 {
@@ -205,7 +205,7 @@ public:
                 {
                     auto reason = reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
                     auto msg = i18n("HTTP Error %1: %2", code.toInt(), reason);
-                    app::log::Log("lottiefiles", "http").stream(app::log::Warning) << reply->url().toString() << msg;
+                    log::Log("lottiefiles", "http").stream(log::Warning) << reply->url().toString() << msg;
                     on_error(msg);
                 }
                 else

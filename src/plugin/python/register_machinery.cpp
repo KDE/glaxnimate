@@ -21,7 +21,7 @@
 #include <QTime>
 #include <QGradient>
 
-#include "app/log/log.hpp"
+#include "glaxnimate/log/log.hpp"
 
 
 namespace glaxnimate::plugin::python {
@@ -236,7 +236,7 @@ PyPropertyInfo register_property(const QMetaProperty& prop, const QMetaObject& m
 
     PyPropertyInfo pyprop = type_dispatch<RegisterProperty, PyPropertyInfo>(prop.userType(), prop);
     if ( !pyprop.name )
-        app::log::LogStream("Python", "", app::log::Error) << "Invalid property" << meta.className() << "::" << prop.name() << "of type" << prop.userType() << prop.typeName();
+        log::LogStream("Python", "", log::Error) << "Invalid property" << meta.className() << "::" << prop.name() << "of type" << prop.userType() << prop.typeName();
     return pyprop;
 }
 
@@ -414,7 +414,7 @@ struct RegisterMethod
             if ( meth.parameterType(i) == QMetaType::UnknownType )
             {
                 auto cls = py::str(handle.attr("__name__"));
-                app::log::LogStream("Python", "", app::log::Error)
+                log::LogStream("Python", "", log::Error)
                     << "Invalid parameter" << QString::fromStdString(cls) << "::" << meth.name()
                     << i << names[i]
                     << "of type" << meth.parameterType(i) << types[i];
@@ -482,13 +482,13 @@ PyMethodInfo register_method(const QMetaMethod& meth, py::handle& handle, const 
 
     if ( meth.parameterCount() > 9 )
     {
-        app::log::LogStream("Python", "", app::log::Error) << "Too many arguments for method " << cls.className() << "::" << meth.name() << ": " << meth.parameterCount();
+        log::LogStream("Python", "", log::Error) << "Too many arguments for method " << cls.className() << "::" << meth.name() << ": " << meth.parameterCount();
         return {};
     }
 
     PyMethodInfo pymeth = type_dispatch_maybe_void<RegisterMethod, PyMethodInfo>(meth.returnType(), meth, handle);
     if ( !pymeth.name )
-        app::log::LogStream("Python", "", app::log::Error) << "Invalid method" << cls.className() << "::" << meth.name() << "return type" << meth.returnType() << meth.typeName();
+        log::LogStream("Python", "", log::Error) << "Invalid method" << cls.className() << "::" << meth.name() << "return type" << meth.returnType() << meth.typeName();
     return pymeth;
 
 }

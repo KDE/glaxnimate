@@ -32,7 +32,7 @@ protected:
     void closeEvent(QCloseEvent* ev) override;
 
 private:
-    void _on_error(const QString& message, app::log::Severity severity);
+    void _on_error(const QString& message, log::Severity severity);
     void _on_progress_max_changed(int max);
     void _on_progress(int value);
     void _on_completed(bool success);

@@ -10,9 +10,11 @@
 #include <memory>
 #include <QWidget>
 
+#include "shape_tool_widget.hpp"
+
 namespace glaxnimate::gui {
 
-class ColorPickerWidget : public QWidget
+class ColorPickerWidget : public ToolWidgetBase
 {
     Q_OBJECT
 

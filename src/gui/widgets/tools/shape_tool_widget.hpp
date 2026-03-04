@@ -13,7 +13,17 @@
 
 namespace glaxnimate::gui {
 
-class ShapeToolWidget : public QWidget
+class ToolWidgetBase : public QWidget
+{
+    Q_OBJECT
+
+public:
+    using QWidget::QWidget;
+
+    virtual void save_settings() {}
+};
+
+class ShapeToolWidget : public ToolWidgetBase
 {
     Q_OBJECT
 
@@ -25,12 +35,11 @@ public:
     bool create_fill() const;
     bool create_stroke() const;
     bool create_layer() const;
+    void save_settings() override;
 
 private Q_SLOTS:
     void check_checks();
 
-protected Q_SLOTS:
-    void save_settings();
 
 Q_SIGNALS:
     void checks_changed();

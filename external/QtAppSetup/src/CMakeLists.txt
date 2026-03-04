@@ -3,11 +3,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 set(SOURCES
-app/application.cpp
 app/settings/settings_group.cpp
-app/settings/settings.cpp
-app/log/logger.cpp
-app/log/log_model.cpp
+# app/settings/settings.cpp
 app/cli.cpp
 )
 

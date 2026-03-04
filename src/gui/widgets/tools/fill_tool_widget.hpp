@@ -8,11 +8,11 @@
 #define FILLTOOLWIDGET_H
 
 #include <memory>
-#include <QWidget>
+#include "shape_tool_widget.hpp"
 
 namespace glaxnimate::gui {
 
-class FillToolWidget : public QWidget
+class FillToolWidget : public ToolWidgetBase
 {
     Q_OBJECT
 

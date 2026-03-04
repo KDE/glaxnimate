@@ -7,7 +7,6 @@
 #include "color_selector.hpp"
 #include "ui_color_selector.h"
 
-#include "app/application.hpp"
 #include "glaxnimate_settings.hpp"
 
 #include "glaxnimate/model/assets/named_color.hpp"

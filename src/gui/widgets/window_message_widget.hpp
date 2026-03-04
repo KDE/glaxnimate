@@ -11,7 +11,7 @@
 #include <QAction>
 #include <memory>
 
-#include "app/log/log_line.hpp"
+#include "glaxnimate/log/log_line.hpp"
 
 namespace glaxnimate::gui {
 

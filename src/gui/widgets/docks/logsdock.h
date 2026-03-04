@@ -6,7 +6,7 @@
 
 # pragma once
 
-#include "app/log/log_model.hpp"
+#include "item_models/log_model.hpp"
 #include "widgets/dialogs/glaxnimate_window.hpp"
 #include <QDockWidget>
 #include <QObject>
@@ -18,7 +18,7 @@ class LogsDock : public QDockWidget
     Q_OBJECT
 
 public:
-    LogsDock(GlaxnimateWindow* parent, app::log::LogModel *logModel);
+    LogsDock(GlaxnimateWindow* parent, LogModel *logModel);
 
     ~LogsDock();
 

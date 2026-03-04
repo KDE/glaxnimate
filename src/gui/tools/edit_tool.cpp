@@ -16,8 +16,6 @@
 
 #include <KLocalizedString>
 
-#include "app/application.hpp"
-
 #include "glaxnimate/math/bezier/operations.hpp"
 #include "glaxnimate/math/bezier/cubic_struts.hpp"
 #include "glaxnimate/model/shapes/shape.hpp"
@@ -36,6 +34,7 @@
 #include "graphics/graphics_editor.hpp"
 #include "graphics/gradient_editor.hpp"
 #include "handle_menu.hpp"
+#include "widgets/tools/shape_tool_widget.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
@@ -872,9 +871,9 @@ void tools::EditTool::disable_event(const Event&)
     d->active_scene = nullptr;
 }
 
-QWidget* tools::EditTool::on_create_widget()
+glaxnimate::gui::ToolWidgetBase* tools::EditTool::on_create_widget()
 {
-    return new QWidget();
+    return new ToolWidgetBase();
 }
 
 void tools::EditTool::selection_set_vertex_type(math::bezier::PointType t)

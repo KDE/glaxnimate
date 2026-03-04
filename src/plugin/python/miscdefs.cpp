@@ -18,7 +18,7 @@
 #include <QSaveFile>
 #include <QGuiApplication>
 
-#include "app/log/log.hpp"
+#include "glaxnimate/log/log.hpp"
 #include "glaxnimate/math/bezier/bezier.hpp"
 #include "glaxnimate/app_info.hpp"
 #include "glaxnimate/utils/trace.hpp"
@@ -375,9 +375,9 @@ py::module define_detail(py::module& parent)
 void define_log(py::module& m)
 {
     py::module log = m.def_submodule("log", "Logging utilities");
-    log.def("info", [](const QString& msg){ app::log::Log("Python").log(msg, app::log::Info); });
-    log.def("warning", [](const QString& msg){ app::log::Log("Python").log(msg, app::log::Warning); });
-    log.def("error", [](const QString& msg){ app::log::Log("Python").log(msg, app::log::Error); });
+    log.def("info", [](const QString& msg){ log::Log("Python").log(msg, log::Info); });
+    log.def("warning", [](const QString& msg){ log::Log("Python").log(msg, log::Warning); });
+    log.def("error", [](const QString& msg){ log::Log("Python").log(msg, log::Error); });
 }
 
 

@@ -80,6 +80,12 @@
         <entry name="script_history" type="StringList"></entry>
     </group>
     <group name="tools">
+        <entry name="shape_layer" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="shape_raw_shape" type="Bool">
+            <default>false</default>
+        </entry>
         <entry name="shape_group" type="Bool">
             <default>true</default>
         </entry>
@@ -131,5 +137,41 @@
         <entry name="text_size" type="Double">
             <default code="true">QFontInfo(QFont()).pointSizeF()</default>
         </entry>
+    </group>
+    <group name="trace">
+        <entry name="trace_tolerance" type="Int">
+            <default>10</default>
+        </entry>
+        <entry name="trace_outline" type="Double">
+            <default>0.5</default>
+        </entry>
+        <entry name="trace_smoothness" type="Double">
+            <default>5</default>
+        </entry>
+        <entry name="trace_alpha_threshold" type="Int">
+            <default>255</default>
+        </entry>
+        <entry name="trace_min_area" type="Int">
+            <default>0</default>
+        </entry>
+        <entry name="trace_posterize" type="Int">
+            <default>16</default>
+        </entry>
+        <entry name="trace_advanced" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="quantize_algo" type="Int">
+            <default>2</default>
+        </entry>
+        <entry name="quantize_means_iterations" type="Int">
+            <default>100</default>
+        </entry>
+        <entry name="quantize_means_match" type="Int">
+            <default>1</default>
+        </entry>
+        <entry name="quantize_eem_min_frequency" type="Double">
+            <default>0.05</default>
+        </entry>
+
     </group>
 </kcfg>

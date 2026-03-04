@@ -210,7 +210,7 @@ bool GlaxnimateWindow::Private::setup_document_open(QIODevice* file, const io::O
     {
         current_document_has_file = true;
 
-        app::settings::set<QString>("open_save", "path", options.path.absolutePath());
+        GlaxnimateSettings::setPath(options.path.absolutePath());
 
         if ( ok && !autosave_load )
             push_recent_file(QUrl::fromLocalFile(options.filename));
@@ -403,7 +403,7 @@ bool GlaxnimateWindow::Private::save_document(bool force_dialog, bool export_opt
             push_recent_file(QUrl::fromLocalFile(opts.filename));
         current_document->undo_stack().setClean();
         current_document_has_file = true;
-        app::settings::set<QString>("open_save", "path", opts.path.absolutePath());
+        GlaxnimateSettings::setPath(opts.path.absolutePath());
         current_document->set_io_options(opts);
 
         if ( !export_opts && !export_options.format )
@@ -907,7 +907,7 @@ void glaxnimate::gui::GlaxnimateWindow::Private::load_pending()
     font_loader->setParent(current_document.get());
     connect(
         font_loader, &gui::font::FontLoader::error, parent,
-        [](const QString& msg){ app::log::Log("Font Loader").log(msg); }
+        [](const QString& msg){ log::Log("Font Loader").log(msg); }
     );
     font_loader->queue_pending(current_document.get());
     connect(

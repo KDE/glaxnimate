@@ -7,7 +7,7 @@
 #include "python_engine.hpp"
 
 #include "register_machinery.hpp"
-#include "app/log/log.hpp"
+#include "glaxnimate/log/log.hpp"
 #include "app/env.hpp"
 
 using namespace glaxnimate;
@@ -46,7 +46,7 @@ public:
             this->owner = owner;
             this->signal = signal;
         } catch ( const py::error_already_set& pyexc ) {
-            app::log::Log("Python").stream(app::log::Error)
+            log::Log("Python").stream(log::Error)
                 << "Could not initialize stream capture:" << pyexc.what();
         }
     }
@@ -205,7 +205,7 @@ void plugin::python::PythonContext::app_module ( const QString& name )
         d->my_modules.push_back(py::module::import(cname));
         d->globals[cname] = d->my_modules.back();
     } catch ( const py::error_already_set& pyexc ) {
-        app::log::Log("Python", name).log(pyexc.what(), app::log::Error);
+        log::Log("Python", name).log(pyexc.what(), log::Error);
     }
 }
 

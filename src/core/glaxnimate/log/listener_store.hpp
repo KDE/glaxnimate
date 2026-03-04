@@ -6,9 +6,9 @@
 
 #pragma once
 
-#include "app/log/logger.hpp"
+#include "glaxnimate/log/logger.hpp"
 
-namespace app::log {
+namespace glaxnimate::log {
 
 class ListenerStore: public LogListener
 {
@@ -28,5 +28,5 @@ private:
     std::vector<LogLine> lines_;
 };
 
-} // namespace app::log
+} // namespace glaxnimate::log
 

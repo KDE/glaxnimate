@@ -8,7 +8,7 @@
 #include "shape_tool_widget.hpp"
 #include "ui_shape_tool_widget.h"
 
-#include "app/settings/widget.hpp"
+#include "glaxnimate_settings.hpp"
 
 class glaxnimate::gui::ShapeToolWidget::Private
 {
@@ -18,14 +18,24 @@ public:
 
     void load_settings()
     {
-        settings.define();
+        ui.check_group->setChecked(GlaxnimateSettings::shape_group());
+        ui.check_layer->setChecked(GlaxnimateSettings::shape_layer());
+        ui.check_raw_shape->setChecked(GlaxnimateSettings::shape_raw_shape());
+        ui.check_fill->setChecked(GlaxnimateSettings::shape_fill());
+        ui.check_stroke->setChecked(GlaxnimateSettings::shape_stroke());
+
         check_checks();
         on_load_settings();
     }
 
     void save_settings()
     {
-        settings.save();
+        GlaxnimateSettings::setShape_group(ui.check_group->isChecked());
+        GlaxnimateSettings::setShape_layer(ui.check_layer->isChecked());
+        GlaxnimateSettings::setShape_raw_shape(ui.check_raw_shape->isChecked());
+        GlaxnimateSettings::setShape_fill(ui.check_fill->isChecked());
+        GlaxnimateSettings::setShape_fill(ui.check_fill->isChecked());
+
         on_save_settings();
     }
 
@@ -57,11 +67,6 @@ public:
     void setup_ui(ShapeToolWidget* parent)
     {
         ui.setupUi(parent);
-        settings.add(ui.check_group, "tools", "shape_");
-        settings.add(ui.check_layer, "tools", "shape_");
-        settings.add(ui.check_raw_shape, "tools", "shape_");
-        settings.add(ui.check_fill, "tools", "shape_");
-        settings.add(ui.check_stroke, "tools", "shape_");
         on_setup_ui(parent, ui.layout);
     }
 
@@ -101,5 +106,4 @@ private:
     Ui::ShapeToolWidget ui;
     bool old_check_fill;
     bool old_check_stroke;
-    app::settings::WidgetSettingGroup settings;
 };

@@ -56,7 +56,7 @@ public:
     void disable_event(const Event& event) override { Q_UNUSED(event); }
 
 protected:
-    QWidget* on_create_widget() override
+    ToolWidgetBase* on_create_widget() override
     {
         return new ColorPickerWidget();
     }

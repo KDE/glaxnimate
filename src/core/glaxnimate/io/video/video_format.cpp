@@ -19,7 +19,7 @@ extern "C" {
 }
 
 #include "app/qstring_exception.hpp"
-#include "app/log/log.hpp"
+#include "glaxnimate/log/log.hpp"
 #include "glaxnimate/model/assets/composition.hpp"
 
 namespace glaxnimate::av {
@@ -591,12 +591,12 @@ private:
             }
             else if ( level == AV_LOG_WARNING )
             {
-                app::log::Log("libav").log(msg);
+                log::Log("libav").log(msg);
                 format->warning(msg);
             }
             else
             {
-                app::log::Log("libav").log(msg, app::log::Error);
+                log::Log("libav").log(msg, log::Error);
                 format->error(msg);
             }
         }

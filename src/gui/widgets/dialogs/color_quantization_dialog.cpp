@@ -10,8 +10,7 @@
 #include <QEvent>
 
 #include "glaxnimate/utils/quantize.hpp"
-
-#include "app/settings/widget.hpp"
+#include "glaxnimate_settings.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
@@ -20,7 +19,6 @@ class ColorQuantizationDialog::Private
 {
 public:
     Ui::ColorQuantizationDialog ui;
-    app::settings::WidgetSettingGroup settings;
 };
 
 ColorQuantizationDialog::ColorQuantizationDialog(QWidget* parent)
@@ -54,19 +52,24 @@ std::vector<QRgb> ColorQuantizationDialog::quantize(const QImage& image, int k) 
 
 void ColorQuantizationDialog::init_settings()
 {
-    d->settings.add(d->ui.combo_algo, "internal", "color_quantization_dialog_");
-    d->settings.add(d->ui.spin_means_iterations, "internal", "color_quantization_dialog_");
-    d->settings.add(d->ui.combo_means_match, "internal", "color_quantization_dialog_");
-    d->settings.add(d->ui.spin_eem_min_frequency, "internal", "color_quantization_dialog_");
-    d->settings.define();
+    d->ui.combo_algo->setCurrentIndex(GlaxnimateSettings::quantize_algo());
+    d->ui.spin_means_iterations->setValue(GlaxnimateSettings::quantize_means_iterations());
+    d->ui.combo_means_match->setCurrentIndex(GlaxnimateSettings::quantize_means_match());
+    d->ui.spin_eem_min_frequency->setValue(GlaxnimateSettings::quantize_eem_min_frequency());
 }
 
 void ColorQuantizationDialog::save_settings()
 {
-    d->settings.save();
+    GlaxnimateSettings::setQuantize_algo(d->ui.combo_algo->currentIndex());
+    GlaxnimateSettings::setQuantize_means_iterations(d->ui.spin_means_iterations->value());
+    GlaxnimateSettings::setQuantize_means_match(d->ui.combo_means_match->currentIndex());
+    GlaxnimateSettings::setQuantize_eem_min_frequency(d->ui.spin_eem_min_frequency->value());
 }
 
 void ColorQuantizationDialog::reset_settings()
 {
-    d->settings.reset();
+    d->ui.combo_algo->setCurrentIndex(GlaxnimateSettings::defaultQuantize_algoValue());
+    d->ui.spin_means_iterations->setValue(GlaxnimateSettings::defaultQuantize_means_iterationsValue());
+    d->ui.combo_means_match->setCurrentIndex(GlaxnimateSettings::defaultQuantize_means_matchValue());
+    d->ui.spin_eem_min_frequency->setValue(GlaxnimateSettings::defaultQuantize_eem_min_frequencyValue());
 }

@@ -10,7 +10,7 @@
 
 #include <QDir>
 
-#include "app/log/log.hpp"
+#include "glaxnimate/log/log.hpp"
 #include "plugin/service.hpp"
 
 namespace glaxnimate::plugin {
@@ -124,7 +124,7 @@ public:
 
     bool enabled() const { return enabled_; }
 
-    app::log::Log logger() const
+    log::Log logger() const
     {
         return {"Plugins", data_.name};
     }
@@ -178,7 +178,7 @@ private:
     std::vector<std::unique_ptr<Plugin>> plugins_;
     Executor* executor_ = nullptr;
     QMap<QString, int> names;
-    app::log::Log logger{"Plugins"};
+    log::Log logger{"Plugins"};
 };
 
 } // namespace glaxnimate::plugin

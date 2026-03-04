@@ -54,12 +54,12 @@ public:
     /**
      * \brief Load all settings
      */
-    void load();
+    void load(QSettings& settings);
 
     /**
      * \brief Save all settings
      */
-    void save();
+    void save(QSettings& settings);
 
     iterator begin() const { return groups_.begin(); }
     iterator end() const  { return groups_.end(); }

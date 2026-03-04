@@ -19,7 +19,7 @@ public:
 };
 
 ColorPickerWidget::ColorPickerWidget ( QWidget* parent )
-    : QWidget ( parent ), d ( std::make_unique<Private>() )
+    : ToolWidgetBase ( parent ), d ( std::make_unique<Private>() )
 {
     d->ui.setupUi ( this );
 }

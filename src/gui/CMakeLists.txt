@@ -24,6 +24,7 @@ item_models/property_model_full.cpp
 item_models/gradient_list_model.cpp
 item_models/document_model_base.cpp
 item_models/comp_filter_model.cpp
+item_models/log_model.cpp
 
 settings/clipboard_settings.cpp
 settings/icon_settings.cpp

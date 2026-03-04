@@ -9,9 +9,9 @@
 #include <QAbstractTableModel>
 #include <QIcon>
 
-#include "app/log/logger.hpp"
+#include "glaxnimate/log/logger.hpp"
 
-namespace app::log {
+namespace glaxnimate::gui {
 
 class LogModel : public QAbstractTableModel
 {
@@ -30,7 +30,7 @@ public:
 
     LogModel();
 
-    void populate(const std::vector<LogLine>& lines);
+    void populate(const std::vector<log::LogLine>& lines);
 
     int rowCount(const QModelIndex &) const override;
 
@@ -41,10 +41,10 @@ public:
     QVariant data(const QModelIndex & index, int role) const override;
 
 private Q_SLOTS:
-    void on_line(const LogLine& line);
+    void on_line(const log::LogLine& line);
 
 private:
-    std::vector<LogLine> lines;
+    std::vector<log::LogLine> lines;
 };
 
-} // namespace app::log
+} // namespace glaxnimate::gui

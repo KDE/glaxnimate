@@ -81,19 +81,19 @@ void IoStatusDialog::_on_completed(bool success)
     disconnect_import_export();
 }
 
-void IoStatusDialog::_on_error(const QString& message, app::log::Severity severity)
+void IoStatusDialog::_on_error(const QString& message, log::Severity severity)
 {
     d->group_box->show();
     QIcon icon;
     switch ( severity )
     {
-        case app::log::Info:
+        case log::Info:
             icon = QIcon::fromTheme("data-information");
             break;
-        case app::log::Warning:
+        case log::Warning:
             icon = QIcon::fromTheme("data-warning");
             break;
-        case app::log::Error:
+        case log::Error:
             icon = QIcon::fromTheme("data-error");
             break;
     }

@@ -50,7 +50,7 @@ void ShapeToolWidget::showEvent(QShowEvent* event)
 }
 
 ShapeToolWidget::ShapeToolWidget(std::unique_ptr<Private> dd, QWidget* parent)
-    : QWidget(parent), d(std::move(dd))
+    : ToolWidgetBase(parent), d(std::move(dd))
 {
     d->setup_ui(this);
     d->load_settings();

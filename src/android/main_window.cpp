@@ -296,6 +296,13 @@ public:
             action->setEnabled(true);
         }
 */
+
+        if ( active_tool )
+        {
+            if ( auto widget = qobject_cast<ToolWidgetBase*>(active_tool->get_settings_widget()) )
+                widget->save_settings();
+        }
+
         active_tool = tool;
         scene.set_active_tool(tool);
         canvas->set_active_tool(tool);

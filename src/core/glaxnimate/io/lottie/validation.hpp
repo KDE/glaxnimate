@@ -17,7 +17,7 @@ public:
     explicit ValidationVisitor(LottieFormat* fmt) : fmt(fmt) {}
 
 protected:
-    void show_error(model::DocumentNode * node, const QString& message, app::log::Severity severity)
+    void show_error(model::DocumentNode * node, const QString& message, log::Severity severity)
     {
         fmt->message(i18n("%1: %2", node->object_name(), message), severity);
     }

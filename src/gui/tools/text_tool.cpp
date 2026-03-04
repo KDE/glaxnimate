@@ -191,8 +191,7 @@ public:
         pen.setCosmetic(true);
         set_text_format(Qt::transparent, pen, item->font->line_spacing());
 
-        editor.setPos({});
-        update_editor_position();
+        editor.setPos({});update_editor_position();
 
         widget()->set_preview_text(target->text.get());
         show_keyboard();
@@ -221,7 +220,7 @@ public:
 #endif
     }
 
-    QWidget* on_create_widget() override
+    ToolWidgetBase* on_create_widget() override
     {
         auto widget = new TextToolWidget();
         connect(widget, &TextToolWidget::checks_changed, this, &TextTool::update_format);

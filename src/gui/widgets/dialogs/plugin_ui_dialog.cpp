@@ -10,9 +10,9 @@
 #include <QVBoxLayout>
 #include <QtUiTools/QUiLoader>
 #include <QDialogButtonBox>
+#include <QApplication>
 
-#include "app/log/log.hpp"
-#include "app/application.hpp"
+#include "glaxnimate/log/log.hpp"
 
 #include <QtColorWidgets/ColorSelector>
 #include <QtColorWidgets/color_2d_slider.hpp>
@@ -109,13 +109,13 @@ PluginUiDialog::PluginUiDialog(QIODevice& file, const plugin::Plugin& data, QWid
     ColoredUiLoader loader;
     loader.setWorkingDirectory(data.data().dir);
     loader.setLanguageChangeEnabled(true);
-    // for ( const auto& dir : app::Application::instance()->data_paths("lib") )
+    // for ( const auto& dir : utils::data_paths("lib") )
         // loader.addPluginPath(dir);
 
     QWidget* child = loader.load(&file, nullptr);
     if ( !child )
     {
-        data.logger().stream(app::log::Error) << "Could not load UI:" << loader.errorString();
+        data.logger().stream(log::Error) << "Could not load UI:" << loader.errorString();
         return;
     }
 

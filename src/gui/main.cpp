@@ -21,12 +21,13 @@
 
 #include "app/env.hpp"
 #include "plugin/python/python_engine.hpp"
-#include "app/log/log.hpp"
+#include "glaxnimate/log/log.hpp"
 
 #include "cli.hpp"
 #include "glaxnimate/app_info.hpp"
 #include "glaxnimate/io/io_registry.hpp"
 #include "glaxnimate/io/lottie/lottie_html_format.hpp"
+#include "glaxnimate/utils/data_paths.hpp"
 
 #include "widgets/dialogs/glaxnimate_window.hpp"
 #include "settings/icon_settings.hpp"
@@ -61,7 +62,7 @@ int main(int argc, char *argv[])
 
     gui::GlaxnimateApp::init_qapplication();
 
-    plugin::python::PythonEngine::add_module_search_paths(app.data_paths("lib/"));
+    plugin::python::PythonEngine::add_module_search_paths(utils::data_paths("lib/"));
 
     io::IoRegistry::load_formats();
 
@@ -81,7 +82,7 @@ int main(int argc, char *argv[])
         QDir binpath(QCoreApplication::applicationDirPath());
         binpath.cdUp();
         pyhome = binpath.absolutePath();
-        app::log::Log("Python").log("Setting PYTHONHOME to " + pyhome.get(), app::log::Info);
+        log::Log("Python").log("Setting PYTHONHOME to " + pyhome.get(), log::Info);
     }
 // #elif defined(Q_OS_MAC)
 //     auto pyhome = app::Environment::Variable("PYTHONHOME");
@@ -90,11 +91,11 @@ int main(int argc, char *argv[])
 //         QDir binpath(QCoreApplication::applicationDirPath());
 //         binpath.cdUp();
 //         pyhome = binpath.absolutePath();
-//         app::log::Log("Python").log("Setting PYTHONHOME to " + pyhome.get(), app::log::Info);
+//         log::Log("Python").log("Setting PYTHONHOME to " + pyhome.get(), log::Info);
 //     }
 #endif
 
-    qRegisterMetaType<app::log::Severity>();
+    qRegisterMetaType<log::Severity>();
 
     QSplashScreen sc;
     sc.setPixmap(QPixmap(":glaxnimate/splash.svg"));

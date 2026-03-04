@@ -867,7 +867,7 @@ private:
             case model::PropertyTraits::Gradient:
                 return val.toArray().toVariantList();
             default:
-                logger.stream(app::log::Error) << "Unsupported type" << prop->traits().type << "for" << property_error_string(prop);
+                logger.stream(log::Error) << "Unsupported type" << prop->traits().type << "for" << property_error_string(prop);
                 return {};
         }
     }
@@ -1206,7 +1206,7 @@ private:
     std::set<int> invalid_indices;
     std::vector<std::pair<model::Object*, QJsonObject>> deferred;
     model::Composition* composition = nullptr;
-    app::log::Log logger{"Lottie Import"};
+    log::Log logger{"Lottie Import"};
     QMap<QString, model::Bitmap*> bitmap_ids;
     QMap<QString, model::Composition*> precomp_ids;
     QMap<QString, FontInfo> fonts;

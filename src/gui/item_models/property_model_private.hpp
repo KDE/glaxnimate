@@ -14,7 +14,7 @@
 
 #include "glaxnimate/model/property/option_list_property.hpp"
 
-#include "app/application.hpp"
+#include "glaxnimate_app.hpp"
 
 #include "widgets/enum_combo.hpp"
 

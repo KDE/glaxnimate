@@ -5,15 +5,12 @@
  */
 
 #include "settings.hpp"
-#include "app/application.hpp"
 
 #include <set>
 #include <QSettings>
 
-void app::settings::Settings::load()
+void app::settings::Settings::load(QSettings& settings)
 {
-    QSettings settings = app::Application::instance()->qsettings();
-
     auto avail_groups = settings.childGroups();
     std::set<QString> unprocessed(avail_groups.begin(), avail_groups.end());
     avail_groups.clear();
@@ -27,10 +24,8 @@ void app::settings::Settings::load()
     }
 }
 
-void app::settings::Settings::save()
+void app::settings::Settings::save(QSettings& settings)
 {
-    QSettings settings = app::Application::instance()->qsettings();
-
     for ( const auto& group : groups_ )
     {
         settings.beginGroup(group->slug());

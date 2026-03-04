@@ -21,6 +21,9 @@
 #include "widgets/scalable_button.hpp"
 #include "widgets/dialogs/selection_manager.hpp"
 
+namespace glaxnimate::gui {
+    class ToolWidgetBase;
+} // namespace glaxnimate::gui
 namespace glaxnimate::gui::tools {
 
 struct Event
@@ -109,7 +112,7 @@ public:
      */
     ScalableButton* get_button();
 
-    QWidget* get_settings_widget();
+    ToolWidgetBase* get_settings_widget();
 
     /**
      * \pre get_action and get_button already called
@@ -146,7 +149,7 @@ protected:
     UnderMouse under_mouse(const MouseEvent& event, bool only_selectable, SelectionMode mode) const;
     graphics::MoveHandle* handle_under_mouse(const MouseEvent& event) const;
 
-    virtual QWidget* on_create_widget() = 0;
+    virtual ToolWidgetBase* on_create_widget() = 0;
     virtual void on_translate() {}
 
     QVariantMap settings_values;
@@ -161,7 +164,7 @@ Q_SIGNALS:
 private:
     QAction* action = nullptr;
     ScalableButton* button = nullptr;
-    QWidget* settings_widget = nullptr;
+    ToolWidgetBase* settings_widget = nullptr;
 
 //     friend Canvas;
 };

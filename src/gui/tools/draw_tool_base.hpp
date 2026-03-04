@@ -25,7 +25,7 @@ public:
     QCursor cursor() override { return Qt::CrossCursor; }
 
 protected:
-    QWidget* on_create_widget() override
+    ToolWidgetBase* on_create_widget() override
     {
         return new ShapeToolWidget();
     }

@@ -451,18 +451,18 @@ void GlaxnimateWindow::ipc_error(QLocalSocket::LocalSocketError socketError)
     auto name = d->ipc_socket? d->ipc_socket->serverName() : "???";
     switch (socketError) {
     case QLocalSocket::ServerNotFoundError:
-        app::log::Log("ipc").stream(app::log::Warning) << "IPC server not found:" << name;
+        log::Log("ipc").stream(log::Warning) << "IPC server not found:" << name;
         break;
     case QLocalSocket::ConnectionRefusedError:
-        app::log::Log("ipc").stream(app::log::Warning) << "IPC server refused connection:" << name;
+        log::Log("ipc").stream(log::Warning) << "IPC server refused connection:" << name;
         break;
     case QLocalSocket::PeerClosedError:
-        app::log::Log("ipc").stream(app::log::Info) << "IPC server closed the connection:" << name;
+        log::Log("ipc").stream(log::Info) << "IPC server closed the connection:" << name;
         d->ipc_socket.reset();
         d->ipc_memory.reset();
         break;
     default:
-        app::log::Log("ipc").stream(app::log::Warning) << "IPC error:" << d->ipc_socket->errorString();
+        log::Log("ipc").stream(log::Warning) << "IPC error:" << d->ipc_socket->errorString();
     }
 }
 
@@ -493,7 +493,7 @@ void GlaxnimateWindow::ipc_read()
         } else if (message == "bye") {
             d->ipc_socket->disconnectFromServer();
         } else {
-            app::log::Log("ipc").stream(app::log::Info) << "IPC server sent unknown command:" << message;
+            log::Log("ipc").stream(log::Info) << "IPC server sent unknown command:" << message;
         }
     }
 }

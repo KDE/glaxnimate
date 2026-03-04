@@ -6,7 +6,6 @@
 
 #include "logsdock.h"
 
-#include "app/log/log_model.hpp"
 #include "style/better_elide_delegate.hpp"
 #include "ui_logs.h"
 
@@ -18,7 +17,7 @@ public:
     ::Ui::dock_logs ui;
 };
 
-LogsDock::LogsDock(GlaxnimateWindow *parent, app::log::LogModel *logModel)
+LogsDock::LogsDock(GlaxnimateWindow *parent, LogModel *logModel)
     : QDockWidget(parent)
     , d(std::make_unique<Private>())
 {

@@ -12,7 +12,7 @@
 #include "glaxnimate/model/shapes/shape.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
 #include "glaxnimate/model/visitor.hpp"
-#include "app/log/log.hpp"
+#include "glaxnimate/log/log.hpp"
 
 using namespace glaxnimate;
 
@@ -139,7 +139,7 @@ io::mime::DeserializedData io::glaxnimate::GlaxnimateMime::deserialize(const QBy
         }
         else
         {
-            app::log::Log("I/O").stream() << "Could not deserialize " << obj->type_name();
+            log::Log("I/O").stream() << "Could not deserialize " << obj->type_name();
             delete obj;
             continue;
         }

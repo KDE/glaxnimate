@@ -11,7 +11,7 @@
 #include <QVBoxLayout>
 #include <QSpacerItem>
 
-#include "app/application.hpp"
+#include "glaxnimate_app.hpp"
 #include "glaxnimate/io/io_registry.hpp"
 
 using namespace glaxnimate::gui;
@@ -20,7 +20,7 @@ using namespace glaxnimate;
 static std::vector<settings::ClipboardSettings::MimeSettings>& mutable_mime_types()
 {
     static std::vector<settings::ClipboardSettings::MimeSettings> settings {
-        {io::IoRegistry::instance().serializer_from_slug("glaxnimate"), true, QIcon(app::Application::instance()->data_file("images/logo.svg"))},
+        {io::IoRegistry::instance().serializer_from_slug("glaxnimate"), true, QIcon(GlaxnimateApp::instance()->data_file("images/logo.svg"))},
         {io::IoRegistry::instance().serializer_from_slug("svg"),        true, QIcon::fromTheme("image-svg+xml")},
         {io::IoRegistry::instance().serializer_from_slug("raster"),     true, QIcon::fromTheme("image-png")},
         {io::IoRegistry::instance().serializer_from_slug("json"),       false, QIcon::fromTheme("application-json")},

@@ -9,7 +9,7 @@
 #include <QVBoxLayout>
 #include <QScrollBar>
 
-#include "app/application.hpp"
+#include "glaxnimate_app.hpp"
 
 using namespace glaxnimate;
 
@@ -64,7 +64,7 @@ public:
     BasicRenderWidget(QWidget* parent, glaxnimate::gui::RenderWidget::Private* d) :
         QWidget(parent), d(d)
     {
-        back.setTexture(QPixmap(app::Application::instance()->data_file("images/widgets/background.png")));
+        back.setTexture(QPixmap(glaxnimate::gui::GlaxnimateApp::instance()->data_file("images/widgets/background.png")));
     }
 
 protected:
@@ -132,7 +132,7 @@ public:
         QOpenGLWidget(parent), d(d)
     {
         setUpdatesEnabled(true);
-        back = QImage(app::Application::instance()->data_file("images/widgets/background.png")).convertedTo(QImage::Format_ARGB32_Premultiplied);
+        back = QImage(GlaxnimateApp::instance()->data_file("images/widgets/background.png")).convertedTo(QImage::Format_ARGB32_Premultiplied);
     }
 
     void* native_gl_context()

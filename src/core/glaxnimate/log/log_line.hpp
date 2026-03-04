@@ -10,7 +10,7 @@
 #include <QDateTime>
 #include <QMetaType>
 
-namespace app::log {
+namespace glaxnimate::log {
 
 enum Severity
 {
@@ -29,7 +29,7 @@ struct LogLine
 };
 
 
-} // namespace app::log
+} // namespace glaxnimate::log
 
-Q_DECLARE_METATYPE(app::log::LogLine)
-Q_DECLARE_METATYPE(app::log::Severity)
+Q_DECLARE_METATYPE(glaxnimate::log::LogLine)
+Q_DECLARE_METATYPE(glaxnimate::log::Severity)

@@ -6,7 +6,6 @@
 
 #include "gradientsdock.h"
 
-#include "app/log/log_model.hpp"
 #include "style/better_elide_delegate.hpp"
 #include "ui_gradients.h"
 

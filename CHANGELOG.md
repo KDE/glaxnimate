@@ -7,6 +7,8 @@
     * Timeline now allows to cycle through mask modes for layers
 * Misc
     * New rendering system
+* Bug Fixes:
+    * Fixed shape tools not remembering their own settings
 
 ## 0.6.0
 

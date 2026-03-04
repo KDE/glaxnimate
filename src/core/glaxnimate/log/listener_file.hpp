@@ -7,9 +7,9 @@
 #pragma once
 
 #include <QFile>
-#include "app/log/logger.hpp"
+#include "glaxnimate/log/logger.hpp"
 
-namespace app::log {
+namespace glaxnimate::log {
 
 class ListenerFile: public LogListener
 {
@@ -38,5 +38,5 @@ private:
     QFile file;
 };
 
-} // namespace app::log
+} // namespace glaxnimate::log
 

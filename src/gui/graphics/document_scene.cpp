@@ -9,7 +9,6 @@
 #include <QDebug>
 #include <set>
 
-#include "app/application.hpp"
 #include "graphics/document_node_graphics_item.hpp"
 #include "graphics/create_items.hpp"
 #include "graphics/graphics_editor.hpp"

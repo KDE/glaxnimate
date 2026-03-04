@@ -55,7 +55,7 @@ private:
     void enable_event(const Event&) override;
     void disable_event(const Event&) override;
 
-    QWidget* on_create_widget() override;
+    ToolWidgetBase* on_create_widget() override;
 
     void set_cursor(Qt::CursorShape shape);
 

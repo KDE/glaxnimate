@@ -204,11 +204,11 @@ QVariantMap io_settings(std::unique_ptr<app::settings::SettingsGroup> group)
     return vals;
 }
 
-void log_message(const QString& message, app::log::Severity severity)
+void log_message(const QString& message, glaxnimate::log::Severity severity)
 {
     app::cli::show_message(
         QStringLiteral("%1: %2")
-        .arg(app::log::Logger::severity_name(severity))
+        .arg(glaxnimate::log::Logger::severity_name(severity))
         .arg(message)
     );
 }
@@ -408,7 +408,7 @@ bool cli_render(const app::cli::ParsedArguments& args)
 
 void glaxnimate::gui::cli_main(gui::GlaxnimateApp& app, app::cli::ParsedArguments& args)
 {
-    app::log::Logger::instance().add_listener<app::log::ListenerStderr>();
+    log::Logger::instance().add_listener<log::ListenerStderr>();
 
     if ( args.has_flag("export-format-list") )
     {

@@ -78,9 +78,9 @@ protected:
 
     void on_load_settings() override
     {
-        combo->set_current_value(app::settings::get<int>("tools", "star_type", 0));
-        spin_ratio->setValue(app::settings::get<double>("tools", "star_ratio", 0.5));
-        spin_points->setValue(app::settings::get<int>("tools", "star_points", 5));
+        combo->set_current_value(GlaxnimateSettings::star_type());
+        spin_ratio->setValue(GlaxnimateSettings::star_ratio());
+        spin_points->setValue(GlaxnimateSettings::star_points());
     }
 
     void on_save_settings() override

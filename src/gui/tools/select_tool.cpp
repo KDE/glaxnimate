@@ -12,6 +12,7 @@
 #include "glaxnimate/command/structure_commands.hpp"
 #include "glaxnimate/command/animation_commands.hpp"
 #include "glaxnimate/math/geom.hpp"
+#include "widgets/tools/shape_tool_widget.hpp"
 
 #ifndef Q_OS_ANDROID
     #include "widgets/dialogs/glaxnimate_window.hpp"
@@ -458,9 +459,9 @@ private:
 #endif
     }
 
-    QWidget* on_create_widget() override
+    ToolWidgetBase* on_create_widget() override
     {
-        return new QWidget();
+        return new ToolWidgetBase();
     }
 
     void on_selected(graphics::DocumentScene * scene, model::VisualNode * node) override

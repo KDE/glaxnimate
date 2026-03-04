@@ -18,22 +18,22 @@ namespace {
     };
 } // namespace
 
-app::log::LogModel::LogModel()
+glaxnimate::gui::LogModel::LogModel()
 {
-    connect(&Logger::instance(), &Logger::logged, this, &LogModel::on_line);
+    connect(&log::Logger::instance(), &log::Logger::logged, this, &LogModel::on_line);
 }
 
-int app::log::LogModel::rowCount(const QModelIndex &) const
+int glaxnimate::gui::LogModel::rowCount(const QModelIndex &) const
 {
     return lines.size();
 }
 
-int app::log::LogModel::columnCount(const QModelIndex &) const
+int glaxnimate::gui::LogModel::columnCount(const QModelIndex &) const
 {
     return Count;
 }
 
-QVariant app::log::LogModel::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant glaxnimate::gui::LogModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if ( orientation == Qt::Horizontal )
     {
@@ -58,26 +58,26 @@ QVariant app::log::LogModel::headerData(int section, Qt::Orientation orientation
         {
             switch ( lines[section].severity )
             {
-                case Info: return QIcon::fromTheme("emblem-information");
-                case Warning: return QIcon::fromTheme("emblem-warning");
-                case Error: return QIcon::fromTheme("emblem-error");
+                case log::Info: return QIcon::fromTheme("emblem-information");
+                case log::Warning: return QIcon::fromTheme("emblem-warning");
+                case log::Error: return QIcon::fromTheme("emblem-error");
             }
         }
         else if ( role == Qt::ToolTipRole )
         {
-            return Logger::severity_name(lines[section].severity);
+            return log::Logger::severity_name(lines[section].severity);
         }
     }
 
     return {};
 }
 
-QVariant app::log::LogModel::data(const QModelIndex & index, int role) const
+QVariant glaxnimate::gui::LogModel::data(const QModelIndex & index, int role) const
 {
     if ( !index.isValid() )
         return {};
 
-    const LogLine& line = lines[index.row()];
+    const log::LogLine& line = lines[index.row()];
     if ( role == Qt::DisplayRole )
     {
         switch ( index.column() )
@@ -106,14 +106,14 @@ QVariant app::log::LogModel::data(const QModelIndex & index, int role) const
     return {};
 }
 
-void app::log::LogModel::on_line(const LogLine& line)
+void glaxnimate::gui::LogModel::on_line(const log::LogLine& line)
 {
     beginInsertRows(QModelIndex(), lines.size(), lines.size());
     lines.push_back(line);
     endInsertRows();
 }
 
-void app::log::LogModel::populate(const std::vector<LogLine>& lines)
+void glaxnimate::gui::LogModel::populate(const std::vector<log::LogLine>& lines)
 {
     beginResetModel();
     this->lines = lines;

@@ -6,16 +6,20 @@
 
 #include "glaxnimate_app.hpp"
 
-#include "glaxnimate/app_info.hpp"
 
 #include <QDir>
+#include <QMetaEnum>
 #include <QStandardPaths>
 
 #include <KAboutData>
 #include <KLocalizedString>
+
 #include "glaxnimate_settings.hpp"
 #include "settings/icon_settings.hpp"
 #include "glaxnimate/utils/trace.hpp"
+#include "glaxnimate/utils/data_paths.hpp"
+#include "glaxnimate/log/log.hpp"
+#include "glaxnimate/app_info.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
@@ -63,6 +67,14 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
     return clipboard.get();
 }
 
+void GlaxnimateApp::on_initialize()
+{
+}
+
+void GlaxnimateApp::on_initialize_settings()
+{
+}
+
 #else
 
 #include <QPalette>
@@ -71,7 +83,7 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
 #include <KLocalizedString>
 
 #include "glaxnimate_settings.hpp"
-#include "app/log/listener_file.hpp"
+#include "glaxnimate/log/listener_file.hpp"
 #include "settings/plugin_settings_group.hpp"
 #include "settings/clipboard_settings.hpp"
 #include "settings/api_credentials.hpp"
@@ -79,9 +91,9 @@ const QMimeData *GlaxnimateApp::get_clipboard_data()
 
 void GlaxnimateApp::on_initialize()
 {
-    app::log::Logger::instance().add_listener<app::log::ListenerFile>(writable_data_path("log.txt"));
-    app::log::Logger::instance().add_listener<app::log::ListenerStderr>();
-    store_logger = app::log::Logger::instance().add_listener<app::log::ListenerStore>();
+    log::Logger::instance().add_listener<log::ListenerFile>(utils::writable_data_path("log.txt"));
+    log::Logger::instance().add_listener<log::ListenerStderr>();
+    store_logger = log::Logger::instance().add_listener<log::ListenerStore>();
 
     setWindowIcon(QIcon(data_file("images/logo.svg")));
 
@@ -107,6 +119,19 @@ void GlaxnimateApp::set_clipboard_data(QMimeData *data)
 const QMimeData *GlaxnimateApp::get_clipboard_data()
 {
     return QGuiApplication::clipboard()->mimeData();
+}
+
+QString GlaxnimateApp::data_file(const QString& name) const
+{
+    QStringList found;
+
+    for ( const QDir& d: utils::data_roots() )
+    {
+        if ( d.exists(name) )
+            return QDir::cleanPath(d.absoluteFilePath(name));
+    }
+
+    return {};
 }
 
 #endif
@@ -137,7 +162,7 @@ bool GlaxnimateApp::event(QEvent *event)
     if ( event->type() == QEvent::ApplicationPaletteChange )
         gui::settings::IconSettings::instance().palette_change();
 
-    return app::Application::event(event);
+    return QApplication::event(event);
 }
 
 #ifdef OPENGL_ENABLED
@@ -224,4 +249,26 @@ void GlaxnimateApp::init_qapplication()
     KAboutData::setApplicationData(aboutData);
     if ( qApp )
         qApp->setOrganizationName(info.organization());
+}
+
+
+void GlaxnimateApp::initialize()
+{
+    on_initialize();
+    on_initialize_settings();
+}
+
+void GlaxnimateApp::finalize()
+{
+}
+
+
+bool GlaxnimateApp::notify(QObject* receiver, QEvent* e)
+{
+    try {
+        return QApplication::notify(receiver, e);
+    } catch ( const std::exception& exc ) {
+        log::Log("Event", QMetaEnum::fromType<QEvent::Type>().valueToKey(e->type())).stream(log::Error) << "Exception:" << exc.what();
+        return false;
+    }
 }

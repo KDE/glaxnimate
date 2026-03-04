@@ -13,7 +13,6 @@
 #include "glaxnimate/model/animation/animatable.hpp"
 #include "glaxnimate/model/document.hpp"
 #include "glaxnimate/command/animation_commands.hpp"
-#include "app/application.hpp"
 #include "widgets/menus/animated_property_menu.hpp"
 
 

@@ -10,6 +10,7 @@
 #include <QWheelEvent>
 #include <QDebug>
 #include <QTreeView>
+#include <QApplication>
 
 #include "timeline_items.hpp"
 #include "glaxnimate/model/shapes/precomp_layer.hpp"

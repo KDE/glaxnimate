@@ -743,7 +743,7 @@ public:
     model::Document* document;
     bool strip;
     QMap<QUuid, int> layer_indices;
-    app::log::Log logger{"Lottie Export"};
+    log::Log logger{"Lottie Export"};
     model::Layer* mask = nullptr;
     bool strip_raster;
     bool auto_embed;

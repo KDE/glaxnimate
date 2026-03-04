@@ -11,11 +11,10 @@
 #include <QJsonArray>
 
 #include "plugin/script_engine.hpp"
-#include "app/application.hpp"
-
 #include "plugin/action.hpp"
 #include "plugin/io.hpp"
 #include "plugin/executor.hpp"
+#include "glaxnimate/utils/data_paths.hpp"
 
 using namespace glaxnimate;
 
@@ -23,13 +22,13 @@ bool plugin::Plugin::run_script ( const plugin::PluginScript& script, const QVar
 {
     if ( !data_.engine )
     {
-        logger().log("Can't run script from a plugin with no engine", app::log::Error);
+        logger().log("Can't run script from a plugin with no engine", log::Error);
         return false;
     }
 
     if ( !PluginRegistry::instance().executor() )
     {
-        logger().log("No script executor", app::log::Error);
+        logger().log("No script executor", log::Error);
         return false;
     }
 
@@ -38,9 +37,9 @@ bool plugin::Plugin::run_script ( const plugin::PluginScript& script, const QVar
 
 void plugin::PluginRegistry::load()
 {
-    QString writable_path = app::Application::instance()->writable_data_path("plugins");
+    QString writable_path = utils::writable_data_path("plugins");
 
-    for ( const QString& path : app::Application::instance()->data_paths("plugins") )
+    for ( const QString& path : utils::data_paths("plugins") )
     {
         bool writable = path == writable_path;
         QDir pathdir(path);
@@ -102,13 +101,13 @@ bool plugin::PluginRegistry::load_plugin ( const QString& path, bool user_instal
         Plugin* plug = plugins_[*it].get();
         if ( plug->data().version >= data.version )
         {
-            logger.stream(app::log::Info) << "Skipping Plugin (newer version exists)";
+            logger.stream(log::Info) << "Skipping Plugin (newer version exists)";
             return false;
         }
 
         if ( plug->enabled() )
         {
-            logger.stream(app::log::Info) << "Skipping Plugin (older version is currently enabled)";
+            logger.stream(log::Info) << "Skipping Plugin (older version is currently enabled)";
             return false;
         }
 
@@ -116,7 +115,7 @@ bool plugin::PluginRegistry::load_plugin ( const QString& path, bool user_instal
     }
 
     data.engine_name = jobj["engine"].toString();
-    data.engine = plugin::ScriptEngineFactory::instance().engine(data.engine_name);
+    data.engine = ScriptEngineFactory::instance().engine(data.engine_name);
     if ( !data.engine)
     {
         logger.stream() << "Plugin refers to an unknown engine" << data.engine_name;

@@ -11,7 +11,7 @@
 #include <QBuffer>
 
 #include "app/settings/settings_group.hpp"
-#include "app/log/log_line.hpp"
+#include "glaxnimate/log/log_line.hpp"
 
 #include "glaxnimate/model/document.hpp"
 #include "glaxnimate/model/assets/composition.hpp"
@@ -101,17 +101,17 @@ public:
 
     Q_INVOKABLE void warning(const QString& message)
     {
-        Q_EMIT this->message(message, app::log::Warning);
+        Q_EMIT this->message(message, log::Warning);
     }
 
     Q_INVOKABLE void information(const QString& message)
     {
-        Q_EMIT this->message(message, app::log::Info);
+        Q_EMIT this->message(message, log::Info);
     }
 
     Q_INVOKABLE void error(const QString& message)
     {
-        Q_EMIT this->message(message, app::log::Error);
+        Q_EMIT this->message(message, log::Error);
     }
 
 protected:
@@ -141,7 +141,7 @@ protected:
     }
 
 Q_SIGNALS:
-    void message(const QString& message, app::log::Severity severity);
+    void message(const QString& message, log::Severity severity);
     void progress_max_changed(int max);
     void progress(int value);
     void completed(bool success);

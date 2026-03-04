@@ -6,7 +6,6 @@
 
 #include "keyframe_editor_widget.hpp"
 #include "ui_keyframe_editor_widget.h"
-#include "app/application.hpp"
 #include "keyframe_transition_data.hpp"
 
 using namespace glaxnimate::gui;

@@ -7,9 +7,9 @@
 #pragma once
 
 #include <QDebug>
-#include "app/log/logger.hpp"
+#include "glaxnimate/log/logger.hpp"
 
-namespace app::log {
+namespace glaxnimate::log {
 
 class ListenerStderr: public LogListener
 {
@@ -29,4 +29,4 @@ protected:
     }
 };
 
-} // namespace app::log
+} // namespace glaxnimate::log

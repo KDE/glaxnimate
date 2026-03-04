@@ -185,14 +185,14 @@ public:
 
         if ( !current_plugin->data().dir.exists(ui_file) )
         {
-            current_plugin->logger().stream(app::log::Error) << "UI file not found:" << ui_file;
+            current_plugin->logger().stream(log::Error) << "UI file not found:" << ui_file;
             return nullptr;
         }
 
         QFile file(current_plugin->data().dir.absoluteFilePath(ui_file));
         if ( !file.open(QIODevice::ReadOnly) )
         {
-            current_plugin->logger().stream(app::log::Error) << "Could not open UI file:" << ui_file;
+            current_plugin->logger().stream(log::Error) << "Could not open UI file:" << ui_file;
             return nullptr;
         }
 

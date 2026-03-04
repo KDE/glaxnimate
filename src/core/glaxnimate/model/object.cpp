@@ -10,7 +10,7 @@
 
 #include "glaxnimate/model/property/property.hpp"
 #include "glaxnimate/model/document.hpp"
-#include "app/log/log.hpp"
+#include "glaxnimate/log/log.hpp"
 
 
 class glaxnimate::model::Object::Private
@@ -54,9 +54,9 @@ void glaxnimate::model::Object::clone_into(glaxnimate::model::Object* dest) cons
 {
     if ( dest->metaObject() != metaObject() )
     {
-        app::log::Log log("Object", type_name());
-        log.stream(app::log::Error) << "trying to clone into" << dest->type_name() << "from" << type_name();
-        log.stream(app::log::Info) << "make sure clone_covariant is implemented for" << type_name() << "or use GLAXNIMATE_OBJECT";
+        log::Log log("Object", type_name());
+        log.stream(log::Error) << "trying to clone into" << dest->type_name() << "from" << type_name();
+        log.stream(log::Info) << "make sure clone_covariant is implemented for" << type_name() << "or use GLAXNIMATE_OBJECT";
         return;
     }
 

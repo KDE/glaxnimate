@@ -10,9 +10,9 @@
 
 #include <QObject>
 
-#include "app/log/log_line.hpp"
+#include "glaxnimate/log/log_line.hpp"
 
-namespace app::log {
+namespace glaxnimate::log {
 
 class Logger;
 
@@ -78,4 +78,4 @@ private:
     std::vector<std::unique_ptr<LogListener>> listeners;
 };
 
-} // namespace app::log
+} // namespace glaxnimate::log

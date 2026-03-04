@@ -7,7 +7,7 @@
 #include "icon_settings.hpp"
 
 #include "glaxnimate_settings.hpp"
-#include "glaxnimate_app.hpp"
+#include "glaxnimate/utils/data_paths.hpp"
 
 #include <QtGlobal>
 #include <QGuiApplication>
@@ -99,7 +99,7 @@ void glaxnimate::gui::settings::IconSettings::initialize()
 {
 #if HAS_FREEDESKTOP_ICONS
     QString theme = GlaxnimateSettings::icon_theme();
-    QIcon::setFallbackSearchPaths(app::Application::instance()->data_paths("images/icons"));
+    QIcon::setFallbackSearchPaths(utils::data_paths("images/icons"));
     d->set_theme(theme);
 #endif
 }

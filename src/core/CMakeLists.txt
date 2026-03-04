@@ -41,6 +41,8 @@ glaxnimate/io/aep/string_decoder.cpp
 glaxnimate/io/aep/gradient_xml.cpp
 glaxnimate/io/io_registry.cpp
 
+glaxnimate/log/logger.cpp
+
 glaxnimate/math/geom.cpp
 glaxnimate/math/polynomial.cpp
 glaxnimate/math/ellipse_solver.cpp
@@ -105,6 +107,7 @@ glaxnimate/model/shapes/zig_zag.cpp
 glaxnimate/renderer/renderer.cpp
 
 glaxnimate/utils/gzip.cpp
+glaxnimate/utils/data_paths.cpp
 )
 
 

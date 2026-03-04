@@ -8,9 +8,9 @@
 
 #include <QTextStream>
 
-#include "app/log/logger.hpp"
+#include "glaxnimate/log/logger.hpp"
 
-namespace app::log {
+namespace glaxnimate::log {
 
 class LogStream
 {
@@ -75,4 +75,4 @@ private:
     QString detail;
 };
 
-} // namespace app::log
+} // namespace glaxnimate::log

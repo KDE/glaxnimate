@@ -68,7 +68,7 @@ private:
     {
         if ( qobject_cast<model::Image*>(node) )
         {
-            show_error(node, i18n("Images are not supported"), app::log::Error);
+            show_error(node, i18n("Images are not supported"), log::Error);
         }
     }
 };

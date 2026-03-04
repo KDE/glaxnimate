@@ -16,6 +16,7 @@
 
 #include "glaxnimate_settings.hpp"
 #include "glaxnimate_app.hpp"
+#include "glaxnimate/utils/data_paths.hpp"
 #include "glaxnimate/utils/trace.hpp"
 #include "glaxnimate/io/video/video_format.hpp"
 #include "glaxnimate/io/io_registry.hpp"
@@ -57,11 +58,11 @@ AboutEnvironmentDialog::AboutEnvironmentDialog(QWidget* parent)
         config_file = QStandardPaths::locate(QStandardPaths::GenericConfigLocation, config_file, QStandardPaths::LocateFile);
     d->line_settings->setText(config_file);
 
-    d->line_user_data->setText(app::Application::instance()->writable_data_path(""));
+    d->line_user_data->setText(utils::writable_data_path(""));
     d->line_backup->setText(GlaxnimateApp::instance()->backup_path());
 
     // Formats
-    populate_view(d->view_data, app::Application::instance()->data_paths_unchecked(""));
+    populate_view(d->view_data, utils::data_paths_unchecked(""));
     populate_view(d->view_icons, QIcon::themeSearchPaths());
 
     populate_io(d->table_formats_input, io::IoRegistry::instance().importers());

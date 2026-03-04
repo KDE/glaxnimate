@@ -11,74 +11,39 @@
 #include <QtGlobal>
 #include <QIcon>
 #include <QMimeData>
+#include <QApplication>
 
-#include "app/application.hpp"
 
-
-#ifdef MOBILE_UI
-
-namespace glaxnimate::gui {
-
-class GlaxnimateApp : public app::Application
-{
-    Q_OBJECT
-
-public:
-    using app::Application::Application;
-
-    static GlaxnimateApp* instance()
-    {
-        return static_cast<GlaxnimateApp *>(QCoreApplication::instance());
-    }
-#ifdef Q_OS_ANDROID
-    QString data_file(const QString& name) const override;
+#ifndef MOBILE_UI
+#   include "glaxnimate/log/listener_stderr.hpp"
+#   include "glaxnimate/log/listener_store.hpp"
 #endif
-    static qreal handle_size_multiplier();
-    static qreal handle_distance_multiplier();
-
-    void set_clipboard_data(QMimeData* data);
-    const QMimeData* get_clipboard_data();
-
-
-    QString backup_path() const;
-
-    static QString temp_path();
-
-
-    static void init_qapplication();
-
-protected:
-    bool event(QEvent *event) override;
-
-private:
-    std::unique_ptr<QMimeData> clipboard = std::make_unique<QMimeData>();
-};
-
-} // namespace glaxnimate::gui
-
-#else
-
-#include "app/log/listener_stderr.hpp"
-#include "app/log/listener_store.hpp"
 
 namespace glaxnimate::gui {
 
-class GlaxnimateApp : public app::Application
+class GlaxnimateApp : public QApplication
 {
     Q_OBJECT
 
 public:
-    using app::Application::Application;
+    using QApplication::QApplication;
 
-    const std::vector<app::log::LogLine>& log_lines() const
-    {
-        return store_logger->lines();
-    }
+    void initialize();
+
+    void finalize();
+
+    /**
+     * \brief Path to get the file from
+     * \param name Name of the data files
+     */
+    QString data_file(const QString& name) const;
 
     static GlaxnimateApp* instance()
     {
         return static_cast<GlaxnimateApp *>(QCoreApplication::instance());
     }
+
+    bool notify(QObject *receiver, QEvent *e) override;
 
     QString backup_path() const;
 
@@ -93,14 +58,37 @@ public:
     static void init_qapplication();
 
 protected:
-    void on_initialize() override;
-    void on_initialize_settings() override;
+
     bool event(QEvent *event) override;
 
 private:
-    app::log::ListenerStore* store_logger;
+    /**
+     * \brief Called after construction, before anything else
+     * \note set application name and stuff in here
+     */
+    void on_initialize();
+
+    /**
+     * \brief Called after on_initialize() and after translations are loaded
+     */
+    void on_initialize_settings();
+
+
+#ifdef MOBILE_UI
+private:
+    std::unique_ptr<QMimeData> clipboard = std::make_unique<QMimeData>();
+#else
+public:
+
+    const std::vector<log::LogLine>& log_lines() const
+    {
+        return store_logger->lines();
+    }
+
+private:
+    log::ListenerStore* store_logger;
+#endif
 
 };
 
 } // namespace glaxnimate::gui
-#endif

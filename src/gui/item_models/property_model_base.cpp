@@ -154,13 +154,13 @@ QVariant item_models::PropertyModelBase::Private::data_value(model::BaseProperty
             switch ( frame_status )
             {
                 case model::AnimatableBase::Tween:
-                    return QIcon(app::Application::instance()->data_file("images/keyframe/status/tween.svg"));
+                    return QIcon(GlaxnimateApp::instance()->data_file("images/keyframe/status/tween.svg"));
                 case model::AnimatableBase::IsKeyframe:
-                    return QIcon(app::Application::instance()->data_file("images/keyframe/status/key.svg"));
+                    return QIcon(GlaxnimateApp::instance()->data_file("images/keyframe/status/key.svg"));
                 case model::AnimatableBase::Mismatch:
-                    return QIcon(app::Application::instance()->data_file("images/keyframe/status/mismatch.svg"));
+                    return QIcon(GlaxnimateApp::instance()->data_file("images/keyframe/status/mismatch.svg"));
                 case model::AnimatableBase::NotAnimated:
-                    return QIcon(app::Application::instance()->data_file("images/keyframe/status/not-animated.svg"));
+                    return QIcon(GlaxnimateApp::instance()->data_file("images/keyframe/status/not-animated.svg"));
             }
 
         }

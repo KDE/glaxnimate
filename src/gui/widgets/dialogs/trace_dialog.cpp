@@ -22,7 +22,7 @@
 
 #include <QtColorWidgets/ColorDelegate>
 
-#include "app/application.hpp"
+#include "glaxnimate_settings.hpp"
 #include "app/settings/widget.hpp"
 #include "glaxnimate/app_info.hpp"
 
@@ -70,7 +70,6 @@ public:
     QGraphicsPixmapItem *item_image;
     app::widgets::NoCloseOnEnter ncoe;
     ColorQuantizationDialog color_options;
-    app::settings::WidgetSettingGroup settings;
     QSize image_size;
     bool initialized = false;
 
@@ -191,26 +190,40 @@ public:
 
     void init_settings()
     {
-        settings.add(ui.spin_tolerance, "internal", "trace_dialog_");
-        settings.add(ui.spin_outline, "internal", "trace_dialog_");
-        settings.add(ui.spin_smoothness, "internal", "trace_dialog_");
-        settings.add(ui.spin_alpha_threshold, "internal", "trace_dialog_");
-        settings.add(ui.spin_min_area, "internal", "trace_dialog_");
-        settings.add(ui.spin_posterize, "internal", "trace_dialog_");
-        settings.add(ui.button_advanced, "internal", "trace_dialog_");
-        settings.define();
+        ui.spin_tolerance->setValue(GlaxnimateSettings::trace_tolerance());
+        ui.spin_outline->setValue(GlaxnimateSettings::trace_outline());
+        ui.spin_smoothness->setValue(GlaxnimateSettings::trace_smoothness());
+        ui.spin_alpha_threshold->setValue(GlaxnimateSettings::trace_alpha_threshold());
+        ui.spin_min_area->setValue(GlaxnimateSettings::trace_min_area());
+        ui.spin_posterize->setValue(GlaxnimateSettings::trace_posterize());
+        ui.button_advanced->setChecked(GlaxnimateSettings::trace_advanced());
+
         color_options.init_settings();
     }
 
     void save_settings()
     {
-        settings.save();
+        GlaxnimateSettings::setTrace_tolerance(ui.spin_tolerance->value());
+        GlaxnimateSettings::setTrace_outline(ui.spin_outline->value());
+        GlaxnimateSettings::setTrace_smoothness(ui.spin_smoothness->value());
+        GlaxnimateSettings::setTrace_alpha_threshold(ui.spin_alpha_threshold->value());
+        GlaxnimateSettings::setTrace_min_area(ui.spin_min_area->value());
+        GlaxnimateSettings::setTrace_posterize(ui.spin_posterize->value());
+        GlaxnimateSettings::setTrace_advanced(ui.button_advanced->isChecked());
+
         color_options.save_settings();
     }
 
     void reset_settings()
     {
-        settings.reset();
+        ui.spin_tolerance->setValue(GlaxnimateSettings::defaultTrace_toleranceValue());
+        ui.spin_outline->setValue(GlaxnimateSettings::defaultTrace_outlineValue());
+        ui.spin_smoothness->setValue(GlaxnimateSettings::defaultTrace_smoothnessValue());
+        ui.spin_alpha_threshold->setValue(GlaxnimateSettings::defaultTrace_alpha_thresholdValue());
+        ui.spin_min_area->setValue(GlaxnimateSettings::defaultTrace_min_areaValue());
+        ui.spin_posterize->setValue(GlaxnimateSettings::defaultTrace_posterizeValue());
+        ui.button_advanced->setChecked(GlaxnimateSettings::defaultTrace_advancedValue());
+
         color_options.reset_settings();
     }
 
@@ -348,7 +361,7 @@ glaxnimate::gui::TraceDialog::TraceDialog(model::Image* image, QWidget* parent)
     d->initialized = true;
     update_preview();
 
-    d->ui.preview->setBackgroundBrush(QPixmap(app::Application::instance()->data_file("images/widgets/background.png")));
+    d->ui.preview->setBackgroundBrush(QPixmap(GlaxnimateApp::instance()->data_file("images/widgets/background.png")));
 
     installEventFilter(&d->ncoe);
 

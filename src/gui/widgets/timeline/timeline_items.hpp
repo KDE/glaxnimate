@@ -12,7 +12,6 @@
 #include <QStyleOptionGraphicsItem>
 #include <QGraphicsSceneMouseEvent>
 
-#include "app/application.hpp"
 #include "glaxnimate/command/animation_commands.hpp"
 #include "glaxnimate/model/document.hpp"
 #include "glaxnimate/model/shapes/precomp_layer.hpp"

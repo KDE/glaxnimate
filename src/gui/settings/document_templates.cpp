@@ -10,8 +10,7 @@
 
 #include <QAction>
 
-#include "app/application.hpp"
-
+#include "glaxnimate/utils/data_paths.hpp"
 #include "glaxnimate/io/glaxnimate/glaxnimate_format.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
 
@@ -144,7 +143,7 @@ void settings::DocumentTemplates::load()
     templates_.clear();
     names.clear();
 
-    for ( QDir dir : app::Application::instance()->data_paths("templates") )
+    for ( QDir dir : utils::data_paths("templates") )
     {
         for ( const auto& filename : dir.entryList(QDir::Files|QDir::Readable) )
         {
@@ -201,7 +200,7 @@ bool settings::DocumentTemplates::save_as_template(model::Document* document)
     }
 
     io::glaxnimate::GlaxnimateFormat format;
-    QDir dirname = app::Application::instance()->writable_data_path("templates");
+    QDir dirname = utils::writable_data_path("templates");
     QString path = dirname.absoluteFilePath(basename + "." + format.extensions()[0]);
 
     if ( !dirname.exists() )

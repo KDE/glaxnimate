@@ -13,7 +13,7 @@
 #include <QByteArray>
 #include <QMimeData>
 
-#include "app/log/log_line.hpp"
+#include "glaxnimate/log/log_line.hpp"
 
 namespace glaxnimate::model {
     class Document;
@@ -64,7 +64,7 @@ public:
     io::mime::DeserializedData from_mime_data(const QMimeData& data) const;
 
 protected:
-    void message(const QString& message, app::log::Severity severity = app::log::Warning) const;
+    void message(const QString& message, log::Severity severity = log::Warning) const;
 
 };
 

@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "app/log/log.hpp"
+#include "glaxnimate/log/log.hpp"
 
 #include "glaxnimate/model/shapes/group.hpp"
 #include "glaxnimate/model/shapes/layer.hpp"

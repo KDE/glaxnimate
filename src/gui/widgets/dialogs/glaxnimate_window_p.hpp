@@ -33,7 +33,7 @@
 #include "style/property_delegate.hpp"
 
 #include "plugin/script_engine.hpp"
-#include "app/log/log_model.hpp"
+#include "item_models/log_model.hpp"
 #include "glaxnimate_settings.hpp"
 
 #include "plugin/plugin.hpp"
@@ -215,7 +215,7 @@ public:
     IoStatusDialog* dialog_export_status;
     AboutEnvironmentDialog* about_env_dialog;
     FlowLayout* dock_tools_layout;
-    app::log::LogModel log_model;
+    LogModel log_model;
     color_widgets::ColorPaletteModel palette_model;
 
     // Stuff for IPC with Shotcut
@@ -265,7 +265,7 @@ public:
     // ui
     void setupUi(bool restore_state, bool debug, GlaxnimateWindow* parent);
     void view_fit();
-    void show_warning(const QString& title, const QString& message, app::log::Severity icon = app::log::Warning);
+    void show_warning(const QString& title, const QString& message, log::Severity icon = log::Warning);
     void help_about_env();
     void copyDebugInfo();
     void shutdown();

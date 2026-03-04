@@ -161,7 +161,7 @@ ScalableButton* tools::Tool::get_button()
     return button;
 }
 
-QWidget* tools::Tool::get_settings_widget()
+ToolWidgetBase* tools::Tool::get_settings_widget()
 {
     if ( !settings_widget )
     {

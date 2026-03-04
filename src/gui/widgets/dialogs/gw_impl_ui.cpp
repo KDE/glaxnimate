@@ -54,6 +54,7 @@
 #include "glaxnimate/model/shapes/offset_path.hpp"
 #include "glaxnimate/model/shapes/zig_zag.hpp"
 #include "glaxnimate/io/io_registry.hpp"
+#include "glaxnimate/utils/data_paths.hpp"
 
 #include "glaxnimate/command/undo_macro_guard.hpp"
 
@@ -72,6 +73,7 @@
 #include "widgets/docks/timelinedock.h"
 #include "widgets/lottiefiles/lottiefiles_search_dialog.hpp"
 #include "widgets/settings/settings_dialog.hpp"
+#include "widgets/tools/shape_tool_widget.hpp"
 
 #include "widgets/view_transform_widget.hpp"
 #include "widgets/flow_layout.hpp"
@@ -939,7 +941,7 @@ void GlaxnimateWindow::Private::init_docks()
     scriptconsole_dock = new ScriptConsoleDock(this->parent);
     // Scripting
     connect(scriptconsole_dock, &ScriptConsoleDock::error, parent, [this](const QString& plugin, const QString& message){
-        show_warning(plugin, message, app::log::Error);
+        show_warning(plugin, message, log::Error);
     });
     scriptconsole_dock->set_global("window", QVariant::fromValue(parent));
 
@@ -954,8 +956,8 @@ void GlaxnimateWindow::Private::init_docks()
     parent->addDockWidget(Qt::DockWidgetArea::BottomDockWidgetArea, logs_dock);
 
     // Swatches
-    palette_model.setSearchPaths(app::Application::instance()->data_paths_unchecked("palettes"));
-    palette_model.setSavePath(app::Application::instance()->writable_data_path("palettes"));
+    palette_model.setSearchPaths(utils::data_paths_unchecked("palettes"));
+    palette_model.setSavePath(utils::writable_data_path("palettes"));
     palette_model.load();
     colors_dock->set_palette_model(&palette_model);
     stroke_dock->set_palette_model(&palette_model);
@@ -1345,17 +1347,17 @@ void GlaxnimateWindow::Private::view_fit()
     canvas->view_fit();
 }
 
-void GlaxnimateWindow::Private::show_warning(const QString& title, const QString& message, app::log::Severity icon)
+void GlaxnimateWindow::Private::show_warning(const QString& title, const QString& message, log::Severity icon)
 {
     KMessageWidget::MessageType message_type;
     switch ( icon )
     {
-        case app::log::Severity::Info: message_type = KMessageWidget::Information; break;
-        case app::log::Severity::Warning: message_type = KMessageWidget::Warning; break;
-        case app::log::Severity::Error: message_type = KMessageWidget::Error; break;
+        case log::Severity::Info: message_type = KMessageWidget::Information; break;
+        case log::Severity::Warning: message_type = KMessageWidget::Warning; break;
+        case log::Severity::Error: message_type = KMessageWidget::Error; break;
     }
     message_widget->queue_message({message, message_type});
-    app::log::Log(title).log(message, icon);
+    log::Log(title).log(message, icon);
 }
 
 void GlaxnimateWindow::Private::help_about_env()
@@ -1444,6 +1446,10 @@ void GlaxnimateWindow::Private::switch_tool(tools::Tool* tool)
         {
             action->setEnabled(false);
         }
+
+
+        if ( auto widget = qobject_cast<ToolWidgetBase*>(active_tool->get_settings_widget()) )
+            widget->save_settings();
     }
 
     if (tool->id() == QStringLiteral("edit") )
@@ -1499,7 +1505,7 @@ void GlaxnimateWindow::Private::trace_dialog(model::DocumentNode* object)
             {
                 if ( bmp )
                 {
-                    show_warning(i18n("Trace Bitmap"), i18n("Only select one image"), app::log::Info);
+                    show_warning(i18n("Trace Bitmap"), i18n("Only select one image"), log::Info);
                     return;
                 }
                 bmp = image;
@@ -1508,14 +1514,14 @@ void GlaxnimateWindow::Private::trace_dialog(model::DocumentNode* object)
 
         if ( !bmp )
         {
-            show_warning(i18n("Trace Bitmap"), i18n("You need to select an image to trace"), app::log::Info);
+            show_warning(i18n("Trace Bitmap"), i18n("You need to select an image to trace"), log::Info);
             return;
         }
     }
 
     if ( !bmp->image.get() )
     {
-        show_warning(i18n("Trace Bitmap"), i18n("You selected an image with no data"), app::log::Info);
+        show_warning(i18n("Trace Bitmap"), i18n("You selected an image with no data"), log::Info);
         return;
     }
 

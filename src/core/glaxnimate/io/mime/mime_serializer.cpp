@@ -6,7 +6,7 @@
 
 #include "glaxnimate/io/mime/mime_serializer.hpp"
 
-#include "app/log/log.hpp"
+#include "glaxnimate/log/log.hpp"
 
 #include "glaxnimate/model/object.hpp"
 #include "glaxnimate/model/document.hpp"
@@ -25,9 +25,9 @@ glaxnimate::io::mime::DeserializedData glaxnimate::io::mime::MimeSerializer::fro
     return {};
 }
 
-void glaxnimate::io::mime::MimeSerializer::message(const QString& message, app::log::Severity severity) const
+void glaxnimate::io::mime::MimeSerializer::message(const QString& message, log::Severity severity) const
 {
-    app::log::Log(slug()).log(message, severity);
+    log::Log(slug()).log(message, severity);
 }
 
 

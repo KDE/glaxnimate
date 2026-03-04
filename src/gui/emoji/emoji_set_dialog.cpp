@@ -27,6 +27,7 @@
 #include "emoji/emoji_set.hpp"
 #include "glaxnimate_app.hpp"
 #include "emoji_dialog.hpp"
+#include "glaxnimate/utils/data_paths.hpp"
 
 class glaxnimate::emoji::EmojiSetDialog::Private
 {
@@ -127,7 +128,7 @@ void glaxnimate::emoji::EmojiSetDialog::reload_sets()
     int row = 0;
     for ( auto& p : d->sets )
     {
-        p.path = QDir(gui::GlaxnimateApp::instance()->writable_data_path("emoji/" + p.name));
+        p.path = QDir(utils::writable_data_path("emoji/" + p.name));
         d->ui.emoji_set_view->setRowCount(row+1);
         d->ui.emoji_set_view->setItem(row, Private::Name, new QTableWidgetItem(p.name));
         d->ui.emoji_set_view->setItem(row, Private::License, new QTableWidgetItem(p.license));
