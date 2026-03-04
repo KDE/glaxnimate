@@ -186,14 +186,14 @@ glaxnimate::command::SetMultipleAnimated::SetMultipleAnimated(const QString& nam
 
 void glaxnimate::command::SetMultipleAnimated::push_property(model::AnimatableBase* prop, const QVariant& after_val)
 {
-    keyframe_after = prop->object()->document()->record_to_keyframe();
+    keyframe_after = prop->object()->document()->record_to_keyframe() || prop->animated();
     time = prop->time();
     int insert = props.size();
     props.push_back(prop);
     before.insert(before.begin() + insert, prop->value());
     after.insert(after.begin() + insert, after_val);
     keyframe_before.push_back(prop->has_keyframe(time));
-    add_0.push_back(!prop->animated() && prop->object()->document()->record_to_keyframe());
+    add_0.push_back(!prop->animated() && keyframe_after);
 }
 
 void glaxnimate::command::SetMultipleAnimated::push_property_not_animated(model::BaseProperty* prop, const QVariant& after_val)

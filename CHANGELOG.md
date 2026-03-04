@@ -3,10 +3,12 @@
 * Editing:
     * Added luma mask mode
     * Added blend modes for groups and layers
+    * Editing properties that are already animated now adds a keyframe
 * UI:
     * Timeline now allows to cycle through mask modes for layers
 * Misc
     * New rendering system
+    * Core as static library
 * Bug Fixes:
     * Fixed shape tools not remembering their own settings
 
