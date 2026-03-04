@@ -17,6 +17,14 @@ message(STATUS "Python3_INCLUDE_DIRS ${Python3_INCLUDE_DIRS}")
 message(STATUS "Python3_LIBRARIES ${Python3_LIBRARIES}")
 message(STATUS "Python3_EXECUTABLE ${Python3_EXECUTABLE}")
 
+find_program(PYTHON_PIP pip3)
+if(NOT PYTHON_PIP)
+    find_program(PYTHON_PIP pip)
+else()
+    message(WARNING "Could not find pip command")
+    set(PYTHON_PIP pip)
+endif()
+
 
 include_directories(${Python3_INCLUDE_DIRS})
 add_library(GlaxnimatePythonEmbed OBJECT ${SOURCES} embed.cpp)
