@@ -9,7 +9,7 @@
 #include <QVariant>
 #include <QDir>
 
-#include "glaxnimate/plugin/plugin.hpp"
+#include "plugin/plugin.hpp"
 
 namespace glaxnimate::gui {
 

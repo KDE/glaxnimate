@@ -6,12 +6,13 @@
 
 #include "python_engine.hpp"
 
-#include "app/scripting/python/register_machinery.hpp"
+#include "register_machinery.hpp"
 #include "app/log/log.hpp"
 #include "app/env.hpp"
 
+using namespace glaxnimate;
 
-app::scripting::ScriptEngine::Autoregister<app::scripting::python::PythonEngine> app::scripting::python::PythonEngine::autoreg;
+plugin::ScriptEngine::Autoregister<plugin::python::PythonEngine> plugin::python::PythonEngine::autoreg;
 
 static int counter = 0;
 
@@ -19,7 +20,7 @@ static int counter = 0;
 class PY_HIDDEN CaptureStream
 {
 public:
-    using OwnerT = app::scripting::ScriptExecutionContext;
+    using OwnerT = plugin::ScriptExecutionContext;
     using SignalT = void (OwnerT::*)(const QString&);
 
     CaptureStream(OwnerT* owner = nullptr, SignalT signal = nullptr)
@@ -87,7 +88,7 @@ private:
 };
 
 
-class PY_HIDDEN app::scripting::python::PythonContext::Private
+class PY_HIDDEN plugin::python::PythonContext::Private
 {
 public:
     void init_capture(PythonContext* ctx)
@@ -117,7 +118,7 @@ public:
 
 };
 
-app::scripting::python::PythonContext::PythonContext(const ScriptEngine* engine)
+plugin::python::PythonContext::PythonContext(const ScriptEngine* engine)
 {
     /// @note Not thread safe, pybind11 doesn't support multiple interpreters at once
     if ( counter == 0 )
@@ -131,7 +132,7 @@ app::scripting::python::PythonContext::PythonContext(const ScriptEngine* engine)
     d->init_capture(this);
 }
 
-app::scripting::python::PythonContext::~PythonContext()
+plugin::python::PythonContext::~PythonContext()
 {
     d.reset();
 
@@ -140,7 +141,7 @@ app::scripting::python::PythonContext::~PythonContext()
         py::finalize_interpreter();
 }
 
-void app::scripting::python::PythonContext::expose(const QString& name, const QVariant& obj)
+void plugin::python::PythonContext::expose(const QString& name, const QVariant& obj)
 {
     try {
         d->globals[name.toStdString().c_str()] = obj;
@@ -149,7 +150,7 @@ void app::scripting::python::PythonContext::expose(const QString& name, const QV
     }
 }
 
-QString app::scripting::python::PythonContext::eval_to_string(const QString& code)
+QString plugin::python::PythonContext::eval_to_string(const QString& code)
 {
     std::string std_code = code.toStdString();
     bool eval = false;
@@ -171,7 +172,7 @@ QString app::scripting::python::PythonContext::eval_to_string(const QString& cod
     }
 }
 
-QStringList app::scripting::python::PythonContext::eval_completions(const QString& code)
+QStringList plugin::python::PythonContext::eval_completions(const QString& code)
 {
     std::string std_code = code.toStdString();
     std::string eval_code;
@@ -196,7 +197,7 @@ QStringList app::scripting::python::PythonContext::eval_completions(const QStrin
     return {};
 }
 
-void app::scripting::python::PythonContext::app_module ( const QString& name )
+void plugin::python::PythonContext::app_module ( const QString& name )
 {
     try {
         auto sname = name.toStdString();
@@ -204,7 +205,7 @@ void app::scripting::python::PythonContext::app_module ( const QString& name )
         d->my_modules.push_back(py::module::import(cname));
         d->globals[cname] = d->my_modules.back();
     } catch ( const py::error_already_set& pyexc ) {
-        log::Log("Python", name).log(pyexc.what(), log::Error);
+        app::log::Log("Python", name).log(pyexc.what(), app::log::Error);
     }
 }
 
@@ -229,7 +230,7 @@ public:
     py::list python_path;
 };
 
-bool app::scripting::python::PythonContext::run_from_module (
+bool plugin::python::PythonContext::run_from_module (
     const QDir& path,
     const QString& module,
     const QString& function,
@@ -256,27 +257,27 @@ bool app::scripting::python::PythonContext::run_from_module (
     return true;
 }
 
-const app::scripting::ScriptEngine * app::scripting::python::PythonContext::engine() const
+const plugin::ScriptEngine * plugin::python::PythonContext::engine() const
 {
     return d->engine;
 }
 
-app::scripting::ScriptContext app::scripting::python::PythonEngine::create_context() const
+plugin::ScriptContext plugin::python::PythonEngine::create_context() const
 {
     return std::make_unique<PythonContext>(this);
 }
 
-void app::scripting::python::PythonEngine::add_module_search_paths(const QStringList& paths)
+void plugin::python::PythonEngine::add_module_search_paths(const QStringList& paths)
 {
     app::Environment::Variable("PYTHONPATH").push_back(paths);
 }
 
-QString app::scripting::python::PythonEngine::pybind_version()
+QString plugin::python::PythonEngine::pybind_version()
 {
     return QStringLiteral("%1.%2.%3").arg(PYBIND11_VERSION_MAJOR).arg(PYBIND11_VERSION_MINOR).arg(PYBIND11_VERSION_PATCH);
 }
 
-QString app::scripting::python::PythonEngine::python_version()
+QString plugin::python::PythonEngine::python_version()
 {
     return QStringLiteral(PY_VERSION);
 }

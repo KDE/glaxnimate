@@ -29,7 +29,7 @@
 #include "glaxnimate/io/lottie/tgs_format.hpp"
 #include "glaxnimate/io/lottie/validation.hpp"
 #include "glaxnimate/io/rive/rive_html_format.hpp"
-#include "glaxnimate/plugin/io.hpp"
+#include "plugin/io.hpp"
 
 #include "glaxnimate/model/visitor.hpp"
 #include "widgets/font/font_loader.hpp"

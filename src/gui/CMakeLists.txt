@@ -219,7 +219,7 @@ if ( NOT MOBILE_UI )
     )
 endif()
 
-if ( PYTHON_SCRIPTING_ENABLED )
+if ( GLAXNIMATE_PYTHON_ENABLED )
     list(APPEND SOURCES
         gui_python.cpp
         widgets/docks/script_console.cpp
@@ -257,6 +257,7 @@ target_link_libraries(
     ${LIB_NAME_GUI} PUBLIC
     QtColorWidgets
     ${LIB_NAME_CORE}
+    ${LIB_NAME_PLUGIN}
     Qt${QT_MAJOR_VERSION}::Widgets
     Qt${QT_MAJOR_VERSION}::UiTools
     Qt${QT_MAJOR_VERSION}::Concurrent

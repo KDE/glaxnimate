@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "glaxnimate/plugin/action.hpp"
-#include "glaxnimate/plugin/plugin.hpp"
+#include "plugin/action.hpp"
+#include "plugin/plugin.hpp"
 
 #include "app/settings/widget_builder.hpp"
 

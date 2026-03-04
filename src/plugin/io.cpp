@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "glaxnimate/plugin/io.hpp"
-#include "glaxnimate/plugin/plugin.hpp"
+#include "plugin/io.hpp"
+#include "plugin/plugin.hpp"
 #include "glaxnimate/model/assets/composition.hpp"
 
 using namespace glaxnimate;

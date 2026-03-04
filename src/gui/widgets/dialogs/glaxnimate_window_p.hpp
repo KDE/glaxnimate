@@ -32,11 +32,11 @@
 #include "style/dock_widget_style.hpp"
 #include "style/property_delegate.hpp"
 
-#include "app/scripting/script_engine.hpp"
+#include "plugin/script_engine.hpp"
 #include "app/log/log_model.hpp"
 #include "glaxnimate_settings.hpp"
 
-#include "glaxnimate/plugin/plugin.hpp"
+#include "plugin/plugin.hpp"
 #include "glaxnimate/utils/pseudo_mutex.hpp"
 #include "widgets/docks/aligndock.h"
 #include "widgets/docks/assetsdock.h"

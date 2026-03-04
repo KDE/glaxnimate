@@ -5,9 +5,10 @@
  */
 
 #pragma once
-#include "glaxnimate/plugin/plugin.hpp"
 
-#include "app/application.hpp"
+#include <QStandardPaths>
+#include "plugin/plugin.hpp"
+
 
 namespace glaxnimate::plugin {
 
@@ -51,7 +52,9 @@ public:
 
     static QString snippet_path()
     {
-        return app::Application::instance()->writable_data_path("snippets");
+        QString search = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+
+        return QDir::cleanPath(QDir(search).absoluteFilePath("snippets"));
     }
 
     static QString snippet_filename(const QString& basename)

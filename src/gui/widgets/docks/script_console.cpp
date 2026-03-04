@@ -13,8 +13,8 @@
 #include <KCompletion>
 
 #include "glaxnimate_settings.hpp"
-#include "app/scripting/script_engine.hpp"
-#include "glaxnimate/plugin/plugin.hpp"
+#include "plugin/script_engine.hpp"
+#include "plugin/plugin.hpp"
 #include "widgets/dialogs/plugin_ui_dialog.hpp"
 
 using namespace glaxnimate::gui;
@@ -25,7 +25,7 @@ class ScriptConsoleDock::Private
 public:
     Ui::ScriptConsole ui;
 
-    std::vector<app::scripting::ScriptContext> script_contexts;
+    std::vector<plugin::ScriptContext> script_contexts;
     const plugin::Plugin* current_plugin = nullptr;
     ScriptConsoleDock* parent;
     std::map<QString, QVariant> globals;
@@ -59,7 +59,7 @@ public:
                     ok = ctx->run_from_module(plugin.data().dir, script.module, script.function, args);
                     if ( !ok )
                         parent->error(plugin.data().name, i18n("Could not run the plugin"));
-                } catch ( const app::scripting::ScriptError& err ) {
+                } catch ( const plugin::ScriptError& err ) {
                     console_error(err);
                     parent->error(plugin.data().name, i18n("Plugin raised an exception"));
                     ok = false;
@@ -115,7 +115,7 @@ public:
             QString out = ctx->eval_to_string(text);
             if ( !out.isEmpty() )
                 console_stdout(out);
-        } catch ( const app::scripting::ScriptError& err ) {
+        } catch ( const plugin::ScriptError& err ) {
             console_error(err);
         }
 
@@ -148,29 +148,29 @@ public:
         ui.console_output->append(line);
     }
 
-    void console_error(const app::scripting::ScriptError& err)
+    void console_error(const plugin::ScriptError& err)
     {
         console_stderr(err.message());
     }
 
     void create_script_context()
     {
-        for ( const auto& engine : app::scripting::ScriptEngineFactory::instance().engines() )
+        for ( const auto& engine : plugin::ScriptEngineFactory::instance().engines() )
         {
             auto ctx = engine->create_context();
 
             if ( !ctx )
                 continue;
 
-            connect(ctx.get(), &app::scripting::ScriptExecutionContext::stdout_line, [this](const QString& s){ console_stdout(s);});
-            connect(ctx.get(), &app::scripting::ScriptExecutionContext::stderr_line, [this](const QString& s){ console_stderr(s);});
+            connect(ctx.get(), &plugin::ScriptExecutionContext::stdout_line, [this](const QString& s){ console_stdout(s);});
+            connect(ctx.get(), &plugin::ScriptExecutionContext::stderr_line, [this](const QString& s){ console_stderr(s);});
 
             try {
                 ctx->app_module("glaxnimate");
                 ctx->app_module("glaxnimate_gui");
                 for ( const auto& p : globals )
                     ctx->expose(p.first, p.second);
-            } catch ( const app::scripting::ScriptError& err ) {
+            } catch ( const plugin::ScriptError& err ) {
                 console_error(err);
             }
 
@@ -211,7 +211,7 @@ ScriptConsoleDock::ScriptConsoleDock(QWidget* parent)
     d->ui.console_input->completionObject()->setOrder(KCompletion::Sorted);
     connect(d->ui.console_input, &KHistoryComboBox::completion, this, [this](const QString& text){ d->set_completions(text); });
 
-    for ( const auto& engine : app::scripting::ScriptEngineFactory::instance().engines() )
+    for ( const auto& engine : plugin::ScriptEngineFactory::instance().engines() )
     {
         d->ui.console_language->addItem(engine->label());
         if ( engine->slug() == "python" )

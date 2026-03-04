@@ -20,7 +20,7 @@
 #include <KIconTheme>
 
 #include "app/env.hpp"
-#include "app/scripting/python/python_engine.hpp"
+#include "plugin/python/python_engine.hpp"
 #include "app/log/log.hpp"
 
 #include "cli.hpp"
@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
 
     gui::GlaxnimateApp::init_qapplication();
 
-    app::scripting::python::PythonEngine::add_module_search_paths(app.data_paths("lib/"));
+    plugin::python::PythonEngine::add_module_search_paths(app.data_paths("lib/"));
 
     io::IoRegistry::load_formats();
 

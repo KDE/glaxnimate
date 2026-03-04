@@ -6,7 +6,6 @@ set(SOURCES
 app/application.cpp
 app/settings/settings_group.cpp
 app/settings/settings.cpp
-app/scripting/script_engine.cpp
 app/log/logger.cpp
 app/log/log_model.cpp
 app/cli.cpp

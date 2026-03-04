@@ -11,13 +11,13 @@
 #include <QDir>
 
 #include "app/log/log.hpp"
-#include "glaxnimate/plugin/service.hpp"
+#include "plugin/service.hpp"
 
-namespace app::scripting {
+namespace glaxnimate::plugin {
 
 class ScriptEngine;
 
-} // namespace app::scripting
+} // namespace glaxnimate::plugin
 
 namespace glaxnimate::plugin {
 
@@ -27,7 +27,7 @@ struct PluginData
     QString id;
 
     int version = 0;
-    const app::scripting::ScriptEngine* engine = nullptr;
+    const glaxnimate::plugin::ScriptEngine* engine = nullptr;
     QString engine_name;
     QString name;
     QString author;

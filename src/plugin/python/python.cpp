@@ -42,12 +42,12 @@
 #include "glaxnimate/io/rive/rive_format.hpp"
 
 
-#include "glaxnimate/plugin/io.hpp"
+#include "plugin/io.hpp"
 #include "glaxnimate/app_info.hpp"
 
 #include "miscdefs.hpp"
 
-using namespace app::scripting::python;
+using namespace glaxnimate::plugin::python;
 using namespace glaxnimate;
 
 namespace {

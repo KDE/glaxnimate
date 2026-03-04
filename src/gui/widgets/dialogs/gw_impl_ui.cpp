@@ -80,7 +80,7 @@
 
 #include "style/better_elide_delegate.hpp"
 #include "tools/edit_tool.hpp"
-#include "glaxnimate/plugin/action.hpp"
+#include "plugin/action.hpp"
 #include "glaxnimate_app.hpp"
 #include "settings/document_templates.hpp"
 #include "emoji/emoji_set_dialog.hpp"

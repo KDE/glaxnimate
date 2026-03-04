@@ -112,7 +112,6 @@ set(GLAXNIMATE_CORE_KDE ON)
 
 if ( GLAXNIMATE_CORE_MINIMAL )
     set(GLAXNIMATE_VIDEO_ENABLED OFF)
-    set(PYTHON_SCRIPTING_ENABLED OFF)
     set(GLAXNIMATE_CORE_KDE OFF)
     set(LIB_NAME_CORE glaxnimate_lib)
     add_definitions(-DWITHOUT_POTRACE)
@@ -127,10 +126,6 @@ if ( GLAXNIMATE_CORE_MINIMAL )
 
 else()
     list(APPEND SOURCES
-        glaxnimate/plugin/plugin.cpp
-        glaxnimate/plugin/action.cpp
-        glaxnimate/plugin/io.cpp
-
         glaxnimate/utils/quantize.cpp
         glaxnimate/utils/trace.cpp
         glaxnimate/utils/trace_wrapper.cpp

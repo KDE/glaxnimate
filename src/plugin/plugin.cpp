@@ -4,18 +4,18 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "glaxnimate/plugin/plugin.hpp"
+#include "plugin/plugin.hpp"
 
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
 
-#include "app/scripting/script_engine.hpp"
+#include "plugin/script_engine.hpp"
 #include "app/application.hpp"
 
-#include "glaxnimate/plugin/action.hpp"
-#include "glaxnimate/plugin/io.hpp"
-#include "glaxnimate/plugin/executor.hpp"
+#include "plugin/action.hpp"
+#include "plugin/io.hpp"
+#include "plugin/executor.hpp"
 
 using namespace glaxnimate;
 
@@ -116,7 +116,7 @@ bool plugin::PluginRegistry::load_plugin ( const QString& path, bool user_instal
     }
 
     data.engine_name = jobj["engine"].toString();
-    data.engine = app::scripting::ScriptEngineFactory::instance().engine(data.engine_name);
+    data.engine = plugin::ScriptEngineFactory::instance().engine(data.engine_name);
     if ( !data.engine)
     {
         logger.stream() << "Plugin refers to an unknown engine" << data.engine_name;

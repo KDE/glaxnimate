@@ -7,10 +7,10 @@
 #pragma once
 
 #include <memory>
-#include "app/scripting/script_engine.hpp"
+#include "plugin/script_engine.hpp"
 
 
-namespace app::scripting::python {
+namespace glaxnimate::plugin::python {
 
 class PythonContext : public ScriptExecutionContext
 {
@@ -59,4 +59,4 @@ private:
     static Autoregister<PythonEngine> autoreg;
 };
 
-} // namespace app::scripting::python
+} // namespace glaxnimate::plugin::python

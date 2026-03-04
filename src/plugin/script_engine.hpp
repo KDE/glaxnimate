@@ -18,9 +18,9 @@
 #include "app/qstring_exception.hpp"
 
 
-namespace app::scripting {
+namespace glaxnimate::plugin {
 
-class ScriptError : public QStringException<>{ using Ctor::Ctor; };
+class ScriptError : public app::QStringException<>{ using Ctor::Ctor; };
 
 class ScriptEngine;
 
@@ -161,4 +161,4 @@ struct ScriptEngine::Autoregister
     }
 };
 
-} // namespace app::scripting
+} // namespace glaxnimate::plugin

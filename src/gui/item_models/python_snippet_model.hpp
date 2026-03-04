@@ -8,7 +8,7 @@
 
 #include <KLocalizedString>
 #include <QAbstractListModel>
-#include "glaxnimate/plugin/snippet.hpp"
+#include "plugin/snippet.hpp"
 
 namespace glaxnimate::gui::item_models {
 

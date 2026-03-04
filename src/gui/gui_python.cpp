@@ -6,11 +6,11 @@
 
 #include "widgets/dialogs/glaxnimate_window.hpp"
 #include "widgets/dialogs/plugin_ui_dialog.hpp"
-#include "app/scripting/python/register_machinery.hpp"
+#include "plugin/python/register_machinery.hpp"
 
 PYBIND11_EMBEDDED_MODULE(glaxnimate_gui, m)
 {
-    using namespace app::scripting::python;
+    using namespace glaxnimate::plugin::python;
     using namespace glaxnimate::gui;
 
     register_from_meta<PluginUiDialog, QObject>(m)

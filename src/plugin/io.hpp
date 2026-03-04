@@ -8,7 +8,7 @@
 
 #include "glaxnimate/io/io_registry.hpp"
 
-#include "glaxnimate/plugin/service.hpp"
+#include "plugin/service.hpp"
 
 namespace glaxnimate::plugin {
 

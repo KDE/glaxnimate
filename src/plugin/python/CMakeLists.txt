@@ -2,16 +2,28 @@
 # SPDX-License-Identifier: BSD-2-Clause
 
 set(SOURCES
-    python.cpp
-    miscdefs.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/python.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/miscdefs.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/register_machinery.cpp
 )
-add_library(${LIB_NAME_PYTHON} OBJECT ${SOURCES} embed.cpp)
-kde_target_enable_exceptions(${LIB_NAME_PYTHON} PUBLIC)
+
+set(GLAXNIMATE_PYTHON_SOURCES
+    ${SOURCES}
+    ${CMAKE_CURRENT_SOURCE_DIR}/embed.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/python_engine.cpp
+    PARENT_SCOPE
+)
+set(GLAXNIMATE_PYTHON_LIBS ${Python3_LIBRARIES} PARENT_SCOPE)
+
+
+message(STATUS "Python3_INCLUDE_DIRS ${Python3_INCLUDE_DIRS}")
+message(STATUS "Python3_LIBRARIES ${Python3_LIBRARIES}")
+message(STATUS "Python3_EXECUTABLE ${Python3_EXECUTABLE}")
+
 #target_include_directories (${LIB_NAME_PYTHON} PUBLIC
         #${Python3_INCLUDE_DIRS}
         #${CMAKE_SOURCE_DIR}/external/QtAppSetup/external/pybind11/include
 #)
-target_link_libraries(${LIB_NAME_PYTHON} PUBLIC ${LIB_NAME_CORE} QtAppSetup)
 
 pybind11_add_module(glaxnimate_python EXCLUDE_FROM_ALL ${SOURCES} module.cpp)
 set_target_properties(
@@ -19,8 +31,9 @@ set_target_properties(
     OUTPUT_NAME ${PROJECT_SLUG}
     LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/build/lib"
 )
-target_link_libraries(glaxnimate_python PUBLIC ${LIB_NAME_CORE} QtAppSetup)
+target_link_libraries(glaxnimate_python PUBLIC ${LIB_NAME_CORE} ${LIB_NAME_PLUGIN} ${Python3_LIBRARIES})
 add_custom_command(TARGET glaxnimate_python PRE_BUILD COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_BINARY_DIR}/build/lib")
+
 
 
 get_target_property(pain1 glaxnimate_python PREFIX)

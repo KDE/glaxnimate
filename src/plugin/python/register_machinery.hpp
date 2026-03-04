@@ -12,12 +12,12 @@
 #include <QMetaEnum>
 #include <QDebug>
 
-#include "app/scripting/python/casters.hpp"
-#include "app/scripting/python/attribute.hpp"
+#include "casters.hpp"
+#include "attribute.hpp"
 
 namespace py = pybind11;
 
-namespace app::scripting::python {
+namespace glaxnimate::plugin::python {
 
 struct PY_HIDDEN PyPropertyInfo
 {
@@ -153,4 +153,4 @@ auto qdebug_operator_to_string()
     return &detail::qdebug_operator_to_string<T>;
 }
 
-} // namespace app::scripting::python
+} // namespace glaxnimate::plugin::python

@@ -10,15 +10,15 @@
 
 #include <KLocalizedString>
 
-#include "app/scripting/script_engine.hpp"
+#include "plugin/script_engine.hpp"
 
 #include "glaxnimate/app_info.hpp"
 #include "glaxnimate/io/io_registry.hpp"
 #include "glaxnimate/io/svg/svg_renderer.hpp"
 #include "glaxnimate/io/raster/raster_mime.hpp"
 
-#include "glaxnimate/plugin/executor.hpp"
-#include "glaxnimate/plugin/plugin.hpp"
+#include "plugin/executor.hpp"
+#include "plugin/plugin.hpp"
 
 app::cli::ParsedArguments glaxnimate::gui::parse_cli(const QStringList& args)
 {
@@ -121,22 +121,22 @@ public:
         globals["document"] = QVariant::fromValue(document);
         globals["window"] = {};
 
-        for ( const auto& engine : app::scripting::ScriptEngineFactory::instance().engines() )
+        for ( const auto& engine : glaxnimate::plugin::ScriptEngineFactory::instance().engines() )
         {
             auto ctx = engine->create_context();
 
             if ( !ctx )
                 continue;
 
-            QObject::connect(ctx.get(), &app::scripting::ScriptExecutionContext::stdout_line, [this](const QString& s){ console_stdout(s);});
-            QObject::connect(ctx.get(), &app::scripting::ScriptExecutionContext::stderr_line, [this](const QString& s){ console_stderr(s);});
+            QObject::connect(ctx.get(), &glaxnimate::plugin::ScriptExecutionContext::stdout_line, [this](const QString& s){ console_stdout(s);});
+            QObject::connect(ctx.get(), &glaxnimate::plugin::ScriptExecutionContext::stderr_line, [this](const QString& s){ console_stderr(s);});
 
             try {
                 ctx->app_module("glaxnimate");
                 ctx->app_module("glaxnimate_gui");
                 for ( const auto& p : globals )
                     ctx->expose(p.first, p.second);
-            } catch ( const app::scripting::ScriptError& err ) {
+            } catch ( const glaxnimate::plugin::ScriptError& err ) {
                 console_stderr(err.message());
             }
 
@@ -157,7 +157,7 @@ public:
                     ok = ctx->run_from_module(plugin.data().dir, script.module, script.function, args);
                     if ( !ok )
                         console_stderr(i18nc("@info:shell", "Could not run the plugin"));
-                } catch ( const app::scripting::ScriptError& err ) {
+                } catch ( const glaxnimate::plugin::ScriptError& err ) {
                     console_stderr(err.message());
                     ok = false;
                 }
@@ -188,7 +188,7 @@ public:
     }
 
 private:
-    std::vector<app::scripting::ScriptContext> script_contexts;
+    std::vector<glaxnimate::plugin::ScriptContext> script_contexts;
     std::map<QString, QVariant> globals;
 };
 
