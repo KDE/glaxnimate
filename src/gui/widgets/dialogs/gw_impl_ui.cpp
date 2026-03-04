@@ -298,8 +298,8 @@ void GlaxnimateWindow::Private::setup_file_actions()
     KActionCategory *fileActions = new KActionCategory(i18n("File"), parent->actionCollection());
 
     // File
-    fileActions->addAction(KStandardAction::New, parent, SLOT(document_new()));
-    fileActions->addAction(KStandardAction::Open, parent, SLOT(document_open_dialog()));
+    fileActions->addAction(KStandardActions::New, parent, &GlaxnimateWindow::document_new);
+    fileActions->addAction(KStandardActions::Open, parent, &GlaxnimateWindow::document_open_dialog);
     QAction *importImage = add_action(fileActions, QStringLiteral("import_image"), i18n("Add Image…"), QStringLiteral("insert-image"), {}, Qt::CTRL | Qt::Key_I);
     connect(importImage, &QAction::triggered, parent, [this]{import_image();});
 
@@ -321,17 +321,17 @@ void GlaxnimateWindow::Private::setup_file_actions()
     });
 
     m_recentFilesAction = KStandardAction::openRecent(parent, &GlaxnimateWindow::document_open_recent, fileActions);
-    fileActions->addAction(KStandardAction::name(KStandardAction::OpenRecent), m_recentFilesAction);
+    fileActions->addAction(KStandardActions::name(KStandardActions::OpenRecent), m_recentFilesAction);
     openLast->setEnabled(false);
     connect(m_recentFilesAction, &KRecentFilesAction::enabledChanged, openLast, &QAction::setEnabled);
 
     m_recentFilesAction->loadEntries(KConfigGroup(KSharedConfig::openConfig(), QString()));
 
-    QAction *revertAction = fileActions->addAction(KStandardAction::Revert, parent, SLOT(document_reload()));
+    QAction *revertAction = fileActions->addAction(KStandardActions::Revert, parent, &GlaxnimateWindow::document_reload);
 
     parent->actionCollection()->setDefaultShortcut(revertAction, Qt::CTRL | Qt::Key_F5);
-    fileActions->addAction(KStandardAction::Save, parent, SLOT(document_save()));
-    fileActions->addAction(KStandardAction::SaveAs, parent, SLOT(document_save_as()));
+    fileActions->addAction(KStandardActions::Save, parent, &GlaxnimateWindow::document_save);
+    fileActions->addAction(KStandardActions::SaveAs, parent, &GlaxnimateWindow::document_save_as);
     QAction *saveAsTemplate = add_action(fileActions, QStringLiteral("save_as_template"), i18n("Save as Template"), QStringLiteral("document-save-as-template"));
     connect(saveAsTemplate, &QAction::triggered, parent, [this]{
         bool ok = true;
@@ -364,20 +364,20 @@ void GlaxnimateWindow::Private::setup_edit_actions()
 {
     KActionCategory *editActions = new KActionCategory(i18n("Edit"), parent->actionCollection());
 
-    QAction *undo = editActions->addAction(KStandardAction::Undo, &parent->undo_group(), SLOT(undo()));
+    QAction *undo = editActions->addAction(KStandardActions::Undo, &parent->undo_group(), &QUndoGroup::undo);
     QObject::connect(&parent->undo_group(), &QUndoGroup::canUndoChanged, undo, &QAction::setEnabled);
     QObject::connect(&parent->undo_group(), &QUndoGroup::undoTextChanged, undo, [this, undo](const QString& s){
         undo->setText(i18n("Undo %1", s));
     });
 
-    QAction *redo = editActions->addAction(KStandardAction::Redo, &parent->undo_group(), SLOT(redo()));
+    QAction *redo = editActions->addAction(KStandardActions::Redo, &parent->undo_group(), &QUndoGroup::redo);
     QObject::connect(&parent->undo_group(), &QUndoGroup::canRedoChanged, redo, &QAction::setEnabled);
     QObject::connect(&parent->undo_group(), &QUndoGroup::redoTextChanged, redo, [this, redo](const QString& s){
         redo->setText(i18n("Redo %1", s));
     });
-    editActions->addAction(KStandardAction::Cut, parent, SLOT(cut()));
-    editActions->addAction(KStandardAction::Copy, parent, SLOT(copy()));
-    editActions->addAction(KStandardAction::Paste, parent, SLOT(paste()));
+    editActions->addAction(KStandardActions::Cut, parent, &GlaxnimateWindow::cut);
+    editActions->addAction(KStandardActions::Copy, parent, &GlaxnimateWindow::copy);
+    editActions->addAction(KStandardActions::Paste, parent, &GlaxnimateWindow::paste);
 
     // edit_paste_as_completion
     QAction *pasteAsComposition = add_action(editActions, QStringLiteral("edit_paste_as_composition"), i18n("Paste as Composition"), QStringLiteral("special_paste"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_V);
@@ -386,7 +386,7 @@ void GlaxnimateWindow::Private::setup_edit_actions()
     QAction *duplicate = add_action(editActions, QStringLiteral("duplicate"), i18n("Duplicate"), QStringLiteral("edit-duplicate"), {}, Qt::CTRL | Qt::Key_D);
     connect(duplicate, &QAction::triggered, parent, &GlaxnimateWindow::duplicate_selection);
 
-    QAction *selectAll = editActions->addAction(KStandardAction::SelectAll);
+    QAction *selectAll = editActions->addAction(KStandardActions::SelectAll);
     selectAll->setEnabled(false);
     QAction *editDelete = add_action(editActions, QStringLiteral("edit_delete"), i18n("Delete"), QStringLiteral("edit-delete"), {}, Qt::Key_Delete);
     connect(editDelete, &QAction::triggered, [this](){
@@ -466,10 +466,10 @@ void GlaxnimateWindow::Private::setup_view_actions()
     connect(layoutCompact, &QAction::triggered, parent, [this]{layout_update();});
 
 
-    viewActions->addAction(KStandardAction::ZoomIn, canvas, SLOT(zoom_in()));
-    viewActions->addAction(KStandardAction::ZoomOut, canvas, SLOT(zoom_out()));
-    viewActions->addAction(KStandardAction::FitToPage, parent, SLOT(view_fit()));
-    viewActions->addAction(KStandardAction::ActualSize, canvas, SLOT(reset_zoom()));
+    viewActions->addAction(KStandardActions::ZoomIn, canvas, &Canvas::zoom_in);
+    viewActions->addAction(KStandardActions::ZoomOut, canvas, &Canvas::zoom_out);
+    viewActions->addAction(KStandardActions::FitToPage, parent, &Canvas::view_fit);
+    viewActions->addAction(KStandardActions::ActualSize, canvas, &Canvas::reset_zoom);
 
     QAction *toolResetRotation = add_action(viewActions, QStringLiteral("view_reset_rotation"), i18n("Reset Rotation"), QStringLiteral("rotation-allowed"));
     connect(toolResetRotation, &QAction::triggered, canvas, &Canvas::reset_rotation);
