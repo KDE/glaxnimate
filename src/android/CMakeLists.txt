@@ -24,7 +24,6 @@ if(NOT ANDROID)
 endif()
 
 include_directories(
-    ${CMAKE_SOURCE_DIR}/external/QtAppSetup/src
     ${CMAKE_SOURCE_DIR}/src/core
     ${CMAKE_SOURCE_DIR}/src/gui
     ${CMAKE_SOURCE_DIR}/external/Qt-Color-Widgets/include
@@ -40,7 +39,6 @@ add_executable(${PROJECT_SLUG}_mobile ${SOURCES})
 kde_target_enable_exceptions(${PROJECT_SLUG}_mobile PUBLIC)
 
 target_link_libraries(${PROJECT_SLUG}_mobile PUBLIC
-    QtAppSetup
     ${LIB_NAME_CORE}
     ${LIB_NAME_GUI}
     QtColorWidgets

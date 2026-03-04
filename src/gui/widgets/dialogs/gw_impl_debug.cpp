@@ -13,9 +13,7 @@
 #include <QFontDatabase>
 #include <QMenu>
 #include <QToolBar>
-
-#include "app/utils/desktop.hpp"
-#include "app/debug/model.hpp"
+#include <QDesktopServices>
 
 #include "glaxnimate/io/base.hpp"
 #include "glaxnimate/io/glaxnimate/glaxnimate_format.hpp"
@@ -72,6 +70,11 @@ QString pretty_rive(const QByteArray& input)
     return pretty_json(glaxnimate::io::rive::RiveFormat().to_json(input));
 }
 
+inline bool open_file(const QString& path)
+{
+    return QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+}
+
 void json_to_pretty_temp(const QJsonDocument& doc)
 {
     QTemporaryFile tempf(GlaxnimateApp::temp_path() + "/XXXXXX.json");
@@ -79,10 +82,112 @@ void json_to_pretty_temp(const QJsonDocument& doc)
     tempf.open();
     tempf.write(doc.toJson(QJsonDocument::Indented));
     tempf.close();
-    app::desktop::open_file(tempf.fileName());
+    open_file(tempf.fileName());
+}
+
+inline void print_model_column(const QAbstractItemModel* model, int i, bool flags, const std::vector<int>& roles, const QModelIndex& index, int indent)
+{
+    auto logger = qDebug();
+    logger.noquote();
+    auto colindex = model->index(index.row(), i, index.parent());
+    for ( int role : roles )
+    {
+        logger << QString(4*indent, ' ') << "  *" << model->data(colindex, role);
+        if ( flags )
+            logger << model->flags(colindex);
+    }
+}
+
+struct DebugSlot
+{
+    QString prefix;
+    QString signal;
+
+    template<class T>
+    decltype(std::declval<QDebug&>() << std::declval<T>()) print(QDebug& stream, T&& t, bool)
+    {
+        return stream << std::forward<T>(t);
+    }
+
+    template<class T>
+    void print(QDebug&, T&&, ...){}
+    void print_all(QDebug&) {}
+
+    template<class T, class... Args>
+    void print_all(QDebug& stream, T&& t, Args&&... args)
+    {
+        print(stream, std::forward<T>(t), true);
+        print_all(stream, std::forward<Args>(args)...);
+    }
+
+    template<class... Args>
+    void operator()(Args&&... args)
+    {
+        auto stream = qDebug();
+        if ( !prefix.isEmpty() )
+            stream << prefix;
+        stream << signal;
+        print_all(stream, std::forward<Args>(args)...);
+    }
+};
+
+inline void print_model_row(const QAbstractItemModel* model, const QModelIndex& index, const std::vector<int>& columns = {}, bool flags = false, const std::vector<int>& roles = {Qt::DisplayRole}, int indent = 0)
+{
+    int rows = model->rowCount(index);
+    int cols = model->columnCount(index);
+
+    qDebug().noquote() << QString(4*indent, ' ') << index << "rows" << rows << "cols" << cols << "ptr" << index.internalId();
+
+    if ( columns.empty() )
+    {
+        for ( int i = 0; i < cols; i++ )
+            print_model_column(model, i, flags, roles, index, indent);
+    }
+    else
+    {
+        for ( int i : columns )
+            print_model_column(model, i, flags, roles, index, indent);
+    }
+}
+
+inline void print_model(const QAbstractItemModel* model, const std::vector<int>& columns = {}, bool flags = false, const std::vector<int>& roles = {Qt::DisplayRole}, const QModelIndex& index = {}, int indent = 0)
+{
+    print_model_row(model, index, columns, flags, roles, indent);
+    for ( int i = 0; i < model->rowCount(index); i++ )
+    {
+        QModelIndex ci = model->index(i, 0, index);
+        if ( !ci.isValid() )
+            qDebug().noquote() << QString(4*(indent+1), ' ') << "invalid";
+        else
+            print_model(model, columns, flags, roles, ci, indent+1);
+    }
+}
+
+inline void connect_debug(QAbstractItemModel* model, const QString& prefix)
+{
+    QObject::connect(model, &QAbstractItemModel::columnsAboutToBeInserted,  model, DebugSlot{prefix, "columnsAboutToBeInserted"});
+    QObject::connect(model, &QAbstractItemModel::columnsAboutToBeMoved,     model, DebugSlot{prefix, "columnsAboutToBeMoved"});
+    QObject::connect(model, &QAbstractItemModel::columnsAboutToBeRemoved,   model, DebugSlot{prefix, "columnsAboutToBeRemoved"});
+    QObject::connect(model, &QAbstractItemModel::columnsInserted,           model, DebugSlot{prefix, "columnsInserted"});
+    QObject::connect(model, &QAbstractItemModel::columnsMoved,              model, DebugSlot{prefix, "columnsMoved"});
+    QObject::connect(model, &QAbstractItemModel::columnsRemoved,            model, DebugSlot{prefix, "columnsRemoved"});
+    QObject::connect(model, &QAbstractItemModel::dataChanged,               model, DebugSlot{prefix, "dataChanged"});
+    QObject::connect(model, &QAbstractItemModel::headerDataChanged,         model, DebugSlot{prefix, "headerDataChanged"});
+    QObject::connect(model, &QAbstractItemModel::layoutAboutToBeChanged,    model, DebugSlot{prefix, "layoutAboutToBeChanged"});
+    QObject::connect(model, &QAbstractItemModel::layoutChanged,             model, DebugSlot{prefix, "layoutChanged"});
+    QObject::connect(model, &QAbstractItemModel::modelAboutToBeReset,       model, DebugSlot{prefix, "modelAboutToBeReset"});
+    QObject::connect(model, &QAbstractItemModel::modelReset,                model, DebugSlot{prefix, "modelReset"});
+    QObject::connect(model, &QAbstractItemModel::rowsAboutToBeInserted,     model, DebugSlot{prefix, "rowsAboutToBeInserted"});
+    QObject::connect(model, &QAbstractItemModel::rowsAboutToBeMoved,        model, DebugSlot{prefix, "rowsAboutToBeMoved"});
+    QObject::connect(model, &QAbstractItemModel::rowsAboutToBeRemoved,      model, DebugSlot{prefix, "rowsAboutToBeRemoved"});
+    QObject::connect(model, &QAbstractItemModel::rowsInserted,              model, DebugSlot{prefix, "rowsInserted"});
+    QObject::connect(model, &QAbstractItemModel::rowsMoved,                 model, DebugSlot{prefix, "rowsMoved"});
+    QObject::connect(model, &QAbstractItemModel::rowsRemoved,               model, DebugSlot{prefix, "rowsRemoved"});
 }
 
 } // namespace
+
+
 
 void GlaxnimateWindow::Private::init_debug()
 {
@@ -98,38 +203,38 @@ void GlaxnimateWindow::Private::init_debug()
     menu_debug->addAction(menu_print_model->menuAction());
 
     menu_print_model->addAction("Document Node - Full", [this]{
-        app::debug::print_model(&document_node_model, {1}, false);
+        print_model(&document_node_model, {1}, false);
     });
 
     menu_print_model->addAction("Document Node - Layers", [this]{
-        app::debug::print_model(layers_dock->layer_view()->model(), {1}, false);
+        print_model(layers_dock->layer_view()->model(), {1}, false);
     });
 
     menu_print_model->addAction("Document Node - Assets", [this]{
-        app::debug::print_model(&asset_model, {0}, false);
+        print_model(&asset_model, {0}, false);
     });
 
     menu_print_model->addSeparator();
 
     menu_print_model->addAction("Properties - Single", [this]{
-        app::debug::print_model(&property_model, {0}, false);
+        print_model(&property_model, {0}, false);
     });
 
     menu_print_model->addAction("Properties - Full", [this]{
-        app::debug::print_model(timeline_dock->timelineWidget()->raw_model(), {0}, false);
+        print_model(timeline_dock->timelineWidget()->raw_model(), {0}, false);
     });
 
     menu_print_model->addAction("Properties - Full (Filtered)", [this]{
-        app::debug::print_model(timeline_dock->timelineWidget()->filtered_model(), {0}, false);
+        print_model(timeline_dock->timelineWidget()->filtered_model(), {0}, false);
     });
 
     QMenu* menu_model_signals = new QMenu("Show Model Signals", menu_debug);
     menu_debug->addAction(menu_model_signals->menuAction());
     menu_model_signals->addAction("Document Node - Full", [this]{
-        app::debug::connect_debug(&document_node_model, "Document Node - Full");
+        connect_debug(&document_node_model, "Document Node - Full");
     });
     menu_model_signals->addAction("Document Node - Layers", [this]{
-        app::debug::connect_debug(layers_dock->layer_view()->model(), "Document Node - Layers");
+        connect_debug(layers_dock->layer_view()->model(), "Document Node - Layers");
     });
 
     menu_debug->addAction("Current index", [this]{
@@ -190,7 +295,7 @@ void GlaxnimateWindow::Private::init_debug()
     QMenu* menu_source = new QMenu("View Source", menu_debug);
     menu_debug->addAction(menu_source->menuAction());
     menu_source->addAction("Raw", [this]{
-        app::desktop::open_file(current_document->io_options().filename);
+        open_file(current_document->io_options().filename);
     });
     menu_source->addAction("Pretty", [this]{
         QString filename = current_document->io_options().filename;
@@ -206,13 +311,13 @@ void GlaxnimateWindow::Private::init_debug()
 
         if ( fmt->slug() == "lottie" || fmt->slug() == "glaxnimate" )
         {
-            app::desktop::open_file(pretty_json(data));
+            open_file(pretty_json(data));
         }
         else if ( fmt->slug() == "tgs" )
         {
             QByteArray decomp;
             utils::gzip::decompress(data, decomp, {});
-            app::desktop::open_file(pretty_json(decomp));
+            open_file(pretty_json(decomp));
         }
         else if ( fmt->slug() == "svg" )
         {
@@ -223,15 +328,15 @@ void GlaxnimateWindow::Private::init_debug()
                 data = std::move(decomp);
             }
 
-            app::desktop::open_file(pretty_xml(data));
+            open_file(pretty_xml(data));
         }
         else if ( fmt->slug() == "rive" )
         {
-            app::desktop::open_file(pretty_rive(data));
+            open_file(pretty_rive(data));
         }
         else
         {
-            app::desktop::open_file(filename);
+            open_file(filename);
         }
     });
     menu_source->addAction("Current (Rawr)", [this]{

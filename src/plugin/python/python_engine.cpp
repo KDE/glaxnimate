@@ -8,7 +8,7 @@
 
 #include "register_machinery.hpp"
 #include "glaxnimate/log/log.hpp"
-#include "app/env.hpp"
+#include "cli_utils/env.hpp"
 
 using namespace glaxnimate;
 
@@ -269,7 +269,7 @@ plugin::ScriptContext plugin::python::PythonEngine::create_context() const
 
 void plugin::python::PythonEngine::add_module_search_paths(const QStringList& paths)
 {
-    app::Environment::Variable("PYTHONPATH").push_back(paths);
+    cli::Environment::Variable("PYTHONPATH").push_back(paths);
 }
 
 QString plugin::python::PythonEngine::pybind_version()

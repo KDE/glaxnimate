@@ -9,7 +9,7 @@
 #include <stdexcept>
 #include <QString>
 
-namespace app {
+namespace glaxnimate::utils {
 
 template<class Base=std::runtime_error>
 class QStringException : public Base
@@ -26,4 +26,4 @@ public:
     }
 };
 
-} // namespace app
+} // namespace glaxnimate::utils

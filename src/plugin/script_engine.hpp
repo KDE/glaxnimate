@@ -15,12 +15,12 @@
 #include <QDir>
 #include <QVariant>
 
-#include "app/qstring_exception.hpp"
+#include "glaxnimate/utils/qstring_exception.hpp"
 
 
 namespace glaxnimate::plugin {
 
-class ScriptError : public app::QStringException<>{ using Ctor::Ctor; };
+class ScriptError : public utils::QStringException<>{ using Ctor::Ctor; };
 
 class ScriptEngine;
 

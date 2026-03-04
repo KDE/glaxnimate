@@ -12,7 +12,6 @@
 #include <QVariant>
 #include <QString>
 
-#include "app/utils/translated_string.hpp"
 #include "glaxnimate/utils/i18n.hpp"
 
 namespace glaxnimate::settings {

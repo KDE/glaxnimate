@@ -23,7 +23,7 @@
 
 #include "QtColorWidgets/ColorSelector"
 
-#include "app/widgets/no_close_on_enter.hpp"
+#include "widgets/no_close_on_enter.hpp"
 #include "glaxnimate_settings.hpp"
 #include "settings/icon_settings.hpp"
 #include "glaxnimate/utils/pseudo_mutex.hpp"
@@ -189,7 +189,7 @@ public:
 
     QComboBox* color_scheme_view = nullptr;
     std::map<KPageWidgetItem*, settings::CustomSettingsGroup*> custom_pages;
-    app::widgets::NoCloseOnEnter ncoe;
+    NoCloseOnEnter ncoe;
     QTableView* icon_view = nullptr;
     bool has_changed = false;
     utils::PseudoMutex internal_change;

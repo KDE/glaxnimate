@@ -163,6 +163,7 @@ if ( NOT MOBILE_UI )
     list(APPEND SOURCES
         main.cpp
         cli.cpp
+        ../cli_utils/cli.cpp
 
         emoji/emoji_set_dialog.cpp
 
@@ -250,7 +251,6 @@ ki18n_wrap_ui(SOURCES_UIS ${SOURCES_UIS})
 kconfig_add_kcfg_files(SOURCES GENERATE_MOC glaxnimate_settings.kcfgc)
 install(FILES glaxnimate_settings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
 
-include_directories(${CMAKE_SOURCE_DIR}/external/QtAppSetup/src)
 include_directories(${CMAKE_SOURCE_DIR}/src/core)
 add_library(${LIB_NAME_GUI} OBJECT ${SOURCES} ${SOURCES_UIS})
 kde_target_enable_exceptions(${LIB_NAME_GUI} PUBLIC)

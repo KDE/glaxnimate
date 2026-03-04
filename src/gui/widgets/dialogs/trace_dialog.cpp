@@ -38,7 +38,7 @@
 #include "glaxnimate/utils/trace_wrapper.hpp"
 #include "glaxnimate/command/undo_macro_guard.hpp"
 #include "glaxnimate/command/object_list_commands.hpp"
-#include "app/widgets/no_close_on_enter.hpp"
+#include "widgets/no_close_on_enter.hpp"
 #include "glaxnimate_app.hpp"
 
 #include "color_quantization_dialog.hpp"
@@ -67,7 +67,7 @@ public:
     QGraphicsRectItem *item_parent_shape;
     QGraphicsRectItem *item_parent_image;
     QGraphicsPixmapItem *item_image;
-    app::widgets::NoCloseOnEnter ncoe;
+    NoCloseOnEnter ncoe;
     ColorQuantizationDialog color_options;
     QSize image_size;
     bool initialized = false;

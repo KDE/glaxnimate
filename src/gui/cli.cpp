@@ -20,13 +20,13 @@
 #include "plugin/executor.hpp"
 #include "plugin/plugin.hpp"
 
-app::cli::ParsedArguments glaxnimate::gui::parse_cli(const QStringList& args)
+glaxnimate::cli::ParsedArguments glaxnimate::gui::parse_cli(const QStringList& args)
 {
-    app::cli::Parser parser(AppInfo::instance().description());
+    glaxnimate::cli::Parser parser(AppInfo::instance().description());
 
     parser.add_group(i18nc("@info:shell", "Informational Options"));
-    parser.add_argument({{"--help", "-h"}, i18nc("@info:shell", "Show this help and exit"), app::cli::Argument::ShowHelp});
-    parser.add_argument({{"--version", "-v"}, i18nc("@info:shell", "Show version information and exit"), app::cli::Argument::ShowVersion});
+    parser.add_argument({{"--help", "-h"}, i18nc("@info:shell", "Show this help and exit"), glaxnimate::cli::Argument::ShowHelp});
+    parser.add_argument({{"--version", "-v"}, i18nc("@info:shell", "Show version information and exit"), glaxnimate::cli::Argument::ShowVersion});
 
     parser.add_group(i18nc("@info:shell", "Options"));
     parser.add_argument({{"file"}, i18nc("@info:shell", "File to open")});
@@ -37,14 +37,14 @@ app::cli::ParsedArguments glaxnimate::gui::parse_cli(const QStringList& args)
     parser.add_argument({
         {"--ipc"},
         i18nc("@info:shell", "Specify the name of the local socket/named pipe to connect to a host application."),
-        app::cli::Argument::String,
+        glaxnimate::cli::Argument::String,
         {},
         "IPC-NAME"
     });
     parser.add_argument({
         {"--window-size"},
         i18nc("@info:shell", "Use a specific size for the main window"),
-        app::cli::Argument::Size,
+        glaxnimate::cli::Argument::Size,
         {},
         "WIDTHxHEIGHT"
     });
@@ -61,49 +61,49 @@ app::cli::ParsedArguments glaxnimate::gui::parse_cli(const QStringList& args)
     parser.add_argument({
         {"--export", "-o"},
         i18nc("@info:shell", "Export the input file to the given file instead of starting the GUI"),
-        app::cli::Argument::String,
+        glaxnimate::cli::Argument::String,
         {},
         "EXPORT-FILENAME"
     });
     parser.add_argument({
         {"--export-format", "-f"},
         i18nc("@info:shell", "Specify the format for --export. If omitted it's determined based on the file name. See --export-format-list for a list of supported formats."),
-        app::cli::Argument::String,
+        glaxnimate::cli::Argument::String,
         {},
         "EXPORT-FORMAT"
     });
     parser.add_argument({
         {"--export-format-list"},
         i18nc("@info:shell", "Shows possible values for --export-format"),
-        app::cli::Argument::Flag
+        glaxnimate::cli::Argument::Flag
     });
 
     parser.add_group(i18nc("@info:shell", "Render Frame Options"));
     parser.add_argument({
         {"--render", "-r"},
         i18nc("@info:shell", "Render frames the input file to the given file instead of starting the GUI"),
-        app::cli::Argument::String,
+        glaxnimate::cli::Argument::String,
         {},
         "RENDER-FILENAME"
     });
     parser.add_argument({
         {"--render-format"},
         i18nc("@info:shell", "Specify the format for --render. If omitted it's determined based on the file name. See --render-format-list for a list of supported formats."),
-        app::cli::Argument::String,
+        glaxnimate::cli::Argument::String,
         {},
         "RENDER-FORMAT"
     });
     parser.add_argument({
         {"--frame"},
         i18nc("@info:shell", "Frame number to render, use `all` to render all frames"),
-        app::cli::Argument::String,
+        glaxnimate::cli::Argument::String,
         {"0"},
         "FRAME"
     });
     parser.add_argument({
         {"--render-format-list"},
         i18nc("@info:shell", "Shows possible values for --render-format"),
-        app::cli::Argument::Flag
+        glaxnimate::cli::Argument::Flag
     });
 
     return parser.parse(args);
@@ -179,12 +179,12 @@ public:
 
     void console_stderr(const QString& line)
     {
-        app::cli::show_message(line, true);
+        glaxnimate::cli::show_message(line, true);
     }
 
     void console_stdout(const QString& line)
     {
-        app::cli::show_message(line, false);
+        glaxnimate::cli::show_message(line, false);
     }
 
 private:
@@ -206,7 +206,7 @@ QVariantMap io_settings(std::unique_ptr<glaxnimate::settings::SettingsGroup> gro
 
 void log_message(const QString& message, glaxnimate::log::Severity severity)
 {
-    app::cli::show_message(
+    glaxnimate::cli::show_message(
         QStringLiteral("%1: %2")
         .arg(glaxnimate::log::Logger::severity_name(severity))
         .arg(message)
@@ -214,7 +214,7 @@ void log_message(const QString& message, glaxnimate::log::Severity severity)
 }
 
 
-std::unique_ptr<glaxnimate::model::Document> cli_open(const app::cli::ParsedArguments& args)
+std::unique_ptr<glaxnimate::model::Document> cli_open(const glaxnimate::cli::ParsedArguments& args)
 {
     using namespace glaxnimate;
 
@@ -222,14 +222,14 @@ std::unique_ptr<glaxnimate::model::Document> cli_open(const app::cli::ParsedArgu
     auto importer = io::IoRegistry::instance().from_filename(input_filename, io::ImportExport::Import);
     if ( !importer || !importer->can_open() )
     {
-        app::cli::show_message(i18nc("@info:shell", "Unknown importer"), true);
+        glaxnimate::cli::show_message(i18nc("@info:shell", "Unknown importer"), true);
         return {};
     }
 
     QFile input_file(input_filename);
     if ( !input_file.open(QIODevice::ReadOnly) )
     {
-        app::cli::show_message(i18nc("@info:shell", "Could not open input file for reading"), true);
+        glaxnimate::cli::show_message(i18nc("@info:shell", "Could not open input file for reading"), true);
         return {};
     }
 
@@ -243,7 +243,7 @@ std::unique_ptr<glaxnimate::model::Document> cli_open(const app::cli::ParsedArgu
     QObject::connect(importer, &io::ImportExport::message, &log_message);
     if ( !importer->open(input_file, input_filename, document.get(), open_settings) )
     {
-        app::cli::show_message(i18nc("@info:shell", "Error loading input file"), true);
+        glaxnimate::cli::show_message(i18nc("@info:shell", "Error loading input file"), true);
         return {};
     }
     input_file.close();
@@ -251,13 +251,13 @@ std::unique_ptr<glaxnimate::model::Document> cli_open(const app::cli::ParsedArgu
     return document;
 }
 
-bool cli_export(const app::cli::ParsedArguments& args)
+bool cli_export(const glaxnimate::cli::ParsedArguments& args)
 {
     using namespace glaxnimate;
 
     if ( !args.is_defined("file") )
     {
-        app::cli::show_message(i18nc("@info:shell", "You need to specify a file to export"), true);
+        glaxnimate::cli::show_message(i18nc("@info:shell", "You need to specify a file to export"), true);
         return false;
     }
 
@@ -272,7 +272,7 @@ bool cli_export(const app::cli::ParsedArguments& args)
 
     if ( !exporter || !exporter->can_save() )
     {
-        app::cli::show_message(i18nc("@info:shell", "Unknown exporter. Use --export-format-list for a list of available formats"), true);
+        glaxnimate::cli::show_message(i18nc("@info:shell", "Unknown exporter. Use --export-format-list for a list of available formats"), true);
         return false;
     }
 
@@ -283,7 +283,7 @@ bool cli_export(const app::cli::ParsedArguments& args)
     QFile output_file(output_filename);
     if ( !output_file.open(QIODevice::WriteOnly) )
     {
-        app::cli::show_message(i18nc("@info:shell", "Could not open output file for writing"), true);
+        glaxnimate::cli::show_message(i18nc("@info:shell", "Could not open output file for writing"), true);
         return false;
     }
 
@@ -292,7 +292,7 @@ bool cli_export(const app::cli::ParsedArguments& args)
     auto comp = document->assets()->compositions->values[0];
     if ( !exporter->save(output_file, output_filename, comp, io_settings(exporter->save_settings(comp))) )
     {
-        app::cli::show_message(i18nc("@info:shell", "Error converting to the output format"), true);
+        glaxnimate::cli::show_message(i18nc("@info:shell", "Error converting to the output format"), true);
         return false;
     }
 
@@ -312,7 +312,7 @@ void render_frame(
     QFile file(filename);
     if ( !file.open(QFile::WriteOnly) )
     {
-        app::cli::show_message(i18nc("@info:shell", "Could not save to %1", filename), true);
+        glaxnimate::cli::show_message(i18nc("@info:shell", "Could not save to %1", filename), true);
         return;
     }
 
@@ -331,16 +331,16 @@ void render_frame_img(glaxnimate::model::Composition* comp, glaxnimate::model::F
 {
     QImage image = glaxnimate::io::raster::RasterMime::frame_to_image(comp, time);
     if ( !image.save(&file, format) )
-        app::cli::show_message(i18nc("@info:shell", "Could not save to %1", file.fileName()), true);
+        glaxnimate::cli::show_message(i18nc("@info:shell", "Could not save to %1", file.fileName()), true);
 }
 
-bool cli_render(const app::cli::ParsedArguments& args)
+bool cli_render(const glaxnimate::cli::ParsedArguments& args)
 {
     using namespace glaxnimate;
 
     if ( !args.is_defined("file") )
     {
-        app::cli::show_message(i18nc("@info:shell", "You need to specify a file to render"), true);
+        glaxnimate::cli::show_message(i18nc("@info:shell", "You need to specify a file to render"), true);
         return false;
     }
 
@@ -406,7 +406,7 @@ bool cli_render(const app::cli::ParsedArguments& args)
 
 } // namespace
 
-void glaxnimate::gui::cli_main(gui::GlaxnimateApp& app, app::cli::ParsedArguments& args)
+void glaxnimate::gui::cli_main(gui::GlaxnimateApp& app, glaxnimate::cli::ParsedArguments& args)
 {
     log::Logger::instance().add_listener<log::ListenerStderr>();
 
@@ -421,7 +421,7 @@ void glaxnimate::gui::cli_main(gui::GlaxnimateApp& app, app::cli::ParsedArgument
             max_name_len = qMax<int>(table.back().first.size(), max_name_len);
         }
         for ( const auto& entry : table )
-            app::cli::show_message(entry.first + QString(max_name_len - entry.first.size(), ' ') + " : " + entry.second, false);
+            glaxnimate::cli::show_message(entry.first + QString(max_name_len - entry.first.size(), ' ') + " : " + entry.second, false);
         args.return_value = 0;
         return;
     }
@@ -429,9 +429,9 @@ void glaxnimate::gui::cli_main(gui::GlaxnimateApp& app, app::cli::ParsedArgument
 
     if ( args.has_flag("render-format-list") )
     {
-        app::cli::show_message("svg");
+        glaxnimate::cli::show_message("svg");
         for ( const auto& fmt : QImageWriter::supportedImageFormats() )
-            app::cli::show_message(QString::fromUtf8(fmt));
+            glaxnimate::cli::show_message(QString::fromUtf8(fmt));
         args.return_value = 0;
         return;
     }

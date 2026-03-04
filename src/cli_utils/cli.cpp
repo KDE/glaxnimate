@@ -12,7 +12,7 @@
 #include <QSize>
 #include <QApplication>
 
-QString app::cli::Argument::get_slug(const QStringList& names)
+QString glaxnimate::cli::Argument::get_slug(const QStringList& names)
 {
     if ( names.empty() )
         return {};
@@ -33,7 +33,7 @@ QString app::cli::Argument::get_slug(const QStringList& names)
     return {};
 }
 
-QVariant app::cli::Argument::arg_to_value(const QString& v, bool* ok) const
+QVariant glaxnimate::cli::Argument::arg_to_value(const QString& v, bool* ok) const
 {
     switch ( type )
     {
@@ -79,7 +79,7 @@ QVariant app::cli::Argument::arg_to_value(const QString& v, bool* ok) const
     return {};
 }
 
-QVariant app::cli::Argument::arg_to_value(const QString& arg) const
+QVariant glaxnimate::cli::Argument::arg_to_value(const QString& arg) const
 {
     bool ok = false;
     QVariant v = arg_to_value(arg, &ok);
@@ -92,7 +92,7 @@ QVariant app::cli::Argument::arg_to_value(const QString& arg) const
 }
 
 
-QVariant app::cli::Argument::args_to_value(const QStringList& args, int& index) const
+QVariant glaxnimate::cli::Argument::args_to_value(const QStringList& args, int& index) const
 {
     if ( type == Flag )
         return true;
@@ -113,7 +113,7 @@ QVariant app::cli::Argument::args_to_value(const QStringList& args, int& index) 
 }
 
 
-QString app::cli::Argument::help_text_name() const
+QString glaxnimate::cli::Argument::help_text_name() const
 {
     QString option_names;
     for ( const auto& name : names )
@@ -131,13 +131,13 @@ QString app::cli::Argument::help_text_name() const
 }
 
 
-bool app::cli::Argument::is_positional() const
+bool glaxnimate::cli::Argument::is_positional() const
 {
     return names.size() == 1 && !names[0].startsWith('-') && nargs > 0;
 }
 
 
-app::cli::Parser& app::cli::Parser::add_argument(Argument arg)
+glaxnimate::cli::Parser& glaxnimate::cli::Parser::add_argument(Argument arg)
 {
     if ( groups.empty() )
         groups.push_back({QApplication::tr("Options")});
@@ -156,13 +156,13 @@ app::cli::Parser& app::cli::Parser::add_argument(Argument arg)
     return *this;
 }
 
-app::cli::Parser & app::cli::Parser::add_group(const QString& name)
+glaxnimate::cli::Parser & glaxnimate::cli::Parser::add_group(const QString& name)
 {
     groups.push_back({name});
     return *this;
 }
 
-const app::cli::Argument * app::cli::Parser::option_from_arg(const QString& arg) const
+const glaxnimate::cli::Argument * glaxnimate::cli::Parser::option_from_arg(const QString& arg) const
 {
     for ( const auto& option : options )
         if ( option.names.contains(arg) )
@@ -170,20 +170,20 @@ const app::cli::Argument * app::cli::Parser::option_from_arg(const QString& arg)
     return nullptr;
 }
 
-void app::cli::ParsedArguments::handle_error(const QString& error)
+void glaxnimate::cli::ParsedArguments::handle_error(const QString& error)
 {
     show_message(error, true);
     return_value = 1;
 }
 
-void app::cli::ParsedArguments::handle_finish(const QString& message)
+void glaxnimate::cli::ParsedArguments::handle_finish(const QString& message)
 {
     show_message(message, false);
     return_value = 0;
 }
 
 
-app::cli::ParsedArguments app::cli::Parser::parse(const QStringList& args, int offset) const
+glaxnimate::cli::ParsedArguments glaxnimate::cli::Parser::parse(const QStringList& args, int offset) const
 {
     int next_positional = 0;
 
@@ -248,18 +248,18 @@ app::cli::ParsedArguments app::cli::Parser::parse(const QStringList& args, int o
     return parsed;
 }
 
-QString app::cli::Parser::version_text() const
+QString glaxnimate::cli::Parser::version_text() const
 {
     return QCoreApplication::applicationName() + " " + QCoreApplication::applicationVersion() + "\n";
 }
 
-void app::cli::show_message(const QString& msg, bool error)
+void glaxnimate::cli::show_message(const QString& msg, bool error)
 {
     std::fputs(qUtf8Printable(msg + '\n'), error ? stderr : stdout);
 }
 
 
-QString app::cli::Parser::help_text() const
+QString glaxnimate::cli::Parser::help_text() const
 {
     QString usage = QCoreApplication::instance()->arguments().constFirst();
 
@@ -314,7 +314,7 @@ QString app::cli::Parser::help_text() const
     return text;
 }
 
-QString app::cli::Parser::wrap_text(const QString& names, int name_max, const QString& description) const
+QString glaxnimate::cli::Parser::wrap_text(const QString& names, int name_max, const QString& description) const
 {
     const QLatin1String indentation("  ");
 

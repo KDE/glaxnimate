@@ -16,7 +16,7 @@
 #   define ENV_SEPARATOR ":"
 #endif
 
-namespace app {
+namespace glaxnimate::cli {
 
 class Environment
 {
@@ -141,4 +141,4 @@ public:
     void erase(const char* name) { qunsetenv(name); }
 };
 
-} // namespace app
+} // namespace glaxnimate::cli

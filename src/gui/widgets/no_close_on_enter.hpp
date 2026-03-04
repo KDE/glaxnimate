@@ -8,7 +8,7 @@
 
 #include <QKeyEvent>
 
-namespace app::widgets {
+namespace glaxnimate::gui {
 
 class NoCloseOnEnter : public QObject
 {
@@ -27,4 +27,4 @@ protected:
 };
 
 
-} // namespace app::widgets
+} // namespace glaxnimate::gui

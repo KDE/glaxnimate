@@ -6,7 +6,6 @@ include(ECMAddTests)
 
 include_directories(
     ${CMAKE_SOURCE_DIR}/src
-    # ${CMAKE_SOURCE_DIR}/external/QtAppSetup/src
     ${CMAKE_SOURCE_DIR}/src/core
 )
 
@@ -15,7 +14,7 @@ set(TESTS_LINK_LIBS
     Qt${QT_MAJOR_VERSION}::Widgets
     KF${KF_MAJOR}::I18n
     QtColorWidgets
-    QtAppSetup
+    ${LIB_NAME_CORE}
 )
 
 # Single source file tests, linking only to default libs
@@ -33,31 +32,25 @@ ecm_add_tests(
     test_trim_path.cpp
     test_trace.cpp
     test_aep_gradient_xml.cpp
-    LINK_LIBRARIES ${TESTS_LINK_LIBS} ${LIB_NAME_CORE}
+    LINK_LIBRARIES ${TESTS_LINK_LIBS}
 )
 
 # Multi source files tests
 
 ecm_add_test(
     test_bezier_length.cpp
-    ../src/core/glaxnimate/math/bezier/bezier.cpp
-    ../src/core/glaxnimate/math/bezier/point.cpp
-    ../src/core/glaxnimate/math/bezier/bezier_length.cpp
     TEST_NAME test_bezier_length
     LINK_LIBRARIES ${TESTS_LINK_LIBS}
 )
 
 ecm_add_test(
     test_keyframe_transition.cpp
-    ../src/core/glaxnimate/model/animation/keyframe_transition.cpp
-    ../src/core/glaxnimate/math/polynomial.cpp
     TEST_NAME test_keyframe_transition
     LINK_LIBRARIES ${TESTS_LINK_LIBS}
 )
 
 ecm_add_test(
     test_cos_parser.cpp
-    ../src/core/glaxnimate/io/aep/string_decoder.cpp
     TEST_NAME test_cos_parser
     LINK_LIBRARIES ${TESTS_LINK_LIBS}
 )

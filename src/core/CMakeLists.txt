@@ -123,12 +123,6 @@ if ( GLAXNIMATE_CORE_MINIMAL )
 
     add_subdirectory(../../external/thorvg/ ${CMAKE_CURRENT_BINARY_DIR}/thorvg)
     set(RENDERER_LIBRARIES thorvg)
-    list(APPEND SOURCES
-        ${CMAKE_CURRENT_SOURCE_DIR}/../../external/QtAppSetup/src/app/log/logger.cpp
-        # ${CMAKE_CURRENT_SOURCE_DIR}/../../external/QtAppSetup/src/app/settings/settings.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/../../external/QtAppSetup/src/app/settings/settings_group.cpp
-    )
-
 else()
     list(APPEND SOURCES
         glaxnimate/utils/quantize.cpp
@@ -208,11 +202,11 @@ target_link_libraries(${LIB_NAME_CORE} PUBLIC
     ${Potrace_LIBRARIES}
 )
 set_property(TARGET ${LIB_NAME_CORE} APPEND PROPERTY AUTOMOC_MACRO_NAMES "GLAXNIMATE_OBJECT")
-target_include_directories(${LIB_NAME_CORE} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> ${CMAKE_CURRENT_SOURCE_DIR}/../../external/QtAppSetup/src)
+target_include_directories(${LIB_NAME_CORE} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 
 
 if ( NOT GLAXNIMATE_CORE_MINIMAL )
-    target_link_libraries(${LIB_NAME_CORE} PUBLIC QtAppSetup)
+    target_link_libraries(${LIB_NAME_CORE} PUBLIC)
 endif ()
 
 target_sources(${LIB_NAME_CORE} PRIVATE ${SOURCES})

@@ -8,13 +8,13 @@
 #include "ui_font_style_dialog.h"
 
 #include <QEvent>
-#include "app/widgets/no_close_on_enter.hpp"
+#include "widgets/no_close_on_enter.hpp"
 
 class glaxnimate::gui::font::FontStyleDialog::Private
 {
 public:
     Ui::FontStyleDialog ui;
-    app::widgets::NoCloseOnEnter ncoe;
+    NoCloseOnEnter ncoe;
 
     void set_preview_font()
     {

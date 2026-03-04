@@ -19,7 +19,7 @@
 #endif
 #include <KIconTheme>
 
-#include "app/env.hpp"
+#include "cli_utils/env.hpp"
 #include "plugin/python/python_engine.hpp"
 #include "glaxnimate/log/log.hpp"
 
@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
     gui::settings::IconSettings::instance().initialize();
 
 #ifdef Q_OS_WIN
-    auto pyhome = app::Environment::Variable("PYTHONHOME");
+    auto pyhome = cli::Environment::Variable("PYTHONHOME");
     if ( pyhome.empty() )
     {
         QDir binpath(QCoreApplication::applicationDirPath());
@@ -119,7 +119,7 @@ int main(int argc, char *argv[])
         window.resize(args.value("window-size").toSize());
 
     if ( args.has_flag("window-id") )
-        app::cli::show_message(QString::number(window.winId(), 16), false);
+        glaxnimate::cli::show_message(QString::number(window.winId(), 16), false);
 
     window.check_autosaves();
 

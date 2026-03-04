@@ -10,7 +10,6 @@
 
 #include <QIcon>
 
-#include "app/utils/translated_string.hpp"
 #include "glaxnimate/settings/setting.hpp"
 #include "custom_settings_group.hpp"
 

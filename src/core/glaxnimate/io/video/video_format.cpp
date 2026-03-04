@@ -18,7 +18,7 @@ extern "C" {
 #include <libswscale/swscale.h>
 }
 
-#include "app/qstring_exception.hpp"
+#include "glaxnimate/utils/qstring_exception.hpp"
 #include "glaxnimate/log/log.hpp"
 #include "glaxnimate/model/assets/composition.hpp"
 
@@ -36,7 +36,7 @@ QString err2str(int errnum)
     return to_str<AV_ERROR_MAX_STRING_SIZE>(&av_make_error_string, AV_ERROR_MAX_STRING_SIZE, errnum);
 }
 
-class Error: public app::QStringException<>{ using Ctor::Ctor; };
+class Error: public utils::QStringException<>{ using Ctor::Ctor; };
 
 
 template<class Callback, class Object>

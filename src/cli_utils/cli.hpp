@@ -13,7 +13,7 @@
 #include <QString>
 #include <QSet>
 
-namespace app::cli {
+namespace glaxnimate::cli {
 
 
 class ArgumentError : public std::invalid_argument
@@ -151,9 +151,9 @@ private:
 public:
     explicit Parser(const QString& description) : description(description) {}
 
-    app::cli::Parser& add_argument(Argument arg);
+    glaxnimate::cli::Parser& add_argument(Argument arg);
     ParsedArguments parse(const QStringList& args, int offset = 1) const;
-    app::cli::Parser& add_group(const QString& name);
+    glaxnimate::cli::Parser& add_group(const QString& name);
 
     const Argument* option_from_arg(const QString& arg) const;
 
@@ -169,4 +169,4 @@ private:
     std::vector<ArgumentGroup> groups = {};
 };
 
-} // namespace app::cli
+} // namespace glaxnimate::cli
