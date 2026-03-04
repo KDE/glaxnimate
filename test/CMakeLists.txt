@@ -48,7 +48,9 @@ ecm_add_test(
     LINK_LIBRARIES ${TESTS_LINK_LIBS}
 )
 
-ecm_add_test(
-    test_trace.cpp
-    LINK_LIBRARIES ${TESTS_LINK_LIBS} Glaxnimate::Trace
-)
+if ( NOT ANDROID )
+    ecm_add_test(
+        test_trace.cpp
+        LINK_LIBRARIES ${TESTS_LINK_LIBS} Glaxnimate::Trace
+    )
+endif()
