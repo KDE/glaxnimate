@@ -15,7 +15,7 @@ else()
     add_executable(${PROJECT_SLUG} WIN32)
     kde_target_enable_exceptions(${PROJECT_SLUG} PUBLIC)
 
-    target_link_libraries(${PROJECT_SLUG} ${LIB_NAME_CORE} ${LIB_NAME_GUI} ${LIB_NAME_PLUGIN} QtColorWidgets)
+    target_link_libraries(${PROJECT_SLUG} Glaxnimate::Core Glaxnimate::Gui Glaxnimate::Plugin QtColorWidgets)
     install(TARGETS ${PROJECT_SLUG} DESTINATION bin)
 
     ## Icon for Windows and OSX

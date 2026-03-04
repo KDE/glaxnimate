@@ -20,18 +20,13 @@ message(STATUS "Python3_INCLUDE_DIRS ${Python3_INCLUDE_DIRS}")
 message(STATUS "Python3_LIBRARIES ${Python3_LIBRARIES}")
 message(STATUS "Python3_EXECUTABLE ${Python3_EXECUTABLE}")
 
-#target_include_directories (${LIB_NAME_PYTHON} PUBLIC
-        #${Python3_INCLUDE_DIRS}
-        #${CMAKE_SOURCE_DIR}/external/QtAppSetup/external/pybind11/include
-#)
-
 pybind11_add_module(glaxnimate_python EXCLUDE_FROM_ALL ${SOURCES} module.cpp)
 set_target_properties(
     glaxnimate_python PROPERTIES
     OUTPUT_NAME ${PROJECT_SLUG}
     LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/build/lib"
 )
-target_link_libraries(glaxnimate_python PUBLIC ${LIB_NAME_CORE} ${LIB_NAME_PLUGIN} ${Python3_LIBRARIES})
+target_link_libraries(glaxnimate_python PUBLIC Glaxnimate::Core Glaxnimate::Plugin ${Python3_LIBRARIES})
 add_custom_command(TARGET glaxnimate_python PRE_BUILD COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_BINARY_DIR}/build/lib")
 
 

@@ -252,13 +252,14 @@ kconfig_add_kcfg_files(SOURCES GENERATE_MOC glaxnimate_settings.kcfgc)
 install(FILES glaxnimate_settings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
 
 include_directories(${CMAKE_SOURCE_DIR}/src/core)
-add_library(${LIB_NAME_GUI} OBJECT ${SOURCES} ${SOURCES_UIS})
-kde_target_enable_exceptions(${LIB_NAME_GUI} PUBLIC)
+add_library(GlaxnimateGui OBJECT ${SOURCES} ${SOURCES_UIS})
+add_library(Glaxnimate::Gui ALIAS GlaxnimateGui)
+kde_target_enable_exceptions(GlaxnimateGui PUBLIC)
 target_link_libraries(
-    ${LIB_NAME_GUI} PUBLIC
+    GlaxnimateGui PUBLIC
     QtColorWidgets
-    ${LIB_NAME_CORE}
-    ${LIB_NAME_PLUGIN}
+    Glaxnimate::Core
+    Glaxnimate::Plugin
     Qt${QT_MAJOR_VERSION}::Widgets
     Qt${QT_MAJOR_VERSION}::UiTools
     Qt${QT_MAJOR_VERSION}::Concurrent
@@ -273,15 +274,15 @@ target_link_libraries(
 )
 
 if(TARGET KF6::BreezeIcons)
-    target_link_libraries(${LIB_NAME_GUI} PUBLIC
+    target_link_libraries(GlaxnimateGui PUBLIC
             KF6::BreezeIcons
     )
-    target_compile_definitions(${LIB_NAME_GUI} PRIVATE WITH_BREEZEICONS_LIB)
+    target_compile_definitions(GlaxnimateGui PRIVATE WITH_BREEZEICONS_LIB)
 endif ()
 
 if ( NOT ANDROID )
     target_link_libraries(
-        ${LIB_NAME_GUI} PUBLIC
+        GlaxnimateGui PUBLIC
         KF${KF_MAJOR}::Crash
     )
 endif()

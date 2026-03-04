@@ -39,8 +39,8 @@ add_executable(${PROJECT_SLUG}_mobile ${SOURCES})
 kde_target_enable_exceptions(${PROJECT_SLUG}_mobile PUBLIC)
 
 target_link_libraries(${PROJECT_SLUG}_mobile PUBLIC
-    ${LIB_NAME_CORE}
-    ${LIB_NAME_GUI}
+    Glaxnimate::Core
+    Glaxnimate::Gui
     QtColorWidgets
     #QtHistoryLineEdit
     Qt${QT_VERSION_MAJOR}::Core

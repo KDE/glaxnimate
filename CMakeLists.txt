@@ -11,11 +11,6 @@ project(Glaxnimate VERSION 0.6.70 LANGUAGES CXX)
 include(FeatureSummary)
 
 set(PROJECT_SLUG "glaxnimate")
-set(LIB_NAME_CORE "${PROJECT_SLUG}_core")
-set(LIB_NAME_GUI "${PROJECT_SLUG}_gui")
-set(LIB_NAME_PLUGIN "${PROJECT_SLUG}_plugin")
-set(LIB_NAME_PYTHON "${PROJECT_SLUG}_python_lib")
-set(LIB_NAME_DESKTOP "${PROJECT_SLUG}_desktop")
 set(DATA_INSTALL "share/${PROJECT_SLUG}/${PROJECT_SLUG}")
 set(PROJECT_ID "org.kde.glaxnimate")
 

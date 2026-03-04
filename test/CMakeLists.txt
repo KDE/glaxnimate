@@ -14,7 +14,7 @@ set(TESTS_LINK_LIBS
     Qt${QT_MAJOR_VERSION}::Widgets
     KF${KF_MAJOR}::I18n
     QtColorWidgets
-    ${LIB_NAME_CORE}
+    Glaxnimate::Core
 )
 
 # Single source file tests, linking only to default libs

@@ -18,12 +18,10 @@ find_package(Qt6 COMPONENTS Core Gui Xml Network REQUIRED)
 set(CMAKE_AUTOMOC ON)
 
 # Glaxnimate lib minimal options
-set(GLAXNIMATE_ROOT ../)
 set(GLAXNIMATE_CORE_MINIMAL ON)
-add_subdirectory(${GLAXNIMATE_ROOT}/src/core  ${CMAKE_CURRENT_BINARY_DIR}/lib)
-include_directories(${GLAXNIMATE_ROOT}/src/core)
+add_subdirectory(../src/core  ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 # Defining the target
 
 add_executable(lib_example main.cpp)
-target_link_libraries(lib_example glaxnimate_lib)
+target_link_libraries(lib_example Glaxnimate::Core)
