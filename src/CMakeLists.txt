@@ -8,6 +8,8 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 add_subdirectory(core)
 if ( NOT ANDROID )
     add_subdirectory(trace)
+else()
+    set(GLAXNIMATE_PYTHON_ENABLED OFF)
 endif()
 
 option(GLAXNIMATE_PYTHON_ENABLED "Enable Python scripting" ON)
