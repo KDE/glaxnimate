@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-02 00:42+0000\n"
+"POT-Creation-Date: 2026-03-04 00:42+0000\n"
 "PO-Revision-Date: 2023-12-17 14:36+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -26,6 +26,8 @@ msgid "Your emails"
 msgstr "wizzardsk@gmail.com"
 
 #. i18n: file: src/core/model/shapes/repeater.hpp
+#. i18n: Property name
+#. i18n: file: src/core/model/shapes/group.hpp
 #. i18n: Property name
 #. i18n: file: src/core/model/shapes/image.hpp
 #. i18n: Property name
@@ -87,8 +89,6 @@ msgstr "veľkosť"
 
 #. i18n: file: src/core/model/shapes/precomp_layer.hpp
 #. i18n: Property name
-#. i18n: file: src/core/model/shapes/group.hpp
-#. i18n: Property name
 #, kde-format
 msgid "opacity"
 msgstr "nepriehľadnosť"
@@ -96,8 +96,8 @@ msgstr "nepriehľadnosť"
 #. i18n: file: src/core/model/shapes/group.hpp
 #. i18n: Property name
 #, kde-format
-msgid "shapes"
-msgstr "tvary"
+msgid "auto_orient"
+msgstr ""
 
 #. i18n: file: src/core/model/shapes/trim.hpp
 #. i18n: Property name
@@ -181,6 +181,8 @@ msgstr "animácia"
 
 #. i18n: file: src/core/model/shapes/layer.hpp
 #. i18n: Property name
+#. i18n: file: src/core/model/mask_settings.hpp
+#. i18n: Property name
 #, kde-format
 msgid "mask"
 msgstr "maska"
@@ -255,33 +257,53 @@ msgstr ""
 msgid "compositions"
 msgstr "kompozície"
 
+#. i18n: file: src/core/model/document_node.hpp
+#. i18n: Property name
+#, kde-format
+msgid "uuid"
+msgstr ""
+
+#. i18n: file: src/core/model/document_node.hpp
+#. i18n: Property name
+#. i18n: file: src/core/model/property/option_list_property.hpp
+#. i18n: Property name
+#. i18n: file: src/core/model/property/object_list_property.hpp
+#. i18n: Property name
+#, kde-format
+msgid "name"
+msgstr "názov"
+
+#. i18n: file: src/core/model/document_node.hpp
+#. i18n: Property name
+#, fuzzy, kde-format
+#| msgid "Background color"
+msgid "group_color"
+msgstr "Farba pozadia"
+
+#. i18n: file: src/core/model/document_node.hpp
+#. i18n: Property name
+#, fuzzy, kde-format
+msgid "visible"
+msgstr "Viditeľný"
+
+#. i18n: file: src/core/model/document_node.hpp
+#. i18n: Property name
+#, fuzzy, kde-format
+#| msgid "Unlocked"
+msgid "locked"
+msgstr "Odomknuté"
+
 #. i18n: file: src/core/model/animation_container.hpp
 #. i18n: Property name
 #, kde-format
 msgid "first_frame"
 msgstr ""
 
-#. i18n: file: src/core/model/property/option_list_property.hpp
-#. i18n: Property name
-#. i18n: file: src/core/model/property/object_list_property.hpp
-#. i18n: Property name
-#. i18n: file: src/core/model/property/property.hpp
-#. i18n: Property name
-#, kde-format
-msgid "name"
-msgstr "názov"
-
 #. i18n: file: src/core/model/stretchable_time.hpp
 #. i18n: Property name
 #, kde-format
 msgid "stretch"
 msgstr "natiahnuť"
-
-#. i18n: file: src/core/model/mask_settings.hpp
-#. i18n: Property name
-#, kde-format
-msgid "inverted"
-msgstr "invertované"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, Dialog)
 #: data/plugins/FrameByFrame/create_frames.ui:18
@@ -337,9 +359,9 @@ msgstr "Nahradiť"
 #: src/android/document_opener.cpp:35 src/android/document_opener.cpp:128
 #: src/android/document_opener.cpp:154 src/android/document_opener.cpp:193
 #: src/android/document_opener.cpp:201
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:448
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:453
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:193
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:449
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:454
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:195
 #: src/gui/widgets/font/external_font_widget.cpp:126
 #, kde-format
 msgid "Open File"
@@ -351,7 +373,7 @@ msgid "Raster images need to be traced into vectors"
 msgstr ""
 
 #: src/android/document_opener.cpp:106
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:194
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:196
 #, kde-format
 msgid "Save File"
 msgstr "Uložiť súbor"
@@ -599,71 +621,71 @@ msgstr ""
 msgid "Brings the selection further to the front."
 msgstr ""
 
-#: src/android/main_window.cpp:394
+#: src/android/main_window.cpp:405
 #, kde-format
 msgid "Timeline"
 msgstr "Časová os"
 
-#: src/android/main_window.cpp:399
+#: src/android/main_window.cpp:410
 #, kde-format
 msgid "Fill Style"
 msgstr "Štýl výplne"
 
-#: src/android/main_window.cpp:404
+#: src/android/main_window.cpp:415
 #, fuzzy, kde-format
 msgid "Stroke Style"
 msgstr "Ťah (štýl)"
 
-#: src/android/main_window.cpp:434 src/gui/widgets/dialogs/gw_impl_ui.cpp:634
-#: src/gui/widgets/menus/node_menu.cpp:105
+#: src/android/main_window.cpp:445 src/gui/widgets/dialogs/gw_impl_ui.cpp:636
+#: src/gui/widgets/menus/node_menu.cpp:106
 #, fuzzy, kde-format
 msgid "Raise"
 msgstr "Presunúť dopredu"
 
-#: src/android/main_window.cpp:439 src/gui/widgets/dialogs/gw_impl_ui.cpp:637
-#: src/gui/widgets/menus/node_menu.cpp:109
+#: src/android/main_window.cpp:450 src/gui/widgets/dialogs/gw_impl_ui.cpp:639
+#: src/gui/widgets/menus/node_menu.cpp:110
 #, fuzzy, kde-format
 msgid "Lower"
 msgstr "Presunúť dozadu"
 
-#: src/android/main_window.cpp:446 src/gui/tools/select_tool.cpp:409
+#: src/android/main_window.cpp:457 src/gui/tools/select_tool.cpp:409
 #: src/gui/widgets/dialogs/selection_manager.cpp:85
 #, kde-format
 msgid "Cut"
 msgstr "Vystrihnúť"
 
-#: src/android/main_window.cpp:449 src/gui/tools/select_tool.cpp:411
+#: src/android/main_window.cpp:460 src/gui/tools/select_tool.cpp:411
 #, fuzzy, kde-format
 msgid "Copy"
 msgstr "Kopírovať"
 
-#: src/android/main_window.cpp:452 src/gui/tools/select_tool.cpp:413
+#: src/android/main_window.cpp:463 src/gui/tools/select_tool.cpp:413
 #: src/gui/widgets/dialogs/selection_manager.cpp:166
 #, kde-format
 msgid "Paste"
 msgstr "Vložiť"
 
-#: src/android/main_window.cpp:456
+#: src/android/main_window.cpp:467
 #, kde-format
 msgid "Delete Selected"
 msgstr "Odstrániť vybrané"
 
-#: src/android/main_window.cpp:464
+#: src/android/main_window.cpp:475
 #, kde-format
 msgid "Raise Above"
 msgstr ""
 
-#: src/android/main_window.cpp:468
+#: src/android/main_window.cpp:479
 #, kde-format
 msgid "Lower Below"
 msgstr ""
 
-#: src/android/main_window.cpp:472
+#: src/android/main_window.cpp:483
 #, fuzzy, kde-format
 msgid "Undo"
 msgstr "Späť"
 
-#: src/android/main_window.cpp:474
+#: src/android/main_window.cpp:485
 #, fuzzy, kde-format
 msgid "Redo"
 msgstr "Znovu"
@@ -671,7 +693,7 @@ msgstr "Znovu"
 #. i18n: ectx: Menu (new_layer_menu)
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #. i18n: ectx: property (text), widget (QToolButton, btn_new)
-#: src/android/main_window.cpp:488 src/gui/glaxnimateui.rc:122
+#: src/android/main_window.cpp:499 src/gui/glaxnimateui.rc:122
 #: src/gui/widgets/docks/snippet_list_widget.ui:29
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:45
 #, fuzzy, kde-format
@@ -679,7 +701,7 @@ msgid "New"
 msgstr "Nové"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
-#: src/android/main_window.cpp:491
+#: src/android/main_window.cpp:502
 #: src/gui/widgets/font/external_font_widget.ui:47
 #, fuzzy, kde-format
 msgid "Open..."
@@ -693,14 +715,14 @@ msgstr "Otvoriť"
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #. i18n: ectx: property (text), widget (QPushButton, button_open)
-#: src/android/main_window.cpp:493
+#: src/android/main_window.cpp:504
 #: src/gui/widgets/dialogs/about_env_dialog.ui:67
 #: src/gui/widgets/dialogs/about_env_dialog.ui:70
 #: src/gui/widgets/dialogs/about_env_dialog.ui:98
 #: src/gui/widgets/dialogs/about_env_dialog.ui:101
 #: src/gui/widgets/dialogs/about_env_dialog.ui:129
 #: src/gui/widgets/dialogs/about_env_dialog.ui:132
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1634
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1636
 #: src/gui/widgets/dialogs/startup_dialog.ui:149
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:136
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
@@ -708,39 +730,39 @@ msgstr "Otvoriť"
 msgid "Open"
 msgstr "Otvoriť"
 
-#: src/android/main_window.cpp:496
+#: src/android/main_window.cpp:507
 #, kde-format
 msgid "Import as Composition"
 msgstr ""
 
-#: src/android/main_window.cpp:499
+#: src/android/main_window.cpp:510
 #, fuzzy, kde-format
 msgid "Save..."
 msgstr "Uložiť..."
 
-#: src/android/main_window.cpp:501
+#: src/android/main_window.cpp:512
 #, fuzzy, kde-format
 msgid "Save"
 msgstr "Uložiť"
 
-#: src/android/main_window.cpp:504
+#: src/android/main_window.cpp:515
 #, fuzzy, kde-format
 msgid "Save As"
 msgstr "Uložiť ako"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_export)
-#: src/android/main_window.cpp:507
+#: src/android/main_window.cpp:518
 #: src/android/sticker_pack_builder_dialog.ui:154
 #, fuzzy, kde-format
 msgid "Export"
 msgstr "Exportovať"
 
-#: src/android/main_window.cpp:510
+#: src/android/main_window.cpp:521
 #, kde-format
 msgid "Save Frame as PNG"
 msgstr ""
 
-#: src/android/main_window.cpp:514
+#: src/android/main_window.cpp:525
 #, kde-format
 msgid "Send to Telegram"
 msgstr ""
@@ -748,36 +770,36 @@ msgstr ""
 #. i18n: ectx: Menu (layers)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/android/main_window.cpp:526 src/gui/glaxnimateui.rc:120
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:590
+#: src/android/main_window.cpp:537 src/gui/glaxnimateui.rc:120
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:592
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #: src/gui/widgets/docks/layers.ui:29
 #, kde-format
 msgid "Layers"
 msgstr "Vrstvy"
 
-#: src/android/main_window.cpp:532
+#: src/android/main_window.cpp:543
 #, kde-format
 msgid "Advanced Properties"
 msgstr "&Rozšírené vlastnosti"
 
-#: src/android/main_window.cpp:537
+#: src/android/main_window.cpp:548
 #, fuzzy, kde-format
 msgid "Help"
 msgstr "Pomocník"
 
-#: src/android/main_window.cpp:605
+#: src/android/main_window.cpp:616
 #, fuzzy, kde-format
 msgid "Animation.%1"
 msgstr "Animácia"
 
-#: src/android/main_window.cpp:647
+#: src/android/main_window.cpp:658
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:293
 #, kde-format
 msgid "Closing Animation"
 msgstr ""
 
-#: src/android/main_window.cpp:648
+#: src/android/main_window.cpp:659
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:294
 #, kde-format
 msgid ""
@@ -785,72 +807,72 @@ msgid ""
 "Do you want to save your changes?"
 msgstr ""
 
-#: src/android/main_window.cpp:732 src/android/main_window.cpp:736
-#: src/android/main_window.cpp:871
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:507
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:511
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:851
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:856
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:868
+#: src/android/main_window.cpp:743 src/android/main_window.cpp:747
+#: src/android/main_window.cpp:882
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:508
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:512
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:852
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:857
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:869
 #, kde-format
 msgid "Import File"
 msgstr "Importovať súbor"
 
-#: src/android/main_window.cpp:732
+#: src/android/main_window.cpp:743
 #, kde-format
 msgid "Could not import file"
 msgstr ""
 
-#: src/android/main_window.cpp:771
+#: src/android/main_window.cpp:782
 #, kde-format
 msgid "Frame %1.png"
 msgstr ""
 
-#: src/android/main_window.cpp:962
+#: src/android/main_window.cpp:968
 #, kde-format
 msgid "Add keyframe"
 msgstr "Pridať kľúčovú snímku"
 
-#: src/android/main_window.cpp:971
+#: src/android/main_window.cpp:977
 #, fuzzy, kde-format
 msgid "Remove keyframe"
 msgstr "Vymazať kľúčovú snímku"
 
-#: src/android/main_window.cpp:986
+#: src/android/main_window.cpp:992
 #: src/gui/widgets/menus/animated_property_menu.cpp:55
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:174
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
 #, kde-format
 msgid "Clear Animations"
 msgstr ""
 
-#: src/android/main_window.cpp:1051
+#: src/android/main_window.cpp:1057
 #, kde-format
 msgid "Emoji"
 msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
-#: src/android/main_window.ui:21 src/core/app_info.cpp:21
+#: src/android/main_window.ui:21 src/core/app_info.cpp:14
 #, kde-format
 msgid "Glaxnimate"
 msgstr "Glaxnimate"
 
-#: src/android/sticker_pack_builder_dialog.cpp:156
+#: src/android/sticker_pack_builder_dialog.cpp:152
 #, kde-format
 msgid "Too many stickers"
 msgstr ""
 
-#: src/android/sticker_pack_builder_dialog.cpp:162
-#: src/android/sticker_pack_builder_dialog.cpp:171
+#: src/android/sticker_pack_builder_dialog.cpp:158
+#: src/android/sticker_pack_builder_dialog.cpp:167
 #, kde-format
 msgid "Could not open file"
 msgstr "Nepodarilo sa otvoriť súbor"
 
-#: src/android/sticker_pack_builder_dialog.cpp:222
+#: src/android/sticker_pack_builder_dialog.cpp:218
 #, kde-format
 msgid "Cannot save as TGS"
 msgstr ""
 
-#: src/android/sticker_pack_builder_dialog.cpp:263
+#: src/android/sticker_pack_builder_dialog.cpp:259
 #, kde-format
 msgid "Are you sure you want to remove all stickers from the pack?"
 msgstr ""
@@ -886,67 +908,6 @@ msgstr ""
 #: src/android/telegram_intent.cpp:45
 #, kde-format
 msgid "Could not start activity, is Telegram installed?"
-msgstr ""
-
-#: src/core/app_info.cpp:57
-#, fuzzy, kde-format
-#| msgid "(c) 2019-2023"
-msgid "(c) 2019-2026"
-msgstr "(c) 2019-2023"
-
-#: src/core/app_info.cpp:66
-#, kde-format
-msgid "Mattia \"Glax\" Basaglia"
-msgstr ""
-
-#: src/core/app_info.cpp:66
-#, kde-format
-msgid "Maintainer"
-msgstr ""
-
-#: src/core/app_info.cpp:68
-#, kde-format
-msgid "potrace"
-msgstr ""
-
-#: src/core/app_info.cpp:68
-#, kde-format
-msgid "Used by the bitmap tracing feature."
-msgstr ""
-
-#: src/core/app_info.cpp:70
-#, kde-format
-msgid "libav"
-msgstr ""
-
-#: src/core/app_info.cpp:71
-#, kde-format
-msgid "libarchive"
-msgstr ""
-
-#: src/core/app_info.cpp:72
-#, kde-format
-msgid "zlib"
-msgstr ""
-
-#: src/core/app_info.cpp:74
-#, kde-format
-msgid "Inkscape"
-msgstr ""
-
-#: src/core/app_info.cpp:77
-#, kde-format
-msgid "pybind11"
-msgstr ""
-
-#: src/core/app_info.cpp:77 src/core/app_info.cpp:78
-#, kde-format
-msgid "Used by the plugin system."
-msgstr ""
-
-#: src/core/app_info.cpp:78
-#, kde-format
-msgid "CPython"
 msgstr ""
 
 #: src/core/command/animation_commands.cpp:17
@@ -1044,7 +1005,7 @@ msgstr "Duplikovať"
 msgid "Move %1"
 msgstr "Presunúť"
 
-#: src/core/io/aep/aep_format.cpp:36
+#: src/core/io/aep/aep_format.cpp:32
 #, fuzzy, kde-format
 msgid "Could not load file: %1"
 msgstr "Nedá sa nahrať súbor '%1'."
@@ -1054,7 +1015,7 @@ msgstr "Nedá sa nahrať súbor '%1'."
 msgid "Adobe After Effects Project"
 msgstr ""
 
-#: src/core/io/aep/aep_format.hpp:42
+#: src/core/io/aep/aep_format.hpp:39
 #, kde-format
 msgid "Adobe After Effects Project XML"
 msgstr ""
@@ -1238,15 +1199,15 @@ msgid "Glaxnimate Animation"
 msgstr ""
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:21
-#: src/core/io/glaxnimate/glaxnimate_mime.cpp:88
-#: src/core/io/lottie/lottie_format.cpp:34
+#: src/core/io/glaxnimate/glaxnimate_mime.cpp:86
+#: src/core/io/lottie/lottie_format.cpp:32
 #, kde-format
 msgid "Could not parse JSON: %1"
 msgstr ""
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:27
-#: src/core/io/glaxnimate/glaxnimate_mime.cpp:94
-#: src/core/io/lottie/lottie_format.cpp:40
+#: src/core/io/glaxnimate/glaxnimate_mime.cpp:92
+#: src/core/io/lottie/lottie_format.cpp:38
 #, kde-format
 msgid "No JSON object found"
 msgstr ""
@@ -1343,42 +1304,42 @@ msgid ""
 "a layer"
 msgstr ""
 
-#: src/core/io/lottie/lottie_format.cpp:59
+#: src/core/io/lottie/lottie_format.cpp:57
 #, fuzzy, kde-format
 msgid "Pretty"
 msgstr "krása"
 
-#: src/core/io/lottie/lottie_format.cpp:59
+#: src/core/io/lottie/lottie_format.cpp:57
 #, kde-format
 msgid "Pretty print the JSON"
 msgstr ""
 
-#: src/core/io/lottie/lottie_format.cpp:60
+#: src/core/io/lottie/lottie_format.cpp:58
 #, kde-format
 msgid "Strip"
 msgstr "Odstrániť"
 
-#: src/core/io/lottie/lottie_format.cpp:60
+#: src/core/io/lottie/lottie_format.cpp:58
 #, kde-format
 msgid "Strip unused properties"
 msgstr ""
 
-#: src/core/io/lottie/lottie_format.cpp:61
+#: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
 msgid "Embed Images"
 msgstr ""
 
-#: src/core/io/lottie/lottie_format.cpp:61
+#: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
 msgid "Automatically embed non-embedded images"
 msgstr ""
 
-#: src/core/io/lottie/lottie_format.cpp:62
+#: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
 msgid "Legacy Keyframes"
 msgstr ""
 
-#: src/core/io/lottie/lottie_format.cpp:62
+#: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
 msgid "Compatibility with lottie-web versions prior to 5.0.0"
 msgstr ""
@@ -1545,7 +1506,7 @@ msgid "JSON"
 msgstr "JSON"
 
 #: src/core/io/raster/raster_format.hpp:25
-#: src/core/io/raster/raster_mime.hpp:25
+#: src/core/io/raster/raster_mime.hpp:26
 #, kde-format
 msgid "Raster Image"
 msgstr ""
@@ -1610,23 +1571,23 @@ msgstr ""
 msgid "Unknown keyframe type for property %1 of %2 (%3, %4)"
 msgstr ""
 
-#: src/core/io/rive/rive_format.cpp:24
+#: src/core/io/rive/rive_format.cpp:22
 #, fuzzy, kde-format
 msgid "Unsupported format"
 msgstr "Nepodporovaný formát: %1"
 
-#: src/core/io/rive/rive_format.cpp:34
+#: src/core/io/rive/rive_format.cpp:32
 #, kde-format
 msgid "Could not read header"
 msgstr ""
 
-#: src/core/io/rive/rive_format.cpp:40
+#: src/core/io/rive/rive_format.cpp:38
 #, kde-format
 msgid ""
 "Loading unsupported rive file version %1.%2, the only supported version is %3"
 msgstr ""
 
-#: src/core/io/rive/rive_format.cpp:46 src/core/io/rive/rive_loader.cpp:750
+#: src/core/io/rive/rive_format.cpp:44 src/core/io/rive/rive_loader.cpp:750
 #, kde-format
 msgid "Could not read property table"
 msgstr ""
@@ -1721,38 +1682,38 @@ msgstr ""
 msgid "Error loading property %1 (%2) of %3 (%4)"
 msgstr ""
 
-#: src/core/io/svg/svg_format.cpp:67
+#: src/core/io/svg/svg_format.cpp:66
 #, kde-format
 msgid "External Stylesheet"
 msgstr ""
 
-#: src/core/io/svg/svg_format.cpp:69
+#: src/core/io/svg/svg_format.cpp:68
 #, kde-format
 msgid "Font face with external url"
 msgstr ""
 
-#: src/core/io/svg/svg_format.cpp:71
+#: src/core/io/svg/svg_format.cpp:70
 #, kde-format
 msgid "Embedded data"
 msgstr ""
 
-#: src/core/io/svg/svg_format.cpp:72
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:959
+#: src/core/io/svg/svg_format.cpp:71
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:960
 #, kde-format
 msgid "Ignore"
 msgstr "Ignorovať"
 
-#: src/core/io/svg/svg_format.cpp:75
+#: src/core/io/svg/svg_format.cpp:74
 #, kde-format
 msgid "External Fonts"
 msgstr ""
 
-#: src/core/io/svg/svg_format.cpp:75
+#: src/core/io/svg/svg_format.cpp:74
 #, kde-format
 msgid "How to include external font"
 msgstr ""
 
-#: src/core/io/svg/svg_format.cpp:92
+#: src/core/io/svg/svg_format.cpp:93
 #, fuzzy, kde-format
 msgid "Could not write to file"
 msgstr "Nepodarilo sa zapisovať do súboru %1."
@@ -1824,7 +1785,7 @@ msgid "Could not allocate frame data."
 msgstr ""
 
 #: src/core/io/video/video_format.cpp:403
-#: src/core/io/video/video_format.cpp:783
+#: src/core/io/video/video_format.cpp:780
 #, kde-format
 msgid "No video codec"
 msgstr ""
@@ -1864,58 +1825,58 @@ msgstr ""
 msgid "Could not allocate temporary picture"
 msgstr ""
 
-#: src/core/io/video/video_format.cpp:751
+#: src/core/io/video/video_format.cpp:748
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
 msgstr ""
 
-#: src/core/io/video/video_format.cpp:755
+#: src/core/io/video/video_format.cpp:752
 #, kde-format
 msgid "Could not find output format"
 msgstr ""
 
-#: src/core/io/video/video_format.cpp:828
+#: src/core/io/video/video_format.cpp:825
 #, kde-format
 msgid "Error occurred when opening output file: %1"
 msgstr ""
 
-#: src/core/io/video/video_format.cpp:863
+#: src/core/io/video/video_format.cpp:860
 #, fuzzy, kde-format
 msgid "Background"
 msgstr "Pozadie"
 
-#: src/core/io/video/video_format.cpp:863
+#: src/core/io/video/video_format.cpp:860
 #, kde-format
 msgid "Background color"
 msgstr "Farba pozadia"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/core/io/video/video_format.cpp:864
+#: src/core/io/video/video_format.cpp:861
 #: src/gui/widgets/dialogs/resize_dialog.ui:56
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:46
 #, kde-format
 msgid "Width"
 msgstr "Šírka"
 
-#: src/core/io/video/video_format.cpp:864
-#: src/core/io/video/video_format.cpp:865
+#: src/core/io/video/video_format.cpp:861
+#: src/core/io/video/video_format.cpp:862
 #, kde-format
 msgid "If not 0, it will overwrite the size"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/core/io/video/video_format.cpp:865
+#: src/core/io/video/video_format.cpp:862
 #: src/gui/widgets/dialogs/resize_dialog.ui:33
 #, kde-format
 msgid "Height"
 msgstr "Výška"
 
-#: src/core/io/video/video_format.cpp:866
+#: src/core/io/video/video_format.cpp:863
 #, kde-format
 msgid "Verbose"
 msgstr "Podrobný"
 
-#: src/core/io/video/video_format.cpp:866
+#: src/core/io/video/video_format.cpp:863
 #, kde-format
 msgid "Show verbose information on the conversion"
 msgstr ""
@@ -2002,7 +1963,7 @@ msgstr "Písma"
 msgid "Assets"
 msgstr "Aktíva"
 
-#: src/core/model/assets/bitmap.cpp:205
+#: src/core/model/assets/bitmap.cpp:206
 #, kde-format
 msgid "Embedded image"
 msgstr ""
@@ -2096,7 +2057,7 @@ msgstr "Kužeľový"
 msgid "Unnamed Color"
 msgstr ""
 
-#: src/core/model/mask_settings.cpp:13
+#: src/core/model/mask_settings.cpp:13 src/gui/widgets/menus/node_menu.cpp:324
 #, fuzzy, kde-format
 msgid "Mask"
 msgstr "Maska"
@@ -2117,8 +2078,8 @@ msgstr "Elipsa"
 #. i18n: ectx: property (text), widget (QRadioButton, check_fill)
 #: src/core/model/shapes/fill.hpp:48 src/gui/tools/draw_tool_base.cpp:114
 #: src/gui/tools/fill_tool.cpp:25
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:763
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:612
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:764
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:614
 #: src/gui/widgets/docks/colors.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:191
 #: src/gui/widgets/tools/color_picker_widget.ui:24
@@ -2129,15 +2090,15 @@ msgid "Fill"
 msgstr "Výplň"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
-#: src/core/model/shapes/group.hpp:42
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:609
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:646
+#: src/core/model/shapes/group.hpp:44
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:611
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:648
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
 #, fuzzy, kde-format
 msgid "Group"
 msgstr "Skupina"
 
-#: src/core/model/shapes/image.cpp:85 src/gui/widgets/menus/node_menu.cpp:352
+#: src/core/model/shapes/image.cpp:85 src/gui/widgets/menus/node_menu.cpp:391
 #, fuzzy, kde-format
 msgid "Image"
 msgstr "Obrázok"
@@ -2149,7 +2110,7 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/model/shapes/layer.hpp:81
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:606
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:608
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
 #, kde-format
 msgid "Layer"
@@ -2164,7 +2125,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/model/shapes/path.hpp:38 src/gui/glaxnimateui.rc:174
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:709
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:711
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
@@ -2200,8 +2161,8 @@ msgstr "Zaoblené rohy"
 #. i18n: ectx: property (text), widget (QCheckBox, check_stroke)
 #. i18n: ectx: property (text), widget (QRadioButton, check_stroke)
 #: src/core/model/shapes/stroke.hpp:68 src/gui/tools/draw_tool_base.cpp:126
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:758
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:615
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:759
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:617
 #: src/gui/widgets/docks/stroke.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:101
 #: src/gui/widgets/tools/color_picker_widget.ui:37
@@ -2218,7 +2179,7 @@ msgstr "Zmeniť písmo"
 
 #. i18n: ectx: Menu (text)
 #: src/core/model/shapes/text.cpp:474 src/gui/glaxnimateui.rc:200
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:128
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:130
 #, fuzzy, kde-format
 msgid "Text"
 msgstr "Text"
@@ -2264,7 +2225,7 @@ msgid ""
 "scripting/"
 msgstr ""
 
-#: src/core/utils/gzip.cpp:30
+#: src/core/utils/gzip.cpp:28
 #, kde-format
 msgid "Could not decompress data"
 msgstr ""
@@ -2526,12 +2487,12 @@ msgstr ""
 #: src/gui/emoji/emoji_set_dialog.ui:50
 #: src/gui/item_models/document_node_model.cpp:255
 #: src/gui/item_models/gradient_list_model.cpp:171
-#: src/gui/item_models/property_model_full.cpp:454
+#: src/gui/item_models/property_model_full.cpp:478
 #: src/gui/item_models/property_model_single.cpp:146
 #: src/gui/widgets/dialogs/about_env_dialog.ui:248
 #: src/gui/widgets/dialogs/about_env_dialog.ui:289
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:109
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:335
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:337
 #: src/gui/widgets/dialogs/startup_dialog.ui:48
 #: src/gui/widgets/settings/plugin_settings_widget.ui:168
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:391
@@ -2592,15 +2553,87 @@ msgstr ""
 msgid "Close"
 msgstr "Zavrieť"
 
+#: src/gui/glaxnimate_app.cpp:162
+#, fuzzy, kde-format
+#| msgid "Open"
+msgid "OpenGL"
+msgstr "Otvoriť"
+
+#: src/gui/glaxnimate_app.cpp:163
+#, kde-format
+msgid "Hardware-accelerated graphics."
+msgstr ""
+
+#: src/gui/glaxnimate_app.cpp:169
+#, kde-format
+msgid "OpenGL Renderer"
+msgstr ""
+
+#: src/gui/glaxnimate_app.cpp:200
+#, fuzzy, kde-format
+#| msgid "(c) 2019-2023"
+msgid "(c) 2019-2026"
+msgstr "(c) 2019-2023"
+
+#: src/gui/glaxnimate_app.cpp:209
+#, kde-format
+msgid "Mattia \"Glax\" Basaglia"
+msgstr ""
+
+#: src/gui/glaxnimate_app.cpp:209
+#, kde-format
+msgid "Maintainer"
+msgstr ""
+
+#: src/gui/glaxnimate_app.cpp:211
+#, kde-format
+msgid "potrace"
+msgstr ""
+
+#: src/gui/glaxnimate_app.cpp:211
+#, kde-format
+msgid "Used by the bitmap tracing feature."
+msgstr ""
+
+#: src/gui/glaxnimate_app.cpp:214
+#, kde-format
+msgid "libav"
+msgstr ""
+
+#: src/gui/glaxnimate_app.cpp:218
+#, kde-format
+msgid "libarchive"
+msgstr ""
+
+#: src/gui/glaxnimate_app.cpp:220
+#, kde-format
+msgid "Inkscape"
+msgstr ""
+
+#: src/gui/glaxnimate_app.cpp:223
+#, kde-format
+msgid "pybind11"
+msgstr ""
+
+#: src/gui/glaxnimate_app.cpp:223 src/gui/glaxnimate_app.cpp:224
+#, kde-format
+msgid "Used by the plugin system."
+msgstr ""
+
+#: src/gui/glaxnimate_app.cpp:224
+#, kde-format
+msgid "CPython"
+msgstr ""
+
 #. i18n: ectx: Menu (file_new_from_template)
-#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1305
+#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1307
 #, fuzzy, kde-format
 msgid "New from Template"
 msgstr "Nový zo šablóny..."
 
 #. i18n: ectx: Menu (edit_tools)
-#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:401
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
+#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:403
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:802
 #, kde-format
 msgid "Tools"
 msgstr "Nástroje"
@@ -2618,7 +2651,7 @@ msgid "Layout"
 msgstr "&Rozloženie"
 
 #. i18n: ectx: Menu (document)
-#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:477
+#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:479
 #, fuzzy, kde-format
 msgid "Document"
 msgstr "Dokument"
@@ -2630,22 +2663,22 @@ msgid "Render Single Frame"
 msgstr ""
 
 #. i18n: ectx: Menu (web_preview_menu)
-#: src/gui/glaxnimateui.rc:93 src/gui/widgets/dialogs/gw_impl_document.cpp:529
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:551
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:557
+#: src/gui/glaxnimateui.rc:93 src/gui/widgets/dialogs/gw_impl_document.cpp:530
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:552
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:558
 #, kde-format
 msgid "Web Preview"
 msgstr ""
 
 #. i18n: ectx: Menu (playback)
-#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:521
+#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:523
 #, fuzzy, kde-format
 #| msgid "&Playback"
 msgid "Playback"
 msgstr "&Prehrávanie"
 
 #. i18n: ectx: Menu (object)
-#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:629
+#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:631
 #, fuzzy, kde-format
 msgid "Object"
 msgstr "Objekt"
@@ -2658,7 +2691,7 @@ msgstr ""
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:205 src/gui/settings/plugin_settings_group.hpp:23
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1529
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1531
 #, fuzzy, kde-format
 msgid "Plugins"
 msgstr "Moduly"
@@ -2708,7 +2741,7 @@ msgstr ""
 msgid "Update shape"
 msgstr ""
 
-#: src/gui/graphics/composition_item.hpp:113
+#: src/gui/graphics/composition_item.hpp:166
 #, kde-format
 msgid "Resize Canvas"
 msgstr "Zmeniť veľkosť plátna"
@@ -2731,19 +2764,20 @@ msgstr ""
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_3)
 #: src/gui/item_models/document_node_model.cpp:253
+#: src/gui/widgets/enum_combo.cpp:153
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:279
 #, kde-format
 msgid "Color"
 msgstr "Farba"
 
 #: src/gui/item_models/document_node_model.cpp:257
-#: src/gui/item_models/property_model_full.cpp:257
+#: src/gui/item_models/property_model_full.cpp:280
 #, fuzzy, kde-format
 msgid "Visible"
 msgstr "Viditeľný"
 
 #: src/gui/item_models/document_node_model.cpp:259
-#: src/gui/item_models/property_model_full.cpp:291
+#: src/gui/item_models/property_model_full.cpp:314
 #, kde-format
 msgid "Locked"
 msgstr "Zamknuté"
@@ -2764,42 +2798,42 @@ msgstr ""
 msgid "%1%"
 msgstr ""
 
-#: src/gui/item_models/property_model_full.cpp:208
+#: src/gui/item_models/property_model_full.cpp:215
 #, kde-format
 msgid "Group Color"
 msgstr ""
 
-#: src/gui/item_models/property_model_full.cpp:215
+#: src/gui/item_models/property_model_full.cpp:222
 #, kde-format
 msgid "Jump to previous keyframe"
 msgstr ""
 
-#: src/gui/item_models/property_model_full.cpp:258
+#: src/gui/item_models/property_model_full.cpp:281
 #, fuzzy, kde-format
 msgid "Hidden"
 msgstr "Skryté"
 
-#: src/gui/item_models/property_model_full.cpp:265
+#: src/gui/item_models/property_model_full.cpp:288
 #, kde-format
 msgid "Toggle Keyframe"
 msgstr ""
 
-#: src/gui/item_models/property_model_full.cpp:292
+#: src/gui/item_models/property_model_full.cpp:315
 #, kde-format
 msgid "Unlocked"
 msgstr "Odomknuté"
 
-#: src/gui/item_models/property_model_full.cpp:300
+#: src/gui/item_models/property_model_full.cpp:323
 #, kde-format
 msgid "Jump to next keyframe"
 msgstr ""
 
-#: src/gui/item_models/property_model_full.cpp:394
+#: src/gui/item_models/property_model_full.cpp:417
 #, kde-format
 msgid "Parent Layer"
 msgstr ""
 
-#: src/gui/item_models/property_model_full.cpp:400
+#: src/gui/item_models/property_model_full.cpp:423
 #, kde-format
 msgid "(No Parent)"
 msgstr ""
@@ -2808,7 +2842,7 @@ msgstr ""
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_hsv_value)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_3)
 #. i18n: ectx: property (text), widget (QTableWidget, table_widget)
-#: src/gui/item_models/property_model_full.cpp:458
+#: src/gui/item_models/property_model_full.cpp:482
 #: src/gui/item_models/property_model_single.cpp:150
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:114
 #: src/gui/widgets/shape_style/color_selector.ui:96
@@ -2817,6 +2851,11 @@ msgstr ""
 #, kde-format
 msgid "Value"
 msgstr "Hodnota"
+
+#: src/gui/item_models/property_model_full.cpp:492
+#, fuzzy, kde-format
+msgid "Mask Mode"
+msgstr "Maska"
 
 #: src/gui/item_models/python_snippet_model.hpp:36
 #, kde-format
@@ -2926,12 +2965,12 @@ msgstr ""
 msgid "Drag nodes"
 msgstr ""
 
-#: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:743
+#: src/gui/tools/edit_tool.cpp:276 src/gui/widgets/dialogs/gw_impl_ui.cpp:745
 #, kde-format
 msgid "Cusp"
 msgstr ""
 
-#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:744
+#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:746
 #, fuzzy, kde-format
 msgid "Smooth"
 msgstr "Plynulý"
@@ -2989,12 +3028,12 @@ msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "Odstrániť prerušenie"
 
-#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:748
+#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:750
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr ""
 
-#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:735
+#: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:737
 #, kde-format
 msgid "Delete Nodes"
 msgstr ""
@@ -3014,7 +3053,7 @@ msgstr ""
 msgid "Curve segments"
 msgstr ""
 
-#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:360
+#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:362
 #, fuzzy, kde-format
 msgid "Edit"
 msgstr "Upraviť"
@@ -3065,19 +3104,19 @@ msgstr "Vybrať"
 msgid "Drag"
 msgstr "Chyť"
 
-#: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:365
+#: src/gui/tools/select_tool.cpp:399 src/gui/widgets/dialogs/gw_impl_ui.cpp:367
 #, fuzzy, kde-format
 msgid "Undo %1"
 msgstr "Vrátiť späť %1"
 
-#: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:371
+#: src/gui/tools/select_tool.cpp:404 src/gui/widgets/dialogs/gw_impl_ui.cpp:373
 #, fuzzy, kde-format
 msgid "Redo %1"
 msgstr "Opakovať vrátené %1"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_delete)
-#: src/gui/tools/select_tool.cpp:417 src/gui/widgets/dialogs/gw_impl_ui.cpp:386
+#: src/gui/tools/select_tool.cpp:417 src/gui/widgets/dialogs/gw_impl_ui.cpp:388
 #: src/gui/widgets/dialogs/selection_manager.cpp:90
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:46
 #: src/gui/widgets/docks/snippet_list_widget.ui:57
@@ -3108,7 +3147,7 @@ msgstr "Kresliť text"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::AboutEnvironmentDialog)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:20
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:155
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:157
 #, kde-format
 msgid "About Environment"
 msgstr ""
@@ -3234,7 +3273,7 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:107
-#: src/gui/widgets/menus/node_menu.cpp:77
+#: src/gui/widgets/menus/node_menu.cpp:78
 #: src/gui/widgets/shape_style/color_selector.ui:59
 #, fuzzy, kde-format
 msgid "None"
@@ -3401,7 +3440,7 @@ msgstr "Kľúčové slová"
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #. i18n: ectx: attribute (title), widget (QWidget, tab_custom)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:84
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:437
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:439
 #: src/gui/widgets/font/font_style_dialog.ui:77
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:58
 #, fuzzy, kde-format
@@ -3613,159 +3652,159 @@ msgid "Close Document"
 msgstr "Zatvoriť dokument"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:245
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:693
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:694
 #, kde-format
 msgid "Load Backup"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:396
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:397
 #, fuzzy, kde-format
 msgid "Export to %1"
 msgstr "&Exportovať do"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:448
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:449
 #, kde-format
 msgid "No importer found for %1"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:453
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:454
 #, kde-format
 msgid ""
 "The file might have been moved or deleted\n"
 "%1"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:507
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:851
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:868
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:508
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:852
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:869
 #, kde-format
 msgid "Could not import %1"
 msgstr "Nie je možné importovať %1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:518
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:519
 #, kde-format
 msgid "No file to reload from"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:551
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:552
 #, fuzzy, kde-format
 msgid "Could not create file"
 msgstr "Nepodarilo sa vytvoriť súbor '%1'."
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:557
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:558
 #, kde-format
 msgid "Could not open browser"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:582
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:609
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:583
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:610
 #, kde-format
 msgid "Save Frame Image"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:585
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:586
 #, kde-format
 msgid "Frame%1.png"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:593
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:594
 #, fuzzy, kde-format
 msgid "Image files (%1)"
 msgstr "Súbory obrázkov"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:602
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:626
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:603
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:627
 #, kde-format
 msgid "Render Frame"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:602
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:626
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:603
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:627
 #, kde-format
 msgid "Could not save image"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:612
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:613
 #, kde-format
 msgid "Frame%1.svg"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:615
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:616
 #, kde-format
 msgid "Scalable Vector Graphics (*.svg)"
 msgstr "Škálovateľná vektorová grafika (* .svg)"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:639
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:499
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:640
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:501
 #, kde-format
 msgid "Validate Discord Sticker"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:641
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:651
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:642
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:652
 #, kde-format
 msgid "No issues found"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:641
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:651
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:642
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:652
 #, kde-format
 msgid "Some issues detected"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:649
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:496
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:650
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:498
 #, kde-format
 msgid "Validate Telegram Sticker"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:693
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:694
 #, kde-format
 msgid "Could not open the backup file"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:772
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:773
 #, kde-format
 msgid "Unlink %1 Color"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:782
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:783
 #, fuzzy, kde-format
 msgid "Link %1 Color"
 msgstr "Farba odkazu:"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:892
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:893
 #, kde-format
 msgid "Download fonts"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:930
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:931
 #, fuzzy, kde-format
 msgid "HTTP Error %1 %2"
 msgstr "HTTP chyba"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:934
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:935
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.cpp:213
 #, kde-format
 msgid "Network Error"
 msgstr "Chyba siete"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:937
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:938
 #, kde-format
 msgid "Load URL"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:937
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:938
 #, fuzzy, kde-format
 msgid "Could not load %1: %2"
 msgstr "Nebolo možné načítať %1."
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:955
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:956
 #, kde-format
 msgid "There are %1 auto-save files that can be restored."
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:963
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:964
 #, kde-format
 msgid "Load Backup..."
 msgstr ""
@@ -3817,108 +3856,108 @@ msgstr "Konvertovať na cestu"
 msgid "Convert %1 to path"
 msgstr "Konvertovať na cestu"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:492
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:493
 #, kde-format
 msgid "New Composition from Selection"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:681
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:682
 #, kde-format
 msgid "Align Selection"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:723
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:724
 #, kde-format
 msgid "Drop"
 msgstr "Kvapka"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:819
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:820
 #, kde-format
 msgid "Put text on path"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:841
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:842
 #, kde-format
 msgid "Remove text from path"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:130
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:132
 #, fuzzy, kde-format
 msgid "Put on Path"
 msgstr "Konvertovať na cestu"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:133
-#: src/gui/widgets/menus/node_menu.cpp:396
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:135
+#: src/gui/widgets/menus/node_menu.cpp:435
 #, kde-format
 msgid "Remove from Path"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:151
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:153
 #, fuzzy, kde-format
 msgid "Copy Debug Information"
 msgstr "Informácia"
 
 #. i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:293
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:295
 #, fuzzy, kde-format
 msgid "File"
 msgstr "&Súbor"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:298
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:300
 #, fuzzy, kde-format
 msgid "Add Image…"
 msgstr "Pridať obrázok"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:301
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:303
 #, fuzzy, kde-format
 msgid "Import…"
 msgstr "Importovať"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:304
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:306
 #, kde-format
 msgid "Import from LottieFiles…"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:307
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:309
 #, kde-format
 msgid "Open Most Recent"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:330
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:335
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:341
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:332
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:337
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:343
 #, fuzzy, kde-format
 msgid "Save as Template"
 msgstr "Uložiť ako ša&blónu"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:341
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:343
 #, kde-format
 msgid "Could not save template"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:345
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:347
 #, fuzzy, kde-format
 msgid "Export…"
 msgstr "Exportovať"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:348
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:350
 #, fuzzy, kde-format
 msgid "Export As…"
 msgstr "E&xportovať ako"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:351
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:353
 #, kde-format
 msgid "Export as Image Sequence…"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:378
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:380
 #, kde-format
 msgid "Paste as Composition"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_duplicate)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:381
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:383
 #: src/gui/widgets/docks/layers.ui:80 src/gui/widgets/docks/layers.ui:83
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:486
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:69
@@ -3926,34 +3965,34 @@ msgstr ""
 msgid "Duplicate"
 msgstr "Duplikovať"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:432
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:434
 #, fuzzy, kde-format
 msgid "View"
 msgstr "&Zobraziť"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:443
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:445
 #, fuzzy, kde-format
 msgid "Automatic"
 msgstr "Automatické"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:448
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:450
 #, kde-format
 msgid "Wide"
 msgstr "Široké"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:453
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:455
 #, fuzzy, kde-format
 msgid "Medium"
 msgstr "Stredné"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:458
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:460
 #, fuzzy, kde-format
 msgid "Compact"
 msgstr "Kompaktný"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_angle_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_angle_reset)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:469
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:471
 #: src/gui/widgets/view_transform_widget.ui:150
 #: src/gui/widgets/view_transform_widget.ui:153
 #, kde-format
@@ -3962,192 +4001,192 @@ msgstr "Zrušiť otočenie"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_flip_view)
 #. i18n: ectx: property (text), widget (QToolButton, btn_flip_view)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:471
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:473
 #: src/gui/widgets/view_transform_widget.ui:164
 #: src/gui/widgets/view_transform_widget.ui:167
 #, fuzzy, kde-format
 msgid "Flip View"
 msgstr "Prevrátiť pohľad"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:479
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:481
 #, kde-format
 msgid "Raster…"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:481
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:483
 #, kde-format
 msgid "SVG…"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:484
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:486
 #, kde-format
 msgid "Lottie (SVG)"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:487
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:489
 #, kde-format
 msgid "Lottie (canvas)"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:490
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:492
 #, kde-format
 msgid "SVG (SMIL)"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:493
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:495
 #, kde-format
 msgid "RIVE (canvas)"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:502
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:504
 #, fuzzy, kde-format
 #| msgid "Resize"
 msgid "Resize…"
 msgstr "Zmeniť veľkosť"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:505
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:507
 #, fuzzy, kde-format
 msgid "Cleanup"
 msgstr "Vyčistenie"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:508
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:510
 #, fuzzy, kde-format
 #| msgid "Timing"
 msgid "Timing…"
 msgstr "Časovanie"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:513
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:515
 #, fuzzy, kde-format
 #| msgid "Metadata..."
 msgid "Metadata…"
 msgstr "Metadáta..."
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:524
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:548
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:526
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:550
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
 #, fuzzy, kde-format
 msgid "Play"
 msgstr "Prehrať"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_loop)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:526
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:528
 #: src/gui/widgets/timeline/frame_controls_widget.ui:63
 #, fuzzy, kde-format
 msgid "Loop"
 msgstr "Opakovať"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:528
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:530
 #, fuzzy, kde-format
 msgid "Record Keyframes"
 msgstr "Vymazať kľúčovú snímku"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:530
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:532
 #, kde-format
 msgid "Jump to Start"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:532
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:534
 #, kde-format
 msgid "Jump to End"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:534
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:536
 #, fuzzy, kde-format
 msgid "Next Frame"
 msgstr "Nasledujúca snímka"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:536
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:538
 #, fuzzy, kde-format
 msgid "Previous Frame"
 msgstr "Predchádzajúca snímka"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:544
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:546
 #, fuzzy, kde-format
 msgid "Pause"
 msgstr "Pozastaviť"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:599
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:601
 #, fuzzy, kde-format
 #| msgid "compositions"
 msgid "Precompose Selection"
 msgstr "kompozície"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:603
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:605
 #, fuzzy, kde-format
 msgid "New Composition"
 msgstr "Nová kompozícia"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:618
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:620
 #, kde-format
 msgid "Emoji…"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:631
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:633
 #, fuzzy, kde-format
 #| msgid "Move to Top"
 msgid "Raise to Top"
 msgstr "Presunúť hore"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:640
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:642
 #, fuzzy, kde-format
 #| msgid "Move to Bottom"
 msgid "Lower to Bottom"
 msgstr "Presunúť dolu"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:643
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:645
 #, fuzzy, kde-format
 msgid "Move to…"
 msgstr "Presunúť do"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:649
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:651
 #, fuzzy, kde-format
 msgid "Ungroup"
 msgstr "Zrušiť zoskupenie"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:652
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:654
 #: src/gui/widgets/docks/aligndock.cpp:46
 #, fuzzy, kde-format
 msgid "Align"
 msgstr "Zarovnať"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:654
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:656
 #, kde-format
 msgid "Selection"
 msgstr "Výber"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:656
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:658
 #, kde-format
 msgid "Canvas"
 msgstr "Plátno"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:658
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:660
 #, kde-format
 msgid "Canvas (as Group)"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:661
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:663
 #, fuzzy, kde-format
 msgid "Left"
 msgstr "Vľavo"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:664
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:673
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:666
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:675
 #, fuzzy, kde-format
 msgid "Center"
 msgstr "Vycentrovať"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:667
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:669
 #, fuzzy, kde-format
 msgid "Right"
 msgstr "Vpravo"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:672
 #, fuzzy, kde-format
 msgid "Top"
 msgstr "Hore"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:676
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:678
 #, fuzzy, kde-format
 msgid "Bottom"
 msgstr "Dole"
@@ -4155,153 +4194,155 @@ msgstr "Dole"
 #. i18n("Relative To"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_horizontal"), i18n("Horizontal"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_vertical"), i18n("Vertical"), QStringLiteral(""));
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:683
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:685
 #, kde-format
 msgid "Outside Left"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
 #, kde-format
 msgid "Outside Right"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:689
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:691
 #, kde-format
 msgid "Outside Top"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:694
 #, kde-format
 msgid "Outside Bottom"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:711
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:713
 #, fuzzy, kde-format
 msgid "Object to Path"
 msgstr "Konvertovať na cestu"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:714
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:716
 #, kde-format
 msgid "Trace Bitmap…"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:719
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:721
 #, fuzzy, kde-format
 msgid "Union"
 msgstr "Spolok"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:722
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:724
+#: src/gui/widgets/enum_combo.cpp:145
 #, fuzzy, kde-format
 #| msgid "&Difference"
 msgid "Difference"
 msgstr "&Rozdiel"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:725
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:727
 #, fuzzy, kde-format
 msgid "Intersect"
 msgstr "Prienik"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:728
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:730
+#: src/gui/widgets/enum_combo.cpp:147
 #, fuzzy, kde-format
 msgid "Exclusion"
 msgstr "Vylúčenie"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:732
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:734
 #, fuzzy, kde-format
 msgid "Reverse"
 msgstr "Otočiť"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:736
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:738
 #, kde-format
 msgid "Add Node…"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:738
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:740
 #, fuzzy, kde-format
 #| msgid "Remove Nodes"
 msgid "Join Nodes"
 msgstr "Odstrániť uzly"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:740
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:742
 #, kde-format
 msgid "Split Nodes"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:745
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:747
 #, kde-format
 msgid "Symmetric"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:746
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:748
 #, kde-format
 msgid "Make segments straight"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:747
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:749
 #, kde-format
 msgid "Make segments curved"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:793
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:795
 #, fuzzy, kde-format
 msgid "Reverse path"
 msgstr "Otočiť"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:891
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:893
 #, kde-format
 msgid "Recording Keyframes"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1305
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1307
 #, kde-format
 msgid "Could not load template"
 msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1500
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1509
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1516
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1502
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1511
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1518
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1500
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1502
 #, kde-format
 msgid "Only select one image"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1509
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1511
 #, kde-format
 msgid "You need to select an image to trace"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1516
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1518
 #, kde-format
 msgid "You selected an image with no data"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1586
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1588
 #, fuzzy, kde-format
 msgid "X: %1 Y: %2"
 msgstr "x<sup>1/y</sup>"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1605
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1607
 #, kde-format
 msgid "Drop File"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1616
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1618
 #, kde-format
 msgid "Add to current file?"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1622
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1624
 #, kde-format
 msgid "Add as Object"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1628
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1630
 #, kde-format
 msgid "Add as Composition"
 msgstr ""
@@ -4707,7 +4748,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #: src/gui/widgets/dialogs/trace_dialog.ui:397
 #: src/gui/widgets/docks/layers.ui:66 src/gui/widgets/docks/layers.ui:69
-#: src/gui/widgets/menus/node_menu.cpp:238
+#: src/gui/widgets/menus/node_menu.cpp:275
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:75
 #, kde-format
 msgid "Add"
@@ -5047,6 +5088,109 @@ msgstr ""
 msgid "Polygon"
 msgstr "Mnohouholník"
 
+#: src/gui/widgets/enum_combo.cpp:113
+#, fuzzy, kde-format
+msgid "No Mask"
+msgstr "Maska"
+
+#: src/gui/widgets/enum_combo.cpp:115
+#, kde-format
+msgid "Alpha Mask"
+msgstr ""
+
+#: src/gui/widgets/enum_combo.cpp:117
+#, fuzzy, kde-format
+msgid "Luma Mask"
+msgstr "Maska"
+
+#: src/gui/widgets/enum_combo.cpp:125
+#, fuzzy, kde-format
+msgid "Normal"
+msgstr "5. Formáty"
+
+#: src/gui/widgets/enum_combo.cpp:127
+#, fuzzy, kde-format
+#| msgid "multiple"
+msgid "Multiply"
+msgstr "viacnásobná"
+
+#: src/gui/widgets/enum_combo.cpp:129
+#, fuzzy, kde-format
+#| msgid "Green"
+msgid "Screen"
+msgstr "Zelená"
+
+#: src/gui/widgets/enum_combo.cpp:131
+#, kde-format
+msgid "Overlay"
+msgstr ""
+
+#: src/gui/widgets/enum_combo.cpp:133
+#, kde-format
+msgid "Darken"
+msgstr ""
+
+#: src/gui/widgets/enum_combo.cpp:135
+#, fuzzy, kde-format
+msgid "Lighten"
+msgstr "Vpravo"
+
+#: src/gui/widgets/enum_combo.cpp:137
+#, fuzzy, kde-format
+#| msgid "Color Mode"
+msgid "Color Dodge"
+msgstr "Farebný režim"
+
+#: src/gui/widgets/enum_combo.cpp:139
+#, fuzzy, kde-format
+#| msgid "Color"
+msgid "Color Burn"
+msgstr "Farba"
+
+#: src/gui/widgets/enum_combo.cpp:141
+#, fuzzy, kde-format
+#| msgid "Height"
+msgid "Hard Light"
+msgstr "Výška"
+
+#: src/gui/widgets/enum_combo.cpp:143
+#, kde-format
+msgid "Soft Light"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (color_widgets::HueSlider, slider_hsv_hue)
+#. i18n: ectx: property (toolTip), widget (QLabel, label)
+#. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox)
+#. i18n: ectx: property (toolTip), widget (color_widgets::HueSlider, slider_hsl_hue)
+#. i18n: ectx: property (toolTip), widget (QLabel, label_5)
+#. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_5)
+#: src/gui/widgets/enum_combo.cpp:149
+#: src/gui/widgets/shape_style/color_selector.ui:106
+#: src/gui/widgets/shape_style/color_selector.ui:133
+#: src/gui/widgets/shape_style/color_selector.ui:143
+#: src/gui/widgets/shape_style/color_selector.ui:217
+#: src/gui/widgets/shape_style/color_selector.ui:224
+#: src/gui/widgets/shape_style/color_selector.ui:241
+#, fuzzy, kde-format
+msgid "Hue"
+msgstr "Odtieň"
+
+#. i18n: ectx: property (toolTip), widget (QLabel, label_2)
+#. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_2)
+#. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_hsv_sat)
+#: src/gui/widgets/enum_combo.cpp:151
+#: src/gui/widgets/shape_style/color_selector.ui:86
+#: src/gui/widgets/shape_style/color_selector.ui:123
+#: src/gui/widgets/shape_style/color_selector.ui:163
+#, fuzzy, kde-format
+msgid "Saturation"
+msgstr "Sýtosť"
+
+#: src/gui/widgets/enum_combo.cpp:155
+#, kde-format
+msgid "Luminosity"
+msgstr ""
+
 #: src/gui/widgets/font/external_font_widget.cpp:127
 #, kde-format
 msgid ""
@@ -5234,7 +5378,7 @@ msgid "View on LottieFiles..."
 msgstr ""
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:56
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:177
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:179
 #, kde-format
 msgid "Paste Keyframe"
 msgstr ""
@@ -5250,170 +5394,176 @@ msgid "Follow Path..."
 msgstr ""
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:175
 #, fuzzy, kde-format
 msgid "Remove Keyframe"
 msgstr "Vymazať kľúčovú snímku"
 
-#: src/gui/widgets/menus/node_menu.cpp:49
-#: src/gui/widgets/menus/node_menu.cpp:253
-#: src/gui/widgets/menus/node_menu.cpp:346
-#: src/gui/widgets/menus/node_menu.cpp:363
+#: src/gui/widgets/menus/node_menu.cpp:50
+#: src/gui/widgets/menus/node_menu.cpp:290
+#: src/gui/widgets/menus/node_menu.cpp:385
+#: src/gui/widgets/menus/node_menu.cpp:402
 #, kde-format
 msgid "Reset Transform"
 msgstr ""
 
-#: src/gui/widgets/menus/node_menu.cpp:101
+#: src/gui/widgets/menus/node_menu.cpp:102
 #, kde-format
 msgid "Move to Top"
 msgstr "Presunúť hore"
 
-#: src/gui/widgets/menus/node_menu.cpp:113
+#: src/gui/widgets/menus/node_menu.cpp:114
 #, kde-format
 msgid "Move to Bottom"
 msgstr "Presunúť dolu"
 
-#: src/gui/widgets/menus/node_menu.cpp:199
+#: src/gui/widgets/menus/node_menu.cpp:200
 #, fuzzy, kde-format
 msgid "Convert %1 to %2"
 msgstr "Previesť do"
 
-#: src/gui/widgets/menus/node_menu.cpp:257
+#: src/gui/widgets/menus/node_menu.cpp:294
 #, kde-format
 msgid "Auto Orient"
 msgstr ""
 
-#: src/gui/widgets/menus/node_menu.cpp:266
-#: src/gui/widgets/menus/node_menu.cpp:267
+#: src/gui/widgets/menus/node_menu.cpp:301
+#, fuzzy, kde-format
+#| msgid "Color Mode"
+msgid "Blend Mode"
+msgstr "Farebný režim"
+
+#: src/gui/widgets/menus/node_menu.cpp:307
+#: src/gui/widgets/menus/node_menu.cpp:308
 #, kde-format
 msgid "Span All Frames"
 msgstr ""
 
-#: src/gui/widgets/menus/node_menu.cpp:277
+#: src/gui/widgets/menus/node_menu.cpp:318
 #, fuzzy, kde-format
 msgid "Parent"
 msgstr "Rodič"
 
-#: src/gui/widgets/menus/node_menu.cpp:278
+#: src/gui/widgets/menus/node_menu.cpp:319
 #, kde-format
 msgid "Convert to Group"
 msgstr ""
 
-#: src/gui/widgets/menus/node_menu.cpp:279
+#: src/gui/widgets/menus/node_menu.cpp:320
 #, kde-format
 msgid "Precompose"
 msgstr ""
 
-#: src/gui/widgets/menus/node_menu.cpp:285
-#: src/gui/widgets/menus/node_menu.cpp:304
-#, kde-format
-msgid "Convert to Mask"
-msgstr ""
+#: src/gui/widgets/menus/node_menu.cpp:325
+#, fuzzy, kde-format
+#| msgid "inverted"
+msgid "Inverted"
+msgstr "invertované"
 
-#: src/gui/widgets/menus/node_menu.cpp:291
-#, kde-format
-msgid "Remove Mask"
-msgstr ""
-
-#: src/gui/widgets/menus/node_menu.cpp:300
+#: src/gui/widgets/menus/node_menu.cpp:339
 #, kde-format
 msgid "Convert to Layer"
 msgstr ""
 
-#: src/gui/widgets/menus/node_menu.cpp:309
+#: src/gui/widgets/menus/node_menu.cpp:343
+#, kde-format
+msgid "Convert to Mask"
+msgstr ""
+
+#: src/gui/widgets/menus/node_menu.cpp:348
 #, fuzzy, kde-format
 msgid "Convert to Path"
 msgstr "Konvertovať na cestu"
 
-#: src/gui/widgets/menus/node_menu.cpp:314
+#: src/gui/widgets/menus/node_menu.cpp:353
 #, kde-format
 msgid "Embed"
 msgstr "Zahrnúť"
 
-#: src/gui/widgets/menus/node_menu.cpp:318
+#: src/gui/widgets/menus/node_menu.cpp:357
 #, kde-format
 msgid "Open with External Application"
 msgstr ""
 
-#: src/gui/widgets/menus/node_menu.cpp:320
+#: src/gui/widgets/menus/node_menu.cpp:359
 #, kde-format
 msgid "Could not find suitable application, check your system settings."
 msgstr ""
 
-#: src/gui/widgets/menus/node_menu.cpp:324
+#: src/gui/widgets/menus/node_menu.cpp:363
 #, kde-format
 msgid "From File..."
 msgstr "Zo súboru..."
 
-#: src/gui/widgets/menus/node_menu.cpp:325
-#: src/gui/widgets/menus/node_menu.cpp:329
+#: src/gui/widgets/menus/node_menu.cpp:364
+#: src/gui/widgets/menus/node_menu.cpp:368
 #, kde-format
 msgid "Update Image"
 msgstr ""
 
-#: src/gui/widgets/menus/node_menu.cpp:356
+#: src/gui/widgets/menus/node_menu.cpp:395
 #, kde-format
 msgid "Trace Bitmap..."
 msgstr ""
 
-#: src/gui/widgets/menus/node_menu.cpp:367
+#: src/gui/widgets/menus/node_menu.cpp:406
 #, kde-format
 msgid "Rename from Composition"
 msgstr ""
 
-#: src/gui/widgets/menus/node_menu.cpp:371
-#: src/gui/widgets/menus/node_menu.cpp:372
+#: src/gui/widgets/menus/node_menu.cpp:410
+#: src/gui/widgets/menus/node_menu.cpp:411
 #, kde-format
 msgid "Decompose"
 msgstr ""
 
-#: src/gui/widgets/menus/node_menu.cpp:410
+#: src/gui/widgets/menus/node_menu.cpp:449
 #, kde-format
 msgid "Stretch time"
 msgstr ""
 
-#: src/gui/widgets/menus/node_menu.cpp:411
+#: src/gui/widgets/menus/node_menu.cpp:450
 #, kde-format
 msgid "Speed Multiplier"
 msgstr ""
 
-#: src/gui/widgets/menus/node_menu.cpp:428
+#: src/gui/widgets/menus/node_menu.cpp:467
 #, fuzzy, kde-format
 msgctxt "@option:check"
 msgid "Visible"
 msgstr "Viditeľný"
 
-#: src/gui/widgets/menus/node_menu.cpp:429
+#: src/gui/widgets/menus/node_menu.cpp:468
 #, kde-format
 msgctxt "@option:check"
 msgid "Locked"
 msgstr "Zamknuté"
 
-#: src/gui/widgets/menus/node_menu.cpp:434
+#: src/gui/widgets/menus/node_menu.cpp:473
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Delete"
 msgstr "Vymazať"
 
-#: src/gui/widgets/menus/node_menu.cpp:438
+#: src/gui/widgets/menus/node_menu.cpp:477
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Duplicate"
 msgstr "Duplikovať"
 
-#: src/gui/widgets/menus/node_menu.cpp:451
+#: src/gui/widgets/menus/node_menu.cpp:490
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Move to..."
 msgstr "Presunúť do"
 
-#: src/gui/widgets/menus/node_menu.cpp:479
+#: src/gui/widgets/menus/node_menu.cpp:518
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Convert to Path"
 msgstr "Konvertovať na cestu"
 
-#: src/gui/widgets/menus/node_menu.cpp:496
+#: src/gui/widgets/menus/node_menu.cpp:535
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Change speed"
@@ -5622,16 +5772,6 @@ msgstr "CMYK"
 msgid "Palette"
 msgstr "Paleta"
 
-#. i18n: ectx: property (toolTip), widget (QLabel, label_2)
-#. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_2)
-#. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_hsv_sat)
-#: src/gui/widgets/shape_style/color_selector.ui:86
-#: src/gui/widgets/shape_style/color_selector.ui:123
-#: src/gui/widgets/shape_style/color_selector.ui:163
-#, fuzzy, kde-format
-msgid "Saturation"
-msgstr "Sýtosť"
-
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: src/gui/widgets/shape_style/color_selector.ui:89
@@ -5639,22 +5779,6 @@ msgstr "Sýtosť"
 #, fuzzy, kde-format
 msgid "S"
 msgstr "S"
-
-#. i18n: ectx: property (toolTip), widget (color_widgets::HueSlider, slider_hsv_hue)
-#. i18n: ectx: property (toolTip), widget (QLabel, label)
-#. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox)
-#. i18n: ectx: property (toolTip), widget (color_widgets::HueSlider, slider_hsl_hue)
-#. i18n: ectx: property (toolTip), widget (QLabel, label_5)
-#. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_5)
-#: src/gui/widgets/shape_style/color_selector.ui:106
-#: src/gui/widgets/shape_style/color_selector.ui:133
-#: src/gui/widgets/shape_style/color_selector.ui:143
-#: src/gui/widgets/shape_style/color_selector.ui:217
-#: src/gui/widgets/shape_style/color_selector.ui:224
-#: src/gui/widgets/shape_style/color_selector.ui:241
-#, fuzzy, kde-format
-msgid "Hue"
-msgstr "Odtieň"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_5)
@@ -6078,22 +6202,22 @@ msgstr "Premenovať kompozíciu"
 msgid "Delete Composition"
 msgstr "Odstrániť kompozíciu"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:155
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:157
 #, kde-format
 msgid "Transition From Previous"
 msgstr ""
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:156
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:158
 #, kde-format
 msgid "Transition To Next"
 msgstr ""
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:163
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:165
 #, kde-format
 msgid "Custom..."
 msgstr "Vlastné..."
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:178
 #, kde-format
 msgid "Copy Keyframe"
 msgstr "Kopírovať kľúčovú snímku"
@@ -6298,6 +6422,9 @@ msgstr "Uhol"
 #, kde-format
 msgid "°"
 msgstr ""
+
+#~ msgid "shapes"
+#~ msgstr "tvary"
 
 #~ msgctxt "@label:spinbox"
 #~ msgid "Width"
