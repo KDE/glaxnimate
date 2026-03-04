@@ -16,7 +16,6 @@
 
 #include "glaxnimate_settings.hpp"
 #include "settings/icon_settings.hpp"
-#include "glaxnimate/utils/trace.hpp"
 #include "glaxnimate/utils/data_paths.hpp"
 #include "glaxnimate/log/log.hpp"
 #include "glaxnimate/app_info.hpp"
@@ -87,6 +86,7 @@ void GlaxnimateApp::on_initialize_settings()
 #include "settings/plugin_settings_group.hpp"
 #include "settings/clipboard_settings.hpp"
 #include "settings/api_credentials.hpp"
+#include "trace/trace.hpp"
 
 
 void GlaxnimateApp::on_initialize()
@@ -229,13 +229,13 @@ void GlaxnimateApp::init_qapplication()
 
     aboutData.addAuthor(i18n("Mattia \"Glax\" Basaglia"), i18n("Maintainer"), QStringLiteral("glax@dragon.best"));
 
-    aboutData.addComponent(i18n("potrace"), i18n("Used by the bitmap tracing feature."), utils::trace::Tracer::potrace_version(), QStringLiteral("http://potrace.sourceforge.net/"), KAboutLicense::GPL_V2);
 
 #ifdef GLAXNIMATE_VIDEO_ENABLED
     aboutData.addComponent(i18n("libav"), {}, io::video::VideoFormat::library_version(), QStringLiteral("https://libav.org/"), KAboutLicense::LGPL);
 #endif
 
 #ifndef Q_OS_ANDROID
+    aboutData.addComponent(i18n("potrace"), i18n("Used by the bitmap tracing feature."), utils::trace::Tracer::potrace_version(), QStringLiteral("http://potrace.sourceforge.net/"), KAboutLicense::GPL_V2);
     aboutData.addComponent(i18n("Inkscape"), {}, {}, QStringLiteral("https://inkscape.org/"), KAboutLicense::GPL_V2);
 #endif
 #ifdef GLAXNIMATE_PYTHON_ENABLED

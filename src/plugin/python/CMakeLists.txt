@@ -26,7 +26,7 @@ set_target_properties(
     OUTPUT_NAME ${PROJECT_SLUG}
     LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/build/lib"
 )
-target_link_libraries(glaxnimate_python PUBLIC Glaxnimate::Core Glaxnimate::Plugin ${Python3_LIBRARIES})
+target_link_libraries(glaxnimate_python PUBLIC Glaxnimate::Core Glaxnimate::Plugin Glaxnimate::Trace ${Python3_LIBRARIES})
 add_custom_command(TARGET glaxnimate_python PRE_BUILD COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_BINARY_DIR}/build/lib")
 
 

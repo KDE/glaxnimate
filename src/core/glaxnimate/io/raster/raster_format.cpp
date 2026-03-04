@@ -8,8 +8,6 @@
 
 #include <QFileInfo>
 
-#include "glaxnimate/utils/trace_wrapper.hpp"
-
 QStringList glaxnimate::io::raster::RasterFormat::extensions() const
 {
     QStringList formats;
@@ -28,26 +26,6 @@ bool glaxnimate::io::raster::RasterFormat::on_open(QIODevice& dev, const QString
 
     model::FrameTime default_time = settings["default_time"].toFloat();
     main->animation->last_frame.set(default_time == 0 ? default_time : 180);
-
-#ifdef GLAXNIMATE_POTRACE_ENABLED
-    if ( settings.value("trace", {}).toBool() )
-    {
-        QImageReader reader;
-        reader.setDevice(&dev);
-        QImage image = reader.read();
-        if ( image.isNull() )
-            return false;
-
-        utils::trace::TraceWrapper trace(main, image, filename);
-        std::vector<QRgb> colors;
-        std::vector<utils::trace::TraceWrapper::TraceResult> result;
-        auto preset = trace.preset_suggestion();
-        trace.trace_preset(preset, 16, colors, result);
-        trace.apply(result, preset == utils::trace::TraceWrapper::PixelPreset ? 0 : 1);
-
-        return true;
-    }
-#endif
 
     auto bmp = document->assets()->images->values.insert(std::make_unique<model::Bitmap>(document));
     if ( auto file = qobject_cast<QFile*>(&dev) )

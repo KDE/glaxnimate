@@ -284,5 +284,6 @@ if ( NOT ANDROID )
     target_link_libraries(
         GlaxnimateGui PUBLIC
         KF${KF_MAJOR}::Crash
+        Glaxnimate::Trace
     )
 endif()

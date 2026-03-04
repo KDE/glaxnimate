@@ -11,7 +11,7 @@
 #include "glaxnimate/math/bezier/bezier.hpp"
 #include "glaxnimate/model/shapes/image.hpp"
 #include "glaxnimate/model/shapes/group.hpp"
-#include "glaxnimate/utils/trace.hpp"
+#include "trace/trace.hpp"
 
 namespace glaxnimate::utils::trace {
 

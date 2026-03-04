@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "glaxnimate/utils/quantize.hpp"
+#include "trace/quantize.hpp"
 
 #include <QHash>
 

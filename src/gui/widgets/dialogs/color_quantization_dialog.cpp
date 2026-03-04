@@ -9,7 +9,7 @@
 
 #include <QEvent>
 
-#include "glaxnimate/utils/quantize.hpp"
+#include "trace/quantize.hpp"
 #include "glaxnimate_settings.hpp"
 
 using namespace glaxnimate::gui;

@@ -178,23 +178,6 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-# Potrace
-option(GLAXNIMATE_POTRACE_ENABLED "Enable potrace" ON)
-option(GLAXNIMATE_SYSTEM_POTRACE "Use the system potrace library" ON)
-if ( NOT GLAXNIMATE_POTRACE_ENABLED )
-    # No potrace
-elseif (NOT GLAXNIMATE_SYSTEM_POTRACE)
-    # Custom potrace
-    message(STATUS "Using bundled potrace")
-    set(CMAKE_C_COMPILE_OBJECT ${CMAKE_CXX_COMPILE_OBJECT})
-    add_subdirectory(external/potrace/)
-    set(Potrace_LIBRARIES potrace)
-    set(Potrace_INCLUDE_DIRS external/potrace/src/)
-else()
-    # system potrace
-    find_package(Potrace REQUIRED)
-endif()
-
 # Debug flags
 if(CMAKE_BUILD_TYPE STREQUAL "")
     set(CMAKE_BUILD_TYPE "Debug")

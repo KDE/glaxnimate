@@ -120,12 +120,6 @@ if ( GLAXNIMATE_CORE_MINIMAL )
     set(GLAXNIMATE_CORE_KDE OFF)
 
     set(RENDERER_LIBRARIES thorvg)
-else()
-    list(APPEND SOURCES
-        glaxnimate/utils/quantize.cpp
-        glaxnimate/utils/trace.cpp
-        glaxnimate/utils/trace_wrapper.cpp
-    )
 endif()
 
 
@@ -156,14 +150,6 @@ configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/glaxnimate/application_info_generated.in.hpp
     ${CMAKE_CURRENT_BINARY_DIR}/glaxnimate/application_info_generated.hpp
 )
-
-# Potrace
-if ( GLAXNIMATE_POTRACE_ENABLED )
-    target_compile_definitions(GlaxnimateCore PUBLIC -DGLAXNIMATE_POTRACE_ENABLED)
-    if ( GLAXNIMATE_SYSTEM_POTRACE )
-        target_include_directories(GlaxnimateCore PUBLIC ${Potrace_INCLUDE_DIRS})
-    endif()
-endif()
 
 # KDE provides gzip support
 if ( GLAXNIMATE_CORE_KDE )

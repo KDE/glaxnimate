@@ -22,15 +22,8 @@ set(TESTS_LINK_LIBS
 ecm_add_tests(
     test_bezier_solver.cpp
     test_riff.cpp
-    LINK_LIBRARIES ${TESTS_LINK_LIBS}
-)
-
-# Single source file tests, linking to core lib additionally
-
-ecm_add_tests(
     test_property.cpp
     test_trim_path.cpp
-    test_trace.cpp
     test_aep_gradient_xml.cpp
     LINK_LIBRARIES ${TESTS_LINK_LIBS}
 )
@@ -53,4 +46,9 @@ ecm_add_test(
     test_cos_parser.cpp
     TEST_NAME test_cos_parser
     LINK_LIBRARIES ${TESTS_LINK_LIBS}
+)
+
+ecm_add_test(
+    test_trace.cpp
+    LINK_LIBRARIES ${TESTS_LINK_LIBS} Glaxnimate::Trace
 )

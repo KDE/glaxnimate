@@ -6,6 +6,9 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/gui/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 add_subdirectory(core)
+if ( NOT ANDROID )
+    add_subdirectory(trace)
+endif()
 add_subdirectory(plugin)
 add_subdirectory(gui)
 
@@ -16,6 +19,10 @@ else()
     kde_target_enable_exceptions(${PROJECT_SLUG} PUBLIC)
 
     target_link_libraries(${PROJECT_SLUG} Glaxnimate::Core Glaxnimate::Gui Glaxnimate::Plugin QtColorWidgets)
+    if ( NOT ANDROID )
+        target_link_libraries(${PROJECT_SLUG} Glaxnimate::Trace)
+    endif()
+
     install(TARGETS ${PROJECT_SLUG} DESTINATION bin)
 
     ## Icon for Windows and OSX

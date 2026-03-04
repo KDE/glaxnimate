@@ -21,8 +21,8 @@
 #include "glaxnimate/log/log.hpp"
 #include "glaxnimate/math/bezier/bezier.hpp"
 #include "glaxnimate/app_info.hpp"
-#include "glaxnimate/utils/trace.hpp"
-#include "glaxnimate/utils/quantize.hpp"
+#include "trace/trace.hpp"
+#include "trace/quantize.hpp"
 
 using namespace glaxnimate;
 

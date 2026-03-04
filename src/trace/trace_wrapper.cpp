@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "glaxnimate/utils/trace_wrapper.hpp"
-#include "glaxnimate/utils/quantize.hpp"
+#include "trace/trace_wrapper.hpp"
+#include "trace/quantize.hpp"
 #include "glaxnimate/model/document.hpp"
 #include "glaxnimate/model/shapes/stroke.hpp"
 #include "glaxnimate/model/shapes/fill.hpp"
