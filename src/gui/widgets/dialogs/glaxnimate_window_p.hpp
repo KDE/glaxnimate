@@ -32,11 +32,13 @@
 #include "style/dock_widget_style.hpp"
 #include "style/property_delegate.hpp"
 
+#include "plugin/plugin.hpp"
 #include "plugin/script_engine.hpp"
+#include "plugin/action.hpp"
+
 #include "item_models/log_model.hpp"
 #include "glaxnimate_settings.hpp"
 
-#include "plugin/plugin.hpp"
 #include "glaxnimate/utils/pseudo_mutex.hpp"
 #include "widgets/docks/aligndock.h"
 #include "widgets/docks/assetsdock.h"
@@ -284,6 +286,7 @@ public:
     void insert_emoji();
     void style_change_event();
     void import_from_lottiefiles();
+    void trigger_plugin_action(plugin::ActionService* act);
 
     QAction* add_action(KActionCategory *collection, const QString &id, const QString &text, const QString &iconName = {}, const QString &toolTip = {}, const QKeySequence &shortcut = {});
 

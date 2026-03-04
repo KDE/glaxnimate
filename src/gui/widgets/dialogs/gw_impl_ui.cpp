@@ -1533,34 +1533,38 @@ void GlaxnimateWindow::Private::trace_dialog(model::DocumentNode* object)
 }
 
 
+void GlaxnimateWindow::Private::trigger_plugin_action(plugin::ActionService* service)
+{
+    QVariantMap settings_value;
+    if ( !service->script.settings.empty() )
+    {
+        if ( !glaxnimate::gui::WidgetBuilder().show_dialog(
+            service->script.settings, settings_value, service->plugin()->data().name
+        ) )
+            return;
+    }
+
+    service->trigger(settings_value);
+}
+
+
 void GlaxnimateWindow::Private::init_plugins()
 {
     plugin_category = new KActionCategory(i18n("Plugins"), parent->actionCollection());
 
     auto& par = plugin::PluginActionRegistry::instance();
-    for ( auto act : par.enabled() )
+    for ( plugin::ActionService* service : par.enabled() )
     {
-        QAction* qaction = par.make_qaction(act);
+        QAction* qaction = par.make_qaction(service);
         plugin_actions.append(qaction);
         plugin_category->addAction(qaction->objectName(), qaction);
-        connect(qaction, &QAction::triggered, act, [act]{
-            QVariantMap settings_value;
-            if ( !act->script.settings.empty() )
-            {
-                if ( !glaxnimate::gui::WidgetBuilder().show_dialog(
-                    act->script.settings, settings_value, act->plugin()->data().name
-                ) )
-                    return;
-            }
-
-            act->trigger(settings_value);
-        });
+        connect(qaction, &QAction::triggered, service, [service, this]{trigger_plugin_action(service);});
     }
 
     parent->unplugActionList("plugins_actionlist");
     parent->plugActionList("plugins_actionlist", plugin_actions);
 
-    connect(&par, &plugin::PluginActionRegistry::action_added, parent, [this](plugin::ActionService* action, plugin::ActionService* before) {
+    connect(&par, &plugin::PluginActionRegistry::action_added, parent, [this](plugin::ActionService* service, plugin::ActionService* before) {
         qsizetype index = -1;
         for ( auto act : plugin_actions )
         {
@@ -1570,7 +1574,8 @@ void GlaxnimateWindow::Private::init_plugins()
                 break;
             }
         }
-        QAction* qaction = plugin::PluginActionRegistry::instance().make_qaction(action);
+        QAction* qaction = plugin::PluginActionRegistry::instance().make_qaction(service);
+        connect(qaction, &QAction::triggered, service, [service, this]{trigger_plugin_action(service);});
         plugin_actions.insert(qMax(qsizetype(0), qsizetype(index -1)), qaction);
         plugin_category->addAction(qaction->objectName(), qaction);
 
