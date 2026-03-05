@@ -101,29 +101,6 @@ if ( WIN32 AND MinGW )
     set(CMAKE_ENABLE_EXPORTS TRUE)
 endif()
 
-
-# Python
-if ( NOT MOBILE_UI )
-    set(PYTHON_SCRIPTING_ENABLED ON)
-else()
-    set(PYTHON_SCRIPTING_ENABLED OFF)
-endif()
-
-if ( PYTHON_SCRIPTING_ENABLED )
-    add_definitions(-DPYTHON_SCRIPTING_ENABLED)
-    find_program(PYTHON_PIP pip3)
-    if(NOT PYTHON_PIP)
-        find_program(PYTHON_PIP pip)
-    endif()
-
-    find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
-    message(STATUS ${Python3_EXECUTABLE})
-
-    set(PYBIND11_FINDPYTHON ON)
-else()
-    message(STATUS "Python Disabled")
-endif()
-
 # QT_MAJOR_VERSION is the common name in KDE apps and infrastructure.
 # However some third-party submodules use QT_VERSION_MAJOR so we need to set that too.
 set(QT_MAJOR_VERSION 6)

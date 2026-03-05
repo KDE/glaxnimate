@@ -13,8 +13,9 @@ add_library(Glaxnimate::Plugin ALIAS GlaxnimatePlugin)
 
 
 if(GLAXNIMATE_PYTHON_ENABLED)
-    find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
     message(STATUS "Python3 enabled")
+    find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+    set(PYBIND11_FINDPYTHON ON)
     add_subdirectory(../../external/pybind11 ${CMAKE_CURRENT_BINARY_DIR}/pybind11)
     target_include_directories(GlaxnimatePlugin PUBLIC
         ${Python3_INCLUDE_DIRS}
