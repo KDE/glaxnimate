@@ -1,12 +1,13 @@
+/*
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
 #include <emscripten/bind.h>
 
 #include "glaxnimate/io/io_registry.hpp"
 #include "glaxnimate/renderer/renderer.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
-
-#include <emscripten/emscripten.h>
-#include <QPainter>
-#include <thorvg.h>
 
 using namespace glaxnimate;
 
@@ -19,7 +20,6 @@ public:
         if ( !initialized )
         {
             io::IoRegistry::load_formats();
-            //tvg::Initializer::init(1);
             initialized = true;
         }
 
@@ -70,17 +70,6 @@ public:
         if ( !comp )
             return;
         frame = comp->render_image(current_time()).convertToFormat(QImage::Format_RGBA8888);
-        /*frame = QImage(width(), height(), QImage::Format_ARGB32);
-        frame.fill(Qt::blue);
-
-        auto renderer = renderer::default_renderer(10);
-        renderer->set_image_surface(&frame);
-        renderer->render_start();
-        comp->paint(renderer.get(), current_time(), model::VisualNode::Render);
-        // renderer->fill_rect(QRectF(0, 0, 100, 100), Qt::red);
-        renderer->render_end();
-
-        frame = frame.convertToFormat(QImage::Format_RGBA8888);*/
     }
 
     emscripten::val render()
