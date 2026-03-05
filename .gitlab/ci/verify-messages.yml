@@ -1,0 +1,10 @@
+include:
+    - project: sysadmin/ci-utilities
+      file:
+         - /gitlab-templates/blocks/ci-linux-base.yml
+
+verify_messages:
+    stage: validate
+    extends: .suse_tumbleweed_qt6stable
+    script:
+        - podir=build/po EXTRACTRC=true XGETTEXT=true sh -e ./Messages.sh
