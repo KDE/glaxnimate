@@ -18,7 +18,7 @@
 
 namespace glaxnimate::io::lottie::detail {
 
-inline QLatin1String operator "" _l(const char* c, std::size_t sz)
+inline QLatin1String operator ""_l(const char* c, std::size_t sz)
 {
     return QLatin1String(c, sz);
 }
