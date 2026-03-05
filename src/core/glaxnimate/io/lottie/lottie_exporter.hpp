@@ -32,7 +32,7 @@ inline QLatin1String operator ""_l(const char* c, std::size_t sz)
 
 class LottieExporterState
 {
-    static constexpr const char* version = "5.7.1";
+    static constexpr const char* version = "5.13.0";
 
 public:
     explicit LottieExporterState(ImportExport* format, model::Composition* comp, bool strip, bool strip_raster, const QVariantMap& settings )
@@ -221,14 +221,21 @@ public:
             else
             {
                 int i = 0;
-                QCborMap mask;
+                MatteData matte;
                 if ( layer->mask->has_mask() && !layer->shapes.empty() )
                 {
                     if ( layer->shapes[0]->visible.get() )
                     {
-                        mask = convert_single_layer(children_types[0], layer->shapes[0], output, layer, true);
+                        QCborMap mask = convert_single_layer(children_types[0], layer->shapes[0], output, layer, true);
                         if ( !mask.isEmpty() )
+                        {
                             mask["td"_l] = 1;
+                            // mask["hd"_l] = 1;
+                            output.push_front(mask);
+                            matte.parent = mask["ind"_l].toInteger();
+                            matte.type = convert_matte_type(layer->mask.get());
+
+                        }
                     }
                     i = 1;
                 }
@@ -236,7 +243,7 @@ public:
                 for ( ; i < layer->shapes.size(); i++ )
                 {
                     if ( !strip || layer->shapes[i]->visible.get() )
-                        convert_layer(children_types[i], layer->shapes[i], output, layer, mask);
+                        convert_layer(children_types[i], layer->shapes[i], output, layer, matte);
                 }
             }
         }
@@ -244,8 +251,31 @@ public:
         return json;
     }
 
+    struct MatteData
+    {
+        int type;
+        int parent;
+        MatteData() : type(-1), parent(-1) {};
+
+        bool has_matte() const { return parent != -1 && type != -1; }
+    };
+
+    int convert_matte_type(model::MaskSettings* mask)
+    {
+        switch ( mask->mask.get() )
+        {
+            case model::MaskSettings::NoMask:
+                return 0;
+            case model::MaskSettings::Alpha:
+                return mask->inverted.get() ? 2 : 1;
+            case model::MaskSettings::Luma:
+                return mask->inverted.get() ? 4 : 3;
+        }
+        return -1;
+    }
+
     QCborMap convert_layer(LayerType type, model::ShapeElement* shape, QCborArray& output,
-                           model::Layer* forced_parent = nullptr, const QCborMap& mask = {})
+                           model::Layer* forced_parent = nullptr, const MatteData& matte = MatteData{})
     {
         if ( !shape->visible.get() )
             return {};
@@ -261,16 +291,12 @@ public:
 
         auto json = convert_single_layer(type, shape, output, forced_parent, false);
 
-        if ( !mask.isEmpty() )
+        if ( matte.has_matte() )
         {
-            json["tt"_l] = 1;
-            output.push_front(json);
-            output.push_front(mask);
+            json["tt"_l] = matte.type;
+            json["tp"_l] = matte.parent;
         }
-        else
-        {
-            output.push_front(json);
-        }
+        output.push_front(json);
 
         return json;
     }
