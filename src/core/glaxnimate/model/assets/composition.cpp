@@ -66,7 +66,7 @@ QImage glaxnimate::model::Composition::render_image(float time, QSize image_size
     QSizeF real_size = size();
     if ( !image_size.isValid() )
         image_size = real_size.toSize();
-    QImage image(image_size, QImage::Format_RGBA8888);
+    QImage image(image_size, QImage::Format_ARGB32);
     if ( !background.isValid() )
         image.fill(Qt::transparent);
     else
