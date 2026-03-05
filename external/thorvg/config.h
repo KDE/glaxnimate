@@ -3,8 +3,9 @@
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
-#define THORVG_THREAD_SUPPORT 1
 #define THORVG_SW_RASTER_SUPPORT 1
+
+#cmakedefine THORVG_THREAD_SUPPORT 1
 
 #cmakedefine THORVG_GL_RASTER_SUPPORT 1
 #cmakedefine THORVG_GL_TARGET_GL 1

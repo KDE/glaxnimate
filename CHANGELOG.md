@@ -9,6 +9,7 @@
 * Misc
     * New rendering system
     * Core as static library
+    * Experimental wasm build of the core renderer
 * Bug Fixes:
     * Fixed shape tools not remembering their own settings
 

@@ -9,6 +9,11 @@ file(
     ${CMAKE_CURRENT_SOURCE_DIR}/thorvg/src/loaders/raw/*.cpp
 )
 
+if ( EMSCRIPTEN )
+    set(THORVG_THREAD_SUPPORT OFF)
+else()
+    set(THORVG_THREAD_SUPPORT ON)
+endif()
 
 if ( OPENGL_ENABLED )
     set(THORVG_GL_RASTER_SUPPORT ON)
