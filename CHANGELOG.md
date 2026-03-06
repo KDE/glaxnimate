@@ -8,6 +8,7 @@
     * Timeline now allows to cycle through mask modes for layers
 * I/O:
     * Improved matte import and export for lottie
+    * Improved mask properties import for lottie
 * Misc
     * New rendering system
     * Core as static library
