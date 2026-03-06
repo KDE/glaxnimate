@@ -9,6 +9,7 @@
 #include "glaxnimate/model/assets/asset.hpp"
 #include "glaxnimate/model/property/object_list_property.hpp"
 #include "glaxnimate/model/shapes/composable/layer.hpp"
+#include "glaxnimate/utils/range.hpp"
 
 namespace glaxnimate::model {
 

@@ -6,29 +6,21 @@
 
 #pragma once
 
-#include "glaxnimate/model/shapes/shape.hpp"
-
-#include "glaxnimate/model/transform.hpp"
-#include "glaxnimate/model/property/sub_object_property.hpp"
-#include "glaxnimate/utils/range.hpp"
+#include "glaxnimate/model/shapes/composable/composable.hpp"
 
 namespace glaxnimate::model {
 
 
-class Group : public StaticOverrides<Group, ShapeElement>
+class Group : public StaticOverrides<Group, Composable>
 {
     GLAXNIMATE_OBJECT(Group)
 
 public:
 
     GLAXNIMATE_PROPERTY_LIST(ShapeElement, shapes)
-    GLAXNIMATE_SUBOBJECT(Transform, transform)
-    GLAXNIMATE_ANIMATABLE(float, opacity, 1, &Group::opacity_changed, 0, 1, false, PropertyTraits::Percent)
-    GLAXNIMATE_PROPERTY(bool, auto_orient, false, &Group::on_transform_matrix_changed, {}, PropertyTraits::Visual|PropertyTraits::Hidden)
-    GLAXNIMATE_PROPERTY(renderer::BlendMode, blend_mode, renderer::BlendMode::Normal, &Group::blend_mode_changed, {}, PropertyTraits::Visual|PropertyTraits::Hidden)
 
 public:
-    Group(Document* document);
+    using Ctor::Ctor;
 
     int docnode_child_count() const override { return shapes.size(); }
     DocumentNode* docnode_child(int index) const override { return shapes[index]; }
@@ -54,18 +46,10 @@ public:
 
     std::unique_ptr<ShapeElement> to_path() const override;
 
-Q_SIGNALS:
-    void opacity_changed(float op);
-    void blend_mode_changed(renderer::BlendMode mode);
-
 protected:
     glaxnimate::math::bezier::MultiBezier to_painter_path_impl(model::FrameTime t) const override;
-    void on_paint(renderer::Renderer*, FrameTime, PaintMode, model::Modifier*) const override;
     void on_graphics_changed() override;
     void on_composition_changed(model::Composition* old_comp, model::Composition* new_comp) override;
-
-private Q_SLOTS:
-    void on_transform_matrix_changed();
 };
 
 } // namespace glaxnimate::model
