@@ -153,6 +153,8 @@ std::pair<QString, const char*> EnumCombo::raw_data_for(const QMetaEnum& meta_en
                 return {i18n("Color"), nullptr};
             case renderer::BlendMode::Luminosity:
                 return {i18n("Luminosity"), nullptr};
+            case renderer::BlendMode::Add:
+                return {i18n("Add"), nullptr};
         }
     }
 

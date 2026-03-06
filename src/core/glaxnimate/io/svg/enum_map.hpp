@@ -14,7 +14,7 @@
 namespace glaxnimate::io::svg::detail {
 
 const std::vector<std::pair<renderer::BlendMode, QString>> blend_modes = {
-    {renderer::BlendMode::Normal, "source-over"},
+    {renderer::BlendMode::Normal, "normal"},
     {renderer::BlendMode::Multiply, "multiply"},
     {renderer::BlendMode::Screen, "screen"},
     {renderer::BlendMode::Overlay, "overlay"},
@@ -30,6 +30,7 @@ const std::vector<std::pair<renderer::BlendMode, QString>> blend_modes = {
     {renderer::BlendMode::Saturation, "saturation"},
     {renderer::BlendMode::Color, "color"},
     {renderer::BlendMode::Luminosity, "luminosity"},
+    {renderer::BlendMode::Add, "plus-lighter"},
 };
 
 template<class T>
