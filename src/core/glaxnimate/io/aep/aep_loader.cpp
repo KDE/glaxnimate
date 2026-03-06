@@ -86,7 +86,34 @@ static QMap<int, renderer::BlendMode> layer_blend_modes = {
     {17, renderer::BlendMode::Normal}, // Stencil Alpha
     {18, renderer::BlendMode::Normal}, // Stencil Luma
     {37, renderer::BlendMode::Difference}, // Subtract
+};
 
+
+static QMap<int, renderer::BlendMode> shape_blend_modes = {
+    { 1, renderer::BlendMode::Normal},
+    { 3, renderer::BlendMode::Darken},
+    { 4, renderer::BlendMode::Multiply},
+    { 5, renderer::BlendMode::ColorBurn},
+    { 6, renderer::BlendMode::ColorBurn}, // Linear Burn
+    { 7, renderer::BlendMode::Darken}, // Darker Color
+    { 9, renderer::BlendMode::Lighten},
+    {10, renderer::BlendMode::Screen},
+    {11, renderer::BlendMode::ColorDodge},
+    {12, renderer::BlendMode::ColorDodge}, // Linear Dodge
+    {13, renderer::BlendMode::Lighten}, // Lighter Color
+    {15, renderer::BlendMode::Overlay},
+    {16, renderer::BlendMode::SoftLight},
+    {17, renderer::BlendMode::HardLight},
+    {18, renderer::BlendMode::SoftLight}, // Linear Light
+    {19, renderer::BlendMode::SoftLight}, // Vivid Light
+    {20, renderer::BlendMode::HardLight}, // Pin Light
+    {21, renderer::BlendMode::Normal}, // Hard Mix (exported by lottie)
+    {23, renderer::BlendMode::Difference},
+    {24, renderer::BlendMode::Exclusion},
+    {26, renderer::BlendMode::Hue},
+    {27, renderer::BlendMode::Saturation},
+    {28, renderer::BlendMode::Color},
+    {29, renderer::BlendMode::Luminosity},
 };
 
 
@@ -519,6 +546,12 @@ model::Stroke::Join convert_enum(const PropertyValue& v)
         case 2: return model::Stroke::Join::RoundJoin;
         case 3: return model::Stroke::Join::BevelJoin;
     }
+}
+
+template<>
+renderer::BlendMode convert_enum(const PropertyValue& v)
+{
+    return shape_blend_modes.value(convert_value<int>(v), renderer::BlendMode::Normal);
 }
 
 struct AnchorMult
@@ -1008,6 +1041,13 @@ void load_shape_list(ImportExport* io, model::Document* document, const Property
     }
 }
 
+template<class Obj, class O2, class PropT, class T = typename PropT::value_type, class Converter=DefaultConverter<T>>
+auto make_prop_converter(PropT O2::* property, const char* match_name, const Converter& conv = {})
+{
+    auto ptr = std::make_unique<PropertyConverter<Obj, O2, PropT, T, Converter>>(property, match_name, conv);
+    return ptr;
+}
+
 const ObjectFactory<model::ShapeElement>& shape_factory()
 {
     static ObjectFactory<model::ShapeElement> factory;
@@ -1020,6 +1060,12 @@ const ObjectFactory<model::ShapeElement>& shape_factory()
             load_transform(io, gp->transform.get(), (*prop.value)["ADBE Vector Transform Group"], &gp->opacity, {1, 1}, true);
 
             load_shape_list(io, document, (*prop.value)["ADBE Vectors Group"], gp->shapes);
+
+            if ( auto bmprop = prop.value->get("ADBE Vector Blend Mode") )
+            {
+                auto conv = make_prop_converter<model::Group>(&model::Composable::blend_mode, "ADBE Vector Blend Mode", &convert_enum<renderer::BlendMode>);
+                conv->load(io, gp.get(), *bmprop);
+            }
 
             return gp;
         });
