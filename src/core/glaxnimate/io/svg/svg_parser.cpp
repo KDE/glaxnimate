@@ -6,6 +6,7 @@
 
 #include "glaxnimate/io/svg/svg_parser.hpp"
 #include "glaxnimate/io/svg/svg_parser_private.hpp"
+#include "glaxnimate/io/svg/enum_map.hpp"
 
 using namespace glaxnimate::io::svg::detail;
 
@@ -391,7 +392,7 @@ private:
                 if ( split.size() == 2 )
                 {
                     QString name = split[0].trimmed().toString();
-                    if ( !name.isEmpty() && css_atrrs.count(name) )
+                    if ( !name.isEmpty() )// && css_atrrs.count(name) )
                         style[name] = split[1].trimmed().toString();
                 }
             }
@@ -498,7 +499,7 @@ private:
 
     void parse_transform(
         const QDomElement& element,
-        model::Group* node,
+        model::Composable* node,
         model::Transform* transform
     )
     {
@@ -656,6 +657,16 @@ private:
         return info;
     }
 
+    void parse_composable(const ParseFuncArgs& args, model::Composable* comp, const Style& style)
+    {
+        parse_transform(args.element, comp, comp->transform.get());
+        comp->blend_mode.set(detail::enum_from_svg(
+            style.get("mix-blend-mode", "source-over"),
+            detail::blend_modes,
+            renderer::BlendMode::Normal
+        ));
+    }
+
     void add_shapes(const ParseFuncArgs& args, ShapeCollection&& shapes)
     {
         Style style = parse_style(args.element, args.parent_style);
@@ -668,8 +679,8 @@ private:
         for ( auto& shape : shapes )
             group->shapes.insert(std::move(shape));
 
-        // parse_transform at the end so the bounding box isn't empty
-        parse_transform(args.element, group.get(), group->transform.get());
+        // parse_composable at the end so the bounding box isn't empty
+        parse_composable(args, group.get(), style);
         args.shape_parent->insert(std::move(group));
     }
 
@@ -1172,6 +1183,18 @@ private:
         return image->from_file(file);
     }
 
+    void parse_image_position(const ParseFuncArgs& args, model::Transform* tf)
+    {
+        tf->position.set(QPointF(
+            len_attr(args.element, "x", 0),
+            len_attr(args.element, "y", 0)
+        ));
+
+        auto anim = parse_animated(args.element);
+        for ( const auto& kf : anim.joined({"x", "y"}) )
+            tf->position.set_keyframe(kf.time, {kf.values[0].vector()[0], kf.values[1].vector()[0]})->set_transition(kf.transition);
+    }
+
     void parseshape_image(const ParseFuncArgs& args)
     {
         auto bitmap = std::make_unique<model::Bitmap>(document);
@@ -1201,14 +1224,29 @@ private:
         auto image = std::make_unique<model::Image>(document);
         image->image.set(document->assets()->images->values.insert(std::move(bitmap)));
 
-        QTransform trans;
-        if ( args.element.hasAttribute("transform") )
-            trans = svg_transform(args.element.attribute("transform"), trans).transform;
-        trans.translate(
-            len_attr(args.element, "x", 0),
-            len_attr(args.element, "y", 0)
-        );
-        image->transform->set_transform_matrix(trans);
+        Style style = parse_style(args.element, args.parent_style);
+        parse_composable(args, image.get(), style);
+
+        if ( args.element.hasAttribute("x") || args.element.hasAttribute("y") )
+        {
+            if ( args.element.hasAttribute("transform") )
+            {
+                // Has both x,y and a transform, therefore add an intermediate layer
+                auto wrapper = std::make_unique<model::Layer>(document);
+                wrapper->name.set(image->name.get());
+                wrapper->blend_mode.set(image->blend_mode.get());
+                image->blend_mode.set(renderer::BlendMode::Normal);
+                parse_image_position(args, wrapper->transform.get());
+                layers.push_back(wrapper.get());
+                wrapper->shapes.insert(std::move(image));
+                args.shape_parent->insert(std::move(wrapper));
+                return;
+            }
+            else
+            {
+                parse_image_position(args, image->transform.get());
+            }
+        }
 
         args.shape_parent->insert(std::move(image));
     }
