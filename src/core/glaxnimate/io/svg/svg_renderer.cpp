@@ -26,6 +26,7 @@
 #include "glaxnimate/io/svg/detail.hpp"
 #include "glaxnimate/io/svg/font_weight.hpp"
 #include "glaxnimate/io/utils.hpp"
+#include "glaxnimate/io/svg/enum_map.hpp"
 
 using namespace glaxnimate::io::svg::detail;
 using namespace glaxnimate;
@@ -567,16 +568,24 @@ public:
         write_property(element, &styler->opacity, attr+"-opacity", t);
     }
 
+    void write_composable(model::Composable* comp, QDomElement& e, model::FrameTime t)
+    {
+        transform_to_attr(e, t, comp->transform.get(), comp->auto_orient.get());
+        if ( comp->blend_mode.get() != renderer::BlendMode::Normal )
+            set_attribute(e, "style", "mix-blend-mode: " + detail::enum_to_svg(comp->blend_mode.get(), detail::blend_modes, "source-over"));
+
+    }
+
     void write_image(model::Image* img, QDomElement& parent, model::FrameTime t)
     {
         if ( img->image.get() )
         {
             auto e = element(parent, "image");
-            set_attribute(e, "x", 0);
-            set_attribute(e, "y", 0);
+            // set_attribute(e, "x", 0);
+            // set_attribute(e, "y", 0);
             set_attribute(e, "width", img->image->width.get());
             set_attribute(e, "height", img->image->height.get());
-            transform_to_attr(e, t, img->transform.get());
+            write_composable(img, e, t);
             set_attribute(e, "xlink:href", img->image->to_url().toString());
         }
     }
@@ -651,17 +660,20 @@ public:
                 return;
 
             timing.push_back(layer->timing.get());
-            auto clip = element(defs, "clipPath");
-            set_attribute(clip, "id", "clip_" + id(layer));
-            set_attribute(clip, "clipPathUnits", "userSpaceOnUse");
-            auto clip_rect = element(clip, "rect");
-            set_attribute(clip_rect, "x", "0");
-            set_attribute(clip_rect, "y", "0");
-            set_attribute(clip_rect, "width", layer->size.get().width());
-            set_attribute(clip_rect, "height", layer->size.get().height());
+            if ( !layer->unbounded.get() )
+            {
+                auto clip = element(defs, "clipPath");
+                set_attribute(clip, "id", "clip_" + id(layer));
+                set_attribute(clip, "clipPathUnits", "userSpaceOnUse");
+                auto clip_rect = element(clip, "rect");
+                set_attribute(clip_rect, "x", "0");
+                set_attribute(clip_rect, "y", "0");
+                set_attribute(clip_rect, "width", layer->size.get().width());
+                set_attribute(clip_rect, "height", layer->size.get().height());
+            }
 
             auto e = start_layer(parent, layer);
-            transform_to_attr(e, t, layer->transform.get());
+            write_composable(layer, e, t);
             write_property(e, &layer->opacity, "opacity", t);
             write_visibility_attributes(parent, layer);
             time_stretch = layer->timing->stretch.get();
@@ -928,7 +940,7 @@ public:
             g = start_group(parent, group);
         }
 
-        transform_to_attr(g, t, group->transform.get(), group->auto_orient.get());
+        write_composable(group, g, t);
         write_property(g, &group->opacity, "opacity", t);
         write_visibility_attributes(g, group);
         write_shapes(g, group->shapes, has_mask, t);
