@@ -926,7 +926,7 @@ public:
                 QDomElement clip = element(defs, "mask");
                 QString mask_id = "clip_" + id(layer);
                 clip.setAttribute("id", mask_id);
-                clip.setAttribute("mask-type", "alpha");
+                clip.setAttribute("mask-type", layer->mask->mask.value() == model::MaskSettings::Luma ? "luminance" : "alpha");
                 if ( layer->shapes.size() > 1 )
                     write_shape(clip, layer->shapes[0], false, t);
 
