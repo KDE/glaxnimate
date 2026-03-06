@@ -23,6 +23,7 @@ class PreCompLayer : public ShapeElement
     GLAXNIMATE_PROPERTY(QSizeF, size, {})
     GLAXNIMATE_SUBOBJECT(Transform, transform)
     GLAXNIMATE_ANIMATABLE(float, opacity, 1, &PreCompLayer::opacity_changed, 0, 1, false, PropertyTraits::Percent)
+    GLAXNIMATE_PROPERTY(bool, unbounded, false, {}, {}, PropertyTraits::Visual)
 
 public:
     PreCompLayer(Document* document);

@@ -6,12 +6,16 @@
     * Editing properties that are already animated now adds a keyframe
 * UI:
     * Timeline now allows to cycle through mask modes for layers
+* I/O:
+    * Improved matte import and export for lottie
 * Misc
     * New rendering system
     * Core as static library
     * Experimental wasm build of the core renderer
+    * Unbounded precomp layers
 * Bug Fixes:
     * Fixed shape tools not remembering their own settings
+    * Fixed open file dialog not saving the last used path on app closure
 
 ## 0.6.0
 

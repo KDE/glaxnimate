@@ -61,7 +61,8 @@ void glaxnimate::model::PreCompLayer::on_paint(renderer::Renderer* painter, glax
     {
         time = timing->time_to_local(time);
         painter->set_opacity(opacity.get_at(time));
-        painter->clip_rect(QRectF(QPointF(0, 0), size.get()));
+        if ( !unbounded.get() )
+            painter->clip_rect(QRectF(QPointF(0, 0), size.get()));
         composition->paint(painter, time, mode);
     }
 }
