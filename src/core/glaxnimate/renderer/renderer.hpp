@@ -59,7 +59,7 @@ enum class BlendMode
     Saturation,
     Color,
     Luminosity,
-    //Add, // in lottie but not in svg
+    Add,
     //HardMix, // in lottie but not in svg
 };
 
