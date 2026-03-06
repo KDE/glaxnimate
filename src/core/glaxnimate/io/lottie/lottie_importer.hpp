@@ -424,8 +424,40 @@ private:
         return precomp;
     }
 
-    void load_mask(const QJsonObject& json, model::Group* group)
+    void load_mask(const QJsonObject& json, model::Group* parent, bool subgroup, model::MaskSettings* mask)
     {
+        model::Group* group = parent;
+        if ( subgroup )
+        {
+            auto clip_group_p = make_node<model::Group>(document);
+            group = clip_group_p.get();
+            parent->shapes.insert(std::move(clip_group_p));
+            document->set_best_name(group, i18n("Clip"));
+        }
+        char mode = json["mode"].toString("a")[0].toLatin1();
+        switch ( mode )
+        {
+            // 'l', 'a' don't need anything
+            // TODO 'i' intersect
+            case 'n':
+                group->visible.set(false);
+                break;
+            case 's':
+            case 'f':
+            case 'd':
+                if ( subgroup )
+                    group->blend_mode.set(renderer::BlendMode::Difference);
+                else
+                    mask->inverted.set(!json["inv"].toBool(false));
+                break;
+        }
+
+        // TODO this doesn't work with multiple mask properties with different values of "inv"
+        if ( subgroup && json["inv"].toBool(false) )
+        {
+            mask->inverted.set(true);
+        }
+
         auto fill = make_node<model::Fill>(document);
         fill->color.set(QColor(255, 255, 255));
         document->set_best_name(fill.get());
@@ -512,9 +544,11 @@ private:
             {
                 layer->mask->mask.set(model::MaskSettings::Alpha);
 
+                // Group clip shapes go into
                 auto clip_p = make_node<model::Group>(document);
                 auto clip = clip_p.get();
                 layer->shapes.insert(std::move(clip_p));
+                // Copy of the layer where the rest of the properties go into
                 auto shape_target = std::make_unique<model::Layer>(document);
                 target = shape_target.get();
                 shape_target->name.set(layer->name.get());
@@ -525,17 +559,13 @@ private:
                 document->set_best_name(clip, i18n("Clip"));
                 if ( masks.size() == 1 )
                 {
-                    load_mask(masks[0].toObject(), clip);
+                    load_mask(masks[0].toObject(), clip, false, layer->mask.get());
                 }
                 else
                 {
                     for ( const auto& mask : masks )
                     {
-                        auto clip_group_p = make_node<model::Group>(document);
-                        auto clip_group = clip_group_p.get();
-                        clip->shapes.insert(std::move(clip_group_p));
-                        document->set_best_name(clip_group, i18n("Clip"));
-                        load_mask(mask.toObject(), clip_group);
+                        load_mask(mask.toObject(), clip, true, layer->mask.get());
                     }
                 }
             }
