@@ -55,6 +55,7 @@ const std::unordered_set<QString> glaxnimate::io::svg::detail::css_atrrs = {
     "marker-mid",
     "marker-start",
     "mask",
+    "mask-type",
     "opacity",
     "overflow",
     "paint-order",

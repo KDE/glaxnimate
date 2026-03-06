@@ -453,7 +453,6 @@ private:
         auto layer = add_layer(args.shape_parent);
         apply_common_style(layer, args.element, style);
         set_name(layer, args.element);
-        layer->mask->mask.set(model::MaskSettings::Alpha);
 
         QDomElement element = args.element;
 
@@ -466,7 +465,7 @@ private:
         for ( const auto& attr : detail::css_atrrs )
             element.removeAttribute(attr);
 
-        Style mask_style;
+        Style mask_style = parse_style(mask_element, {});
         mask_style["stroke"] = "none";
         parse_g_to_layer({
             mask_element,
@@ -474,6 +473,12 @@ private:
             mask_style,
             false
         });
+
+        layer->mask->mask.set(
+            mask_style.get("mask-style", "luminance") == "alpha" ?
+            model::MaskSettings::Alpha :
+            model::MaskSettings::Luma
+        );
 
         parse_shape_impl({
             element,
