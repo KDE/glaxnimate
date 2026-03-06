@@ -130,6 +130,7 @@ void glaxnimate::model::Layer::paint(renderer::Renderer* painter, FrameTime time
         painter->transform(transform);
 
         painter->mask_start(renderer_mask_mode);
+        painter->transform(transform);
         shapes[0]->paint(painter, time, mode);
         painter->mask_end();
 
