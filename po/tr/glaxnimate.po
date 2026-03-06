@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-05 00:41+0000\n"
-"PO-Revision-Date: 2026-03-04 13:05+0300\n"
+"POT-Creation-Date: 2026-03-06 00:41+0000\n"
+"PO-Revision-Date: 2026-03-05 13:47+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,6 +26,284 @@ msgstr "Emir SARI"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "emir_sari@icloud.com"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/repeater.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/shapes/group.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/shapes/image.hpp
+#. i18n: Property name
+#, kde-format
+msgid "transform"
+msgstr "dönüşüm"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/repeater.hpp
+#. i18n: Property name
+#, kde-format
+msgid "start_opacity"
+msgstr "başlangıç_matlığı"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/stroke.hpp
+#. i18n: Property name
+#, kde-format
+msgid "cap"
+msgstr "sınır"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/stroke.hpp
+#. i18n: Property name
+#, kde-format
+msgid "miter_limit"
+msgstr "gönye_sınırı"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/shape.hpp
+#. i18n: Property name
+#, kde-format
+msgid "reversed"
+msgstr "ters_çevrilmiş"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/rect.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/shapes/text.hpp
+#. i18n: Property name
+#, kde-format
+msgid "position"
+msgstr "konum"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/rect.hpp
+#. i18n: Property name
+#, kde-format
+msgid "rounded"
+msgstr "yuvarlatılmış"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/precomp_layer.hpp
+#. i18n: Property name
+#, kde-format
+msgid "timing"
+msgstr "zamanlama"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/precomp_layer.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/shapes/ellipse.hpp
+#. i18n: Property name
+#, kde-format
+msgid "size"
+msgstr "boyut"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/precomp_layer.hpp
+#. i18n: Property name
+#, kde-format
+msgid "opacity"
+msgstr "matlık"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/group.hpp
+#. i18n: Property name
+#, kde-format
+msgid "auto_orient"
+msgstr "kendiliğinden_yönlendir"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/trim.hpp
+#. i18n: Property name
+#, kde-format
+msgid "end"
+msgstr "bitiş"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/trim.hpp
+#. i18n: Property name
+#, kde-format
+msgid "multiple"
+msgstr "çoklu"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/text.hpp
+#. i18n: Property name
+#, kde-format
+msgid "path"
+msgstr "yol"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/fill.hpp
+#. i18n: Property name
+#, kde-format
+msgid "fill_rule"
+msgstr "dolgu_kuralı"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/assets/gradient.hpp
+#. i18n: Property name
+#, kde-format
+msgid "type"
+msgstr "tür"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
+#. i18n: Property name
+#, kde-format
+msgid "outer_radius"
+msgstr "dış_yarıçap"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
+#. i18n: Property name
+#, kde-format
+msgid "angle"
+msgstr "açı"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
+#. i18n: Property name
+#, kde-format
+msgid "outer_roundness"
+msgstr "dış_yuvarlaklık"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/styler.hpp
+#. i18n: Property name
+#, kde-format
+msgid "color"
+msgstr "renk"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/styler.hpp
+#. i18n: Property name
+#, kde-format
+msgid "use"
+msgstr "kullanım"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/offset_path.hpp
+#. i18n: Property name
+#, kde-format
+msgid "amount"
+msgstr "tutar"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/offset_path.hpp
+#. i18n: Property name
+#, kde-format
+msgid "join"
+msgstr "katıl"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/layer.hpp
+#. i18n: Property name
+#, kde-format
+msgid "animation"
+msgstr "canlandırma"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/layer.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/mask_settings.hpp
+#. i18n: Property name
+#, kde-format
+msgid "mask"
+msgstr "maske"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/zig_zag.hpp
+#. i18n: Property name
+#, kde-format
+msgid "frequency"
+msgstr "sıklık"
+
+#. i18n: file: src/core/glaxnimate/model/transform.hpp
+#. i18n: Property name
+#, kde-format
+msgid "anchor_point"
+msgstr "tutturma_noktası"
+
+#. i18n: file: src/core/glaxnimate/model/transform.hpp
+#. i18n: Property name
+#, kde-format
+msgid "scale"
+msgstr "ölçek"
+
+#. i18n: file: src/core/glaxnimate/model/assets/bitmap.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/assets/embedded_font.hpp
+#. i18n: Property name
+#, kde-format
+msgid "data"
+msgstr "veri"
+
+#. i18n: file: src/core/glaxnimate/model/assets/bitmap.hpp
+#. i18n: Property name
+#, kde-format
+msgid "url"
+msgstr "url"
+
+#. i18n: file: src/core/glaxnimate/model/assets/bitmap.hpp
+#. i18n: Property name
+#, kde-format
+msgid "width"
+msgstr "genişlik"
+
+#. i18n: file: src/core/glaxnimate/model/assets/embedded_font.hpp
+#. i18n: Property name
+#, kde-format
+msgid "css_url"
+msgstr "css_url’si"
+
+#. i18n: file: src/core/glaxnimate/model/assets/gradient.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/assets/assets.hpp
+#. i18n: Property name
+#, kde-format
+msgid "colors"
+msgstr "renkler"
+
+#. i18n: file: src/core/glaxnimate/model/assets/gradient.hpp
+#. i18n: Property name
+#, kde-format
+msgid "start_point"
+msgstr "başlangıç_noktası"
+
+#. i18n: file: src/core/glaxnimate/model/assets/assets.hpp
+#. i18n: Property name
+#, kde-format
+msgid "gradient_colors"
+msgstr "gradyan_renkleri"
+
+#. i18n: file: src/core/glaxnimate/model/assets/assets.hpp
+#. i18n: Property name
+#, kde-format
+msgid "compositions"
+msgstr "kompozisyonlar"
+
+#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: Property name
+#, kde-format
+msgid "uuid"
+msgstr "uuid"
+
+#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/property/option_list_property.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/property/object_list_property.hpp
+#. i18n: Property name
+#, kde-format
+msgid "name"
+msgstr "ad"
+
+#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: Property name
+#, kde-format
+msgid "group_color"
+msgstr "grup_rengi"
+
+#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: Property name
+#, kde-format
+msgid "visible"
+msgstr "görünür"
+
+#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: Property name
+#, kde-format
+msgid "locked"
+msgstr "kilitli"
+
+#. i18n: file: src/core/glaxnimate/model/animation_container.hpp
+#. i18n: Property name
+#, kde-format
+msgid "first_frame"
+msgstr "ilk_kare"
+
+#. i18n: file: src/core/glaxnimate/model/stretchable_time.hpp
+#. i18n: Property name
+#, kde-format
+msgid "stretch"
+msgstr "ger"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, Dialog)
 #: data/plugins/FrameByFrame/create_frames.ui:18
@@ -2244,7 +2522,7 @@ msgstr "Hiçbir dosya indirilmedi"
 #, kde-format
 msgctxt "Package install status"
 msgid "Some files failed to extract"
-msgstr ""
+msgstr "Bazı dosyalar çıkarılamadı"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, EmojiSetDialog)
 #: src/gui/emoji/emoji_set_dialog.ui:21
@@ -6346,139 +6624,6 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "%1 izlendi"
-
-#~ msgid "transform"
-#~ msgstr "dönüşüm"
-
-#~ msgid "start_opacity"
-#~ msgstr "başlangıç_matlığı"
-
-#~ msgid "cap"
-#~ msgstr "sınır"
-
-#~ msgid "miter_limit"
-#~ msgstr "gönye_sınırı"
-
-#~ msgid "reversed"
-#~ msgstr "ters_çevrilmiş"
-
-#~ msgid "position"
-#~ msgstr "konum"
-
-#~ msgid "rounded"
-#~ msgstr "yuvarlatılmış"
-
-#~ msgid "timing"
-#~ msgstr "zamanlama"
-
-#~ msgid "size"
-#~ msgstr "boyut"
-
-#~ msgid "opacity"
-#~ msgstr "matlık"
-
-#~| msgid "Auto Orient"
-#~ msgid "auto_orient"
-#~ msgstr "kendiliğinden_yönlendir"
-
-#~ msgid "end"
-#~ msgstr "bitiş"
-
-#~ msgid "multiple"
-#~ msgstr "çoklu"
-
-#~ msgid "path"
-#~ msgstr "yol"
-
-#~ msgid "fill_rule"
-#~ msgstr "dolgu_kuralı"
-
-#~ msgid "type"
-#~ msgstr "tür"
-
-#~ msgid "outer_radius"
-#~ msgstr "dış_yarıçap"
-
-#~ msgid "angle"
-#~ msgstr "açı"
-
-#~ msgid "outer_roundness"
-#~ msgstr "dış_yuvarlaklık"
-
-#~ msgid "color"
-#~ msgstr "renk"
-
-#~ msgid "use"
-#~ msgstr "kullanım"
-
-#~ msgid "amount"
-#~ msgstr "tutar"
-
-#~ msgid "join"
-#~ msgstr "katıl"
-
-#~ msgid "animation"
-#~ msgstr "canlandırma"
-
-#~ msgid "mask"
-#~ msgstr "maske"
-
-#~ msgid "frequency"
-#~ msgstr "sıklık"
-
-#~ msgid "anchor_point"
-#~ msgstr "tutturma_noktası"
-
-#~ msgid "scale"
-#~ msgstr "ölçek"
-
-#~ msgid "data"
-#~ msgstr "veri"
-
-#~ msgid "url"
-#~ msgstr "url"
-
-#~ msgid "width"
-#~ msgstr "genişlik"
-
-#~ msgid "css_url"
-#~ msgstr "css_url’si"
-
-#~ msgid "colors"
-#~ msgstr "renkler"
-
-#~ msgid "start_point"
-#~ msgstr "başlangıç_noktası"
-
-#~ msgid "gradient_colors"
-#~ msgstr "gradyan_renkleri"
-
-#~ msgid "compositions"
-#~ msgstr "kompozisyonlar"
-
-#~ msgid "uuid"
-#~ msgstr "uuid"
-
-#~ msgid "name"
-#~ msgstr "ad"
-
-#~| msgid "Group Color"
-#~ msgid "group_color"
-#~ msgstr "grup_rengi"
-
-#~| msgid "Visible"
-#~ msgid "visible"
-#~ msgstr "görünür"
-
-#~| msgid "Unlocked"
-#~ msgid "locked"
-#~ msgstr "kilitli"
-
-#~ msgid "first_frame"
-#~ msgstr "ilk_kare"
-
-#~ msgid "stretch"
-#~ msgstr "ger"
 
 #~ msgid "libarchive"
 #~ msgstr "libarchive"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-05 00:41+0000\n"
+"POT-Creation-Date: 2026-03-06 00:41+0000\n"
 "PO-Revision-Date: 2026-03-01 18:07+0100\n"
 "Last-Translator: Valter Mura <valtermura@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -28,6 +28,288 @@ msgstr "Valter Mura"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "valtermura@gmail.com"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/repeater.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/shapes/group.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/shapes/image.hpp
+#. i18n: Property name
+#, kde-format
+msgid "transform"
+msgstr "trasformazione"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/repeater.hpp
+#. i18n: Property name
+#, kde-format
+msgid "start_opacity"
+msgstr "opacità_iniziale"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/stroke.hpp
+#. i18n: Property name
+#, kde-format
+msgid "cap"
+msgstr "estremità"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/stroke.hpp
+#. i18n: Property name
+#, kde-format
+msgid "miter_limit"
+msgstr "limite_giunzione"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/shape.hpp
+#. i18n: Property name
+#, kde-format
+msgid "reversed"
+msgstr "rovesciato"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/rect.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/shapes/text.hpp
+#. i18n: Property name
+#, kde-format
+msgid "position"
+msgstr "posizione"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/rect.hpp
+#. i18n: Property name
+#, kde-format
+msgid "rounded"
+msgstr "arrotondato"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/precomp_layer.hpp
+#. i18n: Property name
+#, kde-format
+msgid "timing"
+msgstr "tempistica"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/precomp_layer.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/shapes/ellipse.hpp
+#. i18n: Property name
+#, kde-format
+msgid "size"
+msgstr "dimensione"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/precomp_layer.hpp
+#. i18n: Property name
+#, kde-format
+msgid "opacity"
+msgstr "opacità"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/group.hpp
+#. i18n: Property name
+#, fuzzy, kde-format
+#| msgid "Auto Orient"
+msgid "auto_orient"
+msgstr "Orientazione automatica"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/trim.hpp
+#. i18n: Property name
+#, kde-format
+msgid "end"
+msgstr "fine"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/trim.hpp
+#. i18n: Property name
+#, kde-format
+msgid "multiple"
+msgstr "multipla"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/text.hpp
+#. i18n: Property name
+#, kde-format
+msgid "path"
+msgstr "tracciato"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/fill.hpp
+#. i18n: Property name
+#, kde-format
+msgid "fill_rule"
+msgstr "regola_riempimento"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/assets/gradient.hpp
+#. i18n: Property name
+#, kde-format
+msgid "type"
+msgstr "tipo"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
+#. i18n: Property name
+#, kde-format
+msgid "outer_radius"
+msgstr "raggio_esterno"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
+#. i18n: Property name
+#, kde-format
+msgid "angle"
+msgstr "angolo"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
+#. i18n: Property name
+#, kde-format
+msgid "outer_roundness"
+msgstr "rotondità_esterna"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/styler.hpp
+#. i18n: Property name
+#, kde-format
+msgid "color"
+msgstr "colore"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/styler.hpp
+#. i18n: Property name
+#, kde-format
+msgid "use"
+msgstr "usa"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/offset_path.hpp
+#. i18n: Property name
+#, kde-format
+msgid "amount"
+msgstr "quantità"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/offset_path.hpp
+#. i18n: Property name
+#, kde-format
+msgid "join"
+msgstr "unisci"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/layer.hpp
+#. i18n: Property name
+#, kde-format
+msgid "animation"
+msgstr "animazione"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/layer.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/mask_settings.hpp
+#. i18n: Property name
+#, kde-format
+msgid "mask"
+msgstr "maschera"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/zig_zag.hpp
+#. i18n: Property name
+#, kde-format
+msgid "frequency"
+msgstr "frequenza"
+
+#. i18n: file: src/core/glaxnimate/model/transform.hpp
+#. i18n: Property name
+#, kde-format
+msgid "anchor_point"
+msgstr "punto_di_ancoraggio"
+
+#. i18n: file: src/core/glaxnimate/model/transform.hpp
+#. i18n: Property name
+#, kde-format
+msgid "scale"
+msgstr "scala"
+
+#. i18n: file: src/core/glaxnimate/model/assets/bitmap.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/assets/embedded_font.hpp
+#. i18n: Property name
+#, kde-format
+msgid "data"
+msgstr "dati"
+
+#. i18n: file: src/core/glaxnimate/model/assets/bitmap.hpp
+#. i18n: Property name
+#, kde-format
+msgid "url"
+msgstr "url"
+
+#. i18n: file: src/core/glaxnimate/model/assets/bitmap.hpp
+#. i18n: Property name
+#, kde-format
+msgid "width"
+msgstr "larghezza"
+
+#. i18n: file: src/core/glaxnimate/model/assets/embedded_font.hpp
+#. i18n: Property name
+#, kde-format
+msgid "css_url"
+msgstr "url_css"
+
+#. i18n: file: src/core/glaxnimate/model/assets/gradient.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/assets/assets.hpp
+#. i18n: Property name
+#, kde-format
+msgid "colors"
+msgstr "colori"
+
+#. i18n: file: src/core/glaxnimate/model/assets/gradient.hpp
+#. i18n: Property name
+#, kde-format
+msgid "start_point"
+msgstr "punto_iniziale"
+
+#. i18n: file: src/core/glaxnimate/model/assets/assets.hpp
+#. i18n: Property name
+#, kde-format
+msgid "gradient_colors"
+msgstr "colori_sfumatura"
+
+#. i18n: file: src/core/glaxnimate/model/assets/assets.hpp
+#. i18n: Property name
+#, kde-format
+msgid "compositions"
+msgstr "composizioni"
+
+#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: Property name
+#, kde-format
+msgid "uuid"
+msgstr ""
+
+#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/property/option_list_property.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/property/object_list_property.hpp
+#. i18n: Property name
+#, kde-format
+msgid "name"
+msgstr "nome"
+
+#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: Property name
+#, fuzzy, kde-format
+#| msgid "Group Color"
+msgid "group_color"
+msgstr "Raggruppa colore"
+
+#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: Property name
+#, fuzzy, kde-format
+#| msgid "Visible"
+msgid "visible"
+msgstr "Visibile"
+
+#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: Property name
+#, fuzzy, kde-format
+#| msgid "Unlocked"
+msgid "locked"
+msgstr "Sbloccato"
+
+#. i18n: file: src/core/glaxnimate/model/animation_container.hpp
+#. i18n: Property name
+#, kde-format
+msgid "first_frame"
+msgstr "primo_fotogramma"
+
+#. i18n: file: src/core/glaxnimate/model/stretchable_time.hpp
+#. i18n: Property name
+#, kde-format
+msgid "stretch"
+msgstr "allunga"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, Dialog)
 #: data/plugins/FrameByFrame/create_frames.ui:18
@@ -6395,140 +6677,6 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "Tracciato %1"
-
-#~ msgid "transform"
-#~ msgstr "trasformazione"
-
-#~ msgid "start_opacity"
-#~ msgstr "opacità_iniziale"
-
-#~ msgid "cap"
-#~ msgstr "estremità"
-
-#~ msgid "miter_limit"
-#~ msgstr "limite_giunzione"
-
-#~ msgid "reversed"
-#~ msgstr "rovesciato"
-
-#~ msgid "position"
-#~ msgstr "posizione"
-
-#~ msgid "rounded"
-#~ msgstr "arrotondato"
-
-#~ msgid "timing"
-#~ msgstr "tempistica"
-
-#~ msgid "size"
-#~ msgstr "dimensione"
-
-#~ msgid "opacity"
-#~ msgstr "opacità"
-
-#, fuzzy
-#~| msgid "Auto Orient"
-#~ msgid "auto_orient"
-#~ msgstr "Orientazione automatica"
-
-#~ msgid "end"
-#~ msgstr "fine"
-
-#~ msgid "multiple"
-#~ msgstr "multipla"
-
-#~ msgid "path"
-#~ msgstr "tracciato"
-
-#~ msgid "fill_rule"
-#~ msgstr "regola_riempimento"
-
-#~ msgid "type"
-#~ msgstr "tipo"
-
-#~ msgid "outer_radius"
-#~ msgstr "raggio_esterno"
-
-#~ msgid "angle"
-#~ msgstr "angolo"
-
-#~ msgid "outer_roundness"
-#~ msgstr "rotondità_esterna"
-
-#~ msgid "color"
-#~ msgstr "colore"
-
-#~ msgid "use"
-#~ msgstr "usa"
-
-#~ msgid "amount"
-#~ msgstr "quantità"
-
-#~ msgid "join"
-#~ msgstr "unisci"
-
-#~ msgid "animation"
-#~ msgstr "animazione"
-
-#~ msgid "mask"
-#~ msgstr "maschera"
-
-#~ msgid "frequency"
-#~ msgstr "frequenza"
-
-#~ msgid "anchor_point"
-#~ msgstr "punto_di_ancoraggio"
-
-#~ msgid "scale"
-#~ msgstr "scala"
-
-#~ msgid "data"
-#~ msgstr "dati"
-
-#~ msgid "url"
-#~ msgstr "url"
-
-#~ msgid "width"
-#~ msgstr "larghezza"
-
-#~ msgid "css_url"
-#~ msgstr "url_css"
-
-#~ msgid "colors"
-#~ msgstr "colori"
-
-#~ msgid "start_point"
-#~ msgstr "punto_iniziale"
-
-#~ msgid "gradient_colors"
-#~ msgstr "colori_sfumatura"
-
-#~ msgid "compositions"
-#~ msgstr "composizioni"
-
-#~ msgid "name"
-#~ msgstr "nome"
-
-#, fuzzy
-#~| msgid "Group Color"
-#~ msgid "group_color"
-#~ msgstr "Raggruppa colore"
-
-#, fuzzy
-#~| msgid "Visible"
-#~ msgid "visible"
-#~ msgstr "Visibile"
-
-#, fuzzy
-#~| msgid "Unlocked"
-#~ msgid "locked"
-#~ msgstr "Sbloccato"
-
-#~ msgid "first_frame"
-#~ msgstr "primo_fotogramma"
-
-#~ msgid "stretch"
-#~ msgstr "allunga"
 
 #~ msgid "libarchive"
 #~ msgstr "libarchive"

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-05 00:41+0000\n"
-"PO-Revision-Date: 2026-03-04 09:38+0100\n"
+"POT-Creation-Date: 2026-03-06 00:41+0000\n"
+"PO-Revision-Date: 2026-03-05 09:59+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -30,6 +30,284 @@ msgstr "Martin Srebotnjak"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "miles@filmsi.net"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/repeater.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/shapes/group.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/shapes/image.hpp
+#. i18n: Property name
+#, kde-format
+msgid "transform"
+msgstr "preoblikuj"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/repeater.hpp
+#. i18n: Property name
+#, kde-format
+msgid "start_opacity"
+msgstr "začetna_prekrivnost"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/stroke.hpp
+#. i18n: Property name
+#, kde-format
+msgid "cap"
+msgstr "konec"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/stroke.hpp
+#. i18n: Property name
+#, kde-format
+msgid "miter_limit"
+msgstr "spoj_pod_kotom"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/shape.hpp
+#. i18n: Property name
+#, kde-format
+msgid "reversed"
+msgstr "preobrnjeno"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/rect.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/shapes/text.hpp
+#. i18n: Property name
+#, kde-format
+msgid "position"
+msgstr "šoložaj"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/rect.hpp
+#. i18n: Property name
+#, kde-format
+msgid "rounded"
+msgstr "zaobljeno"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/precomp_layer.hpp
+#. i18n: Property name
+#, kde-format
+msgid "timing"
+msgstr "časovna_usklajenost"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/precomp_layer.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/shapes/ellipse.hpp
+#. i18n: Property name
+#, kde-format
+msgid "size"
+msgstr "velikost"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/precomp_layer.hpp
+#. i18n: Property name
+#, kde-format
+msgid "opacity"
+msgstr "prekrivnost"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/group.hpp
+#. i18n: Property name
+#, kde-format
+msgid "auto_orient"
+msgstr "samodejna_usmeritev"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/trim.hpp
+#. i18n: Property name
+#, kde-format
+msgid "end"
+msgstr "konec"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/trim.hpp
+#. i18n: Property name
+#, kde-format
+msgid "multiple"
+msgstr "večkraten"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/text.hpp
+#. i18n: Property name
+#, kde-format
+msgid "path"
+msgstr "pot"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/fill.hpp
+#. i18n: Property name
+#, kde-format
+msgid "fill_rule"
+msgstr "pravilo_polnila"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/assets/gradient.hpp
+#. i18n: Property name
+#, kde-format
+msgid "type"
+msgstr "vrsta"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
+#. i18n: Property name
+#, kde-format
+msgid "outer_radius"
+msgstr "zunanji_polmer"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
+#. i18n: Property name
+#, kde-format
+msgid "angle"
+msgstr "kot"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
+#. i18n: Property name
+#, kde-format
+msgid "outer_roundness"
+msgstr "zunanja_zaobljenost"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/styler.hpp
+#. i18n: Property name
+#, kde-format
+msgid "color"
+msgstr "barva"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/styler.hpp
+#. i18n: Property name
+#, kde-format
+msgid "use"
+msgstr "uporabi"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/offset_path.hpp
+#. i18n: Property name
+#, kde-format
+msgid "amount"
+msgstr "količina"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/offset_path.hpp
+#. i18n: Property name
+#, kde-format
+msgid "join"
+msgstr "spoji"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/layer.hpp
+#. i18n: Property name
+#, kde-format
+msgid "animation"
+msgstr "animacija"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/layer.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/mask_settings.hpp
+#. i18n: Property name
+#, kde-format
+msgid "mask"
+msgstr "maska"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/zig_zag.hpp
+#. i18n: Property name
+#, kde-format
+msgid "frequency"
+msgstr "frekvenca"
+
+#. i18n: file: src/core/glaxnimate/model/transform.hpp
+#. i18n: Property name
+#, kde-format
+msgid "anchor_point"
+msgstr "točka_sidranja"
+
+#. i18n: file: src/core/glaxnimate/model/transform.hpp
+#. i18n: Property name
+#, kde-format
+msgid "scale"
+msgstr "spremeni_merilo"
+
+#. i18n: file: src/core/glaxnimate/model/assets/bitmap.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/assets/embedded_font.hpp
+#. i18n: Property name
+#, kde-format
+msgid "data"
+msgstr "šodatki"
+
+#. i18n: file: src/core/glaxnimate/model/assets/bitmap.hpp
+#. i18n: Property name
+#, kde-format
+msgid "url"
+msgstr "url"
+
+#. i18n: file: src/core/glaxnimate/model/assets/bitmap.hpp
+#. i18n: Property name
+#, kde-format
+msgid "width"
+msgstr "širina"
+
+#. i18n: file: src/core/glaxnimate/model/assets/embedded_font.hpp
+#. i18n: Property name
+#, kde-format
+msgid "css_url"
+msgstr "css_url"
+
+#. i18n: file: src/core/glaxnimate/model/assets/gradient.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/assets/assets.hpp
+#. i18n: Property name
+#, kde-format
+msgid "colors"
+msgstr "barve"
+
+#. i18n: file: src/core/glaxnimate/model/assets/gradient.hpp
+#. i18n: Property name
+#, kde-format
+msgid "start_point"
+msgstr "začetna_točka"
+
+#. i18n: file: src/core/glaxnimate/model/assets/assets.hpp
+#. i18n: Property name
+#, kde-format
+msgid "gradient_colors"
+msgstr "barve_preliva"
+
+#. i18n: file: src/core/glaxnimate/model/assets/assets.hpp
+#. i18n: Property name
+#, kde-format
+msgid "compositions"
+msgstr "sestave"
+
+#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: Property name
+#, kde-format
+msgid "uuid"
+msgstr "uuid"
+
+#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/property/option_list_property.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/property/object_list_property.hpp
+#. i18n: Property name
+#, kde-format
+msgid "name"
+msgstr "ime"
+
+#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: Property name
+#, kde-format
+msgid "group_color"
+msgstr "barva_skupine"
+
+#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: Property name
+#, kde-format
+msgid "visible"
+msgstr "vidno"
+
+#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: Property name
+#, kde-format
+msgid "locked"
+msgstr "zaklenjeno"
+
+#. i18n: file: src/core/glaxnimate/model/animation_container.hpp
+#. i18n: Property name
+#, kde-format
+msgid "first_frame"
+msgstr "prva_sličica"
+
+#. i18n: file: src/core/glaxnimate/model/stretchable_time.hpp
+#. i18n: Property name
+#, kde-format
+msgid "stretch"
+msgstr "raztegni"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, Dialog)
 #: data/plugins/FrameByFrame/create_frames.ui:18
@@ -2251,7 +2529,7 @@ msgstr "Nobena datoteka ni bila prejeta"
 #, kde-format
 msgctxt "Package install status"
 msgid "Some files failed to extract"
-msgstr ""
+msgstr "Nekaterih datotek ni bilo mogoče izvleči"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, EmojiSetDialog)
 #: src/gui/emoji/emoji_set_dialog.ui:21
@@ -6354,135 +6632,6 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "Sledeno %1"
-
-#~ msgid "transform"
-#~ msgstr "preoblikuj"
-
-#~ msgid "start_opacity"
-#~ msgstr "začetna_prekrivnost"
-
-#~ msgid "cap"
-#~ msgstr "konec"
-
-#~ msgid "miter_limit"
-#~ msgstr "spoj_pod_kotom"
-
-#~ msgid "reversed"
-#~ msgstr "preobrnjeno"
-
-#~ msgid "position"
-#~ msgstr "šoložaj"
-
-#~ msgid "rounded"
-#~ msgstr "zaobljeno"
-
-#~ msgid "timing"
-#~ msgstr "časovna_usklajenost"
-
-#~ msgid "size"
-#~ msgstr "velikost"
-
-#~ msgid "opacity"
-#~ msgstr "prekrivnost"
-
-#~ msgid "auto_orient"
-#~ msgstr "samodejna_usmeritev"
-
-#~ msgid "end"
-#~ msgstr "konec"
-
-#~ msgid "multiple"
-#~ msgstr "večkraten"
-
-#~ msgid "path"
-#~ msgstr "pot"
-
-#~ msgid "fill_rule"
-#~ msgstr "pravilo_polnila"
-
-#~ msgid "type"
-#~ msgstr "vrsta"
-
-#~ msgid "outer_radius"
-#~ msgstr "zunanji_polmer"
-
-#~ msgid "angle"
-#~ msgstr "kot"
-
-#~ msgid "outer_roundness"
-#~ msgstr "zunanja_zaobljenost"
-
-#~ msgid "color"
-#~ msgstr "barva"
-
-#~ msgid "use"
-#~ msgstr "uporabi"
-
-#~ msgid "amount"
-#~ msgstr "količina"
-
-#~ msgid "join"
-#~ msgstr "spoji"
-
-#~ msgid "animation"
-#~ msgstr "animacija"
-
-#~ msgid "mask"
-#~ msgstr "maska"
-
-#~ msgid "frequency"
-#~ msgstr "frekvenca"
-
-#~ msgid "anchor_point"
-#~ msgstr "točka_sidranja"
-
-#~ msgid "scale"
-#~ msgstr "spremeni_merilo"
-
-#~ msgid "data"
-#~ msgstr "šodatki"
-
-#~ msgid "url"
-#~ msgstr "url"
-
-#~ msgid "width"
-#~ msgstr "širina"
-
-#~ msgid "css_url"
-#~ msgstr "css_url"
-
-#~ msgid "colors"
-#~ msgstr "barve"
-
-#~ msgid "start_point"
-#~ msgstr "začetna_točka"
-
-#~ msgid "gradient_colors"
-#~ msgstr "barve_preliva"
-
-#~ msgid "compositions"
-#~ msgstr "sestave"
-
-#~ msgid "uuid"
-#~ msgstr "uuid"
-
-#~ msgid "name"
-#~ msgstr "ime"
-
-#~ msgid "group_color"
-#~ msgstr "barva_skupine"
-
-#~ msgid "visible"
-#~ msgstr "vidno"
-
-#~ msgid "locked"
-#~ msgstr "zaklenjeno"
-
-#~ msgid "first_frame"
-#~ msgstr "prva_sličica"
-
-#~ msgid "stretch"
-#~ msgstr "raztegni"
 
 #~ msgid "libarchive"
 #~ msgstr "libarchive"
