@@ -293,18 +293,21 @@ private:
         layer->name = to_string(utf8);
 
         auto data = ldta->data();
-        layer->id = data.read_uint32();
-        layer->quality = LayerQuality(data.read_uint16());
-        data.skip(4);
-        layer->time_stretch = data.read_uint16();
-        data.skip(1);
-        layer->start_time = comp.time_to_frames(data.read_sint16());
-        data.skip(6);
-        layer->in_time = context.time_to_frames(data.read_uint16());
-        data.skip(6);
-        layer->out_time = context.time_to_frames(data.read_uint16());
-        data.skip(6);
-        Flags flags = data.read_uint<3>();
+/*0000*/layer->id = data.read_uint32();
+/*0004*/layer->quality = LayerQuality(data.read_uint16());
+/*0006*/data.skip(2);
+/*0008*/layer->time_stretch = data.read_uint32();
+        // A lot of these are given as numerator / denominator
+/*000c*/qreal start_time = data.read_sint32();
+/*0010*/start_time /= data.read_sint32();
+        layer->start_time = comp.time_to_frames(start_time);
+/*0014*/qreal in_time = data.read_sint32();
+/*0018*/in_time /= data.read_sint32();
+        layer->in_time = context.time_to_frames(in_time);
+/*001c*/qreal out_time = data.read_sint32();
+/*0020*/out_time /= data.read_sint32();
+        layer->out_time = context.time_to_frames(out_time);
+/*0024*/Flags flags = data.read_uint<4>();
         layer->is_guide = flags.get(2, 1);
         layer->bicubic_sampling = flags.get(2, 6);
         layer->auto_orient = flags.get(1, 0);
@@ -318,20 +321,21 @@ private:
         layer->locked = flags.get(0, 5);
         layer->shy = flags.get(0, 6);
         layer->continuously_rasterize = flags.get(0, 7);
-        layer->asset_id = data.read_uint32();
-        data.skip(17);
-        layer->label_color = LabelColors(data.read_uint8());
-        data.skip(2);
-        data.skip(32); // Name, we get it from Utf8 instead
-        data.skip(11);
-        layer->matte_mode = TrackMatteType(data.read_uint8());
-        data.skip(2);
-        layer->time_stretch /= data.read_uint16();
-        data.skip(19);
-        layer->type = LayerType(data.read_uint8());
-        layer->parent_id = data.read_uint32();
-        data.skip(24);
-        layer->matte_id = data.read_uint32();
+/*0028*/layer->asset_id = data.read_uint32();
+/*002c*/data.skip(17);
+/*003d*/layer->label_color = LabelColors(data.read_uint8());
+/*003e*/data.skip(2);
+/*0040*/data.skip(32); // Name, we get it from Utf8 instead
+/*0060*/layer->blend_mode = data.read_uint32();
+/*0064*/data.skip(4);
+/*0068*/layer->matte_mode = TrackMatteType(data.read_uint32());
+/*006c*/data.skip(2);
+/*006e*/layer->time_stretch /= data.read_uint16();
+/*0070*/data.skip(19);
+/*0083*/layer->type = LayerType(data.read_uint8());
+/*0084*/layer->parent_id = data.read_uint32();
+/*0088*/data.skip(24);
+/*00a0*/layer->matte_id = data.read_uint32();
 
         parse_property_group(tdgp, layer->properties, context);
 
