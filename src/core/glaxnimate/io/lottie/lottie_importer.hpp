@@ -125,7 +125,6 @@ private:
     void load_composition(const QJsonObject& json, model::Composition* composition)
     {
         this->composition = composition;
-        invalid_indices.clear();
         layer_indices.clear();
         deferred.clear();
 
@@ -149,20 +148,102 @@ private:
         load_basic(json, composition);
 
         {
-            std::set<int> referenced;
-            std::vector<QJsonObject> layer_jsons;
-            auto layer_array = json["layers"].toArray();
-            layer_jsons.reserve(layer_array.size());
-            for ( auto val : layer_array )
+            std::vector<LayerData> layers;
+            std::map<int, int> lottie_to_array_index;
+            auto raw_layers = json["layers"].toArray();
+            layers.reserve(layers.size());
+
+            // First pass, get index info
+            for ( auto val : raw_layers )
             {
-                QJsonObject obj = val.toObject();
-                if ( obj.contains("parent") )
-                    referenced.insert(obj["parent"].toInt());
-                layer_array.push_back(obj);
+                LayerData data;
+                data.json = val.toObject();
+
+                if ( data.json.contains("parent") )
+                    data.is_parent = true;
+
+                if ( data.json.contains("ind") )
+                {
+                    data.lottie_index = data.json["ind"].toInt();
+                    data.has_index = true;
+                    lottie_to_array_index[data.lottie_index] = layers.size();
+                }
+
+                data.name = data.json["nm"].toString();
+
+                layers.emplace_back(std::move(data));
             }
 
-            for ( auto layer : json["layers"].toArray() )
-                create_layer(layer.toObject(), referenced);
+            // Second pass, figure out matte links
+            for ( std::size_t i = 0; i < layers.size(); i++ )
+            {
+                auto& layer = layers[i];
+                if ( layer.json["tt"].toInt() )
+                {
+                    layer.matte_type = layer.json["tt"].toInt();
+                    if ( layer.json.contains("tp") )
+                    {
+                        int lottie_index = layer.json["tp"].toInt();
+                        auto it = lottie_to_array_index.find(lottie_index);
+                        if ( it == lottie_to_array_index.end() || it->second == int(i) )
+                        {
+                            warning(i18n("Mask parent %1 of layer %2 could not be found", lottie_index, layer.identifier()), layer.json);
+                            layer.matte_type = -1;
+                        }
+                        else
+                        {
+                            layer.matte = &layers[it->second];
+                        }
+                    }
+                    else if ( i == 0 )
+                    {
+                        warning(i18n("Mask parent of layer %1 could not be found", layer.identifier()), layer.json);
+                    }
+                    else
+                    {
+                        layer.matte = &layers[i - 1];
+                    }
+
+                    if ( layer.matte )
+                        layer.matte->matte_count += 1;
+                }
+            }
+
+            // Third pass precompose layers that act as mattes for multiple other layers
+            for ( auto& layer : layers )
+            {
+                if ( layer.matte_count )
+                {
+                    layer.skip = true;
+                    if ( layer.matte_count > 1 )
+                    {
+                        auto inner_comp = document->assets()->compositions->values.insert(std::make_unique<model::Composition>(document));
+                        inner_comp->width.set(main->width.get());
+                        inner_comp->height.set(main->height.get());
+                        inner_comp->fps.set(main->fps.get());
+                        inner_comp->animation->first_frame.set(main->animation->first_frame.get());
+                        inner_comp->animation->last_frame.set(main->animation->last_frame.get());
+                        auto props = load_basic_setup(layer.json);
+                        load_properties(inner_comp, fields["DocumentNode"], layer.json, props);
+                        if ( inner_comp->name.get().isEmpty() )
+                            document->set_best_name(inner_comp);
+                        inner_comp->shapes.insert(create_layer(layer, inner_comp, true));
+                        // Gotta set this after we create the layer for the inner comp!
+                        layer.matte_comp = inner_comp;
+                        // Transform already applied within the comp
+                        layer.json.remove("ks");
+                    }
+                }
+            }
+
+            // Fourth pass, create normal layers
+            for ( const auto& layer : layers )
+            {
+                if ( !layer.skip )
+                {
+                    composition->shapes.insert(create_layer(layer, composition, false), 0);
+                }
+            }
         }
 
         auto deferred_layers = std::move(deferred);
@@ -171,77 +252,136 @@ private:
             load_layer(pair.second, static_cast<model::Layer*>(pair.first));
     }
 
+    struct LayerData
+    {
+        QJsonObject json = {};
+        QString name = {};
+        bool is_parent = false;
+        bool skip = false;
+        int matte_count = 0;
+        int lottie_index = -1;
+        bool has_index = false;
+        int matte_type = -1;
+        LayerData* matte = nullptr;
+        model::Composition* matte_comp = nullptr;
+
+        QString identifier() const
+        {
+            if ( has_index )
+                return QString::number(lottie_index);
+            return {};
+        }
+
+    };
+
     void load_visibility(model::VisualNode* node, const QJsonObject& json)
     {
         if ( json.contains("hd") && json["hd"].toBool() )
             node->visible.set(false);
     }
 
-    void create_layer(const QJsonObject& json, std::set<int>& referenced)
+    void defer_layer(const LayerData& data, model::Layer* layer, bool immediate_load)
     {
-        int index = json["ind"].toInt();
-        if ( !json.contains("ty") || !json["ty"].isDouble() )
+        if ( immediate_load )
         {
-            warning(i18n("Missing layer type for %1", index), json);
-            invalid_indices.insert(index);
-            return;
+            load_layer(data.json, layer);
         }
+        else
+        {
+            if ( data.has_index )
+                layer_indices[data.lottie_index] = layer;
+            deferred.emplace_back(layer, data.json);
+        }
+    }
 
-        int ty = json["ty"].toInt();
-
+    std::unique_ptr<model::ShapeElement> create_layer(const LayerData& data, model::Composition* comp, bool immediate_load)
+    {
         std::unique_ptr<model::ShapeElement> inner_shape;
-        bool start_mask = json["td"].toInt();
-        start_mask = false;
-
-        if ( ty == 0 )
+        if ( data.matte_comp )
         {
-            inner_shape = load_precomp_layer(json);
-
-            auto op = this->composition->animation->last_frame.get();
-            if ( json.contains("parent") || referenced.count(index) || json["ip"].toDouble() != 0 ||
-                json["op"].toDouble(op) != op || start_mask
-            )
-            {
-                auto layer = make_node<model::Layer>(document);
-                layer->name.set(inner_shape->name.get());
-                layer->shapes.insert(std::move(inner_shape), 0);
-                layer_indices[index] = layer.get();
-                deferred.emplace_back(layer.get(), json);
-                inner_shape = std::move(layer);
-            }
+            // rendered as a precomp because multiple layers use it as matte
+            auto precomp = make_node<model::PreCompLayer>(document);
+            auto props = load_basic_setup(data.json);
+            load_properties(precomp.get(), fields["DocumentNode"], data.json, props);
+            load_properties(precomp.get(), fields["__Layer__"], data.json, props);
+            load_visibility(precomp.get(), data.json);
+            load_transform(data.json["ks"].toObject(), precomp->transform.get(), &precomp->opacity);
+            precomp->composition.set(data.matte_comp);
+            precomp->unbounded.set(true);
+            inner_shape = std::move(precomp);
         }
         else
         {
-            auto layer = std::make_unique<model::Layer>(document);
-            layer_indices[index] = layer.get();
-            deferred.emplace_back(layer.get(), json);
-            inner_shape = std::move(layer);
-        }
-
-        if ( start_mask )
-        {
-            auto layer = std::make_unique<model::Layer>(document);
-            mask = layer.get();
-            layer->name.set(json["nm"].toString());
-            layer->shapes.insert(std::move(inner_shape), 0);
-            composition->shapes.insert(std::move(layer), 0);
-        }
-        else
-        {
-            auto tt = json["tt"].toInt();
-
-            if ( mask && tt )
+            int ty = 3; // default to null layer
+            if ( !data.json.contains("ty") || !data.json["ty"].isDouble() )
             {
-                mask->shapes.insert(std::move(inner_shape), 1);
-                auto mode = model::MaskSettings::MaskMode((tt + 1) / 2);
-                mask->mask->mask.set(mode);
-                mask->mask->inverted.set(tt > 0 && tt % 2 == 0);
+                warning(i18n("Missing type for layer %1", data.identifier()), data.json);
             }
             else
             {
-                composition->shapes.insert(std::move(inner_shape), 0);
+                ty = data.json["ty"].toInt();
             }
-            mask = nullptr;
+
+            // precomp layer
+            if ( ty == 0 )
+            {
+                inner_shape = load_precomp_layer(data.json);
+
+                // Wrap around Layer to handle properties a precomplayer doesn't support
+                auto op = comp->animation->last_frame.get();
+                if ( data.json.contains("parent") || data.is_parent || data.json["ip"].toDouble() != 0 ||
+                    data.json["op"].toDouble(op) != op
+                )
+                {
+                    auto layer = make_node<model::Layer>(document);
+                    layer->name.set(inner_shape->name.get());
+                    layer->shapes.insert(std::move(inner_shape), 0);
+                    defer_layer(data, layer.get(), immediate_load);
+                    inner_shape = std::move(layer);
+                }
+            }
+            // other layers
+            else
+            {
+                auto layer = std::make_unique<model::Layer>(document);
+                defer_layer(data, layer.get(), immediate_load);
+                inner_shape = std::move(layer);
+            }
+        }
+
+        // handle mattes
+        if ( data.matte && data.matte_type > 0 )
+        {
+            auto mask_layer = std::make_unique<model::Layer>(document);
+            load_layer_ip_op(data.json, mask_layer.get());
+            mask_layer->name.set(data.name);
+
+            mask_layer->shapes.insert(create_layer(*data.matte, comp, immediate_load));
+            mask_layer->shapes.insert(std::move(inner_shape));
+
+            switch ( data.matte_type )
+            {
+                case 1:
+                    mask_layer->mask->mask.set(model::MaskSettings::Alpha);
+                    break;
+                case 2:
+                    mask_layer->mask->mask.set(model::MaskSettings::Alpha);
+                    mask_layer->mask->inverted.set(true);
+                    break;
+                case 3:
+                    mask_layer->mask->mask.set(model::MaskSettings::Luma);
+                    break;
+                case 4:
+                    mask_layer->mask->mask.set(model::MaskSettings::Luma);
+                    mask_layer->mask->inverted.set(true);
+                    break;
+            }
+
+            return mask_layer;
+        }
+        else
+        {
+            return inner_shape;
         }
     }
 
@@ -309,41 +449,8 @@ private:
         group->shapes.insert(std::move(path));
     }
 
-    void load_layer(const QJsonObject& json, model::Layer* layer)
+    void load_layer_ip_op(const QJsonObject& json, model::Layer* layer)
     {
-        current_node = current_layer = layer;
-
-        if ( json.contains("parent") )
-        {
-            int parent_index = json["parent"].toInt();
-            if ( invalid_indices.count(parent_index) )
-            {
-                warning(
-                    i18n("Cannot use %1 as parent as it couldn't be loaded", parent_index),
-                    json
-                );
-            }
-            else
-            {
-                auto it = layer_indices.find(parent_index);
-                if ( it == layer_indices.end() )
-                {
-                    warning(
-                        i18n("Invalid parent layer %1", parent_index),
-                        json
-                    );
-                }
-                else
-                {
-                    auto parent_layer = layer->docnode_parent()->cast<model::Layer>();
-                    if ( parent_layer && parent_layer->mask->has_mask() )
-                        parent_layer->parent.set(*it);
-                    else
-                        layer->parent.set(*it);
-                }
-            }
-        }
-
         if ( !json.contains("ip") && !json.contains("op") )
         {
             auto comp = layer->owner_composition();
@@ -354,6 +461,34 @@ private:
         {
             load_animation_container(json, layer->animation.get());
         }
+    }
+
+    void load_layer(const QJsonObject& json, model::Layer* layer)
+    {
+        current_node = current_layer = layer;
+
+        if ( json.contains("parent") )
+        {
+            int parent_index = json["parent"].toInt();
+            auto it = layer_indices.find(parent_index);
+            if ( it == layer_indices.end() )
+            {
+                warning(
+                    i18n("Invalid parent layer %1", parent_index),
+                    json
+                );
+            }
+            else
+            {
+                auto parent_layer = layer->docnode_parent()->cast<model::Layer>();
+                if ( parent_layer && parent_layer->mask->has_mask() )
+                    parent_layer->parent.set(*it);
+                else
+                    layer->parent.set(*it);
+            }
+        }
+
+        load_layer_ip_op(json, layer);
 
         if ( !layer->shapes.empty() )
             return;
@@ -1210,7 +1345,6 @@ private:
     QMap<QString, model::Bitmap*> bitmap_ids;
     QMap<QString, model::Composition*> precomp_ids;
     QMap<QString, FontInfo> fonts;
-    model::Layer* mask = nullptr;
     model::DocumentNode* current_node = nullptr;
     model::Layer* current_layer = nullptr;
     std::array<int, 3> version = {5,5,1};

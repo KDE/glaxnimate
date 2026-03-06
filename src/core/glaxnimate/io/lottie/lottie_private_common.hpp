@@ -220,6 +220,7 @@ const QMap<QString, QVector<FieldInfo>> fields = {
         FieldInfo("bm"),
         FieldInfo("tt"),
         FieldInfo("td"),
+        FieldInfo("tp"),
         FieldInfo("ind", Custom),
         FieldInfo("cl"),
         FieldInfo("ln"),

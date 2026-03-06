@@ -22,6 +22,7 @@
 
 namespace glaxnimate::gui::graphics {
 
+// TODO remove this
 class CompositionItem : public DocumentNodeGraphicsItem
 {
 public:
