@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -11,7 +11,7 @@
 #include <QClipboard>
 
 #include "glaxnimate/model/assets/assets.hpp"
-#include "glaxnimate/model/shapes/precomp_layer.hpp"
+#include "glaxnimate/model/shapes/composable/precomp_layer.hpp"
 #include "glaxnimate/model/assets/pending_asset.hpp"
 
 #include "glaxnimate/command/shape_commands.hpp"

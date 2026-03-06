@@ -13,7 +13,7 @@
 #include "glaxnimate/io/mime/mime_serializer.hpp"
 #include "glaxnimate/io/io_registry.hpp"
 #include "glaxnimate/model/document.hpp"
-#include "glaxnimate/model/shapes/image.hpp"
+#include "glaxnimate/model/shapes/composable/image.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
 #include "glaxnimate/renderer/renderer.hpp"
 

@@ -1,11 +1,11 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 #include "rectangle_tool.hpp"
-#include "glaxnimate/model/shapes/ellipse.hpp"
+#include "glaxnimate/model/shapes/shapes/ellipse.hpp"
 
 namespace glaxnimate::gui::tools {
 

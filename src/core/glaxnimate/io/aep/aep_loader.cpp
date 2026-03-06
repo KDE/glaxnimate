@@ -1,24 +1,29 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 #include "glaxnimate/io/aep/aep_loader.hpp"
-#include "glaxnimate/model/shapes/rect.hpp"
-#include "glaxnimate/model/shapes/ellipse.hpp"
-#include "glaxnimate/model/shapes/fill.hpp"
-#include "glaxnimate/model/shapes/stroke.hpp"
-#include "glaxnimate/model/shapes/image.hpp"
-#include "glaxnimate/model/shapes/polystar.hpp"
-#include "glaxnimate/model/shapes/path.hpp"
-#include "glaxnimate/model/shapes/trim.hpp"
-#include "glaxnimate/model/shapes/offset_path.hpp"
-#include "glaxnimate/model/shapes/inflate_deflate.hpp"
-#include "glaxnimate/model/shapes/zig_zag.hpp"
-#include "glaxnimate/model/shapes/round_corners.hpp"
-#include "glaxnimate/model/shapes/repeater.hpp"
-#include "glaxnimate/model/shapes/precomp_layer.hpp"
-#include "glaxnimate/model/shapes/text.hpp"
+
+#include "glaxnimate/model/shapes/shapes/rect.hpp"
+#include "glaxnimate/model/shapes/shapes/ellipse.hpp"
+#include "glaxnimate/model/shapes/shapes/text.hpp"
+#include "glaxnimate/model/shapes/shapes/polystar.hpp"
+#include "glaxnimate/model/shapes/shapes/path.hpp"
+
+#include "glaxnimate/model/shapes/style/fill.hpp"
+#include "glaxnimate/model/shapes/style/stroke.hpp"
+
+#include "glaxnimate/model/shapes/composable/image.hpp"
+#include "glaxnimate/model/shapes/composable/precomp_layer.hpp"
+
+#include "glaxnimate/model/shapes/modifiers/trim.hpp"
+#include "glaxnimate/model/shapes/modifiers/offset_path.hpp"
+#include "glaxnimate/model/shapes/modifiers/inflate_deflate.hpp"
+#include "glaxnimate/model/shapes/modifiers/zig_zag.hpp"
+#include "glaxnimate/model/shapes/modifiers/round_corners.hpp"
+#include "glaxnimate/model/shapes/modifiers/repeater.hpp"
+
 #include "glaxnimate/model/animation/join_animatables.hpp"
 
 using namespace glaxnimate::io::aep;

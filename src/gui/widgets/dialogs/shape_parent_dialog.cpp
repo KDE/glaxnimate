@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -7,7 +7,7 @@
 #include "shape_parent_dialog.hpp"
 #include "ui_shape_parent_dialog.h"
 #include <QtColorWidgets/ColorDelegate>
-#include "glaxnimate/model/shapes/group.hpp"
+#include "glaxnimate/model/shapes/composable/group.hpp"
 #include "item_models/node_type_proxy_model.hpp"
 
 using namespace glaxnimate::gui;

@@ -10,7 +10,7 @@
 
 #include "glaxnimate/io/base.hpp"
 #include "glaxnimate/io/io_registry.hpp"
-#include "glaxnimate/model/shapes/image.hpp"
+#include "glaxnimate/model/shapes/composable/image.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
 
 namespace glaxnimate::io::raster {

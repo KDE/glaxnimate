@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -8,7 +8,7 @@
 
 #include "glaxnimate/model/assets/asset.hpp"
 #include "glaxnimate/model/property/object_list_property.hpp"
-#include "glaxnimate/model/shapes/layer.hpp"
+#include "glaxnimate/model/shapes/composable/layer.hpp"
 
 namespace glaxnimate::model {
 

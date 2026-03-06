@@ -1,12 +1,10 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 #include "glaxnimate_window_p.hpp"
-
-#include <queue>
 
 #include <QClipboard>
 #include <QImageReader>
@@ -17,22 +15,18 @@
 
 #include "glaxnimate_settings.hpp"
 
-#include "settings/widget_builder.hpp"
-
 #include "glaxnimate/command/shape_commands.hpp"
 #include "glaxnimate/command/structure_commands.hpp"
 #include "glaxnimate/command/undo_macro_guard.hpp"
 
-#include "glaxnimate/model/shapes/image.hpp"
-#include "glaxnimate/model/shapes/group.hpp"
-#include "glaxnimate/model/shapes/path.hpp"
-#include "glaxnimate/model/shapes/precomp_layer.hpp"
-#include "glaxnimate/model/simple_visitor.hpp"
-#include "glaxnimate/model/shapes/text.hpp"
+#include "glaxnimate/model/shapes/composable/image.hpp"
+#include "glaxnimate/model/shapes/composable/group.hpp"
+#include "glaxnimate/model/shapes/composable/precomp_layer.hpp"
+#include "glaxnimate/model/shapes/shapes/path.hpp"
+#include "glaxnimate/model/shapes/shapes/text.hpp"
 
 #include "settings/clipboard_settings.hpp"
 #include "widgets/dialogs/shape_parent_dialog.hpp"
-#include "widgets/shape_style/shape_style_preview_widget.hpp"
 
 #include "item_models/drag_data.hpp"
 

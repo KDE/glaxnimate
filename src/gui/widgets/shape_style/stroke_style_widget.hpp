@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -10,7 +10,7 @@
 #include <memory>
 #include <QWidget>
 
-#include "glaxnimate/model/shapes/stroke.hpp"
+#include "glaxnimate/model/shapes/style/stroke.hpp"
 
 
 namespace color_widgets {

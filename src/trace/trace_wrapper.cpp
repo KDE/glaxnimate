@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -7,10 +7,10 @@
 #include "trace/trace_wrapper.hpp"
 #include "trace/quantize.hpp"
 #include "glaxnimate/model/document.hpp"
-#include "glaxnimate/model/shapes/stroke.hpp"
-#include "glaxnimate/model/shapes/fill.hpp"
-#include "glaxnimate/model/shapes/path.hpp"
-#include "glaxnimate/model/shapes/rect.hpp"
+#include "glaxnimate/model/shapes/style/stroke.hpp"
+#include "glaxnimate/model/shapes/style/fill.hpp"
+#include "glaxnimate/model/shapes/shapes/path.hpp"
+#include "glaxnimate/model/shapes/shapes/rect.hpp"
 #include "glaxnimate/command/object_list_commands.hpp"
 
 class glaxnimate::utils::trace::TraceWrapper::Private

@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -8,7 +8,7 @@
 #include "base.hpp"
 
 #include "draw_tool_drag.hpp"
-#include "glaxnimate/model/shapes/rect.hpp"
+#include "glaxnimate/model/shapes/shapes/rect.hpp"
 
 namespace glaxnimate::gui::tools {
 

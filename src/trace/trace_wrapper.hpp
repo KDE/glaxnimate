@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -9,8 +9,8 @@
 #include <QObject>
 
 #include "glaxnimate/math/bezier/bezier.hpp"
-#include "glaxnimate/model/shapes/image.hpp"
-#include "glaxnimate/model/shapes/group.hpp"
+#include "glaxnimate/model/shapes/composable/image.hpp"
+#include "glaxnimate/model/shapes/composable/group.hpp"
 #include "trace/trace.hpp"
 
 namespace glaxnimate::utils::trace {

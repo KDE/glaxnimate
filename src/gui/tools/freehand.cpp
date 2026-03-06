@@ -1,11 +1,11 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 #include "draw_tool_base.hpp"
-#include "glaxnimate/model/shapes/path.hpp"
+#include "glaxnimate/model/shapes/shapes/path.hpp"
 #include "glaxnimate/math/bezier/operations.hpp"
 
 namespace glaxnimate::gui::tools {

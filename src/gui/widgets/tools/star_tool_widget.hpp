@@ -1,12 +1,12 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 #pragma once
 
-#include "glaxnimate/model/shapes/polystar.hpp"
+#include "glaxnimate/model/shapes/shapes/polystar.hpp"
 
 #include "shape_tool_widget.hpp"
 
