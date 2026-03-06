@@ -502,18 +502,19 @@ void register_py_module(py::module& glaxnimate_module)
     register_from_meta<model::Shape, model::ShapeElement>(shapes);
     register_from_meta<model::Modifier, model::ShapeElement>(shapes);
     register_from_meta<model::Styler, model::ShapeElement>(shapes);
+    register_from_meta<model::Composable, model::ShapeElement>(shapes);
 
     register_constructible<model::Rect, model::Shape>(shapes);
     register_constructible<model::Ellipse, model::Shape>(shapes);
     register_constructible<model::PolyStar, model::Shape>(shapes, enums<model::PolyStar::StarType>{});
     register_constructible<model::Path, model::Shape>(shapes);
 
-    auto cls_group = register_constructible<model::Group, model::ShapeElement>(shapes);
+    auto cls_group = register_constructible<model::Group, model::Composable>(shapes);
     define_add_shape(cls_group);
 
     register_constructible<model::Layer, model::Group>(shapes);
-    register_constructible<model::PreCompLayer, model::ShapeElement>(shapes);
-    register_constructible<model::Image, model::ShapeElement>(shapes);
+    register_constructible<model::PreCompLayer, model::Composable>(shapes);
+    register_constructible<model::Image, model::Composable>(shapes);
 
     register_constructible<model::Fill, model::Styler>(shapes, enums<model::Fill::Rule>{});
     register_constructible<model::Stroke, model::Styler>(shapes, enums<model::Stroke::Cap, model::Stroke::Join>{});

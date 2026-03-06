@@ -124,11 +124,7 @@ public:
 
         if ( auto grp = shape->cast<model::Group>() )
         {
-            QCborMap transform;
-            convert_transform(grp->transform.get(), &grp->opacity, transform);
-            json["ks"_l] = transform;
-            json["ao"_l] = int(grp->auto_orient.get());
-
+            convert_composable(grp, json);
             json["shapes"_l] = convert_shapes(grp->shapes, false);
         }
         else
@@ -158,6 +154,17 @@ public:
         if ( meta->inherits(&model::PreCompLayer::staticMetaObject) )
             return LayerType::PreComp;
         return LayerType::Shape;
+    }
+
+    void convert_composable(model::Composable* grp, QCborMap& json)
+    {
+        convert_object_properties(grp, fields["Composable"], json);
+        QCborMap transform;
+        convert_transform(grp->transform.get(), &grp->opacity, transform);
+        json["ks"_l] = transform;
+        json["ao"_l] = int(grp->auto_orient.get());
+        if ( grp->blend_mode.get() != renderer::BlendMode::Normal )
+            json["bm"_l] = int(grp->blend_mode.get());
     }
 
     QCborMap convert_single_layer(LayerType type, model::ShapeElement* shape, QCborArray& output, model::Layer* forced_parent, bool force_all_shapes)
@@ -191,9 +198,8 @@ public:
         convert_object_properties(layer, fields["DocumentNode"], json);
         convert_object_properties(layer, fields["__Layer__"], json);
 
-        QCborMap transform;
-        convert_transform(layer->transform.get(), &layer->opacity, transform);
-        json["ks"_l] = transform;
+        convert_composable(layer, json);
+
         if ( parent_index != -1 )
             json["parent"_l] = parent_index;
 
@@ -629,6 +635,7 @@ public:
 
     QCborArray convert_shapes(const model::ShapeListProperty& shapes, bool force_hidden)
     {
+        // TODO auto-convert groups to layers
         QCborArray jshapes;
         for ( const auto& shape : shapes )
         {
@@ -725,13 +732,7 @@ public:
             json["ty"_l] = 2;
         json["ind"_l] = layer_index(image);
         json["st"_l] = 0;
-        QCborMap transform;
-        convert_object_basic(image->transform.get(), transform);
-        transform["o"_l] = QCborMap{
-            {"a"_l, 0},
-            {"k"_l, 100},
-        };
-        json["ks"_l] = transform;
+        convert_composable(image, json);
         if ( !strip_raster && image->image.get() )
             json["refId"_l] = image->image->uuid.get().toString();
         return json;
@@ -754,9 +755,7 @@ public:
         json["ind"_l] = layer_index(layer);
         json["st"_l] = layer->timing->start_time.get();
         json["sr"_l] = layer->timing->stretch.get();
-        QCborMap transform;
-        convert_transform(layer->transform.get(), &layer->opacity, transform);
-        json["ks"_l] = transform;
+        convert_composable(layer, json);
         if ( layer->composition.get() )
             json["refId"_l] = layer->composition->uuid.get().toString();
         json["w"_l] = layer->size.get().width();

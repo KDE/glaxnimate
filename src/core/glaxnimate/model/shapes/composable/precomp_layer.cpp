@@ -14,11 +14,6 @@
 
 GLAXNIMATE_OBJECT_IMPL(glaxnimate::model::PreCompLayer)
 
-glaxnimate::model::PreCompLayer::PreCompLayer(Document* document)
-    : ShapeElement(document)
-{
-    connect(transform.get(), &Object::property_changed, this, &PreCompLayer::on_transform_matrix_changed);
-}
 
 QIcon glaxnimate::model::PreCompLayer::tree_icon() const
 {
@@ -55,23 +50,16 @@ bool glaxnimate::model::PreCompLayer::is_valid_precomp(glaxnimate::model::Docume
     return false;
 }
 
-void glaxnimate::model::PreCompLayer::on_paint(renderer::Renderer* painter, glaxnimate::model::FrameTime time, glaxnimate::model::VisualNode::PaintMode mode, glaxnimate::model::Modifier*) const
+void glaxnimate::model::PreCompLayer::on_paint(renderer::Renderer* painter, glaxnimate::model::FrameTime time, glaxnimate::model::VisualNode::PaintMode mode, glaxnimate::model::Modifier* mod) const
 {
     if ( composition.get() )
     {
         time = timing->time_to_local(time);
-        painter->set_opacity(opacity.get_at(time));
+        Composable::on_paint(painter, time, mode, mod);
         if ( !unbounded.get() )
             painter->clip_rect(QRectF(QPointF(0, 0), size.get()));
         composition->paint(painter, time, mode);
     }
-}
-
-void glaxnimate::model::PreCompLayer::on_transform_matrix_changed()
-{
-    propagate_bounding_rect_changed();
-    Q_EMIT local_transform_matrix_changed(local_transform_matrix(time()));
-    propagate_transform_matrix_changed(transform_matrix(time()), group_transform_matrix(time()));
 }
 
 QRectF glaxnimate::model::PreCompLayer::local_bounding_rect(FrameTime) const

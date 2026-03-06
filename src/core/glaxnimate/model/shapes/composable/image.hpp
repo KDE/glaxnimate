@@ -7,22 +7,21 @@
 #pragma once
 
 #include "glaxnimate/model/assets/bitmap.hpp"
-#include "glaxnimate/model/shapes/shape.hpp"
+#include "glaxnimate/model/shapes/composable/composable.hpp"
 #include "glaxnimate/model/transform.hpp"
 #include "glaxnimate/model/property/reference_property.hpp"
 #include "glaxnimate/model/property/sub_object_property.hpp"
 
 namespace glaxnimate::model {
 
-class Image : public ShapeElement
+class Image : public Composable
 {
     GLAXNIMATE_OBJECT(Image)
 
-    GLAXNIMATE_SUBOBJECT(Transform, transform)
     GLAXNIMATE_PROPERTY_REFERENCE(Bitmap, image, &Image::valid_images, &Image::is_valid_image, &Image::on_image_changed)
 
 public:
-    Image(model::Document* doc);
+    using Composable::Composable;
 
     void add_shapes(FrameTime, math::bezier::MultiBezier&, const QTransform&) const override;
 
@@ -34,9 +33,6 @@ public:
 protected:
     glaxnimate::math::bezier::MultiBezier to_painter_path_impl(FrameTime t) const override;
     void on_paint(renderer::Renderer* p, FrameTime t, PaintMode, model::Modifier*) const override;
-
-private Q_SLOTS:
-    void on_transform_matrix_changed();
 
 private:
     std::vector<DocumentNode*> valid_images() const;

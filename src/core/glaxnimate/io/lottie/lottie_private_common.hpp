@@ -217,10 +217,7 @@ const QMap<QString, QVector<FieldInfo>> fields = {
         FieldInfo("ty", Custom),
         FieldInfo("parent", Custom),
         FieldInfo("sr"),
-        FieldInfo("ks", Custom),
-        FieldInfo("ao", "auto_orient", IntBool()),
         FieldInfo{"st", Custom},
-        FieldInfo("bm"),
         FieldInfo("tt"),
         FieldInfo("td"),
         FieldInfo("tp"),
@@ -232,6 +229,11 @@ const QMap<QString, QVector<FieldInfo>> fields = {
         FieldInfo("ef"),
         FieldInfo("bounds"), // old, no longer there
         FieldInfo("ct"),
+    }},
+    {"Composable", {
+        FieldInfo("ks", Custom),
+        FieldInfo("ao", "auto_orient", IntBool()),
+        FieldInfo("bm"),
     }},
     {"Transform", {
         FieldInfo{"a", "anchor_point"},

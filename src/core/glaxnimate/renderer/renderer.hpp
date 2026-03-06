@@ -60,6 +60,7 @@ enum class BlendMode
     Color,
     Luminosity,
     //Add, // in lottie but not in svg
+    //HardMix, // in lottie but not in svg
 };
 
 Q_ENUM_NS(BlendMode)

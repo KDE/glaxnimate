@@ -270,6 +270,23 @@ QAction* add_enum_action(QMenu* parent, ValueT value, ValueT current, const Call
     return action;
 }
 
+void actions_composable(QMenu* menu,model::Composable* group)
+{
+    menu->addAction(QIcon::fromTheme("transform-move"), i18n("Reset Transform"), menu,
+        ResetTransform{group->document(), group->transform.get()}
+    );
+    /// \todo better icon
+    auto ao = menu->addAction(QIcon::fromTheme("path-reverse"), i18n("Auto Orient"), menu, [group](bool check) {
+        group->auto_orient.set_undoable(check);
+    });
+    ao->setCheckable(true);
+    ao->setChecked(group->auto_orient.get());
+
+
+    auto menu_blend = menu->addMenu(QIcon::fromTheme("edit-opacity"), i18n("Blend Mode"));
+    add_enum_actions(menu_blend, &group->blend_mode);
+}
+
 void actions_group(QMenu* menu, GlaxnimateWindow* window, model::Group* group)
 {
     QMenu* menu_add = new QMenu(i18n("Add"), menu);
@@ -287,19 +304,7 @@ void actions_group(QMenu* menu, GlaxnimateWindow* window, model::Group* group)
 
     menu->addSeparator();
 
-    menu->addAction(QIcon::fromTheme("transform-move"), i18n("Reset Transform"), menu,
-        ResetTransform{group->document(), group->transform.get()}
-    );
-    /// \todo better icon
-    auto ao = menu->addAction(QIcon::fromTheme("path-reverse"), i18n("Auto Orient"), menu, [group](bool check) {
-        group->auto_orient.set_undoable(check);
-    });
-    ao->setCheckable(true);
-    ao->setChecked(group->auto_orient.get());
-
-
-    auto menu_blend = menu->addMenu(QIcon::fromTheme("edit-opacity"), i18n("Blend Mode"));
-    add_enum_actions(menu_blend, &group->blend_mode);
+    actions_composable(menu, group);
 
     model::Layer* lay = qobject_cast<model::Layer*>(group);
     if ( lay )
@@ -337,12 +342,6 @@ void actions_group(QMenu* menu, GlaxnimateWindow* window, model::Group* group)
         menu->addSeparator();
 
         menu->addAction(QIcon::fromTheme("folder"), i18n("Convert to Layer"), menu, ConvertGroupType<model::Layer>(group));
-        auto callback = [](model::Layer* lay){
-            lay->mask->mask.set_undoable(true);
-        };
-        menu->addAction(QIcon::fromTheme("path-mask-edit"), i18n("Convert to Mask"), menu,
-                        ConvertGroupType<model::Layer, decltype(callback)>(group, callback));
-
     }
 
     menu->addAction(QIcon::fromTheme("object-to-path"), i18n("Convert to Path"), menu, [window, group]{ window->convert_to_path(group);});
@@ -382,9 +381,7 @@ void actions_bitmap(QMenu* menu, GlaxnimateWindow* window, model::Bitmap* bmp, m
 
 void actions_image(QMenu* menu, GlaxnimateWindow* window, model::Image* image)
 {
-    menu->addAction(QIcon::fromTheme("transform-move"), i18n("Reset Transform"), menu,
-        ResetTransform{image->document(), image->transform.get()}
-    );
+    actions_composable(menu, image);
 
     menu->addSeparator();
 
@@ -399,9 +396,7 @@ void actions_image(QMenu* menu, GlaxnimateWindow* window, model::Image* image)
 
 void actions_precomp(QMenu* menu, GlaxnimateWindow*, model::PreCompLayer* lay)
 {
-    menu->addAction(QIcon::fromTheme("transform-move"), i18n("Reset Transform"), menu,
-        ResetTransform{lay->document(), lay->transform.get()}
-    );
+    actions_composable(menu, lay);
 
     menu->addAction(QIcon::fromTheme("edit-rename"), i18n("Rename from Composition"), menu, [lay]{
         if ( lay->composition.get() )

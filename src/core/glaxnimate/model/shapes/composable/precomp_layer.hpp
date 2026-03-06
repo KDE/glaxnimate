@@ -8,25 +8,23 @@
 
 #include "glaxnimate/model/property/reference_property.hpp"
 #include "glaxnimate/model/stretchable_time.hpp"
-#include "glaxnimate/model/shapes/shape.hpp"
+#include "glaxnimate/model/shapes/composable/composable.hpp"
 #include "glaxnimate/model/assets/composition.hpp"
 
 
 namespace glaxnimate::model {
 
-class PreCompLayer : public ShapeElement
+class PreCompLayer : public Composable
 {
     GLAXNIMATE_OBJECT(PreCompLayer)
 
     GLAXNIMATE_SUBOBJECT(StretchableTime, timing)
     GLAXNIMATE_PROPERTY_REFERENCE(Composition, composition, &PreCompLayer::valid_precomps, &PreCompLayer::is_valid_precomp, &PreCompLayer::composition_changed)
     GLAXNIMATE_PROPERTY(QSizeF, size, {})
-    GLAXNIMATE_SUBOBJECT(Transform, transform)
-    GLAXNIMATE_ANIMATABLE(float, opacity, 1, &PreCompLayer::opacity_changed, 0, 1, false, PropertyTraits::Percent)
     GLAXNIMATE_PROPERTY(bool, unbounded, false, {}, {}, PropertyTraits::Visual)
 
 public:
-    PreCompLayer(Document* document);
+    using Composable::Composable;
 
 
     QIcon tree_icon() const override;
@@ -57,10 +55,6 @@ protected:
     glaxnimate::math::bezier::MultiBezier to_painter_path_impl(model::FrameTime t) const override;
     void on_paint(renderer::Renderer*, FrameTime, PaintMode, model::Modifier*) const override;
     void on_composition_changed(model::Composition* old_comp, model::Composition* new_comp) override;
-
-private Q_SLOTS:
-    void on_transform_matrix_changed();
-
 
 private:
     std::vector<DocumentNode*> valid_precomps() const;

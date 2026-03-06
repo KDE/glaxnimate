@@ -14,26 +14,6 @@
 GLAXNIMATE_OBJECT_IMPL(glaxnimate::model::Group)
 
 
-glaxnimate::model::Group::Group(Document* document)
-    : Ctor(document)
-{
-    connect(transform.get(), &Object::property_changed,
-            this, &Group::on_transform_matrix_changed);
-}
-
-void glaxnimate::model::Group::on_paint(renderer::Renderer* painter, glaxnimate::model::FrameTime time, glaxnimate::model::VisualNode::PaintMode, glaxnimate::model::Modifier*) const
-{
-    painter->set_blend_mode(blend_mode.get());
-    painter->set_opacity(opacity.get_at(time));
-}
-
-void glaxnimate::model::Group::on_transform_matrix_changed()
-{
-    propagate_bounding_rect_changed();
-    Q_EMIT local_transform_matrix_changed(local_transform_matrix(time()));
-    propagate_transform_matrix_changed(transform_matrix(time()), group_transform_matrix(time()));
-}
-
 void glaxnimate::model::Group::add_shapes(glaxnimate::model::FrameTime t, math::bezier::MultiBezier & bez, const QTransform& parent_transform) const
 {
     QTransform trans = transform.get()->transform_matrix(t, auto_orient.get()) * parent_transform;

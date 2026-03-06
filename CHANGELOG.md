@@ -4,11 +4,13 @@
     * Added luma mask mode
     * Added blend modes for groups and layers
     * Editing properties that are already animated now adds a keyframe
+    * Unified some properties across groups, images, and precomp layers
 * UI:
     * Timeline now allows to cycle through mask modes for layers
 * I/O:
     * Improved matte import and export for lottie
     * Improved mask properties import for lottie
+    * Reduced the number of intermediate layers when importing a lottie
 * Misc
     * New rendering system
     * Core as static library
