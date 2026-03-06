@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -10,14 +10,14 @@
 
 #include "glaxnimate/model/document.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
-#include "glaxnimate/model/shapes/precomp_layer.hpp"
-#include "glaxnimate/model/shapes/rect.hpp"
-#include "glaxnimate/model/shapes/ellipse.hpp"
-#include "glaxnimate/model/shapes/polystar.hpp"
-#include "glaxnimate/model/shapes/path.hpp"
-#include "glaxnimate/model/shapes/fill.hpp"
-#include "glaxnimate/model/shapes/stroke.hpp"
-#include "glaxnimate/model/shapes/image.hpp"
+#include "glaxnimate/model/shapes/composable/precomp_layer.hpp"
+#include "glaxnimate/model/shapes/composable/image.hpp"
+#include "glaxnimate/model/shapes/shapes/rect.hpp"
+#include "glaxnimate/model/shapes/shapes/ellipse.hpp"
+#include "glaxnimate/model/shapes/shapes/polystar.hpp"
+#include "glaxnimate/model/shapes/shapes/path.hpp"
+#include "glaxnimate/model/shapes/style/fill.hpp"
+#include "glaxnimate/model/shapes/style/stroke.hpp"
 #include "glaxnimate/io/rive/rive_format.hpp"
 
 namespace glaxnimate::io::rive {

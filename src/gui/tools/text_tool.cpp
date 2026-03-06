@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -12,7 +12,7 @@
 #include <QInputDialog>
 
 #include "draw_tool_base.hpp"
-#include "glaxnimate/model/shapes/text.hpp"
+#include "glaxnimate/model/shapes/shapes/text.hpp"
 #include "widgets/tools/text_tool_widget.hpp"
 #include "glaxnimate_app.hpp"
 

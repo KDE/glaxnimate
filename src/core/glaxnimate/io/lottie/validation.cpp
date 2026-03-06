@@ -1,12 +1,12 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 #include "glaxnimate/io/lottie/validation.hpp"
 #include "glaxnimate/model/visitor.hpp"
-#include "glaxnimate/model/shapes/image.hpp"
+#include "glaxnimate/model/shapes/composable/image.hpp"
 #include "glaxnimate/model/assets/composition.hpp"
 
 

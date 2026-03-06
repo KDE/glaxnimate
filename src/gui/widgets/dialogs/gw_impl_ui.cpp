@@ -21,6 +21,7 @@
 #include <QClipboard>
 #include <QKeySequence>
 #include <QList>
+#include <QMenu>
 
 #include <KHelpMenu>
 #include <KActionCategory>
@@ -45,14 +46,13 @@
 #include "glaxnimate_settings.hpp"
 
 #include "tools/base.hpp"
-#include "glaxnimate/model/shapes/group.hpp"
-#include "glaxnimate/model/shapes/image.hpp"
-#include "glaxnimate/model/shapes/repeater.hpp"
-#include "glaxnimate/model/shapes/trim.hpp"
-#include "glaxnimate/model/shapes/inflate_deflate.hpp"
-#include "glaxnimate/model/shapes/round_corners.hpp"
-#include "glaxnimate/model/shapes/offset_path.hpp"
-#include "glaxnimate/model/shapes/zig_zag.hpp"
+#include "glaxnimate/model/shapes/composable/image.hpp"
+#include "glaxnimate/model/shapes/modifiers/repeater.hpp"
+#include "glaxnimate/model/shapes/modifiers/trim.hpp"
+#include "glaxnimate/model/shapes/modifiers/inflate_deflate.hpp"
+#include "glaxnimate/model/shapes/modifiers/round_corners.hpp"
+#include "glaxnimate/model/shapes/modifiers/offset_path.hpp"
+#include "glaxnimate/model/shapes/modifiers/zig_zag.hpp"
 #include "glaxnimate/io/io_registry.hpp"
 #include "glaxnimate/utils/data_paths.hpp"
 
@@ -77,10 +77,8 @@
 
 #include "widgets/view_transform_widget.hpp"
 #include "widgets/flow_layout.hpp"
-#include "widgets/menus/node_menu.hpp"
 #include "widgets/shape_style/shape_style_preview_widget.hpp"
 
-#include "style/better_elide_delegate.hpp"
 #include "tools/edit_tool.hpp"
 #include "plugin/action.hpp"
 #include "glaxnimate_app.hpp"
@@ -366,13 +364,13 @@ void GlaxnimateWindow::Private::setup_edit_actions()
 
     QAction *undo = editActions->addAction(KStandardActions::Undo, &parent->undo_group(), &QUndoGroup::undo);
     QObject::connect(&parent->undo_group(), &QUndoGroup::canUndoChanged, undo, &QAction::setEnabled);
-    QObject::connect(&parent->undo_group(), &QUndoGroup::undoTextChanged, undo, [this, undo](const QString& s){
+    QObject::connect(&parent->undo_group(), &QUndoGroup::undoTextChanged, undo, [undo](const QString& s){
         undo->setText(i18n("Undo %1", s));
     });
 
     QAction *redo = editActions->addAction(KStandardActions::Redo, &parent->undo_group(), &QUndoGroup::redo);
     QObject::connect(&parent->undo_group(), &QUndoGroup::canRedoChanged, redo, &QAction::setEnabled);
-    QObject::connect(&parent->undo_group(), &QUndoGroup::redoTextChanged, redo, [this, redo](const QString& s){
+    QObject::connect(&parent->undo_group(), &QUndoGroup::redoTextChanged, redo, [redo](const QString& s){
         redo->setText(i18n("Redo %1", s));
     });
     editActions->addAction(KStandardActions::Cut, parent, &GlaxnimateWindow::cut);

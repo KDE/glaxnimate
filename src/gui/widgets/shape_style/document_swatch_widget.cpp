@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -24,7 +24,7 @@
 #include "glaxnimate/command/animation_commands.hpp"
 #include "glaxnimate/utils/pseudo_mutex.hpp"
 #include "glaxnimate/model/visitor.hpp"
-#include "glaxnimate/model/shapes/styler.hpp"
+#include "glaxnimate/model/shapes/style/styler.hpp"
 #include "glaxnimate/model/assets/named_color.hpp"
 #include "glaxnimate/command/undo_macro_guard.hpp"
 

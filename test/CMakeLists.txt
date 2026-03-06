@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+# SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
 # SPDX-FileCopyrightText: 2023 Julius Künzel <jk.kdedev@smartlab.uber.space>
 # SPDX-License-Identifier: BSD-2-Clause
 

@@ -11,13 +11,13 @@
 #include <KCompressionDevice>
 
 #include "glaxnimate/io/lottie/cbor_write_json.hpp"
-#include "glaxnimate/model/shapes/polystar.hpp"
-#include "glaxnimate/model/shapes/image.hpp"
-#include "glaxnimate/model/shapes/stroke.hpp"
-#include "glaxnimate/model/shapes/repeater.hpp"
-#include "glaxnimate/model/shapes/inflate_deflate.hpp"
-#include "glaxnimate/model/shapes/offset_path.hpp"
-#include "glaxnimate/model/shapes/zig_zag.hpp"
+#include "glaxnimate/model/shapes/shapes/polystar.hpp"
+#include "glaxnimate/model/shapes/composable/image.hpp"
+#include "glaxnimate/model/shapes/style/stroke.hpp"
+#include "glaxnimate/model/shapes/modifiers/repeater.hpp"
+#include "glaxnimate/model/shapes/modifiers/inflate_deflate.hpp"
+#include "glaxnimate/model/shapes/modifiers/offset_path.hpp"
+#include "glaxnimate/model/shapes/modifiers/zig_zag.hpp"
 #include "glaxnimate/io/lottie/validation.hpp"
 
 

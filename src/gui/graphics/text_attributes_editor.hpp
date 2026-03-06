@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -12,7 +12,7 @@
 #include "glaxnimate/math/geom.hpp"
 #include "glaxnimate/math/vector.hpp"
 #include "glaxnimate/model/document.hpp"
-#include "glaxnimate/model/shapes/text.hpp"
+#include "glaxnimate/model/shapes/shapes/text.hpp"
 #include "glaxnimate/command/animation_commands.hpp"
 
 #include "handle.hpp"

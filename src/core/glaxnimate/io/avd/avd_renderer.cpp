@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -10,11 +10,11 @@
 #include "glaxnimate/io/svg/svg_renderer.hpp"
 
 #include "glaxnimate/model/document.hpp"
-#include "glaxnimate/model/shapes/group.hpp"
-#include "glaxnimate/model/shapes/trim.hpp"
-#include "glaxnimate/model/shapes/fill.hpp"
-#include "glaxnimate/model/shapes/stroke.hpp"
-#include "glaxnimate/model/shapes/path.hpp"
+#include "glaxnimate/model/shapes/composable/group.hpp"
+#include "glaxnimate/model/shapes/modifiers/trim.hpp"
+#include "glaxnimate/model/shapes/style/fill.hpp"
+#include "glaxnimate/model/shapes/style/stroke.hpp"
+#include "glaxnimate/model/shapes/shapes/path.hpp"
 #include "glaxnimate/model/animation/join_animatables.hpp"
 
 #include <vector>

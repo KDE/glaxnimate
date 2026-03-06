@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -20,8 +20,8 @@
 
 #include "glaxnimate/model/document.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
-#include "glaxnimate/model/shapes/fill.hpp"
-#include "glaxnimate/model/shapes/stroke.hpp"
+#include "glaxnimate/model/shapes/style/fill.hpp"
+#include "glaxnimate/model/shapes/style/stroke.hpp"
 
 #include "glaxnimate/command/undo_macro_guard.hpp"
 #include "glaxnimate/command/object_list_commands.hpp"

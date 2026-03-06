@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2019-2025 Mattia Basaglia <dev@dragon.best>
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -9,7 +9,7 @@
 #include <QPalette>
 
 #include "glaxnimate/io/svg/svg_parser_private.hpp"
-#include "glaxnimate/model/shapes/trim.hpp"
+#include "glaxnimate/model/shapes/modifiers/trim.hpp"
 
 using namespace glaxnimate::io::svg;
 using namespace glaxnimate::io::svg::detail;
