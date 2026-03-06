@@ -533,6 +533,7 @@ struct Layer
     Id parent_id = 0;
     TrackMatteType matte_mode = TrackMatteType::None;
     Id matte_id = 0;
+    int blend_mode = -1;
 
     PropertyGroup properties;
 };

@@ -50,6 +50,46 @@ static constexpr std::array<QRgb, 17> label_colors = {
     0xff203f1f // Dark Green
 };
 
+static QMap<int, renderer::BlendMode> layer_blend_modes = {
+    { 2, renderer::BlendMode::Normal},
+    {10, renderer::BlendMode::Darken},
+    { 5, renderer::BlendMode::Multiply},
+    {28, renderer::BlendMode::ColorBurn},
+    {30, renderer::BlendMode::ColorBurn}, // Linear Burn
+    {36, renderer::BlendMode::Darken}, // Darker Color
+    {11, renderer::BlendMode::Lighten},
+    { 6, renderer::BlendMode::Screen},
+    {27, renderer::BlendMode::ColorDodge},
+    {29, renderer::BlendMode::ColorDodge}, // Linear Dodge
+    {35, renderer::BlendMode::Lighten}, // Lighter Color
+    { 7, renderer::BlendMode::Overlay},
+    { 8, renderer::BlendMode::SoftLight},
+    { 9, renderer::BlendMode::HardLight},
+    {31, renderer::BlendMode::SoftLight}, // Linear Light
+    {32, renderer::BlendMode::SoftLight}, // Vivid Light
+    {33, renderer::BlendMode::HardLight}, // Pin Light
+    {34, renderer::BlendMode::Normal}, // Hard Mix (exported by lottie)
+    {26, renderer::BlendMode::Difference},
+    {25, renderer::BlendMode::Exclusion},
+    {13, renderer::BlendMode::Hue},
+    {14, renderer::BlendMode::Saturation},
+    {15, renderer::BlendMode::Color},
+    {16, renderer::BlendMode::Luminosity},
+    { 4, renderer::BlendMode::Add},
+    {22, renderer::BlendMode::Normal}, // Alpha Add
+    {24, renderer::BlendMode::ColorBurn}, // Classic Color Burn
+    {12, renderer::BlendMode::Difference}, // Classic Difference
+    {38, renderer::BlendMode::Difference}, // Divide
+    {21, renderer::BlendMode::Normal}, // Luminescent Premul
+    {19, renderer::BlendMode::Normal}, // Silhouette Alpha
+    {20, renderer::BlendMode::Normal}, // Silhouette Luma
+    {17, renderer::BlendMode::Normal}, // Stencil Alpha
+    {18, renderer::BlendMode::Normal}, // Stencil Luma
+    {37, renderer::BlendMode::Difference}, // Subtract
+
+};
+
+
 void glaxnimate::io::aep::AepLoader::load_project()
 {
     for ( const auto& comp : project.compositions )
@@ -1130,6 +1170,7 @@ void glaxnimate::io::aep::AepLoader::load_layer(const glaxnimate::io::aep::Layer
     layer->visible.set(ae_layer.properties.visible);
     /// \todo could be nice to toggle visibility based on solo/shy
     layer->group_color.set(label_colors[int(ae_layer.label_color)]);
+    layer->blend_mode.set(layer_blend_modes.value(ae_layer.blend_mode, renderer::BlendMode::Normal));
 
     layer->transform->position.set({
         data.comp->width.get() / 2.,
