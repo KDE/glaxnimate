@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
-
-SPDX-License-Identifier: GPL-3.0-or-later
--->
-
 <ui version="4.0">
- <class>glaxnimate::gui::StartupDialog</class>
+ <author>
+SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia &lt;dev@dragon.best&gt;
+SPDX-License-Identifier: GPL-3.0-or-later
+</author>
+ <class>StartupDialog</class>
  <widget class="QDialog" name="StartupDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>774</width>
+    <width>823</width>
     <height>564</height>
    </rect>
   </property>
@@ -31,11 +28,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <widget class="QTableWidget" name="view_presets">
+          <property name="editTriggers">
+           <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+          </property>
           <property name="selectionMode">
-           <enum>QAbstractItemView::SingleSelection</enum>
+           <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
           </property>
           <property name="selectionBehavior">
-           <enum>QAbstractItemView::SelectRows</enum>
+           <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
           </property>
           <property name="showGrid">
            <bool>false</bool>
@@ -100,7 +100,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
            <item row="2" column="1">
             <widget class="QDoubleSpinBox" name="spin_duration">
              <property name="maximum">
-              <double>9999.99</double>
+              <double>9999.989999999999782</double>
              </property>
             </widget>
            </item>
@@ -158,8 +158,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
            <string>Browse...</string>
           </property>
           <property name="icon">
-           <iconset theme="document-open">
-            <normaloff>.</normaloff>.</iconset>
+           <iconset theme="document-open"/>
           </property>
          </widget>
         </item>
@@ -183,7 +182,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
      <item>
       <widget class="QDialogButtonBox" name="buttonBox">
        <property name="standardButtons">
-        <set>QDialogButtonBox::Ok</set>
+        <set>QDialogButtonBox::StandardButton::Ok</set>
        </property>
       </widget>
      </item>
@@ -199,6 +198,15 @@ SPDX-License-Identifier: GPL-3.0-or-later
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>check_show_at_startup</tabstop>
+  <tabstop>view_presets</tabstop>
+  <tabstop>view_recent</tabstop>
+  <tabstop>button_open_browse</tabstop>
+  <tabstop>spin_fps</tabstop>
+  <tabstop>combo_time_units</tabstop>
+  <tabstop>spin_duration</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
