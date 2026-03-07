@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-06 00:41+0000\n"
-"PO-Revision-Date: 2026-03-03 12:20+0100\n"
+"PO-Revision-Date: 2026-03-05 16:33+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -2636,10 +2636,9 @@ msgid "Close"
 msgstr "Fermer"
 
 #: src/gui/glaxnimate_app.cpp:202
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgid "OpenGL"
-msgstr "Ouvrir"
+msgstr "OpenGL"
 
 #: src/gui/glaxnimate_app.cpp:203
 #, kde-format
@@ -2926,10 +2925,9 @@ msgid "Value"
 msgstr "Valeur"
 
 #: src/gui/item_models/property_model_full.cpp:492
-#, fuzzy, kde-format
-#| msgid "k-Modes"
+#, kde-format
 msgid "Mask Mode"
-msgstr "k-Modes"
+msgstr "Mode de masquage"
 
 #: src/gui/item_models/python_snippet_model.hpp:36
 #, kde-format
@@ -5317,39 +5315,34 @@ msgid "Polygon"
 msgstr "Polygone"
 
 #: src/gui/widgets/enum_combo.cpp:113
-#, fuzzy, kde-format
-#| msgid "Mask"
+#, kde-format
 msgid "No Mask"
-msgstr "Masque"
+msgstr "Aucun masque"
 
 #: src/gui/widgets/enum_combo.cpp:115
 #, kde-format
 msgid "Alpha Mask"
-msgstr ""
+msgstr "Masque Alpha"
 
 #: src/gui/widgets/enum_combo.cpp:117
-#, fuzzy, kde-format
-#| msgid "Mask"
+#, kde-format
 msgid "Luma Mask"
-msgstr "Masque"
+msgstr "Masque de luminosité"
 
 #: src/gui/widgets/enum_combo.cpp:125
-#, fuzzy, kde-format
-#| msgid "Formats"
+#, kde-format
 msgid "Normal"
-msgstr "Formats"
+msgstr "Normal"
 
 #: src/gui/widgets/enum_combo.cpp:127
-#, fuzzy, kde-format
-#| msgid "multiple"
+#, kde-format
 msgid "Multiply"
-msgstr "multiple"
+msgstr "Multiplier"
 
 #: src/gui/widgets/enum_combo.cpp:129
-#, fuzzy, kde-format
-#| msgid "Green"
+#, kde-format
 msgid "Screen"
-msgstr "Vert"
+msgstr "Écran"
 
 #: src/gui/widgets/enum_combo.cpp:131
 #, kde-format
@@ -5362,28 +5355,24 @@ msgid "Darken"
 msgstr ""
 
 #: src/gui/widgets/enum_combo.cpp:135
-#, fuzzy, kde-format
-#| msgid "Right"
+#, kde-format
 msgid "Lighten"
-msgstr "Droit"
+msgstr "Éclaircir"
 
 #: src/gui/widgets/enum_combo.cpp:137
-#, fuzzy, kde-format
-#| msgid "Color Mode"
+#, kde-format
 msgid "Color Dodge"
-msgstr "Mode de couleur"
+msgstr "Nuance de couleur"
 
 #: src/gui/widgets/enum_combo.cpp:139
-#, fuzzy, kde-format
-#| msgid "Color"
+#, kde-format
 msgid "Color Burn"
-msgstr "Couleur"
+msgstr "Brûlure des couleurs"
 
 #: src/gui/widgets/enum_combo.cpp:141
-#, fuzzy, kde-format
-#| msgid "Height"
+#, kde-format
 msgid "Hard Light"
-msgstr "Hauteur"
+msgstr "Lumière dure"
 
 #: src/gui/widgets/enum_combo.cpp:143
 #, kde-format
@@ -5661,10 +5650,9 @@ msgid "Auto Orient"
 msgstr "Orienter automatiquement"
 
 #: src/gui/widgets/menus/node_menu.cpp:301
-#, fuzzy, kde-format
-#| msgid "Color Mode"
+#, kde-format
 msgid "Blend Mode"
-msgstr "Mode de couleur"
+msgstr "Mode de mélange"
 
 #: src/gui/widgets/menus/node_menu.cpp:307
 #: src/gui/widgets/menus/node_menu.cpp:308
@@ -5688,10 +5676,9 @@ msgid "Precompose"
 msgstr "Précomposer"
 
 #: src/gui/widgets/menus/node_menu.cpp:325
-#, fuzzy, kde-format
-#| msgid "inverted"
+#, kde-format
 msgid "Inverted"
-msgstr "inversé"
+msgstr "Inversé"
 
 #: src/gui/widgets/menus/node_menu.cpp:339
 #, kde-format
