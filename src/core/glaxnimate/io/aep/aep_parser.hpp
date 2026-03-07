@@ -36,7 +36,7 @@ private:
 
         model::FrameTime time_to_frames(model::FrameTime time) const
         {
-            return time / comp->time_scale + layer->start_time;
+            return time / comp->frame_time + layer->start_time;
         }
     };
 
@@ -140,32 +140,27 @@ private:
 
         /// \todo label color?
         auto data = cdta->data();
-        comp.resolution_x = data.read_uint16();
-        comp.resolution_y = data.read_uint16();
-        data.skip(1);
+/*0000*/comp.resolution_x = data.read_uint16();
+/*0002*/comp.resolution_y = data.read_uint16();
         // Time stuff
-        comp.time_scale = data.read_uint16();
-        data.skip(14);
-        comp.playhead_time = comp.time_to_frames(data.read_uint16());
-        data.skip(6);
-        comp.in_time = comp.time_to_frames(data.read_uint16());
-        data.skip(6);
-        auto out_time = data.read_uint16();
-        data.skip(6);
-        comp.duration = comp.time_to_frames(data.read_uint16());
-        if ( out_time == 0xffff )
+/*0004*/comp.frame_time = data.read_fraction_64();
+/*000c*/data.skip(8);
+/*0014*/comp.playhead_time = comp.time_to_frames(data.read_fraction_64());
+/*001c*/comp.in_time = comp.time_to_frames(data.read_fraction_64());
+/*0024*/auto out_time_n = data.read_sint32();
+/*0029*/auto out_time_d = data.read_uint32();
+/*002c*/comp.duration = comp.time_to_frames(data.read_fraction_64());
+        if ( out_time_n == -1 )
             comp.out_time = comp.duration;
         else
-            comp.out_time = comp.time_to_frames(out_time);
-        data.skip(5);
-
+            comp.out_time = comp.time_to_frames(qreal(out_time_n) / out_time_d);
         // Background
-        comp.color.setRed(data.read_uint8());
-        comp.color.setGreen(data.read_uint8());
-        comp.color.setBlue(data.read_uint8());
+/*0034*/comp.color.setRed(data.read_uint8());
+/*0035*/comp.color.setGreen(data.read_uint8());
+/*0036*/comp.color.setBlue(data.read_uint8());
 
         // Flags
-        data.skip(84);
+/*0037*/data.skip(84);
         Flags attr(data.read_uint8());
         comp.shy = attr.get(0, 0);
         comp.motion_blur = attr.get(0, 3);
@@ -301,12 +296,12 @@ private:
 /*000c*/qreal start_time = data.read_sint32();
 /*0010*/start_time /= data.read_sint32();
         layer->start_time = comp.time_to_frames(start_time);
-/*0014*/qreal in_time = data.read_sint32();
-/*0018*/in_time /= data.read_sint32();
-        layer->in_time = context.time_to_frames(in_time);
-/*001c*/qreal out_time = data.read_sint32();
-/*0020*/out_time /= data.read_sint32();
-        layer->out_time = context.time_to_frames(out_time);
+/*0014*/qint32 in_time_n = data.read_sint32();
+/*0018*/quint32 in_time_d = data.read_sint32();
+        layer->in_time = context.time_to_frames(qreal(in_time_n) / in_time_d);
+/*001c*/qint32 out_time_n = data.read_sint32();
+/*0020*/quint32 out_time_d = data.read_sint32();
+        layer->out_time = context.time_to_frames(qreal(out_time_n) / out_time_d);
 /*0024*/Flags flags = data.read_uint<4>();
         layer->is_guide = flags.get(2, 1);
         layer->bicubic_sampling = flags.get(2, 6);

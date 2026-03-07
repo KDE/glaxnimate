@@ -621,7 +621,7 @@ struct Composition : FolderItem
     std::vector<std::unique_ptr<Layer>> layers;
     std::uint16_t resolution_x = 0;
     std::uint16_t resolution_y = 0;
-    double time_scale = 0;
+    double frame_time = 0;
     model::FrameTime playhead_time = 0;
     model::FrameTime in_time = 0;
     model::FrameTime out_time = 0;
@@ -636,7 +636,7 @@ struct Composition : FolderItem
     double height = 0;
     std::uint32_t pixel_ratio_width = 1;
     std::uint32_t pixel_ratio_height = 1;
-    double framerate = 0;
+    std::uint16_t framerate = 0;
     std::uint16_t shutter_angle = 0;
     std::int32_t shutter_phase = 0;
     std::uint32_t samples_limit = 0;
@@ -648,7 +648,7 @@ struct Composition : FolderItem
 
     model::FrameTime time_to_frames(model::FrameTime time) const
     {
-        return time / time_scale;
+        return time / frame_time;
     };
 };
 

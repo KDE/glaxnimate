@@ -273,7 +273,17 @@ public:
     std::uint32_t read_uint32() { return read_uint<4>(); }
 
     std::int16_t read_sint16() { return read_sint<2>(); }
-    std::uint32_t read_sint32() { return read_sint<4>(); }
+    std::int32_t read_sint32() { return read_sint<4>(); }
+
+    /**
+     * Reads sint32, uint32 and divides them
+     */
+    qreal read_fraction_64()
+    {
+        auto num = read_sint32();
+        auto den = read_uint32();
+        return qreal(num) / den;
+    }
 
     float read_float32()
     {

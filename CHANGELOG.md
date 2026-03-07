@@ -11,6 +11,7 @@
     * Improved matte import and export for lottie
     * Improved mask properties import for lottie
     * Reduced the number of intermediate layers when importing a lottie
+    * Multiple improvements to the AEP importer
 * Misc
     * New rendering system
     * Core as static library
