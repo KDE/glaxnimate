@@ -41,7 +41,7 @@ private:
     {
         T value = index.data().value<T>();
         paint_plaintext(
-            QString("%1 x %2")
+            QString("%1 × %2")
             .arg(math::get(value, 0))
             .arg(math::get(value, 1)),
             painter,

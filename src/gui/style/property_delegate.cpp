@@ -6,6 +6,8 @@
 
 #include "property_delegate.hpp"
 
+#include <KLocalizedString>
+
 #include <QComboBox>
 #include <QFontComboBox>
 #include <QTimer>
@@ -39,7 +41,7 @@ void PropertyDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opti
         {
             auto value = index.data().value<QVector2D>();
             return paint_plaintext(
-                QString("%1% x %2%")
+                i18n("%1% × %2%")
                 .arg(math::get(value, 0) * 100)
                 .arg(math::get(value, 1) * 100),
                 painter,

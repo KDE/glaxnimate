@@ -7,6 +7,8 @@
 #include "startup_dialog.hpp"
 #include "ui_startup_dialog.h"
 
+#include <KLocalizedString>
+
 #include <QEvent>
 
 #include "glaxnimate_settings.hpp"
@@ -122,11 +124,11 @@ void StartupDialog::reload_presets()
         int col = 0;
         d->ui.view_presets->setItem(row, col++, new QTableWidgetItem(QIcon::fromTheme("document-new-from-template"), templ.name()));
 
-        auto item = new QTableWidgetItem(QString("%1x%2").arg(templ.size().width()).arg(templ.size().height()));
+        auto item = new QTableWidgetItem(QString("%1 × %2").arg(templ.size().width()).arg(templ.size().height()));
         item->setTextAlignment(Qt::AlignCenter);
         d->ui.view_presets->setItem(row, col++, item);
 
-        item = new QTableWidgetItem(QString("%1 fps").arg(templ.fps()));
+        item = new QTableWidgetItem(i18n("%1 fps").arg(templ.fps()));
         item->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
         d->ui.view_presets->setItem(row, col++, item);
 

@@ -120,7 +120,7 @@ KLocalizedString gui::settings::DocumentTemplate::name_template(model::Compositi
     auto h = comp->height.get();
 
     //:
-    return ki18nc("%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the frame rate", "%5 - %1x%2 %3 %4fps")
+    return ki18nc("%5 is the file name, %1 × %2 is the size, %3 is the aspect ratio, %4 is the frame rate", "%5 — %1 × %2 %3 %4 fps")
         .subs(w)
         .subs(h)
         .subs(aspect_ratio(QSize(w, h)))
