@@ -203,29 +203,40 @@ model::Composition * glaxnimate::io::aep::AepLoader::get_comp(glaxnimate::io::ae
     return comp;
 }
 
+struct glaxnimate::io::aep::AepLoader::LayerData
+{
+    Layer* ae_layer = nullptr;
+    model::Layer* layer = nullptr;
+    model::Composition* matte_comp = nullptr;
+    LayerData* parent = nullptr;
+    LayerData* matte_parent = nullptr;
+    int matte_count = 0;
+    int child_count = 0;
+    bool finished = false;
+    bool skip = false;
+    std::unique_ptr<model::Layer> external;
+
+    QString name() const
+    {
+        return ae_layer->name.isEmpty() ? i18n("Layer #%1", ae_layer->id) : ae_layer->name;
+    }
+};
+
 struct glaxnimate::io::aep::AepLoader::CompData
 {
-    struct PendingLayer
+    LayerData* by_id(Id id)
     {
-        model::Layer* layer;
-        Id parent = 0;
-        Id track_matte = 0;
-    };
-
-    void resolve()
-    {
-        for ( const auto& p : pending )
-        {
-            if ( p.parent )
-                p.layer->parent.set(layers.at(p.parent));
-            /// \todo track matte
-        }
+        auto it = layer_ids.find(id);
+        if ( it == layer_ids.end() )
+            return nullptr;
+        return &layers[it->second];
     }
 
     model::Composition* comp;
     const Composition* ae_comp;
-    std::unordered_map<Id, model::Layer*> layers = {};
-    std::vector<PendingLayer> pending = {};
+    model::ObjectListProperty<model::ShapeElement>* shapes;
+    std::unordered_map<Id, std::size_t> layer_ids = {};
+    std::vector<LayerData> layers = {};
 
 };
 
@@ -235,17 +246,111 @@ void glaxnimate::io::aep::AepLoader::load_comp(const glaxnimate::io::aep::Compos
     comp->name.set(ae_comp.name);
     comp->width.set(ae_comp.width);
     comp->height.set(ae_comp.height);
-    comp->fps.set(ae_comp.framerate);
+    comp->fps.set(1 / ae_comp.frame_time);
     comp->animation->first_frame.set(ae_comp.in_time);
     comp->animation->last_frame.set(ae_comp.out_time);
     comp->group_color.set(ae_comp.color);
     comp->group_color.set(label_colors[int(ae_comp.label_color)]);
 
-    CompData data{comp, &ae_comp};
-    for ( const auto& layer : ae_comp.layers )
-        load_layer(*layer, data);
+    CompData data{comp, &ae_comp, &comp->shapes};
+    data.layers.reserve(ae_comp.layers.size());
 
-    data.resolve();
+    // Pass 1 collect parenting info
+    for ( const auto& layer : ae_comp.layers )
+    {
+        data.layer_ids[layer->id] = data.layers.size();
+        data.layers.push_back({});
+        data.layers.back().ae_layer = layer.get();
+    }
+
+
+    // Pass 2 update child counters
+    for ( auto& layer : data.layers )
+    {
+        if ( layer.ae_layer->parent_id )
+        {
+            if ( auto p = data.by_id(layer.ae_layer->parent_id) )
+            {
+                layer.parent = p;
+                p->child_count++;
+            }
+            else
+            {
+                warning(i18n("Parent #%1 of layer %2 could not be found", layer.ae_layer->parent_id, layer.name()));
+            }
+        }
+
+        if ( layer.ae_layer->matte_id )
+        {
+            if ( auto p = data.by_id(layer.ae_layer->matte_id) )
+            {
+                layer.matte_parent = p;
+                p->matte_count++;
+            }
+            else
+            {
+                warning(i18n("Mask parent #%1 of layer %2 could not be found", layer.ae_layer->matte_id, layer.name()));
+            }
+        }
+    }
+
+    // Pass 3 externalize multi-matte layers
+    for ( auto& layer : data.layers )
+    {
+        if ( layer.matte_count > 0 )
+        {
+            if ( layer.matte_count > 1 || layer.child_count > 0 || layer.parent )
+            {
+                auto inner_comp = document->assets()->compositions->values.insert(std::make_unique<model::Composition>(document));
+                inner_comp->name.set(layer.ae_layer->name);
+                inner_comp->width.set(ae_comp.width);
+                inner_comp->height.set(ae_comp.height);
+                inner_comp->fps.set(1 / ae_comp.frame_time);
+                inner_comp->animation->last_frame.set(ae_comp.out_time);
+                inner_comp->animation->first_frame.set(ae_comp.in_time);
+                inner_comp->group_color.set(label_colors[int(layer.ae_layer->label_color)]);
+                layer.matte_comp = inner_comp;
+                model::PreCompLayer* external_link = nullptr;
+                if ( layer.child_count > 0 || layer.parent )
+                {
+                    layer.external = std::make_unique<model::Layer>(document);
+                    auto precomp = std::make_unique<model::PreCompLayer>(document);
+                    external_link = precomp.get();
+                    precomp->composition.set(inner_comp);
+                    layer.external->shapes.insert(std::move(precomp));
+                }
+                CompData sub_data{inner_comp, &ae_comp, &inner_comp->shapes};
+                load_layer(layer, sub_data);
+                if ( layer.external )
+                {
+                    layer.external->name.set(layer.layer->name.get());
+                    layer.external->group_color.set(layer.layer->group_color.get());
+
+                    external_link->name.set(layer.layer->name.get());
+                    external_link->group_color.set(layer.layer->group_color.get());
+                    layer.layer = layer.external.get();
+                }
+            }
+
+            layer.skip = true;
+        }
+    }
+
+    // Pass 4 load layers
+    for ( auto& layer : data.layers )
+    {
+        if ( layer.external )
+            data.comp->shapes.insert(std::move(layer.external), 0);
+        else if ( !layer.skip )
+            load_layer(layer, data);
+    }
+
+    // Pass 5 resolve parenting
+    for ( const auto& layer : data.layers )
+    {
+        if ( layer.parent )
+            layer.layer->parent.set(layer.parent->layer);
+    }
 }
 
 namespace {
@@ -1198,27 +1303,26 @@ std::unique_ptr<model::ShapeElement> create_shape(ImportExport* io, model::Docum
 } // namespace
 
 
-void glaxnimate::io::aep::AepLoader::load_layer(const glaxnimate::io::aep::Layer& ae_layer, CompData& data)
+void glaxnimate::io::aep::AepLoader::load_layer(LayerData& layer_data, CompData& data)
 {
-
+    const auto& ae_layer = *layer_data.ae_layer;
     auto ulayer = std::make_unique<model::Layer>(document);
     auto layer = ulayer.get();
-    data.comp->shapes.insert(std::move(ulayer), 0);
-    data.layers[ae_layer.id] = layer;
+    layer_data.layer = layer;
+    data.shapes->insert(std::move(ulayer), 0);
 
-    if ( ae_layer.parent_id || ae_layer.matte_id )
-        data.pending.push_back({layer, ae_layer.parent_id, ae_layer.matte_id});
+    model::Layer* composable = layer_data.external ? layer_data.external.get() : layer;
 
     layer->name.set(ae_layer.name);
     layer->render.set(!ae_layer.is_guide);
-    layer->animation->first_frame.set(ae_layer.in_time);
     layer->animation->last_frame.set(ae_layer.out_time);
-    layer->visible.set(ae_layer.properties.visible);
+    layer->animation->first_frame.set(ae_layer.in_time);
+    composable->visible.set(ae_layer.properties.visible);
     /// \todo could be nice to toggle visibility based on solo/shy
     layer->group_color.set(label_colors[int(ae_layer.label_color)]);
-    layer->blend_mode.set(layer_blend_modes.value(ae_layer.blend_mode, renderer::BlendMode::Normal));
+    composable->blend_mode.set(layer_blend_modes.value(ae_layer.blend_mode, renderer::BlendMode::Normal));
 
-    layer->transform->position.set({
+    composable->transform->position.set({
         data.comp->width.get() / 2.,
         data.comp->height.get() / 2.,
     });
@@ -1228,11 +1332,10 @@ void glaxnimate::io::aep::AepLoader::load_layer(const glaxnimate::io::aep::Layer
     if ( it != asset_size.end() && !ae_layer.is_null )
     {
         anchor = it->second;
-        layer->transform->anchor_point.set(anchor / 2);
+        composable->transform->anchor_point.set(anchor / 2);
     }
-    load_transform(io, layer->transform.get(), ae_layer.properties["ADBE Transform Group"], &layer->opacity, anchor, false);
-    layer->auto_orient.set(ae_layer.auto_orient);
-    /// \todo masks "ADBE Mask Parade"
+    load_transform(io, composable->transform.get(), ae_layer.properties["ADBE Transform Group"], &composable->opacity, anchor, false);
+    composable->auto_orient.set(ae_layer.auto_orient);
 
     if ( ae_layer.is_null )
         return;
@@ -1286,6 +1389,44 @@ void glaxnimate::io::aep::AepLoader::load_layer(const glaxnimate::io::aep::Layer
             }
 
             clip->shapes.insert(std::move(group));
+        }
+    }
+
+    if ( layer_data.matte_parent )
+    {
+        if ( layer_data.matte_parent->matte_comp )
+        {
+            auto ext_comp = layer_data.matte_parent->matte_comp;
+            auto external = std::make_unique<model::PreCompLayer>(document);
+            external->name.set(ext_comp->name.get());
+            external->group_color.set(ext_comp->group_color.get());
+            external->composition.set(ext_comp);
+            layer->shapes.insert(std::move(external));
+        }
+        else
+        {
+            CompData sub_data{data.comp, data.ae_comp, &layer->shapes};
+            load_layer(*layer_data.matte_parent, sub_data);
+        }
+
+        switch ( ae_layer.matte_mode )
+        {
+            case None:
+                break;
+            case Alpha:
+                layer->mask->mask.set(model::MaskSettings::Alpha);
+                break;
+            case AlphaInverted:
+                layer->mask->mask.set(model::MaskSettings::Alpha);
+                layer->mask->inverted.set(true);
+                break;
+            case Luma:
+                layer->mask->mask.set(model::MaskSettings::Luma);
+                break;
+            case LumaInverted:
+                layer->mask->mask.set(model::MaskSettings::Luma);
+                layer->mask->inverted.set(true);
+                break;
         }
     }
 }

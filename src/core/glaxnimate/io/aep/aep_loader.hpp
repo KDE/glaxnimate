@@ -21,8 +21,9 @@ public:
 
     void load_project();
 
-    struct CompData;
 private:
+    struct CompData;
+    struct LayerData;
     struct ColorInfo
     {
         model::NamedColor* asset;
@@ -31,7 +32,7 @@ private:
 
     void load_comp(const Composition& comp);
     void load_asset(const FolderItem* item);
-    void load_layer(const Layer& layer, CompData& data);
+    void load_layer(LayerData& layer, CompData& data);
     void asset_layer(model::Layer* layer, const Layer& ae_layer, CompData& data);
     void shape_layer(model::Layer* layer, const Layer& ae_layer, CompData& data);
     void text_layer(model::Layer* layer, const Layer& ae_layer, CompData& data);
