@@ -464,6 +464,7 @@ struct Property : PropertyBase
     bool is_component = false;
     int components = 0;
     PropertyValue value;
+    quint32 keyframe_time_denominator = 1;
     std::vector<Keyframe> keyframes;
     PropertyType type = PropertyType::MultiDimensional;
     std::optional<QString> expression;

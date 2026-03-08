@@ -217,21 +217,25 @@ private:
 
     FolderItem* parse_asset(Id id, Chunk chunk, Folder& folder, Project& project)
     {
-        Chunk sspc, utf8, als2, opti;
-        sspc = utf8 = als2 = opti = nullptr;
-        chunk->find_multiple({&sspc, &utf8, &als2, &opti}, {"sspc", "Utf8", "Als2", "opti"});
+        Chunk sspc, als2, opti;
+        sspc = als2 = opti = nullptr;
+        chunk->find_multiple({&sspc, &als2, &opti}, {"sspc", "Als2", "opti"});
         if ( !sspc || !opti )
         {
             warning(i18n("Missing asset data"));
             return nullptr;
         }
 
-        auto name = to_string(utf8);
+        QStringList name_chunks;
+        for ( const RiffChunk& utf8 : chunk->find_all("Utf8") )
+            name_chunks.push_back(to_string(&utf8));
+        QString name = name_chunks.join(' ');
+
+
         auto asset_reader = sspc->data();
-        asset_reader.skip(32);
-        auto width = asset_reader.read_uint16();
-        asset_reader.skip(2);
-        auto height = asset_reader.read_uint16();
+        asset_reader.skip(30);
+        auto width = asset_reader.read_uint32();
+        auto height = asset_reader.read_uint32();
         Asset* asset;
 
         auto data = opti->data();
@@ -293,15 +297,12 @@ private:
 /*0006*/data.skip(2);
 /*0008*/layer->time_stretch = data.read_uint32();
         // A lot of these are given as numerator / denominator
-/*000c*/qreal start_time = data.read_sint32();
-/*0010*/start_time /= data.read_sint32();
+/*000c*/qreal start_time = data.read_fraction_64();
         layer->start_time = comp.time_to_frames(start_time);
-/*0014*/qint32 in_time_n = data.read_sint32();
-/*0018*/quint32 in_time_d = data.read_sint32();
-        layer->in_time = context.time_to_frames(qreal(in_time_n) / in_time_d);
-/*001c*/qint32 out_time_n = data.read_sint32();
-/*0020*/quint32 out_time_d = data.read_sint32();
-        layer->out_time = context.time_to_frames(qreal(out_time_n) / out_time_d);
+/*0014*/qint32 in_time = data.read_fraction_64();
+        layer->in_time = context.time_to_frames(in_time);
+/*001c*/qint32 out_time = data.read_fraction_64();
+        layer->out_time = context.time_to_frames(out_time);
 /*0024*/Flags flags = data.read_uint<4>();
         layer->is_guide = flags.get(2, 1);
         layer->bicubic_sampling = flags.get(2, 6);
@@ -455,7 +456,12 @@ private:
         prop->components = data.read_uint16();
 
         bool position = Flags(data.read_uint16()).get(0, 3);
-        data.skip(10+8*5);
+
+        // data.skip(10+8*5);
+        data.skip(6);
+        prop->keyframe_time_denominator = data.read_uint32();
+        data.skip(40);
+
         Flags type = data.read_uint32();
         bool no_value = type.get(2, 0);
         bool color = type.get(0, 0);
@@ -497,7 +503,7 @@ private:
         {
             auto raw_keys = list_values(keyframes);
             for ( std::size_t i = 0; i < raw_keys.size(); i++ ) {
-                prop->keyframes.push_back(load_keyframe(i, raw_keys[i], *prop, context, values));
+                prop->keyframes.push_back(load_keyframe(i, raw_keys[i], *prop, context, values, prop->keyframe_time_denominator));
             }
         }
         else if ( value )
@@ -527,7 +533,7 @@ private:
             case PropertyType::Color:
                 if ( raw_value.size() < 4 )
                     return QColor();
-                return QColor(raw_value[1], raw_value[2], raw_value[3], raw_value[0]);
+                return QColor(raw_value[1], raw_value[2], raw_value[3], raw_value[0] * 255);
             default:
                 return vector_value(raw_value);
         }
@@ -549,14 +555,18 @@ private:
         }
     }
 
-    Keyframe load_keyframe(int index, BinaryReader& reader, Property& prop, const PropertyContext& context, std::vector<PropertyValue>& values)
+    double nan_or_0(double v) const
+    {
+        return qIsNaN(v) ? 0 : v;
+    }
+
+    Keyframe load_keyframe(int index, BinaryReader& reader, Property& prop, const PropertyContext& context, std::vector<PropertyValue>& values, qreal time_den)
     {
         reader.prepare();
         Keyframe kf;
 
+        kf.time = context.time_to_frames(reader.read_sint32() / time_den);
         reader.skip(1);
-        kf.time = context.time_to_frames(reader.read_uint16());
-        reader.skip(2);
 
         kf.transition_type = KeyframeTransitionType(reader.read_uint8());
 
@@ -574,9 +584,9 @@ private:
         if ( prop.type == PropertyType::NoValue )
         {
             reader.skip(16);
-            kf.in_speed.push_back(reader.read_float64());
+            kf.in_speed.push_back(nan_or_0(reader.read_float64()));
             kf.in_influence.push_back(reader.read_float64());
-            kf.out_speed.push_back(reader.read_float64());
+            kf.out_speed.push_back(nan_or_0(reader.read_float64()));
             kf.out_influence.push_back(reader.read_float64());
             kf.value = std::move(values[index]);
         }
@@ -591,9 +601,9 @@ private:
         else if ( prop.type == PropertyType::Position )
         {
             reader.skip(16);
-            kf.in_speed.push_back(reader.read_float64());
+            kf.in_speed.push_back(nan_or_0(reader.read_float64()));
             kf.in_influence.push_back(reader.read_float64());
-            kf.out_speed.push_back(reader.read_float64());
+            kf.out_speed.push_back(nan_or_0(reader.read_float64()));
             kf.out_influence.push_back(reader.read_float64());
             kf.value = vector_value(reader.read_array(&BinaryReader::read_float64, prop.components));
             auto it = reader.read_array(&BinaryReader::read_float64, prop.components);
@@ -607,9 +617,9 @@ private:
         else if ( prop.type == PropertyType::Color )
         {
             reader.skip(16);
-            kf.in_speed.push_back(reader.read_float64());
+            kf.in_speed.push_back(nan_or_0(reader.read_float64()));
             kf.in_influence.push_back(reader.read_float64());
-            kf.out_speed.push_back(reader.read_float64());
+            kf.out_speed.push_back(nan_or_0(reader.read_float64()));
             kf.out_influence.push_back(reader.read_float64());
             auto value = reader.read_array(&BinaryReader::read_float64, prop.components);
             kf.value = QColor(value[1], value[2], value[3], value[0]);
@@ -680,7 +690,9 @@ private:
         {
             float x = pt.read_float32();
             float y = pt.read_float32();
-            data.points.push_back({x, y});
+            // Ignore corrupted points
+            if ( !qIsNaN(x) && !qIsNaN(y) )
+                data.points.push_back({x, y});
         }
 
         return data;
@@ -706,11 +718,9 @@ private:
         Marker marker;
         marker.name = to_string(chunk->child("Utf8"));
         auto data = chunk->child("NmHd")->data();
-        data.skip(4);
+        data.skip(3);
         marker.is_protected = data.read_uint8() & 2;
-        data.skip(4);
-        marker.duration = data.read_uint32();
-        data.skip(4);
+        marker.duration = data.read_fraction_64();
         marker.label_color = LabelColors(data.read_uint8());
         return marker;
     }
