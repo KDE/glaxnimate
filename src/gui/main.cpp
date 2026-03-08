@@ -32,6 +32,63 @@
 #include "widgets/dialogs/glaxnimate_window.hpp"
 #include "settings/icon_settings.hpp"
 
+// Uncomment the following line to add some minimal tracing of qDebug() messages
+// #define GLAXNIMATE_DETAILED_QDEBUG
+#ifdef GLAXNIMATE_DETAILED_QDEBUG
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void detailed_qdebug(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+{
+    QByteArray localMsg = msg.toLocal8Bit();
+    const char* type_name = "Unknown";
+    switch ( type )
+    {
+        case QtDebugMsg:
+            type_name = "Debug";
+            break;
+        case QtInfoMsg:
+            type_name = "Info";
+            break;
+        case QtWarningMsg:
+            type_name = "Warning";
+            break;
+        case QtCriticalMsg:
+            type_name = "Critical";
+            break;
+        case QtFatalMsg:
+            type_name = "Fatal";
+            break;
+    }
+
+    if ( context.file )
+    {
+        fprintf(
+            stderr,
+            "%s: %s:%u (%s): %s\n",
+            type_name,
+            context.file,
+            context.line,
+            context.function,
+            localMsg.constData()
+        );
+    }
+    else
+    {
+        fprintf(
+            stderr,
+            "%s: %s\n",
+            type_name,
+            localMsg.constData()
+        );
+    }
+
+    if ( type == QtFatalMsg )
+        abort();
+}
+#endif
+
 using namespace glaxnimate;
 
 int main(int argc, char *argv[])
@@ -45,6 +102,10 @@ int main(int argc, char *argv[])
 // trigger initialisation of proper icon theme
 #if KICONTHEMES_VERSION >= QT_VERSION_CHECK(6, 3, 0)
     KIconTheme::initTheme();
+#endif
+
+#ifdef GLAXNIMATE_DETAILED_QDEBUG
+    qInstallMessageHandler(detailed_qdebug);
 #endif
 
     gui::GlaxnimateApp app(argc, argv);
