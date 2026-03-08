@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-06 00:41+0000\n"
-"PO-Revision-Date: 2026-03-05 16:33+0100\n"
+"POT-Creation-Date: 2026-03-08 00:41+0000\n"
+"PO-Revision-Date: 2026-03-06 09:10+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -95,10 +95,9 @@ msgstr "opacité"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/group.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Auto Orient"
+#, kde-format
 msgid "auto_orient"
-msgstr "Orienter automatiquement"
+msgstr "auto_orient"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/trim.hpp
 #. i18n: Property name
@@ -276,24 +275,21 @@ msgstr "nom"
 
 #. i18n: file: src/core/glaxnimate/model/document_node.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Group Color"
+#, kde-format
 msgid "group_color"
-msgstr "Couleur du groupe"
+msgstr "group_color"
 
 #. i18n: file: src/core/glaxnimate/model/document_node.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Visible"
+#, kde-format
 msgid "visible"
-msgstr "Visible"
+msgstr "visible"
 
 #. i18n: file: src/core/glaxnimate/model/document_node.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Unlocked"
+#, kde-format
 msgid "locked"
-msgstr "Déverrouillé"
+msgstr "verrouillé"
 
 #. i18n: file: src/core/glaxnimate/model/animation_container.hpp
 #. i18n: Property name
@@ -2552,7 +2548,7 @@ msgstr "N'a téléchargé aucun fichier"
 #, kde-format
 msgctxt "Package install status"
 msgid "Some files failed to extract"
-msgstr ""
+msgstr "Il a été impossible d'extraire certains fichiers"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, EmojiSetDialog)
 #: src/gui/emoji/emoji_set_dialog.ui:21
@@ -2643,12 +2639,12 @@ msgstr "OpenGL"
 #: src/gui/glaxnimate_app.cpp:203
 #, kde-format
 msgid "Hardware-accelerated graphics."
-msgstr ""
+msgstr "Accélération graphique matérielle."
 
 #: src/gui/glaxnimate_app.cpp:209
 #, kde-format
 msgid "OpenGL Renderer"
-msgstr ""
+msgstr "Moteur de rendu OpenGL"
 
 #: src/gui/glaxnimate_app.cpp:236
 #, kde-format
@@ -2967,11 +2963,15 @@ msgstr "%1"
 # %5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the
 # frame rate
 #: src/gui/settings/document_templates.cpp:123
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
+#| "frame rate"
+#| msgid "%5 - %1x%2 %3 %4fps"
 msgctxt ""
-"%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
+"%5 is the file name, %1 × %2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
-msgid "%5 - %1x%2 %3 %4fps"
+msgid "%5 — %1 × %2 %3 %4 fps"
 msgstr "%5 - %1 x %2 %3 %4 FPS"
 
 #: src/gui/settings/document_templates.cpp:178
@@ -2989,11 +2989,16 @@ msgstr "%1 %2"
 msgid "System Default"
 msgstr "Configuration par défaut du système"
 
+#: src/gui/style/property_delegate.cpp:44
+#, kde-format
+msgid "%1% × %2%"
+msgstr ""
+
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_preview_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_eem_min_frequency)
-#: src/gui/style/property_delegate.cpp:304
+#: src/gui/style/property_delegate.cpp:306
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:212
 #: src/gui/widgets/dialogs/trace_dialog.ui:533
 #: src/gui/widgets/dialogs/trace_dialog.ui:639
@@ -4634,14 +4639,20 @@ msgstr "Charger"
 msgid "Delete All"
 msgstr "Tout supprimer"
 
+#: src/gui/widgets/dialogs/startup_dialog.cpp:131
+#, fuzzy, kde-format
+#| msgid " fps"
+msgid "%1 fps"
+msgstr " FPS"
+
 #. i18n: ectx: property (windowTitle), widget (QDialog, StartupDialog)
-#: src/gui/widgets/dialogs/startup_dialog.ui:21
+#: src/gui/widgets/dialogs/startup_dialog.ui:18
 #, kde-format
 msgid "Startup"
 msgstr "Démarrage"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/gui/widgets/dialogs/startup_dialog.ui:29
+#: src/gui/widgets/dialogs/startup_dialog.ui:26
 #, kde-format
 msgid "Create New"
 msgstr "Créer un nouveau"
@@ -4691,7 +4702,7 @@ msgid "Browse..."
 msgstr "Naviguer..."
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_show_at_startup)
-#: src/gui/widgets/dialogs/startup_dialog.ui:176
+#: src/gui/widgets/dialogs/startup_dialog.ui:175
 #, kde-format
 msgid "Show at startup"
 msgstr "Affiche au démarrage"
@@ -5347,12 +5358,12 @@ msgstr "Écran"
 #: src/gui/widgets/enum_combo.cpp:131
 #, kde-format
 msgid "Overlay"
-msgstr ""
+msgstr "Superposer"
 
 #: src/gui/widgets/enum_combo.cpp:133
 #, kde-format
 msgid "Darken"
-msgstr ""
+msgstr "Assombrir"
 
 #: src/gui/widgets/enum_combo.cpp:135
 #, kde-format
@@ -5377,7 +5388,7 @@ msgstr "Lumière dure"
 #: src/gui/widgets/enum_combo.cpp:143
 #, kde-format
 msgid "Soft Light"
-msgstr ""
+msgstr "Lumière douce"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::HueSlider, slider_hsv_hue)
 #. i18n: ectx: property (toolTip), widget (QLabel, label)
@@ -5410,7 +5421,7 @@ msgstr "Saturation"
 #: src/gui/widgets/enum_combo.cpp:155
 #, kde-format
 msgid "Luminosity"
-msgstr ""
+msgstr "Luminosité"
 
 #: src/gui/widgets/font/external_font_widget.cpp:127
 #, kde-format

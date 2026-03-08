@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-06 00:41+0000\n"
-"PO-Revision-Date: 2026-02-27 09:08+0200\n"
+"POT-Creation-Date: 2026-03-08 00:41+0000\n"
+"PO-Revision-Date: 2026-03-07 08:04+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -98,10 +98,9 @@ msgstr "אטימות"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/group.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Auto Orient"
+#, kde-format
 msgid "auto_orient"
-msgstr "הכוונה אוטומטית"
+msgstr "כיוון_אוטומטי"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/trim.hpp
 #. i18n: Property name
@@ -265,7 +264,7 @@ msgstr "תרכובות"
 #. i18n: Property name
 #, kde-format
 msgid "uuid"
-msgstr ""
+msgstr "מזהה_ייחודי"
 
 #. i18n: file: src/core/glaxnimate/model/document_node.hpp
 #. i18n: Property name
@@ -279,24 +278,21 @@ msgstr "שם"
 
 #. i18n: file: src/core/glaxnimate/model/document_node.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Group Color"
+#, kde-format
 msgid "group_color"
-msgstr "צבע קבוצה"
+msgstr "צבע_קבוצה"
 
 #. i18n: file: src/core/glaxnimate/model/document_node.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Visible"
+#, kde-format
 msgid "visible"
 msgstr "גלוי"
 
 #. i18n: file: src/core/glaxnimate/model/document_node.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Unlocked"
+#, kde-format
 msgid "locked"
-msgstr "משוחרר"
+msgstr "נעול"
 
 #. i18n: file: src/core/glaxnimate/model/animation_container.hpp
 #. i18n: Property name
@@ -2508,7 +2504,7 @@ msgstr "לא ירדו אף קבצים"
 #, kde-format
 msgctxt "Package install status"
 msgid "Some files failed to extract"
-msgstr ""
+msgstr "החילוץ של חלק מהקבצים נכשל"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, EmojiSetDialog)
 #: src/gui/emoji/emoji_set_dialog.ui:21
@@ -2592,26 +2588,24 @@ msgid "Close"
 msgstr "סגירה"
 
 #: src/gui/glaxnimate_app.cpp:202
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgid "OpenGL"
-msgstr "פתיחה"
+msgstr "OpenGL"
 
 #: src/gui/glaxnimate_app.cpp:203
 #, kde-format
 msgid "Hardware-accelerated graphics."
-msgstr ""
+msgstr "גרפיקה בהאצת חומרה."
 
 #: src/gui/glaxnimate_app.cpp:209
 #, kde-format
 msgid "OpenGL Renderer"
-msgstr ""
+msgstr "מתצג OpenGL"
 
 #: src/gui/glaxnimate_app.cpp:236
-#, fuzzy, kde-format
-#| msgid "(c) 2019-2025"
+#, kde-format
 msgid "(c) 2019-2026"
-msgstr "‏(c) 2019‏-2025"
+msgstr "‏(c) 2019‏-2026"
 
 #: src/gui/glaxnimate_app.cpp:245
 #, kde-format
@@ -2883,10 +2877,9 @@ msgid "Value"
 msgstr "ערך"
 
 #: src/gui/item_models/property_model_full.cpp:492
-#, fuzzy, kde-format
-#| msgid "k-Modes"
+#, kde-format
 msgid "Mask Mode"
-msgstr "k-Modes"
+msgstr "מצב מסכה"
 
 #: src/gui/item_models/python_snippet_model.hpp:36
 #, kde-format
@@ -2924,11 +2917,15 @@ msgid "%1"
 msgstr "%1"
 
 #: src/gui/settings/document_templates.cpp:123
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
+#| "frame rate"
+#| msgid "%5 - %1x%2 %3 %4fps"
 msgctxt ""
-"%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
+"%5 is the file name, %1 × %2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
-msgid "%5 - %1x%2 %3 %4fps"
+msgid "%5 — %1 × %2 %3 %4 fps"
 msgstr "%5 - %1x%2 %3 %4 תמוניות לשנייה"
 
 #: src/gui/settings/document_templates.cpp:178
@@ -2946,11 +2943,16 @@ msgstr "%1 %2"
 msgid "System Default"
 msgstr "לפי המערכת"
 
+#: src/gui/style/property_delegate.cpp:44
+#, kde-format
+msgid "%1% × %2%"
+msgstr ""
+
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_preview_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_eem_min_frequency)
-#: src/gui/style/property_delegate.cpp:304
+#: src/gui/style/property_delegate.cpp:306
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:212
 #: src/gui/widgets/dialogs/trace_dialog.ui:533
 #: src/gui/widgets/dialogs/trace_dialog.ui:639
@@ -4587,14 +4589,20 @@ msgstr "לטעון"
 msgid "Delete All"
 msgstr "למחוק הכול"
 
+#: src/gui/widgets/dialogs/startup_dialog.cpp:131
+#, fuzzy, kde-format
+#| msgid " fps"
+msgid "%1 fps"
+msgstr " תמוניות לשנייה"
+
 #. i18n: ectx: property (windowTitle), widget (QDialog, StartupDialog)
-#: src/gui/widgets/dialogs/startup_dialog.ui:21
+#: src/gui/widgets/dialogs/startup_dialog.ui:18
 #, kde-format
 msgid "Startup"
 msgstr "עלייה"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/gui/widgets/dialogs/startup_dialog.ui:29
+#: src/gui/widgets/dialogs/startup_dialog.ui:26
 #, kde-format
 msgid "Create New"
 msgstr "יצירת חדש"
@@ -4644,7 +4652,7 @@ msgid "Browse..."
 msgstr "עיון…"
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_show_at_startup)
-#: src/gui/widgets/dialogs/startup_dialog.ui:176
+#: src/gui/widgets/dialogs/startup_dialog.ui:175
 #, kde-format
 msgid "Show at startup"
 msgstr "הצגה בעלייה"
@@ -5267,78 +5275,69 @@ msgid "Polygon"
 msgstr "מצולע"
 
 #: src/gui/widgets/enum_combo.cpp:113
-#, fuzzy, kde-format
-#| msgid "Mask"
+#, kde-format
 msgid "No Mask"
-msgstr "מסכה"
+msgstr "אין מסכה"
 
 #: src/gui/widgets/enum_combo.cpp:115
 #, kde-format
 msgid "Alpha Mask"
-msgstr ""
+msgstr "מסכת שקיפות"
 
 #: src/gui/widgets/enum_combo.cpp:117
-#, fuzzy, kde-format
-#| msgid "Mask"
+#, kde-format
 msgid "Luma Mask"
-msgstr "מסכה"
+msgstr "מסכת לומה"
 
 #: src/gui/widgets/enum_combo.cpp:125
-#, fuzzy, kde-format
-#| msgid "Formats"
+#, kde-format
 msgid "Normal"
-msgstr "תסדירים"
+msgstr "רגיל"
 
 #: src/gui/widgets/enum_combo.cpp:127
-#, fuzzy, kde-format
-#| msgid "multiple"
+#, kde-format
 msgid "Multiply"
-msgstr "ריבוי"
+msgstr "הכפלה"
 
 #: src/gui/widgets/enum_combo.cpp:129
-#, fuzzy, kde-format
-#| msgid "Green"
+#, kde-format
 msgid "Screen"
-msgstr "ירוק"
+msgstr "הקרנה"
 
 #: src/gui/widgets/enum_combo.cpp:131
 #, kde-format
 msgid "Overlay"
-msgstr ""
+msgstr "שכבת על"
 
 #: src/gui/widgets/enum_combo.cpp:133
 #, kde-format
 msgid "Darken"
-msgstr ""
+msgstr "החשכה"
 
 #: src/gui/widgets/enum_combo.cpp:135
-#, fuzzy, kde-format
-#| msgid "Right"
+#, kde-format
 msgid "Lighten"
-msgstr "ימין"
+msgstr "הבהרה"
 
 #: src/gui/widgets/enum_combo.cpp:137
-#, fuzzy, kde-format
-#| msgid "Color Mode"
+#, kde-format
 msgid "Color Dodge"
-msgstr "מצב צבע"
+msgstr "הבהרת צבע"
 
 #: src/gui/widgets/enum_combo.cpp:139
-#, fuzzy, kde-format
-#| msgid "Color"
+#, kde-format
 msgid "Color Burn"
-msgstr "צבע"
+msgstr "צריבת צבע"
 
 #: src/gui/widgets/enum_combo.cpp:141
-#, fuzzy, kde-format
-#| msgid "Height"
+#, kde-format
 msgid "Hard Light"
-msgstr "גובה"
+msgstr "אור קשיח"
 
 #: src/gui/widgets/enum_combo.cpp:143
 #, kde-format
 msgid "Soft Light"
-msgstr ""
+msgstr "אור רך"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::HueSlider, slider_hsv_hue)
 #. i18n: ectx: property (toolTip), widget (QLabel, label)
@@ -5371,7 +5370,7 @@ msgstr "רוויה"
 #: src/gui/widgets/enum_combo.cpp:155
 #, kde-format
 msgid "Luminosity"
-msgstr ""
+msgstr "הארה"
 
 #: src/gui/widgets/font/external_font_widget.cpp:127
 #, kde-format
@@ -5610,10 +5609,9 @@ msgid "Auto Orient"
 msgstr "הכוונה אוטומטית"
 
 #: src/gui/widgets/menus/node_menu.cpp:301
-#, fuzzy, kde-format
-#| msgid "Color Mode"
+#, kde-format
 msgid "Blend Mode"
-msgstr "מצב צבע"
+msgstr "מצב ערבול"
 
 #: src/gui/widgets/menus/node_menu.cpp:307
 #: src/gui/widgets/menus/node_menu.cpp:308
@@ -5637,8 +5635,7 @@ msgid "Precompose"
 msgstr "הרכבה מראש"
 
 #: src/gui/widgets/menus/node_menu.cpp:325
-#, fuzzy, kde-format
-#| msgid "inverted"
+#, kde-format
 msgid "Inverted"
 msgstr "הפוך"
 

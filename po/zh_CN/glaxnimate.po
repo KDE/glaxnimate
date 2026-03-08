@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-06 00:41+0000\n"
+"POT-Creation-Date: 2026-03-08 00:41+0000\n"
 "PO-Revision-Date: 2024-04-22 16:06\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -39,10 +39,9 @@ msgstr "变形"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/repeater.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "opacity"
+#, kde-format
 msgid "start_opacity"
-msgstr "不透明度"
+msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/shapes/stroke.hpp
 #. i18n: Property name
@@ -142,10 +141,9 @@ msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Angle"
+#, kde-format
 msgid "angle"
-msgstr "角度"
+msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
 #. i18n: Property name
@@ -155,17 +153,15 @@ msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/shapes/styler.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Add color"
+#, kde-format
 msgid "color"
-msgstr "添加颜色"
+msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/shapes/styler.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Pause"
+#, kde-format
 msgid "use"
-msgstr "暂停"
+msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/shapes/offset_path.hpp
 #. i18n: Property name
@@ -181,10 +177,9 @@ msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/shapes/layer.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Loop animation"
+#, kde-format
 msgid "animation"
-msgstr "循环播放"
+msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/shapes/layer.hpp
 #. i18n: Property name
@@ -202,10 +197,9 @@ msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/transform.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Drag anchor point"
+#, kde-format
 msgid "anchor_point"
-msgstr "拖曳锚点"
+msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/transform.hpp
 #. i18n: Property name
@@ -243,10 +237,9 @@ msgstr ""
 #. i18n: Property name
 #. i18n: file: src/core/glaxnimate/model/assets/assets.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Add color"
+#, kde-format
 msgid "colors"
-msgstr "添加颜色"
+msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/assets/gradient.hpp
 #. i18n: Property name
@@ -256,17 +249,15 @@ msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/assets/assets.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Group Color"
+#, kde-format
 msgid "gradient_colors"
-msgstr "组颜色"
+msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/assets/assets.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "position"
+#, kde-format
 msgid "compositions"
-msgstr "位置"
+msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/document_node.hpp
 #. i18n: Property name
@@ -280,15 +271,13 @@ msgstr ""
 #. i18n: Property name
 #. i18n: file: src/core/glaxnimate/model/property/object_list_property.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgid "name"
-msgstr "重命名"
+msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/document_node.hpp
 #. i18n: Property name
 #, fuzzy, kde-format
-#| msgid "Group Color"
 msgid "group_color"
 msgstr "组颜色"
 
@@ -312,10 +301,9 @@ msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/stretchable_time.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Stretch Time"
+#, kde-format
 msgid "stretch"
-msgstr "伸展时间"
+msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, Dialog)
 #: data/plugins/FrameByFrame/create_frames.ui:18
@@ -2874,7 +2862,6 @@ msgstr ""
 
 #: src/gui/item_models/property_model_full.cpp:492
 #, fuzzy, kde-format
-#| msgid "Mask"
 msgid "Mask Mode"
 msgstr "蒙版"
 
@@ -2916,9 +2903,9 @@ msgstr ""
 #: src/gui/settings/document_templates.cpp:123
 #, kde-format
 msgctxt ""
-"%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
+"%5 is the file name, %1 × %2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
-msgid "%5 - %1x%2 %3 %4fps"
+msgid "%5 — %1 × %2 %3 %4 fps"
 msgstr ""
 
 #: src/gui/settings/document_templates.cpp:178
@@ -2936,11 +2923,16 @@ msgstr ""
 msgid "System Default"
 msgstr ""
 
+#: src/gui/style/property_delegate.cpp:44
+#, kde-format
+msgid "%1% × %2%"
+msgstr ""
+
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_preview_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_eem_min_frequency)
-#: src/gui/style/property_delegate.cpp:304
+#: src/gui/style/property_delegate.cpp:306
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:212
 #: src/gui/widgets/dialogs/trace_dialog.ui:533
 #: src/gui/widgets/dialogs/trace_dialog.ui:639
@@ -4492,14 +4484,20 @@ msgstr "加载"
 msgid "Delete All"
 msgstr ""
 
+#: src/gui/widgets/dialogs/startup_dialog.cpp:131
+#, fuzzy, kde-format
+#| msgid " fps"
+msgid "%1 fps"
+msgstr " fps"
+
 #. i18n: ectx: property (windowTitle), widget (QDialog, StartupDialog)
-#: src/gui/widgets/dialogs/startup_dialog.ui:21
+#: src/gui/widgets/dialogs/startup_dialog.ui:18
 #, kde-format
 msgid "Startup"
 msgstr "启动"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/gui/widgets/dialogs/startup_dialog.ui:29
+#: src/gui/widgets/dialogs/startup_dialog.ui:26
 #, kde-format
 msgid "Create New"
 msgstr "创建新动画"
@@ -4549,7 +4547,7 @@ msgid "Browse..."
 msgstr "浏览..."
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_show_at_startup)
-#: src/gui/widgets/dialogs/startup_dialog.ui:176
+#: src/gui/widgets/dialogs/startup_dialog.ui:175
 #, kde-format
 msgid "Show at startup"
 msgstr "在启动时显示"
@@ -5105,7 +5103,6 @@ msgstr "多边形"
 
 #: src/gui/widgets/enum_combo.cpp:113
 #, fuzzy, kde-format
-#| msgid "Mask"
 msgid "No Mask"
 msgstr "蒙版"
 
@@ -5116,19 +5113,16 @@ msgstr ""
 
 #: src/gui/widgets/enum_combo.cpp:117
 #, fuzzy, kde-format
-#| msgid "Mask"
 msgid "Luma Mask"
 msgstr "蒙版"
 
 #: src/gui/widgets/enum_combo.cpp:125
 #, fuzzy, kde-format
-#| msgid "Formats"
 msgid "Normal"
 msgstr "格式"
 
 #: src/gui/widgets/enum_combo.cpp:127
 #, fuzzy, kde-format
-#| msgid "multiple"
 msgid "Multiply"
 msgstr "倍数"
 
@@ -5149,19 +5143,16 @@ msgstr ""
 
 #: src/gui/widgets/enum_combo.cpp:135
 #, fuzzy, kde-format
-#| msgid "Right"
 msgid "Lighten"
 msgstr "右对齐"
 
 #: src/gui/widgets/enum_combo.cpp:137
 #, fuzzy, kde-format
-#| msgid "Color Mode"
 msgid "Color Dodge"
 msgstr "颜色模式"
 
 #: src/gui/widgets/enum_combo.cpp:139
 #, fuzzy, kde-format
-#| msgid "Color Picker"
 msgid "Color Burn"
 msgstr "取色器"
 
@@ -5446,7 +5437,6 @@ msgstr ""
 
 #: src/gui/widgets/menus/node_menu.cpp:301
 #, fuzzy, kde-format
-#| msgid "Color Mode"
 msgid "Blend Mode"
 msgstr "颜色模式"
 
@@ -6454,11 +6444,11 @@ msgstr "#文档参见https://glaxnimate.mattbas.org/contributing/scripting/"
 msgid "Traced %1"
 msgstr ""
 
-#~ msgid "libarchive"
-#~ msgstr "libarchive"
-
 #~ msgid "shapes"
 #~ msgstr "形状"
+
+#~ msgid "libarchive"
+#~ msgstr "libarchive"
 
 #~ msgid "Remove Mask"
 #~ msgstr "删除蒙版"
