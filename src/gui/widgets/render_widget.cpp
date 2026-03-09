@@ -99,7 +99,7 @@ protected:
             painter.drawImage(d->background_target, d->background);
 
         if ( d->grid )
-            d->grid->render(&painter, d->world_transform.inverted().map(QPolygonF(QRectF(ev->rect()))).boundingRect());
+            d->grid->render(&painter, d->world_transform.inverted().map(QPolygonF(QRectF(ev->rect()))));
 
         painter.setTransform({});
 

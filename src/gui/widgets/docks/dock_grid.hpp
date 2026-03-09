@@ -34,10 +34,10 @@ Q_SIGNALS:
 private Q_SLOTS:
     void position_spin_changed();
     void grid_moved(QPointF p);
-    void on_button_reset_clicked();
     void on_combo_shape_currentIndexChanged(int index);
     void on_check_enable_toggled(bool arg1);
     void on_spin_size_valueChanged(int size);
+    void on_spin_angle_valueChanged(double angle);
 
 private:
     class Private;

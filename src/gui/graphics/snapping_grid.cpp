@@ -8,36 +8,33 @@
 #include <QLineF>
 #include <QApplication>
 #include <QPalette>
+#include "glaxnimate/math/math.hpp"
 
 static const double sqrt3 = 1.732050808;
 
 using namespace glaxnimate::gui;
 
-SnappingGrid::SnappingGrid(unsigned size, SnappingGrid::GridShape shape,
-                             QPointF origin, bool enabled)
-    : m_size(size > 0 ? size : 1), m_shape(shape),
-      m_origin(origin), m_enabled(enabled)
-{
-}
 
-void SnappingGrid::snap(QPointF &p) const
+QPointF SnappingGrid::nearest(QPointF p, bool transform) const
 {
     if ( !m_enabled )
-        return;
+        return p;
+
+    // Transform coordinate system to local
+    if ( transform )
+        p = m_global_to_local.map(p);
 
     if ( m_shape == Square )
     {
         /**
             Square grid, simple enough
         */
-        p -= m_origin;
         p /= m_size;
         p.setX(qRound64(p.x()));
         p.setY(qRound64(p.y()));
         p *= m_size;
-        p += m_origin;
     }
-    else if ( m_shape == Triangle1 )
+    else if ( m_shape == Triangle )
     {
         /**
             Triangular grid, find intersection of line1 and line2
@@ -51,35 +48,30 @@ void SnappingGrid::snap(QPointF &p) const
             if you think of p as (x,y)+offset, you can get the expressions used
             below to get (x,y) from (p.x,p.y).
             The rounding p/size removes the offset as |offset.x| < size
-
-            the p -= origin, p += origin is to transform the coordinates
-            relative to the grid origin
         */
-        p -= m_origin;
         double y_factor = m_size * sqrt3/2.0;
         qint64 n2 = qRound64(p.y()/y_factor);
         p.setY(n2*y_factor);
         qint64 n1 = qRound64 ( p.x()/m_size - n2/2.0 );
         p.setX(m_size*(n2/2.0+n1));
-        p+=m_origin;
     }
-    else if ( m_shape == Triangle2 )
-    {
-        p -= m_origin;
-        double x_factor = m_size * sqrt3/2.0;
-        qint64 n2 = qRound64(p.x()/x_factor);
-        p.setX(n2*x_factor);
-        qint64 n1 = qRound64 ( p.y()/m_size - n2/2.0 );
-        p.setY(m_size*(n2/2.0+n1));
-        p+=m_origin;
-    }
+
+    // Transform back to global
+    if ( transform )
+        p = m_local_to_global.map(p);
+
+    return p;
 }
 
-void SnappingGrid::render(QPainter *painter, const QRectF &rect) const
+void SnappingGrid::render(QPainter *painter, const QPolygonF &boundary) const
 {
 
     if ( !m_enabled )
         return;
+
+    painter->save();
+    painter->setTransform(m_local_to_global, true);
+    QRectF rect = m_global_to_local.map(boundary).boundingRect();
 
     QColor color = qApp->palette().highlight().color();
     color.setAlpha(color.alpha() / 3.);
@@ -88,7 +80,7 @@ void SnappingGrid::render(QPainter *painter, const QRectF &rect) const
     /*const QTransform& transform = painter->transform();
     qreal scale = std::sqrt(transform.m11() * transform.m11() + transform.m12() * transform.m12());
     painter->drawEllipse(m_origin, 5 / scale, 5 / scale);*/
-    QPointF topleft = nearest(rect.left()-m_size,rect.top()-m_size);
+    QPointF topleft = nearest(QPointF(rect.left()-m_size, rect.top()-m_size), false);
 
     QVarLengthArray<QLineF, 128> lines;
     if ( m_shape == SnappingGrid::Square )
@@ -98,7 +90,7 @@ void SnappingGrid::render(QPainter *painter, const QRectF &rect) const
         for (double y = topleft.y(); y < rect.bottom(); y += m_size)
             lines.append(QLineF(rect.left(), y, rect.right(), y));
     }
-    else if ( m_shape == SnappingGrid::Triangle1 )
+    else if ( m_shape == SnappingGrid::Triangle )
     {
         double y_factor = m_size*sqrt3/2.0;
         double y;
@@ -120,30 +112,9 @@ void SnappingGrid::render(QPainter *painter, const QRectF &rect) const
         }
 
     }
-    else if ( m_shape == SnappingGrid::Triangle2 )
-    {
-        double x_factor = m_size*sqrt3/2.0;
-        double x;
-        for ( x = topleft.x(); x < rect.right(); x += x_factor)
-                lines.append(QLineF(x,rect.top(), x, rect.bottom()));
-
-        double slope =  sqrt3;
-        double y = topleft.y();
-        for ( double y2 = y; y2 < rect.bottom(); y += m_size )
-        {
-            y2 = (rect.right()-topleft.x())/(-slope)+y;
-            lines.append(QLineF(topleft.x(),y,rect.right(),y2 ));
-        }
-
-        for ( double y2 = y; y2 > rect.top(); y -= m_size )
-        {
-            y2 = (rect.right()-topleft.x())/(slope)+y;
-            lines.append(QLineF(topleft.x(),y,rect.right(),y2 ));
-        }
-
-    }
 
     painter->drawLines(lines.data(), lines.size());
+    painter->restore();
 }
 
 void SnappingGrid::enable(bool enable)
@@ -158,6 +129,7 @@ void SnappingGrid::set_size(int size)
     if ( size > 0 )
     {
         m_size = size;
+        Q_EMIT size_changed(size);
         Q_EMIT grid_changed();
     }
 }
@@ -172,8 +144,27 @@ void SnappingGrid::set_shape(SnappingGrid::GridShape shape)
 void SnappingGrid::set_origin(QPointF origin)
 {
     m_origin = origin;
-    Q_EMIT grid_changed();
+    rebuild_tf();
     Q_EMIT moved(origin);
+    Q_EMIT grid_changed();
 }
 
 
+void glaxnimate::gui::SnappingGrid::set_angle(qreal angle)
+{
+    m_angle = angle;
+    rebuild_tf();
+    Q_EMIT angle_changed(angle);
+    Q_EMIT grid_changed();
+}
+
+void glaxnimate::gui::SnappingGrid::rebuild_tf()
+{
+    m_local_to_global = QTransform();
+    m_local_to_global.rotateRadians(m_angle);
+    m_local_to_global.translate(m_origin.x(), m_origin.y());
+
+    m_global_to_local = QTransform();
+    m_global_to_local.translate(-m_origin.x(), -m_origin.y());
+    m_global_to_local.rotateRadians(-m_angle);
+}

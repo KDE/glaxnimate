@@ -16,32 +16,32 @@ class SnappingGrid : public QObject
     Q_OBJECT
 
 public:
-    enum GridShape { Square, Triangle1, Triangle2 };
+    enum GridShape { Square, Triangle };
     Q_ENUM(GridShape)
 
+    Q_PROPERTY(bool enabled READ is_enabled WRITE enable NOTIFY enabled)
+    Q_PROPERTY(unsigned size READ size WRITE set_size NOTIFY size_changed)
+    Q_PROPERTY(GridShape shape READ shape WRITE set_shape NOTIFY shape_changed)
+    Q_PROPERTY(QPointF origin READ origin WRITE set_origin NOTIFY moved)
+    Q_PROPERTY(qreal angle READ angle WRITE set_angle NOTIFY angle_changed)
+
 protected:
-    unsigned    m_size;
-    GridShape   m_shape;
-    QPointF     m_origin;
-    bool        m_enabled;
+    unsigned    m_size = 32;
+    GridShape   m_shape = Square;
+    QPointF     m_origin = {};
+    qreal       m_angle = 0;
+    bool        m_enabled = false;
+    QTransform  m_global_to_local;
+    QTransform  m_local_to_global;
 
 public:
-    explicit SnappingGrid ( unsigned size = 32,
-                             GridShape shape = Square,
-                             QPointF origin=QPointF(0,0),
-                             bool enabled = false );
-
-    /// move p to closest grid point
-    void snap ( QPointF &p ) const;
     /// returns closest grid point
-    QPointF nearest ( QPointF p ) const { snap(p); return p; }
+    QPointF nearest ( QPointF p ) const { return nearest(p, true); }
     /// returns closest grid point
     QPointF nearest ( double x, double y ) const { return nearest(QPointF(x,y)); }
 
     /// draws grid lines that cover at least rect
-    void render (QPainter *painter, const QRectF &rect) const;
-
-
+    void render (QPainter *painter, const QPolygonF &rect) const;
 
     bool is_enabled () const { return m_enabled; }
 
@@ -51,9 +51,13 @@ public:
 
     QPointF origin() const { return m_origin; }
 
+    qreal angle() const { return m_angle; }
+
+private:
+    void rebuild_tf();
+    QPointF nearest ( QPointF p, bool transform ) const;
 
 public Q_SLOTS:
-
     void enable ( bool enabled );
 
     void set_size (int size );
@@ -62,11 +66,15 @@ public Q_SLOTS:
 
     void set_origin ( QPointF origin );
 
+    void set_angle(qreal angle);
+
 Q_SIGNALS:
     void grid_changed();
     void moved(QPointF);
     void shape_changed(int);
     void enabled(bool);
+    void angle_changed(qreal);
+    void size_changed(int);
 };
 
 } // namespace glaxnimate::gui

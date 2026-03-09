@@ -7,6 +7,7 @@
 
 #include "ui_dock_grid.h"
 #include "glaxnimate_settings.hpp"
+#include "glaxnimate/math/math.hpp"
 
 
 using namespace glaxnimate::gui;
@@ -21,8 +22,6 @@ DockGrid::DockGrid(QWidget *parent) :
     QDockWidget(parent), d(std::make_unique<Private>())
 {
     d->setupUi(this);
-    connect(d->button_move,SIGNAL(clicked()),SIGNAL(move_grid()));
-    d->button_move->setVisible(false);
 }
 
 glaxnimate::gui::DockGrid::~DockGrid() = default;
@@ -51,6 +50,8 @@ void DockGrid::set_grid(SnappingGrid *target_grid)
         d->spin_y->blockSignals(true);
         d->spin_y->setValue(d->target->origin().y());
         d->spin_y->blockSignals(false);
+
+        d->spin_angle->setValue(math::rad2deg(d->target->angle()));
 
         connect(d->target,SIGNAL(moved(QPointF)),SLOT(grid_moved(QPointF)));
 
@@ -103,12 +104,6 @@ void DockGrid::grid_moved(QPointF p)
     d->spin_y->setValue(p.y());
 }
 
-void DockGrid::on_button_reset_clicked()
-{
-    d->spin_x->setValue(0);
-    d->spin_y->setValue(0);
-}
-
 void DockGrid::on_combo_shape_currentIndexChanged(int index)
 {
     if ( d->target )
@@ -128,4 +123,12 @@ void glaxnimate::gui::DockGrid::on_spin_size_valueChanged(int size)
     if ( d->target )
         d->target->set_size(size);
     GlaxnimateSettings::self()->setGrid_size(size);
+}
+
+void glaxnimate::gui::DockGrid::on_spin_angle_valueChanged(double angle)
+{
+    if ( d->target )
+        d->target->set_angle(math::deg2rad(angle));
+    GlaxnimateSettings::self()->setGrid_angle(angle);
+
 }

@@ -113,9 +113,7 @@ public:
     tools::MouseEvent mouse_event(QMouseEvent* ev)
     {
         QPointF pos = view->mapToScene(ev->pos());
-        QPointF snapped_pos = pos;
-        if ( grid && grid->is_enabled() )
-            grid->snap(snapped_pos);
+        QPointF snapped_pos = grid && grid->is_enabled() ? grid->nearest(pos) : pos;
         return {
             event(),
             ev,

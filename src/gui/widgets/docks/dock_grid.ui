@@ -11,7 +11,7 @@
     <x>0</x>
     <y>0</y>
     <width>220</width>
-    <height>329</height>
+    <height>292</height>
    </rect>
   </property>
   <property name="windowIcon">
@@ -42,7 +42,7 @@
       <x>0</x>
       <y>0</y>
       <width>220</width>
-      <height>299</height>
+      <height>262</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -55,6 +55,56 @@
      </item>
      <item>
       <layout class="QGridLayout" name="gridLayout">
+       <item row="3" column="1">
+        <widget class="QDoubleSpinBox" name="spin_x">
+         <property name="minimum">
+          <double>-8192.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>8192.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>X</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="combo_shape">
+         <item>
+          <property name="text">
+           <string>Square</string>
+          </property>
+          <property name="icon">
+           <iconset theme="grid-rectangular"/>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Triangle</string>
+          </property>
+          <property name="icon">
+           <iconset theme="grid-axonometric"/>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Shape</string>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label">
          <property name="sizePolicy">
@@ -81,117 +131,53 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QComboBox" name="combo_shape">
-         <item>
-          <property name="text">
-           <string>Square</string>
-          </property>
-          <property name="icon">
-           <iconset theme="grid-rectangular"/>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Triangle 1</string>
-          </property>
-          <property name="icon">
-           <iconset theme="grid-axonometric"/>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Triangle 2</string>
-          </property>
-          <property name="icon">
-           <iconset theme="grid-axonometric"/>
-          </property>
-         </item>
+       <item row="2" column="1">
+        <widget class="QDoubleSpinBox" name="spin_angle">
+         <property name="wrapping">
+          <bool>true</bool>
+         </property>
+         <property name="suffix">
+          <string>°</string>
+         </property>
+         <property name="maximum">
+          <double>360.000000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>5.000000000000000</double>
+         </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_2">
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_5">
          <property name="text">
-          <string>Shape</string>
+          <string>Angle</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QDoubleSpinBox" name="spin_y">
+         <property name="minimum">
+          <double>-8192.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>8192.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Y</string>
          </property>
         </widget>
        </item>
       </layout>
-     </item>
-     <item>
-      <widget class="QGroupBox" name="groupBox">
-       <property name="title">
-        <string>Origin</string>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_3">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>x</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QDoubleSpinBox" name="spin_x">
-          <property name="minimum">
-           <double>-8192.000000000000000</double>
-          </property>
-          <property name="maximum">
-           <double>8192.000000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_4">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>y</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QDoubleSpinBox" name="spin_y">
-          <property name="minimum">
-           <double>-8192.000000000000000</double>
-          </property>
-          <property name="maximum">
-           <double>8192.000000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QPushButton" name="button_reset">
-          <property name="toolTip">
-           <string>Reset grid position</string>
-          </property>
-          <property name="text">
-           <string>Reset</string>
-          </property>
-          <property name="icon">
-           <iconset theme="edit-reset"/>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QPushButton" name="button_move">
-          <property name="text">
-           <string>Move...</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
      </item>
     </layout>
    </widget>
