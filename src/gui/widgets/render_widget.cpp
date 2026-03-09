@@ -8,6 +8,7 @@
 #include <QPainter>
 #include <QVBoxLayout>
 #include <QScrollBar>
+#include <QPaintEvent>
 
 #include "glaxnimate_app.hpp"
 
@@ -24,6 +25,7 @@ public:
     QImage background;
     QRectF background_target;
     RenderWidget* emitter;
+    const SnappingGrid* grid = nullptr;
 
     QWidget* widget;
     QGraphicsView* view = nullptr;
@@ -76,37 +78,37 @@ protected:
         d->renderer->render_end();
     }
 
-    void paintEvent(QPaintEvent* ) override
+    void paintEvent(QPaintEvent* ev) override
     {
         Q_EMIT d->emitter->request_background();
 
         QPainter painter(this);
         painter.setRenderHint(QPainter::Antialiasing);
-        painter.fillRect(0, 0, this->width(), this->height(), this->palette().base());
+        painter.fillRect(rect(), this->palette().base());
 
         if ( !d->composition )
             return;
 
         d->update_transform();
 
+        // Background stuff
         painter.setTransform(d->world_transform);
+
         painter.fillRect(QRectF(QPointF(0, 0), d->composition->size()), back);
         if ( !d->background.isNull() )
             painter.drawImage(d->background_target, d->background);
+
+        if ( d->grid )
+            d->grid->render(&painter, d->world_transform.inverted().map(QPolygonF(QRectF(ev->rect()))).boundingRect());
+
         painter.setTransform({});
 
-        if ( d->renderer->set_painter_surface(&painter, width(), height()) )
-        {
-            render_composition();
-        }
-        else
-        {
-            QImage img(this->width(), this->height(), QImage::Format_ARGB32_Premultiplied);
-            img.fill(Qt::transparent);
-            d->renderer->set_image_surface(&img);
-            render_composition();
-            painter.drawImage(0, 0, img);
-        }
+        // Composition
+        QImage img(this->width(), this->height(), QImage::Format_ARGB32_Premultiplied);
+        img.fill(Qt::transparent);
+        d->renderer->set_image_surface(&img);
+        render_composition();
+        painter.drawImage(0, 0, img);
     }
 
 };
@@ -286,3 +288,7 @@ void glaxnimate::gui::RenderWidget::clear_background()
     d->background = {};
 }
 
+void glaxnimate::gui::RenderWidget::set_grid(const SnappingGrid* grid)
+{
+    d->grid = grid;
+}

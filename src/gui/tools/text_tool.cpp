@@ -33,7 +33,7 @@ public:
 
     void mouse_press(const MouseEvent& event) override
     {
-        forward_click = editor.scene() && editor.mapToScene(editor.boundingRect()).containsPoint(event.scene_pos, Qt::WindingFill);
+        forward_click = editor.scene() && editor.mapToScene(editor.boundingRect()).containsPoint(event.snapped_pos, Qt::WindingFill);
         if ( forward_click )
             event.forward_to_scene();
     }
@@ -203,7 +203,7 @@ public:
 
         set_text_format(event.window->current_color(), event.window->current_pen_style(), base_line_spacing());
         editor.setTransform(QTransform{});
-        editor.setPos(event.scene_pos + editor_offet());
+        editor.setPos(event.snapped_pos + editor_offet());
         event.scene->addItem(&editor);
         editor.setPlainText("");
         editor.setFocus(Qt::OtherFocusReason);

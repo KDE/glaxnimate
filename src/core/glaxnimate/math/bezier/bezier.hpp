@@ -223,6 +223,7 @@ class MultiBezier
 public:
     MultiBezier() {}
     MultiBezier(const QPainterPath& path) { append(path); }
+    MultiBezier(const Bezier& path) { append(path); }
     const std::vector<Bezier>& beziers() const { return beziers_; }
     std::vector<Bezier>& beziers() { return beziers_; }
 
@@ -288,6 +289,12 @@ public:
     {
         if ( path.size() > 1 )
             beziers_.push_back(path);
+    }
+
+    void append(const QLineF& path)
+    {
+        move_to(path.p1());
+        line_to(path.p2());
     }
 
     template<class T>

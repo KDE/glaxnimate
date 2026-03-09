@@ -161,7 +161,7 @@ public:
 
             for ( auto& p : selected )
             {
-                p.second.drag(event.scene_pos, props, before, after);
+                p.second.drag(event.snapped_pos, props, before, after);
             }
 
             event.window->document()->push_command(new command::SetMultipleAnimated(

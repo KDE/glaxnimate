@@ -19,7 +19,7 @@ protected:
         if ( event.button() == Qt::LeftButton )
         {
             dragging = false;
-            p1 = p2 = event.scene_pos;
+            p1 = p2 = event.snapped_pos;
             on_drag_start();
         }
     }
@@ -33,7 +33,7 @@ protected:
 
         if ( dragging )
         {
-            p2 = event.scene_pos;
+            p2 = event.snapped_pos;
             on_drag(event);
             event.repaint();
         }

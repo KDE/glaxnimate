@@ -12,6 +12,7 @@
 #include <memory>
 
 #include "widgets/dialogs/selection_manager.hpp"
+#include "graphics/snapping_grid.hpp"
 
 namespace glaxnimate::gui::tools {
 class Tool;
@@ -42,6 +43,8 @@ public:
 
     void set_active_tool(tools::Tool* tool);
     void set_tool_target(glaxnimate::gui::SelectionManager* window);
+
+    void set_grid(SnappingGrid* grid);
 
 public Q_SLOTS:
     /**

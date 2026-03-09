@@ -184,12 +184,12 @@ private:
                 if ( drag_selection )
                 {
                     for ( auto node : event.scene->cleaned_selection() )
-                        DragObjectData::push(node, event.scene_pos, drag_data);
+                        DragObjectData::push(node, event.snapped_pos, drag_data);
                 }
                 else
                 {
                     replace_selection = clicked_on.nodes[0]->node();
-                    DragObjectData::push(clicked_on.nodes[0]->node(), event.scene_pos, drag_data);
+                    DragObjectData::push(clicked_on.nodes[0]->node(), event.snapped_pos, drag_data);
                 }
             }
 
@@ -230,7 +230,7 @@ private:
                     rubber_p2 = event.pos();
                     break;
                 case DragObject:
-                    do_drag(event.scene_pos, event.modifiers(), false);
+                    do_drag(event.snapped_pos, event.modifiers(), false);
                     break;
             }
         }
@@ -301,7 +301,7 @@ private:
                 }
                 break;
                 case DragObject:
-                    do_drag(event.scene_pos, event.modifiers(), true);
+                    do_drag(event.snapped_pos, event.modifiers(), true);
                     break;
             }
 

@@ -44,6 +44,8 @@ struct MouseEvent : Event
     QMouseEvent* event;
     /// Mouse position in scene coordinates
     QPointF scene_pos;
+    /// Mouse position in scene coordinates, snapped to the nearest snapping point
+    QPointF snapped_pos;
 
     /// Mouse press that started the event (also available in move events)
     Qt::MouseButton press_button;

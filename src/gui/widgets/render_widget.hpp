@@ -9,6 +9,7 @@
 #include <QGraphicsView>
 
 #include "glaxnimate/model/assets/composition.hpp"
+#include "graphics/snapping_grid.hpp"
 
 namespace glaxnimate::gui {
 
@@ -28,6 +29,7 @@ public:
     void render();
     void set_background(QImage image, const QRectF& target);
     void clear_background();
+    void set_grid(const SnappingGrid* grid);
 
     class Private;
 private:

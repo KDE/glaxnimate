@@ -1030,6 +1030,15 @@ void GlaxnimateWindow::Private::init_docks()
 
     tool_options_dock = new ToolOptionsDock(this->parent);
     parent->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, tool_options_dock);
+
+    grid_dock = new DockGrid(this->parent);
+    parent->addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, grid_dock);
+    grid_dock->set_grid(&grid);
+    canvas->set_grid(&grid);
+    render_widget.set_grid(&grid);
+    connect(&grid, &SnappingGrid::grid_changed, render_widget.widget(), qOverload<>(&QWidget::update));
+
+
 }
 
 void GlaxnimateWindow::Private::layout_update()
@@ -1072,11 +1081,13 @@ void GlaxnimateWindow::Private::layout_medium()
     parent->tabifyDockWidget(layers_dock, gradients_dock);
     parent->tabifyDockWidget(gradients_dock, swatches_dock);
     parent->tabifyDockWidget(swatches_dock, assets_dock);
+    parent->tabifyDockWidget(assets_dock, grid_dock);
     gradients_dock->raise();
     gradients_dock->setVisible(true);
     assets_dock->setVisible(false);
     swatches_dock->setVisible(false);
     layers_dock->setVisible(true);
+    grid_dock->setVisible(false);
 
 
     // Right
@@ -1137,11 +1148,13 @@ void GlaxnimateWindow::Private::layout_wide()
     parent->tabifyDockWidget(layers_dock, gradients_dock);
     parent->tabifyDockWidget(gradients_dock, swatches_dock);
     parent->tabifyDockWidget(swatches_dock, assets_dock);
+    parent->tabifyDockWidget(assets_dock, grid_dock);
     gradients_dock->raise();
     gradients_dock->setVisible(true);
     assets_dock->setVisible(false);
     swatches_dock->setVisible(false);
     layers_dock->setVisible(true);
+    grid_dock->setVisible(false);
 
 
     // Right
@@ -1204,6 +1217,7 @@ void GlaxnimateWindow::Private::layout_compact()
     parent->tabifyDockWidget(undo_dock, gradients_dock);
     parent->tabifyDockWidget(gradients_dock, swatches_dock);
     parent->tabifyDockWidget(swatches_dock, assets_dock);
+    parent->tabifyDockWidget(assets_dock, grid_dock);
     colors_dock->raise();
     colors_dock->setVisible(true);
     stroke_dock->setVisible(true);
@@ -1213,6 +1227,7 @@ void GlaxnimateWindow::Private::layout_compact()
     undo_dock->setVisible(false);
     properties_dock->setVisible(true);
     layers_dock->setVisible(true);
+    grid_dock->setVisible(false);
 
     // Left
     parent->addDockWidget(Qt::LeftDockWidgetArea, tools_dock);

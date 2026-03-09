@@ -120,17 +120,19 @@ public:
 
     QPointF best_point(const glaxnimate::gui::tools::MouseEvent& event)
     {
+        QPointF pos = event.snapped_pos;
+
         if ( bezier.size() < 2 || !(event.modifiers() & Qt::ControlModifier) )
-            return event.scene_pos;
+            return pos;
 
         const QPointF& ref = bezier.points()[bezier.size() - 2].pos;
-        QPointF best = math::line_closest_point(ref, ref + QPointF(10, 0), event.scene_pos);
-        auto best_dist = math::distance(best, event.scene_pos);
+        QPointF best = math::line_closest_point(ref, ref + QPointF(10, 0), pos);
+        auto best_dist = math::distance(best, pos);
         static const std::array<QPointF, 3> offsets{QPointF(0, 10), QPointF(10, 10), QPointF(10, -10)};
         for ( const auto& off : offsets )
         {
-            QPointF p = math::line_closest_point(ref, ref + off, event.scene_pos);
-            auto dist = math::distance(p, event.scene_pos);
+            QPointF p = math::line_closest_point(ref, ref + off, pos);
+            auto dist = math::distance(p, pos);
             if ( dist < best_dist )
             {
                 best = p;
@@ -341,7 +343,7 @@ void glaxnimate::gui::tools::DrawTool::Private::prepare_draw(const glaxnimate::g
         }
     }
 
-    bezier.push_back(math::bezier::Point(event.scene_pos, event.scene_pos, event.scene_pos, math::bezier::Corner));
+    bezier.push_back(math::bezier::Point(event.snapped_pos, event.snapped_pos, event.snapped_pos, math::bezier::Corner));
 }
 
 glaxnimate::gui::tools::DrawTool::DrawTool()
@@ -382,7 +384,7 @@ void glaxnimate::gui::tools::DrawTool::mouse_move(const glaxnimate::gui::tools::
 
     if ( d->dragging )
     {
-        d->bezier.points().back().drag_tan_out(event.scene_pos);
+        d->bezier.points().back().drag_tan_out(event.snapped_pos);
     }
     else if ( d->bezier.size() > 2 && d->within_join_distance(event, d->bezier.points().front().pos) )
     {

@@ -5,6 +5,7 @@
  */
 
 #include "glaxnimate/model/shapes/shapes/ellipse.hpp"
+#include "glaxnimate/math/bezier/shapes.hpp"
 
 GLAXNIMATE_OBJECT_IMPL(glaxnimate::model::Ellipse)
 
@@ -21,9 +22,7 @@ QString glaxnimate::model::Ellipse::type_name_human() const
 
 glaxnimate::math::bezier::Bezier glaxnimate::model::Ellipse::to_bezier(FrameTime t) const
 {
-    QSizeF sz = size.get_at(t);
-
-    auto bezier = math::EllipseSolver(position.get_at(t), QPointF(sz.width()/2, sz.height()/2), 0).to_bezier(-math::pi/2, math::tau);
+    auto bezier = math::bezier::ellipse(position.get_at(t), size.get_at(t));
 
     if ( reversed.get() )
         bezier.reverse();

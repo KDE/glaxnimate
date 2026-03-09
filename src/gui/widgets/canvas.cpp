@@ -44,6 +44,7 @@ public:
     qreal rotation = 0;
     tools::Tool* tool = nullptr;
     glaxnimate::gui::SelectionManager* tool_target = nullptr;
+    SnappingGrid* grid = nullptr;
 //     MouseMode mouse_mode = None;
 
     MouseViewMode mouse_view_mode = NoDrag;
@@ -111,10 +112,15 @@ public:
 
     tools::MouseEvent mouse_event(QMouseEvent* ev)
     {
+        QPointF pos = view->mapToScene(ev->pos());
+        QPointF snapped_pos = pos;
+        if ( grid && grid->is_enabled() )
+            grid->snap(snapped_pos);
         return {
             event(),
             ev,
-            view->mapToScene(ev->pos()),
+            pos,
+            snapped_pos,
             press_button,
             move_press_scene,
             move_press_screen,
@@ -623,4 +629,9 @@ bool Canvas::viewportEvent(QEvent *event)
     }
 
     return QGraphicsView::viewportEvent(event);
+}
+
+void glaxnimate::gui::Canvas::set_grid(SnappingGrid* grid)
+{
+    d->grid = grid;
 }

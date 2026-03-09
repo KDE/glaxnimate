@@ -7,7 +7,6 @@
 #pragma once
 
 #include "glaxnimate/model/shapes/shape.hpp"
-#include "glaxnimate/math/ellipse_solver.hpp"
 
 namespace glaxnimate::model {
 

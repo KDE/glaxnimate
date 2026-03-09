@@ -18,6 +18,7 @@ using namespace glaxnimate::gui;
 void tools::MouseEvent::forward_to_scene() const
 {
     QEvent::Type type;
+    QPointF pos = scene_pos;
     switch ( event->type() )
     {
         case QEvent::MouseButtonPress:
@@ -25,9 +26,11 @@ void tools::MouseEvent::forward_to_scene() const
             break;
         case QEvent::MouseMove:
             type = QEvent::GraphicsSceneMouseMove;
+            pos = snapped_pos;
             break;
         case QEvent::MouseButtonRelease:
             type = QEvent::GraphicsSceneMouseRelease;
+            pos = snapped_pos;
             break;
         case QEvent::MouseButtonDblClick:
             type = QEvent::GraphicsSceneMouseDoubleClick;
@@ -40,7 +43,7 @@ void tools::MouseEvent::forward_to_scene() const
     mouse_event.setWidget(view->viewport());
     mouse_event.setButtonDownScenePos(press_button, press_scene_pos);
     mouse_event.setButtonDownScreenPos(press_button, press_screen_pos);
-    mouse_event.setScenePos(scene_pos);
+    mouse_event.setScenePos(pos);
     mouse_event.setScreenPos(event->globalPosition().toPoint());
     mouse_event.setLastScenePos(last_scene_pos);
     mouse_event.setLastScreenPos(last_screen_pos);

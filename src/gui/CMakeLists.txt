@@ -16,6 +16,7 @@ graphics/transform_graphics_item.cpp
 graphics/create_items.cpp
 graphics/bezier_item.cpp
 graphics/gradient_editor.cpp
+graphics/snapping_grid.cpp
 
 item_models/document_node_model.cpp
 item_models/property_model_base.cpp
@@ -62,6 +63,8 @@ widgets/dialogs/follow_path_dialog.cpp
 widgets/dialogs/stalefiles_dialog.cpp
 
 widgets/docks/layer_view.cpp
+widgets/docks/dock_grid.cpp
+widgets/docks/dock_grid.ui
 
 widgets/lottiefiles/lottiefiles_search_dialog.cpp
 widgets/lottiefiles/search_result.cpp

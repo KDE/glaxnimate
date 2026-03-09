@@ -55,6 +55,7 @@
 #include "widgets/docks/snippetsdock.h"
 #include "widgets/docks/undodock.h"
 #include "widgets/docks/tooloptionsdock.h"
+#include "widgets/docks/dock_grid.hpp"
 
 #include "widgets/window_message_widget.hpp"
 #include "widgets/tab_bar/composition_tab_bar.hpp"
@@ -147,6 +148,7 @@ public:
 
     CompositionTabBar *tab_bar;
     WindowMessageWidget *message_widget;
+    SnappingGrid grid;
 
     ColorsDock *colors_dock;
     StrokeDock *stroke_dock;
@@ -164,6 +166,7 @@ public:
     UndoDock *undo_dock;
     ToolOptionsDock *tool_options_dock;
     QDockWidget *tools_dock;
+    DockGrid* grid_dock;
 
     KRecentFilesAction *m_recentFilesAction;
 
