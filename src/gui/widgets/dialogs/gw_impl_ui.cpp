@@ -397,6 +397,11 @@ void GlaxnimateWindow::Private::setup_edit_actions()
     this->tool_actions["select"] = {
         editDelete,
     };
+
+    QAction *grid_enable = add_action(editActions, QStringLiteral("snap_grid_enable"), i18n("Grid"), QStringLiteral("grid-rectangular"), {}, Qt::Key_NumberSign);
+    grid_enable->setCheckable(true);
+    connect(grid_enable, &QAction::triggered, &grid, &SnappingGrid::enable);
+
 }
 
 tools::Tool* GlaxnimateWindow::Private::setup_tools_actions()

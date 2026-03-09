@@ -5,6 +5,7 @@
     * Added blend modes for groups and layers
     * Editing properties that are already animated now adds a keyframe
     * Unified some properties across groups, images, and precomp layers
+    * Added a grid for snapping
 * UI:
     * Timeline now allows to cycle through mask modes for layers
 * I/O:

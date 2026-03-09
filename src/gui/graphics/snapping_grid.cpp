@@ -82,7 +82,7 @@ void SnappingGrid::render(QPainter *painter, const QRectF &rect) const
         return;
 
     QColor color = qApp->palette().highlight().color();
-    color.setAlpha(color.alpha() / 2.);
+    color.setAlpha(color.alpha() / 3.);
     painter->setPen(QPen(color, 0));
 
     /*const QTransform& transform = painter->transform();
