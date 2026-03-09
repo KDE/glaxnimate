@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-08 00:41+0000\n"
-"PO-Revision-Date: 2026-03-07 08:04+0200\n"
+"POT-Creation-Date: 2026-03-09 00:41+0000\n"
+"PO-Revision-Date: 2026-03-08 21:32+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -28,105 +28,33 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-l10n-he@kde.org"
 
-#. i18n: file: src/core/glaxnimate/model/shapes/repeater.hpp
-#. i18n: Property name
-#. i18n: file: src/core/glaxnimate/model/shapes/group.hpp
-#. i18n: Property name
-#. i18n: file: src/core/glaxnimate/model/shapes/image.hpp
-#. i18n: Property name
-#, kde-format
-msgid "transform"
-msgstr "התמרה"
-
-#. i18n: file: src/core/glaxnimate/model/shapes/repeater.hpp
-#. i18n: Property name
-#, kde-format
-msgid "start_opacity"
-msgstr "אטימות_התחלה"
-
-#. i18n: file: src/core/glaxnimate/model/shapes/stroke.hpp
-#. i18n: Property name
-#, kde-format
-msgid "cap"
-msgstr "קצה"
-
-#. i18n: file: src/core/glaxnimate/model/shapes/stroke.hpp
-#. i18n: Property name
-#, kde-format
-msgid "miter_limit"
-msgstr "גבול_תפר"
-
 #. i18n: file: src/core/glaxnimate/model/shapes/shape.hpp
 #. i18n: Property name
 #, kde-format
 msgid "reversed"
 msgstr "הפוך"
 
-#. i18n: file: src/core/glaxnimate/model/shapes/rect.hpp
+#. i18n: file: src/core/glaxnimate/model/shapes/shapes/rect.hpp
 #. i18n: Property name
-#. i18n: file: src/core/glaxnimate/model/shapes/text.hpp
+#. i18n: file: src/core/glaxnimate/model/shapes/shapes/text.hpp
 #. i18n: Property name
 #, kde-format
 msgid "position"
 msgstr "מקום"
 
-#. i18n: file: src/core/glaxnimate/model/shapes/rect.hpp
+#. i18n: file: src/core/glaxnimate/model/shapes/shapes/rect.hpp
 #. i18n: Property name
 #, kde-format
 msgid "rounded"
 msgstr "מעוגל"
 
-#. i18n: file: src/core/glaxnimate/model/shapes/precomp_layer.hpp
-#. i18n: Property name
-#, kde-format
-msgid "timing"
-msgstr "תזמון"
-
-#. i18n: file: src/core/glaxnimate/model/shapes/precomp_layer.hpp
-#. i18n: Property name
-#. i18n: file: src/core/glaxnimate/model/shapes/ellipse.hpp
-#. i18n: Property name
-#, kde-format
-msgid "size"
-msgstr "גודל"
-
-#. i18n: file: src/core/glaxnimate/model/shapes/precomp_layer.hpp
-#. i18n: Property name
-#, kde-format
-msgid "opacity"
-msgstr "אטימות"
-
-#. i18n: file: src/core/glaxnimate/model/shapes/group.hpp
-#. i18n: Property name
-#, kde-format
-msgid "auto_orient"
-msgstr "כיוון_אוטומטי"
-
-#. i18n: file: src/core/glaxnimate/model/shapes/trim.hpp
-#. i18n: Property name
-#, kde-format
-msgid "end"
-msgstr "סוף"
-
-#. i18n: file: src/core/glaxnimate/model/shapes/trim.hpp
-#. i18n: Property name
-#, kde-format
-msgid "multiple"
-msgstr "ריבוי"
-
-#. i18n: file: src/core/glaxnimate/model/shapes/text.hpp
+#. i18n: file: src/core/glaxnimate/model/shapes/shapes/text.hpp
 #. i18n: Property name
 #, kde-format
 msgid "path"
 msgstr "נתיב"
 
-#. i18n: file: src/core/glaxnimate/model/shapes/fill.hpp
-#. i18n: Property name
-#, kde-format
-msgid "fill_rule"
-msgstr "כלל_מילוי"
-
-#. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
+#. i18n: file: src/core/glaxnimate/model/shapes/shapes/polystar.hpp
 #. i18n: Property name
 #. i18n: file: src/core/glaxnimate/model/assets/gradient.hpp
 #. i18n: Property name
@@ -134,55 +62,89 @@ msgstr "כלל_מילוי"
 msgid "type"
 msgstr "סוג"
 
-#. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
+#. i18n: file: src/core/glaxnimate/model/shapes/shapes/polystar.hpp
 #. i18n: Property name
 #, kde-format
 msgid "outer_radius"
 msgstr "רדיוס_חיצוני"
 
-#. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
+#. i18n: file: src/core/glaxnimate/model/shapes/shapes/polystar.hpp
 #. i18n: Property name
 #, kde-format
 msgid "angle"
 msgstr "זווית"
 
-#. i18n: file: src/core/glaxnimate/model/shapes/polystar.hpp
+#. i18n: file: src/core/glaxnimate/model/shapes/shapes/polystar.hpp
 #. i18n: Property name
 #, kde-format
 msgid "outer_roundness"
 msgstr "עיגוליות_חיצונית"
 
-#. i18n: file: src/core/glaxnimate/model/shapes/styler.hpp
+#. i18n: file: src/core/glaxnimate/model/shapes/shapes/ellipse.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/shapes/composable/precomp_layer.hpp
 #. i18n: Property name
 #, kde-format
-msgid "color"
-msgstr "צבע"
+msgid "size"
+msgstr "גודל"
 
-#. i18n: file: src/core/glaxnimate/model/shapes/styler.hpp
+#. i18n: file: src/core/glaxnimate/model/shapes/modifiers/repeater.hpp
 #. i18n: Property name
 #, kde-format
-msgid "use"
-msgstr "שימוש"
+msgid "transform"
+msgstr "התמרה"
 
-#. i18n: file: src/core/glaxnimate/model/shapes/offset_path.hpp
+#. i18n: file: src/core/glaxnimate/model/shapes/modifiers/repeater.hpp
+#. i18n: Property name
+#, kde-format
+msgid "start_opacity"
+msgstr "אטימות_התחלה"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/modifiers/trim.hpp
+#. i18n: Property name
+#, kde-format
+msgid "end"
+msgstr "סוף"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/modifiers/trim.hpp
+#. i18n: Property name
+#, kde-format
+msgid "multiple"
+msgstr "ריבוי"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/modifiers/offset_path.hpp
 #. i18n: Property name
 #, kde-format
 msgid "amount"
 msgstr "כמות"
 
-#. i18n: file: src/core/glaxnimate/model/shapes/offset_path.hpp
+#. i18n: file: src/core/glaxnimate/model/shapes/modifiers/offset_path.hpp
 #. i18n: Property name
 #, kde-format
 msgid "join"
 msgstr "צירוף"
 
-#. i18n: file: src/core/glaxnimate/model/shapes/layer.hpp
+#. i18n: file: src/core/glaxnimate/model/shapes/modifiers/zig_zag.hpp
+#. i18n: Property name
+#, kde-format
+msgid "frequency"
+msgstr "תדירות"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/composable/precomp_layer.hpp
+#. i18n: Property name
+#, kde-format
+msgid "timing"
+msgstr "תזמון"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/composable/layer.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/assets/composition.hpp
 #. i18n: Property name
 #, kde-format
 msgid "animation"
 msgstr "הנפשה"
 
-#. i18n: file: src/core/glaxnimate/model/shapes/layer.hpp
+#. i18n: file: src/core/glaxnimate/model/shapes/composable/layer.hpp
 #. i18n: Property name
 #. i18n: file: src/core/glaxnimate/model/mask_settings.hpp
 #. i18n: Property name
@@ -190,11 +152,55 @@ msgstr "הנפשה"
 msgid "mask"
 msgstr "מסכה"
 
-#. i18n: file: src/core/glaxnimate/model/shapes/zig_zag.hpp
+#. i18n: file: src/core/glaxnimate/model/shapes/composable/composable.hpp
 #. i18n: Property name
 #, kde-format
-msgid "frequency"
-msgstr "תדירות"
+msgid "opacity"
+msgstr "אטימות"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/composable/composable.hpp
+#. i18n: Property name
+#, fuzzy, kde-format
+#| msgid "Blend Mode"
+msgid "blend_mode"
+msgstr "מצב ערבול"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/composable/image.hpp
+#. i18n: Property name
+#, fuzzy, kde-format
+#| msgid "Image"
+msgid "image"
+msgstr "תמונה"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/style/stroke.hpp
+#. i18n: Property name
+#, kde-format
+msgid "cap"
+msgstr "קצה"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/style/stroke.hpp
+#. i18n: Property name
+#, kde-format
+msgid "miter_limit"
+msgstr "גבול_תפר"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/style/fill.hpp
+#. i18n: Property name
+#, kde-format
+msgid "fill_rule"
+msgstr "כלל_מילוי"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/style/styler.hpp
+#. i18n: Property name
+#, kde-format
+msgid "color"
+msgstr "צבע"
+
+#. i18n: file: src/core/glaxnimate/model/shapes/style/styler.hpp
+#. i18n: Property name
+#, kde-format
+msgid "use"
+msgstr "שימוש"
 
 #. i18n: file: src/core/glaxnimate/model/transform.hpp
 #. i18n: Property name
@@ -207,6 +213,12 @@ msgstr "נקודת_עוגן"
 #, kde-format
 msgid "scale"
 msgstr "קנה_מידה"
+
+#. i18n: file: src/core/glaxnimate/model/assets/composition.hpp
+#. i18n: Property name
+#, kde-format
+msgid "shapes"
+msgstr "צורות"
 
 #. i18n: file: src/core/glaxnimate/model/assets/bitmap.hpp
 #. i18n: Property name
@@ -368,7 +380,7 @@ msgstr "החלפה"
 #: src/android/document_opener.cpp:201
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:449
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:454
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:198
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:196
 #: src/gui/widgets/font/external_font_widget.cpp:126
 #, kde-format
 msgid "Open File"
@@ -380,7 +392,7 @@ msgid "Raster images need to be traced into vectors"
 msgstr "יש להמיר תמונות מפות סיביות לווקטורים"
 
 #: src/android/document_opener.cpp:106
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:199
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:197
 #, kde-format
 msgid "Save File"
 msgstr "שמירת הקובץ"
@@ -660,13 +672,13 @@ msgstr "סגנון מילוי"
 msgid "Stroke Style"
 msgstr "סגנון קו המתאר"
 
-#: src/android/main_window.cpp:453 src/gui/widgets/dialogs/gw_impl_ui.cpp:639
+#: src/android/main_window.cpp:453 src/gui/widgets/dialogs/gw_impl_ui.cpp:637
 #: src/gui/widgets/menus/node_menu.cpp:106
 #, kde-format
 msgid "Raise"
 msgstr "הגבהה"
 
-#: src/android/main_window.cpp:458 src/gui/widgets/dialogs/gw_impl_ui.cpp:642
+#: src/android/main_window.cpp:458 src/gui/widgets/dialogs/gw_impl_ui.cpp:640
 #: src/gui/widgets/menus/node_menu.cpp:110
 #, kde-format
 msgid "Lower"
@@ -746,7 +758,7 @@ msgstr "פתיחה…"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:101
 #: src/gui/widgets/dialogs/about_env_dialog.ui:129
 #: src/gui/widgets/dialogs/about_env_dialog.ui:132
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1660
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1658
 #: src/gui/widgets/dialogs/startup_dialog.ui:149
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:136
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
@@ -795,7 +807,7 @@ msgstr "שליחה לטלגרם"
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/android/main_window.cpp:545 src/gui/glaxnimateui.rc:120
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:595
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:593
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #: src/gui/widgets/docks/layers.ui:29
 #, kde-format
@@ -1048,57 +1060,73 @@ msgstr "מיזם Adobe After Effects"
 msgid "Adobe After Effects Project XML"
 msgstr "XML של מיזם Adobe After Effects"
 
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:75
+#: src/core/glaxnimate/io/aep/aep_loader.cpp:147
 #, kde-format
 msgid "External asset not found: %1"
 msgstr "משאב חיצוני לא נמצא: %1"
 
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:117
+#: src/core/glaxnimate/io/aep/aep_loader.cpp:189
 #, kde-format
 msgid "Unknown property \"%1\" of \"%2\""
 msgstr "המאפיין „%1” של „%2” לא ידוע"
 
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:404
+#: src/core/glaxnimate/io/aep/aep_loader.cpp:221
+#, fuzzy, kde-format
+#| msgid "Layer"
+msgid "Layer #%1"
+msgstr "שכבה"
+
+#: src/core/glaxnimate/io/aep/aep_loader.cpp:279
+#, kde-format
+msgid "Parent #%1 of layer %2 could not be found"
+msgstr ""
+
+#: src/core/glaxnimate/io/aep/aep_loader.cpp:292
+#, kde-format
+msgid "Mask parent #%1 of layer %2 could not be found"
+msgstr ""
+
+#: src/core/glaxnimate/io/aep/aep_loader.cpp:581
 #, kde-format
 msgid "Expected property for %1"
 msgstr "מאפיין צפוי עבור %1"
 
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:411
+#: src/core/glaxnimate/io/aep/aep_loader.cpp:588
 #, kde-format
 msgid "Could convert %1"
 msgstr "אפשר להמיר לכדי %1"
 
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:415
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:900
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:922
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:929
+#: src/core/glaxnimate/io/aep/aep_loader.cpp:592
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1102
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1124
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1131
 #, kde-format
 msgid "Invalid value for %1"
 msgstr "ערך שגוי עבור %1"
 
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:510
+#: src/core/glaxnimate/io/aep/aep_loader.cpp:693
 #, kde-format
 msgid "Expected property group for transform"
 msgstr "קבוצת מאפיינים צפויה להתמרה"
 
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:559
+#: src/core/glaxnimate/io/aep/aep_loader.cpp:742
 #, kde-format
 msgid "Unknown property \"%1\""
 msgstr "המאפיין „%1” לא ידוע"
 
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:1103
+#: src/core/glaxnimate/io/aep/aep_loader.cpp:1299
 #, kde-format
 msgid "Unknown shape %1"
 msgstr "הצורה %1 לא ידועה"
 
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:1162
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:390
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:402
+#: src/core/glaxnimate/io/aep/aep_loader.cpp:1357
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:533
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:632
 #, kde-format
 msgid "Clip"
 msgstr "סרטון"
 
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:1267
+#: src/core/glaxnimate/io/aep/aep_loader.cpp:1500
 #, kde-format
 msgid "Unknown asset type for %1"
 msgstr "סוג המשאב של %1 שגוי"
@@ -1118,17 +1146,17 @@ msgstr "סוג הפריט %s לא ידוע"
 msgid "Missing composition data"
 msgstr "נתוני התרכובת חסרים"
 
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:214
+#: src/core/glaxnimate/io/aep/aep_parser.hpp:209
 #, kde-format
 msgid "Unknown encoding for %1"
 msgstr "הקידוד של %1 לא ידוע"
 
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:230
+#: src/core/glaxnimate/io/aep/aep_parser.hpp:225
 #, kde-format
 msgid "Missing asset data"
 msgstr "נתוני המשאב חסרים"
 
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:288
+#: src/core/glaxnimate/io/aep/aep_parser.hpp:287
 #, kde-format
 msgid "Missing layer data"
 msgstr "נתוני השכבה חסרים"
@@ -1144,17 +1172,17 @@ msgstr "מאפייני המסכה חסרים"
 msgid "Unknown property type: %1"
 msgstr "סוג המאפיין לא ידוע: %1"
 
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:645
+#: src/core/glaxnimate/io/aep/aep_parser.hpp:654
 #, kde-format
 msgid "Missing list data"
 msgstr "נתוני הרשימה חסרים"
 
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:657
+#: src/core/glaxnimate/io/aep/aep_parser.hpp:666
 #, kde-format
 msgid "Not enough data in list"
 msgstr "אין מספיק נתונים ברשימה"
 
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:791
+#: src/core/glaxnimate/io/aep/aep_parser.hpp:800
 #, kde-format
 msgid "Invalid text document: %1"
 msgstr "מסמך טקסט שגוי: %1"
@@ -1162,12 +1190,12 @@ msgstr "מסמך טקסט שגוי: %1"
 #: src/core/glaxnimate/io/aep/riff.hpp:221
 #: src/core/glaxnimate/io/aep/riff.hpp:234
 #: src/core/glaxnimate/io/aep/riff.hpp:255
-#: src/core/glaxnimate/io/aep/riff.hpp:293
+#: src/core/glaxnimate/io/aep/riff.hpp:303
 #, kde-format
 msgid "Not enough data"
 msgstr "אין מספיק נתונים"
 
-#: src/core/glaxnimate/io/aep/riff.hpp:529
+#: src/core/glaxnimate/io/aep/riff.hpp:539
 #, kde-format
 msgid "Unknown format %1"
 msgstr "התסדיר %1 לא ידוע"
@@ -1219,7 +1247,7 @@ msgid "%s cannot be a clip path"
 msgstr "%s לא יכול להיות נתיב חיתוך"
 
 #: src/core/glaxnimate/io/base.cpp:22
-#: src/core/glaxnimate/io/svg/svg_renderer.cpp:827 src/gui/tools/base.cpp:158
+#: src/core/glaxnimate/io/svg/svg_renderer.cpp:839 src/gui/tools/base.cpp:158
 #, kde-format
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
@@ -1314,22 +1342,22 @@ msgstr "לא ניתן להוסיף תמונית מפתח"
 msgid "Unknown object of type '%1'"
 msgstr "פריט לא ידוע מסוג ‚%1’"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:559
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:591
 #, kde-format
 msgid "Lottie only supports layers in the top level"
 msgstr "Lottie תומך בשכבות ברמה העליונה בלבד"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:561
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:593
 #, kde-format
 msgid "Lottie only supports auto-orient layers in the top level"
 msgstr "Lottie תומך בכיוון שכבות אוטומטי ברמה העליונה"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:610
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:643
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr "אי אפשר לקבץ תמונות עם צורות אחרות, הן חייבות להיות בתוך שכבה"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:612
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:645
 #, kde-format
 msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
@@ -1386,73 +1414,79 @@ msgstr "הנפשת Lottie"
 msgid "Lottie HTML Preview"
 msgstr "תצוגת Lottie HTML מקדימה"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:185
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:190
 #, kde-format
-msgid "Missing layer type for %1"
-msgstr "סוג השכבה של %1 חסר"
+msgid "Mask parent %1 of layer %2 could not be found"
+msgstr ""
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:322
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:200
 #, kde-format
-msgid "Cannot use %1 as parent as it couldn't be loaded"
-msgstr "לא ניתן להשתמש ב־%1 כהורה כיוון שלא נטען לטעון אותו"
+msgid "Mask parent of layer %1 could not be found"
+msgstr ""
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:332
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:218
 #, kde-format
 msgid "Invalid parent layer %1"
 msgstr "שכבת הורה שגויה %1"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:457
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:315
+#, fuzzy, kde-format
+#| msgid "Missing layer type for %1"
+msgid "Missing type for layer %1"
+msgstr "סוג השכבה של %1 חסר"
+
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:389
 #, kde-format
 msgid "Unsupported layer of type %1"
 msgstr "שכבה לא נתמכת לסוג %1"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:482
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:676
 #, kde-format
 msgid "Missing shape type"
 msgstr "סוג הצורה לא נתמך"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:495
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:505
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:689
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:699
 #, kde-format
 msgid "Unsupported shape type %1"
 msgstr "סוג הצורה %1 לא נתמך"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:528
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:722
 #, kde-format
 msgid "Unknown field %2%1"
 msgstr "השדה %2%1 לא ידוע"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:855
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1057
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
 msgstr "נקודת בזייה שגויה %1 ב־%2"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:937
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1139
 #, kde-format
 msgid "Invalid keyframes for %1"
 msgstr "תמוניות מפתח שגויות עבור %1"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:987
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1189
 #, kde-format
 msgid "(null)"
 msgstr "(אפס)"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:993
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1195
 #, kde-format
 msgid "(empty)"
 msgstr "(ריק)"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:998
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1200
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
 msgstr "לא ניתן לטעון את תמונית המפתח %1 עבור %2 עם הערך %3"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1052
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1254
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
 msgstr "מזהה מפת סיביות כפול: %1"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1084
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1286
 #, kde-format
 msgid "Duplicate Composition ID: %1"
 msgstr "מזהה תרכובת כפול: %1"
@@ -2021,7 +2055,7 @@ msgstr "תרכובת"
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/core/glaxnimate/model/assets/embedded_font.cpp:42
-#: src/core/glaxnimate/model/shapes/text.cpp:231
+#: src/core/glaxnimate/model/shapes/shapes/text.cpp:231
 #: src/gui/widgets/font/external_font_widget.ui:69
 #: src/gui/widgets/font/font_style_widget.ui:24
 #: src/gui/widgets/font/google_fonts_widget.ui:68
@@ -2100,7 +2134,7 @@ msgid "Unnamed Color"
 msgstr "צבע ללא שם"
 
 #: src/core/glaxnimate/model/mask_settings.cpp:13
-#: src/gui/widgets/menus/node_menu.cpp:324
+#: src/gui/widgets/menus/node_menu.cpp:329
 #, kde-format
 msgid "Mask"
 msgstr "מסכה"
@@ -2110,20 +2144,112 @@ msgstr "מסכה"
 msgid "Unknown Object"
 msgstr "פריט לא ידוע"
 
-#: src/core/glaxnimate/model/shapes/ellipse.cpp:19
+#. i18n: ectx: property (text), widget (QRadioButton, check_group)
+#: src/core/glaxnimate/model/shapes/composable/group.hpp:36
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:612
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:649
+#: src/gui/widgets/tools/shape_tool_widget.ui:41
+#, kde-format
+msgid "Group"
+msgstr "קבוצה"
+
+#: src/core/glaxnimate/model/shapes/composable/image.cpp:74
+#: src/gui/widgets/menus/node_menu.cpp:388
+#, kde-format
+msgid "Image"
+msgstr "תמונה"
+
+#. i18n: ectx: property (text), widget (QRadioButton, check_layer)
+#: src/core/glaxnimate/model/shapes/composable/layer.hpp:81
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:609
+#: src/gui/widgets/tools/shape_tool_widget.ui:55
+#, kde-format
+msgid "Layer"
+msgstr "שכבה"
+
+#: src/core/glaxnimate/model/shapes/composable/precomp_layer.cpp:25
+#, kde-format
+msgid "Composition Layer"
+msgstr "שכבת תרכובת"
+
+#: src/core/glaxnimate/model/shapes/modifiers/inflate_deflate.cpp:18
+#, kde-format
+msgid "Inflate and Deflate"
+msgstr "ניפוח וצמצום"
+
+#: src/core/glaxnimate/model/shapes/modifiers/offset_path.cpp:342
+#, kde-format
+msgid "Offset Path"
+msgstr "נתיב היסט"
+
+#: src/core/glaxnimate/model/shapes/modifiers/repeater.cpp:25
+#, kde-format
+msgid "Repeater"
+msgstr "מחזיר"
+
+#: src/core/glaxnimate/model/shapes/modifiers/round_corners.cpp:20
+#, kde-format
+msgid "Round Corners"
+msgstr "עיגול פינות"
+
+#: src/core/glaxnimate/model/shapes/modifiers/trim.cpp:24
+#, kde-format
+msgid "Trim Path"
+msgstr "נתיב גזירה"
+
+#: src/core/glaxnimate/model/shapes/modifiers/zig_zag.cpp:139
+#, kde-format
+msgid "Zig Zag"
+msgstr "זיגזג"
+
+#: src/core/glaxnimate/model/shapes/shapes/ellipse.cpp:19
 #: src/gui/tools/ellipse_tool.cpp:17
 #, kde-format
 msgid "Ellipse"
 msgstr "אליפסה"
 
+#. i18n: ectx: Menu (path)
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: src/core/glaxnimate/model/shapes/shapes/path.hpp:38
+#: src/gui/glaxnimateui.rc:174
+#: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:712
+#: src/gui/widgets/settings/plugin_settings_widget.ui:176
+#, kde-format
+msgid "Path"
+msgstr "נתיב"
+
+#: src/core/glaxnimate/model/shapes/shapes/polystar.hpp:48
+#, kde-format
+msgid "PolyStar"
+msgstr "כוכב רב־צלעות"
+
+#: src/core/glaxnimate/model/shapes/shapes/rect.hpp:31
+#: src/gui/tools/rectangle_tool.hpp:20
+#, kde-format
+msgid "Rectangle"
+msgstr "מרובע"
+
+#: src/core/glaxnimate/model/shapes/shapes/text.cpp:248
+#, kde-format
+msgid "Change Font"
+msgstr "החלפת גופן"
+
+#. i18n: ectx: Menu (text)
+#: src/core/glaxnimate/model/shapes/shapes/text.cpp:474
+#: src/gui/glaxnimateui.rc:200 src/gui/widgets/dialogs/gw_impl_ui.cpp:131
+#, kde-format
+msgid "Text"
+msgstr "טקסט"
+
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_colors)
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QCheckBox, check_fill)
 #. i18n: ectx: property (text), widget (QRadioButton, check_fill)
-#: src/core/glaxnimate/model/shapes/fill.hpp:48
+#: src/core/glaxnimate/model/shapes/style/fill.hpp:48
 #: src/gui/tools/draw_tool_base.cpp:114 src/gui/tools/fill_tool.cpp:25
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:764
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:617
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:615
 #: src/gui/widgets/docks/colors.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:191
 #: src/gui/widgets/tools/color_picker_widget.ui:24
@@ -2133,83 +2259,14 @@ msgstr "אליפסה"
 msgid "Fill"
 msgstr "מילוי"
 
-#. i18n: ectx: property (text), widget (QRadioButton, check_group)
-#: src/core/glaxnimate/model/shapes/group.hpp:44
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:614
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:651
-#: src/gui/widgets/tools/shape_tool_widget.ui:41
-#, kde-format
-msgid "Group"
-msgstr "קבוצה"
-
-#: src/core/glaxnimate/model/shapes/image.cpp:85
-#: src/gui/widgets/menus/node_menu.cpp:391
-#, kde-format
-msgid "Image"
-msgstr "תמונה"
-
-#: src/core/glaxnimate/model/shapes/inflate_deflate.cpp:18
-#, kde-format
-msgid "Inflate and Deflate"
-msgstr "ניפוח וצמצום"
-
-#. i18n: ectx: property (text), widget (QRadioButton, check_layer)
-#: src/core/glaxnimate/model/shapes/layer.hpp:81
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:611
-#: src/gui/widgets/tools/shape_tool_widget.ui:55
-#, kde-format
-msgid "Layer"
-msgstr "שכבה"
-
-#: src/core/glaxnimate/model/shapes/offset_path.cpp:342
-#, kde-format
-msgid "Offset Path"
-msgstr "נתיב היסט"
-
-#. i18n: ectx: Menu (path)
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: src/core/glaxnimate/model/shapes/path.hpp:38 src/gui/glaxnimateui.rc:174
-#: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:714
-#: src/gui/widgets/settings/plugin_settings_widget.ui:176
-#, kde-format
-msgid "Path"
-msgstr "נתיב"
-
-#: src/core/glaxnimate/model/shapes/polystar.hpp:48
-#, kde-format
-msgid "PolyStar"
-msgstr "כוכב רב־צלעות"
-
-#: src/core/glaxnimate/model/shapes/precomp_layer.cpp:30
-#, kde-format
-msgid "Composition Layer"
-msgstr "שכבת תרכובת"
-
-#: src/core/glaxnimate/model/shapes/rect.hpp:31
-#: src/gui/tools/rectangle_tool.hpp:20
-#, kde-format
-msgid "Rectangle"
-msgstr "מרובע"
-
-#: src/core/glaxnimate/model/shapes/repeater.cpp:25
-#, kde-format
-msgid "Repeater"
-msgstr "מחזיר"
-
-#: src/core/glaxnimate/model/shapes/round_corners.cpp:20
-#, kde-format
-msgid "Round Corners"
-msgstr "עיגול פינות"
-
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_stroke)
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (text), widget (QCheckBox, check_stroke)
 #. i18n: ectx: property (text), widget (QRadioButton, check_stroke)
-#: src/core/glaxnimate/model/shapes/stroke.hpp:68
+#: src/core/glaxnimate/model/shapes/style/stroke.hpp:68
 #: src/gui/tools/draw_tool_base.cpp:126
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:759
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:620
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:618
 #: src/gui/widgets/docks/stroke.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:101
 #: src/gui/widgets/tools/color_picker_widget.ui:37
@@ -2218,28 +2275,6 @@ msgstr "עיגול פינות"
 #, kde-format
 msgid "Stroke"
 msgstr "קו מתאר"
-
-#: src/core/glaxnimate/model/shapes/text.cpp:248
-#, kde-format
-msgid "Change Font"
-msgstr "החלפת גופן"
-
-#. i18n: ectx: Menu (text)
-#: src/core/glaxnimate/model/shapes/text.cpp:474 src/gui/glaxnimateui.rc:200
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:133
-#, kde-format
-msgid "Text"
-msgstr "טקסט"
-
-#: src/core/glaxnimate/model/shapes/trim.cpp:24
-#, kde-format
-msgid "Trim Path"
-msgstr "נתיב גזירה"
-
-#: src/core/glaxnimate/model/shapes/zig_zag.cpp:139
-#, kde-format
-msgid "Zig Zag"
-msgstr "זיגזג"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TimingDialog)
 #: src/core/glaxnimate/model/stretchable_time.cpp:28
@@ -2526,7 +2561,7 @@ msgstr "ערכת אמוג׳י"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:248
 #: src/gui/widgets/dialogs/about_env_dialog.ui:289
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:109
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:340
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:338
 #: src/gui/widgets/dialogs/startup_dialog.ui:48
 #: src/gui/widgets/settings/plugin_settings_widget.ui:168
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:391
@@ -2653,14 +2688,14 @@ msgid "CPython"
 msgstr "CPython"
 
 #. i18n: ectx: Menu (file_new_from_template)
-#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1310
+#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1308
 #, kde-format
 msgid "New from Template"
 msgstr "חדש מתבנית"
 
 #. i18n: ectx: Menu (edit_tools)
-#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:406
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:805
+#: src/gui/glaxnimateui.rc:49 src/gui/widgets/dialogs/gw_impl_ui.cpp:404
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:803
 #, kde-format
 msgid "Tools"
 msgstr "כלים"
@@ -2678,7 +2713,7 @@ msgid "Layout"
 msgstr "פריסה"
 
 #. i18n: ectx: Menu (document)
-#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:482
+#: src/gui/glaxnimateui.rc:86 src/gui/widgets/dialogs/gw_impl_ui.cpp:480
 #, kde-format
 msgid "Document"
 msgstr "מסמך"
@@ -2698,13 +2733,13 @@ msgid "Web Preview"
 msgstr "תצוגה מקדימה לאתר"
 
 #. i18n: ectx: Menu (playback)
-#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:526
+#: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:524
 #, kde-format
 msgid "Playback"
 msgstr "נגינה"
 
 #. i18n: ectx: Menu (object)
-#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:634
+#: src/gui/glaxnimateui.rc:143 src/gui/widgets/dialogs/gw_impl_ui.cpp:632
 #, kde-format
 msgid "Object"
 msgstr "פריט"
@@ -2717,7 +2752,7 @@ msgstr "יישור ופיזור"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:205 src/gui/settings/plugin_settings_group.hpp:23
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1553
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1551
 #, kde-format
 msgid "Plugins"
 msgstr "תוספים"
@@ -2765,7 +2800,7 @@ msgstr "הגדרת התחלה"
 msgid "Update shape"
 msgstr "עדכון צורה"
 
-#: src/gui/graphics/composition_item.hpp:166
+#: src/gui/graphics/composition_item.hpp:167
 #, kde-format
 msgid "Resize Canvas"
 msgstr "שינוי גודל משטח ציור"
@@ -2917,16 +2952,12 @@ msgid "%1"
 msgstr "%1"
 
 #: src/gui/settings/document_templates.cpp:123
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
-#| "frame rate"
-#| msgid "%5 - %1x%2 %3 %4fps"
+#, kde-format
 msgctxt ""
 "%5 is the file name, %1 × %2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
 msgid "%5 — %1 × %2 %3 %4 fps"
-msgstr "%5 - %1x%2 %3 %4 תמוניות לשנייה"
+msgstr "%5 — %1 × %2 %3 %4 תמוניות לשנייה"
 
 #: src/gui/settings/document_templates.cpp:178
 #, kde-format
@@ -2946,7 +2977,7 @@ msgstr "לפי המערכת"
 #: src/gui/style/property_delegate.cpp:44
 #, kde-format
 msgid "%1% × %2%"
-msgstr ""
+msgstr "%1% × %2%"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
@@ -2998,12 +3029,12 @@ msgstr "ציור בזייה"
 msgid "Drag nodes"
 msgstr "גרירת נקודות"
 
-#: src/gui/tools/edit_tool.cpp:275 src/gui/widgets/dialogs/gw_impl_ui.cpp:748
+#: src/gui/tools/edit_tool.cpp:275 src/gui/widgets/dialogs/gw_impl_ui.cpp:746
 #, kde-format
 msgid "Cusp"
 msgstr "חד"
 
-#: src/gui/tools/edit_tool.cpp:279 src/gui/widgets/dialogs/gw_impl_ui.cpp:749
+#: src/gui/tools/edit_tool.cpp:279 src/gui/widgets/dialogs/gw_impl_ui.cpp:747
 #, kde-format
 msgid "Smooth"
 msgstr "חלק"
@@ -3061,12 +3092,12 @@ msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "הסרת עצירה"
 
-#: src/gui/tools/edit_tool.cpp:526 src/gui/widgets/dialogs/gw_impl_ui.cpp:753
+#: src/gui/tools/edit_tool.cpp:526 src/gui/widgets/dialogs/gw_impl_ui.cpp:751
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr "התמוססות נקודות"
 
-#: src/gui/tools/edit_tool.cpp:526 src/gui/widgets/dialogs/gw_impl_ui.cpp:740
+#: src/gui/tools/edit_tool.cpp:526 src/gui/widgets/dialogs/gw_impl_ui.cpp:738
 #, kde-format
 msgid "Delete Nodes"
 msgstr "מחיקת נקודות"
@@ -3086,7 +3117,7 @@ msgstr "שיטוח מקטעים"
 msgid "Curve segments"
 msgstr "עיקול מקטעים"
 
-#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:365
+#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:363
 #, kde-format
 msgid "Edit"
 msgstr "עריכה"
@@ -3137,19 +3168,19 @@ msgstr "בחירה"
 msgid "Drag"
 msgstr "גרירה"
 
-#: src/gui/tools/select_tool.cpp:400 src/gui/widgets/dialogs/gw_impl_ui.cpp:370
+#: src/gui/tools/select_tool.cpp:400 src/gui/widgets/dialogs/gw_impl_ui.cpp:368
 #, kde-format
 msgid "Undo %1"
 msgstr "הסגת %1"
 
-#: src/gui/tools/select_tool.cpp:405 src/gui/widgets/dialogs/gw_impl_ui.cpp:376
+#: src/gui/tools/select_tool.cpp:405 src/gui/widgets/dialogs/gw_impl_ui.cpp:374
 #, kde-format
 msgid "Redo %1"
 msgstr "ביצוע %1 מחדש"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_delete)
-#: src/gui/tools/select_tool.cpp:418 src/gui/widgets/dialogs/gw_impl_ui.cpp:391
+#: src/gui/tools/select_tool.cpp:418 src/gui/widgets/dialogs/gw_impl_ui.cpp:389
 #: src/gui/widgets/dialogs/selection_manager.cpp:90
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:46
 #: src/gui/widgets/docks/snippet_list_widget.ui:57
@@ -3180,7 +3211,7 @@ msgstr "ציור טקסט"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::AboutEnvironmentDialog)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:20
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:160
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:158
 #, kde-format
 msgid "About Environment"
 msgstr "על הסביבה"
@@ -3556,7 +3587,7 @@ msgstr "מילות מפתח"
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #. i18n: ectx: attribute (title), widget (QWidget, tab_custom)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:84
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:442
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:440
 #: src/gui/widgets/font/font_style_dialog.ui:77
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:58
 #, kde-format
@@ -3857,7 +3888,7 @@ msgid "Scalable Vector Graphics (*.svg)"
 msgstr "גרפיקת וקטורים נמתחת (‎*.svg)"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:640
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:504
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:502
 #, kde-format
 msgid "Validate Discord Sticker"
 msgstr "אימות מדבקות Discord"
@@ -3875,7 +3906,7 @@ msgid "Some issues detected"
 msgstr "התגלו כמה תקלות"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:650
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:501
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:499
 #, kde-format
 msgid "Validate Telegram Sticker"
 msgstr "אימות מדבקות טלגרם"
@@ -3931,155 +3962,155 @@ msgstr "יש %1 קובצי שמירה אוטומטית שאפשר לשחזר."
 msgid "Load Backup..."
 msgstr "טעינת גיבוי…"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:89
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:83
 #, kde-format
 msgid "Delete %1"
 msgstr "מחיקת %1"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:187
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:181
 #, kde-format
 msgid "Move Shapes"
 msgstr "הזזת צורות"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:211
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:205
 #, kde-format
 msgid "All Supported files (%1)"
 msgstr "כל הקבצים הנתמכים (%1)"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:238
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:245
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:255
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:232
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:239
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:249
 #, kde-format
 msgid "Import Image"
 msgstr "ייבוא תמונה"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:255
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:249
 #, kde-format
 msgid "Could not import image"
 msgstr "לא ניתן לייבא תמונה"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:292
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:286
 #, kde-format
 msgid "Cleanup Document"
 msgstr "ניקוי המסמך"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:300
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:294
 #, kde-format
 msgid "Removed %1 assets"
 msgstr "הוסרו %1 משאבים"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:308
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:302
 #, kde-format
 msgid "Convert to path"
 msgstr "המרה לנתיב"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:310
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:304
 #, kde-format
 msgid "Convert %1 to path"
 msgstr "המרת %1 לנתיב"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:493
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:487
 #, kde-format
 msgid "New Composition from Selection"
 msgstr "תרכובת חדשה מהבחירה"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:682
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:676
 #, kde-format
 msgid "Align Selection"
 msgstr "יישור הבחירה"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:724
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:718
 #, kde-format
 msgid "Drop"
 msgstr "השמטה"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:820
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:814
 #, kde-format
 msgid "Put text on path"
 msgstr "הצבת טקסט על נתיב"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:842
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:836
 #, kde-format
 msgid "Remove text from path"
 msgstr "הסרת טקסט מנתיב"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:135
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:133
 #, kde-format
 msgid "Put on Path"
 msgstr "הצבה על נתיב"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:138
-#: src/gui/widgets/menus/node_menu.cpp:435
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:136
+#: src/gui/widgets/menus/node_menu.cpp:430
 #, kde-format
 msgid "Remove from Path"
 msgstr "הסרה מנתיב"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:156
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:154
 #, kde-format
 msgid "Copy Debug Information"
 msgstr "העתקת פרטי ניפוי שגיאות"
 
 #. i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:298
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:296
 #, kde-format
 msgid "File"
 msgstr "קובץ"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:303
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:301
 #, kde-format
 msgid "Add Image…"
 msgstr "הוספת תמונה…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:306
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:304
 #, kde-format
 msgid "Import…"
 msgstr "ייבוא…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:309
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:307
 #, kde-format
 msgid "Import from LottieFiles…"
 msgstr "ייבוא מ־LottieFiles…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:312
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:310
 #, kde-format
 msgid "Open Most Recent"
 msgstr "פתיחת האחרונים"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:335
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:340
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:346
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:333
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:338
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:344
 #, kde-format
 msgid "Save as Template"
 msgstr "שמירה כתבנית"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:346
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:344
 #, kde-format
 msgid "Could not save template"
 msgstr "לא ניתן לשמור תבנית"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:350
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:348
 #, kde-format
 msgid "Export…"
 msgstr "ייצוא…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:353
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:351
 #, kde-format
 msgid "Export As…"
 msgstr "ייצוא בתור…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:356
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:354
 #, kde-format
 msgid "Export as Image Sequence…"
 msgstr "ייצוא כרצף תמונות…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:383
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:381
 #, kde-format
 msgid "Paste as Composition"
 msgstr "הדבקה כתרכובת"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_duplicate)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:386
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:384
 #: src/gui/widgets/docks/layers.ui:80 src/gui/widgets/docks/layers.ui:83
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:486
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:69
@@ -4087,34 +4118,34 @@ msgstr "הדבקה כתרכובת"
 msgid "Duplicate"
 msgstr "שכפול"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:437
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:435
 #, kde-format
 msgid "View"
 msgstr "תצוגה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:448
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:446
 #, kde-format
 msgid "Automatic"
 msgstr "אוטומטי"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:453
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:451
 #, kde-format
 msgid "Wide"
 msgstr "רחב"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:458
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:456
 #, kde-format
 msgid "Medium"
 msgstr "בינוני"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:463
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:461
 #, kde-format
 msgid "Compact"
 msgstr "מצומצם"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_angle_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_angle_reset)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:474
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:472
 #: src/gui/widgets/view_transform_widget.ui:150
 #: src/gui/widgets/view_transform_widget.ui:153
 #, kde-format
@@ -4123,186 +4154,186 @@ msgstr "איפוס ההטייה"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_flip_view)
 #. i18n: ectx: property (text), widget (QToolButton, btn_flip_view)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:476
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:474
 #: src/gui/widgets/view_transform_widget.ui:164
 #: src/gui/widgets/view_transform_widget.ui:167
 #, kde-format
 msgid "Flip View"
 msgstr "היפוך התצוגה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:484
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:482
 #, kde-format
 msgid "Raster…"
 msgstr "תיצוג…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:486
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:484
 #, kde-format
 msgid "SVG…"
 msgstr "SVG…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:489
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:487
 #, kde-format
 msgid "Lottie (SVG)"
 msgstr "Lottie (SVG)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:492
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:490
 #, kde-format
 msgid "Lottie (canvas)"
 msgstr "Lottie (משטח ציור)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:495
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:493
 #, kde-format
 msgid "SVG (SMIL)"
 msgstr "SVG (SMIL)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:498
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:496
 #, kde-format
 msgid "RIVE (canvas)"
 msgstr "RIVE (משטח ציור)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:507
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:505
 #, kde-format
 msgid "Resize…"
 msgstr "שינוי גודל…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:510
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:508
 #, kde-format
 msgid "Cleanup"
 msgstr "ניקוי"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:513
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:511
 #, kde-format
 msgid "Timing…"
 msgstr "תזמון…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:518
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:516
 #, kde-format
 msgid "Metadata…"
 msgstr "נתוני־על…"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:529
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:553
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:527
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:551
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
 #, kde-format
 msgid "Play"
 msgstr "נגינה"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_loop)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:531
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:529
 #: src/gui/widgets/timeline/frame_controls_widget.ui:63
 #, kde-format
 msgid "Loop"
 msgstr "חזרה בלולאה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:533
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:531
 #, kde-format
 msgid "Record Keyframes"
 msgstr "הקלטת תמוניות מפתח"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:535
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:533
 #, kde-format
 msgid "Jump to Start"
 msgstr "קפיצה להתחלה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:537
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:535
 #, kde-format
 msgid "Jump to End"
 msgstr "קפיצה לסוף"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:539
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:537
 #, kde-format
 msgid "Next Frame"
 msgstr "התמונית הבאה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:541
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:539
 #, kde-format
 msgid "Previous Frame"
 msgstr "התמונית הקודמת"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:549
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:547
 #, kde-format
 msgid "Pause"
 msgstr "השהיה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:604
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:602
 #, kde-format
 msgid "Precompose Selection"
 msgstr "הרכבת הבחירה מראש"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:608
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:606
 #, kde-format
 msgid "New Composition"
 msgstr "תרכובת חדשה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:623
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:621
 #, kde-format
 msgid "Emoji…"
 msgstr "אמוג׳י…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:636
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:634
 #, kde-format
 msgid "Raise to Top"
 msgstr "הגבהה לראש"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:645
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:643
 #, kde-format
 msgid "Lower to Bottom"
 msgstr "הנמכה לתחתית"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:648
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:646
 #, kde-format
 msgid "Move to…"
 msgstr "העברה אל…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:654
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:652
 #, kde-format
 msgid "Ungroup"
 msgstr "פירוק"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:657
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:655
 #: src/gui/widgets/docks/aligndock.cpp:46
 #, kde-format
 msgid "Align"
 msgstr "יישור"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:659
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:657
 #, kde-format
 msgid "Selection"
 msgstr "בחירה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:661
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:659
 #, kde-format
 msgid "Canvas"
 msgstr "משטח ציור"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:663
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:661
 #, kde-format
 msgid "Canvas (as Group)"
 msgstr "משטח ציור (כקבוצה)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:666
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:664
 #, kde-format
 msgid "Left"
 msgstr "שמאל"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:669
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:678
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:667
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:676
 #, kde-format
 msgid "Center"
 msgstr "מרכז"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:672
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
 #, kde-format
 msgid "Right"
 msgstr "ימין"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:675
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:673
 #, kde-format
 msgid "Top"
 msgstr "למעלה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:681
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:679
 #, kde-format
 msgid "Bottom"
 msgstr "למטה"
@@ -4310,153 +4341,153 @@ msgstr "למטה"
 #. i18n("Relative To"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_horizontal"), i18n("Horizontal"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_vertical"), i18n("Vertical"), QStringLiteral(""));
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
 #, kde-format
 msgid "Outside Left"
 msgstr "מחוץ משמאל"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:691
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:689
 #, kde-format
 msgid "Outside Right"
 msgstr "מחוץ מימין"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:694
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
 #, kde-format
 msgid "Outside Top"
 msgstr "מחוץ למעלה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:697
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:695
 #, kde-format
 msgid "Outside Bottom"
 msgstr "מחוץ למטה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:716
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:714
 #, kde-format
 msgid "Object to Path"
 msgstr "פריט לנתיב"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:719
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:717
 #, kde-format
 msgid "Trace Bitmap…"
 msgstr "מעקב אחר מפת סיביות…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:724
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:722
 #, kde-format
 msgid "Union"
 msgstr "איחוד"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:727
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:725
 #: src/gui/widgets/enum_combo.cpp:145
 #, kde-format
 msgid "Difference"
 msgstr "הבדל"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:730
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:728
 #, kde-format
 msgid "Intersect"
 msgstr "חצייה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:733
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:731
 #: src/gui/widgets/enum_combo.cpp:147
 #, kde-format
 msgid "Exclusion"
 msgstr "החרגה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:737
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:735
 #, kde-format
 msgid "Reverse"
 msgstr "היפוך"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:741
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:739
 #, kde-format
 msgid "Add Node…"
 msgstr "הוספת נקודה…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:743
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:741
 #, kde-format
 msgid "Join Nodes"
 msgstr "צירוף נקודות"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:745
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:743
 #, kde-format
 msgid "Split Nodes"
 msgstr "פיצול נקודות"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:750
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:748
 #, kde-format
 msgid "Symmetric"
 msgstr "סימטרית"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:751
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:749
 #, kde-format
 msgid "Make segments straight"
 msgstr "יישור מקטעים"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:752
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:750
 #, kde-format
 msgid "Make segments curved"
 msgstr "עיגול מקטעים"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:798
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:796
 #, kde-format
 msgid "Reverse path"
 msgstr "היפוך נתיב"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:896
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:894
 #, kde-format
 msgid "Recording Keyframes"
 msgstr "הקלטת תמוניות מפתח"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1310
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1308
 #, kde-format
 msgid "Could not load template"
 msgstr "לא ניתן לטעון תבנית"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1509
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1518
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1525
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1507
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1516
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1523
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
 msgstr "מעקב אחר מפת סיביות"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1509
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1507
 #, kde-format
 msgid "Only select one image"
 msgstr "יש לבחור תמונה אחת בלבד"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1518
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1516
 #, kde-format
 msgid "You need to select an image to trace"
 msgstr "יש לבחור תמונה למעקב אחריה"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1525
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1523
 #, kde-format
 msgid "You selected an image with no data"
 msgstr "בחרת תמונה בלי נתונים"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1612
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1610
 #, kde-format
 msgid "X: %1 Y: %2"
 msgstr "X: %1 Y: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1631
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1629
 #, kde-format
 msgid "Drop File"
 msgstr "השמטת קובץ"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1642
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1640
 #, kde-format
 msgid "Add to current file?"
 msgstr "להוסיף לקובץ הנוכחי?"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1648
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1646
 #, kde-format
 msgid "Add as Object"
 msgstr "הוספה כפריט"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1654
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1652
 #, kde-format
 msgid "Add as Composition"
 msgstr "הוספה כתרכובת"
@@ -4590,10 +4621,9 @@ msgid "Delete All"
 msgstr "למחוק הכול"
 
 #: src/gui/widgets/dialogs/startup_dialog.cpp:131
-#, fuzzy, kde-format
-#| msgid " fps"
+#, kde-format
 msgid "%1 fps"
-msgstr " תמוניות לשנייה"
+msgstr "%1 תמוניות לשנייה"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, StartupDialog)
 #: src/gui/widgets/dialogs/startup_dialog.ui:18
@@ -4936,7 +4966,7 @@ msgstr "הוספת צבע"
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #: src/gui/widgets/dialogs/trace_dialog.ui:397
 #: src/gui/widgets/docks/layers.ui:66 src/gui/widgets/docks/layers.ui:69
-#: src/gui/widgets/menus/node_menu.cpp:275
+#: src/gui/widgets/enum_combo.cpp:157 src/gui/widgets/menus/node_menu.cpp:292
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:75
 #, kde-format
 msgid "Add"
@@ -5581,9 +5611,7 @@ msgid "Remove Keyframe"
 msgstr "הסרת תמונית מפתח‏"
 
 #: src/gui/widgets/menus/node_menu.cpp:50
-#: src/gui/widgets/menus/node_menu.cpp:290
-#: src/gui/widgets/menus/node_menu.cpp:385
-#: src/gui/widgets/menus/node_menu.cpp:402
+#: src/gui/widgets/menus/node_menu.cpp:275
 #, kde-format
 msgid "Reset Transform"
 msgstr "איפוס התמרה"
@@ -5603,146 +5631,141 @@ msgstr "העברה לתחתית"
 msgid "Convert %1 to %2"
 msgstr "המרת %1 אל %2"
 
-#: src/gui/widgets/menus/node_menu.cpp:294
+#: src/gui/widgets/menus/node_menu.cpp:279
 #, kde-format
 msgid "Auto Orient"
 msgstr "הכוונה אוטומטית"
 
-#: src/gui/widgets/menus/node_menu.cpp:301
+#: src/gui/widgets/menus/node_menu.cpp:286
 #, kde-format
 msgid "Blend Mode"
 msgstr "מצב ערבול"
 
-#: src/gui/widgets/menus/node_menu.cpp:307
-#: src/gui/widgets/menus/node_menu.cpp:308
+#: src/gui/widgets/menus/node_menu.cpp:312
+#: src/gui/widgets/menus/node_menu.cpp:313
 #, kde-format
 msgid "Span All Frames"
 msgstr "פריסת כל התמוניות"
 
-#: src/gui/widgets/menus/node_menu.cpp:318
+#: src/gui/widgets/menus/node_menu.cpp:323
 #, kde-format
 msgid "Parent"
 msgstr "הורה"
 
-#: src/gui/widgets/menus/node_menu.cpp:319
+#: src/gui/widgets/menus/node_menu.cpp:324
 #, kde-format
 msgid "Convert to Group"
 msgstr "המרה לקבוצה"
 
-#: src/gui/widgets/menus/node_menu.cpp:320
+#: src/gui/widgets/menus/node_menu.cpp:325
 #, kde-format
 msgid "Precompose"
 msgstr "הרכבה מראש"
 
-#: src/gui/widgets/menus/node_menu.cpp:325
+#: src/gui/widgets/menus/node_menu.cpp:330
 #, kde-format
 msgid "Inverted"
 msgstr "הפוך"
 
-#: src/gui/widgets/menus/node_menu.cpp:339
+#: src/gui/widgets/menus/node_menu.cpp:344
 #, kde-format
 msgid "Convert to Layer"
 msgstr "המרה לשכבה"
 
-#: src/gui/widgets/menus/node_menu.cpp:343
-#, kde-format
-msgid "Convert to Mask"
-msgstr "המרה למסכה"
-
-#: src/gui/widgets/menus/node_menu.cpp:348
+#: src/gui/widgets/menus/node_menu.cpp:347
 #, kde-format
 msgid "Convert to Path"
 msgstr "המרה לנתיב"
 
-#: src/gui/widgets/menus/node_menu.cpp:353
+#: src/gui/widgets/menus/node_menu.cpp:352
 #, kde-format
 msgid "Embed"
 msgstr "הטמעה"
 
-#: src/gui/widgets/menus/node_menu.cpp:357
+#: src/gui/widgets/menus/node_menu.cpp:356
 #, kde-format
 msgid "Open with External Application"
 msgstr "פתיחה ביישום חיצוני"
 
-#: src/gui/widgets/menus/node_menu.cpp:359
+#: src/gui/widgets/menus/node_menu.cpp:358
 #, kde-format
 msgid "Could not find suitable application, check your system settings."
 msgstr "לא ניתן למצוא יישום מתאים, נא לבדוק שהגדרת המערכת שלך תקינות."
 
-#: src/gui/widgets/menus/node_menu.cpp:363
+#: src/gui/widgets/menus/node_menu.cpp:362
 #, kde-format
 msgid "From File..."
 msgstr "מקובץ…"
 
-#: src/gui/widgets/menus/node_menu.cpp:364
-#: src/gui/widgets/menus/node_menu.cpp:368
+#: src/gui/widgets/menus/node_menu.cpp:363
+#: src/gui/widgets/menus/node_menu.cpp:367
 #, kde-format
 msgid "Update Image"
 msgstr "עדכון תמונה"
 
-#: src/gui/widgets/menus/node_menu.cpp:395
+#: src/gui/widgets/menus/node_menu.cpp:392
 #, kde-format
 msgid "Trace Bitmap..."
 msgstr "מעקב אחר מפת סיביות…"
 
-#: src/gui/widgets/menus/node_menu.cpp:406
+#: src/gui/widgets/menus/node_menu.cpp:401
 #, kde-format
 msgid "Rename from Composition"
 msgstr "שינוי שם מתרכובת"
 
-#: src/gui/widgets/menus/node_menu.cpp:410
-#: src/gui/widgets/menus/node_menu.cpp:411
+#: src/gui/widgets/menus/node_menu.cpp:405
+#: src/gui/widgets/menus/node_menu.cpp:406
 #, kde-format
 msgid "Decompose"
 msgstr "פירוק תרכובת"
 
-#: src/gui/widgets/menus/node_menu.cpp:449
+#: src/gui/widgets/menus/node_menu.cpp:444
 #, kde-format
 msgid "Stretch time"
 msgstr "מתיחת הזמן"
 
-#: src/gui/widgets/menus/node_menu.cpp:450
+#: src/gui/widgets/menus/node_menu.cpp:445
 #, kde-format
 msgid "Speed Multiplier"
 msgstr "מכפיל מהירות"
 
-#: src/gui/widgets/menus/node_menu.cpp:467
+#: src/gui/widgets/menus/node_menu.cpp:462
 #, kde-format
 msgctxt "@option:check"
 msgid "Visible"
 msgstr "גלוי"
 
-#: src/gui/widgets/menus/node_menu.cpp:468
+#: src/gui/widgets/menus/node_menu.cpp:463
 #, kde-format
 msgctxt "@option:check"
 msgid "Locked"
 msgstr "נעול"
 
-#: src/gui/widgets/menus/node_menu.cpp:473
+#: src/gui/widgets/menus/node_menu.cpp:468
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Delete"
 msgstr "מחיקה"
 
-#: src/gui/widgets/menus/node_menu.cpp:477
+#: src/gui/widgets/menus/node_menu.cpp:472
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Duplicate"
 msgstr "שכפול"
 
-#: src/gui/widgets/menus/node_menu.cpp:490
+#: src/gui/widgets/menus/node_menu.cpp:485
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Move to..."
 msgstr "העברה אל…"
 
-#: src/gui/widgets/menus/node_menu.cpp:518
+#: src/gui/widgets/menus/node_menu.cpp:513
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Convert to Path"
 msgstr "המרה לנתיב"
 
-#: src/gui/widgets/menus/node_menu.cpp:535
+#: src/gui/widgets/menus/node_menu.cpp:530
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Change speed"
@@ -6621,11 +6644,17 @@ msgstr ""
 msgid "Traced %1"
 msgstr "%1 נעקב"
 
+#~ msgid "auto_orient"
+#~ msgstr "כיוון_אוטומטי"
+
+#~ msgid "Cannot use %1 as parent as it couldn't be loaded"
+#~ msgstr "לא ניתן להשתמש ב־%1 כהורה כיוון שלא נטען לטעון אותו"
+
+#~ msgid "Convert to Mask"
+#~ msgstr "המרה למסכה"
+
 #~ msgid "libarchive"
 #~ msgstr "libarchive"
-
-#~ msgid "shapes"
-#~ msgstr "צורות"
 
 #~ msgid "zlib"
 #~ msgstr "zlib"
