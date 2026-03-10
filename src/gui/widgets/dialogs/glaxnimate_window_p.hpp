@@ -140,7 +140,8 @@ public:
         Auto,
         Wide,
         Medium,
-        Compact
+        Compact,
+        Mobile
     };
 
     Canvas *canvas;
@@ -321,6 +322,7 @@ public:
     void layout_compact();
     void layout_custom();
     void layout_update();
+    void layout_mobile();
 
     // IPC
     void ipc_connect(const QString& name);

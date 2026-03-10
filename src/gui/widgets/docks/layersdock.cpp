@@ -54,3 +54,25 @@ glaxnimate::gui::LayerView* LayersDock::layer_view()
 {
     return d->ui.view_document_node;
 }
+
+void glaxnimate::gui::LayersDock::resizeEvent(QResizeEvent* ev)
+{
+    auto margins = d->ui.main_layout->contentsMargins();
+    int threshold = d->ui.buttons_layout->minimumSize().width() + margins.left() + margins.right();
+    if ( ev->size().width() < threshold + 16 )
+    {
+        if ( d->ui.main_layout->indexOf(d->ui.order_layout) == -1 )
+        {
+            d->ui.buttons_layout->removeItem(d->ui.order_layout);
+            d->ui.main_layout->addLayout(d->ui.order_layout);
+        }
+    }
+    else if (
+        d->ui.buttons_layout->indexOf(d->ui.order_layout) == -1 &&
+        ev->size().width() > threshold + d->ui.order_layout->minimumSize().width() + 24
+    )
+    {
+        d->ui.main_layout->removeItem(d->ui.order_layout);
+        d->ui.buttons_layout->addLayout(d->ui.order_layout);
+    }
+}

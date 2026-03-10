@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+ <author>
+SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia &gt;dev@dragon.best&lt;
+SPDX-License-Identifier: GPL-3.0-or-later
+ </author>
  <class>dock_properties</class>
  <widget class="QDockWidget" name="dock_properties">
   <property name="geometry">
@@ -28,7 +32,7 @@
      <widget class="QTreeView" name="view_properties">
       <property name="minimumSize">
        <size>
-        <width>333</width>
+        <width>200</width>
         <height>0</height>
        </size>
       </property>
@@ -46,6 +50,9 @@
         <width>32</width>
         <height>32</height>
        </size>
+      </property>
+      <property name="rootIsDecorated">
+       <bool>false</bool>
       </property>
       <attribute name="headerMinimumSectionSize">
        <number>32</number>

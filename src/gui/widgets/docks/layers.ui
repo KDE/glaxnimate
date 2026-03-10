@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
-
-SPDX-License-Identifier: GPL-3.0-or-later
--->
 <ui version="4.0">
+ <author>
+SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia &gt;dev@dragon.best&lt;
+SPDX-License-Identifier: GPL-3.0-or-later
+ </author>
  <class>dock_layers</class>
  <widget class="QDockWidget" name="dock_layers">
   <property name="geometry">
@@ -22,24 +21,29 @@ SPDX-License-Identifier: GPL-3.0-or-later
    </sizepolicy>
   </property>
   <property name="windowIcon">
-   <iconset theme="dialog-layers">
-    <normaloff>.</normaloff>.</iconset>
+   <iconset theme="dialog-layers"/>
   </property>
   <property name="windowTitle">
    <string>Layers</string>
   </property>
   <widget class="QWidget" name="dockWidgetContents">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="main_layout">
     <item>
      <widget class="glaxnimate::gui::LayerView" name="view_document_node">
+      <property name="minimumSize">
+       <size>
+        <width>200</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="dragEnabled">
        <bool>true</bool>
       </property>
       <property name="dragDropMode">
-       <enum>QAbstractItemView::InternalMove</enum>
+       <enum>QAbstractItemView::DragDropMode::InternalMove</enum>
       </property>
       <property name="selectionMode">
-       <enum>QAbstractItemView::ExtendedSelection</enum>
+       <enum>QAbstractItemView::SelectionMode::ExtendedSelection</enum>
       </property>
       <property name="autoExpandDelay">
        <number>500</number>
@@ -59,7 +63,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="buttons_layout">
       <item>
        <widget class="QToolButton" name="btn_layer_add">
         <property name="toolTip">
@@ -105,7 +109,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -116,60 +120,77 @@ SPDX-License-Identifier: GPL-3.0-or-later
        </spacer>
       </item>
       <item>
-       <widget class="QToolButton" name="btn_layer_top">
-        <property name="toolTip">
-         <string>Move To Top</string>
-        </property>
-        <property name="text">
-         <string>Move To Top</string>
-        </property>
-        <property name="icon">
-         <iconset theme="layer-top">
-          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="btn_layer_up">
-        <property name="toolTip">
-         <string>Move Up</string>
-        </property>
-        <property name="text">
-         <string>Move Up</string>
-        </property>
-        <property name="icon">
-         <iconset theme="layer-raise">
-          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="btn_layer_down">
-        <property name="toolTip">
-         <string>Move Down</string>
-        </property>
-        <property name="text">
-         <string>Move Down</string>
-        </property>
-        <property name="icon">
-         <iconset theme="layer-lower">
-          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="btn_layer_bottom">
-        <property name="toolTip">
-         <string>Move To Bottom</string>
-        </property>
-        <property name="text">
-         <string>Move To Bottom</string>
-        </property>
-        <property name="icon">
-         <iconset theme="layer-bottom">
-          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="order_layout">
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QToolButton" name="btn_layer_up">
+          <property name="toolTip">
+           <string>Move Up</string>
+          </property>
+          <property name="text">
+           <string>Move Up</string>
+          </property>
+          <property name="icon">
+           <iconset theme="layer-raise">
+            <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="btn_layer_top">
+          <property name="toolTip">
+           <string>Move To Top</string>
+          </property>
+          <property name="text">
+           <string>Move To Top</string>
+          </property>
+          <property name="icon">
+           <iconset theme="layer-top">
+            <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="btn_layer_down">
+          <property name="toolTip">
+           <string>Move Down</string>
+          </property>
+          <property name="text">
+           <string>Move Down</string>
+          </property>
+          <property name="icon">
+           <iconset theme="layer-lower">
+            <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="btn_layer_bottom">
+          <property name="toolTip">
+           <string>Move To Bottom</string>
+          </property>
+          <property name="text">
+           <string>Move To Bottom</string>
+          </property>
+          <property name="icon">
+           <iconset theme="layer-bottom">
+            <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </item>

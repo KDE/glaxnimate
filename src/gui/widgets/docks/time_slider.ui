@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
-
-SPDX-License-Identifier: GPL-3.0-or-later
--->
 <ui version="4.0">
+ <author>
+SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia &gt;dev@dragon.best&lt;
+SPDX-License-Identifier: GPL-3.0-or-later
+ </author>
  <class>dock_time_slider</class>
  <widget class="QDockWidget" name="dock_time_slider">
   <property name="geometry">
@@ -12,7 +11,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>60</height>
    </rect>
   </property>
   <property name="windowIcon">
@@ -22,7 +21,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
    <string>Compact Timeline</string>
   </property>
   <widget class="QWidget" name="dockWidgetContents">
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
      <number>0</number>
     </property>

@@ -227,6 +227,9 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
         case LayoutPreset::Medium:
             layout_medium();
             break;
+        case LayoutPreset::Mobile:
+            layout_mobile();
+            break;
         case LayoutPreset::Custom:
             layout_auto();
             GlaxnimateSettings::setLayout(int(LayoutPreset::Custom));
@@ -467,6 +470,11 @@ void GlaxnimateWindow::Private::setup_view_actions()
     layoutCompact->setActionGroup(layout_actions);
     layoutCompact->setCheckable(true);
     connect(layoutCompact, &QAction::triggered, parent, [this]{layout_update();});
+
+    QAction *layoutMobile = add_action(viewActions, QStringLiteral("layout_mobile"), i18n("Mobile"), {}, QStringLiteral("Layout best suited for small portrait screens"));
+    layoutMobile->setActionGroup(layout_actions);
+    layoutMobile->setCheckable(true);
+    connect(layoutMobile, &QAction::triggered, parent, [this]{layout_update();});
 
 
     viewActions->addAction(KStandardActions::ZoomIn, canvas, &Canvas::zoom_in);
@@ -1061,7 +1069,7 @@ void GlaxnimateWindow::Private::layout_update()
     QAction *layoutCompact = parent->actionCollection()->action(QStringLiteral("layout_compact"));
     QAction *layoutCustom = parent->actionCollection()->action(QStringLiteral("layout_custom"));
     QAction *layoutMedium = parent->actionCollection()->action(QStringLiteral("layout_medium"));
-
+    QAction* action_mobile = parent->actionCollection()->action(QStringLiteral("layout_mobile"));
 
     if ( layoutWide->isChecked() )
         layout_wide();
@@ -1071,6 +1079,8 @@ void GlaxnimateWindow::Private::layout_update()
         layout_custom();
     else if ( layoutMedium->isChecked() )
         layout_medium();
+    else if ( action_mobile->isChecked() )
+        layout_mobile();
     else
         layout_auto();
 }
@@ -1103,7 +1113,6 @@ void GlaxnimateWindow::Private::layout_medium()
     layers_dock->setVisible(true);
     grid_dock->setVisible(false);
 
-
     // Right
     parent->addDockWidget(Qt::RightDockWidgetArea, colors_dock);
     parent->tabifyDockWidget(colors_dock, stroke_dock);
@@ -1113,7 +1122,6 @@ void GlaxnimateWindow::Private::layout_medium()
     stroke_dock->setVisible(true);
     undo_dock->setVisible(true);
 
-
     // Left
     parent->addDockWidget(Qt::LeftDockWidgetArea, tools_dock);
 
@@ -1122,6 +1130,11 @@ void GlaxnimateWindow::Private::layout_medium()
     tool_options_dock->raise();
     tool_options_dock->setVisible(true);
     align_dock->setVisible(true);
+
+    // Toolbars
+    KToolBar *toolbar_tools = parent->toolBar(QStringLiteral("toolsToolBar"));
+    parent->addToolBar(Qt::LeftToolBarArea, toolbar_tools);
+    toolbar_tools->setVisible(true);
 
     // Resize
     parent->resizeDocks({snippets_dock}, {1}, Qt::Horizontal);
@@ -1180,7 +1193,6 @@ void GlaxnimateWindow::Private::layout_wide()
     stroke_dock->setVisible(true);
     undo_dock->setVisible(true);
 
-
     // Left
     parent->addDockWidget(Qt::LeftDockWidgetArea, tools_dock);
 
@@ -1188,6 +1200,11 @@ void GlaxnimateWindow::Private::layout_wide()
     parent->addDockWidget(Qt::LeftDockWidgetArea, align_dock);
     tool_options_dock->setVisible(true);
     align_dock->setVisible(true);
+
+    // Toolbars
+    KToolBar *toolbar_tools = parent->toolBar(QStringLiteral("toolsToolBar"));
+    parent->addToolBar(Qt::LeftToolBarArea, toolbar_tools);
+    toolbar_tools->setVisible(true);
 
     // Resize
     parent->resizeDocks({snippets_dock}, {1}, Qt::Horizontal);
@@ -1252,6 +1269,11 @@ void GlaxnimateWindow::Private::layout_compact()
     tool_options_dock->setVisible(true);
     align_dock->setVisible(true);
 
+    // Toolbars
+    KToolBar *toolbar_tools = parent->toolBar(QStringLiteral("toolsToolBar"));
+    parent->addToolBar(Qt::LeftToolBarArea, toolbar_tools);
+    toolbar_tools->setVisible(true);
+
     // Resize
     parent->resizeDocks({tool_options_dock, align_dock, tools_dock}, {1, 1, 4000}, Qt::Vertical);
     parent->resizeDocks({time_slider_dock}, {64}, Qt::Vertical);
@@ -1268,6 +1290,70 @@ void GlaxnimateWindow::Private::layout_compact()
     layoutCompact->setChecked(true);
 }
 
+
+void GlaxnimateWindow::Private::layout_mobile()
+{
+    // Bottom
+    parent->addDockWidget(Qt::BottomDockWidgetArea, time_slider_dock);
+    parent->tabifyDockWidget(time_slider_dock, timeline_dock);
+    parent->tabifyDockWidget(timeline_dock, scriptconsole_dock);
+    parent->tabifyDockWidget(scriptconsole_dock, logs_dock);
+    time_slider_dock->raise();
+    time_slider_dock->setVisible(true);
+    timeline_dock->setVisible(false);
+    logs_dock->setVisible(false);
+
+    parent->addDockWidget(Qt::BottomDockWidgetArea, snippets_dock);
+
+    // Right
+    parent->addDockWidget(Qt::RightDockWidgetArea, colors_dock);
+    parent->tabifyDockWidget(colors_dock, stroke_dock);
+    parent->tabifyDockWidget(stroke_dock, layers_dock);
+    parent->tabifyDockWidget(layers_dock, properties_dock);
+    parent->tabifyDockWidget(properties_dock, undo_dock);
+    parent->tabifyDockWidget(undo_dock, gradients_dock);
+    parent->tabifyDockWidget(gradients_dock, swatches_dock);
+    parent->tabifyDockWidget(swatches_dock, assets_dock);
+    parent->tabifyDockWidget(assets_dock, grid_dock);
+    parent->tabifyDockWidget(grid_dock, tools_dock);
+    parent->tabifyDockWidget(tools_dock, tool_options_dock);
+    parent->tabifyDockWidget(tool_options_dock, align_dock);
+
+    colors_dock->raise();
+    colors_dock->setVisible(true);
+    stroke_dock->setVisible(true);
+    gradients_dock->setVisible(false);
+    assets_dock->setVisible(false);
+    swatches_dock->setVisible(false);
+    undo_dock->setVisible(false);
+    properties_dock->setVisible(true);
+    layers_dock->setVisible(true);
+    grid_dock->setVisible(false);
+    tools_dock->setVisible(false);
+    align_dock->setVisible(false);
+    tool_options_dock->setVisible(false);
+
+    // Toolbars
+    KToolBar *toolbar_tools = parent->toolBar(QStringLiteral("toolsToolBar"));
+    parent->addToolBar(Qt::BottomToolBarArea, toolbar_tools);
+    toolbar_tools->setVisible(true);
+
+    // Resize
+    // parent->resizeDocks({tool_options_dock, align_dock, tools_dock}, {1, 1, 4000}, Qt::Vertical);
+    parent->resizeDocks({colors_dock, stroke_dock, layers_dock, properties_dock}, {64}, Qt::Horizontal);
+    parent->resizeDocks({time_slider_dock}, {64}, Qt::Vertical);
+    scriptconsole_dock->setVisible(false);
+    logs_dock->setVisible(false);
+    snippets_dock->setVisible(false);
+
+    // Resize parent to have a reasonable default size
+    parent->resize(400, 900);
+
+    GlaxnimateSettings::setLayout(int(LayoutPreset::Compact));
+    QAction *layoutCompact = parent->actionCollection()->action(QStringLiteral("layout_compact"));
+    layoutCompact->setChecked(true);
+}
+
 void GlaxnimateWindow::Private::layout_auto()
 {
     auto real_estate = qApp->primaryScreen()->availableSize();
@@ -1275,8 +1361,10 @@ void GlaxnimateWindow::Private::layout_auto()
         layout_wide();
     else if ( real_estate.width() >= 1440 && real_estate.height() >= 900 )
         layout_medium();
-    else
+    else if ( real_estate.width() > real_estate.height() )
         layout_compact();
+    else
+        layout_mobile();
 
     GlaxnimateSettings::setLayout(int(LayoutPreset::Auto));
     QAction *layoutAuto = parent->actionCollection()->action(QStringLiteral("layout_automatic"));

@@ -25,6 +25,9 @@ public:
 
     glaxnimate::gui::LayerView* layer_view();
 
+protected:
+    void resizeEvent(QResizeEvent* ev) override;
+
 Q_SIGNALS:
     void add_layer();
     void duplicate_layer();
