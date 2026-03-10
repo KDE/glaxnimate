@@ -214,6 +214,7 @@ private:
                 auto it = lottie_to_array_index.find(parent_index);
                 if ( it == lottie_to_array_index.end() )
                 {
+                    layer.has_parent = false;
                     warning(
                         i18n("Invalid parent layer %1", parent_index),
                         json
@@ -610,6 +611,7 @@ private:
         props.erase("ind");
 
         load_properties(data.layer, fields["DocumentNode"], data.json, props);
+        load_properties(data.layer, fields["Composable"], data.json, props);
         load_properties(data.layer, fields["__Layer__"], data.json, props);
 
         load_composable(data.json, data.layer, props);
