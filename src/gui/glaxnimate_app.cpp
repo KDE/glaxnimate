@@ -98,8 +98,6 @@ void GlaxnimateApp::on_initialize()
     log::Logger::instance().add_listener<log::ListenerStderr>();
     store_logger = log::Logger::instance().add_listener<log::ListenerStore>();
 
-    setWindowIcon(QIcon(data_file("images/logo.svg")));
-
     QDir().mkpath(backup_path());
 }
 
@@ -264,7 +262,10 @@ void GlaxnimateApp::init_qapplication()
 
     KAboutData::setApplicationData(aboutData);
     if ( qApp )
+    {
         qApp->setOrganizationName(info.organization());
+        qApp->setWindowIcon(QIcon(instance()->data_file("images/logo.svg")));
+    }
 }
 
 

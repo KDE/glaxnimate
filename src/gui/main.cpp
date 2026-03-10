@@ -6,6 +6,7 @@
 
 #include <QSplashScreen>
 #include <QtGlobal>
+#include <QWindow>
 
 #include <kiconthemes_version.h>
 
@@ -15,7 +16,7 @@
 
 #define HAVE_STYLE_MANAGER __has_include(<KStyleManager>)
 #if HAVE_STYLE_MANAGER
-#include <KStyleManager>
+#   include <KStyleManager>
 #endif
 #include <KIconTheme>
 
@@ -50,11 +51,6 @@ int main(int argc, char *argv[])
     gui::GlaxnimateApp app(argc, argv);
     KLocalizedString::setApplicationDomain("glaxnimate");
 
-#if HAVE_STYLE_MANAGER
-    // trigger initialisation of proper application style
-    KStyleManager::initStyle();
-#endif
-
 #ifndef Q_OS_ANDROID
     KCrash::setDrKonqiEnabled(true);
     KCrash::initialize();
@@ -62,16 +58,36 @@ int main(int argc, char *argv[])
 
     gui::GlaxnimateApp::init_qapplication();
 
+    auto args = gui::parse_cli(app.arguments());
+
+    QSplashScreen sc;
+    if ( !gui::cli_no_gui(args) )
+    {
+        sc.setPixmap(QPixmap(":glaxnimate/splash.svg"));
+        sc.show();
+
+        // Force the splash screen to show
+        for ( int i = 0; i < 200 && !sc.windowHandle()->isExposed(); i++)
+        {
+            QCoreApplication::processEvents(QEventLoop::AllEvents, 1);
+            QCoreApplication::sendPostedEvents();
+        }
+    }
+
     plugin::python::PythonEngine::add_module_search_paths(utils::data_paths("lib/"));
 
     io::IoRegistry::load_formats();
-
-    auto args = gui::parse_cli(app.arguments());
 
     gui::cli_main(app, args);
 
     if ( args.return_value )
         return *args.return_value;
+
+#if HAVE_STYLE_MANAGER
+    // trigger initialisation of proper application style
+    KStyleManager::initStyle();
+#endif
+
 
     gui::settings::IconSettings::instance().initialize();
 
@@ -96,11 +112,6 @@ int main(int argc, char *argv[])
 #endif
 
     qRegisterMetaType<log::Severity>();
-
-    QSplashScreen sc;
-    sc.setPixmap(QPixmap(":glaxnimate/splash.svg"));
-    sc.show();
-    app.processEvents();
 
     app.initialize();
 

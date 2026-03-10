@@ -454,3 +454,15 @@ void glaxnimate::gui::cli_main(gui::GlaxnimateApp& app, glaxnimate::cli::ParsedA
             args.return_value = 0;
     }
 }
+
+bool glaxnimate::gui::cli_no_gui(const glaxnimate::cli::ParsedArguments& args)
+{
+    if ( args.has_flag("export-format-list") )
+        return true;
+    if ( args.has_flag("render-format-list") )
+        return true;
+    if ( args.is_defined("render") )
+        return true;
+    return false;
+}
+
