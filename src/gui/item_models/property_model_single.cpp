@@ -26,10 +26,13 @@ public:
         for ( model::BaseProperty* prop : object->properties() )
         {
 
-            // skip object lists
+            // skip object lists and data props
             if (
-                (prop->traits().flags & model::PropertyTraits::List) &&
-                prop->traits().type == model::PropertyTraits::Object
+                prop->traits().type == model::PropertyTraits::Data ||
+                (
+                    (prop->traits().flags & model::PropertyTraits::List) &&
+                    prop->traits().type == model::PropertyTraits::Object
+                )
             )
                 continue;
 
