@@ -80,6 +80,7 @@ public:
 
     QVariant data_value(Subtree* tree, int role);
     QVariant data_value(model::BaseProperty* prop, model::Object* object, int role);
+    QVariant data_toggle_keyframe(glaxnimate::model::AnimatableBase* prop, int role);
 
     virtual void on_connect(model::Object* object, Subtree* tree, bool insert_row, ReferencedPropertiesMap* referenced) = 0;
 

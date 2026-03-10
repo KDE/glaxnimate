@@ -228,26 +228,6 @@ public:
         return {};
     }
 
-    QIcon transparent_icon(const QIcon& icon, qreal alpha = 0.3)
-    {
-        QIcon out;
-
-        for ( const auto& size : icon.availableSizes() )
-        {
-            QPixmap pixmap = icon.pixmap(size);
-            QPixmap outpix(pixmap.size());
-            outpix.fill(Qt::transparent);
-
-            QPainter painter(&outpix);
-            painter.setOpacity(alpha);
-            painter.drawPixmap(0, 0, pixmap);
-
-            out.addPixmap(outpix);
-        }
-
-        return out;
-    }
-
     QVariant data_mask(Subtree* tree, int role)
     {
         if ( !tree->visual_node )
@@ -283,16 +263,7 @@ public:
         }
         else if ( model::AnimatableBase* anprop = animatable(tree) )
         {
-            if ( role == Qt::ToolTipRole )
-            {
-                return i18n("Toggle Keyframe");
-            }
-            else if ( role == Qt::DecorationRole )
-            {
-                if ( anprop->has_keyframe(document->current_time()) )
-                    return QIcon::fromTheme("keyframe");
-                return transparent_icon(QIcon::fromTheme("keyframe-disable"));
-            }
+            return data_toggle_keyframe(anprop, role);
         }
 
         return {};

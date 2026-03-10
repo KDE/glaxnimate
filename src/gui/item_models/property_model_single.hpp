@@ -18,6 +18,7 @@ public:
     enum Columns
     {
         ColumnName,
+        ColumnToggleKeyframe,
         ColumnValue,
 
         ColumnCount

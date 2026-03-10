@@ -8,6 +8,7 @@
     * Added a grid for snapping
 * UI:
     * Timeline now allows to cycle through mask modes for layers
+    * Added button to toggle keyframes in the property view
 * I/O:
     * Improved matte import and export for lottie
     * Improved mask properties import for lottie

@@ -41,9 +41,10 @@ void PropertyDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opti
         {
             auto value = index.data().value<QVector2D>();
             return paint_plaintext(
-                i18n("%1% × %2%")
-                .arg(math::get(value, 0) * 100)
-                .arg(math::get(value, 1) * 100),
+                i18n("%1% × %2%",
+                    math::get(value, 0) * 100,
+                    math::get(value, 1) * 100
+                ),
                 painter,
                 option,
                 index

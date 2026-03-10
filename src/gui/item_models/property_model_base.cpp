@@ -251,6 +251,29 @@ QVariant item_models::PropertyModelBase::Private::data_value(model::BaseProperty
     }
 }
 
+QVariant item_models::PropertyModelBase::Private::data_toggle_keyframe(model::AnimatableBase* prop, int role)
+{
+    if ( !prop )
+        return {};
+
+    if ( role == Qt::ToolTipRole )
+    {
+        return i18n("Toggle Keyframe");
+    }
+    else if ( role == Qt::DecorationRole )
+    {
+        if ( prop->has_keyframe(document->current_time()) )
+            return QIcon::fromTheme("keyframe");
+        return (QIcon::fromTheme("keyframe-disable"));
+    }
+    else if ( role == Qt::SizeHintRole )
+    {
+        return QSize(22, 22);
+    }
+
+    return {};
+}
+
 void item_models::PropertyModelBase::Private::connect_recursive(Subtree* this_node, bool insert_row)
 {
     auto object = this_node->object;

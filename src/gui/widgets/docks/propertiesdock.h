@@ -25,6 +25,9 @@ public:
 
     void expandAll();
 
+private Q_SLOTS:
+    void click_index(const QModelIndex& index);
+
 private:
     class Private;
     std::unique_ptr<Private> d;

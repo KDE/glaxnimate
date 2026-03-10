@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
-
-SPDX-License-Identifier: GPL-3.0-or-later
--->
 <ui version="4.0">
  <class>dock_properties</class>
  <widget class="QDockWidget" name="dock_properties">
@@ -46,11 +41,40 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <property name="alternatingRowColors">
        <bool>true</bool>
       </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <attribute name="headerMinimumSectionSize">
+       <number>32</number>
+      </attribute>
      </widget>
     </item>
    </layout>
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>view_properties</sender>
+   <signal>clicked(QModelIndex)</signal>
+   <receiver>dock_properties</receiver>
+   <slot>click_index(QModelIndex)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>219</x>
+     <y>104</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>498</x>
+     <y>129</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>click_index(QModelIndex)</slot>
+ </slots>
 </ui>

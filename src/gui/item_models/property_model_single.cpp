@@ -80,6 +80,7 @@ Qt::ItemFlags item_models::PropertyModelSingle::flags(const QModelIndex& index) 
 
     switch ( index.column() )
     {
+        case ColumnToggleKeyframe:
         case ColumnName:
             return flags;
         case ColumnValue:
@@ -116,6 +117,7 @@ QVariant item_models::PropertyModelSingle::data(const QModelIndex& index, int ro
     {
         case ColumnName: return d->data_name(tree, role);
         case ColumnValue: return d->data_value(tree, role);
+        case ColumnToggleKeyframe: return d->data_toggle_keyframe(d->animatable(tree), role);
     }
     return {};
 }
@@ -148,6 +150,8 @@ QVariant item_models::PropertyModelSingle::headerData(int section, Qt::Orientati
             case ColumnValue:
                 if ( role == Qt::DisplayRole )
                     return i18n("Value");
+                break;
+            case ColumnToggleKeyframe:
                 break;
         }
     }
