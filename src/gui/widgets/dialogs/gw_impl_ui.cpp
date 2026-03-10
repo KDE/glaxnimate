@@ -1089,14 +1089,12 @@ void GlaxnimateWindow::Private::layout_medium()
 {
     // Bottom
     parent->addDockWidget(Qt::BottomDockWidgetArea, timeline_dock);
-    parent->tabifyDockWidget(timeline_dock, properties_dock);
-    parent->tabifyDockWidget(properties_dock, scriptconsole_dock);
+    parent->tabifyDockWidget(timeline_dock, scriptconsole_dock);
     parent->tabifyDockWidget(scriptconsole_dock, logs_dock);
     parent->tabifyDockWidget(logs_dock, time_slider_dock);
     timeline_dock->raise();
     time_slider_dock->setVisible(false);
     timeline_dock->setVisible(true);
-    properties_dock->setVisible(true);
 
     parent->addDockWidget(Qt::BottomDockWidgetArea, snippets_dock);
 
@@ -1117,10 +1115,12 @@ void GlaxnimateWindow::Private::layout_medium()
     parent->addDockWidget(Qt::RightDockWidgetArea, colors_dock);
     parent->tabifyDockWidget(colors_dock, stroke_dock);
     parent->tabifyDockWidget(stroke_dock, undo_dock);
+    parent->tabifyDockWidget(undo_dock, properties_dock);
     colors_dock->raise();
     colors_dock->setVisible(true);
     stroke_dock->setVisible(true);
     undo_dock->setVisible(true);
+    properties_dock->setVisible(true);
 
     // Left
     parent->addDockWidget(Qt::LeftDockWidgetArea, tools_dock);
@@ -1188,10 +1188,12 @@ void GlaxnimateWindow::Private::layout_wide()
     parent->addDockWidget(Qt::RightDockWidgetArea, colors_dock);
     parent->tabifyDockWidget(colors_dock, stroke_dock);
     parent->tabifyDockWidget(stroke_dock, undo_dock);
+    parent->tabifyDockWidget(undo_dock, properties_dock);
     colors_dock->raise();
     colors_dock->setVisible(true);
     stroke_dock->setVisible(true);
     undo_dock->setVisible(true);
+    properties_dock->setVisible(true);
 
     // Left
     parent->addDockWidget(Qt::LeftDockWidgetArea, tools_dock);
