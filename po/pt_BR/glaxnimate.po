@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-09 00:41+0000\n"
-"PO-Revision-Date: 2026-03-08 07:26-0300\n"
+"PO-Revision-Date: 2026-03-09 07:59-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -160,17 +160,15 @@ msgstr "opacidade"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/composable.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Blend Mode"
+#, kde-format
 msgid "blend_mode"
-msgstr "Modo de mesclagem"
+msgstr "modo_mesclagem"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/image.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Image"
+#, kde-format
 msgid "image"
-msgstr "Imagem"
+msgstr "imagem"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/style/stroke.hpp
 #. i18n: Property name
@@ -1082,20 +1080,19 @@ msgid "Unknown property \"%1\" of \"%2\""
 msgstr "Propriedade desconhecida \"%1 de \"%2\""
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:221
-#, fuzzy, kde-format
-#| msgid "Layer"
+#, kde-format
 msgid "Layer #%1"
-msgstr "Camada"
+msgstr "Camada #%1"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:279
 #, kde-format
 msgid "Parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Não foi possível encontrar o pai #%1 da camada %2"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:292
 #, kde-format
 msgid "Mask parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Não foi possível encontrar a máscara pai #%1 da camada %2"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:581
 #, kde-format
@@ -1434,12 +1431,12 @@ msgstr "Prévia Lottie HTML"
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:190
 #, kde-format
 msgid "Mask parent %1 of layer %2 could not be found"
-msgstr ""
+msgstr "Não foi possível encontrar a máscara pai #%1 da camada %2"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:200
 #, kde-format
 msgid "Mask parent of layer %1 could not be found"
-msgstr ""
+msgstr "Não foi possível encontrar a máscara da camada %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:218
 #, kde-format
@@ -1447,10 +1444,9 @@ msgid "Invalid parent layer %1"
 msgstr "Camada pai inválida %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:315
-#, fuzzy, kde-format
-#| msgid "Missing layer type for %1"
+#, kde-format
 msgid "Missing type for layer %1"
-msgstr "Tipo de camada ausente para %1"
+msgstr "Tipo ausente para a camada %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:389
 #, kde-format

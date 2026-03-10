@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-09 00:41+0000\n"
-"PO-Revision-Date: 2026-03-08 07:13+0100\n"
+"PO-Revision-Date: 2026-03-09 07:10+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -163,17 +163,15 @@ msgstr "prekrivnost"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/composable.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Blend Mode"
+#, kde-format
 msgid "blend_mode"
-msgstr "Mešalni način"
+msgstr "mešalni_način"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/image.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Image"
+#, kde-format
 msgid "image"
-msgstr "Slika"
+msgstr "slika"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/style/stroke.hpp
 #. i18n: Property name
@@ -1086,20 +1084,19 @@ msgid "Unknown property \"%1\" of \"%2\""
 msgstr "Neznana lastnost »%1« za »%2«"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:221
-#, fuzzy, kde-format
-#| msgid "Layer"
+#, kde-format
 msgid "Layer #%1"
-msgstr "Plast"
+msgstr "Plast #%1"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:279
 #, kde-format
 msgid "Parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Nadrejenega #%1 sloja %2 ni bilo mogoče najti"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:292
 #, kde-format
 msgid "Mask parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Nadrejene maske #%1 plasti %2 ni bilo mogoče najti"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:581
 #, kde-format
@@ -1434,12 +1431,12 @@ msgstr "Predogled HTML Lottie"
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:190
 #, kde-format
 msgid "Mask parent %1 of layer %2 could not be found"
-msgstr ""
+msgstr "Nadrejene maske %1 plasti %2 ni bilo mogoče najti"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:200
 #, kde-format
 msgid "Mask parent of layer %1 could not be found"
-msgstr ""
+msgstr "Maske nadrejene plasti %1 ni bilo mogoče najti"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:218
 #, kde-format
@@ -1447,8 +1444,7 @@ msgid "Invalid parent layer %1"
 msgstr "Neveljavna nadrejena plast %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:315
-#, fuzzy, kde-format
-#| msgid "Missing layer type for %1"
+#, kde-format
 msgid "Missing type for layer %1"
 msgstr "Manjka vrsta plasti za %1"
 

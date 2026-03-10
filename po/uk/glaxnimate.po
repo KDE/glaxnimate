@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-09 00:41+0000\n"
-"PO-Revision-Date: 2026-03-08 16:00+0200\n"
+"PO-Revision-Date: 2026-03-09 09:56+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -160,17 +160,15 @@ msgstr "непрозорість"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/composable.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Blend Mode"
+#, kde-format
 msgid "blend_mode"
-msgstr "Режим змішування"
+msgstr "режим_змішування"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/image.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Image"
+#, kde-format
 msgid "image"
-msgstr "Зображення"
+msgstr "зображення"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/style/stroke.hpp
 #. i18n: Property name
@@ -1084,20 +1082,19 @@ msgid "Unknown property \"%1\" of \"%2\""
 msgstr "Неочікувана властивість «%1» «%2»"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:221
-#, fuzzy, kde-format
-#| msgid "Layer"
+#, kde-format
 msgid "Layer #%1"
-msgstr "Шар"
+msgstr "Шар %1"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:279
 #, kde-format
 msgid "Parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Не вдалося знайти батьківський елемент %1 шару %2"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:292
 #, kde-format
 msgid "Mask parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Не вдалося знайти батьківський елемент маски %1 шару %2"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:581
 #, kde-format
@@ -1437,12 +1434,12 @@ msgstr "Попередній перегляд HTML Lottie"
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:190
 #, kde-format
 msgid "Mask parent %1 of layer %2 could not be found"
-msgstr ""
+msgstr "Не вдалося знайти батьківський елемент маски %1 шару %2"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:200
 #, kde-format
 msgid "Mask parent of layer %1 could not be found"
-msgstr ""
+msgstr "Не вдалося знайти батьківський елемент маски шару %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:218
 #, kde-format
@@ -1450,10 +1447,9 @@ msgid "Invalid parent layer %1"
 msgstr "Некоректний батьківський шар %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:315
-#, fuzzy, kde-format
-#| msgid "Missing layer type for %1"
+#, kde-format
 msgid "Missing type for layer %1"
-msgstr "Пропущено тип шару для %1"
+msgstr "Пропущено тип для шару %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:389
 #, kde-format

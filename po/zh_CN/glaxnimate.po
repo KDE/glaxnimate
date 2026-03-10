@@ -159,16 +159,15 @@ msgstr "不透明度"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/composable.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
+#, kde-format
 msgid "blend_mode"
-msgstr "颜色模式"
+msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/image.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Images"
+#, kde-format
 msgid "image"
-msgstr "图片"
+msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/shapes/style/stroke.hpp
 #. i18n: Property name
@@ -288,9 +287,9 @@ msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/document_node.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
+#, kde-format
 msgid "group_color"
-msgstr "组颜色"
+msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/document_node.hpp
 #. i18n: Property name
@@ -1417,10 +1416,9 @@ msgid "Invalid parent layer %1"
 msgstr "无效的父级图层%1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:315
-#, fuzzy, kde-format
-#| msgid "Missing layer type for %1"
+#, kde-format
 msgid "Missing type for layer %1"
-msgstr "缺少 %1 的图层类型"
+msgstr ""
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:389
 #, kde-format
@@ -2894,9 +2892,9 @@ msgid "Value"
 msgstr ""
 
 #: src/gui/item_models/property_model_full.cpp:492
-#, fuzzy, kde-format
+#, kde-format
 msgid "Mask Mode"
-msgstr "蒙版"
+msgstr ""
 
 #: src/gui/item_models/python_snippet_model.hpp:36
 #, kde-format
@@ -4518,10 +4516,9 @@ msgid "Delete All"
 msgstr ""
 
 #: src/gui/widgets/dialogs/startup_dialog.cpp:131
-#, fuzzy, kde-format
-#| msgid " fps"
+#, kde-format
 msgid "%1 fps"
-msgstr " fps"
+msgstr ""
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, StartupDialog)
 #: src/gui/widgets/dialogs/startup_dialog.ui:18
@@ -5135,9 +5132,9 @@ msgid "Polygon"
 msgstr "多边形"
 
 #: src/gui/widgets/enum_combo.cpp:113
-#, fuzzy, kde-format
+#, kde-format
 msgid "No Mask"
-msgstr "蒙版"
+msgstr ""
 
 #: src/gui/widgets/enum_combo.cpp:115
 #, kde-format
@@ -5145,19 +5142,19 @@ msgid "Alpha Mask"
 msgstr ""
 
 #: src/gui/widgets/enum_combo.cpp:117
-#, fuzzy, kde-format
+#, kde-format
 msgid "Luma Mask"
-msgstr "蒙版"
+msgstr ""
 
 #: src/gui/widgets/enum_combo.cpp:125
-#, fuzzy, kde-format
+#, kde-format
 msgid "Normal"
-msgstr "格式"
+msgstr ""
 
 #: src/gui/widgets/enum_combo.cpp:127
-#, fuzzy, kde-format
+#, kde-format
 msgid "Multiply"
-msgstr "倍数"
+msgstr ""
 
 #: src/gui/widgets/enum_combo.cpp:129
 #, kde-format
@@ -5175,19 +5172,19 @@ msgid "Darken"
 msgstr ""
 
 #: src/gui/widgets/enum_combo.cpp:135
-#, fuzzy, kde-format
+#, kde-format
 msgid "Lighten"
-msgstr "右对齐"
+msgstr ""
 
 #: src/gui/widgets/enum_combo.cpp:137
-#, fuzzy, kde-format
+#, kde-format
 msgid "Color Dodge"
-msgstr "颜色模式"
+msgstr ""
 
 #: src/gui/widgets/enum_combo.cpp:139
-#, fuzzy, kde-format
+#, kde-format
 msgid "Color Burn"
-msgstr "取色器"
+msgstr ""
 
 #: src/gui/widgets/enum_combo.cpp:141
 #, kde-format
@@ -5467,9 +5464,9 @@ msgid "Auto Orient"
 msgstr ""
 
 #: src/gui/widgets/menus/node_menu.cpp:286
-#, fuzzy, kde-format
+#, kde-format
 msgid "Blend Mode"
-msgstr "颜色模式"
+msgstr ""
 
 #: src/gui/widgets/menus/node_menu.cpp:312
 #: src/gui/widgets/menus/node_menu.cpp:313
@@ -6469,15 +6466,3 @@ msgstr "#文档参见https://glaxnimate.mattbas.org/contributing/scripting/"
 #, kde-format
 msgid "Traced %1"
 msgstr ""
-
-#~ msgid "Cannot use %1 as parent as it couldn't be loaded"
-#~ msgstr "无法将%1用作父级，因为它无法加载"
-
-#~ msgid "Convert to Mask"
-#~ msgstr "转换为蒙版"
-
-#~ msgid "libarchive"
-#~ msgstr "libarchive"
-
-#~ msgid "Remove Mask"
-#~ msgstr "删除蒙版"

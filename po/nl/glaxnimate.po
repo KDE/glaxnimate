@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-09 00:41+0000\n"
-"PO-Revision-Date: 2026-03-08 17:01+0100\n"
+"PO-Revision-Date: 2026-03-09 14:51+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -159,17 +159,15 @@ msgstr "dekking"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/composable.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Blend Mode"
+#, kde-format
 msgid "blend_mode"
-msgstr "Mengmodus"
+msgstr "mengmodus"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/image.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Image"
+#, kde-format
 msgid "image"
-msgstr "Afbeelding"
+msgstr "afbeelding"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/style/stroke.hpp
 #. i18n: Property name
@@ -1085,20 +1083,19 @@ msgid "Unknown property \"%1\" of \"%2\""
 msgstr "Onbekende eigenschap %1\" van \"%2\""
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:221
-#, fuzzy, kde-format
-#| msgid "Layer"
+#, kde-format
 msgid "Layer #%1"
-msgstr "Laag"
+msgstr "Laag #%1"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:279
 #, kde-format
 msgid "Parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Ouder #%1 van laag %2 was niet te vinden"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:292
 #, kde-format
 msgid "Mask parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Maskeer ouder #%1 van laag %2 was niet te vinden"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:581
 #, kde-format
@@ -1437,12 +1434,12 @@ msgstr "Lottie HTML-voorbeeld"
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:190
 #, kde-format
 msgid "Mask parent %1 of layer %2 could not be found"
-msgstr ""
+msgstr "Maskeer ouder %1 van laag %2 was niet te vinden"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:200
 #, kde-format
 msgid "Mask parent of layer %1 could not be found"
-msgstr ""
+msgstr "Maskeer ouder van laag %1 was niet te vinden"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:218
 #, kde-format
@@ -1450,10 +1447,9 @@ msgid "Invalid parent layer %1"
 msgstr "Ongeldige ouderlaag %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:315
-#, fuzzy, kde-format
-#| msgid "Missing layer type for %1"
+#, kde-format
 msgid "Missing type for layer %1"
-msgstr "Ontbrekend type laag voor %1"
+msgstr "Ontbrekend type voor laag voor %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:389
 #, kde-format

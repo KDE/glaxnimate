@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-09 00:41+0000\n"
-"PO-Revision-Date: 2026-03-08 15:13+0300\n"
+"PO-Revision-Date: 2026-03-09 19:29+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -159,17 +159,15 @@ msgstr "matlık"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/composable.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Blend Mode"
+#, kde-format
 msgid "blend_mode"
-msgstr "Harman Kipi"
+msgstr "harman_kipi"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/image.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Image"
+#, kde-format
 msgid "image"
-msgstr "Görsel"
+msgstr "görsel"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/style/stroke.hpp
 #. i18n: Property name
@@ -1081,20 +1079,19 @@ msgid "Unknown property \"%1\" of \"%2\""
 msgstr "“%2” ögesinin bilinmeyen “%1” özelliği"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:221
-#, fuzzy, kde-format
-#| msgid "Layer"
+#, kde-format
 msgid "Layer #%1"
-msgstr "Katman"
+msgstr "Katman №%1"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:279
 #, kde-format
 msgid "Parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Katman %2 üst ögesi №%1 bulunamadı"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:292
 #, kde-format
 msgid "Mask parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Katman %2 maske üst ögesi №%1 bulunamadı"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:581
 #, kde-format
@@ -1431,12 +1428,12 @@ msgstr "Lottie HTML Önizlemesi"
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:190
 #, kde-format
 msgid "Mask parent %1 of layer %2 could not be found"
-msgstr ""
+msgstr "Katman %2 maske üst ögesi %1 bulunamadı"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:200
 #, kde-format
 msgid "Mask parent of layer %1 could not be found"
-msgstr ""
+msgstr "Katman %1 maske üst ögesi bulunamadı"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:218
 #, kde-format
@@ -1444,10 +1441,9 @@ msgid "Invalid parent layer %1"
 msgstr "Geçersiz üst katman %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:315
-#, fuzzy, kde-format
-#| msgid "Missing layer type for %1"
+#, kde-format
 msgid "Missing type for layer %1"
-msgstr "%1 için katman türü eksik"
+msgstr "Katman %1 için eksik tür"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:389
 #, kde-format

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-09 00:41+0000\n"
-"PO-Revision-Date: 2026-03-08 10:09+0400\n"
+"PO-Revision-Date: 2026-03-09 21:28+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -160,15 +160,13 @@ msgstr "تظليل"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/composable.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Blend Mode"
+#, kde-format
 msgid "blend_mode"
 msgstr "وضع المزج"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/image.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Image"
+#, kde-format
 msgid "image"
 msgstr "صورة"
 
@@ -1072,20 +1070,19 @@ msgid "Unknown property \"%1\" of \"%2\""
 msgstr "خاصية غير معروفة \"%1\" لـ \"%2\""
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:221
-#, fuzzy, kde-format
-#| msgid "Layer"
+#, kde-format
 msgid "Layer #%1"
-msgstr "طبقة"
+msgstr "الطبقة #%1"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:279
 #, kde-format
 msgid "Parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "تعذر العثور على الأساس #%1 للطبقة %2"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:292
 #, kde-format
 msgid "Mask parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "تعذر العثور على القناع الأساس #%1 للطبقة %2"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:581
 #, kde-format
@@ -1418,12 +1415,12 @@ msgstr "معاينة لوتي HTML"
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:190
 #, kde-format
 msgid "Mask parent %1 of layer %2 could not be found"
-msgstr ""
+msgstr "تعذر العثور على القناع الأساس %1 للطبقة %2"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:200
 #, kde-format
 msgid "Mask parent of layer %1 could not be found"
-msgstr ""
+msgstr "تعذر العثور على القناع الأساس للطبقة %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:218
 #, kde-format
@@ -1431,10 +1428,9 @@ msgid "Invalid parent layer %1"
 msgstr "طبقة والد غير صالحة %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:315
-#, fuzzy, kde-format
-#| msgid "Missing layer type for %1"
+#, kde-format
 msgid "Missing type for layer %1"
-msgstr "نوع الطبقة مفقود لـ %1"
+msgstr "نوع الطبقة مفقود لطبقة %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:389
 #, kde-format
@@ -2952,16 +2948,12 @@ msgid "%1"
 msgstr "%1"
 
 #: src/gui/settings/document_templates.cpp:123
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
-#| "frame rate"
-#| msgid "%5 - %1x%2 %3 %4fps"
+#, kde-format
 msgctxt ""
 "%5 is the file name, %1 × %2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
 msgid "%5 — %1 × %2 %3 %4 fps"
-msgstr "%5 - %1×%2 %3 %4 إطار/ث"
+msgstr "%5 — %1 × %2 %3 %4  إطار/ثا"
 
 #: src/gui/settings/document_templates.cpp:178
 #, kde-format
@@ -2981,7 +2973,7 @@ msgstr "مبدئي النظام"
 #: src/gui/style/property_delegate.cpp:44
 #, kde-format
 msgid "%1% × %2%"
-msgstr ""
+msgstr "%1% × %2%"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
@@ -4623,10 +4615,9 @@ msgid "Delete All"
 msgstr "احذف الكل"
 
 #: src/gui/widgets/dialogs/startup_dialog.cpp:131
-#, fuzzy, kde-format
-#| msgid " fps"
+#, kde-format
 msgid "%1 fps"
-msgstr "  إطار/ثا"
+msgstr "%1  إطار/ثا"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, StartupDialog)
 #: src/gui/widgets/dialogs/startup_dialog.ui:18
