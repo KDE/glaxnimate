@@ -1036,7 +1036,16 @@ void GlaxnimateWindow::Private::init_docks()
     tool_options_dock = new ToolOptionsDock(this->parent);
     parent->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, tool_options_dock);
 
+    // Grid
     grid_dock = new DockGrid(this->parent);
+    grid.set_angle(math::deg2rad(GlaxnimateSettings::self()->grid_angle()));
+    grid.set_origin(QPointF(
+        GlaxnimateSettings::self()->grid_origin_x(),
+        GlaxnimateSettings::self()->grid_origin_y()
+    ));
+    grid.set_shape(SnappingGrid::GridShape(GlaxnimateSettings::self()->grid_shape()));
+    grid.enable(GlaxnimateSettings::self()->grid_enabled());
+    grid.set_size(GlaxnimateSettings::self()->grid_size());
     parent->addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, grid_dock);
     grid_dock->set_grid(&grid);
     canvas->set_grid(&grid);
@@ -1350,7 +1359,6 @@ void GlaxnimateWindow::Private::init_tools(tools::Tool* to_activate)
 
 void GlaxnimateWindow::Private::init_restore_state()
 {
-    // TODO check if they are properly restored once fully migrated to XmlGui
     parent->restoreState(QByteArray::fromBase64(GlaxnimateSettings::window_state().toUtf8()));
     timeline_dock->timelineWidget()->load_state(QByteArray::fromBase64(GlaxnimateSettings::timeline_splitter().toUtf8()));
     // parent->restoreGeometry(GlaxnimateSettings::window_geometry());
@@ -1427,7 +1435,6 @@ void GlaxnimateWindow::Private::shutdown()
     KSharedConfigPtr config = KSharedConfig::openConfig();
     m_recentFilesAction->saveEntries(KConfigGroup(config, QString()));
 
-    // TODO
     // GlaxnimateSettings::setWindow_geometry(parent->saveGeometry());
     GlaxnimateSettings::setWindow_state(QString::fromLatin1(parent->saveState().toBase64()));
     GlaxnimateSettings::setTimeline_splitter(QString::fromLatin1(timeline_dock->timelineWidget()->save_state().toBase64()));
