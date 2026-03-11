@@ -332,12 +332,21 @@ public:
                 return {AV_PIX_FMT_MONOBLACK, format};
             case QImage::Format_Indexed8:
                 return {AV_PIX_FMT_ARGB, QImage::Format_RGB32};
+#ifdef Q_LITTLE_ENDIAN
+            case QImage::Format_RGB32:
+                return {AV_PIX_FMT_0BGR, format};
+            case QImage::Format_ARGB32:
+                return {AV_PIX_FMT_BGRA, format};
+            case QImage::Format_ARGB32_Premultiplied:
+                return {AV_PIX_FMT_BGRA, format};
+#else
             case QImage::Format_RGB32:
                 return {AV_PIX_FMT_0RGB, format};
             case QImage::Format_ARGB32:
                 return {AV_PIX_FMT_ARGB, format};
             case QImage::Format_ARGB32_Premultiplied:
                 return {AV_PIX_FMT_ARGB, format};
+#endif
             case QImage::Format_RGB16:
                 return {AV_PIX_FMT_RGB565LE, format};
             case QImage::Format_RGB555:
@@ -372,9 +381,10 @@ public:
 
     static AVPixelFormat best_pixel_format(const AVPixelFormat* pix_fmts)
     {
-        static const std::array<AVPixelFormat, 8> preferred = {
+        static const std::array<AVPixelFormat, 12> preferred = {
             // RGBA and similar (no conversion)
             AV_PIX_FMT_ARGB, AV_PIX_FMT_RGBA, AV_PIX_FMT_ABGR, AV_PIX_FMT_BGRA,
+            AV_PIX_FMT_RGBA64BE, AV_PIX_FMT_RGBA64LE, AV_PIX_FMT_BGRA64BE, AV_PIX_FMT_BGRA64LE,
             // YUV + Alpha
             AV_PIX_FMT_YUVA444P, AV_PIX_FMT_YUVA420P,
             // RGB

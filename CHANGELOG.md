@@ -15,6 +15,7 @@
     * Improved mask properties import for lottie
     * Reduced the number of intermediate layers when importing a lottie
     * Multiple improvements to the AEP importer
+    * Fixed wrong channel order on video export
 * Misc
     * New rendering system
     * Core as static library
