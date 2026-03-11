@@ -29,6 +29,7 @@
     * Fixed shape tools not remembering their own settings
     * Fixed open file dialog not saving the last used path on app closure
     * Fixed gradients not being displayed correctly in the properties dock
+    * Fixed gradients not showing properly on timeline / properties docks
 
 ## 0.6.0
 

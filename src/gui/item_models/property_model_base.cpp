@@ -707,11 +707,12 @@ void item_models::PropertyModelBase::Private::on_property_changed(id_type prop_n
         if ( prop_node->prop->traits().type == model::PropertyTraits::ObjectReference )
         {
             model::Object* obj_value = value.value<model::Object*>();
+            bool has_sub = prop_node->connected_subobjects.count(obj_value);
 
-            if ( !prop_node->children.empty() )
+            if ( !prop_node->children.empty() && (!prop_node->expand_referenced || !has_sub) )
                 clean_object_references(index, prop_node);
 
-            if ( prop_node->expand_referenced && obj_value )
+            if ( prop_node->expand_referenced && obj_value && !has_sub )
                 connect_subobject(obj_value, prop_node, true);
         }
 
