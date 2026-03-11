@@ -149,22 +149,7 @@ QVariant item_models::PropertyModelBase::Private::data_value(model::BaseProperty
         model::AnimatableBase* anprop = static_cast<model::AnimatableBase*>(prop);
         auto frame_status = anprop->keyframe_status(document->current_time());
 
-        if ( role == Qt::DecorationRole )
-        {
-            switch ( frame_status )
-            {
-                case model::AnimatableBase::Tween:
-                    return QIcon(GlaxnimateApp::instance()->data_file("images/keyframe/status/tween.svg"));
-                case model::AnimatableBase::IsKeyframe:
-                    return QIcon(GlaxnimateApp::instance()->data_file("images/keyframe/status/key.svg"));
-                case model::AnimatableBase::Mismatch:
-                    return QIcon(GlaxnimateApp::instance()->data_file("images/keyframe/status/mismatch.svg"));
-                case model::AnimatableBase::NotAnimated:
-                    return QIcon(GlaxnimateApp::instance()->data_file("images/keyframe/status/not-animated.svg"));
-            }
-
-        }
-        else if ( role == Qt::BackgroundRole )
+        if ( role == Qt::BackgroundRole )
         {
             switch ( frame_status )
             {
@@ -262,9 +247,19 @@ QVariant item_models::PropertyModelBase::Private::data_toggle_keyframe(model::An
     }
     else if ( role == Qt::DecorationRole )
     {
-        if ( prop->has_keyframe(document->current_time()) )
-            return QIcon::fromTheme("keyframe");
-        return (QIcon::fromTheme("keyframe-disable"));
+        auto frame_status = prop->keyframe_status(document->current_time());
+
+        switch ( frame_status )
+        {
+            case model::AnimatableBase::Tween:
+                return QIcon::fromTheme("keyframe-duplicate");
+            case model::AnimatableBase::IsKeyframe:
+                return QIcon::fromTheme("keyframe");
+            case model::AnimatableBase::Mismatch:
+                return QIcon::fromTheme("warn-keyframe");
+            case model::AnimatableBase::NotAnimated:
+                return QIcon::fromTheme("keyframe-disable");
+        }
     }
     else if ( role == Qt::SizeHintRole )
     {
