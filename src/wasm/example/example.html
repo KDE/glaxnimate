@@ -10,37 +10,15 @@
     <canvas id="canvas"></canvas>
     <script>
     const canvas = document.getElementById("canvas");
-    const context = canvas.getContext("2d");
-    let start_time = -1;
-    let renderer;
-
-    function draw_frame(time)
-    {
-        if ( start_time < 0 )
-            start_time = time;
-
-        let time_frames = (time - start_time) / 1000 * renderer.fps % renderer.last_frame;
-        renderer.current_time = time_frames;
-        const pixels = renderer.render();
-        canvas.width = renderer.width;
-        canvas.height = renderer.height;
-        const img = context.createImageData(renderer.width, renderer.height);
-        img.data.set(pixels);
-        context.putImageData(img, 0, 0);
-        requestAnimationFrame(draw_frame);
-
-    }
-
-    Glaxnimate().then((Module) => {
-        fetch("example.rawr")
-            .then(r => r.text())
-            .then(data => {
-                renderer = new Module.GlaxnimateRenderer({
-                    data,
-                    slug: "glaxnimate"
-                });
-                requestAnimationFrame(draw_frame);
-            });
+    let player;
+    fetch("example.rawr")
+    .then(r => r.text())
+    .then(data => {
+        player = new Glaxnimate.Player({
+            data,
+            slug: "glaxnimate",
+            canvas
+        });
     });
     </script>
 </body>

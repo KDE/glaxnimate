@@ -29,7 +29,14 @@ target_link_options(glaxnimate_renderer PRIVATE
     -sMODULARIZE=1
     --no-entry
     -sEXPORT_NAME="Glaxnimate"
+    "SHELL:--extern-post-js ${CMAKE_CURRENT_SOURCE_DIR}/custom.js"
 )
+set_property(
+    TARGET glaxnimate_renderer
+    APPEND PROPERTY LINK_DEPENDS
+    "${CMAKE_CURRENT_SOURCE_DIR}/custom.js"
+)
+
 
 # source "$HOME/src/emsdk/emsdk_env.sh"
 # -DCMAKE_TOOLCHAIN_FILE=$HOME/Qt/6.9.3/wasm_singlethread/lib/cmake/Qt6/qt.toolchain.cmake
