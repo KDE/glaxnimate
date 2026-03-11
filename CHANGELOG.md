@@ -9,6 +9,7 @@
 * UI:
     * Timeline now allows to cycle through mask modes for layers
     * Added button to toggle keyframes in the property view
+    * You can now click-drag to edit properties
 * I/O:
     * Improved matte import and export for lottie
     * Improved mask properties import for lottie

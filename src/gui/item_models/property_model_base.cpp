@@ -720,7 +720,8 @@ void item_models::PropertyModelBase::Private::on_property_changed(id_type prop_n
                 connect_subobject(obj_value, prop_node, true);
         }
 
-        Q_EMIT model->dataChanged(index, index, {});
+        QModelIndex index_br = model->createIndex(i, model->columnCount(), prop_node->id);
+        Q_EMIT model->dataChanged(index, index_br, {});
     }
 }
 

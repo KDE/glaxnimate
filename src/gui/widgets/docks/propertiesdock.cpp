@@ -9,6 +9,7 @@
 #include "ui_properties.h"
 
 #include "glaxnimate/command/animation_commands.hpp"
+#include "widgets/timeline/value_drag_event_filter.hpp"
 
 using namespace glaxnimate::gui;
 
@@ -32,6 +33,8 @@ PropertiesDock::PropertiesDock(GlaxnimateWindow* parent, item_models::PropertyMo
     d->ui.view_properties->header()->setSectionResizeMode(item_models::PropertyModelSingle::ColumnName, QHeaderView::ResizeToContents);
     d->ui.view_properties->header()->setSectionResizeMode(item_models::PropertyModelSingle::ColumnToggleKeyframe, QHeaderView::ResizeToContents);
     d->ui.view_properties->header()->setSectionResizeMode(item_models::PropertyModelSingle::ColumnValue, QHeaderView::Stretch);
+
+    new ValueDragEventFilter(d->ui.view_properties);
 }
 
 PropertiesDock::~PropertiesDock() = default;

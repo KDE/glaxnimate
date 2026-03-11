@@ -77,6 +77,7 @@ widgets/timeline/timeline_widget.cpp
 widgets/timeline/compound_timeline_widget.cpp
 widgets/timeline/timeline_items.cpp
 widgets/timeline/timeline_treeview.cpp
+widgets/timeline/value_drag_event_filter.cpp
 
 widgets/tools/shape_tool_widget.cpp
 widgets/tools/star_tool_widget.cpp

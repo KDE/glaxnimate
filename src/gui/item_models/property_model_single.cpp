@@ -54,6 +54,7 @@ public:
 item_models::PropertyModelSingle::PropertyModelSingle()
     : PropertyModelBase(std::make_unique<Private>(this))
 {
+    setObjectName("Test");
 }
 
 void item_models::PropertyModelSingle::set_object(model::Object* object)
