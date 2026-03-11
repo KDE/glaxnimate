@@ -11,6 +11,7 @@
 
 #include <QMouseEvent>
 #include <QApplication>
+#include <QAbstractProxyModel>
 
 using namespace glaxnimate::gui;
 
@@ -21,8 +22,6 @@ public:
     QPointF min_value;
     QPointF max_value;
     QPointF drag_start;
-    QAbstractItemView* view = nullptr;
-    item_models::PropertyModelBase* property_model = nullptr;
     model::BaseProperty* prop = nullptr;
     enum {
         None,
@@ -35,6 +34,10 @@ public:
     qreal radius_scale = 1;
     bool clamp = false;
     qreal round = 1;
+
+    QAbstractItemView* view = nullptr;
+    item_models::PropertyModelBase* property_model = nullptr;
+    QAbstractProxyModel* proxy = nullptr;
 
     static constexpr const int mult_min = -1;
     static constexpr const int mult_max = 3;
@@ -115,7 +118,8 @@ public:
             {
 
                 auto anim_point = static_cast<model::AnimatedProperty<QVector2D>*>(prop);
-                set_vals(anim_point->get().toPointF(), true);
+                set_vals(anim_point->get().toPointF(), false);
+                round = 0.01;
                 prop_type = AnimScale;
                 this->prop = prop;
                 return true;
@@ -139,6 +143,8 @@ public:
             return false;
 
         QModelIndex index = view->indexAt(event->pos());
+        if ( proxy )
+            index = proxy->mapToSource(index);
         if ( !grab_property(property_model->item(index).property) )
             return false;
 
@@ -252,7 +258,9 @@ glaxnimate::gui::ValueDragEventFilter::ValueDragEventFilter(QAbstractItemView* v
 {
     view->viewport()->installEventFilter(this);
     d->view = view;
-    d->property_model = static_cast<item_models::PropertyModelBase*>(view->model());
+    auto model = view->model();
+    d->proxy = qobject_cast<QAbstractProxyModel*>(model);
+    d->property_model = static_cast<item_models::PropertyModelBase*>(d->proxy ? d->proxy->sourceModel() : model);
 }
 
 glaxnimate::gui::ValueDragEventFilter::~ValueDragEventFilter() = default;

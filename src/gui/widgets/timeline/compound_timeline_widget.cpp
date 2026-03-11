@@ -33,6 +33,7 @@
 #endif
 #include "widgets/menus/animated_property_menu.hpp"
 #include "widgets/timeline/keyframe_transition_data.hpp"
+#include "widgets/timeline/value_drag_event_filter.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
@@ -59,6 +60,7 @@ public:
         ui.properties->setPalette(prop_pal);
 
         ui.properties->setModel(&comp_model);
+        new ValueDragEventFilter(ui.properties);
         ui.timeline->set_model(&comp_model, &property_model, ui.properties);
         connect(&property_model, &QAbstractItemModel::dataChanged,
                 ui.properties->viewport(), (void (QWidget::*)())&QWidget::update);
