@@ -814,7 +814,7 @@ private:
 
                 glaxnimate::model::JoinAnimatables join({&gradient->start_point, &gradient->end_point, &length, &angle});
                 join.apply_to(&gradient->highlight, [](const QPointF& p, const QPointF& e, float length, float angle) -> QPointF {
-                    angle = math::deg2rad(angle + 90);
+                    angle = math::deg2rad(angle);
                     length = math::length(e - p) * length / 100;
                     return p + math::from_polar<QPointF>(length, angle);
                 }, &gradient->start_point, &gradient->end_point, &length, &angle);

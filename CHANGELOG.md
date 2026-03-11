@@ -17,6 +17,7 @@
     * Multiple improvements to the AEP importer
     * Fixed wrong channel order on video export
     * Implemented radial gradient highlight export for lottie
+    * Fixed radial gradient highlight lottie import
     * Removed option for legacy format on lottie export
 * Misc
     * New rendering system
