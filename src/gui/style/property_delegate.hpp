@@ -16,6 +16,8 @@ namespace glaxnimate::gui::style {
 class PropertyDelegate : public color_widgets::ColorDelegate
 {
 public:
+    explicit PropertyDelegate(QObject *parent = nullptr);
+
     void set_forced_height(int height) { force_height = height; }
 
     QWidget* editor_from_property(model::BaseProperty* prop, QWidget* parent) const;

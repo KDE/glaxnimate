@@ -28,6 +28,7 @@
 * Bug Fixes:
     * Fixed shape tools not remembering their own settings
     * Fixed open file dialog not saving the last used path on app closure
+    * Fixed gradients not being displayed correctly in the properties dock
 
 ## 0.6.0
 

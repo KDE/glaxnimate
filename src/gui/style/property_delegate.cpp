@@ -29,6 +29,12 @@ using namespace glaxnimate::gui::style;
 using namespace glaxnimate::gui;
 
 
+glaxnimate::gui::style::PropertyDelegate::PropertyDelegate(QObject* parent) : ColorDelegate(parent)
+{
+    paint_frame = false;
+}
+
+
 void PropertyDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     QVariant data = index.data();
