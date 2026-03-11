@@ -63,9 +63,6 @@ void glaxnimate::io::IoRegistry::load_formats()
         glaxnimate::GlaxnimateMime,
         mime::JsonMime,
         lottie::LottieFormat,
-        raster::RasterFormat,
-        raster::RasterMime,
-        raster::SpritesheetFormat,
         rive::RiveFormat,
         svg::SvgFormat,
         svg::SvgMime
@@ -82,4 +79,11 @@ void glaxnimate::io::IoRegistry::load_formats()
         video::VideoFormat
     >();
 #endif
+
+    // Raster after video for precedence
+    register_classes<
+        raster::RasterFormat,
+        raster::RasterMime,
+        raster::SpritesheetFormat
+    >();
 }

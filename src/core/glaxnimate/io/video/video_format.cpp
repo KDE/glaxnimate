@@ -451,6 +451,10 @@ public:
 //         if ( ost.codec_context->codec_id == AV_CODEC_ID_MPEG2VIDEO )
 //             ost.codec_context->max_b_frames = 2;
 
+        // This suppresses a YUV-related warning
+        if ( codec_id == AV_CODEC_ID_WEBP )
+            options[QStringLiteral("lossless")] = "1";
+
         int ret;
         // open the codec
         ret = avcodec_open2(ost.codec_context, ost.codec, options.dict());
@@ -708,7 +712,7 @@ static QStringList out_ext;
 static bool format_skip(const AVOutputFormat* format)
 {
     static std::set<std::string> blacklisted = {
-        "webp", "gif", "ico"
+        /*"webp",*/ "gif", "ico"
     };
 
     return
@@ -730,6 +734,8 @@ static void get_formats()
 
         out_ext += QString(format->extensions).split(',', Qt::SkipEmptyParts);
     }
+
+    std::sort(out_ext.begin(), out_ext.end());
 }
 
 QStringList glaxnimate::io::video::VideoFormat::extensions() const
