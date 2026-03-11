@@ -60,7 +60,7 @@ public:
         ui.properties->setPalette(prop_pal);
 
         ui.properties->setModel(&comp_model);
-        new ValueDragEventFilter(ui.properties);
+        new ValueDragEventFilter(ui.properties, item_models::PropertyModelFull::ColumnValue);
         ui.timeline->set_model(&comp_model, &property_model, ui.properties);
         connect(&property_model, &QAbstractItemModel::dataChanged,
                 ui.properties->viewport(), (void (QWidget::*)())&QWidget::update);

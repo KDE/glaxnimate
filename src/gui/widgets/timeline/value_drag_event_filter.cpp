@@ -38,6 +38,7 @@ public:
     QAbstractItemView* view = nullptr;
     item_models::PropertyModelBase* property_model = nullptr;
     QAbstractProxyModel* proxy = nullptr;
+    int column = 0;
 
     static constexpr const int mult_min = -1;
     static constexpr const int mult_max = 3;
@@ -145,6 +146,8 @@ public:
         QModelIndex index = view->indexAt(event->pos());
         if ( proxy )
             index = proxy->mapToSource(index);
+        if ( index.column() != column )
+            return false;
         if ( !grab_property(property_model->item(index).property) )
             return false;
 
@@ -248,12 +251,13 @@ public:
         QApplication::restoreOverrideCursor();
         view->releaseMouse();
         event->accept();
+        prop = nullptr;
         return true;
     }
 
 };
 
-glaxnimate::gui::ValueDragEventFilter::ValueDragEventFilter(QAbstractItemView* view)
+glaxnimate::gui::ValueDragEventFilter::ValueDragEventFilter(QAbstractItemView* view, int column)
     : d(std::make_unique<Private>())
 {
     view->viewport()->installEventFilter(this);
@@ -261,6 +265,7 @@ glaxnimate::gui::ValueDragEventFilter::ValueDragEventFilter(QAbstractItemView* v
     auto model = view->model();
     d->proxy = qobject_cast<QAbstractProxyModel*>(model);
     d->property_model = static_cast<item_models::PropertyModelBase*>(d->proxy ? d->proxy->sourceModel() : model);
+    d->column = column;
 }
 
 glaxnimate::gui::ValueDragEventFilter::~ValueDragEventFilter() = default;

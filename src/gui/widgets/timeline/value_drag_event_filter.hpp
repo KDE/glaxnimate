@@ -13,7 +13,7 @@ namespace glaxnimate::gui {
 class ValueDragEventFilter : public QObject
 {
 public:
-    ValueDragEventFilter(QAbstractItemView* view);
+    ValueDragEventFilter(QAbstractItemView* view, int column);
     ~ValueDragEventFilter();
 
 protected:

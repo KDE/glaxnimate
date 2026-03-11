@@ -34,7 +34,7 @@ PropertiesDock::PropertiesDock(GlaxnimateWindow* parent, item_models::PropertyMo
     d->ui.view_properties->header()->setSectionResizeMode(item_models::PropertyModelSingle::ColumnToggleKeyframe, QHeaderView::ResizeToContents);
     d->ui.view_properties->header()->setSectionResizeMode(item_models::PropertyModelSingle::ColumnValue, QHeaderView::Stretch);
 
-    new ValueDragEventFilter(d->ui.view_properties);
+    new ValueDragEventFilter(d->ui.view_properties, item_models::PropertyModelSingle::ColumnValue);
 }
 
 PropertiesDock::~PropertiesDock() = default;
