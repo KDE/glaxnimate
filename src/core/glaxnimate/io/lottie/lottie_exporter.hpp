@@ -41,8 +41,7 @@ public:
         document(comp->document()),
         strip(strip),
         strip_raster( strip_raster ),
-        auto_embed(settings["auto_embed"].toBool()),
-        old_kf(settings["old_kf"].toBool())
+        auto_embed(settings["auto_embed"].toBool())
     {}
 
     QCborMap to_json()
@@ -446,6 +445,28 @@ public:
         return QCborArray{cb};
     }
 
+    void populate_keyframe(QCborMap& jkf, const QVariant& value, model::FrameTime time, const model::KeyframeTransition& transition, bool is_last)
+    {
+        QCborValue kf_value = keyframe_value_from_variant(value);
+
+        jkf["t"_l] = time;
+        jkf["s"_l] = kf_value;
+
+        if ( !is_last )
+        {
+            if ( transition.hold() )
+            {
+                jkf["h"_l] =  1;
+            }
+            else
+            {
+                jkf["h"_l] =  0;
+                jkf["o"_l] = keyframe_bezier_handle(transition.before());
+                jkf["i"_l] = keyframe_bezier_handle(transition.after());
+            }
+        }
+    }
+
     QCborMap convert_animated(
         model::AnimatableBase* prop,
         const TransformFunc& transform_values
@@ -465,12 +486,9 @@ public:
             {
                 auto kf = split_kfs[i].get();
                 QVariant v = transform_values.to_lottie(kf->value(), kf->time());
-                QCborValue kf_value = keyframe_value_from_variant(v);
 
                 if ( i != 0 )
                 {
-                    if ( old_kf )
-                        jkf["e"_l] = kf_value;
 
                     if ( position )
                     {
@@ -482,22 +500,7 @@ public:
                 }
 
                 jkf.clear();
-                jkf["t"_l] = kf->time();
-                jkf["s"_l] = kf_value;
-
-                if ( i != e - 1 )
-                {
-                    if ( kf->transition().hold() )
-                    {
-                        jkf["h"_l] =  1;
-                    }
-                    else
-                    {
-                        jkf["h"_l] =  0;
-                        jkf["o"_l] = keyframe_bezier_handle(kf->transition().before());
-                        jkf["i"_l] = keyframe_bezier_handle(kf->transition().after());
-                    }
-                }
+                populate_keyframe(jkf, v, kf->time(), kf->transition(), i == e - 1);
 
                 if ( position )
                 {
@@ -531,6 +534,16 @@ public:
         return jobj;
     }
 
+    static std::pair<qreal, qreal> radial_highlight(const QPointF& s, const QPointF& e, const QPointF& h)
+    {
+        auto de = e - s;
+        auto dh = h - s;
+        auto dist = math::hypot(de.x(), de.y());
+        qreal val_h = qFuzzyIsNull(dist) ? 0 : math::hypot(dh.x(), dh.y()) / dist * 100;
+        qreal val_a = math::rad2deg(math::atan2(dh.y(), dh.x()) - math::atan2(de.y(), de.x()));
+        return {val_h, val_a};
+    }
+
     void convert_styler(model::Styler* shape, QCborMap& jsh)
     {
         auto used = shape->use.get();
@@ -558,9 +571,46 @@ public:
         else
             jsh["ty"_l] = "gs";
 
-        /// \todo highlight
-        jsh["h"_l] = fake_animated(0);
-        jsh["a"_l] = fake_animated(0);
+        if ( gradient->type.get() == model::Gradient::Radial )
+        {
+            model::JoinAnimatables highlight({&gradient->start_point, &gradient->end_point, &gradient->highlight});
+            QCborMap prop_a;
+            QCborMap prop_h;
+            if ( highlight.animated() )
+            {
+                prop_a["a"_l] = 1;
+                prop_h["a"_l] = 1;
+                QCborArray k_a;
+                QCborArray k_h;
+                for ( std::size_t i = 0; i < highlight.keyframes().size(); i++ )
+                {
+                    const auto& kf = highlight.keyframes()[i];
+                    QCborMap kf_a;
+                    QCborMap kf_h;
+                    qreal val_h, val_a;
+                    std::tie(val_h, val_a) = radial_highlight(kf.values[0].toPointF(), kf.values[1].toPointF(), kf.values[2].toPointF());
+                    populate_keyframe(kf_h, val_h, kf.time, kf.transition(), i + 1 == highlight.keyframes().size());
+                    populate_keyframe(kf_a, val_a, kf.time, kf.transition(), i + 1 == highlight.keyframes().size());
+                    k_a.push_back(kf_a);
+                    k_h.push_back(kf_h);
+                }
+
+                prop_a["k"_l] = k_a;
+                prop_h["k"_l] = k_h;
+            }
+            else
+            {
+                prop_a["a"_l] = 0;
+                prop_h["a"_l] = 0;
+                qreal val_h, val_a;
+                std::tie(val_h, val_a) = radial_highlight(gradient->start_point.get(), gradient->end_point.get(), gradient->highlight.get());
+                prop_a["k"_l] = val_a;
+                prop_h["k"_l] = val_h;
+            }
+
+            jsh["a"_l] = prop_a;
+            jsh["h"_l] = prop_h;
+        }
 
         auto colors = gradient->colors.get();
         QCborMap jcolors;
@@ -772,7 +822,6 @@ public:
     model::Layer* mask = nullptr;
     bool strip_raster;
     bool auto_embed;
-    bool old_kf;
 };
 
 

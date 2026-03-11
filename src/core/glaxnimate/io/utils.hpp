@@ -10,6 +10,9 @@
 
 namespace glaxnimate::io {
 
+/**
+ * \brief Splits keyframes to avoid overshooting [0-1] easing values
+ */
 std::vector<std::unique_ptr<model::KeyframeBase>> split_keyframes(model::AnimatableBase* prop);
 
 } // namespace glaxnimate::io

@@ -16,6 +16,8 @@
     * Reduced the number of intermediate layers when importing a lottie
     * Multiple improvements to the AEP importer
     * Fixed wrong channel order on video export
+    * Implemented radial gradient highlight export for lottie
+    * Removed option for legacy format on lottie export
 * Misc
     * New rendering system
     * Core as static library

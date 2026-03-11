@@ -57,6 +57,5 @@ std::unique_ptr<glaxnimate::settings::SettingsGroup> glaxnimate::io::lottie::Lot
         glaxnimate::settings::Setting("pretty", i18n("Pretty"), i18n("Pretty print the JSON"), false),
         glaxnimate::settings::Setting("strip", i18n("Strip"), i18n("Strip unused properties"), false),
         glaxnimate::settings::Setting("auto_embed", i18n("Embed Images"), i18n("Automatically embed non-embedded images"), false),
-        glaxnimate::settings::Setting("old_kf", i18n("Legacy Keyframes"), i18n("Compatibility with lottie-web versions prior to 5.0.0"), false),
     });
 }
