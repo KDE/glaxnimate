@@ -8,17 +8,18 @@
 #include <emscripten/bind.h>
 #include <QMetaProperty>
 #include <QColor>
+#include "glaxnimate/model/document.hpp"
 
 
 namespace emscripten {
 
-// Why the heck does this work?
+
 // newer version of embind have policies in val::vall but we are restricted by Qt
 template<class T, class... Policies>
 emscripten::val val_ptr(T* ptr, Policies...)
 {
-    return emscripten::val(ptr);
-
+    return emscripten::val(ptr); // Why the heck does this work?
+    // return emscripten::val::take_ownership(internal::_emval_take_value(internal::TypeID<QObject>::get(), ptr));
 }
 
 } // namespace emscripten
@@ -88,6 +89,8 @@ emscripten::val qvariant_to_val(const QVariant& v)
     {
         return emscripten::val_ptr(qvariant_cast<QObject*>(v), emscripten::return_value_policy::reference());
     }
+
+    qDebug() << v << v.metaType();
 
     return emscripten::val::undefined();
 }
@@ -222,8 +225,8 @@ emclass_t<CppClass, Args...>& register_from_meta(emclass_t<CppClass, Args...>& r
         if ( !prop.isScriptable() )
             continue;
 
+        // qDebug() << meta.className() << emscripten::internal::TypeID<CppClass>::get() << i << prop.name() << prop.metaType();
         /*int meta_type = prop.typeId();
-        qDebug() << meta.className() << i << prop.name() << prop.metaType() << meta_type;
         if ( meta_type >= QMetaType::User )
         {
             if ( QMetaType(meta_type).flags() & QMetaType::IsEnumeration )

@@ -210,6 +210,14 @@ private:
 
 
 
+template<class T, class Base=model::AnimatableBase>
+void register_animatable()
+{
+    std::string name = "AnimatedProperty<";
+    name += QMetaType::fromType<T>().name();
+    name += ">";
+    emscripten::class_<model::AnimatedProperty<T>, emscripten::base<Base>>(name.c_str());
+}
 
 } // glaxnimate::js
 
@@ -218,6 +226,7 @@ EMSCRIPTEN_BINDINGS(my_module)
 {
     using namespace glaxnimate::js;
     emscripten::function("initialize", &io::IoRegistry::load_formats);
+
     emscripten::class_<MetaObject>("MetaObject")
         .class_function("from", &MetaObject::from, emscripten::allow_raw_pointers())
         .property("properties", &MetaObject::properties)
@@ -237,11 +246,27 @@ EMSCRIPTEN_BINDINGS(my_module)
         .field("blue", &QColor::blue, &QColor::setBlue)
         .field("alpha", &QColor::alpha, &QColor::setAlpha)
     ;
+    emscripten::value_array<QPointF>("Point")
+        .element(&QPointF::x, &QPointF::setX)
+        .element(&QPointF::y, &QPointF::setY)
+    ;
+    emscripten::value_array<QVector2D>("Vector2D")
+        .element(&QVector2D::x, &QVector2D::setX)
+        .element(&QVector2D::y, &QVector2D::setY)
+    ;
+    emscripten::value_array<QSizeF>("Size")
+        .element(&QSizeF::width, &QSizeF::setWidth)
+        .element(&QSizeF::height, &QSizeF::setHeight)
+    ;
     emscripten::class_<GlaxnimateRenderer>("GlaxnimateRenderer")
         .constructor<emscripten::val>()
         .property("current_time", &GlaxnimateRenderer::current_time, &GlaxnimateRenderer::set_current_time)
         .property("loaded", &GlaxnimateRenderer::loaded)
         .function("render", &GlaxnimateRenderer::render)
+        .property("fps", &GlaxnimateRenderer::fps)
+        .property("width", &GlaxnimateRenderer::width)
+        .property("height", &GlaxnimateRenderer::height)
+        .property("last_frame", &GlaxnimateRenderer::last_frame)
         .property("document", &GlaxnimateRenderer::document_obj, emscripten::return_value_policy::reference())
         .property("composition", &GlaxnimateRenderer::composition, emscripten::return_value_policy::reference())
     ;
@@ -256,6 +281,27 @@ EMSCRIPTEN_BINDINGS(my_module)
     register_from_meta<model::StretchableTime, model::Object>();
     register_from_meta<model::Transform, model::Object>();
     register_from_meta<model::MaskSettings, model::Object>();
+
+    register_from_meta<model::AnimatableBase, QObject>()
+        .function("get", std::function<QVariant(const model::AnimatableBase&)>([](const model::AnimatableBase& anim){
+            return anim.value();
+        }))
+        .function("get_at", std::function<QVariant(const model::AnimatableBase&, double)>([](const model::AnimatableBase& anim, double t){
+            return anim.value(t);
+        }))
+        .function("set", std::function<QVariant(model::AnimatableBase&, const QVariant& var)>([](model::AnimatableBase& anim, const QVariant& var){
+            return anim.set_undoable(var);
+        }))
+    ;
+    register_from_meta<model::detail::AnimatedPropertyPosition, model::AnimatableBase>();
+    register_animatable<QPointF, model::detail::AnimatedPropertyPosition>();
+    register_animatable<QSizeF>();
+    register_animatable<QVector2D>();
+    register_animatable<QColor>();
+    register_animatable<float>();
+    register_animatable<QGradientStops>();
+    register_from_meta<model::detail::AnimatedPropertyBezier, model::AnimatableBase>();
+    register_animatable<math::bezier::Bezier, model::detail::AnimatedPropertyBezier>();
 
     register_from_meta<model::Assets, model::DocumentNode>();
     register_from_meta<model::Asset, model::DocumentNode>();
@@ -272,7 +318,7 @@ EMSCRIPTEN_BINDINGS(my_module)
     register_from_meta<model::EmbeddedFont, model::Asset>();
     register_from_meta<model::FontList, model::DocumentNode>();
 
-
+    register_from_meta<model::ShapeElement, model::VisualNode>();
     register_from_meta<model::Shape, model::ShapeElement>();
     register_from_meta<model::Modifier, model::ShapeElement>();
     register_from_meta<model::Styler, model::ShapeElement>();
@@ -283,7 +329,7 @@ EMSCRIPTEN_BINDINGS(my_module)
     register_constructible<model::PolyStar, model::Shape>(enums<model::PolyStar::StarType>{});
     register_constructible<model::Path, model::Shape>();
 
-    auto cls_group = register_from_meta<model::Group, model::Composable>();
+    auto cls_group = register_constructible<model::Group, model::Composable>();
     // define_add_shape(cls_group);
 
     register_constructible<model::Layer, model::Group>();
@@ -300,4 +346,5 @@ EMSCRIPTEN_BINDINGS(my_module)
     register_constructible<model::RoundCorners, model::PathModifier>();
     register_constructible<model::OffsetPath, model::PathModifier>();
     register_constructible<model::ZigZag, model::PathModifier>();
+
 }

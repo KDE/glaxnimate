@@ -33,6 +33,7 @@
             this.context = this.canvas.getContext("2d");
             this._start_time = -1;
             this._frames_offset = 0
+            this._animation_frame = null;
             Glaxnimate.load_action(this.load.bind(this));
         }
 
@@ -40,7 +41,7 @@
         {
             this.renderer = new Glaxnimate.GlaxnimateRenderer(this._opts);
             if ( this._play )
-                requestAnimationFrame(this.draw_frame.bind(this));
+                this._request_frame();
         }
 
         play()
@@ -49,7 +50,7 @@
             {
                 this._play = true;
                 this._start_time = -1;
-                requestAnimationFrame(this.draw_frame.bind(this));
+                this._request_frame();
             }
         }
 
@@ -59,24 +60,52 @@
             {
                 this._play = false;
                 this._frames_offset = this.renderer.current_time;
+                if ( this._animation_frame )
+                {
+                    cancelAnimationFrame(this._animation_frame);
+                    this._animation_frame = null;
+                }
             }
         }
 
-        draw_frame(time)
+        render_frame(time_frames)
         {
+            this.renderer.current_time = time_frames;
+            const pixels = this.renderer.render();
+            this.canvas.width = this.renderer.width;
+            this.canvas.height = this.renderer.height;
+            const img = this.context.createImageData(this.renderer.width, this.renderer.height);
+            img.data.set(pixels);
+            this.context.putImageData(img, 0, 0);
+        }
+
+        _request_frame()
+        {
+            this._animation_frame = requestAnimationFrame(this._render_tick.bind(this));
+        }
+
+        _render_tick(time)
+        {
+            this._animation_frame = null;
             if ( this._start_time < 0 )
                 this._start_time = time;
 
-            let time_frames = ((time - this._start_time) / 1000 * this.renderer.composition.fps + this._frames_offset) % this.renderer.composition.animation.last_frame;
-            this.renderer.current_time = time_frames;
-            const pixels = this.renderer.render();
-            this.canvas.width = this.renderer.composition.width;
-            this.canvas.height = this.renderer.composition.height;
-            const img = this.context.createImageData(this.renderer.composition.width, this.renderer.composition.height);
-            img.data.set(pixels);
-            this.context.putImageData(img, 0, 0);
+            let time_frames = ((time - this._start_time) / 1000 * this.renderer.fps + this._frames_offset) % this.renderer.last_frame;
+
+            this.render_frame(time_frames);
+
             if ( this._play )
-                requestAnimationFrame(this.draw_frame.bind(this));
+                this._request_frame();
+        }
+
+        get document()
+        {
+            return renderer.document;
+        }
+
+        get composition()
+        {
+            return renderer.composition;
         }
     }
 
