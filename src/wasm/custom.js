@@ -67,12 +67,12 @@
             if ( this._start_time < 0 )
                 this._start_time = time;
 
-            let time_frames = ((time - this._start_time) / 1000 * this.renderer.fps + this._frames_offset) % this.renderer.last_frame;
+            let time_frames = ((time - this._start_time) / 1000 * this.renderer.composition.fps + this._frames_offset) % this.renderer.composition.animation.last_frame;
             this.renderer.current_time = time_frames;
             const pixels = this.renderer.render();
-            this.canvas.width = this.renderer.width;
-            this.canvas.height = this.renderer.height;
-            const img = this.context.createImageData(this.renderer.width, this.renderer.height);
+            this.canvas.width = this.renderer.composition.width;
+            this.canvas.height = this.renderer.composition.height;
+            const img = this.context.createImageData(this.renderer.composition.width, this.renderer.composition.height);
             img.data.set(pixels);
             this.context.putImageData(img, 0, 0);
             if ( this._play )

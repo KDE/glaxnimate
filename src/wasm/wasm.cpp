@@ -11,20 +11,50 @@
 #include "glaxnimate/renderer/renderer.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
 
+#include "glaxnimate/model/shapes/style/stroke.hpp"
+#include "glaxnimate/model/shapes/style/fill.hpp"
+
+#include "glaxnimate/model/shapes/shapes/ellipse.hpp"
+#include "glaxnimate/model/shapes/shapes/polystar.hpp"
+#include "glaxnimate/model/shapes/shapes/rect.hpp"
+#include "glaxnimate/model/shapes/shapes/path.hpp"
+
+#include "glaxnimate/model/shapes/composable/layer.hpp"
+#include "glaxnimate/model/shapes/composable/precomp_layer.hpp"
+#include "glaxnimate/model/shapes/composable/image.hpp"
+
+#include "glaxnimate/model/shapes/modifiers/repeater.hpp"
+#include "glaxnimate/model/shapes/modifiers/trim.hpp"
+#include "glaxnimate/model/shapes/modifiers/inflate_deflate.hpp"
+#include "glaxnimate/model/shapes/modifiers/zig_zag.hpp"
+#include "glaxnimate/model/shapes/modifiers/offset_path.hpp"
+#include "glaxnimate/model/shapes/modifiers/round_corners.hpp"
+
+
+#include "register_js.hpp"
+
 using namespace glaxnimate;
 
 namespace glaxnimate::js {
-
-emscripten::val convert_qvariant(const QVariant& v);
-
-class MetaObjectAccessor
+class MetaObject
 {
-private:
 public:
-    MetaObjectAccessor(const QMetaObject* meta)
-    : meta(meta)
+    MetaObject(const QMetaObject* meta) : meta(meta)
     {
         load_props();
+    }
+
+    emscripten::val properties() const
+    {
+        emscripten::val result = emscripten::val::array();
+        for ( int i = 0; i < meta->propertyCount(); i++ )
+            result.set(i, emscripten::val(meta->property(i).name()));
+        return result;
+    }
+
+    QString class_name() const
+    {
+        return QString::fromLatin1(meta->className());
     }
 
     emscripten::val get(QObject* self, const std::string& name) const
@@ -32,12 +62,19 @@ public:
         auto it = props.find(name);
         if ( it == props.end() )
             return emscripten::val::undefined();
-        return convert_qvariant(it->second.read(self));
+        return qvariant_to_val(it->second.read(self));
     }
 
-    static MetaObjectAccessor* accessor(const QMetaObject* obj)
+    static MetaObject* from(const QObject* object)
     {
-        static std::unordered_map<const QMetaObject*, MetaObjectAccessor> metas;
+        if ( !object )
+            return nullptr;
+        return accessor(object->metaObject());
+    }
+
+    static MetaObject* accessor(const QMetaObject* obj)
+    {
+        static std::unordered_map<const QMetaObject*, MetaObject> metas;
         auto it = metas.find(obj);
         if ( it != metas.end() )
             return &it->second;
@@ -45,7 +82,7 @@ public:
         return &metas.emplace(obj, obj).first->second;
     }
 
-// private:
+private:
     void load_props()
     {
         for ( int i = 0; i < meta->propertyCount(); i++ )
@@ -58,84 +95,6 @@ public:
     const QMetaObject* meta;
     std::unordered_map<std::string, QMetaProperty> props;
 };
-
-class ObjectAccessor
-{
-public:
-    ObjectAccessor(QObject* object)
-        : object(object),
-        accessor(MetaObjectAccessor::accessor(object->metaObject()))
-    {}
-
-    std::string class_name() const
-    {
-        return accessor->meta->className();
-    }
-
-    emscripten::val get(const std::string& name)
-    {
-        return accessor->get(object, name);
-    }
-
-    std::string to_string() const
-    {
-        return object->objectName().isEmpty() ? class_name() : object->objectName().toStdString();
-    }
-
-    emscripten::val properties() const
-    {
-        /*std::vector<emscripten::val> properties;
-        properties.reserve(accessor->props.size());
-        for ( const auto& p : accessor->props )
-            properties.push_back(emscripten::val(p.first));
-        return emscripten::val::array(properties.begin(), properties.end());*/
-
-        emscripten::val properties = emscripten::val::array();
-        properties.call<void>("push", emscripten::val("hello"));
-        for ( const auto& p : accessor->props )
-            properties.call<void>("push", emscripten::val(p.first));
-        return properties;
-    }
-
-private:
-    QObject* object;
-    MetaObjectAccessor* accessor;
-};
-
-
-emscripten::val convert_qvariant(const QVariant& v)
-{
-    switch ( v.typeId() )
-    {
-        case QMetaType::Bool:
-            return emscripten::val(v.toBool());
-        case QMetaType::Float:
-            return emscripten::val(v.toFloat());
-        case QMetaType::Double:
-            return emscripten::val(v.toDouble());
-        case QMetaType::Long:
-        case QMetaType::Short:
-        case QMetaType::Int:
-            return emscripten::val(v.toInt());
-        case QMetaType::LongLong:
-            return emscripten::val(v.toLongLong());
-        case QMetaType::ULong:
-        case QMetaType::UShort:
-        case QMetaType::UInt:
-            return emscripten::val(v.toUInt());
-        case QMetaType::ULongLong:
-            return emscripten::val(v.toULongLong());
-        case QMetaType::QString:
-            return emscripten::val(v.toString().toStdString());
-    }
-
-    auto meta_obj = v.metaType().metaObject();
-    if ( meta_obj )
-    {
-        return emscripten::val(ObjectAccessor(qvariant_cast<QObject*>(v)));
-    }
-    return emscripten::val::undefined();
-}
 
 class GlaxnimateRenderer
 {
@@ -232,9 +191,14 @@ public:
         return !comp ? 0 : comp->animation->last_frame.get();
     }
 
-    ObjectAccessor document_obj() const
+    model::Document* document_obj() const
     {
-        return ObjectAccessor(document.get());
+        return (document.get());
+    }
+
+    model::Composition* composition() const
+    {
+        return comp;
     }
 
 private:
@@ -244,6 +208,9 @@ private:
 
 };
 
+
+
+
 } // glaxnimate::js
 
 
@@ -251,23 +218,86 @@ EMSCRIPTEN_BINDINGS(my_module)
 {
     using namespace glaxnimate::js;
     emscripten::function("initialize", &io::IoRegistry::load_formats);
-    emscripten::class_<QObject>("QObject");
+    emscripten::class_<MetaObject>("MetaObject")
+        .class_function("from", &MetaObject::from, emscripten::allow_raw_pointers())
+        .property("properties", &MetaObject::properties)
+        .property("class_name", &MetaObject::class_name)
+        .function("get", &MetaObject::get, emscripten::allow_raw_pointers())
+    ;
+
+    emscripten::class_<QObject>("QObject")
+        .property("objectName", &QObject::objectName, qOverload<const QString&>.of<void, QObject>(&QObject::setObjectName))
+        .function("meta", std::function<const MetaObject*(const QObject&)>([](const QObject& obj){
+            return MetaObject::accessor(obj.metaObject());
+        }), emscripten::allow_raw_pointers());
+    ;
+    emscripten::value_object<QColor>("Color")
+        .field("red", &QColor::red, &QColor::setRed)
+        .field("green", &QColor::green, &QColor::setGreen)
+        .field("blue", &QColor::blue, &QColor::setBlue)
+        .field("alpha", &QColor::alpha, &QColor::setAlpha)
+    ;
     emscripten::class_<GlaxnimateRenderer>("GlaxnimateRenderer")
         .constructor<emscripten::val>()
         .property("current_time", &GlaxnimateRenderer::current_time, &GlaxnimateRenderer::set_current_time)
         .property("loaded", &GlaxnimateRenderer::loaded)
-        .property("fps", &GlaxnimateRenderer::fps)
-        .property("width", &GlaxnimateRenderer::width)
-        .property("height", &GlaxnimateRenderer::height)
-        .property("last_frame", &GlaxnimateRenderer::last_frame)
         .function("render", &GlaxnimateRenderer::render)
         .property("document", &GlaxnimateRenderer::document_obj, emscripten::return_value_policy::reference())
+        .property("composition", &GlaxnimateRenderer::composition, emscripten::return_value_policy::reference())
     ;
-    emscripten::class_<ObjectAccessor>("ObjectAccessor")
-        .constructor<QObject*>()
-        .property("class_name", &ObjectAccessor::class_name)
-        .function("toString", &ObjectAccessor::to_string)
-        .function("get", &ObjectAccessor::get)
-        .function("properties", &ObjectAccessor::properties)
-    ;
+
+    register_from_meta<model::Document, QObject>();
+
+    register_from_meta<model::Object, QObject>();
+    register_from_meta<model::DocumentNode, model::Object>();
+    register_from_meta<model::VisualNode, model::DocumentNode>();
+
+    register_from_meta<model::AnimationContainer, model::Object>();
+    register_from_meta<model::StretchableTime, model::Object>();
+    register_from_meta<model::Transform, model::Object>();
+    register_from_meta<model::MaskSettings, model::Object>();
+
+    register_from_meta<model::Assets, model::DocumentNode>();
+    register_from_meta<model::Asset, model::DocumentNode>();
+    register_from_meta<model::Composition, model::VisualNode>();
+    register_from_meta<model::CompositionList, model::DocumentNode>();
+    register_from_meta<model::NamedColor, model::Asset>();
+    register_from_meta<model::NamedColorList, model::DocumentNode>();
+    register_from_meta<model::GradientColors, model::Asset>();
+    register_from_meta<model::GradientColorsList, model::DocumentNode>();
+    register_from_meta<model::Gradient, model::Asset>();
+    register_from_meta<model::GradientList, model::DocumentNode>();
+    register_from_meta<model::Bitmap, model::Asset>();
+    register_from_meta<model::BitmapList, model::DocumentNode>();
+    register_from_meta<model::EmbeddedFont, model::Asset>();
+    register_from_meta<model::FontList, model::DocumentNode>();
+
+
+    register_from_meta<model::Shape, model::ShapeElement>();
+    register_from_meta<model::Modifier, model::ShapeElement>();
+    register_from_meta<model::Styler, model::ShapeElement>();
+    register_from_meta<model::Composable, model::ShapeElement>();
+
+    register_constructible<model::Rect, model::Shape>();
+    register_constructible<model::Ellipse, model::Shape>();
+    register_constructible<model::PolyStar, model::Shape>(enums<model::PolyStar::StarType>{});
+    register_constructible<model::Path, model::Shape>();
+
+    auto cls_group = register_from_meta<model::Group, model::Composable>();
+    // define_add_shape(cls_group);
+
+    register_constructible<model::Layer, model::Group>();
+    register_constructible<model::PreCompLayer, model::Composable>();
+    register_constructible<model::Image, model::Composable>();
+
+    register_constructible<model::Fill, model::Styler>(enums<model::Fill::Rule>{});
+    register_constructible<model::Stroke, model::Styler>(enums<model::Stroke::Cap, model::Stroke::Join>{});
+    register_constructible<model::Repeater, model::Modifier>();
+
+    register_from_meta<model::PathModifier, model::Modifier>();
+    register_constructible<model::Trim, model::PathModifier>();
+    register_constructible<model::InflateDeflate, model::PathModifier>();
+    register_constructible<model::RoundCorners, model::PathModifier>();
+    register_constructible<model::OffsetPath, model::PathModifier>();
+    register_constructible<model::ZigZag, model::PathModifier>();
 }
