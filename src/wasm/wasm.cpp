@@ -65,6 +65,14 @@ public:
         return qvariant_to_val(it->second.read(self));
     }
 
+    bool set(QObject* self, const std::string& name, const QVariant& value) const
+    {
+        auto it = props.find(name);
+        if ( it == props.end() )
+            return false;
+        return it->second.write(self, value);
+    }
+
     static MetaObject* from(const QObject* object)
     {
         if ( !object )
@@ -246,17 +254,21 @@ EMSCRIPTEN_BINDINGS(my_module)
         .field("blue", &QColor::blue, &QColor::setBlue)
         .field("alpha", &QColor::alpha, &QColor::setAlpha)
     ;
-    emscripten::value_array<QPointF>("Point")
-        .element(&QPointF::x, &QPointF::setX)
-        .element(&QPointF::y, &QPointF::setY)
+    emscripten::value_object<QPointF>("Point")
+        .field("x", &QPointF::x, &QPointF::setX)
+        .field("y", &QPointF::y, &QPointF::setY)
     ;
-    emscripten::value_array<QVector2D>("Vector2D")
-        .element(&QVector2D::x, &QVector2D::setX)
-        .element(&QVector2D::y, &QVector2D::setY)
+    emscripten::value_object<QVector2D>("Vector2D")
+        .field("x", &QVector2D::x, &QVector2D::setX)
+        .field("y", &QVector2D::y, &QVector2D::setY)
+        .field("_v",
+            std::function<bool(const QVector2D&)>([](const QVector2D&){ return true;}),
+            std::function<void(QVector2D&, bool)>([](QVector2D&, bool){})
+        )
     ;
-    emscripten::value_array<QSizeF>("Size")
-        .element(&QSizeF::width, &QSizeF::setWidth)
-        .element(&QSizeF::height, &QSizeF::setHeight)
+    emscripten::value_object<QSizeF>("Size")
+        .field("width", &QSizeF::width, &QSizeF::setWidth)
+        .field("height", &QSizeF::height, &QSizeF::setHeight)
     ;
     emscripten::class_<GlaxnimateRenderer>("GlaxnimateRenderer")
         .constructor<emscripten::val>()

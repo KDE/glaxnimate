@@ -82,6 +82,12 @@ emscripten::val qvariant_to_val(const QVariant& v)
         }
         case QMetaType::QColor:
             return emscripten::val(qvariant_cast<QColor>(v));
+        case QMetaType::QPointF:
+            return emscripten::val(qvariant_cast<QPointF>(v));
+        case QMetaType::QSizeF:
+            return emscripten::val(qvariant_cast<QSizeF>(v));
+        case QMetaType::QVector2D:
+            return emscripten::val(qvariant_cast<QVector2D>(v));
     }
 
     auto meta_obj = v.metaType().metaObject();
@@ -93,6 +99,19 @@ emscripten::val qvariant_to_val(const QVariant& v)
     qDebug() << v << v.metaType();
 
     return emscripten::val::undefined();
+}
+
+std::string type_name(emscripten::val val)
+{
+    std::array<const char*, 4> chunks;
+
+    for ( auto chunk : chunks )
+    {
+        val = val[chunk];
+        if ( val.isUndefined() )
+            return {};
+    }
+    return val.as<std::string>();
 }
 
 QVariant qvariant_from_val(const emscripten::val& val)
@@ -112,11 +131,49 @@ QVariant qvariant_from_val(const emscripten::val& val)
         auto length = val["length"].as<int>();
         for ( int i = 0; i < length; i++ )
             arr.push_back(qvariant_from_val(val[i]));
+        return QVariant(arr);
     }
 
-    if ( QObject* ptr = val.as<QObject*>(emscripten::allow_raw_pointers()) )
+    std::string name = type_name(val);
+
+    if ( !name.empty() )
     {
-        return QVariant::fromValue(ptr);
+        qDebug() << name;
+        if ( QObject* ptr = val.as<QObject*>(emscripten::allow_raw_pointers()) )
+        {
+            return QVariant::fromValue(ptr);
+        }
+    }
+    else
+    {
+        if ( val.hasOwnProperty("red") )
+        {
+            return QVariant::fromValue(QColor(
+                val["red"].as<int>(),
+                val["green"].as<int>(),
+                val["blue"].as<int>(),
+                val["alpha"].as<int>()
+            ));
+        }
+        else if ( val.hasOwnProperty("width") )
+        {
+            return QVariant::fromValue(QSizeF(
+                val["width"].as<double>(),
+                val["height"].as<double>()
+            ));
+        }
+        else if ( val.hasOwnProperty("x") )
+        {
+            if ( val.hasOwnProperty("_v") )
+                return QVariant::fromValue(QVector2D(
+                    val["x"].as<double>(),
+                    val["y"].as<double>()
+                ));
+            return QVariant::fromValue(QPointF(
+                val["x"].as<double>(),
+                val["y"].as<double>()
+            ));
+        }
     }
 
     return {};
@@ -242,9 +299,17 @@ emclass_t<CppClass, Args...>& register_from_meta(emclass_t<CppClass, Args...>& r
         }
         else*/
         {
-            reg.property(prop.name(), std::function<emscripten::val(const CppClass&)>([prop](const CppClass& self) {
+            std::function<emscripten::val(const CppClass&)> getter([prop](const CppClass& self) {
                 return qvariant_to_val(prop.read(&self));
-            }));
+            });
+            if ( prop.isWritable() )
+                reg.property(prop.name(), std::move(getter), std::function<void(CppClass&, const QVariant& val)>(
+                    [prop]( CppClass& self, const QVariant& val) {
+                        prop.write(&self, val);
+                    }
+                ));
+            else
+                reg.property(prop.name(), std::move(getter));
         }
     }
 /*
