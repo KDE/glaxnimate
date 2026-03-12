@@ -40,6 +40,8 @@ set_target_properties(
 
 configure_file(example/example.html ${CMAKE_CURRENT_BINARY_DIR}/example.html COPYONLY)
 configure_file(example/example.rawr ${CMAKE_CURRENT_BINARY_DIR}/example.rawr COPYONLY)
+configure_file(package.json ${CMAKE_CURRENT_BINARY_DIR}/package.json COPYONLY)
+configure_file(Readme.md ${CMAKE_CURRENT_BINARY_DIR}/Readme.md COPYONLY)
 
 
 # source "$HOME/src/emsdk/emsdk_env.sh"

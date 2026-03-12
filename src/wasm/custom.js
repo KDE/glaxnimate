@@ -4,6 +4,7 @@
  */
 (() => {
     Glaxnimate.load_actions = [];
+    Glaxnimate.initialized = false;
     Glaxnimate().then((Module) => {
         Glaxnimate.Module = Module;
         Module.initialize();
@@ -11,6 +12,8 @@
         for ( let [k, v] of Object.entries(Module) )
             if ( !k.match(/^[A-Z0-9]+$|^[Qq]t|^promise/) )
                 Glaxnimate[k] = v;
+
+            Glaxnimate.initialized = true;
 
         for ( let action of Glaxnimate.load_actions )
             action(Module);
@@ -27,21 +30,28 @@
     {
         constructor(opts)
         {
-            this._play = opts.autoplay ?? true;
+            this._play = false;
             this._opts = opts;
             this.canvas = opts.canvas;
             this.context = this.canvas.getContext("2d");
             this._start_time = -1;
             this._frames_offset = 0
             this._animation_frame = null;
-            Glaxnimate.load_action(this.load.bind(this));
+            Glaxnimate.load_action(() => this.load());
         }
 
-        load()
+        load(opts=undefined)
         {
+            if ( opts )
+                this._opts = {...this._opts, ...opts};
+
+            if ( !Glaxnimate.initialized || !this._opts.data )
+                return;
+
             this.renderer = new Glaxnimate.GlaxnimateRenderer(this._opts);
-            if ( this._play )
-                this._request_frame();
+
+            if ( this._opts.autoplay ?? true )
+                this.play();
         }
 
         play()

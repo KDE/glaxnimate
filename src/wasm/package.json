@@ -1,0 +1,42 @@
+{
+    "name": "glaxnimate",
+    "version": "0.6.51",
+    "description": "Player and live editor for animations",
+    "homepage": "https://glaxnimate.org/",
+    "bugs": {
+        "url": "https://bugs.kde.org/describecomponents.cgi?product=glaxnimate"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://invent.kde.org/graphics/glaxnimate.git"
+    },
+    "license": "GPL-3.0-or-later",
+    "author": "Mattia Basaglia",
+    "files": [
+        "glaxnimate.js",
+        "glaxnimate.wasm"
+    ],
+    "keywords": [
+        "animation",
+        "canvas",
+        "svg",
+        "lottie",
+        "after effects",
+        "player",
+        "web"
+    ],
+    "browser": "glaxnimate.js",
+    "main": "glaxnimate.js",
+    "module": "glaxnimate.js",
+    "exports": {
+        ".": {
+            "browser": "./glaxnimate.js",
+            "import": "./glaxnimate.js"
+        },
+        "./global": "./glaxnimate.js"
+    },
+    "scripts": {
+    },
+    "devDependencies": {
+    }
+}

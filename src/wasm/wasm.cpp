@@ -123,9 +123,9 @@ public:
         QByteArray data = QByteArray::fromStdString(options["data"].as<std::string>());
         io::ImportExport* importer = nullptr;
 
-        if ( !options["slug"].isUndefined() )
+        if ( !options["format"].isUndefined() )
         {
-            importer = io::IoRegistry::instance().from_slug(QString::fromStdString(options["slug"].as<std::string>()));
+            importer = io::IoRegistry::instance().from_slug(QString::fromStdString(options["format"].as<std::string>()));
         }
 
         if ( !importer || !importer->can_handle(glaxnimate::io::ImportExport::Import) )
