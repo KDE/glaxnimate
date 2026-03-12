@@ -27,6 +27,16 @@ emscripten::val val_ptr(T* ptr, Policies...)
 namespace glaxnimate::js {
 
 
+template<class EnumT>
+/*PyEnumInfo*/void register_enum(const QMetaEnum& meta)
+{
+    emscripten::enum_<EnumT> pyenum(meta.name());
+    for ( int i = 0; i < meta.keyCount(); i++ )
+        pyenum.value(meta.key(i), EnumT(meta.value(i)));
+
+    // return {meta.name(), pyenum};
+}
+
 template<class... Enums>
 struct enums;
 
@@ -34,17 +44,17 @@ template<class EnumT, class... Others>
 struct enums<EnumT, Others...>
     : public enums<Others...>
 {
-    /*void process(py::handle& scope, std::vector<PyEnumInfo>& out)
+    void process(/*std::vector<PyEnumInfo>& out*/)
     {
-        out.push_back(register_enum<EnumT>(QMetaEnum::fromType<EnumT>(), scope));
-        enums<Others...>::process(scope, out);
-    }*/
+        /*out.push_back(*/register_enum<EnumT>(QMetaEnum::fromType<EnumT>())/*)*/;
+        enums<Others...>::process(/*out*/);
+    }
 };
 
 template<>
 struct enums<>
 {
-    // void process(py::handle&, std::vector<PyEnumInfo>&) {}
+    void process(/*std::vector<PyEnumInfo>&*/) {}
 };
 
 emscripten::val qvariant_to_val(const QVariant& v)
@@ -88,6 +98,11 @@ emscripten::val qvariant_to_val(const QVariant& v)
             return emscripten::val(qvariant_cast<QSizeF>(v));
         case QMetaType::QVector2D:
             return emscripten::val(qvariant_cast<QVector2D>(v));
+    }
+
+    if ( v.metaType().flags() & QMetaType::IsEnumeration )
+    {
+        return emscripten::val(v.toInt());
     }
 
     auto meta_obj = v.metaType().metaObject();
@@ -173,6 +188,10 @@ QVariant qvariant_from_val(const emscripten::val& val)
                 val["x"].as<double>(),
                 val["y"].as<double>()
             ));
+        }
+        else if ( val.hasOwnProperty("value") )
+        {
+            return QVariant(val["value"].as<int>());
         }
     }
 
@@ -267,6 +286,63 @@ emclass_t<CppClass, Args...> declare_from_meta()
     return emclass_t<CppClass, Args...> (clean_name);
 }
 
+} // namespace glaxnimate::js
+
+// Hack using emscripten internals to allow settings class static properties that aren't pointers
+namespace emscripten {
+namespace internal {
+
+template<typename GetterReturnType>
+struct GetterPolicy<std::function<GetterReturnType()>> {
+    typedef GetterReturnType ReturnType;
+    typedef std::function<GetterReturnType()> Context;
+
+    typedef internal::BindingType<ReturnType> Binding;
+    typedef typename Binding::WireType WireType;
+
+    template<typename ClassType, typename ReturnPolicy>
+    static WireType get(const Context& context) {
+        return Binding::toWireType(context(), ReturnPolicy{});
+    }
+
+    static void* getContext(const Context& context) {
+        return internal::getContext(context);
+    }
+};
+} // namespace internal
+template<
+    class ClassType,
+    class FieldType,
+    typename PropertyType = internal::DeduceArgumentsTag,
+    typename... Policies
+>
+void class_static_property(const char* name, FieldType value, Policies...)
+{
+    using namespace internal;
+
+    using Getter = std::function<FieldType()>;
+    Getter getter([value]{return value;});
+
+    typedef GetterPolicy<
+            typename std::conditional<std::is_same<PropertyType, internal::DeduceArgumentsTag>::value,
+                                                   Getter,
+                                                   PropertyTag<Getter, PropertyType>>::type> GP;
+    using ReturnPolicy = typename GetReturnValuePolicy<typename GP::ReturnType>::tag;
+    auto gter = &GP::template get<ClassType, ReturnPolicy>;
+
+    _embind_register_class_class_property(
+        TypeID<ClassType>::get(),
+        name,
+        TypeID<FieldType>::get(),
+        GP::getContext(getter),
+        getSignature(gter),
+        reinterpret_cast<GenericFunction>(gter),
+        0,
+        0);
+}
+} // namespace emscripten
+namespace glaxnimate::js {
+
 template<class CppClass, class... Args, class... Enums>
 emclass_t<CppClass, Args...>& register_from_meta(emclass_t<CppClass, Args...>& reg, enums<Enums...> reg_enums = {})
 {
@@ -319,25 +395,27 @@ emclass_t<CppClass, Args...>& register_from_meta(emclass_t<CppClass, Args...>& r
         if ( pymeth.name )
             reg.attr(pymeth.name) = pymeth.method;
     }
-*//*
+*/
+
     if ( meta.classInfoOffset() < meta.classInfoCount() )
     {
-        emscripten::dict classinfo;
+        emscripten::val classinfo = emscripten::val::object();
 
         for ( int i = meta.classInfoOffset(); i < meta.classInfoCount(); i++ )
         {
             auto info = meta.classInfo(i);
-            classinfo[info.name()] = info.value();
+            classinfo.set(info.name(), emscripten::val(info.value()));
         }
 
-        reg.attr("__classinfo__") = classinfo;
+        emscripten::class_static_property<CppClass>("__classinfo__", classinfo);
     }
 
-*/
-    /*std::vector<PyEnumInfo> enum_info;
-    reg_enums.process(reg, enum_info);
-    for ( const auto& info : enum_info )
+
+    /*std::vector<PyEnumInfo> enum_info;*/
+    reg_enums.process(/*, enum_info*/);
+    /*for ( const auto& info : enum_info )
         reg.attr(info.name) = info.enum_handle;*/
+
     return reg;
 }
 
