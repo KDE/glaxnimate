@@ -4,7 +4,7 @@ SPDX-PackageSupplier = "Mattia Basaglia <dev@dragon.best>"
 SPDX-PackageDownloadLocation = "https://glaxnimate.org/"
 
 [[annotations]]
-path = ["README.md", "CONTRIBUTING.md", "src/plugin/python/README.md"]
+path = ["README.md", "CONTRIBUTING.md", "src/plugin/python/README.md", "src/wasm/Readme.md"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2019 Mattia Basaglia <dev@dragon.best>"
 SPDX-License-Identifier = "CC-BY-SA-4.0"
@@ -16,7 +16,7 @@ SPDX-FileCopyrightText = "none"
 SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
-path = ["src/plugin/python/MANIFEST.in.in", "src/plugin/python/build-requirements.txt", ".github/**", ".gitlab/**", "deploy/**", "data/emoji/sets.json", "data/**.desktop", "data/**.gpl", "data/templates/**", "data/themes/**", "REUSE.toml", "src/wasm/example/*"]
+path = ["src/plugin/python/MANIFEST.in.in", "src/plugin/python/build-requirements.txt", ".github/**", ".gitlab/**", "deploy/**", "data/emoji/sets.json", "data/**.desktop", "data/**.gpl", "data/templates/**", "data/themes/**", "REUSE.toml", "src/wasm/example/*", "src/wasm/package.json"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "none"
 SPDX-License-Identifier = "CC0-1.0"
