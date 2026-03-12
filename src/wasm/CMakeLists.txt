@@ -20,9 +20,9 @@ add_subdirectory(../core  ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 # Defining the target
 
-add_executable(glaxnimate_renderer wasm.cpp)
-target_link_libraries(glaxnimate_renderer Glaxnimate::Core)
-target_link_options(glaxnimate_renderer PRIVATE
+add_executable(glaxnimate_wasm wasm.cpp)
+target_link_libraries(glaxnimate_wasm Glaxnimate::Core)
+target_link_options(glaxnimate_wasm PRIVATE
     --bind
     -sALLOW_MEMORY_GROWTH=1
     -sPTHREAD_POOL_SIZE=4
@@ -31,11 +31,15 @@ target_link_options(glaxnimate_renderer PRIVATE
     -sEXPORT_NAME="Glaxnimate"
     "SHELL:--extern-post-js ${CMAKE_CURRENT_SOURCE_DIR}/custom.js"
 )
-set_property(
-    TARGET glaxnimate_renderer
-    APPEND PROPERTY LINK_DEPENDS
-    "${CMAKE_CURRENT_SOURCE_DIR}/custom.js"
+set_target_properties(
+    glaxnimate_wasm
+    PROPERTIES
+    OUTPUT_NAME "glaxnimate"
+    LINK_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/custom.js"
 )
+
+configure_file(example/example.html ${CMAKE_CURRENT_BINARY_DIR}/example.html COPYONLY)
+configure_file(example/example.rawr ${CMAKE_CURRENT_BINARY_DIR}/example.rawr COPYONLY)
 
 
 # source "$HOME/src/emsdk/emsdk_env.sh"
