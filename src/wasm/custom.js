@@ -100,12 +100,12 @@
 
         get document()
         {
-            return renderer.document;
+            return this.renderer.document;
         }
 
         get composition()
         {
-            return renderer.composition;
+            return this.renderer.composition;
         }
     }
 

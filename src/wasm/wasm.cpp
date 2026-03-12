@@ -311,6 +311,7 @@ EMSCRIPTEN_BINDINGS(my_module)
     register_animatable<QVector2D>();
     register_animatable<QColor>();
     register_animatable<float>();
+    register_animatable<int>();
     register_animatable<QGradientStops>();
     register_from_meta<model::detail::AnimatedPropertyBezier, model::AnimatableBase>();
     register_animatable<math::bezier::Bezier, model::detail::AnimatedPropertyBezier>();

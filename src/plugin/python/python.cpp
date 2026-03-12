@@ -471,6 +471,7 @@ void register_py_module(py::module& glaxnimate_module)
     register_animatable<QVector2D>(detail);
     register_animatable<QColor>(detail);
     register_animatable<float>(detail);
+    register_animatable<int>(detail);
     register_animatable<QGradientStops>(detail);
     register_from_meta<model::detail::AnimatedPropertyBezier, model::AnimatableBase>(detail);
     register_animatable<math::bezier::Bezier, model::detail::AnimatedPropertyBezier>(detail);
