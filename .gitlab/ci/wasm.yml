@@ -1,0 +1,16 @@
+
+wasm:
+    image: mattbas/qt-emscripten:6.10.2
+    stage: build
+    script:
+        - mkdir build
+        - cmake -DCMAKE_TOOLCHAIN_FILE=$CMAKE_TOOLCHAIN_FILE -DQT_HOST_PATH=$QT_HOST_PATH -DCMAKE_CXX_FLAGS="-matomics -mbulk-memory" -DCMAKE_EXE_LINKER_FLAGS="-lembind" ../src/wasm/
+        - make
+    when: always
+    artifacts:
+        paths:
+            - build/glaxnimate.js
+            - build/glaxnimate.wasm
+
+
+

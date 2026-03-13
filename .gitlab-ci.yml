@@ -27,6 +27,7 @@ include:
     # - .gitlab/ci/test-files.yml
     - .gitlab/ci/renderer-lib.yml
     - .gitlab/ci/verify-messages.yml
+    - .gitlab/ci/wasm.yml
     - project: sysadmin/ci-utilities
       file:
         # CI

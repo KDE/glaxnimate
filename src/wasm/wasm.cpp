@@ -120,8 +120,6 @@ public:
         if ( js_data.isUndefined() )
             return;
 
-        qDebug() << options["filename"].as<QString>();
-        qDebug() << js_data.isString();
         QString filename = options["filename"].isUndefined() ? "data" : options["filename"].as<QString>();
         QByteArray data;
         if ( js_data.isString() )
