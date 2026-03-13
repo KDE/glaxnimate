@@ -50,7 +50,7 @@
         {
             this._update_opts(opts);
             fetch(url)
-            .then(r => r.text())
+            .then(r => r.bytes())
             .then(data => player.load({
                 data,
                 filename: url

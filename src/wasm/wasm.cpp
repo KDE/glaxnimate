@@ -116,16 +116,23 @@ public:
             initialized = true;
         }
 
-        if ( options["data"].isUndefined() )
+        auto js_data = options["data"];
+        if ( js_data.isUndefined() )
             return;
 
-        QString filename = options["filename"].isUndefined() ? "data" : QString::fromStdString(options["filename"].as<std::string>());
-        QByteArray data = QByteArray::fromStdString(options["data"].as<std::string>());
+        qDebug() << options["filename"].as<QString>();
+        qDebug() << js_data.isString();
+        QString filename = options["filename"].isUndefined() ? "data" : options["filename"].as<QString>();
+        QByteArray data;
+        if ( js_data.isString() )
+            data = js_data.as<QString>().toUtf8();
+        else
+            data = js_data.as<QByteArray>();
         io::ImportExport* importer = nullptr;
 
         if ( !options["format"].isUndefined() )
         {
-            importer = io::IoRegistry::instance().from_slug(QString::fromStdString(options["format"].as<std::string>()));
+            importer = io::IoRegistry::instance().from_slug(options["format"].as<QString>());
         }
         else if ( !options["filename"].isUndefined() )
         {
@@ -363,5 +370,4 @@ EMSCRIPTEN_BINDINGS(my_module)
     register_constructible<model::RoundCorners, model::PathModifier>();
     register_constructible<model::OffsetPath, model::PathModifier>();
     register_constructible<model::ZigZag, model::PathModifier>();
-
 }

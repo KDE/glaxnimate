@@ -22,7 +22,9 @@ let player = new Glaxnimate.Player({
 // Load an animation explicitly
 // You can also just pass these to the constructor if data is available
 player.load({
-    data: "your data,
+    // `data` can be a string or Uint8Array
+    data: "your data", 
+    // You have to specify `format` or `filename` so the correct importer can be used
     format: "glaxnimate"
 });
 

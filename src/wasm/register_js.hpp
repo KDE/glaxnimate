@@ -57,6 +57,29 @@ struct enums<>
     void process(/*std::vector<PyEnumInfo>&*/) {}
 };
 
+emscripten::val bytearray_to_val(const QByteArray& cpp_arr, bool alias)
+{
+    // Get a refence to the byte array buffer
+    emscripten::val unalaiased = emscripten::val(
+        emscripten::typed_memory_view(
+            cpp_arr.size(),
+            reinterpret_cast<const uint8_t*>(cpp_arr.constData())
+        )
+    );
+    if ( !alias )
+        return unalaiased;
+    // Make sure the data is actually copied, rather than referenced
+    auto js_arr = emscripten::val::global("Uint8Array").new_(cpp_arr.size());
+    js_arr.call<void>("set", unalaiased);
+    return js_arr;
+}
+
+QByteArray bytearray_from_val(const emscripten::val& val)
+{
+    std::vector<char> vec = emscripten::convertJSArrayToNumberVector<char>(val);
+    return QByteArray(vec.data(), vec.size());
+}
+
 emscripten::val qvariant_to_val(const QVariant& v)
 {
     switch ( v.typeId() )
@@ -98,6 +121,8 @@ emscripten::val qvariant_to_val(const QVariant& v)
             return emscripten::val(qvariant_cast<QSizeF>(v));
         case QMetaType::QVector2D:
             return emscripten::val(qvariant_cast<QVector2D>(v));
+        case QMetaType::QByteArray:
+            return bytearray_to_val(v.toByteArray(), true);
     }
 
     if ( v.metaType().flags() & QMetaType::IsEnumeration )
@@ -111,7 +136,7 @@ emscripten::val qvariant_to_val(const QVariant& v)
         return emscripten::val_ptr(qvariant_cast<QObject*>(v), emscripten::return_value_policy::reference());
     }
 
-    qDebug() << v << v.metaType();
+    qDebug() << "qvariant_to_val" << v << v.metaType() << v.typeId();
 
     return emscripten::val::undefined();
 }
@@ -161,7 +186,11 @@ QVariant qvariant_from_val(const emscripten::val& val)
     }
     else
     {
-        if ( val.hasOwnProperty("red") )
+        if ( val.instanceof(emscripten::val::global("Uint8Array")) || val.instanceof(emscripten::val::global("Int8Array")) )
+        {
+            return QVariant(bytearray_from_val(val));
+        }
+        else if ( val.hasOwnProperty("red") )
         {
             return QVariant::fromValue(QColor(
                 val["red"].as<int>(),
@@ -262,6 +291,36 @@ struct BindingType<QVariant>
 };
 
 BIND_OVERLOAD(QVariant)
+
+
+
+template<>
+struct TypeID<QByteArray>
+{
+    static constexpr TYPEID get()
+    {
+        return TypeID<val>::get();
+    }
+};
+
+template<>
+struct BindingType<QByteArray>
+{
+    typedef EM_VAL WireType;
+
+    static WireType toWireType(const QByteArray& arr, rvp::default_tag)
+    {
+        return glaxnimate::js::bytearray_to_val(arr, true).release_ownership();
+    }
+
+    static QByteArray fromWireType(WireType handle)
+    {
+        return glaxnimate::js::bytearray_from_val(val::take_ownership(handle));
+    }
+};
+
+BIND_OVERLOAD(QByteArray)
+
 
 } // namespace emscripten::internal
 
