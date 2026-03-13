@@ -13,7 +13,7 @@
             if ( !k.match(/^[A-Z0-9]+$|^[Qq]t|^promise/) )
                 Glaxnimate[k] = v;
 
-            Glaxnimate.initialized = true;
+        Glaxnimate.initialized = true;
 
         for ( let action of Glaxnimate.load_actions )
             action(Module);

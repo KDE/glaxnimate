@@ -5,6 +5,7 @@
  */
 #include <emscripten/bind.h>
 
+#include <QCoreApplication>
 #include <QMetaProperty>
 
 #include "glaxnimate/io/io_registry.hpp"
@@ -236,13 +237,21 @@ void register_animatable()
     emscripten::class_<model::AnimatedProperty<T>, emscripten::base<Base>>(name.c_str());
 }
 
+void initialize()
+{
+    static int argc = 0;
+    static char* argv[0] = {};
+    static QCoreApplication app(argc, argv);
+    io::IoRegistry::load_formats();
+}
+
 } // glaxnimate::js
 
 
 EMSCRIPTEN_BINDINGS(my_module)
 {
     using namespace glaxnimate::js;
-    emscripten::function("initialize", &io::IoRegistry::load_formats);
+    emscripten::function("initialize", &initialize);
 
     emscripten::class_<MetaObject>("MetaObject")
         .class_function("from", &MetaObject::from, emscripten::allow_raw_pointers())
