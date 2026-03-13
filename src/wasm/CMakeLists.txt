@@ -3,7 +3,7 @@
 
 cmake_minimum_required (VERSION 3.16 FATAL_ERROR)
 
-project(GlaxnimateWasm LANGUAGES CXX)
+project(GlaxnimateWasm VERSION 0.6.52 LANGUAGES CXX)
 
 # C++
 set(CMAKE_CXX_STANDARD 17)
@@ -40,7 +40,7 @@ set_target_properties(
 
 configure_file(example/example.html ${CMAKE_CURRENT_BINARY_DIR}/example.html COPYONLY)
 configure_file(example/example.rawr ${CMAKE_CURRENT_BINARY_DIR}/example.rawr COPYONLY)
-configure_file(package.json ${CMAKE_CURRENT_BINARY_DIR}/package.json COPYONLY)
+configure_file(package.json ${CMAKE_CURRENT_BINARY_DIR}/package.json)
 configure_file(Readme.md ${CMAKE_CURRENT_BINARY_DIR}/Readme.md COPYONLY)
 
 

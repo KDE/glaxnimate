@@ -94,6 +94,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             </Menu>
             <Menu name="web_preview_menu" icon="internet-web-browser">
                 <text>Web Preview</text>
+                <Action name="glaxnimate_preview"/>
                 <Action name="lottie_preview"/>
                 <Action name="lottie_canvas_preview"/>
                 <Action name="svg_preview"/>

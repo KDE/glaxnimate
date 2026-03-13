@@ -116,8 +116,6 @@ int main(int argc, char *argv[])
     app.initialize();
 
     bool debug = args.has_flag("debug");
-    if ( debug )
-        io::IoRegistry::instance().register_object(std::make_unique<io::lottie::LottieHtmlFormat>());
     gui::GlaxnimateWindow window(!args.has_flag("default-ui"), debug);
     window.setAttribute(Qt::WA_DeleteOnClose, false);
     sc.finish(&window);

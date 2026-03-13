@@ -80,6 +80,11 @@ QByteArray bytearray_from_val(const emscripten::val& val)
     return QByteArray(vec.data(), vec.size());
 }
 
+bool is_byte_array(const emscripten::val& val)
+{
+    return val.instanceof(emscripten::val::global("Uint8Array")) || val.instanceof(emscripten::val::global("Int8Array"));
+}
+
 emscripten::val qvariant_to_val(const QVariant& v)
 {
     switch ( v.typeId() )
@@ -186,7 +191,7 @@ QVariant qvariant_from_val(const emscripten::val& val)
     }
     else
     {
-        if ( val.instanceof(emscripten::val::global("Uint8Array")) || val.instanceof(emscripten::val::global("Int8Array")) )
+        if ( is_byte_array(val) )
         {
             return QVariant(bytearray_from_val(val));
         }

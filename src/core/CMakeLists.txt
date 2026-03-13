@@ -15,6 +15,7 @@ glaxnimate/io/utils.cpp
 glaxnimate/io/glaxnimate/glaxnimate_format.cpp
 glaxnimate/io/glaxnimate/glaxnimate_importer.cpp
 glaxnimate/io/glaxnimate/glaxnimate_mime.cpp
+glaxnimate/io/glaxnimate/glaxnimate_html_format.cpp
 glaxnimate/io/lottie/cbor_write_json.cpp
 glaxnimate/io/lottie/lottie_format.cpp
 glaxnimate/io/lottie/lottie_html_format.cpp

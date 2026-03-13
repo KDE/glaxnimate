@@ -244,6 +244,7 @@ public:
     io::Options options_from_filename(const QString& filename, const QVariantMap& settings = {});
     void drop_document(const QString& filename, bool as_comp);
     void document_reload();
+    void preview_glaxnimate();
     void preview_lottie(const QString& renderer);
     void preview_svg();
     void preview_rive();

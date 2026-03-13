@@ -497,6 +497,9 @@ void GlaxnimateWindow::Private::setup_document_actions()
     QAction *renderSvg = add_action(documentActions, QStringLiteral("render_frame_svg"), i18n("SVG…"), QStringLiteral("image-svg+xml"));
     connect(renderSvg, &QAction::triggered, parent, &GlaxnimateWindow::save_frame_svg);
 
+    QAction *preview_glax = add_action(documentActions, QStringLiteral("glaxnimate_preview"), i18n("Glaxnimate"));
+    connect(preview_glax, &QAction::triggered, parent, [this]{preview_glaxnimate();});
+
     QAction *previewLottie = add_action(documentActions, QStringLiteral("lottie_preview"), i18n("Lottie (SVG)"));
     connect(previewLottie, &QAction::triggered, parent, [this]{preview_lottie("svg");});
 

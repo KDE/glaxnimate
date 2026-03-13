@@ -7,13 +7,24 @@ Web library to embed and edit Glaxnimate animation on web pages.
 Usage
 -----
 
+### Loading the library
 
-You can load from CDN
+You can load from CDN. Both jsdelivr and unpkg are supported:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/glaxnimate/glaxnimate.min.js"></script>
+```
+
+or
 
 ```html
 <script src="https://unpkg.com/glaxnimate@latest/glaxnimate.js"></script>
-<script>
+```
 
+### Usage
+
+```html
+<script>
 // Create the player  
 let player = new Glaxnimate.Player({
     canvas: document.getElementById("canvas")
@@ -40,9 +51,21 @@ player.play();
 // Edit the animation live
 let fill = player.composition.shapes[0].shapes[0].shapes[0];
 fill.color.value = {red: 255, green: 0, blue: 255, alpha: 255};
-
 </script>
 ```
+
+Supported Formats
+-----------------
+
+* Glaxnimate `.rawr`
+* Lottie `.lot`, `.json`
+* SVG `.svg` 
+* AEP `.aep`, `.aepx`
+
+Experimental formats:
+
+* Andorid Vector Drawables `.avd`
+* Rive `.riv`
 
 Links
 -----
@@ -50,7 +73,7 @@ Links
 * [Repo](https://invent.kde.org/graphics/glaxnimate)
 * [Issues](https://bugs.kde.org/describecomponents.cgi?product=glaxnimate)
 * [npm](https://www.npmjs.com/package/glaxnimate)
-* [CDN](https://app.unpkg.com/glaxnimate)
+* CDN [unpkg](https://app.unpkg.com/glaxnimate) [jsdelivr](https://www.jsdelivr.com/package/npm/glaxnimate)
 
 License
 -------

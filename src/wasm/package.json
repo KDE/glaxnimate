@@ -1,6 +1,6 @@
 {
     "name": "glaxnimate",
-    "version": "0.6.51",
+    "version": "@CMAKE_PROJECT_VERSION@",
     "description": "Player and live editor for animations",
     "homepage": "https://glaxnimate.org/",
     "bugs": {
@@ -23,7 +23,8 @@
         "lottie",
         "after effects",
         "player",
-        "web"
+        "web",
+        "kde"
     ],
     "browser": "glaxnimate.js",
     "main": "glaxnimate.js",

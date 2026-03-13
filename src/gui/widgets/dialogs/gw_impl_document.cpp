@@ -29,6 +29,7 @@
 #include "glaxnimate/io/lottie/tgs_format.hpp"
 #include "glaxnimate/io/lottie/validation.hpp"
 #include "glaxnimate/io/rive/rive_html_format.hpp"
+#include "glaxnimate/io/glaxnimate/glaxnimate_html_format.hpp"
 #include "plugin/io.hpp"
 
 #include "glaxnimate/model/visitor.hpp"
@@ -557,6 +558,12 @@ void GlaxnimateWindow::Private::preview(io::ImportExport& exporter, const QVaria
     {
         show_warning(i18n("Web Preview"), i18n("Could not open browser"));
     }
+}
+
+void GlaxnimateWindow::Private::preview_glaxnimate()
+{
+    io::glaxnimate::GlaxnimateHtmlFormat fmt;
+    preview(fmt, {});
 }
 
 void GlaxnimateWindow::Private::preview_lottie(const QString& renderer)
