@@ -14,19 +14,20 @@ You can load from CDN
 <script src="https://unpkg.com/glaxnimate@latest/glaxnimate.js"></script>
 <script>
 
-// Create the player    
+// Create the player  
 let player = new Glaxnimate.Player({
     canvas: document.getElementById("canvas")
 });
 
-// Load a remote animation 
+// Load an animation explicitly
 // You can also just pass these to the constructor if data is available
-fetch("example.rawr")
-.then(r => r.text())
-.then(data => player.load({
-    data,
+player.load({
+    data: "your data,
     format: "glaxnimate"
-}));
+});
+
+// Fetch a remote animation
+player.fetch("example.rawr");
 
 // ... 
 

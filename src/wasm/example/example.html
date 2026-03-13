@@ -12,13 +12,7 @@
     <script>
     const canvas = document.getElementById("canvas");
     let player = new Glaxnimate.Player({canvas});
-
-    fetch("example.rawr")
-    .then(r => r.text())
-    .then(data => player.load({
-        data,
-        format: "glaxnimate"
-    }));
+    player.fetch("example.rawr");
     </script>
 </body>
 </html>

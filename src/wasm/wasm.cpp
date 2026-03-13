@@ -127,6 +127,10 @@ public:
         {
             importer = io::IoRegistry::instance().from_slug(QString::fromStdString(options["format"].as<std::string>()));
         }
+        else if ( !options["filename"].isUndefined() )
+        {
+            importer = io::IoRegistry::instance().from_filename(options["filename"].as<QString>(), glaxnimate::io::ImportExport::Import);
+        }
 
         if ( !importer || !importer->can_handle(glaxnimate::io::ImportExport::Import) )
             return;

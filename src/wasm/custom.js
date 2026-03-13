@@ -1,6 +1,6 @@
 /*
  * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
- * SPDX-License-Identifier: BSD-2-Clause
+ * SPDX-License-Identifier: GPL-3.0-or-later
  */
 (() => {
     Glaxnimate.load_actions = [];
@@ -40,10 +40,26 @@
             Glaxnimate.load_action(() => this.load());
         }
 
-        load(opts=undefined)
+        _update_opts(opts)
         {
             if ( opts )
                 this._opts = {...this._opts, ...opts};
+        }
+
+        fetch(url, opts=undefined)
+        {
+            this._update_opts(opts);
+            fetch(url)
+            .then(r => r.text())
+            .then(data => player.load({
+                data,
+                filename: url
+            }));
+        }
+
+        load(opts=undefined)
+        {
+            this._update_opts(opts);
 
             if ( !Glaxnimate.initialized || !this._opts.data )
                 return;
