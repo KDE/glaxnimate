@@ -43,7 +43,9 @@
         _update_opts(opts)
         {
             if ( opts )
+            {
                 this._opts = {...this._opts, ...opts};
+            }
         }
 
         fetch(url, opts=undefined)
@@ -62,12 +64,27 @@
             this._update_opts(opts);
 
             if ( !Glaxnimate.initialized || !this._opts.data )
-                return;
+                return false;
 
+            this.pause();
             this.renderer = new Glaxnimate.GlaxnimateRenderer(this._opts);
+
+            // Clear loader-specific options
+            delete this._opts.data;
+            delete this._opts.filename;
+            delete this._opts.format;
+
+            // Loading failed
+            if ( !this.renderer.composition )
+            {
+                this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                return false;
+            }
 
             if ( this._opts.autoplay ?? true )
                 this.play();
+
+            return true;
         }
 
         play()

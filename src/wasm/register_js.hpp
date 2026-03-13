@@ -76,13 +76,20 @@ emscripten::val bytearray_to_val(const QByteArray& cpp_arr, bool alias)
 
 QByteArray bytearray_from_val(const emscripten::val& val)
 {
+    if ( val.instanceof(emscripten::val::global("ArrayBuffer")) )
+    {
+        return bytearray_from_val(emscripten::val::global("Uint8Array").new_(val));
+    }
     std::vector<char> vec = emscripten::convertJSArrayToNumberVector<char>(val);
     return QByteArray(vec.data(), vec.size());
 }
 
 bool is_byte_array(const emscripten::val& val)
 {
-    return val.instanceof(emscripten::val::global("Uint8Array")) || val.instanceof(emscripten::val::global("Int8Array"));
+    return val.instanceof(emscripten::val::global("Uint8Array"))
+        || val.instanceof(emscripten::val::global("Int8Array"))
+        || val.instanceof(emscripten::val::global("ArrayBuffer"))
+        ;
 }
 
 emscripten::val qvariant_to_val(const QVariant& v)

@@ -10,11 +10,38 @@
 <!--     <script src="https://unpkg.com/glaxnimate@latest/glaxnimate.js"></script> -->
 <!--     <script src="https://cdn.jsdelivr.net/npm/glaxnimate/glaxnimate.min.js"></script> -->
 
+    <div>
+        <div>
+            <input type="url" value="" placeholder="Animation URL" id="url" />
+            <button onclick="load_url()">View</button>
+        </div>
+
+        <input type="file" onchange="load_file(event)" />
+    </div>
+
     <canvas id="canvas"></canvas>
     <script>
-    const canvas = document.getElementById("canvas");
-    let player = new Glaxnimate.Player({canvas});
-    player.fetch("example.rawr");
+
+let url_input = document.getElementById("url");
+const canvas = document.getElementById("canvas");
+let player = new Glaxnimate.Player({canvas});
+player.fetch("example.rawr");
+
+function load_url()
+{
+    player.fetch(url_input.value);
+}
+
+function load_file(ev)
+{
+    if ( ev.target.files.length > 0 )
+    {
+        const file = ev.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (e) => player.load({data: e.target.result, filename: file.name});
+        reader.readAsArrayBuffer(file);
+    }
+}
     </script>
 </body>
 </html>

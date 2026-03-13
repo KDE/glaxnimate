@@ -110,13 +110,6 @@ class GlaxnimateRenderer
 public:
     GlaxnimateRenderer(const emscripten::val& options)
     {
-        static bool initialized = false;
-        if ( !initialized )
-        {
-            io::IoRegistry::load_formats();
-            initialized = true;
-        }
-
         auto js_data = options["data"];
         if ( js_data.isUndefined() )
             return;
@@ -129,7 +122,7 @@ public:
             data = js_data.as<QByteArray>();
         io::ImportExport* importer = nullptr;
 
-        if ( !options["format"].isUndefined() )
+        if ( !options["format"].isUndefined() && !options["format"].isNull() )
         {
             importer = io::IoRegistry::instance().from_slug(options["format"].as<QString>());
         }

@@ -3,7 +3,7 @@
 
 cmake_minimum_required (VERSION 3.16 FATAL_ERROR)
 
-project(GlaxnimateWasm VERSION 0.6.53 LANGUAGES CXX)
+project(GlaxnimateWasm VERSION 0.6.55 LANGUAGES CXX)
 
 # C++
 set(CMAKE_CXX_STANDARD 17)
@@ -45,7 +45,13 @@ configure_file(Readme.md ${CMAKE_CURRENT_BINARY_DIR}/Readme.md COPYONLY)
 
 
 # source "$HOME/src/emsdk/emsdk_env.sh"
-# -DCMAKE_TOOLCHAIN_FILE=$HOME/Qt/6.9.3/wasm_singlethread/lib/cmake/Qt6/qt.toolchain.cmake
-# -DQT_HOST_PATH=$HOME/Qt/6.9.3/gcc_64
+# cmake ../src/wasm
+# -DCMAKE_TOOLCHAIN_FILE=$HOME/Qt/6.10.2/wasm_singlethread/lib/cmake/Qt6/qt.toolchain.cmake
+# -DQT_HOST_PATH=$HOME/Qt/6.10.2/gcc_64
 # -DCMAKE_CXX_FLAGS="-matomics -mbulk-memory"
 # -DCMAKE_EXE_LINKER_FLAGS="-lembind"
+# -DCMAKE_BUILD_TYPE=Release # or Debug
+
+# In docker image:
+# source /opt/emsdk/emsdk_env.sh
+# cmake -DCMAKE_TOOLCHAIN_FILE=$CMAKE_TOOLCHAIN_FILE -DQT_HOST_PATH=$QT_HOST_PATH -DCMAKE_CXX_FLAGS="-matomics -mbulk-memory" -DCMAKE_EXE_LINKER_FLAGS="-lembind" -DCMAKE_BUILD_TYPE=Release /glax/src/wasm
