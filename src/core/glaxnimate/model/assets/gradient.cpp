@@ -224,7 +224,14 @@ QBrush glaxnimate::model::Gradient::brush_style ( glaxnimate::model::FrameTime t
         auto angle = -math::rad2deg(math::atan2(end.y() - start.y(), end.x() - start.x()));
         QConicalGradient g(start, angle);
         if ( colors.get() )
-            g.setStops(colors->colors.get_at(t));
+        {
+            auto stops = colors->colors.get_at(t);
+            // Qt conic gradients go counter-clockwise
+            for ( auto& stop : stops )
+                stop.first = 1 - stop.first;
+            std::reverse(stops.begin(), stops.end());
+            g.setStops(stops);
+        }
         return g;
     }
     else
