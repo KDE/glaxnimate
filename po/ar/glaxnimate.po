@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-12 00:41+0000\n"
-"PO-Revision-Date: 2026-03-09 21:28+0400\n"
+"PO-Revision-Date: 2026-03-12 10:12+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -4107,7 +4107,7 @@ msgstr "كرّر"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:404
 #, kde-format
 msgid "Grid"
-msgstr ""
+msgstr "الشبكة"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:443
 #, kde-format
@@ -5073,23 +5073,21 @@ msgstr "متقدّم"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, DockGrid)
 #: src/gui/widgets/docks/dock_grid.ui:21
-#, fuzzy, kde-format
-#| msgid "Configure..."
+#, kde-format
 msgid "Configure Grid"
-msgstr "اضبط..."
+msgstr "اضبط الشبكة"
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_enable)
 #: src/gui/widgets/docks/dock_grid.ui:52
-#, fuzzy, kde-format
-#| msgid "Enable"
+#, kde-format
 msgid "Enable Grid"
-msgstr "مكّن"
+msgstr "مكّن الشبكة"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/docks/dock_grid.ui:77
 #, kde-format
 msgid "X"
-msgstr ""
+msgstr "س"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_shape)
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_cap_square)
@@ -5103,16 +5101,15 @@ msgstr "مربع"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_shape)
 #: src/gui/widgets/docks/dock_grid.ui:93
-#, fuzzy, kde-format
-#| msgid "angle"
+#, kde-format
 msgid "Triangle"
-msgstr "زاوية"
+msgstr "مثلّث"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spin_size)
 #: src/gui/widgets/docks/dock_grid.ui:124
 #, kde-format
 msgid "px"
-msgstr ""
+msgstr "بكسل"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_angle)
 #: src/gui/widgets/docks/dock_grid.ui:140
