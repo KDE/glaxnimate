@@ -13,7 +13,7 @@
 #include "glaxnimate/command/animation_commands.hpp"
 #include "glaxnimate/command/undo_macro_guard.hpp"
 #include "glaxnimate_app.hpp"
-#include "widgets/dialogs/glaxnimate_window.hpp"
+#include "widgets/dialogs/selection_manager.hpp"
 
 using namespace glaxnimate::gui;
 

@@ -10,7 +10,7 @@
 #include "glaxnimate/model/shapes/shape.hpp"
 #include "glaxnimate/command/object_list_commands.hpp"
 
-namespace glaxnimate::model { class Group; }
+namespace glaxnimate::model { class Group; class PreCompLayer; }
 
 namespace glaxnimate::command {
 
@@ -61,5 +61,35 @@ public:
 };
 
 AddShape* duplicate_shape(model::ShapeElement* shape);
+
+/**
+ * \brief Converts \p shapes to path
+ * \param out if not null, it will be populated with the new shapes
+ * \returns The converted shapes
+ */
+void convert_to_path(const std::vector<model::ShapeElement*>& shapes, std::vector<model::ShapeElement*>* out = nullptr);
+
+/**
+ * \brief Recursively traverses the node and reverses the path direction of any shape
+ */
+void recursive_reverse_path(model::DocumentNode* node);
+
+/**
+ * \brief Precomposes the given objects into a new composition
+ * \param source_comp Original composition containing the objects
+ * \param objects Objects to move to the new composition
+ * \param layer_parent Property to add the precomp layer to
+ * \param layer_index Where in the property to insert the precomp layer to (-1 for default position)
+ * \returns The created precomp layer
+ * \pre All objects belong to \p source_comp
+ * \pre layer_parent->object() not in \p objects
+ * \post The returned layer is either null or it references the new composition
+ */
+model::PreCompLayer* precompose(
+    model::Composition* source_comp,
+    const std::vector<model::VisualNode*>& objects,
+    model::ObjectListProperty<model::ShapeElement>* layer_parent,
+    int layer_index
+);
 
 } // namespace glaxnimate::command

@@ -28,9 +28,7 @@
 #include "style/fixed_height_delegate.hpp"
 #include "widgets/dialogs/keyframe_editor_dialog.hpp"
 
-#ifndef Q_OS_ANDROID
-    #include "widgets/menus/node_menu.hpp"
-#endif
+#include "widgets/menus/node_menu.hpp"
 #include "widgets/menus/animated_property_menu.hpp"
 #include "widgets/timeline/keyframe_transition_data.hpp"
 #include "widgets/timeline/value_drag_event_filter.hpp"
@@ -296,7 +294,7 @@ public:
     model::KeyframeBase* menu_kf_enter = nullptr;
     model::KeyframeBase* menu_kf_exit = nullptr;
 
-    GlaxnimateWindow* window = nullptr;
+    SelectionManager* window = nullptr;
 };
 
 CompoundTimelineWidget::CompoundTimelineWidget(QWidget* parent)
@@ -486,13 +484,11 @@ QByteArray CompoundTimelineWidget::save_state() const
     return d->ui.splitter->saveState();
 }
 
-#ifndef MOBILE_UI
-void CompoundTimelineWidget::set_controller(GlaxnimateWindow* window)
+void CompoundTimelineWidget::set_controller(SelectionManager* window)
 {
     d->window = window;
     d->menu_property.set_controller(window);
 }
-#endif
 
 void CompoundTimelineWidget::copy_keyframe()
 {

@@ -17,6 +17,7 @@
 #include "glaxnimate/model/document.hpp"
 #include "glaxnimate/model/shapes/style/fill.hpp"
 #include "glaxnimate/model/shapes/style/stroke.hpp"
+#include "glaxnimate/model/shapes/composable/precomp_layer.hpp"
 
 #include "glaxnimate/io/glaxnimate/glaxnimate_format.hpp"
 #include "glaxnimate/io/lottie/tgs_format.hpp"
@@ -1296,4 +1297,13 @@ void MainWindow::open_intent(const QUrl &uri)
     {
         d->open_url(uri, false);
     }
+}
+
+void MainWindow::update_selection_after_precompose(
+    const std::vector<model::VisualNode*>&,
+    model::Composition*,
+    model::PreCompLayer* precomp_layer
+)
+{
+    set_current_composition(precomp_layer->composition.get());
 }

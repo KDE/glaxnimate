@@ -294,56 +294,6 @@ void GlaxnimateWindow::Private::cleanup_document()
     status_message(i18n("Removed %1 assets", count), 0);
 }
 
-void GlaxnimateWindow::Private::convert_to_path(const std::vector<model::ShapeElement*>& shapes, std::vector<model::ShapeElement*>* out)
-{
-    if ( shapes.empty() )
-        return;
-
-    QString macro_name = i18n("Convert to path");
-    if ( shapes.size() == 1 )
-        macro_name = i18n("Convert %1 to path", (*shapes.begin())->name.get());
-
-    std::unordered_map<model::Layer*, model::Layer*> converted_layers;
-
-    command::UndoMacroGuard guard(macro_name, current_document.get(), false);
-    for ( auto shape : shapes )
-    {
-        auto path = shape->to_path();
-
-        if ( out )
-            out->push_back(path.get());
-
-        if ( path )
-        {
-            if ( auto lay = shape->cast<model::Layer>() )
-                converted_layers[lay] = static_cast<model::Layer*>(path.get());
-
-            guard.start();
-            current_document->push_command(
-                new command::AddObject<model::ShapeElement>(
-                    shape->owner(),
-                    std::move(path),
-                    shape->position()
-                )
-            );
-            current_document->push_command(
-                new command::RemoveObject<model::ShapeElement>(shape, shape->owner())
-            );
-        }
-    }
-
-    // Maintain parenting of layers that have been converted
-    for ( const auto& p : converted_layers )
-    {
-        if ( auto src_parent = p.first->parent.get() )
-        {
-            auto it = converted_layers.find(src_parent);
-            if ( it != converted_layers.end() )
-                p.second->parent.set(it->second);
-        }
-    }
-}
-
 void GlaxnimateWindow::Private::to_path()
 {
     std::vector<model::ShapeElement*> shapes;
@@ -360,7 +310,7 @@ void GlaxnimateWindow::Private::to_path()
         }
     }
 
-    convert_to_path(shapes, nullptr);
+    command::convert_to_path(shapes);
 }
 
 void GlaxnimateWindow::Private::switch_composition(model::Composition* new_comp, int i)
@@ -473,57 +423,6 @@ void GlaxnimateWindow::Private::add_composition()
     tab_bar->setCurrentIndex(tab_bar->count()-1);
 }
 
-void GlaxnimateWindow::Private::objects_to_new_composition(
-    model::Composition* comp,
-    const std::vector<model::VisualNode*>& objects,
-    model::ObjectListProperty<model::ShapeElement>* layer_parent,
-    int layer_index
-)
-{
-    if ( objects.empty() )
-        return;
-
-    int new_comp_index = current_document->assets()->compositions->values.size();
-    command::UndoMacroGuard guard(i18n("New Composition from Selection"), current_document.get());
-
-    auto ucomp = std::make_unique<model::Composition>(current_document.get());
-    model::Composition* new_comp = ucomp.get();
-    new_comp->width.set(comp->width.get());
-    new_comp->height.set(comp->height.get());
-    new_comp->fps.set(comp->fps.get());
-    new_comp->animation->first_frame.set(comp->animation->first_frame.get());
-    new_comp->animation->last_frame.set(comp->animation->last_frame.get());
-    if ( objects.size() > 1 || objects[0]->name.get().isEmpty() )
-        current_document->set_best_name(new_comp);
-    else
-        new_comp->name.set(objects[0]->name.get());
-    current_document->push_command(new command::AddObject(&current_document->assets()->compositions->values, std::move(ucomp)));
-
-
-    for ( auto node : objects )
-    {
-        if ( auto shape = node->cast<model::ShapeElement>() )
-            current_document->push_command(new command::MoveShape(
-                shape, shape->owner(), &new_comp->shapes, new_comp->shapes.size()
-            ));
-    }
-
-    comp_selections.back().current = objects[0];
-    comp_selections.back().selection = objects;
-
-    auto pcl = std::make_unique<model::PreCompLayer>(current_document.get());
-    pcl->composition.set(new_comp);
-    pcl->size.set(new_comp->size());
-    current_document->set_best_name(pcl.get());
-    auto pcl_ptr = pcl.get();
-    current_document->push_command(new command::AddShape(layer_parent, std::move(pcl), layer_index));
-
-    switch_composition(new_comp, new_comp_index);
-
-    int old_comp_index = current_document->assets()->compositions->values.index_of(static_cast<model::Composition*>(comp));
-    comp_selections[old_comp_index] = pcl_ptr;
-}
-
 
 void GlaxnimateWindow::Private::on_remove_precomp(int index)
 {
@@ -548,34 +447,6 @@ void GlaxnimateWindow::Private::layer_new_comp_action(QAction* action)
     parent->layer_new_comp(action->data().value<model::Composition*>());
 }
 
-void GlaxnimateWindow::Private::shape_to_composition(model::ShapeElement* node)
-{
-    if ( !node )
-        return;
-
-    auto parent = node->docnode_parent();
-    if ( !parent )
-        return;
-
-    auto ancestor = parent;
-    auto grand_ancestor = ancestor->docnode_parent();
-    while ( grand_ancestor && !ancestor->is_instance<model::Composition>() )
-    {
-        ancestor = grand_ancestor;
-        grand_ancestor = ancestor->docnode_parent();
-    }
-
-    auto owner_comp = ancestor->cast<model::Composition>();
-    if ( !owner_comp )
-        return;
-
-    auto prop = parent->get_property("shapes");
-    if ( !prop )
-        return;
-
-    auto shape_prop = static_cast<model::ObjectListProperty<model::ShapeElement>*>(prop);
-    objects_to_new_composition(owner_comp, {node}, shape_prop, shape_prop->index_of(node));
-}
 
 QPointF GlaxnimateWindow::Private::align_point(const QRectF& rect, AlignDirection direction, AlignPosition position)
 {

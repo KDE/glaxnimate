@@ -6,8 +6,11 @@
 
 #include "glaxnimate/command/shape_commands.hpp"
 #include "glaxnimate/model/shapes/composable/group.hpp"
+#include "glaxnimate/model/shapes/composable/precomp_layer.hpp"
 #include "glaxnimate/model/assets/composition.hpp"
+#include "glaxnimate/model/assets/assets.hpp"
 #include "glaxnimate/model/document.hpp"
+#include "glaxnimate/command/undo_macro_guard.hpp"
 
 using namespace glaxnimate;
 
@@ -179,3 +182,116 @@ command::AddShape * command::duplicate_shape ( model::ShapeElement* shape )
     );
 }
 
+
+void command::convert_to_path(const std::vector<model::ShapeElement*>& shapes, std::vector<model::ShapeElement*>* out)
+{
+
+    if ( shapes.empty() )
+        return;
+
+    QString macro_name = i18n("Convert to path");
+    if ( shapes.size() == 1 )
+        macro_name = i18n("Convert %1 to path", (*shapes.begin())->name.get());
+
+    std::unordered_map<model::Layer*, model::Layer*> converted_layers;
+
+    model::Document* doc = shapes[0]->document();
+    command::UndoMacroGuard guard(macro_name, doc, false);
+    for ( auto shape : shapes )
+    {
+        auto path = shape->to_path();
+
+        if ( out )
+            out->push_back(path.get());
+
+        if ( path )
+        {
+            if ( auto lay = shape->cast<model::Layer>() )
+                converted_layers[lay] = static_cast<model::Layer*>(path.get());
+
+            guard.start();
+            doc->push_command(
+                new command::AddObject<model::ShapeElement>(
+                    shape->owner(),
+                    std::move(path),
+                    shape->position()
+                )
+            );
+            doc->push_command(
+                new command::RemoveObject<model::ShapeElement>(shape, shape->owner())
+            );
+        }
+    }
+
+    // Maintain parenting of layers that have been converted
+    for ( const auto& p : converted_layers )
+    {
+        if ( auto src_parent = p.first->parent.get() )
+        {
+            auto it = converted_layers.find(src_parent);
+            if ( it != converted_layers.end() )
+                p.second->parent.set(it->second);
+        }
+    }
+}
+
+
+void command::recursive_reverse_path(model::DocumentNode* node)
+{
+    command::UndoMacroGuard guard(i18n("Reverse path"), node->document());
+
+    if ( auto shape = qobject_cast<model::Shape*>(node) )
+    {
+        shape->reversed.set_undoable(!shape->reversed.get());
+    }
+
+    for ( const auto& child : node->docnode_children() )
+        recursive_reverse_path(child);
+}
+
+
+
+model::PreCompLayer* command::precompose(
+    model::Composition* comp,
+    const std::vector<model::VisualNode*>& objects,
+    model::ObjectListProperty<model::ShapeElement>* layer_parent,
+    int layer_index
+)
+{
+    if ( objects.empty() )
+        return nullptr;
+
+    auto doc = comp->document();
+
+    command::UndoMacroGuard guard(i18n("Precompose"), doc);
+
+    auto ucomp = std::make_unique<model::Composition>(doc);
+    model::Composition* new_comp = ucomp.get();
+    new_comp->width.set(comp->width.get());
+    new_comp->height.set(comp->height.get());
+    new_comp->fps.set(comp->fps.get());
+    new_comp->animation->first_frame.set(comp->animation->first_frame.get());
+    new_comp->animation->last_frame.set(comp->animation->last_frame.get());
+    if ( objects.size() > 1 || objects[0]->name.get().isEmpty() )
+        doc->set_best_name(new_comp);
+    else
+        new_comp->name.set(objects[0]->name.get());
+    doc->push_command(new command::AddObject(&doc->assets()->compositions->values, std::move(ucomp)));
+
+
+    for ( auto node : objects )
+    {
+        if ( auto shape = node->cast<model::ShapeElement>() )
+            doc->push_command(new command::MoveShape(
+                shape, shape->owner(), &new_comp->shapes, new_comp->shapes.size()
+            ));
+    }
+
+    auto pcl = std::make_unique<model::PreCompLayer>(doc);
+    pcl->composition.set(new_comp);
+    pcl->size.set(new_comp->size());
+    doc->set_best_name(pcl.get());
+    auto pcl_ptr = pcl.get();
+    doc->push_command(new command::AddShape(layer_parent, std::move(pcl), layer_index));
+    return pcl_ptr;
+}

@@ -257,3 +257,48 @@ model::PreCompLayer* glaxnimate::gui::SelectionManager::layer_new_comp(model::Co
     layer_new_impl(std::move(layer));
     return ptr;
 }
+
+void glaxnimate::gui::SelectionManager::precompose(model::ShapeElement* node)
+{
+    if ( !node )
+        return;
+
+    auto parent = node->docnode_parent();
+    if ( !parent )
+        return;
+
+    auto ancestor = parent;
+    auto grand_ancestor = ancestor->docnode_parent();
+    while ( grand_ancestor && !ancestor->is_instance<model::Composition>() )
+    {
+        ancestor = grand_ancestor;
+        grand_ancestor = ancestor->docnode_parent();
+    }
+
+    auto owner_comp = ancestor->cast<model::Composition>();
+    if ( !owner_comp )
+        return;
+
+    auto prop = parent->get_property("shapes");
+    if ( !prop )
+        return;
+
+    auto shape_prop = static_cast<model::ObjectListProperty<model::ShapeElement>*>(prop);
+
+    precompose(owner_comp, {node}, shape_prop, shape_prop->index_of(node));
+}
+
+void glaxnimate::gui::SelectionManager::precompose(
+    model::Composition* source_comp,
+    const std::vector<model::VisualNode*>& objects,
+    model::ObjectListProperty<model::ShapeElement>* layer_parent,
+    int layer_index
+)
+
+{
+    auto precomp_layer = command::precompose(source_comp, objects, layer_parent, layer_index);
+    if ( !precomp_layer )
+        return;
+
+    update_selection_after_precompose(objects, source_comp, precomp_layer);
+}

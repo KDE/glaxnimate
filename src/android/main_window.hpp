@@ -58,6 +58,12 @@ protected:
     void resizeEvent(QResizeEvent* e) override;
     void showEvent(QShowEvent* e) override;
 
+    void update_selection_after_precompose(
+        const std::vector<model::VisualNode*>& objects,
+        model::Composition* source_comp,
+        model::PreCompLayer* precomp_layer
+    ) override;
+
 private Q_SLOTS:
     void tool_triggered(bool checked);
 

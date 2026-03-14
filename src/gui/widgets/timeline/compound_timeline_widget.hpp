@@ -16,7 +16,7 @@ class QItemSelection;
 
 namespace glaxnimate::gui {
 
-class GlaxnimateWindow;
+class SelectionManager;
 class TimelineWidget;
 
 class CompoundTimelineWidget : public QWidget
@@ -33,9 +33,7 @@ public:
     void clear_document();
     QByteArray save_state() const;
     void load_state(const QByteArray& state);
-#ifndef MOBILE_UI
-    void set_controller(GlaxnimateWindow* window);
-#endif
+    void set_controller(SelectionManager* window);
     QAbstractItemModel* filtered_model() const;
     QAbstractItemModel* raw_model() const;
     TimelineWidget* timeline() const;

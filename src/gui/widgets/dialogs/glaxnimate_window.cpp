@@ -18,6 +18,7 @@
 #include "glaxnimate/app_info.hpp"
 #include "settings/clipboard_settings.hpp"
 #include "export_image_sequence_dialog.hpp"
+#include "glaxnimate/model/shapes/composable/precomp_layer.hpp"
 
 
 GlaxnimateWindow::GlaxnimateWindow(bool restore_state, bool debug, QWidget *parent, Qt::WindowFlags flags)
@@ -404,11 +405,6 @@ void GlaxnimateWindow::trace_dialog(model::DocumentNode* object)
     return d->trace_dialog(object);
 }
 
-void GlaxnimateWindow::shape_to_composition(model::ShapeElement* node)
-{
-    return d->shape_to_composition(node);
-}
-
 void GlaxnimateWindow::set_current_composition(model::Composition* comp)
 {
     d->tab_bar->set_current_composition(comp);
@@ -558,18 +554,6 @@ void GlaxnimateWindow::ipc_draw_background()
     }
 }
 
-std::vector<model::ShapeElement *> GlaxnimateWindow::convert_to_path(const std::vector<model::ShapeElement *>& shapes)
-{
-    std::vector<model::ShapeElement *> out;
-    d->convert_to_path(shapes, &out);
-    return out;
-}
-
-model::ShapeElement * GlaxnimateWindow::convert_to_path(model::ShapeElement* shape)
-{
-    return convert_to_path(std::vector<model::ShapeElement *>{shape})[0];
-}
-
 void GlaxnimateWindow::show_startup_dialog()
 {
     d->show_startup_dialog();
@@ -599,4 +583,18 @@ void GlaxnimateWindow::update_selection(const std::vector<model::VisualNode*>& s
 void GlaxnimateWindow::check_autosaves()
 {
     d->check_autosaves();
+}
+void GlaxnimateWindow::update_selection_after_precompose(
+    const std::vector<model::VisualNode*>& objects,
+    model::Composition* source_comp,
+    model::PreCompLayer* precomp_layer
+)
+{
+    auto new_comp = precomp_layer->composition.get();
+    int new_comp_index = d->current_document->assets()->compositions->values.index_of(new_comp);
+    d->comp_selections[new_comp_index].current = objects[0];
+    d->comp_selections[new_comp_index].selection = objects;
+    switch_composition(new_comp, new_comp_index);
+    int old_comp_index = d->current_document->assets()->compositions->values.index_of(source_comp);
+    d->comp_selections[old_comp_index] = precomp_layer;
 }

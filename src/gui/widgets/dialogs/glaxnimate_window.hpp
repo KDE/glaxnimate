@@ -128,27 +128,13 @@ public:
 
     void trace_dialog(model::DocumentNode* object);
 
-    void shape_to_composition(model::ShapeElement* node);
-
-    /**
-     * \brief Converts \p shape to path
-     * \returns The converted shape
-     */
-    Q_INVOKABLE glaxnimate::model::ShapeElement* convert_to_path(glaxnimate::model::ShapeElement* shape);
-
-    /**
-     * \brief Converts \p shapes to path
-     * \returns The converted shapes
-     */
-    std::vector<model::ShapeElement*> convert_to_path(const std::vector<model::ShapeElement*>& shapes);
-
     void show_startup_dialog();
 
     QWidget* as_widget() override { return this; }
-    std::vector<io::mime::MimeSerializer*> supported_mimes() const override;
 
     void set_selection(const std::vector<model::VisualNode*>& selected) override;
     void update_selection(const std::vector<model::VisualNode*>& selected, const std::vector<model::VisualNode*>& deselected) override;
+    std::vector<io::mime::MimeSerializer*> supported_mimes() const override;
 
     void ipc_connect(const QString& name);
 
@@ -221,6 +207,11 @@ protected:
     void dragLeaveEvent(QDragLeaveEvent* event) override;
     void dropEvent(QDropEvent* event) override;
 
+    void update_selection_after_precompose(
+        const std::vector<model::VisualNode*>& objects,
+        model::Composition* source_comp,
+        model::PreCompLayer* precomp_layer
+    ) override;
 private:
     class Private;
     std::unique_ptr<Private> d;

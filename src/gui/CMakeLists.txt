@@ -118,6 +118,7 @@ widgets/font/external_font_widget.cpp
 widgets/font/font_loader.cpp
 
 widgets/menus/animated_property_menu.cpp
+widgets/menus/node_menu.cpp
 
 widgets/render_widget.cpp
 )
@@ -198,8 +199,6 @@ if ( NOT MOBILE_UI )
         widgets/docks/snippetsdock.cpp
         widgets/docks/undodock.cpp
         widgets/docks/tooloptionsdock.cpp
-
-        widgets/menus/node_menu.cpp
     )
 
     list(APPEND SOURCES_UIS

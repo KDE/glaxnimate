@@ -340,7 +340,6 @@ public:
     void move_to();
     void cleanup_document();
     void to_path();
-    void convert_to_path(const std::vector<model::ShapeElement*>& shapes, std::vector<model::ShapeElement*>* out);
     void align(AlignDirection direction, AlignPosition position, bool outside);
     QPointF align_point(const QRectF& rect, AlignDirection direction, AlignPosition position);
     void dropped(const QMimeData* data);
@@ -348,14 +347,7 @@ public:
     void switch_composition(model::Composition* comp, int i);
     void setup_composition(model::Composition* comp, int index = -1);
     void add_composition();
-    void objects_to_new_composition(
-        model::Composition* comp,
-        const std::vector<model::VisualNode*>& objects,
-        model::ObjectListProperty<model::ShapeElement>* layer_parent,
-        int layer_index
-    );
     void on_remove_precomp(int index);
-    void shape_to_composition(model::ShapeElement* node);
 
     void layer_new_layer();
     void layer_new_fill();

@@ -38,6 +38,14 @@
 #include "widgets/dialogs/shape_parent_dialog.hpp"
 #include "glaxnimate_app.hpp"
 
+#ifndef MOBILE_UI
+#   include "widgets/dialogs/glaxnimate_window.hpp"
+glaxnimate::gui::GlaxnimateWindow* to_window(glaxnimate::gui::SelectionManager* sel)
+{
+    return static_cast<glaxnimate::gui::GlaxnimateWindow*>(sel);
+}
+#endif
+
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
 
@@ -317,7 +325,7 @@ void actions_composable(QMenu* menu, model::Composable* group)
     add_enum_actions(menu_blend, &group->blend_mode);
 }
 
-void actions_group(QMenu* menu, GlaxnimateWindow* window, model::Group* group)
+void actions_group(QMenu* menu, SelectionManager* window, model::Group* group)
 {
     QMenu* menu_add = new QMenu(i18n("Add"), menu);
     menu_add->setIcon(QIcon::fromTheme("list-add"));
@@ -353,7 +361,7 @@ void actions_group(QMenu* menu, GlaxnimateWindow* window, model::Group* group)
         menu->addAction(menu_ref_property(QIcon::fromTheme("go-parent-folder"), i18n("Parent"), menu, &lay->parent)->menuAction());
         menu->addAction(QIcon::fromTheme("object-group"), i18n("Convert to Group"), menu, ConvertGroupType<model::Group>(lay));
         menu->addAction(QIcon::fromTheme("component"), i18n("Precompose"), menu, [window, lay]{
-            window->shape_to_composition(lay);
+            window->precompose(lay);
         });
 
         auto mask_menu = menu->addMenu(QIcon::fromTheme("mask-alpha"), i18n("Mask"));
@@ -374,10 +382,10 @@ void actions_group(QMenu* menu, GlaxnimateWindow* window, model::Group* group)
         menu->addAction(QIcon::fromTheme("folder"), i18n("Convert to Layer"), menu, ConvertGroupType<model::Layer>(group));
     }
 
-    menu->addAction(QIcon::fromTheme("object-to-path"), i18n("Convert to Path"), menu, [window, group]{ window->convert_to_path(group);});
+    menu->addAction(QIcon::fromTheme("object-to-path"), i18n("Convert to Path"), menu, [group]{ command::convert_to_path({group});});
 }
 
-void actions_bitmap(QMenu* menu, GlaxnimateWindow* window, model::Bitmap* bmp, model::Image* shape)
+void actions_bitmap(QMenu* menu, SelectionManager* window, model::Bitmap* bmp, model::Image* shape)
 {
     menu->addAction(QIcon::fromTheme("mail-attachment-symbolic"), i18n("Embed"), menu, [bmp]{
             bmp->embed(true);
@@ -385,12 +393,17 @@ void actions_bitmap(QMenu* menu, GlaxnimateWindow* window, model::Bitmap* bmp, m
 
     menu->addAction(QIcon::fromTheme("editimage"), i18n("Open with External Application"), menu, [bmp, window]{
         if ( !QDesktopServices::openUrl(bmp->to_url()) )
-            window->warning(i18n("Could not find suitable application, check your system settings."));
+        {
+#ifndef MOBILE_UI
+            to_window(window)->warning(i18n("Could not find suitable application, check your system settings."));
+#endif
+        }
     })->setEnabled(bmp);
 
 
+#ifndef MOBILE_UI
     menu->addAction(QIcon::fromTheme("document-open"), i18n("From File..."), menu, [bmp, window, shape]{
-        QString filename = window->get_open_image_file(i18n("Update Image"), bmp ? bmp->file_info().absolutePath() : "");
+        QString filename = to_window(window)->get_open_image_file(i18n("Update Image"), bmp ? bmp->file_info().absolutePath() : "");
         if ( filename.isEmpty() )
             return;
 
@@ -407,9 +420,10 @@ void actions_bitmap(QMenu* menu, GlaxnimateWindow* window, model::Bitmap* bmp, m
                 shape->image.set_undoable(QVariant::fromValue(img));
         }
     });
+#endif
 }
 
-void actions_image(QMenu* menu, GlaxnimateWindow* window, model::Image* image)
+void actions_image(QMenu* menu, SelectionManager* window, model::Image* image)
 {
     actions_composable(menu, image);
 
@@ -419,12 +433,14 @@ void actions_image(QMenu* menu, GlaxnimateWindow* window, model::Image* image)
 
     actions_bitmap(menu, window, image->image.get(), image);
 
+#ifndef MOBILE_UI
     menu->addAction(QIcon::fromTheme("bitmap-trace"), i18n("Trace Bitmap..."), menu, [image, window]{
-        window->trace_dialog(image);
+        to_window(window)->trace_dialog(image);
     });
+#endif
 }
 
-void actions_precomp(QMenu* menu, GlaxnimateWindow*, model::PreCompLayer* lay)
+void actions_precomp(QMenu* menu, SelectionManager*, model::PreCompLayer* lay)
 {
     actions_composable(menu, lay);
 
@@ -481,7 +497,7 @@ void time_stretch_dialog(model::Object* object, QWidget* parent)
 
 
 
-NodeMenu::NodeMenu(model::Object* node, GlaxnimateWindow* window, QWidget* parent, model::Object* context_object)
+NodeMenu::NodeMenu(model::Object* node, SelectionManager* window, QWidget* parent, model::Object* context_object)
     : QMenu(node->object_name(), parent)
 {
     setIcon(node->tree_icon());
@@ -528,11 +544,11 @@ NodeMenu::NodeMenu(model::Object* node, GlaxnimateWindow* window, QWidget* paren
             move_action(menu_move, shape, command::ReorderCommand::MoveDown);
             move_action(menu_move, shape, command::ReorderCommand::MoveBottom);
 
-            menu_move->addAction(QIcon::fromTheme("selection-move-to-layer-above"), i18nc("@action:inmenu", "Move to..."), this, [shape, window]{
-                if ( auto parent = ShapeParentDialog(window->model(), window).get_shape_parent() )
+            menu_move->addAction(QIcon::fromTheme("selection-move-to-layer-above"), i18nc("@action:inmenu", "Move to..."), this, [shape, window, parent]{
+                if ( auto shape_parent = ShapeParentDialog(window->model(), parent).get_shape_parent() )
                 {
-                    if ( shape->owner() != parent )
-                        shape->push_command(new command::MoveShape(shape, shape->owner(), parent, parent->size()));
+                    if ( shape->owner() != shape_parent )
+                        shape->push_command(new command::MoveShape(shape, shape->owner(), shape_parent, shape_parent->size()));
                 }
             });
 
@@ -556,14 +572,16 @@ NodeMenu::NodeMenu(model::Object* node, GlaxnimateWindow* window, QWidget* paren
                     actions_text(this, text);
 
                 addSeparator();
-                addAction(QIcon::fromTheme("object-to-path"), i18nc("@action:inmenu", "Convert to Path"), this, [window, shape]{ window->convert_to_path(shape);});
+                addAction(QIcon::fromTheme("object-to-path"), i18nc("@action:inmenu", "Convert to Path"), this, [shape]{ command::convert_to_path({shape});});
             }
         }
         else if ( qobject_cast<model::Composition*>(node) )
         {
+#ifndef MOBILE_UI
             addAction(
-                window->create_layer_menu()->menuAction()
+                to_window(window)->create_layer_menu()->menuAction()
             );
+#endif
         }
     }
     else if ( auto image = qobject_cast<model::Bitmap*>(node) )

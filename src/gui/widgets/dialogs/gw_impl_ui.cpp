@@ -57,6 +57,7 @@
 #include "glaxnimate/utils/data_paths.hpp"
 
 #include "glaxnimate/command/undo_macro_guard.hpp"
+#include "glaxnimate/command/shape_commands.hpp"
 
 #include "widgets/dialogs/io_status_dialog.hpp"
 #include "widgets/dialogs/about_env_dialog.hpp"
@@ -616,7 +617,7 @@ void GlaxnimateWindow::Private::setup_layers_actions()
 
     QAction *newPrecompSelection = add_action(layersActions, QStringLiteral("new_precomp_selection"), i18n("Precompose Selection"), QStringLiteral("archive-extract"));
     connect(newPrecompSelection, &QAction::triggered, parent, [this]{
-        objects_to_new_composition(comp, cleaned_selection(), &comp->shapes, -1);
+        parent->precompose(comp, cleaned_selection(), &comp->shapes, -1);
     });
     QAction *newComp = add_action(layersActions, QStringLiteral("new_comp"), i18n("New Composition"), QStringLiteral("folder-video"));
     connect(newComp, &QAction::triggered, parent, [this]{add_composition();});
@@ -711,16 +712,6 @@ void GlaxnimateWindow::Private::setup_object_actions()
     connect(alignVertBottomOut, &QAction::triggered, parent, [this]{align(AlignDirection::Vertical, AlignPosition::End, true);});
 }
 
-void recursive_reverse_path(model::DocumentNode* node)
-{
-    if ( auto shape = qobject_cast<model::Shape*>(node) )
-    {
-        shape->reversed.set_undoable(!shape->reversed.get());
-    }
-
-    for ( const auto& child : node->docnode_children() )
-        recursive_reverse_path(child);
-}
 
 void GlaxnimateWindow::Private::setup_path_actions()
 {
@@ -808,8 +799,7 @@ void GlaxnimateWindow::Private::setup_path_actions()
         if ( !curr )
             return;
 
-        command::UndoMacroGuard guard(i18n("Reverse path"), current_document.get());
-        recursive_reverse_path(curr);
+        command::recursive_reverse_path(curr);
     });
 }
 

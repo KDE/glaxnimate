@@ -74,18 +74,31 @@ public:
     void paste_as_composition();
     void paste_document(model::Document* document, const QString& macro_name, bool as_comp);
 
+    void precompose(model::ShapeElement* node);
+    void precompose(
+        model::Composition* source_comp,
+        const std::vector<model::VisualNode*>& objects,
+        model::ObjectListProperty<model::ShapeElement>* layer_parent,
+        int layer_index
+    );
+
     virtual void set_selection(const std::vector<model::VisualNode*>& selected) = 0;
     virtual void update_selection(const std::vector<model::VisualNode*>& selected, const std::vector<model::VisualNode*>& deselected) = 0;
 
     QUndoGroup& undo_group() { return undo_group_; }
 
     virtual item_models::DocumentNodeModel* model() const = 0;
+    virtual std::vector<io::mime::MimeSerializer*> supported_mimes() const = 0;
 
 protected:
-    virtual std::vector<io::mime::MimeSerializer*> supported_mimes() const = 0;
     void layer_new_impl(std::unique_ptr<model::ShapeElement> layer);
     model::PreCompLayer *layer_new_comp(model::Composition *comp);
     void delete_shapes_impl(const QString& undo_string, const std::vector<model::VisualNode *> &selection);
+    virtual void update_selection_after_precompose(
+        const std::vector<model::VisualNode*>& objects,
+        model::Composition* source_comp,
+        model::PreCompLayer* precomp_layer
+    ) = 0;
 
 private:
     void paste_impl(bool as_comp);
