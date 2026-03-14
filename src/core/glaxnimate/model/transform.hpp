@@ -22,13 +22,14 @@ class Transform : public Object
     GLAXNIMATE_ANIMATABLE(QPointF, position, QPointF(0, 0))
     GLAXNIMATE_ANIMATABLE(QVector2D, scale, QVector2D(1, 1))
     GLAXNIMATE_ANIMATABLE(float, rotation, 0, {})
+    GLAXNIMATE_PROPERTY(bool, auto_orient, false, {}, {}, PropertyTraits::Visual|PropertyTraits::Hidden)
 
 public:
     using Object::Object;
 
     virtual QString type_name_human() const override { return i18n("Transform"); }
 
-    QTransform transform_matrix(FrameTime f, bool auto_orient = false) const;
+    QTransform transform_matrix(FrameTime f) const;
     void set_transform_matrix(const QTransform& t);
     void copy(Transform* other);
 };

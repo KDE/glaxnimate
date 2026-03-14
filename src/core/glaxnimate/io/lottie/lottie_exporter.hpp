@@ -161,7 +161,7 @@ public:
         QCborMap transform;
         convert_transform(grp->transform.get(), &grp->opacity, transform);
         json["ks"_l] = transform;
-        json["ao"_l] = int(grp->auto_orient.get());
+        json["ao"_l] = int(grp->transform->auto_orient.get());
         if ( grp->blend_mode.get() != renderer::BlendMode::Normal )
             json["bm"_l] = int(grp->blend_mode.get());
     }
@@ -639,7 +639,7 @@ public:
         {
             if ( qobject_cast<model::Layer*>(gr) )
                 format->information(i18n("Lottie only supports layers in the top level"));
-            else if ( gr->auto_orient.get() )
+            else if ( gr->transform->auto_orient.get() )
                 format->information(i18n("Lottie only supports auto-orient layers in the top level"));
             auto shapes = convert_shapes(gr->shapes, force_hidden || !gr->visible.get());
             QCborMap transform;

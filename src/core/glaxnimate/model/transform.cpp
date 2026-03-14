@@ -20,10 +20,10 @@ QTransform make_transform(
     QTransform trans;
     trans.translate(position.x(), position.y());
     trans.rotate(rotation);
-    trans.scale(scale.x(), scale.y());
-    trans.translate(-anchor_point.x(), -anchor_point.y());
     if ( pos_derivative )
         trans.rotate(glaxnimate::math::rad2deg(glaxnimate::math::atan2(pos_derivative->y(), pos_derivative->x())));
+    trans.scale(scale.x(), scale.y());
+    trans.translate(-anchor_point.x(), -anchor_point.y());
     return trans;
 }
 
@@ -31,10 +31,10 @@ QTransform make_transform(
 
 GLAXNIMATE_OBJECT_IMPL(glaxnimate::model::Transform)
 
-QTransform glaxnimate::model::Transform::transform_matrix(FrameTime f, bool auto_orient) const
+QTransform glaxnimate::model::Transform::transform_matrix(FrameTime f) const
 {
     std::optional<QPointF> pos_derivative;
-    if ( auto_orient )
+    if ( auto_orient.get() )
         pos_derivative = position.derivative_at(f);
 
     return make_transform(

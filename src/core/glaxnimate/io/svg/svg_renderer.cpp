@@ -570,7 +570,7 @@ public:
 
     void write_composable(model::Composable* comp, QDomElement& e, model::FrameTime t)
     {
-        transform_to_attr(e, t, comp->transform.get(), comp->auto_orient.get());
+        transform_to_attr(e, t, comp->transform.get());
         if ( comp->blend_mode.get() != renderer::BlendMode::Normal )
             set_attribute(e, "style", "mix-blend-mode: " + detail::enum_to_svg(comp->blend_mode.get(), detail::blend_modes, "source-over"));
 
@@ -983,7 +983,7 @@ public:
         return g;
     }
 
-    void transform_to_attr(QDomElement& parent, model::FrameTime t, model::Transform* transf, bool auto_orient = false)
+    void transform_to_attr(QDomElement& parent, model::FrameTime t, model::Transform* transf)
     {
         if ( animated && (transf->position.animated() || transf->scale.animated() || transf->rotation.animated() || transf->anchor_point.animated()) )
         {
@@ -1001,7 +1001,7 @@ public:
             mb.beziers().push_back(transf->position.bezier());
             subject = transform_property(subject, t, "translate", &transf->position, [](const QPointF& val){
                 return QString("%1 %2").arg(val.x()).arg(val.y());
-            }, path_data(mb).first, auto_orient);
+            }, path_data(mb).first, transf->auto_orient.get());
         }
         else
         {

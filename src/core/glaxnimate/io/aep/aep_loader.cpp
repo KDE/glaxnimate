@@ -1335,7 +1335,7 @@ void glaxnimate::io::aep::AepLoader::load_layer(LayerData& layer_data, CompData&
         composable->transform->anchor_point.set(anchor / 2);
     }
     load_transform(io, composable->transform.get(), ae_layer.properties["ADBE Transform Group"], &composable->opacity, anchor, false);
-    composable->auto_orient.set(ae_layer.auto_orient);
+    composable->transform->auto_orient.set(ae_layer.auto_orient);
 
     if ( ae_layer.is_null )
         return;

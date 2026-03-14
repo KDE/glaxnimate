@@ -318,6 +318,13 @@ private:
                 object["compositions"] = comps;
             }
         }
+
+
+        if ( document_version < 9 )
+        {
+            if ( object["__type__"].toString() == "Layer" )
+                object["transform"].toObject()["auto_orient"] = object["auto_orient"];
+        }
     }
 
     void do_load_object ( model::Object* target, QJsonObject object, const UnresolvedPath& path )

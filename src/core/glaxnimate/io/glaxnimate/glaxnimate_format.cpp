@@ -15,7 +15,7 @@
 
 using namespace glaxnimate;
 
-const int glaxnimate::io::glaxnimate::GlaxnimateFormat::format_version = 8;
+const int glaxnimate::io::glaxnimate::GlaxnimateFormat::format_version = 9;
 
 
 

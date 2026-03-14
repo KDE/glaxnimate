@@ -19,7 +19,6 @@ class Composable: public ShapeElement
 
     GLAXNIMATE_SUBOBJECT(Transform, transform)
     GLAXNIMATE_ANIMATABLE(float, opacity, 1, &Composable::opacity_changed, 0, 1, false, PropertyTraits::Percent)
-    GLAXNIMATE_PROPERTY(bool, auto_orient, false, &Composable::on_transform_matrix_changed, {}, PropertyTraits::Visual|PropertyTraits::Hidden)
     GLAXNIMATE_PROPERTY(renderer::BlendMode, blend_mode, renderer::BlendMode::Normal, &Composable::blend_mode_changed, {}, PropertyTraits::Visual|PropertyTraits::Hidden)
 
 public:

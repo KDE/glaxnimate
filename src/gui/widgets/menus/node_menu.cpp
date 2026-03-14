@@ -279,10 +279,10 @@ void actions_composable(QMenu* menu,model::Composable* group)
     );
     /// \todo better icon
     auto ao = menu->addAction(QIcon::fromTheme("path-reverse"), i18n("Auto Orient"), menu, [group](bool check) {
-        group->auto_orient.set_undoable(check);
+        group->transform->auto_orient.set_undoable(check);
     });
     ao->setCheckable(true);
-    ao->setChecked(group->auto_orient.get());
+    ao->setChecked(group->transform->auto_orient.get());
 
 
     auto menu_blend = menu->addMenu(QIcon::fromTheme("edit-opacity"), i18n("Blend Mode"));
