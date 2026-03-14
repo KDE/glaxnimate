@@ -467,25 +467,27 @@ NodeMenu::NodeMenu(model::DocumentNode* node, GlaxnimateWindow* window, QWidget*
 
         if ( auto shape = qobject_cast<model::ShapeElement*>(node) )
         {
-            addAction(QIcon::fromTheme("edit-cut"), i18nc("@action:inmenu", "Cut"), this, [shape, window]{
+            auto menu_edit = addMenu(QIcon::fromTheme("edit-cut"), i18nc("@action:inmenu", "Edit"));
+
+            menu_edit->addAction(QIcon::fromTheme("edit-cut"), i18nc("@action:inmenu", "Cut"), this, [shape, window]{
                 GlaxnimateApp::instance()->set_clipboard_data(command::copy_helper(
                     {shape},
                     window->supported_mimes()
                 ));
                 shape->push_command(new command::RemoveShape(shape, shape->owner(), nullptr, i18n("Cut")));
             });
-            addAction(QIcon::fromTheme("edit-copy"), i18nc("@action:inmenu", "Copy"), this, [visual, window]{
+            menu_edit->addAction(QIcon::fromTheme("edit-copy"), i18nc("@action:inmenu", "Copy"), this, [visual, window]{
                 GlaxnimateApp::instance()->set_clipboard_data(command::copy_helper(
                     {visual},
                     window->supported_mimes()
                 ));
             });
 
-            addAction(QIcon::fromTheme("edit-delete-remove"), i18nc("@action:inmenu", "Delete"), this, [shape]{
+            menu_edit->addAction(QIcon::fromTheme("edit-delete-remove"), i18nc("@action:inmenu", "Delete"), this, [shape]{
                 shape->push_command(new command::RemoveShape(shape, shape->owner()));
             });
 
-            addAction(QIcon::fromTheme("edit-duplicate"), i18nc("@action:inmenu", "Duplicate"), this, [shape, window]{
+            menu_edit->addAction(QIcon::fromTheme("edit-duplicate"), i18nc("@action:inmenu", "Duplicate"), this, [shape, window]{
                 auto cmd = command::duplicate_shape(shape);
                 shape->push_command(cmd);
                 window->set_current_document_node(cmd->object());
