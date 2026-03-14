@@ -17,6 +17,7 @@
 #include "glaxnimate/command/shape_commands.hpp"
 #include "glaxnimate/command/structure_commands.hpp"
 #include "glaxnimate/command/undo_macro_guard.hpp"
+#include "glaxnimate/command/clipboard.hpp"
 
 #include "glaxnimate_app.hpp"
 
@@ -66,11 +67,10 @@ std::vector<model::VisualNode *> glaxnimate::gui::SelectionManager::copy() const
 
     if ( !selection.empty() )
     {
-        QMimeData* data = new QMimeData;
-        for ( const auto& serializer : supported_mimes() )
-        {
-            serializer->to_mime_data(*data, std::vector<model::DocumentNode*>(selection.begin(), selection.end()));
-        }
+        QMimeData* data = command::copy_helper(
+            std::vector<model::DocumentNode*>(selection.begin(), selection.end()),
+            supported_mimes()
+        );
 
         GlaxnimateApp::instance()->set_clipboard_data(data);
     }

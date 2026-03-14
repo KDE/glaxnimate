@@ -32,9 +32,11 @@
 #include "glaxnimate/command/property_commands.hpp"
 #include "glaxnimate/command/shape_commands.hpp"
 #include "glaxnimate/command/undo_macro_guard.hpp"
-#include "widgets/enum_combo.hpp"
+#include "glaxnimate/command/clipboard.hpp"
 
+#include "widgets/enum_combo.hpp"
 #include "widgets/dialogs/shape_parent_dialog.hpp"
+#include "glaxnimate_app.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
@@ -87,7 +89,7 @@ QAction* action_for_node(model::DocumentNode* node, model::DocumentNode* selecte
 }
 
 void move_action(
-    NodeMenu* menu,
+    QMenu* menu,
     model::ShapeElement* node,
     command::ReorderCommand::SpecialPosition pos
 )
@@ -465,6 +467,20 @@ NodeMenu::NodeMenu(model::DocumentNode* node, GlaxnimateWindow* window, QWidget*
 
         if ( auto shape = qobject_cast<model::ShapeElement*>(node) )
         {
+            addAction(QIcon::fromTheme("edit-cut"), i18nc("@action:inmenu", "Cut"), this, [shape, window]{
+                GlaxnimateApp::instance()->set_clipboard_data(command::copy_helper(
+                    {shape},
+                    window->supported_mimes()
+                ));
+                shape->push_command(new command::RemoveShape(shape, shape->owner(), nullptr, i18n("Cut")));
+            });
+            addAction(QIcon::fromTheme("edit-copy"), i18nc("@action:inmenu", "Copy"), this, [visual, window]{
+                GlaxnimateApp::instance()->set_clipboard_data(command::copy_helper(
+                    {visual},
+                    window->supported_mimes()
+                ));
+            });
+
             addAction(QIcon::fromTheme("edit-delete-remove"), i18nc("@action:inmenu", "Delete"), this, [shape]{
                 shape->push_command(new command::RemoveShape(shape, shape->owner()));
             });
@@ -475,14 +491,14 @@ NodeMenu::NodeMenu(model::DocumentNode* node, GlaxnimateWindow* window, QWidget*
                 window->set_current_document_node(cmd->object());
             });
 
-            addSeparator();
+            auto menu_move = addMenu(QIcon::fromTheme("selection-move-to-layer-above"), i18nc("@action:inmenu", "Move"));
 
-            move_action(this, shape, command::ReorderCommand::MoveTop);
-            move_action(this, shape, command::ReorderCommand::MoveUp);
-            move_action(this, shape, command::ReorderCommand::MoveDown);
-            move_action(this, shape, command::ReorderCommand::MoveBottom);
+            move_action(menu_move, shape, command::ReorderCommand::MoveTop);
+            move_action(menu_move, shape, command::ReorderCommand::MoveUp);
+            move_action(menu_move, shape, command::ReorderCommand::MoveDown);
+            move_action(menu_move, shape, command::ReorderCommand::MoveBottom);
 
-            addAction(QIcon::fromTheme("selection-move-to-layer-above"), i18nc("@action:inmenu", "Move to..."), this, [shape, window]{
+            menu_move->addAction(QIcon::fromTheme("selection-move-to-layer-above"), i18nc("@action:inmenu", "Move to..."), this, [shape, window]{
                 if ( auto parent = ShapeParentDialog(window->model(), window).get_shape_parent() )
                 {
                     if ( shape->owner() != parent )

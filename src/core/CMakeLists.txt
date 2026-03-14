@@ -8,6 +8,7 @@ glaxnimate/app_info.cpp
 glaxnimate/command/structure_commands.cpp
 glaxnimate/command/shape_commands.cpp
 glaxnimate/command/animation_commands.cpp
+glaxnimate/command/clipboard.cpp
 
 glaxnimate/io/base.cpp
 glaxnimate/io/binary_stream.cpp

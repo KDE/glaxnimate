@@ -57,14 +57,14 @@ template<class ItemT, class PropT = model::ObjectListProperty<ItemT>>
 class RemoveObject : public QUndoCommand
 {
 public:
-    RemoveObject(ItemT* object, PropT* object_parent, QUndoCommand* parent = nullptr)
-        : QUndoCommand(i18n("Remove %1", object->object_name()), parent),
+    RemoveObject(ItemT* object, PropT* object_parent, QUndoCommand* parent = nullptr, QString text = {})
+        : QUndoCommand(text.isEmpty() ? i18n("Remove %1", object->object_name()) : text, parent),
           object_parent(object_parent),
           position(object_parent->index_of(object, -1))
     {}
 
-    RemoveObject(int index, PropT* object_parent, QUndoCommand* parent = nullptr)
-        : QUndoCommand(i18n("Remove %1", (*object_parent)[index]->object_name()), parent),
+    RemoveObject(int index, PropT* object_parent, QUndoCommand* parent = nullptr, QString text = {})
+        : QUndoCommand(text.isEmpty() ? i18n("Remove %1", (*object_parent)[index]->object_name()) : text, parent),
           object_parent(object_parent),
           position(index)
     {}
