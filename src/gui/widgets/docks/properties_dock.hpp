@@ -27,6 +27,7 @@ public:
 
 private Q_SLOTS:
     void click_index(const QModelIndex& index);
+    void custom_context_menu(const QPoint& p);
 
 private:
     class Private;

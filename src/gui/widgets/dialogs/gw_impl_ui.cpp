@@ -68,7 +68,6 @@
 #include "widgets/docks/aligndock.h"
 #include "widgets/docks/assetsdock.h"
 #include "widgets/docks/logsdock.h"
-#include "widgets/docks/propertiesdock.h"
 #include "widgets/docks/script_console.hpp"
 #include "widgets/docks/timelinedock.h"
 #include "widgets/lottiefiles/lottiefiles_search_dialog.hpp"

@@ -45,7 +45,7 @@
 #include "widgets/docks/colorsdock.h"
 #include "widgets/docks/layersdock.h"
 #include "widgets/docks/logsdock.h"
-#include "widgets/docks/propertiesdock.h"
+#include "widgets/docks/properties_dock.hpp"
 #include "widgets/docks/script_console.hpp"
 #include "widgets/docks/strokedock.h"
 #include "widgets/docks/timelinedock.h"

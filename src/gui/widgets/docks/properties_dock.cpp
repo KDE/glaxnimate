@@ -1,15 +1,18 @@
 /*
+ * SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia <dev@dragon.best>
  * SPDX-FileCopyrightText: 2024 Julius Künzel <julius.kuenzel@kde.org>
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "propertiesdock.h"
+#include "properties_dock.hpp"
 
-#include "ui_properties.h"
+#include "ui_properties_dock.h"
 
 #include "glaxnimate/command/animation_commands.hpp"
 #include "widgets/timeline/value_drag_event_filter.hpp"
+#include "widgets/menus/animated_property_menu.hpp"
+#include "widgets/menus/node_menu.hpp"
 
 using namespace glaxnimate::gui;
 
@@ -18,12 +21,14 @@ class PropertiesDock::Private
 public:
     ::Ui::dock_properties ui;
     item_models::PropertyModelSingle* property_model;
+    GlaxnimateWindow* window;
 };
 
 PropertiesDock::PropertiesDock(GlaxnimateWindow* parent, item_models::PropertyModelSingle* property_model, style::PropertyDelegate* property_delegate)
     : QDockWidget(parent)
     , d(std::make_unique<Private>())
 {
+    d->window = parent;
     d->ui.setupUi(this);
 
     d->property_model = property_model;
@@ -35,6 +40,8 @@ PropertiesDock::PropertiesDock(GlaxnimateWindow* parent, item_models::PropertyMo
     d->ui.view_properties->header()->setSectionResizeMode(item_models::PropertyModelSingle::ColumnValue, QHeaderView::Stretch);
 
     new ValueDragEventFilter(d->ui.view_properties, item_models::PropertyModelSingle::ColumnValue);
+
+    connect(this, &QWidget::customContextMenuRequested, this, &PropertiesDock::custom_context_menu);
 }
 
 PropertiesDock::~PropertiesDock() = default;
@@ -60,5 +67,23 @@ void glaxnimate::gui::PropertiesDock::click_index(const QModelIndex& index)
                 d->property_model->document()->push_command(new command::SetKeyframe(anprop, time, anprop->value(), true));
             }
         }
+    }
+}
+
+void glaxnimate::gui::PropertiesDock::custom_context_menu(const QPoint& p)
+{
+    auto index = d->ui.view_properties->indexAt(p);
+    auto item = d->property_model->item(index);
+
+    if ( item.property && item.property->traits().flags & model::PropertyTraits::Animated )
+    {
+        AnimatedPropertyMenu menu(this);
+        menu.set_controller(d->window);
+        menu.set_property(static_cast<model::AnimatableBase*>(item.property));
+        menu.exec(QCursor::pos());
+    }
+    else if ( auto node = qobject_cast<model::DocumentNode*>(item.object) )
+    {
+        NodeMenu(node, d->window, this).exec(QCursor::pos());
     }
 }

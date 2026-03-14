@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <author>
-SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia &gt;dev@dragon.best&lt;
+SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia &gt;dev@dragon.best&lt;
 SPDX-License-Identifier: GPL-3.0-or-later
  </author>
  <class>dock_properties</class>
@@ -35,6 +35,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <width>200</width>
         <height>0</height>
        </size>
+      </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::ContextMenuPolicy::CustomContextMenu</enum>
       </property>
       <property name="editTriggers">
        <set>QAbstractItemView::EditTrigger::DoubleClicked|QAbstractItemView::EditTrigger::EditKeyPressed|QAbstractItemView::EditTrigger::SelectedClicked</set>
@@ -80,8 +83,25 @@ SPDX-License-Identifier: GPL-3.0-or-later
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>view_properties</sender>
+   <signal>customContextMenuRequested(QPoint)</signal>
+   <receiver>dock_properties</receiver>
+   <slot>custom_context_menu(QPoint)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>269</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>603</x>
+     <y>92</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>click_index(QModelIndex)</slot>
+  <slot>custom_context_menu(QPoint)</slot>
  </slots>
 </ui>

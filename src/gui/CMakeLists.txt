@@ -189,7 +189,7 @@ if ( NOT MOBILE_UI )
         widgets/docks/colorsdock.cpp
         widgets/docks/strokedock.cpp
         widgets/docks/layersdock.cpp
-        widgets/docks/propertiesdock.cpp
+        widgets/docks/properties_dock.cpp
         widgets/docks/timelinedock.cpp
         widgets/docks/logsdock.cpp
         widgets/docks/timesliderdock.cpp
@@ -212,7 +212,7 @@ if ( NOT MOBILE_UI )
         widgets/docks/colors.ui
         widgets/docks/stroke.ui
         widgets/docks/layers.ui
-        widgets/docks/properties.ui
+        widgets/docks/properties_dock.ui
         widgets/docks/timeline.ui
         widgets/docks/script_console.ui
         widgets/docks/logs.ui
