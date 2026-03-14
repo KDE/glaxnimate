@@ -419,12 +419,25 @@ void CompoundTimelineWidget::custom_context_menu(const QPoint& p)
         d->menu_property.refresh_actions();
         d->menu_property.exec(glob);
     }
-#ifndef MOBILE_UI
-    else if ( auto dn = qobject_cast<model::DocumentNode*>(item.object) )
+    else if ( item.property && !(item.property->traits().flags & model::PropertyTraits::List) )
     {
-        NodeMenu(dn, d->window, this).exec(glob);
+        if ( item.property->traits().type == model::PropertyTraits::Object )
+        {
+            auto op = static_cast<model::SubObjectPropertyBase*>(item.property);
+            NodeMenu(op->sub_object(), d->window, this, item.property->object()).exec(QCursor::pos());
+        }
+        else if ( item.property->traits().type ==
+            model::PropertyTraits::ObjectReference )
+        {
+            auto op = static_cast<model::ReferencePropertyBase*>(item.property);
+            if ( auto ref = op->get_ref() )
+                NodeMenu(ref, d->window, this, item.property->object()).exec(QCursor::pos());
+        }
     }
-#endif
+    else if ( item.object )
+    {
+        NodeMenu(item.object, d->window, this).exec(glob);
+    }
 }
 
 void CompoundTimelineWidget::add_keyframe()

@@ -272,19 +272,47 @@ QAction* add_enum_action(QMenu* parent, ValueT value, ValueT current, const Call
     return action;
 }
 
-void actions_composable(QMenu* menu,model::Composable* group)
+void actions_transform(QMenu* menu, model::Transform* tf, model::ShapeElement* bbshape)
 {
     menu->addAction(QIcon::fromTheme("transform-move"), i18n("Reset Transform"), menu,
-        ResetTransform{group->document(), group->transform.get()}
+        ResetTransform{tf->document(), tf}
     );
+
+    if ( bbshape )
+    {
+        menu->addAction(QIcon::fromTheme("snap-bounding-box-center"), i18n("Anchor Point to Center"), menu, [tf, bbshape]{
+            auto center = bbshape->local_bounding_rect(bbshape->time()).center();
+
+            auto t = tf->time();
+            QPointF p1 = tf->transform_matrix(t).map(QPointF(0, 0));
+            QPointF p2 = tf->transform_matrix_with_anchor(t, center).map(QPointF(0, 0));
+            QPointF pos = tf->position.get() - p2 + p1;
+
+            tf->document()->push_command(new command::SetMultipleAnimated(
+                i18n("Anchor Point to Center"),
+                true,
+                {
+                    &tf->position,
+                    &tf->anchor_point
+                },
+                pos,
+                center,
+                0
+            ));
+        });
+    }
     /// \todo better icon
-    auto ao = menu->addAction(QIcon::fromTheme("path-reverse"), i18n("Auto Orient"), menu, [group](bool check) {
-        group->transform->auto_orient.set_undoable(check);
+    auto ao = menu->addAction(QIcon::fromTheme("path-reverse"), i18n("Auto Orient"), menu, [tf](bool check) {
+        tf->auto_orient.set_undoable(check);
     });
     ao->setCheckable(true);
-    ao->setChecked(group->transform->auto_orient.get());
+    ao->setChecked(tf->auto_orient.get());
+}
 
-
+void actions_composable(QMenu* menu, model::Composable* group)
+{
+    auto menu_tf = menu->addMenu(QIcon::fromTheme("node-transform"), i18n("Transform"));
+    actions_transform(menu_tf, group->transform.get(), group);
     auto menu_blend = menu->addMenu(QIcon::fromTheme("edit-opacity"), i18n("Blend Mode"));
     add_enum_actions(menu_blend, &group->blend_mode);
 }
@@ -453,7 +481,7 @@ void time_stretch_dialog(model::Object* object, QWidget* parent)
 
 
 
-NodeMenu::NodeMenu(model::DocumentNode* node, GlaxnimateWindow* window, QWidget* parent)
+NodeMenu::NodeMenu(model::Object* node, GlaxnimateWindow* window, QWidget* parent, model::Object* context_object)
     : QMenu(node->object_name(), parent)
 {
     setIcon(node->tree_icon());
@@ -541,6 +569,10 @@ NodeMenu::NodeMenu(model::DocumentNode* node, GlaxnimateWindow* window, QWidget*
     else if ( auto image = qobject_cast<model::Bitmap*>(node) )
     {
         actions_bitmap(this, window, image, nullptr);
+    }
+    else if ( auto tf = qobject_cast<model::Transform*>(node) )
+    {
+        actions_transform(this, tf, qobject_cast<model::ShapeElement*>(context_object));
     }
 
 

@@ -427,14 +427,10 @@ void graphics::TransformGraphicsItem::drag_r(const QPointF& p, Qt::KeyboardModif
 void graphics::TransformGraphicsItem::drag_a(const QPointF& p, Qt::KeyboardModifiers)
 {
     QPointF anchor = p;
-    QPointF anchor_old = d->transform->anchor_point.get();
-
     QPointF p1 = d->transform_matrix.map(QPointF(0, 0));
-    d->transform->anchor_point.set(anchor);
-    QPointF p2 = d->transform_matrix.map(QPointF(0, 0));
-
+    QPointF p2 = d->transform->transform_matrix_with_anchor(d->transform->time(), anchor).map(QPointF(0, 0));
     QPointF pos = d->transform->position.get() - p2 + p1;
-    d->transform->anchor_point.set(anchor_old);
+
     d->target->document()->undo_stack().push(new command::SetMultipleAnimated(
         i18n("Drag anchor point"),
         false,

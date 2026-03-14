@@ -10,6 +10,7 @@
 #include "glaxnimate/model/object.hpp"
 
 #include <QTransform>
+#include <QIcon>
 
 
 namespace glaxnimate::model {
@@ -27,11 +28,18 @@ class Transform : public Object
 public:
     using Object::Object;
 
+    virtual QIcon tree_icon() const override { return QIcon::fromTheme("node-transform"); }
     virtual QString type_name_human() const override { return i18n("Transform"); }
 
     QTransform transform_matrix(FrameTime f) const;
     void set_transform_matrix(const QTransform& t);
+    /**
+     * \brief Returns the transform at the given time using the given anchor point instead of the transform's
+     */
+    QTransform transform_matrix_with_anchor(FrameTime f, const QPointF& anchor) const;
     void copy(Transform* other);
+
+
 };
 
 

@@ -638,6 +638,14 @@ QModelIndex item_models::PropertyModelBase::index_by_id(quintptr id, int column)
     return createIndex(i, column, prop_node->id);
 }
 
+model::Object* item_models::PropertyModelBase::object(const QModelIndex& index) const
+{
+    Private::Subtree* tree = d->node_from_index(index);
+    if ( !tree )
+        return nullptr;
+
+    return tree->object;
+}
 
 model::VisualNode* item_models::PropertyModelBase::visual_node(const QModelIndex& index) const
 {

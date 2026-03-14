@@ -75,15 +75,30 @@ void glaxnimate::gui::PropertiesDock::custom_context_menu(const QPoint& p)
     auto index = d->ui.view_properties->indexAt(p);
     auto item = d->property_model->item(index);
 
-    if ( item.property && item.property->traits().flags & model::PropertyTraits::Animated )
+    if ( item.property && !(item.property->traits().flags & model::PropertyTraits::List) )
     {
-        AnimatedPropertyMenu menu(this);
-        menu.set_controller(d->window);
-        menu.set_property(static_cast<model::AnimatableBase*>(item.property));
-        menu.exec(QCursor::pos());
+        if ( item.property->traits().flags & model::PropertyTraits::Animated )
+        {
+            AnimatedPropertyMenu menu(this);
+            menu.set_controller(d->window);
+            menu.set_property(static_cast<model::AnimatableBase*>(item.property));
+            menu.exec(QCursor::pos());
+        }
+        else if ( item.property->traits().type == model::PropertyTraits::Object )
+        {
+            auto op = static_cast<model::SubObjectPropertyBase*>(item.property);
+            NodeMenu(op->sub_object(), d->window, this, item.property->object()).exec(QCursor::pos());
+        }
+        else if ( item.property->traits().type ==
+            model::PropertyTraits::ObjectReference )
+        {
+            auto op = static_cast<model::ReferencePropertyBase*>(item.property);
+            if ( auto ref = op->get_ref() )
+                NodeMenu(ref, d->window, this, item.property->object()).exec(QCursor::pos());
+        }
     }
-    else if ( auto node = qobject_cast<model::DocumentNode*>(item.object) )
+    else if ( item.object )
     {
-        NodeMenu(node, d->window, this).exec(QCursor::pos());
+        NodeMenu(item.object, d->window, this).exec(QCursor::pos());
     }
 }

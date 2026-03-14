@@ -33,18 +33,25 @@ GLAXNIMATE_OBJECT_IMPL(glaxnimate::model::Transform)
 
 QTransform glaxnimate::model::Transform::transform_matrix(FrameTime f) const
 {
+    return transform_matrix_with_anchor(f, anchor_point.get_at(f));
+}
+
+QTransform glaxnimate::model::Transform::transform_matrix_with_anchor(FrameTime f, const QPointF& anchor) const
+{
+
     std::optional<QPointF> pos_derivative;
     if ( auto_orient.get() )
         pos_derivative = position.derivative_at(f);
 
     return make_transform(
-        anchor_point.get_at(f),
+        anchor,
         position.get_at(f),
         rotation.get_at(f),
         scale.get_at(f),
         pos_derivative
     );
 }
+
 
 void glaxnimate::model::Transform::set_transform_matrix(const QTransform& t)
 {

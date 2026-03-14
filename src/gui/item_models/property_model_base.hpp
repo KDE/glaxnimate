@@ -59,6 +59,7 @@ public:
     QModelIndex object_index(model::Object* obj) const;
     QModelIndex index_by_id(quintptr id, int column = 0) const;
 
+    model::Object* object(const QModelIndex& index) const;
     model::VisualNode* visual_node(const QModelIndex& index) const override;
     model::DocumentNode* node(const QModelIndex& index) const override;
     QModelIndex node_index(model::DocumentNode* node) const override;

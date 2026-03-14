@@ -97,8 +97,6 @@ public:
     explicit DocumentNode(model::Document* document);
     ~DocumentNode();
 
-    virtual QIcon tree_icon() const = 0;
-
     virtual DocumentNode* docnode_parent() const;
     virtual int docnode_child_count() const = 0;
     virtual DocumentNode* docnode_child(int index) const = 0;

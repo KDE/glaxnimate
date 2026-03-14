@@ -11,6 +11,7 @@
 
 #include <QObject>
 #include <QVariant>
+#include <QIcon>
 
 #include "glaxnimate/utils/i18n.hpp"
 #include "glaxnimate/model/animation/frame_time.hpp"
@@ -103,6 +104,8 @@ public:
     template<class T> bool is_instance() const { return metaObject()->inherits(&T::staticMetaObject); }
 
     virtual void stretch_time(qreal multiplier);
+
+    virtual QIcon tree_icon() const { return {}; }
 
 Q_SIGNALS:
     void property_changed(const model::BaseProperty* prop, const QVariant& value);

@@ -13,6 +13,8 @@
     * Made the keyframe status display in the timeline more consistent
     * Added context menus to the properties dock
     * Gradient properties are now shown on the timeline
+    * Added context menu for more objects
+    * Context menu has been re-organized with more sub-menus for ease of navigation
 * I/O:
     * Improved matte import and export for lottie
     * Improved mask properties import for lottie

@@ -18,7 +18,7 @@ class NodeMenu : public QMenu
 {
     Q_OBJECT
 public:
-    NodeMenu(model::DocumentNode* node, GlaxnimateWindow* window, QWidget* parent);
+    NodeMenu(model::Object* node, GlaxnimateWindow* window, QWidget* parent, model::Object* context_object = nullptr);
 };
 
 } // namespace glaxnimate::gui
