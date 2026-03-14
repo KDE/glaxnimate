@@ -165,7 +165,8 @@ private:
     QVariantList before;
     QVariantList after;
     std::vector<int> keyframe_before;
-    bool keyframe_after;
+    bool keyframe_after_global;
+    std::vector<int> keyframe_after;
     model::FrameTime time;
     std::vector<bool> add_0;
     std::vector<model::BaseProperty*> props_not_animated;

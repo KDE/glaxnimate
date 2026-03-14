@@ -164,7 +164,7 @@ glaxnimate::command::SetMultipleAnimated::SetMultipleAnimated(
     props(props),
     before(before),
     after(after),
-    keyframe_after(props[0]->object()->document()->record_to_keyframe()),
+    keyframe_after_global(props[0]->object()->document()->record_to_keyframe()),
     time(props[0]->time())
 {
     bool add_before = before.empty();
@@ -174,6 +174,7 @@ glaxnimate::command::SetMultipleAnimated::SetMultipleAnimated(
         if ( add_before )
             this->before.push_back(prop->value());
         keyframe_before.push_back(prop->has_keyframe(time));
+        keyframe_after.push_back(prop->animated());
         add_0.push_back(time != 0 && !prop->animated() && prop->object()->document()->record_to_keyframe());
     }
 }
@@ -186,14 +187,15 @@ glaxnimate::command::SetMultipleAnimated::SetMultipleAnimated(const QString& nam
 
 void glaxnimate::command::SetMultipleAnimated::push_property(model::AnimatableBase* prop, const QVariant& after_val)
 {
-    keyframe_after = prop->object()->document()->record_to_keyframe() || prop->animated();
+    keyframe_after_global = keyframe_after_global || prop->object()->document()->record_to_keyframe();
+    keyframe_after.push_back(prop->animated());
     time = prop->time();
     int insert = props.size();
     props.push_back(prop);
     before.insert(before.begin() + insert, prop->value());
     after.insert(after.begin() + insert, after_val);
     keyframe_before.push_back(prop->has_keyframe(time));
-    add_0.push_back(!prop->animated() && keyframe_after);
+    add_0.push_back(!prop->animated() && keyframe_after_global);
 }
 
 void glaxnimate::command::SetMultipleAnimated::push_property_not_animated(model::BaseProperty* prop, const QVariant& after_val)
@@ -212,7 +214,7 @@ void glaxnimate::command::SetMultipleAnimated::undo()
         if ( add_0[i] )
             prop->remove_keyframe_at_time(0);
 
-        if ( keyframe_after )
+        if ( keyframe_after_global || keyframe_after[i] )
         {
             if ( keyframe_before[i] )
             {
@@ -249,7 +251,7 @@ void glaxnimate::command::SetMultipleAnimated::redo()
         if ( add_0[i] )
             prop->set_keyframe(0, before[i]);
 
-        if ( keyframe_after )
+        if ( keyframe_after_global || keyframe_after[i] )
             prop->set_keyframe(time, after[i]);
         else if ( !prop->animated() || prop->time() == time )
             prop->set_value(after[i]);
