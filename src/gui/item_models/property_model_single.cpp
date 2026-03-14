@@ -49,6 +49,8 @@ public:
             }
         }
     }
+
+    model::Object* root_object = nullptr;
 };
 
 item_models::PropertyModelSingle::PropertyModelSingle()
@@ -59,8 +61,12 @@ item_models::PropertyModelSingle::PropertyModelSingle()
 
 void item_models::PropertyModelSingle::set_object(model::Object* object)
 {
+    if ( dd()->root_object == object )
+        return;
+
     beginResetModel();
     d->clear();
+    dd()->root_object = object;
     if ( object )
         d->add_object(object, nullptr, false);
     endResetModel();
@@ -165,4 +171,9 @@ QVariant item_models::PropertyModelSingle::headerData(int section, Qt::Orientati
 std::pair<model::VisualNode *, int> item_models::PropertyModelSingle::drop_position(const QModelIndex&, int, int) const
 {
     return {};
+}
+
+item_models::PropertyModelSingle::Private* item_models::PropertyModelSingle::dd() const
+{
+    return static_cast<Private*>(d.get());
 }

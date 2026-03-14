@@ -12,6 +12,7 @@
     * You can now click-drag to edit properties
     * Made the keyframe status display in the timeline more consistent
     * Added context menus to the properties dock
+    * Gradient properties are now shown on the timeline
 * I/O:
     * Improved matte import and export for lottie
     * Improved mask properties import for lottie
