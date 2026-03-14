@@ -271,6 +271,8 @@ public:
 
     int frame_at_point(const QPoint& view_pos)
     {
+        if ( end_time <= start_time )
+            return start_time;
         return qBound(start_time, qRound(parent->mapToScene(view_pos).x()), end_time - 1);
     }
 
