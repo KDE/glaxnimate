@@ -185,7 +185,7 @@ struct FieldInfo
 const QMap<QString, QVector<FieldInfo>> fields = {
     {"DocumentNode", {
         FieldInfo{"nm", "name", {}, false},
-        FieldInfo{"mn", "uuid", {}, false},
+        FieldInfo{"uid", "uuid", {}, false},
     }},
     {"Composition", {
         FieldInfo("layers", Custom),

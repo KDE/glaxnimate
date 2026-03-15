@@ -59,8 +59,14 @@ public:
     {
         QCborArray layers;
         for ( const auto& layer : composition->shapes )
+        {
             if ( !strip || layer->visible.get() )
-                convert_layer(layer_type(layer.get()), layer.get(), layers);
+            {
+                wrap_to_layer.clear();
+                shape_is_layer(layer.get());
+                convert_as_layer(layer.get(), layers, nullptr, true, {}, composition->animation.get());
+            }
+        }
 
         json["layers"_l] = layers;
     }
@@ -110,16 +116,143 @@ public:
         return layer_indices[layer->uuid.get()];
     }
 
-    QCborMap wrap_layer_shape(model::ShapeElement* shape, model::Layer* forced_parent)
+    struct MatteData
+    {
+        int type;
+        int parent;
+        MatteData() : type(-1), parent(-1) {};
+
+        bool has_matte() const { return parent != -1 && type != -1; }
+    };
+
+    QCborMap convert_as_layer(
+        model::ShapeElement* shape,
+        QCborArray& output,
+        model::ShapeElement* parent,
+        bool push,
+        const MatteData& matte,
+        model::AnimationContainer* animation
+    )
     {
         QCborMap json;
         json["ddd"_l] = 0;
-        json["ty"_l] = 4;
-        convert_fake_layer_parent(forced_parent, json);
-        json["ind"_l] = layer_index(shape);
+        int index = layer_index(shape);
+        json["ind"_l] = index;
         json["st"_l] = 0;
+        json["ty"_l] = 3;
         if ( !shape->visible.get() )
+        {
+            if ( strip )
+                return {};
             json["hd"_l] = true;
+        }
+
+        if ( !strip )
+        {
+            json["nm"_l] = shape->name.get();
+            json["uid"_l] = shape->uuid.get().toString();
+        }
+
+        if ( auto layer = shape->cast<model::Layer>() )
+        {
+            if ( !layer->render.get() )
+                return {};
+            convert_normal_layer(layer, json, output);
+        }
+        else if ( auto image = shape->cast<model::Image>() )
+        {
+            convert_image_layer(image, json, animation);
+        }
+        else if ( auto precomp = shape->cast<model::PreCompLayer>() )
+        {
+            convert_precomp_layer(precomp, json, animation);
+        }
+        else if ( auto group = shape->cast<model::Group>() )
+        {
+            group_as_layer(group, json, animation, output);
+        }
+        else
+        {
+            shape_as_layer(shape, json, animation);
+        }
+
+        if ( parent )
+            json["parent"_l] = layer_index(parent);
+
+        if ( matte.has_matte() )
+        {
+            json["tt"_l] = matte.type;
+            json["tp"_l] = matte.parent;
+        }
+
+        if ( push )
+            output.push_front(json);
+        return json;
+    }
+
+    void convert_normal_layer(model::Layer* layer, QCborMap& json, QCborArray& output)
+    {
+        auto animation = layer->animation.get();
+        convert_animation_container(animation, json);
+        convert_object_properties(layer, fields["__Layer__"], json);
+        convert_composable(layer, json);
+
+        if ( !layer->shapes.empty() )
+        {
+            bool all_shapes = !contains_layer.count(layer);
+
+            if ( all_shapes && !layer->mask->has_mask() )
+            {
+                json["ty"_l] = 4;
+                json["shapes"_l] = convert_shapes(layer->shapes, false);
+            }
+            else
+            {
+                int i = 0;
+                MatteData matte;
+                if ( layer->mask->has_mask() && !layer->shapes.empty() )
+                {
+                    if ( layer->shapes[0]->visible.get() )
+                    {
+                        QCborMap mask = convert_as_layer(layer->shapes[0], output, layer, false, {}, animation);
+                        if ( !mask.isEmpty() )
+                        {
+                            mask["td"_l] = 1;
+                            // mask["hd"_l] = 1;
+                            output.push_front(mask);
+                            matte.parent = mask["ind"_l].toInteger();
+                            matte.type = convert_matte_type(layer->mask.get());
+                        }
+                    }
+                    i = 1;
+                }
+
+                for ( ; i < layer->shapes.size(); i++ )
+                {
+                    convert_as_layer(layer->shapes[i], output, layer, true, matte, animation);
+                }
+            }
+        }
+    }
+
+    void group_as_layer(model::Group* group, QCborMap& json, model::AnimationContainer* animation, QCborArray& output)
+    {
+        if ( contains_layer.count(group) )
+        {
+            convert_composable(group, json);
+            for ( const auto& child : group->shapes )
+                convert_as_layer(child.get(), output, group, true, {}, animation);
+        }
+        else
+        {
+            shape_as_layer(group, json, animation);
+        }
+    }
+
+    void shape_as_layer(model::ShapeElement* shape, QCborMap& json, model::AnimationContainer* animation)
+    {
+        convert_animation_container(animation, json);
+        json["ty"_l] = 4;
 
         if ( auto grp = shape->cast<model::Group>() )
         {
@@ -128,17 +261,12 @@ public:
         }
         else
         {
-            QCborMap transform;
-            model::Transform tf(document);
-            convert_transform(&tf, nullptr, transform);
-            json["ks"_l] = transform;
+            json["ks"_l] = QCborMap();
 
             QCborArray shapes;
             shapes.push_back(convert_shape(shape, false));
             json["shapes"_l] = shapes;
         }
-
-        return json;
     }
 
     enum class LayerType { Shape, Layer, Image, PreComp };
@@ -161,109 +289,12 @@ public:
         QCborMap transform;
         convert_transform(grp->transform.get(), &grp->opacity, transform);
         json["ks"_l] = transform;
-        json["ao"_l] = int(grp->transform->auto_orient.get());
+        if ( grp->transform->auto_orient.get() )
+            json["ao"_l] = 1;
         if ( grp->blend_mode.get() != renderer::BlendMode::Normal )
             json["bm"_l] = int(grp->blend_mode.get());
     }
 
-    QCborMap convert_single_layer(LayerType type, model::ShapeElement* shape, QCborArray& output, model::Layer* forced_parent, bool force_all_shapes)
-    {
-        switch ( type )
-        {
-            case LayerType::Shape:
-                return wrap_layer_shape(shape, forced_parent);
-            case LayerType::Image:
-                return convert_image_layer(static_cast<model::Image*>(shape), forced_parent);
-            case LayerType::PreComp:
-                return convert_precomp_layer(static_cast<model::PreCompLayer*>(shape), forced_parent);
-            case LayerType::Layer:
-                break;
-        }
-
-        auto layer = static_cast<model::Layer*>(shape);
-
-        int parent_index = layer_index(forced_parent ? forced_parent : layer->parent.get());
-
-        QCborMap json;
-        json["ddd"_l] = 0;
-        json["ty"_l] = 3;
-        int index = layer_index(layer);
-        json["ind"_l] = index;
-        json["st"_l] = 0;
-        if ( !shape->visible.get() )
-            json["hd"_l] = true;
-
-        convert_animation_container(layer->animation.get(), json);
-        convert_object_properties(layer, fields["DocumentNode"], json);
-        convert_object_properties(layer, fields["__Layer__"], json);
-
-        convert_composable(layer, json);
-
-        if ( parent_index != -1 )
-            json["parent"_l] = parent_index;
-
-        if ( !layer->shapes.empty() )
-        {
-            std::vector<LayerType> children_types;
-            children_types.reserve(layer->shapes.size());
-
-            bool all_shapes = true;
-            if ( !force_all_shapes )
-            {
-                for ( const auto& shape : layer->shapes )
-                {
-                    children_types.push_back(layer_type(shape.get()));
-                    if ( children_types.back() != LayerType::Shape )
-                        all_shapes = false;
-                }
-            }
-
-            if ( all_shapes && !layer->mask->has_mask() )
-            {
-                json["ty"_l] = 4;
-                json["shapes"_l] = convert_shapes(layer->shapes, false);
-            }
-            else
-            {
-                int i = 0;
-                MatteData matte;
-                if ( layer->mask->has_mask() && !layer->shapes.empty() )
-                {
-                    if ( layer->shapes[0]->visible.get() )
-                    {
-                        QCborMap mask = convert_single_layer(children_types[0], layer->shapes[0], output, layer, true);
-                        if ( !mask.isEmpty() )
-                        {
-                            mask["td"_l] = 1;
-                            // mask["hd"_l] = 1;
-                            output.push_front(mask);
-                            matte.parent = mask["ind"_l].toInteger();
-                            matte.type = convert_matte_type(layer->mask.get());
-
-                        }
-                    }
-                    i = 1;
-                }
-
-                for ( ; i < layer->shapes.size(); i++ )
-                {
-                    if ( !strip || layer->shapes[i]->visible.get() )
-                        convert_layer(children_types[i], layer->shapes[i], output, layer, matte);
-                }
-            }
-        }
-
-        return json;
-    }
-
-    struct MatteData
-    {
-        int type;
-        int parent;
-        MatteData() : type(-1), parent(-1) {};
-
-        bool has_matte() const { return parent != -1 && type != -1; }
-    };
 
     int convert_matte_type(model::MaskSettings* mask)
     {
@@ -277,33 +308,6 @@ public:
                 return mask->inverted.get() ? 4 : 3;
         }
         return -1;
-    }
-
-    QCborMap convert_layer(LayerType type, model::ShapeElement* shape, QCborArray& output,
-                           model::Layer* forced_parent = nullptr, const MatteData& matte = MatteData{})
-    {
-        if ( !shape->visible.get() )
-            return {};
-
-        model::Layer* layer = nullptr;
-        if ( type == LayerType::Layer )
-        {
-            layer = static_cast<model::Layer*>(shape);
-
-            if ( !layer->render.get() )
-                return {};
-        }
-
-        auto json = convert_single_layer(type, shape, output, forced_parent, false);
-
-        if ( matte.has_matte() )
-        {
-            json["tt"_l] = matte.type;
-            json["tp"_l] = matte.parent;
-        }
-        output.push_front(json);
-
-        return json;
     }
 
     void convert_transform(model::Transform* tf, model::AnimatableBase* opacity, QCborMap& json)
@@ -637,10 +641,6 @@ public:
 
         if ( auto gr = qobject_cast<model::Group*>(shape) )
         {
-            if ( qobject_cast<model::Layer*>(gr) )
-                format->information(i18n("Lottie only supports layers in the top level"));
-            else if ( gr->transform->auto_orient.get() )
-                format->information(i18n("Lottie only supports auto-orient layers in the top level"));
             auto shapes = convert_shapes(gr->shapes, force_hidden || !gr->visible.get());
             QCborMap transform;
             transform["ty"_l] = "tr";
@@ -671,6 +671,10 @@ public:
             jsh["m"_l] = 1;
             jsh["tr"_l] = transform;
         }
+        else if ( !shape->is_instance<model::Shape>() )
+        {
+            format->warning(i18n("%1 is an unsupported shape of type %2", shape->object_name(), shape->type_name_human()));
+        }
 
         return jsh;
     }
@@ -685,7 +689,6 @@ public:
 
     QCborArray convert_shapes(const model::ShapeListProperty& shapes, bool force_hidden)
     {
-        // TODO auto-convert groups to layers
         QCborArray jshapes;
         for ( const auto& shape : shapes )
         {
@@ -749,43 +752,14 @@ public:
         return out;
     }
 
-    void convert_fake_layer_parent(model::Layer* parent, QCborMap& json)
+    void convert_image_layer(model::Image* image, QCborMap& json, model::AnimationContainer* animation)
     {
-        if ( parent )
-        {
-            convert_animation_container(parent->animation.get(), json);
-            json["parent"_l] = layer_index(parent);
-        }
-        else
-        {
-            convert_animation_container(main->animation.get(), json);
-        }
-    }
-
-    void convert_fake_layer(model::DocumentNode* node, model::Layer* parent, QCborMap& json)
-    {
-        json["ddd"_l] = 0;
-        if ( !strip )
-        {
-            json["nm"_l] = node->name.get();
-            json["mn"_l] = node->uuid.get().toString();
-        }
-        convert_fake_layer_parent(parent, json);
-        json["ind"_l] = layer_index(node);
-    }
-
-    QCborMap convert_image_layer(model::Image* image, model::Layer* parent)
-    {
-        QCborMap json;
-        convert_fake_layer(image, parent, json);
+        convert_animation_container(animation, json);
         if ( !strip_raster )
             json["ty"_l] = 2;
-        json["ind"_l] = layer_index(image);
-        json["st"_l] = 0;
         convert_composable(image, json);
         if ( !strip_raster && image->image.get() )
             json["refId"_l] = image->image->uuid.get().toString();
-        return json;
     }
 
     QCborMap convert_precomp(model::Composition* comp)
@@ -797,12 +771,11 @@ public:
         return out;
     }
 
-    QCborMap convert_precomp_layer(model::PreCompLayer* layer, model::Layer* parent)
+    void convert_precomp_layer(model::PreCompLayer* layer, QCborMap& json, model::AnimationContainer* animation)
     {
-        QCborMap json;
         json["ty"_l] = 0;
-        convert_fake_layer(layer, parent, json);
         json["ind"_l] = layer_index(layer);
+        convert_animation_container(animation, json);
         json["st"_l] = layer->timing->start_time.get();
         json["sr"_l] = layer->timing->stretch.get();
         convert_composable(layer, json);
@@ -810,7 +783,42 @@ public:
             json["refId"_l] = layer->composition->uuid.get().toString();
         json["w"_l] = layer->size.get().width();
         json["h"_l] = layer->size.get().height();
-        return json;
+    }
+
+    bool group_is_layer(model::Group* shape)
+    {
+        bool force_layer = false;
+        if ( shape->transform->auto_orient.get() )
+            force_layer = true;
+        if ( shape->cast<model::Layer>() )
+            force_layer = true;
+
+        bool child_layer = false;
+        for ( const auto& child : shape->shapes )
+            if ( shape_is_layer(child.get()) )
+                child_layer = true;
+
+        if ( child_layer )
+        {
+            force_layer = true;
+            contains_layer.insert(shape);
+        }
+
+        if ( force_layer )
+            wrap_to_layer.insert(shape);
+        return force_layer;
+    }
+
+    bool shape_is_layer(model::ShapeElement* shape)
+    {
+        if ( shape->cast<model::Composable>() )
+        {
+            if ( auto g = shape->cast<model::Group>() )
+                return group_is_layer(g);
+            return true;
+        }
+
+        return false;
     }
 
     ImportExport* format;
@@ -822,6 +830,8 @@ public:
     model::Layer* mask = nullptr;
     bool strip_raster;
     bool auto_embed;
+    std::unordered_set<model::Group*> wrap_to_layer;
+    std::unordered_set<model::Group*> contains_layer;
 };
 
 
