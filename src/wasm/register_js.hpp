@@ -10,7 +10,6 @@
 #include <QColor>
 #include "glaxnimate/model/document.hpp"
 #include "glaxnimate/script/register_machinery.hpp"
-#include "js_registrar.hpp"
 
 
 namespace emscripten {
@@ -209,7 +208,6 @@ QVariant qvariant_from_val(const emscripten::val& val)
 
     if ( !name.empty() )
     {
-        qDebug() << name;
         if ( QObject* ptr = val.as<QObject*>(emscripten::allow_raw_pointers()) )
         {
             return QVariant::fromValue(ptr);
@@ -431,98 +429,3 @@ void class_static_property(const char* name, FieldType value, Policies...)
         0);
 }
 } // namespace emscripten
-namespace glaxnimate::js {
-
-template<class CppClass, class... Args, class... Enums>
-emclass_t<CppClass, Args...>& register_from_meta(emclass_t<CppClass, Args...>& reg, enums<Enums...> reg_enums = {})
-{
-    using Reg = JsRegistrar;
-    const QMetaObject& meta = CppClass::staticMetaObject;
-
-    for ( int i = meta.propertyOffset(); i < meta.propertyCount(); i++ )
-    {
-        // PyPropertyInfo pyprop = register_property(meta.property(i), meta);
-        // if ( pyprop.name )
-            // reg.def_property(pyprop.name, pyprop.get, pyprop.set, "");
-
-        auto prop = meta.property(i);
-        if ( !prop.isScriptable() )
-            continue;
-
-        // qDebug() << meta.className() << emscripten::internal::TypeID<CppClass>::get() << i << prop.name() << prop.metaType();
-        /*int meta_type = prop.typeId();
-        if ( meta_type >= QMetaType::User )
-        {
-            if ( QMetaType(meta_type).flags() & QMetaType::IsEnumeration )
-            {
-                // TODO
-            }
-            else
-            {
-                reg.property(prop.name(), std::function<QObject*(const CppClass&)>([prop](const CppClass& self) {
-                    return qvariant_cast<QObject*>(prop.read(&self));
-                }), emscripten::return_value_policy::reference());
-            }
-        }
-        else*/
-        {
-            auto getter = fn([prop](const CppClass& self) {
-                return qvariant_to_val(prop.read(&self));
-            });
-            if ( prop.isWritable() )
-                reg.property(prop.name(), std::move(getter), fn(
-                    [prop]( CppClass& self, const QVariant& val) {
-                        prop.write(&self, val);
-                    }
-                ));
-            else
-                reg.property(prop.name(), std::move(getter));
-        }
-    }
-
-    for ( int i = meta.methodOffset(); i < meta.methodCount(); i++ )
-    {
-        script::register_method<Reg>(meta.method(i), reg, meta);
-    }
-
-
-    if ( meta.classInfoOffset() < meta.classInfoCount() )
-    {
-        emscripten::val classinfo = emscripten::val::object();
-
-        for ( int i = meta.classInfoOffset(); i < meta.classInfoCount(); i++ )
-        {
-            auto info = meta.classInfo(i);
-            classinfo.set(info.name(), emscripten::val(info.value()));
-        }
-
-        emscripten::class_static_property<CppClass>("__classinfo__", classinfo);
-    }
-
-
-    /*std::vector<PyEnumInfo> enum_info;*/
-    reg_enums.process(/*, enum_info*/);
-    /*for ( const auto& info : enum_info )
-        reg.attr(info.name) = info.enum_handle;*/
-
-    return reg;
-}
-
-template<class CppClass, class... Args, class... Enums>
-emclass_t<CppClass, Args...> register_from_meta(enums<Enums...> reg_enums = {})
-{
-    emclass_t<CppClass, Args...> reg = declare_from_meta<CppClass, Args...>();
-
-    register_from_meta<CppClass, Args...>(reg, reg_enums);
-    return reg;
-}
-
-template<class CppClass, class... Args, class... Enums>
-emclass_t<CppClass, Args...> register_constructible(enums<Enums...> reg_enums = {})
-{
-    // TODO make constructible?
-    return register_from_meta<CppClass, Args...>(reg_enums);
-}
-
-
-} // namespace glaxnimate::js

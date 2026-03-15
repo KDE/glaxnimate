@@ -32,7 +32,7 @@
 #include "glaxnimate/model/shapes/modifiers/round_corners.hpp"
 
 
-#include "register_js.hpp"
+#include "js_registrar.hpp"
 
 using namespace glaxnimate;
 
