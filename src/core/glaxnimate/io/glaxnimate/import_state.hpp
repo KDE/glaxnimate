@@ -210,9 +210,9 @@ private:
 
     void version_fixup(QJsonObject& object)
     {
+        QString type = object["__type__"].toString();
         if ( document_version == 1 )
         {
-            QString type = object["__type__"].toString();
             static const auto fix_ac = [](QJsonObject& object){
                 QJsonObject ac;
                 ac["__type__"] = "AnimationContainer";
@@ -241,7 +241,7 @@ private:
             }
         }
 
-        if ( document_version < 3 && object["__type__"].toString() == "Defs" )
+        if ( document_version < 3 && type == "Defs" )
         {
             static const std::vector<std::pair<QString, QString>> types = {
                 {"colors", "NamedColorList"},
@@ -261,16 +261,17 @@ private:
 
             object["uuid"] = QUuid::createUuid().toString();
             object["__type__"] = "Assets";
+            type = "Assets";
         }
 
-        if ( document_version < 4 && object["__type__"].toString() == "Assets" )
+        if ( document_version < 4 && type == "Assets" )
         {
             object["fonts"] = fixed_asset_list("FontList", QJsonArray());
         }
 
         if ( document_version < 5 )
         {
-            if ( object["__type__"].toString() == "Trim" )
+            if ( type == "Trim" )
             {
                 // values were swapped
                 if ( object["multiple"].toString() == "Individually" )
@@ -282,20 +283,22 @@ private:
 
         if ( document_version < 6 )
         {
-            if ( object["__type__"].toString() == "MaskSettings" )
+            if ( type == "MaskSettings" )
                 object["mask"] = int(object["mask"].toBool());
         }
 
 
         if ( document_version < 8 )
         {
-            if ( object["__type__"].toString() == "MainComposition" )
+            if ( type == "MainComposition" )
             {
                 object["__type__"] = "Composition";
+                type = "Composition";
             }
-            else if ( object["__type__"].toString() == "Precomposition" )
+            else if ( type == "Precomposition" )
             {
                 object["__type__"] = "Composition";
+                type = "Composition";
                 if ( !document->assets()->compositions->values.empty() )
                 {
                     auto main = document->assets()->compositions->values[0];
@@ -307,11 +310,12 @@ private:
                         object["height"] = main->height.get();
                 }
             }
-            else if ( object["__type__"].toString() == "PrecompositionList" )
+            else if ( type == "PrecompositionList" )
             {
                 object["__type__"] = "CompositionList";
+                type = "CompositionList";
             }
-            else if ( object["__type__"].toString() == "Assets" )
+            else if ( type == "Assets" )
             {
                 QJsonObject comps = object["precompositions"].toObject();
                 object.remove("precompositions");
@@ -319,11 +323,14 @@ private:
             }
         }
 
-
         if ( document_version < 9 )
         {
-            if ( object["__type__"].toString() == "Layer" )
-                object["transform"].toObject()["auto_orient"] = object["auto_orient"];
+            if ( (type == "Layer" || type == "Group") && object.contains("auto_orient") )
+            {
+                auto tf = object["transform"].toObject();
+                tf["auto_orient"] = object["auto_orient"];
+                object.remove("auto_orient");
+            }
         }
     }
 
