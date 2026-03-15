@@ -9,6 +9,8 @@
 #include <QMetaProperty>
 #include <QColor>
 #include "glaxnimate/model/document.hpp"
+#include "glaxnimate/script/register_machinery.hpp"
+#include "js_registrar.hpp"
 
 
 namespace emscripten {
@@ -172,7 +174,7 @@ emscripten::val qvariant_to_val(const QVariant& v)
 
 std::string type_name(emscripten::val val)
 {
-    std::array<const char*, 4> chunks;
+    std::array<const char*, 4> chunks = {"$$", "ptrType", "registeredClass", "name"};
 
     for ( auto chunk : chunks )
     {
@@ -434,6 +436,7 @@ namespace glaxnimate::js {
 template<class CppClass, class... Args, class... Enums>
 emclass_t<CppClass, Args...>& register_from_meta(emclass_t<CppClass, Args...>& reg, enums<Enums...> reg_enums = {})
 {
+    using Reg = JsRegistrar;
     const QMetaObject& meta = CppClass::staticMetaObject;
 
     for ( int i = meta.propertyOffset(); i < meta.propertyCount(); i++ )
@@ -476,14 +479,12 @@ emclass_t<CppClass, Args...>& register_from_meta(emclass_t<CppClass, Args...>& r
                 reg.property(prop.name(), std::move(getter));
         }
     }
-/*
+
     for ( int i = meta.methodOffset(); i < meta.methodCount(); i++ )
     {
-        PyMethodInfo pymeth = register_method(meta.method(i), reg, meta);
-        if ( pymeth.name )
-            reg.attr(pymeth.name) = pymeth.method;
+        script::register_method<Reg>(meta.method(i), reg, meta);
     }
-*/
+
 
     if ( meta.classInfoOffset() < meta.classInfoCount() )
     {

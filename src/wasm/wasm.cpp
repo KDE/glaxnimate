@@ -244,6 +244,7 @@ void initialize()
 EMSCRIPTEN_BINDINGS(glaxnimate_wasm)
 {
     using namespace glaxnimate::js;
+    emscripten::register_optional<emscripten::val>();
     emscripten::function("initialize", &initialize);
 
     emscripten::class_<MetaObject>("MetaObject")
