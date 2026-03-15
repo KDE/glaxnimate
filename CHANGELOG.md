@@ -25,6 +25,7 @@
     * Fixed radial gradient highlight lottie import
     * Removed option for legacy format on lottie export
     * Lottie export now allows groupings of mixed shapes / images / precomps
+    * Fixed SVG export of animated positions
 * Misc
     * New rendering system
     * Core as static library

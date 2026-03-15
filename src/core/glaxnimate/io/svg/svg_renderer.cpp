@@ -969,6 +969,7 @@ public:
                 for ( const auto& kf : j )
                     data.add_keyframe(time_to_global(kf.time), {""}, kf.transition());
                 data.add_dom(g, "animateMotion", "", path, auto_orient);
+                return g;
             }
             else
             {
