@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-14 00:41+0000\n"
-"PO-Revision-Date: 2026-03-08 00:04+0100\n"
+"POT-Creation-Date: 2026-03-15 00:42+0000\n"
+"PO-Revision-Date: 2026-03-15 00:22+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -39,6 +39,8 @@ msgstr "revertido"
 #. i18n: file: src/core/glaxnimate/model/shapes/shapes/text.hpp
 #. i18n: Property name
 #. i18n: file: src/core/glaxnimate/model/shapes/shapes/ellipse.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/transform.hpp
 #. i18n: Property name
 #, kde-format
 msgid "position"
@@ -158,19 +160,11 @@ msgstr "máscara"
 msgid "opacity"
 msgstr "opacidad"
 
-#. i18n: file: src/core/glaxnimate/model/shapes/composable/composable.hpp
-#. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Blend Mode"
-msgid "blend_mode"
-msgstr "Modo de mezcla"
-
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/image.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Image"
+#, kde-format
 msgid "image"
-msgstr "Imagen"
+msgstr "imagen"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/style/stroke.hpp
 #. i18n: Property name
@@ -204,22 +198,16 @@ msgstr "uso"
 
 #. i18n: file: src/core/glaxnimate/model/transform.hpp
 #. i18n: Property name
-#, kde-format
-msgid "anchor_point"
-msgstr "punto_anclaje"
-
-#. i18n: file: src/core/glaxnimate/model/transform.hpp
-#. i18n: Property name
-#, kde-format
-msgid "scale"
-msgstr "escala"
+#, fuzzy, kde-format
+#| msgid "Duration"
+msgid "rotation"
+msgstr "Duración"
 
 #. i18n: file: src/core/glaxnimate/model/assets/composition.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Shape"
+#, kde-format
 msgid "shapes"
-msgstr "Forma"
+msgstr "formas"
 
 #. i18n: file: src/core/glaxnimate/model/assets/bitmap.hpp
 #. i18n: Property name
@@ -672,71 +660,72 @@ msgstr "Empuja la selección más atrás."
 msgid "Brings the selection further to the front."
 msgstr "Trae la selección más hacia el frente."
 
-#: src/android/main_window.cpp:413
+#: src/android/main_window.cpp:414
 #, kde-format
 msgid "Timeline"
 msgstr "Línea temporal"
 
-#: src/android/main_window.cpp:418
+#: src/android/main_window.cpp:419
 #, kde-format
 msgid "Fill Style"
 msgstr "Estilo de relleno"
 
-#: src/android/main_window.cpp:423
+#: src/android/main_window.cpp:424
 #, kde-format
 msgid "Stroke Style"
 msgstr "Estilo de trazo"
 
-#: src/android/main_window.cpp:453 src/gui/widgets/dialogs/gw_impl_ui.cpp:653
-#: src/gui/widgets/menus/node_menu.cpp:106
+#: src/android/main_window.cpp:454 src/gui/widgets/dialogs/gw_impl_ui.cpp:653
+#: src/gui/widgets/menus/node_menu.cpp:116
 #, kde-format
 msgid "Raise"
 msgstr "Elevar"
 
-#: src/android/main_window.cpp:458 src/gui/widgets/dialogs/gw_impl_ui.cpp:656
-#: src/gui/widgets/menus/node_menu.cpp:110
+#: src/android/main_window.cpp:459 src/gui/widgets/dialogs/gw_impl_ui.cpp:656
+#: src/gui/widgets/menus/node_menu.cpp:120
 #, kde-format
 msgid "Lower"
 msgstr "Bajar"
 
-#: src/android/main_window.cpp:465 src/gui/tools/select_tool.cpp:410
+#: src/android/main_window.cpp:466 src/gui/tools/select_tool.cpp:410
 #: src/gui/widgets/dialogs/selection_manager.cpp:85
+#: src/gui/widgets/menus/node_menu.cpp:521
 #, kde-format
 msgid "Cut"
 msgstr "Cortar"
 
-#: src/android/main_window.cpp:468 src/gui/tools/select_tool.cpp:412
+#: src/android/main_window.cpp:469 src/gui/tools/select_tool.cpp:412
 #, kde-format
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/android/main_window.cpp:471 src/gui/tools/select_tool.cpp:414
+#: src/android/main_window.cpp:472 src/gui/tools/select_tool.cpp:414
 #: src/gui/widgets/dialogs/selection_manager.cpp:166
 #, kde-format
 msgid "Paste"
 msgstr "Pegar"
 
-#: src/android/main_window.cpp:475
+#: src/android/main_window.cpp:476
 #, kde-format
 msgid "Delete Selected"
 msgstr "Borrar lo seleccionado"
 
-#: src/android/main_window.cpp:483
+#: src/android/main_window.cpp:484
 #, kde-format
 msgid "Raise Above"
 msgstr "Poner encima"
 
-#: src/android/main_window.cpp:487
+#: src/android/main_window.cpp:488
 #, kde-format
 msgid "Lower Below"
 msgstr "Bajar al fondo"
 
-#: src/android/main_window.cpp:491
+#: src/android/main_window.cpp:492
 #, kde-format
 msgid "Undo"
 msgstr "Deshacer"
 
-#: src/android/main_window.cpp:493
+#: src/android/main_window.cpp:494
 #, kde-format
 msgid "Redo"
 msgstr "Rehacer"
@@ -744,7 +733,7 @@ msgstr "Rehacer"
 #. i18n: ectx: Menu (new_layer_menu)
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #. i18n: ectx: property (text), widget (QToolButton, btn_new)
-#: src/android/main_window.cpp:507 src/gui/glaxnimateui.rc:126
+#: src/android/main_window.cpp:508 src/gui/glaxnimateui.rc:126
 #: src/gui/widgets/docks/snippet_list_widget.ui:29
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:45
 #, kde-format
@@ -752,7 +741,7 @@ msgid "New"
 msgstr "Nuevo"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
-#: src/android/main_window.cpp:510
+#: src/android/main_window.cpp:511
 #: src/gui/widgets/font/external_font_widget.ui:47
 #, kde-format
 msgid "Open..."
@@ -766,14 +755,14 @@ msgstr "Abrir…"
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #. i18n: ectx: property (text), widget (QPushButton, button_open)
-#: src/android/main_window.cpp:512
+#: src/android/main_window.cpp:513
 #: src/gui/widgets/dialogs/about_env_dialog.ui:67
 #: src/gui/widgets/dialogs/about_env_dialog.ui:70
 #: src/gui/widgets/dialogs/about_env_dialog.ui:98
 #: src/gui/widgets/dialogs/about_env_dialog.ui:101
 #: src/gui/widgets/dialogs/about_env_dialog.ui:129
 #: src/gui/widgets/dialogs/about_env_dialog.ui:132
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1778
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1767
 #: src/gui/widgets/dialogs/startup_dialog.ui:149
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:136
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
@@ -781,39 +770,39 @@ msgstr "Abrir…"
 msgid "Open"
 msgstr "Abrir"
 
-#: src/android/main_window.cpp:515
+#: src/android/main_window.cpp:516
 #, kde-format
 msgid "Import as Composition"
 msgstr "Importar como composición"
 
-#: src/android/main_window.cpp:518
+#: src/android/main_window.cpp:519
 #, kde-format
 msgid "Save..."
 msgstr "Guardar…"
 
-#: src/android/main_window.cpp:520
+#: src/android/main_window.cpp:521
 #, kde-format
 msgid "Save"
 msgstr "Guardar"
 
-#: src/android/main_window.cpp:523
+#: src/android/main_window.cpp:524
 #, kde-format
 msgid "Save As"
 msgstr "Guardar como"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_export)
-#: src/android/main_window.cpp:526
+#: src/android/main_window.cpp:527
 #: src/android/sticker_pack_builder_dialog.ui:154
 #, kde-format
 msgid "Export"
 msgstr "Exportar"
 
-#: src/android/main_window.cpp:529
+#: src/android/main_window.cpp:530
 #, kde-format
 msgid "Save Frame as PNG"
 msgstr "Guardar fotograma como PNG"
 
-#: src/android/main_window.cpp:533
+#: src/android/main_window.cpp:534
 #, kde-format
 msgid "Send to Telegram"
 msgstr "Enviar a Telegram"
@@ -821,7 +810,7 @@ msgstr "Enviar a Telegram"
 #. i18n: ectx: Menu (layers)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/android/main_window.cpp:545 src/gui/glaxnimateui.rc:124
+#: src/android/main_window.cpp:546 src/gui/glaxnimateui.rc:124
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:609
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #: src/gui/widgets/docks/layers.ui:27
@@ -829,28 +818,28 @@ msgstr "Enviar a Telegram"
 msgid "Layers"
 msgstr "Capas"
 
-#: src/android/main_window.cpp:551
+#: src/android/main_window.cpp:552
 #, kde-format
 msgid "Advanced Properties"
 msgstr "Propiedades avanzadas"
 
-#: src/android/main_window.cpp:556
+#: src/android/main_window.cpp:557
 #, kde-format
 msgid "Help"
 msgstr "Ayuda"
 
-#: src/android/main_window.cpp:624
+#: src/android/main_window.cpp:625
 #, kde-format
 msgid "Animation.%1"
 msgstr "Animación.%1"
 
-#: src/android/main_window.cpp:666
+#: src/android/main_window.cpp:667
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:294
 #, kde-format
 msgid "Closing Animation"
 msgstr "Cerrando Animación"
 
-#: src/android/main_window.cpp:667
+#: src/android/main_window.cpp:668
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:295
 #, kde-format
 msgid ""
@@ -860,8 +849,8 @@ msgstr ""
 "La animación tiene cambios sin guardar.\n"
 "¿Quieres guardar tus cambios?"
 
-#: src/android/main_window.cpp:751 src/android/main_window.cpp:755
-#: src/android/main_window.cpp:890
+#: src/android/main_window.cpp:752 src/android/main_window.cpp:756
+#: src/android/main_window.cpp:891
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:509
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:513
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:859
@@ -871,34 +860,34 @@ msgstr ""
 msgid "Import File"
 msgstr "Importar archivo"
 
-#: src/android/main_window.cpp:751
+#: src/android/main_window.cpp:752
 #, kde-format
 msgid "Could not import file"
 msgstr "No se pudo importar archivo"
 
-#: src/android/main_window.cpp:790
+#: src/android/main_window.cpp:791
 #, kde-format
 msgid "Frame %1.png"
 msgstr "Fotograma %1.png"
 
-#: src/android/main_window.cpp:976
+#: src/android/main_window.cpp:977
 #, kde-format
 msgid "Add keyframe"
 msgstr "Añadir fotograma clave"
 
-#: src/android/main_window.cpp:985
+#: src/android/main_window.cpp:986
 #, kde-format
 msgid "Remove keyframe"
 msgstr "Eliminar fotograma clave"
 
-#: src/android/main_window.cpp:1000
+#: src/android/main_window.cpp:1001
 #: src/gui/widgets/menus/animated_property_menu.cpp:55
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:178
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
 #, kde-format
 msgid "Clear Animations"
 msgstr "Limpiar animaciones"
 
-#: src/android/main_window.cpp:1065
+#: src/android/main_window.cpp:1066
 #, kde-format
 msgid "Emoji"
 msgstr "Emoji"
@@ -979,45 +968,45 @@ msgstr "Quitar fotograma clave %1 en %2"
 msgid "Remove %1 keyframe %2"
 msgstr "Eliminar %1 fotogramas clave %2"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:289
+#: src/core/glaxnimate/command/animation_commands.cpp:291
 #, kde-format
 msgid "Add keyframe for %1 at %2"
 msgstr "Añadir fotograma clave para %1 en %2"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:292
+#: src/core/glaxnimate/command/animation_commands.cpp:294
 #, kde-format
 msgid "Update %1 at %2"
 msgstr "Actualizar %1 en %2"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:294
+#: src/core/glaxnimate/command/animation_commands.cpp:296
 #: src/core/glaxnimate/command/property_commands.hpp:24
 #: src/core/glaxnimate/model/animation/animatable.cpp:171
 #, kde-format
 msgid "Update %1"
 msgstr "Actualizar %1"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:307
+#: src/core/glaxnimate/command/animation_commands.cpp:309
 #: src/gui/widgets/timeline/timeline_items.cpp:541
 #, kde-format
 msgid "Update keyframe transition"
 msgstr "Actualizar transición de fotogramas clave"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:358
+#: src/core/glaxnimate/command/animation_commands.cpp:360
 #, kde-format
 msgid "Move keyframe"
 msgstr "Mover fotograma clave"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:381
+#: src/core/glaxnimate/command/animation_commands.cpp:383
 #, kde-format
 msgid "Remove animations from %1"
 msgstr "Quitar animaciones de %1"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:432
+#: src/core/glaxnimate/command/animation_commands.cpp:434
 #, kde-format
 msgid "Update animation path"
 msgstr "Actualizar trayectoria de la animación"
 
-#: src/core/glaxnimate/command/animation_commands.hpp:240
+#: src/core/glaxnimate/command/animation_commands.hpp:241
 #, kde-format
 msgid "Stretch Time"
 msgstr "Tiempo de Estiramiento"
@@ -1038,23 +1027,44 @@ msgstr "Quitar %1"
 msgid "Move Object"
 msgstr "Mover Objeto"
 
-#: src/core/glaxnimate/command/shape_commands.cpp:120
+#: src/core/glaxnimate/command/shape_commands.cpp:123
 #: src/gui/tools/select_tool.cpp:423
 #, kde-format
 msgid "Group Shapes"
 msgstr "Agrupar formas"
 
-#: src/core/glaxnimate/command/shape_commands.cpp:153
+#: src/core/glaxnimate/command/shape_commands.cpp:156
 #: src/gui/tools/select_tool.cpp:426
 #, kde-format
 msgid "Ungroup Shapes"
 msgstr "Separar formas"
 
-#: src/core/glaxnimate/command/shape_commands.cpp:178
+#: src/core/glaxnimate/command/shape_commands.cpp:181
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:82
 #, kde-format
 msgid "Duplicate %1"
 msgstr "Duplicar %1"
+
+#: src/core/glaxnimate/command/shape_commands.cpp:192
+#, kde-format
+msgid "Convert to path"
+msgstr "Convertir a trayecto"
+
+#: src/core/glaxnimate/command/shape_commands.cpp:194
+#, kde-format
+msgid "Convert %1 to path"
+msgstr "Convertir %1 a trayecto"
+
+#: src/core/glaxnimate/command/shape_commands.cpp:241
+#, kde-format
+msgid "Reverse path"
+msgstr "Invertir ruta"
+
+#: src/core/glaxnimate/command/shape_commands.cpp:266
+#: src/gui/widgets/menus/node_menu.cpp:363
+#, kde-format
+msgid "Precompose"
+msgstr "Precomponer"
 
 #: src/core/glaxnimate/command/structure_commands.cpp:73
 #, kde-format
@@ -1087,20 +1097,19 @@ msgid "Unknown property \"%1\" of \"%2\""
 msgstr "Propiedad desconocida «%1» de «%2»"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:221
-#, fuzzy, kde-format
-#| msgid "Layer"
+#, kde-format
 msgid "Layer #%1"
-msgstr "Capa"
+msgstr "Capa #%1"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:279
 #, kde-format
 msgid "Parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "No se pudo encontrar el elemento raíz #%1 de la capa %2 "
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:292
 #, kde-format
 msgid "Mask parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "No se pudo encontrar la máscara raíz #%1 de la capa %2 "
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:581
 #, kde-format
@@ -1275,10 +1284,9 @@ msgid "Glaxnimate Animation"
 msgstr "Animación de Glaxnimate"
 
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_html_format.hpp:20
-#, fuzzy, kde-format
-#| msgid "Lottie HTML Preview"
+#, kde-format
 msgid "Glaxnimate HTML Preview"
-msgstr "Previsualización Lottie HTML"
+msgstr "Previsualización Glaxnimate HTML"
 
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_importer.cpp:21
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_mime.cpp:86
@@ -1319,47 +1327,47 @@ msgstr "No se pudo cargar %1 para %2: uuid se refiere a objeto inaceptable"
 msgid "Object %1 is invalid"
 msgstr "Objeto %1 no es válido"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:328
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:335
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
 msgstr "Tipo de objeto incorrecto: se esperaba '%1' pero se tuvo '%2'"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:334
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:341
 #, kde-format
 msgid "Could not load %1 for %2"
 msgstr "No se pudo cargar %1 para %2"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:343
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:350
 #, kde-format
 msgid "Could not set property %1"
 msgstr "No se pudo establecer propeidad %1"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:369
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:376
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
 msgstr "Elemento %1 para %2 en %3 no es un objeto"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:381
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:388
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
 msgstr "Elemento %1 para %2 en %3 no es aceptable"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:420
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:427
 #, kde-format
 msgid "Keyframe must specify a time"
 msgstr "Fotograma clave debe especificar un tiempo"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:425
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:432
 #, kde-format
 msgid "Keyframe must specify a value"
 msgstr "Fotograma clave debe especificar un valor"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:435
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:442
 #, kde-format
 msgid "Could not add keyframe"
 msgstr "No se pudo añadir fotograma clave"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:619
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:626
 #, kde-format
 msgid "Unknown object of type '%1'"
 msgstr "Objeto de tipo '%1' desconocido"
@@ -1433,12 +1441,12 @@ msgstr "Previsualización Lottie HTML"
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:190
 #, kde-format
 msgid "Mask parent %1 of layer %2 could not be found"
-msgstr ""
+msgstr "No se pudo encontrar la máscara raíz %1 de la capa %2 "
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:200
 #, kde-format
 msgid "Mask parent of layer %1 could not be found"
-msgstr ""
+msgstr "No se pudo encontrar la máscara raíz de la capa %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:219
 #, kde-format
@@ -1446,10 +1454,9 @@ msgid "Invalid parent layer %1"
 msgstr "Capa padre %1 inválida"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:316
-#, fuzzy, kde-format
-#| msgid "Missing layer type for %1"
+#, kde-format
 msgid "Missing type for layer %1"
-msgstr "Tipo de capa faltante para %1"
+msgstr "Tipo inexistente para la capa %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:390
 #, kde-format
@@ -2156,12 +2163,12 @@ msgid "Unnamed Color"
 msgstr "Color Sin Nombrar"
 
 #: src/core/glaxnimate/model/mask_settings.cpp:13
-#: src/gui/widgets/menus/node_menu.cpp:329
+#: src/gui/widgets/menus/node_menu.cpp:367
 #, kde-format
 msgid "Mask"
 msgstr "Máscara"
 
-#: src/core/glaxnimate/model/object.hpp:91
+#: src/core/glaxnimate/model/object.hpp:92
 #, kde-format
 msgid "Unknown Object"
 msgstr "Objeto Desconocido"
@@ -2176,7 +2183,7 @@ msgid "Group"
 msgstr "Grupo"
 
 #: src/core/glaxnimate/model/shapes/composable/image.cpp:74
-#: src/gui/widgets/menus/node_menu.cpp:388
+#: src/gui/widgets/menus/node_menu.cpp:432
 #, kde-format
 msgid "Image"
 msgstr "Imagen"
@@ -2235,7 +2242,7 @@ msgstr "Elipse"
 #: src/core/glaxnimate/model/shapes/shapes/path.hpp:38
 #: src/gui/glaxnimateui.rc:178
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:728
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:718
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
@@ -2305,7 +2312,8 @@ msgstr "Trazo"
 msgid "Timing"
 msgstr "Tiempo"
 
-#: src/core/glaxnimate/model/transform.hpp:29
+#: src/core/glaxnimate/model/transform.hpp:32
+#: src/gui/widgets/menus/node_menu.cpp:322
 #, kde-format
 msgid "Transform"
 msgstr "Transformar"
@@ -2588,8 +2596,8 @@ msgstr "Conjuntos de Emoji"
 #: src/gui/emoji/emoji_set_dialog.ui:50
 #: src/gui/item_models/document_node_model.cpp:255
 #: src/gui/item_models/gradient_list_model.cpp:171
-#: src/gui/item_models/property_model_full.cpp:449
-#: src/gui/item_models/property_model_single.cpp:152
+#: src/gui/item_models/property_model_full.cpp:448
+#: src/gui/item_models/property_model_single.cpp:158
 #: src/gui/widgets/dialogs/about_env_dialog.ui:248
 #: src/gui/widgets/dialogs/about_env_dialog.ui:289
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:109
@@ -2720,14 +2728,14 @@ msgid "CPython"
 msgstr "CPython"
 
 #. i18n: ectx: Menu (file_new_from_template)
-#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1430
+#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1419
 #, kde-format
 msgid "New from Template"
 msgstr "Nuevo desde Plantilla"
 
 #. i18n: ectx: Menu (edit_tools)
 #: src/gui/glaxnimateui.rc:51 src/gui/widgets/dialogs/gw_impl_ui.cpp:412
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:819
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:808
 #, kde-format
 msgid "Tools"
 msgstr "Herramientas"
@@ -2784,7 +2792,7 @@ msgstr "Alinear y Distribuir"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:209 src/gui/settings/plugin_settings_group.hpp:23
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1671
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1660
 #, kde-format
 msgid "Plugins"
 msgstr "Complementos"
@@ -2842,8 +2850,8 @@ msgstr "Redimensionar Lienzo"
 msgid "Drag Gradient"
 msgstr "Arrastrar Gradiente"
 
-#: src/gui/graphics/transform_graphics_item.cpp:439
-#: src/gui/graphics/transform_graphics_item.cpp:509
+#: src/gui/graphics/transform_graphics_item.cpp:435
+#: src/gui/graphics/transform_graphics_item.cpp:505
 #, kde-format
 msgid "Drag anchor point"
 msgstr "Arrastrar punto de anclaje"
@@ -2862,13 +2870,13 @@ msgid "Color"
 msgstr "Color"
 
 #: src/gui/item_models/document_node_model.cpp:257
-#: src/gui/item_models/property_model_full.cpp:260
+#: src/gui/item_models/property_model_full.cpp:259
 #, kde-format
 msgid "Visible"
 msgstr "Visible"
 
 #: src/gui/item_models/document_node_model.cpp:259
-#: src/gui/item_models/property_model_full.cpp:285
+#: src/gui/item_models/property_model_full.cpp:284
 #, kde-format
 msgid "Locked"
 msgstr "Bloqueado"
@@ -2894,37 +2902,37 @@ msgstr "%1 %"
 msgid "Toggle Keyframe"
 msgstr "Conmutar fotograma clave"
 
-#: src/gui/item_models/property_model_full.cpp:215
+#: src/gui/item_models/property_model_full.cpp:214
 #, kde-format
 msgid "Group Color"
 msgstr "Color de Grupo"
 
-#: src/gui/item_models/property_model_full.cpp:222
+#: src/gui/item_models/property_model_full.cpp:221
 #, kde-format
 msgid "Jump to previous keyframe"
 msgstr "Saltar a fotograma clave anterior"
 
-#: src/gui/item_models/property_model_full.cpp:261
+#: src/gui/item_models/property_model_full.cpp:260
 #, kde-format
 msgid "Hidden"
 msgstr "Oculto"
 
-#: src/gui/item_models/property_model_full.cpp:286
+#: src/gui/item_models/property_model_full.cpp:285
 #, kde-format
 msgid "Unlocked"
 msgstr "Desbloqueado"
 
-#: src/gui/item_models/property_model_full.cpp:294
+#: src/gui/item_models/property_model_full.cpp:293
 #, kde-format
 msgid "Jump to next keyframe"
 msgstr "Saltar a siguiente fotograma clave"
 
-#: src/gui/item_models/property_model_full.cpp:388
+#: src/gui/item_models/property_model_full.cpp:387
 #, kde-format
 msgid "Parent Layer"
 msgstr "Capa Padre"
 
-#: src/gui/item_models/property_model_full.cpp:394
+#: src/gui/item_models/property_model_full.cpp:393
 #, kde-format
 msgid "(No Parent)"
 msgstr "(No hay Padre)"
@@ -2933,8 +2941,8 @@ msgstr "(No hay Padre)"
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_hsv_value)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_3)
 #. i18n: ectx: property (text), widget (QTableWidget, table_widget)
-#: src/gui/item_models/property_model_full.cpp:453
-#: src/gui/item_models/property_model_single.cpp:156
+#: src/gui/item_models/property_model_full.cpp:452
+#: src/gui/item_models/property_model_single.cpp:162
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:114
 #: src/gui/widgets/shape_style/color_selector.ui:96
 #: src/gui/widgets/shape_style/color_selector.ui:113
@@ -2944,7 +2952,7 @@ msgid "Value"
 msgstr "Valor"
 
 # It could be more suitable to mantain the name k-Modes since it's a technical term which can be used in spanish as well
-#: src/gui/item_models/property_model_full.cpp:463
+#: src/gui/item_models/property_model_full.cpp:462
 #, kde-format
 msgid "Mask Mode"
 msgstr "Modo máscara"
@@ -2986,16 +2994,12 @@ msgstr "%1"
 
 # %5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the frame rate
 #: src/gui/settings/document_templates.cpp:123
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
-#| "frame rate"
-#| msgid "%5 - %1x%2 %3 %4fps"
+#, kde-format
 msgctxt ""
 "%5 is the file name, %1 × %2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
 msgid "%5 — %1 × %2 %3 %4 fps"
-msgstr "%5 - %1x%2 %3 %4fps"
+msgstr "%5 — %1 × %2 %3 %4 fps"
 
 #: src/gui/settings/document_templates.cpp:178
 #, kde-format
@@ -3015,7 +3019,7 @@ msgstr "Sistema predeterminado"
 #: src/gui/style/property_delegate.cpp:50
 #, kde-format
 msgid "%1% × %2%"
-msgstr ""
+msgstr "%1% × %2%"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
@@ -3067,12 +3071,12 @@ msgstr "Dibujar Bezier"
 msgid "Drag nodes"
 msgstr "Arrastrar nodos"
 
-#: src/gui/tools/edit_tool.cpp:275 src/gui/widgets/dialogs/gw_impl_ui.cpp:762
+#: src/gui/tools/edit_tool.cpp:275 src/gui/widgets/dialogs/gw_impl_ui.cpp:752
 #, kde-format
 msgid "Cusp"
 msgstr "Cúspide"
 
-#: src/gui/tools/edit_tool.cpp:279 src/gui/widgets/dialogs/gw_impl_ui.cpp:763
+#: src/gui/tools/edit_tool.cpp:279 src/gui/widgets/dialogs/gw_impl_ui.cpp:753
 #, kde-format
 msgid "Smooth"
 msgstr "Suave"
@@ -3130,12 +3134,12 @@ msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "Eliminar parada"
 
-#: src/gui/tools/edit_tool.cpp:526 src/gui/widgets/dialogs/gw_impl_ui.cpp:767
+#: src/gui/tools/edit_tool.cpp:526 src/gui/widgets/dialogs/gw_impl_ui.cpp:757
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr "Disolver nodos"
 
-#: src/gui/tools/edit_tool.cpp:526 src/gui/widgets/dialogs/gw_impl_ui.cpp:754
+#: src/gui/tools/edit_tool.cpp:526 src/gui/widgets/dialogs/gw_impl_ui.cpp:744
 #, kde-format
 msgid "Delete Nodes"
 msgstr "Borrar nodos"
@@ -3186,7 +3190,7 @@ msgid "Draw Freehand"
 msgstr "Dibujar a Mano Alzada"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_properties)
-#: src/gui/tools/handle_menu.hpp:32 src/gui/widgets/docks/properties.ui:27
+#: src/gui/tools/handle_menu.hpp:32 src/gui/widgets/docks/properties_dock.ui:27
 #, kde-format
 msgid "Properties"
 msgstr "Propiedades"
@@ -3378,7 +3382,7 @@ msgstr "Repeticiones Máximas"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:107
-#: src/gui/widgets/menus/node_menu.cpp:78
+#: src/gui/widgets/menus/node_menu.cpp:88
 #: src/gui/widgets/shape_style/color_selector.ui:59
 #, kde-format
 msgid "None"
@@ -3787,37 +3791,37 @@ msgstr "Elegir"
 msgid "Start Time"
 msgstr "Tiempo inicial"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:27
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:35
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:28
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:36
 #, kde-format
 msgid "New Animation"
 msgstr "Nueva Animación"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:41
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:49
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:42
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:50
 #, kde-format
 msgid "File saved"
 msgstr "Archivo guardado"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:43
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:51
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:44
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:52
 #, kde-format
 msgid "Could not save file"
 msgstr "No se pudo guardar archivo"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:57
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:65
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:58
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:66
 #, kde-format
 msgid "File exported"
 msgstr "Archivo exportado"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:59
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:67
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:60
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:68
 #, kde-format
 msgid "Could not export file"
 msgstr "No se pudo exportar archivo"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:169
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:170
 #, kde-format
 msgid "Warning"
 msgstr "Advertencia"
@@ -4043,37 +4047,22 @@ msgstr "Limpiar Documento"
 msgid "Removed %1 assets"
 msgstr "Quitar %1 recursos"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:302
-#, kde-format
-msgid "Convert to path"
-msgstr "Convertir a trayecto"
-
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:304
-#, kde-format
-msgid "Convert %1 to path"
-msgstr "Convertir %1 a trayecto"
-
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:487
-#, kde-format
-msgid "New Composition from Selection"
-msgstr "Nueva Composición desde Selección"
-
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:676
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:547
 #, kde-format
 msgid "Align Selection"
 msgstr "Alinear Selección"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:718
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:589
 #, kde-format
 msgid "Drop"
 msgstr "Soltar"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:814
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:685
 #, kde-format
 msgid "Put text on path"
 msgstr "Poner texto en trayecto"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:836
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:707
 #, kde-format
 msgid "Remove text from path"
 msgstr "Quitar texto de trayecto"
@@ -4084,7 +4073,7 @@ msgid "Put on Path"
 msgstr "Poner en Trayecto"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:136
-#: src/gui/widgets/menus/node_menu.cpp:430
+#: src/gui/widgets/menus/node_menu.cpp:476
 #, kde-format
 msgid "Remove from Path"
 msgstr "Quitar de Trayecto"
@@ -4165,7 +4154,7 @@ msgstr "Duplicar"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:404
 #, kde-format
 msgid "Grid"
-msgstr ""
+msgstr "Rejilla"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:443
 #, kde-format
@@ -4195,7 +4184,7 @@ msgstr "Compacta"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:474
 #, kde-format
 msgid "Mobile"
-msgstr ""
+msgstr "Móvil"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_angle_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_angle_reset)
@@ -4415,133 +4404,128 @@ msgstr "Exterior Superior"
 msgid "Outside Bottom"
 msgstr "Exterior Inferior"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:730
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:720
 #, kde-format
 msgid "Object to Path"
 msgstr "Objeto a trayecto"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:733
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:723
 #, kde-format
 msgid "Trace Bitmap…"
 msgstr "Trazar mapa de bits…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:738
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:728
 #, kde-format
 msgid "Union"
 msgstr "Unión"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:741
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:731
 #: src/gui/widgets/enum_combo.cpp:145
 #, kde-format
 msgid "Difference"
 msgstr "Diferencia"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:744
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:734
 #, kde-format
 msgid "Intersect"
 msgstr "Intersección"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:747
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:737
 #: src/gui/widgets/enum_combo.cpp:147
 #, kde-format
 msgid "Exclusion"
 msgstr "Exclusión"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:751
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:741
 #, kde-format
 msgid "Reverse"
 msgstr "Revertir"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:755
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:745
 #, kde-format
 msgid "Add Node…"
 msgstr "Añadir Nodo…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:757
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:747
 #, kde-format
 msgid "Join Nodes"
 msgstr "Unir Nodos"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:759
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:749
 #, kde-format
 msgid "Split Nodes"
 msgstr "Separar Nodos"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:764
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:754
 #, kde-format
 msgid "Symmetric"
 msgstr "Simétrico"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:765
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:755
 #, kde-format
 msgid "Make segments straight"
 msgstr "Enderezar segmentos"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:766
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:756
 #, kde-format
 msgid "Make segments curved"
 msgstr "Curvar segmentos"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:812
-#, kde-format
-msgid "Reverse path"
-msgstr "Invertir ruta"
-
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:910
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:899
 #, kde-format
 msgid "Recording Keyframes"
 msgstr "Grabando Fotogramas clave"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1430
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1419
 #, kde-format
 msgid "Could not load template"
 msgstr "No se pudo cargar plantilla"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1627
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1636
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1643
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1616
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1625
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1632
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
 msgstr "Trazar mapa de bits"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1627
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1616
 #, kde-format
 msgid "Only select one image"
 msgstr "Seleccionar solo una imagen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1636
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1625
 #, kde-format
 msgid "You need to select an image to trace"
 msgstr "Necesita seleccionar una imagen para trazar"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1643
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1632
 #, kde-format
 msgid "You selected an image with no data"
 msgstr "Seleccionó una imagen sin datos"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1730
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1719
 #, kde-format
 msgid "X: %1 Y: %2"
 msgstr "X: %1 Y: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1749
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1738
 #, kde-format
 msgid "Drop File"
 msgstr "Soltar Archivo"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1760
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1749
 #, kde-format
 msgid "Add to current file?"
 msgstr "Añadir a archivo actual?"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1766
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1755
 #, kde-format
 msgid "Add as Object"
 msgstr "Añadir como Objeto"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1772
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1761
 #, kde-format
 msgid "Add as Composition"
 msgstr "Añadir como Composición"
@@ -4675,10 +4659,9 @@ msgid "Delete All"
 msgstr "Borrar todo"
 
 #: src/gui/widgets/dialogs/startup_dialog.cpp:131
-#, fuzzy, kde-format
-#| msgid " fps"
+#, kde-format
 msgid "%1 fps"
-msgstr " fps"
+msgstr "%1 fps"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, StartupDialog)
 #: src/gui/widgets/dialogs/startup_dialog.ui:18
@@ -5024,7 +5007,7 @@ msgstr "Añadir color"
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #: src/gui/widgets/dialogs/trace_dialog.ui:397
 #: src/gui/widgets/docks/layers.ui:70 src/gui/widgets/docks/layers.ui:73
-#: src/gui/widgets/enum_combo.cpp:157 src/gui/widgets/menus/node_menu.cpp:292
+#: src/gui/widgets/enum_combo.cpp:157 src/gui/widgets/menus/node_menu.cpp:330
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:75
 #, kde-format
 msgid "Add"
@@ -5137,23 +5120,21 @@ msgstr "Avanzado"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, DockGrid)
 #: src/gui/widgets/docks/dock_grid.ui:21
-#, fuzzy, kde-format
-#| msgid "Configure..."
+#, kde-format
 msgid "Configure Grid"
-msgstr "Configurar…"
+msgstr "Configurar rejilla"
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_enable)
 #: src/gui/widgets/docks/dock_grid.ui:52
-#, fuzzy, kde-format
-#| msgid "Enable"
+#, kde-format
 msgid "Enable Grid"
-msgstr "Activar"
+msgstr "Activar rejilla"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/docks/dock_grid.ui:77
 #, kde-format
 msgid "X"
-msgstr ""
+msgstr "X"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_shape)
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_cap_square)
@@ -5167,16 +5148,15 @@ msgstr "Cuadrado"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_shape)
 #: src/gui/widgets/docks/dock_grid.ui:93
-#, fuzzy, kde-format
-#| msgid "angle"
+#, kde-format
 msgid "Triangle"
-msgstr "ángulo"
+msgstr "Triángulo"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spin_size)
 #: src/gui/widgets/docks/dock_grid.ui:124
 #, kde-format
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_angle)
 #: src/gui/widgets/docks/dock_grid.ui:140
@@ -5706,7 +5686,7 @@ msgid "View on LottieFiles..."
 msgstr "Ver en LottieFiles…"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:56
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:181
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:179
 #, kde-format
 msgid "Paste Keyframe"
 msgstr "Pegar fotograma clave"
@@ -5722,169 +5702,198 @@ msgid "Follow Path..."
 msgstr "Seguir ruta"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:177
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:175
 #, kde-format
 msgid "Remove Keyframe"
 msgstr "Quitar fotograma clave"
 
-#: src/gui/widgets/menus/node_menu.cpp:50
-#: src/gui/widgets/menus/node_menu.cpp:275
+#: src/gui/widgets/menus/node_menu.cpp:60
+#: src/gui/widgets/menus/node_menu.cpp:285
 #, kde-format
 msgid "Reset Transform"
 msgstr "Reiniciar Transformación"
 
-#: src/gui/widgets/menus/node_menu.cpp:102
+#: src/gui/widgets/menus/node_menu.cpp:112
 #, kde-format
 msgid "Move to Top"
 msgstr "Mover hacia el Frente"
 
-#: src/gui/widgets/menus/node_menu.cpp:114
+#: src/gui/widgets/menus/node_menu.cpp:124
 #, kde-format
 msgid "Move to Bottom"
 msgstr "Mover hacia el Fondo"
 
-#: src/gui/widgets/menus/node_menu.cpp:200
+#: src/gui/widgets/menus/node_menu.cpp:210
 #, kde-format
 msgid "Convert %1 to %2"
 msgstr "Convertir %1 a %2"
 
-#: src/gui/widgets/menus/node_menu.cpp:279
+#: src/gui/widgets/menus/node_menu.cpp:291
+#: src/gui/widgets/menus/node_menu.cpp:300
+#, kde-format
+msgid "Anchor Point to Center"
+msgstr ""
+
+#: src/gui/widgets/menus/node_menu.cpp:313
 #, kde-format
 msgid "Auto Orient"
 msgstr "Auto orientar"
 
-#: src/gui/widgets/menus/node_menu.cpp:286
+#: src/gui/widgets/menus/node_menu.cpp:324
 #, kde-format
 msgid "Blend Mode"
 msgstr "Modo de mezcla"
 
-#: src/gui/widgets/menus/node_menu.cpp:312
-#: src/gui/widgets/menus/node_menu.cpp:313
+#: src/gui/widgets/menus/node_menu.cpp:350
+#: src/gui/widgets/menus/node_menu.cpp:351
 #, kde-format
 msgid "Span All Frames"
 msgstr "Abarcar todos los fotogramas"
 
-#: src/gui/widgets/menus/node_menu.cpp:323
+#: src/gui/widgets/menus/node_menu.cpp:361
 #, kde-format
 msgid "Parent"
 msgstr "Padre"
 
-#: src/gui/widgets/menus/node_menu.cpp:324
+#: src/gui/widgets/menus/node_menu.cpp:362
 #, kde-format
 msgid "Convert to Group"
 msgstr "Convertir en Grupo"
 
-#: src/gui/widgets/menus/node_menu.cpp:325
-#, kde-format
-msgid "Precompose"
-msgstr "Precomponer"
-
-#: src/gui/widgets/menus/node_menu.cpp:330
+#: src/gui/widgets/menus/node_menu.cpp:368
 #, kde-format
 msgid "Inverted"
 msgstr "Invertido"
 
-#: src/gui/widgets/menus/node_menu.cpp:344
+#: src/gui/widgets/menus/node_menu.cpp:382
 #, kde-format
 msgid "Convert to Layer"
 msgstr "Convertir en Capa"
 
-#: src/gui/widgets/menus/node_menu.cpp:347
+#: src/gui/widgets/menus/node_menu.cpp:385
 #, kde-format
 msgid "Convert to Path"
 msgstr "Convertir en trayecto"
 
-#: src/gui/widgets/menus/node_menu.cpp:352
+#: src/gui/widgets/menus/node_menu.cpp:390
 #, kde-format
 msgid "Embed"
 msgstr "Incrustar"
 
-#: src/gui/widgets/menus/node_menu.cpp:356
+#: src/gui/widgets/menus/node_menu.cpp:394
 #, kde-format
 msgid "Open with External Application"
 msgstr "Abrir con Aplicación Externa"
 
-#: src/gui/widgets/menus/node_menu.cpp:358
+#: src/gui/widgets/menus/node_menu.cpp:398
 #, kde-format
 msgid "Could not find suitable application, check your system settings."
 msgstr ""
 "No se pudo encontrar una aplicación adecuada, revise sus preferencias de "
 "sistema."
 
-#: src/gui/widgets/menus/node_menu.cpp:362
+#: src/gui/widgets/menus/node_menu.cpp:405
 #, kde-format
 msgid "From File..."
 msgstr "Desde Archivo…"
 
-#: src/gui/widgets/menus/node_menu.cpp:363
-#: src/gui/widgets/menus/node_menu.cpp:367
+#: src/gui/widgets/menus/node_menu.cpp:406
+#: src/gui/widgets/menus/node_menu.cpp:410
 #, kde-format
 msgid "Update Image"
 msgstr "Actualizar Imagen"
 
-#: src/gui/widgets/menus/node_menu.cpp:392
+#: src/gui/widgets/menus/node_menu.cpp:437
 #, kde-format
 msgid "Trace Bitmap..."
 msgstr "Trazar mapa de bits…"
 
-#: src/gui/widgets/menus/node_menu.cpp:401
+#: src/gui/widgets/menus/node_menu.cpp:447
 #, kde-format
 msgid "Rename from Composition"
 msgstr "Renombrar desde Composición"
 
-#: src/gui/widgets/menus/node_menu.cpp:405
-#: src/gui/widgets/menus/node_menu.cpp:406
+#: src/gui/widgets/menus/node_menu.cpp:451
+#: src/gui/widgets/menus/node_menu.cpp:452
 #, kde-format
 msgid "Decompose"
 msgstr "Descomponer"
 
-#: src/gui/widgets/menus/node_menu.cpp:444
+#: src/gui/widgets/menus/node_menu.cpp:490
 #, kde-format
 msgid "Stretch time"
 msgstr "Estirar tiempo"
 
-#: src/gui/widgets/menus/node_menu.cpp:445
+#: src/gui/widgets/menus/node_menu.cpp:491
 #, kde-format
 msgid "Speed Multiplier"
 msgstr "Multiplicador de Velocidad"
 
-#: src/gui/widgets/menus/node_menu.cpp:462
+#: src/gui/widgets/menus/node_menu.cpp:508
 #, kde-format
 msgctxt "@option:check"
 msgid "Visible"
 msgstr "Visible"
 
-#: src/gui/widgets/menus/node_menu.cpp:463
+#: src/gui/widgets/menus/node_menu.cpp:509
 #, kde-format
 msgctxt "@option:check"
 msgid "Locked"
 msgstr "Bloqueado"
 
-#: src/gui/widgets/menus/node_menu.cpp:468
+#: src/gui/widgets/menus/node_menu.cpp:514
+#, fuzzy, kde-format
+#| msgid "Edit"
+msgctxt "@action:inmenu"
+msgid "Edit"
+msgstr "Editar"
+
+#: src/gui/widgets/menus/node_menu.cpp:516
+#, fuzzy, kde-format
+#| msgid "Cut"
+msgctxt "@action:inmenu"
+msgid "Cut"
+msgstr "Cortar"
+
+#: src/gui/widgets/menus/node_menu.cpp:523
+#, fuzzy, kde-format
+#| msgid "Copy"
+msgctxt "@action:inmenu"
+msgid "Copy"
+msgstr "Copiar"
+
+#: src/gui/widgets/menus/node_menu.cpp:530
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Delete"
 msgstr "Borrar"
 
-#: src/gui/widgets/menus/node_menu.cpp:472
+#: src/gui/widgets/menus/node_menu.cpp:534
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Duplicate"
 msgstr "Duplicar"
 
-#: src/gui/widgets/menus/node_menu.cpp:485
+#: src/gui/widgets/menus/node_menu.cpp:540
+#, fuzzy, kde-format
+#| msgid "Move"
+msgctxt "@action:inmenu"
+msgid "Move"
+msgstr "Mover"
+
+#: src/gui/widgets/menus/node_menu.cpp:547
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Move to..."
 msgstr "Mover a…"
 
-#: src/gui/widgets/menus/node_menu.cpp:513
+#: src/gui/widgets/menus/node_menu.cpp:575
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Convert to Path"
 msgstr "Convertir en trayecto"
 
-#: src/gui/widgets/menus/node_menu.cpp:530
+#: src/gui/widgets/menus/node_menu.cpp:598
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Change speed"
@@ -6510,22 +6519,22 @@ msgstr "Renombrar Composición"
 msgid "Delete Composition"
 msgstr "Borrar Composición"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:159
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:157
 #, kde-format
 msgid "Transition From Previous"
 msgstr "Transición Desde Anterior"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:160
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:158
 #, kde-format
 msgid "Transition To Next"
 msgstr "Transición A Siguiente"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:167
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:165
 #, kde-format
 msgid "Custom..."
 msgstr "Personalizado…"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:180
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:178
 #, kde-format
 msgid "Copy Keyframe"
 msgstr "Copiar Fotograma clave"
@@ -6747,17 +6756,14 @@ msgstr ""
 msgid "Traced %1"
 msgstr "Trazado %1"
 
-#~ msgid "Legacy Keyframes"
-#~ msgstr "Fotogramas Clave Heredados"
+#~ msgid "blend_mode"
+#~ msgstr "modo_mezcla"
 
-#~ msgid "Compatibility with lottie-web versions prior to 5.0.0"
-#~ msgstr "Compatibilidad con versiones de lottie-web anteriores a 5.0.0"
+#~ msgid "anchor_point"
+#~ msgstr "punto_anclaje"
 
-#~ msgid "auto_orient"
-#~ msgstr "Auto orientar"
+#~ msgid "scale"
+#~ msgstr "escala"
 
-#~ msgid "Cannot use %1 as parent as it couldn't be loaded"
-#~ msgstr "No se puede usar %1 como padre pues no pudo ser cargado"
-
-#~ msgid "Convert to Mask"
-#~ msgstr "Convertir en Máscara"
+#~ msgid "New Composition from Selection"
+#~ msgstr "Nueva Composición desde Selección"
