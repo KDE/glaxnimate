@@ -17,7 +17,7 @@ plugin::ScriptEngine::Autoregister<plugin::python::PythonEngine> plugin::python:
 static int counter = 0;
 
 
-class PY_HIDDEN CaptureStream
+class SCRIPT_HIDDEN CaptureStream
 {
 public:
     using OwnerT = plugin::ScriptExecutionContext;
@@ -88,7 +88,7 @@ private:
 };
 
 
-class PY_HIDDEN plugin::python::PythonContext::Private
+class SCRIPT_HIDDEN plugin::python::PythonContext::Private
 {
 public:
     void init_capture(PythonContext* ctx)
@@ -210,7 +210,7 @@ void plugin::python::PythonContext::app_module ( const QString& name )
 }
 
 
-class PY_HIDDEN ModuleSetter
+class SCRIPT_HIDDEN ModuleSetter
 {
 public:
     ModuleSetter(py::module& sys, const QString& append) : sys(sys)

@@ -241,7 +241,7 @@ void initialize()
 } // glaxnimate::js
 
 
-EMSCRIPTEN_BINDINGS(my_module)
+EMSCRIPTEN_BINDINGS(glaxnimate_wasm)
 {
     using namespace glaxnimate::js;
     emscripten::function("initialize", &initialize);

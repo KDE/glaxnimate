@@ -13,33 +13,27 @@
 #include <QDebug>
 
 #include "casters.hpp"
-#include "attribute.hpp"
+#include "glaxnimate/script/register_machinery.hpp"
+#include "python_registrar.hpp"
 
 namespace py = pybind11;
 
 namespace glaxnimate::plugin::python {
 
-struct PY_HIDDEN PyPropertyInfo
+struct SCRIPT_HIDDEN PyPropertyInfo
 {
     const char* name = nullptr;
     py::cpp_function get;
     py::cpp_function set;
 };
 
-struct PY_HIDDEN PyMethodInfo
-{
-    const char* name = nullptr;
-    py::cpp_function method;
-};
-
-struct PY_HIDDEN PyEnumInfo
+struct SCRIPT_HIDDEN PyEnumInfo
 {
     const char* name = nullptr;
     py::handle enum_handle;
 };
 
 PyPropertyInfo register_property(const QMetaProperty& prop, const QMetaObject& cls);
-PyMethodInfo register_method(const QMetaMethod& meth, py::handle& handle, const QMetaObject& cls);
 
 template<class EnumT>
 PyEnumInfo register_enum(const QMetaEnum& meta, py::handle& scope)
@@ -98,6 +92,7 @@ py::class_<CppClass, Args...> register_from_meta(py::handle scope, enums<Enums..
 template<class CppClass, class... Args, class... Enums>
 py::class_<CppClass, Args...>& register_from_meta(py::class_<CppClass, Args...>& reg, enums<Enums...> reg_enums = {})
 {
+    using Reg = PythonRegistrar;
     const QMetaObject& meta = CppClass::staticMetaObject;
 
     for ( int i = meta.propertyOffset(); i < meta.propertyCount(); i++ )
@@ -109,9 +104,7 @@ py::class_<CppClass, Args...>& register_from_meta(py::class_<CppClass, Args...>&
 
     for ( int i = meta.methodOffset(); i < meta.methodCount(); i++ )
     {
-        PyMethodInfo pymeth = register_method(meta.method(i), reg, meta);
-        if ( pymeth.name )
-            reg.attr(pymeth.name) = pymeth.method;
+        register_method<Reg>(meta.method(i), reg, meta);
     }
 
     if ( meta.classInfoOffset() < meta.classInfoCount() )

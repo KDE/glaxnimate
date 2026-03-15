@@ -5,6 +5,7 @@ set(SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/python.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/miscdefs.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/register_machinery.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/python_registrar.cpp
 )
 
 set(LIB_SOURCES
