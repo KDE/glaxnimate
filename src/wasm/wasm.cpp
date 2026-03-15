@@ -255,7 +255,7 @@ EMSCRIPTEN_BINDINGS(my_module)
 
     emscripten::class_<QObject>("QObject")
         .property("objectName", &QObject::objectName, qOverload<const QString&>.of<void, QObject>(&QObject::setObjectName))
-        .function("meta", std::function<const MetaObject*(const QObject&)>([](const QObject& obj){
+        .function("meta", fn([](const QObject& obj){
             return MetaObject::accessor(obj.metaObject());
         }), emscripten::allow_raw_pointers());
     ;
@@ -273,8 +273,8 @@ EMSCRIPTEN_BINDINGS(my_module)
         .field("x", &QVector2D::x, &QVector2D::setX)
         .field("y", &QVector2D::y, &QVector2D::setY)
         .field("_v",
-            std::function<bool(const QVector2D&)>([](const QVector2D&){ return true;}),
-            std::function<void(QVector2D&, bool)>([](QVector2D&, bool){})
+            fn([](const QVector2D&){ return true;}),
+            fn([](QVector2D&, bool){})
         )
     ;
     emscripten::value_object<QSizeF>("Size")
@@ -306,13 +306,13 @@ EMSCRIPTEN_BINDINGS(my_module)
     register_from_meta<model::MaskSettings, model::Object>();
 
     register_from_meta<model::AnimatableBase, QObject>()
-        .function("get", std::function<QVariant(const model::AnimatableBase&)>([](const model::AnimatableBase& anim){
+        .function("get", fn([](const model::AnimatableBase& anim){
             return anim.value();
         }))
-        .function("get_at", std::function<QVariant(const model::AnimatableBase&, double)>([](const model::AnimatableBase& anim, double t){
+        .function("get_at", fn([](const model::AnimatableBase& anim, double t){
             return anim.value(t);
         }))
-        .function("set", std::function<QVariant(model::AnimatableBase&, const QVariant& var)>([](model::AnimatableBase& anim, const QVariant& var){
+        .function("set", fn([](model::AnimatableBase& anim, const QVariant& var){
             return anim.set_undoable(var);
         }))
     ;

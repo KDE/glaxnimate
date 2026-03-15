@@ -57,6 +57,23 @@ struct enums<>
     void process(/*std::vector<PyEnumInfo>&*/) {}
 };
 
+template<class T>
+struct FunctionInfo : public FunctionInfo<decltype(&T::operator())> {};
+
+template <typename Class, typename Return, typename... Args>
+struct FunctionInfo<Return(Class::*)(Args...) const>
+{
+    using return_type = Return;
+    static constexpr const int num_args = sizeof...(Args);
+    using wrapper_type = std::function<Return(Args...)>;
+};
+
+template<class T>
+decltype(auto) fn(const T& func)
+{
+    return typename FunctionInfo<T>::wrapper_type(func);
+}
+
 emscripten::val bytearray_to_val(const QByteArray& cpp_arr, bool alias)
 {
     // Get a refence to the byte array buffer
@@ -446,11 +463,11 @@ emclass_t<CppClass, Args...>& register_from_meta(emclass_t<CppClass, Args...>& r
         }
         else*/
         {
-            std::function<emscripten::val(const CppClass&)> getter([prop](const CppClass& self) {
+            auto getter = fn([prop](const CppClass& self) {
                 return qvariant_to_val(prop.read(&self));
             });
             if ( prop.isWritable() )
-                reg.property(prop.name(), std::move(getter), std::function<void(CppClass&, const QVariant& val)>(
+                reg.property(prop.name(), std::move(getter), fn(
                     [prop]( CppClass& self, const QVariant& val) {
                         prop.write(&self, val);
                     }
