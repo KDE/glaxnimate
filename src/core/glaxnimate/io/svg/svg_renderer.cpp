@@ -988,20 +988,30 @@ public:
         if ( animated && (transf->position.animated() || transf->scale.animated() || transf->rotation.animated() || transf->anchor_point.animated()) )
         {
             QDomElement subject = parent;
-            subject = transform_property(subject, t, "translate", &transf->anchor_point, [](const QPointF& val){
-                return QString("%1 %2").arg(-val.x()).arg(-val.y());
-            });
-            subject = transform_property(subject, t, "scale", &transf->scale, [](const QVector2D& val){
-                return QString("%1 %2").arg(val.x()).arg(val.y());
-            });
-            subject = transform_property(subject, t, "rotate", &transf->rotation, [](qreal val){
-                return QString::number(val);
-            });
-            math::bezier::MultiBezier mb;
-            mb.beziers().push_back(transf->position.bezier());
-            subject = transform_property(subject, t, "translate", &transf->position, [](const QPointF& val){
-                return QString("%1 %2").arg(val.x()).arg(val.y());
-            }, path_data(mb).first, transf->auto_orient.get());
+
+            if ( transf->anchor_point.animated() || transf->anchor_point.get() != QPointF() )
+                subject = transform_property(subject, t, "translate", &transf->anchor_point, [](const QPointF& val){
+                    return QString("%1 %2").arg(-val.x()).arg(-val.y());
+                });
+
+            if ( transf->scale.animated() || transf->scale.get() != QVector2D(1, 1) )
+                subject = transform_property(subject, t, "scale", &transf->scale, [](const QVector2D& val){
+                    return QString("%1 %2").arg(val.x()).arg(val.y());
+                });
+
+            if ( transf->rotation.animated() || transf->rotation.get() != 0 )
+                subject = transform_property(subject, t, "rotate", &transf->rotation, [](qreal val){
+                    return QString::number(val);
+                });
+
+            if ( transf->position.animated() || transf->position.get() != QPointF() )
+            {
+                math::bezier::MultiBezier mb;
+                mb.beziers().push_back(transf->position.bezier());
+                subject = transform_property(subject, t, "translate", &transf->position, [](const QPointF& val){
+                    return QString("%1 %2").arg(val.x()).arg(val.y());
+                }, path_data(mb).first, transf->auto_orient.get());
+            }
         }
         else
         {

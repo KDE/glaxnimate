@@ -181,7 +181,7 @@ glaxnimate::command::SetMultipleAnimated::SetMultipleAnimated(
 
 
 glaxnimate::command::SetMultipleAnimated::SetMultipleAnimated(const QString& name, bool commit)
-    : Parent(name, commit)
+    : Parent(name, commit), keyframe_after_global(false)
 {
 }
 
