@@ -210,7 +210,7 @@ private:
 
             if ( layer.has_parent )
             {
-                int parent_index = json["parent"].toInt();
+                int parent_index = layer.json["parent"].toInt();
                 auto it = lottie_to_array_index.find(parent_index);
                 if ( it == lottie_to_array_index.end() )
                 {
