@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-15 00:42+0000\n"
+"POT-Creation-Date: 2026-03-16 00:41+0000\n"
 "PO-Revision-Date: 2024-09-02 18:12+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -1333,68 +1333,64 @@ msgstr ""
 msgid "Object %1 is invalid"
 msgstr "Objekt %1 är ogiltigt"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:335
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:342
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
 msgstr "Felaktig objekttyp: förväntade '%1' men fick '%2'"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:341
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:348
 #, kde-format
 msgid "Could not load %1 for %2"
 msgstr "Kunde inte läsa in %1 för %2"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:350
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:357
 #, kde-format
 msgid "Could not set property %1"
 msgstr "Kunde inte ställa in egenskap %1"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:376
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:383
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
 msgstr "Artikel %1 för %2 i %3 är inte ett objekt"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:388
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:395
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
 msgstr "Artikel %1 för %2 i %3 är inte acceptabel"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:427
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:434
 #, kde-format
 msgid "Keyframe must specify a time"
 msgstr "Nyckelbild måste ange en tid"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:432
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:439
 #, kde-format
 msgid "Keyframe must specify a value"
 msgstr "Nyckelbild måste ange ett värde"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:442
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:449
 #, kde-format
 msgid "Could not add keyframe"
 msgstr "Kunde inte lägga till nyckelbild"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:626
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:633
 #, kde-format
 msgid "Unknown object of type '%1'"
 msgstr "Okänt objekt av typ '%1'"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:641
-#, kde-format
-msgid "Lottie only supports layers in the top level"
-msgstr "Lottie stöder bara lager på översta nivån"
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:676
+#, fuzzy, kde-format
+#| msgid "Unsupported shape type %1"
+msgid "%1 is an unsupported shape of type %2"
+msgstr "Formtyp %1 stöds inte"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:643
-#, kde-format
-msgid "Lottie only supports auto-orient layers in the top level"
-msgstr "Lottie stöder bara lager med automatisk orientering på översta nivån"
-
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:693
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:696
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
 "Bilder kan inte grupperas med andra former, de måste vara inne i ett lager"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:695
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:698
 #, kde-format
 msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
@@ -6762,6 +6758,13 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "Följ %1"
+
+#~ msgid "Lottie only supports layers in the top level"
+#~ msgstr "Lottie stöder bara lager på översta nivån"
+
+#~ msgid "Lottie only supports auto-orient layers in the top level"
+#~ msgstr ""
+#~ "Lottie stöder bara lager med automatisk orientering på översta nivån"
 
 #, fuzzy
 #~| msgid "Color Mode"

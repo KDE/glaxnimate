@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-15 00:42+0000\n"
-"PO-Revision-Date: 2026-03-14 09:52-0300\n"
+"POT-Creation-Date: 2026-03-16 00:41+0000\n"
+"PO-Revision-Date: 2026-03-15 06:51-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -198,10 +198,9 @@ msgstr "usar"
 
 #. i18n: file: src/core/glaxnimate/model/transform.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Duration"
+#, kde-format
 msgid "rotation"
-msgstr "Duração"
+msgstr "rotação"
 
 #. i18n: file: src/core/glaxnimate/model/assets/composition.hpp
 #. i18n: Property name
@@ -1326,69 +1325,65 @@ msgstr ""
 msgid "Object %1 is invalid"
 msgstr "O objeto %1 é inválido"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:335
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:342
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
 msgstr "Tipo de objeto errado: esperava '%1' mas recebeu '%2'"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:341
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:348
 #, kde-format
 msgid "Could not load %1 for %2"
 msgstr "Não foi possível carregar %1 para %2"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:350
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:357
 #, kde-format
 msgid "Could not set property %1"
 msgstr "Não foi possível definir a propriedade %1"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:376
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:383
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
 msgstr "Item %1 para %2 em %3 não é um objeto"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:388
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:395
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
 msgstr "Item %1 para %2 em %3 não é aceitável"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:427
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:434
 #, kde-format
 msgid "Keyframe must specify a time"
 msgstr "O quadro-chave deve especificar um tempo"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:432
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:439
 #, kde-format
 msgid "Keyframe must specify a value"
 msgstr "O quadro-chave deve especificar um valor"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:442
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:449
 #, kde-format
 msgid "Could not add keyframe"
 msgstr "Não foi possível adicionar quadro-chave"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:626
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:633
 #, kde-format
 msgid "Unknown object of type '%1'"
 msgstr "Objeto desconhecido do tipo '%1'"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:641
-#, kde-format
-msgid "Lottie only supports layers in the top level"
-msgstr "O Lottie só suporta camadas no nível superior"
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:676
+#, fuzzy, kde-format
+#| msgid "Unsupported shape type %1"
+msgid "%1 is an unsupported shape of type %2"
+msgstr "Tipo de forma não suportada %1"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:643
-#, kde-format
-msgid "Lottie only supports auto-orient layers in the top level"
-msgstr "O Lottie só suporta camadas auto-orientadas no nível superior"
-
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:693
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:696
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
 "Imagens não podem ser agrupadas com outras formas, elas devem estar dentro "
 "de uma camada"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:695
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:698
 #, kde-format
 msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
@@ -5721,7 +5716,7 @@ msgstr "Converter %1 para %2"
 #: src/gui/widgets/menus/node_menu.cpp:300
 #, kde-format
 msgid "Anchor Point to Center"
-msgstr ""
+msgstr "Ponto de âncora para o centro"
 
 #: src/gui/widgets/menus/node_menu.cpp:313
 #, kde-format
@@ -5831,22 +5826,19 @@ msgid "Locked"
 msgstr "Bloqueado"
 
 #: src/gui/widgets/menus/node_menu.cpp:514
-#, fuzzy, kde-format
-#| msgid "Edit"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Edit"
 msgstr "Editar"
 
 #: src/gui/widgets/menus/node_menu.cpp:516
-#, fuzzy, kde-format
-#| msgid "Cut"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Cut"
 msgstr "Recortar"
 
 #: src/gui/widgets/menus/node_menu.cpp:523
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy"
 msgstr "Copiar"
@@ -5864,8 +5856,7 @@ msgid "Duplicate"
 msgstr "Duplicar"
 
 #: src/gui/widgets/menus/node_menu.cpp:540
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Move"
 msgstr "Mover"
@@ -6744,6 +6735,12 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "Traçou %1"
+
+#~ msgid "Lottie only supports layers in the top level"
+#~ msgstr "O Lottie só suporta camadas no nível superior"
+
+#~ msgid "Lottie only supports auto-orient layers in the top level"
+#~ msgstr "O Lottie só suporta camadas auto-orientadas no nível superior"
 
 #~ msgid "blend_mode"
 #~ msgstr "modo_mesclagem"

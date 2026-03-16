@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-15 00:42+0000\n"
+"POT-Creation-Date: 2026-03-16 00:41+0000\n"
 "PO-Revision-Date: 2024-09-14 11:22+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
@@ -1329,69 +1329,65 @@ msgstr "Ne eblis ŝargi %1 por %2: uuid rilatas al neakceptebla objekto"
 msgid "Object %1 is invalid"
 msgstr "Objekto %1 estas malvalida"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:335
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:342
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
 msgstr "Malĝusta objektotipo: atendita '%1' sed ricevis '%2'"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:341
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:348
 #, kde-format
 msgid "Could not load %1 for %2"
 msgstr "Ne eblis ŝargi %1 por %2"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:350
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:357
 #, kde-format
 msgid "Could not set property %1"
 msgstr "Ne eblis agordi proprecon %1"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:376
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:383
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
 msgstr "Ero %1 por %2 en %3 ne estas objekto"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:388
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:395
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
 msgstr "Ero %1 por %2 en %3 ne estas akceptebla"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:427
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:434
 #, kde-format
 msgid "Keyframe must specify a time"
 msgstr "Ŝlosilkadro devas specifi tempon"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:432
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:439
 #, kde-format
 msgid "Keyframe must specify a value"
 msgstr "Ŝlosilkadro devas specifi valoron"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:442
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:449
 #, kde-format
 msgid "Could not add keyframe"
 msgstr "Ne eblis aldoni ŝlosilkadron"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:626
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:633
 #, kde-format
 msgid "Unknown object of type '%1'"
 msgstr "Nekonata objekto de tipo '%1'"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:641
-#, kde-format
-msgid "Lottie only supports layers in the top level"
-msgstr "Lottie nur subtenas tavolojn en la supra nivelo"
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:676
+#, fuzzy, kde-format
+#| msgid "Unsupported shape type %1"
+msgid "%1 is an unsupported shape of type %2"
+msgstr "Nesubtenata formo tipo %1"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:643
-#, kde-format
-msgid "Lottie only supports auto-orient layers in the top level"
-msgstr "Lottie nur subtenas aŭtomatajn orientigajn tavolojn en la supra nivelo"
-
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:693
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:696
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
 "Bildoj ne povas esti grupigitaj kun aliaj formoj, ili devas esti ene de "
 "tavolo"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:695
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:698
 #, kde-format
 msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
@@ -6758,6 +6754,13 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "Spurita %1"
+
+#~ msgid "Lottie only supports layers in the top level"
+#~ msgstr "Lottie nur subtenas tavolojn en la supra nivelo"
+
+#~ msgid "Lottie only supports auto-orient layers in the top level"
+#~ msgstr ""
+#~ "Lottie nur subtenas aŭtomatajn orientigajn tavolojn en la supra nivelo"
 
 #, fuzzy
 #~| msgid "Color Mode"

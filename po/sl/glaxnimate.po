@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-15 00:42+0000\n"
-"PO-Revision-Date: 2026-03-14 07:26+0100\n"
+"POT-Creation-Date: 2026-03-16 00:41+0000\n"
+"PO-Revision-Date: 2026-03-15 08:24+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -201,10 +201,9 @@ msgstr "uporabi"
 
 #. i18n: file: src/core/glaxnimate/model/transform.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Duration"
+#, kde-format
 msgid "rotation"
-msgstr "Trajanje"
+msgstr "rotacija"
 
 #. i18n: file: src/core/glaxnimate/model/assets/composition.hpp
 #. i18n: Property name
@@ -1329,67 +1328,63 @@ msgstr ""
 msgid "Object %1 is invalid"
 msgstr "Predmet %1 ni veljaven"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:335
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:342
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
 msgstr "Napačna vrsta predmeta: pričakovano je bilo »%1«, prejeto pa »%2«"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:341
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:348
 #, kde-format
 msgid "Could not load %1 for %2"
 msgstr "Ni bilo mogoče naložiti %1 za %2"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:350
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:357
 #, kde-format
 msgid "Could not set property %1"
 msgstr "Lastnosti %1 ni bilo mogoče nastaviti"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:376
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:383
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
 msgstr "Element %1 za %2 v %3 ni predmet"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:388
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:395
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
 msgstr "Element %1 za %2 v %3 ni sprejemljiv"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:427
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:434
 #, kde-format
 msgid "Keyframe must specify a time"
 msgstr "Ključna sličica mora določati čas"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:432
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:439
 #, kde-format
 msgid "Keyframe must specify a value"
 msgstr "Ključna sličica mora določati vrednost"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:442
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:449
 #, kde-format
 msgid "Could not add keyframe"
 msgstr "Ključne sličice ni mogoče dodati"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:626
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:633
 #, kde-format
 msgid "Unknown object of type '%1'"
 msgstr "Najden predmet vrste »%1«"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:641
-#, kde-format
-msgid "Lottie only supports layers in the top level"
-msgstr "Lottie podpira le plasti na vrhnji ravni"
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:676
+#, fuzzy, kde-format
+#| msgid "Unsupported shape type %1"
+msgid "%1 is an unsupported shape of type %2"
+msgstr "Nepodprta vrsta lika %1"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:643
-#, kde-format
-msgid "Lottie only supports auto-orient layers in the top level"
-msgstr "Lottie podpira samo samodejno usmerjanje plasti na najvišji ravni"
-
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:693
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:696
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr "Slik ni mogoče združiti z drugimi liki, biti morajo znotraj plasti"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:695
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:698
 #, kde-format
 msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
@@ -5712,7 +5707,7 @@ msgstr "Pretvori %1 v %2"
 #: src/gui/widgets/menus/node_menu.cpp:300
 #, kde-format
 msgid "Anchor Point to Center"
-msgstr ""
+msgstr "Točka sidranja na središče"
 
 #: src/gui/widgets/menus/node_menu.cpp:313
 #, kde-format
@@ -5821,22 +5816,19 @@ msgid "Locked"
 msgstr "Zaklenjeno"
 
 #: src/gui/widgets/menus/node_menu.cpp:514
-#, fuzzy, kde-format
-#| msgid "Edit"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Edit"
 msgstr "Uredi"
 
 #: src/gui/widgets/menus/node_menu.cpp:516
-#, fuzzy, kde-format
-#| msgid "Cut"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Cut"
 msgstr "Izreži"
 
 #: src/gui/widgets/menus/node_menu.cpp:523
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy"
 msgstr "Kopiraj"
@@ -5854,8 +5846,7 @@ msgid "Duplicate"
 msgstr "Podvoji"
 
 #: src/gui/widgets/menus/node_menu.cpp:540
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Move"
 msgstr "Premakni"
@@ -6734,6 +6725,12 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "Sledeno %1"
+
+#~ msgid "Lottie only supports layers in the top level"
+#~ msgstr "Lottie podpira le plasti na vrhnji ravni"
+
+#~ msgid "Lottie only supports auto-orient layers in the top level"
+#~ msgstr "Lottie podpira samo samodejno usmerjanje plasti na najvišji ravni"
 
 #~ msgid "blend_mode"
 #~ msgstr "mešalni_način"

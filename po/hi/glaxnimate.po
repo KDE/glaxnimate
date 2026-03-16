@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-15 00:42+0000\n"
+"POT-Creation-Date: 2026-03-16 00:41+0000\n"
 "PO-Revision-Date: 2024-12-15 19:32+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Hindi <kde-i18n-doc@kde.org>\n"
@@ -1327,69 +1327,65 @@ msgstr ""
 msgid "Object %1 is invalid"
 msgstr "ऑब्जेक्ट %1 अमान्य है"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:335
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:342
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
 msgstr "गलत ऑब्जेक्ट प्रकार: अपेक्षित '%1' लेकिन प्राप्त हुआ '%2'"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:341
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:348
 #, kde-format
 msgid "Could not load %1 for %2"
 msgstr "%2 के लिए %1 लोड नहीं किया जा सका"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:350
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:357
 #, kde-format
 msgid "Could not set property %1"
 msgstr "प्रॉपर्टी %1 सेट नहीं की जा सकी"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:376
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:383
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
 msgstr "%3 में %2 के लिए आइटम %1 कोई ऑब्जेक्ट नहीं है"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:388
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:395
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
 msgstr "%3 में %2 के लिए आइटम %1 स्वीकार्य नहीं है"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:427
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:434
 #, kde-format
 msgid "Keyframe must specify a time"
 msgstr "कीफ़्रेम को समय निर्दिष्ट करना होगा"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:432
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:439
 #, kde-format
 msgid "Keyframe must specify a value"
 msgstr "कीफ़्रेम को एक मान निर्दिष्ट करना होगा"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:442
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:449
 #, kde-format
 msgid "Could not add keyframe"
 msgstr "मुख्यफ़्रेम नहीं जोड़ा जा सका"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:626
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:633
 #, kde-format
 msgid "Unknown object of type '%1'"
 msgstr "'%1' प्रकार का अज्ञात ऑब्जेक्ट"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:641
-#, kde-format
-msgid "Lottie only supports layers in the top level"
-msgstr "लोटी केवल शीर्ष स्तर की परतों का समर्थन करता है"
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:676
+#, fuzzy, kde-format
+#| msgid "Unsupported shape type %1"
+msgid "%1 is an unsupported shape of type %2"
+msgstr "असमर्थित आकार प्रकार %1"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:643
-#, kde-format
-msgid "Lottie only supports auto-orient layers in the top level"
-msgstr "लोटी केवल शीर्ष स्तर पर ऑटो-ओरिएंट परतों का समर्थन करता है"
-
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:693
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:696
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
 "छवियों को अन्य आकृतियों के साथ समूहीकृत नहीं किया जा सकता, उन्हें एक परत के अंदर होना "
 "चाहिए"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:695
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:698
 #, kde-format
 msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
@@ -6722,6 +6718,12 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "%1 का पता लगाया गया"
+
+#~ msgid "Lottie only supports layers in the top level"
+#~ msgstr "लोटी केवल शीर्ष स्तर की परतों का समर्थन करता है"
+
+#~ msgid "Lottie only supports auto-orient layers in the top level"
+#~ msgstr "लोटी केवल शीर्ष स्तर पर ऑटो-ओरिएंट परतों का समर्थन करता है"
 
 #, fuzzy
 #~| msgid "Color Mode"

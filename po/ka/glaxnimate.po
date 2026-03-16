@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-15 00:42+0000\n"
-"PO-Revision-Date: 2026-03-14 06:41+0100\n"
+"POT-Creation-Date: 2026-03-16 00:41+0000\n"
+"PO-Revision-Date: 2026-03-15 07:52+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -198,10 +198,9 @@ msgstr "გამოყენება"
 
 #. i18n: file: src/core/glaxnimate/model/transform.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Duration"
+#, kde-format
 msgid "rotation"
-msgstr "ხანგრძლივობა"
+msgstr "შებრუნება"
 
 #. i18n: file: src/core/glaxnimate/model/assets/composition.hpp
 #. i18n: Property name
@@ -1326,69 +1325,64 @@ msgstr "%1-ის ჩატვირთვა %2-სთვის შეუძლ
 msgid "Object %1 is invalid"
 msgstr "ობიექტი %1 არასწორია"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:335
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:342
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
 msgstr "არასწორი ობიექტის ტიპი: მოველოდი: '%1'; მივიღე: \"%2\""
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:341
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:348
 #, kde-format
 msgid "Could not load %1 for %2"
 msgstr "ვერ ჩავტვირთე %1 %2-სთვის"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:350
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:357
 #, kde-format
 msgid "Could not set property %1"
 msgstr "ვერ დავაყენე თვისება %1"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:376
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:383
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
 msgstr "ელემენტი %1 %2-სთვის %3-ში ობიექტი არაა"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:388
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:395
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
 msgstr "ელემენტი %1 %2-სთვის %3-ში მისაღები არაა"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:427
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:434
 #, kde-format
 msgid "Keyframe must specify a time"
 msgstr "საკვანძო კადრი დროს უნდა მიუთითებდეს"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:432
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:439
 #, kde-format
 msgid "Keyframe must specify a value"
 msgstr "საკვანძო კადრი მნიშვნელობას უნდა მიუთითებდეს"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:442
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:449
 #, kde-format
 msgid "Could not add keyframe"
 msgstr "საკვანძო კადრის დამატება შეუძლებელია"
 
-#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:626
+#: src/core/glaxnimate/io/glaxnimate/import_state.hpp:633
 #, kde-format
 msgid "Unknown object of type '%1'"
 msgstr "უცნობი ობიექტი ტიპით '%1'"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:641
-#, kde-format
-msgid "Lottie only supports layers in the top level"
-msgstr "Lottie-ს ფენების მხარდაჭერა მხოლოდ ყველაზე ზედა ფენაში აქვს"
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:676
+#, fuzzy, kde-format
+#| msgid "Unsupported shape type %1"
+msgid "%1 is an unsupported shape of type %2"
+msgstr "მხარდაუჭერელი ფიგურის ტიპი %1"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:643
-#, kde-format
-msgid "Lottie only supports auto-orient layers in the top level"
-msgstr ""
-"Lottie-ს, ფენების ავტოორიენტაციის მხარდაჭერა, მხოლოდ ყველაზე ზედა ფენაში აქვთ"
-
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:693
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:696
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
 "გამოსახულებებს სხვა ფიგურებთან ერთად ვერ დააჯგუფებთ. ისინი ფენაში უნდა იყვნენ"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:695
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:698
 #, kde-format
 msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
@@ -5717,7 +5711,7 @@ msgstr "%1-ის გადაყვანა %2-ში"
 #: src/gui/widgets/menus/node_menu.cpp:300
 #, kde-format
 msgid "Anchor Point to Center"
-msgstr ""
+msgstr "წერილის მიმაგრება ცენტრში"
 
 #: src/gui/widgets/menus/node_menu.cpp:313
 #, kde-format
@@ -5827,22 +5821,19 @@ msgid "Locked"
 msgstr "დაბლოკილია"
 
 #: src/gui/widgets/menus/node_menu.cpp:514
-#, fuzzy, kde-format
-#| msgid "Edit"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Edit"
 msgstr "ჩასწორება"
 
 #: src/gui/widgets/menus/node_menu.cpp:516
-#, fuzzy, kde-format
-#| msgid "Cut"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Cut"
 msgstr "ამოჭრა"
 
 #: src/gui/widgets/menus/node_menu.cpp:523
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy"
 msgstr "კოპირება"
@@ -5860,8 +5851,7 @@ msgid "Duplicate"
 msgstr "დუბლირება"
 
 #: src/gui/widgets/menus/node_menu.cpp:540
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Move"
 msgstr "გადატანა"
@@ -6740,6 +6730,14 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "ტრასირებულია %1"
+
+#~ msgid "Lottie only supports layers in the top level"
+#~ msgstr "Lottie-ს ფენების მხარდაჭერა მხოლოდ ყველაზე ზედა ფენაში აქვს"
+
+#~ msgid "Lottie only supports auto-orient layers in the top level"
+#~ msgstr ""
+#~ "Lottie-ს, ფენების ავტოორიენტაციის მხარდაჭერა, მხოლოდ ყველაზე ზედა ფენაში "
+#~ "აქვთ"
 
 #~ msgid "blend_mode"
 #~ msgstr "blend_mode"
