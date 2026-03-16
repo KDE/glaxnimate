@@ -6,11 +6,11 @@
 
 #pragma once
 
-#include "register_machinery.hpp"
-
-static constexpr auto no_own = py::return_value_policy::automatic_reference;
+#include "python_registrar.hpp"
 
 using namespace glaxnimate::plugin::python;
+
+static constexpr auto no_own = py::return_value_policy::automatic_reference;
 
 void define_utils(py::module& m);
 

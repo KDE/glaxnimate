@@ -4,19 +4,18 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "register_machinery.hpp"
-
 #include <utility>
 
 #include "glaxnimate/log/log.hpp"
 #include "glaxnimate/script/register_impl.hpp"
+#include "casters.hpp"
 
 
 using namespace glaxnimate::script;
+namespace py = pybind11;
+
 
 namespace glaxnimate::plugin::python {
-
-
 
 template<int i>
 bool qvariant_type_caster_load_impl(QVariant& into, const pybind11::handle& src)

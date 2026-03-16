@@ -6,16 +6,22 @@
 
 #include "python_engine.hpp"
 
-#include "plugin/python/register_machinery.hpp"
+#include "plugin/python/python_registrar.hpp"
 #include "glaxnimate/log/log.hpp"
 #include "cli_utils/env.hpp"
 
 using namespace glaxnimate;
+namespace py = pybind11;
 
 plugin::ScriptEngine::Autoregister<plugin::python::PythonEngine> plugin::python::PythonEngine::autoreg;
 
 static int counter = 0;
 
+#if __GNUC__ >= 4
+#   define SCRIPT_HIDDEN  __attribute__ ((visibility ("hidden")))
+#else
+#   define SCRIPT_HIDDEN
+#endif
 
 class SCRIPT_HIDDEN CaptureStream
 {

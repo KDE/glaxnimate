@@ -22,6 +22,7 @@
 #include "glaxnimate/math/bezier/bezier.hpp"
 #include "glaxnimate/app_info.hpp"
 #include "glaxnimate/io/io_registry.hpp"
+#include "glaxnimate/script/register_machinery.hpp"
 #include "trace/trace.hpp"
 #include "trace/quantize.hpp"
 

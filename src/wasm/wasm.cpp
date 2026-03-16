@@ -244,6 +244,9 @@ void initialize()
 EMSCRIPTEN_BINDINGS(glaxnimate_wasm)
 {
     using namespace glaxnimate::js;
+    using namespace glaxnimate::script;
+    using Reg = JsRegistrar;
+
     emscripten::register_optional<emscripten::val>();
     emscripten::function("initialize", &initialize);
 
@@ -295,18 +298,23 @@ EMSCRIPTEN_BINDINGS(glaxnimate_wasm)
         .property("composition", &GlaxnimateRenderer::composition, emscripten::return_value_policy::reference())
     ;
 
-    register_from_meta<model::Document, QObject>();
+    auto glaxnimate_module = Reg::module();
+    auto model = Reg::submodule(glaxnimate_module, "model");
+    auto defs = Reg::submodule(glaxnimate_module, "assets");
+    auto shapes = Reg::submodule(glaxnimate_module, "shapes");
 
-    register_from_meta<model::Object, QObject>();
-    register_from_meta<model::DocumentNode, model::Object>();
-    register_from_meta<model::VisualNode, model::DocumentNode>();
+    register_from_meta<Reg, model::Document, QObject>(model);
 
-    register_from_meta<model::AnimationContainer, model::Object>();
-    register_from_meta<model::StretchableTime, model::Object>();
-    register_from_meta<model::Transform, model::Object>();
-    register_from_meta<model::MaskSettings, model::Object>();
+    register_from_meta<Reg, model::Object, QObject>(model);
+    register_from_meta<Reg, model::DocumentNode, model::Object>(model);
+    register_from_meta<Reg, model::VisualNode, model::DocumentNode>(model);
 
-    register_from_meta<model::AnimatableBase, QObject>()
+    register_from_meta<Reg, model::AnimationContainer, model::Object>(model);
+    register_from_meta<Reg, model::StretchableTime, model::Object>(model);
+    register_from_meta<Reg, model::Transform, model::Object>(model);
+    register_from_meta<Reg, model::MaskSettings, model::Object>(model);
+
+    register_from_meta<Reg, model::AnimatableBase, QObject>(model)
         .function("get", fn([](const model::AnimatableBase& anim){
             return anim.value();
         }))
@@ -317,7 +325,7 @@ EMSCRIPTEN_BINDINGS(glaxnimate_wasm)
             return anim.set_undoable(var);
         }))
     ;
-    register_from_meta<model::detail::AnimatedPropertyPosition, model::AnimatableBase>();
+    register_from_meta<Reg, model::detail::AnimatedPropertyPosition, model::AnimatableBase>(model);
     register_animatable<QPointF, model::detail::AnimatedPropertyPosition>();
     register_animatable<QSizeF>();
     register_animatable<QVector2D>();
@@ -325,50 +333,50 @@ EMSCRIPTEN_BINDINGS(glaxnimate_wasm)
     register_animatable<float>();
     register_animatable<int>();
     register_animatable<QGradientStops>();
-    register_from_meta<model::detail::AnimatedPropertyBezier, model::AnimatableBase>();
+    register_from_meta<Reg, model::detail::AnimatedPropertyBezier, model::AnimatableBase>(model);
     register_animatable<math::bezier::Bezier, model::detail::AnimatedPropertyBezier>();
 
-    register_from_meta<model::Assets, model::DocumentNode>();
-    register_from_meta<model::Asset, model::DocumentNode>();
-    register_from_meta<model::Composition, model::VisualNode>();
-    register_from_meta<model::CompositionList, model::DocumentNode>();
-    register_from_meta<model::NamedColor, model::Asset>();
-    register_from_meta<model::NamedColorList, model::DocumentNode>();
-    register_from_meta<model::GradientColors, model::Asset>();
-    register_from_meta<model::GradientColorsList, model::DocumentNode>();
-    register_from_meta<model::Gradient, model::Asset>();
-    register_from_meta<model::GradientList, model::DocumentNode>();
-    register_from_meta<model::Bitmap, model::Asset>();
-    register_from_meta<model::BitmapList, model::DocumentNode>();
-    register_from_meta<model::EmbeddedFont, model::Asset>();
-    register_from_meta<model::FontList, model::DocumentNode>();
+    register_from_meta<Reg, model::Assets, model::DocumentNode>(defs);
+    register_from_meta<Reg, model::Asset, model::DocumentNode>(defs);
+    register_from_meta<Reg, model::Composition, model::VisualNode>(defs);
+    register_from_meta<Reg, model::CompositionList, model::DocumentNode>(defs);
+    register_from_meta<Reg, model::NamedColor, model::Asset>(defs);
+    register_from_meta<Reg, model::NamedColorList, model::DocumentNode>(defs);
+    register_from_meta<Reg, model::GradientColors, model::Asset>(defs);
+    register_from_meta<Reg, model::GradientColorsList, model::DocumentNode>(defs);
+    register_from_meta<Reg, model::Gradient, model::Asset>(defs);
+    register_from_meta<Reg, model::GradientList, model::DocumentNode>(defs);
+    register_from_meta<Reg, model::Bitmap, model::Asset>(defs);
+    register_from_meta<Reg, model::BitmapList, model::DocumentNode>(defs);
+    register_from_meta<Reg, model::EmbeddedFont, model::Asset>(defs);
+    register_from_meta<Reg, model::FontList, model::DocumentNode>(defs);
 
-    register_from_meta<model::ShapeElement, model::VisualNode>();
-    register_from_meta<model::Shape, model::ShapeElement>();
-    register_from_meta<model::Modifier, model::ShapeElement>();
-    register_from_meta<model::Styler, model::ShapeElement>();
-    register_from_meta<model::Composable, model::ShapeElement>();
+    register_from_meta<Reg, model::ShapeElement, model::VisualNode>(shapes);
+    register_from_meta<Reg, model::Shape, model::ShapeElement>(shapes);
+    register_from_meta<Reg, model::Modifier, model::ShapeElement>(shapes);
+    register_from_meta<Reg, model::Styler, model::ShapeElement>(shapes);
+    register_from_meta<Reg, model::Composable, model::ShapeElement>(shapes);
 
-    register_constructible<model::Rect, model::Shape>();
-    register_constructible<model::Ellipse, model::Shape>();
-    register_constructible<model::PolyStar, model::Shape>(enums<model::PolyStar::StarType>{});
-    register_constructible<model::Path, model::Shape>();
+    register_constructible<Reg, model::Rect, model::Shape>(shapes);
+    register_constructible<Reg, model::Ellipse, model::Shape>(shapes);
+    register_constructible<Reg, model::PolyStar, model::Shape>(shapes, enums<model::PolyStar::StarType>{});
+    register_constructible<Reg, model::Path, model::Shape>(shapes);
 
-    auto cls_group = register_constructible<model::Group, model::Composable>();
+    auto cls_group = register_constructible<Reg, model::Group, model::Composable>(shapes);
     // define_add_shape(cls_group);
 
-    register_constructible<model::Layer, model::Group>();
-    register_constructible<model::PreCompLayer, model::Composable>();
-    register_constructible<model::Image, model::Composable>();
+    register_constructible<Reg, model::Layer, model::Group>(shapes);
+    register_constructible<Reg, model::PreCompLayer, model::Composable>(shapes);
+    register_constructible<Reg, model::Image, model::Composable>(shapes);
 
-    register_constructible<model::Fill, model::Styler>(enums<model::Fill::Rule>{});
-    register_constructible<model::Stroke, model::Styler>(enums<model::Stroke::Cap, model::Stroke::Join>{});
-    register_constructible<model::Repeater, model::Modifier>();
+    register_constructible<Reg, model::Fill, model::Styler>(shapes, enums<model::Fill::Rule>{});
+    register_constructible<Reg, model::Stroke, model::Styler>(shapes, enums<model::Stroke::Cap, model::Stroke::Join>{});
+    register_constructible<Reg, model::Repeater, model::Modifier>(shapes);
 
-    register_from_meta<model::PathModifier, model::Modifier>();
-    register_constructible<model::Trim, model::PathModifier>();
-    register_constructible<model::InflateDeflate, model::PathModifier>();
-    register_constructible<model::RoundCorners, model::PathModifier>();
-    register_constructible<model::OffsetPath, model::PathModifier>();
-    register_constructible<model::ZigZag, model::PathModifier>();
+    register_from_meta<Reg, model::PathModifier, model::Modifier>(shapes);
+    register_constructible<Reg, model::Trim, model::PathModifier>(shapes);
+    register_constructible<Reg, model::InflateDeflate, model::PathModifier>(shapes);
+    register_constructible<Reg, model::RoundCorners, model::PathModifier>(shapes);
+    register_constructible<Reg, model::OffsetPath, model::PathModifier>(shapes);
+    register_constructible<Reg, model::ZigZag, model::PathModifier>(shapes);
 }

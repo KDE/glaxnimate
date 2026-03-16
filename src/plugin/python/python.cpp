@@ -44,16 +44,21 @@
 #include "glaxnimate/io/svg/svg_renderer.hpp"
 #include "glaxnimate/io/rive/rive_format.hpp"
 
+#include "glaxnimate/script/register_machinery.hpp"
+
 
 #include "plugin/io.hpp"
 #include "glaxnimate/app_info.hpp"
 
 #include "miscdefs.hpp"
 
+using namespace glaxnimate::script;
 using namespace glaxnimate::plugin::python;
 using namespace glaxnimate;
 
 namespace {
+
+using Reg = PythonRegistrar;
 
 template<class T, class Base=model::AnimatableBase>
 void register_animatable(py::module& m)
@@ -116,29 +121,29 @@ void define_io(py::module& m)
 
     io.attr("registry") = std::unique_ptr<Fac, py::nodelete>(&io::IoRegistry::instance());
 
-    auto import_export = register_from_meta<io::ImportExport, QObject>(io, enums<io::ImportExport::Direction>{})
+    auto import_export = register_from_meta<Reg, io::ImportExport, QObject>(io, enums<io::ImportExport::Direction>{})
         .def("progress_max_changed", &io::ImportExport::progress_max_changed)
         .def("progress", &io::ImportExport::progress)
     ;
     io.attr("Direction") = import_export.attr("Direction");
 
-    register_from_meta<io::glaxnimate::GlaxnimateFormat, io::ImportExport>(io)
+    register_from_meta<Reg, io::glaxnimate::GlaxnimateFormat, io::ImportExport>(io)
         .attr("instance") = std::unique_ptr<io::glaxnimate::GlaxnimateFormat, py::nodelete>(io::glaxnimate::GlaxnimateFormat::instance())
     ;
 
-    register_from_meta<io::raster::RasterFormat, io::ImportExport>(io)
+    register_from_meta<Reg, io::raster::RasterFormat, io::ImportExport>(io)
         .def_static("render_frame", &io::raster::RasterMime::to_image, to_image_docstring)
         .def_static("render_frame", &doc_to_image, to_image_docstring)
     ;
 
-    register_from_meta<io::svg::SvgFormat, io::ImportExport>(io)
+    register_from_meta<Reg, io::svg::SvgFormat, io::ImportExport>(io)
         .def_static("render_frame", &frame_to_svg, "renders the current frame to SVG")
     ;
 
-    register_from_meta<plugin::IoFormat, io::ImportExport>(io);
+    register_from_meta<Reg, plugin::IoFormat, io::ImportExport>(io);
 
 
-    register_from_meta<io::rive::RiveFormat, io::ImportExport>(io)
+    register_from_meta<Reg, io::rive::RiveFormat, io::ImportExport>(io)
         .def("to_json_data", [](io::rive::RiveFormat& self, const QByteArray& data){
             return self.to_json(data).toJson();
         }, py::arg("binary_data"))
@@ -177,7 +182,7 @@ void define_animatable(py::module& m)
             no_own
         )
     ;
-    register_from_meta<model::AnimatableBase, QObject>(m)
+    register_from_meta<Reg, model::AnimatableBase, QObject>(m)
         .def("keyframe", [](const model::AnimatableBase& a, model::FrameTime t){ return a.keyframe(t); }, no_own, py::arg("time"))
         .def("set_keyframe", [](model::AnimatableBase& a, model::FrameTime time, const QVariant& value){
             a.object()->document()->undo_stack().push(
@@ -357,10 +362,10 @@ void define_add_shape(PyClass& cls, PropT Owner::* prop = &Owner::shapes, const 
     ;
 }
 
-template<class Cls, class... Args, class... FwArgs>
+template<class Reg, class Cls, class... Args, class... FwArgs>
 auto register_constructible(py::module& module, FwArgs&&... args)
 {
-    return register_from_meta<Cls, Args...>(module, std::forward<FwArgs>(args)...)
+    return register_from_meta<Reg, Cls, Args...>(module, std::forward<FwArgs>(args)...)
         .def(py::init([](model::Document* doc) -> std::unique_ptr<Cls> {
             if ( !doc )
                 return {};
@@ -413,11 +418,11 @@ void register_py_module(py::module& glaxnimate_module)
         .attr("__doc__") = "Context manager that creates undo macros"
     ;
 
-    register_from_meta<model::DocumentNode, model::Object>(model)
+    register_from_meta<Reg, model::DocumentNode, model::Object>(model)
         .def_property_readonly("users", &model::DocumentNode::users, "List of properties pointing to this object")
     ;
 
-    auto document = register_from_meta<model::Document, QObject>(model)
+    auto document = register_from_meta<Reg, model::Document, QObject>(model)
         .def(py::init<QString>())
         .def(py::init<>())
         .def(
@@ -446,26 +451,26 @@ void register_py_module(py::module& glaxnimate_module)
         .def_readwrite("keywords", &model::Document::DocumentInfo::keywords)
     ;
 
-    register_from_meta<model::VisualNode, model::DocumentNode>(model);
-    register_from_meta<model::AnimationContainer, model::Object>(model);
-    register_from_meta<model::StretchableTime, model::Object>(model);
-    register_from_meta<model::Transform, model::Object>(model);
-    register_from_meta<model::MaskSettings, model::Object>(model);
+    register_from_meta<Reg, model::VisualNode, model::DocumentNode>(model);
+    register_from_meta<Reg, model::AnimationContainer, model::Object>(model);
+    register_from_meta<Reg, model::StretchableTime, model::Object>(model);
+    register_from_meta<Reg, model::Transform, model::Object>(model);
+    register_from_meta<Reg, model::MaskSettings, model::Object>(model);
 
     py::module shapes = model.def_submodule("shapes", "");
-    register_from_meta<model::ShapeElement, model::VisualNode>(shapes)
+    register_from_meta<Reg, model::ShapeElement, model::VisualNode>(shapes)
         .def("to_path", &model::ShapeElement::to_path)
     ;
 
     py::module defs = model.def_submodule("assets", "");
     py::class_<model::AssetBase>(defs, "AssetBase");
-    auto cls_comp = register_from_meta<model::Composition, model::VisualNode, model::AssetBase>(model);
+    auto cls_comp = register_from_meta<Reg, model::Composition, model::VisualNode, model::AssetBase>(model);
     define_add_shape(cls_comp);
 
     define_io(glaxnimate_module);
 
     define_animatable(model);
-    register_from_meta<model::detail::AnimatedPropertyPosition, model::AnimatableBase>(detail);
+    register_from_meta<Reg, model::detail::AnimatedPropertyPosition, model::AnimatableBase>(detail);
     register_animatable<QPointF, model::detail::AnimatedPropertyPosition>(detail);
     register_animatable<QSizeF>(detail);
     register_animatable<QVector2D>(detail);
@@ -473,7 +478,7 @@ void register_py_module(py::module& glaxnimate_module)
     register_animatable<float>(detail);
     register_animatable<int>(detail);
     register_animatable<QGradientStops>(detail);
-    register_from_meta<model::detail::AnimatedPropertyBezier, model::AnimatableBase>(detail);
+    register_from_meta<Reg, model::detail::AnimatedPropertyBezier, model::AnimatableBase>(detail);
     register_animatable<math::bezier::Bezier, model::detail::AnimatedPropertyBezier>(detail);
 
     py::class_<PyVisitorPublic, PyVisitorTrampoline>(model, "Visitor")
@@ -485,46 +490,46 @@ void register_py_module(py::module& glaxnimate_module)
         .def("on_visit_node", &PyVisitorPublic::on_visit_node)
     ;
 
-    register_from_meta<model::Asset, model::DocumentNode, model::AssetBase>(defs);
-    register_from_meta<model::BrushStyle, model::Asset>(defs);
-    register_constructible<model::NamedColor, model::BrushStyle>(defs);
-    register_constructible<model::GradientColors, model::Asset>(defs);
-    register_constructible<model::Gradient, model::BrushStyle>(defs, enums<model::Gradient::GradientType>{});
-    register_constructible<model::Bitmap, model::Asset>(defs);
-    register_from_meta<model::EmbeddedFont, model::Asset>(defs);
-    register_from_meta<model::BitmapList, model::DocumentNode>(defs);
-    register_from_meta<model::NamedColorList, model::DocumentNode>(defs);
-    register_from_meta<model::GradientList, model::DocumentNode>(defs);
-    register_from_meta<model::GradientColorsList, model::DocumentNode>(defs);
-    register_from_meta<model::CompositionList, model::DocumentNode>(defs);
-    register_from_meta<model::FontList, model::DocumentNode>(defs);
-    register_from_meta<model::Assets, model::DocumentNode>(defs);
+    register_from_meta<Reg, model::Asset, model::DocumentNode, model::AssetBase>(defs);
+    register_from_meta<Reg, model::BrushStyle, model::Asset>(defs);
+    register_constructible<Reg, model::NamedColor, model::BrushStyle>(defs);
+    register_constructible<Reg, model::GradientColors, model::Asset>(defs);
+    register_constructible<Reg, model::Gradient, model::BrushStyle>(defs, enums<model::Gradient::GradientType>{});
+    register_constructible<Reg, model::Bitmap, model::Asset>(defs);
+    register_from_meta<Reg, model::EmbeddedFont, model::Asset>(defs);
+    register_from_meta<Reg, model::BitmapList, model::DocumentNode>(defs);
+    register_from_meta<Reg, model::NamedColorList, model::DocumentNode>(defs);
+    register_from_meta<Reg, model::GradientList, model::DocumentNode>(defs);
+    register_from_meta<Reg, model::GradientColorsList, model::DocumentNode>(defs);
+    register_from_meta<Reg, model::CompositionList, model::DocumentNode>(defs);
+    register_from_meta<Reg, model::FontList, model::DocumentNode>(defs);
+    register_from_meta<Reg, model::Assets, model::DocumentNode>(defs);
 
-    register_from_meta<model::Shape, model::ShapeElement>(shapes);
-    register_from_meta<model::Modifier, model::ShapeElement>(shapes);
-    register_from_meta<model::Styler, model::ShapeElement>(shapes);
-    register_from_meta<model::Composable, model::ShapeElement>(shapes);
+    register_from_meta<Reg, model::Shape, model::ShapeElement>(shapes);
+    register_from_meta<Reg, model::Modifier, model::ShapeElement>(shapes);
+    register_from_meta<Reg, model::Styler, model::ShapeElement>(shapes);
+    register_from_meta<Reg, model::Composable, model::ShapeElement>(shapes, enums<renderer::BlendMode>{});
 
-    register_constructible<model::Rect, model::Shape>(shapes);
-    register_constructible<model::Ellipse, model::Shape>(shapes);
-    register_constructible<model::PolyStar, model::Shape>(shapes, enums<model::PolyStar::StarType>{});
-    register_constructible<model::Path, model::Shape>(shapes);
+    register_constructible<Reg, model::Rect, model::Shape>(shapes);
+    register_constructible<Reg, model::Ellipse, model::Shape>(shapes);
+    register_constructible<Reg, model::PolyStar, model::Shape>(shapes, enums<model::PolyStar::StarType>{});
+    register_constructible<Reg, model::Path, model::Shape>(shapes);
 
-    auto cls_group = register_constructible<model::Group, model::Composable>(shapes);
+    auto cls_group = register_constructible<Reg, model::Group, model::Composable>(shapes);
     define_add_shape(cls_group);
 
-    register_constructible<model::Layer, model::Group>(shapes);
-    register_constructible<model::PreCompLayer, model::Composable>(shapes);
-    register_constructible<model::Image, model::Composable>(shapes);
+    register_constructible<Reg, model::Layer, model::Group>(shapes);
+    register_constructible<Reg, model::PreCompLayer, model::Composable>(shapes);
+    register_constructible<Reg, model::Image, model::Composable>(shapes);
 
-    register_constructible<model::Fill, model::Styler>(shapes, enums<model::Fill::Rule>{});
-    register_constructible<model::Stroke, model::Styler>(shapes, enums<model::Stroke::Cap, model::Stroke::Join>{});
-    register_constructible<model::Repeater, model::Modifier>(shapes);
+    register_constructible<Reg, model::Fill, model::Styler>(shapes, enums<model::Fill::Rule>{});
+    register_constructible<Reg, model::Stroke, model::Styler>(shapes, enums<model::Stroke::Cap, model::Stroke::Join>{});
+    register_constructible<Reg, model::Repeater, model::Modifier>(shapes);
 
-    register_from_meta<model::PathModifier, model::Modifier>(shapes);
-    register_constructible<model::Trim, model::PathModifier>(shapes);
-    register_constructible<model::InflateDeflate, model::PathModifier>(shapes);
-    register_constructible<model::RoundCorners, model::PathModifier>(shapes);
-    register_constructible<model::OffsetPath, model::PathModifier>(shapes);
-    register_constructible<model::ZigZag, model::PathModifier>(shapes);
+    register_from_meta<Reg, model::PathModifier, model::Modifier>(shapes);
+    register_constructible<Reg, model::Trim, model::PathModifier>(shapes);
+    register_constructible<Reg, model::InflateDeflate, model::PathModifier>(shapes);
+    register_constructible<Reg, model::RoundCorners, model::PathModifier>(shapes);
+    register_constructible<Reg, model::OffsetPath, model::PathModifier>(shapes);
+    register_constructible<Reg, model::ZigZag, model::PathModifier>(shapes);
 }

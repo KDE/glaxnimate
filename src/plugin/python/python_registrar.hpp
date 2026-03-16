@@ -66,15 +66,29 @@ struct RegisterProperty
 
 struct PythonRegistrar
 {
-    /*
-    using val_type = py::handle;
-
-    template<class T>
-    static T val_cast(const val_type& val) { return val.cast<T>(); }
+    using namespace_ = py::handle;
 
     template<class CppClass, class... Args>
     using class_ = py::class_<CppClass, Args...>;
-*/
+
+    using module = py::module;
+
+    static module submodule(module& parent, const char* name, const char* docs = "")
+    {
+        return parent.def_submodule(name, docs);
+    }
+
+    template<class CppClass, class... Args>
+    static class_<CppClass, Args...> define_class(const module& mod, const char* name)
+    {
+        return class_<CppClass, Args...>(mod, name);
+    }
+
+    template<class Class>
+    static void set_class_static(Class& reg, const char* name, const QVariant& value)
+    {
+        reg.attr(name) = value;
+    }
 
     template<class Class>
     static void register_method(const QMetaMethod& meth, Class& handle)
@@ -152,6 +166,17 @@ struct PythonRegistrar
     static bool register_property(const QMetaProperty& prop, Class& handle)
     {
         return type_dispatch<RegisterProperty, bool>(prop.userType(), prop, handle);
+    }
+
+
+    template<class EnumT, class Class>
+    static void register_enum(const QMetaEnum& meta, Class& scope)
+    {
+        py::enum_<EnumT> pyenum(scope, meta.name());
+        for ( int i = 0; i < meta.keyCount(); i++ )
+            pyenum.value(meta.key(i), EnumT(meta.value(i)));
+
+        // scope.attr(meta.name()) = pyenum;
     }
 };
 

@@ -27,37 +27,6 @@ emscripten::val val_ptr(T* ptr, Policies...)
 
 namespace glaxnimate::js {
 
-
-template<class EnumT>
-/*PyEnumInfo*/void register_enum(const QMetaEnum& meta)
-{
-    emscripten::enum_<EnumT> pyenum(meta.name());
-    for ( int i = 0; i < meta.keyCount(); i++ )
-        pyenum.value(meta.key(i), EnumT(meta.value(i)));
-
-    // return {meta.name(), pyenum};
-}
-
-template<class... Enums>
-struct enums;
-
-template<class EnumT, class... Others>
-struct enums<EnumT, Others...>
-    : public enums<Others...>
-{
-    void process(/*std::vector<PyEnumInfo>& out*/)
-    {
-        /*out.push_back(*/register_enum<EnumT>(QMetaEnum::fromType<EnumT>())/*)*/;
-        enums<Others...>::process(/*out*/);
-    }
-};
-
-template<>
-struct enums<>
-{
-    void process(/*std::vector<PyEnumInfo>&*/) {}
-};
-
 template<class T>
 struct FunctionInfo : public FunctionInfo<decltype(&T::operator())> {};
 
@@ -350,36 +319,7 @@ struct BindingType<QByteArray>
 
 BIND_OVERLOAD(QByteArray)
 
-
-} // namespace emscripten::internal
-
-namespace glaxnimate::js {
-
-template<class... Args> struct Emclass;
-template<class CppClass> struct Emclass<CppClass> { using type = emscripten::class_<CppClass>; };
-template<class CppClass, class Base> struct Emclass<CppClass, Base> { using type = emscripten::class_<CppClass, emscripten::base<Base>>; };
-template<class... Args> using emclass_t = typename Emclass<Args...>::type;
-
-template<class CppClass, class... Args>
-emclass_t<CppClass, Args...> declare_from_meta()
-{
-    const QMetaObject& meta = CppClass::staticMetaObject;
-    const char* name = meta.className();
-    const char* clean_name = std::strrchr(name, ':');
-    if ( clean_name == nullptr )
-        clean_name = name;
-    else
-        clean_name++;
-
-    return emclass_t<CppClass, Args...> (clean_name);
-}
-
-} // namespace glaxnimate::js
-
 // Hack using emscripten internals to allow settings class static properties that aren't pointers
-namespace emscripten {
-namespace internal {
-
 template<typename GetterReturnType>
 struct GetterPolicy<std::function<GetterReturnType()>> {
     typedef GetterReturnType ReturnType;
@@ -397,16 +337,19 @@ struct GetterPolicy<std::function<GetterReturnType()>> {
         return internal::getContext(context);
     }
 };
-} // namespace internal
+} // namespace emscripten::internal
+
+namespace glaxnimate::js {
 template<
     class ClassType,
     class FieldType,
-    typename PropertyType = internal::DeduceArgumentsTag,
+    typename PropertyType = emscripten::internal::DeduceArgumentsTag,
     typename... Policies
 >
 void class_static_property(const char* name, FieldType value, Policies...)
 {
-    using namespace internal;
+    using namespace emscripten;
+    using namespace emscripten::internal;
 
     using Getter = std::function<FieldType()>;
     Getter getter([value]{return value;});
@@ -428,4 +371,4 @@ void class_static_property(const char* name, FieldType value, Policies...)
         0,
         0);
 }
-} // namespace emscripten
+} // namespace glaxnimate::js

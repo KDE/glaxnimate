@@ -35,11 +35,30 @@ struct ConvertReturn
     }
 };
 
+template<class... Args> struct Emclass;
+template<class CppClass> struct Emclass<CppClass> { using type = emscripten::class_<CppClass>; };
+template<class CppClass, class Base> struct Emclass<CppClass, Base> { using type = emscripten::class_<CppClass, emscripten::base<Base>>; };
+
 
 struct JsRegistrar
 {
+    template<class CppClass, class... Args>
+    using class_ = typename Emclass<CppClass, Args...>::type;
+
+    using module = int;
+    static module submodule(module&, const char*, const char* = "")
+    {
+        return 0;
+    }
+
+    template<class CppClass, class... Args>
+    static class_<CppClass, Args...> define_class(const module&, const char* name)
+    {
+        return class_<CppClass, Args...>(name);
+    }
+
     template<class Class>
-    static bool register_method(const QMetaMethod& meth, Class& handle)
+    static void register_method(const QMetaMethod& meth, Class& handle)
     {
 
         handle.function(meth.name().constData(),
@@ -129,62 +148,34 @@ struct JsRegistrar
         return true;
     }
 
+
+    template<class Class>
+    static void set_class_static(Class&, const char* name, const QVariant& value)
+    {
+        class_static_property<typename Class::class_type>(name, value);
+    }
+
+    template<class EnumT, class Class>
+    static void register_enum(const QMetaEnum& meta, Class& scope)
+    {
+        QVariantMap static_val;
+        emscripten::enum_<EnumT> jsenum(meta.name());
+        for ( int i = 0; i < meta.keyCount(); i++ )
+        {
+            jsenum.value(meta.key(i), EnumT(meta.value(i)));
+            static_val[meta.key(i)] = QVariant::fromValue(EnumT(meta.value(i)));
+        }
+
+        set_class_static(scope, meta.name(), static_val);
+    }
 };
 
 
-template<class CppClass, class... Args, class... Enums>
-emclass_t<CppClass, Args...>& register_from_meta(emclass_t<CppClass, Args...>& reg, enums<Enums...> reg_enums = {})
-{
-    using Reg = JsRegistrar;
-    const QMetaObject& meta = CppClass::staticMetaObject;
-
-    for ( int i = meta.propertyOffset(); i < meta.propertyCount(); i++ )
-    {
-        script::register_property<Reg>(meta.property(i), meta, reg);
-    }
-
-    for ( int i = meta.methodOffset(); i < meta.methodCount(); i++ )
-    {
-        script::register_method<Reg>(meta.method(i), meta, reg);
-    }
-
-
-    if ( meta.classInfoOffset() < meta.classInfoCount() )
-    {
-        emscripten::val classinfo = emscripten::val::object();
-
-        for ( int i = meta.classInfoOffset(); i < meta.classInfoCount(); i++ )
-        {
-            auto info = meta.classInfo(i);
-            classinfo.set(info.name(), emscripten::val(info.value()));
-        }
-
-        emscripten::class_static_property<CppClass>("__classinfo__", classinfo);
-    }
-
-
-    /*std::vector<PyEnumInfo> enum_info;*/
-    reg_enums.process(/*, enum_info*/);
-    /*for ( const auto& info : enum_info )
-        reg.attr(info.name) = info.enum_handle;*/
-
-    return reg;
-}
-
-template<class CppClass, class... Args, class... Enums>
-emclass_t<CppClass, Args...> register_from_meta(enums<Enums...> reg_enums = {})
-{
-    emclass_t<CppClass, Args...> reg = declare_from_meta<CppClass, Args...>();
-
-    register_from_meta<CppClass, Args...>(reg, reg_enums);
-    return reg;
-}
-
-template<class CppClass, class... Args, class... Enums>
-emclass_t<CppClass, Args...> register_constructible(enums<Enums...> reg_enums = {})
+template<class Reg, class CppClass, class... Args, class... Enums>
+typename Reg::template class_<CppClass, Args...> register_constructible(typename Reg::module& mod, script::enums<Enums...> reg_enums = {})
 {
     // TODO make constructible?
-    return register_from_meta<CppClass, Args...>(reg_enums);
+    return script::register_from_meta<Reg, CppClass, Args...>(mod, reg_enums);
 }
 
 } // namespace glaxnimate::js
