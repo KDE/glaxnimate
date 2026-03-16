@@ -31,6 +31,11 @@ include_directories(${Python3_INCLUDE_DIRS})
 add_library(GlaxnimatePythonEmbed OBJECT ${SOURCES} embed.cpp)
 target_link_libraries(GlaxnimatePythonEmbed PUBLIC ${Python3_LIBRARIES} Glaxnimate::Core Glaxnimate::Plugin Glaxnimate::Trace)
 
+if(MSVC)
+    target_compile_options(GlaxnimatePythonEmbed PUBLIC /bigobj)
+endif()
+
+
 pybind11_add_module(glaxnimate_python EXCLUDE_FROM_ALL ${SOURCES} module.cpp)
 target_link_libraries(glaxnimate_python PUBLIC ${Python3_LIBRARIES} Glaxnimate::Core Glaxnimate::Plugin Glaxnimate::Trace)
 set_target_properties(
