@@ -290,5 +290,45 @@ private:
 template<> inline void ArgumentBuffer::allocate_return_type<void>(const char*){}
 template<> inline void ArgumentBuffer::return_value<void>(){}
 
+template<class CppType>
+struct AllocateReturn
+{
+    static bool do_the_thing(script::ArgumentBuffer& buf, const char* name)
+    {
+        buf.allocate_return_type<CppType>(name);
+        return true;
+    }
+};
+
+
+template<class T> QVariant qvariant_from_cpp(const T& t) { return QVariant::fromValue(t); }
+template<class T> T qvariant_to_cpp(const QVariant& v) { return v.value<T>(); }
+
+template<> inline QVariant qvariant_from_cpp<std::string>(const std::string& t) { return QString::fromStdString(t); }
+template<> inline std::string qvariant_to_cpp<std::string>(const QVariant& v) { return v.toString().toStdString(); }
+
+template<> inline QVariant qvariant_from_cpp<QVariant>(const QVariant& t) { return t; }
+template<> inline QVariant qvariant_to_cpp<QVariant>(const QVariant& v) { return v; }
+
+
+template<> inline void qvariant_to_cpp<void>(const QVariant&) {}
+
+
+template<>
+QVariant inline qvariant_from_cpp<std::vector<QObject*>>(const std::vector<QObject*>& t)
+{
+    QVariantList list;
+    for ( QObject* obj : t )
+        list.push_back(QVariant::fromValue(obj));
+    return list;
+
+}
+template<> inline std::vector<QObject*> qvariant_to_cpp<std::vector<QObject*>>(const QVariant& v)
+{
+    std::vector<QObject*> objects;
+    for ( const QVariant& vi : v.toList() )
+        objects.push_back(vi.value<QObject*>());
+    return objects;
+}
 
 } // namespace glaxnimate::script

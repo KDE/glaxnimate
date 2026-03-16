@@ -27,12 +27,57 @@ struct ConvertArgument
     }
 };
 
-
-template<class ReturnType>
-struct RegisterMethod
+template<class CppType>
+struct ConvertReturn
 {
+    static QVariant do_the_thing(script::ArgumentBuffer& buf)
+    {
+        return qvariant_from_cpp(buf.return_value<CppType>());
+    }
+};
+
+template<class CppType>
+struct RegisterProperty
+{
+    template<class Class>
+    static bool do_the_thing(const QMetaProperty& prop, Class& reg)
+    {
+        const char* name = prop.name();
+        std::string sig = "Type: " + fix_type(prop.typeName());
+        auto get = py::cpp_function(
+            [prop](const QObject* o) { return qvariant_to_cpp<CppType>(prop.read(o)); },
+            py::return_value_policy::automatic_reference,
+            sig.c_str()
+        );
+
+        py::cpp_function set;
+        if ( prop.isWritable() )
+            set = py::cpp_function([prop](QObject* o, const CppType& v) {
+                prop.write(o, qvariant_from_cpp<CppType>(v));
+            });
+
+
+        reg.def_property(name, get, set, "");
+        return true;
+    }
+};
+
+
+
+struct PythonRegistrar
+{
+    /*
+    using val_type = py::handle;
+
     template<class T>
-    static bool do_the_thing(const QMetaMethod& meth, T& handle)
+    static T val_cast(const val_type& val) { return val.cast<T>(); }
+
+    template<class CppClass, class... Args>
+    using class_ = py::class_<CppClass, Args...>;
+*/
+
+    template<class Class>
+    static void register_method(const QMetaMethod& meth, Class& handle)
     {
         std::string signature = "Signature:\n";
         signature += meth.name().toStdString();
@@ -45,22 +90,12 @@ struct RegisterMethod
             signature += names[i].toStdString();
             signature += ": ";
             signature += fix_type(types[i]);
-
-            if ( meth.parameterType(i) == QMetaType::UnknownType )
-            {
-                auto cls = py::str(handle.attr("__name__"));
-                log::LogStream("Python", "", log::Error)
-                    << "Invalid parameter" << QString::fromStdString(cls) << "::" << meth.name()
-                    << i << names[i]
-                    << "of type" << meth.parameterType(i) << types[i];
-                return false;
-            }
         }
         signature += ") -> ";
         signature += fix_type(meth.typeName());
 
         handle.def(meth.name().constData(),
-            [meth](QObject* o, py::args args) -> ReturnType
+            [meth](QObject* o, py::args args) -> QVariant
             {
                 int len = py::len(args);
                 if ( len > 9 )
@@ -69,7 +104,8 @@ struct RegisterMethod
                 try {
                     ArgumentBuffer argbuf(meth);
 
-                    argbuf.allocate_return_type<ReturnType>(meth.typeName());
+
+                    script::type_dispatch<AllocateReturn, bool>(meth.returnType(), argbuf, meth.typeName());
 
                     for ( int i = 0; i < len; i++ )
                     {
@@ -96,7 +132,8 @@ struct RegisterMethod
                     );
                     if ( !ok )
                         throw pybind11::value_error("Invalid method invocation");
-                    return argbuf.return_value<ReturnType>();
+
+                    return script::type_dispatch<ConvertReturn, QVariant>(meth.returnType(), argbuf);
 
                 } catch ( const ScriptError& err ) {
                     throw py::type_error(err.what());
@@ -108,27 +145,13 @@ struct RegisterMethod
             py::return_value_policy::automatic_reference,
             signature.c_str()
         );
-
-        return true;
     }
-};
 
-struct PythonRegistrar
-{
-    /*
-    using val_type = py::handle;
-
-    template<class T>
-    static T val_cast(const val_type& val) { return val.cast<T>(); }
-
-    template<class CppClass, class... Args>
-    using class_ = py::class_<CppClass, Args...>;
-*/
 
     template<class Class>
-    static void register_method(const QMetaMethod& meth, Class& handle)
+    static bool register_property(const QMetaProperty& prop, Class& handle)
     {
-        type_dispatch_maybe_void<RegisterMethod, bool>(meth.returnType(), meth, handle);
+        return type_dispatch<RegisterProperty, bool>(prop.userType(), prop, handle);
     }
 };
 

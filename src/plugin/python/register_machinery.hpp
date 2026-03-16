@@ -20,20 +20,12 @@ namespace py = pybind11;
 
 namespace glaxnimate::plugin::python {
 
-struct SCRIPT_HIDDEN PyPropertyInfo
-{
-    const char* name = nullptr;
-    py::cpp_function get;
-    py::cpp_function set;
-};
 
 struct SCRIPT_HIDDEN PyEnumInfo
 {
     const char* name = nullptr;
     py::handle enum_handle;
 };
-
-PyPropertyInfo register_property(const QMetaProperty& prop, const QMetaObject& cls);
 
 template<class EnumT>
 PyEnumInfo register_enum(const QMetaEnum& meta, py::handle& scope)
@@ -97,14 +89,12 @@ py::class_<CppClass, Args...>& register_from_meta(py::class_<CppClass, Args...>&
 
     for ( int i = meta.propertyOffset(); i < meta.propertyCount(); i++ )
     {
-        PyPropertyInfo pyprop = register_property(meta.property(i), meta);
-        if ( pyprop.name )
-            reg.def_property(pyprop.name, pyprop.get, pyprop.set, "");
+        register_property<Reg>(meta.property(i), meta, reg);
     }
 
     for ( int i = meta.methodOffset(); i < meta.methodCount(); i++ )
     {
-        register_method<Reg>(meta.method(i), reg, meta);
+        register_method<Reg>(meta.method(i), meta, reg);
     }
 
     if ( meta.classInfoOffset() < meta.classInfoCount() )

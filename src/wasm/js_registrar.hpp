@@ -24,15 +24,6 @@ struct ConvertArgument
     }
 };
 
-template<class CppType>
-struct AllocateReturn
-{
-    static bool do_the_thing(script::ArgumentBuffer& buf, const char* name)
-    {
-        buf.allocate_return_type<CppType>(name);
-        return true;
-    }
-};
 
 
 template<class CppType>
@@ -48,8 +39,9 @@ struct ConvertReturn
 struct JsRegistrar
 {
     template<class Class>
-    static void register_method(const QMetaMethod& meth, Class& handle)
+    static bool register_method(const QMetaMethod& meth, Class& handle)
     {
+
         handle.function(meth.name().constData(),
             fn([meth](
                 const emscripten::val& self,
@@ -66,7 +58,7 @@ struct JsRegistrar
             {
                 script::ArgumentBuffer argbuf(meth);
 
-                script::type_dispatch<AllocateReturn, bool>(meth.returnType(), argbuf, meth.typeName());
+                script::type_dispatch<script::AllocateReturn, bool>(meth.returnType(), argbuf, meth.typeName());
 
                 QObject* o = qvariant_cast<QObject*>(self.as<QVariant>());
                 if ( !o )
@@ -118,6 +110,25 @@ struct JsRegistrar
             emscripten::return_value_policy::reference()
         );
     }
+
+
+    template<class Class>
+    static bool register_property(const QMetaProperty& prop, Class& reg)
+    {
+        auto getter = fn([prop](const QObject& self) {
+            return qvariant_to_val(prop.read(&self));
+        });
+        if ( prop.isWritable() )
+            reg.property(prop.name(), std::move(getter), fn(
+                [prop]( QObject& self, const QVariant& val) {
+                    prop.write(&self, val);
+                }
+            ));
+        else
+            reg.property(prop.name(), std::move(getter));
+        return true;
+    }
+
 };
 
 
@@ -129,48 +140,12 @@ emclass_t<CppClass, Args...>& register_from_meta(emclass_t<CppClass, Args...>& r
 
     for ( int i = meta.propertyOffset(); i < meta.propertyCount(); i++ )
     {
-        // PyPropertyInfo pyprop = register_property(meta.property(i), meta);
-        // if ( pyprop.name )
-            // reg.def_property(pyprop.name, pyprop.get, pyprop.set, "");
-
-        auto prop = meta.property(i);
-        if ( !prop.isScriptable() )
-            continue;
-
-        // qDebug() << meta.className() << emscripten::internal::TypeID<CppClass>::get() << i << prop.name() << prop.metaType();
-        /*int meta_type = prop.typeId();
-        if ( meta_type >= QMetaType::User )
-        {
-            if ( QMetaType(meta_type).flags() & QMetaType::IsEnumeration )
-            {
-                // TODO
-            }
-            else
-            {
-                reg.property(prop.name(), std::function<QObject*(const CppClass&)>([prop](const CppClass& self) {
-                    return qvariant_cast<QObject*>(prop.read(&self));
-                }), emscripten::return_value_policy::reference());
-            }
-        }
-        else*/
-        {
-            auto getter = fn([prop](const CppClass& self) {
-                return qvariant_to_val(prop.read(&self));
-            });
-            if ( prop.isWritable() )
-                reg.property(prop.name(), std::move(getter), fn(
-                    [prop]( CppClass& self, const QVariant& val) {
-                        prop.write(&self, val);
-                    }
-                ));
-            else
-                reg.property(prop.name(), std::move(getter));
-        }
+        script::register_property<Reg>(meta.property(i), meta, reg);
     }
 
     for ( int i = meta.methodOffset(); i < meta.methodCount(); i++ )
     {
-        script::register_method<Reg>(meta.method(i), reg, meta);
+        script::register_method<Reg>(meta.method(i), meta, reg);
     }
 
 
