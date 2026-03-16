@@ -234,7 +234,7 @@ struct PythonRegistrar
     template<class CppClass, class... Args>
     static void glaxnimate_constructible(class_<CppClass, Args...>& reg)
     {
-        return reg.def(py::init([](model::Document* doc) -> std::unique_ptr<CppClass> {
+        reg.def(py::init([](model::Document* doc) -> std::unique_ptr<CppClass> {
             if ( !doc )
                 return {};
             return std::make_unique<CppClass>(doc);
