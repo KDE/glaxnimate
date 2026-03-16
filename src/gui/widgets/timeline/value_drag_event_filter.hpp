@@ -12,12 +12,17 @@ namespace glaxnimate::gui {
 
 class ValueDragEventFilter : public QObject
 {
+    Q_OBJECT
+
 public:
     ValueDragEventFilter(QAbstractItemView* view, int column);
     ~ValueDragEventFilter();
 
 protected:
     bool eventFilter(QObject *watched, QEvent *event) override;
+
+Q_SIGNALS:
+    void clicked(const QModelIndex& index);
 
 private:
     class Private;

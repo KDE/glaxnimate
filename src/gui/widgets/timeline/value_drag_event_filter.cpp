@@ -34,12 +34,15 @@ public:
     qreal radius_scale = 1;
     bool clamp = false;
     qreal round = 1;
+    bool accepted_press = false;
 
     QAbstractItemView* view = nullptr;
     item_models::PropertyModelBase* property_model = nullptr;
     QAbstractProxyModel* proxy = nullptr;
     int column = 0;
+    bool dragged = false;
 
+    static constexpr const int sensitivity = 3*3;
     static constexpr const int mult_min = -1;
     static constexpr const int mult_max = 3;
 
@@ -148,14 +151,13 @@ public:
             index = proxy->mapToSource(index);
         if ( index.column() != column )
             return false;
+
+        accepted_press = true;
         if ( !grab_property(property_model->item(index).property) )
-            return false;
+            return true;
 
+        dragged = false;
         drag_start = event->pos();
-
-        QApplication::setOverrideCursor(prop->traits().type == model::PropertyTraits::Point ? Qt::SizeAllCursor : Qt::SizeHorCursor);
-        view->viewport()->grabMouse();
-
         event->accept();
         return true;
     }
@@ -235,17 +237,67 @@ public:
     bool mouse_move(QMouseEvent* event)
     {
         if ( !prop )
-            return false;
+            return accepted_press;
 
-        set_value(event, false);
         event->accept();
+
+        if ( !dragged )
+        {
+            // Avoid grabs on small movements
+            if ( math::length_squared(drag_start - event->pos()) < 3 )
+                return true;
+
+            QApplication::setOverrideCursor(prop->traits().type == model::PropertyTraits::Point ? Qt::SizeAllCursor : Qt::SizeHorCursor);
+            view->viewport()->grabMouse();
+        }
+
+        dragged = true;
+        set_value(event, false);
         return true;
     }
 
     bool mouse_release(QMouseEvent* event)
     {
-        if ( !prop )
+        if ( event->button() != Qt::LeftButton )
+        {
             return false;
+        }
+
+        if ( !prop )
+        {
+            if ( accepted_press )
+            {
+                QModelIndex index = view->indexAt(event->pos());
+                auto clicked_prop = property_model->item(index).property;
+                if ( clicked_prop )
+                {
+                    if ( clicked_prop->traits().type == model::PropertyTraits::Bool )
+                    {
+                        if ( !(clicked_prop->traits().flags & model::PropertyTraits::ReadOnly) )
+                        {
+                            auto bool_prop = static_cast<model::Property<bool>*>(clicked_prop);
+                            bool_prop->set_undoable(!bool_prop->get());
+                        }
+                    }
+                    else
+                    {
+                        view->edit(index);
+                    }
+                }
+
+            }
+            bool accepted = accepted_press;
+            accepted_press = false;
+            return accepted;
+        }
+
+        accepted_press = false;
+        if ( !dragged )
+        {
+            QModelIndex index = view->indexAt(event->pos());
+            view->edit(index);
+            return true;
+        }
 
         set_value(event, true);
         QApplication::restoreOverrideCursor();
