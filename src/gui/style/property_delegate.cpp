@@ -89,13 +89,15 @@ QWidget* PropertyDelegate::createEditor(QWidget *parent, const QStyleOptionViewI
 
 static void combo_setup(QComboBox* combo)
 {
+    /*
     QTimer* cheeky = new QTimer(combo);
     QObject::connect(cheeky, &QTimer::timeout, combo, [combo]{
         combo->setFocus();
         combo->showPopup();
     });
     cheeky->setSingleShot(true);
-    cheeky->start(qApp->doubleClickInterval() / 2);
+    cheeky->start(qApp->doubleClickInterval() / 2);*/
+    QTimer::singleShot(0, combo, &QComboBox::showPopup);
 }
 
 void PropertyDelegate::setEditorData ( QWidget * editor, const QModelIndex & index ) const
@@ -414,6 +416,7 @@ bool PropertyDelegate::set_editor_data(QWidget *editor, const QVariant &data, in
     {
         EnumCombo* combo = static_cast<EnumCombo*>(editor);
         combo->set_data_from_qvariant(data);
+        combo_setup(combo);
         return true;
     }
     // Cradient
