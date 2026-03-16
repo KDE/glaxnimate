@@ -10,27 +10,8 @@
 
 #include "glaxnimate/io/io_registry.hpp"
 #include "glaxnimate/renderer/renderer.hpp"
-#include "glaxnimate/model/assets/assets.hpp"
 
-#include "glaxnimate/model/shapes/style/stroke.hpp"
-#include "glaxnimate/model/shapes/style/fill.hpp"
-
-#include "glaxnimate/model/shapes/shapes/ellipse.hpp"
-#include "glaxnimate/model/shapes/shapes/polystar.hpp"
-#include "glaxnimate/model/shapes/shapes/rect.hpp"
-#include "glaxnimate/model/shapes/shapes/path.hpp"
-
-#include "glaxnimate/model/shapes/composable/layer.hpp"
-#include "glaxnimate/model/shapes/composable/precomp_layer.hpp"
-#include "glaxnimate/model/shapes/composable/image.hpp"
-
-#include "glaxnimate/model/shapes/modifiers/repeater.hpp"
-#include "glaxnimate/model/shapes/modifiers/trim.hpp"
-#include "glaxnimate/model/shapes/modifiers/inflate_deflate.hpp"
-#include "glaxnimate/model/shapes/modifiers/zig_zag.hpp"
-#include "glaxnimate/model/shapes/modifiers/offset_path.hpp"
-#include "glaxnimate/model/shapes/modifiers/round_corners.hpp"
-
+#include "glaxnimate/script/glaxnimate_model.hpp"
 
 #include "js_registrar.hpp"
 
@@ -238,6 +219,8 @@ void initialize()
     io::IoRegistry::load_formats();
 }
 
+
+
 } // glaxnimate::js
 
 
@@ -304,15 +287,10 @@ EMSCRIPTEN_BINDINGS(glaxnimate_wasm)
     auto shapes = Reg::submodule(glaxnimate_module, "shapes");
 
     register_from_meta<Reg, model::Document, QObject>(model);
-
     register_from_meta<Reg, model::Object, QObject>(model);
     register_from_meta<Reg, model::DocumentNode, model::Object>(model);
-    register_from_meta<Reg, model::VisualNode, model::DocumentNode>(model);
+    register_top_level<Reg>(model);
 
-    register_from_meta<Reg, model::AnimationContainer, model::Object>(model);
-    register_from_meta<Reg, model::StretchableTime, model::Object>(model);
-    register_from_meta<Reg, model::Transform, model::Object>(model);
-    register_from_meta<Reg, model::MaskSettings, model::Object>(model);
 
     register_from_meta<Reg, model::AnimatableBase, QObject>(model)
         .function("get", fn([](const model::AnimatableBase& anim){
@@ -336,47 +314,13 @@ EMSCRIPTEN_BINDINGS(glaxnimate_wasm)
     register_from_meta<Reg, model::detail::AnimatedPropertyBezier, model::AnimatableBase>(model);
     register_animatable<math::bezier::Bezier, model::detail::AnimatedPropertyBezier>();
 
-    register_from_meta<Reg, model::Assets, model::DocumentNode>(defs);
-    register_from_meta<Reg, model::Asset, model::DocumentNode>(defs);
-    register_from_meta<Reg, model::Composition, model::VisualNode>(defs);
-    register_from_meta<Reg, model::CompositionList, model::DocumentNode>(defs);
-    register_from_meta<Reg, model::NamedColor, model::Asset>(defs);
-    register_from_meta<Reg, model::NamedColorList, model::DocumentNode>(defs);
-    register_from_meta<Reg, model::GradientColors, model::Asset>(defs);
-    register_from_meta<Reg, model::GradientColorsList, model::DocumentNode>(defs);
-    register_from_meta<Reg, model::Gradient, model::Asset>(defs);
-    register_from_meta<Reg, model::GradientList, model::DocumentNode>(defs);
-    register_from_meta<Reg, model::Bitmap, model::Asset>(defs);
-    register_from_meta<Reg, model::BitmapList, model::DocumentNode>(defs);
-    register_from_meta<Reg, model::EmbeddedFont, model::Asset>(defs);
-    register_from_meta<Reg, model::FontList, model::DocumentNode>(defs);
+    auto cls_comp = register_from_meta<Reg, model::Composition, model::VisualNode>(defs);
+    Reg::define_add_shape(cls_comp);
 
-    register_from_meta<Reg, model::ShapeElement, model::VisualNode>(shapes);
-    register_from_meta<Reg, model::Shape, model::ShapeElement>(shapes);
-    register_from_meta<Reg, model::Modifier, model::ShapeElement>(shapes);
-    register_from_meta<Reg, model::Styler, model::ShapeElement>(shapes);
-    register_from_meta<Reg, model::Composable, model::ShapeElement>(shapes);
+    register_from_meta<Reg, model::ShapeElement, model::VisualNode>(shapes)
+        .function("to_path", &model::ShapeElement::to_path)
+    ;
 
-    register_constructible<Reg, model::Rect, model::Shape>(shapes);
-    register_constructible<Reg, model::Ellipse, model::Shape>(shapes);
-    register_constructible<Reg, model::PolyStar, model::Shape>(shapes, enums<model::PolyStar::StarType>{});
-    register_constructible<Reg, model::Path, model::Shape>(shapes);
-
-    auto cls_group = register_constructible<Reg, model::Group, model::Composable>(shapes);
-    // define_add_shape(cls_group);
-
-    register_constructible<Reg, model::Layer, model::Group>(shapes);
-    register_constructible<Reg, model::PreCompLayer, model::Composable>(shapes);
-    register_constructible<Reg, model::Image, model::Composable>(shapes);
-
-    register_constructible<Reg, model::Fill, model::Styler>(shapes, enums<model::Fill::Rule>{});
-    register_constructible<Reg, model::Stroke, model::Styler>(shapes, enums<model::Stroke::Cap, model::Stroke::Join>{});
-    register_constructible<Reg, model::Repeater, model::Modifier>(shapes);
-
-    register_from_meta<Reg, model::PathModifier, model::Modifier>(shapes);
-    register_constructible<Reg, model::Trim, model::PathModifier>(shapes);
-    register_constructible<Reg, model::InflateDeflate, model::PathModifier>(shapes);
-    register_constructible<Reg, model::RoundCorners, model::PathModifier>(shapes);
-    register_constructible<Reg, model::OffsetPath, model::PathModifier>(shapes);
-    register_constructible<Reg, model::ZigZag, model::PathModifier>(shapes);
+    register_assets<Reg>(defs);
+    register_shapes<Reg>(shapes);
 }

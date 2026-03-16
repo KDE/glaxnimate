@@ -168,14 +168,39 @@ struct JsRegistrar
 
         set_class_static(scope, meta.name(), static_val);
     }
+
+// Glaxnimate-spacific stuff
+
+    template<
+        class JsClass,
+        class PropT = model::ObjectListProperty<model::ShapeElement>,
+        class Owner = typename JsClass::class_type,
+        class ItemT = typename PropT::value_type
+    >
+    static void define_add_shape(JsClass& cls, PropT Owner::* prop = &Owner::shapes, const std::string& name = "add_shape")
+    {
+        cls.function(
+            name.c_str(),
+            fn([prop](Owner* owner, const emscripten::val& what, const std::optional<emscripten::val>& index) -> ItemT* {
+                int i = index ? index->as<int>() : -1;
+                if ( what.isString() )
+                    return script::AddShapeName<Owner, PropT, ItemT>(prop)(owner, what.as<QString>(), i);
+                return script::AddShapeClone<Owner, PropT, ItemT>(prop)(
+                    owner,
+                    qobject_cast<model::ShapeElement*>(qvariant_cast<QObject*>(what.as<QVariant>())),
+                    i
+                );
+            }),
+            emscripten::return_value_policy::reference()
+        )
+        ;
+    }
+
+    template<class CppClass, class... Args>
+    static void glaxnimate_constructible(class_<CppClass, Args...>& cls)
+    {
+        cls.constructor(fn([](model::Document* doc){ return std::make_unique<CppClass>(doc); }), emscripten::allow_raw_pointers());
+    }
 };
-
-
-template<class Reg, class CppClass, class... Args, class... Enums>
-typename Reg::template class_<CppClass, Args...> register_constructible(typename Reg::module& mod, script::enums<Enums...> reg_enums = {})
-{
-    // TODO make constructible?
-    return script::register_from_meta<Reg, CppClass, Args...>(mod, reg_enums);
-}
 
 } // namespace glaxnimate::js

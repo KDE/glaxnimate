@@ -6,32 +6,7 @@
 
 #include <pybind11/operators.h>
 
-#include "glaxnimate/model/document.hpp"
 #include "glaxnimate/model/visitor.hpp"
-
-#include "glaxnimate/model/shapes/composable/group.hpp"
-#include "glaxnimate/model/shapes/composable/layer.hpp"
-#include "glaxnimate/model/shapes/composable/precomp_layer.hpp"
-#include "glaxnimate/model/shapes/composable/image.hpp"
-
-#include "glaxnimate/model/shapes/shapes/rect.hpp"
-#include "glaxnimate/model/shapes/shapes/ellipse.hpp"
-#include "glaxnimate/model/shapes/shapes/path.hpp"
-#include "glaxnimate/model/shapes/shapes/polystar.hpp"
-
-#include "glaxnimate/model/shapes/style/fill.hpp"
-#include "glaxnimate/model/shapes/style/stroke.hpp"
-
-#include "glaxnimate/model/shapes/modifiers/repeater.hpp"
-#include "glaxnimate/model/shapes/modifiers/trim.hpp"
-#include "glaxnimate/model/shapes/modifiers/inflate_deflate.hpp"
-#include "glaxnimate/model/shapes/modifiers/round_corners.hpp"
-#include "glaxnimate/model/shapes/modifiers/offset_path.hpp"
-#include "glaxnimate/model/shapes/modifiers/zig_zag.hpp"
-
-#include "glaxnimate/model/assets/assets.hpp"
-#include "glaxnimate/model/assets/named_color.hpp"
-#include "glaxnimate/model/assets/composition.hpp"
 
 #include "glaxnimate/command/animation_commands.hpp"
 #include "glaxnimate/command/undo_macro_guard.hpp"
@@ -44,7 +19,7 @@
 #include "glaxnimate/io/svg/svg_renderer.hpp"
 #include "glaxnimate/io/rive/rive_format.hpp"
 
-#include "glaxnimate/script/register_machinery.hpp"
+#include "glaxnimate/script/glaxnimate_model.hpp"
 
 
 #include "plugin/io.hpp"
@@ -236,142 +211,6 @@ public:
     }
 };
 
-template<class Owner, class PropT, class ItemT = typename PropT::value_type>
-class AddShapeBase
-{
-public:
-    using PtrMem = PropT Owner::*;
-
-    AddShapeBase(PtrMem p) noexcept : ptr(p) {}
-
-protected:
-    ItemT* create(model::Document* doc, PropT& prop, const QString& clsname, int index) const
-    {
-        auto obj = model::Factory::static_build(clsname, doc);
-        if ( !obj )
-            return nullptr;
-
-        auto cast = obj->cast<ItemT>();
-
-        if ( !cast )
-        {
-            delete obj;
-            return nullptr;
-        }
-
-        if constexpr ( std::is_base_of_v<model::DocumentNode, ItemT> )
-            doc->set_best_name(static_cast<model::DocumentNode*>(cast));
-        else
-            cast->name.set(cast->type_name_human());
-
-        doc->push_command(new command::AddObject<ItemT, PropT>(&prop, std::unique_ptr<ItemT>(cast), index));
-
-        return cast;
-    }
-
-    PtrMem ptr;
-};
-
-template<class Owner, class PropT, class ItemT = typename PropT::value_type>
-class AddShapeName : public AddShapeBase<Owner, PropT, ItemT>
-{
-public:
-    using AddShapeBase<Owner, PropT, ItemT>::AddShapeBase;
-
-    ItemT* operator() (Owner* owner, const QString& clsname, int index = -1) const
-    {
-        return this->create(owner->document(), owner->*(this->ptr), clsname, index);
-    }
-};
-
-template<class Owner, class PropT, class ItemT = typename PropT::value_type>
-class AddShapeClass : public AddShapeBase<Owner, PropT, ItemT>
-{
-public:
-    using AddShapeBase<Owner, PropT, ItemT>::AddShapeBase;
-
-    ItemT* operator() (Owner* owner, const py::object& cls, int index = -1) const
-    {
-        pybind11::detail::type_caster<QString> cast;
-        cast.load(cls.attr("__name__"), true);
-        return this->create(owner->document(), owner->*(this->ptr), cast, index);
-    }
-};
-
-template<class Owner, class PropT, class ItemT = typename PropT::value_type>
-class AddShapeClone
-{
-public:
-    using PtrMem = PropT Owner::*;
-
-    AddShapeClone(PtrMem p) noexcept : ptr(p) {}
-
-    ItemT* operator() (Owner* owner, ItemT* object, int index = -1) const
-    {
-        if ( !object )
-            return nullptr;
-
-        std::unique_ptr<ItemT> clone(static_cast<ItemT*>(object->clone().release()));
-        if ( clone->document() != owner->document() )
-            clone->transfer(owner->document());
-
-        auto ptr = clone.get();
-
-        owner->push_command(new command::AddObject<ItemT, PropT>(&(owner->*(this->ptr)), std::move(clone), index));
-
-        return ptr;
-    }
-
-private:
-
-    PtrMem ptr;
-};
-
-template<
-    class PyClass,
-    class PropT = model::ObjectListProperty<model::ShapeElement>,
-    class Owner = typename PyClass::type,
-    class ItemT = typename PropT::value_type
->
-void define_add_shape(PyClass& cls, PropT Owner::* prop = &Owner::shapes, const std::string& name = "add_shape")
-{
-    cls.def(
-            name.c_str(),
-            AddShapeName<Owner, PropT, ItemT>(prop),
-            no_own,
-            "Adds a shape from its class name",
-            py::arg("type_name"),
-            py::arg("index") = -1
-        )
-        .def(
-            name.c_str(),
-            AddShapeClone<Owner, PropT, ItemT>(prop),
-            no_own,
-            "Adds a shape, note that the input object is cloned, and the clone is returned. The document will have ownership over the clone.",
-            py::arg("object"),
-            py::arg("index") = -1
-        )
-        .def(
-            name.c_str(),
-            AddShapeClass<Owner, PropT, ItemT>(prop),
-            no_own,
-            "Adds a shape from its class",
-            py::arg("cls"),
-            py::arg("index") = -1
-        )
-    ;
-}
-
-template<class Reg, class Cls, class... Args, class... FwArgs>
-auto register_constructible(py::module& module, FwArgs&&... args)
-{
-    return register_from_meta<Reg, Cls, Args...>(module, std::forward<FwArgs>(args)...)
-        .def(py::init([](model::Document* doc) -> std::unique_ptr<Cls> {
-            if ( !doc )
-                return {};
-            return std::make_unique<Cls>(doc);
-        }));
-}
 
 } // namespace
 
@@ -451,11 +290,7 @@ void register_py_module(py::module& glaxnimate_module)
         .def_readwrite("keywords", &model::Document::DocumentInfo::keywords)
     ;
 
-    register_from_meta<Reg, model::VisualNode, model::DocumentNode>(model);
-    register_from_meta<Reg, model::AnimationContainer, model::Object>(model);
-    register_from_meta<Reg, model::StretchableTime, model::Object>(model);
-    register_from_meta<Reg, model::Transform, model::Object>(model);
-    register_from_meta<Reg, model::MaskSettings, model::Object>(model);
+    register_top_level<Reg>(model);
 
     py::module shapes = model.def_submodule("shapes", "");
     register_from_meta<Reg, model::ShapeElement, model::VisualNode>(shapes)
@@ -465,7 +300,7 @@ void register_py_module(py::module& glaxnimate_module)
     py::module defs = model.def_submodule("assets", "");
     py::class_<model::AssetBase>(defs, "AssetBase");
     auto cls_comp = register_from_meta<Reg, model::Composition, model::VisualNode, model::AssetBase>(model);
-    define_add_shape(cls_comp);
+    Reg::define_add_shape(cls_comp);
 
     define_io(glaxnimate_module);
 
@@ -491,45 +326,8 @@ void register_py_module(py::module& glaxnimate_module)
     ;
 
     register_from_meta<Reg, model::Asset, model::DocumentNode, model::AssetBase>(defs);
-    register_from_meta<Reg, model::BrushStyle, model::Asset>(defs);
-    register_constructible<Reg, model::NamedColor, model::BrushStyle>(defs);
-    register_constructible<Reg, model::GradientColors, model::Asset>(defs);
-    register_constructible<Reg, model::Gradient, model::BrushStyle>(defs, enums<model::Gradient::GradientType>{});
-    register_constructible<Reg, model::Bitmap, model::Asset>(defs);
-    register_from_meta<Reg, model::EmbeddedFont, model::Asset>(defs);
-    register_from_meta<Reg, model::BitmapList, model::DocumentNode>(defs);
-    register_from_meta<Reg, model::NamedColorList, model::DocumentNode>(defs);
-    register_from_meta<Reg, model::GradientList, model::DocumentNode>(defs);
-    register_from_meta<Reg, model::GradientColorsList, model::DocumentNode>(defs);
-    register_from_meta<Reg, model::CompositionList, model::DocumentNode>(defs);
-    register_from_meta<Reg, model::FontList, model::DocumentNode>(defs);
-    register_from_meta<Reg, model::Assets, model::DocumentNode>(defs);
+    register_assets<Reg>(defs);
 
-    register_from_meta<Reg, model::Shape, model::ShapeElement>(shapes);
-    register_from_meta<Reg, model::Modifier, model::ShapeElement>(shapes);
-    register_from_meta<Reg, model::Styler, model::ShapeElement>(shapes);
-    register_from_meta<Reg, model::Composable, model::ShapeElement>(shapes, enums<renderer::BlendMode>{});
+    register_shapes<Reg>(shapes);
 
-    register_constructible<Reg, model::Rect, model::Shape>(shapes);
-    register_constructible<Reg, model::Ellipse, model::Shape>(shapes);
-    register_constructible<Reg, model::PolyStar, model::Shape>(shapes, enums<model::PolyStar::StarType>{});
-    register_constructible<Reg, model::Path, model::Shape>(shapes);
-
-    auto cls_group = register_constructible<Reg, model::Group, model::Composable>(shapes);
-    define_add_shape(cls_group);
-
-    register_constructible<Reg, model::Layer, model::Group>(shapes);
-    register_constructible<Reg, model::PreCompLayer, model::Composable>(shapes);
-    register_constructible<Reg, model::Image, model::Composable>(shapes);
-
-    register_constructible<Reg, model::Fill, model::Styler>(shapes, enums<model::Fill::Rule>{});
-    register_constructible<Reg, model::Stroke, model::Styler>(shapes, enums<model::Stroke::Cap, model::Stroke::Join>{});
-    register_constructible<Reg, model::Repeater, model::Modifier>(shapes);
-
-    register_from_meta<Reg, model::PathModifier, model::Modifier>(shapes);
-    register_constructible<Reg, model::Trim, model::PathModifier>(shapes);
-    register_constructible<Reg, model::InflateDeflate, model::PathModifier>(shapes);
-    register_constructible<Reg, model::RoundCorners, model::PathModifier>(shapes);
-    register_constructible<Reg, model::OffsetPath, model::PathModifier>(shapes);
-    register_constructible<Reg, model::ZigZag, model::PathModifier>(shapes);
 }

@@ -137,6 +137,14 @@ typename Reg::template class_<CppClass, Args...> register_from_meta(
 }
 
 
+template<class Reg, class Cls, class... Args, class... FwArgs>
+auto register_constructible(const typename Reg::module& module, FwArgs&&... args)
+{
+    auto reg = register_from_meta<Reg, Cls, Args...>(module, std::forward<FwArgs>(args)...);
+    Reg::template glaxnimate_constructible<Cls, Args...>(reg);
+    return reg;
+}
+
 namespace detail {
 
 template<class T>

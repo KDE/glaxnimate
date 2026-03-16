@@ -9,10 +9,12 @@
 #include "casters.hpp"
 #include "glaxnimate/script/registrar_common.hpp"
 #include "glaxnimate/script/register_impl.hpp"
+#include "glaxnimate/script/glaxnimate_model.hpp"
 
 namespace glaxnimate::plugin::python {
 namespace py = pybind11;
 using namespace glaxnimate::script;
+static constexpr auto no_own = py::return_value_policy::automatic_reference;
 
 
 std::string fix_type(QByteArray ba);
@@ -63,6 +65,20 @@ struct RegisterProperty
 };
 
 
+
+template<class Owner, class PropT, class ItemT = typename PropT::value_type>
+class AddShapeClass : public AddShapeBase<Owner, PropT, ItemT>
+{
+public:
+    using AddShapeBase<Owner, PropT, ItemT>::AddShapeBase;
+
+    ItemT* operator() (Owner* owner, const py::object& cls, int index = -1) const
+    {
+        pybind11::detail::type_caster<QString> cast;
+        cast.load(cls.attr("__name__"), true);
+        return this->create(owner->document(), owner->*(this->ptr), cast, index);
+    }
+};
 
 struct PythonRegistrar
 {
@@ -177,6 +193,52 @@ struct PythonRegistrar
             pyenum.value(meta.key(i), EnumT(meta.value(i)));
 
         // scope.attr(meta.name()) = pyenum;
+    }
+
+// glaxnimate-specific stuff
+    template<
+        class PyClass,
+        class PropT = glaxnimate::model::ObjectListProperty<model::ShapeElement>,
+        class Owner = typename PyClass::type,
+        class ItemT = typename PropT::value_type
+    >
+    static void define_add_shape(PyClass& cls, PropT Owner::* prop = &Owner::shapes, const std::string& name = "add_shape")
+    {
+        cls.def(
+                name.c_str(),
+                AddShapeName<Owner, PropT, ItemT>(prop),
+                no_own,
+                "Adds a shape from its class name",
+                py::arg("type_name"),
+                py::arg("index") = -1
+            )
+            .def(
+                name.c_str(),
+                AddShapeClone<Owner, PropT, ItemT>(prop),
+                no_own,
+                "Adds a shape, note that the input object is cloned, and the clone is returned. The document will have ownership over the clone.",
+                py::arg("object"),
+                py::arg("index") = -1
+            )
+            .def(
+                name.c_str(),
+                AddShapeClass<Owner, PropT, ItemT>(prop),
+                no_own,
+                "Adds a shape from its class",
+                py::arg("cls"),
+                py::arg("index") = -1
+            )
+        ;
+    }
+
+    template<class CppClass, class... Args>
+    static void glaxnimate_constructible(class_<CppClass, Args...>& reg)
+    {
+        return reg.def(py::init([](model::Document* doc) -> std::unique_ptr<CppClass> {
+            if ( !doc )
+                return {};
+            return std::make_unique<CppClass>(doc);
+        }));
     }
 };
 
