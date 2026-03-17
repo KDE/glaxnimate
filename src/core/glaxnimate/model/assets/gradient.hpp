@@ -70,6 +70,7 @@ public:
     GLAXNIMATE_ANIMATABLE(QPointF, end_point, {})
 
     GLAXNIMATE_ANIMATABLE(QPointF, highlight, {})
+    GLAXNIMATE_ANIMATABLE(float, angle, 0, {})
 
 public:
     using BrushStyle::BrushStyle;

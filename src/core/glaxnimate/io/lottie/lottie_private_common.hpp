@@ -331,8 +331,8 @@ const QMap<QString, QVector<FieldInfo>> fields = {
         FieldInfo{"s", "start_point"},
         FieldInfo{"e", "end_point"},
         FieldInfo{"t", "type"},
-        FieldInfo{"h", Custom}, /// \todo
-        FieldInfo{"a", Custom}, /// \todo
+        FieldInfo{"h", Custom},
+        FieldInfo{"a", "angle"},
         FieldInfo{"g", Custom},
     }},
     {"PreCompLayer", {
