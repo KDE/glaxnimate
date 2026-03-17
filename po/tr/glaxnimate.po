@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-16 00:41+0000\n"
-"PO-Revision-Date: 2026-03-15 13:23+0300\n"
+"POT-Creation-Date: 2026-03-17 00:41+0000\n"
+"PO-Revision-Date: 2026-03-16 12:19+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1368,10 +1368,9 @@ msgid "Unknown object of type '%1'"
 msgstr "“%1” türünde bilinmeyen nesne"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:676
-#, fuzzy, kde-format
-#| msgid "Unsupported shape type %1"
+#, kde-format
 msgid "%1 is an unsupported shape of type %2"
-msgstr "Desteklenmeyen şekil türü %1"
+msgstr "%1, %2 türünde desteklenmeyen bir şekildir"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:696
 #, kde-format
@@ -2301,6 +2300,18 @@ msgstr "Zamanlama"
 #, kde-format
 msgid "Transform"
 msgstr "Dönüşüm"
+
+#: src/core/glaxnimate/script/register_impl.hpp:203
+#, fuzzy, kde-format
+#| msgid "Could not allocate frame data."
+msgid "Cannot allocate argument"
+msgstr "Kare verisi için yer ayrılamadı."
+
+#: src/core/glaxnimate/script/register_impl.hpp:219
+#, fuzzy, kde-format
+#| msgid "Could not allocate stream"
+msgid "Cannot allocate return value"
+msgstr "Akış için yer ayrılamadı"
 
 #: src/core/glaxnimate/utils/gzip.cpp:28
 #, kde-format

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-16 00:41+0000\n"
+"POT-Creation-Date: 2026-03-17 00:41+0000\n"
 "PO-Revision-Date: 2025-10-17 11:22+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -2308,6 +2308,18 @@ msgstr "Ajoitus"
 #, kde-format
 msgid "Transform"
 msgstr ""
+
+#: src/core/glaxnimate/script/register_impl.hpp:203
+#, fuzzy, kde-format
+#| msgid "Could not allocate stream"
+msgid "Cannot allocate argument"
+msgstr "Virtaa ei voitu osoittaa"
+
+#: src/core/glaxnimate/script/register_impl.hpp:219
+#, fuzzy, kde-format
+#| msgid "Could not allocate stream"
+msgid "Cannot allocate return value"
+msgstr "Virtaa ei voitu osoittaa"
 
 #: src/core/glaxnimate/utils/gzip.cpp:28
 #, kde-format

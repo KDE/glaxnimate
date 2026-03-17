@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-16 00:41+0000\n"
-"PO-Revision-Date: 2026-03-15 14:31+0100\n"
+"POT-Creation-Date: 2026-03-17 00:41+0000\n"
+"PO-Revision-Date: 2026-03-16 14:35+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1373,10 +1373,9 @@ msgid "Unknown object of type '%1'"
 msgstr "Onbekend object van het type '%1'"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:676
-#, fuzzy, kde-format
-#| msgid "Unsupported shape type %1"
+#, kde-format
 msgid "%1 is an unsupported shape of type %2"
-msgstr "Niet-ondersteund type vorm %1"
+msgstr "%1 is een niet ondersteund vorm van type %2"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:696
 #, kde-format
@@ -2312,6 +2311,18 @@ msgstr "Timing"
 #, kde-format
 msgid "Transform"
 msgstr "Transformeren"
+
+#: src/core/glaxnimate/script/register_impl.hpp:203
+#, fuzzy, kde-format
+#| msgid "Could not allocate frame data."
+msgid "Cannot allocate argument"
+msgstr "Kon framegegevens niet toewijzen."
+
+#: src/core/glaxnimate/script/register_impl.hpp:219
+#, fuzzy, kde-format
+#| msgid "Could not allocate stream"
+msgid "Cannot allocate return value"
+msgstr "Kon stream niet toewijzen"
 
 #: src/core/glaxnimate/utils/gzip.cpp:28
 #, kde-format

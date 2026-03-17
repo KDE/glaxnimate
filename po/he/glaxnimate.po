@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-16 00:41+0000\n"
+"POT-Creation-Date: 2026-03-17 00:41+0000\n"
 "PO-Revision-Date: 2026-03-14 12:54+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -2289,6 +2289,18 @@ msgstr "תזמון"
 #, kde-format
 msgid "Transform"
 msgstr "התמרה"
+
+#: src/core/glaxnimate/script/register_impl.hpp:203
+#, fuzzy, kde-format
+#| msgid "Could not allocate frame data."
+msgid "Cannot allocate argument"
+msgstr "לא ניתן להקצות נתוני תמונית."
+
+#: src/core/glaxnimate/script/register_impl.hpp:219
+#, fuzzy, kde-format
+#| msgid "Could not allocate stream"
+msgid "Cannot allocate return value"
+msgstr "לא ניתן להקצות תזרים"
 
 #: src/core/glaxnimate/utils/gzip.cpp:28
 #, kde-format

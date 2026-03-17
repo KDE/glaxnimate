@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-16 00:41+0000\n"
-"PO-Revision-Date: 2026-03-15 08:24+0100\n"
+"POT-Creation-Date: 2026-03-17 00:41+0000\n"
+"PO-Revision-Date: 2026-03-16 06:28+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1374,10 +1374,9 @@ msgid "Unknown object of type '%1'"
 msgstr "Najden predmet vrste »%1«"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:676
-#, fuzzy, kde-format
-#| msgid "Unsupported shape type %1"
+#, kde-format
 msgid "%1 is an unsupported shape of type %2"
-msgstr "Nepodprta vrsta lika %1"
+msgstr "%1 je nepodprti lik tipa %2"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:696
 #, kde-format
@@ -2309,6 +2308,18 @@ msgstr "Časovna usklajenost"
 #, kde-format
 msgid "Transform"
 msgstr "Preoblikuj"
+
+#: src/core/glaxnimate/script/register_impl.hpp:203
+#, fuzzy, kde-format
+#| msgid "Could not allocate frame data."
+msgid "Cannot allocate argument"
+msgstr "Ni bilo mogoče dodeliti podatkov sličice."
+
+#: src/core/glaxnimate/script/register_impl.hpp:219
+#, fuzzy, kde-format
+#| msgid "Could not allocate stream"
+msgid "Cannot allocate return value"
+msgstr "Ni bilo mogoče dodeliti toka"
 
 #: src/core/glaxnimate/utils/gzip.cpp:28
 #, kde-format

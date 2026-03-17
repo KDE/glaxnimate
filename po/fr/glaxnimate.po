@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-16 00:41+0000\n"
-"PO-Revision-Date: 2026-03-13 20:43+0100\n"
+"POT-Creation-Date: 2026-03-17 00:41+0000\n"
+"PO-Revision-Date: 2026-03-15 17:36+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -1284,10 +1284,9 @@ msgid "Glaxnimate Animation"
 msgstr "Animation Glaxnimate"
 
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_html_format.hpp:20
-#, fuzzy, kde-format
-#| msgid "Lottie HTML Preview"
+#, kde-format
 msgid "Glaxnimate HTML Preview"
-msgstr "Aperçu en « HTML » de Lottie"
+msgstr "Aperçu de Glaxnimate dans un format « HTML » "
 
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_importer.cpp:21
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_mime.cpp:86
@@ -2314,6 +2313,18 @@ msgstr "Chronologie"
 #, kde-format
 msgid "Transform"
 msgstr "Transformer"
+
+#: src/core/glaxnimate/script/register_impl.hpp:203
+#, fuzzy, kde-format
+#| msgid "Could not allocate frame data."
+msgid "Cannot allocate argument"
+msgstr "Impossible d'allouer des données de l'image"
+
+#: src/core/glaxnimate/script/register_impl.hpp:219
+#, fuzzy, kde-format
+#| msgid "Could not allocate stream"
+msgid "Cannot allocate return value"
+msgstr "Impossible d'allouer le flux"
 
 #: src/core/glaxnimate/utils/gzip.cpp:28
 #, kde-format

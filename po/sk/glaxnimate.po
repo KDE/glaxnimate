@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-16 00:41+0000\n"
+"POT-Creation-Date: 2026-03-17 00:41+0000\n"
 "PO-Revision-Date: 2023-12-17 14:36+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -2266,6 +2266,16 @@ msgstr "Časovanie"
 #, kde-format
 msgid "Transform"
 msgstr "Transformovať"
+
+#: src/core/glaxnimate/script/register_impl.hpp:203
+#, kde-format
+msgid "Cannot allocate argument"
+msgstr ""
+
+#: src/core/glaxnimate/script/register_impl.hpp:219
+#, kde-format
+msgid "Cannot allocate return value"
+msgstr ""
 
 #: src/core/glaxnimate/utils/gzip.cpp:28
 #, kde-format

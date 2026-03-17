@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-16 00:41+0000\n"
+"POT-Creation-Date: 2026-03-17 00:41+0000\n"
 "PO-Revision-Date: 2024-04-22 16:06\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -2277,6 +2277,18 @@ msgstr ""
 #, kde-format
 msgid "Transform"
 msgstr "变换"
+
+#: src/core/glaxnimate/script/register_impl.hpp:203
+#, fuzzy, kde-format
+#| msgid "Could not allocate frame data."
+msgid "Cannot allocate argument"
+msgstr "不能分配帧数据"
+
+#: src/core/glaxnimate/script/register_impl.hpp:219
+#, fuzzy, kde-format
+#| msgid "Could not allocate stream"
+msgid "Cannot allocate return value"
+msgstr "不能分配流"
 
 #: src/core/glaxnimate/utils/gzip.cpp:28
 #, kde-format

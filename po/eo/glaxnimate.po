@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-16 00:41+0000\n"
+"POT-Creation-Date: 2026-03-17 00:41+0000\n"
 "PO-Revision-Date: 2024-09-14 11:22+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
@@ -2312,6 +2312,18 @@ msgstr "Tempigo"
 #, kde-format
 msgid "Transform"
 msgstr "Transformi"
+
+#: src/core/glaxnimate/script/register_impl.hpp:203
+#, fuzzy, kde-format
+#| msgid "Could not allocate frame data."
+msgid "Cannot allocate argument"
+msgstr "Ne eblis asigni kadrajn datumojn."
+
+#: src/core/glaxnimate/script/register_impl.hpp:219
+#, fuzzy, kde-format
+#| msgid "Could not allocate stream"
+msgid "Cannot allocate return value"
+msgstr "Ne eblis asigni fluon"
 
 #: src/core/glaxnimate/utils/gzip.cpp:28
 #, kde-format

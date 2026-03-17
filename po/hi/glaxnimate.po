@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-16 00:41+0000\n"
+"POT-Creation-Date: 2026-03-17 00:41+0000\n"
 "PO-Revision-Date: 2024-12-15 19:32+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Hindi <kde-i18n-doc@kde.org>\n"
@@ -2308,6 +2308,18 @@ msgstr "समय"
 #, kde-format
 msgid "Transform"
 msgstr "परिवर्तन"
+
+#: src/core/glaxnimate/script/register_impl.hpp:203
+#, fuzzy, kde-format
+#| msgid "Could not allocate frame data."
+msgid "Cannot allocate argument"
+msgstr "फ़्रेम डेटा आवंटित नहीं किया जा सका."
+
+#: src/core/glaxnimate/script/register_impl.hpp:219
+#, fuzzy, kde-format
+#| msgid "Could not allocate stream"
+msgid "Cannot allocate return value"
+msgstr "स्ट्रीम आवंटित नहीं की जा सकी"
 
 #: src/core/glaxnimate/utils/gzip.cpp:28
 #, kde-format

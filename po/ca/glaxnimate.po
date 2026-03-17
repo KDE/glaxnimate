@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-16 00:41+0000\n"
-"PO-Revision-Date: 2026-03-15 09:53+0100\n"
+"POT-Creation-Date: 2026-03-17 00:41+0000\n"
+"PO-Revision-Date: 2026-03-16 09:58+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1380,10 +1380,9 @@ msgid "Unknown object of type '%1'"
 msgstr "Objecte desconegut del tipus «%1»"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:676
-#, fuzzy, kde-format
-#| msgid "Unsupported shape type %1"
+#, kde-format
 msgid "%1 is an unsupported shape of type %2"
-msgstr "Tipus de forma no admès %1"
+msgstr "%1 és una forma no admesa de tipus %2"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:696
 #, kde-format
@@ -2324,6 +2323,18 @@ msgstr "Temporització"
 #, kde-format
 msgid "Transform"
 msgstr "Transforma"
+
+#: src/core/glaxnimate/script/register_impl.hpp:203
+#, fuzzy, kde-format
+#| msgid "Could not allocate frame data."
+msgid "Cannot allocate argument"
+msgstr "No s'han pogut assignar les dades del fotograma."
+
+#: src/core/glaxnimate/script/register_impl.hpp:219
+#, fuzzy, kde-format
+#| msgid "Could not allocate stream"
+msgid "Cannot allocate return value"
+msgstr "No s'ha pogut assignar el flux"
 
 #: src/core/glaxnimate/utils/gzip.cpp:28
 #, kde-format
