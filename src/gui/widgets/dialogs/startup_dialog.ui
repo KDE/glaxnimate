@@ -105,7 +105,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             </widget>
            </item>
            <item row="0" column="1" colspan="2">
-            <widget class="glaxnimate::gui::Spin2D" name="spin_size" native="true"/>
+            <widget class="glaxnimate::gui::SpinBox2D" name="spin_size" native="true"/>
            </item>
            <item row="1" column="1" colspan="2">
             <widget class="QDoubleSpinBox" name="spin_fps">
@@ -192,7 +192,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
  </widget>
  <customwidgets>
   <customwidget>
-   <class>glaxnimate::gui::Spin2D</class>
+   <class>glaxnimate::gui::SpinBox2D</class>
    <extends>QWidget</extends>
    <header>widgets/spin2d.hpp</header>
    <container>1</container>

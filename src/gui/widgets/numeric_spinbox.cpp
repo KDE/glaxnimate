@@ -13,25 +13,26 @@ namespace {
 class SimpleExprParser
 {
 public:
-    SimpleExprParser(const QString& text, QLocale locale)
-    : text(&text),
-    number_extra(locale.zeroDigit() + locale.groupSeparator() + locale.decimalPoint()),
-    locale(std::move(locale))
+    SimpleExprParser(QLocale locale) :
+        number_extra(locale.zeroDigit() + locale.groupSeparator() + locale.decimalPoint()),
+        locale(std::move(locale))
     {}
 
-    qreal parse()
+    qreal parse(QStringView string)
     {
+        text = string;
         lex();
         return parse_expr();
     }
 
-    bool is_empty()
+    bool is_empty(QStringView string)
     {
+        text = string;
         return lex() == Eof;
     }
 
 private:
-    const QString* text;
+    QStringView text;
     int pos = 0;
     enum Token {
         Operator,
@@ -46,14 +47,14 @@ private:
 
     QChar get_ch()
     {
-        auto ch = (*text)[pos];
+        auto ch = text[pos];
         pos++;
         return ch;
     }
 
     bool at_end()
     {
-        return pos >= text->length();
+        return pos >= text.length();
     }
 
     bool is_num(const QChar& ch)
@@ -95,7 +96,7 @@ private:
 
     qreal lex_number()
     {
-        const QChar* start = text->constData() + pos - 1;
+        const QChar* start = text.constData() + pos - 1;
         while ( !at_end() )
         {
             if ( !is_num(get_ch()) )
@@ -104,7 +105,7 @@ private:
                 break;
             }
         }
-        const QChar* end = text->constData() + pos;
+        const QChar* end = text.constData() + pos;
 
         return locale.toDouble(QStringView(start, end));
     }
@@ -145,7 +146,7 @@ private:
             if ( token_op == '*' )
             {
                 lex();
-                val /= parse_unary();
+                val *= parse_unary();
             }
             else if ( token_op == '/' )
             {
@@ -210,12 +211,17 @@ glaxnimate::gui::NumericSpinBox::NumericSpinBox(QWidget* parent) : QDoubleSpinBo
 
 double glaxnimate::gui::NumericSpinBox::valueFromText(const QString& text) const
 {
-    return SimpleExprParser(text, locale()).parse();
+    return SimpleExprParser(locale()).parse(text);
 }
 
 QValidator::State glaxnimate::gui::NumericSpinBox::validate(QString& input, int&) const
 {
-    if ( SimpleExprParser(input, locale()).is_empty() )
+    if ( SimpleExprParser(locale()).is_empty(input) )
         return QValidator::Intermediate;
     return QValidator::Acceptable;
+}
+
+double glaxnimate::gui::NumericSpinBox::parse(QLocale locale, QStringView text)
+{
+    return SimpleExprParser(locale).parse(text);
 }

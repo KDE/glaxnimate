@@ -242,8 +242,8 @@ QWidget *PropertyDelegate::editor_from_property(model::BaseProperty *prop, QWidg
 
     if ( auto combo = qobject_cast<QComboBox*>(editor) )
         connect(combo, QOverload<int>::of(&QComboBox::activated), this, slot);
-    else if ( auto wid = qobject_cast<Spin2D*>(editor) )
-        connect(wid, &Spin2D::value_changed, this, slot);
+    else if ( auto wid = qobject_cast<SpinBox2D*>(editor) )
+        connect(wid, &SpinBox2D::valueChanged, this, slot);
     else if ( auto wid = qobject_cast<QSpinBox*>(editor) )
         connect(wid, QOverload<int>::of(&QSpinBox::valueChanged), this, slot);
     else if ( auto wid = qobject_cast<QDoubleSpinBox*>(editor) )
@@ -318,11 +318,21 @@ QWidget *PropertyDelegate::create_editor_from_variant(const QVariant &data, int 
     switch ( data.userType() )
     {
         case QMetaType::QPointF:
-            return new Spin2D(false, parent);
+            return new SpinBox2D(parent);
         case QMetaType::QVector2D:
-            return new Spin2D(true, parent);
+        {
+            auto box = new SpinBox2D(parent);
+            box->setRatioLock(true);
+            box->setDecimals(0);
+            box->setSuffix(i18n("%"));
+            return box;
+        }
         case QMetaType::QSizeF:
-            return new Spin2D(true, parent);
+        {
+            auto box = new SpinBox2D(parent);
+            box->setRatioLock(true);
+            return box;
+        }
         case QMetaType::Float:
         case QMetaType::Double:
         {
@@ -451,13 +461,13 @@ bool PropertyDelegate::set_editor_data(QWidget *editor, const QVariant &data, in
     switch ( data.userType() )
     {
         case QMetaType::QPointF:
-            static_cast<Spin2D*>(editor)->set_value(data.value<QPointF>());
+            static_cast<SpinBox2D*>(editor)->setValuePoint(data.value<QPointF>());
             return true;
         case QMetaType::QVector2D:
-            static_cast<Spin2D*>(editor)->set_value(data.value<QVector2D>());
+            static_cast<SpinBox2D*>(editor)->setValueVector2D(data.value<QVector2D>() * 100);
             return true;
         case QMetaType::QSizeF:
-            static_cast<Spin2D*>(editor)->set_value(data.value<QSizeF>());
+            static_cast<SpinBox2D*>(editor)->setValueSize(data.value<QSizeF>());
             return true;
         case QMetaType::Float:
         case QMetaType::Double:
@@ -515,11 +525,11 @@ QVariant PropertyDelegate::get_editor_data(QWidget *editor, const QVariant& data
     switch ( data.userType() )
     {
         case QMetaType::QPointF:
-            return static_cast<Spin2D*>(editor)->value_point();
+            return static_cast<SpinBox2D*>(editor)->valuePoint();
         case QMetaType::QVector2D:
-            return static_cast<Spin2D*>(editor)->value_vector();
+            return static_cast<SpinBox2D*>(editor)->valueVector2D() / 100;
         case QMetaType::QSizeF:
-            return static_cast<Spin2D*>(editor)->value_size();
+            return static_cast<SpinBox2D*>(editor)->valueSize();
         case QMetaType::Float:
         case QMetaType::Double:
         case QMetaType::Int:

@@ -6,51 +6,81 @@
 
 #pragma once
 
-#include <QToolButton>
+#include <QAbstractSpinBox>
 #include <QVector2D>
-#include "smaller_spinbox.hpp"
 
 namespace glaxnimate::gui {
 
-class Spin2D : public QWidget
+
+class SpinBox2D : public QAbstractSpinBox
 {
     Q_OBJECT
-    
+
+    Q_PROPERTY(QPointF valuePoint READ valuePoint WRITE setValuePoint)
+    Q_PROPERTY(QVector2D valueVector2D READ valueVector2D WRITE setValueVector2D)
+    Q_PROPERTY(QSizeF valueSize READ valueSize WRITE setValueSize)
+
+    Q_PROPERTY(double minimum READ minimum WRITE setMinimum)
+    Q_PROPERTY(double maximum READ maximum WRITE setMaximum)
+    Q_PROPERTY(double singleStep READ singleStep WRITE setSingleStep)
+    Q_PROPERTY(int decimals READ decimals WRITE setDecimals)
+    Q_PROPERTY(bool ratioLock READ ratioLock WRITE setRatioLock)
+    Q_PROPERTY(double ratio READ ratio WRITE setRatio)
+    Q_PROPERTY(QString suffix READ suffix WRITE setSuffix)
+
 public:
-    Spin2D(bool ratio_lock, QWidget* parent = nullptr);
-    Spin2D(QWidget* parent = nullptr);
-    
-    QVector2D value_vector() const;
-    QPointF value_point() const;
-    QSizeF value_size() const;
+    explicit SpinBox2D(QWidget *parent = nullptr);
+    ~SpinBox2D();
 
-    void enable_ratio_lock();
-    
-    void set_value(const QVector2D& v);
-    void set_value(const QPointF& v);
-    void set_value(const QSizeF& v);
-    void set_value(qreal x, qreal y);
+    QPointF valuePoint() const;
+    QVector2D valueVector2D() const;
+    QSizeF valueSize() const;
+    double valueX() const;
+    double valueY() const;
 
-    void set_decimals(int decimals);
-    
-    qreal x() const;
-    qreal y() const;
-    
-private Q_SLOTS:
-    void lock_toggled(bool on);
-    void x_changed(qreal x);
-    void y_changed(qreal y);
+    double minimum() const;
+    double maximum() const;
+    double singleStep() const;
+    int decimals() const;
+    QString separator() const;
+    bool ratioLock() const;
+    double ratio() const;
+    QString suffix();
+
+    void setMinimum(double min);
+    void setMaximum(double max);
+    void setSingleStep(double step);
+    void setDecimals(int dec);
+    void setSeparator(const QString &sep);
+    void setRatioLock(bool lock, bool update_ratio=true);
+    void setRatio(double ratio);
+    void setRatio(double x, double y);
+    void setSuffix(const QString &suffix);
+    void setValuePoint(const QPointF &val);
+    void setValueVector2D(const QVector2D &val);
+    void setValueSize(const QSizeF &val);
+
+    QValidator::State validate(QString &input, int &pos) const override;
+    void fixup(QString &input) const override;
+    void stepBy(int steps) override;
 
 Q_SIGNALS:
-    void value_changed();
-    
+    void valueChanged();
+
+public Q_SLOTS:
+    void setValue(double x, double y);
+
+protected:
+    StepEnabled stepEnabled() const override;
+    void keyPressEvent(QKeyEvent *event) override;
+    bool eventFilter(QObject* source, QEvent *event) override;
+    void focusInEvent(QFocusEvent *event) override;
+    void focusOutEvent(QFocusEvent *event) override;
+
 private:
-    bool ratio_lock() const;
-    
-    qreal ratio = 1;
-    SmallerSpinBox* spin_x;
-    SmallerSpinBox* spin_y;
-    QToolButton* lock = nullptr;
+    class Private;
+    std::unique_ptr<Private> d;
+
 };
 
 } // namespace glaxnimate::gui

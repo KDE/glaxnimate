@@ -21,6 +21,8 @@ public:
     double valueFromText(const QString &text) const override;
 
     QValidator::State validate(QString & input, int & pos) const override;
+
+    static double parse(QLocale locale, QStringView text);
 };
 
 } // namespace glaxnimate::gui

@@ -64,8 +64,8 @@ public:
         auto last_frame = duration_frames();
         for ( const auto& comp : doc->assets()->compositions->values )
         {
-            comp->width.set(ui.spin_size->x());
-            comp->height.set(ui.spin_size->y());
+            comp->width.set(ui.spin_size->valueX());
+            comp->height.set(ui.spin_size->valueY());
             comp->fps.set(ui.spin_fps->value());
             comp->animation->last_frame.set(last_frame);
             for ( auto lay : comp->docnode_find_by_type_name<model::Layer>("Layer") )
@@ -82,12 +82,12 @@ StartupDialog::StartupDialog(GlaxnimateWindow* parent)
     connect(&settings::DocumentTemplates::instance(), &settings::DocumentTemplates::loaded, this, &StartupDialog::reload_presets);
     connect(d->ui.button_open_browse, &QPushButton::clicked, this, &StartupDialog::open_browse);
 
-    d->ui.spin_size->enable_ratio_lock();
-    d->ui.spin_size->set_decimals(0);
-    d->ui.spin_size->set_value(
+    d->ui.spin_size->setDecimals(0);
+    d->ui.spin_size->setValue(
         GlaxnimateSettings::width(),
         GlaxnimateSettings::height()
     );
+    d->ui.spin_size->setRatioLock(true);
     float fps = GlaxnimateSettings::fps();
     d->ui.spin_fps->setValue(fps);
     d->adjust_duration_spin();
@@ -146,7 +146,7 @@ void StartupDialog::reload_presets()
 void StartupDialog::select_preset(const QModelIndex& index)
 {
     const auto& templ = settings::DocumentTemplates::instance().templates()[index.row()];
-    d->ui.spin_size->set_value(templ.size());
+    d->ui.spin_size->setValueSize(templ.size());
     d->ui.spin_fps->setValue(templ.fps());
     d->ui.spin_duration->setValue(d->duration(templ.duration(), templ.fps()));
 }
@@ -180,8 +180,8 @@ std::unique_ptr<model::Document> StartupDialog::create() const
     layer->animation->last_frame.set(d->duration_frames());
     layer->name.set(layer->type_name_human());
     QPointF pos(
-        d->ui.spin_size->x() / 2.0,
-        d->ui.spin_size->y() / 2.0
+        d->ui.spin_size->valueX() / 2.0,
+        d->ui.spin_size->valueY() / 2.0
     );
     layer->transform.get()->anchor_point.set(pos);
     layer->transform.get()->position.set(pos);
