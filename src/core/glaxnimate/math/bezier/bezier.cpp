@@ -231,7 +231,7 @@ glaxnimate::math::bezier::Point glaxnimate::math::bezier::Bezier::point_with_typ
 
         if ( math::fuzzy_compare(point.tan_out, point.pos) && (index < size() - 1 || closed_) )
         {
-            const auto& next = points_[index + 1];
+            const auto& next = points_[(index + 1) % points_.size()];
             point.tan_out = (next.pos - point.pos) / 6 + point.pos;
         }
     }
