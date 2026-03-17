@@ -284,7 +284,7 @@ public:
                         view->edit(index);
                     }
                 }
-
+                event->accept();
             }
             bool accepted = accepted_press;
             accepted_press = false;
@@ -296,6 +296,7 @@ public:
         {
             QModelIndex index = view->indexAt(event->pos());
             view->edit(index);
+            prop = nullptr;
             return true;
         }
 
