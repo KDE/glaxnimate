@@ -149,11 +149,15 @@ public:
         QModelIndex index = view->indexAt(event->pos());
         if ( proxy )
             index = proxy->mapToSource(index);
-        if ( index.column() != column )
+        if ( index.column() != column || !(index.flags() & Qt::ItemIsEditable) )
+            return false;
+
+        auto prop = property_model->item(index).property;
+        if ( !prop )
             return false;
 
         accepted_press = true;
-        if ( !grab_property(property_model->item(index).property) )
+        if ( !grab_property(prop) )
             return true;
 
         dragged = false;
