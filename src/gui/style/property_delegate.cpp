@@ -20,6 +20,7 @@
 #include <QtColorWidgets/ColorSelector>
 
 #include "item_models/property_model_base.hpp"
+#include "widgets/numeric_spinbox.hpp"
 #include "widgets/spin2d.hpp"
 #include "widgets/enum_combo.hpp"
 #include "glaxnimate/model/property/option_list_property.hpp"
@@ -43,6 +44,7 @@ void PropertyDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opti
     {
         case QMetaType::QPointF:
             return paint_xy<QPointF>(painter, option, index);
+
         case QMetaType::QVector2D:
         {
             auto value = index.data().value<QVector2D>();
@@ -56,8 +58,25 @@ void PropertyDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opti
                 index
             );
         }
+
         case QMetaType::QSizeF:
             return paint_xy<QSizeF>(painter, option, index);
+
+
+        case QMetaType::Float:
+        case QMetaType::Double:
+        {
+            int flags = index.data(item_models::PropertyModelBase::Flags).toInt();
+            if ( flags & model::PropertyTraits::Percent )
+                return paint_plaintext(
+                    i18n("%1%", option.locale.toString(data.toDouble() * 100, 'f', 0)),
+                    painter,
+                    option,
+                    index
+                );
+            break;
+        }
+
     }
 
 
@@ -307,7 +326,7 @@ QWidget *PropertyDelegate::create_editor_from_variant(const QVariant &data, int 
         case QMetaType::Float:
         case QMetaType::Double:
         {
-            auto box = new SmallerSpinBox(false, parent);
+            auto box = new NumericSpinBox(parent);
             qreal mult = 1;
             if ( prop_flags & model::PropertyTraits::Percent )
             {
@@ -334,7 +353,11 @@ QWidget *PropertyDelegate::create_editor_from_variant(const QVariant &data, int 
             return box;
         }
         case QMetaType::Int:
-            return new SmallerSpinBoxInt(parent);
+        {
+            auto box = new NumericSpinBox(parent);
+            box->setDecimals(0);
+            return box;
+        }
     }
 
     if ( data.userType() == qMetaTypeId<QGradientStops>() )
@@ -438,10 +461,8 @@ bool PropertyDelegate::set_editor_data(QWidget *editor, const QVariant &data, in
             return true;
         case QMetaType::Float:
         case QMetaType::Double:
-            static_cast<QDoubleSpinBox*>(editor)->setValue(data.toDouble() * ((prop_flags & model::PropertyTraits::Percent) ? 100 : 1));
-            return true;
         case QMetaType::Int:
-            static_cast<QSpinBox*>(editor)->setValue(data.toInt());
+            static_cast<QDoubleSpinBox*>(editor)->setValue(data.toDouble() * ((prop_flags & model::PropertyTraits::Percent) ? 100 : 1));
             return true;
     }
 
@@ -501,9 +522,8 @@ QVariant PropertyDelegate::get_editor_data(QWidget *editor, const QVariant& data
             return static_cast<Spin2D*>(editor)->value_size();
         case QMetaType::Float:
         case QMetaType::Double:
-            return static_cast<QDoubleSpinBox*>(editor)->value() / ((prop_flags & model::PropertyTraits::Percent) ? 100 : 1);
         case QMetaType::Int:
-            return static_cast<QSpinBox*>(editor)->value();
+            return static_cast<QDoubleSpinBox*>(editor)->value() / ((prop_flags & model::PropertyTraits::Percent) ? 100 : 1);
     }
 
     status = 0;

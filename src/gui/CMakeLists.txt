@@ -89,6 +89,7 @@ widgets/canvas.cpp
 widgets/view_transform_widget.cpp
 widgets/flow_layout.cpp
 widgets/spin2d.cpp
+widgets/numeric_spinbox.cpp
 widgets/enum_combo.cpp
 widgets/window_message_widget.cpp
 widgets/tab_bar/tab_bar_close_button.cpp

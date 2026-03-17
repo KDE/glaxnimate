@@ -16,6 +16,7 @@
     * Added context menu for more objects
     * Context menu has been re-organized with more sub-menus for ease of navigation
     * Both timeline and properties dock now show the value editor on a single click
+    * Spin boxes for numeric properties now allow basic math
 * I/O:
     * Improved matte import and export for lottie
     * Improved mask properties import for lottie
