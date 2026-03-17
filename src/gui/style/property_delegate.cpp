@@ -330,8 +330,6 @@ QWidget *PropertyDelegate::create_editor_from_variant(const QVariant &data, int 
                 if ( maxf != std::numeric_limits<double>::max() )
                     maxf *= mult;
                 box->setMaximum(maxf);
-                if ( max == 1 )
-                    box->setSingleStep(0.1);
             }
             return box;
         }
