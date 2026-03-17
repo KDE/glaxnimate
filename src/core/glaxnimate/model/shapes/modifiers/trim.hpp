@@ -13,9 +13,9 @@ namespace glaxnimate::model {
 class Trim : public StaticOverrides<Trim, PathModifier>
 {
     GLAXNIMATE_OBJECT(Trim)
-    GLAXNIMATE_ANIMATABLE(float, start, 0, {}, 0, 1, false, PropertyTraits::Percent)
-    GLAXNIMATE_ANIMATABLE(float, end, 1, {}, 0, 1, false, PropertyTraits::Percent)
-    GLAXNIMATE_ANIMATABLE(float, offset, 0, {}, std::numeric_limits<float>::lowest(), std::numeric_limits<float>::max(), false, PropertyTraits::Percent)
+    GLAXNIMATE_ANIMATABLE(float, start, 0, {}, 0, 1, PropertyTraits::Percent)
+    GLAXNIMATE_ANIMATABLE(float, end, 1, {}, 0, 1, PropertyTraits::Percent)
+    GLAXNIMATE_ANIMATABLE(float, offset, 0, {}, std::numeric_limits<float>::lowest(), std::numeric_limits<float>::max(), PropertyTraits::Percent)
 
 public:
     enum MultipleShapes

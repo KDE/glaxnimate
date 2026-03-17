@@ -28,10 +28,10 @@ public:
     GLAXNIMATE_ANIMATABLE(QPointF, position, QPointF())
     GLAXNIMATE_ANIMATABLE(float, outer_radius, 0, {}, 0)
     GLAXNIMATE_ANIMATABLE(float, inner_radius, 0, {}, 0)
-    GLAXNIMATE_ANIMATABLE(float, angle, 0, {}, 0, 360, true)
+    GLAXNIMATE_ANIMATABLE(float, angle, 0, {})
     GLAXNIMATE_ANIMATABLE(int, points, 5)
-    GLAXNIMATE_ANIMATABLE(float, outer_roundness, 0, {}, 0, 100, false, PropertyTraits::Percent)
-    GLAXNIMATE_ANIMATABLE(float, inner_roundness, 0, {}, 0, 100, false, PropertyTraits::Percent)
+    GLAXNIMATE_ANIMATABLE(float, outer_roundness, 0, {}, 0, 100, PropertyTraits::Percent)
+    GLAXNIMATE_ANIMATABLE(float, inner_roundness, 0, {}, 0, 100, PropertyTraits::Percent)
 
 public:
     using Shape::Shape;

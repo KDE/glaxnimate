@@ -1031,12 +1031,10 @@ public:
         PropertyCallback<void, float> emitter = {},
         float min = std::numeric_limits<float>::lowest(),
         float max = std::numeric_limits<float>::max(),
-        bool cycle = false,
         int flags = 0
     ) : detail::AnimatedProperty<float>(object, name, default_value, std::move(emitter), flags),
         min_(min),
-        max_(max),
-        cycle_(cycle)
+        max_(max)
     {
     }
 
@@ -1058,10 +1056,7 @@ public:
 private:
     float bound(float value) const
     {
-        return cycle_ ?
-            math::fmod(value, max_) :
-            math::bound(min_, value, max_)
-        ;
+        return math::bound(min_, value, max_);
     }
 
     float min_;

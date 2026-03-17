@@ -13,7 +13,7 @@ namespace glaxnimate::model {
 class InflateDeflate : public StaticOverrides<InflateDeflate, PathModifier>
 {
     GLAXNIMATE_OBJECT(InflateDeflate)
-    GLAXNIMATE_ANIMATABLE(float, amount, 0, {}, -1, 1, false, PropertyTraits::Percent)
+    GLAXNIMATE_ANIMATABLE(float, amount, 0, {}, -1, 1, PropertyTraits::Percent)
 
 public:
     using Ctor::Ctor;
