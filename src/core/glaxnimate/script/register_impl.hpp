@@ -262,9 +262,9 @@ private:
     int arguments = 0;
     int buffer_used = 0;
     std::array<char, 256> buffer;
-    std::array<Destructor*, 16> destructors;
-    std::array<QGenericArgument, 16> generic_args;
-    std::array<std::string, 16> names;
+    std::array<Destructor*, 9> destructors;
+    std::array<QGenericArgument, 9> generic_args;
+    std::array<std::string, 9> names;
     QGenericReturnArgument ret;
     void* ret_addr = nullptr;
     QMetaMethod method;
