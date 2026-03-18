@@ -177,7 +177,7 @@ public:
 
             // update existing Gradient object
             model::Gradient* old = styler->use.get() ? styler->use->cast<model::Gradient>() : nullptr;
-            if ( old )
+            if ( old && old->users().size() == 1 )
             {
                 document->push_command(new command::SetPropertyValue(
                     &old->type,
@@ -248,6 +248,20 @@ public:
 
         clear_buttons();
         ui.list_view->setCurrentIndex(model.gradient_to_index(raw));
+    }
+
+    void duplicate_gradient()
+    {
+        model::GradientColors* colors = current();
+        if ( !colors )
+        {
+            if ( document->assets()->gradient_colors->values.empty() )
+                return;
+
+            colors = document->assets()->gradient_colors->values.back();
+        }
+
+        add_gradient(colors->colors.get(), colors->name.get());
     }
 
     void clear_buttons()
@@ -414,12 +428,14 @@ GradientListWidget::GradientListWidget(QWidget* parent)
     d->parent = this;
     d->ui.setupUi(this);
     d->ui.list_view->setModel(&d->model);
+    d->ui.list_view->horizontalHeader()->setSectionResizeMode(item_models::GradientListModel::Gradient, QHeaderView::Stretch);
     d->ui.list_view->horizontalHeader()->setSectionResizeMode(item_models::GradientListModel::Users, QHeaderView::ResizeToContents);
     d->ui.list_view->setItemDelegateForColumn(item_models::GradientListModel::Gradient, &d->delegate);
 
     d->build_presets();
 
     connect(d->ui.btn_new, &QAbstractButton::clicked, this, [this]{ d->add_gradient(); });
+    connect(d->ui.btn_duplicate, &QAbstractButton::clicked, this, [this]{ d->duplicate_gradient(); });
     connect(d->ui.btn_remove, &QAbstractButton::clicked, this, [this]{ d->delete_gradient(); });
     connect(d->ui.btn_fill_linear,   &QAbstractButton::clicked, this, d->slot_linear(this, false));
     connect(d->ui.btn_fill_radial,   &QAbstractButton::clicked, this, d->slot_radial(this, false));

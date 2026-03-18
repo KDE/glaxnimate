@@ -6,6 +6,7 @@
     * Editing properties that are already animated now adds a keyframe
     * Unified some properties across groups, images, and precomp layers
     * Added a grid for snapping
+    * Gradient editor on canvas is more accurate
 * UI:
     * Timeline now allows to cycle through mask modes for layers
     * Added button to toggle keyframes in the property view
@@ -18,6 +19,7 @@
     * Both timeline and properties dock now show the value editor on a single click
     * Spin boxes for numeric properties now allow basic math
     * Significantly improved spin box for 2d val
+    * Small improvements to the gradients docks (visual changes, easier to edit, and duplicate button)
 * I/O:
     * Improved matte import and export for lottie
     * Improved mask properties import for lottie

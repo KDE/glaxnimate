@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
-
-SPDX-License-Identifier: GPL-3.0-or-later
--->
-
 <ui version="4.0">
+ <author>
+SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia &gt;dev@dragon.best&lt;
+SPDX-License-Identifier: GPL-3.0-or-later
+ </author>
  <class>GradientListWidget</class>
  <widget class="QWidget" name="GradientListWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>177</width>
+    <width>224</width>
     <height>353</height>
    </rect>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QTableView" name="list_view">
+     <property name="editTriggers">
+      <set>QAbstractItemView::EditTrigger::AnyKeyPressed|QAbstractItemView::EditTrigger::DoubleClicked|QAbstractItemView::EditTrigger::EditKeyPressed|QAbstractItemView::EditTrigger::SelectedClicked</set>
+     </property>
      <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
+      <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
      </property>
      <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
+      <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
      </property>
      <attribute name="horizontalHeaderVisible">
       <bool>true</bool>
@@ -36,6 +36,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
      <item>
       <widget class="QToolButton" name="btn_new">
        <property name="toolTip">
@@ -45,8 +48,17 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <string>New</string>
        </property>
        <property name="icon">
-        <iconset theme="list-add">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="list-add"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="btn_duplicate">
+       <property name="toolTip">
+        <string>Duplicate</string>
+       </property>
+       <property name="icon">
+        <iconset theme="edit-duplicate"/>
        </property>
       </widget>
      </item>
@@ -59,15 +71,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <string>Preset</string>
        </property>
        <property name="icon">
-        <iconset theme="folder">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="folder"/>
        </property>
       </widget>
      </item>
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -86,8 +97,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <string>Remove</string>
        </property>
        <property name="icon">
-        <iconset theme="list-remove">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="list-remove"/>
        </property>
       </widget>
      </item>
@@ -101,7 +111,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <string>Stroke</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
       </widget>
      </item>
@@ -117,8 +127,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <string>Radial</string>
        </property>
        <property name="icon">
-        <iconset theme="paint-gradient-radial">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="paint-gradient-radial"/>
        </property>
        <property name="checkable">
         <bool>true</bool>
@@ -137,8 +146,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <string>Linear</string>
        </property>
        <property name="icon">
-        <iconset theme="paint-gradient-linear">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="paint-gradient-linear"/>
        </property>
        <property name="checkable">
         <bool>true</bool>
@@ -157,8 +165,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <string>Linear</string>
        </property>
        <property name="icon">
-        <iconset theme="paint-gradient-linear">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="paint-gradient-linear"/>
        </property>
        <property name="checkable">
         <bool>true</bool>
@@ -177,8 +184,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <string>Radial</string>
        </property>
        <property name="icon">
-        <iconset theme="paint-gradient-radial">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="paint-gradient-radial"/>
        </property>
        <property name="checkable">
         <bool>true</bool>
@@ -191,7 +197,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <string>Fill</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
       </widget>
      </item>
@@ -250,7 +256,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
      <y>98</y>
     </hint>
     <hint type="destinationlabel">
-     <x>278</x>
+     <x>223</x>
      <y>152</y>
     </hint>
    </hints>
@@ -266,7 +272,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
      <y>191</y>
     </hint>
     <hint type="destinationlabel">
-     <x>264</x>
+     <x>223</x>
      <y>275</y>
     </hint>
    </hints>
