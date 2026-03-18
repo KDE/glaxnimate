@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-17 00:41+0000\n"
-"PO-Revision-Date: 2026-03-01 18:07+0100\n"
+"POT-Creation-Date: 2026-03-18 00:42+0000\n"
+"PO-Revision-Date: 2026-03-14 17:10+0100\n"
 "Last-Translator: Valter Mura <valtermura@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -163,10 +163,9 @@ msgstr "opacità"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/image.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Image"
+#, kde-format
 msgid "image"
-msgstr "Immagine"
+msgstr "immagine"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/style/stroke.hpp
 #. i18n: Property name
@@ -267,7 +266,7 @@ msgstr "composizioni"
 #. i18n: Property name
 #, kde-format
 msgid "uuid"
-msgstr ""
+msgstr "uuid"
 
 #. i18n: file: src/core/glaxnimate/model/document_node.hpp
 #. i18n: Property name
@@ -281,24 +280,21 @@ msgstr "nome"
 
 #. i18n: file: src/core/glaxnimate/model/document_node.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Group Color"
+#, kde-format
 msgid "group_color"
-msgstr "Raggruppa colore"
+msgstr "raggruppa_colore"
 
 #. i18n: file: src/core/glaxnimate/model/document_node.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Visible"
+#, kde-format
 msgid "visible"
-msgstr "Visibile"
+msgstr "visibile"
 
 #. i18n: file: src/core/glaxnimate/model/document_node.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Unlocked"
+#, kde-format
 msgid "locked"
-msgstr "Sbloccato"
+msgstr "bloccato"
 
 #. i18n: file: src/core/glaxnimate/model/animation_container.hpp
 #. i18n: Property name
@@ -1108,20 +1104,19 @@ msgid "Unknown property \"%1\" of \"%2\""
 msgstr "Proprietà sconosciuta «%1» di «%2»"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:221
-#, fuzzy, kde-format
-#| msgid "Layer"
+#, kde-format
 msgid "Layer #%1"
-msgstr "Livello"
+msgstr "Livello #%1"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:279
 #, kde-format
 msgid "Parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Impossibile trovare il genitore #%1 del livello %2"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:292
 #, kde-format
 msgid "Mask parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Impossibile trovare il genitore della maschera #%1 del livello %2"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:581
 #, kde-format
@@ -1453,12 +1448,12 @@ msgstr "Anteprima HTML Lottie"
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:190
 #, kde-format
 msgid "Mask parent %1 of layer %2 could not be found"
-msgstr ""
+msgstr "Impossibile trovare il genitore della maschera %1 del livello %2"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:200
 #, kde-format
 msgid "Mask parent of layer %1 could not be found"
-msgstr ""
+msgstr "Impossibile trovare il genitore della maschera del livello %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:219
 #, kde-format
@@ -1466,10 +1461,9 @@ msgid "Invalid parent layer %1"
 msgstr "Livello genitore %1 non valido"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:316
-#, fuzzy, kde-format
-#| msgid "Missing layer type for %1"
+#, kde-format
 msgid "Missing type for layer %1"
-msgstr "Manca il tipo di livello per %1"
+msgstr "Manca il tipo per il livello %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:390
 #, kde-format
@@ -2604,7 +2598,7 @@ msgstr "Non è stato scaricato alcun file"
 #, kde-format
 msgctxt "Package install status"
 msgid "Some files failed to extract"
-msgstr ""
+msgstr "Non è stato possibile estrarre alcuni file"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, EmojiSetDialog)
 #: src/gui/emoji/emoji_set_dialog.ui:21
@@ -2688,20 +2682,19 @@ msgid "Close"
 msgstr "Chiudi"
 
 #: src/gui/glaxnimate_app.cpp:200
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgid "OpenGL"
-msgstr "Apri"
+msgstr "OpenGL"
 
 #: src/gui/glaxnimate_app.cpp:201
 #, kde-format
 msgid "Hardware-accelerated graphics."
-msgstr ""
+msgstr "Grafica accelerata dall'hardware."
 
 #: src/gui/glaxnimate_app.cpp:207
 #, kde-format
 msgid "OpenGL Renderer"
-msgstr ""
+msgstr "OpenGL Renderer"
 
 #: src/gui/glaxnimate_app.cpp:234
 #, kde-format
@@ -2918,12 +2911,7 @@ msgstr "#"
 msgid "Number of users"
 msgstr "Numero di utenti"
 
-#: src/gui/item_models/property_model_base.cpp:232
-#, kde-format
-msgid "%1%"
-msgstr "%1%"
-
-#: src/gui/item_models/property_model_base.cpp:246
+#: src/gui/item_models/property_model_base.cpp:244
 #, kde-format
 msgid "Toggle Keyframe"
 msgstr "Attiva/disattiva fotogramma chiave"
@@ -2978,10 +2966,9 @@ msgid "Value"
 msgstr "Valore"
 
 #: src/gui/item_models/property_model_full.cpp:462
-#, fuzzy, kde-format
-#| msgid "k-Modes"
+#, kde-format
 msgid "Mask Mode"
-msgstr "k-Modes"
+msgstr "Modalità maschera"
 
 #: src/gui/item_models/python_snippet_model.hpp:36
 #, kde-format
@@ -3020,16 +3007,12 @@ msgstr "%1"
 
 # %5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the frame rate
 #: src/gui/settings/document_templates.cpp:123
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
-#| "frame rate"
-#| msgid "%5 - %1x%2 %3 %4fps"
+#, kde-format
 msgctxt ""
 "%5 is the file name, %1 × %2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
 msgid "%5 — %1 × %2 %3 %4 fps"
-msgstr "%5 - %1x%2 %3 %4fps"
+msgstr "%5 — %1 × %2 %3 %4 fps"
 
 #: src/gui/settings/document_templates.cpp:178
 #, kde-format
@@ -3046,21 +3029,26 @@ msgstr "%1 %2"
 msgid "System Default"
 msgstr "Predefinito da Sistema"
 
-#: src/gui/style/property_delegate.cpp:50
+#: src/gui/style/property_delegate.cpp:52
 #, kde-format
 msgid "%1% × %2%"
-msgstr ""
+msgstr "%1% × %2%"
+
+#: src/gui/style/property_delegate.cpp:72
+#, kde-format
+msgid "%1%"
+msgstr "%1%"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_preview_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_eem_min_frequency)
-#: src/gui/style/property_delegate.cpp:313
+#: src/gui/style/property_delegate.cpp:327
+#: src/gui/style/property_delegate.cpp:344
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:212
 #: src/gui/widgets/dialogs/trace_dialog.ui:533
 #: src/gui/widgets/dialogs/trace_dialog.ui:639
 #: src/gui/widgets/font/font_preview_widget.ui:45
-#: src/gui/widgets/spin2d.cpp:110 src/gui/widgets/spin2d.cpp:111
 #: src/gui/widgets/view_transform_widget.ui:60
 #, no-c-format, kde-format
 msgid "%"
@@ -4182,7 +4170,7 @@ msgstr "Duplica"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:404
 #, kde-format
 msgid "Grid"
-msgstr ""
+msgstr "Griglia"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:443
 #, kde-format
@@ -4212,7 +4200,7 @@ msgstr "Compatta"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:474
 #, kde-format
 msgid "Mobile"
-msgstr ""
+msgstr "Mobile"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_angle_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_angle_reset)
@@ -4687,10 +4675,9 @@ msgid "Delete All"
 msgstr "Elimina tutto"
 
 #: src/gui/widgets/dialogs/startup_dialog.cpp:131
-#, fuzzy, kde-format
-#| msgid " fps"
+#, kde-format
 msgid "%1 fps"
-msgstr " fps"
+msgstr "%1 fps"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, StartupDialog)
 #: src/gui/widgets/dialogs/startup_dialog.ui:18
@@ -5148,23 +5135,21 @@ msgstr "Avanzate"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, DockGrid)
 #: src/gui/widgets/docks/dock_grid.ui:21
-#, fuzzy, kde-format
-#| msgid "Configure..."
+#, kde-format
 msgid "Configure Grid"
-msgstr "Configura..."
+msgstr "Configura la griglia"
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_enable)
 #: src/gui/widgets/docks/dock_grid.ui:52
-#, fuzzy, kde-format
-#| msgid "Enable"
+#, kde-format
 msgid "Enable Grid"
-msgstr "Abilita"
+msgstr "Abilita griglia"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/docks/dock_grid.ui:77
 #, kde-format
 msgid "X"
-msgstr ""
+msgstr "X"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_shape)
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_cap_square)
@@ -5178,16 +5163,15 @@ msgstr "Quadrato"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_shape)
 #: src/gui/widgets/docks/dock_grid.ui:93
-#, fuzzy, kde-format
-#| msgid "angle"
+#, kde-format
 msgid "Triangle"
-msgstr "angolo"
+msgstr "Triangolare"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spin_size)
 #: src/gui/widgets/docks/dock_grid.ui:124
 #, kde-format
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_angle)
 #: src/gui/widgets/docks/dock_grid.ui:140
@@ -5431,79 +5415,69 @@ msgid "Polygon"
 msgstr "Poligono"
 
 #: src/gui/widgets/enum_combo.cpp:113
-#, fuzzy, kde-format
-#| msgid "Mask"
+#, kde-format
 msgid "No Mask"
-msgstr "Maschera"
+msgstr "Nessuna maschera"
 
 #: src/gui/widgets/enum_combo.cpp:115
-#, fuzzy, kde-format
-#| msgid "Alpha"
+#, kde-format
 msgid "Alpha Mask"
-msgstr "Alfa"
+msgstr "Maschera alfa"
 
 #: src/gui/widgets/enum_combo.cpp:117
-#, fuzzy, kde-format
-#| msgid "Mask"
+#, kde-format
 msgid "Luma Mask"
-msgstr "Maschera"
+msgstr "Maschera luma"
 
 #: src/gui/widgets/enum_combo.cpp:125
-#, fuzzy, kde-format
-#| msgid "Formats"
+#, kde-format
 msgid "Normal"
-msgstr "Formati"
+msgstr "Normale"
 
 #: src/gui/widgets/enum_combo.cpp:127
-#, fuzzy, kde-format
-#| msgid "multiple"
+#, kde-format
 msgid "Multiply"
-msgstr "multipla"
+msgstr "Moltiplica"
 
 #: src/gui/widgets/enum_combo.cpp:129
-#, fuzzy, kde-format
-#| msgid "Green"
+#, kde-format
 msgid "Screen"
-msgstr "Verde"
+msgstr "Schermo"
 
 #: src/gui/widgets/enum_combo.cpp:131
 #, kde-format
 msgid "Overlay"
-msgstr ""
+msgstr "Sovrapponi"
 
 #: src/gui/widgets/enum_combo.cpp:133
 #, kde-format
 msgid "Darken"
-msgstr ""
+msgstr "Scurisci"
 
 #: src/gui/widgets/enum_combo.cpp:135
-#, fuzzy, kde-format
-#| msgid "Right"
+#, kde-format
 msgid "Lighten"
-msgstr "Destra"
+msgstr "Schiarisci"
 
 #: src/gui/widgets/enum_combo.cpp:137
-#, fuzzy, kde-format
-#| msgid "Color Mode"
+#, kde-format
 msgid "Color Dodge"
-msgstr "Modalità colore"
+msgstr "Colore scherma"
 
 #: src/gui/widgets/enum_combo.cpp:139
-#, fuzzy, kde-format
-#| msgid "Color"
+#, kde-format
 msgid "Color Burn"
-msgstr "Colore"
+msgstr "Colore brucia"
 
 #: src/gui/widgets/enum_combo.cpp:141
-#, fuzzy, kde-format
-#| msgid "Height"
+#, kde-format
 msgid "Hard Light"
-msgstr "Altezza"
+msgstr "Luce intensa"
 
 #: src/gui/widgets/enum_combo.cpp:143
 #, kde-format
 msgid "Soft Light"
-msgstr ""
+msgstr "Luce soffusa"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::HueSlider, slider_hsv_hue)
 #. i18n: ectx: property (toolTip), widget (QLabel, label)
@@ -5536,7 +5510,7 @@ msgstr "Saturazione"
 #: src/gui/widgets/enum_combo.cpp:155
 #, kde-format
 msgid "Luminosity"
-msgstr ""
+msgstr "Luminosità"
 
 #: src/gui/widgets/font/external_font_widget.cpp:127
 #, kde-format
@@ -5779,10 +5753,9 @@ msgid "Auto Orient"
 msgstr "Orientazione automatica"
 
 #: src/gui/widgets/menus/node_menu.cpp:324
-#, fuzzy, kde-format
-#| msgid "Color Mode"
+#, kde-format
 msgid "Blend Mode"
-msgstr "Modalità colore"
+msgstr "Metodo di fusione"
 
 #: src/gui/widgets/menus/node_menu.cpp:350
 #: src/gui/widgets/menus/node_menu.cpp:351
@@ -5801,10 +5774,9 @@ msgid "Convert to Group"
 msgstr "Converti in gruppo"
 
 #: src/gui/widgets/menus/node_menu.cpp:368
-#, fuzzy, kde-format
-#| msgid "inverted"
+#, kde-format
 msgid "Inverted"
-msgstr "invertito"
+msgstr "Invertito"
 
 #: src/gui/widgets/menus/node_menu.cpp:382
 #, kde-format
@@ -6540,9 +6512,10 @@ msgstr "Limite giunzione"
 msgid "Dashes"
 msgstr "Trattini"
 
-#: src/gui/widgets/spin2d.cpp:46
-#, kde-format
-msgid "Lock Ratio"
+#: src/gui/widgets/spin2d.cpp:242
+#, fuzzy, kde-format
+#| msgid "Lock Aspect Ratio"
+msgid "Lock aspect ratio"
 msgstr "Mantieni proporzioni"
 
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:86
@@ -6796,6 +6769,9 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "Tracciato %1"
+
+#~ msgid "Lock Ratio"
+#~ msgstr "Mantieni proporzioni"
 
 #~ msgid "Lottie only supports layers in the top level"
 #~ msgstr "Lottie supporta i livelli solo nel primo livello"

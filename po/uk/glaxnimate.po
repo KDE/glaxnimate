@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-17 00:41+0000\n"
-"PO-Revision-Date: 2026-03-15 12:02+0200\n"
+"POT-Creation-Date: 2026-03-18 00:42+0000\n"
+"PO-Revision-Date: 2026-03-17 08:19+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1372,10 +1372,9 @@ msgid "Unknown object of type '%1'"
 msgstr "Невідомий об'єкт типу «%1»"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:676
-#, fuzzy, kde-format
-#| msgid "Unsupported shape type %1"
+#, kde-format
 msgid "%1 is an unsupported shape of type %2"
-msgstr "Непідтримуваний тип форми %1"
+msgstr "%1 є непідтримуваною формою типу %2"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:696
 #, kde-format
@@ -2317,16 +2316,14 @@ msgid "Transform"
 msgstr "Перетворення"
 
 #: src/core/glaxnimate/script/register_impl.hpp:203
-#, fuzzy, kde-format
-#| msgid "Could not allocate frame data."
+#, kde-format
 msgid "Cannot allocate argument"
-msgstr "Не вдалося розмістити у пам'яті дані кадру."
+msgstr "Не вдалося розмістити аргумент у пам'яті"
 
 #: src/core/glaxnimate/script/register_impl.hpp:219
-#, fuzzy, kde-format
-#| msgid "Could not allocate stream"
+#, kde-format
 msgid "Cannot allocate return value"
-msgstr "Не вдалося розмістити у пам'яті потік даних"
+msgstr "Не вдалося розмістити повернуте значення у пам'яті"
 
 #: src/core/glaxnimate/utils/gzip.cpp:28
 #, kde-format
@@ -2903,12 +2900,7 @@ msgstr "№"
 msgid "Number of users"
 msgstr "Кількість користувачів"
 
-#: src/gui/item_models/property_model_base.cpp:232
-#, kde-format
-msgid "%1%"
-msgstr "%1%"
-
-#: src/gui/item_models/property_model_base.cpp:246
+#: src/gui/item_models/property_model_base.cpp:244
 #, kde-format
 msgid "Toggle Keyframe"
 msgstr "Перемкнути ключовий кадр"
@@ -3025,21 +3017,26 @@ msgstr "%1 %2"
 msgid "System Default"
 msgstr "Типова для системи"
 
-#: src/gui/style/property_delegate.cpp:50
+#: src/gui/style/property_delegate.cpp:52
 #, kde-format
 msgid "%1% × %2%"
 msgstr "%1% × %2%"
+
+#: src/gui/style/property_delegate.cpp:72
+#, kde-format
+msgid "%1%"
+msgstr "%1%"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_preview_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_eem_min_frequency)
-#: src/gui/style/property_delegate.cpp:313
+#: src/gui/style/property_delegate.cpp:327
+#: src/gui/style/property_delegate.cpp:344
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:212
 #: src/gui/widgets/dialogs/trace_dialog.ui:533
 #: src/gui/widgets/dialogs/trace_dialog.ui:639
 #: src/gui/widgets/font/font_preview_widget.ui:45
-#: src/gui/widgets/spin2d.cpp:110 src/gui/widgets/spin2d.cpp:111
 #: src/gui/widgets/view_transform_widget.ui:60
 #, no-c-format, kde-format
 msgid "%"
@@ -6502,10 +6499,11 @@ msgstr "Обмеження фацета"
 msgid "Dashes"
 msgstr "Штрихова"
 
-#: src/gui/widgets/spin2d.cpp:46
-#, kde-format
-msgid "Lock Ratio"
-msgstr "Заблокувати пропорцію"
+#: src/gui/widgets/spin2d.cpp:242
+#, fuzzy, kde-format
+#| msgid "Lock Aspect Ratio"
+msgid "Lock aspect ratio"
+msgstr "Зафіксувати співвідношення розмірів"
 
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:86
 #, kde-format
@@ -6758,6 +6756,9 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "Трасування %1"
+
+#~ msgid "Lock Ratio"
+#~ msgstr "Заблокувати пропорцію"
 
 #~ msgid "Lottie only supports layers in the top level"
 #~ msgstr "У Lottie передбачено підтримку шарів лише у верхньому рівні"

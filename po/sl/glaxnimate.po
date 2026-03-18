@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-17 00:41+0000\n"
-"PO-Revision-Date: 2026-03-16 06:28+0100\n"
+"POT-Creation-Date: 2026-03-18 00:42+0000\n"
+"PO-Revision-Date: 2026-03-17 06:26+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -2310,16 +2310,14 @@ msgid "Transform"
 msgstr "Preoblikuj"
 
 #: src/core/glaxnimate/script/register_impl.hpp:203
-#, fuzzy, kde-format
-#| msgid "Could not allocate frame data."
+#, kde-format
 msgid "Cannot allocate argument"
-msgstr "Ni bilo mogoče dodeliti podatkov sličice."
+msgstr "Ni mogoče dodeliti argumenta"
 
 #: src/core/glaxnimate/script/register_impl.hpp:219
-#, fuzzy, kde-format
-#| msgid "Could not allocate stream"
+#, kde-format
 msgid "Cannot allocate return value"
-msgstr "Ni bilo mogoče dodeliti toka"
+msgstr "Ni mogoče dodeliti vrnjene vrednosti"
 
 #: src/core/glaxnimate/utils/gzip.cpp:28
 #, kde-format
@@ -2889,12 +2887,7 @@ msgstr "#"
 msgid "Number of users"
 msgstr "Število uporabnikov"
 
-#: src/gui/item_models/property_model_base.cpp:232
-#, kde-format
-msgid "%1%"
-msgstr "%1%"
-
-#: src/gui/item_models/property_model_base.cpp:246
+#: src/gui/item_models/property_model_base.cpp:244
 #, kde-format
 msgid "Toggle Keyframe"
 msgstr "Preklopi ključno sličico"
@@ -3011,21 +3004,26 @@ msgstr "%1 %2"
 msgid "System Default"
 msgstr "Sistemsko privzeto"
 
-#: src/gui/style/property_delegate.cpp:50
+#: src/gui/style/property_delegate.cpp:52
 #, kde-format
 msgid "%1% × %2%"
 msgstr "%1% × %2%"
+
+#: src/gui/style/property_delegate.cpp:72
+#, kde-format
+msgid "%1%"
+msgstr "%1%"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_preview_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_eem_min_frequency)
-#: src/gui/style/property_delegate.cpp:313
+#: src/gui/style/property_delegate.cpp:327
+#: src/gui/style/property_delegate.cpp:344
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:212
 #: src/gui/widgets/dialogs/trace_dialog.ui:533
 #: src/gui/widgets/dialogs/trace_dialog.ui:639
 #: src/gui/widgets/font/font_preview_widget.ui:45
-#: src/gui/widgets/spin2d.cpp:110 src/gui/widgets/spin2d.cpp:111
 #: src/gui/widgets/view_transform_widget.ui:60
 #, no-c-format, kde-format
 msgid "%"
@@ -6480,9 +6478,10 @@ msgstr "Spoj pod kotom"
 msgid "Dashes"
 msgstr "Črtice"
 
-#: src/gui/widgets/spin2d.cpp:46
-#, kde-format
-msgid "Lock Ratio"
+#: src/gui/widgets/spin2d.cpp:242
+#, fuzzy, kde-format
+#| msgid "Lock Aspect Ratio"
+msgid "Lock aspect ratio"
 msgstr "Zakleni razmerje stranic"
 
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:86
@@ -6736,6 +6735,9 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "Sledeno %1"
+
+#~ msgid "Lock Ratio"
+#~ msgstr "Zakleni razmerje stranic"
 
 #~ msgid "Lottie only supports layers in the top level"
 #~ msgstr "Lottie podpira le plasti na vrhnji ravni"

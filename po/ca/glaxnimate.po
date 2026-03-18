@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-17 00:41+0000\n"
-"PO-Revision-Date: 2026-03-16 09:58+0100\n"
+"POT-Creation-Date: 2026-03-18 00:42+0000\n"
+"PO-Revision-Date: 2026-03-17 10:25+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2325,16 +2325,14 @@ msgid "Transform"
 msgstr "Transforma"
 
 #: src/core/glaxnimate/script/register_impl.hpp:203
-#, fuzzy, kde-format
-#| msgid "Could not allocate frame data."
+#, kde-format
 msgid "Cannot allocate argument"
-msgstr "No s'han pogut assignar les dades del fotograma."
+msgstr "No s'ha pogut assignar l'argument"
 
 #: src/core/glaxnimate/script/register_impl.hpp:219
-#, fuzzy, kde-format
-#| msgid "Could not allocate stream"
+#, kde-format
 msgid "Cannot allocate return value"
-msgstr "No s'ha pogut assignar el flux"
+msgstr "No s'ha pogut assignar el valor de retorn"
 
 #: src/core/glaxnimate/utils/gzip.cpp:28
 #, kde-format
@@ -2909,12 +2907,7 @@ msgstr "#"
 msgid "Number of users"
 msgstr "Nombre d'usuaris"
 
-#: src/gui/item_models/property_model_base.cpp:232
-#, kde-format
-msgid "%1%"
-msgstr "%1%"
-
-#: src/gui/item_models/property_model_base.cpp:246
+#: src/gui/item_models/property_model_base.cpp:244
 #, kde-format
 msgid "Toggle Keyframe"
 msgstr "Commuta el fotograma clau"
@@ -3031,21 +3024,26 @@ msgstr "%1 %2"
 msgid "System Default"
 msgstr "Predeterminat del sistema"
 
-#: src/gui/style/property_delegate.cpp:50
+#: src/gui/style/property_delegate.cpp:52
 #, kde-format
 msgid "%1% × %2%"
 msgstr "%1% × %2%"
+
+#: src/gui/style/property_delegate.cpp:72
+#, kde-format
+msgid "%1%"
+msgstr "%1%"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_preview_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_eem_min_frequency)
-#: src/gui/style/property_delegate.cpp:313
+#: src/gui/style/property_delegate.cpp:327
+#: src/gui/style/property_delegate.cpp:344
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:212
 #: src/gui/widgets/dialogs/trace_dialog.ui:533
 #: src/gui/widgets/dialogs/trace_dialog.ui:639
 #: src/gui/widgets/font/font_preview_widget.ui:45
-#: src/gui/widgets/spin2d.cpp:110 src/gui/widgets/spin2d.cpp:111
 #: src/gui/widgets/view_transform_widget.ui:60
 #, no-c-format, kde-format
 msgid "%"
@@ -6506,9 +6504,10 @@ msgstr "Límit del biaix"
 msgid "Dashes"
 msgstr "Guions"
 
-#: src/gui/widgets/spin2d.cpp:46
-#, kde-format
-msgid "Lock Ratio"
+#: src/gui/widgets/spin2d.cpp:242
+#, fuzzy, kde-format
+#| msgid "Lock Aspect Ratio"
+msgid "Lock aspect ratio"
 msgstr "Bloqueja la relació d'aspecte"
 
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:86
@@ -6763,6 +6762,9 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "Traçat %1"
+
+#~ msgid "Lock Ratio"
+#~ msgstr "Bloqueja la relació d'aspecte"
 
 #~ msgid "Lottie only supports layers in the top level"
 #~ msgstr "El Lottie només permet capes al nivell superior"

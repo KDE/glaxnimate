@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-17 00:41+0000\n"
-"PO-Revision-Date: 2026-03-16 12:19+0300\n"
+"POT-Creation-Date: 2026-03-18 00:42+0000\n"
+"PO-Revision-Date: 2026-03-17 13:54+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2302,16 +2302,14 @@ msgid "Transform"
 msgstr "Dönüşüm"
 
 #: src/core/glaxnimate/script/register_impl.hpp:203
-#, fuzzy, kde-format
-#| msgid "Could not allocate frame data."
+#, kde-format
 msgid "Cannot allocate argument"
-msgstr "Kare verisi için yer ayrılamadı."
+msgstr "Kare verisi için yer ayrılamıyor"
 
 #: src/core/glaxnimate/script/register_impl.hpp:219
-#, fuzzy, kde-format
-#| msgid "Could not allocate stream"
+#, kde-format
 msgid "Cannot allocate return value"
-msgstr "Akış için yer ayrılamadı"
+msgstr "Akış için yer ayrılamıyor"
 
 #: src/core/glaxnimate/utils/gzip.cpp:28
 #, kde-format
@@ -2881,12 +2879,7 @@ msgstr "№"
 msgid "Number of users"
 msgstr "Kullanıcı sayısı"
 
-#: src/gui/item_models/property_model_base.cpp:232
-#, kde-format
-msgid "%1%"
-msgstr "%​%1"
-
-#: src/gui/item_models/property_model_base.cpp:246
+#: src/gui/item_models/property_model_base.cpp:244
 #, kde-format
 msgid "Toggle Keyframe"
 msgstr "Anahtar Kareyi Aç/Kapat"
@@ -3003,21 +2996,26 @@ msgstr "%1 %2"
 msgid "System Default"
 msgstr "Sistem Öntanımlısı"
 
-#: src/gui/style/property_delegate.cpp:50
+#: src/gui/style/property_delegate.cpp:52
 #, kde-format
 msgid "%1% × %2%"
 msgstr "%​%1 × %​%2"
+
+#: src/gui/style/property_delegate.cpp:72
+#, kde-format
+msgid "%1%"
+msgstr "%​%1"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_preview_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_eem_min_frequency)
-#: src/gui/style/property_delegate.cpp:313
+#: src/gui/style/property_delegate.cpp:327
+#: src/gui/style/property_delegate.cpp:344
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:212
 #: src/gui/widgets/dialogs/trace_dialog.ui:533
 #: src/gui/widgets/dialogs/trace_dialog.ui:639
 #: src/gui/widgets/font/font_preview_widget.ui:45
-#: src/gui/widgets/spin2d.cpp:110 src/gui/widgets/spin2d.cpp:111
 #: src/gui/widgets/view_transform_widget.ui:60
 #, no-c-format, kde-format
 msgid "%"
@@ -6471,10 +6469,11 @@ msgstr "Gönye Sınırı"
 msgid "Dashes"
 msgstr "Tireler"
 
-#: src/gui/widgets/spin2d.cpp:46
-#, kde-format
-msgid "Lock Ratio"
-msgstr "Kilit Oranı"
+#: src/gui/widgets/spin2d.cpp:242
+#, fuzzy, kde-format
+#| msgid "Lock Aspect Ratio"
+msgid "Lock aspect ratio"
+msgstr "En–Boy Oranını Kilitle"
 
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:86
 #, kde-format
@@ -6727,6 +6726,9 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "%1 izlendi"
+
+#~ msgid "Lock Ratio"
+#~ msgstr "Kilit Oranı"
 
 #~ msgid "Lottie only supports layers in the top level"
 #~ msgstr "Lottie yalnızca en üst düzeyde katmanlara izin verir"

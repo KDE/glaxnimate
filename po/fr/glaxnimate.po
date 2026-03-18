@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-17 00:41+0000\n"
-"PO-Revision-Date: 2026-03-15 17:36+0100\n"
+"POT-Creation-Date: 2026-03-18 00:42+0000\n"
+"PO-Revision-Date: 2026-03-16 09:02+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -195,10 +195,9 @@ msgstr "Utilisation"
 
 #. i18n: file: src/core/glaxnimate/model/transform.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Duration"
+#, kde-format
 msgid "rotation"
-msgstr "Durée"
+msgstr "Rotation"
 
 #. i18n: file: src/core/glaxnimate/model/assets/composition.hpp
 #. i18n: Property name
@@ -2905,12 +2904,7 @@ msgstr "#"
 msgid "Number of users"
 msgstr "Nombre d'utilisateurs"
 
-#: src/gui/item_models/property_model_base.cpp:232
-#, kde-format
-msgid "%1%"
-msgstr "%1 %"
-
-#: src/gui/item_models/property_model_base.cpp:246
+#: src/gui/item_models/property_model_base.cpp:244
 #, kde-format
 msgid "Toggle Keyframe"
 msgstr "Basculer une trame clé"
@@ -3029,21 +3023,26 @@ msgstr "%1 %2"
 msgid "System Default"
 msgstr "Configuration par défaut du système"
 
-#: src/gui/style/property_delegate.cpp:50
+#: src/gui/style/property_delegate.cpp:52
 #, kde-format
 msgid "%1% × %2%"
 msgstr "%1 % × %2 %"
+
+#: src/gui/style/property_delegate.cpp:72
+#, kde-format
+msgid "%1%"
+msgstr "%1 %"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_preview_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_eem_min_frequency)
-#: src/gui/style/property_delegate.cpp:313
+#: src/gui/style/property_delegate.cpp:327
+#: src/gui/style/property_delegate.cpp:344
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:212
 #: src/gui/widgets/dialogs/trace_dialog.ui:533
 #: src/gui/widgets/dialogs/trace_dialog.ui:639
 #: src/gui/widgets/font/font_preview_widget.ui:45
-#: src/gui/widgets/spin2d.cpp:110 src/gui/widgets/spin2d.cpp:111
 #: src/gui/widgets/view_transform_widget.ui:60
 #, no-c-format, kde-format
 msgid "%"
@@ -5743,7 +5742,7 @@ msgstr "Convertir %1 en %2"
 #: src/gui/widgets/menus/node_menu.cpp:300
 #, kde-format
 msgid "Anchor Point to Center"
-msgstr ""
+msgstr "Ancrer le point au centre"
 
 #: src/gui/widgets/menus/node_menu.cpp:313
 #, kde-format
@@ -5853,22 +5852,19 @@ msgid "Locked"
 msgstr "Verrouillé"
 
 #: src/gui/widgets/menus/node_menu.cpp:514
-#, fuzzy, kde-format
-#| msgid "Edit"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Edit"
 msgstr "Modifier"
 
 #: src/gui/widgets/menus/node_menu.cpp:516
-#, fuzzy, kde-format
-#| msgid "Cut"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Cut"
 msgstr "Couper"
 
 #: src/gui/widgets/menus/node_menu.cpp:523
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy"
 msgstr "Copier"
@@ -5886,8 +5882,7 @@ msgid "Duplicate"
 msgstr "Dupliquer"
 
 #: src/gui/widgets/menus/node_menu.cpp:540
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Move"
 msgstr "Déplacer"
@@ -6510,10 +6505,11 @@ msgstr "Limite de biseau"
 msgid "Dashes"
 msgstr "Pointillés"
 
-#: src/gui/widgets/spin2d.cpp:46
-#, kde-format
-msgid "Lock Ratio"
-msgstr "Verrouiller le rapport"
+#: src/gui/widgets/spin2d.cpp:242
+#, fuzzy, kde-format
+#| msgid "Lock Aspect Ratio"
+msgid "Lock aspect ratio"
+msgstr "Verrouiller un ratio d'aspect"
 
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:86
 #, kde-format
@@ -6768,6 +6764,9 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "%1 tracé"
+
+#~ msgid "Lock Ratio"
+#~ msgstr "Verrouiller le rapport"
 
 #~ msgid "Lottie only supports layers in the top level"
 #~ msgstr "Lottie ne prend en charge les calques qu'au niveau le plus haut"
