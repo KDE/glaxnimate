@@ -42,6 +42,7 @@
     * Fixed gradients not being displayed correctly in the properties dock
     * Fixed gradients not showing properly on timeline / properties docks
     * Fixed auto orient being calculated incorrectly
+    * Fixed crash on "Fit to Page" action
 
 ## 0.6.0
 

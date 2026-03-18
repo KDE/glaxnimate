@@ -479,7 +479,7 @@ void GlaxnimateWindow::Private::setup_view_actions()
 
     viewActions->addAction(KStandardActions::ZoomIn, canvas, &Canvas::zoom_in);
     viewActions->addAction(KStandardActions::ZoomOut, canvas, &Canvas::zoom_out);
-    viewActions->addAction(KStandardActions::FitToPage, parent, &Canvas::view_fit);
+    viewActions->addAction(KStandardActions::FitToPage, canvas, &Canvas::view_fit);
     viewActions->addAction(KStandardActions::ActualSize, canvas, &Canvas::reset_zoom);
 
     QAction *toolResetRotation = add_action(viewActions, QStringLiteral("view_reset_rotation"), i18n("Reset Rotation"), QStringLiteral("rotation-allowed"));
