@@ -36,11 +36,11 @@ public:
         constexpr const int spacing_mask = (ProportionalFonts | MonospacedFonts);
 
         if ( (filters & scalable_mask) && (filters & scalable_mask) != scalable_mask )
-            if ( bool(filters & ScalableFonts) != database.isSmoothlyScalable(family) )
+            if ( bool(filters & ScalableFonts) != QFontDatabase::isSmoothlyScalable(family) )
                 return false;
 
         if ( (filters & spacing_mask) && (filters & spacing_mask) != spacing_mask )
-            if ( bool(filters & MonospacedFonts) != database.isFixedPitch(family) )
+            if ( bool(filters & MonospacedFonts) != QFontDatabase::isFixedPitch(family) )
                 return false;
 
         return true;
@@ -66,8 +66,15 @@ public:
         fonts.clear();
 
         std::set<QString> font_set;
-        for ( const auto& fam : database.families(system) )
+        for ( const auto& fam : QFontDatabase::families(system) )
         {
+            // Avoid huge repeating list
+            if ( system == QFontDatabase::Any  &&  (
+                fam.startsWith(QStringLiteral("Noto Sans ")) ||
+                fam.startsWith(QStringLiteral("Noto Serif "))
+            ))
+                continue;
+
             if ( valid(fam) )
                 font_set.insert(fam);
         }
@@ -86,7 +93,7 @@ public:
 
     void maybe_remove_family(const QString& family, FontModel* parent)
     {
-        if ( database.families(system).contains(family) )
+        if ( QFontDatabase::families(system).contains(family) )
             return;
 
         int row = fonts.indexOf(family);
@@ -116,7 +123,6 @@ public:
         parent->endInsertRows();
     }
 
-    QFontDatabase database;
     QFontDatabase::WritingSystem system = QFontDatabase::Any;
     FontFilters filters = AllFonts;
     bool preview_font = true;
