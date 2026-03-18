@@ -442,7 +442,7 @@ void graphics::GradientEditor::stop_move(bool commit)
     {
         QPointF start = gradient_->type.get() == model::Gradient::Radial ? gradient_->highlight.get() : gradient_->start_point.get();
         QPointF end = gradient_->end_point.get();
-        QPointF pos = math::line_closest_point(start, end, pos);
+        // pos = math::line_closest_point(start, end, pos);
 
         if ( start == end )
         {
@@ -450,34 +450,10 @@ void graphics::GradientEditor::stop_move(bool commit)
         }
         else
         {
-            // reverse interpolation on one component
-            qreal a, b, p;
-            if ( start.x() == end.x() )
-            {
-                a = start.y();
-                b = end.y();
-                p = pos.y();
-            }
-            else
-            {
-                a = start.x();
-                b = end.x();
-                p = pos.x();
-            }
-
-            // derived from p = a*(1-ratio) + b*ratio
-            ratio = (p-a) / (b-a);
-
-            if ( ratio < 0 )
-            {
-                ratio = 0;
-                pos = start;
-            }
-            else if ( ratio > 1 )
-            {
-                ratio = 1;
-                pos = end;
-            }
+            qreal dist1 = math::length(start - pos);
+            qreal dist2 = math::length(end - pos);
+            ratio = math::bound(0., dist1 / (dist1+dist2), 1.);
+            pos = math::lerp(start, end, ratio);
         }
     }
 
