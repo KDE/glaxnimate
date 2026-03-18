@@ -29,6 +29,10 @@ public:
     void show_highlight();
     bool highlight_visible() const;
 
+    void remove_angle();
+    void show_angle();
+    bool angle_visible() const;
+
     model::Styler* styler() const;
     model::Gradient* gradient() const;
 
@@ -41,10 +45,14 @@ private:
     void finish_committed();
     void highlight_dragged(const QPointF& p);
     void highlight_committed();
+    void angle_dragged(const QPointF& p);
+    void angle_committed();
+    QPointF angle_preferred_pos();
     QString command_name() const;
 
-    void update_stops();
-    void update_stop_pos();
+    QPointF stop_pos(qreal f);
+
+    void update_handles(bool recreate_stops);
     void stop_dragged();
     void stop_committed();
     void stop_move(bool commit);
@@ -53,6 +61,7 @@ private:
     MoveHandle start{this, MoveHandle::Any, MoveHandle::Square};
     MoveHandle finish{this, MoveHandle::Any, MoveHandle::Diamond, 8};
     MoveHandle highlight{this, MoveHandle::Any, MoveHandle::Saltire, 8};
+    MoveHandle angle{this, MoveHandle::Any, MoveHandle::Saltire, 8};
     std::list<MoveHandle> stops;
 
     model::Styler* styler_;

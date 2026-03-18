@@ -24,7 +24,9 @@ graphics::GradientEditor::GradientEditor(model::Styler* styler)
     start.setVisible(false);
     finish.setVisible(false);
     highlight.setVisible(false);
+    angle.setVisible(false);
 
+    // Used by edit_tool
     start.set_role(MoveHandle::GradientStop);
     finish.set_role(MoveHandle::GradientStop);
     highlight.set_role(MoveHandle::GradientHighlight);
@@ -42,6 +44,8 @@ graphics::GradientEditor::GradientEditor(model::Styler* styler)
     connect(&finish,    &MoveHandle::drag_finished, this, &GradientEditor::finish_committed);
     connect(&highlight, &MoveHandle::dragged,       this, &GradientEditor::highlight_dragged);
     connect(&highlight, &MoveHandle::drag_finished, this, &GradientEditor::highlight_committed);
+    connect(&angle, &MoveHandle::dragged,       this, &GradientEditor::angle_dragged);
+    connect(&angle, &MoveHandle::drag_finished, this, &GradientEditor::angle_committed);
     connect(&start, &MoveHandle::clicked, this, [this](Qt::KeyboardModifiers mod){
         if ( (mod & Qt::ShiftModifier) )
             show_highlight();
@@ -68,17 +72,19 @@ void graphics::GradientEditor::on_use_changed(model::BrushStyle* new_use)
 
     gradient_ = new_gradient;
 
-    update_stops();
+    update_handles(true);
 
     if ( !gradient_ )
     {
         start.setVisible(false);
         finish.setVisible(false);
         highlight.setVisible(false);
+        angle.setVisible(false);
 
         start.clear_associated_properties();
         finish.clear_associated_properties();
         highlight.clear_associated_properties();
+        angle.clear_associated_properties();
         update();
         return;
     }
@@ -87,6 +93,7 @@ void graphics::GradientEditor::on_use_changed(model::BrushStyle* new_use)
     start.set_associated_properties({&gradient_->start_point, &gradient_->colors->colors});
     finish.set_associated_properties({&gradient_->end_point, &gradient_->colors->colors});
     highlight.set_associated_properties({&gradient_->highlight, &gradient_->colors->colors});
+    angle.set_associated_properties({&gradient_->angle});
 
     connect(gradient_, &model::Gradient::style_changed, this, &GradientEditor::update_stops_from_gradient);
 
@@ -98,9 +105,12 @@ void graphics::GradientEditor::on_use_changed(model::BrushStyle* new_use)
     else
         highlight.setVisible(false);
 
+    angle.setVisible(gradient_->type.get() == model::Gradient::Conical);
+
     start.setPos(gradient_->start_point.get());
     finish.setPos(gradient_->end_point.get());
     highlight.setPos(gradient_->highlight.get());
+    angle.setPos(angle_preferred_pos());
     update();
 }
 
@@ -128,7 +138,7 @@ void graphics::GradientEditor::start_dragged(QPointF p, Qt::KeyboardModifiers mo
 
     styler_->push_command(cmd);
 
-    update_stop_pos();
+    update_handles(false);
     update();
 }
 
@@ -163,7 +173,7 @@ void graphics::GradientEditor::finish_dragged(QPointF p, Qt::KeyboardModifiers m
         new command::SetMultipleAnimated(&gradient_->end_point, p, false)
     );
 
-    update_stop_pos();
+    update_handles(false);
     update();
 }
 
@@ -198,12 +208,54 @@ void graphics::GradientEditor::highlight_committed()
     );
 }
 
+
+void graphics::GradientEditor::angle_dragged(const QPointF& p)
+{
+    if ( !gradient_ )
+        return;
+
+
+    auto start = gradient_->start_point.get();
+    auto end = p;
+    auto angle = math::rad2deg(math::atan2(end.y() - start.y(), end.x() - start.x()));
+
+    styler_->push_command(
+        new command::SetMultipleAnimated(&gradient_->angle, angle, false)
+    );
+}
+
+void graphics::GradientEditor::angle_committed()
+{
+    if ( !gradient_ )
+        return;
+
+    styler_->push_command(
+        new command::SetMultipleAnimated(&gradient_->angle, gradient_->angle.value(), true)
+    );
+}
+
+
 QRectF graphics::GradientEditor::boundingRect() const
 {
     if ( !gradient_ )
         return {};
 
-    return QRectF(start.pos(), finish.pos());
+    switch ( gradient_->type.get() )
+    {
+        case model::Gradient::Conical:
+        {
+            QPointF center = start.pos();
+            qreal size = math::length(finish.pos() - center) * 1.1; // TODO
+            return QRectF(center.x() - size, center.y() - size, center.x() + size , center.y() + size);
+        }
+        case model::Gradient::Linear:
+            return QRectF(start.pos(), finish.pos());
+        case model::Gradient::Radial:
+            return QRectF(highlight.pos(), finish.pos());
+    }
+
+    return {};
+
 }
 
 void graphics::GradientEditor::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget*)
@@ -213,7 +265,21 @@ void graphics::GradientEditor::paint(QPainter* painter, const QStyleOptionGraphi
         QPen p(option->palette.highlight(), 1);
         p.setCosmetic(true);
         painter->setPen(p);
-        painter->drawLine(start.pos(), finish.pos());
+        switch ( gradient_->type.get() )
+        {
+            case model::Gradient::Conical:
+            {
+                qreal size = math::length(finish.pos() - start.pos()) / 2;
+                painter->drawEllipse(start.pos(), size, size);
+                break;
+            }
+            case model::Gradient::Linear:
+                painter->drawLine(start.pos(), finish.pos());
+                break;
+            case model::Gradient::Radial:
+                painter->drawLine(highlight.pos(), finish.pos());
+                break;
+        }
     }
 }
 
@@ -236,9 +302,66 @@ void graphics::GradientEditor::show_highlight()
     }
 }
 
-void graphics::GradientEditor::update_stops()
+void graphics::GradientEditor::remove_angle()
 {
-    stops.clear();
+    if ( gradient_ && gradient_->type.get() == model::Gradient::Conical )
+    {
+        angle.setVisible(false);
+        gradient_->angle.set_undoable(0);
+    }
+}
+
+QPointF glaxnimate::gui::graphics::GradientEditor::angle_preferred_pos()
+{
+    QPointF start = gradient_->start_point.get();
+    QPointF end = gradient_->end_point.get();
+    auto polar = math::PolarVector(end - start);
+    polar.angle = math::deg2rad(gradient_->angle.get());
+    polar.length *= 0.8;
+    return start + polar.to_cartesian();
+}
+
+bool glaxnimate::gui::graphics::GradientEditor::angle_visible() const
+{
+    return angle.isVisible();
+}
+
+
+void graphics::GradientEditor::show_angle()
+{
+    if ( gradient_ && gradient_->type.get() == model::Gradient::Conical )
+    {
+        angle.setVisible(true);
+        angle.setPos(angle_preferred_pos());
+    }
+}
+
+QPointF glaxnimate::gui::graphics::GradientEditor::stop_pos(qreal f)
+{
+
+    switch ( gradient_->type.get() )
+    {
+        case model::Gradient::Conical:
+        {
+            QPointF center = gradient_->start_point.get();
+            math::PolarVector polar(gradient_->end_point.get() - center);
+            polar.length /= 2;
+            polar.angle = math::deg2rad(gradient_->angle.get()) + math::tau * f;
+            return center + polar.to_cartesian();
+        }
+        case model::Gradient::Linear:
+            return math::lerp(start.pos(), finish.pos(), f);
+        case model::Gradient::Radial:
+            return math::lerp(highlight.pos(), finish.pos(), f);
+    }
+    return {};
+}
+
+void graphics::GradientEditor::update_handles(bool create_stops)
+{
+    if ( create_stops )
+        stops.clear();
+
     if ( !gradient_ )
         return;
 
@@ -248,38 +371,38 @@ void graphics::GradientEditor::update_stops()
     this->start.setPos(start);
     finish.setPos(end);
     highlight.setPos(gradient_->highlight.get());
+    angle.setPos(angle_preferred_pos());
+    highlight.setVisible(
+        gradient_->type.get() == model::Gradient::Radial &&
+        (gradient_->highlight.get() != gradient_->start_point.get() || highlight.isVisible())
+    );
+    angle.setVisible(gradient_->type.get() == model::Gradient::Conical);
+
 
     int i = 0;
-    for ( const auto& stop : gradient_->colors->colors.get() )
-    {
-        stops.emplace_back(this, MoveHandle::Any, MoveHandle::Diamond);
-        stops.back().set_role(MoveHandle::GradientStop);
-        stops.back().setData(graphics::GradientStopIndex, i++);
-        stops.back().setPos(math::lerp(start, end, stop.first));
-        stops.back().setZValue(-10);
-        stops.back().set_associated_property(&gradient_->colors->colors);
-        connect(&stops.back(), &MoveHandle::dragged, this, &GradientEditor::stop_dragged);
-        connect(&stops.back(), &MoveHandle::drag_finished, this, &GradientEditor::stop_committed);
-    }
-    finish.setData(graphics::GradientStopIndex, gradient_->colors->colors.get().size() - 1);
-
-    update();
-}
-
-void graphics::GradientEditor::update_stop_pos()
-{
-    QPointF start = gradient_->start_point.get();
-    QPointF end = gradient_->end_point.get();
-
-    this->start.setPos(start);
-    finish.setPos(end);
-    highlight.setPos(gradient_->highlight.get());
-
     const auto& colors = gradient_->colors->colors.get();
-    int i = 0;
-    for ( auto& handle : stops )
+
+    if ( create_stops )
     {
-        handle.setPos(math::lerp(start, end, colors[i++].first));
+        for ( const auto& stop : colors )
+        {
+            stops.emplace_back(this, MoveHandle::Any, MoveHandle::Diamond);
+            stops.back().set_role(MoveHandle::GradientStop);
+            stops.back().setData(graphics::GradientStopIndex, i++);
+            stops.back().setPos(stop_pos(stop.first));
+            stops.back().setZValue(-10);
+            stops.back().set_associated_property(&gradient_->colors->colors);
+            connect(&stops.back(), &MoveHandle::dragged, this, &GradientEditor::stop_dragged);
+            connect(&stops.back(), &MoveHandle::drag_finished, this, &GradientEditor::stop_committed);
+        }
+        finish.setData(graphics::GradientStopIndex, colors.size() - 1);
+    }
+    else
+    {
+        for ( auto& handle : stops )
+        {
+            handle.setPos(stop_pos(colors[i++].first));
+        }
     }
 
     update();
@@ -304,44 +427,57 @@ void graphics::GradientEditor::stop_move(bool commit)
     if ( index < 0 || index >= colors.size() )
         return;
 
-    QPointF start = gradient_->start_point.get();
-    QPointF end = gradient_->end_point.get();
-    QPointF pos = math::line_closest_point(start, end, handle->pos());
+    QPointF pos = handle->pos();
     qreal ratio = 0;
 
-    if ( start == end )
+    if ( gradient_->type.get() == model::Gradient::Conical )
     {
-        pos = start;
+        auto start = gradient_->start_point.get();
+        auto angle = math::atan2(pos.y() - start.y(), pos.x() - start.x()) - math::deg2rad(gradient_->angle.get());
+        // atan2 returns [-pi, pi]
+        ratio = math::fmod(angle / math::tau, 1.);
+        pos = stop_pos(ratio);
     }
     else
     {
-        // reverse interpolation on one component
-        qreal a, b, p;
-        if ( start.x() == end.x() )
+        QPointF start = gradient_->type.get() == model::Gradient::Radial ? gradient_->highlight.get() : gradient_->start_point.get();
+        QPointF end = gradient_->end_point.get();
+        QPointF pos = math::line_closest_point(start, end, pos);
+
+        if ( start == end )
         {
-            a = start.y();
-            b = end.y();
-            p = pos.y();
+            pos = start;
         }
         else
         {
-            a = start.x();
-            b = end.x();
-            p = pos.x();
-        }
+            // reverse interpolation on one component
+            qreal a, b, p;
+            if ( start.x() == end.x() )
+            {
+                a = start.y();
+                b = end.y();
+                p = pos.y();
+            }
+            else
+            {
+                a = start.x();
+                b = end.x();
+                p = pos.x();
+            }
 
-        // derived from p = a*(1-ratio) + b*ratio
-        ratio = (p-a) / (b-a);
+            // derived from p = a*(1-ratio) + b*ratio
+            ratio = (p-a) / (b-a);
 
-        if ( ratio < 0 )
-        {
-            ratio = 0;
-            pos = start;
-        }
-        else if ( ratio > 1 )
-        {
-            ratio = 1;
-            pos = end;
+            if ( ratio < 0 )
+            {
+                ratio = 0;
+                pos = start;
+            }
+            else if ( ratio > 1 )
+            {
+                ratio = 1;
+                pos = end;
+            }
         }
     }
 
@@ -358,7 +494,7 @@ void graphics::GradientEditor::stop_move(bool commit)
     ));
 
     if ( commit )
-        update_stop_pos();
+        update_handles(false);
 }
 
 void graphics::GradientEditor::update_stops_from_gradient()
@@ -366,16 +502,16 @@ void graphics::GradientEditor::update_stops_from_gradient()
     if ( !gradient_->colors.get() )
     {
         on_use_changed(nullptr);
-        update_stops();
+        update_handles(true);
         return;
     }
 
     const auto& colors = gradient_->colors->colors.get();
 
     if ( colors.size() != int(stops.size()) )
-        update_stops();
+        update_handles(true);
     else
-        update_stop_pos();
+        update_handles(false);
 }
 
 glaxnimate::model::Styler * graphics::GradientEditor::styler() const

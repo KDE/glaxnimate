@@ -220,8 +220,7 @@ QBrush glaxnimate::model::Gradient::brush_style ( glaxnimate::model::FrameTime t
     else if ( type.get() == Conical )
     {
         auto start = start_point.get_at(t);
-        auto end = end_point.get_at(t);
-        auto angle = -math::rad2deg(math::atan2(end.y() - start.y(), end.x() - start.x())) - this->angle.get();
+        auto angle = -this->angle.get();
         QConicalGradient g(start, angle);
         if ( colors.get() )
         {
