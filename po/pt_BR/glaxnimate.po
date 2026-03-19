@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-18 00:42+0000\n"
-"PO-Revision-Date: 2026-03-17 08:13-0300\n"
+"POT-Creation-Date: 2026-03-19 00:42+0000\n"
+"PO-Revision-Date: 2026-03-18 08:53-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -73,6 +73,8 @@ msgid "outer_radius"
 msgstr "raio_exterior"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/shapes/polystar.hpp
+#. i18n: Property name
+#. i18n: file: src/core/glaxnimate/model/assets/gradient.hpp
 #. i18n: Property name
 #, kde-format
 msgid "angle"
@@ -731,7 +733,7 @@ msgstr "Refazer"
 #. i18n: ectx: property (text), widget (QToolButton, btn_new)
 #: src/android/main_window.cpp:508 src/gui/glaxnimateui.rc:126
 #: src/gui/widgets/docks/snippet_list_widget.ui:29
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:45
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:48
 #, kde-format
 msgid "New"
 msgstr "Novo"
@@ -1118,9 +1120,9 @@ msgid "Could convert %1"
 msgstr "Poderia converter %1"
 
 #: src/core/glaxnimate/io/aep/aep_loader.cpp:592
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1104
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1126
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1133
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1101
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1123
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1130
 #, kde-format
 msgid "Invalid value for %1"
 msgstr "Valor inválido para %1"
@@ -1472,37 +1474,37 @@ msgstr "Tipo de forma não suportada %1"
 msgid "Unknown field %2%1"
 msgstr "Campo desconhecido %2%1"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1059
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1056
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
 msgstr "Ponto de Bezier %1 inválido em %2"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1141
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1138
 #, kde-format
 msgid "Invalid keyframes for %1"
 msgstr "Quadros-chave inválidos para %1"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1191
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1188
 #, kde-format
 msgid "(null)"
 msgstr "(nulo)"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1197
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1194
 #, kde-format
 msgid "(empty)"
 msgstr "(vazio)"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1202
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1199
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
 msgstr "Não foi possível carregar quadro-chave em %1 para %2 com valor %3"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1256
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1253
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
 msgstr "ID de bitmap duplicado: %1"
 
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1288
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1285
 #, kde-format
 msgid "Duplicate Composition ID: %1"
 msgstr "ID de composição duplicado: %1"
@@ -2109,12 +2111,12 @@ msgstr "%1 Gradiente"
 #. i18n: ectx: property (text), widget (QToolButton, btn_fill_linear)
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_stroke_linear)
 #. i18n: ectx: property (text), widget (QToolButton, btn_stroke_linear)
-#: src/core/glaxnimate/model/assets/gradient.cpp:288
+#: src/core/glaxnimate/model/assets/gradient.cpp:287
 #: src/gui/widgets/enum_combo.cpp:100
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:134
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:137
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:154
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:157
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:143
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:146
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:162
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:165
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:49
 #, kde-format
 msgid "Linear"
@@ -2124,12 +2126,12 @@ msgstr "Linear"
 #. i18n: ectx: property (text), widget (QToolButton, btn_fill_radial)
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_stroke_radial)
 #. i18n: ectx: property (text), widget (QToolButton, btn_stroke_radial)
-#: src/core/glaxnimate/model/assets/gradient.cpp:290
+#: src/core/glaxnimate/model/assets/gradient.cpp:289
 #: src/gui/widgets/enum_combo.cpp:102
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:114
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:117
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:174
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:177
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:124
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:127
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:181
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:184
 #, kde-format
 msgid "Radial"
 msgstr "Raio"
@@ -2138,12 +2140,12 @@ msgstr "Raio"
 #. i18n: ectx: property (text), widget (QToolButton, btn_fill_conical)
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_stroke_conical)
 #. i18n: ectx: property (text), widget (QToolButton, btn_stroke_conical)
-#: src/core/glaxnimate/model/assets/gradient.cpp:292
+#: src/core/glaxnimate/model/assets/gradient.cpp:291
 #: src/gui/widgets/enum_combo.cpp:104
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:204
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:207
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:223
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:226
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:210
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:213
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:229
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:232
 #, kde-format
 msgid "Conical"
 msgstr "Cônico"
@@ -2271,7 +2273,7 @@ msgstr "Texto"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:771
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:631
 #: src/gui/widgets/docks/colors.ui:22
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:191
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:197
 #: src/gui/widgets/tools/color_picker_widget.ui:24
 #: src/gui/widgets/tools/fill_tool_widget.ui:24
 #: src/gui/widgets/tools/shape_tool_widget.ui:66
@@ -2288,7 +2290,7 @@ msgstr "Preencher"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:766
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:634
 #: src/gui/widgets/docks/stroke.ui:22
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:101
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:111
 #: src/gui/widgets/tools/color_picker_widget.ui:37
 #: src/gui/widgets/tools/fill_tool_widget.ui:38
 #: src/gui/widgets/tools/shape_tool_widget.ui:80
@@ -2841,12 +2843,12 @@ msgstr "Definir início"
 msgid "Update shape"
 msgstr "Atualizar forma"
 
-#: src/gui/graphics/composition_item.hpp:167
+#: src/gui/graphics/composition_item.hpp:106
 #, kde-format
 msgid "Resize Canvas"
 msgstr "Redimensionar tela"
 
-#: src/gui/graphics/gradient_editor.cpp:109
+#: src/gui/graphics/gradient_editor.cpp:119
 #, kde-format
 msgid "Drag Gradient"
 msgstr "Arrastar gradiente"
@@ -4139,9 +4141,11 @@ msgstr "Colar como composição"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_duplicate)
+#. i18n: ectx: property (toolTip), widget (QToolButton, btn_duplicate)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:387
 #: src/gui/widgets/docks/layers.ui:84 src/gui/widgets/docks/layers.ui:87
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:486
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:58
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:69
 #, kde-format
 msgid "Duplicate"
@@ -5022,7 +5026,7 @@ msgstr "Remover cor"
 #: src/gui/widgets/docks/layers.ui:98 src/gui/widgets/docks/layers.ui:101
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:477
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:86
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:86
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:97
 #, kde-format
 msgid "Remove"
 msgstr "Remover"
@@ -6393,30 +6397,30 @@ msgstr "Definir %1 gradiente"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_remove)
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:212
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:83
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:94
 #, kde-format
 msgid "Remove Gradient"
 msgstr "Remover gradiente"
 
-#: src/gui/widgets/shape_style/gradient_list_widget.cpp:388
+#: src/gui/widgets/shape_style/gradient_list_widget.cpp:402
 #, kde-format
 msgid "Gradient Presets"
 msgstr "Predefinições de gradiente"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_new)
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:42
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:45
 #, kde-format
 msgid "Add Gradient"
 msgstr "Adicionar gradiente"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_preset)
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:56
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:68
 #, kde-format
 msgid "Add from Preset"
 msgstr "Adicionar da predefinição"
 
 #. i18n: ectx: property (text), widget (QToolButton, btn_preset)
-#: src/gui/widgets/shape_style/gradient_list_widget.ui:59
+#: src/gui/widgets/shape_style/gradient_list_widget.ui:71
 #, kde-format
 msgid "Preset"
 msgstr "Predefinição"
@@ -6489,8 +6493,7 @@ msgid "Dashes"
 msgstr "Traços"
 
 #: src/gui/widgets/spin2d.cpp:242
-#, fuzzy, kde-format
-#| msgid "Lock Aspect Ratio"
+#, kde-format
 msgid "Lock aspect ratio"
 msgstr "Bloquear taxa de proporção"
 
