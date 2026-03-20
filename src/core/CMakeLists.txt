@@ -68,6 +68,7 @@ glaxnimate/model/visitor.cpp
 glaxnimate/model/custom_font.cpp
 
 glaxnimate/model/animation/keyframe_transition.cpp
+glaxnimate/model/animation/keyframe_base.cpp
 glaxnimate/model/animation/animatable.cpp
 glaxnimate/model/animation/animatable_path.cpp
 glaxnimate/model/property/property.cpp
