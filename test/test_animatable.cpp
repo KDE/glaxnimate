@@ -430,6 +430,198 @@ private Q_SLOTS:
 
     }
 
+    void test_command_move_keyframe()
+    {
+        Document doc("");
+        MetaTestSubject ts(&doc);
+        auto& property = ts.anim_int;
+        using type = int;
+        property.set_keyframe(10, 100);
+        property.set_keyframe(20, 120);
+        property.set_keyframe(30, 130);
+
+        {
+            auto cmd = new MoveKeyframe(&property, 1, 40);
+            cmd->redo();
+            PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(30, 130), newkf<type>(40, 120));
+            cmd->undo();
+            PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(20, 120), newkf<type>(30, 130));
+        }
+
+        {
+            auto cmd = new MoveKeyframe(&property, 1, 30);
+            cmd->redo();
+            PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(30, 130), newkf<type>(30, 120));
+            cmd->undo();
+            PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(20, 120), newkf<type>(30, 130));
+        }
+    }
+
+    void test_command_set_multiple()
+    {
+        Document doc("");
+        MetaTestSubject ts(&doc);
+        std::vector<model::AnimatableBase*> props = {&ts.anim_int, &ts.anim_float, &ts.anim_point};
+
+        ts.set_time(48);
+        ts.anim_int.set(4);
+        ts.anim_float.set(5);
+        ts.anim_point.set(QPointF(6, 7));
+
+        QCOMPARE(ts.anim_int.get(), 4);
+        QCOMPARE(ts.anim_float.get(), 5);
+        QCOMPARE(ts.anim_point.get(), QPointF(6, 7));
+
+        {
+            SetMultipleAnimated cmd(QStringLiteral("test"), false, props, 1, 2, QPointF(3, 4));
+            cmd.redo();
+            QCOMPARE(ts.anim_int.get(), 1);
+            QCOMPARE(ts.anim_float.get(), 2);
+            QCOMPARE(ts.anim_point.get(), QPointF(3, 4));
+            QCOMPARE(ts.anim_int.animated(), false);
+            QCOMPARE(ts.anim_float.animated(), false);
+            QCOMPARE(ts.anim_point.animated(), false);
+            cmd.undo();
+            QCOMPARE(ts.anim_int.get(), 4);
+            QCOMPARE(ts.anim_float.get(), 5);
+            QCOMPARE(ts.anim_point.get(), QPointF(6, 7));
+            QCOMPARE(ts.anim_int.animated(), false);
+            QCOMPARE(ts.anim_float.animated(), false);
+            QCOMPARE(ts.anim_point.animated(), false);
+        }
+
+        {
+            doc.set_record_to_keyframe(true);
+            SetMultipleAnimated cmd(QStringLiteral("test"), false, props, 1, 2, QPointF(3, 4));
+            cmd.redo();
+            QCOMPARE(ts.anim_int.get(), 1);
+            QCOMPARE(ts.anim_float.get(), 2);
+            QCOMPARE(ts.anim_point.get(), QPointF(3, 4));
+            QCOMPARE(ts.anim_int.animated(), true);
+            QCOMPARE(ts.anim_float.animated(), true);
+            QCOMPARE(ts.anim_point.animated(), true);
+            PROPERTY_KEYFRAMES(int, ts.anim_int, newkf<int>(0, 4), newkf<int>(48, 1));
+            PROPERTY_KEYFRAMES(float, ts.anim_float, newkf<float>(0, 5), newkf<float>(48, 2));
+            PROPERTY_KEYFRAMES(QPointF, ts.anim_point, newkf<QPointF>(0, QPointF(6, 7)), newkf<QPointF>(48, QPointF(3, 4)));
+            cmd.undo();
+            QCOMPARE(ts.anim_int.get(), 4);
+            QCOMPARE(ts.anim_float.get(), 5);
+            QCOMPARE(ts.anim_point.get(), QPointF(6, 7));
+            QCOMPARE(ts.anim_int.animated(), false);
+            QCOMPARE(ts.anim_float.animated(), false);
+            QCOMPARE(ts.anim_point.animated(), false);
+            doc.set_record_to_keyframe(false);
+        }
+
+        {
+            ts.anim_int.set_keyframe(10, 10);
+            PROPERTY_KEYFRAMES(int, ts.anim_int, newkf<int>(10, 10));
+            SetMultipleAnimated cmd(QStringLiteral("test"), false, props, 1, 2, QPointF(3, 4));
+            cmd.redo();
+            QCOMPARE(ts.anim_int.get(), 1);
+            QCOMPARE(ts.anim_float.get(), 2);
+            QCOMPARE(ts.anim_point.get(), QPointF(3, 4));
+            QCOMPARE(ts.anim_int.animated(), true);
+            QCOMPARE(ts.anim_float.animated(), false);
+            QCOMPARE(ts.anim_point.animated(), false);
+            PROPERTY_KEYFRAMES(int, ts.anim_int, newkf<int>(10, 10), newkf<int>(48, 1));
+            cmd.undo();
+            QCOMPARE(ts.anim_int.get(), 10);
+            QCOMPARE(ts.anim_float.get(), 5);
+            QCOMPARE(ts.anim_point.get(), QPointF(6, 7));
+            QCOMPARE(ts.anim_int.animated(), true);
+            QCOMPARE(ts.anim_float.animated(), false);
+            QCOMPARE(ts.anim_point.animated(), false);
+            PROPERTY_KEYFRAMES(int, ts.anim_int, newkf<int>(10, 10));
+        }
+    }
+
+    void test_command_set_multiple_push()
+    {
+        Document doc("");
+        MetaTestSubject ts(&doc);
+
+        ts.set_time(48);
+        ts.anim_int.set(4);
+        ts.anim_float.set(5);
+        ts.anim_point.set(QPointF(6, 7));
+
+        QCOMPARE(ts.anim_int.get(), 4);
+        QCOMPARE(ts.anim_float.get(), 5);
+        QCOMPARE(ts.anim_point.get(), QPointF(6, 7));
+
+        {
+            SetMultipleAnimated cmd(QStringLiteral("test"), std::vector<model::AnimatableBase*>{}, QVariantList(), QVariantList(), false);
+            cmd.push_property(&ts.anim_int, 1);
+            cmd.push_property(&ts.anim_float, 2);
+            cmd.push_property(&ts.anim_point, QPointF(3, 4));
+            cmd.redo();
+            QCOMPARE(ts.anim_int.get(), 1);
+            QCOMPARE(ts.anim_float.get(), 2);
+            QCOMPARE(ts.anim_point.get(), QPointF(3, 4));
+            QCOMPARE(ts.anim_int.animated(), false);
+            QCOMPARE(ts.anim_float.animated(), false);
+            QCOMPARE(ts.anim_point.animated(), false);
+            cmd.undo();
+            QCOMPARE(ts.anim_int.get(), 4);
+            QCOMPARE(ts.anim_float.get(), 5);
+            QCOMPARE(ts.anim_point.get(), QPointF(6, 7));
+            QCOMPARE(ts.anim_int.animated(), false);
+            QCOMPARE(ts.anim_float.animated(), false);
+            QCOMPARE(ts.anim_point.animated(), false);
+        }
+
+        {
+            doc.set_record_to_keyframe(true);
+            SetMultipleAnimated cmd(QStringLiteral("test"), std::vector<model::AnimatableBase*>{}, QVariantList(), QVariantList(), false);
+            cmd.push_property(&ts.anim_int, 1);
+            cmd.push_property(&ts.anim_float, 2);
+            cmd.push_property(&ts.anim_point, QPointF(3, 4));
+            cmd.redo();
+            QCOMPARE(ts.anim_int.get(), 1);
+            QCOMPARE(ts.anim_float.get(), 2);
+            QCOMPARE(ts.anim_point.get(), QPointF(3, 4));
+            QCOMPARE(ts.anim_int.animated(), true);
+            QCOMPARE(ts.anim_float.animated(), true);
+            QCOMPARE(ts.anim_point.animated(), true);
+            PROPERTY_KEYFRAMES(int, ts.anim_int, newkf<int>(0, 4), newkf<int>(48, 1));
+            PROPERTY_KEYFRAMES(float, ts.anim_float, newkf<float>(0, 5), newkf<float>(48, 2));
+            PROPERTY_KEYFRAMES(QPointF, ts.anim_point, newkf<QPointF>(0, QPointF(6, 7)), newkf<QPointF>(48, QPointF(3, 4)));
+            cmd.undo();
+            QCOMPARE(ts.anim_int.get(), 4);
+            QCOMPARE(ts.anim_float.get(), 5);
+            QCOMPARE(ts.anim_point.get(), QPointF(6, 7));
+            QCOMPARE(ts.anim_int.animated(), false);
+            QCOMPARE(ts.anim_float.animated(), false);
+            QCOMPARE(ts.anim_point.animated(), false);
+            doc.set_record_to_keyframe(false);
+        }
+
+        {
+            ts.anim_int.set_keyframe(10, 10);
+            PROPERTY_KEYFRAMES(int, ts.anim_int, newkf<int>(10, 10));
+            SetMultipleAnimated cmd(QStringLiteral("test"), std::vector<model::AnimatableBase*>{}, QVariantList(), QVariantList(), false);
+            cmd.push_property(&ts.anim_int, 1);
+            cmd.push_property(&ts.anim_float, 2);
+            cmd.push_property(&ts.anim_point, QPointF(3, 4));
+            cmd.redo();
+            QCOMPARE(ts.anim_int.get(), 1);
+            QCOMPARE(ts.anim_float.get(), 2);
+            QCOMPARE(ts.anim_point.get(), QPointF(3, 4));
+            QCOMPARE(ts.anim_int.animated(), true);
+            QCOMPARE(ts.anim_float.animated(), false);
+            QCOMPARE(ts.anim_point.animated(), false);
+            PROPERTY_KEYFRAMES(int, ts.anim_int, newkf<int>(10, 10), newkf<int>(48, 1));
+            cmd.undo();
+            QCOMPARE(ts.anim_int.get(), 10);
+            QCOMPARE(ts.anim_float.get(), 5);
+            QCOMPARE(ts.anim_point.get(), QPointF(6, 7));
+            QCOMPARE(ts.anim_int.animated(), true);
+            QCOMPARE(ts.anim_float.animated(), false);
+            QCOMPARE(ts.anim_point.animated(), false);
+            PROPERTY_KEYFRAMES(int, ts.anim_int, newkf<int>(10, 10));
+        }
+    }
 };
 
 QTEST_GUILESS_MAIN(TestAnimatable)
