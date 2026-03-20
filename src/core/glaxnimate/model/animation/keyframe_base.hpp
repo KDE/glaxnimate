@@ -33,13 +33,8 @@ public:
     /**
      * \brief Transition into the next value
      */
-    const KeyframeTransition& transition() const { return transition_; }
-
-    void set_transition(const KeyframeTransition& trans)
-    {
-        transition_ = trans;
-        Q_EMIT transition_changed(transition_.before_descriptive(), transition_.after_descriptive());
-    }
+    virtual KeyframeTransition transition() const = 0;
+    virtual void set_transition(const KeyframeTransition& trans) = 0;
 
     void stretch_time(qreal multiplier)
     {
@@ -60,7 +55,6 @@ public:
     std::unique_ptr<KeyframeBase> clone() const
     {
         auto clone = do_clone();
-        clone->set_transition(transition_);
         return clone;
     }
 
@@ -84,7 +78,6 @@ protected:
 
 private:
     FrameTime time_;
-    KeyframeTransition transition_;
 };
 
 
