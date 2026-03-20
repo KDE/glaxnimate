@@ -164,8 +164,8 @@ glaxnimate::command::SetMultipleAnimated::SetMultipleAnimated(
     props(props),
     before(before),
     after(after),
-    keyframe_after_global(props[0]->object()->document()->record_to_keyframe()),
-    time(props[0]->time())
+    keyframe_after_global(props.empty() ? false : props[0]->object()->document()->record_to_keyframe()),
+    time(props.empty() ? 0 : props[0]->time())
 {
     bool add_before = before.empty();
 
