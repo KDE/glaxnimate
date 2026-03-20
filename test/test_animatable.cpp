@@ -206,7 +206,6 @@ private Q_SLOTS:
     {
         MetaTestSubject ts(new Document(""));
         auto& property = ts.anim_int;
-        using type = int;
         qreal time_offset = 0.02; // prevents rounding issues
 
         property.set_time(5 + time_offset);
@@ -234,6 +233,88 @@ private Q_SLOTS:
         QCOMPARE(property.get(), 121);
 
 
+    }
+
+
+    void test_point_basics()
+    {
+        MetaTestSubject ts(new Document(""));
+        auto& property = ts.anim_point;
+        using type = QPointF;
+
+        QCOMPARE(property.keyframe_count(), 0);
+        QCOMPARE(property.animated(), false);
+
+        property.set_keyframe(10, QPointF(100, -100));
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(10, QPointF(100, -100)));
+        QCOMPARE(property.animated(), true);
+
+        property.set_keyframe(5, QPointF(200, -200));
+        property.set_keyframe(20, QPointF(300, -300));
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(5, QPointF(200, -200)), newkf<type>(10, QPointF(100, -100)), newkf<type>(20, QPointF(300, -300)));
+
+        property.set_keyframe(10, QPointF(400, -400));
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(5, QPointF(200, -200)), newkf<type>(10, QPointF(400, -400)), newkf<type>(20, QPointF(300, -300)));
+
+        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(5)), 5, QPointF(200, -200), KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(10)), 10, QPointF(400, -400), KeyframeTransition());
+
+        // keyframe_containing
+        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(99)), 20, QPointF(300, -300), KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(-99)), 5, QPointF(200, -200), KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(10)), 10, QPointF(400, -400), KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(12)), 10, QPointF(400, -400), KeyframeTransition());
+
+        property.move_keyframe(0, 25);
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(10, QPointF(400, -400)), newkf<type>(20, QPointF(300, -300)), newkf<type>(25, QPointF(200, -200)));
+        property.move_keyframe(2, 15);
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(10, QPointF(400, -400)), newkf<type>(15, QPointF(200, -200)), newkf<type>(20, QPointF(300, -300)));
+        property.move_keyframe(1, 5);
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(5, QPointF(200, -200)), newkf<type>(10, QPointF(400, -400)), newkf<type>(20, QPointF(300, -300)));
+
+        property.remove_keyframe_at_time(10);
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(5, QPointF(200, -200)), newkf<type>(20, QPointF(300, -300)));
+
+        property.remove_keyframe_at_time(10);
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(5, QPointF(200, -200)), newkf<type>(20, QPointF(300, -300)));
+
+        QCOMPARE(property.animated(), true);
+        property.clear_keyframes();
+        QCOMPARE(property.keyframe_count(), 0);
+        QCOMPARE(property.animated(), false);
+    }
+
+
+    void test_point_transitions()
+    {
+        MetaTestSubject ts(new Document(""));
+        auto& property = ts.anim_point;
+        qreal time_offset = 0;
+
+        property.set_time(5 + time_offset);
+        QCOMPARE(property.get(), QPointF());
+
+        property.set_keyframe(0, QPointF(100, -100));
+        QCOMPARE(property.get(), QPointF(100, -100));
+
+        property.set_keyframe(10, QPointF(200, -200));
+        QCOMPARE(property.get(), QPointF(150, -150));
+
+        property.set_keyframe(10, QPointF(300, -300));
+        QCOMPARE(property.get(), QPointF(200, -200));
+
+        property.set_time(2.5 + time_offset);
+        QCOMPARE(property.get(), QPointF(150, -150));
+        QCOMPARE(property.get_at(7.5 + time_offset), QPointF(250, -250));
+
+        property.keyframe(0)->set_transition(KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
+        KEYFRAME_COMPARE(property.keyframe(0), 0, QPointF(100, -100), KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
+        QCOMPARE(property.get_at(5 + time_offset), QPointF(200, -200));
+        qreal offset = 2118;
+        QCOMPARE(qRound(property.get_at(7.5 + time_offset).x()*100), 30000-offset);
+        property.set_time(0);property.set_time(2.5 + time_offset); // TODO FIXME This shouldn't be here
+        QCOMPARE(qRound(property.get_at(2.5 + time_offset).x()*100), 10000+offset);
+        QCOMPARE(qRound(property.get().x()*100), 10000+offset);
     }
 
 };
