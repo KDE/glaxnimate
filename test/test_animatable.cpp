@@ -11,7 +11,9 @@
 #include "glaxnimate/model/animation/animatable.hpp"
 #include "glaxnimate/model/object.hpp"
 #include "glaxnimate/model/document.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
 
+using namespace glaxnimate::command;
 using namespace glaxnimate::model;
 using namespace glaxnimate;
 
@@ -317,8 +319,6 @@ private Q_SLOTS:
         QCOMPARE(qRound(property.get().x()*100), 10000+offset);
     }
 
-
-
     void test_point_bezier()
     {
         MetaTestSubject ts(new Document(""));
@@ -357,6 +357,77 @@ private Q_SLOTS:
         bez.add_point(QPointF(8, 67));
         property.set_bezier(bez);
         PROPERTY_KEYFRAMES(type, property, newkf<type>(0, QPointF(1, 23)), newkf<type>(10, QPointF(4, 56)), newkf<type>(100, QPointF(8, 67)));
+    }
+
+    void test_command_set_keyframe()
+    {
+        Document doc("");
+        MetaTestSubject ts(&doc);
+        auto& property = ts.anim_int;
+        using type = int;
+
+        QCOMPARE(property.animated(), false);
+        auto cmd1 = new SetKeyframe(&property, 10, QVariant(123), false);
+        cmd1->redo();
+        QCOMPARE(property.animated(), true);
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 123));
+        cmd1->undo();
+        QCOMPARE(property.animated(), false);
+        cmd1->redo();
+
+        auto cmd2 = new SetKeyframe(&property, 20, QVariant(45), false);
+        cmd2->redo();
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 123), newkf<type>(20, 45));
+        cmd2->undo();
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 123));
+        cmd2->redo();
+
+        auto cmd3 = new SetKeyframe(&property, 10, QVariant(67), false);
+        cmd3->redo();
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 67), newkf<type>(20, 45));
+        cmd3->undo();
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 123), newkf<type>(20, 45));
+        cmd2->undo();
+        cmd1->undo();
+        cmd1->redo();
+        cmd2->redo();
+        cmd3->redo();
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 67), newkf<type>(20, 45));
+    }
+
+    void test_command_remove_keyframe()
+    {
+        Document doc("");
+        MetaTestSubject ts(&doc);
+        auto& property = ts.anim_int;
+        using type = int;
+        property.set_keyframe(10, 100);
+        property.set_keyframe(20, 120);
+        property.set_keyframe(30, 130);
+
+        auto cmd1 = new RemoveKeyframeTime(&property, 20);
+        cmd1->redo();
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(30, 130));
+        cmd1->undo();
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(20, 120), newkf<type>(30, 130));
+        cmd1->redo();
+
+        auto cmd2 = new RemoveKeyframeTime(&property, 10);
+        cmd2->redo();
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(30, 130));
+        cmd2->undo();
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(30, 130));
+
+
+        auto cmd3 = new RemoveAllKeyframes(&property, 67);
+        cmd3->redo();
+        QCOMPARE(property.keyframe_count(), 0);
+        QCOMPARE(property.get(), 67);
+        cmd3->undo();
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(30, 130));
+        cmd3->redo();
+
+
     }
 
 };
