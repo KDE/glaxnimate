@@ -243,7 +243,7 @@ public:
               parent(parent),
               subkf(subkf)
         {
-            set_transition(subkf->transition());
+            transition_ = subkf->transition();
         }
 
         Keyframe(JoinedAnimatable* parent, model::FrameTime time)
@@ -270,6 +270,9 @@ public:
 
         // read only
         bool set_value(const QVariant&) override { return false; }
+
+        KeyframeTransition transition() const override { return transition_; }
+        void set_transition(const KeyframeTransition&) override {}
 
     protected:
         std::unique_ptr<KeyframeBase> do_clone() const override
@@ -315,6 +318,7 @@ public:
     private:
         JoinedAnimatable* parent;
         const JoinAnimatables::Keyframe* subkf = nullptr;
+        KeyframeTransition transition_;
     };
 
     JoinedAnimatable(std::vector<const model::AnimatableBase*> properties, ConversionFunction converter, int flags = Normal)

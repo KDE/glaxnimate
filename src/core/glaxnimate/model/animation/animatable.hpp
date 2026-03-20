@@ -295,11 +295,20 @@ public:
         return math::lerp(value_, other.get(), this->transition().lerp_factor(t));
     }
 
+    KeyframeTransition transition() const override { return transition_; }
+
+    void set_transition(const KeyframeTransition& trans) override
+    {
+        transition_ = trans;
+        Q_EMIT transition_changed(transition_.before_descriptive(), transition_.after_descriptive());
+    }
 
 protected:
     std::unique_ptr<KeyframeBase> do_clone() const override
     {
-        return std::make_unique<Keyframe>(time(), value_);
+        auto clone = std::make_unique<Keyframe>(time(), value_);
+        clone->set_transition(transition_);
+        return clone;
     }
 
     class TypedKeyframeSplitter : public KeyframeSplitter
@@ -338,6 +347,7 @@ protected:
 
 private:
     Type value_;
+    KeyframeTransition transition_;
 };
 
 
@@ -420,10 +430,20 @@ public:
         return linear;
     }
 
+    KeyframeTransition transition() const override { return transition_; }
+
+    void set_transition(const KeyframeTransition& trans) override
+    {
+        transition_ = trans;
+        Q_EMIT transition_changed(transition_.before_descriptive(), transition_.after_descriptive());
+    }
+
 protected:
     std::unique_ptr<KeyframeBase> do_clone() const override
     {
-        return std::make_unique<Keyframe>(time(), point_);
+        auto clone = std::make_unique<Keyframe>(time(), point_);
+        clone->set_transition(transition_);
+        return clone;
     }
 
     class PointKeyframeSplitter;
@@ -437,6 +457,7 @@ private:
 
     math::bezier::Point point_;
     bool linear = true;
+    KeyframeTransition transition_;
 };
 
 template<class Type>
