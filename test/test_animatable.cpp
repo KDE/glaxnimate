@@ -317,6 +317,48 @@ private Q_SLOTS:
         QCOMPARE(qRound(property.get().x()*100), 10000+offset);
     }
 
+
+
+    void test_point_bezier()
+    {
+        MetaTestSubject ts(new Document(""));
+        auto& property = ts.anim_point;
+        using type = QPointF;
+
+        property.set_keyframe(0, QPointF(0, 0));
+        property.set_keyframe(100, QPointF(100, 200));
+        QCOMPARE(property.get_at(50), QPointF(50, 100));
+        property.keyframe(0)->set_point(math::bezier::Point(
+            QPointF(0, 0),
+            QPointF(0, 0),
+            QPointF(0, -50)
+        ));
+        property.keyframe(1)->set_point(math::bezier::Point(
+            QPointF(100, 200),
+            QPointF(50, 200),
+            QPointF(100, 200)
+        ));
+        QCOMPARE(qRound(property.get_at(50).x() * 100), 3806);
+        QCOMPARE(qRound(property.get_at(50).y() * 100), 10108);
+
+        math::bezier::CubicBezierSolver<QPointF> b(
+            QPointF(0, 0),
+            QPointF(0, -50),
+            QPointF(50, 200),
+            QPointF(100, 200)
+        );
+        QPointF p = b.solve(0.25);
+        property.split_segment(0, 0.25);
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(0, QPointF(0, 0)), newkf<type>(10, p), newkf<type>(100, QPointF(100, 200)));
+
+        math::bezier::Bezier bez;
+        bez.add_point(QPointF(1, 23));
+        bez.add_point(QPointF(4, 56));
+        bez.add_point(QPointF(8, 67));
+        property.set_bezier(bez);
+        PROPERTY_KEYFRAMES(type, property, newkf<type>(0, QPointF(1, 23)), newkf<type>(10, QPointF(4, 56)), newkf<type>(100, QPointF(8, 67)));
+    }
+
 };
 
 QTEST_GUILESS_MAIN(TestAnimatable)
