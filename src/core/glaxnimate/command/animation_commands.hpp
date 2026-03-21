@@ -172,8 +172,6 @@ public:
     void redo() override;
 
 private:
-    model::KeyframeBase* keyframe() const;
-
     model::AnimatableBase* prop;
     model::FrameTime time;
     model::KeyframeTransition undo_value;

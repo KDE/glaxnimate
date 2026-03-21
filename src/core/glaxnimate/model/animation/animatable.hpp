@@ -225,7 +225,7 @@ public:
         return Tween;
     }
 
-    bool has_keyframe(FrameTime time) const
+    Q_INVOKABLE bool has_keyframe(FrameTime time) const
     {
         if ( !animated() )
             return false;
@@ -238,12 +238,12 @@ public:
      * \brief Clears all keyframes and creates an associated undo action
      * \param value Value to be set after clearing
      */
-    virtual void clear_keyframes_undoable(QVariant value = {});
+    Q_INVOKABLE virtual void clear_keyframes_undoable(QVariant value = {});
 
     /**
      * \brief Adds a keyframe at the given time
      */
-    virtual void add_smooth_keyframe_undoable(FrameTime time, const QVariant& value);
+    Q_INVOKABLE virtual void add_smooth_keyframe_undoable(FrameTime time, const QVariant& value);
 
     virtual detail::TypeErasedKeyframeRange keyframe_range() const = 0;
     virtual detail::TypeErasedKeyframeIterator find(model::FrameTime t) const = 0;
@@ -251,11 +251,25 @@ public:
     virtual const KeyframeBase* first_keyframe() const = 0;
     virtual const KeyframeBase* last_keyframe() const = 0;
 
+    /**
+     * @brief Sets the transition at the given keyframe
+     * @param time
+     * @param transition
+     */
+    Q_INVOKABLE virtual void set_transition(FrameTime time, const KeyframeTransition& transition) = 0;
+    /**
+     * @brief Sets the transition at the keyframe before \p time
+     * @param time
+     * @param transition
+     */
+    Q_INVOKABLE virtual void set_transition_before(FrameTime time, const KeyframeTransition& transition) = 0;
+
 Q_SIGNALS:
     void keyframe_added(FrameTime time);
     void keyframe_removed(FrameTime time);
     void keyframe_updated(FrameTime time);
     void keyframe_moved(FrameTime from_time, FrameTime to_time);
+    void transition_changed(FrameTime time, KeyframeTransition::Descriptive before, KeyframeTransition::Descriptive after);
 
 protected:
     virtual void on_set_time(FrameTime time) = 0;
@@ -312,7 +326,6 @@ public:
     void set_transition(const KeyframeTransition& trans) override
     {
         transition_ = trans;
-        Q_EMIT transition_changed(transition_.before_descriptive(), transition_.after_descriptive());
     }
 
 protected:
@@ -449,7 +462,6 @@ public:
     void set_transition(const KeyframeTransition& trans) override
     {
         transition_ = trans;
-        Q_EMIT transition_changed(transition_.before_descriptive(), transition_.after_descriptive());
     }
 
 protected:
@@ -710,13 +722,7 @@ public:
         // Find the right keyframe
         auto kf = this->keyframes_.find_best(time);
 
-        bool includes_current_time = this->keyframes_.contains_time(kf, time);
-        if ( time > this->time() && !includes_current_time )
-        {
-            auto prev = kf;
-            --prev;
-            includes_current_time = this->keyframes_.contains_time(prev, time);
-        }
+        bool includes_current_time = this->keyframes_.affects_time(kf, this->time());
 
         // Time matches, update
         if ( kf->time() == time && !force_insert )
@@ -746,13 +752,38 @@ public:
 
         // Insert somewhere in the middle
         auto it = this->keyframes_.insert(kf, time, keyframe_type(time, value));
-        Q_EMIT this->keyframe_added(time);
         if ( includes_current_time )
             this->set_time(this->time());
+        Q_EMIT this->keyframe_added(time);
         on_keyframe_updated(it);
         if ( info )
             *info = {true};
         return it.ptr();
+    }
+
+    void set_transition(FrameTime time, const KeyframeTransition& transition) override
+    {
+        auto kf = this->keyframes_.find(time);
+        if ( kf != this->keyframes_.end() )
+        {
+            kf->set_transition(transition);
+            if ( this->keyframes_.affects_time(kf, this->time()) )
+                this->set_time(this->time());
+            Q_EMIT this->transition_changed(time, transition.before_descriptive(), transition.after_descriptive());
+        }
+    }
+
+    void set_transition_before(FrameTime time, const KeyframeTransition& transition) override
+    {
+        auto kf = this->keyframes_.find_best(time);
+        if ( kf == this->keyframes_.end() || kf == this->keyframes_.begin())
+            return;
+        --kf;
+
+        kf->set_transition(transition);
+        if ( this->keyframes_.affects_time(kf, time) )
+            this->set_time(this->time());
+        Q_EMIT this->transition_changed(time, transition.before_descriptive(), transition.after_descriptive());
     }
 
     value_type get() const

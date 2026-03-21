@@ -31,8 +31,7 @@ void glaxnimate::command::SetKeyframe::undo()
     else
         prop->remove_keyframe_at_time(time);
 
-    if ( auto kfp = prop->keyframe_before(time) )
-        kfp->set_transition(trans_before);
+    prop->set_transition_before(time, trans_before);
 }
 
 void glaxnimate::command::SetKeyframe::redo()
@@ -68,8 +67,8 @@ void glaxnimate::command::SetKeyframe::redo()
 
     if ( adjust_transition )
     {
-        prop->keyframe_before(time)->set_transition(left);
-        prop->keyframe_at(time)->set_transition(right);
+        prop->set_transition_before(time, left);
+        prop->set_transition(time, right);
     }
 
 }
@@ -104,14 +103,12 @@ glaxnimate::command::RemoveKeyframeTime::RemoveKeyframeTime(
 void glaxnimate::command::RemoveKeyframeTime::undo()
 {
     prop->set_keyframe(time, before)->set_transition(transition_before);
-    if ( auto kf_before = prop->keyframe_before(time) )
-        kf_before->set_transition(prev_transition_before);
+    prop->set_transition_before(time, prev_transition_before);
 }
 
 void glaxnimate::command::RemoveKeyframeTime::redo()
 {
-    if ( auto kf_before = prop->keyframe_before(time) )
-        kf_before->set_transition(prev_transition_after);
+    prop->set_transition_before(time, prev_transition_after);
     prop->remove_keyframe_at_time(time);
 }
 
@@ -281,7 +278,7 @@ glaxnimate::command::SetKeyframeTransition::SetKeyframeTransition(
 : QUndoCommand(i18n("Update keyframe transition")),
     prop(prop),
     time(time),
-    undo_value(keyframe()->transition()),
+    undo_value(prop->keyframe_at(time)->transition()),
     redo_value(transition)
 {
 }
@@ -312,17 +309,12 @@ glaxnimate::command::SetKeyframeTransition::SetKeyframeTransition(
 
 void glaxnimate::command::SetKeyframeTransition::undo()
 {
-    keyframe()->set_transition(undo_value);
+    prop->set_transition(time, undo_value);
 }
 
 void glaxnimate::command::SetKeyframeTransition::redo()
 {
-    keyframe()->set_transition(redo_value);
-}
-
-glaxnimate::model::KeyframeBase* glaxnimate::command::SetKeyframeTransition::keyframe() const
-{
-    return prop->keyframe_at(time);
+    prop->set_transition(time, redo_value);
 }
 
 glaxnimate::command::MoveKeyframe::MoveKeyframe(

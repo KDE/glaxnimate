@@ -250,12 +250,11 @@ private Q_SLOTS:
         QCOMPARE(property.get(), 150);
         QCOMPARE(property.get_at(7.5 + time_offset), 250);
 
-        property.keyframe_at(0)->set_transition(KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
+        property.set_transition(0, KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
         KEYFRAME_COMPARE(property.keyframe_at(0), 0, 100, KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
         QCOMPARE(property.get_at(5 + time_offset), 200);
         qreal offset = 2118;
         QCOMPARE(qRound(property.get_at(7.5 + time_offset)*100), 30000-offset);
-        property.set_time(0);property.set_time(2.5 + time_offset); // TODO FIXME This shouldn't be here
         QCOMPARE(qRound(property.get_at(2.5 + time_offset)*100), 10000+offset);
         QCOMPARE(qRound(property.get()*100), 10000+offset);
 
@@ -284,11 +283,10 @@ private Q_SLOTS:
         QCOMPARE(property.get(), 150);
         QCOMPARE(property.get_at(7.5 + time_offset), 250);
 
-        property.keyframe_at(0)->set_transition(KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
+        property.set_transition(0, KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
         KEYFRAME_COMPARE(property.keyframe_at(0), 0, 100, KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
         QCOMPARE(property.get_at(5 + time_offset), 200);
         QCOMPARE(property.get_at(7.5 + time_offset), 279);
-        property.set_time(0);property.set_time(2.5 + time_offset); // TODO FIXME This shouldn't be here
         QCOMPARE(property.get_at(2.5 + time_offset), 121);
         QCOMPARE(property.get(), 121);
 
@@ -364,12 +362,11 @@ private Q_SLOTS:
         QCOMPARE(property.get(), QPointF(150, -150));
         QCOMPARE(property.get_at(7.5 + time_offset), QPointF(250, -250));
 
-        property.keyframe_at(0)->set_transition(KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
+        property.set_transition(0, KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
         KEYFRAME_COMPARE(property.keyframe_at(0), 0, QPointF(100, -100), KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
         QCOMPARE(property.get_at(5 + time_offset), QPointF(200, -200));
         qreal offset = 2118;
         QCOMPARE(qRound(property.get_at(7.5 + time_offset).x()*100), 30000-offset);
-        property.set_time(0);property.set_time(2.5 + time_offset); // TODO FIXME This shouldn't be here
         QCOMPARE(qRound(property.get_at(2.5 + time_offset).x()*100), 10000+offset);
         QCOMPARE(qRound(property.get().x()*100), 10000+offset);
     }

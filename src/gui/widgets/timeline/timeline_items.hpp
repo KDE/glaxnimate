@@ -236,9 +236,7 @@ public Q_SLOTS:
     void remove_keyframe(model::FrameTime time);
 
 private Q_SLOTS:
-    void transition_changed(model::KeyframeTransition::Descriptive before, model::KeyframeTransition::Descriptive after);
-
-
+    void transition_changed(model::FrameTime time, model::KeyframeTransition::Descriptive before, model::KeyframeTransition::Descriptive after);
 
     void update_keyframe(model::FrameTime time);
     void move_keyframe(model::FrameTime from_time, model::FrameTime to_time);

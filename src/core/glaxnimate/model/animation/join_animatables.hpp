@@ -342,6 +342,8 @@ public:
     KeyframeBase* set_keyframe(FrameTime , const QVariant& , SetKeyframeInfo*, bool ) override { return nullptr; }
     void clear_keyframes() override {};
     bool remove_keyframe_at_time(FrameTime) override { return false; }
+    void set_transition(FrameTime, const KeyframeTransition&) override {}
+    void set_transition_before(FrameTime, const KeyframeTransition&) override {}
 
 protected:
     void on_set_time(FrameTime) override {}
