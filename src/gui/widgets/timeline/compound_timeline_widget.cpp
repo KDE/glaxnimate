@@ -14,15 +14,10 @@
 #include <QSignalBlocker>
 #include <QActionGroup>
 
-#include "glaxnimate/math/bezier/meta.hpp"
-#include "glaxnimate/model/shapes/composable/precomp_layer.hpp"
 #include "glaxnimate/command/animation_commands.hpp"
-#include "glaxnimate/command/undo_macro_guard.hpp"
 
 #include "item_models/property_model_full.hpp"
 #include "item_models/comp_filter_model.hpp"
-
-#include "glaxnimate_app.hpp"
 
 #include "style/property_delegate.hpp"
 #include "style/fixed_height_delegate.hpp"
@@ -192,16 +187,12 @@ public:
         if ( !keyframe || !menu_property.property() )
             return;
 
-        int index = menu_property.property()->keyframe_index(keyframe);
-        if ( index == -1 )
-            return;
-
         QVariant data = action->data();
         if ( data.isValid() && data.toInt() != model::KeyframeTransition::Custom )
         {
             menu_property.property()->object()->push_command(
                 new command::SetKeyframeTransition(
-                    menu_property.property(), index, data.value<model::KeyframeTransition::Descriptive>(),
+                    menu_property.property(), keyframe->time(), data.value<model::KeyframeTransition::Descriptive>(),
                     before_transition ? keyframe->transition().before() : keyframe->transition().after(),
                     before_transition
                 )
@@ -215,7 +206,7 @@ public:
             {
                 menu_property.property()->object()->push_command(
                     new command::SetKeyframeTransition(
-                        menu_property.property(), index,
+                        menu_property.property(), keyframe->time(),
                         keyframe_editor.transition()
                     )
                 );
@@ -579,18 +570,17 @@ void CompoundTimelineWidget::click_index ( const QModelIndex& index )
                 return;
 
             auto time = d->property_model.document()->current_time();
-            auto kfindex = anprop->keyframe_index(time);
-            auto kf = anprop->keyframe(kfindex);
+            auto kf = anprop->find(time);
 
             if ( qFuzzyCompare(kf->time(), time) || kf->time() > time )
             {
-                kfindex -= 1;
+                auto range = anprop->keyframe_range();
+                if ( kf == range.begin() )
+                    kf = range.end();
+                --kf;
             }
 
-            if ( kfindex < 0 )
-                kfindex = anprop->keyframe_count() - 1;
-
-            d->property_model.document()->set_current_time(anprop->keyframe(kfindex)->time());
+            d->property_model.document()->set_current_time(kf->time());
         }
         else if ( index.column() == item_models::PropertyModelFull::ColumnNextKeyframe )
         {
@@ -598,18 +588,18 @@ void CompoundTimelineWidget::click_index ( const QModelIndex& index )
                 return;
 
             auto time = d->property_model.document()->current_time();
-            auto kfindex = anprop->keyframe_index(time);
-            auto kf = anprop->keyframe(kfindex);
+            auto kf = anprop->find(time);
 
             if ( qFuzzyCompare(kf->time(), time) || kf->time() < time )
             {
-                kfindex += 1;
+                kf++;
             }
 
-            if ( kfindex == anprop->keyframe_count() )
-                kfindex = 0;
+            auto range = anprop->keyframe_range();
+            if ( kf == range.end() )
+                kf = range.begin();
 
-            d->property_model.document()->set_current_time(anprop->keyframe(kfindex)->time());
+            d->property_model.document()->set_current_time(kf->time());
         }
     }
 }

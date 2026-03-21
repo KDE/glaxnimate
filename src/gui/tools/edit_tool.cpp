@@ -469,13 +469,15 @@ public:
             if ( sz1 >= item->bezier().size() )
             {
                 QVariant value;
-                for ( int i = 0; i < pos_prop->keyframe_count(); i++ )
+                int i = 0;
+                for ( const auto& kf : *pos_prop )
                 {
                     if ( !item->selected_indices().count(i) )
                     {
-                        value = pos_prop->keyframe(i)->value();
+                        value = kf.value();
                         break;
                     }
+                    ++i;
                 }
                 pos_prop->clear_keyframes_undoable(value);
                 return;

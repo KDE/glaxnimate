@@ -147,7 +147,7 @@ public:
     static constexpr const int pen = 2;
     static constexpr const QSize half_icon_size{icon_size/2, icon_size};
 
-    KeyframeSplitItem(AnimatableItem* parent);
+    KeyframeSplitItem(model::FrameTime keyframe_time, AnimatableItem* parent);
 
     QRectF boundingRect() const override
     {
@@ -162,6 +162,9 @@ public:
     void set_exit(model::KeyframeTransition::Descriptive exit);
 
     model::FrameTime time() const { return x(); }
+
+    model::FrameTime keyframe_time() const  { return keyframe_time_; }
+    void set_keyframe_time(model::FrameTime t) { keyframe_time_ = t; }
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent * event) override;
@@ -203,6 +206,7 @@ private:
     model::FrameTime drag_start;
     bool dragging = false;
     model::VisualNode* visual_node = nullptr;
+    model::FrameTime keyframe_time_;
 };
 
 class AnimatableItem : public LineItem
@@ -227,22 +231,25 @@ public:
     item_models::PropertyModelFull::Item property_item() const override;
 
 public Q_SLOTS:
-    void add_keyframe(int index);
+    void add_keyframe(model::FrameTime time);
 
-    void remove_keyframe(int index);
+    void remove_keyframe(model::FrameTime time);
 
 private Q_SLOTS:
     void transition_changed(model::KeyframeTransition::Descriptive before, model::KeyframeTransition::Descriptive after);
 
 
-    void update_keyframe(int index, model::KeyframeBase* kf);
+
+    void update_keyframe(model::FrameTime time);
+    void move_keyframe(model::FrameTime from_time, model::FrameTime to_time);
 
 private:
     void keyframes_dragged(const std::vector<DragData>& keyframe_items);
     void cycle_keyframe_transition(model::FrameTime time);
+    void do_add_keyframe(model::KeyframeBase* keyframe);
 
     model::AnimatableBase* animatable;
-    std::vector<KeyframeSplitItem*> kf_split_items;
+    model::KeyframeContainer<KeyframeSplitItem*> kf_split_items;
     friend KeyframeSplitItem;
 };
 

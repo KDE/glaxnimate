@@ -103,12 +103,11 @@ bool glaxnimate::model::AnimatableBase::assign_from(const model::BaseProperty* p
     if ( !other->animated() )
         return set_value(other->value());
 
-    for ( int i = 0, e = other->keyframe_count(); i < e; i++ )
+    for ( const auto& kf_other : other->keyframe_range() )
     {
-        const KeyframeBase* kf_other = other->keyframe(i);
-        KeyframeBase* kf = set_keyframe(kf_other->time(), kf_other->value());
+        KeyframeBase* kf = set_keyframe(kf_other.time(), kf_other.value());
         if ( kf )
-            kf->set_transition(kf_other->transition());
+            kf->set_transition(kf_other.transition());
     }
 
     return true;
@@ -131,21 +130,20 @@ bool glaxnimate::model::AnimatableBase::set_undoable(const QVariant& val, bool c
 
 glaxnimate::model::AnimatableBase::MidTransition glaxnimate::model::AnimatableBase::mid_transition(model::FrameTime time) const
 {
-    int keyframe_index = this->keyframe_index(time);
-    const KeyframeBase* kf_before = this->keyframe(keyframe_index);
-    if ( !kf_before )
+    const KeyframeBase* kf_during = this->keyframe_containing(time);
+    if ( !kf_during )
         return {MidTransition::Invalid, value(), {}, {}};
 
-    auto before_time = kf_before->time();
+    auto before_time = kf_during->time();
 
     if ( before_time >= time )
-        return {MidTransition::SingleKeyframe, kf_before->value(), {}, kf_before->transition(),};
+        return {MidTransition::SingleKeyframe, kf_during->value(), {}, kf_during->transition(),};
 
 
-    const KeyframeBase* kf_after = this->keyframe(keyframe_index + 1);
+    const KeyframeBase* kf_after = this->keyframe_after(time);
 
     if ( !kf_after )
-        return {MidTransition::SingleKeyframe, kf_before->value(), kf_before->transition(), {},};
+        return {MidTransition::SingleKeyframe, kf_during->value(), kf_during->transition(), {},};
 
     auto after_time = kf_after->time();
 
@@ -153,45 +151,43 @@ glaxnimate::model::AnimatableBase::MidTransition glaxnimate::model::AnimatableBa
         return {
             MidTransition::SingleKeyframe,
             kf_after->value(),
-            kf_before->transition(),
+            kf_during->transition(),
             kf_after->transition(),
         };
 
     qreal x = math::unlerp(before_time, after_time, time);
-    return do_mid_transition(kf_before, kf_after, x, keyframe_index);
+    return do_mid_transition(kf_during, kf_after, x);
 }
 
-
 glaxnimate::model::AnimatableBase::MidTransition glaxnimate::model::AnimatableBase::do_mid_transition(
-    const model::KeyframeBase* kf_before,
+    const model::KeyframeBase* kf_during,
     const model::KeyframeBase* kf_after,
-    qreal x,
-    int index
+    qreal x
 ) const
 {
-    const auto& beftrans = kf_before->transition();
+    const auto& beftrans = kf_during->transition();
     if ( beftrans.hold() || (beftrans.before() == QPointF(0, 0) && beftrans.after() == QPointF(1,1)) )
-        return {MidTransition::Middle, kf_before->value(), beftrans, beftrans};
+        return {MidTransition::Middle, kf_during->value(), beftrans, beftrans};
 
     qreal t = beftrans.bezier_parameter(x);
 
     if ( t <= 0 )
     {
         KeyframeTransition from_previous = {{}, {1, 1}};
-        if ( index > 0 )
-            from_previous = keyframe(index-1)->transition();
+        if ( auto kf_before = keyframe_before(kf_during->time()) )
+            from_previous = kf_before->transition();
 
-        return {MidTransition::SingleKeyframe, kf_before->value(), from_previous, beftrans};
+        return {MidTransition::SingleKeyframe, kf_during->value(), from_previous, beftrans};
     }
     else if ( t >= 1 )
     {
-        return {MidTransition::SingleKeyframe, kf_before->value(), beftrans, kf_after->transition(),};
+        return {MidTransition::SingleKeyframe, kf_during->value(), beftrans, kf_after->transition(),};
     }
 
 
     model::AnimatableBase::MidTransition mt;
     mt.type = MidTransition::Middle;
-    mt.value = do_mid_transition_value(kf_before, kf_after, x);
+    mt.value = do_mid_transition_value(kf_during, kf_after, x);
     std::tie(mt.from_previous, mt.to_next) = beftrans.split(x);
     return mt;
 }
@@ -227,18 +223,23 @@ void glaxnimate::model::detail::AnimatedPropertyPosition::split_segment(int inde
 
     if ( index <= 0 && factor <= 0 )
     {
-        time = keyframes_[0]->time();
-        value = keyframes_[0]->value();
+        time = keyframes_.begin()->time();
+        value = keyframes_.begin()->value();
     }
     else if ( index >= int(keyframes_.size()) - 1 && factor >= 1 )
     {
-        time = keyframes_.back()->time();
-        value = keyframes_.back()->value();
+        auto back = keyframes_.end();
+        --back;
+        time = back->time();
+        value = back->value();
     }
     else
     {
-        auto kf_before = keyframes_[index].get();
-        auto kf_after = keyframes_[index + 1].get();
+        auto iter = keyframes_.begin();
+        std::advance(iter, index);
+        auto kf_before = iter;
+        ++iter;
+        auto kf_after = iter;
 
         value = kf_before->lerp(*kf_after, factor);
 
@@ -273,19 +274,20 @@ bool glaxnimate::model::detail::AnimatedPropertyPosition::set_bezier(math::bezie
     if ( bezier.size() != int(keyframes_.size()) )
         return false;
 
-    for ( int i = 0; i < bezier.size(); i++ )
+    int i = 0;
+    for ( auto kf = keyframes_.begin(); kf != keyframes_.end(); ++kf )
     {
-        keyframes_[i]->set_point(bezier[i]);
-        on_keyframe_updated(keyframes_[i]->time(), i-1, i+1);
+        kf->set_point(bezier[i]);
+        on_keyframe_updated(kf);
+        i++;
     }
 
-    value_ = get_at_impl(time()).second;
+    value_ = get_at_impl(time());
     emitter(this->object(), value_);
     Q_EMIT bezier_set(bezier);
 
     return true;
 }
-
 
 void glaxnimate::model::detail::AnimatedPropertyPosition::remove_points(const std::set<int>& indices)
 {
@@ -295,10 +297,22 @@ void glaxnimate::model::detail::AnimatedPropertyPosition::remove_points(const st
     auto after = before.removed_points(indices);
 
     int order = 0;
-    for ( int index : indices )
+    int index = 0;
+    auto iter = keyframes_.begin();
+    while ( iter != keyframes_.end() )
     {
-        parent->add_command(std::make_unique<command::RemoveKeyframeIndex>(this, index), -order, order);
-        ++order;
+        if ( indices.count(index) )
+        {
+            auto time = iter->time();
+            ++iter;
+            parent->add_command(std::make_unique<command::RemoveKeyframeTime>(this, time), -order, order);
+            ++order;
+        }
+        else
+        {
+            ++iter;
+        }
+        ++index;
     }
 
     object()->push_command(parent.release());
@@ -308,7 +322,7 @@ glaxnimate::math::bezier::Bezier glaxnimate::model::detail::AnimatedPropertyPosi
 {
     math::bezier::Bezier bez;
     for ( const auto& kf : keyframes_ )
-        bez.push_back(kf->point());
+        bez.push_back(kf.point());
 
     return bez;
 }
@@ -375,31 +389,35 @@ void glaxnimate::model::detail::AnimatedPropertyPosition::add_smooth_keyframe_un
 
     int count = keyframes_.size();
 
-    if ( value.userType() == QMetaType::QPointF && count >= 2 && keyframes_[0]->time() < time && keyframes_.back()->time() > time )
+    if ( value.userType() == QMetaType::QPointF && count >= 2  )
     {
-        int index = keyframe_index(time);
-        auto first = keyframe(index);
-        const keyframe_type* second = keyframe(index+1);
-
-        if ( !first->is_linear() || second->is_linear() )
+        auto first = keyframes_.find_best(time);
+        if ( first->time() < time )
         {
-            double scaled_time = (time - first->time()) / (second->time() - first->time());
+            auto second = first;
+            ++second;
 
-            auto factor = first->transition().lerp_factor(scaled_time);
-            auto solver = first->bezier_solver(*second);
-            math::bezier::LengthData len(solver, 20);
-            auto t = len.at_ratio(factor).ratio;
-            auto split = solver.split(t);
+            if ( second != keyframes_.end() && (!first->is_linear() || second->is_linear()) )
+            {
+                double scaled_time = (time - first->time()) / (second->time() - first->time());
 
-            auto before = bezier();
-            auto after = before;
-            after[index].tan_out = split.first[1];
-            after[index+1].tan_in = split.second[2];
-            math::bezier::Point p(split.first[3], split.first[2], split.second[1]);
-            p.translate_to(value.value<QPointF>());
-            after.insert_point(index+1, p);
+                auto factor = first->transition().lerp_factor(scaled_time);
+                auto solver = first->bezier_solver(*second);
+                math::bezier::LengthData len(solver, 20);
+                auto t = len.at_ratio(factor).ratio;
+                auto split = solver.split(t);
 
-            parent->add_command(std::make_unique<command::SetPositionBezier>(this, before, after, true), 1, 1);
+                auto before = bezier();
+                auto after = before;
+                int index = std::distance(keyframes_.begin(), first);
+                after[index].tan_out = split.first[1];
+                after[index+1].tan_in = split.second[2];
+                math::bezier::Point p(split.first[3], split.first[2], split.second[1]);
+                p.translate_to(value.value<QPointF>());
+                after.insert_point(index+1, p);
+
+                parent->add_command(std::make_unique<command::SetPositionBezier>(this, before, after, true), 1, 1);
+            }
         }
     }
 
@@ -412,19 +430,18 @@ std::optional<QPointF> glaxnimate::model::detail::AnimatedPropertyPosition::deri
     if ( count < 2 )
         return {};
 
-    int index_before = keyframe_index(time);
-    const keyframe_type* kf_before = keyframe(index_before);
-    const keyframe_type* kf_after = nullptr;
+    auto kf_before = keyframes_.find_best(time);
+    auto kf_after = kf_before;
+    ++kf_after;
     qreal factor = 1;
 
-    if ( index_before == count - 1 )
+    if ( kf_after == keyframes_.end() )
     {
         kf_after = kf_before;
-        kf_before = keyframe(index_before - 1);
+        --kf_before;
     }
     else
     {
-        kf_after = keyframe(index_before + 1);
         factor = math::unlerp(kf_before->time(), kf_after->time(), time);
     }
 

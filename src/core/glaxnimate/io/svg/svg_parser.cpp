@@ -1379,12 +1379,10 @@ private:
                 shape->position.get() +
                 QPointF(-style.anchor * shape->local_bounding_rect(document->current_time()).width(), 0)
             );
-            int keycount = shape->position.keyframe_count();
-            for ( int i = 0; i < keycount; i++ )
+            for ( auto& keyframe : shape->position.mutable_range() )
             {
-                auto keyframe = shape->position.keyframe(i);
-                QPointF offset(-style.anchor * shape->local_bounding_rect(keyframe->time()).width(), 0);
-                keyframe->set(keyframe->get() + offset);
+                QPointF offset(-style.anchor * shape->local_bounding_rect(keyframe.time()).width(), 0);
+                keyframe.set(keyframe.get() + offset);
             }
         }
     }

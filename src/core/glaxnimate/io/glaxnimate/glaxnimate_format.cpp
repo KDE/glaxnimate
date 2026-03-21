@@ -97,24 +97,23 @@ QJsonValue io::glaxnimate::GlaxnimateFormat::to_json ( model::BaseProperty* prop
         else
         {
             QJsonArray keyframes;
-            for ( int i = 0, e = anim->keyframe_count(); i < e; i++ )
+            for ( const auto& kf : anim->keyframe_range() )
             {
-                auto kf = anim->keyframe(i);
                 QJsonObject jkf;
-                jkf["time"] = kf->time();
-                jkf["value"] = to_json(kf->value(), property->traits());
-                if ( !kf->transition().hold() )
+                jkf["time"] = kf.time();
+                jkf["value"] = to_json(kf.value(), property->traits());
+                if ( !kf.transition().hold() )
                 {
-                    jkf["before"] = to_json(kf->transition().before());
-                    jkf["after"] = to_json(kf->transition().after());
+                    jkf["before"] = to_json(kf.transition().before());
+                    jkf["after"] = to_json(kf.transition().after());
                 }
 
                 if ( position )
                 {
-                    auto pkf = static_cast<model::Keyframe<QPointF>*>(kf);
-                    jkf["tan_in"] = point_to_json(pkf->point().tan_in);
-                    jkf["tan_out"] = point_to_json(pkf->point().tan_out);
-                    jkf["point_type"] = pkf->point().type;
+                    const auto& pkf = static_cast<const model::Keyframe<QPointF>&>(kf);
+                    jkf["tan_in"] = point_to_json(pkf.point().tan_in);
+                    jkf["tan_out"] = point_to_json(pkf.point().tan_out);
+                    jkf["point_type"] = pkf.point().type;
                 }
 
                 keyframes.push_back(jkf);

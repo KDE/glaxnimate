@@ -5,8 +5,6 @@
  */
 #pragma once
 
-#include <iterator>
-
 #include <QVariant>
 
 #include "glaxnimate/model/animation/keyframe_transition.hpp"
@@ -23,6 +21,9 @@ class KeyframeBase : public QObject
 public:
     explicit KeyframeBase(FrameTime time) : time_ { time } {}
     virtual ~KeyframeBase() = default;
+    KeyframeBase(KeyframeBase&& oth) :
+        time_(oth.time_)
+    {}
 
     virtual QVariant value() const = 0;
     virtual bool set_value(const QVariant& value) = 0;

@@ -16,9 +16,9 @@ void glaxnimate::model::detail::AnimatedPropertyBezier::set_closed(bool closed)
     value_.set_closed(closed);
     for ( auto& keyframe : keyframes_ )
     {
-        auto v = keyframe->get();
+        auto v = keyframe.get();
         v.set_closed(closed);
-        keyframe->set(v);
+        keyframe.set(v);
     }
     value_changed();
     emitter(object(), value_);
@@ -35,11 +35,11 @@ void glaxnimate::model::detail::AnimatedPropertyBezier::split_segment(int index,
     bool set = true;
     for ( const auto& kf : keyframes_ )
     {
-        auto bez = kf->get();
+        auto bez = kf.get();
         bez.split_segment(index, factor);
-        if ( !mismatched_ && kf->time() == time() )
+        if ( !mismatched_ && kf.time() == time() )
             set = false;
-        object()->push_command(new command::SetKeyframe(this, kf->time(), QVariant::fromValue(bez), true));
+        object()->push_command(new command::SetKeyframe(this, kf.time(), QVariant::fromValue(bez), true));
     }
 
     if ( set )
@@ -65,10 +65,10 @@ void glaxnimate::model::detail::AnimatedPropertyBezier::remove_points(const std:
     bool set = true;
     for ( const auto& kf : keyframes_ )
     {
-        auto bez = kf->get().removed_points(indices);
-        if ( !mismatched_ && kf->time() == time() )
+        auto bez = kf.get().removed_points(indices);
+        if ( !mismatched_ && kf.time() == time() )
             set = false;
-        object()->push_command(new command::SetKeyframe(this, kf->time(), QVariant::fromValue(bez), true));
+        object()->push_command(new command::SetKeyframe(this, kf.time(), QVariant::fromValue(bez), true));
     }
 
     if ( set )
@@ -144,10 +144,10 @@ void glaxnimate::model::detail::AnimatedPropertyBezier::extend(const math::bezie
 
     for ( auto& kf : keyframes_ )
     {
-        if ( !mismatched_ && kf->time() == time() )
+        if ( !mismatched_ && kf.time() == time() )
             set = false;
         object()->push_command(
-            new command::SetKeyframe(this, kf->time(), extend_impl(kf->get(), target, at_end), true)
+            new command::SetKeyframe(this, kf.time(), extend_impl(kf.get(), target, at_end), true)
         );
     }
 

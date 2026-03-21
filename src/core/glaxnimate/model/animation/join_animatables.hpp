@@ -83,7 +83,7 @@ public:
      */
     bool animated() const
     {
-        return keyframes_.size() > 1;
+        return raw_keyframes_.size() > 1;
     }
 
     /**
@@ -91,7 +91,7 @@ public:
      */
     auto begin() const
     {
-        return keyframes_.begin();
+        return raw_keyframes_.begin();
     }
 
     /**
@@ -99,7 +99,7 @@ public:
      */
     auto end() const
     {
-        return keyframes_.end();
+        return raw_keyframes_.end();
     }
 
     /**
@@ -133,7 +133,7 @@ public:
 
     const std::vector<Keyframe>& keyframes() const
     {
-        return keyframes_;
+        return raw_keyframes_;
     }
 
     /**
@@ -166,7 +166,7 @@ public:
     {
         target->clear_keyframes();
         target->set(combine_current_value<Args...>(func));
-        for ( const auto& keyframe : keyframes_ )
+        for ( const auto& keyframe : raw_keyframes_ )
         {
             auto real_kf = target->set_keyframe(keyframe.time, combine_value_at<Args...>(keyframe.time, func));
             real_kf->set_transition(keyframe.transition());
@@ -175,14 +175,14 @@ public:
 
 private:
     std::vector<const model::AnimatableBase*> properties_;
-    std::vector<Keyframe> keyframes_;
+    std::vector<Keyframe> raw_keyframes_;
 
     void load_keyframes(int flags)
     {
         std::set<FrameTime> time_set;
         for ( auto prop : properties_ )
-            for ( int i = 0, e = prop->keyframe_count(); i < e; i++ )
-                time_set.insert(prop->keyframe(i)->time());
+            for ( const auto& kf : prop->keyframe_range() )
+                time_set.insert(kf.time());
         std::vector<FrameTime> time_vector(time_set.begin(), time_set.end());
         time_set.clear();
 
@@ -196,19 +196,19 @@ private:
                 mids.back().push_back(prop->mid_transition(t));
         }
 
-        keyframes_.reserve(time_vector.size());
+        raw_keyframes_.reserve(time_vector.size());
         for ( std::size_t i = 0; i < time_vector.size(); i++ )
         {
-            keyframes_.emplace_back(time_vector[i], properties_.size());
+            raw_keyframes_.emplace_back(time_vector[i], properties_.size());
 
             for ( std::size_t j = 0; j < properties_.size(); j++ )
             {
                 if ( !(flags & NoValues) )
-                    keyframes_.back().values.push_back(mids[i][j].value);
-                keyframes_.back().transitions.push_back(mids[i][j].to_next);
+                    raw_keyframes_.back().values.push_back(mids[i][j].value);
+                raw_keyframes_.back().transitions.push_back(mids[i][j].to_next);
                 if ( mids[i][j].type == MidTransition::Middle && i > 0 && mids[i-1][j].type != MidTransition::Middle )
                 {
-                    keyframes_[i-1].transitions[j] = mids[i][j].from_previous;
+                    raw_keyframes_[i-1].transitions[j] = mids[i][j].from_previous;
                 }
             }
         }
@@ -227,127 +227,101 @@ private:
     }
 };
 
+class JoinedAnimatable;
+
+class JoinedKeyframe : public KeyframeBase
+{
+public:
+    JoinedKeyframe(JoinedAnimatable* parent, const JoinAnimatables::Keyframe* subkf)
+        : KeyframeBase(subkf->time),
+          parent(parent),
+          subkf(subkf)
+    {
+        transition_ = subkf->transition();
+    }
+
+    JoinedKeyframe(JoinedAnimatable* parent, model::FrameTime time)
+        : KeyframeBase(time),
+          parent(parent),
+          subkf(nullptr)
+    {}
+    JoinedKeyframe(JoinedKeyframe&&) = default;
+
+    std::vector<QVariant> get() const;
+    QVariant value() const override;
+
+    // read only
+    bool set_value(const QVariant&) override { return false; }
+
+    KeyframeTransition transition() const override { return transition_; }
+    void set_transition(const KeyframeTransition&) override {}
+
+protected:
+    std::unique_ptr<KeyframeBase> do_clone() const override
+    {
+        return std::make_unique<JoinedKeyframe>(parent, subkf);
+    }
+
+    class Splitter : public KeyframeSplitter
+    {
+    public:
+        Splitter(const JoinedKeyframe* a, const JoinedKeyframe* b) : a(a), b(b) {}
+
+        void step(const QPointF&) override {}
+
+
+        std::unique_ptr<KeyframeBase> left(const QPointF& p) const override
+        {
+            return std::make_unique<JoinedKeyframe>(
+                a->parent,
+                math::lerp(a->time(), b->time(), p.x())
+            );
+        }
+
+        std::unique_ptr<KeyframeBase> right(const QPointF& p) const override
+        {
+            return std::make_unique<JoinedKeyframe>(
+                a->parent,
+                math::lerp(a->time(), b->time(), p.x())
+            );
+        }
+
+        std::unique_ptr<KeyframeBase> last() const override { return b->clone(); }
+
+        const JoinedKeyframe* a;
+        const JoinedKeyframe* b;
+    };
+
+    std::unique_ptr<KeyframeSplitter> splitter(const KeyframeBase* other) const override
+    {
+        return std::make_unique<Splitter>(this, static_cast<const JoinedKeyframe*>(other));
+    }
+
+private:
+    JoinedAnimatable* parent;
+    const JoinAnimatables::Keyframe* subkf = nullptr;
+    KeyframeTransition transition_;
+};
+
 /**
  * \brief JoinAnimatables implementing AnimatableBase
  */
-class JoinedAnimatable : public AnimatableBase, public JoinAnimatables
+class JoinedAnimatable : public detail::AnimatableImpl<JoinedKeyframe, AnimatableBase>, public JoinAnimatables
 {
 public:
     using ConversionFunction = std::function<QVariant (const std::vector<QVariant>& args)>;
 
-    class Keyframe : public KeyframeBase
-    {
-    public:
-        Keyframe(JoinedAnimatable* parent, const JoinAnimatables::Keyframe* subkf)
-            : KeyframeBase(subkf->time),
-              parent(parent),
-              subkf(subkf)
-        {
-            transition_ = subkf->transition();
-        }
-
-        Keyframe(JoinedAnimatable* parent, model::FrameTime time)
-            : KeyframeBase(time),
-              parent(parent),
-              subkf(nullptr)
-        {}
-
-        std::vector<QVariant> get() const
-        {
-            if ( subkf )
-                return subkf->values;
-            else
-                return parent->value_at(time());
-        }
-
-        QVariant value() const override
-        {
-            if ( subkf )
-                return parent->converter(subkf->values);
-            else
-                return parent->converter(parent->value_at(time()));
-        }
-
-        // read only
-        bool set_value(const QVariant&) override { return false; }
-
-        KeyframeTransition transition() const override { return transition_; }
-        void set_transition(const KeyframeTransition&) override {}
-
-    protected:
-        std::unique_ptr<KeyframeBase> do_clone() const override
-        {
-            return std::make_unique<JoinedAnimatable::Keyframe>(parent, subkf);
-        }
-
-        class Splitter : public KeyframeSplitter
-        {
-        public:
-            Splitter(const Keyframe* a, const Keyframe* b) : a(a), b(b) {}
-
-            void step(const QPointF&) override {}
-
-
-            std::unique_ptr<KeyframeBase> left(const QPointF& p) const override
-            {
-                return std::make_unique<Keyframe>(
-                    a->parent,
-                    math::lerp(a->time(), b->time(), p.x())
-                );
-            }
-
-            std::unique_ptr<KeyframeBase> right(const QPointF& p) const override
-            {
-                return std::make_unique<Keyframe>(
-                    a->parent,
-                    math::lerp(a->time(), b->time(), p.x())
-                );
-            }
-
-            std::unique_ptr<KeyframeBase> last() const override { return b->clone(); }
-
-            const Keyframe* a;
-            const Keyframe* b;
-        };
-
-        std::unique_ptr<KeyframeSplitter> splitter(const KeyframeBase* other) const override
-        {
-            return std::make_unique<Splitter>(this, static_cast<const Keyframe*>(other));
-        }
-
-    private:
-        JoinedAnimatable* parent;
-        const JoinAnimatables::Keyframe* subkf = nullptr;
-        KeyframeTransition transition_;
-    };
-
     JoinedAnimatable(std::vector<const model::AnimatableBase*> properties, ConversionFunction converter, int flags = Normal)
-        : AnimatableBase(nullptr, {}, {}),
+        : Ctor(nullptr, {}, {}),
           JoinAnimatables(std::move(properties), flags),
           converter(std::move(converter))
 
     {
-        wrapped_keyframes.reserve(keyframes().size());
         for ( auto& kf : keyframes() )
-            wrapped_keyframes.push_back(std::make_unique<Keyframe>(this, &kf));
-    }
-
-    int keyframe_count() const override
-    {
-        return wrapped_keyframes.size();
+            keyframes_.insert(kf.time, JoinedKeyframe(this, &kf));
     }
 
     using JoinAnimatables::animated;
-
-    const KeyframeBase* keyframe(int i) const override
-    {
-        return wrapped_keyframes[i].get();
-    }
-
-    KeyframeBase* keyframe(int i) override
-    {
-        return wrapped_keyframes[i].get();
-    }
 
     QVariant value(FrameTime time) const override
     {
@@ -359,15 +333,13 @@ public:
         return converter(current_value());
     }
 
-
     // read only
     bool set_value(const QVariant&) override { return false; }
     bool valid_value(const QVariant&) const override { return false; }
     bool set_undoable(const QVariant&, bool) override { return false; }
-    int move_keyframe(int, FrameTime) override { return -1; }
+    AnimatableBase::MoveResult move_keyframe(FrameTime, FrameTime) override { return MoveResult::NotFound; }
     bool value_mismatch() const override { return false; }
     KeyframeBase* set_keyframe(FrameTime , const QVariant& , SetKeyframeInfo*, bool ) override { return nullptr; }
-    void remove_keyframe(int) override {};
     void clear_keyframes() override {};
     bool remove_keyframe_at_time(FrameTime) override { return false; }
 
@@ -380,10 +352,27 @@ protected:
         return {};
     }
 
-
 private:
+    friend JoinedKeyframe;
     ConversionFunction converter;
-    std::vector<std::unique_ptr<Keyframe>> wrapped_keyframes;
 };
+
+
+
+inline std::vector<QVariant> JoinedKeyframe::get() const
+{
+    if ( subkf )
+        return subkf->values;
+    else
+        return parent->value_at(time());
+}
+
+inline QVariant JoinedKeyframe::value() const
+{
+    if ( subkf )
+        return parent->converter(subkf->values);
+    else
+        return parent->converter(parent->value_at(time()));
+}
 
 } // namespace glaxnimate::model

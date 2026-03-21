@@ -8,11 +8,10 @@
 
 #include <QClipboard>
 #include <QMimeData>
+#include <QGuiApplication>
 
 #include "widgets/dialogs/follow_path_dialog.hpp"
 #include "glaxnimate/command/animation_commands.hpp"
-#include "glaxnimate/command/undo_macro_guard.hpp"
-#include "glaxnimate_app.hpp"
 #include "widgets/dialogs/selection_manager.hpp"
 
 using namespace glaxnimate::gui;
@@ -118,7 +117,7 @@ void glaxnimate::gui::AnimatedPropertyMenu::loop_keyframes()
     d->property->object()->push_command(new command::SetKeyframe(
         d->property,
         d->comp()->animation->last_frame.get(),
-        d->property->keyframe(0)->value(),
+        d->property->first_keyframe()->value(),
         true
     ));
 }

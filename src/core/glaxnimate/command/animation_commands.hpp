@@ -37,11 +37,11 @@ private:
     QVariant after;
     bool had_before;
     bool calculated = false;
-    int insert_index = -1;
     model::KeyframeTransition trans_before;
     model::KeyframeTransition left;
     model::KeyframeTransition right;
     bool force_insert = false;
+    bool adjust_transition = false;
 };
 
 class RemoveKeyframeTime : public QUndoCommand
@@ -59,32 +59,10 @@ public:
 private:
     model::AnimatableBase* prop;
     model::FrameTime time;
-    int index;
     QVariant before;
     model::KeyframeTransition prev_transition_before;
     model::KeyframeTransition prev_transition_after;
-};
-
-
-class RemoveKeyframeIndex: public QUndoCommand
-{
-public:
-    RemoveKeyframeIndex(
-        model::AnimatableBase* prop,
-        int index
-    );
-
-    void undo() override;
-
-    void redo() override;
-
-private:
-    model::AnimatableBase* prop;
-    int index;
-    model::FrameTime time;
-    QVariant before;
-    model::KeyframeTransition prev_transition_before;
-    model::KeyframeTransition prev_transition_after;
+    model::KeyframeTransition transition_before;
 };
 
 
@@ -173,12 +151,12 @@ private:
 };
 
 
-class SetKeyframeTransition : public QUndoCommand
+class SetKeyframeTransition: public QUndoCommand
 {
 public:
     SetKeyframeTransition(
         model::AnimatableBase* prop,
-        int keyframe_index,
+        model::FrameTime time,
         model::KeyframeTransition::Descriptive desc,
         const QPointF& point,
         bool before_transition
@@ -186,7 +164,7 @@ public:
 
     SetKeyframeTransition(
         model::AnimatableBase* prop,
-        int keyframe_index,
+        model::FrameTime time,
         const model::KeyframeTransition& transition
     );
 
@@ -197,37 +175,35 @@ private:
     model::KeyframeBase* keyframe() const;
 
     model::AnimatableBase* prop;
-    int keyframe_index;
+    model::FrameTime time;
     model::KeyframeTransition undo_value;
     model::KeyframeTransition redo_value;
 };
-
 
 class MoveKeyframe : public QUndoCommand
 {
 public:
     MoveKeyframe(
         model::AnimatableBase* prop,
-        int keyframe_index,
+        model::FrameTime time_before,
         model::FrameTime time_after
     );
 
     void undo() override;
 
     void redo() override;
-
-    /**
-     * \brief The index after redo()
-     * \pre redo() called at least once
-     */
-    int redo_index() const;
+    
+    static model::AnimatableBase::MoveResult move_keyframe(
+        model::AnimatableBase* prop,
+        model::FrameTime time_before,
+        model::FrameTime time_after
+    );
 
 private:
     model::AnimatableBase* prop;
-    int keyframe_index_before;
-    int keyframe_index_after = -1;
     model::FrameTime time_before;
     model::FrameTime time_after;
+
 };
 
 template<class T>

@@ -158,12 +158,12 @@ void define_animatable(py::module& m)
         )
     ;
     register_from_meta<Reg, model::AnimatableBase, QObject>(m)
-        .def("keyframe", [](const model::AnimatableBase& a, model::FrameTime t){ return a.keyframe(t); }, no_own, py::arg("time"))
+        .def("keyframe", [](const model::AnimatableBase& a, model::FrameTime t){ return a.keyframe_at(t); }, no_own, py::arg("time"))
         .def("set_keyframe", [](model::AnimatableBase& a, model::FrameTime time, const QVariant& value){
             a.object()->document()->undo_stack().push(
                 new command::SetKeyframe(&a, time, value, true)
             );
-            return a.keyframe(a.keyframe_index(time));
+            return a.keyframe_at(time);
         }, no_own, py::arg("time"), py::arg("value"))
         .def("remove_keyframe_at_time", [](model::AnimatableBase& a, model::FrameTime time){
             a.object()->document()->undo_stack().push(
