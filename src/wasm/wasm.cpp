@@ -292,6 +292,12 @@ EMSCRIPTEN_BINDINGS(glaxnimate_wasm)
     register_top_level<Reg>(model);
 
 
+    emscripten::class_<model::KeyframeBase>(m, "Keyframe")
+        .property("time", &model::KeyframeBase::time)
+        .def_property("value", &model::KeyframeBase::value)
+        .property("transition", &model::KeyframeBase::transition)
+        ;
+
     register_from_meta<Reg, model::AnimatableBase, QObject>(model)
         .function("get", fn([](const model::AnimatableBase& anim){
             return anim.value();

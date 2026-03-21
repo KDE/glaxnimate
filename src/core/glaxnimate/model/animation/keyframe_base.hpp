@@ -12,19 +12,16 @@
 
 namespace glaxnimate::model {
 
-class KeyframeBase : public QObject
+class KeyframeBase
 {
-    Q_OBJECT
-
-    Q_PROPERTY(QVariant value READ value)
-    Q_PROPERTY(double time READ time)
-
 public:
     explicit KeyframeBase(FrameTime time) : time_ { time } {}
     virtual ~KeyframeBase() = default;
     KeyframeBase(KeyframeBase&& oth) :
         time_(oth.time_)
     {}
+    KeyframeBase(const KeyframeBase&) = delete;
+    KeyframeBase& operator=(const KeyframeBase&) = delete;
 
     virtual QVariant value() const = 0;
     virtual bool set_value(const QVariant& value) = 0;

@@ -99,6 +99,7 @@ public:
      */
     Q_INVOKABLE virtual const KeyframeBase* keyframe_containing(FrameTime time) const = 0;
     virtual KeyframeBase* keyframe_containing(FrameTime time) = 0;
+
     /**
      * \brief Returns the keyframe fully before the given time
      *
@@ -257,6 +258,7 @@ public:
      * @param transition
      */
     Q_INVOKABLE virtual void set_transition(FrameTime time, const KeyframeTransition& transition) = 0;
+
     /**
      * @brief Sets the transition at the keyframe before \p time
      * @param time
