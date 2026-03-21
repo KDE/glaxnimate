@@ -74,13 +74,11 @@ void glaxnimate::model::Repeater::on_paint(renderer::Renderer* painter, glaxnima
 template<class T, class Func = std::plus<T>>
 static void increase_transform(glaxnimate::model::AnimatedProperty<T>& into, const glaxnimate::model::AnimatedProperty<T>& from, Func func = {})
 {
-    using Keyframe = glaxnimate::model::Keyframe<T>;
-
-    for ( int i = 0, e = from.keyframe_count(); i < e; i++ )
+    auto from_kf = from.begin();
+    for ( auto& into_kf : into.mutable_range() )
     {
-        auto into_kf = static_cast<Keyframe*>(into.keyframe(i));
-
-        into_kf->set(func(into_kf->get(), static_cast<const Keyframe*>(from.keyframe(i))->get()));
+        into_kf.set(func(into_kf.get(), from_kf->get()));
+        ++from_kf;
     }
 
     into.set(func(into.get(), from.get()));
@@ -136,9 +134,9 @@ std::unique_ptr<glaxnimate::model::ShapeElement> glaxnimate::model::Repeater::to
 int glaxnimate::model::Repeater::max_copies() const
 {
     int max = copies.get();
-    for ( int i = 0, e = copies.keyframe_count(); i < e; ++i )
+    for ( const auto& kf : copies )
     {
-        int val = copies.keyframe(i)->get();
+        int val = kf.get();
         if ( val > max )
             max = val;
     }

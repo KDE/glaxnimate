@@ -49,14 +49,28 @@ public:
     using Object::Object;
 };
 
+#define CONTAINER_COMPARE(cont, ...) \
+    do { \
+        std::pair<model::FrameTime, int> kfs[] = {__VA_ARGS__}; \
+        QCOMPARE(cont.size(), sizeof(kfs) / sizeof(kfs[0])); \
+        int i = 0; \
+        for ( auto it = cont.begin(); it != cont.end(); ++it ) { \
+            QCOMPARE(it.key(), kfs[i].first); \
+            QCOMPARE(*it, kfs[i].second); \
+            ++i; \
+        } \
+    } while (false);
+
 
 #define PROPERTY_KEYFRAMES(T, prop, ...) \
     do { \
         std::unique_ptr<Keyframe<T>> kfs[] = {__VA_ARGS__}; \
         QCOMPARE(prop.keyframe_count(), sizeof(kfs) / sizeof(kfs[0])); \
-        for ( int i = 0; i < prop.keyframe_count(); i++ ) { \
-            QCOMPARE(prop.keyframe(i)->time(), kfs[i]->time()); \
-            QCOMPARE(prop.keyframe(i)->get(), kfs[i]->get()); \
+        int i = 0; \
+        for ( const auto& kf : prop ) { \
+            QCOMPARE(kf.time(), kfs[i]->time()); \
+            QCOMPARE(kf.get(), kfs[i]->get()); \
+            ++i; \
         } \
     } while(false)
 
@@ -73,6 +87,52 @@ class TestAnimatable: public QObject
     Q_OBJECT
 
 private Q_SLOTS:
+
+    void test_animation_container()
+    {
+        KeyframeContainer<int> cont;
+        QCOMPARE(cont.empty(),  true);
+        QCOMPARE(cont.size(),  0);
+        QCOMPARE(cont.find_best(1), cont.end());
+        cont.insert(10, 110);
+        CONTAINER_COMPARE(cont, {10, 110});
+        cont.insert(20, 120);
+        CONTAINER_COMPARE(cont, {10, 110}, {20, 120});
+        cont.insert(-20, 220);
+        CONTAINER_COMPARE(cont, {-20, 220}, {10, 110}, {20, 120});
+
+        QCOMPARE(*cont.find_best(1), 220);
+        QCOMPARE(*cont.find_best(-300), 220);
+        QCOMPARE(*cont.find_best(10), 110);
+        QCOMPARE(*cont.find_best(100), 120);
+
+
+        QCOMPARE(cont.find(1), cont.end());
+        QCOMPARE(*cont.find(10), 110);
+
+        QCOMPARE(*cont.lower_bound(1), 110);
+        QCOMPARE(*cont.lower_bound(10), 110);
+        QCOMPARE(*cont.lower_bound(20), 120);
+        QCOMPARE(cont.lower_bound(100), cont.end());
+        QCOMPARE(cont.lower_bound(-30), cont.begin());
+
+        QCOMPARE(*cont.upper_bound(1), 110);
+        QCOMPARE(*cont.upper_bound(10), 120);
+        QCOMPARE(cont.upper_bound(20), cont.end());
+        QCOMPARE(cont.lower_bound(100), cont.end());
+        QCOMPARE(cont.lower_bound(-30), cont.begin());
+
+        auto iter = cont.move(cont.begin(), 50);
+        CONTAINER_COMPARE(cont, {10, 110}, {20, 120}, {50, 220});
+        QCOMPARE(iter.key(), 50);
+        QCOMPARE(*iter, 220);
+
+        // iterator can be converted to const_iterator
+        KeyframeContainer<int>::iterator mut_iter = cont.begin();
+        KeyframeContainer<int>::const_iterator const_iter = mut_iter;
+        QCOMPARE(const_iter, cont.cbegin());
+
+    }
 
     void test_int_basics()
     {
@@ -94,20 +154,19 @@ private Q_SLOTS:
         property.set_keyframe(10, 400);
         PROPERTY_KEYFRAMES(type, property, newkf<type>(5, 200), newkf<type>(10, 400), newkf<type>(20, 300));
 
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(5)), 5, 200, KeyframeTransition());
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(10)), 10, 400, KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_at(5), 5, 200, KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_at(10), 10, 400, KeyframeTransition());
 
-        // keyframe_containing
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(99)), 20, 300, KeyframeTransition());
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(-99)), 5, 200, KeyframeTransition());
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(10)), 10, 400, KeyframeTransition());
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(12)), 10, 400, KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_containing(99), 20, 300, KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_containing(-99), 5, 200, KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_containing(10), 10, 400, KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_containing(12), 10, 400, KeyframeTransition());
 
-        property.move_keyframe(0, 25);
+        property.move_keyframe(5, 25);
         PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 400), newkf<type>(20, 300), newkf<type>(25, 200));
-        property.move_keyframe(2, 15);
+        property.move_keyframe(25, 15);
         PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 400), newkf<type>(15, 200), newkf<type>(20, 300));
-        property.move_keyframe(1, 5);
+        property.move_keyframe(15, 5);
         PROPERTY_KEYFRAMES(type, property, newkf<type>(5, 200), newkf<type>(10, 400), newkf<type>(20, 300));
 
         property.remove_keyframe_at_time(10);
@@ -142,20 +201,19 @@ private Q_SLOTS:
         property.set_keyframe(10, 400);
         PROPERTY_KEYFRAMES(type, property, newkf<type>(5, 200), newkf<type>(10, 400), newkf<type>(20, 300));
 
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(5)), 5, 200, KeyframeTransition());
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(10)), 10, 400, KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_at(5), 5, 200, KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_at(10), 10, 400, KeyframeTransition());
 
-        // keyframe_containing
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(99)), 20, 300, KeyframeTransition());
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(-99)), 5, 200, KeyframeTransition());
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(10)), 10, 400, KeyframeTransition());
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(12)), 10, 400, KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_containing(99), 20, 300, KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_containing(-99), 5, 200, KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_containing(10), 10, 400, KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_containing(12), 10, 400, KeyframeTransition());
 
-        property.move_keyframe(0, 25);
+        property.move_keyframe(5, 25);
         PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 400), newkf<type>(20, 300), newkf<type>(25, 200));
-        property.move_keyframe(2, 15);
+        property.move_keyframe(25, 15);
         PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 400), newkf<type>(15, 200), newkf<type>(20, 300));
-        property.move_keyframe(1, 5);
+        property.move_keyframe(15, 5);
         PROPERTY_KEYFRAMES(type, property, newkf<type>(5, 200), newkf<type>(10, 400), newkf<type>(20, 300));
 
         property.remove_keyframe_at_time(10);
@@ -192,8 +250,8 @@ private Q_SLOTS:
         QCOMPARE(property.get(), 150);
         QCOMPARE(property.get_at(7.5 + time_offset), 250);
 
-        property.keyframe(0)->set_transition(KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
-        KEYFRAME_COMPARE(property.keyframe(0), 0, 100, KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
+        property.keyframe_at(0)->set_transition(KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
+        KEYFRAME_COMPARE(property.keyframe_at(0), 0, 100, KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
         QCOMPARE(property.get_at(5 + time_offset), 200);
         qreal offset = 2118;
         QCOMPARE(qRound(property.get_at(7.5 + time_offset)*100), 30000-offset);
@@ -226,8 +284,8 @@ private Q_SLOTS:
         QCOMPARE(property.get(), 150);
         QCOMPARE(property.get_at(7.5 + time_offset), 250);
 
-        property.keyframe(0)->set_transition(KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
-        KEYFRAME_COMPARE(property.keyframe(0), 0, 100, KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
+        property.keyframe_at(0)->set_transition(KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
+        KEYFRAME_COMPARE(property.keyframe_at(0), 0, 100, KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
         QCOMPARE(property.get_at(5 + time_offset), 200);
         QCOMPARE(property.get_at(7.5 + time_offset), 279);
         property.set_time(0);property.set_time(2.5 + time_offset); // TODO FIXME This shouldn't be here
@@ -236,7 +294,6 @@ private Q_SLOTS:
 
 
     }
-
 
     void test_point_basics()
     {
@@ -258,20 +315,19 @@ private Q_SLOTS:
         property.set_keyframe(10, QPointF(400, -400));
         PROPERTY_KEYFRAMES(type, property, newkf<type>(5, QPointF(200, -200)), newkf<type>(10, QPointF(400, -400)), newkf<type>(20, QPointF(300, -300)));
 
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(5)), 5, QPointF(200, -200), KeyframeTransition());
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(10)), 10, QPointF(400, -400), KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_at(5), 5, QPointF(200, -200), KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_at(10), 10, QPointF(400, -400), KeyframeTransition());
 
-        // keyframe_containing
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(99)), 20, QPointF(300, -300), KeyframeTransition());
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(-99)), 5, QPointF(200, -200), KeyframeTransition());
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(10)), 10, QPointF(400, -400), KeyframeTransition());
-        KEYFRAME_COMPARE(property.keyframe(property.keyframe_index(12)), 10, QPointF(400, -400), KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_containing(99), 20, QPointF(300, -300), KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_containing(-99), 5, QPointF(200, -200), KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_containing(10), 10, QPointF(400, -400), KeyframeTransition());
+        KEYFRAME_COMPARE(property.keyframe_containing(12), 10, QPointF(400, -400), KeyframeTransition());
 
-        property.move_keyframe(0, 25);
+        property.move_keyframe(5, 25);
         PROPERTY_KEYFRAMES(type, property, newkf<type>(10, QPointF(400, -400)), newkf<type>(20, QPointF(300, -300)), newkf<type>(25, QPointF(200, -200)));
-        property.move_keyframe(2, 15);
+        property.move_keyframe(25, 15);
         PROPERTY_KEYFRAMES(type, property, newkf<type>(10, QPointF(400, -400)), newkf<type>(15, QPointF(200, -200)), newkf<type>(20, QPointF(300, -300)));
-        property.move_keyframe(1, 5);
+        property.move_keyframe(15, 5);
         PROPERTY_KEYFRAMES(type, property, newkf<type>(5, QPointF(200, -200)), newkf<type>(10, QPointF(400, -400)), newkf<type>(20, QPointF(300, -300)));
 
         property.remove_keyframe_at_time(10);
@@ -285,7 +341,6 @@ private Q_SLOTS:
         QCOMPARE(property.keyframe_count(), 0);
         QCOMPARE(property.animated(), false);
     }
-
 
     void test_point_transitions()
     {
@@ -309,8 +364,8 @@ private Q_SLOTS:
         QCOMPARE(property.get(), QPointF(150, -150));
         QCOMPARE(property.get_at(7.5 + time_offset), QPointF(250, -250));
 
-        property.keyframe(0)->set_transition(KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
-        KEYFRAME_COMPARE(property.keyframe(0), 0, QPointF(100, -100), KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
+        property.keyframe_at(0)->set_transition(KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
+        KEYFRAME_COMPARE(property.keyframe_at(0), 0, QPointF(100, -100), KeyframeTransition(QPointF(.5, 0), QPointF(.5, 1)));
         QCOMPARE(property.get_at(5 + time_offset), QPointF(200, -200));
         qreal offset = 2118;
         QCOMPARE(qRound(property.get_at(7.5 + time_offset).x()*100), 30000-offset);
@@ -328,12 +383,12 @@ private Q_SLOTS:
         property.set_keyframe(0, QPointF(0, 0));
         property.set_keyframe(100, QPointF(100, 200));
         QCOMPARE(property.get_at(50), QPointF(50, 100));
-        property.keyframe(0)->set_point(math::bezier::Point(
+        property.keyframe_at(0)->set_point(math::bezier::Point(
             QPointF(0, 0),
             QPointF(0, 0),
             QPointF(0, -50)
         ));
-        property.keyframe(1)->set_point(math::bezier::Point(
+        property.keyframe_at(100)->set_point(math::bezier::Point(
             QPointF(100, 200),
             QPointF(50, 200),
             QPointF(100, 200)
@@ -441,18 +496,16 @@ private Q_SLOTS:
         property.set_keyframe(30, 130);
 
         {
-            auto cmd = new MoveKeyframe(&property, 1, 40);
-            cmd->redo();
+            MoveKeyframe::move_keyframe(&property, 20, 40);
             PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(30, 130), newkf<type>(40, 120));
-            cmd->undo();
+            doc.undo_stack().undo();
             PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(20, 120), newkf<type>(30, 130));
         }
 
         {
-            auto cmd = new MoveKeyframe(&property, 1, 30);
-            cmd->redo();
-            PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(30, 130), newkf<type>(30, 120));
-            cmd->undo();
+            MoveKeyframe::move_keyframe(&property, 20, 30);
+            PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(30, 120));
+            doc.undo_stack().undo();
             PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(20, 120), newkf<type>(30, 130));
         }
     }

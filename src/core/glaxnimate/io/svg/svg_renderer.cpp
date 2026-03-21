@@ -13,7 +13,6 @@
 #include "glaxnimate/model/shapes/composable/precomp_layer.hpp"
 #include "glaxnimate/model/shapes/shapes/rect.hpp"
 #include "glaxnimate/model/shapes/shapes/ellipse.hpp"
-#include "glaxnimate/model/shapes/shapes/path.hpp"
 #include "glaxnimate/model/shapes/shapes/polystar.hpp"
 #include "glaxnimate/model/shapes/shapes/text.hpp"
 #include "glaxnimate/model/shapes/style/fill.hpp"
@@ -704,10 +703,9 @@ public:
             {
                 AnimationData anim_display(this, {"display"}, kf_count, time_stretch, time_start);
 
-                for ( int i = 0; i < kf_count; i++ )
+                for ( const auto& kf : repeater->copies )
                 {
-                    auto kf = repeater->copies.keyframe(i);
-                    anim_display.add_keyframe(time_to_global(kf->time()), {index < kf->get() ? "block" : "none"}, kf->transition());
+                    anim_display.add_keyframe(time_to_global(kf.time()), {index < kf.get() ? "block" : "none"}, kf.transition());
                 }
 
                 anim_display.add_dom(element);

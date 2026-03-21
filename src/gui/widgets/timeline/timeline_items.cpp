@@ -14,9 +14,10 @@ using namespace glaxnimate;
 
 bool timeline::enable_debug = false;
 
-    timeline::KeyframeSplitItem::KeyframeSplitItem(AnimatableItem* parent)
+timeline::KeyframeSplitItem::KeyframeSplitItem(model::FrameTime keyframe_time, AnimatableItem* parent)
     : QGraphicsObject(parent),
-    visual_node(parent->object()->cast<model::VisualNode>())
+    visual_node(parent->object()->cast<model::VisualNode>()),
+    keyframe_time_(keyframe_time)
 {
     setFlags(
         QGraphicsItem::ItemIsSelectable|
@@ -413,27 +414,30 @@ timeline::AnimatableItem::AnimatableItem(quintptr id, model::Object* obj, model:
     : LineItem(id, obj, time_start, time_end, height),
     animatable(animatable)
 {
-    for ( int i = 0; i < animatable->keyframe_count(); i++ )
-        add_keyframe(i);
+    for ( const auto& kf : animatable->keyframe_range() )
+        do_add_keyframe(const_cast<model::KeyframeBase*>(&kf));
 
     connect(animatable, &model::AnimatableBase::keyframe_added, this, &AnimatableItem::add_keyframe);
     connect(animatable, &model::AnimatableBase::keyframe_removed, this, &AnimatableItem::remove_keyframe);
     connect(animatable, &model::AnimatableBase::keyframe_updated, this, &AnimatableItem::update_keyframe);
+    connect(animatable, &model::AnimatableBase::keyframe_moved, this, &AnimatableItem::move_keyframe);
 }
 
 std::pair<model::KeyframeBase*, model::KeyframeBase*> timeline::AnimatableItem::keyframes(KeyframeSplitItem* item)
 {
-    for ( int i = 0; i < int(kf_split_items.size()); i++ )
-    {
-        if ( kf_split_items[i] == item )
-        {
-            if ( i == 0 )
-                return {nullptr, animatable->keyframe(i)};
-            return {animatable->keyframe(i-1), animatable->keyframe(i)};
-        }
-    }
+    auto range = animatable->keyframe_range();
+    auto iter = animatable->find(item->keyframe_time());
 
-    return {nullptr, nullptr};
+    if ( iter == range.end() )
+        return {nullptr, nullptr};
+
+    if ( iter == range.begin() )
+        return {nullptr, const_cast<model::KeyframeBase*>(&*iter)};
+
+    auto prev_iter = iter;
+    --prev_iter;
+    return {const_cast<model::KeyframeBase*>(&*prev_iter), const_cast<model::KeyframeBase*>(&*iter)};
+
 }
 
 int timeline::AnimatableItem::type() const
@@ -446,74 +450,81 @@ item_models::PropertyModelFull::Item timeline::AnimatableItem::property_item() c
     return {object(), animatable};
 }
 
-void timeline::AnimatableItem::add_keyframe(int index)
+void timeline::AnimatableItem::add_keyframe(model::FrameTime time)
 {
-    model::KeyframeBase* kf = animatable->keyframe(index);
-    if ( index == 0 && !kf_split_items.empty() )
-        kf_split_items[0]->set_enter(kf->transition().after_descriptive());
+    do_add_keyframe(animatable->keyframe_at(time));
+}
 
-    model::KeyframeBase* prev = index > 0 ? animatable->keyframe(index-1) : nullptr;
-    auto item = new KeyframeSplitItem(this);
+
+void timeline::AnimatableItem::do_add_keyframe(model::KeyframeBase *kf)
+{
+    model::KeyframeBase* prev = animatable->keyframe_before(kf->time());
+    if ( !prev && !kf_split_items.empty() )
+        (*kf_split_items.begin())->set_enter(kf->transition().after_descriptive());
+
+    auto item = new KeyframeSplitItem(kf->time(), this);
     item->setPos(kf->time(), row_height() / 2.0);
     item->set_exit(kf->transition().before_descriptive());
     item->set_enter(prev ? prev->transition().after_descriptive() : model::KeyframeTransition::Hold);
-    kf_split_items.insert(kf_split_items.begin() + index, item);
+    kf_split_items.insert(kf->time(), item);
 
     connect(kf, &model::KeyframeBase::transition_changed, this, &AnimatableItem::transition_changed);
 }
 
-void timeline::AnimatableItem::remove_keyframe(int index)
+
+void timeline::AnimatableItem::remove_keyframe(model::FrameTime t)
 {
-    delete kf_split_items[index];
-    kf_split_items.erase(kf_split_items.begin() + index);
-    if ( index < int(kf_split_items.size()) && index > 0 )
+    auto it = kf_split_items.find(t);
+    if ( it != kf_split_items.end() )
     {
-        kf_split_items[index]->set_enter(animatable->keyframe(index-1)->transition().after_descriptive());
+        if ( it != kf_split_items.begin() )
+        {
+            auto next = it;
+            ++next;
+            if ( next != kf_split_items.end() )
+                (*next)->set_enter(animatable->keyframe_before(t)->transition().after_descriptive());
+        }
+
+        delete *it;
+        kf_split_items.erase(it);
     }
 }
 
 void timeline::AnimatableItem::transition_changed(model::KeyframeTransition::Descriptive before, model::KeyframeTransition::Descriptive after)
 {
-    int index = animatable->keyframe_index(static_cast<model::KeyframeBase*>(sender()));
-    if ( index == -1 )
+    auto iter = kf_split_items.find(static_cast<model::KeyframeBase*>(sender())->time());
+    if ( iter == kf_split_items.end() )
         return;
 
-    kf_split_items[index]->set_exit(before);
+    (*iter)->set_exit(before);
 
 
-    index += 1;
-    if ( index >= int(kf_split_items.size()) )
+    ++iter;
+    if ( iter == kf_split_items.end() )
         return;
 
-    kf_split_items[index]->set_enter(after);
+    (*iter)->set_enter(after);
 }
 
 void timeline::AnimatableItem::keyframes_dragged(const std::vector<DragData>& keyframe_items)
 {
     for ( auto kf : keyframe_items )
     {
-        int index = animatable->keyframe_index(kf.from);
-        auto cmd = new command::MoveKeyframe(animatable, index, kf.to);
-        kf.item->setSelected(false);
-        animatable->object()->push_command(cmd);
-    }
-
-
-    for ( auto kf : keyframe_items )
-    {
-        int index = animatable->keyframe_index(kf.to);
-        kf_split_items[index]->setSelected(true);
+        if ( command::MoveKeyframe::move_keyframe(animatable, kf.from, kf.to) == model::AnimatableBase::MoveResult::OverwrittenDestination )
+        {
+            (*kf_split_items.find(kf.to))->setSelected(true);
+        }
     }
 }
 
 void glaxnimate::gui::timeline::AnimatableItem::cycle_keyframe_transition(model::FrameTime time)
 {
-    int index = animatable->keyframe_index(time);
-    auto kf = animatable->keyframe(index);
+    auto kf = animatable->keyframe_at(time);
     if ( !kf )
         return;
 
-    auto desc = index == 0 ? kf->transition().after_descriptive() : kf->transition().before_descriptive();
+    auto kf_before = animatable->keyframe_before(time);
+    auto desc = !kf_before ? kf->transition().after_descriptive() : kf->transition().before_descriptive();
 
     switch ( desc )
     {
@@ -539,33 +550,45 @@ void glaxnimate::gui::timeline::AnimatableItem::cycle_keyframe_transition(model:
 
     {
         command::UndoMacroGuard guard(i18n("Update keyframe transition"), animatable->object()->document());
-        if ( index > 0 )
+        if ( kf_before )
         {
-            auto kf_before = animatable->keyframe(index - 1);
             auto left_trans = kf_before->transition();
             left_trans.set_after_descriptive(desc);
-            animatable->object()->push_command(new command::SetKeyframeTransition(animatable, index-1, left_trans));
+            animatable->object()->push_command(new command::SetKeyframeTransition(animatable, kf_before->time(), left_trans));
         }
 
         auto right_trans = kf->transition();
         right_trans.set_before_descriptive(desc);
-        animatable->object()->push_command(new command::SetKeyframeTransition(animatable, index, right_trans));
+        animatable->object()->push_command(new command::SetKeyframeTransition(animatable, time, right_trans));
     }
 }
 
-
-void timeline::AnimatableItem::update_keyframe(int index, model::KeyframeBase* kf)
+void timeline::AnimatableItem::update_keyframe(model::FrameTime time)
 {
-    auto item_start = kf_split_items[index];
-    item_start->setPos(kf->time(), row_height() / 2.0);
-    item_start->set_exit(kf->transition().before_descriptive());
+    const auto& kf = animatable->keyframe_at(time);
+    auto item_start = kf_split_items.find(time);
 
-    if ( index == 0 )
-        item_start->set_enter(model::KeyframeTransition::Hold);
+    if ( item_start == kf_split_items.begin() )
+        (*item_start)->set_enter(model::KeyframeTransition::Hold);
+    else
+        (*item_start)->set_exit(kf->transition().before_descriptive());
 
-    if ( index < int(kf_split_items.size()) - 1 )
+    ++item_start;
+    if ( item_start != kf_split_items.end() )
     {
-        auto item_end = kf_split_items[index+1];
-        item_end->set_enter(kf->transition().after_descriptive());
+        (*item_start)->set_enter(kf->transition().after_descriptive());
     }
+}
+
+void timeline::AnimatableItem::move_keyframe(model::FrameTime from_time, model::FrameTime to_time)
+{
+    auto item = kf_split_items.find(from_time);
+    (*item)->set_keyframe_time(to_time);
+    (*item)->setPos(to_time, row_height() / 2.0);
+    kf_split_items.move(item, to_time);
+    update_keyframe(to_time);
+
+    auto first_kf = animatable->first_keyframe();
+    if ( from_time < first_kf->time() )
+        update_keyframe(first_kf->time());
 }

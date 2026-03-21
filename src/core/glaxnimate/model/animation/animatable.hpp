@@ -16,6 +16,7 @@
 #include "glaxnimate/math/bezier/solver.hpp"
 #include "glaxnimate/math/bezier/bezier_length.hpp"
 #include "glaxnimate/model/animation/keyframe_base.hpp"
+#include "glaxnimate/model/animation/keyframe_container.hpp"
 
 /*
  * Arguments: type, name, default, emitter, flags
@@ -53,7 +54,6 @@ public:
     struct SetKeyframeInfo
     {
         bool insertion;
-        int index;
     };
 
     struct MidTransition
@@ -81,14 +81,61 @@ public:
     virtual int keyframe_count() const = 0;
 
     /**
-     * \param i Keyframe index
-     * \pre \p i in [0, keyframe_count())
-     * \return the Corresponding keyframe or nullptr if not found
+     * \brief Keyframe whose transition contains \p time
      *
-     * keyframe(i).time() < keyframe(j).time() <=> i < j
+     *  This keyframe starts before or at \p time and it ends at \p time
+     *
+     * If all keyframes are after \p time, returns first one
+     * This means keyframe(keyframe_index(t)) is always valid when animated
+     *
+     *          keyframe_containing
+     *          v-------v
+     *  t0      t1      t2      t3
+     *  |-------|-------|-------|
+     *          ^   ^
+     *            time
+     *
+     * \return the Corresponding keyframe or nullptr if not found
      */
-    virtual const KeyframeBase* keyframe(int i) const = 0;
-    virtual KeyframeBase* keyframe(int i) = 0;
+    Q_INVOKABLE virtual const KeyframeBase* keyframe_containing(FrameTime time) const = 0;
+    virtual KeyframeBase* keyframe_containing(FrameTime time) = 0;
+    /**
+     * \brief Returns the keyframe fully before the given time
+     *
+     *
+     *  keyframe_before
+     *  v-------v
+     *  t0      t1      t2      t3
+     *  |-------|-------|-------|
+     *          ^   ^
+     *            time
+     *
+     */
+    Q_INVOKABLE virtual KeyframeBase* keyframe_before(FrameTime time) = 0;
+    virtual const KeyframeBase* keyframe_before(FrameTime time) const = 0;
+
+    /**
+     * \brief Returns the keyframe fully before the given time
+     *
+     *
+     *                  keyframe_before
+     *                  v-------v
+     *  t0      t1      t2      t3
+     *  |-------|-------|-------|
+     *          ^   ^
+     *            time
+     *
+     */
+    Q_INVOKABLE virtual KeyframeBase* keyframe_after(FrameTime time) = 0;
+    virtual const KeyframeBase* keyframe_after(FrameTime time) const = 0;
+
+    /**
+     * \brief Keyframe at that specific time
+     * \return the Corresponding keyframe or nullptr if not found
+     */
+    Q_INVOKABLE virtual const KeyframeBase* keyframe_at(FrameTime time) const = 0;
+    virtual KeyframeBase* keyframe_at(FrameTime time) = 0;
+
 
     /**
      * \brief Sets a value at a keyframe
@@ -101,11 +148,6 @@ public:
      * If there is already a keyframe at \p time the returned value might be an existing keyframe
      */
     virtual KeyframeBase* set_keyframe(FrameTime time, const QVariant& value, SetKeyframeInfo* info = nullptr, bool force_insert = false) = 0;
-
-    /**
-     * \brief Removes the keyframe at index \p i
-     */
-    virtual void remove_keyframe(int i) = 0;
 
     /**
      * \brief Removes all keyframes
@@ -128,13 +170,19 @@ public:
 
     using BaseProperty::value;
 
+    enum class MoveResult
+    {
+        NotFound,
+        OverwrittenDestination,
+        Moved,
+    };
+
     /**
      * \brief Moves a keyframe
-     * \param keyframe_index Index of the keyframe to move
-     * \param time New time for the keyframe
-     * \return The new index for that keyframe
+     * \param from_time Time of the keyframe to move
+     * \param to_time New time for the keyframe
      */
-    virtual int move_keyframe(int keyframe_index, FrameTime time) = 0;
+    virtual MoveResult move_keyframe(FrameTime from_time, FrameTime to_time) = 0;
 
     /**
      * If animated(), whether the current value has been changed over the animated value
@@ -159,55 +207,11 @@ public:
     }
 
     /**
-     * \brief Set the value for the given keyframe
-     */
-    bool set_keyframe_value(int keyframe_index, const QVariant& value)
-    {
-        if ( auto kf = keyframe(keyframe_index) )
-            return kf->set_value(value);
-        return false;
-    }
-
-    /**
      * \brief Whether it has multiple keyframes
      */
     bool animated() const
     {
         return keyframe_count() != 0;
-    }
-
-    /**
-     * \brief Index of the keyframe whose time lays in the transition
-     * \pre animated()
-     *
-     * If all keyframes are after \p time, returns 0
-     * This means keyframe(keyframe_index(t)) is always valid when animated
-     */
-    Q_INVOKABLE int keyframe_index(double time) const
-    {
-        auto kfcount = keyframe_count();
-
-        for ( int i = 0; i < kfcount; i++ )
-        {
-            auto kftime = keyframe(i)->time();
-            if ( kftime == time )
-                return i;
-            else if ( kftime > time )
-                return std::max(0, i-1);
-        }
-        return kfcount - 1;
-    }
-
-    int keyframe_index(KeyframeBase* kf) const
-    {
-        auto kfcount = keyframe_count();
-
-        for ( int i = 0; i < kfcount; i++ )
-        {
-            if ( keyframe(i) == kf )
-                return i;
-        }
-        return -1;
     }
 
     KeyframeStatus keyframe_status(FrameTime time) const
@@ -216,7 +220,7 @@ public:
             return NotAnimated;
         if ( value_mismatch() )
             return Mismatch;
-        if ( keyframe(keyframe_index(time))->time() == time )
+        if ( keyframe_at(time) )
             return IsKeyframe;
         return Tween;
     }
@@ -225,7 +229,7 @@ public:
     {
         if ( !animated() )
             return false;
-        return keyframe(keyframe_index(time))->time() == time;
+        return keyframe_at(time);
     }
 
     MidTransition mid_transition(FrameTime time) const;
@@ -241,15 +245,22 @@ public:
      */
     virtual void add_smooth_keyframe_undoable(FrameTime time, const QVariant& value);
 
+    virtual detail::TypeErasedKeyframeRange keyframe_range() const = 0;
+    virtual detail::TypeErasedKeyframeIterator find(model::FrameTime t) const = 0;
+
+    virtual const KeyframeBase* first_keyframe() const = 0;
+    virtual const KeyframeBase* last_keyframe() const = 0;
+
 Q_SIGNALS:
-    void keyframe_added(int index, KeyframeBase* keyframe);
-    void keyframe_removed(int index);
-    void keyframe_updated(int index, KeyframeBase* keyframe);
+    void keyframe_added(FrameTime time);
+    void keyframe_removed(FrameTime time);
+    void keyframe_updated(FrameTime time);
+    void keyframe_moved(FrameTime from_time, FrameTime to_time);
 
 protected:
     virtual void on_set_time(FrameTime time) = 0;
 
-    MidTransition do_mid_transition(const KeyframeBase* kf_before, const KeyframeBase* kf_after, qreal ratio, int index) const;
+    MidTransition do_mid_transition(const KeyframeBase* kf_before, const KeyframeBase* kf_after, qreal ratio) const;
     virtual QVariant do_mid_transition_value(const KeyframeBase* kf_before, const KeyframeBase* kf_after, qreal ratio) const = 0;
 
     FrameTime current_time = 0;
@@ -264,6 +275,7 @@ public:
 
     Keyframe(FrameTime time, Type value)
         : KeyframeBase(time), value_(std::move(value)) {}
+    Keyframe(Keyframe&&) = default;
 
     void set(reference value)
     {
@@ -366,6 +378,8 @@ public:
         : KeyframeBase(time), point_(value), linear(point_is_linear(value))
         {}
 
+    Keyframe(Keyframe&&) = default;
+
     void set(reference value)
     {
         point_.translate_to(value);
@@ -465,105 +479,134 @@ class AnimatedProperty;
 
 namespace detail {
 
-template<class Type>
-class AnimatedProperty : public AnimatableBase
+/**
+ * @brief Implements common operations based on the keyframe container
+ */
+template<class KeyframeT, class Base>
+class AnimatableImpl : public Base
 {
+public:
+    using Ctor = AnimatableImpl;
+    using keyframe_type = KeyframeT;
+
+    using Base::Base;
+
+    int keyframe_count() const override
+    {
+        return keyframes_.size();
+    }
+
+    const keyframe_type* keyframe_containing(FrameTime time) const override
+    {
+        auto it = keyframes_.find_best(time);
+        if ( it == keyframes_.end() )
+            return nullptr;
+        return it.ptr();
+    }
+
+    keyframe_type* keyframe_containing(FrameTime time) override
+    {
+        auto it = keyframes_.find_best(time);
+        if ( it == keyframes_.end() )
+            return nullptr;
+        return it.ptr();
+    }
+
+    keyframe_type* keyframe_before(FrameTime time) override
+    {
+        auto it = keyframes_.find_best(time);
+        if ( it == keyframes_.end() || it == keyframes_.begin())
+            return nullptr;
+        --it;
+        return it.ptr();
+    }
+
+
+    keyframe_type* keyframe_after(FrameTime time) override
+    {
+        auto it = keyframes_.upper_bound(time);
+        if ( it == keyframes_.end() )
+            return nullptr;
+        return it.ptr();
+    }
+
+
+    const keyframe_type* keyframe_before(FrameTime time) const override
+    {
+        auto it = keyframes_.find_best(time);
+        if ( it == keyframes_.end() || it == keyframes_.begin())
+            return nullptr;
+        --it;
+        return it.ptr();
+    }
+
+
+    const keyframe_type* keyframe_after(FrameTime time) const override
+    {
+        auto it = keyframes_.upper_bound(time);
+        if ( it == keyframes_.end() )
+            return nullptr;
+        return it.ptr();
+    }
+
+    const keyframe_type* keyframe_at(FrameTime time) const override
+    {
+        auto it = keyframes_.find(time);
+        if ( it == keyframes_.end() )
+            return nullptr;
+        return it.ptr();
+    }
+
+    keyframe_type* keyframe_at(FrameTime time) override
+    {
+        auto it = keyframes_.find(time);
+        if ( it == keyframes_.end() )
+            return nullptr;
+        return it.ptr();
+    }
+
+    detail::TypeErasedKeyframeRange keyframe_range() const override
+    {
+        return keyframes_.type_erased();
+    }
+
+    detail::TypeErasedKeyframeIterator find(model::FrameTime t) const override
+    {
+        return keyframes_.type_erased(keyframes_.find(t));
+    }
+
+    virtual const KeyframeBase* first_keyframe() const override
+    {
+        return keyframes_.empty() ? nullptr : keyframes_.begin().ptr();
+    }
+
+    virtual const KeyframeBase* last_keyframe() const override
+    {
+        if ( keyframes_.empty() )
+            return nullptr;
+        auto iter = keyframes_.end();
+        --iter;
+        return iter.ptr();
+    }
+
+    typename KeyframeContainer<KeyframeT>::const_iterator begin() const { return this->keyframes_.begin(); }
+    typename KeyframeContainer<KeyframeT>::const_iterator end() const { return this->keyframes_.end(); }
+
+protected:
+    KeyframeContainer<KeyframeT> keyframes_;
+};
+
+template<class Type>
+class AnimatedProperty : public AnimatableImpl<Keyframe<Type>, AnimatableBase>
+{
+    using Base = AnimatableImpl<Keyframe<Type>, AnimatableBase>;
 public:
     using keyframe_type = Keyframe<Type>;
     using value_type = typename Keyframe<Type>::value_type;
     using reference = typename Keyframe<Type>::reference;
+    using iterator = typename KeyframeContainer<keyframe_type>::const_iterator;
+    using mutable_iterator = typename KeyframeContainer<keyframe_type>::iterator;
 
-    class iterator
-    {
-    public:
-        using value_type = keyframe_type;
-        using pointer = const value_type*;
-        using reference = const value_type&;
-        using difference_type = int;
-        using iterator_category = std::random_access_iterator_tag;
-
-        iterator(const AnimatedProperty* prop, int index) noexcept
-        : prop(prop), index(index) {}
-
-        reference operator*() const { return *prop->keyframes_[index]; }
-        pointer operator->() const { return prop->keyframes_[index].get(); }
-
-        bool operator==(const iterator& other) const noexcept
-        {
-            return prop == other.prop && index == other.index;
-        }
-        bool operator!=(const iterator& other) const noexcept
-        {
-            return prop != other.prop || index != other.index;
-        }
-        bool operator<=(const iterator& other) const noexcept
-        {
-            return prop < other.prop || (prop == other.prop && index <= other.index);
-        }
-        bool operator<(const iterator& other) const noexcept
-        {
-            return prop < other.prop || (prop == other.prop && index < other.index);
-        }
-        bool operator>=(const iterator& other) const noexcept
-        {
-            return prop > other.prop || (prop == other.prop && index >= other.index);
-        }
-        bool operator>(const iterator& other) const noexcept
-        {
-            return prop > other.prop || (prop == other.prop && index > other.index);
-        }
-
-        iterator& operator++() noexcept
-        {
-            index++;
-            return *this;
-        }
-        iterator operator++(int) noexcept
-        {
-            auto copy = this;
-            index++;
-            return copy;
-        }
-        iterator& operator--() noexcept
-        {
-            index--;
-            return *this;
-        }
-        iterator operator--(int) noexcept
-        {
-            auto copy = this;
-            index--;
-            return copy;
-        }
-        iterator& operator+=(difference_type d) noexcept
-        {
-            index += d;
-            return *this;
-        }
-        iterator operator+(difference_type d) const noexcept
-        {
-            auto copy = this;
-            return copy += d;
-        }
-        iterator& operator-=(difference_type d) noexcept
-        {
-            index -= d;
-            return *this;
-        }
-        iterator operator-(difference_type d) const noexcept
-        {
-            auto copy = this;
-            return copy -= d;
-        }
-        difference_type operator-(const iterator& other) const noexcept
-        {
-            return index - other.index;
-        }
-
-    private:
-        const AnimatedProperty* prop;
-        int index;
-    };
 
     AnimatedProperty(
         Object* object,
@@ -572,7 +615,7 @@ public:
         PropertyCallback<void, Type> emitter = {},
         int flags = 0
     )
-    : AnimatableBase(
+    : Base(
         object, name, PropertyTraits::from_scalar<Type>(
             PropertyTraits::Animated|PropertyTraits::Visual|flags
         )),
@@ -580,24 +623,6 @@ public:
       emitter(std::move(emitter))
     {}
 
-    int keyframe_count() const override
-    {
-        return keyframes_.size();
-    }
-
-    const keyframe_type* keyframe(int i) const override
-    {
-        if ( i < 0 || i >= int(keyframes_.size()) )
-            return nullptr;
-        return keyframes_[i].get();
-    }
-
-    keyframe_type* keyframe(int i) override
-    {
-        if ( i < 0 || i >= int(keyframes_.size()) )
-            return nullptr;
-        return keyframes_[i].get();
-    }
 
     QVariant value() const override
     {
@@ -609,43 +634,37 @@ public:
         return QVariant::fromValue(get_at(time));
     }
 
-    keyframe_type* set_keyframe(FrameTime time, const QVariant& val, SetKeyframeInfo* info = nullptr, bool force_insert = false) override
+    keyframe_type* set_keyframe(FrameTime time, const QVariant& val, AnimatableBase::SetKeyframeInfo* info = nullptr, bool force_insert = false) override
     {
         if ( auto v = detail::variant_cast<Type>(val) )
             return static_cast<model::AnimatedProperty<Type>*>(this)->set_keyframe(time, *v, info, force_insert);
         return nullptr;
     }
 
-    void remove_keyframe(int i) override
-    {
-        if ( i >= 0 && i <= int(keyframes_.size()) )
-        {
-            keyframes_.erase(keyframes_.begin() + i);
-            Q_EMIT this->keyframe_removed(i);
-            value_changed();
-        }
-    }
-
     void clear_keyframes() override
     {
-        int n = keyframes_.size();
-        keyframes_.clear();
+        int n = this->keyframes_.size();
+        this->keyframes_.clear();
         for ( int i = n - 1; i >= 0; i-- )
             Q_EMIT this->keyframe_removed(i);
     }
 
     bool remove_keyframe_at_time(FrameTime time) override
     {
-        for ( auto it = keyframes_.begin(); it != keyframes_.end(); ++it )
+        auto iter = this->keyframes_.find(time);
+        if ( iter != this->keyframes_.end() )
         {
-            if ( (*it)->time() == time )
-            {
-                int index = it - keyframes_.begin();
-                keyframes_.erase(it);
-                Q_EMIT this->keyframe_removed(index);
-                on_keyframe_updated(time, index-1, index);
-                return true;
-            }
+            auto prev = iter;
+            bool update_prev = prev != this->keyframes_.begin();
+            if ( update_prev )
+                --prev;
+            this->keyframes_.erase(iter);
+            Q_EMIT this->keyframe_removed(time);
+            if ( update_prev )
+                on_keyframe_updated(prev);
+            else
+                this->value_changed();
+            return true;
         }
         return false;
     }
@@ -667,71 +686,73 @@ public:
     bool set(reference val)
     {
         value_ = val;
-        mismatched_ = !keyframes_.empty();
+        mismatched_ = !this->keyframes_.empty();
         this->value_changed();
         emitter(this->object(), value_);
         return true;
     }
 
-    keyframe_type* set_keyframe(FrameTime time, reference value, SetKeyframeInfo* info = nullptr, bool force_insert = false)
+    keyframe_type* set_keyframe(FrameTime time, reference value, AnimatableBase::SetKeyframeInfo* info = nullptr, bool force_insert = false)
     {
         // First keyframe
-        if ( keyframes_.empty() )
+        if ( this->keyframes_.empty() )
         {
             value_ = value;
             this->value_changed();
             emitter(this->object(), value_);
-            keyframes_.push_back(std::make_unique<keyframe_type>(time, value));
-            Q_EMIT this->keyframe_added(0, keyframes_.back().get());
+            auto it = this->keyframes_.insert(time, keyframe_type(time, value));
+            Q_EMIT this->keyframe_added(time);
             if ( info )
-                *info = {true, 0};
-            return keyframes_.back().get();
-        }
-
-        // Current time, update value_
-        if ( time == this->time() )
-        {
-            value_ = value;
-            this->value_changed();
-            emitter(this->object(), value_);
+                *info = {true};
+            return it.ptr();
         }
 
         // Find the right keyframe
-        int index = this->keyframe_index(time);
-        auto kf = keyframe(index);
+        auto kf = this->keyframes_.find_best(time);
+
+        bool includes_current_time = this->keyframes_.contains_time(kf, time);
+        if ( time > this->time() && !includes_current_time )
+        {
+            auto prev = kf;
+            --prev;
+            includes_current_time = this->keyframes_.contains_time(prev, time);
+        }
 
         // Time matches, update
         if ( kf->time() == time && !force_insert )
         {
             kf->set(value);
-            Q_EMIT this->keyframe_updated(index, kf);
-            on_keyframe_updated(time, index-1, index+1);
+            if ( includes_current_time )
+                this->set_time(this->time());
+            Q_EMIT this->keyframe_updated(time);
+            on_keyframe_updated(kf);
             if ( info )
-                *info = {false, index};
-            return kf;
+                *info = {false};
+            return kf.ptr();
         }
 
         // First keyframe not at 0, might have to add the new keyframe at 0
-        if ( index == 0 && kf->time() > time )
+        if ( kf == this->keyframes_.begin() && kf->time() > time )
         {
-            keyframes_.insert(keyframes_.begin(), std::make_unique<keyframe_type>(time, value));
-            Q_EMIT this->keyframe_added(0, keyframes_.front().get());
-            on_keyframe_updated(time, -1, 1);
+            auto it = this->keyframes_.insert(kf, time, keyframe_type(time, value));
+            if ( includes_current_time )
+                this->set_time(this->time());
+            Q_EMIT this->keyframe_added(time);
+            on_keyframe_updated(it);
             if ( info )
-                *info = {true, 0};
-            return keyframes_.front().get();
+                *info = {true};
+            return it.ptr();
         }
 
         // Insert somewhere in the middle
-        auto it = keyframes_.insert(
-            keyframes_.begin() + index + 1,
-            std::make_unique<keyframe_type>(time, value)
-        );
-        Q_EMIT this->keyframe_added(index + 1, it->get());
-        on_keyframe_updated(time, index, index+2);
+        auto it = this->keyframes_.insert(kf, time, keyframe_type(time, value));
+        Q_EMIT this->keyframe_added(time);
+        if ( includes_current_time )
+            this->set_time(this->time());
+        on_keyframe_updated(it);
         if ( info )
-            *info = {true, index+1};
-        return it->get();
+            *info = {true};
+        return it.ptr();
     }
 
     value_type get() const
@@ -743,7 +764,7 @@ public:
     {
         if ( time == this->time() )
             return value_;
-        return get_at_impl(time).second;
+        return get_at_impl(time);
     }
 
     bool value_mismatch() const override
@@ -751,25 +772,36 @@ public:
         return mismatched_;
     }
 
-    int move_keyframe(int keyframe_index, FrameTime time) override
+    AnimatableBase::MoveResult move_keyframe(FrameTime from_time, FrameTime to_time) override
     {
-        if ( keyframe_index < 0 || keyframe_index >= int(keyframes_.size()) )
-            return keyframe_index;
+        auto kf_at = this->keyframes_.find(from_time);
+        if ( kf_at == this->keyframes_.end() )
+            return AnimatableBase::MoveResult::NotFound;
 
-        int new_index = 0;
-        for ( ; new_index < int(keyframes_.size()); new_index++ )
+        // Nothing to do
+        if ( to_time == from_time )
+            return AnimatableBase::MoveResult::Moved;
+
+        // Just move to a new position
+        auto iter = this->keyframes_.lower_bound(to_time);
+        if ( iter == this->keyframes_.end() || iter->time() != to_time )
         {
-            if ( keyframes_[new_index]->time() > time )
-                break;
+            kf_at->set_time(to_time);
+            this->keyframes_.move(kf_at, to_time);
+            Q_EMIT this->keyframe_moved(from_time, to_time);
+            return AnimatableBase::MoveResult::Moved;
         }
 
-        if ( new_index > keyframe_index )
-            new_index--;
+        // Needs to overwite
+        iter->set_transition(kf_at->transition());
+        iter->set(kf_at->get());
+        this->keyframes_.erase(kf_at);
+        Q_EMIT this->keyframe_removed(from_time);
+        Q_EMIT this->keyframe_updated(to_time);
+        return AnimatableBase::MoveResult::OverwrittenDestination;
 
-        keyframes_[keyframe_index]->set_time(time);
-
-        if ( keyframe_index != new_index )
-        {
+        // why did I need all this?
+        /*
 
             QPointF incoming(-1, -1);
             if ( keyframe_index > 0 )
@@ -804,62 +836,67 @@ public:
                 auto trans_moved = keyframes_[new_index]->transition();
                 trans_moved.set_after(outgoing);
                 keyframes_[new_index]->set_transition(trans_moved);
-            }
-
-            for ( ; ia <= ib; ia++ )
-                Q_EMIT this->keyframe_updated(ia, keyframes_[ia].get());
-        }
-        else
-        {
-            Q_EMIT this->keyframe_updated(keyframe_index, keyframes_[keyframe_index].get());
-        }
-
-        return new_index;
+            }*/
     }
 
-    iterator begin() const { return iterator{this, 0}; }
-    iterator end() const { return iterator{this, int(keyframes_.size())}; }
+    SimpleRange<mutable_iterator> mutable_range() { return {
+        this->keyframes_.begin(),
+        this->keyframes_.end()
+    }; }
 
     void stretch_time(qreal multiplier) override
     {
-        for ( std::size_t i = 0; i < keyframes_.size(); i++ )
+        std::vector<mutable_iterator> iters;
+        iters.reserve(this->keyframes_.size());
+
+        for ( auto it = this->keyframes_.begin(); it != this->keyframes_.end(); ++it )
+            iters.push_back(it);
+
+        // Ensure we never clash
+        if ( multiplier > 1 )
+            std::reverse(iters.begin(), iters.end());
+
+        for ( auto& iter : iters )
         {
-            keyframes_[i]->stretch_time(multiplier);
-            Q_EMIT keyframe_updated(i, keyframes_[i].get());
+            auto from_time = iter->time();
+            iter->stretch_time(multiplier);
+            auto to_time = iter->time();
+            this->keyframes_.move(iter, to_time);
+            Q_EMIT this->keyframe_moved(from_time, to_time);
         }
 
-        current_time *= multiplier;
+        this->current_time *= multiplier;
     }
 
 protected:
     void on_set_time(FrameTime time) override
     {
-        if ( !keyframes_.empty() )
+        if ( !this->keyframes_.empty() )
         {
-            const keyframe_type* kf;
-            std::tie(kf, value_) = get_at_impl(time);
+            value_ = get_at_impl(time);
             this->value_changed();
             emitter(this->object(), value_);
         }
         mismatched_ = false;
     }
 
-    void on_keyframe_updated(FrameTime kf_time, int prev_index, int next_index)
+    void on_keyframe_updated(mutable_iterator kf)
     {
-        auto cur_time = time();
+        auto cur_time = this->time();
         // if no keyframes or the current keyframe is being modified => update value_
-        if ( !keyframes_.empty() && cur_time != kf_time )
+        if ( !this->keyframes_.empty() && cur_time != kf->time() )
         {
-            if ( kf_time > cur_time )
+            if ( kf->time() > cur_time )
             {
                 // if the modified keyframe is far ahead => don't update value_
-                if ( prev_index >= 0 && keyframes_[prev_index]->time() > cur_time )
+                if ( kf->time() > cur_time )
                     return;
             }
             else
             {
+                ++kf;
                 // if the modified keyframe is far behind => don't update value_
-                if ( next_index < int(keyframes_.size()) && keyframes_[next_index]->time() < cur_time )
+                if ( kf != this->keyframes_.end() && kf->time() < cur_time )
                     return;
             }
         }
@@ -867,28 +904,28 @@ protected:
         on_set_time(cur_time);
     }
 
-    std::pair<const keyframe_type*, value_type> get_at_impl(FrameTime time) const
+    value_type get_at_impl(FrameTime time) const
     {
-        if ( keyframes_.empty() )
-            return {nullptr, value_};
+        auto iter_during = this->keyframes_.find_best(time);
 
-        const keyframe_type* first = keyframe(0);
-        int count = keyframe_count();
-        if ( count < 2 || first->time() >= time )
-            return {first, first->get()};
+        // No keyframe
+        if ( iter_during == this->keyframes_.end() )
+            return value_;
 
-        // We have at least 2 keyframes and time is after the first keyframe
-        int index = this->keyframe_index(time);
-        first = keyframe(index);
+        // Before the first keyframe
+        if ( time < iter_during->time() )
+            return iter_during->get();
 
-        // Only one keyframe needed to get the value
-        if ( index == count - 1 || first->time() == time )
-            return {first, first->get()};
+        auto iter_after = iter_during;
+        ++iter_after;
+
+        // After the last keyframe
+        if ( iter_after == this->keyframes_.end() )
+            return iter_during->get();
 
         // Interpolate between two keyframes
-        const keyframe_type* second = keyframe(index+1);
-        double scaled_time = (time - first->time()) / (second->time() - first->time());
-        return {nullptr, first->lerp(*second, scaled_time)};
+        double scaled_time = (time - iter_during->time()) / (iter_after->time() - iter_during->time());
+        return iter_during->lerp(*iter_after, scaled_time);
     }
 
     QVariant do_mid_transition_value(const KeyframeBase* kf_before, const KeyframeBase* kf_after, qreal ratio) const override
@@ -902,7 +939,6 @@ protected:
     }
 
     value_type value_;
-    std::vector<std::unique_ptr<keyframe_type>> keyframes_;
     bool mismatched_ = false;
     PropertyCallback<void, Type> emitter;
 };
@@ -1007,7 +1043,6 @@ private:
 
     float min_;
     float max_;
-    bool cycle_;
 };
 
 

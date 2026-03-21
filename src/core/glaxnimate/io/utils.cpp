@@ -5,18 +5,22 @@
  */
 #include "glaxnimate/io/utils.hpp"
 
-
 std::vector<std::unique_ptr<glaxnimate::model::KeyframeBase>> glaxnimate::io::split_keyframes(model::AnimatableBase* prop)
 {
     std::vector<std::unique_ptr<model::KeyframeBase>> split_kfs;
-    std::unique_ptr<model::KeyframeBase> previous = prop->keyframe(0)->clone();
+    if ( !prop->animated() )
+        return split_kfs;
 
-    for ( int i = 1, e = prop->keyframe_count(); i < e; i++ )
+    auto range = prop->keyframe_range();
+    std::unique_ptr<model::KeyframeBase> previous = range.begin()->clone();
+
+    auto kf = range.begin();
+    for ( ++kf; kf != range.end(); ++kf )
     {
         if ( previous->transition().hold() )
         {
             split_kfs.push_back(std::move(previous));
-            previous = prop->keyframe(i)->clone();
+            previous = kf->clone();
             continue;
         }
 
@@ -34,12 +38,12 @@ std::vector<std::unique_ptr<glaxnimate::model::KeyframeBase>> glaxnimate::io::sp
         if ( splits.size() == 0 )
         {
             split_kfs.push_back(std::move(previous));
-            previous = prop->keyframe(i)->clone();
+            previous = kf->clone();
         }
         else
         {
-            auto next = prop->keyframe(i);
-            auto next_segment = previous->split(next, splits);
+            auto next = kf;
+            auto next_segment = previous->split(&*next, splits);
             previous = std::move(next_segment.back());
             split_kfs.insert(split_kfs.end(), std::make_move_iterator(next_segment.begin()), std::make_move_iterator(next_segment.end() - 1));
         }
@@ -49,4 +53,3 @@ std::vector<std::unique_ptr<glaxnimate::model::KeyframeBase>> glaxnimate::io::sp
 
     return split_kfs;
 }
-
