@@ -151,11 +151,7 @@ void define_animatable(py::module& m)
     py::class_<model::KeyframeBase>(m, "Keyframe")
         .def_property_readonly("time", &model::KeyframeBase::time)
         .def_property_readonly("value", &model::KeyframeBase::value)
-        .def_property("transition",
-            &model::KeyframeBase::transition,
-            &model::KeyframeBase::set_transition,
-            no_own
-        )
+        .def_property_readonly("transition", &model::KeyframeBase::transition)
     ;
     register_from_meta<Reg, model::AnimatableBase, QObject>(m)
         .def("keyframe", [](const model::AnimatableBase& a, model::FrameTime t){ return a.keyframe_at(t); }, no_own, py::arg("time"))

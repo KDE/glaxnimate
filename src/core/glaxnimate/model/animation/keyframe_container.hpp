@@ -278,7 +278,26 @@ public:
         ++it;
         if ( it.iter == map.end() )
             return true;
-        return it.key() <= time;
+        return it.key() >= time;
+    }
+
+
+    /**
+     * @brief Whethers the given time would be affected by chages of values at the time of the given iterator
+     * @returns \b true if time lies on the given keyframe or the one before
+     */
+    bool affects_time(const_iterator it, FrameTime time) const
+    {
+        if ( contains_time(it, time) )
+            return true;
+
+        if ( it.key() > time && it.iter != map.begin() )
+        {
+            --it;
+            return contains_time(it, time);
+        }
+
+        return false;
     }
 
 private:

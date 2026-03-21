@@ -421,6 +421,7 @@ timeline::AnimatableItem::AnimatableItem(quintptr id, model::Object* obj, model:
     connect(animatable, &model::AnimatableBase::keyframe_removed, this, &AnimatableItem::remove_keyframe);
     connect(animatable, &model::AnimatableBase::keyframe_updated, this, &AnimatableItem::update_keyframe);
     connect(animatable, &model::AnimatableBase::keyframe_moved, this, &AnimatableItem::move_keyframe);
+    connect(animatable, &model::AnimatableBase::transition_changed, this, &AnimatableItem::transition_changed);
 }
 
 std::pair<model::KeyframeBase*, model::KeyframeBase*> timeline::AnimatableItem::keyframes(KeyframeSplitItem* item)
@@ -467,8 +468,6 @@ void timeline::AnimatableItem::do_add_keyframe(model::KeyframeBase *kf)
     item->set_exit(kf->transition().before_descriptive());
     item->set_enter(prev ? prev->transition().after_descriptive() : model::KeyframeTransition::Hold);
     kf_split_items.insert(kf->time(), item);
-
-    connect(kf, &model::KeyframeBase::transition_changed, this, &AnimatableItem::transition_changed);
 }
 
 
@@ -490,9 +489,9 @@ void timeline::AnimatableItem::remove_keyframe(model::FrameTime t)
     }
 }
 
-void timeline::AnimatableItem::transition_changed(model::KeyframeTransition::Descriptive before, model::KeyframeTransition::Descriptive after)
+void timeline::AnimatableItem::transition_changed(model::FrameTime time, model::KeyframeTransition::Descriptive before, model::KeyframeTransition::Descriptive after)
 {
-    auto iter = kf_split_items.find(static_cast<model::KeyframeBase*>(sender())->time());
+    auto iter = kf_split_items.find(time);
     if ( iter == kf_split_items.end() )
         return;
 

@@ -18,6 +18,7 @@ class KeyframeBase : public QObject
 
     Q_PROPERTY(QVariant value READ value)
     Q_PROPERTY(double time READ time)
+
 public:
     explicit KeyframeBase(FrameTime time) : time_ { time } {}
     virtual ~KeyframeBase() = default;
@@ -58,9 +59,6 @@ public:
         auto clone = do_clone();
         return clone;
     }
-
-Q_SIGNALS:
-    void transition_changed(KeyframeTransition::Descriptive before, KeyframeTransition::Descriptive after);
 
 protected:
     virtual std::unique_ptr<KeyframeBase> do_clone() const = 0;
