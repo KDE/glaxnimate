@@ -104,7 +104,7 @@ private Q_SLOTS:
 
     void test_split_hold()
     {
-        model::KeyframeTransition kft({0, 0}, {1, 1}, true);
+        model::KeyframeTransition kft({0, 0}, {1, 1}, model::KeyframeTransition::Special::Hold);
         auto split = kft.split(0.2);
         QCOMPARE(split.first.hold(), true);
         QCOMPARE(split.second.hold(), true);
@@ -112,7 +112,7 @@ private Q_SLOTS:
 
     void test_split_linear()
     {
-        model::KeyframeTransition kft({1./3., 1./3.}, {2./3., 2./3.}, false);
+        model::KeyframeTransition kft({1./3., 1./3.}, {2./3., 2./3.}, model::KeyframeTransition::Special::Normal);
         auto split = kft.split(0.2);
 
         QCOMPARE(split.first.hold(), false);
@@ -130,7 +130,7 @@ private Q_SLOTS:
 
     void test_split_ease()
     {
-        model::KeyframeTransition kft({1./3., 0}, {2./3., 1}, false);
+        model::KeyframeTransition kft({1./3., 0}, {2./3., 1}, model::KeyframeTransition::Special::Normal);
         auto split = kft.split(0.5);
 
         QCOMPARE(split.first.hold(), false);

@@ -1162,7 +1162,7 @@ private:
                     kf->set_transition({
                         keyframe_bezier_handle(jkf["o"]),
                         keyframe_bezier_handle(jkf["i"]),
-                        bool(jkf["h"].toInt())
+                        jkf["h"].toInt() ? model::KeyframeTransition::Special::Hold : model::KeyframeTransition::Special::Normal
                     });
 
                     if ( position )
@@ -1356,7 +1356,7 @@ private:
         // TODO "a" "m" "p"
 
         model::Group* prev = nullptr;
-        model::KeyframeTransition jump({}, {}, true);
+        model::KeyframeTransition jump({}, {}, model::KeyframeTransition::Special::Hold);
 
         for ( const auto& v : text["d"].toObject()["k"].toArray() )
         {

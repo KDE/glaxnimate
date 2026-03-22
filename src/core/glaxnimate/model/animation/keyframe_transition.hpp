@@ -32,15 +32,24 @@ public:
         Custom,
     };
 
+    enum class Special
+    {
+        Normal, //!< Handled by points
+        Hold,   //!< Value doesn't change
+        NoValue,//!< There is no value to interpolate
+
+    };
+
     Q_ENUM(Descriptive)
 
     KeyframeTransition() = default;
-    KeyframeTransition(const QPointF& before_handle, const QPointF& after_handle, bool hold = false);
+    KeyframeTransition(const QPointF& before_handle, const QPointF& after_handle, Special special = Special::Normal);
     explicit KeyframeTransition(Descriptive before, Descriptive after);
     explicit KeyframeTransition(Descriptive descriptive);
 
     const math::bezier::CubicBezierSolver<QPointF>& bezier() const { return bezier_; }
-    bool hold() const { return hold_; }
+    bool hold() const { return special_ == Special::Hold; }
+    Special special() const { return special_; }
 
     Descriptive before_descriptive() const;
     Descriptive after_descriptive() const;
@@ -83,7 +92,7 @@ public:
 
 private:
     math::bezier::CubicBezierSolver<QPointF> bezier_ { QPointF(0, 0), QPointF(0, 0), QPointF(1, 1), QPointF(1, 1) };
-    bool hold_ = false;
+    Special special_ = Special::Normal;
 };
 
 } // namespace glaxnimate::model

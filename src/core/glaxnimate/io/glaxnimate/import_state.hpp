@@ -457,7 +457,7 @@ private:
                     }
                     else
                     {
-                        kf->set_transition({{0, 0}, {1, 1}, true});
+                        kf->set_transition({{0, 0}, {1, 1}, model::KeyframeTransition::Special::Hold});
                     }
 
                     if ( position )

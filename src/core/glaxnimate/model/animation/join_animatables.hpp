@@ -51,7 +51,7 @@ public:
             }
 
             if ( count == 0 )
-                return {{0, 0}, {1, 1}, true};
+                return {{0, 0}, {1, 1}, model::KeyframeTransition::Special::Hold};
 
             return {in / count, out / count};
         }

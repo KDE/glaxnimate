@@ -22,7 +22,7 @@ constexpr QPointF bound_vec(const QPointF& v)
 
 glaxnimate::model::KeyframeTransition::Descriptive glaxnimate::model::KeyframeTransition::before_descriptive() const
 {
-    if ( hold_ )
+    if ( special_ == Special::Hold )
         return Hold;
 
     if ( qFuzzyIsNull(bezier_.points()[1].x() - bezier_.points()[1].y()) )
@@ -42,7 +42,7 @@ glaxnimate::model::KeyframeTransition::Descriptive glaxnimate::model::KeyframeTr
 
 glaxnimate::model::KeyframeTransition::Descriptive glaxnimate::model::KeyframeTransition::after_descriptive() const
 {
-    if ( hold_ )
+    if ( special_ == Special::Hold )
         return Hold;
 
     if ( qFuzzyIsNull(bezier_.points()[2].x() - bezier_.points()[2].y()) )
@@ -69,22 +69,22 @@ void glaxnimate::model::KeyframeTransition::set_before_descriptive(model::Keyfra
             return;
         case Linear:
             bezier_.set<1>(QPointF{1./3., 1./3.});
-            hold_ = false;
+            special_ = Special::Normal;
             break;
         case Ease:
             bezier_.set<1>(QPointF{1./3., 0});
-            hold_ = false;
+            special_ = Special::Normal;
             break;
         case Fast:
             bezier_.set<1>(QPointF{1./6., 1./3.});
-            hold_ = false;
+            special_ = Special::Normal;
             break;
         case Overshoot:
             bezier_.set<1>(QPointF{2./3., -1./3.});
-            hold_ = false;
+            special_ = Special::Normal;
             break;
         case Custom:
-            hold_ = false;
+            special_ = Special::Normal;
             break;
     }
 }
@@ -98,22 +98,22 @@ void glaxnimate::model::KeyframeTransition::set_after_descriptive(model::Keyfram
             return;
         case Linear:
             bezier_.set<2>(QPointF{2./3., 2./3.});
-            hold_ = false;
+            special_ = Special::Normal;
             break;
         case Ease:
             bezier_.set<2>(QPointF{2./3., 1});
-            hold_ = false;
+            special_ = Special::Normal;
             break;
         case Fast:
             bezier_.set<2>(QPointF{5./6., 2./3.});
-            hold_ = false;
+            special_ = Special::Normal;
             break;
         case Overshoot:
             bezier_.set<2>(QPointF{1./3., 4./3.});
-            hold_ = false;
+            special_ = Special::Normal;
             break;
         case Custom:
-            hold_ = false;
+            special_ = Special::Normal;
             break;
     }
 }
@@ -136,12 +136,12 @@ void glaxnimate::model::KeyframeTransition::set_handles(const QPointF& before, c
 
 void glaxnimate::model::KeyframeTransition::set_hold(bool hold)
 {
-    hold_ = hold;
+    special_ = hold ? Special::Hold : Special::Normal;
 }
 
 double glaxnimate::model::KeyframeTransition::lerp_factor(double ratio) const
 {
-    if ( hold_ )
+    if ( special_ == Special::Hold )
     {
         if ( ratio >= 1 || qFuzzyCompare(float(ratio), 1.f) )
             return 1;
@@ -158,16 +158,16 @@ double glaxnimate::model::KeyframeTransition::lerp_factor(double ratio) const
 
 double glaxnimate::model::KeyframeTransition::bezier_parameter(double ratio) const
 {
-    if ( ratio <= 0 || hold_ )
+    if ( ratio <= 0 || special_ == Special::Hold )
         return 0;
     if ( ratio >= 1 )
         return 1;
     return bezier_.t_at_value(ratio);
 }
 
-glaxnimate::model::KeyframeTransition::KeyframeTransition(const QPointF& before_handle, const QPointF& after_handle, bool hold)
+glaxnimate::model::KeyframeTransition::KeyframeTransition(const QPointF& before_handle, const QPointF& after_handle, Special special)
     : bezier_({0, 0}, before_handle, after_handle, {1,1}),
-    hold_(hold)
+    special_(special)
 {}
 
 glaxnimate::model::KeyframeTransition::KeyframeTransition(
@@ -191,16 +191,16 @@ std::pair<glaxnimate::model::KeyframeTransition, glaxnimate::model::KeyframeTran
 
 std::pair<glaxnimate::model::KeyframeTransition, glaxnimate::model::KeyframeTransition> glaxnimate::model::KeyframeTransition::split_t(double t) const
 {
-    if ( hold_ )
-        return { {{0, 0}, {1, 1}, true}, {{0, 0}, {1, 1}, true} };
+    if ( special_ != Special::Normal )
+        return { {{0, 0}, {1, 1}, special_}, {{0, 0}, {1, 1}, special_} };
 
     if ( qFuzzyIsNull(t) )
     {
-        return { {{0, 0}, {1, 1}, false}, *this };
+        return { {{0, 0}, {1, 1}, special_}, *this };
     }
     else if ( qFuzzyCompare(t, 1) )
     {
-        return { *this, {{0, 0}, {1, 1}, false} };
+        return { *this, {{0, 0}, {1, 1}, special_} };
     }
 
     qreal x = bezier_.solve_component(t, 0);
