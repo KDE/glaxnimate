@@ -56,7 +56,7 @@ public:
         template<class Callback>
         void render_properties(
             QDomElement& element,
-            std::vector<const model::AnimatableBase*> properties,
+            std::vector<const model::AnimatedPropertyBase*> properties,
             const Callback& callback
         )
         {
@@ -310,7 +310,7 @@ public:
     void render_shapes_to_path_data(const std::vector<model::Shape*>& shapes, const QString& name, QDomElement& elem)
     {
         std::vector<std::unique_ptr<model::ShapeElement>> saved;
-        std::vector<const model::AnimatableBase*> paths;
+        std::vector<const model::AnimatedPropertyBase*> paths;
         paths.reserve(shapes.size());
 
         for ( const auto& sh : shapes )
@@ -335,7 +335,7 @@ public:
         });
     }
 
-    void collect_paths(model::ShapeElement* element, std::vector<const model::AnimatableBase*>& paths)
+    void collect_paths(model::ShapeElement* element, std::vector<const model::AnimatedPropertyBase*>& paths)
     {
         if ( auto p = element->cast<model::Path>() )
         {

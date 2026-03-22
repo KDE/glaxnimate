@@ -146,7 +146,7 @@ QVariant item_models::PropertyModelBase::Private::data_value(model::BaseProperty
 
     if ( (traits.flags & model::PropertyTraits::Animated) )
     {
-        model::AnimatableBase* anprop = static_cast<model::AnimatableBase*>(prop);
+        model::AnimatedPropertyBase* anprop = static_cast<model::AnimatedPropertyBase*>(prop);
         auto frame_status = anprop->keyframe_status(document->current_time());
 
         if ( role == Qt::BackgroundRole )
@@ -795,7 +795,7 @@ model::AnimatableBase* item_models::PropertyModelBase::Private::animatable(Subtr
 
     model::PropertyTraits traits = tree->prop->traits();
     if ( traits.flags & model::PropertyTraits::Animated )
-        return static_cast<model::AnimatableBase*>(tree->prop);
+        return static_cast<model::AnimatedPropertyBase*>(tree->prop);
 
     return nullptr;
 }

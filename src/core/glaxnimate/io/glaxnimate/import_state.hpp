@@ -423,7 +423,7 @@ private:
             }
             else
             {
-                model::AnimatableBase* anim = static_cast<model::AnimatableBase*>(target);
+                model::AnimatedPropertyBase* anim = static_cast<model::AnimatedPropertyBase*>(target);
                 bool position = anim->traits().type == model::PropertyTraits::Point;
 
                 for ( auto v : jso["keyframes"].toArray() )

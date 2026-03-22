@@ -15,7 +15,7 @@
 using namespace glaxnimate;
 using namespace glaxnimate::gui;
 
-graphics::PointItem::PointItem(int index, const math::bezier::Point& point, QGraphicsItem* parent, model::AnimatableBase* property)
+graphics::PointItem::PointItem(int index, const math::bezier::Point& point, QGraphicsItem* parent, model::AnimatedPropertyBase* property)
 : QGraphicsObject(parent), index_(index), point_(point)
 {
     connect(&tan_in, &MoveHandle::dragged, this, &PointItem::tan_in_dragged);
@@ -274,9 +274,9 @@ glaxnimate::gui::graphics::BezierItem::BezierItem(model::AnimatedProperty<QPoint
 : Ctor(parent), property_pos(property), target_object_(target_object ? target_object : property->object()->cast<model::VisualNode>())
 {
     update_bezier(property->bezier());
-    connect(property, &model::AnimatableBase::keyframe_added, this, &BezierItem::refresh_from_position_property);
-    connect(property, &model::AnimatableBase::keyframe_removed, this, &BezierItem::refresh_from_position_property);
-    connect(property, &model::AnimatableBase::keyframe_updated, this, &BezierItem::refresh_from_position_property);
+    connect(property, &model::AnimatedPropertyBase::keyframe_added, this, &BezierItem::refresh_from_position_property);
+    connect(property, &model::AnimatedPropertyBase::keyframe_removed, this, &BezierItem::refresh_from_position_property);
+    connect(property, &model::AnimatedPropertyBase::keyframe_updated, this, &BezierItem::refresh_from_position_property);
     connect(property, &model::AnimatedProperty<QPointF>::bezier_set, this, &BezierItem::update_bezier);
 }
 
@@ -429,7 +429,7 @@ void graphics::BezierItem::do_add_point(int index)
         items[index-1]->set_has_tan_out(true);
 }
 
-model::AnimatableBase * graphics::BezierItem::target_property() const
+model::AnimatedPropertyBase * graphics::BezierItem::target_property() const
 {
     if ( property_bezier )
         return property_bezier;

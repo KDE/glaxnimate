@@ -61,13 +61,14 @@ public:
 
     model::Composition* comp()
     {
-        if ( auto shape = property->object()->cast<model::ShapeElement>() )
+        if ( auto shape = object->cast<model::ShapeElement>() )
             return shape->owner_composition();
 
         return window->current_composition();
     }
 
     model::AnimatableBase* property = nullptr;
+    model::Object* object = nullptr;
     QAction* action_title;
     QAction action_kf_loop;
     QAction action_kf_paste;
@@ -76,6 +77,7 @@ public:
     QAction action_remove_keyframe;
     QAction action_remove_all_keyframes;
     SelectionManager* window = nullptr;
+    model::PropertyTraits::Type property_type = model::PropertyTraits::Unknown;
 };
 
 glaxnimate::gui::AnimatedPropertyMenu::AnimatedPropertyMenu(QWidget* parent)
@@ -98,14 +100,14 @@ void glaxnimate::gui::AnimatedPropertyMenu::paste_keyframe()
     QDataStream stream(&encoded, QIODevice::ReadOnly);
     int type = model::PropertyTraits::Unknown;
     stream >> type;
-    if ( type != d->property->traits().type )
+    if ( type != d->property_type )
         return;
 
     QVariant value;
     stream >> value;
 
-    d->property->object()->push_command(
-        new command::SetKeyframe(d->property, d->property->time(), value, true)
+    d->object->push_command(
+        new command::SetKeyframe(d->property, d->object->time(), value, true)
     );
 }
 
@@ -114,7 +116,7 @@ void glaxnimate::gui::AnimatedPropertyMenu::loop_keyframes()
     if ( !d->property || d->property->keyframe_count() < 1 )
         return;
 
-    d->property->object()->push_command(new command::SetKeyframe(
+    d->object->push_command(new command::SetKeyframe(
         d->property,
         d->comp()->animation->last_frame.get(),
         d->property->first_keyframe()->value(),
@@ -124,7 +126,7 @@ void glaxnimate::gui::AnimatedPropertyMenu::loop_keyframes()
 
 void glaxnimate::gui::AnimatedPropertyMenu::follow_path()
 {
-    if ( d->property && d->property->traits().type == model::PropertyTraits::Point )
+    if ( d->property && d->property_type == model::PropertyTraits::Point )
     {
         auto prop = static_cast<model::AnimatedProperty<QPointF>*>(d->property);
         FollowPathDialog(prop, d->comp(), d->window->model(), parentWidget()).exec();
@@ -136,7 +138,7 @@ void glaxnimate::gui::AnimatedPropertyMenu::remove_all_keyframes()
     if ( !d->property )
         return;
 
-    d->property->clear_keyframes_undoable();
+    d->object->push_command(new command::RemoveAllKeyframes(d->property, d->property->static_value()));
 }
 
 void glaxnimate::gui::AnimatedPropertyMenu::set_controller(glaxnimate::gui::SelectionManager* window)
@@ -144,13 +146,25 @@ void glaxnimate::gui::AnimatedPropertyMenu::set_controller(glaxnimate::gui::Sele
     d->window = window;
 }
 
-void glaxnimate::gui::AnimatedPropertyMenu::set_property(model::AnimatableBase* property)
+glaxnimate::model::Object *AnimatedPropertyMenu::object() const
+{
+    return d->object;
+}
+
+glaxnimate::model::PropertyTraits::Type AnimatedPropertyMenu::property_type() const
+{
+    return d->property_type;
+}
+
+void glaxnimate::gui::AnimatedPropertyMenu::set_property(model::AnimatedPropertyBase* property)
 {
     d->property = property;
     if ( property )
     {
-        setTitle(d->property->name());
-        d->action_title->setText(d->property->name());
+        d->object = property->object();
+        d->property_type = property->traits().type;
+        setTitle(property->name());
+        d->action_title->setText(property->name());
         d->action_follow_path.setVisible(property->traits().type == model::PropertyTraits::Point);
         refresh_actions();
     }
@@ -160,7 +174,7 @@ void glaxnimate::gui::AnimatedPropertyMenu::refresh_actions()
 {
     if ( d->property )
     {
-        bool has_kf = d->property->has_keyframe(d->property->time());
+        bool has_kf = d->property->has_keyframe(d->object->time());
         d->action_remove_keyframe.setEnabled(has_kf);
         d->action_remove_all_keyframes.setEnabled(d->property->keyframe_count() > 0);
         d->action_kf_loop.setEnabled(d->property->keyframe_count() > 0);
@@ -183,7 +197,7 @@ bool glaxnimate::gui::AnimatedPropertyMenu::can_paste() const
         QDataStream stream(&encoded, QIODevice::ReadOnly);
         int type = model::PropertyTraits::Unknown;
         stream >> type;
-        return type == d->property->traits().type;
+        return type == d->property_type;
     }
 
     return false;
@@ -193,14 +207,17 @@ bool glaxnimate::gui::AnimatedPropertyMenu::can_paste() const
 void glaxnimate::gui::AnimatedPropertyMenu::add_keyframe()
 {
     if ( d->property )
-        d->property->add_smooth_keyframe_undoable(d->property->time(), d->property->value());
+        d->object->push_command(
+            d->property->add_smooth_keyframe_command(d->object->time(), d->property->static_value())
+        );
 }
 
 void glaxnimate::gui::AnimatedPropertyMenu::remove_keyframe()
 {
     if ( d->property )
-        d->property->object()->push_command(
-            new command::RemoveKeyframeTime(d->property, d->property->time())
+        d->object->push_command(
+            new command::RemoveKeyframeTime(d->property, d->object->time())
         );
 }
+
 

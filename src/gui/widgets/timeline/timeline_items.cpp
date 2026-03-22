@@ -448,7 +448,12 @@ int timeline::AnimatableItem::type() const
 
 item_models::PropertyModelFull::Item timeline::AnimatableItem::property_item() const
 {
-    return {object(), animatable};
+    return {
+        object(),
+        animatable->animatable_flags() & model::AnimatableBase::IsProperty ?
+        static_cast<model::AnimatedPropertyBase*>(animatable) :
+        nullptr
+    };
 }
 
 void timeline::AnimatableItem::add_keyframe(model::FrameTime time)
@@ -509,7 +514,7 @@ void timeline::AnimatableItem::keyframes_dragged(const std::vector<DragData>& ke
 {
     for ( auto kf : keyframe_items )
     {
-        if ( command::MoveKeyframe::move_keyframe(animatable, kf.from, kf.to) == model::AnimatableBase::MoveResult::OverwrittenDestination )
+        if ( command::MoveKeyframe::move_keyframe(object(), animatable, kf.from, kf.to) == model::AnimatableBase::MoveResult::OverwrittenDestination )
         {
             (*kf_split_items.find(kf.to))->setSelected(true);
         }
@@ -548,17 +553,17 @@ void glaxnimate::gui::timeline::AnimatableItem::cycle_keyframe_transition(model:
     }
 
     {
-        command::UndoMacroGuard guard(i18n("Update keyframe transition"), animatable->object()->document());
+        command::UndoMacroGuard guard(i18n("Update keyframe transition"), object()->document());
         if ( kf_before )
         {
             auto left_trans = kf_before->transition();
             left_trans.set_after_descriptive(desc);
-            animatable->object()->push_command(new command::SetKeyframeTransition(animatable, kf_before->time(), left_trans));
+            object()->push_command(new command::SetKeyframeTransition(animatable, kf_before->time(), left_trans));
         }
 
         auto right_trans = kf->transition();
         right_trans.set_before_descriptive(desc);
-        animatable->object()->push_command(new command::SetKeyframeTransition(animatable, time, right_trans));
+        object()->push_command(new command::SetKeyframeTransition(animatable, time, right_trans));
     }
 }
 

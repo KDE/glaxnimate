@@ -46,7 +46,9 @@ void glaxnimate::model::detail::AnimatedPropertyBezier::split_segment(int index,
     {
         bez.split_segment(index, factor);
         QVariant after = QVariant::fromValue(bez);
-        object()->push_command(new command::SetMultipleAnimated("", {this}, {before}, {after}, true));
+        object()->push_command(new command::SetMultipleAnimated(
+            "", {this}, {before}, {after}, true, time(), object()->document()->record_to_keyframe()
+        ));
     }
 }
 
@@ -155,6 +157,8 @@ void glaxnimate::model::detail::AnimatedPropertyBezier::extend(const math::bezie
     {
         QVariant before = QVariant::fromValue(bez);
         QVariant after = extend_impl(bez, target, at_end);
-        object()->push_command(new command::SetMultipleAnimated("", {this}, {before}, {after}, true));
+        object()->push_command(new command::SetMultipleAnimated(
+            "", {this}, {before}, {after}, true, time(), object()->document()->record_to_keyframe()
+        ));
     }
 }

@@ -19,7 +19,7 @@ namespace glaxnimate::model {
 class JoinAnimatables
 {
 private:
-    using MidTransition = model::AnimatableBase::MidTransition;
+    using MidTransition = model::AnimatedPropertyBase::MidTransition;
 
 public:
     struct Keyframe
@@ -71,7 +71,7 @@ public:
 
     using iterator = typename std::vector<Keyframe>::const_iterator;
 
-    JoinAnimatables(std::vector<const model::AnimatableBase*> properties, int flags = Normal)
+    JoinAnimatables(std::vector<const model::AnimatedPropertyBase*> properties, int flags = Normal)
     : properties_(std::move(properties))
     {
         if ( !(flags & NoKeyframes) )
@@ -110,7 +110,7 @@ public:
         std::vector<QVariant> values;
         values.reserve(properties_.size());
         for ( auto prop : properties_ )
-            values.push_back(prop->value());
+            values.push_back(prop->static_value());
         return values;
     }
 
@@ -126,7 +126,7 @@ public:
         return values;
     }
 
-    const std::vector<const model::AnimatableBase*>& properties() const
+    const std::vector<const model::AnimatedPropertyBase*>& properties() const
     {
         return properties_;
     }
@@ -174,7 +174,7 @@ public:
     }
 
 private:
-    std::vector<const model::AnimatableBase*> properties_;
+    std::vector<const model::AnimatedPropertyBase*> properties_;
     std::vector<Keyframe> raw_keyframes_;
 
     void load_keyframes(int flags)
@@ -304,16 +304,15 @@ private:
 };
 
 /**
- * \brief JoinAnimatables implementing AnimatableBase
+ * \brief JoinAnimatables implementing AnimatedPropertyBase
  */
 class JoinedAnimatable : public detail::AnimatableImpl<JoinedKeyframe, AnimatableBase>, public JoinAnimatables
 {
 public:
     using ConversionFunction = std::function<QVariant (const std::vector<QVariant>& args)>;
 
-    JoinedAnimatable(std::vector<const model::AnimatableBase*> properties, ConversionFunction converter, int flags = Normal)
-        : Ctor(nullptr, {}, {}),
-          JoinAnimatables(std::move(properties), flags),
+    JoinedAnimatable(std::vector<const model::AnimatedPropertyBase*> properties, ConversionFunction converter, int flags = Normal)
+        : JoinAnimatables(std::move(properties), flags),
           converter(std::move(converter))
 
     {
@@ -323,30 +322,36 @@ public:
 
     using JoinAnimatables::animated;
 
-    QVariant value(FrameTime time) const override
+    int animatable_flags() const override
+    {
+        return HasValue;
+    }
+
+    QVariant value_at_time(FrameTime time) const override
     {
         return converter(value_at(time));
     }
 
-    QVariant value() const override
+    QVariant static_value() const override
     {
         return converter(current_value());
     }
 
     // read only
-    bool set_value(const QVariant&) override { return false; }
-    bool valid_value(const QVariant&) const override { return false; }
-    bool set_undoable(const QVariant&, bool) override { return false; }
-    AnimatableBase::MoveResult move_keyframe(FrameTime, FrameTime) override { return MoveResult::NotFound; }
+    bool set_static_value(const QVariant&) override { return false; }
+    // bool valid_value(const QVariant&) const override { return false; }
+    // bool set_undoable(const QVariant&, bool) override { return false; }
+    AnimatedPropertyBase::MoveResult move_keyframe(FrameTime, FrameTime) override { return MoveResult::NotFound; }
     bool value_mismatch() const override { return false; }
     KeyframeBase* set_keyframe(FrameTime , const QVariant& , SetKeyframeInfo*, bool ) override { return nullptr; }
     void clear_keyframes() override {};
     bool remove_keyframe_at_time(FrameTime) override { return false; }
     void set_transition(FrameTime, const KeyframeTransition&) override {}
     void set_transition_before(FrameTime, const KeyframeTransition&) override {}
+    QString visual_name() const override { return {}; }
 
 protected:
-    void on_set_time(FrameTime) override {}
+    // void on_set_time(FrameTime) override {}
 
     // Shouldn't be needed
     QVariant do_mid_transition_value(const KeyframeBase*, const KeyframeBase*, qreal) const override

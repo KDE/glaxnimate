@@ -51,7 +51,7 @@ private:
     void push(const QVariant& val, bool commit)
     {
         target->object()->document()->undo_stack().push(new command::SetMultipleAnimated(
-            target->name(), {target}, {target->value()}, {val}, commit
+            target->name(), {target}, {target->value()}, {val}, commit, target->time(), target->object()->document()->record_to_keyframe()
         ));
     }
 

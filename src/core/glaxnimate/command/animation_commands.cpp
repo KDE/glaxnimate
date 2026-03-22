@@ -15,10 +15,10 @@ glaxnimate::command::SetKeyframe::SetKeyframe(
     const QVariant& value,
     bool commit,
     bool force_insert
-) : Parent(i18n("Update %1 keyframe at %2", prop->name(), time), commit),
+) : Parent(i18n("Update %1 keyframe at %2", prop->visual_name(), time), commit),
     prop(prop),
     time(time),
-    before(prop->value(time)),
+    before(prop->value_at_time(time)),
     after(value),
     had_before(prop->has_keyframe(time) && !force_insert),
     force_insert(force_insert)
@@ -40,11 +40,11 @@ void glaxnimate::command::SetKeyframe::redo()
     if ( !calculated )
     {
         auto mid = prop->mid_transition(time);
-        model::AnimatableBase::SetKeyframeInfo info;
+        model::AnimatedPropertyBase::SetKeyframeInfo info;
         kf = prop->set_keyframe(time, after, &info, force_insert);
         if ( kf && info.insertion )
         {
-            if ( mid.type != model::AnimatableBase::MidTransition::Middle )
+            if ( mid.type != model::AnimatedPropertyBase::MidTransition::Middle )
             {
                 adjust_transition = false;
             }
@@ -84,7 +84,7 @@ bool glaxnimate::command::SetKeyframe::merge_with(const SetKeyframe& other)
 glaxnimate::command::RemoveKeyframeTime::RemoveKeyframeTime(
     model::AnimatableBase* prop,
     model::FrameTime time
-) : QUndoCommand(i18n("Remove %1 keyframe at %2", prop->name(), time)),
+) : QUndoCommand(i18n("Remove %1 keyframe at %2", prop->visual_name(), time)),
     prop(prop),
     time(time)
 {
@@ -112,13 +112,15 @@ void glaxnimate::command::RemoveKeyframeTime::redo()
     prop->remove_keyframe_at_time(time);
 }
 
-glaxnimate::command::SetMultipleAnimated::SetMultipleAnimated(model::AnimatableBase* prop, QVariant after, bool commit)
+glaxnimate::command::SetMultipleAnimated::SetMultipleAnimated(model::AnimatedPropertyBase* prop, QVariant after, bool commit)
     : SetMultipleAnimated(
         auto_name(prop),
         {prop},
         {},
         {after},
-        commit
+        commit,
+        prop->time(),
+        prop->object()->document()->record_to_keyframe()
     )
 {}
 
@@ -127,24 +129,26 @@ glaxnimate::command::SetMultipleAnimated::SetMultipleAnimated(
     const std::vector<model::AnimatableBase*>& props,
     const QVariantList& before,
     const QVariantList& after,
-    bool commit
+    bool commit,
+    model::FrameTime time,
+    bool record_to_keyframe
 )
     : Parent(name, commit),
     props(props),
     before(before),
     after(after),
-    keyframe_after_global(props.empty() ? false :props[0]->object()->document()->record_to_keyframe()),
-    time(props.empty() ?  0 : props[0]->time())
+    keyframe_after_global(record_to_keyframe),
+    time(time)
 {
     bool add_before = before.empty();
 
     for ( auto prop : props )
     {
         if ( add_before )
-            this->before.push_back(prop->value());
+            this->before.push_back(prop->static_value());
         keyframe_before.push_back(prop->has_keyframe(time));
         keyframe_after.push_back(prop->animated());
-        add_0.push_back(time != 0 && !prop->animated() && prop->object()->document()->record_to_keyframe());
+        add_0.push_back(time != 0 && !prop->animated() && keyframe_after_global);
     }
 }
 
@@ -154,7 +158,7 @@ glaxnimate::command::SetMultipleAnimated::SetMultipleAnimated(const QString& nam
 {
 }
 
-void glaxnimate::command::SetMultipleAnimated::push_property(model::AnimatableBase* prop, const QVariant& after_val)
+void glaxnimate::command::SetMultipleAnimated::push_property(model::AnimatedPropertyBase* prop, const QVariant& after_val)
 {
     keyframe_after_global = keyframe_after_global || prop->object()->document()->record_to_keyframe();
     keyframe_after.push_back(prop->animated());
@@ -192,15 +196,15 @@ void glaxnimate::command::SetMultipleAnimated::undo()
             else
             {
                 prop->remove_keyframe_at_time(time);
-                prop->set_value(before[i]);
+                prop->set_static_value(before[i]);
             }
         }
         else
         {
             if ( keyframe_before[i] )
                 prop->set_keyframe(time, before[i]);
-            else if ( !prop->animated() || prop->time() == time )
-                prop->set_value(before[i]);
+            else if ( !prop->animated() )
+                prop->set_static_value(before[i]);
         }
 
     }
@@ -222,8 +226,8 @@ void glaxnimate::command::SetMultipleAnimated::redo()
 
         if ( keyframe_after_global || keyframe_after[i] )
             prop->set_keyframe(time, after[i]);
-        else if ( !prop->animated() || prop->time() == time )
-            prop->set_value(after[i]);
+        else
+            prop->set_static_value(after[i]);
     }
 
     for ( int i = 0; i < int(props_not_animated.size()); i++ )
@@ -251,7 +255,7 @@ bool glaxnimate::command::SetMultipleAnimated::merge_with(const SetMultipleAnima
     return true;
 }
 
-QString glaxnimate::command::SetMultipleAnimated::auto_name(model::AnimatableBase* prop)
+QString glaxnimate::command::SetMultipleAnimated::auto_name(model::AnimatedPropertyBase* prop)
 {
     bool key_before = prop->has_keyframe(prop->time());
     bool key_after = prop->object()->document()->record_to_keyframe();
@@ -337,27 +341,31 @@ void glaxnimate::command::MoveKeyframe::redo()
     prop->move_keyframe(time_before, time_after);
 }
 
-glaxnimate::model::AnimatableBase::MoveResult glaxnimate::command::MoveKeyframe::move_keyframe(model::AnimatableBase *prop, model::FrameTime time_before, model::FrameTime time_after)
+glaxnimate::model::AnimatableBase::MoveResult glaxnimate::command::MoveKeyframe::move_keyframe(
+    model::Object* object,
+    model::AnimatableBase *prop,
+    model::FrameTime time_before,
+    model::FrameTime time_after)
 {
     if ( !prop->keyframe_at(time_before) )
         return model::AnimatableBase::MoveResult::NotFound;
 
     if ( !prop->keyframe_at(time_after) )
     {
-        prop->object()->push_command(new MoveKeyframe(prop, time_before, time_after));
+        object->push_command(new MoveKeyframe(prop, time_before, time_after));
         return model::AnimatableBase::MoveResult::Moved;
     }
 
-    UndoMacroGuard guard(i18n("Move keyframe"), prop->object()->document());
-    prop->object()->push_command(new RemoveKeyframeTime(prop, time_after));
-    prop->object()->push_command(new MoveKeyframe(prop, time_before, time_after));
+    UndoMacroGuard guard(i18n("Move keyframe"), object->document());
+    object->push_command(new RemoveKeyframeTime(prop, time_after));
+    object->push_command(new MoveKeyframe(prop, time_before, time_after));
     return model::AnimatableBase::MoveResult::OverwrittenDestination;
 }
 
 glaxnimate::command::RemoveAllKeyframes::RemoveAllKeyframes(model::AnimatableBase* prop, QVariant after)
-    : QUndoCommand(i18n("Remove animations from %1", prop->name())),
+    : QUndoCommand(i18n("Remove animations from %1", prop->visual_name())),
       prop(prop),
-      before(prop->value()),
+      before(prop->static_value()),
       after(std::move(after))
 {
     int count = prop->keyframe_count();
@@ -375,7 +383,7 @@ glaxnimate::command::RemoveAllKeyframes::RemoveAllKeyframes(model::AnimatableBas
 void glaxnimate::command::RemoveAllKeyframes::redo()
 {
     prop->clear_keyframes();
-    prop->set_value(after);
+    prop->set_static_value(after);
 }
 
 void glaxnimate::command::RemoveAllKeyframes::undo()
@@ -384,8 +392,8 @@ void glaxnimate::command::RemoveAllKeyframes::undo()
     {
         prop->set_keyframe(kf.time, kf.value, nullptr, true)->set_transition(kf.transition);
     }
-    prop->set_time(prop->time());
-    prop->set_value(before);
+    // prop->set_time(prop->time());
+    prop->set_static_value(before);
 }
 
 

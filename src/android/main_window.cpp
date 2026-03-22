@@ -969,14 +969,16 @@ public:
 
                 if ( traits.flags & Traits::Animated )
                 {
-                    auto anim = static_cast<model::AnimatableBase*>(prop);
+                    auto anim = static_cast<model::AnimatedPropertyBase*>(prop);
                     QHBoxLayout* btnlay = new QHBoxLayout();
 
                     auto btn_add_kf = new QToolButton();
                     btn_add_kf->setIcon(QIcon::fromTheme("keyframe-add"));
                     btn_add_kf->setText(i18n("Add keyframe"));
                     connect(btn_add_kf, &QToolButton::clicked, node, [anim]{
-                        anim->add_smooth_keyframe_undoable(anim->time(), anim->value());
+                        anim->object()->push_command(
+                            anim->add_smooth_keyframe_command(anim->time(), anim->value())
+                        );
                     });
                     btn_add_kf->setIconSize(QSize(80, 80));
                     btnlay->addWidget(btn_add_kf);

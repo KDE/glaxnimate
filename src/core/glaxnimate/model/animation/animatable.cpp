@@ -91,12 +91,12 @@ std::unique_ptr<glaxnimate::model::KeyframeBase::KeyframeSplitter> glaxnimate::m
     return std::make_unique<PointKeyframeSplitter>(this, static_cast<const Keyframe<QPointF>*>(other));
 }
 
-bool glaxnimate::model::AnimatableBase::assign_from(const model::BaseProperty* prop)
+bool glaxnimate::model::AnimatedPropertyBase::assign_from(const model::BaseProperty* prop)
 {
     if ( prop->traits().flags != traits().flags || prop->traits().type != traits().type )
         return false;
 
-    const AnimatableBase* other = static_cast<const AnimatableBase*>(prop);
+    const AnimatedPropertyBase* other = static_cast<const AnimatedPropertyBase*>(prop);
 
     clear_keyframes();
 
@@ -113,7 +113,7 @@ bool glaxnimate::model::AnimatableBase::assign_from(const model::BaseProperty* p
     return true;
 }
 
-bool glaxnimate::model::AnimatableBase::set_undoable(const QVariant& val, bool commit)
+bool glaxnimate::model::AnimatedPropertyBase::set_undoable(const QVariant& val, bool commit)
 {
     if ( !valid_value(val) )
         return false;
@@ -123,16 +123,18 @@ bool glaxnimate::model::AnimatableBase::set_undoable(const QVariant& val, bool c
         {this},
         {value()},
         {val},
-        commit
+        commit,
+        time(),
+        object()->document()->record_to_keyframe()
     ));
     return true;
 }
 
-glaxnimate::model::AnimatableBase::MidTransition glaxnimate::model::AnimatableBase::mid_transition(model::FrameTime time) const
+glaxnimate::model::AnimatedPropertyBase::MidTransition glaxnimate::model::AnimatableBase::mid_transition(model::FrameTime time) const
 {
     const KeyframeBase* kf_during = this->keyframe_containing(time);
     if ( !kf_during )
-        return {MidTransition::Invalid, value(), {}, {}};
+        return {MidTransition::Invalid, static_value(), {}, {}};
 
     auto before_time = kf_during->time();
 
@@ -159,7 +161,7 @@ glaxnimate::model::AnimatableBase::MidTransition glaxnimate::model::AnimatableBa
     return do_mid_transition(kf_during, kf_after, x);
 }
 
-glaxnimate::model::AnimatableBase::MidTransition glaxnimate::model::AnimatableBase::do_mid_transition(
+glaxnimate::model::AnimatedPropertyBase::MidTransition glaxnimate::model::AnimatableBase::do_mid_transition(
     const model::KeyframeBase* kf_during,
     const model::KeyframeBase* kf_after,
     qreal x
@@ -185,14 +187,14 @@ glaxnimate::model::AnimatableBase::MidTransition glaxnimate::model::AnimatableBa
     }
 
 
-    model::AnimatableBase::MidTransition mt;
+    model::AnimatedPropertyBase::MidTransition mt;
     mt.type = MidTransition::Middle;
     mt.value = do_mid_transition_value(kf_during, kf_after, x);
     std::tie(mt.from_previous, mt.to_next) = beftrans.split(x);
     return mt;
 }
 
-void glaxnimate::model::AnimatableBase::clear_keyframes_undoable(QVariant value)
+void glaxnimate::model::AnimatedPropertyBase::clear_keyframes_undoable(QVariant value)
 {
     if ( !value.isValid() || value.isNull() )
         value = this->value();
@@ -200,11 +202,9 @@ void glaxnimate::model::AnimatableBase::clear_keyframes_undoable(QVariant value)
     object()->push_command(new command::RemoveAllKeyframes(this, std::move(value)));
 }
 
-void glaxnimate::model::AnimatableBase::add_smooth_keyframe_undoable(FrameTime time, const QVariant& val)
+void glaxnimate::model::AnimatedPropertyBase::add_smooth_keyframe(FrameTime time, const QVariant& value)
 {
-    object()->push_command(
-        new command::SetKeyframe(this, time, val.isNull() ? value() : val, true)
-    );
+    object()->push_command(add_smooth_keyframe_command(time, value));
 }
 
 void glaxnimate::model::detail::AnimatedPropertyPosition::split_segment(int index, qreal factor)
@@ -379,7 +379,7 @@ bool glaxnimate::model::detail::AnimatedPropertyPosition::valid_value(const QVar
     return false;
 }
 
-void glaxnimate::model::detail::AnimatedPropertyPosition::add_smooth_keyframe_undoable(FrameTime time, const QVariant& val)
+QUndoCommand* glaxnimate::model::detail::AnimatedPropertyPosition::add_smooth_keyframe_command(FrameTime time, const QVariant& val)
 {
     auto parent = std::make_unique<command::ReorderedUndoCommand>(i18n("Add Keyframe"));
 
@@ -421,7 +421,7 @@ void glaxnimate::model::detail::AnimatedPropertyPosition::add_smooth_keyframe_un
         }
     }
 
-    object()->document()->push_command(parent.release());
+    return parent.release();
 }
 
 std::optional<QPointF> glaxnimate::model::detail::AnimatedPropertyPosition::derivative_at(glaxnimate::model::FrameTime time) const

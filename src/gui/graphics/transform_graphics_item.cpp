@@ -54,7 +54,7 @@ public:
             MoveHandle* handle,
             Getter get_p,
             Signal signal,
-            const std::vector<model::AnimatableBase*>& props
+            const std::vector<model::AnimatedPropertyBase*>& props
         ) : handle(handle), get_p(get_p), signal(signal)
         {
             handle->set_associated_properties(props);
@@ -200,10 +200,10 @@ public:
         return new_scale;
     }
 
-    void push_command(model::AnimatableBase& prop, const QVariant& value, bool commit)
+    void push_command(model::AnimatedPropertyBase& prop, const QVariant& value, bool commit)
     {
         target->document()->undo_stack().push(new command::SetMultipleAnimated(
-            prop.name(), {&prop}, {prop.value()}, {value}, commit
+            prop.name(), {&prop}, {prop.value()}, {value}, commit, prop.time(), prop.object()->document()->record_to_keyframe()
         ));
     }
 

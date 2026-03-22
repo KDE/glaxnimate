@@ -168,12 +168,12 @@ QRectF glaxnimate::model::ShapeListProperty::bounding_rect(FrameTime t) const
 
 std::unique_ptr<glaxnimate::model::ShapeElement> glaxnimate::model::Shape::to_path() const
 {
-    std::vector<const AnimatableBase*> properties;
+    std::vector<const AnimatedPropertyBase*> properties;
     auto flags = PropertyTraits::Visual|PropertyTraits::Animated;
     for ( auto prop : this->properties() )
     {
         if ( (prop->traits().flags & flags) == flags )
-            properties.push_back(static_cast<AnimatableBase*>(prop));
+            properties.push_back(static_cast<AnimatedPropertyBase*>(prop));
     }
 
     auto path = std::make_unique<glaxnimate::model::Path>(document());
@@ -185,7 +185,7 @@ std::unique_ptr<glaxnimate::model::ShapeElement> glaxnimate::model::Shape::to_pa
     {
 
         JoinAnimatables ja(std::move(properties));
-        FrameTime cur_time = ja.properties()[0]->time();
+        FrameTime cur_time = time();
         path->set_time(cur_time);
 
         if ( ja.animated() )

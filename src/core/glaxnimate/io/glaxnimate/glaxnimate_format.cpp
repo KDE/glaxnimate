@@ -87,7 +87,7 @@ QJsonValue io::glaxnimate::GlaxnimateFormat::to_json ( model::BaseProperty* prop
     }
     else if ( property->traits().flags & model::PropertyTraits::Animated )
     {
-        model::AnimatableBase* anim = static_cast<model::AnimatableBase*>(property);
+        model::AnimatedPropertyBase* anim = static_cast<model::AnimatedPropertyBase*>(property);
         bool position = anim->traits().type == model::PropertyTraits::Point;
         QJsonObject jso;
         if ( !anim->animated() )

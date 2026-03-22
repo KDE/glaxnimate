@@ -164,12 +164,17 @@ public:
                 p.second.drag(event.snapped_pos, props, before, after);
             }
 
+            if ( props.empty() )
+                return;
+
             event.window->document()->push_command(new command::SetMultipleAnimated(
                 i18n("Drag nodes"),
                 props,
                 before,
                 after,
-                commit
+                commit,
+                event.window->document()->current_time(),
+                event.window->document()->record_to_keyframe()
             ));
         }
     };

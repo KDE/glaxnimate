@@ -310,7 +310,7 @@ public:
         return -1;
     }
 
-    void convert_transform(model::Transform* tf, model::AnimatableBase* opacity, QCborMap& json)
+    void convert_transform(model::Transform* tf, model::AnimatedPropertyBase* opacity, QCborMap& json)
     {
         convert_object_basic(tf, json);
         if ( opacity )
@@ -431,7 +431,7 @@ public:
 
             if ( prop->traits().flags & model::PropertyTraits::Animated )
             {
-                json_obj[field.lottie] = convert_animated(static_cast<model::AnimatableBase*>(prop), field.transform);
+                json_obj[field.lottie] = convert_animated(static_cast<model::AnimatedPropertyBase*>(prop), field.transform);
             }
             else
             {
@@ -471,12 +471,29 @@ public:
         }
     }
 
+
+    QCborMap convert_animated(
+        model::AnimatedPropertyBase* prop,
+        const TransformFunc& transform_values
+        )
+    {
+        return convert_animated(prop, transform_values, prop->traits().type == model::PropertyTraits::Point);
+    }
+
+    QCborMap convert_animated(
+        model::JoinedAnimatable* prop,
+        const TransformFunc& transform_values
+        )
+    {
+        return convert_animated(prop, transform_values, false);
+    }
+
     QCborMap convert_animated(
         model::AnimatableBase* prop,
-        const TransformFunc& transform_values
+        const TransformFunc& transform_values,
+        bool position
     )
     {
-        bool position = prop->traits().type == model::PropertyTraits::Point;
 
         QCborMap jobj;
         if ( prop->keyframe_count() > 1 )
@@ -520,7 +537,7 @@ public:
         else
         {
             jobj["a"_l] = 0;
-            QVariant v = transform_values.to_lottie(prop->value(), 0);
+            QVariant v = transform_values.to_lottie(prop->static_value(), 0);
             jobj["k"_l] = value_from_variant(v);
         }
         return jobj;

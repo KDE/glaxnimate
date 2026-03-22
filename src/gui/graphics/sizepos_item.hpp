@@ -167,7 +167,7 @@ private:
             after.push_back(rect.center());
         }
 
-        stack.push(new command::SetMultipleAnimated(size->name(), props, before, after, commit));
+        stack.push(new command::SetMultipleAnimated(size->name(), props, before, after, commit, size->time(), size->object()->document()->record_to_keyframe()));
         prepareGeometryChange();
     }
 

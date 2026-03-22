@@ -71,6 +71,7 @@ glaxnimate/model/animation/keyframe_transition.cpp
 glaxnimate/model/animation/keyframe_base.cpp
 glaxnimate/model/animation/animatable.cpp
 glaxnimate/model/animation/animatable_path.cpp
+glaxnimate/model/animation/animatable_base.cpp
 glaxnimate/model/property/property.cpp
 glaxnimate/model/property/reference_property.cpp
 glaxnimate/model/property/option_list_property.cpp

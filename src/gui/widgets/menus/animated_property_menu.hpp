@@ -23,9 +23,11 @@ public:
     ~AnimatedPropertyMenu();
 
     model::AnimatableBase* property() const;
-    void set_property(model::AnimatableBase* property);
+    void set_property(model::AnimatedPropertyBase* property);
     void refresh_actions();
     void set_controller(SelectionManager* window);
+    model::PropertyTraits::Type property_type() const;
+    model::Object* object() const;
 
     bool can_paste() const;
 

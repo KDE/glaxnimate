@@ -15,7 +15,7 @@
 
 namespace glaxnimate::model {
 
-class AnimatableBase;
+class AnimatedPropertyBase;
 
 } // namespace glaxnimate::model
 
@@ -91,13 +91,13 @@ public:
      * \brief Set associated properties, shown on the context menu
      * \see set_associated_property(), clear_associated_properties()
      */
-    void set_associated_properties(std::vector<model::AnimatableBase*> props);
+    void set_associated_properties(std::vector<model::AnimatedPropertyBase*> props);
 
     /**
      * \brief Set associated property, shown on the context menu
      * \see set_associated_properties(), clear_associated_properties()
      */
-    void set_associated_property(model::AnimatableBase* prop);
+    void set_associated_property(model::AnimatedPropertyBase* prop);
 
     /**
      * \brief Clears associated properties

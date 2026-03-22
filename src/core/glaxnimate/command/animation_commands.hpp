@@ -97,15 +97,21 @@ private:
 class SetMultipleAnimated : public MergeableCommand<Id::SetMultipleAnimated, SetMultipleAnimated>
 {
 public:
-    SetMultipleAnimated(model::AnimatableBase* prop, QVariant after, bool commit);
+    SetMultipleAnimated(model::AnimatedPropertyBase* prop, QVariant after, bool commit);
 
     template<class... Args>
     SetMultipleAnimated(
         const QString& name,
         bool commit,
-        const std::vector<model::AnimatableBase*>& props,
+        const std::vector<model::AnimatedPropertyBase*>& props,
         Args... vals
-    ) : SetMultipleAnimated(name, props, {}, {QVariant::fromValue(vals)...}, commit)
+    ) : SetMultipleAnimated(
+            name,
+            std::vector<model::AnimatableBase*>(props.begin(), props.end()),
+            {}, {QVariant::fromValue(vals)...}, commit,
+            props.empty() ?  0 : props[0]->time(),
+            props.empty() ? false : props[0]->object()->document()->record_to_keyframe()
+    )
     {}
 
     /**
@@ -118,12 +124,14 @@ public:
         const std::vector<model::AnimatableBase*>& props,
         const QVariantList& before,
         const QVariantList& after,
-        bool commit
+        bool commit,
+        model::FrameTime time,
+        bool record_to_keyframe
     );
 
     SetMultipleAnimated(const QString& name, bool commit);
 
-    void push_property(model::AnimatableBase* prop, const QVariant& after);
+    void push_property(model::AnimatedPropertyBase* prop, const QVariant& after);
     void push_property_not_animated(model::BaseProperty* prop, const QVariant& after);
 
     void undo() override;
@@ -137,7 +145,7 @@ public:
     bool empty() const;
 
 private:
-    static QString auto_name(model::AnimatableBase* prop);
+    static QString auto_name(model::AnimatedPropertyBase* prop);
 
     std::vector<model::AnimatableBase*> props;
     QVariantList before;
@@ -192,6 +200,7 @@ public:
     void redo() override;
     
     static model::AnimatableBase::MoveResult move_keyframe(
+        model::Object* object,
         model::AnimatableBase* prop,
         model::FrameTime time_before,
         model::FrameTime time_after

@@ -228,7 +228,7 @@ void graphics::MoveHandle::set_role(graphics::MoveHandle::HandleRole role)
     setData(ItemData::HandleRole, role);
 }
 
-void graphics::MoveHandle::set_associated_properties ( std::vector<model::AnimatableBase *> props )
+void graphics::MoveHandle::set_associated_properties ( std::vector<model::AnimatedPropertyBase *> props )
 {
     QVariantList p;
     for ( auto prop : props )
@@ -237,7 +237,7 @@ void graphics::MoveHandle::set_associated_properties ( std::vector<model::Animat
     setData(AssociatedProperty, p);
 }
 
-void graphics::MoveHandle::set_associated_property ( model::AnimatableBase * prop )
+void graphics::MoveHandle::set_associated_property ( model::AnimatedPropertyBase * prop )
 {
     set_associated_properties({prop});
 }

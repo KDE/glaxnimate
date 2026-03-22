@@ -105,7 +105,8 @@ private:
     void push_inner(const QVariant& val, bool commit)
     {
         shape->push_command(new command::SetMultipleAnimated(
-            shape->inner_radius.name(), {&shape->inner_radius}, {shape->inner_radius.value()}, {val}, commit
+            shape->inner_radius.name(), {&shape->inner_radius}, {shape->inner_radius.value()}, {val}, commit,
+            shape->time(), shape->document()->record_to_keyframe()
         ));
     }
 
@@ -116,7 +117,9 @@ private:
             {&shape->outer_radius, &shape->angle},
             {shape->outer_radius.value(), shape->angle.value()},
             {radius, angle},
-            commit
+            commit,
+            shape->time(),
+            shape->document()->record_to_keyframe()
         ));
     }
 

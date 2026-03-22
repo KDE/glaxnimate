@@ -22,7 +22,7 @@ class PointItem : public QGraphicsObject
 {
     Q_OBJECT
 public:
-    PointItem(int index, const math::bezier::Point& point, QGraphicsItem* parent, model::AnimatableBase* property);
+    PointItem(int index, const math::bezier::Point& point, QGraphicsItem* parent, model::AnimatedPropertyBase* property);
 
     QRectF boundingRect() const override;
 
@@ -98,7 +98,7 @@ public:
 
     void set_type(int index, math::bezier::PointType type);
 
-    model::AnimatableBase* target_property() const;
+    model::AnimatedPropertyBase* target_property() const;
     model::AnimatedProperty<math::bezier::Bezier>* target_bezier_property() const;
     model::AnimatedProperty<QPointF>* target_position_property() const;
     model::VisualNode* target_object() const;

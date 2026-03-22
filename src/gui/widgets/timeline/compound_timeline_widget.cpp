@@ -190,7 +190,7 @@ public:
         QVariant data = action->data();
         if ( data.isValid() && data.toInt() != model::KeyframeTransition::Custom )
         {
-            menu_property.property()->object()->push_command(
+            property_model.document()->push_command(
                 new command::SetKeyframeTransition(
                     menu_property.property(), keyframe->time(), data.value<model::KeyframeTransition::Descriptive>(),
                     before_transition ? keyframe->transition().before() : keyframe->transition().after(),
@@ -204,7 +204,7 @@ public:
             keyframe_editor.setWindowModality(Qt::ApplicationModal);
             if ( keyframe_editor.exec() )
             {
-                menu_property.property()->object()->push_command(
+                property_model.document()->push_command(
                     new command::SetKeyframeTransition(
                         menu_property.property(), keyframe->time(),
                         keyframe_editor.transition()
@@ -388,7 +388,7 @@ void CompoundTimelineWidget::custom_context_menu(const QPoint& p)
     }
 
     if ( item.property && item.property->traits().flags & model::PropertyTraits::Animated )
-        d->menu_property.set_property(static_cast<model::AnimatableBase*>(item.property));
+        d->menu_property.set_property(static_cast<model::AnimatedPropertyBase*>(item.property));
 
     if ( d->menu_kf_exit )
     {
@@ -434,8 +434,10 @@ void CompoundTimelineWidget::add_keyframe()
     if ( !d->menu_property.property() )
         return;
 
-    d->menu_property.property()->add_smooth_keyframe_undoable(
-        d->ui.timeline->highlighted_time(), d->menu_property.property()->value()
+    d->property_model.document()->push_command(
+        d->menu_property.property()->add_smooth_keyframe_command(
+            d->ui.timeline->highlighted_time(), d->menu_property.property()->static_value()
+        )
     );
 }
 
@@ -460,7 +462,7 @@ void CompoundTimelineWidget::remove_keyframe()
     if ( !d->menu_kf_exit || !d->menu_property.property() )
         return;
 
-    d->menu_property.property()->object()->document()->undo_stack().push(
+    d->property_model.document()->undo_stack().push(
         new command::RemoveKeyframeTime(d->menu_property.property(), d->menu_kf_exit->time())
     );
 }
@@ -489,7 +491,7 @@ void CompoundTimelineWidget::copy_keyframe()
     QMimeData* data = new QMimeData;
     QByteArray encoded;
     QDataStream stream(&encoded, QIODevice::WriteOnly);
-    stream << int(d->menu_property.property()->traits().type);
+    stream << int(d->menu_property.property_type());
     stream << d->menu_kf_exit->value();
     data->setData("application/x.glaxnimate-keyframe", encoded);
     QGuiApplication::clipboard()->setMimeData(data);
@@ -508,15 +510,15 @@ void CompoundTimelineWidget::paste_keyframe()
     QDataStream stream(&encoded, QIODevice::ReadOnly);
     int type = model::PropertyTraits::Unknown;
     stream >> type;
-    if ( type != d->menu_property.property()->traits().type )
+    if ( type != d->menu_property.property_type() )
         return;
 
     QVariant value;
     stream >> value;
 
-    auto time = d->menu_kf_exit ? d->menu_kf_exit->time() : d->menu_property.property()->time();
+    auto time = d->menu_kf_exit ? d->menu_kf_exit->time() : d->menu_property.object()->time();
 
-    d->menu_property.property()->object()->push_command(
+    d->property_model.document()->push_command(
         new command::SetKeyframe(d->menu_property.property(), time, value, true)
     );
 }
@@ -561,7 +563,7 @@ void CompoundTimelineWidget::click_index ( const QModelIndex& index )
             }
             else
             {
-                d->property_model.document()->push_command(new command::SetKeyframe(anprop, time, anprop->value(), true));
+                d->property_model.document()->push_command(new command::SetKeyframe(anprop, time, anprop->static_value(), true));
             }
         }
         else if ( index.column() == item_models::PropertyModelFull::ColumnPrevKeyframe )

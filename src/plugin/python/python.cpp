@@ -35,7 +35,7 @@ namespace {
 
 using Reg = PythonRegistrar;
 
-template<class T, class Base=model::AnimatableBase>
+template<class T, class Base=model::AnimatedPropertyBase>
 void register_animatable(py::module& m)
 {
     std::string name = "AnimatedProperty<";
@@ -155,18 +155,20 @@ void define_animatable(py::module& m)
     ;
     register_from_meta<Reg, model::AnimatableBase, QObject>(m)
         .def("keyframe", [](const model::AnimatableBase& a, model::FrameTime t){ return a.keyframe_at(t); }, no_own, py::arg("time"))
-        .def("set_keyframe", [](model::AnimatableBase& a, model::FrameTime time, const QVariant& value){
+    ;
+    register_from_meta<Reg, model::AnimatedPropertyBase, model::AnimatableBase>(m)
+        .def("set_keyframe", [](model::AnimatedPropertyBase& a, model::FrameTime time, const QVariant& value){
             a.object()->document()->undo_stack().push(
                 new command::SetKeyframe(&a, time, value, true)
             );
             return a.keyframe_at(time);
         }, no_own, py::arg("time"), py::arg("value"))
-        .def("remove_keyframe_at_time", [](model::AnimatableBase& a, model::FrameTime time){
+        .def("remove_keyframe_at_time", [](model::AnimatedPropertyBase& a, model::FrameTime time){
             a.object()->document()->undo_stack().push(
                 new command::RemoveKeyframeTime(&a, time)
             );
         }, py::arg("time"))
-        .def("clear_keyframes", &model::AnimatableBase::clear_keyframes_undoable, py::arg("value") = py::none())
+        .def("clear_keyframes", &model::AnimatedPropertyBase::clear_keyframes_undoable, py::arg("value") = py::none())
     ;
 }
 
@@ -301,7 +303,7 @@ void register_py_module(py::module& glaxnimate_module)
     define_io(glaxnimate_module);
 
     define_animatable(model);
-    register_from_meta<Reg, model::detail::AnimatedPropertyPosition, model::AnimatableBase>(detail);
+    register_from_meta<Reg, model::detail::AnimatedPropertyPosition, model::AnimatedPropertyBase>(detail);
     register_animatable<QPointF, model::detail::AnimatedPropertyPosition>(detail);
     register_animatable<QSizeF>(detail);
     register_animatable<QVector2D>(detail);
@@ -309,7 +311,7 @@ void register_py_module(py::module& glaxnimate_module)
     register_animatable<float>(detail);
     register_animatable<int>(detail);
     register_animatable<QGradientStops>(detail);
-    register_from_meta<Reg, model::detail::AnimatedPropertyBezier, model::AnimatableBase>(detail);
+    register_from_meta<Reg, model::detail::AnimatedPropertyBezier, model::AnimatedPropertyBase>(detail);
     register_animatable<math::bezier::Bezier, model::detail::AnimatedPropertyBezier>(detail);
 
     py::class_<PyVisitorPublic, PyVisitorTrampoline>(model, "Visitor")

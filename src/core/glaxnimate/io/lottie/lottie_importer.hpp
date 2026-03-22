@@ -753,7 +753,7 @@ private:
             document->set_best_name(obj);
     }
 
-    void load_transform(const QJsonObject& transform, model::Transform* tf, model::AnimatableBase* opacity)
+    void load_transform(const QJsonObject& transform, model::Transform* tf, model::AnimatedPropertyBase* opacity)
     {
         load_basic(transform, tf);
         if ( transform.contains("o") && opacity )
@@ -920,7 +920,7 @@ private:
 
             if ( prop->traits().flags & model::PropertyTraits::Animated )
             {
-                load_animated(static_cast<model::AnimatableBase*>(prop), json_obj[field.lottie], field.transform);
+                load_animated(static_cast<model::AnimatedPropertyBase*>(prop), json_obj[field.lottie], field.transform);
             }
             else if ( field.mode == AnimatedToStatic )
             {
@@ -1116,7 +1116,7 @@ private:
         load_value(prop, val, trans);
     }
 
-    void load_animated(model::AnimatableBase* prop, const QJsonValue& val, const TransformFunc& trans)
+    void load_animated(model::AnimatedPropertyBase* prop, const QJsonValue& val, const TransformFunc& trans)
     {
         if ( !val.isObject() )
         {

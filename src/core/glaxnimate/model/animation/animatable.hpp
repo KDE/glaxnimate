@@ -15,8 +15,7 @@
 #include "glaxnimate/math/bezier/point.hpp"
 #include "glaxnimate/math/bezier/solver.hpp"
 #include "glaxnimate/math/bezier/bezier_length.hpp"
-#include "glaxnimate/model/animation/keyframe_base.hpp"
-#include "glaxnimate/model/animation/keyframe_container.hpp"
+#include "glaxnimate/model/animation/animatable_base.hpp"
 
 /*
  * Arguments: type, name, default, emitter, flags
@@ -34,161 +33,24 @@ private:                                                                        
 
 namespace glaxnimate::model {
 
-class AnimatableBase : public QObject, public BaseProperty
+class AnimatedPropertyBase : public AnimatableBase, public BaseProperty
 {
     Q_OBJECT
 
-    Q_PROPERTY(int keyframe_count READ keyframe_count)
     Q_PROPERTY(QVariant value READ value WRITE set_undoable)
-    Q_PROPERTY(bool animated READ animated)
 
 public:
-    enum KeyframeStatus
-    {
-        NotAnimated,    ///< Value is not animated
-        Tween,          ///< Value is animated but the given time isn't a keyframe
-        IsKeyframe,     ///< Value is animated and the given time is a keyframe
-        Mismatch        ///< Value is animated and the current value doesn't match the animated value
-    };
-
-    struct SetKeyframeInfo
-    {
-        bool insertion;
-    };
-
-    struct MidTransition
-    {
-        enum Type
-        {
-            Invalid,
-            SingleKeyframe,
-            Middle,
-        };
-        Type type = Invalid;
-
-        QVariant value;
-        model::KeyframeTransition from_previous;
-        model::KeyframeTransition to_next;
-    };
 
     using BaseProperty::BaseProperty;
 
-    virtual ~AnimatableBase() = default;
-
-    /**
-     * \brief Number of keyframes
-     */
-    virtual int keyframe_count() const = 0;
-
-    /**
-     * \brief Keyframe whose transition contains \p time
-     *
-     *  This keyframe starts before or at \p time and it ends at \p time
-     *
-     * If all keyframes are after \p time, returns first one
-     * This means keyframe(keyframe_index(t)) is always valid when animated
-     *
-     *          keyframe_containing
-     *          v-------v
-     *  t0      t1      t2      t3
-     *  |-------|-------|-------|
-     *          ^   ^
-     *            time
-     *
-     * \return the Corresponding keyframe or nullptr if not found
-     */
-    Q_INVOKABLE virtual const KeyframeBase* keyframe_containing(FrameTime time) const = 0;
-    virtual KeyframeBase* keyframe_containing(FrameTime time) = 0;
-
-    /**
-     * \brief Returns the keyframe fully before the given time
-     *
-     *
-     *  keyframe_before
-     *  v-------v
-     *  t0      t1      t2      t3
-     *  |-------|-------|-------|
-     *          ^   ^
-     *            time
-     *
-     */
-    Q_INVOKABLE virtual KeyframeBase* keyframe_before(FrameTime time) = 0;
-    virtual const KeyframeBase* keyframe_before(FrameTime time) const = 0;
-
-    /**
-     * \brief Returns the keyframe fully before the given time
-     *
-     *
-     *                  keyframe_before
-     *                  v-------v
-     *  t0      t1      t2      t3
-     *  |-------|-------|-------|
-     *          ^   ^
-     *            time
-     *
-     */
-    Q_INVOKABLE virtual KeyframeBase* keyframe_after(FrameTime time) = 0;
-    virtual const KeyframeBase* keyframe_after(FrameTime time) const = 0;
-
-    /**
-     * \brief Keyframe at that specific time
-     * \return the Corresponding keyframe or nullptr if not found
-     */
-    Q_INVOKABLE virtual const KeyframeBase* keyframe_at(FrameTime time) const = 0;
-    virtual KeyframeBase* keyframe_at(FrameTime time) = 0;
-
-
-    /**
-     * \brief Sets a value at a keyframe
-     * \param time          Time to set the value at
-     * \param value         Value to set
-     * \param info          If not nullptr, it will be written to with information about what has been node
-     * \param force_insert  If \b true, it will always add a new keyframe
-     * \post value(time) == \p value && animate() == true
-     * \return The keyframe or nullptr if it couldn't be added.
-     * If there is already a keyframe at \p time the returned value might be an existing keyframe
-     */
-    virtual KeyframeBase* set_keyframe(FrameTime time, const QVariant& value, SetKeyframeInfo* info = nullptr, bool force_insert = false) = 0;
-
-    /**
-     * \brief Removes all keyframes
-     * \post !animated()
-     */
-    virtual void clear_keyframes() = 0;
-
-    /**
-     * \brief Removes the keyframe with the given time
-     * \returns whether a keyframe was found and removed
-     */
-    virtual bool remove_keyframe_at_time(FrameTime time) = 0;
-
-    /**
-     * \brief Get the value at the given time
-     */
-    virtual QVariant value(FrameTime time) const = 0;
+    int animatable_flags() const override
+    {
+        return HasValue|IsWritable|IsProperty;
+    }
 
     bool set_undoable(const QVariant& val, bool commit=true) override;
 
     using BaseProperty::value;
-
-    enum class MoveResult
-    {
-        NotFound,
-        OverwrittenDestination,
-        Moved,
-    };
-
-    /**
-     * \brief Moves a keyframe
-     * \param from_time Time of the keyframe to move
-     * \param to_time New time for the keyframe
-     */
-    virtual MoveResult move_keyframe(FrameTime from_time, FrameTime to_time) = 0;
-
-    /**
-     * If animated(), whether the current value has been changed over the animated value
-     */
-    Q_INVOKABLE virtual bool value_mismatch() const = 0;
 
     bool assign_from(const BaseProperty* prop) override;
 
@@ -207,33 +69,6 @@ public:
         return current_time;
     }
 
-    /**
-     * \brief Whether it has multiple keyframes
-     */
-    bool animated() const
-    {
-        return keyframe_count() != 0;
-    }
-
-    KeyframeStatus keyframe_status(FrameTime time) const
-    {
-        if ( !animated() )
-            return NotAnimated;
-        if ( value_mismatch() )
-            return Mismatch;
-        if ( keyframe_at(time) )
-            return IsKeyframe;
-        return Tween;
-    }
-
-    Q_INVOKABLE bool has_keyframe(FrameTime time) const
-    {
-        if ( !animated() )
-            return false;
-        return keyframe_at(time);
-    }
-
-    MidTransition mid_transition(FrameTime time) const;
 
     /**
      * \brief Clears all keyframes and creates an associated undo action
@@ -244,40 +79,19 @@ public:
     /**
      * \brief Adds a keyframe at the given time
      */
-    Q_INVOKABLE virtual void add_smooth_keyframe_undoable(FrameTime time, const QVariant& value);
+    Q_INVOKABLE void add_smooth_keyframe(FrameTime time, const QVariant& value = {});
 
-    virtual detail::TypeErasedKeyframeRange keyframe_range() const = 0;
-    virtual detail::TypeErasedKeyframeIterator find(model::FrameTime t) const = 0;
 
-    virtual const KeyframeBase* first_keyframe() const = 0;
-    virtual const KeyframeBase* last_keyframe() const = 0;
+    QVariant static_value() const override { return value(); }
+    bool set_static_value(const QVariant& v) override { return set_value(v); }
 
-    /**
-     * @brief Sets the transition at the given keyframe
-     * @param time
-     * @param transition
-     */
-    Q_INVOKABLE virtual void set_transition(FrameTime time, const KeyframeTransition& transition) = 0;
+    QVariant value(FrameTime time) const { return value_at_time(time); }
+    QVariant value() const override = 0;
+    QString visual_name() const override { return name(); }
 
-    /**
-     * @brief Sets the transition at the keyframe before \p time
-     * @param time
-     * @param transition
-     */
-    Q_INVOKABLE virtual void set_transition_before(FrameTime time, const KeyframeTransition& transition) = 0;
-
-Q_SIGNALS:
-    void keyframe_added(FrameTime time);
-    void keyframe_removed(FrameTime time);
-    void keyframe_updated(FrameTime time);
-    void keyframe_moved(FrameTime from_time, FrameTime to_time);
-    void transition_changed(FrameTime time, KeyframeTransition::Descriptive before, KeyframeTransition::Descriptive after);
 
 protected:
     virtual void on_set_time(FrameTime time) = 0;
-
-    MidTransition do_mid_transition(const KeyframeBase* kf_before, const KeyframeBase* kf_after, qreal ratio) const;
-    virtual QVariant do_mid_transition_value(const KeyframeBase* kf_before, const KeyframeBase* kf_after, qreal ratio) const = 0;
 
     FrameTime current_time = 0;
 };
@@ -611,9 +425,9 @@ protected:
 };
 
 template<class Type>
-class AnimatedProperty : public AnimatableImpl<Keyframe<Type>, AnimatableBase>
+class AnimatedProperty : public AnimatableImpl<Keyframe<Type>, AnimatedPropertyBase>
 {
-    using Base = AnimatableImpl<Keyframe<Type>, AnimatableBase>;
+    using Base = AnimatableImpl<Keyframe<Type>, AnimatedPropertyBase>;
 public:
     using keyframe_type = Keyframe<Type>;
     using value_type = typename Keyframe<Type>::value_type;
@@ -643,12 +457,12 @@ public:
         return QVariant::fromValue(value_);
     }
 
-    QVariant value(FrameTime time) const override
+    QVariant value_at_time(FrameTime time) const override
     {
         return QVariant::fromValue(get_at(time));
     }
 
-    keyframe_type* set_keyframe(FrameTime time, const QVariant& val, AnimatableBase::SetKeyframeInfo* info = nullptr, bool force_insert = false) override
+    keyframe_type* set_keyframe(FrameTime time, const QVariant& val, AnimatedPropertyBase::SetKeyframeInfo* info = nullptr, bool force_insert = false) override
     {
         if ( auto v = detail::variant_cast<Type>(val) )
             return static_cast<model::AnimatedProperty<Type>*>(this)->set_keyframe(time, *v, info, force_insert);
@@ -706,7 +520,7 @@ public:
         return true;
     }
 
-    keyframe_type* set_keyframe(FrameTime time, reference value, AnimatableBase::SetKeyframeInfo* info = nullptr, bool force_insert = false)
+    keyframe_type* set_keyframe(FrameTime time, reference value, AnimatedPropertyBase::SetKeyframeInfo* info = nullptr, bool force_insert = false)
     {
         // First keyframe
         if ( this->keyframes_.empty() )
@@ -1010,7 +824,7 @@ public:
 
     bool valid_value(const QVariant& val) const override;
 
-    void add_smooth_keyframe_undoable(FrameTime time, const QVariant& value) override;
+    QUndoCommand* add_smooth_keyframe_command(FrameTime time, const QVariant& value) override;
 
     /**
      * \brief Gets the bezier derivative at the given time
@@ -1061,7 +875,7 @@ public:
         return detail::AnimatedProperty<float>::set(bound(val));
     }
 
-    using AnimatableBase::set_keyframe;
+    using AnimatedPropertyBase::set_keyframe;
 
     keyframe_type* set_keyframe(FrameTime time, reference value, SetKeyframeInfo* info = nullptr, bool force_insert = false)
     {

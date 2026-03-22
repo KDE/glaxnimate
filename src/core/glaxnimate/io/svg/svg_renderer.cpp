@@ -346,7 +346,7 @@ public:
 
     void write_property(
         QDomElement& element,
-        model::AnimatableBase* property,
+        model::AnimatedPropertyBase* property,
         const QString& attr,
         model::FrameTime t
     )
@@ -383,7 +383,7 @@ public:
     void write_properties(
         QDomElement& element,
         model::FrameTime t,
-        std::vector<const model::AnimatableBase*> properties,
+        std::vector<const model::AnimatedPropertyBase*> properties,
         const std::vector<QString>& attrs,
         const Callback& callback
     )
@@ -802,11 +802,11 @@ public:
 
         if ( animated )
         {
-            std::vector<const model::AnimatableBase*> props;
+            std::vector<const model::AnimatedPropertyBase*> props;
             for ( auto prop : shape->properties() )
             {
                 if ( prop->traits().flags & model::PropertyTraits::Animated )
-                    props.push_back(static_cast<model::AnimatableBase*>(prop));
+                    props.push_back(static_cast<model::AnimatedPropertyBase*>(prop));
             }
 
             model::JoinAnimatables j(std::move(props), model::JoinAnimatables::NoValues);

@@ -23,7 +23,7 @@ inline void add_property_menu_actions(QMenu* menu, QGraphicsItem* item, Selectio
     bool started = false;
     for ( const auto& propvariant : item->data(graphics::AssociatedProperty).toList() )
     {
-        auto prop = propvariant.value<model::AnimatableBase*>();
+        auto prop = propvariant.value<model::AnimatedPropertyBase*>();
         if ( !prop )
             continue;
 

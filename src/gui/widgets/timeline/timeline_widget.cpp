@@ -102,7 +102,7 @@ public:
         LineItem* item;
 
         if ( prop->traits().flags & model::PropertyTraits::Animated )
-            item = add_animatable(id, static_cast<model::AnimatableBase*>(prop));
+            item = add_animatable(id, static_cast<model::AnimatedPropertyBase*>(prop));
         else if ( (prop->traits().flags & model::PropertyTraits::List) && prop->traits().is_object() )
             item = add_property_list(id, static_cast<model::ObjectListPropertyBase*>(prop));
         else
@@ -111,7 +111,7 @@ public:
         return item;
     }
 
-    LineItem* add_animatable(quintptr id, model::AnimatableBase* anim)
+    LineItem* add_animatable(quintptr id, model::AnimatedPropertyBase* anim)
     {
         AnimatableItem* item = new AnimatableItem(id, anim->object(), anim, start_time, end_time, row_height);
         connect(item, &LineItem::clicked, parent, &TimelineWidget::line_clicked);

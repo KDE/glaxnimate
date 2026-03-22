@@ -72,7 +72,8 @@ private:
         float val = handle.pos().y() - itemrect.top();
         target->document()->undo_stack().push(new command::SetMultipleAnimated(
             target->rounded.name(), {&target->rounded},
-            {target->rounded.value()}, {val}, commit
+            {target->rounded.value()}, {val}, commit,
+            target->time(), target->document()->record_to_keyframe()
         ));
     }
 

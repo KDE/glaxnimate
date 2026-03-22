@@ -202,7 +202,7 @@ private:
 
 
 
-template<class T, class Base=model::AnimatableBase>
+template<class T, class Base=model::AnimatedPropertyBase>
 void register_animatable()
 {
     std::string name = "AnimatedProperty<";
@@ -298,7 +298,8 @@ EMSCRIPTEN_BINDINGS(glaxnimate_wasm)
         .property("transition", &model::KeyframeBase::transition)
         ;
 
-    register_from_meta<Reg, model::AnimatableBase, QObject>(model)
+    register_from_meta<Reg, model::AnimatableBase, QObject>(model);
+    register_from_meta<Reg, model::AnimatedPropertyBase, model::AnimatableBase>(model)
         .function("get", fn([](const model::AnimatableBase& anim){
             return anim.value();
         }))
@@ -308,7 +309,8 @@ EMSCRIPTEN_BINDINGS(glaxnimate_wasm)
         .function("set", fn([](model::AnimatableBase& anim, const QVariant& var){
             return anim.set_undoable(var);
         }))
-    ;
+        ;
+
     register_from_meta<Reg, model::detail::AnimatedPropertyPosition, model::AnimatableBase>(model);
     register_animatable<QPointF, model::detail::AnimatedPropertyPosition>();
     register_animatable<QSizeF>();

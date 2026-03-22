@@ -64,7 +64,7 @@ void glaxnimate::gui::PropertiesDock::click_index(const QModelIndex& index)
             }
             else
             {
-                d->property_model->document()->push_command(new command::SetKeyframe(anprop, time, anprop->value(), true));
+                d->property_model->document()->push_command(new command::SetKeyframe(anprop, time, anprop->static_value(), true));
             }
         }
     }
@@ -81,7 +81,7 @@ void glaxnimate::gui::PropertiesDock::custom_context_menu(const QPoint& p)
         {
             AnimatedPropertyMenu menu(this);
             menu.set_controller(d->window);
-            menu.set_property(static_cast<model::AnimatableBase*>(item.property));
+            menu.set_property(static_cast<model::AnimatedPropertyBase*>(item.property));
             menu.exec(QCursor::pos());
         }
         else if ( item.property->traits().type == model::PropertyTraits::Object )
