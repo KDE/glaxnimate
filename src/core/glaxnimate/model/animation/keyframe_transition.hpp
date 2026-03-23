@@ -24,12 +24,14 @@ class KeyframeTransition
 public:
     enum Descriptive
     {
+        Custom,
         Hold,
+        NoValue,
+
         Linear,
         Ease,
         Fast,
         Overshoot,
-        Custom,
     };
 
     enum class Special

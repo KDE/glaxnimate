@@ -40,8 +40,7 @@ class AnimatedPropertyBase : public AnimatableBase, public BaseProperty
     Q_PROPERTY(QVariant value READ value WRITE set_undoable)
 
 public:
-
-    using BaseProperty::BaseProperty;
+    AnimatedPropertyBase(Object* object, const utils::LazyLocalizedString& name, PropertyTraits traits);
 
     int animatable_flags() const override
     {

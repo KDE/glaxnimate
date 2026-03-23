@@ -9,6 +9,7 @@
 #include "glaxnimate/command/animation_commands.hpp"
 #include "glaxnimate/model/object.hpp"
 #include "glaxnimate/math/bezier/segment.hpp"
+#include "glaxnimate/model/animation/meta_animatable.hpp"
 
 class glaxnimate::model::Keyframe<QPointF>::PointKeyframeSplitter : public KeyframeSplitter
 {
@@ -111,6 +112,12 @@ bool glaxnimate::model::AnimatedPropertyBase::assign_from(const model::BasePrope
     }
 
     return true;
+}
+
+glaxnimate::model::AnimatedPropertyBase::AnimatedPropertyBase(Object *object, const utils::LazyLocalizedString &name, PropertyTraits traits)
+: BaseProperty(object, name, traits)
+{
+    object->grouped_animations().add_animatable(this);
 }
 
 bool glaxnimate::model::AnimatedPropertyBase::set_undoable(const QVariant& val, bool commit)

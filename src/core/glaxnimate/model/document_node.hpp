@@ -20,6 +20,7 @@ namespace glaxnimate::model {
 
 class Document;
 class ReferencePropertyBase;
+class ObjectListPropertyBase;
 
 /**
  * \brief Base class for elements of the document tree, that need to show in the tree view etc.

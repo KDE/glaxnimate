@@ -53,10 +53,9 @@ public:                                                                 \
 
 namespace glaxnimate::model {
 
-class ObjectListPropertyBase;
 class BaseProperty;
 class Document;
-
+class MetaAnimatable;
 
 class Object : public QObject
 {
@@ -106,6 +105,8 @@ public:
     virtual void stretch_time(qreal multiplier);
 
     virtual QIcon tree_icon() const { return {}; }
+
+    MetaAnimatable& grouped_animations();
 
 Q_SIGNALS:
     void property_changed(const model::BaseProperty* prop, const QVariant& value);

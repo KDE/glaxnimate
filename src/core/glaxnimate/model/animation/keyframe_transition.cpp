@@ -6,7 +6,6 @@
 
 #include "glaxnimate/model/animation/keyframe_transition.hpp"
 #include "glaxnimate/math/bezier/segment.hpp"
-#include "glaxnimate/math/polynomial.hpp"
 
 namespace {
 
@@ -22,8 +21,8 @@ constexpr QPointF bound_vec(const QPointF& v)
 
 glaxnimate::model::KeyframeTransition::Descriptive glaxnimate::model::KeyframeTransition::before_descriptive() const
 {
-    if ( special_ == Special::Hold )
-        return Hold;
+    if ( special_ != Special::Normal )
+        return Descriptive(special_);
 
     if ( qFuzzyIsNull(bezier_.points()[1].x() - bezier_.points()[1].y()) )
         return Linear;
@@ -42,8 +41,8 @@ glaxnimate::model::KeyframeTransition::Descriptive glaxnimate::model::KeyframeTr
 
 glaxnimate::model::KeyframeTransition::Descriptive glaxnimate::model::KeyframeTransition::after_descriptive() const
 {
-    if ( special_ == Special::Hold )
-        return Hold;
+    if ( special_ != Special::Normal )
+        return Descriptive(special_);
 
     if ( qFuzzyIsNull(bezier_.points()[2].x() - bezier_.points()[2].y()) )
         return Linear;
@@ -64,8 +63,9 @@ void glaxnimate::model::KeyframeTransition::set_before_descriptive(model::Keyfra
 {
     switch ( d )
     {
+        case NoValue:
         case Hold:
-            set_hold(true);
+            special_ = Special(d);
             return;
         case Linear:
             bezier_.set<1>(QPointF{1./3., 1./3.});
@@ -93,8 +93,9 @@ void glaxnimate::model::KeyframeTransition::set_after_descriptive(model::Keyfram
 {
     switch ( d )
     {
+        case NoValue:
         case Hold:
-            set_hold(true);
+            special_ = Special(d);
             return;
         case Linear:
             bezier_.set<2>(QPointF{2./3., 2./3.});

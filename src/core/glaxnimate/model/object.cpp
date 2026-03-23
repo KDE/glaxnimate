@@ -11,22 +11,26 @@
 #include "glaxnimate/model/property/property.hpp"
 #include "glaxnimate/model/document.hpp"
 #include "glaxnimate/log/log.hpp"
-
+#include "glaxnimate/model/animation/meta_animatable.hpp"
 
 class glaxnimate::model::Object::Private
 {
 public:
+    Private(Object* parent, Document* document)
+    : document(document), animation_group(parent)
+    {}
+
     std::unordered_map<QString, BaseProperty*> props;
     std::vector<BaseProperty*> prop_order;
     Document* document;
     FrameTime current_time = 0;
+    MetaAnimatable animation_group;
 };
 
 
 glaxnimate::model::Object::Object(Document* document)
-    : d(std::make_unique<glaxnimate::model::Object::Private>())
+    : d(std::make_unique<glaxnimate::model::Object::Private>(this, document))
 {
-    d->document = document;
     if ( document && thread() != document->thread() )
         moveToThread(document->thread());
 }
@@ -169,4 +173,9 @@ void glaxnimate::model::Object::stretch_time(qreal multiplier)
         prop->stretch_time(multiplier);
 
     d->current_time *= multiplier;
+}
+
+glaxnimate::model::MetaAnimatable &glaxnimate::model::Object::grouped_animations()
+{
+    return d->animation_group;
 }

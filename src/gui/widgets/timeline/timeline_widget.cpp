@@ -105,6 +105,8 @@ public:
             item = add_animatable(id, static_cast<model::AnimatedPropertyBase*>(prop));
         else if ( (prop->traits().flags & model::PropertyTraits::List) && prop->traits().is_object() )
             item = add_property_list(id, static_cast<model::ObjectListPropertyBase*>(prop));
+        else if ( prop->traits().type == model::PropertyTraits::Object )
+            item = add_object_without_properties(id, static_cast<model::SubObjectPropertyBase*>(prop)->sub_object());
         else
             item = add_property_plain(id, prop);
 

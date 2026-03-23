@@ -119,23 +119,6 @@ private:
     bool expanded_ = false;
 };
 
-class ObjectLineItem : public LineItem
-{
-    Q_OBJECT
-
-public:
-    ObjectLineItem(quintptr id, model::Object* obj, int time_start, int time_end, int height)
-        : LineItem(id, obj, time_start, time_end, height)
-    {}
-
-    int type() const override { return int(ItemTypes::ObjectLineItem); }
-
-    item_models::PropertyModelFull::Item property_item() const override
-    {
-        return {object(), nullptr};
-    }
-};
-
 class AnimatableItem;
 
 class KeyframeSplitItem : public QGraphicsObject
@@ -250,6 +233,21 @@ private:
     model::KeyframeContainer<KeyframeSplitItem*> kf_split_items;
     friend KeyframeSplitItem;
 };
+
+class ObjectLineItem : public AnimatableItem
+{
+    Q_OBJECT
+
+public:
+    ObjectLineItem(quintptr id, model::Object *obj, int time_start, int time_end, int height);
+
+    int type() const override { return int(ItemTypes::ObjectLineItem); }
+
+    item_models::PropertyModelFull::Item property_item() const override {
+        return {object(), nullptr};
+    }
+};
+
 
 class TimeRectItem : public QGraphicsObject
 {
@@ -474,25 +472,18 @@ private:
     graphics::MoveHandle handle_op{this, graphics::MoveHandle::Horizontal, graphics::MoveHandle::None, 1, true};
 };
 
-class ObjectListLineItem : public LineItem
+class ObjectListLineItem : public AnimatableItem
 {
     Q_OBJECT
 
 public:
-    ObjectListLineItem(quintptr id, model::Object* obj, model::ObjectListPropertyBase* prop, int time_start, int time_end, int height)
-        : LineItem(id, obj, time_start, time_end, height),
-        property_(prop)
-    {}
+    ObjectListLineItem(quintptr id, model::Object *obj, model::ObjectListPropertyBase *prop, int time_start, int time_end, int height);
 
     int type() const override { return int(ItemTypes::ObjectListLineItem); }
 
-    model::BaseProperty* property() const
-    {
-        return property_;
-    }
+    model::BaseProperty *property() const { return property_; }
 
-    item_models::PropertyModelFull::Item property_item() const override
-    {
+    item_models::PropertyModelFull::Item property_item() const override {
         return {object(), property_};
     }
 

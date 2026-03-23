@@ -36,6 +36,7 @@ QUndoCommand *glaxnimate::model::AnimatedPropertyBase::command_set_transition_si
 
 QUndoCommand *glaxnimate::model::AnimatedPropertyBase::command_move_keyframe(FrameTime time_before, FrameTime time_after, QUndoCommand *parent)
 {
+    qDebug() << visual_name() << time_before << time_after;
     if ( !keyframe_at(time_before) )
         return nullptr;
 

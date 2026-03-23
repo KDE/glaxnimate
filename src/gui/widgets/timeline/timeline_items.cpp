@@ -7,6 +7,7 @@
 #include "timeline_items.hpp"
 
 #include "glaxnimate/command/undo_macro_guard.hpp"
+#include "glaxnimate/model/animation/meta_animatable.hpp"
 #include "keyframe_transition_data.hpp"
 
 using namespace glaxnimate::gui;
@@ -470,8 +471,14 @@ void timeline::AnimatableItem::do_add_keyframe(model::KeyframeBase *kf)
 
     auto item = new KeyframeSplitItem(kf->time(), this);
     item->setPos(kf->time(), row_height() / 2.0);
-    item->set_exit(kf->transition().before_descriptive());
-    item->set_enter(prev ? prev->transition().after_descriptive() : model::KeyframeTransition::Hold);
+    auto exit = kf->transition().before_descriptive();
+    item->set_exit(exit);
+    if ( prev )
+        item->set_enter(prev->transition().after_descriptive());
+    else if ( kf->transition().special() != model::KeyframeTransition::Special::Normal )
+        item->set_enter(exit);
+    else
+        item->set_enter(model::KeyframeTransition::Hold);
     kf_split_items.insert(kf->time(), item);
 }
 
@@ -487,8 +494,8 @@ void timeline::AnimatableItem::remove_keyframe(model::FrameTime t)
             ++next;
             if ( next != kf_split_items.end() )
             {
-                if ( auto kf_before = animatable->keyframe_before(t) );
-                    (*next)->set_enter(animatable->keyframe_before(t)->transition().after_descriptive());
+                if ( auto kf_before = animatable->keyframe_before(t) )
+                    (*next)->set_enter(kf_before->transition().after_descriptive());
             }
         }
 
@@ -519,7 +526,7 @@ void timeline::AnimatableItem::keyframes_dragged(const std::vector<DragData>& ke
     {
         object()->push_command(animatable->command_move_keyframe(kf.from, kf.to));
         auto kfto = kf_split_items.find(kf.to);
-        if ( kfto != kf_split_items.end() )
+        if ( kfto != kf_split_items.end() && *kfto != kf.item )
             (*kfto)->setSelected(true);
     }
 }
@@ -553,6 +560,8 @@ void glaxnimate::gui::timeline::AnimatableItem::cycle_keyframe_transition(model:
         case model::KeyframeTransition::Custom:
             desc = model::KeyframeTransition::Hold;
             break;
+        case model::KeyframeTransition::NoValue:
+            return;
     }
 
     {
@@ -575,10 +584,15 @@ void timeline::AnimatableItem::update_keyframe(model::FrameTime time)
     const auto& kf = animatable->keyframe_at(time);
     auto item_start = kf_split_items.find(time);
 
+    (*item_start)->set_exit(kf->transition().before_descriptive());
+
     if ( item_start == kf_split_items.begin() )
-        (*item_start)->set_enter(model::KeyframeTransition::Hold);
-    else
-        (*item_start)->set_exit(kf->transition().before_descriptive());
+    {
+        if ( kf->transition().special() != model::KeyframeTransition::Special::Normal )
+            (*item_start)->set_enter(kf->transition().before_descriptive());
+        else
+            (*item_start)->set_enter(model::KeyframeTransition::Hold);
+    }
 
     ++item_start;
     if ( item_start != kf_split_items.end() )
@@ -599,3 +613,12 @@ void timeline::AnimatableItem::move_keyframe(model::FrameTime from_time, model::
     if ( from_time < first_kf->time() )
         update_keyframe(first_kf->time());
 }
+glaxnimate::gui::timeline::ObjectLineItem::ObjectLineItem(
+    quintptr id, model::Object *obj, int time_start, int time_end, int height
+)
+: AnimatableItem(id, obj, &obj->grouped_animations(), time_start, time_end, height)
+{}
+glaxnimate::gui::timeline::ObjectListLineItem::ObjectListLineItem(
+    quintptr id, model::Object *obj, model::ObjectListPropertyBase *prop, int time_start, int time_end, int height
+)
+: AnimatableItem(id, obj, &obj->grouped_animations(), time_start, time_end, height), property_(prop) {}
