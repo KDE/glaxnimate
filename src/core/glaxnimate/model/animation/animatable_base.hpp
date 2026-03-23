@@ -134,18 +134,6 @@ public:
     virtual KeyframeBase* keyframe_at(FrameTime time) = 0;
 
     /**
-     * \brief Removes all keyframes
-     * \post !animated()
-     */
-    virtual void clear_keyframes() = 0;
-
-    /**
-     * \brief Removes the keyframe with the given time
-     * \returns whether a keyframe was found and removed
-     */
-    virtual bool remove_keyframe_at_time(FrameTime time) = 0;
-
-    /**
      * \brief Whether it has multiple keyframes
      */
     bool animated() const
@@ -182,27 +170,6 @@ public:
     virtual const KeyframeBase* first_keyframe() const = 0;
     virtual const KeyframeBase* last_keyframe() const = 0;
 
-    /**
-     * @brief Sets the transition at the given keyframe
-     * @param time
-     * @param transition
-     */
-    Q_INVOKABLE virtual void set_transition(FrameTime time, const KeyframeTransition& transition) = 0;
-
-    /**
-     * @brief Sets the transition at the keyframe before \p time
-     * @param time
-     * @param transition
-     */
-    Q_INVOKABLE virtual void set_transition_before(FrameTime time, const KeyframeTransition& transition) = 0;
-
-    /**
-     * \brief Moves a keyframe
-     * \param from_time Time of the keyframe to move
-     * \param to_time New time for the keyframe
-     */
-    virtual MoveResult move_keyframe(FrameTime from_time, FrameTime to_time) = 0;
-
     // Renamed to avoid clashing with BaseProperty
     /**
      * \brief Get the value at the given time
@@ -212,40 +179,27 @@ public:
     virtual QVariant static_value() const = 0;
     virtual bool set_static_value(const QVariant& v) = 0;
 
-
-    /**
-     * \brief Sets a value at a keyframe
-     * \param time          Time to set the value at
-     * \param value         Value to set
-     * \param info          If not nullptr, it will be written to with information about what has been node
-     * \param force_insert  If \b true, it will always add a new keyframe
-     * \post value(time) == \p value && animate() == true
-     * \return The keyframe or nullptr if it couldn't be added.
-     * If there is already a keyframe at \p time the returned value might be an existing keyframe
-     */
-    virtual KeyframeBase* set_keyframe(FrameTime time, const QVariant& value, SetKeyframeInfo* info = nullptr, bool force_insert = false) = 0;
-
     /**
      * \brief Adds a keyframe at the given time
      */
-    virtual QUndoCommand* command_add_smooth_keyframe(FrameTime time, const QVariant& value, bool commit = true, QUndoCommand* parent = nullptr);
-    virtual QUndoCommand* command_remove_keyframe(FrameTime time, QUndoCommand* parent = nullptr);
+    virtual QUndoCommand* command_add_smooth_keyframe(FrameTime time, const QVariant& value, bool commit = true, QUndoCommand* parent = nullptr) = 0;
+    virtual QUndoCommand* command_remove_keyframe(FrameTime time, QUndoCommand* parent = nullptr) = 0;
     /**
      * \brief Clears all keyframes and creates an associated undo action
      */
-    virtual QUndoCommand* command_clear_keyframes(QUndoCommand* parent = nullptr);
+    virtual QUndoCommand* command_clear_keyframes(QUndoCommand* parent = nullptr) = 0;
     /**
      * @brief Creates an appropriate undo command for changing a keyframe's transition
      */
-    virtual QUndoCommand* command_set_transition(model::FrameTime time, const model::KeyframeTransition& transition, QUndoCommand* parent = nullptr);
+    virtual QUndoCommand* command_set_transition(model::FrameTime time, const model::KeyframeTransition& transition, QUndoCommand* parent = nullptr) = 0;
     virtual QUndoCommand* command_set_transition_side(
         model::FrameTime time,
         model::KeyframeTransition::Descriptive desc,
         const QPointF& point,
         bool before_transition,
         QUndoCommand* parent = nullptr
-    );
-    virtual QUndoCommand* command_move_keyframe(model::FrameTime time_before, model::FrameTime time_after, QUndoCommand* parent = nullptr);
+    ) = 0;
+    virtual QUndoCommand* command_move_keyframe(model::FrameTime time_before, model::FrameTime time_after, QUndoCommand* parent = nullptr) = 0;
 
     // Renamed to avoid clashing with BaseProperty
     virtual QString visual_name() const = 0;

@@ -486,7 +486,10 @@ void timeline::AnimatableItem::remove_keyframe(model::FrameTime t)
             auto next = it;
             ++next;
             if ( next != kf_split_items.end() )
-                (*next)->set_enter(animatable->keyframe_before(t)->transition().after_descriptive());
+            {
+                if ( auto kf_before = animatable->keyframe_before(t) );
+                    (*next)->set_enter(animatable->keyframe_before(t)->transition().after_descriptive());
+            }
         }
 
         delete *it;
@@ -514,10 +517,10 @@ void timeline::AnimatableItem::keyframes_dragged(const std::vector<DragData>& ke
 {
     for ( auto kf : keyframe_items )
     {
-        if ( animatable->command_move_keyframe(kf.from, kf.to) )
-        {
-            (*kf_split_items.find(kf.to))->setSelected(true);
-        }
+        object()->push_command(animatable->command_move_keyframe(kf.from, kf.to));
+        auto kfto = kf_split_items.find(kf.to);
+        if ( kfto != kf_split_items.end() )
+            (*kfto)->setSelected(true);
     }
 }
 

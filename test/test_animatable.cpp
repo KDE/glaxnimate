@@ -611,7 +611,7 @@ private Q_SLOTS:
         QCOMPARE(ts.anim_point.get(), QPointF(6, 7));
 
         {
-            SetMultipleAnimated cmd(QStringLiteral("test"), std::vector<model::AnimatableBase*>{}, QVariantList(), QVariantList(), false, ts.time(), false);
+            SetMultipleAnimated cmd(QStringLiteral("test"), std::vector<model::AnimatedPropertyBase*>{}, QVariantList(), QVariantList(), false, ts.time(), false);
             cmd.push_property(&ts.anim_int, 1);
             cmd.push_property(&ts.anim_float, 2);
             cmd.push_property(&ts.anim_point, QPointF(3, 4));
@@ -633,7 +633,7 @@ private Q_SLOTS:
 
         {
             doc.set_record_to_keyframe(true);
-            SetMultipleAnimated cmd(QStringLiteral("test"), std::vector<model::AnimatableBase*>{}, QVariantList(), QVariantList(), false, ts.time(), true);
+            SetMultipleAnimated cmd(QStringLiteral("test"), std::vector<model::AnimatedPropertyBase*>{}, QVariantList(), QVariantList(), false, ts.time(), true);
             cmd.push_property(&ts.anim_int, 1);
             cmd.push_property(&ts.anim_float, 2);
             cmd.push_property(&ts.anim_point, QPointF(3, 4));
@@ -660,7 +660,7 @@ private Q_SLOTS:
         {
             ts.anim_int.set_keyframe(10, 10);
             PROPERTY_KEYFRAMES(int, ts.anim_int, newkf<int>(10, 10));
-            SetMultipleAnimated cmd(QStringLiteral("test"), std::vector<model::AnimatableBase*>{}, QVariantList(), QVariantList(), false, ts.time(), false);
+            SetMultipleAnimated cmd(QStringLiteral("test"), std::vector<model::AnimatedPropertyBase*>{}, QVariantList(), QVariantList(), false, ts.time(), false);
             cmd.push_property(&ts.anim_int, 1);
             cmd.push_property(&ts.anim_float, 2);
             cmd.push_property(&ts.anim_point, QPointF(3, 4));

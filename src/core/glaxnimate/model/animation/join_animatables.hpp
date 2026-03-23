@@ -339,16 +339,29 @@ public:
 
     // read only
     bool set_static_value(const QVariant&) override { return false; }
+    bool value_mismatch() const override { return false; }
     // bool valid_value(const QVariant&) const override { return false; }
     // bool set_undoable(const QVariant&, bool) override { return false; }
-    AnimatedPropertyBase::MoveResult move_keyframe(FrameTime, FrameTime) override { return MoveResult::NotFound; }
-    bool value_mismatch() const override { return false; }
+    /*AnimatedPropertyBase::MoveResult move_keyframe(FrameTime, FrameTime) override { return MoveResult::NotFound; }
     KeyframeBase* set_keyframe(FrameTime , const QVariant& , SetKeyframeInfo*, bool ) override { return nullptr; }
     void clear_keyframes() override {};
     bool remove_keyframe_at_time(FrameTime) override { return false; }
     void set_transition(FrameTime, const KeyframeTransition&) override {}
-    void set_transition_before(FrameTime, const KeyframeTransition&) override {}
+    void set_transition_before(FrameTime, const KeyframeTransition&) override {}*/
     QString visual_name() const override { return {}; }
+
+
+    QUndoCommand* command_add_smooth_keyframe(FrameTime, const QVariant&, bool, QUndoCommand*) override { return nullptr; }
+    QUndoCommand* command_remove_keyframe(FrameTime, QUndoCommand*) override { return nullptr; }
+    QUndoCommand* command_clear_keyframes(QUndoCommand*) override { return nullptr; }
+    QUndoCommand* command_set_transition(
+        model::FrameTime, const model::KeyframeTransition&, QUndoCommand*
+    ) override { return nullptr; }
+    QUndoCommand* command_set_transition_side(
+        model::FrameTime, model::KeyframeTransition::Descriptive, const QPointF&, bool, QUndoCommand*
+    ) override { return nullptr; }
+    QUndoCommand* command_move_keyframe(model::FrameTime, model::FrameTime, QUndoCommand*) override { return nullptr; }
+
 
 protected:
     // void on_set_time(FrameTime) override {}

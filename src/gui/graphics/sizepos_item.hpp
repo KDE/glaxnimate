@@ -132,7 +132,7 @@ private Q_SLOTS:
 private:
     void push(bool commit)
     {
-        std::vector<model::AnimatableBase*> props;
+        std::vector<model::AnimatedPropertyBase*> props;
         QVariantList before;
         QVariantList after;
 

@@ -17,7 +17,7 @@ class SetKeyframe : public MergeableCommand<Id::SetKeyframe, SetKeyframe>
 {
 public:
     SetKeyframe(
-        model::AnimatableBase* prop,
+        model::AnimatedPropertyBase* prop,
         model::FrameTime time,
         const QVariant& value,
         bool commit,
@@ -33,7 +33,7 @@ public:
     bool merge_with(const SetKeyframe& other);
 
 private:
-    model::AnimatableBase* prop;
+    model::AnimatedPropertyBase* prop;
     model::FrameTime time;
     QVariant before;
     QVariant after;
@@ -49,7 +49,7 @@ class RemoveKeyframeTime : public QUndoCommand
 {
 public:
     RemoveKeyframeTime(
-        model::AnimatableBase* prop,
+        model::AnimatedPropertyBase* prop,
         model::FrameTime time,
         QUndoCommand* parent
     );
@@ -61,7 +61,7 @@ public:
     void redo() override;
 
 private:
-    model::AnimatableBase* prop;
+    model::AnimatedPropertyBase* prop;
     model::FrameTime time;
     QVariant before;
     model::KeyframeTransition prev_transition_before;
@@ -72,7 +72,7 @@ private:
 class RemoveAllKeyframes : public QUndoCommand
 {
 public:
-    RemoveAllKeyframes(model::AnimatableBase* prop, QVariant value, QUndoCommand* parent);
+    RemoveAllKeyframes(model::AnimatedPropertyBase* prop, QVariant value, QUndoCommand* parent);
 
     static QString command_name(model::AnimatableBase* prop);
 
@@ -87,7 +87,7 @@ private:
         QVariant value;
         model::KeyframeTransition transition;
     };
-    model::AnimatableBase* prop;
+    model::AnimatedPropertyBase* prop;
     std::vector<Keframe> keyframes;
     QVariant before;
     QVariant after;
@@ -111,7 +111,7 @@ public:
         Args... vals
     ) : SetMultipleAnimated(
             name,
-            std::vector<model::AnimatableBase*>(props.begin(), props.end()),
+            std::vector<model::AnimatedPropertyBase*>(props.begin(), props.end()),
             {}, {QVariant::fromValue(vals)...}, commit,
             props.empty() ?  0 : props[0]->time(),
             props.empty() ? false : props[0]->object()->document()->record_to_keyframe()
@@ -125,7 +125,7 @@ public:
      */
     SetMultipleAnimated(
         const QString& name,
-        const std::vector<model::AnimatableBase*>& props,
+        const std::vector<model::AnimatedPropertyBase*>& props,
         const QVariantList& before,
         const QVariantList& after,
         bool commit,
@@ -144,14 +144,14 @@ public:
 
     bool merge_with(const SetMultipleAnimated& other);
 
-    const std::vector<model::AnimatableBase*>& properties() const { return props; }
+    const std::vector<model::AnimatedPropertyBase*>& properties() const { return props; }
 
     bool empty() const;
 
 private:
     static QString auto_name(model::AnimatedPropertyBase* prop);
 
-    std::vector<model::AnimatableBase*> props;
+    std::vector<model::AnimatedPropertyBase*> props;
     QVariantList before;
     QVariantList after;
     std::vector<int> keyframe_before;
@@ -167,7 +167,7 @@ class SetKeyframeTransition: public QUndoCommand
 {
 public:
     SetKeyframeTransition(
-        model::AnimatableBase* prop,
+        model::AnimatedPropertyBase* prop,
         model::FrameTime time,
         const model::KeyframeTransition& transition,
         QUndoCommand* parent
@@ -178,7 +178,7 @@ public:
     void redo() override;
 
     static model::KeyframeTransition transition_side(
-        model::AnimatableBase* prop,
+        model::AnimatedPropertyBase* prop,
         model::FrameTime time,
         model::KeyframeTransition::Descriptive desc,
         const QPointF& point,
@@ -186,7 +186,7 @@ public:
     );
 
 private:
-    model::AnimatableBase* prop;
+    model::AnimatedPropertyBase* prop;
     model::FrameTime time;
     model::KeyframeTransition undo_value;
     model::KeyframeTransition redo_value;
@@ -196,7 +196,7 @@ class MoveKeyframe : public QUndoCommand
 {
 public:
     MoveKeyframe(
-        model::AnimatableBase* prop,
+        model::AnimatedPropertyBase* prop,
         model::FrameTime time_before,
         model::FrameTime time_after,
         QUndoCommand* parent
@@ -207,7 +207,7 @@ public:
     void redo() override;
 
 private:
-    model::AnimatableBase* prop;
+    model::AnimatedPropertyBase* prop;
     model::FrameTime time_before;
     model::FrameTime time_after;
 

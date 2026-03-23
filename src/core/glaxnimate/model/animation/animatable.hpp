@@ -76,6 +76,63 @@ public:
     QVariant value() const override = 0;
     QString visual_name() const override { return name(); }
 
+    /**
+     * \brief Removes all keyframes
+     * \post !animated()
+     */
+    virtual void clear_keyframes() = 0;
+
+    /**
+     * \brief Removes the keyframe with the given time
+     * \returns whether a keyframe was found and removed
+     */
+    virtual bool remove_keyframe_at_time(FrameTime time) = 0;
+
+    /**
+     * @brief Sets the transition at the given keyframe
+     * @param time
+     * @param transition
+     */
+    virtual void set_transition(FrameTime time, const KeyframeTransition& transition) = 0;
+
+    /**
+     * @brief Sets the transition at the keyframe before \p time
+     * @param time
+     * @param transition
+     */
+    virtual void set_transition_before(FrameTime time, const KeyframeTransition& transition) = 0;
+
+    /**
+     * \brief Moves a keyframe
+     * \param from_time Time of the keyframe to move
+     * \param to_time New time for the keyframe
+     */
+    virtual MoveResult move_keyframe(FrameTime from_time, FrameTime to_time) = 0;
+
+    /**
+     * \brief Sets a value at a keyframe
+     * \param time          Time to set the value at
+     * \param value         Value to set
+     * \param info          If not nullptr, it will be written to with information about what has been node
+     * \param force_insert  If \b true, it will always add a new keyframe
+     * \post value(time) == \p value && animate() == true
+     * \return The keyframe or nullptr if it couldn't be added.
+     * If there is already a keyframe at \p time the returned value might be an existing keyframe
+     */
+    virtual KeyframeBase* set_keyframe(FrameTime time, const QVariant& value, SetKeyframeInfo* info = nullptr, bool force_insert = false) = 0;
+
+    QUndoCommand* command_add_smooth_keyframe(FrameTime time, const QVariant& value, bool commit = true, QUndoCommand* parent = nullptr) override;
+    QUndoCommand* command_remove_keyframe(FrameTime time, QUndoCommand* parent = nullptr) override;
+    QUndoCommand* command_clear_keyframes(QUndoCommand* parent = nullptr) override;
+    QUndoCommand* command_set_transition(model::FrameTime time, const model::KeyframeTransition& transition, QUndoCommand* parent = nullptr) override;
+    QUndoCommand* command_set_transition_side(
+        model::FrameTime time,
+        model::KeyframeTransition::Descriptive desc,
+        const QPointF& point,
+        bool before_transition,
+        QUndoCommand* parent = nullptr
+    ) override;
+    QUndoCommand* command_move_keyframe(model::FrameTime time_before, model::FrameTime time_after, QUndoCommand* parent = nullptr) override;
 
 protected:
     virtual void on_set_time(FrameTime time) = 0;
@@ -499,12 +556,16 @@ public:
         if ( to_time == from_time )
             return AnimatableBase::MoveResult::Moved;
 
+        bool includes_current_time = this->keyframes_.affects_time(kf_at, this->time());
+
         // Just move to a new position
         auto iter = this->keyframes_.lower_bound(to_time);
         if ( iter == this->keyframes_.end() || iter->time() != to_time )
         {
             kf_at->set_time(to_time);
-            this->keyframes_.move(kf_at, to_time);
+            kf_at = this->keyframes_.move(kf_at, to_time);
+            if ( includes_current_time || this->keyframes_.affects_time(kf_at, this->time()) )
+                this->set_time(this->time());
             Q_EMIT this->keyframe_moved(from_time, to_time);
             return AnimatableBase::MoveResult::Moved;
         }
@@ -513,6 +574,8 @@ public:
         iter->set_transition(kf_at->transition());
         iter->set(kf_at->get());
         this->keyframes_.erase(kf_at);
+        if ( includes_current_time || this->keyframes_.affects_time(iter, this->time()) )
+            this->set_time(this->time());
         Q_EMIT this->keyframe_removed(from_time);
         Q_EMIT this->keyframe_updated(to_time);
         return AnimatableBase::MoveResult::OverwrittenDestination;

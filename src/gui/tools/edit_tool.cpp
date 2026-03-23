@@ -76,7 +76,7 @@ public:
 
             void drag(
                 const QPointF& scene_pos,
-                std::vector<model::AnimatableBase*>& props,
+                std::vector<model::AnimatedPropertyBase*>& props,
                 QVariantList& before,
                 QVariantList& after
             )
@@ -155,7 +155,7 @@ public:
 
         void drag(const MouseEvent& event, bool commit)
         {
-            std::vector<model::AnimatableBase*> props;
+            std::vector<model::AnimatedPropertyBase*> props;
             QVariantList before;
             QVariantList after;
 

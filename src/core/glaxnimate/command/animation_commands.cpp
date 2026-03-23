@@ -10,7 +10,7 @@
 #include "glaxnimate/model/document.hpp"
 
 glaxnimate::command::SetKeyframe::SetKeyframe(
-    model::AnimatableBase* prop,
+    model::AnimatedPropertyBase* prop,
     model::FrameTime time,
     const QVariant& value,
     bool commit,
@@ -86,7 +86,7 @@ bool glaxnimate::command::SetKeyframe::merge_with(const SetKeyframe& other)
 }
 
 glaxnimate::command::RemoveKeyframeTime::RemoveKeyframeTime(
-    model::AnimatableBase* prop,
+    model::AnimatedPropertyBase* prop,
     model::FrameTime time,
     QUndoCommand* parent
 ) : QUndoCommand(command_name(prop, time), parent),
@@ -136,7 +136,7 @@ glaxnimate::command::SetMultipleAnimated::SetMultipleAnimated(model::AnimatedPro
 
 glaxnimate::command::SetMultipleAnimated::SetMultipleAnimated(
     const QString& name,
-    const std::vector<model::AnimatableBase*>& props,
+    const std::vector<model::AnimatedPropertyBase*>& props,
     const QVariantList& before,
     const QVariantList& after,
     bool commit,
@@ -285,7 +285,7 @@ bool glaxnimate::command::SetMultipleAnimated::empty() const
 }
 
 glaxnimate::command::SetKeyframeTransition::SetKeyframeTransition(
-        model::AnimatableBase* prop,
+        model::AnimatedPropertyBase* prop,
         model::FrameTime time,
         const model::KeyframeTransition& transition,
         QUndoCommand *parent
@@ -309,7 +309,7 @@ void glaxnimate::command::SetKeyframeTransition::redo()
 }
 
 glaxnimate::model::KeyframeTransition glaxnimate::command::SetKeyframeTransition::transition_side(
-    model::AnimatableBase *prop,
+    model::AnimatedPropertyBase *prop,
     model::FrameTime time,
     model::KeyframeTransition::Descriptive desc,
     const QPointF &point,
@@ -336,7 +336,7 @@ glaxnimate::model::KeyframeTransition glaxnimate::command::SetKeyframeTransition
 }
 
 glaxnimate::command::MoveKeyframe::MoveKeyframe(
-    model::AnimatableBase* prop,
+    model::AnimatedPropertyBase* prop,
     model::FrameTime time_before,
     model::FrameTime time_after,
     QUndoCommand* parent
@@ -357,7 +357,7 @@ void glaxnimate::command::MoveKeyframe::redo()
 }
 
 
-glaxnimate::command::RemoveAllKeyframes::RemoveAllKeyframes(model::AnimatableBase* prop, QVariant after, QUndoCommand *parent)
+glaxnimate::command::RemoveAllKeyframes::RemoveAllKeyframes(model::AnimatedPropertyBase* prop, QVariant after, QUndoCommand *parent)
     : QUndoCommand(command_name(prop), parent),
       prop(prop),
       before(prop->static_value()),
