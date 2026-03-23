@@ -116,17 +116,16 @@ void glaxnimate::gui::FollowPathDialog::apply()
     }
 
     auto guard = command::UndoMacroGuard(i18n("Follow Path"), d->property->object()->document());
-    d->property->object()->push_command(new command::RemoveAllKeyframes(d->property, d->property->value()));
+    d->property->object()->push_command(d->property->command_clear_keyframes());
 
     for ( int i = 0; i < bezier.size(); i++ )
     {
         qreal point_length = i < bezier.size() - 1 ? length.child_start(i) : length.child_end(i-1);
-        d->property->object()->push_command(new command::SetKeyframe(
-            d->property,
+        d->property->object()->push_command(d->property->command_add_smooth_keyframe(
             math::lerp(start, end, point_length / length.length()),
             QVariant::fromValue(bezier[i].pos),
             true,
-            true
+            nullptr
         ));
     }
 

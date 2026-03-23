@@ -159,16 +159,20 @@ void define_animatable(py::module& m)
     register_from_meta<Reg, model::AnimatedPropertyBase, model::AnimatableBase>(m)
         .def("set_keyframe", [](model::AnimatedPropertyBase& a, model::FrameTime time, const QVariant& value){
             a.object()->document()->undo_stack().push(
-                new command::SetKeyframe(&a, time, value, true)
+                a.command_add_smooth_keyframe(time, value, true)
             );
             return a.keyframe_at(time);
         }, no_own, py::arg("time"), py::arg("value"))
-        .def("remove_keyframe_at_time", [](model::AnimatedPropertyBase& a, model::FrameTime time){
+        .def("remove_keyframe", [](model::AnimatedPropertyBase& a, model::FrameTime time){
             a.object()->document()->undo_stack().push(
-                new command::RemoveKeyframeTime(&a, time)
+                a.command_remove_keyframe(time)
             );
         }, py::arg("time"))
-        .def("clear_keyframes", &model::AnimatedPropertyBase::clear_keyframes_undoable, py::arg("value") = py::none())
+        .def("clear_keyframes", [](model::AnimatedPropertyBase& a){
+            a.object()->document()->undo_stack().push(
+                a.command_clear_keyframes()
+            );
+        })
     ;
 }
 

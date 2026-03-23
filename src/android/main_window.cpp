@@ -977,7 +977,7 @@ public:
                     btn_add_kf->setText(i18n("Add keyframe"));
                     connect(btn_add_kf, &QToolButton::clicked, node, [anim]{
                         anim->object()->push_command(
-                            anim->add_smooth_keyframe_command(anim->time(), anim->value())
+                            anim->command_add_smooth_keyframe(anim->time(), anim->value())
                         );
                     });
                     btn_add_kf->setIconSize(QSize(80, 80));
@@ -990,7 +990,7 @@ public:
                         if ( anim->has_keyframe(anim->time()) )
                         {
                             anim->object()->push_command(
-                                new command::RemoveKeyframeTime(anim, anim->time())
+                                anim->command_remove_keyframe(anim->time())
                             );
                         }
                     });
@@ -1004,7 +1004,9 @@ public:
                     connect(btn_rm_kf, &QToolButton::clicked, node, [anim]{
                         if ( anim->animated() )
                         {
-                            anim->clear_keyframes_undoable();
+                            anim->object()->push_command(
+                                anim->command_clear_keyframes()
+                            );
                         }
                     });
                     btn_rm_kf_all->setIconSize(QSize(80, 80));

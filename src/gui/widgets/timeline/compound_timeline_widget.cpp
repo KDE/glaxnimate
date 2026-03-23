@@ -191,8 +191,8 @@ public:
         if ( data.isValid() && data.toInt() != model::KeyframeTransition::Custom )
         {
             property_model.document()->push_command(
-                new command::SetKeyframeTransition(
-                    menu_property.property(), keyframe->time(), data.value<model::KeyframeTransition::Descriptive>(),
+                menu_property.property()->command_set_transition_side(
+                    keyframe->time(), data.value<model::KeyframeTransition::Descriptive>(),
                     before_transition ? keyframe->transition().before() : keyframe->transition().after(),
                     before_transition
                 )
@@ -205,8 +205,8 @@ public:
             if ( keyframe_editor.exec() )
             {
                 property_model.document()->push_command(
-                    new command::SetKeyframeTransition(
-                        menu_property.property(), keyframe->time(),
+                    menu_property.property()->command_set_transition(
+                        keyframe->time(),
                         keyframe_editor.transition()
                     )
                 );
@@ -435,7 +435,7 @@ void CompoundTimelineWidget::add_keyframe()
         return;
 
     d->property_model.document()->push_command(
-        d->menu_property.property()->add_smooth_keyframe_command(
+        d->menu_property.property()->command_add_smooth_keyframe(
             d->ui.timeline->highlighted_time(), d->menu_property.property()->static_value()
         )
     );
@@ -463,7 +463,7 @@ void CompoundTimelineWidget::remove_keyframe()
         return;
 
     d->property_model.document()->undo_stack().push(
-        new command::RemoveKeyframeTime(d->menu_property.property(), d->menu_kf_exit->time())
+        d->menu_property.property()->command_remove_keyframe(d->menu_kf_exit->time())
     );
 }
 
@@ -519,7 +519,7 @@ void CompoundTimelineWidget::paste_keyframe()
     auto time = d->menu_kf_exit ? d->menu_kf_exit->time() : d->menu_property.object()->time();
 
     d->property_model.document()->push_command(
-        new command::SetKeyframe(d->menu_property.property(), time, value, true)
+        d->menu_property.property()->command_add_smooth_keyframe(time, value, true)
     );
 }
 
@@ -559,11 +559,11 @@ void CompoundTimelineWidget::click_index ( const QModelIndex& index )
             auto time = d->property_model.document()->current_time();
             if ( anprop->has_keyframe(time) )
             {
-                d->property_model.document()->push_command(new command::RemoveKeyframeTime(anprop, time));
+                d->property_model.document()->push_command(anprop->command_remove_keyframe(time));
             }
             else
             {
-                d->property_model.document()->push_command(new command::SetKeyframe(anprop, time, anprop->static_value(), true));
+                d->property_model.document()->push_command(anprop->command_add_smooth_keyframe(time, anprop->static_value()));
             }
         }
         else if ( index.column() == item_models::PropertyModelFull::ColumnPrevKeyframe )

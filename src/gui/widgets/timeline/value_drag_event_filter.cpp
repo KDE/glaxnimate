@@ -197,8 +197,7 @@ public:
             case AnimPoint:
             {
                 auto concprop = static_cast<model::AnimatedProperty<QPointF>*>(prop);
-                property_model->document()->push_command(new command::SetKeyframe(
-                    concprop,
+                property_model->document()->push_command(concprop->command_add_smooth_keyframe(
                     concprop->time(),
                     QPointF(val_x, val_y),
                     commit
@@ -208,8 +207,7 @@ public:
             case AnimScale:
             {
                 auto concprop = static_cast<model::AnimatedProperty<QVector2D>*>(prop);
-                property_model->document()->push_command(new command::SetKeyframe(
-                    concprop,
+                property_model->document()->push_command(concprop->command_add_smooth_keyframe(
                     concprop->time(),
                     QVector2D(val_x, val_y),
                     commit
@@ -219,8 +217,7 @@ public:
             case AnimFloat:
             {
                 auto concprop = static_cast<model::AnimatedProperty<QPointF>*>(prop);
-                property_model->document()->push_command(new command::SetKeyframe(
-                    concprop,
+                property_model->document()->push_command(concprop->command_add_smooth_keyframe(
                     concprop->time(),
                     prefer_y_axis ? val_y : val_x,
                     commit

@@ -137,8 +137,8 @@ void glaxnimate::model::GradientColors::split_segment(int segment_index, float f
     else
     {
         for ( const auto& kf : colors )
-            document()->push_command(new command::SetKeyframe(
-                &colors, kf.time(), split_gradient(kf.get(), segment_index, factor, new_color), true
+            document()->push_command(colors.command_add_smooth_keyframe(
+                kf.time(), split_gradient(kf.get(), segment_index, factor, new_color)
             ));
     }
 }
@@ -163,8 +163,8 @@ void glaxnimate::model::GradientColors::remove_stop(int index)
             auto stops = kf.get();
             stops.erase(std::min(stops.begin() + index, stops.end()));
 
-            document()->push_command(new command::SetKeyframe(
-                &colors, kf.time(), QVariant::fromValue(stops), true
+            document()->push_command(colors.command_add_smooth_keyframe(
+                kf.time(), QVariant::fromValue(stops)
             ));
         }
     }

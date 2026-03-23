@@ -107,7 +107,7 @@ void glaxnimate::gui::AnimatedPropertyMenu::paste_keyframe()
     stream >> value;
 
     d->object->push_command(
-        new command::SetKeyframe(d->property, d->object->time(), value, true)
+        d->property->command_add_smooth_keyframe(d->object->time(), value)
     );
 }
 
@@ -116,11 +116,9 @@ void glaxnimate::gui::AnimatedPropertyMenu::loop_keyframes()
     if ( !d->property || d->property->keyframe_count() < 1 )
         return;
 
-    d->object->push_command(new command::SetKeyframe(
-        d->property,
+    d->object->push_command(d->property->command_add_smooth_keyframe(
         d->comp()->animation->last_frame.get(),
-        d->property->first_keyframe()->value(),
-        true
+        d->property->first_keyframe()->value()
     ));
 }
 
@@ -138,7 +136,7 @@ void glaxnimate::gui::AnimatedPropertyMenu::remove_all_keyframes()
     if ( !d->property )
         return;
 
-    d->object->push_command(new command::RemoveAllKeyframes(d->property, d->property->static_value()));
+    d->object->push_command(d->property->command_clear_keyframes());
 }
 
 void glaxnimate::gui::AnimatedPropertyMenu::set_controller(glaxnimate::gui::SelectionManager* window)
@@ -208,7 +206,7 @@ void glaxnimate::gui::AnimatedPropertyMenu::add_keyframe()
 {
     if ( d->property )
         d->object->push_command(
-            d->property->add_smooth_keyframe_command(d->object->time(), d->property->static_value())
+            d->property->command_add_smooth_keyframe(d->object->time(), d->property->static_value())
         );
 }
 
@@ -216,7 +214,7 @@ void glaxnimate::gui::AnimatedPropertyMenu::remove_keyframe()
 {
     if ( d->property )
         d->object->push_command(
-            new command::RemoveKeyframeTime(d->property, d->object->time())
+            d->property->command_remove_keyframe(d->object->time())
         );
 }
 

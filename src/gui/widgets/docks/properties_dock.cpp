@@ -60,11 +60,13 @@ void glaxnimate::gui::PropertiesDock::click_index(const QModelIndex& index)
             auto time = d->property_model->document()->current_time();
             if ( anprop->has_keyframe(time) )
             {
-                d->property_model->document()->push_command(new command::RemoveKeyframeTime(anprop, time));
+                d->property_model->document()->push_command(anprop->command_remove_keyframe(time));
             }
             else
             {
-                d->property_model->document()->push_command(new command::SetKeyframe(anprop, time, anprop->static_value(), true));
+                d->property_model->document()->push_command(
+                    anprop->command_add_smooth_keyframe(time, anprop->static_value())
+                );
             }
         }
     }

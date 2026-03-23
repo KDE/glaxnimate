@@ -184,6 +184,11 @@ glaxnimate::model::KeyframeTransition::KeyframeTransition(glaxnimate::model::Key
 {
 }
 
+glaxnimate::model::KeyframeTransition::KeyframeTransition(Special special)
+    : KeyframeTransition({0, 0}, {1, 1}, special)
+{
+}
+
 std::pair<glaxnimate::model::KeyframeTransition, glaxnimate::model::KeyframeTransition> glaxnimate::model::KeyframeTransition::split(double x) const
 {
     return split_t(bezier_.t_at_value(x));

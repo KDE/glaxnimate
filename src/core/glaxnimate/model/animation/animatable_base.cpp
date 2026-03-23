@@ -7,7 +7,44 @@
 #include "glaxnimate/model/animation/animatable_base.hpp"
 #include "glaxnimate/command/animation_commands.hpp"
 
-QUndoCommand *glaxnimate::model::AnimatableBase::add_smooth_keyframe_command(FrameTime time, const QVariant &value)
+QUndoCommand *glaxnimate::model::AnimatableBase::command_add_smooth_keyframe(FrameTime time, const QVariant &value, bool commit, QUndoCommand *parent)
 {
-    return new command::SetKeyframe(this, time, value.isNull() ? static_value() : value, true);
+    return new command::SetKeyframe(this, time, value.isNull() ? static_value() : value, commit, parent);
+}
+
+QUndoCommand *glaxnimate::model::AnimatableBase::command_remove_keyframe(FrameTime time, QUndoCommand *parent)
+{
+    return new command::RemoveKeyframeTime(this, time, parent);
+}
+
+QUndoCommand *glaxnimate::model::AnimatableBase::command_clear_keyframes(QUndoCommand *parent)
+{
+    return new command::RemoveAllKeyframes(this, static_value(), parent);
+}
+
+QUndoCommand *glaxnimate::model::AnimatableBase::command_set_transition(FrameTime time, const model::KeyframeTransition &transition, QUndoCommand *parent)
+{
+    return new command::SetKeyframeTransition(this, time, transition, parent);
+}
+
+QUndoCommand *glaxnimate::model::AnimatableBase::command_set_transition_side(FrameTime time, model::KeyframeTransition::Descriptive desc, const QPointF &point, bool before_transition, QUndoCommand *parent)
+{
+    auto transition = command::SetKeyframeTransition::transition_side(this, time, desc, point, before_transition);
+    return new command::SetKeyframeTransition(this, time, transition, parent);
+}
+
+QUndoCommand *glaxnimate::model::AnimatableBase::command_move_keyframe(FrameTime time_before, FrameTime time_after, QUndoCommand *parent)
+{
+    if ( !keyframe_at(time_before) )
+        return nullptr;
+
+    if ( !keyframe_at(time_after) )
+    {
+        return new command::MoveKeyframe(this, time_before, time_after, parent);
+    }
+
+    auto subp = new QUndoCommand(i18n("Move keyframe"), parent);
+    new command::RemoveKeyframeTime(this, time_after, subp);
+    new command::MoveKeyframe(this, time_before, time_after, subp);
+    return subp;
 }

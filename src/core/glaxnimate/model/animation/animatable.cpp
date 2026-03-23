@@ -194,19 +194,6 @@ glaxnimate::model::AnimatedPropertyBase::MidTransition glaxnimate::model::Animat
     return mt;
 }
 
-void glaxnimate::model::AnimatedPropertyBase::clear_keyframes_undoable(QVariant value)
-{
-    if ( !value.isValid() || value.isNull() )
-        value = this->value();
-
-    object()->push_command(new command::RemoveAllKeyframes(this, std::move(value)));
-}
-
-void glaxnimate::model::AnimatedPropertyBase::add_smooth_keyframe(FrameTime time, const QVariant& value)
-{
-    object()->push_command(add_smooth_keyframe_command(time, value));
-}
-
 void glaxnimate::model::detail::AnimatedPropertyPosition::split_segment(int index, qreal factor)
 {
     if ( keyframes_.size() < 2 )
@@ -251,7 +238,7 @@ void glaxnimate::model::detail::AnimatedPropertyPosition::split_segment(int inde
     }
 
     parent->add_command(
-        std::make_unique<command::SetKeyframe>(this, time, value, true, true),
+        std::make_unique<command::SetKeyframe>(this, time, value, true, nullptr),
         0, 0
     );
 
@@ -305,7 +292,7 @@ void glaxnimate::model::detail::AnimatedPropertyPosition::remove_points(const st
         {
             auto time = iter->time();
             ++iter;
-            parent->add_command(std::make_unique<command::RemoveKeyframeTime>(this, time), -order, order);
+            parent->add_command(std::make_unique<command::RemoveKeyframeTime>(this, time, nullptr), -order, order);
             ++order;
         }
         else
@@ -379,13 +366,17 @@ bool glaxnimate::model::detail::AnimatedPropertyPosition::valid_value(const QVar
     return false;
 }
 
-QUndoCommand* glaxnimate::model::detail::AnimatedPropertyPosition::add_smooth_keyframe_command(FrameTime time, const QVariant& val)
+QUndoCommand* glaxnimate::model::detail::AnimatedPropertyPosition::command_add_smooth_keyframe(FrameTime time, const QVariant& val, bool commit, QUndoCommand* parent_cmd)
 {
-    auto parent = std::make_unique<command::ReorderedUndoCommand>(i18n("Add Keyframe"));
+    // TODO test this
+    if ( !commit )
+        return new command::SetKeyframe(this, time, val, false, parent_cmd);
+
+    auto parent = std::make_unique<command::ReorderedUndoCommand>(i18n("Add Keyframe"), parent_cmd);
 
     auto value = val.isNull() ? QVariant(value_) : val;
 
-    parent->add_command(std::make_unique<command::SetKeyframe>(this, time, value, true), 0, 0);
+    parent->add_command(std::make_unique<command::SetKeyframe>(this, time, value, true, nullptr), 0, 0);
 
     int count = keyframes_.size();
 

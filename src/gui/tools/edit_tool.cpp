@@ -484,7 +484,9 @@ public:
                     }
                     ++i;
                 }
-                pos_prop->clear_keyframes_undoable(value);
+                pos_prop->object()->push_command(
+                    pos_prop->command_clear_keyframes()
+                );
                 return;
             }
             pos_prop->remove_points(item->selected_indices());

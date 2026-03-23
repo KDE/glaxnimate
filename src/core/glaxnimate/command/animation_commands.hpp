@@ -21,8 +21,10 @@ public:
         model::FrameTime time,
         const QVariant& value,
         bool commit,
-        bool force_insert = false
+        QUndoCommand* parent
     );
+
+    static QString command_name(model::AnimatableBase* prop, model::FrameTime time);
 
     void undo() override;
 
@@ -40,7 +42,6 @@ private:
     model::KeyframeTransition trans_before;
     model::KeyframeTransition left;
     model::KeyframeTransition right;
-    bool force_insert = false;
     bool adjust_transition = false;
 };
 
@@ -49,8 +50,11 @@ class RemoveKeyframeTime : public QUndoCommand
 public:
     RemoveKeyframeTime(
         model::AnimatableBase* prop,
-        model::FrameTime time
+        model::FrameTime time,
+        QUndoCommand* parent
     );
+
+    static QString command_name(model::AnimatableBase* prop, model::FrameTime time);
 
     void undo() override;
 
@@ -65,12 +69,12 @@ private:
     model::KeyframeTransition transition_before;
 };
 
-
-
 class RemoveAllKeyframes : public QUndoCommand
 {
 public:
-    RemoveAllKeyframes(model::AnimatableBase* prop, QVariant value);
+    RemoveAllKeyframes(model::AnimatableBase* prop, QVariant value, QUndoCommand* parent);
+
+    static QString command_name(model::AnimatableBase* prop);
 
     void undo() override;
 
@@ -165,19 +169,21 @@ public:
     SetKeyframeTransition(
         model::AnimatableBase* prop,
         model::FrameTime time,
+        const model::KeyframeTransition& transition,
+        QUndoCommand* parent
+    );
+
+
+    void undo() override;
+    void redo() override;
+
+    static model::KeyframeTransition transition_side(
+        model::AnimatableBase* prop,
+        model::FrameTime time,
         model::KeyframeTransition::Descriptive desc,
         const QPointF& point,
         bool before_transition
     );
-
-    SetKeyframeTransition(
-        model::AnimatableBase* prop,
-        model::FrameTime time,
-        const model::KeyframeTransition& transition
-    );
-
-    void undo() override;
-    void redo() override;
 
 private:
     model::AnimatableBase* prop;
@@ -192,19 +198,13 @@ public:
     MoveKeyframe(
         model::AnimatableBase* prop,
         model::FrameTime time_before,
-        model::FrameTime time_after
+        model::FrameTime time_after,
+        QUndoCommand* parent
     );
 
     void undo() override;
 
     void redo() override;
-    
-    static model::AnimatableBase::MoveResult move_keyframe(
-        model::Object* object,
-        model::AnimatableBase* prop,
-        model::FrameTime time_before,
-        model::FrameTime time_after
-    );
 
 private:
     model::AnimatableBase* prop;

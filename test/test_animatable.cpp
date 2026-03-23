@@ -426,7 +426,7 @@ private Q_SLOTS:
         using type = int;
 
         QCOMPARE(property.animated(), false);
-        auto cmd1 = new SetKeyframe(&property, 10, QVariant(123), false);
+        auto cmd1 = property.command_add_smooth_keyframe(10, QVariant(123), false);
         cmd1->redo();
         QCOMPARE(property.animated(), true);
         PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 123));
@@ -434,14 +434,14 @@ private Q_SLOTS:
         QCOMPARE(property.animated(), false);
         cmd1->redo();
 
-        auto cmd2 = new SetKeyframe(&property, 20, QVariant(45), false);
+        auto cmd2 = property.command_add_smooth_keyframe(20, QVariant(45), false);
         cmd2->redo();
         PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 123), newkf<type>(20, 45));
         cmd2->undo();
         PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 123));
         cmd2->redo();
 
-        auto cmd3 = new SetKeyframe(&property, 10, QVariant(67), false);
+        auto cmd3 = property.command_add_smooth_keyframe(10, QVariant(67), false);
         cmd3->redo();
         PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 67), newkf<type>(20, 45));
         cmd3->undo();
@@ -464,21 +464,22 @@ private Q_SLOTS:
         property.set_keyframe(20, 120);
         property.set_keyframe(30, 130);
 
-        auto cmd1 = new RemoveKeyframeTime(&property, 20);
+        auto cmd1 = property.command_remove_keyframe(20);
         cmd1->redo();
         PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(30, 130));
         cmd1->undo();
         PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(20, 120), newkf<type>(30, 130));
         cmd1->redo();
 
-        auto cmd2 = new RemoveKeyframeTime(&property, 10);
+        auto cmd2 = property.command_remove_keyframe(10);
         cmd2->redo();
         PROPERTY_KEYFRAMES(type, property, newkf<type>(30, 130));
         cmd2->undo();
         PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(30, 130));
 
 
-        auto cmd3 = new RemoveAllKeyframes(&property, 67);
+        property.set_value(67);
+        auto cmd3 = property.command_clear_keyframes();
         cmd3->redo();
         QCOMPARE(property.keyframe_count(), 0);
         QCOMPARE(property.get(), 67);
@@ -500,16 +501,18 @@ private Q_SLOTS:
         property.set_keyframe(30, 130);
 
         {
-            MoveKeyframe::move_keyframe(&ts, &property, 20, 40);
+            auto cmd = property.command_move_keyframe(20, 40);
+            cmd->redo();
             PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(30, 130), newkf<type>(40, 120));
-            doc.undo_stack().undo();
+            cmd->undo();
             PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(20, 120), newkf<type>(30, 130));
         }
 
         {
-            MoveKeyframe::move_keyframe(&ts, &property, 20, 30);
+            auto cmd = property.command_move_keyframe(20, 30);
+            cmd->redo();
             PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(30, 120));
-            doc.undo_stack().undo();
+            cmd->undo();
             PROPERTY_KEYFRAMES(type, property, newkf<type>(10, 100), newkf<type>(20, 120), newkf<type>(30, 130));
         }
     }

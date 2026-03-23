@@ -514,7 +514,7 @@ void timeline::AnimatableItem::keyframes_dragged(const std::vector<DragData>& ke
 {
     for ( auto kf : keyframe_items )
     {
-        if ( command::MoveKeyframe::move_keyframe(object(), animatable, kf.from, kf.to) == model::AnimatableBase::MoveResult::OverwrittenDestination )
+        if ( animatable->command_move_keyframe(kf.from, kf.to) )
         {
             (*kf_split_items.find(kf.to))->setSelected(true);
         }
@@ -558,12 +558,12 @@ void glaxnimate::gui::timeline::AnimatableItem::cycle_keyframe_transition(model:
         {
             auto left_trans = kf_before->transition();
             left_trans.set_after_descriptive(desc);
-            object()->push_command(new command::SetKeyframeTransition(animatable, kf_before->time(), left_trans));
+            object()->push_command(animatable->command_set_transition(kf_before->time(), left_trans));
         }
 
         auto right_trans = kf->transition();
         right_trans.set_before_descriptive(desc);
-        object()->push_command(new command::SetKeyframeTransition(animatable, time, right_trans));
+        object()->push_command(animatable->command_set_transition(time, right_trans));
     }
 }
 

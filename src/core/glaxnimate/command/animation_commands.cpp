@@ -14,15 +14,19 @@ glaxnimate::command::SetKeyframe::SetKeyframe(
     model::FrameTime time,
     const QVariant& value,
     bool commit,
-    bool force_insert
-) : Parent(i18n("Update %1 keyframe at %2", prop->visual_name(), time), commit),
+    QUndoCommand* parent
+    ) : Parent(command_name(prop, time), commit, parent),
     prop(prop),
     time(time),
     before(prop->value_at_time(time)),
     after(value),
-    had_before(prop->has_keyframe(time) && !force_insert),
-    force_insert(force_insert)
+    had_before(prop->has_keyframe(time))
 {}
+
+QString glaxnimate::command::SetKeyframe::command_name(model::AnimatableBase *prop, model::FrameTime time)
+{
+    return i18n("Update %1 keyframe at %2", prop->visual_name(), time);
+}
 
 void glaxnimate::command::SetKeyframe::undo()
 {
@@ -41,7 +45,7 @@ void glaxnimate::command::SetKeyframe::redo()
     {
         auto mid = prop->mid_transition(time);
         model::AnimatedPropertyBase::SetKeyframeInfo info;
-        kf = prop->set_keyframe(time, after, &info, force_insert);
+        kf = prop->set_keyframe(time, after, &info);
         if ( kf && info.insertion )
         {
             if ( mid.type != model::AnimatedPropertyBase::MidTransition::Middle )
@@ -62,7 +66,7 @@ void glaxnimate::command::SetKeyframe::redo()
     }
     else
     {
-        prop->set_keyframe(time, after, nullptr, force_insert);
+        prop->set_keyframe(time, after, nullptr);
     }
 
     if ( adjust_transition )
@@ -83,8 +87,9 @@ bool glaxnimate::command::SetKeyframe::merge_with(const SetKeyframe& other)
 
 glaxnimate::command::RemoveKeyframeTime::RemoveKeyframeTime(
     model::AnimatableBase* prop,
-    model::FrameTime time
-) : QUndoCommand(i18n("Remove %1 keyframe at %2", prop->visual_name(), time)),
+    model::FrameTime time,
+    QUndoCommand* parent
+) : QUndoCommand(command_name(prop, time), parent),
     prop(prop),
     time(time)
 {
@@ -98,6 +103,11 @@ glaxnimate::command::RemoveKeyframeTime::RemoveKeyframeTime(
         if ( !prev_transition_after.hold() )
             prev_transition_after.set_after(kf->transition().after());
     }
+}
+
+QString glaxnimate::command::RemoveKeyframeTime::command_name(model::AnimatableBase *prop, model::FrameTime time)
+{
+    return i18n("Remove %1 keyframe at %2", prop->visual_name(), time);
 }
 
 void glaxnimate::command::RemoveKeyframeTime::undo()
@@ -277,38 +287,15 @@ bool glaxnimate::command::SetMultipleAnimated::empty() const
 glaxnimate::command::SetKeyframeTransition::SetKeyframeTransition(
         model::AnimatableBase* prop,
         model::FrameTime time,
-        const model::KeyframeTransition& transition
+        const model::KeyframeTransition& transition,
+        QUndoCommand *parent
     )
-: QUndoCommand(i18n("Update keyframe transition")),
+: QUndoCommand(i18n("Update keyframe transition"), parent),
     prop(prop),
     time(time),
     undo_value(prop->keyframe_at(time)->transition()),
     redo_value(transition)
 {
-}
-
-glaxnimate::command::SetKeyframeTransition::SetKeyframeTransition(
-    model::AnimatableBase* prop,
-    model::FrameTime time,
-    model::KeyframeTransition::Descriptive desc,
-    const QPointF& point,
-    bool before_transition
-) : SetKeyframeTransition(prop, time, prop->keyframe_at(time)->transition())
-{
-    if ( desc == model::KeyframeTransition::Custom )
-    {
-        if ( before_transition )
-            redo_value.set_before(point);
-        else
-            redo_value.set_after(point);
-    }
-    else
-    {
-        if ( before_transition )
-            redo_value.set_before_descriptive(desc);
-        else
-            redo_value.set_after_descriptive(desc);
-    }
 }
 
 void glaxnimate::command::SetKeyframeTransition::undo()
@@ -321,11 +308,39 @@ void glaxnimate::command::SetKeyframeTransition::redo()
     prop->set_transition(time, redo_value);
 }
 
+glaxnimate::model::KeyframeTransition glaxnimate::command::SetKeyframeTransition::transition_side(
+    model::AnimatableBase *prop,
+    model::FrameTime time,
+    model::KeyframeTransition::Descriptive desc,
+    const QPointF &point,
+    bool before_transition)
+{
+    auto transition = prop->keyframe_at(time)->transition();
+
+    if ( desc == model::KeyframeTransition::Custom )
+    {
+        if ( before_transition )
+            transition.set_before(point);
+        else
+            transition.set_after(point);
+    }
+    else
+    {
+        if ( before_transition )
+            transition.set_before_descriptive(desc);
+        else
+            transition.set_after_descriptive(desc);
+    }
+
+    return transition;
+}
+
 glaxnimate::command::MoveKeyframe::MoveKeyframe(
     model::AnimatableBase* prop,
     model::FrameTime time_before,
-    model::FrameTime time_after
-) : QUndoCommand(i18n("Move keyframe")),
+    model::FrameTime time_after,
+    QUndoCommand* parent
+) : QUndoCommand(i18n("Move keyframe"), parent),
     prop(prop),
     time_before(time_before),
     time_after(time_after)
@@ -341,29 +356,9 @@ void glaxnimate::command::MoveKeyframe::redo()
     prop->move_keyframe(time_before, time_after);
 }
 
-glaxnimate::model::AnimatableBase::MoveResult glaxnimate::command::MoveKeyframe::move_keyframe(
-    model::Object* object,
-    model::AnimatableBase *prop,
-    model::FrameTime time_before,
-    model::FrameTime time_after)
-{
-    if ( !prop->keyframe_at(time_before) )
-        return model::AnimatableBase::MoveResult::NotFound;
 
-    if ( !prop->keyframe_at(time_after) )
-    {
-        object->push_command(new MoveKeyframe(prop, time_before, time_after));
-        return model::AnimatableBase::MoveResult::Moved;
-    }
-
-    UndoMacroGuard guard(i18n("Move keyframe"), object->document());
-    object->push_command(new RemoveKeyframeTime(prop, time_after));
-    object->push_command(new MoveKeyframe(prop, time_before, time_after));
-    return model::AnimatableBase::MoveResult::OverwrittenDestination;
-}
-
-glaxnimate::command::RemoveAllKeyframes::RemoveAllKeyframes(model::AnimatableBase* prop, QVariant after)
-    : QUndoCommand(i18n("Remove animations from %1", prop->visual_name())),
+glaxnimate::command::RemoveAllKeyframes::RemoveAllKeyframes(model::AnimatableBase* prop, QVariant after, QUndoCommand *parent)
+    : QUndoCommand(command_name(prop), parent),
       prop(prop),
       before(prop->static_value()),
       after(std::move(after))
@@ -378,6 +373,11 @@ glaxnimate::command::RemoveAllKeyframes::RemoveAllKeyframes(model::AnimatableBas
             kf.transition()
         });
     }
+}
+
+QString glaxnimate::command::RemoveAllKeyframes::command_name(model::AnimatableBase *prop)
+{
+    return i18n("Remove animations from %1", prop->visual_name());
 }
 
 void glaxnimate::command::RemoveAllKeyframes::redo()

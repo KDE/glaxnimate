@@ -47,8 +47,8 @@ public:
 protected:
     using Parent = MergeableCommand;
 
-    MergeableCommand(const QString& name, bool commit = true)
-        : QUndoCommand(name), commit(commit)
+    MergeableCommand(const QString& name, bool commit = true, QUndoCommand* parent = nullptr)
+        : QUndoCommand(name, parent), commit(commit)
     {}
 
     bool commit;

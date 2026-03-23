@@ -39,7 +39,7 @@ void glaxnimate::model::detail::AnimatedPropertyBezier::split_segment(int index,
         bez.split_segment(index, factor);
         if ( !mismatched_ && kf.time() == time() )
             set = false;
-        object()->push_command(new command::SetKeyframe(this, kf.time(), QVariant::fromValue(bez), true));
+        object()->push_command(new command::SetKeyframe(this, kf.time(), QVariant::fromValue(bez), true, nullptr));
     }
 
     if ( set )
@@ -70,7 +70,7 @@ void glaxnimate::model::detail::AnimatedPropertyBezier::remove_points(const std:
         auto bez = kf.get().removed_points(indices);
         if ( !mismatched_ && kf.time() == time() )
             set = false;
-        object()->push_command(new command::SetKeyframe(this, kf.time(), QVariant::fromValue(bez), true));
+        object()->push_command(new command::SetKeyframe(this, kf.time(), QVariant::fromValue(bez), true, nullptr));
     }
 
     if ( set )
@@ -149,7 +149,7 @@ void glaxnimate::model::detail::AnimatedPropertyBezier::extend(const math::bezie
         if ( !mismatched_ && kf.time() == time() )
             set = false;
         object()->push_command(
-            new command::SetKeyframe(this, kf.time(), extend_impl(kf.get(), target, at_end), true)
+            new command::SetKeyframe(this, kf.time(), extend_impl(kf.get(), target, at_end), true, nullptr)
         );
     }
 

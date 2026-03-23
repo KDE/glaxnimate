@@ -43,6 +43,7 @@ public:
         HasValue = 1,
         IsWritable = 2,
         IsProperty = 4,
+        IsMeta = 8
     };
 
     struct SetKeyframeInfo
@@ -224,8 +225,27 @@ public:
      */
     virtual KeyframeBase* set_keyframe(FrameTime time, const QVariant& value, SetKeyframeInfo* info = nullptr, bool force_insert = false) = 0;
 
-    virtual QUndoCommand* add_smooth_keyframe_command(FrameTime time, const QVariant& value);
-
+    /**
+     * \brief Adds a keyframe at the given time
+     */
+    virtual QUndoCommand* command_add_smooth_keyframe(FrameTime time, const QVariant& value, bool commit = true, QUndoCommand* parent = nullptr);
+    virtual QUndoCommand* command_remove_keyframe(FrameTime time, QUndoCommand* parent = nullptr);
+    /**
+     * \brief Clears all keyframes and creates an associated undo action
+     */
+    virtual QUndoCommand* command_clear_keyframes(QUndoCommand* parent = nullptr);
+    /**
+     * @brief Creates an appropriate undo command for changing a keyframe's transition
+     */
+    virtual QUndoCommand* command_set_transition(model::FrameTime time, const model::KeyframeTransition& transition, QUndoCommand* parent = nullptr);
+    virtual QUndoCommand* command_set_transition_side(
+        model::FrameTime time,
+        model::KeyframeTransition::Descriptive desc,
+        const QPointF& point,
+        bool before_transition,
+        QUndoCommand* parent = nullptr
+    );
+    virtual QUndoCommand* command_move_keyframe(model::FrameTime time_before, model::FrameTime time_after, QUndoCommand* parent = nullptr);
 
     // Renamed to avoid clashing with BaseProperty
     virtual QString visual_name() const = 0;
@@ -245,5 +265,127 @@ Q_SIGNALS:
     void transition_changed(FrameTime time, KeyframeTransition::Descriptive before, KeyframeTransition::Descriptive after);
 
 };
+
+
+namespace detail {
+
+/**
+ * @brief Implements common operations based on the keyframe container
+ */
+template<class KeyframeT, class Base>
+class AnimatableImpl : public Base
+{
+public:
+    using Ctor = AnimatableImpl;
+    using keyframe_type = KeyframeT;
+
+    using Base::Base;
+
+    int keyframe_count() const override
+    {
+        return keyframes_.size();
+    }
+
+    const keyframe_type* keyframe_containing(FrameTime time) const override
+    {
+        auto it = keyframes_.find_best(time);
+        if ( it == keyframes_.end() )
+            return nullptr;
+        return it.ptr();
+    }
+
+    keyframe_type* keyframe_containing(FrameTime time) override
+    {
+        auto it = keyframes_.find_best(time);
+        if ( it == keyframes_.end() )
+            return nullptr;
+        return it.ptr();
+    }
+
+    keyframe_type* keyframe_before(FrameTime time) override
+    {
+        auto it = keyframes_.find_best(time);
+        if ( it == keyframes_.end() || it == keyframes_.begin())
+            return nullptr;
+        --it;
+        return it.ptr();
+    }
+
+
+    keyframe_type* keyframe_after(FrameTime time) override
+    {
+        auto it = keyframes_.upper_bound(time);
+        if ( it == keyframes_.end() )
+            return nullptr;
+        return it.ptr();
+    }
+
+
+    const keyframe_type* keyframe_before(FrameTime time) const override
+    {
+        auto it = keyframes_.find_best(time);
+        if ( it == keyframes_.end() || it == keyframes_.begin())
+            return nullptr;
+        --it;
+        return it.ptr();
+    }
+
+
+    const keyframe_type* keyframe_after(FrameTime time) const override
+    {
+        auto it = keyframes_.upper_bound(time);
+        if ( it == keyframes_.end() )
+            return nullptr;
+        return it.ptr();
+    }
+
+    const keyframe_type* keyframe_at(FrameTime time) const override
+    {
+        auto it = keyframes_.find(time);
+        if ( it == keyframes_.end() )
+            return nullptr;
+        return it.ptr();
+    }
+
+    keyframe_type* keyframe_at(FrameTime time) override
+    {
+        auto it = keyframes_.find(time);
+        if ( it == keyframes_.end() )
+            return nullptr;
+        return it.ptr();
+    }
+
+    detail::TypeErasedKeyframeRange keyframe_range() const override
+    {
+        return keyframes_.type_erased();
+    }
+
+    detail::TypeErasedKeyframeIterator find(model::FrameTime t) const override
+    {
+        return keyframes_.type_erased(keyframes_.find(t));
+    }
+
+    const KeyframeBase* first_keyframe() const override
+    {
+        return keyframes_.empty() ? nullptr : keyframes_.begin().ptr();
+    }
+
+    const KeyframeBase* last_keyframe() const override
+    {
+        if ( keyframes_.empty() )
+            return nullptr;
+        auto iter = keyframes_.end();
+        --iter;
+        return iter.ptr();
+    }
+
+    typename KeyframeContainer<KeyframeT>::const_iterator begin() const { return this->keyframes_.begin(); }
+    typename KeyframeContainer<KeyframeT>::const_iterator end() const { return this->keyframes_.end(); }
+
+protected:
+    KeyframeContainer<KeyframeT> keyframes_;
+};
+
+} // namespace detail
 
 } // namespace glaxnimate::model

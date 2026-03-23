@@ -69,19 +69,6 @@ public:
         return current_time;
     }
 
-
-    /**
-     * \brief Clears all keyframes and creates an associated undo action
-     * \param value Value to be set after clearing
-     */
-    Q_INVOKABLE virtual void clear_keyframes_undoable(QVariant value = {});
-
-    /**
-     * \brief Adds a keyframe at the given time
-     */
-    Q_INVOKABLE void add_smooth_keyframe(FrameTime time, const QVariant& value = {});
-
-
     QVariant static_value() const override { return value(); }
     bool set_static_value(const QVariant& v) override { return set_value(v); }
 
@@ -306,123 +293,6 @@ template<class Type>
 class AnimatedProperty;
 
 namespace detail {
-
-/**
- * @brief Implements common operations based on the keyframe container
- */
-template<class KeyframeT, class Base>
-class AnimatableImpl : public Base
-{
-public:
-    using Ctor = AnimatableImpl;
-    using keyframe_type = KeyframeT;
-
-    using Base::Base;
-
-    int keyframe_count() const override
-    {
-        return keyframes_.size();
-    }
-
-    const keyframe_type* keyframe_containing(FrameTime time) const override
-    {
-        auto it = keyframes_.find_best(time);
-        if ( it == keyframes_.end() )
-            return nullptr;
-        return it.ptr();
-    }
-
-    keyframe_type* keyframe_containing(FrameTime time) override
-    {
-        auto it = keyframes_.find_best(time);
-        if ( it == keyframes_.end() )
-            return nullptr;
-        return it.ptr();
-    }
-
-    keyframe_type* keyframe_before(FrameTime time) override
-    {
-        auto it = keyframes_.find_best(time);
-        if ( it == keyframes_.end() || it == keyframes_.begin())
-            return nullptr;
-        --it;
-        return it.ptr();
-    }
-
-
-    keyframe_type* keyframe_after(FrameTime time) override
-    {
-        auto it = keyframes_.upper_bound(time);
-        if ( it == keyframes_.end() )
-            return nullptr;
-        return it.ptr();
-    }
-
-
-    const keyframe_type* keyframe_before(FrameTime time) const override
-    {
-        auto it = keyframes_.find_best(time);
-        if ( it == keyframes_.end() || it == keyframes_.begin())
-            return nullptr;
-        --it;
-        return it.ptr();
-    }
-
-
-    const keyframe_type* keyframe_after(FrameTime time) const override
-    {
-        auto it = keyframes_.upper_bound(time);
-        if ( it == keyframes_.end() )
-            return nullptr;
-        return it.ptr();
-    }
-
-    const keyframe_type* keyframe_at(FrameTime time) const override
-    {
-        auto it = keyframes_.find(time);
-        if ( it == keyframes_.end() )
-            return nullptr;
-        return it.ptr();
-    }
-
-    keyframe_type* keyframe_at(FrameTime time) override
-    {
-        auto it = keyframes_.find(time);
-        if ( it == keyframes_.end() )
-            return nullptr;
-        return it.ptr();
-    }
-
-    detail::TypeErasedKeyframeRange keyframe_range() const override
-    {
-        return keyframes_.type_erased();
-    }
-
-    detail::TypeErasedKeyframeIterator find(model::FrameTime t) const override
-    {
-        return keyframes_.type_erased(keyframes_.find(t));
-    }
-
-    virtual const KeyframeBase* first_keyframe() const override
-    {
-        return keyframes_.empty() ? nullptr : keyframes_.begin().ptr();
-    }
-
-    virtual const KeyframeBase* last_keyframe() const override
-    {
-        if ( keyframes_.empty() )
-            return nullptr;
-        auto iter = keyframes_.end();
-        --iter;
-        return iter.ptr();
-    }
-
-    typename KeyframeContainer<KeyframeT>::const_iterator begin() const { return this->keyframes_.begin(); }
-    typename KeyframeContainer<KeyframeT>::const_iterator end() const { return this->keyframes_.end(); }
-
-protected:
-    KeyframeContainer<KeyframeT> keyframes_;
-};
 
 template<class Type>
 class AnimatedProperty : public AnimatableImpl<Keyframe<Type>, AnimatedPropertyBase>
@@ -824,7 +694,7 @@ public:
 
     bool valid_value(const QVariant& val) const override;
 
-    QUndoCommand* add_smooth_keyframe_command(FrameTime time, const QVariant& value) override;
+    QUndoCommand* command_add_smooth_keyframe(FrameTime time, const QVariant& value, bool commit = true, QUndoCommand* parent = nullptr) override;
 
     /**
      * \brief Gets the bezier derivative at the given time
