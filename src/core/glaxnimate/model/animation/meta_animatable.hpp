@@ -7,6 +7,7 @@
 #pragma once
 
 #include <QObject>
+#include <set>
 
 #include "glaxnimate/model/animation/animatable_base.hpp"
 
