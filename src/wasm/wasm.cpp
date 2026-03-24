@@ -10,6 +10,7 @@
 
 #include "glaxnimate/io/io_registry.hpp"
 #include "glaxnimate/renderer/renderer.hpp"
+#include "glaxnimate/init.hpp"
 
 #include "glaxnimate/script/glaxnimate_model.hpp"
 
@@ -209,6 +210,12 @@ void register_animatable()
     name += QMetaType::fromType<T>().name();
     name += ">";
     emscripten::class_<model::AnimatedProperty<T>, emscripten::base<Base>>(name.c_str());
+
+
+    name = "Keyframe<";
+    name += QMetaType::fromType<T>().name();
+    name += ">";
+    emscripten::class_<model::Keyframe<T>, emscripten::base<model::KeyframeBase>>(name.c_str());
 }
 
 void initialize()
@@ -216,7 +223,7 @@ void initialize()
     static int argc = 0;
     static char* argv[0] = {};
     static QCoreApplication app(argc, argv);
-    io::IoRegistry::load_formats();
+    glaxnimate::init();
 }
 
 
@@ -287,18 +294,25 @@ EMSCRIPTEN_BINDINGS(glaxnimate_wasm)
     auto shapes = Reg::submodule(glaxnimate_module, "shapes");
 
     register_from_meta<Reg, model::Document, QObject>(model);
-    register_from_meta<Reg, model::Object, QObject>(model);
+    register_from_meta<Reg, model::Object, QObject>(model)
+        .function(
+            "stretch_time",
+            fn([](model::Object* object, double multiplier){
+                if ( multiplier > 0 )
+                    object->push_command(new command::StretchTimeCommand(object, multiplier));
+            })
+        )
+        .property("document", fn([](const model::Object* object) { return object->document(); }))
+        .property("grouped_animations", fn([](model::Object* object) { return &object->grouped_animations(); }))
+    ;
     register_from_meta<Reg, model::DocumentNode, model::Object>(model);
     register_top_level<Reg>(model);
 
 
-    emscripten::class_<model::KeyframeBase>(m, "Keyframe")
-        .property("time", &model::KeyframeBase::time)
-        .def_property("value", &model::KeyframeBase::value)
-        .property("transition", &model::KeyframeBase::transition)
-        ;
+    register_from_meta<Reg, model::KeyframeBase, QObject>(m);
 
     register_from_meta<Reg, model::AnimatableBase, QObject>(model);
+    register_from_meta<Reg, model::MetaAnimatable, model::AnimatableBase>(m);
     register_from_meta<Reg, model::AnimatedPropertyBase, model::AnimatableBase>(model)
         .function("get", fn([](const model::AnimatableBase& anim){
             return anim.value();

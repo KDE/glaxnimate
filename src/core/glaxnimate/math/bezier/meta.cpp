@@ -54,18 +54,3 @@ void math::bezier::register_meta()
     QMetaType::registerConverter<QPointF, Point>([](const QPointF& p) { return Point{p, p, p}; });
 }
 
-
-namespace {
-
-class BezierAutoRegister
-{
-public:
-    BezierAutoRegister()
-    {
-        math::bezier::register_meta();
-    }
-};
-
-} // namespace
-
-static BezierAutoRegister bezier_reg = {};

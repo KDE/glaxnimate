@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 #include <iostream>
-#include "glaxnimate/io/io_registry.hpp"
+#include "glaxnimate/init.hpp"
 #include "glaxnimate/renderer/renderer.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
 
@@ -24,8 +24,8 @@ int main(int argc, char *argv[])
     float frame = std::stof(argv[2]);
     QString out_filename = argv[3];
 
-    // Initialize default format loaders
-    io::IoRegistry::load_formats();
+    // Initialize default format loaders ant Qt meta types
+    glaxnimate::init();
 
     // Load file
     auto importer = io::IoRegistry::instance().from_filename(in_filename, io::ImportExport::Import);

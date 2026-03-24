@@ -92,8 +92,9 @@ public:
      *            time
      *
      * \return the Corresponding keyframe or nullptr if not found
+     * \note Uses double instead of FrameTime because Qt's MOC is too dumb to figure out typedefs
      */
-    Q_INVOKABLE virtual const KeyframeBase* keyframe_containing(FrameTime time) const = 0;
+    Q_INVOKABLE virtual const KeyframeBase* keyframe_containing(double time) const = 0;
     virtual KeyframeBase* keyframe_containing(FrameTime time) = 0;
 
     /**
@@ -108,7 +109,7 @@ public:
      *            time
      *
      */
-    Q_INVOKABLE virtual KeyframeBase* keyframe_before(FrameTime time) = 0;
+    Q_INVOKABLE virtual KeyframeBase* keyframe_before(double time) = 0;
     virtual const KeyframeBase* keyframe_before(FrameTime time) const = 0;
 
     /**
@@ -123,14 +124,14 @@ public:
      *            time
      *
      */
-    Q_INVOKABLE virtual KeyframeBase* keyframe_after(FrameTime time) = 0;
+    Q_INVOKABLE virtual KeyframeBase* keyframe_after(double time) = 0;
     virtual const KeyframeBase* keyframe_after(FrameTime time) const = 0;
 
     /**
      * \brief Keyframe at that specific time
      * \return the Corresponding keyframe or nullptr if not found
      */
-    Q_INVOKABLE virtual const KeyframeBase* keyframe_at(FrameTime time) const = 0;
+    Q_INVOKABLE virtual const KeyframeBase* keyframe_at(double time) const = 0;
     virtual KeyframeBase* keyframe_at(FrameTime time) = 0;
 
     /**
@@ -157,7 +158,7 @@ public:
         return Tween;
     }
 
-    Q_INVOKABLE bool has_keyframe(FrameTime time) const
+    Q_INVOKABLE bool has_keyframe(double time) const
     {
         if ( !animated() )
             return false;
@@ -167,16 +168,16 @@ public:
     virtual detail::TypeErasedKeyframeRange keyframe_range() const = 0;
     virtual detail::TypeErasedKeyframeIterator find(model::FrameTime t) const = 0;
 
-    virtual const KeyframeBase* first_keyframe() const = 0;
-    virtual const KeyframeBase* last_keyframe() const = 0;
+    Q_INVOKABLE virtual const KeyframeBase* first_keyframe() const = 0;
+    Q_INVOKABLE virtual const KeyframeBase* last_keyframe() const = 0;
 
     // Renamed to avoid clashing with BaseProperty
     /**
      * \brief Get the value at the given time
      */
-    virtual QVariant value_at_time(FrameTime time) const = 0;
+    Q_INVOKABLE virtual QVariant value_at_time(double time) const = 0;
     // Renamed to avoid clashing with BaseProperty
-    virtual QVariant static_value() const = 0;
+    Q_INVOKABLE virtual QVariant static_value() const = 0;
     virtual bool set_static_value(const QVariant& v) = 0;
 
     /**
@@ -202,7 +203,7 @@ public:
     virtual QUndoCommand* command_move_keyframe(model::FrameTime time_before, model::FrameTime time_after, QUndoCommand* parent = nullptr) = 0;
 
     // Renamed to avoid clashing with BaseProperty
-    virtual QString visual_name() const = 0;
+    Q_INVOKABLE virtual QString visual_name() const = 0;
 
     MidTransition mid_transition(FrameTime time) const;
 

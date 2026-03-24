@@ -58,7 +58,6 @@ bool qvariant_type_caster_cast_impl<QMetaType::QVariant>(
     return false;
 }
 
-
 template<int... i>
 bool qvariant_type_caster_cast(
     pybind11::handle& into,

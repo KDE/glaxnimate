@@ -26,6 +26,8 @@
 #include <QGradient>
 
 #include "glaxnimate/script/registrar_common.hpp"
+#include "glaxnimate/math/bezier/bezier.hpp"
+#include "glaxnimate/model/animation/keyframe_transition.hpp"
 
 
 namespace glaxnimate::script {
@@ -37,6 +39,7 @@ template<class T> const char* type_name()
 }
 template<int> struct meta_2_cpp_s;
 template<class> struct cpp_2_meta_s;
+
 
 #define TYPE_NAME(Type) //template<> const char* type_name<Type>() { return #Type; }
 #define SETUP_TYPE(MetaInt, Type)                                   \
@@ -115,6 +118,28 @@ using supported_types = std::integer_sequence<int,
     // Ensure new types have SETUP_TYPE
 >;
 
+using supported_custom_types = std::tuple<
+    model::KeyframeTransition,
+    math::bezier::Point,
+    math::bezier::Bezier
+>;
+
+
+template<class CustomT, template<class FuncT> class Func, class RetT, class... FuncArgs>
+bool custom_type_dispatch_impl_step(int meta_type, RetT& ret, FuncArgs&&... args)
+{
+    if ( meta_type != qMetaTypeId<CustomT>() )
+        return false;
+
+    ret = Func<CustomT>::do_the_thing(std::forward<FuncArgs>(args)...);
+    return true;
+};
+
+template<class SupportedTypes, template<class FuncT> class Func, class RetT, class... FuncArgs, std::size_t... i>
+bool custom_type_dispatch_impl(int meta_type, RetT& ret, std::index_sequence<i...>, FuncArgs&&... args)
+{
+    return (custom_type_dispatch_impl_step<std::tuple_element_t<i, SupportedTypes>, Func>(meta_type, ret, std::forward<FuncArgs>(args)...)||...);
+}
 
 template<int i, template<class FuncT> class Func, class RetT, class... FuncArgs>
 bool type_dispatch_impl_step(int meta_type, RetT& ret, FuncArgs&&... args)
@@ -124,13 +149,15 @@ bool type_dispatch_impl_step(int meta_type, RetT& ret, FuncArgs&&... args)
 
     ret = Func<meta_2_cpp<i>>::do_the_thing(std::forward<FuncArgs>(args)...);
     return true;
-}
+};
+
 
 template<template<class FuncT> class Func, class RetT, class... FuncArgs, int... i>
 bool type_dispatch_impl(int meta_type, RetT& ret, std::integer_sequence<int, i...>, FuncArgs&&... args)
 {
     return (type_dispatch_impl_step<i, Func>(meta_type, ret, std::forward<FuncArgs>(args)...)||...);
 }
+
 
 template<template<class FuncT> class Func, class RetT, class... FuncArgs>
 RetT type_dispatch(int meta_type, FuncArgs&&... args)
@@ -139,7 +166,11 @@ RetT type_dispatch(int meta_type, FuncArgs&&... args)
     {
         if ( QMetaType(meta_type).flags() & QMetaType::IsEnumeration )
             return Func<int>::do_the_thing(std::forward<FuncArgs>(args)...);
-        return Func<QObject*>::do_the_thing(std::forward<FuncArgs>(args)...);
+        if ( QMetaType(meta_type).flags() & QMetaType::PointerToQObject )
+            return Func<QObject*>::do_the_thing(std::forward<FuncArgs>(args)...);
+        RetT ret;
+        custom_type_dispatch_impl<supported_custom_types, Func>(meta_type, ret, std::make_index_sequence<std::tuple_size_v<supported_custom_types>>{}, std::forward<FuncArgs>(args)...);
+        return ret;
     }
     RetT ret;
     type_dispatch_impl<Func>(meta_type, ret, supported_types(), std::forward<FuncArgs>(args)...);

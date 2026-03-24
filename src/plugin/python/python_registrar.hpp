@@ -134,7 +134,6 @@ struct PythonRegistrar
                 try {
                     ArgumentBuffer argbuf(meth);
 
-
                     script::type_dispatch<AllocateReturn, bool>(meth.returnType(), argbuf, meth.typeName());
 
                     for ( int i = 0; i < len; i++ )

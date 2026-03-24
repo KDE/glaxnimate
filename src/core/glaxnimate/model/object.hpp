@@ -60,6 +60,10 @@ class MetaAnimatable;
 class Object : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QString object_name READ object_name)
+    Q_PROPERTY(QString type_name_human READ type_name_human)
+    Q_PROPERTY(QString type_name READ type_name)
+    Q_PROPERTY(double time READ time)
 
 public:
     explicit Object(Document* document);
@@ -79,10 +83,10 @@ public:
 
     virtual void assign_from(const Object* other);
 
-    QVariant get(const QString& property) const;
+    Q_INVOKABLE QVariant get(const QString& property) const;
     bool set(const QString& property, const QVariant& value);
     bool set_undoable(const QString& property, const QVariant& value);
-    bool has(const QString& property) const;
+    Q_INVOKABLE bool has(const QString& property) const;
 
     const std::vector<BaseProperty*>& properties() const;
     BaseProperty* get_property(const QString& property);

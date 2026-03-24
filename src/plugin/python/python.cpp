@@ -7,10 +7,10 @@
 #include <pybind11/operators.h>
 
 #include "glaxnimate/model/visitor.hpp"
+#include "glaxnimate/model/animation/meta_animatable.hpp"
 
 #include "glaxnimate/command/animation_commands.hpp"
 #include "glaxnimate/command/undo_macro_guard.hpp"
-#include "glaxnimate/command/object_list_commands.hpp"
 
 #include "glaxnimate/io/glaxnimate/glaxnimate_format.hpp"
 #include "glaxnimate/io/raster/raster_format.hpp"
@@ -42,6 +42,12 @@ void register_animatable(py::module& m)
     name += QMetaType::fromType<T>().name();
     name += ">";
     py::class_<model::AnimatedProperty<T>, Base>(m, name.c_str());
+
+
+    name = "Keyframe<";
+    name += QMetaType::fromType<T>().name();
+    name += ">";
+    py::class_<model::Keyframe<T>, model::KeyframeBase>(m, name.c_str());
 }
 
 static QImage doc_to_image(model::Composition* comp)
@@ -129,13 +135,7 @@ void define_io(py::module& m)
 void define_animatable(py::module& m)
 {
     py::class_<model::KeyframeTransition> kt(m, "KeyframeTransition");
-    kt.attr("Descriptive") = py::enum_<model::KeyframeTransition::Descriptive>(kt, "Descriptive")
-        .value("Hold", model::KeyframeTransition::Hold)
-        .value("Linear", model::KeyframeTransition::Linear)
-        .value("Ease", model::KeyframeTransition::Ease)
-        .value("Fast", model::KeyframeTransition::Fast)
-        .value("Custom", model::KeyframeTransition::Custom)
-    ;
+    Reg::register_enum<model::KeyframeTransition::Descriptive>(QMetaEnum::fromType<model::KeyframeTransition::Descriptive>(), kt);
     kt
         .def(py::init<>())
         .def(py::init<const QPointF&, const QPointF&>())
@@ -148,11 +148,7 @@ void define_animatable(py::module& m)
         .def("bezier_parameter", &model::KeyframeTransition::bezier_parameter)
     ;
 
-    py::class_<model::KeyframeBase>(m, "Keyframe")
-        .def_property_readonly("time", &model::KeyframeBase::time)
-        .def_property_readonly("value", &model::KeyframeBase::value)
-        .def_property_readonly("transition", &model::KeyframeBase::transition)
-    ;
+    register_from_meta<Reg, model::KeyframeBase, QObject>(m);
     register_from_meta<Reg, model::AnimatableBase, QObject>(m)
         .def("keyframe", [](const model::AnimatableBase& a, model::FrameTime t){ return a.keyframe_at(t); }, no_own, py::arg("time"))
     ;
@@ -173,7 +169,13 @@ void define_animatable(py::module& m)
                 a.command_clear_keyframes()
             );
         })
+        .def("set_transition", [](model::AnimatedPropertyBase& a, model::FrameTime time, const model::KeyframeTransition& transition){
+            a.object()->document()->undo_stack().push(
+                a.command_set_transition(time, transition)
+            );
+        })
     ;
+    register_from_meta<Reg, model::MetaAnimatable, model::AnimatableBase>(m);
 }
 
 class PyVisitorPublic : public model::Visitor
@@ -237,7 +239,7 @@ void register_py_module(py::module& glaxnimate_module)
     };
 
     py::module model = glaxnimate_module.def_submodule("model", "");
-    py::class_<model::Object, QObject>(model, "Object")
+    script::register_from_meta<Reg, model::Object, QObject>(model)
         .def(
             "stretch_time",
             [](model::Object* object, double multiplier){
@@ -247,6 +249,8 @@ void register_py_module(py::module& glaxnimate_module)
             py::arg("multiplier"),
             "Stretches animation timings by the given factor"
         )
+        .def_property_readonly("document", [](const model::Object* object) { return object->document(); })
+        .def_property_readonly("grouped_animations", [](model::Object* object) { return &object->grouped_animations(); })
     ;
 
     py::class_<command::UndoMacroGuard>(model, "UndoMacroGuard")

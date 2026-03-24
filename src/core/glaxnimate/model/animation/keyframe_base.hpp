@@ -12,8 +12,13 @@
 
 namespace glaxnimate::model {
 
-class KeyframeBase
+class KeyframeBase : public QObject
 {
+    Q_OBJECT
+    Q_PROPERTY(QVariant value READ value)
+    Q_PROPERTY(double time READ time)
+    Q_PROPERTY(KeyframeTransition transition READ transition)
+
 public:
     explicit KeyframeBase(FrameTime time) : time_ { time } {}
     virtual ~KeyframeBase() = default;

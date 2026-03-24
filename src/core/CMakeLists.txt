@@ -120,6 +120,7 @@ glaxnimate/settings/settings_group.cpp
 
 glaxnimate/utils/gzip.cpp
 glaxnimate/utils/data_paths.cpp
+glaxnimate/init.cpp
 )
 
 
@@ -133,7 +134,8 @@ if ( GLAXNIMATE_CORE_MINIMAL )
 endif()
 
 
-add_library(GlaxnimateCore STATIC)
+add_library(GlaxnimateCore STATIC
+)
 add_library(Glaxnimate::Core ALIAS GlaxnimateCore)
 
 

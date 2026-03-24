@@ -20,14 +20,10 @@
 #endif
 #include <KIconTheme>
 
-#include "cli_utils/env.hpp"
 #include "gui_python/python_engine.hpp"
-#include "glaxnimate/log/log.hpp"
 
 #include "cli.hpp"
-#include "glaxnimate/app_info.hpp"
-#include "glaxnimate/io/io_registry.hpp"
-#include "glaxnimate/io/lottie/lottie_html_format.hpp"
+#include "glaxnimate/init.hpp"
 #include "glaxnimate/utils/data_paths.hpp"
 
 #include "widgets/dialogs/glaxnimate_window.hpp"
@@ -76,7 +72,7 @@ int main(int argc, char *argv[])
 
     plugin::python::PythonEngine::add_module_search_paths(utils::data_paths("lib/"));
 
-    io::IoRegistry::load_formats();
+    glaxnimate::init();
 
     gui::cli_main(app, args);
 

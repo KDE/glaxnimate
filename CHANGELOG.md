@@ -37,6 +37,8 @@
     * Core as static library
     * Experimental wasm build of the core renderer
     * Unbounded precomp layers
+* Scripting
+    * Improved bindings for various objects, especially properties and keyframes
 * Bug Fixes:
     * Fixed shape tools not remembering their own settings
     * Fixed open file dialog not saving the last used path on app closure
