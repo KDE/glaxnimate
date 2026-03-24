@@ -230,11 +230,11 @@ void GlaxnimateApp::init_qapplication()
         info.name(),
         info.version(),
         info.description(),
-        KAboutLicense::GPL,
-        i18n("(c) 2019-2026"),
+        KAboutLicense::GPL_V3,
+        i18n("Copyright © 2019-2026"),
         // Optional text shown in the About box.
         QStringLiteral(""),
-        info.url_docs().toString()
+        info.url_home().toString()
     );
 
     aboutData.setOrganizationDomain(QByteArray("kde.org"));

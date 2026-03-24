@@ -43,3 +43,8 @@ QString glaxnimate::AppInfo::project_id() const
 {
     return QStringLiteral(PROJECT_ID);
 }
+
+QUrl glaxnimate::AppInfo::url_home() const
+{
+    return QUrl(PROJECT_HOMEPAGE_URL);
+}

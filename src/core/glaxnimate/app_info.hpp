@@ -54,6 +54,7 @@ public:
 
     QString project_id() const;
 
+    QUrl url_home() const;
 private:
     AppInfo() = default;
     ~AppInfo() = default;
