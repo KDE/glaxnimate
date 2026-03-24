@@ -6,7 +6,8 @@
     * Editing properties that are already animated now adds a keyframe
     * Unified some properties across groups, images, and precomp layers
     * Added a grid for snapping
-    * Gradient editor on canvas is more accurate
+    * Gradient editor on canvas is more accurate    
+    * The timeline now shows object keyframes that allow editing of keyframes in that object's properties
 * UI:
     * Timeline now allows to cycle through mask modes for layers
     * Added button to toggle keyframes in the property view

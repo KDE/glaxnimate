@@ -6,7 +6,6 @@
 
 #include "glaxnimate/model/animation/meta_animatable.hpp"
 #include "glaxnimate/model/object.hpp"
-#include "glaxnimate/utils/pseudo_mutex.hpp"
 #include "glaxnimate/command/animation_commands.hpp"
 
 
@@ -29,7 +28,6 @@ public:
 
     std::vector<AnimatableBase*> props;
     Object* object;
-    utils::PseudoMutex updating;
 };
 
 glaxnimate::model::MetaAnimatable::MetaAnimatable(Object *object)
@@ -131,9 +129,11 @@ QUndoCommand* glaxnimate::model::MetaAnimatable::command_move_keyframe(FrameTime
     if ( !d->props.size() )
         return nullptr;
 
-    auto kf = keyframes_.find(time_before);
-    if ( kf == keyframes_.end() )
+    auto kfit = keyframes_.find(time_before);
+    if ( kfit == keyframes_.end() )
         return nullptr;
+
+    auto kf = &*kfit;
 
     auto cmd = new QUndoCommand(i18n("Move Keyframe"), parent);
 
@@ -156,9 +156,6 @@ QString glaxnimate::model::MetaAnimatable::visual_name() const
 
 void glaxnimate::model::MetaAnimatable::external_keyframe_added(FrameTime time)
 {
-    if ( d->updating )
-        return;
-
     auto prop = static_cast<AnimatableBase*>(sender());
     auto kf = keyframes_.find(time);
     if ( kf != keyframes_.end() )
@@ -174,9 +171,6 @@ void glaxnimate::model::MetaAnimatable::external_keyframe_added(FrameTime time)
 
 void glaxnimate::model::MetaAnimatable::external_keyframe_removed(FrameTime time)
 {
-    if ( d->updating )
-        return;
-
     auto kf = keyframes_.find(time);
     if ( kf == keyframes_.end() )
         return;
@@ -192,24 +186,7 @@ void glaxnimate::model::MetaAnimatable::external_keyframe_removed(FrameTime time
 
 void glaxnimate::model::MetaAnimatable::external_keyframe_moved(FrameTime from_time, FrameTime to_time)
 {
-    if ( d->updating )
-        return;
-
-    auto kf = keyframes_.find(from_time);
-    if ( kf == keyframes_.end() )
-        return;
-
-    if ( kf->size() == 1 )
-    {
-        kf->set_time(to_time);
-        keyframes_.move(kf, to_time);
-        Q_EMIT keyframe_moved(from_time, to_time);
-        return;
-    }
-
-    auto prop = static_cast<AnimatableBase*>(sender());
-
-    kf->remove_property(prop);
+    external_keyframe_removed(from_time);
     external_keyframe_added(to_time);
 }
 
