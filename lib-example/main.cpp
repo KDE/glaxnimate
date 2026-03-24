@@ -5,6 +5,7 @@
  */
 #include <iostream>
 #include "glaxnimate/init.hpp"
+#include "glaxnimate/io/io_registry.hpp"
 #include "glaxnimate/renderer/renderer.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
 
