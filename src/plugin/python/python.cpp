@@ -276,15 +276,6 @@ void register_py_module(py::module& glaxnimate_module)
             py::return_value_policy::take_ownership,
             "Context manager to group changes into a single undo command"
         )
-        .def(
-            "stretch_time",
-            [](model::Document* document, double multiplier){
-                if ( multiplier > 0 )
-                    document->push_command(new command::StretchTimeCommand(document, multiplier));
-            },
-            py::arg("multiplier"),
-            "Stretches animation timings by the given factor"
-        )
         .def_property("metadata", &model::Document::metadata, &model::Document::set_metadata, no_own)
         .def_property("info", &model::Document::info, [](model::Document* doc, const model::Document::DocumentInfo& info){ doc->info() = info; }, no_own)
     ;

@@ -175,6 +175,11 @@ void glaxnimate::model::Object::stretch_time(qreal multiplier)
     d->current_time *= multiplier;
 }
 
+glaxnimate::model::MetaAnimatable *glaxnimate::model::Object::grouped_animations_ptr() const
+{
+    return &d->animation_group;
+}
+
 glaxnimate::model::MetaAnimatable &glaxnimate::model::Object::grouped_animations()
 {
     return d->animation_group;

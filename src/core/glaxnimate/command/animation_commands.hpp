@@ -213,14 +213,13 @@ private:
 
 };
 
-template<class T>
 class StretchTimeCommand: public QUndoCommand
 {
 public:
     /**
      * \pre multiplier > 0
      */
-    StretchTimeCommand(T* target, qreal multiplier)
+    StretchTimeCommand(model::Object* target, qreal multiplier)
         : QUndoCommand(i18n("Stretch Time")),
           target(target),
           multiplier(multiplier)
@@ -229,22 +228,19 @@ public:
     void undo() override
     {
         target->stretch_time(1/multiplier);
-        if constexpr ( !std::is_same_v<T, model::Document> )
-            target->set_time(target->document()->current_time());
+        target->set_time(target->document()->current_time());
     }
 
     void redo() override
     {
         target->stretch_time(multiplier);
-        if constexpr ( !std::is_same_v<T, model::Document> )
-            target->set_time(target->document()->current_time());
+        target->set_time(target->document()->current_time());
     }
 
 private:
-    T* target;
+    model::Object* target;
     qreal multiplier;
 };
-
 
 /**
  * \brief Command that sets the path of an animated position

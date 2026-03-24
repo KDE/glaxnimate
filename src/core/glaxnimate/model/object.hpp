@@ -111,6 +111,8 @@ public:
     virtual QIcon tree_icon() const { return {}; }
 
     MetaAnimatable& grouped_animations();
+    // Used because emscripten bindings is very restrictive
+    MetaAnimatable* grouped_animations_ptr() const;
 
 Q_SIGNALS:
     void property_changed(const model::BaseProperty* prop, const QVariant& value);

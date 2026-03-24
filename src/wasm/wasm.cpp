@@ -11,6 +11,8 @@
 #include "glaxnimate/io/io_registry.hpp"
 #include "glaxnimate/renderer/renderer.hpp"
 #include "glaxnimate/init.hpp"
+#include "glaxnimate/command/animation_commands.hpp"
+#include "glaxnimate/model/animation/meta_animatable.hpp"
 
 #include "glaxnimate/script/glaxnimate_model.hpp"
 
@@ -300,30 +302,43 @@ EMSCRIPTEN_BINDINGS(glaxnimate_wasm)
             fn([](model::Object* object, double multiplier){
                 if ( multiplier > 0 )
                     object->push_command(new command::StretchTimeCommand(object, multiplier));
-            })
+            }),
+            emscripten::allow_raw_pointers()
         )
-        .property("document", fn([](const model::Object* object) { return object->document(); }))
-        .property("grouped_animations", fn([](model::Object* object) { return &object->grouped_animations(); }))
+        .property("document", &model::Object::document, emscripten::return_value_policy::reference())
+        .property("grouped_animations", &model::Object::grouped_animations_ptr, emscripten::return_value_policy::reference())
     ;
     register_from_meta<Reg, model::DocumentNode, model::Object>(model);
     register_top_level<Reg>(model);
 
 
-    register_from_meta<Reg, model::KeyframeBase, QObject>(m);
+    register_from_meta<Reg, model::KeyframeBase, QObject>(model);
 
     register_from_meta<Reg, model::AnimatableBase, QObject>(model);
-    register_from_meta<Reg, model::MetaAnimatable, model::AnimatableBase>(m);
+    register_from_meta<Reg, model::MetaAnimatable, model::AnimatableBase>(model);
     register_from_meta<Reg, model::AnimatedPropertyBase, model::AnimatableBase>(model)
-        .function("get", fn([](const model::AnimatableBase& anim){
-            return anim.value();
+        .function("set_keyframe", fn([](model::AnimatedPropertyBase& a, model::FrameTime time, const QVariant& value){
+            a.object()->document()->undo_stack().push(
+                a.command_add_smooth_keyframe(time, value, true)
+                );
+            return a.keyframe_at(time);
+        }), emscripten::return_value_policy::reference())
+        .function("remove_keyframe", fn([](model::AnimatedPropertyBase& a, model::FrameTime time){
+            a.object()->document()->undo_stack().push(
+                a.command_remove_keyframe(time)
+            );
         }))
-        .function("get_at", fn([](const model::AnimatableBase& anim, double t){
-            return anim.value(t);
+        .function("clear_keyframes", fn([](model::AnimatedPropertyBase& a){
+            a.object()->document()->undo_stack().push(
+                a.command_clear_keyframes()
+            );
         }))
-        .function("set", fn([](model::AnimatableBase& anim, const QVariant& var){
-            return anim.set_undoable(var);
+        .function("set_transition", fn([](model::AnimatedPropertyBase& a, model::FrameTime time, const model::KeyframeTransition& transition){
+            a.object()->document()->undo_stack().push(
+                a.command_set_transition(time, transition)
+            );
         }))
-        ;
+    ;
 
     register_from_meta<Reg, model::detail::AnimatedPropertyPosition, model::AnimatableBase>(model);
     register_animatable<QPointF, model::detail::AnimatedPropertyPosition>();
