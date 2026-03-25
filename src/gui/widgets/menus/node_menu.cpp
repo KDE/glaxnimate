@@ -511,27 +511,25 @@ NodeMenu::NodeMenu(model::Object* node, SelectionManager* window, QWidget* paren
 
         if ( auto shape = qobject_cast<model::ShapeElement*>(node) )
         {
-            auto menu_edit = addMenu(QIcon::fromTheme("edit-cut"), i18nc("@action:inmenu", "Edit"));
-
-            menu_edit->addAction(QIcon::fromTheme("edit-cut"), i18nc("@action:inmenu", "Cut"), this, [shape, window]{
+            this->addAction(QIcon::fromTheme("edit-cut"), i18nc("@action:inmenu", "Cut"), this, [shape, window]{
                 GlaxnimateApp::instance()->set_clipboard_data(command::copy_helper(
                     {shape},
                     window->supported_mimes()
                 ));
                 shape->push_command(new command::RemoveShape(shape, shape->owner(), nullptr, i18n("Cut")));
             });
-            menu_edit->addAction(QIcon::fromTheme("edit-copy"), i18nc("@action:inmenu", "Copy"), this, [visual, window]{
+            this->addAction(QIcon::fromTheme("edit-copy"), i18nc("@action:inmenu", "Copy"), this, [visual, window]{
                 GlaxnimateApp::instance()->set_clipboard_data(command::copy_helper(
                     {visual},
                     window->supported_mimes()
                 ));
             });
 
-            menu_edit->addAction(QIcon::fromTheme("edit-delete-remove"), i18nc("@action:inmenu", "Delete"), this, [shape]{
+            this->addAction(QIcon::fromTheme("edit-delete-remove"), i18nc("@action:inmenu", "Delete"), this, [shape]{
                 shape->push_command(new command::RemoveShape(shape, shape->owner()));
             });
 
-            menu_edit->addAction(QIcon::fromTheme("edit-duplicate"), i18nc("@action:inmenu", "Duplicate"), this, [shape, window]{
+            this->addAction(QIcon::fromTheme("edit-duplicate"), i18nc("@action:inmenu", "Duplicate"), this, [shape, window]{
                 auto cmd = command::duplicate_shape(shape);
                 shape->push_command(cmd);
                 window->set_current_document_node(cmd->object());
