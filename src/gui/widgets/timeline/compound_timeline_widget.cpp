@@ -104,6 +104,9 @@ public:
     {
         for ( int i = 0; i < KeyframeTransitionData::count; i++ )
         {
+            if ( i == model::KeyframeTransition::NoValue )
+                continue;
+
             auto data = KeyframeTransitionData::from_index(i, KeyframeTransitionData::Full);
             actions_enter[i].setIcon(data.icon());
             actions_enter[i].setActionGroup(&enter);
@@ -112,6 +115,17 @@ public:
             actions_leave[i].setIcon(data.icon());
             actions_leave[i].setActionGroup(&exit);
             actions_leave[i].setData(data.variant());
+
+            if ( i == model::KeyframeTransition::Custom )
+            {
+                actions_enter[i].setText(i18n("Custom..."));
+                actions_leave[i].setText(actions_enter[i].text());
+            }
+            else
+            {
+                actions_leave[i].setText(KeyframeTransitionData::from_index(i, KeyframeTransitionData::Start).name);
+                actions_enter[i].setText(KeyframeTransitionData::from_index(i, KeyframeTransitionData::Finish).name);
+            }
         }
 
         menu_keyframe.addAction(&action_kf_remove);
@@ -151,21 +165,6 @@ public:
 
         action_enter->setText(i18n("Transition From Previous"));
         action_exit->setText(i18n("Transition To Next"));
-
-
-        for ( int i = 0; i < KeyframeTransitionData::count; i++ )
-        {
-            if ( i == model::KeyframeTransition::Custom )
-            {
-                actions_enter[i].setText(i18n("Custom..."));
-                actions_leave[i].setText(actions_enter[i].text());
-            }
-            else
-            {
-                actions_leave[i].setText(KeyframeTransitionData::from_index(i, KeyframeTransitionData::Start).name);
-                actions_enter[i].setText(KeyframeTransitionData::from_index(i, KeyframeTransitionData::Finish).name);
-            }
-        }
 
         action_kf_remove.setText(i18n("Remove Keyframe"));
         action_kf_remove_all.setText(i18n("Clear Animations"));
@@ -375,6 +374,9 @@ void CompoundTimelineWidget::custom_context_menu(const QPoint& p)
                 d->ui.properties->viewport()->mapFromGlobal(glob)
             )
         ));
+
+        if ( item.property && item.property->traits().flags & model::PropertyTraits::Animated )
+            d->menu_property.set_property(static_cast<model::AnimatedPropertyBase*>(item.property));
     }
     else
     {
@@ -385,10 +387,23 @@ void CompoundTimelineWidget::custom_context_menu(const QPoint& p)
         item = d->ui.timeline->item_at(
             d->ui.timeline->viewport()->mapFromGlobal(glob)
         );
+
+
+        if ( item.property && !(item.property->traits().flags & model::PropertyTraits::List) )
+        {
+            if ( item.property->traits().flags & model::PropertyTraits::Animated )
+                d->menu_property.set_property(static_cast<model::AnimatedPropertyBase*>(item.property));
+            else if ( item.property->traits().type == model::PropertyTraits::Object )
+                d->menu_property.set_object_group(static_cast<model::SubObjectPropertyBase*>(item.property)->sub_object());
+            else if ( item.property->traits().type == model::PropertyTraits::ObjectReference )
+                d->menu_property.set_object_group(static_cast<model::ReferencePropertyBase*>(item.property)->get_ref());
+        }
+        else if ( item.object )
+        {
+            d->menu_property.set_object_group(item.object);
+        }
     }
 
-    if ( item.property && item.property->traits().flags & model::PropertyTraits::Animated )
-        d->menu_property.set_property(static_cast<model::AnimatedPropertyBase*>(item.property));
 
     if ( d->menu_kf_exit )
     {

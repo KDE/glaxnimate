@@ -10,8 +10,8 @@
 #include <QMimeData>
 #include <QGuiApplication>
 
+#include "glaxnimate/model/animation/meta_animatable.hpp"
 #include "widgets/dialogs/follow_path_dialog.hpp"
-#include "glaxnimate/command/animation_commands.hpp"
 #include "widgets/dialogs/selection_manager.hpp"
 
 using namespace glaxnimate::gui;
@@ -164,6 +164,21 @@ void glaxnimate::gui::AnimatedPropertyMenu::set_property(model::AnimatedProperty
         setTitle(property->name());
         d->action_title->setText(property->name());
         d->action_follow_path.setVisible(property->traits().type == model::PropertyTraits::Point);
+        refresh_actions();
+    }
+}
+
+void AnimatedPropertyMenu::set_object_group(model::Object *object)
+{
+    d->object = object;
+    d->property = nullptr;
+    if ( object )
+    {
+        d->property = &object->grouped_animations();
+        d->property_type = model::PropertyTraits::Unknown;
+        setTitle(object->object_name());
+        d->action_title->setText(object->object_name());
+        d->action_follow_path.setVisible(false);
         refresh_actions();
     }
 }

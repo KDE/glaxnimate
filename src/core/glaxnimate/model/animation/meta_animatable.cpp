@@ -58,7 +58,7 @@ QUndoCommand* glaxnimate::model::MetaAnimatable::command_add_smooth_keyframe(Fra
     auto cmd = new QUndoCommand(command::SetKeyframe::command_name(this, time), parent);
 
     for ( auto prop: d->props )
-        prop->command_add_smooth_keyframe(time, prop->value_at_time(time), cmd);
+        prop->command_add_smooth_keyframe(time, prop->value_at_time(time), true, cmd);
 
     return cmd;
 }
@@ -125,7 +125,6 @@ QUndoCommand* glaxnimate::model::MetaAnimatable::command_set_transition_side(Fra
 
 QUndoCommand* glaxnimate::model::MetaAnimatable::command_move_keyframe(FrameTime time_before, FrameTime time_after, QUndoCommand* parent)
 {
-    qDebug() << visual_name() << time_before << time_after;
     if ( !d->props.size() )
         return nullptr;
 

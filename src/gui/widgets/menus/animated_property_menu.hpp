@@ -24,6 +24,7 @@ public:
 
     model::AnimatableBase* property() const;
     void set_property(model::AnimatedPropertyBase* property);
+    void set_object_group(model::Object* object);
     void refresh_actions();
     void set_controller(SelectionManager* window);
     model::PropertyTraits::Type property_type() const;

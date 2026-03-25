@@ -34,6 +34,8 @@ public:
         Overshoot,
     };
 
+    static constexpr const int max_descriptive = Overshoot;
+
     enum class Special
     {
         Normal, //!< Handled by points

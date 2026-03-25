@@ -27,6 +27,16 @@
 
 #include "glaxnimate_app.hpp"
 
+void debug_cmd(const QUndoCommand* cmd, std::string ind)
+{
+    qDebug() << ind.c_str()
+        << cmd->text()
+        << cmd->id()
+        << cmd->childCount();
+    for ( int i = 0; i < cmd->childCount(); i++ )
+        debug_cmd(cmd->child(i), ind + "    ");
+}
+
 namespace  {
 
 void screenshot_widget(const QString& path, QWidget* widget)
@@ -383,5 +393,9 @@ void GlaxnimateWindow::Private::init_debug()
         qDebug() << "----";
     });
     menu_debug->addAction("Force Autosave", [this]{autosave(true);});
+
+    menu_debug->addAction("Inspect undo command", [this]{
+        debug_cmd(current_document->undo_stack().command(current_document->undo_stack().index() - 1), "");
+    });
     //menu_debug->addAction("Crash", []{volatile int* np = nullptr;*np = 123;});
 }

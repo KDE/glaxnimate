@@ -15,7 +15,7 @@ namespace glaxnimate::gui {
 
 struct KeyframeTransitionData
 {
-    static constexpr const int count = model::KeyframeTransition::Custom + 1;
+    static constexpr const int count = model::KeyframeTransition::max_descriptive + 1;
 
     enum Side
     {
