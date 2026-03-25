@@ -23,6 +23,8 @@
 #include "gui_python/python_engine.hpp"
 
 #include "cli.hpp"
+#include "cli_utils/env.hpp"
+#include "glaxnimate/log/log.hpp"
 #include "glaxnimate/init.hpp"
 #include "glaxnimate/utils/data_paths.hpp"
 
