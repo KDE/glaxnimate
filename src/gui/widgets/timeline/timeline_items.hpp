@@ -25,7 +25,8 @@ extern bool enable_debug;
 
 enum class ItemTypes
 {
-    LineItem = QGraphicsItem::UserType + 1,
+    KeyframeSplitItem = QGraphicsItem::UserType + 1,
+    LineItem,
     ObjectLineItem,
     AnimatableItem,
     PropertyLineItem,
@@ -150,6 +151,8 @@ public:
     model::FrameTime keyframe_time() const  { return keyframe_time_; }
     void set_keyframe_time(model::FrameTime t) { keyframe_time_ = t; }
 
+    int type() const override { return int(ItemTypes::KeyframeSplitItem); }
+
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent * event) override;
 
@@ -213,6 +216,7 @@ public:
     int type() const override;
 
     item_models::PropertyModelFull::Item property_item() const override;
+    model::AnimatableBase* animatable() const { return animatable_; }
 
 public Q_SLOTS:
     void add_keyframe(model::FrameTime time);
@@ -236,7 +240,7 @@ private:
     void cycle_keyframe_transition(model::FrameTime time);
     void do_add_keyframe(model::KeyframeBase* keyframe);
 
-    model::AnimatableBase* animatable;
+    model::AnimatableBase* animatable_;
     model::KeyframeContainer<KeyframeSplitItem*> kf_split_items;
     friend KeyframeSplitItem;
 };

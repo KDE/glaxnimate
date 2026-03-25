@@ -413,7 +413,7 @@ void timeline::LineItem::paint(QPainter * painter, const QStyleOptionGraphicsIte
 
 timeline::AnimatableItem::AnimatableItem(quintptr id, model::Object* obj, model::AnimatableBase* animatable, int time_start, int time_end, int height)
     : LineItem(id, obj, time_start, time_end, height),
-    animatable(animatable)
+    animatable_(animatable)
 {
     if ( animatable )
         connect_animatable(animatable);
@@ -421,8 +421,8 @@ timeline::AnimatableItem::AnimatableItem(quintptr id, model::Object* obj, model:
 
 std::pair<model::KeyframeBase*, model::KeyframeBase*> timeline::AnimatableItem::keyframes(KeyframeSplitItem* item)
 {
-    auto range = animatable->keyframe_range();
-    auto iter = animatable->find(item->keyframe_time());
+    auto range = animatable_->keyframe_range();
+    auto iter = animatable_->find(item->keyframe_time());
 
     if ( iter == range.end() )
         return {nullptr, nullptr};
@@ -445,21 +445,21 @@ item_models::PropertyModelFull::Item timeline::AnimatableItem::property_item() c
 {
     return {
         object(),
-        animatable->animatable_flags() & model::AnimatableBase::IsProperty ?
-        static_cast<model::AnimatedPropertyBase*>(animatable) :
+        animatable_->animatable_flags() & model::AnimatableBase::IsProperty ?
+        static_cast<model::AnimatedPropertyBase*>(animatable_) :
         nullptr
     };
 }
 
 void timeline::AnimatableItem::add_keyframe(model::FrameTime time)
 {
-    do_add_keyframe(animatable->keyframe_at(time));
+    do_add_keyframe(animatable_->keyframe_at(time));
 }
 
 
 void timeline::AnimatableItem::do_add_keyframe(model::KeyframeBase *kf)
 {
-    model::KeyframeBase* prev = animatable->keyframe_before(kf->time());
+    model::KeyframeBase* prev = animatable_->keyframe_before(kf->time());
     if ( !prev && !kf_split_items.empty() )
         (*kf_split_items.begin())->set_enter(kf->transition().after_descriptive());
 
@@ -488,7 +488,7 @@ void timeline::AnimatableItem::remove_keyframe(model::FrameTime t)
             ++next;
             if ( next != kf_split_items.end() )
             {
-                if ( auto kf_before = animatable->keyframe_before(t) )
+                if ( auto kf_before = animatable_->keyframe_before(t) )
                     (*next)->set_enter(kf_before->transition().after_descriptive());
             }
         }
@@ -518,7 +518,7 @@ void timeline::AnimatableItem::keyframes_dragged(const std::vector<DragData>& ke
 {
     for ( auto kf : keyframe_items )
     {
-        object()->push_command(animatable->command_move_keyframe(kf.from, kf.to));
+        object()->push_command(animatable_->command_move_keyframe(kf.from, kf.to));
         auto kfto = kf_split_items.find(kf.to);
         if ( kfto != kf_split_items.end() && *kfto != kf.item )
             (*kfto)->setSelected(true);
@@ -527,11 +527,11 @@ void timeline::AnimatableItem::keyframes_dragged(const std::vector<DragData>& ke
 
 void glaxnimate::gui::timeline::AnimatableItem::cycle_keyframe_transition(model::FrameTime time)
 {
-    auto kf = animatable->keyframe_at(time);
+    auto kf = animatable_->keyframe_at(time);
     if ( !kf )
         return;
 
-    auto kf_before = animatable->keyframe_before(time);
+    auto kf_before = animatable_->keyframe_before(time);
     auto desc = !kf_before ? kf->transition().after_descriptive() : kf->transition().before_descriptive();
 
     switch ( desc )
@@ -564,18 +564,18 @@ void glaxnimate::gui::timeline::AnimatableItem::cycle_keyframe_transition(model:
         {
             auto left_trans = kf_before->transition();
             left_trans.set_after_descriptive(desc);
-            object()->push_command(animatable->command_set_transition(kf_before->time(), left_trans));
+            object()->push_command(animatable_->command_set_transition(kf_before->time(), left_trans));
         }
 
         auto right_trans = kf->transition();
         right_trans.set_before_descriptive(desc);
-        object()->push_command(animatable->command_set_transition(time, right_trans));
+        object()->push_command(animatable_->command_set_transition(time, right_trans));
     }
 }
 
 void timeline::AnimatableItem::update_keyframe(model::FrameTime time)
 {
-    const auto& kf = animatable->keyframe_at(time);
+    const auto& kf = animatable_->keyframe_at(time);
     auto item_start = kf_split_items.find(time);
 
     (*item_start)->set_exit(kf->transition().before_descriptive());
@@ -603,28 +603,28 @@ void timeline::AnimatableItem::move_keyframe(model::FrameTime from_time, model::
     kf_split_items.move(item, to_time);
     update_keyframe(to_time);
 
-    auto first_kf = animatable->first_keyframe();
+    auto first_kf = animatable_->first_keyframe();
     if ( from_time < first_kf->time() )
         update_keyframe(first_kf->time());
 }
 
 void timeline::AnimatableItem::set_animatable(model::AnimatableBase *animatable)
 {
-    if ( this->animatable == animatable )
+    if ( this->animatable_ == animatable )
         return;
 
-    if ( this->animatable )
+    if ( this->animatable_ )
         disconnect_animatable();
 
-    this->animatable = animatable;
+    this->animatable_ = animatable;
 
-    if ( this->animatable )
-        connect_animatable(this->animatable);
+    if ( this->animatable_ )
+        connect_animatable(this->animatable_);
 }
 
 void timeline::AnimatableItem::disconnect_animatable()
 {
-    disconnect(animatable, nullptr, this, nullptr);
+    disconnect(animatable_, nullptr, this, nullptr);
     for ( auto kf : kf_split_items )
         delete kf;
     kf_split_items.clear();

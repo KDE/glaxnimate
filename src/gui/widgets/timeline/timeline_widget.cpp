@@ -50,6 +50,7 @@ public:
     bool keep_highlight = false;
     QPoint drag_start;
     QPoint drag_scroll;
+    bool soft_focus = false;
 
     LineItem* root = nullptr;
     std::unordered_map<quintptr, LineItem*> line_items;
@@ -674,6 +675,7 @@ void TimelineWidget::mouseReleaseEvent(QMouseEvent* event)
 
 void TimelineWidget::leaveEvent(QEvent* event)
 {
+    d->soft_focus = false;
     QGraphicsView::leaveEvent(event);
     if ( !d->keep_highlight )
     {
@@ -685,6 +687,7 @@ void TimelineWidget::leaveEvent(QEvent* event)
 
 void TimelineWidget::enterEvent(QEnterEvent* event)
 {
+    d->soft_focus = true;
     QGraphicsView::enterEvent(event);
     d->keep_highlight = false;
 }
@@ -945,6 +948,26 @@ void TimelineWidget::debug_lines() const
     debug_line(d->root, "", 0, true);
 
     qDebug() << sceneRect() << d->scene_rect() << d->rounded_end_time();
+}
+
+KeyframeSelection TimelineWidget::selected_keyframes() const
+{
+    KeyframeSelection selection;
+    for ( auto item : d->scene.selectedItems() )
+    {
+        if ( item->type() == int(ItemTypes::KeyframeSplitItem) && item->isSelected() )
+        {
+            auto kf_item = static_cast<KeyframeSplitItem*>(item);
+            auto prop_item = static_cast<AnimatableItem*>(item->parentItem());
+            selection.push_back({prop_item->animatable(), kf_item->time()});
+        }
+    }
+    return selection;
+}
+
+bool TimelineWidget::has_soft_focus() const
+{
+    return d->soft_focus;
 }
 
 void TimelineWidget::toggle_debug(bool debug)

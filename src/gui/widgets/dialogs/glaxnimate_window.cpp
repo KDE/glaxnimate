@@ -19,6 +19,7 @@
 #include "settings/clipboard_settings.hpp"
 #include "export_image_sequence_dialog.hpp"
 #include "glaxnimate/model/shapes/composable/precomp_layer.hpp"
+#include "widgets/timeline/timeline_widget.hpp"
 
 
 GlaxnimateWindow::GlaxnimateWindow(bool restore_state, bool debug, QWidget *parent, Qt::WindowFlags flags)
@@ -284,6 +285,19 @@ void GlaxnimateWindow::cut()
 
 void GlaxnimateWindow::delete_selected()
 {
+    auto timeline = d->timeline_dock->timelineWidget()->timeline();
+    if ( timeline->has_soft_focus() )
+    {
+        auto selected = timeline->selected_keyframes();
+        if ( selected.size() > 0 )
+        {
+            auto cmd = new QUndoCommand(i18np("Delete keyframe", "Delete keyframes", selected.size()));
+            for ( const auto& sel : selected )
+                sel.property->command_remove_keyframe(sel.time, cmd);
+            d->current_document->push_command(cmd);
+            return;
+        }
+    }
     SelectionManager::delete_selected();
 }
 

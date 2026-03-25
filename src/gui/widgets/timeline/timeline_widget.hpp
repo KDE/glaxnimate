@@ -13,6 +13,7 @@
 #include "glaxnimate/model/document.hpp"
 #include "item_models/property_model_full.hpp"
 #include "item_models/comp_filter_model.hpp"
+#include "widgets/timeline/keyframe_selection.hpp"
 
 
 class QTreeView;
@@ -58,6 +59,9 @@ public:
      * \brief Prints debugging info about the line items
      */
     void debug_lines() const;
+
+    KeyframeSelection selected_keyframes() const;
+    bool has_soft_focus() const;
 
 public Q_SLOTS:
     void update_timeline_start(model::FrameTime start);
