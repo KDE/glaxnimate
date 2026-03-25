@@ -48,6 +48,7 @@
     * Fixed gradients not showing properly on timeline / properties docks
     * Fixed auto orient being calculated incorrectly
     * Fixed crash on "Fit to Page" action
+    * F1 key now is used again for the select tool
 
 ## 0.6.0
 

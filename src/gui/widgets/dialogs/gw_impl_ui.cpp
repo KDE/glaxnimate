@@ -168,8 +168,17 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
             render_widget.update_from_settings();
         }, parent->actionCollection());
 
+    // Get rid of the blasted action that uses F1 shortcut
+    auto axef1 = connect(parent->actionCollection(), &KActionCollection::inserted, parent, [parent](QAction* action){
+        if ( action->objectName() == KStandardAction::name(KStandardAction::HelpContents) )
+        {
+            action->setShortcut({});
+            parent->actionCollection()->removeAction(action);
+        }
+    });
     // Main Window
     parent->setupGUI();
+    disconnect(axef1);
 
     parent->setDockOptions(parent->dockOptions() | QMainWindow::AllowNestedDocks | QMainWindow::AllowTabbedDocks);
 
@@ -247,20 +256,12 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
         init_debug();
 
     // Redirect help entry to our own function
-    // First delete the default help action
-    QAction *officialHelp = parent->actionCollection()->action(KStandardAction::name(KStandardAction::HelpContents));
-    // Save and later restore any custom shortcuts
-    QList<QKeySequence> helpShortcuts = officialHelp->shortcuts();
-    parent->actionCollection()->removeAction(officialHelp);
-    // Now recreate our own
-    KStandardAction::helpContents(parent, &GlaxnimateWindow::help_manual, parent->actionCollection());
-    officialHelp = parent->actionCollection()->action(KStandardAction::name(KStandardAction::HelpContents));
-    officialHelp->setShortcuts(helpShortcuts);
+    auto help = KStandardAction::helpContents(parent, &GlaxnimateWindow::help_manual, parent->actionCollection());
     // Replug it in the Help menu
     QMenu *helpMenu = static_cast<QMenu *>(parent->factory()->container(QStringLiteral("help"), parent));
     if (helpMenu) {
         QAction *whatsThis = parent->actionCollection()->action(KStandardAction::name(KStandardAction::WhatsThis));
-        helpMenu->insertAction(whatsThis, officialHelp);
+        helpMenu->insertAction(whatsThis, help);
     }
 
     // Restore state
