@@ -95,6 +95,31 @@ Glaxnimate is licensed under the [GNU GPLv3+](http://www.gnu.org/licenses/gpl-3.
 so your contributions must be under the same license.
 
 
+### How to find things
+
+All the code is in one of the subdirectories within `./src`.
+
+#### Core
+
+Glaxnimate core is resposible for the object model, undo commands, file formats, etc.
+
+* File format support: `src/core/glaxnimate/io`
+* Undo commands: `src/core/glaxnimate/command`
+* Object model: `src/core/glaxnimate/model/`
+* Static properties for the object model: `src/core/glaxnimate/model/property`
+* Animations for the object model: `src/core/glaxnimate/model/animation`
+
+#### GUI
+
+Glaxnimate gui contains the code for widgets and the app itself.
+
+* Timeline: `src/gui/widgets/timeline`
+* Adding settings:
+    * `src/gui/glaxnimate_settings.kcfg` for the settings definitions
+    * `src/gui/widgets/settings/settings_dialog.cpp` to add them to the settings dialog
+* Menu/toolbar actions: `src/gui/glaxnimateui.rc`
+
+
 Credits and Licensing
 ---------------------------------------
 
