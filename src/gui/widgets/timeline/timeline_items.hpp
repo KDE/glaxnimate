@@ -30,6 +30,7 @@ enum class ItemTypes
     AnimatableItem,
     PropertyLineItem,
     ObjectListLineItem,
+    ReferencePropertyLineItem,
 };
 
 class LineItem : public QGraphicsObject
@@ -224,7 +225,13 @@ private Q_SLOTS:
     void update_keyframe(model::FrameTime time);
     void move_keyframe(model::FrameTime from_time, model::FrameTime to_time);
 
+protected:
+    void set_animatable(model::AnimatableBase* animatable);
+
 private:
+    void disconnect_animatable();
+    void connect_animatable(model::AnimatableBase* animatable);
+
     void keyframes_dragged(const std::vector<DragData>& keyframe_items);
     void cycle_keyframe_transition(model::FrameTime time);
     void do_add_keyframe(model::KeyframeBase* keyframe);
@@ -491,5 +498,28 @@ private:
     model::ObjectListPropertyBase* property_;
 };
 
+class ReferencePropertyLineItem : public AnimatableItem
+{
+    Q_OBJECT
+
+public:
+    ReferencePropertyLineItem(quintptr id, model::Object *obj, model::ReferencePropertyBase* prop, int time_start, int time_end, int height);
+
+    int type() const override { return int(ItemTypes::ReferencePropertyLineItem); }
+
+    model::BaseProperty *property() const { return property_; }
+
+    item_models::PropertyModelFull::Item property_item() const override {
+        return {object(), property_};
+    }
+
+private Q_SLOTS:
+    void property_changed(const model::BaseProperty* prop);
+
+private:
+    void update_from_prop();
+
+    model::ReferencePropertyBase* property_;
+};
 
 } // namespace glaxnimate::gui::timeline

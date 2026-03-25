@@ -107,6 +107,8 @@ public:
             item = add_property_list(id, static_cast<model::ObjectListPropertyBase*>(prop));
         else if ( prop->traits().type == model::PropertyTraits::Object )
             item = add_object_without_properties(id, static_cast<model::SubObjectPropertyBase*>(prop)->sub_object());
+        else if ( prop->traits().type == model::PropertyTraits::ObjectReference )
+            item = add_property_reference(id, static_cast<model::ReferencePropertyBase*>(prop));
         else
             item = add_property_plain(id, prop);
 
@@ -144,6 +146,14 @@ public:
         connect(item, &LineItem::clicked, parent, &TimelineWidget::line_clicked);
         return item;
     }
+
+    LineItem* add_property_reference(quintptr id, model::ReferencePropertyBase* prop)
+    {
+        ReferencePropertyLineItem* item = new ReferencePropertyLineItem(id, prop->object(), prop, start_time, end_time, row_height);
+        connect(item, &LineItem::clicked, parent, &TimelineWidget::line_clicked);
+        return item;
+    }
+
 
     ObjectLineItem* add_object_without_properties(quintptr id, model::Object* obj)
     {
@@ -721,6 +731,7 @@ item_models::PropertyModelFull::Item TimelineWidget::item_at(const QPoint& viewp
             case ItemTypes::ObjectLineItem:
             case ItemTypes::PropertyLineItem:
             case ItemTypes::ObjectListLineItem:
+            case ItemTypes::ReferencePropertyLineItem:
                 return static_cast<LineItem*>(it)->property_item();
         }
     }

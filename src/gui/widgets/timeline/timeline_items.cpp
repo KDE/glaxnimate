@@ -415,14 +415,8 @@ timeline::AnimatableItem::AnimatableItem(quintptr id, model::Object* obj, model:
     : LineItem(id, obj, time_start, time_end, height),
     animatable(animatable)
 {
-    for ( const auto& kf : animatable->keyframe_range() )
-        do_add_keyframe(const_cast<model::KeyframeBase*>(&kf));
-
-    connect(animatable, &model::AnimatableBase::keyframe_added, this, &AnimatableItem::add_keyframe);
-    connect(animatable, &model::AnimatableBase::keyframe_removed, this, &AnimatableItem::remove_keyframe);
-    connect(animatable, &model::AnimatableBase::keyframe_updated, this, &AnimatableItem::update_keyframe);
-    connect(animatable, &model::AnimatableBase::keyframe_moved, this, &AnimatableItem::move_keyframe);
-    connect(animatable, &model::AnimatableBase::transition_changed, this, &AnimatableItem::transition_changed);
+    if ( animatable )
+        connect_animatable(animatable);
 }
 
 std::pair<model::KeyframeBase*, model::KeyframeBase*> timeline::AnimatableItem::keyframes(KeyframeSplitItem* item)
@@ -613,12 +607,71 @@ void timeline::AnimatableItem::move_keyframe(model::FrameTime from_time, model::
     if ( from_time < first_kf->time() )
         update_keyframe(first_kf->time());
 }
+
+void timeline::AnimatableItem::set_animatable(model::AnimatableBase *animatable)
+{
+    if ( this->animatable == animatable )
+        return;
+
+    if ( this->animatable )
+        disconnect_animatable();
+
+    this->animatable = animatable;
+
+    if ( this->animatable )
+        connect_animatable(this->animatable);
+}
+
+void timeline::AnimatableItem::disconnect_animatable()
+{
+    disconnect(animatable, nullptr, this, nullptr);
+    for ( auto kf : kf_split_items )
+        delete kf;
+    kf_split_items.clear();
+}
+
+void timeline::AnimatableItem::connect_animatable(model::AnimatableBase *animatable)
+{
+    for ( const auto& kf : animatable->keyframe_range() )
+        do_add_keyframe(const_cast<model::KeyframeBase*>(&kf));
+
+    connect(animatable, &model::AnimatableBase::keyframe_added, this, &AnimatableItem::add_keyframe);
+    connect(animatable, &model::AnimatableBase::keyframe_removed, this, &AnimatableItem::remove_keyframe);
+    connect(animatable, &model::AnimatableBase::keyframe_updated, this, &AnimatableItem::update_keyframe);
+    connect(animatable, &model::AnimatableBase::keyframe_moved, this, &AnimatableItem::move_keyframe);
+    connect(animatable, &model::AnimatableBase::transition_changed, this, &AnimatableItem::transition_changed);
+}
+
 glaxnimate::gui::timeline::ObjectLineItem::ObjectLineItem(
     quintptr id, model::Object *obj, int time_start, int time_end, int height
 )
 : AnimatableItem(id, obj, &obj->grouped_animations(), time_start, time_end, height)
 {}
+
 glaxnimate::gui::timeline::ObjectListLineItem::ObjectListLineItem(
     quintptr id, model::Object *obj, model::ObjectListPropertyBase *prop, int time_start, int time_end, int height
 )
 : AnimatableItem(id, obj, &obj->grouped_animations(), time_start, time_end, height), property_(prop) {}
+
+
+timeline::ReferencePropertyLineItem::ReferencePropertyLineItem(
+    quintptr id, model::Object *obj, model::ReferencePropertyBase *prop, int time_start, int time_end, int height
+) : AnimatableItem(id, obj, nullptr, time_start, time_end, height), property_(prop)
+{
+    connect(obj, &model::Object::property_changed, this, &ReferencePropertyLineItem::property_changed);
+    update_from_prop();
+}
+
+void timeline::ReferencePropertyLineItem::property_changed(const model::BaseProperty *prop)
+{
+    if ( prop == property_ )
+        update_from_prop();
+}
+
+void timeline::ReferencePropertyLineItem::update_from_prop()
+{
+    if ( property_->get_ref() )
+        set_animatable(&property_->get_ref()->grouped_animations());
+    else
+        set_animatable(nullptr);
+}
