@@ -30,6 +30,7 @@ public:
     void set_background(QImage image, const QRectF& target);
     void clear_background();
     void set_grid(const SnappingGrid* grid);
+    void update_from_settings();
 
     class Private;
 private:

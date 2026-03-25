@@ -467,6 +467,11 @@ public:
     {
         layers.back()->blend(tvg::BlendMethod(mode));
     }
+
+    void set_quality(int quality) override
+    {
+        effect_quality = quality;
+    }
 };
 
 } // namespace glaxnimate::renderer

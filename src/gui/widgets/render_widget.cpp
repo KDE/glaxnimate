@@ -10,6 +10,7 @@
 #include <QScrollBar>
 #include <QPaintEvent>
 
+#include "glaxnimate_settings.hpp"
 #include "glaxnimate_app.hpp"
 
 using namespace glaxnimate;
@@ -20,6 +21,7 @@ class glaxnimate::gui::RenderWidget::Private
 public:
     model::Composition* composition = nullptr;
     std::unique_ptr<renderer::Renderer> renderer;
+    qreal global_scale = 1;
     QTransform world_transform;
     QPointF offset;
     QImage background;
@@ -73,8 +75,11 @@ protected:
     void render_composition()
     {
         d->renderer->render_start();
+        d->renderer->scale(d->global_scale, d->global_scale);
+        d->renderer->layer_start();
         d->renderer->transform(d->world_transform);
         d->composition->paint(d->renderer.get(), d->composition->time(), model::VisualNode::Canvas);
+        d->renderer->layer_end();
         d->renderer->render_end();
     }
 
@@ -104,11 +109,11 @@ protected:
         painter.setTransform({});
 
         // Composition
-        QImage img(this->width(), this->height(), QImage::Format_ARGB32_Premultiplied);
+        QImage img(qRound(this->width() * d->global_scale), qRound(this->height() * d->global_scale), QImage::Format_ARGB32_Premultiplied);
         img.fill(Qt::transparent);
         d->renderer->set_image_surface(&img);
         render_composition();
-        painter.drawImage(0, 0, img);
+        painter.drawImage(QRectF(0, 0, width(), height()), img);
     }
 
 };
@@ -222,7 +227,8 @@ using OpenGlRenderWidget = BasicRenderWidget;
 void glaxnimate::gui::RenderWidget::Private::init_renderer(QWidget* parent)
 {
     // TODO setting for the render quality
-    renderer = renderer::default_renderer(5);
+    renderer = renderer::default_renderer(GlaxnimateSettings::render_quality());
+
     if ( renderer->supports_surface(renderer::OpenGL) )
     {
         widget = new OpenGlRenderWidget(parent, this);
@@ -237,6 +243,7 @@ void glaxnimate::gui::RenderWidget::Private::init_renderer(QWidget* parent)
 glaxnimate::gui::RenderWidget::RenderWidget(QWidget* parent)
     : d(std::make_unique<Private>(this, parent))
 {
+    update_from_settings();
 }
 
 glaxnimate::gui::RenderWidget::RenderWidget() = default;
@@ -292,3 +299,11 @@ void glaxnimate::gui::RenderWidget::set_grid(const SnappingGrid* grid)
 {
     d->grid = grid;
 }
+
+void gui::RenderWidget::update_from_settings()
+{
+    int quality = GlaxnimateSettings::render_quality();
+    d->renderer->set_quality(quality);
+    d->global_scale = quality < 5 ? 0.5 : 1;
+}
+

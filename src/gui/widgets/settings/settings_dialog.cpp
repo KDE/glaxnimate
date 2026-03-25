@@ -193,6 +193,7 @@ public:
     QTableView* icon_view = nullptr;
     bool has_changed = false;
     utils::PseudoMutex internal_change;
+    QComboBox* combo_quality = nullptr;
 };
 
 SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
@@ -226,6 +227,10 @@ SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
     );
 #endif
 
+    d->combo_quality = new QComboBox();
+    d->combo_quality->addItem(i18n("Best Quality"), 10);
+    d->combo_quality->addItem(i18n("Reduced Size (Performance)"), 1);
+
     d->ui_page = AutoConfigBuilder(kli18nc("Settings", "User Interface"), "preferences-desktop-theme", skeleton, this)
         .add_item("startup_dialog", kli18n("Show startup dialog"))
         .add_item(
@@ -233,6 +238,7 @@ SettingsDialog::SettingsDialog(KXmlGuiWindow *parent)
             kli18n("Horizontal Timeline Scroll"),
             kli18n("If enabled, the timeline will scroll horizontally by default and vertically with Shift or Alt")
         )
+        .add_item_widget("render_quality", d->combo_quality, kli18n("Canvas Render Quality"), kli18n("Display quality within the app, does not affect exports"), false)
 #if HAS_FREEDESKTOP_ICONS
         .add_item_widget("icon_theme", d->icon_view, kli18n("Icon Theme"), kli18n("Icon theme for the application"), false)
 #endif
@@ -278,6 +284,7 @@ void glaxnimate::gui::SettingsDialog::updateSettings()
     gui::settings::IconSettings::instance().set_current_item_index(d->icon_view->currentIndex());
     d->has_changed = false;
 #endif
+    GlaxnimateSettings::setRender_quality(d->combo_quality->currentData().toInt());
 }
 
 void glaxnimate::gui::SettingsDialog::updateWidgets()
@@ -286,6 +293,9 @@ void glaxnimate::gui::SettingsDialog::updateWidgets()
     auto lock = d->internal_change.get_lock();
     d->icon_view->setCurrentIndex(settings::IconSettings::instance().current_item_index());
 #endif
+    d->combo_quality->setCurrentIndex(d->combo_quality->findData(
+        GlaxnimateSettings::render_quality()
+    ));
 }
 
 bool glaxnimate::gui::SettingsDialog::hasChanged()

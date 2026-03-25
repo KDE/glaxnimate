@@ -37,6 +37,7 @@
     * Core as static library
     * Experimental wasm build of the core renderer
     * Unbounded precomp layers
+    * Canvas render quality setting
 * Scripting
     * Improved bindings for various objects, especially properties and keyframes
 * Bug Fixes:

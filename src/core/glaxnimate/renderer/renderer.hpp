@@ -169,6 +169,8 @@ public:
 
     virtual void draw_image(const QImage& image) = 0;
 
+    virtual void set_quality(int quality) = 0;
+
 // Transform
     virtual void scale(qreal x, qreal y) = 0;
     virtual void translate(qreal x, qreal y) = 0;
