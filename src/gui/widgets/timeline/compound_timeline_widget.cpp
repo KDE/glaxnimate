@@ -104,9 +104,6 @@ public:
     {
         for ( int i = 0; i < KeyframeTransitionData::count; i++ )
         {
-            if ( i == model::KeyframeTransition::NoValue )
-                continue;
-
             auto data = KeyframeTransitionData::from_index(i, KeyframeTransitionData::Full);
             actions_enter[i].setIcon(data.icon());
             actions_enter[i].setActionGroup(&enter);
@@ -120,6 +117,11 @@ public:
             {
                 actions_enter[i].setText(i18n("Custom..."));
                 actions_leave[i].setText(actions_enter[i].text());
+            }
+            else if ( i == model::KeyframeTransition::NoValue )
+            {
+                actions_enter[i].setVisible(false);
+                actions_leave[i].setVisible(false);
             }
             else
             {
@@ -256,7 +258,6 @@ public:
 
         return nullptr;
     }
-
 
     Ui_CompoundTimelineWidget ui;
     item_models::PropertyModelFull property_model;
