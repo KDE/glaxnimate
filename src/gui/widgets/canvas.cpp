@@ -62,6 +62,7 @@ public:
     QPainterPath clip;
     QPainterPath in_clip;
     qreal pinch_zoom = 1;
+    bool focus_mode = false;
 
 
     QPointF map_to_scene(QPointF p)
@@ -387,7 +388,8 @@ void Canvas::flip_horizontal()
 
 void Canvas::paintEvent(QPaintEvent *event)
 {
-    QGraphicsView::paintEvent(event);
+    if ( !d->focus_mode )
+        QGraphicsView::paintEvent(event);
 
     QPainter painter;
     painter.begin(viewport());
@@ -488,6 +490,12 @@ void Canvas::view_fit()
     }
 
     d->resize_fit = true;
+}
+
+void Canvas::set_focus_mode(bool enable)
+{
+    d->focus_mode = enable;
+    update();
 }
 
 void Canvas::set_active_tool(tools::Tool* tool)

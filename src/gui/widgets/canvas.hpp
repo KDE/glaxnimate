@@ -45,7 +45,6 @@ public:
     void set_tool_target(glaxnimate::gui::SelectionManager* window);
 
     void set_grid(SnappingGrid* grid);
-
 public Q_SLOTS:
     /**
      *  \brief Translate and resize sceneRect
@@ -108,6 +107,12 @@ public Q_SLOTS:
     void reset_rotation() { set_rotation(0); }
 
     void view_fit();
+
+    /**
+     * @brief Toggles "Focus mode", which hides all widgets from the view
+     * @param enable
+     */
+    void set_focus_mode(bool enable);
 
 Q_SIGNALS:
     /**

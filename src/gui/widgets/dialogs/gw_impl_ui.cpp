@@ -487,6 +487,10 @@ void GlaxnimateWindow::Private::setup_view_actions()
     connect(toolResetRotation, &QAction::triggered, canvas, &Canvas::reset_rotation);
     QAction *toolFlipView = add_action(viewActions, QStringLiteral("flip_view"), i18n("Flip View"), QStringLiteral("object-flip-horizontal"));
     connect(toolFlipView, &QAction::triggered, canvas, &Canvas::flip_horizontal);
+
+    QAction* focus_mode = add_action(viewActions, QStringLiteral("view_focus_mode"), i18n("Focus Mode"), QStringLiteral("window"));
+    focus_mode->setCheckable(true);
+    connect(focus_mode, &QAction::triggered, canvas, &Canvas::set_focus_mode);
 }
 
 void GlaxnimateWindow::Private::setup_document_actions()
