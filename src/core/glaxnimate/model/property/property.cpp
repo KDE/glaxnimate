@@ -7,6 +7,8 @@
 #include "glaxnimate/model/property/property.hpp"
 #include "glaxnimate/model/object.hpp"
 #include "glaxnimate/command/property_commands.hpp"
+#include "glaxnimate/model/property/sub_object_property.hpp"
+#include "glaxnimate/model/animation/meta_animatable.hpp"
 
 glaxnimate::model::BaseProperty::BaseProperty(Object* object, const utils::LazyLocalizedString& name, PropertyTraits traits)
     : object_(object), name_(name), traits_(traits)
@@ -27,4 +29,9 @@ bool glaxnimate::model::BaseProperty::set_undoable ( const QVariant& val, bool c
 
     object_->push_command(new command::SetPropertyValue(this, value(), val, commit));
     return true;
+}
+
+void glaxnimate::model::SubObjectPropertyBase::register_animatable(Object* sub_object)
+{
+    object()->grouped_animations().add_animatable(&sub_object->grouped_animations());
 }

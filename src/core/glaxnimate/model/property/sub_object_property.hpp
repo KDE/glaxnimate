@@ -27,6 +27,9 @@ public:
 
     virtual const model::Object* sub_object() const = 0;
     virtual model::Object* sub_object() = 0;
+
+protected:
+    void register_animatable(Object* sub_object);
 };
 
 template<class Type>
@@ -36,7 +39,9 @@ public:
     SubObjectProperty(Object* obj, const utils::LazyLocalizedString& name)
         : SubObjectPropertyBase(obj, name),
         sub_obj(obj->document())
-    {}
+    {
+        register_animatable(&sub_obj);
+    }
 
     const Type* operator->() const
     {
