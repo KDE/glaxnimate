@@ -46,6 +46,7 @@
 #include <KXMLGUIFactory>
 
 #include "glaxnimate_settings.hpp"
+#include "keyframe_editor_dialog.hpp"
 
 #include "tools/base.hpp"
 #include "glaxnimate/model/shapes/composable/image.hpp"
@@ -736,7 +737,6 @@ void GlaxnimateWindow::Private::setup_object_actions()
             if ( desc == model::KeyframeTransition::Custom )
             {
                 action->setText(i18n("Custom..."));
-                action->setVisible(false); // TODO
             }
         }
     }
@@ -798,24 +798,51 @@ void GlaxnimateWindow::Private::action_keyframe_transition(model::KeyframeTransi
         return;
 
     auto cmd = new QUndoCommand(i18n("Apply %1 keyframe transition", KeyframeTransitionData::data(desc).name));
-    for ( auto kfinfo : selected )
-    {
-        auto kf = kfinfo.property->keyframe_at(kfinfo.time);
-        if ( !kf )
-            continue;
 
-        if ( auto kf_before = kfinfo.property->keyframe_before(kfinfo.time) )
+    if ( desc == model::KeyframeTransition::Custom )
+    {
+        // Custom transition with dialog
+        KeyframeEditorDialog dialog;
+        for ( auto kfinfo : selected )
         {
-            auto left_trans = kf_before->transition();
-            left_trans.set_after_descriptive(desc);
-            kfinfo.property->command_set_transition(kf_before->time(), left_trans, cmd);
+            auto kf = kfinfo.property->keyframe_at(kfinfo.time);
+            if ( kf && kf->transition().special() == model::KeyframeTransition::Special::Normal )
+            {
+                // Set the dialog to use the first normal transition
+                dialog.set_transition(kf->transition());
+                break;
+            }
         }
 
-        auto right_trans = kf->transition();
-        right_trans.set_before_descriptive(desc);
-        kfinfo.property->command_set_transition(kfinfo.time, right_trans, cmd);
+        if ( dialog.exec() )
+        {
+            for ( auto kfinfo : selected )
+                kfinfo.property->command_set_transition(kfinfo.time, dialog.transition(), cmd);
+        }
+    }
+    else
+    {
+        // Preset type
+        for ( auto kfinfo : selected )
+        {
+            auto kf = kfinfo.property->keyframe_at(kfinfo.time);
+            if ( !kf )
+                continue;
+
+            if ( auto kf_before = kfinfo.property->keyframe_before(kfinfo.time) )
+            {
+                auto left_trans = kf_before->transition();
+                left_trans.set_after_descriptive(desc);
+                kfinfo.property->command_set_transition(kf_before->time(), left_trans, cmd);
+            }
+
+            auto right_trans = kf->transition();
+            right_trans.set_before_descriptive(desc);
+            kfinfo.property->command_set_transition(kfinfo.time, right_trans, cmd);
+        }
     }
 
+    // Push if we did anything
     if ( cmd->childCount() > 0 )
         current_document->push_command(cmd);
 }
