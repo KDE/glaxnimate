@@ -95,6 +95,7 @@ Q_SIGNALS:
     void frame_clicked(int frame);
     void line_clicked(quintptr id, bool selected, bool replace_selection);
     void scrolled(int line);
+    void has_keyframe_selected_changed(bool has_keyframe);
     
 private:
     class Private;

@@ -5,8 +5,9 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "glaxnimate/model/animation/collect.hpp"
+#include "glaxnimate/model/animation/edit_utils.hpp"
 #include "glaxnimate_window_p.hpp"
+#include "widgets/timeline/timeline_widget.hpp"
 
 #include <QComboBox>
 #include <QLabel>
@@ -72,6 +73,7 @@
 #include "widgets/docks/logsdock.h"
 #include "widgets/docks/script_console.hpp"
 #include "widgets/docks/timelinedock.h"
+#include "widgets/timeline/keyframe_transition_data.hpp"
 #include "widgets/lottiefiles/lottiefiles_search_dialog.hpp"
 #include "widgets/settings/settings_dialog.hpp"
 #include "widgets/tools/shape_tool_widget.hpp"
@@ -721,6 +723,23 @@ void GlaxnimateWindow::Private::setup_object_actions()
 
     QAction* action_object_add_keyframe = add_action(object_actions, QStringLiteral("object_add_keyframe"), i18n("Add Keyframe"), QStringLiteral("keyframe-add"), {}, Qt::Key_K);
     connect(action_object_add_keyframe, &QAction::triggered, parent, [this]{action_add_keyframe();});
+
+    for ( int i = 0; i < model::KeyframeTransition::max_descriptive; i++ )
+    {
+        auto desc = model::KeyframeTransition::Descriptive(i);
+        if ( desc != model::KeyframeTransition::NoValue )
+        {
+            auto data = KeyframeTransitionData::data(desc);
+            QAction* action = add_action(object_actions, QStringLiteral("kftran_") + data.icon_slug, data.name);
+            action->setIcon(data.icon());
+            connect(action, &QAction::triggered, parent, [this, desc]{action_keyframe_transition(desc);});
+            if ( desc == model::KeyframeTransition::Custom )
+            {
+                action->setText(i18n("Custom..."));
+                action->setVisible(false); // TODO
+            }
+        }
+    }
 }
 
 void GlaxnimateWindow::Private::action_add_keyframe()
@@ -770,6 +789,35 @@ void GlaxnimateWindow::Private::action_add_keyframe_for(model::Object* object, m
     current_document->push_command(
         prop->command_add_smooth_keyframe(object->time(), prop->static_value())
     );
+}
+
+void GlaxnimateWindow::Private::action_keyframe_transition(model::KeyframeTransition::Descriptive desc)
+{
+    auto selected = timeline_dock->timelineWidget()->timeline()->selected_keyframes();
+    if ( selected.empty() )
+        return;
+
+    auto cmd = new QUndoCommand(i18n("Apply %1 keyframe transition", KeyframeTransitionData::data(desc).name));
+    for ( auto kfinfo : selected )
+    {
+        auto kf = kfinfo.property->keyframe_at(kfinfo.time);
+        if ( !kf )
+            continue;
+
+        if ( auto kf_before = kfinfo.property->keyframe_before(kfinfo.time) )
+        {
+            auto left_trans = kf_before->transition();
+            left_trans.set_after_descriptive(desc);
+            kfinfo.property->command_set_transition(kf_before->time(), left_trans, cmd);
+        }
+
+        auto right_trans = kf->transition();
+        right_trans.set_before_descriptive(desc);
+        kfinfo.property->command_set_transition(kfinfo.time, right_trans, cmd);
+    }
+
+    if ( cmd->childCount() > 0 )
+        current_document->push_command(cmd);
 }
 
 
@@ -928,6 +976,9 @@ void GlaxnimateWindow::Private::init_item_views()
     });
     connect(timeline_dock->timelineWidget(), &CompoundTimelineWidget::selection_changed, parent, [this](const std::vector<model::VisualNode*>& selected,  const std::vector<model::VisualNode*>& deselected){
         selection_changed(selected, deselected);
+    });
+    connect(timeline_dock->timelineWidget()->timeline(), &TimelineWidget::has_keyframe_selected_changed, parent, [this](bool has_kf){
+        parent->findChild<QMenu*>("menu_keyframe_type")->setEnabled(has_kf);
     });
 }
 

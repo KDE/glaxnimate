@@ -176,6 +176,15 @@ SPDX-License-Identifier: GPL-3.0-or-later
             </Menu>
             <Separator/>
             <Action name="object_add_keyframe"/>
+            <Menu name="menu_keyframe_type">
+                <text>Keyframe Transition</text>
+                <Action name="kftran_custom" />
+                <Action name="kftran_hold" />
+                <Action name="kftran_linear" />
+                <Action name="kftran_ease" />
+                <Action name="kftran_fast" />
+                <Action name="kftran_overshoot" />
+            </Menu>
         </Menu>
         <Menu name="path">
             <text>Path</text>

@@ -324,6 +324,18 @@ TimelineWidget::TimelineWidget(QWidget* parent)
     setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     setTransformationAnchor(AnchorUnderMouse);
     setCursor(Qt::ArrowCursor);
+    connect(&d->scene, &QGraphicsScene::selectionChanged, this, [this]{
+        bool has_keyframe = false;
+        for ( auto item : d->scene.selectedItems() )
+        {
+            if ( item->type() == int(ItemTypes::KeyframeSplitItem) )
+            {
+                has_keyframe = true;
+                break;
+            }
+        }
+        Q_EMIT has_keyframe_selected_changed(has_keyframe);
+    });
 }
 
 TimelineWidget::~TimelineWidget()
@@ -747,8 +759,9 @@ std::pair<model::KeyframeBase*, model::KeyframeBase*> TimelineWidget::keyframe_a
 {
     for ( QGraphicsItem* it : items(viewport_pos) )
     {
-        if ( auto kfit = dynamic_cast<KeyframeSplitItem*>(it) )
+        if ( it->type() == int(ItemTypes::KeyframeSplitItem) )
         {
+            auto kfit = static_cast<KeyframeSplitItem*>(it);
             auto anit = static_cast<AnimatableItem*>(it->parentItem());
             return anit->keyframes(kfit);
         }
@@ -957,7 +970,7 @@ KeyframeSelection TimelineWidget::selected_keyframes() const
     KeyframeSelection selection;
     for ( auto item : d->scene.selectedItems() )
     {
-        if ( item->type() == int(ItemTypes::KeyframeSplitItem) && item->isSelected() )
+        if ( item->type() == int(ItemTypes::KeyframeSplitItem) )
         {
             auto kf_item = static_cast<KeyframeSplitItem*>(item);
             auto prop_item = static_cast<AnimatableItem*>(item->parentItem());

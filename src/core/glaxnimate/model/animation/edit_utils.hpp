@@ -28,12 +28,14 @@ inline void all_animated_properties(model::Object* object, std::vector<AnimatedP
     }
 }
 
+/**
+ * @brief Finds all animated properties in the object and direct subobjects
+ */
 inline std::vector<AnimatedPropertyBase*> all_animated_properties(model::Object* object)
 {
     std::vector<AnimatedPropertyBase*> out;
     all_animated_properties(object, out);
     return out;
 }
-
 
 } // namespace glaxnimate::model
