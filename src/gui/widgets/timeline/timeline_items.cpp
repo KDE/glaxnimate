@@ -533,7 +533,7 @@ void glaxnimate::gui::timeline::AnimatableItem::cycle_keyframe_transition(model:
         return;
 
     auto kf_before = animatable_->keyframe_before(time);
-    auto desc = !kf_before ? kf->transition().after_descriptive() : kf->transition().before_descriptive();
+    auto desc = kf->transition().before_descriptive();
 
     switch ( desc )
     {
