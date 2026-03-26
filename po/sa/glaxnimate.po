@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-19 00:42+0000\n"
+"POT-Creation-Date: 2026-03-26 00:41+0000\n"
 "PO-Revision-Date: 2024-12-25 19:37+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -265,14 +265,12 @@ msgstr "ढाल_रङ्गाः"
 msgid "compositions"
 msgstr "रचनाः"
 
-#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: file: src/core/glaxnimate/model/animation_container.hpp
 #. i18n: Property name
 #, kde-format
-msgid "uuid"
-msgstr ""
+msgid "first_frame"
+msgstr "प्रथम_चक्रम्"
 
-#. i18n: file: src/core/glaxnimate/model/document_node.hpp
-#. i18n: Property name
 #. i18n: file: src/core/glaxnimate/model/property/option_list_property.hpp
 #. i18n: Property name
 #. i18n: file: src/core/glaxnimate/model/property/object_list_property.hpp
@@ -280,33 +278,6 @@ msgstr ""
 #, kde-format
 msgid "name"
 msgstr "नामः"
-
-#. i18n: file: src/core/glaxnimate/model/document_node.hpp
-#. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Group Color"
-msgid "group_color"
-msgstr "समूहवर्णः"
-
-#. i18n: file: src/core/glaxnimate/model/document_node.hpp
-#. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Visible"
-msgid "visible"
-msgstr "दृश्यमानम्"
-
-#. i18n: file: src/core/glaxnimate/model/document_node.hpp
-#. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Unlocked"
-msgid "locked"
-msgstr "अनलॉक्ड्"
-
-#. i18n: file: src/core/glaxnimate/model/animation_container.hpp
-#. i18n: Property name
-#, kde-format
-msgid "first_frame"
-msgstr "प्रथम_चक्रम्"
 
 #. i18n: file: src/core/glaxnimate/model/stretchable_time.hpp
 #. i18n: Property name
@@ -871,19 +842,19 @@ msgstr "फ्रेम %1.png"
 msgid "Add keyframe"
 msgstr "कीफ्रेम् योजयन्तु"
 
-#: src/android/main_window.cpp:986
+#: src/android/main_window.cpp:988
 #, kde-format
 msgid "Remove keyframe"
 msgstr "कीफ्रेम् निष्कासयन्तु"
 
-#: src/android/main_window.cpp:1001
-#: src/gui/widgets/menus/animated_property_menu.cpp:55
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
+#: src/android/main_window.cpp:1003
+#: src/gui/widgets/menus/animated_property_menu.cpp:54
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:171
 #, kde-format
 msgid "Clear Animations"
 msgstr "स्पष्ट एनिमेशन"
 
-#: src/android/main_window.cpp:1066
+#: src/android/main_window.cpp:1070
 #, kde-format
 msgid "Emoji"
 msgstr "इमोजी"
@@ -949,60 +920,56 @@ msgstr "वर्तमानं योजयतु"
 msgid "Could not start activity, is Telegram installed?"
 msgstr "क्रियाकलापं आरभुं न शक्तवान्, Telegram संस्थापितम् अस्ति वा?"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:17
+#: src/core/glaxnimate/command/animation_commands.cpp:28
 #, kde-format
 msgid "Update %1 keyframe at %2"
 msgstr "%1 कीलफ्रेम् %2 इत्यत्र अद्यतनं कुर्वन्तु"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:86
+#: src/core/glaxnimate/command/animation_commands.cpp:110
 #, kde-format
 msgid "Remove %1 keyframe at %2"
 msgstr "%2 इत्यत्र %1 कीलफ्रेम् निष्कासयन्तु"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:117
-#, kde-format
-msgid "Remove %1 keyframe %2"
-msgstr "%1 कीलफ्रेम् %2 निष्कासयन्तु"
-
-#: src/core/glaxnimate/command/animation_commands.cpp:291
+#: src/core/glaxnimate/command/animation_commands.cpp:274
 #, kde-format
 msgid "Add keyframe for %1 at %2"
 msgstr "%2 इत्यत्र %1 कृते कीलफ्रेम् योजयन्तु"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:294
+#: src/core/glaxnimate/command/animation_commands.cpp:277
 #, kde-format
 msgid "Update %1 at %2"
 msgstr "%1 %2 इत्यत्र अद्यतनं कुर्वन्तु"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:296
+#: src/core/glaxnimate/command/animation_commands.cpp:279
 #: src/core/glaxnimate/command/property_commands.hpp:24
-#: src/core/glaxnimate/model/animation/animatable.cpp:171
+#: src/core/glaxnimate/model/animation/animatable.cpp:129
 #, kde-format
 msgid "Update %1"
 msgstr "%1 अद्यतनं कुर्वन्तु"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:309
-#: src/gui/widgets/timeline/timeline_items.cpp:541
+#: src/core/glaxnimate/command/animation_commands.cpp:293
+#: src/gui/widgets/timeline/timeline_items.cpp:562
 #, kde-format
 msgid "Update keyframe transition"
 msgstr "कीफ्रेम संक्रमणं अद्यतनं कुर्वन्तु"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:360
+#: src/core/glaxnimate/command/animation_commands.cpp:343
+#: src/core/glaxnimate/model/animation/animatable_base.cpp:48
 #, kde-format
 msgid "Move keyframe"
 msgstr "कीफ्रेम् चालयन्तु"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:383
+#: src/core/glaxnimate/command/animation_commands.cpp:380
 #, kde-format
 msgid "Remove animations from %1"
 msgstr "%1 तः एनिमेशनं निष्कासयन्तु"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:434
+#: src/core/glaxnimate/command/animation_commands.cpp:416
 #, kde-format
 msgid "Update animation path"
 msgstr "एनिमेशन मार्ग अद्यतन करें"
 
-#: src/core/glaxnimate/command/animation_commands.hpp:241
+#: src/core/glaxnimate/command/animation_commands.hpp:223
 #, kde-format
 msgid "Stretch Time"
 msgstr "खिंचाव समय"
@@ -1270,7 +1237,7 @@ msgid "%s cannot be a clip path"
 msgstr "%s क्लिप् मार्गः न भवितुम् अर्हति"
 
 #: src/core/glaxnimate/io/base.cpp:22
-#: src/core/glaxnimate/io/svg/svg_renderer.cpp:839 src/gui/tools/base.cpp:161
+#: src/core/glaxnimate/io/svg/svg_renderer.cpp:837 src/gui/tools/base.cpp:161
 #, kde-format
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
@@ -1371,19 +1338,19 @@ msgstr "कीफ्रेम् योजयितुं न शक्तवा
 msgid "Unknown object of type '%1'"
 msgstr "'%1' प्रकारस्य अज्ञात वस्तु ।"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:676
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:693
 #, fuzzy, kde-format
 #| msgid "Unsupported shape type %1"
 msgid "%1 is an unsupported shape of type %2"
 msgstr "असमर्थितः आकारप्रकारः %1"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:696
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:713
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
 "चित्राणि अन्यैः आकारैः सह समूहीकृत्य स्थापयितुं न शक्यन्ते, ते स्तरस्य अन्तः एव भवितुमर्हन्ति"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:698
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:715
 #, kde-format
 msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
@@ -1971,30 +1938,43 @@ msgstr "परिवर्तनस्य विषये वाचिकसू�
 msgid "Video"
 msgstr "विडिओ"
 
-#: src/core/glaxnimate/model/animation/animatable.cpp:271
+#: src/core/glaxnimate/model/animation/animatable.cpp:213
 #: src/core/glaxnimate/model/animation/animatable_path.cpp:30
 #, kde-format
 msgid "Split Segment"
 msgstr "विभक्त खण्ड"
 
-#: src/core/glaxnimate/model/animation/animatable.cpp:340
-#: src/core/glaxnimate/model/animation/animatable_path.cpp:60
+#: src/core/glaxnimate/model/animation/animatable.cpp:288
+#: src/core/glaxnimate/model/animation/animatable_path.cpp:62
 #, kde-format
 msgid "Remove Nodes"
 msgstr "नोड्स् निष्कासयन्तु"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
-#: src/core/glaxnimate/model/animation/animatable.cpp:418
-#: src/gui/widgets/menus/animated_property_menu.cpp:59
+#: src/core/glaxnimate/model/animation/animatable.cpp:382
+#: src/gui/widgets/menus/animated_property_menu.cpp:58
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:194
 #, kde-format
 msgid "Add Keyframe"
 msgstr "Keyframe योजयन्तु"
 
-#: src/core/glaxnimate/model/animation/animatable_path.cpp:139
+#: src/core/glaxnimate/model/animation/animatable_path.cpp:141
 #, kde-format
 msgid "Extend Shape"
 msgstr "आकारं विस्तारयतु"
+
+#: src/core/glaxnimate/model/animation/meta_animatable.cpp:101
+#: src/core/glaxnimate/model/animation/meta_animatable.cpp:118
+#, fuzzy, kde-format
+#| msgid "Update keyframe transition"
+msgid "Set keyframe transition"
+msgstr "कीफ्रेम संक्रमणं अद्यतनं कुर्वन्तु"
+
+#: src/core/glaxnimate/model/animation/meta_animatable.cpp:138
+#, fuzzy, kde-format
+#| msgid "Move keyframe"
+msgid "Move Keyframe"
+msgstr "कीफ्रेम् चालयन्तु"
 
 #: src/core/glaxnimate/model/animation_container.cpp:54
 #, kde-format
@@ -2022,7 +2002,7 @@ msgid "Images"
 msgstr "बिम्बाः"
 
 #: src/core/glaxnimate/model/assets/assets.hpp:127
-#: src/gui/tools/edit_tool.cpp:351
+#: src/gui/tools/edit_tool.cpp:356
 #, kde-format
 msgid "Gradient Colors"
 msgstr "ढाल रंग"
@@ -2155,7 +2135,7 @@ msgstr "अनाम रङ्ग"
 msgid "Mask"
 msgstr "मुखावरण"
 
-#: src/core/glaxnimate/model/object.hpp:92
+#: src/core/glaxnimate/model/object.hpp:95
 #, kde-format
 msgid "Unknown Object"
 msgstr "अज्ञात वस्तु"
@@ -2305,13 +2285,13 @@ msgstr "समयः"
 msgid "Transform"
 msgstr "परिवर्तनं कुरुत"
 
-#: src/core/glaxnimate/script/register_impl.hpp:203
+#: src/core/glaxnimate/script/register_impl.hpp:234
 #, fuzzy, kde-format
 #| msgid "Could not allocate frame data."
 msgid "Cannot allocate argument"
 msgstr "फ्रेमदत्तांशं आवंटयितुं न शक्तवान् ।"
 
-#: src/core/glaxnimate/script/register_impl.hpp:219
+#: src/core/glaxnimate/script/register_impl.hpp:250
 #, fuzzy, kde-format
 #| msgid "Could not allocate stream"
 msgid "Cannot allocate return value"
@@ -2667,10 +2647,9 @@ msgid "OpenGL Renderer"
 msgstr ""
 
 #: src/gui/glaxnimate_app.cpp:234
-#, fuzzy, kde-format
-#| msgid "(c) 2019-2023"
-msgid "(c) 2019-2026"
-msgstr "(ग) 2019-2023"
+#, kde-format
+msgid "Copyright © 2019-2026"
+msgstr ""
 
 #: src/gui/glaxnimate_app.cpp:243
 #, kde-format
@@ -3059,95 +3038,95 @@ msgstr "वक्रबिन्दु योजयतु"
 msgid "Draw Bezier"
 msgstr "बेजियर आकर्षयन्तु"
 
-#: src/gui/tools/edit_tool.cpp:168
+#: src/gui/tools/edit_tool.cpp:171
 #, kde-format
 msgid "Drag nodes"
 msgstr "नोड्स कर्षन्तु"
 
-#: src/gui/tools/edit_tool.cpp:275 src/gui/widgets/dialogs/gw_impl_ui.cpp:752
+#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:752
 #, kde-format
 msgid "Cusp"
 msgstr "Cusp"
 
-#: src/gui/tools/edit_tool.cpp:279 src/gui/widgets/dialogs/gw_impl_ui.cpp:753
+#: src/gui/tools/edit_tool.cpp:284 src/gui/widgets/dialogs/gw_impl_ui.cpp:753
 #, kde-format
 msgid "Smooth"
 msgstr "मसृणः"
 
-#: src/gui/tools/edit_tool.cpp:283
+#: src/gui/tools/edit_tool.cpp:288
 #, kde-format
 msgid "Symmetrical"
 msgstr "सममितम्"
 
-#: src/gui/tools/edit_tool.cpp:290
+#: src/gui/tools/edit_tool.cpp:295
 #, kde-format
 msgid "Set %1 Node"
 msgstr "%1 नोड् सेट् कुर्वन्तु"
 
-#: src/gui/tools/edit_tool.cpp:304
+#: src/gui/tools/edit_tool.cpp:309
 #, kde-format
 msgid "Node"
 msgstr "नोडः"
 
-#: src/gui/tools/edit_tool.cpp:314
+#: src/gui/tools/edit_tool.cpp:319
 #, kde-format
 msgid "Remove Node"
 msgstr "नोडं निष्कासयन्तु"
 
-#: src/gui/tools/edit_tool.cpp:318
+#: src/gui/tools/edit_tool.cpp:323
 #, kde-format
 msgid "Show Tangents"
 msgstr "स्पर्शरेखा दर्शयतु"
 
-#: src/gui/tools/edit_tool.cpp:325
+#: src/gui/tools/edit_tool.cpp:330
 #, kde-format
 msgid "Make First Node"
 msgstr "प्रथमं नोडं कुरुत"
 
-#: src/gui/tools/edit_tool.cpp:333
+#: src/gui/tools/edit_tool.cpp:338
 #, kde-format
 msgid "Remove Tangent"
 msgstr "स्पर्शरेखां निष्कासयन्तु"
 
-#: src/gui/tools/edit_tool.cpp:368
+#: src/gui/tools/edit_tool.cpp:373
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Stop Color..."
 msgstr "Stop Color..."
 
-#: src/gui/tools/edit_tool.cpp:380
+#: src/gui/tools/edit_tool.cpp:385
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Add Stop"
 msgstr "Stop इति योजयतु"
 
-#: src/gui/tools/edit_tool.cpp:384
+#: src/gui/tools/edit_tool.cpp:389
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "Stop इति निष्कासयतु"
 
-#: src/gui/tools/edit_tool.cpp:526 src/gui/widgets/dialogs/gw_impl_ui.cpp:757
+#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:757
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr "Dissolve Nodes"
 
-#: src/gui/tools/edit_tool.cpp:526 src/gui/widgets/dialogs/gw_impl_ui.cpp:744
+#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:744
 #, kde-format
 msgid "Delete Nodes"
 msgstr "Nodes विलोपयन्तु"
 
-#: src/gui/tools/edit_tool.cpp:885
+#: src/gui/tools/edit_tool.cpp:894
 #, kde-format
 msgid "Set node type"
 msgstr "नोड् प्रकारं सेट् कुर्वन्तु"
 
-#: src/gui/tools/edit_tool.cpp:913
+#: src/gui/tools/edit_tool.cpp:922
 #, kde-format
 msgid "Straighten segments"
 msgstr "खण्डान् सीधां कुर्वन्तु"
 
-#: src/gui/tools/edit_tool.cpp:961
+#: src/gui/tools/edit_tool.cpp:970
 #, kde-format
 msgid "Curve segments"
 msgstr "वक्रखण्डाः"
@@ -5658,24 +5637,24 @@ msgstr "टिप्पणियाँ"
 msgid "View on LottieFiles..."
 msgstr "LottieFiles इत्यत्र पश्यन्तु..."
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:56
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:179
+#: src/gui/widgets/menus/animated_property_menu.cpp:55
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:174
 #, kde-format
 msgid "Paste Keyframe"
 msgstr "कीफ्रेम पेस्ट करें"
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:57
+#: src/gui/widgets/menus/animated_property_menu.cpp:56
 #, kde-format
 msgid "Loop Animation"
 msgstr "पाश एनिमेशन"
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:58
+#: src/gui/widgets/menus/animated_property_menu.cpp:57
 #, kde-format
 msgid "Follow Path..."
 msgstr "अनुसरण पथ..."
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:60
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:175
+#: src/gui/widgets/menus/animated_property_menu.cpp:59
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:170
 #, kde-format
 msgid "Remove Keyframe"
 msgstr "कीफ्रेम् निष्कासयन्तु"
@@ -6493,22 +6472,22 @@ msgstr "रचना का नाम बदलें"
 msgid "Delete Composition"
 msgstr "रचनां विलोपयतु"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:157
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:152
 #, kde-format
 msgid "Transition From Previous"
 msgstr "पूर्वतः संक्रमणम्"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:158
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:153
 #, kde-format
 msgid "Transition To Next"
 msgstr "Transition To Next इति"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:165
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:160
 #, kde-format
 msgid "Custom..."
 msgstr "आचारः..."
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:178
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
 #, kde-format
 msgid "Copy Keyframe"
 msgstr "कीफ्रेम प्रतिलिपि कुर्वन्तु"
@@ -6647,7 +6626,7 @@ msgstr "आयासं"
 msgid "Overshoot"
 msgstr "अतिक्रमणम्"
 
-#: src/gui/widgets/timeline/timeline_items.cpp:146
+#: src/gui/widgets/timeline/timeline_items.cpp:148
 #, kde-format
 msgid "Drag Keyframes"
 msgstr "कीफ्रेम्स् खींचें"
@@ -6728,6 +6707,29 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "अनुसन्धानं %1"
+
+#, fuzzy
+#~| msgid "Group Color"
+#~ msgid "group_color"
+#~ msgstr "समूहवर्णः"
+
+#, fuzzy
+#~| msgid "Visible"
+#~ msgid "visible"
+#~ msgstr "दृश्यमानम्"
+
+#, fuzzy
+#~| msgid "Unlocked"
+#~ msgid "locked"
+#~ msgstr "अनलॉक्ड्"
+
+#~ msgid "Remove %1 keyframe %2"
+#~ msgstr "%1 कीलफ्रेम् %2 निष्कासयन्तु"
+
+#, fuzzy
+#~| msgid "(c) 2019-2023"
+#~ msgid "(c) 2019-2026"
+#~ msgstr "(ग) 2019-2023"
 
 #~ msgid "Lock Ratio"
 #~ msgstr "ताला अनुपात"

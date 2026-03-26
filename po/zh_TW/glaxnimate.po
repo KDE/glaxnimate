@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-19 00:42+0000\n"
+"POT-Creation-Date: 2026-03-26 00:41+0000\n"
 "PO-Revision-Date: 2025-09-26 04:59+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -264,14 +264,12 @@ msgstr "漸層顏色"
 msgid "compositions"
 msgstr "合成方案"
 
-#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: file: src/core/glaxnimate/model/animation_container.hpp
 #. i18n: Property name
 #, kde-format
-msgid "uuid"
-msgstr ""
+msgid "first_frame"
+msgstr "第一幀"
 
-#. i18n: file: src/core/glaxnimate/model/document_node.hpp
-#. i18n: Property name
 #. i18n: file: src/core/glaxnimate/model/property/option_list_property.hpp
 #. i18n: Property name
 #. i18n: file: src/core/glaxnimate/model/property/object_list_property.hpp
@@ -279,33 +277,6 @@ msgstr ""
 #, kde-format
 msgid "name"
 msgstr "名稱"
-
-#. i18n: file: src/core/glaxnimate/model/document_node.hpp
-#. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Group Color"
-msgid "group_color"
-msgstr "群組顏色"
-
-#. i18n: file: src/core/glaxnimate/model/document_node.hpp
-#. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Visible"
-msgid "visible"
-msgstr "可見"
-
-#. i18n: file: src/core/glaxnimate/model/document_node.hpp
-#. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Unlocked"
-msgid "locked"
-msgstr "已解除鎖定"
-
-#. i18n: file: src/core/glaxnimate/model/animation_container.hpp
-#. i18n: Property name
-#, kde-format
-msgid "first_frame"
-msgstr "第一幀"
 
 #. i18n: file: src/core/glaxnimate/model/stretchable_time.hpp
 #. i18n: Property name
@@ -852,19 +823,19 @@ msgstr "影格 %1.png"
 msgid "Add keyframe"
 msgstr "新增關鍵幀"
 
-#: src/android/main_window.cpp:986
+#: src/android/main_window.cpp:988
 #, kde-format
 msgid "Remove keyframe"
 msgstr "移除關鍵幀"
 
-#: src/android/main_window.cpp:1001
-#: src/gui/widgets/menus/animated_property_menu.cpp:55
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
+#: src/android/main_window.cpp:1003
+#: src/gui/widgets/menus/animated_property_menu.cpp:54
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:171
 #, kde-format
 msgid "Clear Animations"
 msgstr "清除動畫"
 
-#: src/android/main_window.cpp:1066
+#: src/android/main_window.cpp:1070
 #, kde-format
 msgid "Emoji"
 msgstr "表情符號"
@@ -930,60 +901,56 @@ msgstr "新增目前"
 msgid "Could not start activity, is Telegram installed?"
 msgstr "無法開啟活動，Telegram 是否未安裝？"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:17
+#: src/core/glaxnimate/command/animation_commands.cpp:28
 #, kde-format
 msgid "Update %1 keyframe at %2"
 msgstr "在 %2 更新 %1 關鍵幀"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:86
+#: src/core/glaxnimate/command/animation_commands.cpp:110
 #, kde-format
 msgid "Remove %1 keyframe at %2"
 msgstr "於 %2 移除 %1 關鍵幀"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:117
-#, kde-format
-msgid "Remove %1 keyframe %2"
-msgstr "移除 %1 關鍵幀 %2"
-
-#: src/core/glaxnimate/command/animation_commands.cpp:291
+#: src/core/glaxnimate/command/animation_commands.cpp:274
 #, kde-format
 msgid "Add keyframe for %1 at %2"
 msgstr "新增 %1 的關鍵幀於 %2"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:294
+#: src/core/glaxnimate/command/animation_commands.cpp:277
 #, kde-format
 msgid "Update %1 at %2"
 msgstr "在 %2 更新%1"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:296
+#: src/core/glaxnimate/command/animation_commands.cpp:279
 #: src/core/glaxnimate/command/property_commands.hpp:24
-#: src/core/glaxnimate/model/animation/animatable.cpp:171
+#: src/core/glaxnimate/model/animation/animatable.cpp:129
 #, kde-format
 msgid "Update %1"
 msgstr "更新%1"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:309
-#: src/gui/widgets/timeline/timeline_items.cpp:541
+#: src/core/glaxnimate/command/animation_commands.cpp:293
+#: src/gui/widgets/timeline/timeline_items.cpp:562
 #, kde-format
 msgid "Update keyframe transition"
 msgstr "更新關鍵幀過渡"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:360
+#: src/core/glaxnimate/command/animation_commands.cpp:343
+#: src/core/glaxnimate/model/animation/animatable_base.cpp:48
 #, kde-format
 msgid "Move keyframe"
 msgstr "移動關鍵幀"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:383
+#: src/core/glaxnimate/command/animation_commands.cpp:380
 #, kde-format
 msgid "Remove animations from %1"
 msgstr "從 %1 中移除動畫"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:434
+#: src/core/glaxnimate/command/animation_commands.cpp:416
 #, kde-format
 msgid "Update animation path"
 msgstr "更新動畫路徑"
 
-#: src/core/glaxnimate/command/animation_commands.hpp:241
+#: src/core/glaxnimate/command/animation_commands.hpp:223
 #, kde-format
 msgid "Stretch Time"
 msgstr "拉伸時間"
@@ -1251,7 +1218,7 @@ msgid "%s cannot be a clip path"
 msgstr ""
 
 #: src/core/glaxnimate/io/base.cpp:22
-#: src/core/glaxnimate/io/svg/svg_renderer.cpp:839 src/gui/tools/base.cpp:161
+#: src/core/glaxnimate/io/svg/svg_renderer.cpp:837 src/gui/tools/base.cpp:161
 #, kde-format
 msgid "%1 (%2)"
 msgstr ""
@@ -1352,18 +1319,18 @@ msgstr "無法新增關鍵幀"
 msgid "Unknown object of type '%1'"
 msgstr ""
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:676
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:693
 #, fuzzy, kde-format
 #| msgid "Unsupported shape type %1"
 msgid "%1 is an unsupported shape of type %2"
 msgstr "不支援的形狀類型 %1"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:696
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:713
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:698
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:715
 #, kde-format
 msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
@@ -1951,30 +1918,43 @@ msgstr "顯示轉換時的更多資訊"
 msgid "Video"
 msgstr "視訊"
 
-#: src/core/glaxnimate/model/animation/animatable.cpp:271
+#: src/core/glaxnimate/model/animation/animatable.cpp:213
 #: src/core/glaxnimate/model/animation/animatable_path.cpp:30
 #, kde-format
 msgid "Split Segment"
 msgstr "分割片段"
 
-#: src/core/glaxnimate/model/animation/animatable.cpp:340
-#: src/core/glaxnimate/model/animation/animatable_path.cpp:60
+#: src/core/glaxnimate/model/animation/animatable.cpp:288
+#: src/core/glaxnimate/model/animation/animatable_path.cpp:62
 #, kde-format
 msgid "Remove Nodes"
 msgstr "移除節點"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
-#: src/core/glaxnimate/model/animation/animatable.cpp:418
-#: src/gui/widgets/menus/animated_property_menu.cpp:59
+#: src/core/glaxnimate/model/animation/animatable.cpp:382
+#: src/gui/widgets/menus/animated_property_menu.cpp:58
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:194
 #, kde-format
 msgid "Add Keyframe"
 msgstr "新增關鍵幀"
 
-#: src/core/glaxnimate/model/animation/animatable_path.cpp:139
+#: src/core/glaxnimate/model/animation/animatable_path.cpp:141
 #, kde-format
 msgid "Extend Shape"
 msgstr "延伸形狀"
+
+#: src/core/glaxnimate/model/animation/meta_animatable.cpp:101
+#: src/core/glaxnimate/model/animation/meta_animatable.cpp:118
+#, fuzzy, kde-format
+#| msgid "Update keyframe transition"
+msgid "Set keyframe transition"
+msgstr "更新關鍵幀過渡"
+
+#: src/core/glaxnimate/model/animation/meta_animatable.cpp:138
+#, fuzzy, kde-format
+#| msgid "Move keyframe"
+msgid "Move Keyframe"
+msgstr "移動關鍵幀"
 
 #: src/core/glaxnimate/model/animation_container.cpp:54
 #, kde-format
@@ -2002,7 +1982,7 @@ msgid "Images"
 msgstr "影像"
 
 #: src/core/glaxnimate/model/assets/assets.hpp:127
-#: src/gui/tools/edit_tool.cpp:351
+#: src/gui/tools/edit_tool.cpp:356
 #, kde-format
 msgid "Gradient Colors"
 msgstr "漸層色彩"
@@ -2135,7 +2115,7 @@ msgstr "未命名顏色"
 msgid "Mask"
 msgstr "遮罩"
 
-#: src/core/glaxnimate/model/object.hpp:92
+#: src/core/glaxnimate/model/object.hpp:95
 #, kde-format
 msgid "Unknown Object"
 msgstr "未知物件"
@@ -2285,13 +2265,13 @@ msgstr "時序"
 msgid "Transform"
 msgstr "簡易變形"
 
-#: src/core/glaxnimate/script/register_impl.hpp:203
+#: src/core/glaxnimate/script/register_impl.hpp:234
 #, fuzzy, kde-format
 #| msgid "Could not allocate frame data."
 msgid "Cannot allocate argument"
 msgstr "無法分配影格資料。"
 
-#: src/core/glaxnimate/script/register_impl.hpp:219
+#: src/core/glaxnimate/script/register_impl.hpp:250
 #, fuzzy, kde-format
 #| msgid "Could not allocate stream"
 msgid "Cannot allocate return value"
@@ -2647,10 +2627,9 @@ msgid "OpenGL Renderer"
 msgstr ""
 
 #: src/gui/glaxnimate_app.cpp:234
-#, fuzzy, kde-format
-#| msgid "(c) 2019-2023"
-msgid "(c) 2019-2026"
-msgstr "(c) 2019-2023"
+#, kde-format
+msgid "Copyright © 2019-2026"
+msgstr ""
 
 #: src/gui/glaxnimate_app.cpp:243
 #, kde-format
@@ -3039,95 +3018,95 @@ msgstr "新增曲線點"
 msgid "Draw Bezier"
 msgstr "繪製貝茲曲線"
 
-#: src/gui/tools/edit_tool.cpp:168
+#: src/gui/tools/edit_tool.cpp:171
 #, kde-format
 msgid "Drag nodes"
 msgstr "拖曳節點"
 
-#: src/gui/tools/edit_tool.cpp:275 src/gui/widgets/dialogs/gw_impl_ui.cpp:752
+#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:752
 #, kde-format
 msgid "Cusp"
 msgstr ""
 
-#: src/gui/tools/edit_tool.cpp:279 src/gui/widgets/dialogs/gw_impl_ui.cpp:753
+#: src/gui/tools/edit_tool.cpp:284 src/gui/widgets/dialogs/gw_impl_ui.cpp:753
 #, kde-format
 msgid "Smooth"
 msgstr ""
 
-#: src/gui/tools/edit_tool.cpp:283
+#: src/gui/tools/edit_tool.cpp:288
 #, kde-format
 msgid "Symmetrical"
 msgstr ""
 
-#: src/gui/tools/edit_tool.cpp:290
+#: src/gui/tools/edit_tool.cpp:295
 #, kde-format
 msgid "Set %1 Node"
 msgstr "設定 %1 節點"
 
-#: src/gui/tools/edit_tool.cpp:304
+#: src/gui/tools/edit_tool.cpp:309
 #, kde-format
 msgid "Node"
 msgstr "節點"
 
-#: src/gui/tools/edit_tool.cpp:314
+#: src/gui/tools/edit_tool.cpp:319
 #, kde-format
 msgid "Remove Node"
 msgstr "移除節點"
 
-#: src/gui/tools/edit_tool.cpp:318
+#: src/gui/tools/edit_tool.cpp:323
 #, kde-format
 msgid "Show Tangents"
 msgstr ""
 
-#: src/gui/tools/edit_tool.cpp:325
+#: src/gui/tools/edit_tool.cpp:330
 #, kde-format
 msgid "Make First Node"
 msgstr "建立第一個節點"
 
-#: src/gui/tools/edit_tool.cpp:333
+#: src/gui/tools/edit_tool.cpp:338
 #, kde-format
 msgid "Remove Tangent"
 msgstr ""
 
-#: src/gui/tools/edit_tool.cpp:368
+#: src/gui/tools/edit_tool.cpp:373
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Stop Color..."
 msgstr ""
 
-#: src/gui/tools/edit_tool.cpp:380
+#: src/gui/tools/edit_tool.cpp:385
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Add Stop"
 msgstr ""
 
-#: src/gui/tools/edit_tool.cpp:384
+#: src/gui/tools/edit_tool.cpp:389
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr ""
 
-#: src/gui/tools/edit_tool.cpp:526 src/gui/widgets/dialogs/gw_impl_ui.cpp:757
+#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:757
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr "溶解節點"
 
-#: src/gui/tools/edit_tool.cpp:526 src/gui/widgets/dialogs/gw_impl_ui.cpp:744
+#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:744
 #, kde-format
 msgid "Delete Nodes"
 msgstr "刪除節點"
 
-#: src/gui/tools/edit_tool.cpp:885
+#: src/gui/tools/edit_tool.cpp:894
 #, kde-format
 msgid "Set node type"
 msgstr "設定節點類型"
 
-#: src/gui/tools/edit_tool.cpp:913
+#: src/gui/tools/edit_tool.cpp:922
 #, kde-format
 msgid "Straighten segments"
 msgstr ""
 
-#: src/gui/tools/edit_tool.cpp:961
+#: src/gui/tools/edit_tool.cpp:970
 #, kde-format
 msgid "Curve segments"
 msgstr ""
@@ -5537,24 +5516,24 @@ msgstr "評論"
 msgid "View on LottieFiles..."
 msgstr "在 LottieFiles 上檢視…"
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:56
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:179
+#: src/gui/widgets/menus/animated_property_menu.cpp:55
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:174
 #, kde-format
 msgid "Paste Keyframe"
 msgstr "貼上關鍵幀"
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:57
+#: src/gui/widgets/menus/animated_property_menu.cpp:56
 #, kde-format
 msgid "Loop Animation"
 msgstr "循環動畫"
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:58
+#: src/gui/widgets/menus/animated_property_menu.cpp:57
 #, kde-format
 msgid "Follow Path..."
 msgstr "跟隨路徑..."
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:60
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:175
+#: src/gui/widgets/menus/animated_property_menu.cpp:59
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:170
 #, kde-format
 msgid "Remove Keyframe"
 msgstr "移除關鍵幀"
@@ -6370,22 +6349,22 @@ msgstr "重新命名合成方案"
 msgid "Delete Composition"
 msgstr "刪除合成方案"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:157
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:152
 #, kde-format
 msgid "Transition From Previous"
 msgstr "從前一個過渡"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:158
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:153
 #, kde-format
 msgid "Transition To Next"
 msgstr "過渡到下一個"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:165
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:160
 #, kde-format
 msgid "Custom..."
 msgstr "自訂..."
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:178
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
 #, kde-format
 msgid "Copy Keyframe"
 msgstr "複製關鍵幀"
@@ -6524,7 +6503,7 @@ msgstr ""
 msgid "Overshoot"
 msgstr ""
 
-#: src/gui/widgets/timeline/timeline_items.cpp:146
+#: src/gui/widgets/timeline/timeline_items.cpp:148
 #, kde-format
 msgid "Drag Keyframes"
 msgstr "拖曳關鍵幀"
@@ -6604,6 +6583,29 @@ msgstr "# 說明文件請見 https://glaxnimate.mattbas.org/contributing/scripti
 #, kde-format
 msgid "Traced %1"
 msgstr "描繪了%1"
+
+#, fuzzy
+#~| msgid "Group Color"
+#~ msgid "group_color"
+#~ msgstr "群組顏色"
+
+#, fuzzy
+#~| msgid "Visible"
+#~ msgid "visible"
+#~ msgstr "可見"
+
+#, fuzzy
+#~| msgid "Unlocked"
+#~ msgid "locked"
+#~ msgstr "已解除鎖定"
+
+#~ msgid "Remove %1 keyframe %2"
+#~ msgstr "移除 %1 關鍵幀 %2"
+
+#, fuzzy
+#~| msgid "(c) 2019-2023"
+#~ msgid "(c) 2019-2026"
+#~ msgstr "(c) 2019-2023"
 
 #~ msgid "Lock Ratio"
 #~ msgstr "鎖定寬高比"

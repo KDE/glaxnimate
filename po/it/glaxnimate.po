@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-19 00:42+0000\n"
-"PO-Revision-Date: 2026-03-14 17:10+0100\n"
+"POT-Creation-Date: 2026-03-26 00:41+0000\n"
+"PO-Revision-Date: 2026-03-18 20:21+0100\n"
 "Last-Translator: Valter Mura <valtermura@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -201,10 +201,9 @@ msgstr "usa"
 
 #. i18n: file: src/core/glaxnimate/model/transform.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Duration"
+#, kde-format
 msgid "rotation"
-msgstr "Durata"
+msgstr "rotazione"
 
 #. i18n: file: src/core/glaxnimate/model/assets/composition.hpp
 #. i18n: Property name
@@ -264,14 +263,12 @@ msgstr "colori_sfumatura"
 msgid "compositions"
 msgstr "composizioni"
 
-#. i18n: file: src/core/glaxnimate/model/document_node.hpp
+#. i18n: file: src/core/glaxnimate/model/animation_container.hpp
 #. i18n: Property name
 #, kde-format
-msgid "uuid"
-msgstr "uuid"
+msgid "first_frame"
+msgstr "primo_fotogramma"
 
-#. i18n: file: src/core/glaxnimate/model/document_node.hpp
-#. i18n: Property name
 #. i18n: file: src/core/glaxnimate/model/property/option_list_property.hpp
 #. i18n: Property name
 #. i18n: file: src/core/glaxnimate/model/property/object_list_property.hpp
@@ -279,30 +276,6 @@ msgstr "uuid"
 #, kde-format
 msgid "name"
 msgstr "nome"
-
-#. i18n: file: src/core/glaxnimate/model/document_node.hpp
-#. i18n: Property name
-#, kde-format
-msgid "group_color"
-msgstr "raggruppa_colore"
-
-#. i18n: file: src/core/glaxnimate/model/document_node.hpp
-#. i18n: Property name
-#, kde-format
-msgid "visible"
-msgstr "visibile"
-
-#. i18n: file: src/core/glaxnimate/model/document_node.hpp
-#. i18n: Property name
-#, kde-format
-msgid "locked"
-msgstr "bloccato"
-
-#. i18n: file: src/core/glaxnimate/model/animation_container.hpp
-#. i18n: Property name
-#, kde-format
-msgid "first_frame"
-msgstr "primo_fotogramma"
 
 #. i18n: file: src/core/glaxnimate/model/stretchable_time.hpp
 #. i18n: Property name
@@ -884,19 +857,19 @@ msgstr "Fotogramma %1.png"
 msgid "Add keyframe"
 msgstr "Aggiungi fotogramma chiave"
 
-#: src/android/main_window.cpp:986
+#: src/android/main_window.cpp:988
 #, kde-format
 msgid "Remove keyframe"
 msgstr "Rimuovi fotogramma chiave"
 
-#: src/android/main_window.cpp:1001
-#: src/gui/widgets/menus/animated_property_menu.cpp:55
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
+#: src/android/main_window.cpp:1003
+#: src/gui/widgets/menus/animated_property_menu.cpp:54
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:171
 #, kde-format
 msgid "Clear Animations"
 msgstr "Cancella animazioni"
 
-#: src/android/main_window.cpp:1066
+#: src/android/main_window.cpp:1070
 #, kde-format
 msgid "Emoji"
 msgstr "Emoji"
@@ -962,60 +935,56 @@ msgstr "Aggiungi attuale"
 msgid "Could not start activity, is Telegram installed?"
 msgstr "Impossibile iniziare l'attività, Telegram è installato?"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:17
+#: src/core/glaxnimate/command/animation_commands.cpp:28
 #, kde-format
 msgid "Update %1 keyframe at %2"
 msgstr "Aggiorna il fotogramma chiave per %1 al %2"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:86
+#: src/core/glaxnimate/command/animation_commands.cpp:110
 #, kde-format
 msgid "Remove %1 keyframe at %2"
 msgstr "Rimuovi il fotogramma chiave per %1 al %2"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:117
-#, kde-format
-msgid "Remove %1 keyframe %2"
-msgstr "Rimuovi %1 fotogramma chiave %2"
-
-#: src/core/glaxnimate/command/animation_commands.cpp:291
+#: src/core/glaxnimate/command/animation_commands.cpp:274
 #, kde-format
 msgid "Add keyframe for %1 at %2"
 msgstr "Aggiungi fotogramma chiave per %1 al %2"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:294
+#: src/core/glaxnimate/command/animation_commands.cpp:277
 #, kde-format
 msgid "Update %1 at %2"
 msgstr "Aggiorna %1 al %2"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:296
+#: src/core/glaxnimate/command/animation_commands.cpp:279
 #: src/core/glaxnimate/command/property_commands.hpp:24
-#: src/core/glaxnimate/model/animation/animatable.cpp:171
+#: src/core/glaxnimate/model/animation/animatable.cpp:129
 #, kde-format
 msgid "Update %1"
 msgstr "Aggiorna %1"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:309
-#: src/gui/widgets/timeline/timeline_items.cpp:541
+#: src/core/glaxnimate/command/animation_commands.cpp:293
+#: src/gui/widgets/timeline/timeline_items.cpp:562
 #, kde-format
 msgid "Update keyframe transition"
 msgstr "Aggiorna transizione fotogramma chiave"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:360
+#: src/core/glaxnimate/command/animation_commands.cpp:343
+#: src/core/glaxnimate/model/animation/animatable_base.cpp:48
 #, kde-format
 msgid "Move keyframe"
 msgstr "Sposta fotogramma chiave"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:383
+#: src/core/glaxnimate/command/animation_commands.cpp:380
 #, kde-format
 msgid "Remove animations from %1"
 msgstr "Rimuovi animazioni da %1"
 
-#: src/core/glaxnimate/command/animation_commands.cpp:434
+#: src/core/glaxnimate/command/animation_commands.cpp:416
 #, kde-format
 msgid "Update animation path"
 msgstr "Aggiorna il percorso dell'animazione"
 
-#: src/core/glaxnimate/command/animation_commands.hpp:241
+#: src/core/glaxnimate/command/animation_commands.hpp:223
 #, kde-format
 msgid "Stretch Time"
 msgstr "Tempo allungamento"
@@ -1282,7 +1251,7 @@ msgid "%s cannot be a clip path"
 msgstr "%s non può essere un percorso di una clip"
 
 #: src/core/glaxnimate/io/base.cpp:22
-#: src/core/glaxnimate/io/svg/svg_renderer.cpp:839 src/gui/tools/base.cpp:161
+#: src/core/glaxnimate/io/svg/svg_renderer.cpp:837 src/gui/tools/base.cpp:161
 #, kde-format
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
@@ -1294,10 +1263,9 @@ msgid "Glaxnimate Animation"
 msgstr "Animazione Glaxnimate"
 
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_html_format.hpp:20
-#, fuzzy, kde-format
-#| msgid "Lottie HTML Preview"
+#, kde-format
 msgid "Glaxnimate HTML Preview"
-msgstr "Anteprima HTML Lottie"
+msgstr "Anteprima HTML Glaxnimate"
 
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_importer.cpp:21
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_mime.cpp:86
@@ -1385,20 +1353,19 @@ msgstr "Impossibile aggiungere il fotogramma chiave"
 msgid "Unknown object of type '%1'"
 msgstr "Oggetto sconosciuto di tipo «%1»"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:676
-#, fuzzy, kde-format
-#| msgid "Unsupported shape type %1"
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:693
+#, kde-format
 msgid "%1 is an unsupported shape of type %2"
-msgstr "Tipo di forma %1 non supportato"
+msgstr "%1 è una forma non supportata di tipo %2"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:696
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:713
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
 "Le immagini non possono essere raggruppate con altre forme, devono stare "
 "dentro un livello"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:698
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:715
 #, kde-format
 msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
@@ -1993,30 +1960,43 @@ msgstr "Mostra informazioni dettagliate sulla conversione"
 msgid "Video"
 msgstr "Video"
 
-#: src/core/glaxnimate/model/animation/animatable.cpp:271
+#: src/core/glaxnimate/model/animation/animatable.cpp:213
 #: src/core/glaxnimate/model/animation/animatable_path.cpp:30
 #, kde-format
 msgid "Split Segment"
 msgstr "Dividi segmento"
 
-#: src/core/glaxnimate/model/animation/animatable.cpp:340
-#: src/core/glaxnimate/model/animation/animatable_path.cpp:60
+#: src/core/glaxnimate/model/animation/animatable.cpp:288
+#: src/core/glaxnimate/model/animation/animatable_path.cpp:62
 #, kde-format
 msgid "Remove Nodes"
 msgstr "Rimuovi nodi"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
-#: src/core/glaxnimate/model/animation/animatable.cpp:418
-#: src/gui/widgets/menus/animated_property_menu.cpp:59
+#: src/core/glaxnimate/model/animation/animatable.cpp:382
+#: src/gui/widgets/menus/animated_property_menu.cpp:58
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:194
 #, kde-format
 msgid "Add Keyframe"
 msgstr "Aggiungi fotogramma chiave"
 
-#: src/core/glaxnimate/model/animation/animatable_path.cpp:139
+#: src/core/glaxnimate/model/animation/animatable_path.cpp:141
 #, kde-format
 msgid "Extend Shape"
 msgstr "Estendi forma"
+
+#: src/core/glaxnimate/model/animation/meta_animatable.cpp:101
+#: src/core/glaxnimate/model/animation/meta_animatable.cpp:118
+#, fuzzy, kde-format
+#| msgid "Update keyframe transition"
+msgid "Set keyframe transition"
+msgstr "Aggiorna transizione fotogramma chiave"
+
+#: src/core/glaxnimate/model/animation/meta_animatable.cpp:138
+#, fuzzy, kde-format
+#| msgid "Move keyframe"
+msgid "Move Keyframe"
+msgstr "Sposta fotogramma chiave"
 
 #: src/core/glaxnimate/model/animation_container.cpp:54
 #, kde-format
@@ -2044,7 +2024,7 @@ msgid "Images"
 msgstr "Immagini"
 
 #: src/core/glaxnimate/model/assets/assets.hpp:127
-#: src/gui/tools/edit_tool.cpp:351
+#: src/gui/tools/edit_tool.cpp:356
 #, kde-format
 msgid "Gradient Colors"
 msgstr "Colori della sfumatura"
@@ -2177,7 +2157,7 @@ msgstr "Colore senza nome"
 msgid "Mask"
 msgstr "Maschera"
 
-#: src/core/glaxnimate/model/object.hpp:92
+#: src/core/glaxnimate/model/object.hpp:95
 #, kde-format
 msgid "Unknown Object"
 msgstr "Oggetto sconosciuto"
@@ -2327,17 +2307,15 @@ msgstr "Tempistica"
 msgid "Transform"
 msgstr "Trasformazione"
 
-#: src/core/glaxnimate/script/register_impl.hpp:203
-#, fuzzy, kde-format
-#| msgid "Could not allocate frame data."
+#: src/core/glaxnimate/script/register_impl.hpp:234
+#, kde-format
 msgid "Cannot allocate argument"
-msgstr "Impossibile allocare i dati del fotogramma."
+msgstr "Impossibile allocare l'argomento"
 
-#: src/core/glaxnimate/script/register_impl.hpp:219
-#, fuzzy, kde-format
-#| msgid "Could not allocate stream"
+#: src/core/glaxnimate/script/register_impl.hpp:250
+#, kde-format
 msgid "Cannot allocate return value"
-msgstr "Impossibile allocare il flusso"
+msgstr "Impossibile allocare il valore restituito"
 
 #: src/core/glaxnimate/utils/gzip.cpp:28
 #, kde-format
@@ -2700,8 +2678,8 @@ msgstr "OpenGL Renderer"
 
 #: src/gui/glaxnimate_app.cpp:234
 #, kde-format
-msgid "(c) 2019-2026"
-msgstr "(c) 2019-2026"
+msgid "Copyright © 2019-2026"
+msgstr ""
 
 #: src/gui/glaxnimate_app.cpp:243
 #, kde-format
@@ -3086,95 +3064,95 @@ msgstr "Aggiungi punto alla curva"
 msgid "Draw Bezier"
 msgstr "Disegna curva di Bézier"
 
-#: src/gui/tools/edit_tool.cpp:168
+#: src/gui/tools/edit_tool.cpp:171
 #, kde-format
 msgid "Drag nodes"
 msgstr "Trascina nodi"
 
-#: src/gui/tools/edit_tool.cpp:275 src/gui/widgets/dialogs/gw_impl_ui.cpp:752
+#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:752
 #, kde-format
 msgid "Cusp"
 msgstr "Cuspide"
 
-#: src/gui/tools/edit_tool.cpp:279 src/gui/widgets/dialogs/gw_impl_ui.cpp:753
+#: src/gui/tools/edit_tool.cpp:284 src/gui/widgets/dialogs/gw_impl_ui.cpp:753
 #, kde-format
 msgid "Smooth"
 msgstr "Smussa"
 
-#: src/gui/tools/edit_tool.cpp:283
+#: src/gui/tools/edit_tool.cpp:288
 #, kde-format
 msgid "Symmetrical"
 msgstr "Simmetrico"
 
-#: src/gui/tools/edit_tool.cpp:290
+#: src/gui/tools/edit_tool.cpp:295
 #, kde-format
 msgid "Set %1 Node"
 msgstr "Imposta nodo %1"
 
-#: src/gui/tools/edit_tool.cpp:304
+#: src/gui/tools/edit_tool.cpp:309
 #, kde-format
 msgid "Node"
 msgstr "Nodo"
 
-#: src/gui/tools/edit_tool.cpp:314
+#: src/gui/tools/edit_tool.cpp:319
 #, kde-format
 msgid "Remove Node"
 msgstr "Rimuovi nodo"
 
-#: src/gui/tools/edit_tool.cpp:318
+#: src/gui/tools/edit_tool.cpp:323
 #, kde-format
 msgid "Show Tangents"
 msgstr "Mostra tangenti"
 
-#: src/gui/tools/edit_tool.cpp:325
+#: src/gui/tools/edit_tool.cpp:330
 #, kde-format
 msgid "Make First Node"
 msgstr "Crea il primo nodo"
 
-#: src/gui/tools/edit_tool.cpp:333
+#: src/gui/tools/edit_tool.cpp:338
 #, kde-format
 msgid "Remove Tangent"
 msgstr "Rimuovi tangente"
 
-#: src/gui/tools/edit_tool.cpp:368
+#: src/gui/tools/edit_tool.cpp:373
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Stop Color..."
 msgstr "Colore punto..."
 
-#: src/gui/tools/edit_tool.cpp:380
+#: src/gui/tools/edit_tool.cpp:385
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Add Stop"
 msgstr "Aggiungi punto"
 
-#: src/gui/tools/edit_tool.cpp:384
+#: src/gui/tools/edit_tool.cpp:389
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "Rimuovi punto"
 
-#: src/gui/tools/edit_tool.cpp:526 src/gui/widgets/dialogs/gw_impl_ui.cpp:757
+#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:757
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr "Dissolvi nodi"
 
-#: src/gui/tools/edit_tool.cpp:526 src/gui/widgets/dialogs/gw_impl_ui.cpp:744
+#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:744
 #, kde-format
 msgid "Delete Nodes"
 msgstr "Elimina nodi"
 
-#: src/gui/tools/edit_tool.cpp:885
+#: src/gui/tools/edit_tool.cpp:894
 #, kde-format
 msgid "Set node type"
 msgstr "Imposta tipo di nodo"
 
-#: src/gui/tools/edit_tool.cpp:913
+#: src/gui/tools/edit_tool.cpp:922
 #, kde-format
 msgid "Straighten segments"
 msgstr "Raddrizza segmenti"
 
-#: src/gui/tools/edit_tool.cpp:961
+#: src/gui/tools/edit_tool.cpp:970
 #, kde-format
 msgid "Curve segments"
 msgstr "Curva segmenti"
@@ -5702,24 +5680,24 @@ msgstr "Commenti"
 msgid "View on LottieFiles..."
 msgstr "Vedi su LottieFiles..."
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:56
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:179
+#: src/gui/widgets/menus/animated_property_menu.cpp:55
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:174
 #, kde-format
 msgid "Paste Keyframe"
 msgstr "Incolla fotogramma chiave"
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:57
+#: src/gui/widgets/menus/animated_property_menu.cpp:56
 #, kde-format
 msgid "Loop Animation"
 msgstr "Animazione ciclica"
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:58
+#: src/gui/widgets/menus/animated_property_menu.cpp:57
 #, kde-format
 msgid "Follow Path..."
 msgstr "Segui percorso..."
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:60
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:175
+#: src/gui/widgets/menus/animated_property_menu.cpp:59
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:170
 #, kde-format
 msgid "Remove Keyframe"
 msgstr "Rimuovi fotogramma chiave"
@@ -5749,7 +5727,7 @@ msgstr "Converti %1 in %2"
 #: src/gui/widgets/menus/node_menu.cpp:300
 #, kde-format
 msgid "Anchor Point to Center"
-msgstr ""
+msgstr "Ancora punto al centro"
 
 #: src/gui/widgets/menus/node_menu.cpp:313
 #, kde-format
@@ -5859,22 +5837,19 @@ msgid "Locked"
 msgstr "Bloccato"
 
 #: src/gui/widgets/menus/node_menu.cpp:514
-#, fuzzy, kde-format
-#| msgid "Edit"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Edit"
 msgstr "Modifica"
 
 #: src/gui/widgets/menus/node_menu.cpp:516
-#, fuzzy, kde-format
-#| msgid "Cut"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Cut"
 msgstr "Taglia"
 
 #: src/gui/widgets/menus/node_menu.cpp:523
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy"
 msgstr "Copia"
@@ -5892,8 +5867,7 @@ msgid "Duplicate"
 msgstr "Duplica"
 
 #: src/gui/widgets/menus/node_menu.cpp:540
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Move"
 msgstr "Sposta"
@@ -6517,8 +6491,7 @@ msgid "Dashes"
 msgstr "Trattini"
 
 #: src/gui/widgets/spin2d.cpp:242
-#, fuzzy, kde-format
-#| msgid "Lock Aspect Ratio"
+#, kde-format
 msgid "Lock aspect ratio"
 msgstr "Mantieni proporzioni"
 
@@ -6537,22 +6510,22 @@ msgstr "Rinomina composizione"
 msgid "Delete Composition"
 msgstr "Rimuovi composizione"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:157
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:152
 #, kde-format
 msgid "Transition From Previous"
 msgstr "Transizione dal precedente"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:158
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:153
 #, kde-format
 msgid "Transition To Next"
 msgstr "Transizione al prossimo"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:165
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:160
 #, kde-format
 msgid "Custom..."
 msgstr "Personalizzato..."
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:178
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
 #, kde-format
 msgid "Copy Keyframe"
 msgstr "Copia fotogramma chiave"
@@ -6691,7 +6664,7 @@ msgstr "Anticipa"
 msgid "Overshoot"
 msgstr "Oltrepassa"
 
-#: src/gui/widgets/timeline/timeline_items.cpp:146
+#: src/gui/widgets/timeline/timeline_items.cpp:148
 #, kde-format
 msgid "Drag Keyframes"
 msgstr "Trascina fotogrammi chiave"
@@ -6773,6 +6746,24 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "Tracciato %1"
+
+#~ msgid "uuid"
+#~ msgstr "uuid"
+
+#~ msgid "group_color"
+#~ msgstr "raggruppa_colore"
+
+#~ msgid "visible"
+#~ msgstr "visibile"
+
+#~ msgid "locked"
+#~ msgstr "bloccato"
+
+#~ msgid "Remove %1 keyframe %2"
+#~ msgstr "Rimuovi %1 fotogramma chiave %2"
+
+#~ msgid "(c) 2019-2026"
+#~ msgstr "(c) 2019-2026"
 
 #~ msgid "Lock Ratio"
 #~ msgstr "Mantieni proporzioni"
