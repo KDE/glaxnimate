@@ -6,6 +6,7 @@
 
 #include "property_model_private.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
+#include "glaxnimate/model/animation/meta_animatable.hpp"
 
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
@@ -591,9 +592,18 @@ item_models::PropertyModelBase::Item item_models::PropertyModelBase::item(const 
 {
     if ( Private::Subtree* st = d->node_from_index(index) )
     {
-        Item item = st->object;
+        Item item(st->object, nullptr, nullptr);
         if ( st->prop )
+        {
             item.property = st->prop;
+            if ( st->prop->traits().flags & model::PropertyTraits::Animated )
+                item.animatable = static_cast<model::AnimatedPropertyBase*>(st->prop);
+        }
+        else
+        {
+            item.animatable = &st->object->grouped_animations();
+        }
+
         return item;
     }
 
@@ -827,4 +837,19 @@ item_models::PropertyModelBase::Private::add_property(
         end_insert_row();
 
     return prop_node;
+}
+
+item_models::PropertyModelBase::Item item_models::PropertyModelBase::Item::from_object(model::Object *object)
+{
+    return Item(object, nullptr, &object->grouped_animations());
+}
+
+item_models::PropertyModelBase::Item item_models::PropertyModelBase::Item::from_animated_property(model::AnimatedPropertyBase *property)
+{
+    return Item(property->object(), property, property);
+}
+
+item_models::PropertyModelBase::Item item_models::PropertyModelBase::Item::from_static_property(model::BaseProperty *property)
+{
+    return Item(property->object(), property, nullptr);
 }

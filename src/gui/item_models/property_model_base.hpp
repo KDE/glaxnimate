@@ -26,10 +26,15 @@ public:
     struct Item
     {
         constexpr Item() noexcept = default;
-        constexpr Item(model::Object* object, model::BaseProperty* property = nullptr) noexcept :
+        constexpr Item(model::Object* object, model::BaseProperty* property, model::AnimatableBase* animatable) noexcept :
             object(object),
-            property(property)
+            property(property),
+            animatable(animatable)
         {}
+
+        static Item from_object(model::Object *object);
+        static Item from_static_property(model::BaseProperty *property);
+        static Item from_animated_property(model::AnimatedPropertyBase *property);
 
         explicit constexpr operator bool() const noexcept
         {
@@ -38,6 +43,7 @@ public:
 
         model::Object* object = nullptr;
         model::BaseProperty* property = nullptr;
+        model::AnimatableBase* animatable = nullptr;
     };
 
     PropertyModelBase();

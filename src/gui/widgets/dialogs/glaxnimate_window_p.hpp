@@ -305,6 +305,8 @@ public:
     void connect_playback_actions();
     void setup_document_actions();
     void setup_layers_actions();
+    void action_add_keyframe();
+    void action_add_keyframe_for(model::Object *object, model::AnimatableBase* animatable);
 
     void init_plugins();
     void init_tools_ui();

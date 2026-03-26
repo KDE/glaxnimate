@@ -729,6 +729,8 @@ item_models::PropertyModelFull::Item TimelineWidget::item_at(const QPoint& viewp
     {
         switch ( ItemTypes(it->type()) )
         {
+            case ItemTypes::KeyframeSplitItem:
+                break;
             case ItemTypes::LineItem:
             case ItemTypes::AnimatableItem:
             case ItemTypes::ObjectLineItem:

@@ -447,7 +447,8 @@ item_models::PropertyModelFull::Item timeline::AnimatableItem::property_item() c
         object(),
         animatable_->animatable_flags() & model::AnimatableBase::IsProperty ?
         static_cast<model::AnimatedPropertyBase*>(animatable_) :
-        nullptr
+        nullptr,
+        animatable_
     };
 }
 

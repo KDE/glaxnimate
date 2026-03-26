@@ -255,7 +255,7 @@ public:
     int type() const override { return int(ItemTypes::ObjectLineItem); }
 
     item_models::PropertyModelFull::Item property_item() const override {
-        return {object(), nullptr};
+        return item_models::PropertyModelFull::Item::from_object(object());
     }
 };
 
@@ -391,7 +391,7 @@ public:
 
     item_models::PropertyModelFull::Item property_item() const override
     {
-        return {object(), property_};
+        return item_models::PropertyModelFull::Item::from_static_property(property_);
     }
 
 private:
@@ -495,7 +495,7 @@ public:
     model::BaseProperty *property() const { return property_; }
 
     item_models::PropertyModelFull::Item property_item() const override {
-        return {object(), property_};
+        return item_models::PropertyModelFull::Item::from_static_property(property_);
     }
 
 private:
@@ -514,7 +514,7 @@ public:
     model::BaseProperty *property() const { return property_; }
 
     item_models::PropertyModelFull::Item property_item() const override {
-        return {object(), property_};
+        return item_models::PropertyModelFull::Item::from_static_property(property_);
     }
 
 private Q_SLOTS:

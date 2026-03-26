@@ -9,6 +9,7 @@
 #include <memory>
 #include <QWidget>
 
+#include "item_models/property_model_base.hpp"
 #include "glaxnimate/model/document.hpp"
 
 class QAbstractItemModel;
@@ -40,6 +41,12 @@ public:
     model::DocumentNode* current_node() const;
     QModelIndex current_index_raw() const;
     QModelIndex current_index_filtered() const;
+
+    /**
+     * @brief Gets the item at the given mouse position
+     * @param global_pos Global mouse position
+     */
+    item_models::PropertyModelBase::Item item_at(const QPoint& global_pos) const;
 
     void reset_view();
 

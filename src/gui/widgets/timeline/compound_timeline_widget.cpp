@@ -739,3 +739,25 @@ QModelIndex glaxnimate::gui::CompoundTimelineWidget::current_index_filtered() co
 {
     return d->ui.properties->currentIndex();
 }
+
+item_models::PropertyModelBase::Item CompoundTimelineWidget::item_at(const QPoint &glob) const
+{
+    QPoint pos = mapFromGlobal(glob);
+    if ( !rect().contains(pos) )
+        return {};
+
+    if ( d->ui.properties->rect().contains(pos) )
+    {
+        return d->property_model.item(d->comp_model.mapToSource(
+            d->ui.properties->indexAt(
+                d->ui.properties->viewport()->mapFromGlobal(glob)
+                )
+            ));
+    }
+    else
+    {
+        return d->ui.timeline->item_at(
+            d->ui.timeline->viewport()->mapFromGlobal(glob)
+        );
+    }
+}

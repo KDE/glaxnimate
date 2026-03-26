@@ -9,6 +9,7 @@
     * Gradient editor on canvas is more accurate    
     * The timeline now shows object keyframes that allow editing of keyframes in that object's properties
     * Added keyboard shortcuts for editing keyframes
+    * Added keyboard shortcut to insert a keyframe at the current time
 * UI:
     * Timeline now allows to cycle through mask modes for layers
     * Added button to toggle keyframes in the property view
