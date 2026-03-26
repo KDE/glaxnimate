@@ -50,6 +50,7 @@
     * Fixed auto orient being calculated incorrectly
     * Fixed crash on "Fit to Page" action
     * F1 key now is used again for the select tool
+    * Added back some menu actions that got removed from their menu during the KDE transition
 
 ## 0.6.0
 

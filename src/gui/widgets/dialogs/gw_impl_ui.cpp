@@ -665,13 +665,13 @@ void GlaxnimateWindow::Private::setup_object_actions()
     QAction *lowerToBottom = add_action(objectActions, QStringLiteral("object_lower_to_bottom"), i18n("Lower to Bottom"), QStringLiteral("layer-bottom"), {}, Qt::Key_End);
     connect(lowerToBottom, &QAction::triggered, parent, &GlaxnimateWindow::layer_lower);
 
-    QAction *moveTo = add_action(objectActions, QStringLiteral("move_to"), i18n("Move to…"), QStringLiteral("selection-move-to-layer-above"));
+    QAction *moveTo = add_action(objectActions, QStringLiteral("object_move_to"), i18n("Move to…"), QStringLiteral("selection-move-to-layer-above"));
     connect(moveTo, &QAction::triggered, parent, &GlaxnimateWindow::move_to);
 
-    QAction *group = add_action(objectActions, QStringLiteral("action_group"), i18n("Group"), QStringLiteral("object-group"), {}, Qt::CTRL | Qt::Key_G);
+    QAction *group = add_action(objectActions, QStringLiteral("object_group"), i18n("Group"), QStringLiteral("object-group"), {}, Qt::CTRL | Qt::Key_G);
     connect(group, &QAction::triggered, parent, &GlaxnimateWindow::group_shapes);
 
-    QAction *ungroup = add_action(objectActions, QStringLiteral("action_ungroup"), i18n("Ungroup"), QStringLiteral("object-ungroup"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_G);
+    QAction *ungroup = add_action(objectActions, QStringLiteral("object_ungroup"), i18n("Ungroup"), QStringLiteral("object-ungroup"), {}, Qt::CTRL | Qt::SHIFT | Qt::Key_G);
     connect(ungroup, &QAction::triggered, parent, &GlaxnimateWindow::ungroup_shapes);
 
     KActionCategory *alginActions = new KActionCategory(i18n("Align"), parent->actionCollection());
