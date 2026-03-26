@@ -82,7 +82,7 @@ KeyframeTransitionWidget::~KeyframeTransitionWidget() = default;
 void KeyframeTransitionWidget::set_target(model::KeyframeTransition* kft)
 {
     d->target = kft;
-    auto margin = math::max(-kft->before().y(), kft->after().y() - 1);
+    auto margin = math::max(math::max(-kft->before().y(), kft->after().y() - 1), 1./3.);
     if ( margin > 0 )
     {
         d->y_margin_value = margin;

@@ -752,10 +752,10 @@ void GlaxnimateWindow::Private::action_add_keyframe()
             return;
         QMenu menu;
         menu.addSection(QIcon::fromTheme("keyframe-add"), i18n("Add Keyframe"));
-        for ( auto prop : props )
+        for ( auto sub_prop : props )
         {
-            auto action = menu.addAction(prop->localized_name());
-            connect(action, &QAction::triggered, parent, [this, prop]{action_add_keyframe_for(prop->object(), prop);});
+            auto action = menu.addAction(sub_prop->localized_name());
+            connect(action, &QAction::triggered, parent, [this, sub_prop]{action_add_keyframe_for(sub_prop->object(), sub_prop);});
         }
         menu.exec(mouse);
     }

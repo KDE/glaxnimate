@@ -11,6 +11,7 @@
 #include <QDialogButtonBox>
 
 #include "widgets/timeline/keyframe_editor_widget.hpp"
+#include "glaxnimate/utils/i18n.hpp"
 
 namespace glaxnimate::gui {
 
@@ -20,6 +21,7 @@ public:
     KeyframeEditorDialog(const model::KeyframeTransition& trans = {}, QWidget* parent = nullptr)
         : QDialog(parent)
     {
+        setWindowTitle(i18n("Transition Editor"));
         lay = new QVBoxLayout(this);
         setLayout(lay);
         editor = new KeyframeEditorWidget(this);
