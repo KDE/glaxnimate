@@ -92,10 +92,6 @@ void timeline::KeyframeSplitItem::mousePressEvent(QGraphicsSceneMouseEvent * eve
                 kf->drag_init();
         }
     }
-    else
-    {
-        QGraphicsObject::mousePressEvent(event);
-    }
 }
 
 void timeline::KeyframeSplitItem::mouseMoveEvent(QGraphicsSceneMouseEvent * event)
@@ -109,10 +105,6 @@ void timeline::KeyframeSplitItem::mouseMoveEvent(QGraphicsSceneMouseEvent * even
             if ( auto kf = dynamic_cast<KeyframeSplitItem*>(item) )
                 kf->drag_move(delta);
         }
-    }
-    else
-    {
-        QGraphicsObject::mouseMoveEvent(event);
     }
 }
 
@@ -150,10 +142,6 @@ void timeline::KeyframeSplitItem::mouseReleaseEvent(QGraphicsSceneMouseEvent * e
             for ( const auto& p : items )
                 p.first->keyframes_dragged(p.second);
         }
-    }
-    else
-    {
-        QGraphicsObject::mouseReleaseEvent(event);
     }
 }
 
@@ -519,7 +507,8 @@ void timeline::AnimatableItem::keyframes_dragged(const std::vector<DragData>& ke
 {
     for ( auto kf : keyframe_items )
     {
-        object()->push_command(animatable_->command_move_keyframe(kf.from, kf.to));
+        if ( auto cmd = animatable_->command_move_keyframe(kf.from, kf.to) )
+            object()->push_command(cmd);
         auto kfto = kf_split_items.find(kf.to);
         if ( kfto != kf_split_items.end() && *kfto != kf.item )
             (*kfto)->setSelected(true);
