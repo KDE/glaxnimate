@@ -258,11 +258,12 @@ void GlaxnimateWindow::Private::setupUi(bool restore_state, bool debug, Glaxnima
 
     // Redirect help entry to our own function
     auto help = KStandardAction::helpContents(parent, &GlaxnimateWindow::help_manual, parent->actionCollection());
+    help->setShortcut({});
     // Replug it in the Help menu
-    QMenu *helpMenu = static_cast<QMenu *>(parent->factory()->container(QStringLiteral("help"), parent));
-    if (helpMenu) {
-        QAction* whatsThis = parent->actionCollection()->action(KStandardAction::name(KStandardAction::WhatsThis));
-        helpMenu->insertAction(whatsThis, help);
+    QMenu *help_menu = static_cast<QMenu *>(parent->factory()->container(QStringLiteral("help"), parent));
+    if (help_menu) {
+        QAction* whats_this = parent->actionCollection()->action(KStandardAction::name(KStandardAction::WhatsThis));
+        help_menu->insertAction(whats_this, help);
     }
 
     // Restore state
