@@ -656,7 +656,7 @@ void GlaxnimateWindow::Private::setup_object_actions()
     KActionCategory* object_actions = new KActionCategory(i18n("Object"), parent->actionCollection());
 
     QAction* raise_to_top = add_action(object_actions, QStringLiteral("object_raise_to_top"), i18n("Raise to Top"), QStringLiteral("layer-top"), {}, Qt::Key_Home);
-    connect(raise_to_top, &QAction::triggered, parent, &GlaxnimateWindow::document_reload);
+    connect(raise_to_top, &QAction::triggered, parent, &GlaxnimateWindow::layer_top);
 
     QAction* raise = add_action(object_actions, QStringLiteral("object_raise"), i18n("Raise"), QStringLiteral("layer-raise"), {}, Qt::Key_PageUp);
     connect(raise, &QAction::triggered, parent, &GlaxnimateWindow::layer_raise);
@@ -665,7 +665,7 @@ void GlaxnimateWindow::Private::setup_object_actions()
     connect(lower, &QAction::triggered, parent, &GlaxnimateWindow::layer_lower);
 
     QAction* lower_to_bottom = add_action(object_actions, QStringLiteral("object_lower_to_bottom"), i18n("Lower to Bottom"), QStringLiteral("layer-bottom"), {}, Qt::Key_End);
-    connect(lower_to_bottom, &QAction::triggered, parent, &GlaxnimateWindow::layer_lower);
+    connect(lower_to_bottom, &QAction::triggered, parent, &GlaxnimateWindow::layer_bottom);
 
     QAction* move_to = add_action(object_actions, QStringLiteral("object_move_to"), i18n("Move to…"), QStringLiteral("selection-move-to-layer-above"));
     connect(move_to, &QAction::triggered, parent, &GlaxnimateWindow::move_to);
