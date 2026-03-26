@@ -25,6 +25,13 @@ public:
 
     void expandAll();
 
+
+    /**
+     * @brief Gets the item at the given mouse position
+     * @param global_pos Global mouse position
+     */
+    item_models::PropertyModelBase::Item item_at(const QPoint& global_pos) const;
+
 private Q_SLOTS:
     void click_index(const QModelIndex& index);
     void custom_context_menu(const QPoint& p);

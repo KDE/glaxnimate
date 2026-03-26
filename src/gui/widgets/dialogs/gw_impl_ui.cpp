@@ -731,6 +731,10 @@ void GlaxnimateWindow::Private::action_add_keyframe()
     auto timeline = timeline_dock->timelineWidget();
     QPoint mouse = QCursor::pos();
     auto item = timeline->item_at(mouse);
+
+    if ( !item.property && !item.object )
+        item = properties_dock->item_at(mouse);
+
     if ( item.property )
     {
         object = item.property->object();

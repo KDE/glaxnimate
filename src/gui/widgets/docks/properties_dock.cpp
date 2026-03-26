@@ -51,6 +51,18 @@ void PropertiesDock::expandAll()
     d->ui.view_properties->expandAll();
 }
 
+item_models::PropertyModelBase::Item PropertiesDock::item_at(const QPoint &glob) const
+{
+    QPoint pos = d->ui.view_properties->mapFromGlobal(glob);
+    if ( !d->ui.view_properties->rect().contains(pos) )
+        return {};
+
+    return d->property_model->item(
+        d->ui.view_properties->indexAt(
+        d->ui.view_properties->viewport()->mapFromGlobal(glob)
+    ));
+}
+
 void glaxnimate::gui::PropertiesDock::click_index(const QModelIndex& index)
 {
     if ( auto anprop = d->property_model->animatable(index) )

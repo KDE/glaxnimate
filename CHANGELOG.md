@@ -24,6 +24,7 @@
     * Significantly improved spin box for 2d val
     * Small improvements to the gradients docks (visual changes, easier to edit, and duplicate button)
     * Added "Focus Mode" which hides all controls from the canvas
+    * KDE Find Action...
 * I/O:
     * Improved matte import and export for lottie
     * Improved mask properties import for lottie
