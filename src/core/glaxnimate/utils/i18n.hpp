@@ -42,6 +42,13 @@ QString i18n(Initializer&& init, Args&&... args)
   return arg_spread(QString(std::forward<Initializer>(init)), std::forward<Args>(args)...);
 }
 
+template<class Init1, class Init2, class... Args>
+QString i18np(Init1&& /*singular*/, Init2&& plural, int /*count*/, Args&&... args)
+{
+    return arg_spread(QString(std::forward<Init2>(plural)), std::forward<Args>(args)...);
+}
+
+
 #define kli18n(x) x
 
 namespace glaxnimate::utils {
