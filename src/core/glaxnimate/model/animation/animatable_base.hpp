@@ -207,6 +207,8 @@ public:
 
     MidTransition mid_transition(FrameTime time) const;
 
+    virtual int property_type() const;
+
 protected:
     MidTransition do_mid_transition(const KeyframeBase* kf_before, const KeyframeBase* kf_after, qreal ratio) const;
     virtual QVariant do_mid_transition_value(const KeyframeBase* kf_before, const KeyframeBase* kf_after, qreal ratio) const = 0;

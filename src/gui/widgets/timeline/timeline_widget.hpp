@@ -62,6 +62,7 @@ public:
 
     KeyframeSelection selected_keyframes() const;
     bool has_soft_focus() const;
+    bool has_keyframe_selected();
 
 public Q_SLOTS:
     void update_timeline_start(model::FrameTime start);

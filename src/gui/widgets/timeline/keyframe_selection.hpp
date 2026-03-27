@@ -17,4 +17,5 @@ struct SelectedKeyframe
 
 using KeyframeSelection = std::vector<SelectedKeyframe>;
 
+
 } // namespace glaxnimate::gui

@@ -120,6 +120,8 @@ public:
      */
     virtual KeyframeBase* set_keyframe(FrameTime time, const QVariant& value, SetKeyframeInfo* info = nullptr, bool force_insert = false) = 0;
 
+    int property_type() const override { return traits().type; }
+
     QUndoCommand* command_add_smooth_keyframe(FrameTime time, const QVariant& value, bool commit = true, QUndoCommand* parent = nullptr) override;
     QUndoCommand* command_remove_keyframe(FrameTime time, QUndoCommand* parent = nullptr) override;
     QUndoCommand* command_clear_keyframes(QUndoCommand* parent = nullptr) override;

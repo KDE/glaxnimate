@@ -10,6 +10,7 @@
 #include <QMimeData>
 #include <QGuiApplication>
 
+#include "glaxnimate/command/clipboard.hpp"
 #include "glaxnimate/model/animation/meta_animatable.hpp"
 #include "widgets/dialogs/follow_path_dialog.hpp"
 #include "widgets/dialogs/selection_manager.hpp"
@@ -93,22 +94,9 @@ void glaxnimate::gui::AnimatedPropertyMenu::paste_keyframe()
         return;
 
     const QMimeData* data = QGuiApplication::clipboard()->mimeData();
-    if ( !data->hasFormat("application/x.glaxnimate-keyframe") )
-        return;
-
-    QByteArray encoded = data->data("application/x.glaxnimate-keyframe");
-    QDataStream stream(&encoded, QIODevice::ReadOnly);
-    int type = model::PropertyTraits::Unknown;
-    stream >> type;
-    if ( type != d->property_type )
-        return;
-
-    QVariant value;
-    stream >> value;
-
-    d->object->push_command(
-        d->property->command_add_smooth_keyframe(d->object->time(), value)
-    );
+    auto cmd = command::keyframes_paste_command(data, d->property, d->property_type, d->object->time());
+    if ( cmd )
+        d->object->push_command(cmd);
 }
 
 void glaxnimate::gui::AnimatedPropertyMenu::loop_keyframes()
@@ -203,17 +191,10 @@ glaxnimate::model::AnimatableBase * glaxnimate::gui::AnimatedPropertyMenu::prope
 
 bool glaxnimate::gui::AnimatedPropertyMenu::can_paste() const
 {
+    if ( !d->property )
+        return false;
     const QMimeData* data = QGuiApplication::clipboard()->mimeData();
-    if ( d->property && data->hasFormat("application/x.glaxnimate-keyframe") )
-    {
-        QByteArray encoded = data->data("application/x.glaxnimate-keyframe");
-        QDataStream stream(&encoded, QIODevice::ReadOnly);
-        int type = model::PropertyTraits::Unknown;
-        stream >> type;
-        return type == d->property_type;
-    }
-
-    return false;
+    return command::keyframes_mime_data_has_type(data, d->property_type);
 }
 
 

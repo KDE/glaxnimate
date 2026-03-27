@@ -26,6 +26,7 @@
     * Added "Focus Mode" which hides all controls from the canvas
     * KDE Find Action...
     * Menu actions to set the transition of selected keyframes
+    * Added the ability to copy/paste multiple keyframes at once
 * I/O:
     * Improved matte import and export for lottie
     * Improved mask properties import for lottie

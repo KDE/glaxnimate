@@ -41,6 +41,8 @@ public:
     model::DocumentNode* current_node() const;
     QModelIndex current_index_raw() const;
     QModelIndex current_index_filtered() const;
+    void copy_keyframes() const;
+    void paste_keyframes();
 
     /**
      * @brief Gets the item at the given mouse position
@@ -71,7 +73,6 @@ private Q_SLOTS:
     void keyframe_action_enter();
     void keyframe_action_exit();
     void copy_keyframe();
-    void paste_keyframe();
     void collapse_index(const QModelIndex& index);
     void expand_index(const QModelIndex& index);
     void click_index ( const QModelIndex& index );

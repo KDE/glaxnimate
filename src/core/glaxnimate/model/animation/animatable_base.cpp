@@ -55,3 +55,8 @@ QUndoCommand *glaxnimate::model::AnimatedPropertyBase::command_move_keyframe(Fra
     new command::MoveKeyframe(this, time_before, time_after, subp);
     return subp;
 }
+
+int glaxnimate::model::AnimatableBase::property_type() const
+{
+    return model::PropertyTraits::Unknown;
+}

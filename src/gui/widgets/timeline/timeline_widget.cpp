@@ -51,6 +51,7 @@ public:
     QPoint drag_start;
     QPoint drag_scroll;
     bool soft_focus = false;
+    bool has_keyframe_selected = false;
 
     LineItem* root = nullptr;
     std::unordered_map<quintptr, LineItem*> line_items;
@@ -325,16 +326,16 @@ TimelineWidget::TimelineWidget(QWidget* parent)
     setTransformationAnchor(AnchorUnderMouse);
     setCursor(Qt::ArrowCursor);
     connect(&d->scene, &QGraphicsScene::selectionChanged, this, [this]{
-        bool has_keyframe = false;
+        d->has_keyframe_selected = false;
         for ( auto item : d->scene.selectedItems() )
         {
             if ( item->type() == int(ItemTypes::KeyframeSplitItem) )
             {
-                has_keyframe = true;
+                d->has_keyframe_selected = true;
                 break;
             }
         }
-        Q_EMIT has_keyframe_selected_changed(has_keyframe);
+        Q_EMIT has_keyframe_selected_changed(d->has_keyframe_selected);
     });
 }
 
@@ -983,6 +984,11 @@ KeyframeSelection TimelineWidget::selected_keyframes() const
 bool TimelineWidget::has_soft_focus() const
 {
     return d->soft_focus;
+}
+
+bool TimelineWidget::has_keyframe_selected()
+{
+    return d->has_keyframe_selected;
 }
 
 void TimelineWidget::toggle_debug(bool debug)

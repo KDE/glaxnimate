@@ -5,6 +5,7 @@
  */
 
 #include "compound_timeline_widget.hpp"
+#include "glaxnimate/command/clipboard.hpp"
 #include "ui_compound_timeline_widget.h"
 
 #include <QMenu>
@@ -141,7 +142,7 @@ public:
 
         action_kf_paste.setIcon(QIcon::fromTheme("edit-paste"));
         menu_keyframe.addAction(&action_kf_paste);
-        connect(&action_kf_paste, &QAction::triggered, parent, &CompoundTimelineWidget::paste_keyframe);
+        connect(&action_kf_paste, &QAction::triggered, parent, &CompoundTimelineWidget::paste_keyframes);
 
         menu_keyframe.addSeparator();
 
@@ -504,39 +505,67 @@ void CompoundTimelineWidget::copy_keyframe()
     if ( !d->menu_kf_exit || !d->menu_property.property() )
         return;
 
-    QMimeData* data = new QMimeData;
-    QByteArray encoded;
-    QDataStream stream(&encoded, QIODevice::WriteOnly);
-    stream << int(d->menu_property.property_type());
-    stream << d->menu_kf_exit->value();
-    data->setData("application/x.glaxnimate-keyframe", encoded);
+    QMimeData* data = command::keyframe_to_mime_data(
+        d->menu_property.property_type(),
+        d->menu_kf_exit->value()
+    );
     QGuiApplication::clipboard()->setMimeData(data);
 }
 
-void CompoundTimelineWidget::paste_keyframe()
+void CompoundTimelineWidget::copy_keyframes() const
 {
-    if ( !d->menu_property.property() )
+    auto selection = d->ui.timeline->selected_keyframes();
+    if ( selection.empty() )
+        return;
+
+    command::ClipboardProperties clip_data;
+    std::map<int, command::ClipboardProperty*> props;
+    for ( const auto& kf : selection )
+    {
+        int type = kf.property->property_type();
+        command::ClipboardProperty*& prop = props[type];
+        if ( !prop )
+        {
+            clip_data.properties.push_back({type});
+            prop = &clip_data.properties.back();
+        }
+        prop->keyframes.insert(kf.time, {kf.time, kf.property->value_at_time(kf.time)});
+    }
+
+    auto data = command::keyframes_to_mime_data(clip_data);
+    QGuiApplication::clipboard()->setMimeData(data);
+}
+
+void CompoundTimelineWidget::paste_keyframes()
+{
+    int property_type;
+    model::AnimatableBase* target_property = nullptr;
+    model::FrameTime start_time;
+
+    if ( d->menu_property.property() )
+    {
+        start_time = d->menu_kf_exit ? d->menu_kf_exit->time() : d->menu_property.object()->time();
+        target_property = d->menu_property.property();
+        property_type = d->menu_property.property_type();
+    }
+    else
+    {
+        auto item = d->property_model.item(current_index_raw());
+        if ( item.animatable )
+        {
+            target_property = item.animatable;
+            property_type = item.animatable->property_type();
+            start_time = item.property ? item.property->object()->time() : item.object->time();
+        }
+    }
+
+    if ( !target_property )
         return;
 
     const QMimeData* data = QGuiApplication::clipboard()->mimeData();
-    if ( !data->hasFormat("application/x.glaxnimate-keyframe") )
-        return;
-
-    QByteArray encoded = data->data("application/x.glaxnimate-keyframe");
-    QDataStream stream(&encoded, QIODevice::ReadOnly);
-    int type = model::PropertyTraits::Unknown;
-    stream >> type;
-    if ( type != d->menu_property.property_type() )
-        return;
-
-    QVariant value;
-    stream >> value;
-
-    auto time = d->menu_kf_exit ? d->menu_kf_exit->time() : d->menu_property.object()->time();
-
-    d->property_model.document()->push_command(
-        d->menu_property.property()->command_add_smooth_keyframe(time, value, true)
-    );
+    auto cmd = command::keyframes_paste_command(data, target_property, property_type, start_time);
+    if ( cmd )
+        d->property_model.document()->push_command(cmd);
 }
 
 void CompoundTimelineWidget::collapse_index(const QModelIndex& index)

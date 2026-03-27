@@ -5,6 +5,7 @@
  */
 
 #include "glaxnimate_window.hpp"
+#include "glaxnimate/command/clipboard.hpp"
 #include "glaxnimate_window_p.hpp"
 
 #include <QDesktopServices>
@@ -20,6 +21,7 @@
 #include "export_image_sequence_dialog.hpp"
 #include "glaxnimate/model/shapes/composable/precomp_layer.hpp"
 #include "widgets/timeline/timeline_widget.hpp"
+#include "glaxnimate_app.hpp"
 
 
 GlaxnimateWindow::GlaxnimateWindow(bool restore_state, bool debug, QWidget *parent, Qt::WindowFlags flags)
@@ -270,12 +272,20 @@ std::vector<model::VisualNode*> GlaxnimateWindow::cleaned_selection() const
 
 void GlaxnimateWindow::copy() const
 {
-    SelectionManager::copy();
+    auto timeline = d->timeline_dock->timelineWidget()->timeline();
+    if ( timeline->has_soft_focus() && timeline->has_keyframe_selected() )
+        d->timeline_dock->timelineWidget()->copy_keyframes();
+    else
+        SelectionManager::copy();
 }
 
 void GlaxnimateWindow::paste()
 {
-    SelectionManager::paste();
+    const QMimeData* data = GlaxnimateApp::instance()->get_clipboard_data();
+    if ( command::has_keyframe_data(data) )
+        d->timeline_dock->timelineWidget()->paste_keyframes();
+    else
+        SelectionManager::paste();
 }
 
 void GlaxnimateWindow::cut()
@@ -286,17 +296,14 @@ void GlaxnimateWindow::cut()
 void GlaxnimateWindow::delete_selected()
 {
     auto timeline = d->timeline_dock->timelineWidget()->timeline();
-    if ( timeline->has_soft_focus() )
+    if ( timeline->has_soft_focus() && timeline->has_keyframe_selected() )
     {
         auto selected = timeline->selected_keyframes();
-        if ( selected.size() > 0 )
-        {
-            auto cmd = new QUndoCommand(i18np("Delete keyframe", "Delete keyframes", selected.size()));
-            for ( const auto& sel : selected )
-                sel.property->command_remove_keyframe(sel.time, cmd);
-            d->current_document->push_command(cmd);
-            return;
-        }
+        auto cmd = new QUndoCommand(i18np("Delete keyframe", "Delete keyframes", selected.size()));
+        for ( const auto& sel : selected )
+            sel.property->command_remove_keyframe(sel.time, cmd);
+        d->current_document->push_command(cmd);
+        return;
     }
     SelectionManager::delete_selected();
 }
