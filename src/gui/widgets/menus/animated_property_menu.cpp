@@ -47,6 +47,11 @@ public:
         connect(&action_kf_loop, &QAction::triggered, parent, &AnimatedPropertyMenu::loop_keyframes);
         parent->addAction(&action_kf_loop);
 
+        action_property_loop.setIcon(QIcon::fromTheme(QStringLiteral("media-repeat-all")));
+        action_property_loop.setText(i18n("Repeat until composition ends"));
+        connect(&action_property_loop, &QAction::triggered, parent, &AnimatedPropertyMenu::loop_property);
+        parent->addAction(&action_property_loop);
+
         action_follow_path.setIcon(QIcon::fromTheme("draw-bezier-curves"));
         connect(&action_follow_path, &QAction::triggered, parent, &AnimatedPropertyMenu::follow_path);
         parent->addAction(&action_follow_path);
@@ -54,7 +59,7 @@ public:
 
         action_remove_all_keyframes.setText(i18n("Clear Animations"));
         action_kf_paste.setText(i18n("Paste Keyframe"));
-        action_kf_loop.setText(i18n("Loop Animation"));
+        action_kf_loop.setText(i18n("Perfect Loop"));
         action_follow_path.setText(i18n("Follow Path..."));
         action_add_keyframe.setText(i18n("Add Keyframe"));
         action_remove_keyframe.setText(i18n("Remove Keyframe"));
@@ -77,6 +82,7 @@ public:
     QAction action_add_keyframe;
     QAction action_remove_keyframe;
     QAction action_remove_all_keyframes;
+    QAction action_property_loop;
     SelectionManager* window = nullptr;
     model::PropertyTraits::Type property_type = model::PropertyTraits::Unknown;
 };
@@ -108,6 +114,34 @@ void glaxnimate::gui::AnimatedPropertyMenu::loop_keyframes()
         d->comp()->animation->last_frame.get(),
         d->property->first_keyframe()->value()
     ));
+}
+
+void AnimatedPropertyMenu::loop_property()
+{
+    if ( !d->property || d->property->keyframe_count() < 2 )
+        return;
+
+    model::FrameTime cumulative = d->property->last_keyframe()->time();
+    model::FrameTime duration = cumulative - d->property->first_keyframe()->time();
+    model::FrameTime target = d->window->current_composition()->animation->last_frame.get();
+    if ( duration <= 0 || cumulative >= target )
+        return;
+
+
+    auto cmd = new QUndoCommand(i18n("Loop %1", d->property->visual_name()));
+    while ( cumulative < target )
+    {
+        for ( const auto& kf : d->property->keyframe_range() )
+        {
+            auto time = kf.time() + cumulative;
+            d->property->command_add_smooth_keyframe(time, kf.value(), true, cmd);
+            if ( kf.transition().special() != model::KeyframeTransition::Special::NoValue )
+                d->property->command_set_transition(time, kf.transition(), cmd);
+        }
+        cumulative += duration;
+    }
+
+    d->object->push_command(cmd);
 }
 
 void glaxnimate::gui::AnimatedPropertyMenu::follow_path()
@@ -180,6 +214,11 @@ void glaxnimate::gui::AnimatedPropertyMenu::refresh_actions()
         d->action_remove_all_keyframes.setEnabled(d->property->keyframe_count() > 0);
         d->action_kf_loop.setEnabled(d->property->keyframe_count() > 0);
         d->action_kf_paste.setEnabled(can_paste());
+
+        d->action_property_loop.setEnabled(
+            d->property->keyframe_count() > 1 &&
+            d->property->last_keyframe()->time() < d->window->current_composition()->animation->last_frame.get()
+        );
     }
 }
 

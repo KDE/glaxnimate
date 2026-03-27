@@ -35,6 +35,7 @@ public:
 public Q_SLOTS:
     void paste_keyframe();
     void loop_keyframes();
+    void loop_property();
     void follow_path();
     void remove_all_keyframes();
     void add_keyframe();
