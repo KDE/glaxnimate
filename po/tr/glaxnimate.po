@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-26 00:41+0000\n"
-"PO-Revision-Date: 2026-03-18 13:11+0300\n"
+"PO-Revision-Date: 2026-03-27 00:45+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1966,16 +1966,14 @@ msgstr "Şekli Genişlet"
 
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:101
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:118
-#, fuzzy, kde-format
-#| msgid "Update keyframe transition"
+#, kde-format
 msgid "Set keyframe transition"
-msgstr "Anahtar kare geçişini güncelle"
+msgstr "Anahtar kare geçişini ayarla"
 
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:138
-#, fuzzy, kde-format
-#| msgid "Move keyframe"
+#, kde-format
 msgid "Move Keyframe"
-msgstr "Anahtar kareyi taşı"
+msgstr "Anahtar kareyi"
 
 #: src/core/glaxnimate/model/animation_container.cpp:54
 #, kde-format
@@ -2652,7 +2650,7 @@ msgstr "OpenGL Sunumcusu"
 #: src/gui/glaxnimate_app.cpp:234
 #, kde-format
 msgid "Copyright © 2019-2026"
-msgstr ""
+msgstr "© 2019–2026"
 
 #: src/gui/glaxnimate_app.cpp:243
 #, kde-format

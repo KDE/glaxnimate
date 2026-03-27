@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-26 00:41+0000\n"
-"PO-Revision-Date: 2026-03-18 11:02+0100\n"
+"PO-Revision-Date: 2026-03-26 11:21+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1988,14 +1988,12 @@ msgstr "Amplia la forma"
 
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:101
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:118
-#, fuzzy, kde-format
-#| msgid "Update keyframe transition"
+#, kde-format
 msgid "Set keyframe transition"
-msgstr "Actualitza la transició del fotograma clau"
+msgstr "Establix la transició dels fotogrames clau"
 
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:138
-#, fuzzy, kde-format
-#| msgid "Move keyframe"
+#, kde-format
 msgid "Move Keyframe"
 msgstr "Mou el fotograma clau"
 
@@ -2679,7 +2677,7 @@ msgstr "Renderitzador OpenGL"
 #: src/gui/glaxnimate_app.cpp:234
 #, kde-format
 msgid "Copyright © 2019-2026"
-msgstr ""
+msgstr "Copyright © 2019-2026"
 
 #: src/gui/glaxnimate_app.cpp:243
 #, kde-format
@@ -6746,21 +6744,3 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "Traçat %1"
-
-#~ msgid "uuid"
-#~ msgstr "uuid"
-
-#~ msgid "group_color"
-#~ msgstr "group_color"
-
-#~ msgid "visible"
-#~ msgstr "visible"
-
-#~ msgid "locked"
-#~ msgstr "blocat"
-
-#~ msgid "Remove %1 keyframe %2"
-#~ msgstr "Elimina el fotograma clau %1 %2"
-
-#~ msgid "(c) 2019-2026"
-#~ msgstr "(c) 2019-2026"
