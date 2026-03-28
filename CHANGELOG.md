@@ -42,6 +42,7 @@
 * Misc
     * New rendering system
     * Core as static library
+    * New core module system to easily toggle optional file formats
     * Experimental wasm build of the core renderer
     * Unbounded precomp layers
     * Canvas render quality setting
