@@ -92,7 +92,7 @@ public:
     /**
      * \brief Priority when multiple classes support the same file types
      */
-    virtual int priority() const { return 0; }
+    virtual int priority() const { return 100; }
 
     /**
      * \brief File dialog name filter

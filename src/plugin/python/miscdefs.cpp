@@ -20,7 +20,7 @@
 
 #include "glaxnimate/log/log.hpp"
 #include "glaxnimate/math/bezier/bezier.hpp"
-#include "glaxnimate/init.hpp"
+#include "glaxnimate/module/module.hpp"
 #include "glaxnimate/script/register_machinery.hpp"
 #include "trace/trace.hpp"
 #include "trace/quantize.hpp"
@@ -392,7 +392,7 @@ public:
             QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
             app = std::make_unique<QGuiApplication>(fake_argc, (char**)fake_argv);
             // glaxnimate::gui::GlaxnimateApp::init_qapplication();
-            glaxnimate::init();
+            glaxnimate::module::registry();
         }
     }
 

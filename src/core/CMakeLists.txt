@@ -41,7 +41,7 @@ glaxnimate/io/aep/aep_format.cpp
 glaxnimate/io/aep/aep_loader.cpp
 glaxnimate/io/aep/string_decoder.cpp
 glaxnimate/io/aep/gradient_xml.cpp
-glaxnimate/io/io_registry.cpp
+
 
 glaxnimate/log/logger.cpp
 
@@ -120,14 +120,13 @@ glaxnimate/settings/settings_group.cpp
 
 glaxnimate/utils/gzip.cpp
 glaxnimate/utils/data_paths.cpp
-glaxnimate/init.cpp
+glaxnimate/module/module.cpp
 )
 
 
 set(GLAXNIMATE_CORE_KDE ON)
 
 if ( GLAXNIMATE_CORE_MINIMAL )
-    set(GLAXNIMATE_VIDEO_ENABLED OFF)
     set(GLAXNIMATE_CORE_KDE OFF)
 
     set(RENDERER_LIBRARIES thorvg)
@@ -137,26 +136,6 @@ endif()
 add_library(GlaxnimateCore STATIC
 )
 add_library(Glaxnimate::Core ALIAS GlaxnimateCore)
-
-
-# Video
-if ( NOT ANDROID )
-    set(GLAXNIMATE_VIDEO_DEFAULT ON)
-else()
-    set(GLAXNIMATE_VIDEO_DEFAULT OFF)
-endif()
-
-option(GLAXNIMATE_VIDEO_ENABLED "Toggles support for video format I/O" ${GLAXNIMATE_VIDEO_DEFAULT})
-
-if ( GLAXNIMATE_VIDEO_ENABLED )
-    target_compile_definitions(GlaxnimateCore PUBLIC -DGLAXNIMATE_VIDEO_ENABLED)
-    list(APPEND SOURCES
-        glaxnimate/io/video/video_format.cpp
-    )
-    find_package(Libav COMPONENTS codec util format swscale REQUIRED)
-    include_directories(${Libav_INCLUDE_DIRS})
-    target_link_libraries(GlaxnimateCore PUBLIC ${Libav_LIBRARIES} )
-endif()
 
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/glaxnimate/application_info_generated.in.hpp

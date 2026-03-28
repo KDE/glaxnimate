@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "glaxnimate/io/video/video_format.hpp"
+#include "glaxnimate/module/video/video_format.hpp"
 
 #include <mutex>
 #include <cstring>
@@ -559,7 +559,7 @@ private:
     struct LogData
     {
         std::mutex mutex;
-        io::video::VideoFormat* format = nullptr;
+        video::VideoFormat* format = nullptr;
         int log_level;
 
         static LogData& instance()
@@ -573,7 +573,7 @@ private:
             instance().callback(level, fmt, vl);
         }
 
-        void setup(io::video::VideoFormat* format, int log_level)
+        void setup(video::VideoFormat* format, int log_level)
         {
             auto guard = std::lock_guard(mutex);
             this->format = format;
@@ -617,11 +617,11 @@ private:
     };
 
 public:
-    Logger(io::video::VideoFormat* format)
+    Logger(video::VideoFormat* format)
         : Logger(format, av_log_get_level())
     {}
 
-    Logger(io::video::VideoFormat* format, int log_level)
+    Logger(video::VideoFormat* format, int log_level)
     {
         level = av_log_get_level();
         av_log_set_level(log_level);
@@ -732,13 +732,13 @@ static void get_formats()
         if ( format_skip(format) )
             continue;
 
-        out_ext += QString(format->extensions).split(',', Qt::SkipEmptyParts);
+        out_ext += QString(format->extensions).remove(' ').split(',', Qt::SkipEmptyParts);
     }
 
     std::sort(out_ext.begin(), out_ext.end());
 }
 
-QStringList glaxnimate::io::video::VideoFormat::extensions() const
+QStringList glaxnimate::video::VideoFormat::extensions() const
 {
     if ( out_ext.empty() )
         get_formats();
@@ -746,7 +746,7 @@ QStringList glaxnimate::io::video::VideoFormat::extensions() const
 }
 
 
-bool glaxnimate::io::video::VideoFormat::on_save(QIODevice& dev, const QString& name, model::Composition* comp, const QVariantMap& settings)
+bool glaxnimate::video::VideoFormat::on_save(QIODevice& dev, const QString& name, model::Composition* comp, const QVariantMap& settings)
 {
     try
     {
@@ -846,7 +846,7 @@ bool glaxnimate::io::video::VideoFormat::on_save(QIODevice& dev, const QString& 
         auto last_frame = comp->animation->last_frame.get();
         QColor background = settings["background"].value<QColor>();
         Q_EMIT progress_max_changed(last_frame - first_frame);
-        for ( auto i = first_frame; i < last_frame; i++ )
+        for ( int i = first_frame; i < last_frame; i++ )
         {
             video.write_video_frame(comp->render_image(i, {width, height}, background));
             Q_EMIT progress(i - first_frame);
@@ -869,7 +869,7 @@ bool glaxnimate::io::video::VideoFormat::on_save(QIODevice& dev, const QString& 
     }
 }
 
-std::unique_ptr<glaxnimate::settings::SettingsGroup> glaxnimate::io::video::VideoFormat::save_settings(model::Composition* comp) const
+std::unique_ptr<glaxnimate::settings::SettingsGroup> glaxnimate::video::VideoFormat::save_settings(model::Composition* comp) const
 {
     return std::make_unique<glaxnimate::settings::SettingsGroup>(glaxnimate::settings::SettingList{
         //                      slug            label             description                                           default                 min max
@@ -880,7 +880,7 @@ std::unique_ptr<glaxnimate::settings::SettingsGroup> glaxnimate::io::video::Vide
     });
 }
 
-QString glaxnimate::io::video::VideoFormat::library_version()
+QString glaxnimate::video::VideoFormat::library_version()
 {
     return QStringList{
         LIBAVUTIL_IDENT,

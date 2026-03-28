@@ -8,11 +8,10 @@
 
 
 #include "glaxnimate/io/base.hpp"
-#include "glaxnimate/io/io_registry.hpp"
 
-namespace glaxnimate::io::video {
+namespace glaxnimate::video {
 
-class VideoFormat : public ImportExport
+class VideoFormat : public io::ImportExport
 {
     Q_OBJECT
 
@@ -23,11 +22,13 @@ public:
     bool can_save() const override { return true; }
     bool can_open() const override { return false; }
     std::unique_ptr<settings::SettingsGroup> save_settings(model::Composition*) const override;
+    int priority() const override { return -100; }
 
     static QString library_version();
 
 protected:
     bool on_save(QIODevice& dev, const QString&, model::Composition* comp, const QVariantMap&) override;
+
 };
 
-} // namespace glaxnimate::io::video
+} // namespace glaxnimate::video

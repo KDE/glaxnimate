@@ -25,7 +25,8 @@
 #include "cli.hpp"
 #include "cli_utils/env.hpp"
 #include "glaxnimate/log/log.hpp"
-#include "glaxnimate/init.hpp"
+#include "glaxnimate/module/module.hpp"
+#include "glaxnimate/module/video/video_module.hpp"
 #include "glaxnimate/utils/data_paths.hpp"
 
 #include "widgets/dialogs/glaxnimate_window.hpp"
@@ -54,6 +55,10 @@ int main(int argc, char *argv[])
     KCrash::initialize();
 #endif
 
+    // This loads the build-in modules
+    glaxnimate::module::initialize();
+    glaxnimate::module::registry().install<glaxnimate::video::Module>();
+
     gui::GlaxnimateApp::init_qapplication();
 
     auto args = gui::parse_cli(app.arguments());
@@ -73,8 +78,6 @@ int main(int argc, char *argv[])
     }
 
     plugin::python::PythonEngine::add_module_search_paths(utils::data_paths("lib/"));
-
-    glaxnimate::init();
 
     gui::cli_main(app, args);
 

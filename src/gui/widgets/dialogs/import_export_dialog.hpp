@@ -172,7 +172,6 @@ private:
         {
             dialog.selectNameFilter(selected->name_filter());
         }
-
     }
 
     QWidget* parent;

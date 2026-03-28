@@ -14,6 +14,7 @@
 #include <KAboutData>
 #include <KLocalizedString>
 
+#include "glaxnimate/module/module.hpp"
 #include "glaxnimate_settings.hpp"
 #include "settings/icon_settings.hpp"
 #include "glaxnimate/utils/data_paths.hpp"
@@ -214,10 +215,6 @@ static void gl_version(KAboutData& aboutData)
 }
 #endif
 
-#ifdef GLAXNIMATE_VIDEO_ENABLED
-#   include "glaxnimate/io/video/video_format.hpp"
-#endif
-
 #ifdef GLAXNIMATE_PYTHON_ENABLED
 #   include "gui_python/python_engine.hpp"
 #endif
@@ -242,16 +239,26 @@ void GlaxnimateApp::init_qapplication()
 
     aboutData.addAuthor(i18n("Mattia \"Glax\" Basaglia"), i18n("Maintainer"), QStringLiteral("glax@dragon.best"));
 
+    QMetaEnum meta_license = QMetaEnum::fromType<KAboutLicense::LicenseKey>();
 
-#ifdef GLAXNIMATE_VIDEO_ENABLED
-    aboutData.addComponent(i18n("libav"), {}, io::video::VideoFormat::library_version(), QStringLiteral("https://libav.org/"), KAboutLicense::LGPL);
-#endif
+    for ( const auto& module : glaxnimate::module::registry() )
+    {
+        aboutData.addComponent(module.name(), {}, module.version(), {}, KAboutLicense::GPL_V3);
+        for ( const auto& component : module.components() )
+        {
+            bool license_ok = false;
+            auto license = KAboutLicense::LicenseKey(meta_license.keyToValue(component.license, &license_ok));
+            assert(license_ok);
+            aboutData.addComponent(component.name, component.description, component.version, component.website, license);
+
+        }
+    }
 
     aboutData.addComponent(i18n("potrace"), i18n("Used by the bitmap tracing feature."), utils::trace::Tracer::potrace_version(), QStringLiteral("http://potrace.sourceforge.net/"), KAboutLicense::GPL_V2);
-
 #ifndef Q_OS_ANDROID
     aboutData.addComponent(i18n("Inkscape"), {}, {}, QStringLiteral("https://inkscape.org/"), KAboutLicense::GPL_V2);
 #endif
+
 #ifdef GLAXNIMATE_PYTHON_ENABLED
     aboutData.addComponent(i18n("pybind11"), i18n("Used by the plugin system."), plugin::python::PythonEngine::pybind_version(), QStringLiteral("https://pybind11.readthedocs.io/en/stable/"));
     aboutData.addComponent(i18n("CPython"), i18n("Used by the plugin system."), plugin::python::PythonEngine::python_version(), QStringLiteral("hhttps://python.org/"));

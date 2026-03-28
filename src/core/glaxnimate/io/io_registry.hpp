@@ -131,11 +131,6 @@ public:
         return nullptr;
     }
 
-    /**
-     * \brief Registers all the built-in formats
-     */
-    static void load_formats();
-
     template<class Class, class... Args>
     Class* register_class(Args&&... args)
     {
