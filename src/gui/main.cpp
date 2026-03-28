@@ -32,6 +32,10 @@
 #include "widgets/dialogs/glaxnimate_window.hpp"
 #include "settings/icon_settings.hpp"
 
+#ifdef GLAXNIMATE_CAIRO_ENABLED
+#   include "glaxnimate/module/cairo/cairo_module.hpp"
+#endif
+
 using namespace glaxnimate;
 
 int main(int argc, char *argv[])
@@ -73,7 +77,12 @@ int main(int argc, char *argv[])
 
     // This loads the build-in modules
     glaxnimate::module::initialize();
+#ifdef GLAXNIMATE_VIDEO_ENABLED
     glaxnimate::module::registry().install<glaxnimate::video::Module>();
+#endif
+#ifdef GLAXNIMATE_CAIRO_ENABLED
+    glaxnimate::module::registry().install<glaxnimate::cairo::Module>();
+#endif
 
     gui::GlaxnimateApp::init_about_data();
 

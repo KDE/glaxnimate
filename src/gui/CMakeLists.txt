@@ -300,3 +300,14 @@ if ( GLAXNIMATE_PYTHON_ENABLED )
         GlaxnimatePythonEmbed
     )
 endif()
+
+set(MODULE_DEFS)
+foreach(MODULE ${GLAXNIMATE_MODULES})
+    string(TOUPPER ${MODULE} MODULE_UPPER)
+    # target_link_libraries(GlaxnimateGui PUBLIC Glaxnimate${MODULE})
+    list(APPEND MODULE_DEFS "GLAXNIMATE_${MODULE_UPPER}_ENABLED")
+endforeach()
+
+set_source_files_properties(main.cpp PROPERTIES
+    COMPILE_DEFINITIONS "${MODULE_DEFS}"
+)

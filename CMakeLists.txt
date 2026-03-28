@@ -28,6 +28,7 @@ set(PROJECT_DESCRIPTION "Open-source vector animation and motion design desktop 
 set(PROJECT_MANINTAINER_NAME "Mattia Basaglia")
 set(PROJECT_MANINTAINER_EMAIL "glanimate@mattbas.org")
 set(PROJECT_MANINTAINER "${PROJECT_MANINTAINER_NAME} <${PROJECT_MANINTAINER_EMAIL}>")
+set(PROJECT_COPYYEARS "2019-2026")
 
 option(MOBILE_UI "Build the mobile user interface" OFF)
 
