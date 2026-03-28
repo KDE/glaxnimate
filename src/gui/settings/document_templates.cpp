@@ -200,7 +200,7 @@ bool gui::settings::DocumentTemplates::save_as_template(model::Document* documen
 
     io::glaxnimate::GlaxnimateFormat format;
     QDir dirname = utils::writable_data_path("templates");
-    QString path = dirname.absoluteFilePath(basename + "." + format.extensions()[0]);
+    QString path = dirname.absoluteFilePath(basename + "." + format.extensions(io::ImportExport::Export)[0]);
 
     if ( !dirname.exists() )
     {

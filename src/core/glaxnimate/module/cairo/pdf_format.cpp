@@ -13,7 +13,7 @@
 #include "cairo_renderer.hpp"
 
 
-QStringList glaxnimate::cairo::PdfFormat::extensions() const
+QStringList glaxnimate::cairo::PdfFormat::extensions(Direction) const
 {
     return {QStringLiteral("pdf")};
 }
@@ -31,7 +31,7 @@ static void set_metadata(cairo_surface_t *surface, cairo_pdf_metadata_t metadata
 }
 
 
-bool glaxnimate::cairo::PdfFormat::on_save(QIODevice& dev, const QString&, model::Composition* comp, const QVariantMap&)
+bool glaxnimate::cairo::PdfFormat::on_save_static(QIODevice &dev, const QString &, model::Composition *comp, model::FrameTime time, const QVariantMap &)
 {
     CairoRenderer renderer(10);
     auto surface = cairo_pdf_surface_create_for_stream(&write_to_io, &dev, comp->width.get(), comp->height.get());
@@ -52,7 +52,7 @@ bool glaxnimate::cairo::PdfFormat::on_save(QIODevice& dev, const QString&, model
 
     renderer.set_cairo_surface(surface, comp->width.get(), comp->height.get());
     renderer.render_start();
-    comp->paint(&renderer, comp->time(), model::VisualNode::Render);
+    comp->paint(&renderer, time, model::VisualNode::Render);
     renderer.render_end();
     return true;
 }

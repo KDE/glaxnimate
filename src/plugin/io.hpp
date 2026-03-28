@@ -41,7 +41,7 @@ public:
 
     QString slug() const override { return service->slug; }
     QString name() const override { return service->label; }
-    QStringList extensions() const override { return service->extensions; }
+    QStringList extensions(Direction) const override { return service->extensions; }
     bool can_save() const override { return service->save.valid(); }
     bool can_open() const override { return service->open.valid(); }
 

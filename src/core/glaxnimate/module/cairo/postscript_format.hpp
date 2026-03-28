@@ -18,13 +18,14 @@ class PostScriptFormat : public io::ImportExport
 public:
     QString slug() const override { return "postscript"; }
     QString name() const override { return i18n("PostScript"); }
-    QStringList extensions() const override;
-    bool can_save() const override { return true; }
+    QStringList extensions(Direction direction) const override;
+    bool can_save() const override { return false; }
     bool can_open() const override { return false; }
+    bool can_save_static() const override { return true; }
     std::unique_ptr<settings::SettingsGroup> save_settings(model::Composition*) const override;
 
 protected:
-    bool on_save(QIODevice& dev, const QString&, model::Composition* comp, const QVariantMap&) override;
+    bool on_save_static(QIODevice& dev, const QString&, model::Composition* comp, model::FrameTime time, const QVariantMap&) override;
 
 };
 

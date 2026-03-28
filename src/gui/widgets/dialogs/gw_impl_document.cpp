@@ -41,7 +41,6 @@
 #include "tools/base.hpp"
 
 #include "glaxnimate_app.hpp"
-#include "glaxnimate/app_info.hpp"
 #include "widgets/dialogs/import_export_dialog.hpp"
 #include "widgets/dialogs/io_status_dialog.hpp"
 #include "widgets/shape_style/shape_style_preview_widget.hpp"
@@ -532,7 +531,7 @@ void GlaxnimateWindow::Private::preview(io::ImportExport& exporter, const QVaria
 
     auto promise = QtConcurrent::run(
         [&exporter, comp=comp, options]() -> QString {
-            QTemporaryFile tempf(GlaxnimateApp::temp_path() + "/XXXXXX." + exporter.extensions()[0]);
+            QTemporaryFile tempf(GlaxnimateApp::temp_path() + "/XXXXXX." + exporter.extensions(io::ImportExport::Export)[0]);
             tempf.setAutoRemove(false);
             bool ok = tempf.open() && exporter.save(
                 tempf, tempf.fileName(), comp, options
@@ -584,60 +583,30 @@ void GlaxnimateWindow::Private::preview_rive()
     preview(fmt, {});
 }
 
-void GlaxnimateWindow::Private::save_frame_bmp()
+void GlaxnimateWindow::Private::save_frame()
 {
-    int frame = current_document->current_time();
-    QFileDialog fd(parent, i18n("Save Frame Image"));
-    fd.setDirectory(GlaxnimateSettings::render_path());
-    fd.setDefaultSuffix("png");
-    fd.selectFile(i18n("Frame%1.png", frame));
-    fd.setAcceptMode(QFileDialog::AcceptSave);
-    fd.setFileMode(QFileDialog::AnyFile);
-    fd.setOption(QFileDialog::DontUseNativeDialog, !GlaxnimateSettings::use_native_io_dialog());
+    model::FrameTime frame = current_document->current_time();
+    io::Options options {
+        io::IoRegistry::instance().from_slug("svg"),
+        GlaxnimateSettings::render_path(),
+        i18n("Frame%1.svg", frame),
+        {}
+    };
 
-    QString formats;
-    for ( const auto& fmt : QImageWriter::supportedImageFormats() )
-        formats += QString("*.%1 ").arg(QString::fromUtf8(fmt));
-    fd.setNameFilter(i18n("Image files (%1)", formats));
-
-    if ( fd.exec() == QDialog::Rejected )
+    ImportExportDialog dialog(options, parent);
+    if ( !dialog.export_dialog(comp, io::ImportExport::FrameExport) )
         return;
-
-    GlaxnimateSettings::setRender_path(fd.directory().path());
-
-    QImage image = io::raster::RasterMime().to_image({comp});
-    if ( !image.save(fd.selectedFiles()[0]) )
-        show_warning(i18n("Render Frame"), i18n("Could not save image"));
-}
+    options = dialog.io_options();
 
 
-void GlaxnimateWindow::Private::save_frame_svg()
-{
-    int frame = current_document->current_time();
-    QFileDialog fd(parent, i18n("Save Frame Image"));
-    fd.setDirectory(GlaxnimateSettings::render_path());
-    fd.setDefaultSuffix("svg");
-    fd.selectFile(i18n("Frame%1.svg", frame));
-    fd.setAcceptMode(QFileDialog::AcceptSave);
-    fd.setFileMode(QFileDialog::AnyFile);
-    fd.setNameFilter(i18n("Scalable Vector Graphics (*.svg)"));
-    fd.setOption(QFileDialog::DontUseNativeDialog, !GlaxnimateSettings::use_native_io_dialog());
 
-    if ( fd.exec() == QDialog::Rejected )
-        return;
+    GlaxnimateSettings::setRender_path(options.path.path());
 
-    GlaxnimateSettings::setRender_path(fd.directory().path());
-
-    QFile file(fd.selectedFiles()[0]);
-    if ( !file.open(QFile::WriteOnly) )
+    QFile file(options.filename);
+    if ( !options.format->save_static(file, options.filename, comp, frame, {}) )
     {
         show_warning(i18n("Render Frame"), i18n("Could not save image"));
-        return;
     }
-
-    io::svg::SvgRenderer rend(io::svg::NotAnimated, io::svg::CssFontType::FontFace);
-    rend.write_main(comp, frame);
-    rend.write(&file, true);
 }
 
 void GlaxnimateWindow::Private::validate_discord()

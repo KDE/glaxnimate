@@ -23,7 +23,7 @@
 using namespace glaxnimate::gui;
 using namespace glaxnimate;
 
-static void populate_io(QTableWidget* widget, const std::vector<io::ImportExport*>& data)
+static void populate_io(QTableWidget* widget, const std::vector<io::ImportExport*>& data, io::ImportExport::Direction direction)
 {
     widget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
     widget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
@@ -36,7 +36,7 @@ static void populate_io(QTableWidget* widget, const std::vector<io::ImportExport
     {
         widget->setItem(row, 0, new QTableWidgetItem(item->name()));
         widget->setItem(row, 1, new QTableWidgetItem(item->slug()));
-        widget->setItem(row, 2, new QTableWidgetItem(item->extensions().join(", ")));
+        widget->setItem(row, 2, new QTableWidgetItem(item->extensions(direction).join(", ")));
         height += widget->rowHeight(row);
         row++;
     }
@@ -64,8 +64,9 @@ AboutEnvironmentDialog::AboutEnvironmentDialog(QWidget* parent)
     populate_view(d->view_data, utils::data_paths_unchecked(""));
     populate_view(d->view_icons, QIcon::themeSearchPaths());
 
-    populate_io(d->table_formats_input, io::IoRegistry::instance().importers());
-    populate_io(d->table_formats_output, io::IoRegistry::instance().exporters());
+    populate_io(d->table_formats_input, io::IoRegistry::instance().importers(), io::ImportExport::Import);
+    populate_io(d->table_formats_output, io::IoRegistry::instance().exporters(), io::ImportExport::Export);
+    populate_io(d->table_formats_output_static, io::IoRegistry::instance().static_exporters(), io::ImportExport::FrameExport);
 }
 
 AboutEnvironmentDialog::~AboutEnvironmentDialog() = default;

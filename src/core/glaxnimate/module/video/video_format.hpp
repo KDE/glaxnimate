@@ -18,7 +18,7 @@ class VideoFormat : public io::ImportExport
 public:
     QString slug() const override { return "video"; }
     QString name() const override { return i18n("Video"); }
-    QStringList extensions() const override;
+    QStringList extensions(Direction direction) const override;
     bool can_save() const override { return true; }
     bool can_open() const override { return false; }
     std::unique_ptr<settings::SettingsGroup> save_settings(model::Composition*) const override;

@@ -22,7 +22,7 @@ public:
 
     QString slug() const override { return "rive"; }
     QString name() const override { return i18n("Rive Animation"); }
-    QStringList extensions() const override { return {"riv"}; }
+    QStringList extensions(Direction) const override { return {"riv"}; }
     bool can_save() const override { return true; }
     bool can_open() const override { return true; }
 

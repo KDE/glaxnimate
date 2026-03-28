@@ -503,10 +503,8 @@ void GlaxnimateWindow::Private::setup_document_actions()
 {
     KActionCategory* document_actions = new KActionCategory(i18n("Document"), parent->actionCollection());
 
-    QAction* render_raster = add_action(document_actions, QStringLiteral("render_frame_raster"), i18n("Raster…"), QStringLiteral("image-png"));
-    connect(render_raster, &QAction::triggered, parent, &GlaxnimateWindow::save_frame_bmp);
-    QAction* render_svg = add_action(document_actions, QStringLiteral("render_frame_svg"), i18n("SVG…"), QStringLiteral("image-svg+xml"));
-    connect(render_svg, &QAction::triggered, parent, &GlaxnimateWindow::save_frame_svg);
+    QAction* render_frame = add_action(document_actions, QStringLiteral("render_frame"), i18n("Render Single Frame…"), QStringLiteral("image-x-generic"));
+    connect(render_frame, &QAction::triggered, parent, [this]{save_frame();});
 
     QAction* preview_glax = add_action(document_actions, QStringLiteral("glaxnimate_preview"), i18n("Glaxnimate"));
     connect(preview_glax, &QAction::triggered, parent, [this]{preview_glaxnimate();});

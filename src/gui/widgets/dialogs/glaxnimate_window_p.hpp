@@ -249,8 +249,7 @@ public:
     void preview_svg();
     void preview_rive();
     void preview(io::ImportExport& exporter, const QVariantMap& options);
-    void save_frame_bmp();
-    void save_frame_svg();
+    void save_frame();
     void validate_tgs();
     void validate_discord();
     void autosave_timer_load_settings();

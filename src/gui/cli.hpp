@@ -21,5 +21,7 @@ void cli_main(gui::GlaxnimateApp& app, glaxnimate::cli::ParsedArguments& args);
  */
 bool cli_no_gui(const glaxnimate::cli::ParsedArguments& args);
 
+void initialize_core();
+
 
 } // namespace glaxnimate::gui

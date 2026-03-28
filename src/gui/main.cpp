@@ -38,6 +38,18 @@
 
 using namespace glaxnimate;
 
+void glaxnimate::gui::initialize_core()
+{
+    // This loads the build-in modules
+    glaxnimate::module::initialize();
+#ifdef GLAXNIMATE_VIDEO_ENABLED
+    glaxnimate::module::registry().install<glaxnimate::video::Module>();
+#endif
+#ifdef GLAXNIMATE_CAIRO_ENABLED
+    glaxnimate::module::registry().install<glaxnimate::cairo::Module>();
+#endif
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
@@ -75,14 +87,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    // This loads the build-in modules
-    glaxnimate::module::initialize();
-#ifdef GLAXNIMATE_VIDEO_ENABLED
-    glaxnimate::module::registry().install<glaxnimate::video::Module>();
-#endif
-#ifdef GLAXNIMATE_CAIRO_ENABLED
-    glaxnimate::module::registry().install<glaxnimate::cairo::Module>();
-#endif
+    gui::initialize_core();
 
     gui::GlaxnimateApp::init_about_data();
 

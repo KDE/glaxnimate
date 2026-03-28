@@ -6,10 +6,10 @@
 #include "glaxnimate/io/base.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
 
-QString glaxnimate::io::ImportExport::name_filter() const
+QString glaxnimate::io::ImportExport::name_filter(io::ImportExport::Direction direction) const
 {
     QString ext_str;
-    for ( const QString& ext : extensions() )
+    for ( const QString& ext : extensions(direction) )
     {
         ext_str += "*." + ext + " ";
     }
@@ -72,6 +72,40 @@ bool glaxnimate::io::ImportExport::save(QIODevice& file, const QString& filename
     bool ok = on_save(file, filename, comp, setting_values);
     Q_EMIT completed(ok);
     return ok;
+}
+
+
+bool glaxnimate::io::ImportExport::save_static(QIODevice &file, const QString &filename, model::Composition *comp, model::FrameTime time, const QVariantMap &setting_values)
+{
+
+    if ( !file.isOpen() && auto_open() )
+        if ( !file.open(QIODevice::WriteOnly) )
+            return false;
+
+    bool ok = on_save_static(file, filename, comp, time, setting_values);
+    Q_EMIT completed(ok);
+    return ok;
+}
+
+QByteArray glaxnimate::io::ImportExport::save_static(model::Composition *comp, double time, const QVariantMap &setting_values, const QString &filename)
+{
+    QByteArray data;
+    QBuffer file(&data);
+    file.open(QIODevice::WriteOnly);
+
+    QVariantMap clean_setting_values = setting_values;
+
+    if ( auto settings = save_settings(comp) )
+    {
+        for ( const auto& setting : *settings )
+            clean_setting_values[setting.slug] = setting.get_variant(clean_setting_values);
+    }
+
+    if ( !save_static(file, filename, comp, time, clean_setting_values) )
+        return {};
+
+    return data;
+
 }
 
 bool glaxnimate::io::ImportExport::load(model::Document* document, const QByteArray& data,

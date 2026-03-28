@@ -46,6 +46,7 @@
     * Experimental wasm build of the core renderer
     * Unbounded precomp layers
     * Canvas render quality setting
+    * Frame export for PDF and PostScript
 * Scripting
     * Improved bindings for various objects, especially properties and keyframes
 * Bug Fixes:

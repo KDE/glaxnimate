@@ -88,11 +88,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         </Menu>
         <Menu name="document">
             <text>Document</text>
-            <Menu name="render_frame_menu" icon="image-x-generic">
-                <text>Render Single Frame</text>
-                <Action name="render_frame_raster"/>
-                <Action name="render_frame_svg"/>
-            </Menu>
+            <Action name="render_frame" />
             <Menu name="web_preview_menu" icon="internet-web-browser">
                 <text>Web Preview</text>
                 <Action name="glaxnimate_preview"/>

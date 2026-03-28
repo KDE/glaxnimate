@@ -34,23 +34,23 @@ public:
         return io_options_;
     }
 
-    bool export_dialog(model::Composition* comp)
+    bool export_dialog(model::Composition* comp, io::ImportExport::Direction direction = io::ImportExport::Export)
     {
         QFileDialog dialog(parent);
-        dialog.setWindowTitle(i18n("Save file"));
+        dialog.setWindowTitle(direction == io::ImportExport::FrameExport ? i18n("Save Frame Image") : i18n("Save File"));
         dialog.setAcceptMode(QFileDialog::AcceptSave);
         dialog.setFileMode(QFileDialog::AnyFile);
         dialog.setOption(QFileDialog::DontUseNativeDialog, !GlaxnimateSettings::use_native_io_dialog());
-        setup_file_dialog(dialog, io::IoRegistry::instance().exporters(), io_options_.format, false);
+        setup_file_dialog(dialog, io::IoRegistry::instance().handlers(direction), io_options_.format, false, direction);
         while ( true )
         {
-            if ( !show_file_dialog(dialog, io::IoRegistry::instance().exporters(), io::ImportExport::Export) )
+            if ( !show_file_dialog(dialog, io::IoRegistry::instance().handlers(direction), direction) )
                 return false;
 
             // For some reason the file dialog shows the option to do this automatically but it's disabled
             if ( QFileInfo(io_options_.filename).completeSuffix().isEmpty() )
             {
-                io_options_.filename += "." + io_options_.format->extensions()[0];
+                io_options_.filename += "." + io_options_.format->extensions(direction)[0];
 
                 QFileInfo finfo(io_options_.filename);
                 if ( finfo.exists() )
@@ -79,11 +79,11 @@ public:
     bool import_dialog()
     {
         QFileDialog dialog(parent);
-        dialog.setWindowTitle(i18n("Open file"));
+        dialog.setWindowTitle(i18n("Open File"));
         dialog.setAcceptMode(QFileDialog::AcceptOpen);
         dialog.setFileMode(QFileDialog::ExistingFile);
         dialog.setOption(QFileDialog::DontUseNativeDialog, !GlaxnimateSettings::use_native_io_dialog());
-        setup_file_dialog(dialog, io::IoRegistry::instance().importers(), io_options_.format, true);
+        setup_file_dialog(dialog, io::IoRegistry::instance().importers(), io_options_.format, true, io::ImportExport::Import);
         if ( show_file_dialog(dialog, io::IoRegistry::instance().importers(), io::ImportExport::Import) )
             return options_dialog(io_options_.format->open_settings());
         return false;
@@ -140,7 +140,7 @@ private:
     }
 
     void setup_file_dialog(QFileDialog& dialog, const std::vector<io::ImportExport*>& formats,
-                           io::ImportExport* selected, bool add_all)
+                           io::ImportExport* selected, bool add_all, io::ImportExport::Direction direction)
     {
         dialog.setDirectory(io_options_.path);
         dialog.selectFile(io_options_.filename);
@@ -150,12 +150,12 @@ private:
         QString all;
         for ( const auto& reg : formats )
         {
-            for ( const QString& ext : reg->extensions() )
+            for ( const QString& ext : reg->extensions(direction) )
             {
                 all += "*." + ext + " ";
             }
 
-            filters << reg->name_filter();
+            filters << reg->name_filter(direction);
         }
 
         dialog.setNameFilters(filters);
@@ -170,7 +170,7 @@ private:
         }
         else if ( selected )
         {
-            dialog.selectNameFilter(selected->name_filter());
+            dialog.selectNameFilter(selected->name_filter(direction));
         }
     }
 

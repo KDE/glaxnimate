@@ -183,16 +183,6 @@ QVariant GlaxnimateWindow::choose_option(const QString& label, const QVariantMap
     return d->choose_option(label, options, title);
 }
 
-void GlaxnimateWindow::save_frame_bmp()
-{
-    d->save_frame_bmp();
-}
-
-void GlaxnimateWindow::save_frame_svg()
-{
-    d->save_frame_svg();
-}
-
 void GlaxnimateWindow::document_treeview_selection_changed(const std::vector<model::VisualNode*>& selected, const std::vector<model::VisualNode*>& deselected)
 {
     d->selection_changed(selected, deselected);

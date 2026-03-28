@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <ui version="4.0">
-<author>
-SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia &lt;dev@dragon.best&gt;
+ <author>
+SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia &lt;dev@dragon.best&gt;
 SPDX-FileCopyrightText: 2024 Julius Künzel &lt;julius.kuenzel@kde.org&gt;
 SPDX-License-Identifier: GPL-3.0-or-later
 </author>
@@ -23,7 +22,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
@@ -40,8 +39,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>463</width>
-            <height>438</height>
+            <width>454</width>
+            <height>464</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -214,11 +213,11 @@ SPDX-License-Identifier: GPL-3.0-or-later
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>483</width>
-            <height>458</height>
+            <width>487</width>
+            <height>449</height>
            </rect>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_9">
+          <layout class="QVBoxLayout" name="verticalLayout">
            <item>
             <widget class="QLabel" name="label_7">
              <property name="text">
@@ -269,6 +268,47 @@ SPDX-License-Identifier: GPL-3.0-or-later
            </item>
            <item>
             <widget class="QTableWidget" name="table_formats_output">
+             <property name="verticalScrollBarPolicy">
+              <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+             </property>
+             <property name="editTriggers">
+              <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+             </property>
+             <property name="textElideMode">
+              <enum>Qt::TextElideMode::ElideNone</enum>
+             </property>
+             <property name="horizontalScrollMode">
+              <enum>QAbstractItemView::ScrollMode::ScrollPerPixel</enum>
+             </property>
+             <attribute name="verticalHeaderVisible">
+              <bool>false</bool>
+             </attribute>
+             <column>
+              <property name="text">
+               <string>Name</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>ID</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Extensions</string>
+              </property>
+             </column>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_9">
+             <property name="text">
+              <string>Single Frame Output Formats </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="table_formats_output_static">
              <property name="verticalScrollBarPolicy">
               <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
              </property>

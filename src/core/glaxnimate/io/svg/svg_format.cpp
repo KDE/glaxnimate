@@ -101,8 +101,33 @@ bool glaxnimate::io::svg::SvgFormat::on_save(QIODevice& file, const QString& fil
     return true;
 }
 
+bool glaxnimate::io::svg::SvgFormat::on_save_static(QIODevice &file, const QString &filename, model::Composition *comp, model::FrameTime time, const QVariantMap & options)
+{
+    // TODO settings?
+    io::svg::SvgRenderer rend(io::svg::NotAnimated, io::svg::CssFontType::FontFace);
+    rend.write_main(comp, time);
 
-QStringList glaxnimate::io::svg::SvgFormat::extensions() const
+#ifdef GLAXNIMATE_CORE_KDE
+    if ( filename.endsWith(".svgz") || options.value("compressed", false).toBool() )
+    {
+        KCompressionDevice compressed(&file, false, KCompressionDevice::GZip);
+        compressed.open(QIODevice::WriteOnly);
+        rend.write(&compressed, false);
+        compressed.close();
+
+        if ( compressed.error() )
+            warning(i18n("Could not write to file"));
+    }
+    else
+#endif
+    {
+        rend.write(&file, true);
+    }
+    return true;
+}
+
+
+QStringList glaxnimate::io::svg::SvgFormat::extensions(Direction) const
 {
 #ifdef GLAXNIMATE_CORE_KDE
     return {"svg", "svgz"};

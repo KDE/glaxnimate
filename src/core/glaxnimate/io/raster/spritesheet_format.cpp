@@ -13,7 +13,7 @@
 #include <QImageWriter>
 
 
-QStringList glaxnimate::io::raster::SpritesheetFormat::extensions() const
+QStringList glaxnimate::io::raster::SpritesheetFormat::extensions(Direction) const
 {
     QStringList formats;
     formats << "png";

@@ -44,6 +44,8 @@ public:
             exporters_.insert(std::upper_bound(exporters_.begin(), exporters_.end(), format, &compare_ie_ptr), format);
         if ( format->can_open() )
             importers_.insert(std::upper_bound(importers_.begin(), importers_.end(), format, &compare_ie_ptr), format);
+        if ( format->can_save_static() )
+            static_exporters_.insert(std::upper_bound(static_exporters_.begin(), static_exporters_.end(), format, &compare_ie_ptr), format);
         return format;
     }
 
@@ -69,8 +71,17 @@ public:
         return format;
     }
 
+    const std::vector<ImportExport*>& handlers(ImportExport::Direction direction) const
+    {
+        if ( direction == ImportExport::FrameExport )
+            return static_exporters_;
+        if ( direction == ImportExport::Export )
+            return exporters_;
+        return importers_;
+    }
     const std::vector<ImportExport*>& importers() const { return importers_; }
     const std::vector<ImportExport*>& exporters() const { return exporters_; }
+    const std::vector<ImportExport*>& static_exporters() const { return static_exporters_; }
     const std::vector<mime::MimeSerializer*>& serializers() const { return mime_pointers; }
 
     const std::vector<std::unique_ptr<ImportExport>>& registered() const
@@ -143,6 +154,7 @@ private:
     std::vector<std::unique_ptr<ImportExport>> object_list;
     std::vector<ImportExport*> importers_;
     std::vector<ImportExport*> exporters_;
+    std::vector<ImportExport*> static_exporters_;
     std::vector<std::unique_ptr<mime::MimeSerializer>> mime_list;
     std::vector<mime::MimeSerializer*> mime_pointers;
 

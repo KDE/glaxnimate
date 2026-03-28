@@ -738,7 +738,7 @@ static void get_formats()
     std::sort(out_ext.begin(), out_ext.end());
 }
 
-QStringList glaxnimate::video::VideoFormat::extensions() const
+QStringList glaxnimate::video::VideoFormat::extensions(Direction) const
 {
     if ( out_ext.empty() )
         get_formats();

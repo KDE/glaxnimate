@@ -13,7 +13,7 @@
 #include "glaxnimate/app_info.hpp"
 
 
-QStringList glaxnimate::cairo::PostScriptFormat::extensions() const
+QStringList glaxnimate::cairo::PostScriptFormat::extensions(Direction) const
 {
     return {QStringLiteral("ps"), QStringLiteral("eps")};
 }
@@ -29,7 +29,7 @@ static void add_comment(cairo_surface_t *surface, const QString& string)
     cairo_ps_surface_dsc_comment(surface, string.toStdString().c_str());
 }
 
-bool glaxnimate::cairo::PostScriptFormat::on_save(QIODevice& dev, const QString&, model::Composition* comp, const QVariantMap&)
+bool glaxnimate::cairo::PostScriptFormat::on_save_static(QIODevice &dev, const QString &, model::Composition *comp, model::FrameTime time, const QVariantMap &)
 {
     CairoRenderer renderer(10);
     auto surface = cairo_ps_surface_create_for_stream(&write_to_io, &dev, comp->width.get(), comp->height.get());
@@ -48,7 +48,7 @@ bool glaxnimate::cairo::PostScriptFormat::on_save(QIODevice& dev, const QString&
 
     renderer.set_cairo_surface(surface, comp->width.get(), comp->height.get());
     renderer.render_start();
-    comp->paint(&renderer, comp->time(), model::VisualNode::Render);
+    comp->paint(&renderer, time, model::VisualNode::Render);
     renderer.render_end();
     return true;
 }

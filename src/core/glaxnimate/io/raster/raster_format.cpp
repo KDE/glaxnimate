@@ -8,11 +8,16 @@
 
 #include <QFileInfo>
 
-QStringList glaxnimate::io::raster::RasterFormat::extensions() const
+
+#include "glaxnimate/io/io_registry.hpp"
+#include "glaxnimate/model/shapes/composable/image.hpp"
+#include "glaxnimate/model/assets/assets.hpp"
+
+QStringList glaxnimate::io::raster::RasterFormat::extensions(Direction direction) const
 {
     QStringList formats;
     for ( const auto& fmt : QImageReader::supportedImageFormats() )
-        if ( fmt != "gif" && fmt != "webp" && fmt != "svg" )
+        if ( (direction == FrameExport || (fmt != "gif" && fmt != "webp")) && fmt != "svg" )
             formats << QString::fromUtf8(fmt);
     return formats;
 }
@@ -43,4 +48,12 @@ bool glaxnimate::io::raster::RasterFormat::on_open(QIODevice& dev, const QString
     main->width.set(bmp->pixmap().width());
     main->height.set(bmp->pixmap().height());
     return !bmp->pixmap().isNull();
+}
+
+bool glaxnimate::io::raster::RasterFormat::on_save_static(QIODevice &file, const QString &filename, model::Composition *comp, model::FrameTime time, const QVariantMap &)
+{
+    QString format = QFileInfo(filename).suffix();
+    if ( format.isEmpty() )
+        format = QStringLiteral("png");
+    return  comp->render_image(time).save(&file, format.toStdString().c_str());
 }

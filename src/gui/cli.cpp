@@ -303,10 +303,9 @@ using render_funcptr = void (*)(glaxnimate::model::Composition* comp, glaxnimate
 
 void render_frame(
     const QString& filename,
-    const char* format,
     glaxnimate::model::Composition* comp,
     glaxnimate::model::FrameTime time,
-    render_funcptr renderer
+    glaxnimate::io::ImportExport* renderer
 )
 {
     QFile file(filename);
@@ -316,22 +315,7 @@ void render_frame(
         return;
     }
 
-    renderer(comp, time, file, format);
-}
-
-void render_frame_svg(glaxnimate::model::Composition* comp, glaxnimate::model::FrameTime time, QFile& file, const char*)
-{
-    using namespace glaxnimate;
-    io::svg::SvgRenderer rend(io::svg::NotAnimated, io::svg::CssFontType::FontFace);
-    rend.write_main(comp, time);
-    rend.write(&file, true);
-}
-
-void render_frame_img(glaxnimate::model::Composition* comp, glaxnimate::model::FrameTime time, QFile& file, const char* format)
-{
-    QImage image = glaxnimate::io::raster::RasterMime::frame_to_image(comp, time);
-    if ( !image.save(&file, format) )
-        glaxnimate::cli::show_message(i18nc("@info:shell", "Could not save to %1", file.fileName()), true);
+    renderer->save_static(file, filename, comp, time, {});
 }
 
 bool cli_render(const glaxnimate::cli::ParsedArguments& args)
@@ -348,22 +332,22 @@ bool cli_render(const glaxnimate::cli::ParsedArguments& args)
     QString output_filename = args.value("render").toString();
     QFileInfo finfo(output_filename);
 
+    io::ImportExport* exporter = nullptr;
     if ( !format.isEmpty() )
     {
-        format = finfo.suffix();
-        if ( !format.contains("svg") )
-            format.clear();
+        exporter = io::IoRegistry::instance().from_slug(format);
+        if ( !exporter )
+            exporter = io::IoRegistry::instance().from_extension(format, glaxnimate::io::ImportExport::FrameExport);
+
+        if ( !exporter || !exporter->can_save_static() )
+            return false;
     }
-
-    std::string stdfmt = format.toUpper().toStdString();
-    const char* cfmt = stdfmt.empty() ? nullptr : stdfmt.c_str();
-
-    render_funcptr renderer = nullptr;
-
-    if ( format == "svg" )
-        renderer = &render_frame_svg;
     else
-        renderer = &render_frame_img;
+    {
+        exporter = io::IoRegistry::instance().from_filename(output_filename, glaxnimate::io::ImportExport::FrameExport);
+        if ( !exporter )
+            return false;
+    }
 
     auto document = cli_open(args);
     if ( !document )
@@ -393,15 +377,21 @@ bool cli_render(const glaxnimate::cli::ParsedArguments& args)
         {
             QString frame_name = QString::number(f).rightJustified(pad, '0');
             QString file_name = dir.filePath(finfo.baseName() + frame_name + "." + finfo.completeSuffix());
-            render_frame(file_name, cfmt, comp, f, renderer);
+            render_frame(file_name, comp, f, exporter);
         }
     }
     else
     {
-        render_frame(output_filename, cfmt, comp, frame.toDouble(), renderer);
+        render_frame(output_filename, comp, frame.toDouble(), exporter);
     }
 
     return true;
+}
+
+void initialize_cli(glaxnimate::gui::GlaxnimateApp& app)
+{
+    glaxnimate::gui::initialize_core();
+    app.initialize();
 }
 
 } // namespace
@@ -412,7 +402,7 @@ void glaxnimate::gui::cli_main(gui::GlaxnimateApp& app, glaxnimate::cli::ParsedA
 
     if ( args.has_flag("export-format-list") )
     {
-        app.initialize();
+        initialize_cli(app);
         int max_name_len = 0;
         std::vector<std::pair<QString, QString>> table;
         for ( const auto& exporter : io::IoRegistry::instance().exporters() )
@@ -429,16 +419,20 @@ void glaxnimate::gui::cli_main(gui::GlaxnimateApp& app, glaxnimate::cli::ParsedA
 
     if ( args.has_flag("render-format-list") )
     {
-        glaxnimate::cli::show_message("svg");
-        for ( const auto& fmt : QImageWriter::supportedImageFormats() )
-            glaxnimate::cli::show_message(QString::fromUtf8(fmt));
+        initialize_cli(app);
+        QStringList all;
+        for ( auto exporter : io::IoRegistry::instance().static_exporters() )
+            all += exporter->extensions(io::ImportExport::FrameExport);
+        all.sort(Qt::CaseInsensitive);
+        for ( const auto& ext : all )
+            glaxnimate::cli::show_message(ext);
         args.return_value = 0;
         return;
     }
 
     if ( args.is_defined("export") )
     {
-        app.initialize();
+        initialize_cli(app);
         if ( !cli_export(args) )
             args.return_value = 1;
         else
@@ -447,7 +441,7 @@ void glaxnimate::gui::cli_main(gui::GlaxnimateApp& app, glaxnimate::cli::ParsedA
 
     if ( args.is_defined("render") )
     {
-        app.initialize();
+        initialize_cli(app);
         if ( !cli_render(args) )
             args.return_value = 1;
         else
