@@ -26,7 +26,7 @@ class GlaxnimateApp : public QApplication
     Q_OBJECT
 
 public:
-    using QApplication::QApplication;
+    GlaxnimateApp(int &argc, char **argv);
 
     void initialize();
 
@@ -55,7 +55,8 @@ public:
 
     void set_clipboard_data(QMimeData* data);
     const QMimeData* get_clipboard_data();
-    static void init_qapplication();
+
+    static void init_about_data();
 
 protected:
 

@@ -219,7 +219,7 @@ static void gl_version(KAboutData& aboutData)
 #   include "gui_python/python_engine.hpp"
 #endif
 
-void GlaxnimateApp::init_qapplication()
+void GlaxnimateApp::init_about_data()
 {
     const auto& info = glaxnimate::AppInfo::instance();
     KAboutData aboutData(
@@ -268,13 +268,14 @@ void GlaxnimateApp::init_qapplication()
 #endif
 
     KAboutData::setApplicationData(aboutData);
-    if ( qApp )
-    {
-        qApp->setOrganizationName(info.organization());
-        qApp->setWindowIcon(QIcon(instance()->data_file("images/logo.svg")));
-    }
 }
 
+GlaxnimateApp::GlaxnimateApp(int &argc, char **argv)
+    : QApplication(argc, argv)
+{
+    setOrganizationName(glaxnimate::AppInfo::instance().organization());
+    setWindowIcon(QIcon(data_file("images/logo.svg")));
+}
 
 void GlaxnimateApp::initialize()
 {

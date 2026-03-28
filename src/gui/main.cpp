@@ -55,12 +55,6 @@ int main(int argc, char *argv[])
     KCrash::initialize();
 #endif
 
-    // This loads the build-in modules
-    glaxnimate::module::initialize();
-    glaxnimate::module::registry().install<glaxnimate::video::Module>();
-
-    gui::GlaxnimateApp::init_qapplication();
-
     auto args = gui::parse_cli(app.arguments());
 
     QSplashScreen sc;
@@ -76,6 +70,12 @@ int main(int argc, char *argv[])
             QCoreApplication::sendPostedEvents();
         }
     }
+
+    // This loads the build-in modules
+    glaxnimate::module::initialize();
+    glaxnimate::module::registry().install<glaxnimate::video::Module>();
+
+    gui::GlaxnimateApp::init_about_data();
 
     plugin::python::PythonEngine::add_module_search_paths(utils::data_paths("lib/"));
 
