@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-26 00:41+0000\n"
+"POT-Creation-Date: 2026-03-28 00:41+0000\n"
 "PO-Revision-Date: 2025-10-17 11:22+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -357,7 +357,7 @@ msgstr "Korvaa"
 #: src/android/document_opener.cpp:201
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:450
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:455
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:196
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:210
 #: src/gui/widgets/font/external_font_widget.cpp:126
 #, kde-format
 msgid "Open File"
@@ -369,7 +369,7 @@ msgid "Raster images need to be traced into vectors"
 msgstr "Rasterikuvat täytyy jäljittää vektoreiksi"
 
 #: src/android/document_opener.cpp:106
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:197
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:211
 #, kde-format
 msgid "Save File"
 msgstr "Tallenna tiedosto"
@@ -649,13 +649,13 @@ msgstr "Täyttötyyli"
 msgid "Stroke Style"
 msgstr "Viivan tyyli"
 
-#: src/android/main_window.cpp:454 src/gui/widgets/dialogs/gw_impl_ui.cpp:653
+#: src/android/main_window.cpp:454 src/gui/widgets/dialogs/gw_impl_ui.cpp:664
 #: src/gui/widgets/menus/node_menu.cpp:116
 #, kde-format
 msgid "Raise"
 msgstr "Nosta"
 
-#: src/android/main_window.cpp:459 src/gui/widgets/dialogs/gw_impl_ui.cpp:656
+#: src/android/main_window.cpp:459 src/gui/widgets/dialogs/gw_impl_ui.cpp:667
 #: src/gui/widgets/menus/node_menu.cpp:120
 #, kde-format
 msgid "Lower"
@@ -663,7 +663,7 @@ msgstr "Laske"
 
 #: src/android/main_window.cpp:466 src/gui/tools/select_tool.cpp:410
 #: src/gui/widgets/dialogs/selection_manager.cpp:85
-#: src/gui/widgets/menus/node_menu.cpp:521
+#: src/gui/widgets/menus/node_menu.cpp:519
 #, kde-format
 msgid "Cut"
 msgstr "Leikkaa"
@@ -707,7 +707,7 @@ msgstr "Tee uudelleen"
 #. i18n: ectx: Menu (new_layer_menu)
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #. i18n: ectx: property (text), widget (QToolButton, btn_new)
-#: src/android/main_window.cpp:508 src/gui/glaxnimateui.rc:126
+#: src/android/main_window.cpp:508 src/gui/glaxnimateui.rc:127
 #: src/gui/widgets/docks/snippet_list_widget.ui:29
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:48
 #, kde-format
@@ -736,7 +736,7 @@ msgstr "Avaa…"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:101
 #: src/gui/widgets/dialogs/about_env_dialog.ui:129
 #: src/gui/widgets/dialogs/about_env_dialog.ui:132
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1767
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1905
 #: src/gui/widgets/dialogs/startup_dialog.ui:149
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:136
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
@@ -784,8 +784,8 @@ msgstr "Lähetä Telegramiin"
 #. i18n: ectx: Menu (layers)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/android/main_window.cpp:546 src/gui/glaxnimateui.rc:124
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:609
+#: src/android/main_window.cpp:546 src/gui/glaxnimateui.rc:125
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:620
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #: src/gui/widgets/docks/layers.ui:27
 #, kde-format
@@ -855,8 +855,8 @@ msgid "Remove keyframe"
 msgstr ""
 
 #: src/android/main_window.cpp:1003
-#: src/gui/widgets/menus/animated_property_menu.cpp:54
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:171
+#: src/gui/widgets/menus/animated_property_menu.cpp:60
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
 #, kde-format
 msgid "Clear Animations"
 msgstr "Tyhjennä animaatiot"
@@ -868,7 +868,7 @@ msgstr "Emoji"
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
 #: src/android/main_window.ui:21 src/core/glaxnimate/app_info.cpp:14
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:500
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:511
 #, kde-format
 msgid "Glaxnimate"
 msgstr "Glaxnimate"
@@ -955,13 +955,13 @@ msgid "Update %1"
 msgstr "Päivitä %1"
 
 #: src/core/glaxnimate/command/animation_commands.cpp:293
-#: src/gui/widgets/timeline/timeline_items.cpp:562
+#: src/gui/widgets/timeline/timeline_items.cpp:552
 #, kde-format
 msgid "Update keyframe transition"
 msgstr ""
 
 #: src/core/glaxnimate/command/animation_commands.cpp:343
-#: src/core/glaxnimate/model/animation/animatable_base.cpp:48
+#: src/core/glaxnimate/model/animation/animatable_base.cpp:53
 #, kde-format
 msgid "Move keyframe"
 msgstr ""
@@ -980,6 +980,13 @@ msgstr "Päivitä animaatiopolku"
 #, kde-format
 msgid "Stretch Time"
 msgstr "Venytä aikaa"
+
+#: src/core/glaxnimate/command/clipboard.cpp:142
+#, kde-format
+msgid "Paste keyframe"
+msgid_plural "Paste keyframes"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/core/glaxnimate/command/object_list_commands.hpp:26
 #, kde-format
@@ -1958,7 +1965,9 @@ msgstr "Poista solmut"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/core/glaxnimate/model/animation/animatable.cpp:382
-#: src/gui/widgets/menus/animated_property_menu.cpp:58
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:725
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:777
+#: src/gui/widgets/menus/animated_property_menu.cpp:64
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:194
 #, kde-format
 msgid "Add Keyframe"
@@ -1975,7 +1984,7 @@ msgstr "Laajenna kuviota"
 msgid "Set keyframe transition"
 msgstr ""
 
-#: src/core/glaxnimate/model/animation/meta_animatable.cpp:138
+#: src/core/glaxnimate/model/animation/meta_animatable.cpp:137
 #, kde-format
 msgid "Move Keyframe"
 msgstr ""
@@ -2047,7 +2056,7 @@ msgstr "Bittikartta"
 
 #. i18n: ectx: Menu (new_comp_layer_menu)
 #: src/core/glaxnimate/model/assets/composition.cpp:24
-#: src/gui/glaxnimateui.rc:128
+#: src/gui/glaxnimateui.rc:129
 #, kde-format
 msgid "Composition"
 msgstr "Kompositio"
@@ -2146,8 +2155,8 @@ msgstr "Tuntematon olio"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/glaxnimate/model/shapes/composable/group.hpp:36
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:628
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:665
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:639
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:676
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
 #, kde-format
 msgid "Group"
@@ -2161,7 +2170,7 @@ msgstr "Kuva"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/glaxnimate/model/shapes/composable/layer.hpp:81
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:625
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:636
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
 #, kde-format
 msgid "Layer"
@@ -2211,9 +2220,9 @@ msgstr "Ellipsi"
 #. i18n: ectx: Menu (path)
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/glaxnimate/model/shapes/shapes/path.hpp:38
-#: src/gui/glaxnimateui.rc:178
+#: src/gui/glaxnimateui.rc:190
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:718
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:853
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
@@ -2237,7 +2246,7 @@ msgstr "Vaihda fontti"
 
 #. i18n: ectx: Menu (text)
 #: src/core/glaxnimate/model/shapes/shapes/text.cpp:474
-#: src/gui/glaxnimateui.rc:204 src/gui/widgets/dialogs/gw_impl_ui.cpp:131
+#: src/gui/glaxnimateui.rc:216 src/gui/widgets/dialogs/gw_impl_ui.cpp:135
 #, kde-format
 msgid "Text"
 msgstr "Teksti"
@@ -2249,7 +2258,7 @@ msgstr "Teksti"
 #: src/core/glaxnimate/model/shapes/style/fill.hpp:48
 #: src/gui/tools/draw_tool_base.cpp:114 src/gui/tools/fill_tool.cpp:25
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:771
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:631
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:642
 #: src/gui/widgets/docks/colors.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:197
 #: src/gui/widgets/tools/color_picker_widget.ui:24
@@ -2266,7 +2275,7 @@ msgstr "Täytä"
 #: src/core/glaxnimate/model/shapes/style/stroke.hpp:68
 #: src/gui/tools/draw_tool_base.cpp:126
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:766
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:634
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:645
 #: src/gui/widgets/docks/stroke.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:111
 #: src/gui/widgets/tools/color_picker_widget.ui:37
@@ -2571,7 +2580,7 @@ msgstr "Emojijoukko"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:248
 #: src/gui/widgets/dialogs/about_env_dialog.ui:289
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:109
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:341
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:348
 #: src/gui/widgets/dialogs/startup_dialog.ui:48
 #: src/gui/widgets/settings/plugin_settings_widget.ui:168
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:391
@@ -2699,14 +2708,14 @@ msgid "CPython"
 msgstr "CPython"
 
 #. i18n: ectx: Menu (file_new_from_template)
-#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1419
+#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1557
 #, kde-format
 msgid "New from Template"
 msgstr "Uusi mallista"
 
 #. i18n: ectx: Menu (edit_tools)
-#: src/gui/glaxnimateui.rc:51 src/gui/widgets/dialogs/gw_impl_ui.cpp:412
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:808
+#: src/gui/glaxnimateui.rc:51 src/gui/widgets/dialogs/gw_impl_ui.cpp:419
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:943
 #, kde-format
 msgid "Tools"
 msgstr "Työkalut"
@@ -2724,19 +2733,19 @@ msgid "Layout"
 msgstr "Asettelu"
 
 #. i18n: ectx: Menu (document)
-#: src/gui/glaxnimateui.rc:89 src/gui/widgets/dialogs/gw_impl_ui.cpp:493
+#: src/gui/glaxnimateui.rc:90 src/gui/widgets/dialogs/gw_impl_ui.cpp:504
 #, kde-format
 msgid "Document"
 msgstr "Tiedosto"
 
 #. i18n: ectx: Menu (render_frame_menu)
-#: src/gui/glaxnimateui.rc:91
+#: src/gui/glaxnimateui.rc:92
 #, kde-format
 msgid "Render Single Frame"
 msgstr "Hahmonna yksittäinen kuva"
 
 #. i18n: ectx: Menu (web_preview_menu)
-#: src/gui/glaxnimateui.rc:96 src/gui/widgets/dialogs/gw_impl_document.cpp:531
+#: src/gui/glaxnimateui.rc:97 src/gui/widgets/dialogs/gw_impl_document.cpp:531
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:553
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:559
 #, kde-format
@@ -2744,44 +2753,50 @@ msgid "Web Preview"
 msgstr "Verkkoesikatselu"
 
 #. i18n: ectx: Menu (playback)
-#: src/gui/glaxnimateui.rc:113 src/gui/widgets/dialogs/gw_impl_ui.cpp:540
+#: src/gui/glaxnimateui.rc:114 src/gui/widgets/dialogs/gw_impl_ui.cpp:551
 #, kde-format
 msgid "Playback"
 msgstr "Toisto"
 
 #. i18n: ectx: Menu (object)
-#: src/gui/glaxnimateui.rc:147 src/gui/widgets/dialogs/gw_impl_ui.cpp:648
+#: src/gui/glaxnimateui.rc:148 src/gui/widgets/dialogs/gw_impl_ui.cpp:659
 #, kde-format
 msgid "Object"
 msgstr "Olio"
 
 #. i18n: ectx: Menu (align_menu)
-#: src/gui/glaxnimateui.rc:158
+#: src/gui/glaxnimateui.rc:159
 #, kde-format
 msgid "Align and Distribute"
 msgstr "Tasaa ja jaa"
 
+#. i18n: ectx: Menu (menu_keyframe_type)
+#: src/gui/glaxnimateui.rc:180
+#, kde-format
+msgid "Keyframe Transition"
+msgstr ""
+
 #. i18n: ectx: Menu (plugins)
-#: src/gui/glaxnimateui.rc:209 src/gui/settings/plugin_settings_group.hpp:23
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1660
+#: src/gui/glaxnimateui.rc:221 src/gui/settings/plugin_settings_group.hpp:23
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1798
 #, kde-format
 msgid "Plugins"
 msgstr "Liitännäiset"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: src/gui/glaxnimateui.rc:223
+#: src/gui/glaxnimateui.rc:235
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Päätyökalurivi"
 
 #. i18n: ectx: ToolBar (toolsToolBar)
-#: src/gui/glaxnimateui.rc:246
+#: src/gui/glaxnimateui.rc:258
 #, kde-format
 msgid "Tools Toolbar"
 msgstr "Työkalujen työkalurivi"
 
 #. i18n: ectx: ToolBar (nodeToolBar)
-#: src/gui/glaxnimateui.rc:262
+#: src/gui/glaxnimateui.rc:274
 #, kde-format
 msgid "Node Toolbar"
 msgstr "Solmutyökalurivi"
@@ -2863,7 +2878,7 @@ msgstr ""
 msgid "Number of users"
 msgstr "Käyttäjämäärä"
 
-#: src/gui/item_models/property_model_base.cpp:244
+#: src/gui/item_models/property_model_base.cpp:245
 #, kde-format
 msgid "Toggle Keyframe"
 msgstr ""
@@ -3045,12 +3060,12 @@ msgstr "Piirrä bezierkäyrä"
 msgid "Drag nodes"
 msgstr "Vedä solmuja"
 
-#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:752
+#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:887
 #, kde-format
 msgid "Cusp"
 msgstr ""
 
-#: src/gui/tools/edit_tool.cpp:284 src/gui/widgets/dialogs/gw_impl_ui.cpp:753
+#: src/gui/tools/edit_tool.cpp:284 src/gui/widgets/dialogs/gw_impl_ui.cpp:888
 #, kde-format
 msgid "Smooth"
 msgstr "Tasoita"
@@ -3108,12 +3123,12 @@ msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr ""
 
-#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:757
+#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:892
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr ""
 
-#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:744
+#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:879
 #, kde-format
 msgid "Delete Nodes"
 msgstr ""
@@ -3133,7 +3148,7 @@ msgstr "Suorista segmentit"
 msgid "Curve segments"
 msgstr "Käyristä segmentit"
 
-#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:366
+#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:373
 #, kde-format
 msgid "Edit"
 msgstr "Muokkaa"
@@ -3184,19 +3199,19 @@ msgstr "Valitse"
 msgid "Drag"
 msgstr "Vedä"
 
-#: src/gui/tools/select_tool.cpp:400 src/gui/widgets/dialogs/gw_impl_ui.cpp:371
+#: src/gui/tools/select_tool.cpp:400 src/gui/widgets/dialogs/gw_impl_ui.cpp:378
 #, kde-format
 msgid "Undo %1"
 msgstr "Kumoa %1"
 
-#: src/gui/tools/select_tool.cpp:405 src/gui/widgets/dialogs/gw_impl_ui.cpp:377
+#: src/gui/tools/select_tool.cpp:405 src/gui/widgets/dialogs/gw_impl_ui.cpp:384
 #, kde-format
 msgid "Redo %1"
 msgstr "Tee uudelleen %1"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_delete)
-#: src/gui/tools/select_tool.cpp:418 src/gui/widgets/dialogs/gw_impl_ui.cpp:392
+#: src/gui/tools/select_tool.cpp:418 src/gui/widgets/dialogs/gw_impl_ui.cpp:399
 #: src/gui/widgets/dialogs/selection_manager.cpp:90
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:46
 #: src/gui/widgets/docks/snippet_list_widget.ui:57
@@ -3227,7 +3242,7 @@ msgstr "Piirrä teksti"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::AboutEnvironmentDialog)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:20
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:158
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:162
 #, kde-format
 msgid "About Environment"
 msgstr "Tietoa ympäristöstä"
@@ -3520,7 +3535,7 @@ msgstr "Hakusanat"
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #. i18n: ectx: attribute (title), widget (QWidget, tab_custom)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:84
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:448
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:455
 #: src/gui/widgets/font/font_style_dialog.ui:77
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:58
 #, kde-format
@@ -3623,7 +3638,7 @@ msgstr "Seuraa polkua"
 #: src/gui/widgets/dialogs/startup_dialog.ui:68
 #: src/gui/widgets/dialogs/startup_dialog.ui:82
 #: src/gui/widgets/dialogs/timing_dialog.ui:52
-#: src/gui/widgets/settings/settings_dialog.cpp:249
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 #, kde-format
 msgid "Duration"
 msgstr "Kesto"
@@ -3678,40 +3693,48 @@ msgstr "Valitse…"
 msgid "Start Time"
 msgstr "Alkuaika"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:28
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:36
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:31
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:39
 #, kde-format
 msgid "New Animation"
 msgstr "Uusi animaatio"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:42
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:50
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:45
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:53
 #, kde-format
 msgid "File saved"
 msgstr "Tiedosto tallennettu"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:44
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:52
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:47
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:55
 #, kde-format
 msgid "Could not save file"
 msgstr "Ei voitu tallentaa tiedostoa"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:58
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:66
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:61
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:69
 #, kde-format
 msgid "File exported"
 msgstr "Tiedosto viety"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:60
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:68
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:63
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:71
 #, kde-format
 msgid "Could not export file"
 msgstr "Ei voitu viedä tiedostoa"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:170
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:173
 #, kde-format
 msgid "Warning"
 msgstr "Varoitus"
+
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:302
+#, fuzzy, kde-format
+#| msgid "Delete Selected"
+msgid "Delete keyframe"
+msgid_plural "Delete keyframes"
+msgstr[0] "Poista valitut"
+msgstr[1] "Poista valitut"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:139
 #, kde-format
@@ -3821,7 +3844,7 @@ msgid "Scalable Vector Graphics (*.svg)"
 msgstr "SVG (*.svg)"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:647
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:518
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:529
 #, kde-format
 msgid "Validate Discord Sticker"
 msgstr "Kelpuuta Discord-tarra"
@@ -3839,7 +3862,7 @@ msgid "Some issues detected"
 msgstr "Havaittiin ongelmia"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:657
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:515
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:526
 #, kde-format
 msgid "Validate Telegram Sticker"
 msgstr "Kelpuuta Telegram-tarra"
@@ -3952,76 +3975,76 @@ msgstr "Sijoita teksti polulle"
 msgid "Remove text from path"
 msgstr "Poista teksti polulta"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:133
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:137
 #, kde-format
 msgid "Put on Path"
 msgstr "Sijoita polulle"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:136
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:140
 #: src/gui/widgets/menus/node_menu.cpp:476
 #, kde-format
 msgid "Remove from Path"
 msgstr "Poista polulta"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:154
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:158
 #, kde-format
 msgid "Copy Debug Information"
 msgstr "Kopioi vianjäljitystiedot"
 
 #. i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:299
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:306
 #, kde-format
 msgid "File"
 msgstr "Tiedosto"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:304
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:311
 #, kde-format
 msgid "Add Image…"
 msgstr "Lisää kuva…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:307
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:314
 #, kde-format
 msgid "Import…"
 msgstr "Tuo…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:310
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:317
 #, kde-format
 msgid "Import from LottieFiles…"
 msgstr "Tuo Lottie-tiedostoista…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:313
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:320
 #, kde-format
 msgid "Open Most Recent"
 msgstr "Avaa viimeisin"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:336
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:341
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:347
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:343
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:348
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:354
 #, kde-format
 msgid "Save as Template"
 msgstr "Tallenna mallipohjaksi"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:347
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:354
 #, kde-format
 msgid "Could not save template"
 msgstr "Mallipohjaa ei voitu tallentaa"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:351
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:358
 #, kde-format
 msgid "Export…"
 msgstr "Vie…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:354
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:361
 #, kde-format
 msgid "Export As…"
 msgstr "Vie nimellä…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:357
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:364
 #, kde-format
 msgid "Export as Image Sequence…"
 msgstr "Vie kuvasarjaksi…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:384
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:391
 #, kde-format
 msgid "Paste as Composition"
 msgstr "Liitä kompositioksi"
@@ -4029,7 +4052,7 @@ msgstr "Liitä kompositioksi"
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_duplicate)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:387
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:394
 #: src/gui/widgets/docks/layers.ui:84 src/gui/widgets/docks/layers.ui:87
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:486
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:58
@@ -4038,44 +4061,44 @@ msgstr "Liitä kompositioksi"
 msgid "Duplicate"
 msgstr "Monista"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:404
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:411
 #, kde-format
 msgid "Grid"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:443
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:450
 #, kde-format
 msgid "View"
 msgstr "Näkymä"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:454
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:461
 #, kde-format
 msgid "Automatic"
 msgstr "Automaattinen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:459
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:466
 #, kde-format
 msgid "Wide"
 msgstr "Leveä"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:464
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:471
 #, kde-format
 msgid "Medium"
 msgstr "Keskikokoinen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:469
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:476
 #, kde-format
 msgid "Compact"
 msgstr "Tiivis"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:474
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:481
 #, kde-format
 msgid "Mobile"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_angle_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_angle_reset)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:485
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:492
 #: src/gui/widgets/view_transform_widget.ui:150
 #: src/gui/widgets/view_transform_widget.ui:153
 #, kde-format
@@ -4084,186 +4107,192 @@ msgstr "Palauta kierto"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_flip_view)
 #. i18n: ectx: property (text), widget (QToolButton, btn_flip_view)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:487
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:494
 #: src/gui/widgets/view_transform_widget.ui:164
 #: src/gui/widgets/view_transform_widget.ui:167
 #, kde-format
 msgid "Flip View"
 msgstr "Pyöräytä näkymä"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:495
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
+#, fuzzy, kde-format
+#| msgid "Mask"
+msgid "Focus Mode"
+msgstr "Peite"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
 #, kde-format
 msgid "Raster…"
 msgstr "Rasteroi…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:508
 #, kde-format
 msgid "SVG…"
 msgstr "SVG…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:503
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:514
 #, kde-format
 msgid "Lottie (SVG)"
 msgstr "Lottie (SVG)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:517
 #, kde-format
 msgid "Lottie (canvas)"
 msgstr "Lottie (kangas)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:509
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:520
 #, kde-format
 msgid "SVG (SMIL)"
 msgstr "SVG (SMIL)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:523
 #, kde-format
 msgid "RIVE (canvas)"
 msgstr "RIVE (kangas)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:521
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:532
 #, kde-format
 msgid "Resize…"
 msgstr "Muuta kokoa…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:524
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:535
 #, kde-format
 msgid "Cleanup"
 msgstr "Siivoa"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:527
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:538
 #, kde-format
 msgid "Timing…"
 msgstr "Ajoitus…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:532
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:543
 #, kde-format
 msgid "Metadata…"
 msgstr "Metatiedot…"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:543
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:567
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:554
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:578
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
 #, kde-format
 msgid "Play"
 msgstr "Toista"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_loop)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:545
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:556
 #: src/gui/widgets/timeline/frame_controls_widget.ui:63
 #, kde-format
 msgid "Loop"
 msgstr "Silmukka"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:547
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:558
 #, kde-format
 msgid "Record Keyframes"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:549
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:560
 #, kde-format
 msgid "Jump to Start"
 msgstr "Hyppää alkuun"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:551
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:562
 #, kde-format
 msgid "Jump to End"
 msgstr "Hyppää loppuun"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:553
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:564
 #, kde-format
 msgid "Next Frame"
 msgstr "Seuraava kuva"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:555
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:566
 #, kde-format
 msgid "Previous Frame"
 msgstr "Edellinen kuva"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:563
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:574
 #, kde-format
 msgid "Pause"
 msgstr "Tauko"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:618
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:629
 #, kde-format
 msgid "Precompose Selection"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:622
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:633
 #, kde-format
 msgid "New Composition"
 msgstr "Uusi kompositio"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:637
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:648
 #, kde-format
 msgid "Emoji…"
 msgstr "Emoji…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:650
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:661
 #, kde-format
 msgid "Raise to Top"
 msgstr "Nosta ylimmäs"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:659
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
 #, kde-format
 msgid "Lower to Bottom"
 msgstr "Laske alimmas"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:662
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:673
 #, kde-format
 msgid "Move to…"
 msgstr "Siirrä…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:668
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:679
 #, kde-format
 msgid "Ungroup"
 msgstr "Poista ryhmittely"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:671
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:682
 #: src/gui/widgets/docks/aligndock.cpp:46
 #, kde-format
 msgid "Align"
 msgstr "Tasaa"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:673
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:684
 #, kde-format
 msgid "Selection"
 msgstr "Valinta"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:675
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
 #, kde-format
 msgid "Canvas"
 msgstr "Kangas"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:677
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
 #, kde-format
 msgid "Canvas (as Group)"
 msgstr "Kangas (ryhmänä)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:680
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:691
 #, kde-format
 msgid "Left"
 msgstr "Vasemmalle"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:683
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:694
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:703
 #, kde-format
 msgid "Center"
 msgstr "Keskelle"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:697
 #, kde-format
 msgid "Right"
 msgstr "Oikealle"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:689
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:700
 #, kde-format
 msgid "Top"
 msgstr "Ylös"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:695
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:706
 #, kde-format
 msgid "Bottom"
 msgstr "Alas"
@@ -4271,148 +4300,159 @@ msgstr "Alas"
 #. i18n("Relative To"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_horizontal"), i18n("Horizontal"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_vertical"), i18n("Vertical"), QStringLiteral(""));
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:702
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:713
 #, kde-format
 msgid "Outside Left"
 msgstr "Ulos vasemmalle"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:705
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:716
 #, kde-format
 msgid "Outside Right"
 msgstr "Ulos oikealle"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:708
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:719
 #, kde-format
 msgid "Outside Top"
 msgstr "Ulos ylös"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:711
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:722
 #, kde-format
 msgid "Outside Bottom"
 msgstr "Ulos alas"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:720
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:739
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:119
+#, kde-format
+msgid "Custom..."
+msgstr "Mukauta…"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
+#, kde-format
+msgid "Apply %1 keyframe transition"
+msgstr ""
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:855
 #, kde-format
 msgid "Object to Path"
 msgstr "Olio polulle"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:723
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:858
 #, kde-format
 msgid "Trace Bitmap…"
 msgstr "Jäljitä bittikartta…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:728
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:863
 #, kde-format
 msgid "Union"
 msgstr "Yhdiste"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:731
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:866
 #: src/gui/widgets/enum_combo.cpp:145
 #, kde-format
 msgid "Difference"
 msgstr "Erotus"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:734
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:869
 #, kde-format
 msgid "Intersect"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:737
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:872
 #: src/gui/widgets/enum_combo.cpp:147
 #, kde-format
 msgid "Exclusion"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:741
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:876
 #, kde-format
 msgid "Reverse"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:745
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:880
 #, kde-format
 msgid "Add Node…"
 msgstr "Lisää solmu…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:747
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:882
 #, kde-format
 msgid "Join Nodes"
 msgstr "Yhdistä solmut"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:749
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:884
 #, kde-format
 msgid "Split Nodes"
 msgstr "Jaa solmut"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:754
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:889
 #, kde-format
 msgid "Symmetric"
 msgstr "Symmetrinen"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:755
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:890
 #, kde-format
 msgid "Make segments straight"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:756
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:891
 #, kde-format
 msgid "Make segments curved"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:899
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1037
 #, kde-format
 msgid "Recording Keyframes"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1419
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1557
 #, kde-format
 msgid "Could not load template"
 msgstr "Mallia ei voitu ladata"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1616
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1625
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1632
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1754
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1763
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1770
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
 msgstr "Jäljitä bittikartta"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1616
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1754
 #, kde-format
 msgid "Only select one image"
 msgstr "Valitse vain yksi kuva"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1625
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1763
 #, kde-format
 msgid "You need to select an image to trace"
 msgstr "Jäljitettävä kuva on valittava"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1632
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1770
 #, kde-format
 msgid "You selected an image with no data"
 msgstr "Valitsit kuvan, jossa ei ole dataa"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1719
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1857
 #, kde-format
 msgid "X: %1 Y: %2"
 msgstr "X: %1 Y: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1738
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1876
 #, kde-format
 msgid "Drop File"
 msgstr "Pudota tiedosto"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1749
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1887
 #, kde-format
 msgid "Add to current file?"
 msgstr "Lisätäänkö nykyiseen tiedostoon?"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1755
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1893
 #, kde-format
 msgid "Add as Object"
 msgstr "Lisää olioksi"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1761
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1899
 #, kde-format
 msgid "Add as Composition"
 msgstr "Lisää kompositioksi"
@@ -4469,6 +4509,12 @@ msgstr "/tähän/kansiopolku/tiedostoihin"
 #, kde-format
 msgid "Issues"
 msgstr "Ongelmat"
+
+#: src/gui/widgets/dialogs/keyframe_editor_dialog.hpp:24
+#, fuzzy, kde-format
+#| msgid "Transition To Next"
+msgid "Transition Editor"
+msgstr "Siirtymä seuraavaan"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ResizeDialog)
 #: src/gui/widgets/dialogs/resize_dialog.cpp:28
@@ -4621,7 +4667,7 @@ msgstr "Muuta animaation ominaisuuksia"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
-#: src/gui/widgets/settings/settings_dialog.cpp:248
+#: src/gui/widgets/settings/settings_dialog.cpp:254
 #, kde-format
 msgid "FPS"
 msgstr "FPS"
@@ -5512,27 +5558,38 @@ msgstr "Kommentit"
 msgid "View on LottieFiles..."
 msgstr "Katsele LottieFilesissa…"
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:55
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:174
+#: src/gui/widgets/menus/animated_property_menu.cpp:51
+#, kde-format
+msgid "Repeat until composition ends"
+msgstr ""
+
+#: src/gui/widgets/menus/animated_property_menu.cpp:61
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
 #, kde-format
 msgid "Paste Keyframe"
 msgstr ""
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:56
+#: src/gui/widgets/menus/animated_property_menu.cpp:62
 #, kde-format
-msgid "Loop Animation"
+msgid "Perfect Loop"
 msgstr ""
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:57
+#: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
 msgid "Follow Path..."
 msgstr "Seuraa polkua…"
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:59
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:170
+#: src/gui/widgets/menus/animated_property_menu.cpp:65
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:172
 #, kde-format
 msgid "Remove Keyframe"
 msgstr ""
+
+#: src/gui/widgets/menus/animated_property_menu.cpp:131
+#, fuzzy, kde-format
+#| msgid "Loop"
+msgid "Loop %1"
+msgstr "Silmukka"
 
 #: src/gui/widgets/menus/node_menu.cpp:60
 #: src/gui/widgets/menus/node_menu.cpp:285
@@ -5670,57 +5727,50 @@ msgstr "Lukittu"
 
 #: src/gui/widgets/menus/node_menu.cpp:514
 #, fuzzy, kde-format
-#| msgid "Edit"
-msgctxt "@action:inmenu"
-msgid "Edit"
-msgstr "Muokkaa"
-
-#: src/gui/widgets/menus/node_menu.cpp:516
-#, fuzzy, kde-format
 #| msgid "Cut"
 msgctxt "@action:inmenu"
 msgid "Cut"
 msgstr "Leikkaa"
 
-#: src/gui/widgets/menus/node_menu.cpp:523
+#: src/gui/widgets/menus/node_menu.cpp:521
 #, fuzzy, kde-format
 #| msgid "Copy"
 msgctxt "@action:inmenu"
 msgid "Copy"
 msgstr "Kopioi"
 
-#: src/gui/widgets/menus/node_menu.cpp:530
+#: src/gui/widgets/menus/node_menu.cpp:528
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Delete"
 msgstr "Poista"
 
-#: src/gui/widgets/menus/node_menu.cpp:534
+#: src/gui/widgets/menus/node_menu.cpp:532
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Duplicate"
 msgstr "Monista"
 
-#: src/gui/widgets/menus/node_menu.cpp:540
+#: src/gui/widgets/menus/node_menu.cpp:538
 #, fuzzy, kde-format
 #| msgid "Move"
 msgctxt "@action:inmenu"
 msgid "Move"
 msgstr "Siirrä"
 
-#: src/gui/widgets/menus/node_menu.cpp:547
+#: src/gui/widgets/menus/node_menu.cpp:545
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Move to..."
 msgstr "Siirrä…"
 
-#: src/gui/widgets/menus/node_menu.cpp:575
+#: src/gui/widgets/menus/node_menu.cpp:573
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Convert to Path"
 msgstr "Muunna poluksi"
 
-#: src/gui/widgets/menus/node_menu.cpp:598
+#: src/gui/widgets/menus/node_menu.cpp:596
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Change speed"
@@ -5807,20 +5857,30 @@ msgstr "Versio"
 msgid "Services"
 msgstr "Palvelut"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:229
+#: src/gui/widgets/settings/settings_dialog.cpp:231
+#, kde-format
+msgid "Best Quality"
+msgstr ""
+
+#: src/gui/widgets/settings/settings_dialog.cpp:232
+#, kde-format
+msgid "Reduced Size (Performance)"
+msgstr ""
+
+#: src/gui/widgets/settings/settings_dialog.cpp:234
 msgctxt "Settings"
 msgid "User Interface"
 msgstr "Käyttöliittymä"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:230
+#: src/gui/widgets/settings/settings_dialog.cpp:235
 msgid "Show startup dialog"
 msgstr "Näytä käynnistysikkuna"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:233
+#: src/gui/widgets/settings/settings_dialog.cpp:238
 msgid "Horizontal Timeline Scroll"
 msgstr "Aikajanan vaakavieritys"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:234
+#: src/gui/widgets/settings/settings_dialog.cpp:239
 msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
@@ -5828,60 +5888,68 @@ msgstr ""
 "Jos käytössä, aikajanaa vieritetään oletuksena vaakasuuntaan ja Vaihto- tai "
 "Alt-näppäimellä pystysuuntaan"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:237
+#: src/gui/widgets/settings/settings_dialog.cpp:241
+msgid "Canvas Render Quality"
+msgstr ""
+
+#: src/gui/widgets/settings/settings_dialog.cpp:241
+msgid "Display quality within the app, does not affect exports"
+msgstr ""
+
+#: src/gui/widgets/settings/settings_dialog.cpp:243
 msgid "Icon Theme"
 msgstr "Kuvaketeema"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:237
+#: src/gui/widgets/settings/settings_dialog.cpp:243
 msgid "Icon theme for the application"
 msgstr "Sovelluksen kuvaketeema"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:243
+#: src/gui/widgets/settings/settings_dialog.cpp:249
 #, kde-format
 msgctxt "Seconds suffix"
 msgid "s"
 msgstr "s"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:245
+#: src/gui/widgets/settings/settings_dialog.cpp:251
 msgctxt "Settings"
 msgid "New Animation Defaults"
 msgstr "Uuden animaation oletukset"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:246
+#: src/gui/widgets/settings/settings_dialog.cpp:252
 msgid "Canvas Width"
 msgstr "Kankaan leveys"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:247
+#: src/gui/widgets/settings/settings_dialog.cpp:253
 msgid "Canvas Height"
 msgstr "Kankaan korkeus"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:248
+#: src/gui/widgets/settings/settings_dialog.cpp:254
 msgid "Frames per seconds"
 msgstr "Kuvaa sekunnissa"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:249
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Duration in seconds"
 msgstr "Kesto sekunteina"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:253
+#: src/gui/widgets/settings/settings_dialog.cpp:259
 msgctxt "Settings"
 msgid "Open / Save"
 msgstr "Avaa tai tallenna"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:254
+#: src/gui/widgets/settings/settings_dialog.cpp:260
 msgid "Max Recent Files"
 msgstr "Viimeisimpiä tiedostoja enintään"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:254
-#: src/gui/widgets/settings/settings_dialog.cpp:255
+#: src/gui/widgets/settings/settings_dialog.cpp:260
+#: src/gui/widgets/settings/settings_dialog.cpp:261
 msgid "Number of items to show in the recent files menu"
 msgstr ""
 
-#: src/gui/widgets/settings/settings_dialog.cpp:255
+#: src/gui/widgets/settings/settings_dialog.cpp:261
 msgid "Backup Frequency"
 msgstr "Varmuuskopiointitaajuus"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:256
+#: src/gui/widgets/settings/settings_dialog.cpp:262
 msgid "Use system file dialog"
 msgstr "Käytä järjestelmän tiedostonvalintaikkunaa"
 
@@ -6347,22 +6415,17 @@ msgstr "Muuta komposition nimeä"
 msgid "Delete Composition"
 msgstr "Poista kompositio"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:152
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:169
 #, kde-format
 msgid "Transition From Previous"
 msgstr "Siirtymä edellisestä"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:153
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:170
 #, kde-format
 msgid "Transition To Next"
 msgstr "Siirtymä seuraavaan"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:160
-#, kde-format
-msgid "Custom..."
-msgstr "Mukauta…"
-
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:175
 #, kde-format
 msgid "Copy Keyframe"
 msgstr ""
@@ -6501,7 +6564,7 @@ msgstr "Ennakoi"
 msgid "Overshoot"
 msgstr ""
 
-#: src/gui/widgets/timeline/timeline_items.cpp:148
+#: src/gui/widgets/timeline/timeline_items.cpp:140
 #, kde-format
 msgid "Drag Keyframes"
 msgstr ""
@@ -6579,6 +6642,12 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Edit"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Edit"
+#~ msgstr "Muokkaa"
 
 #, fuzzy
 #~| msgid "Group Color"

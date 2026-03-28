@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-26 00:41+0000\n"
+"POT-Creation-Date: 2026-03-28 00:41+0000\n"
 "PO-Revision-Date: 2024-12-25 19:37+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -347,7 +347,7 @@ msgstr "प्रत्याहृ"
 #: src/android/document_opener.cpp:201
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:450
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:455
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:196
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:210
 #: src/gui/widgets/font/external_font_widget.cpp:126
 #, kde-format
 msgid "Open File"
@@ -359,7 +359,7 @@ msgid "Raster images need to be traced into vectors"
 msgstr "रास्टर-प्रतिमानां सदिशेषु अनुसन्धानं करणीयम्"
 
 #: src/android/document_opener.cpp:106
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:197
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:211
 #, kde-format
 msgid "Save File"
 msgstr "सञ्चिकां रक्षतु"
@@ -642,13 +642,13 @@ msgstr "Fill Style इति"
 msgid "Stroke Style"
 msgstr "आघात शैली"
 
-#: src/android/main_window.cpp:454 src/gui/widgets/dialogs/gw_impl_ui.cpp:653
+#: src/android/main_window.cpp:454 src/gui/widgets/dialogs/gw_impl_ui.cpp:664
 #: src/gui/widgets/menus/node_menu.cpp:116
 #, kde-format
 msgid "Raise"
 msgstr "उत्थापय"
 
-#: src/android/main_window.cpp:459 src/gui/widgets/dialogs/gw_impl_ui.cpp:656
+#: src/android/main_window.cpp:459 src/gui/widgets/dialogs/gw_impl_ui.cpp:667
 #: src/gui/widgets/menus/node_menu.cpp:120
 #, kde-format
 msgid "Lower"
@@ -656,7 +656,7 @@ msgstr "अवच"
 
 #: src/android/main_window.cpp:466 src/gui/tools/select_tool.cpp:410
 #: src/gui/widgets/dialogs/selection_manager.cpp:85
-#: src/gui/widgets/menus/node_menu.cpp:521
+#: src/gui/widgets/menus/node_menu.cpp:519
 #, kde-format
 msgid "Cut"
 msgstr "छिन्न"
@@ -700,7 +700,7 @@ msgstr "पुनः करो"
 #. i18n: ectx: Menu (new_layer_menu)
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #. i18n: ectx: property (text), widget (QToolButton, btn_new)
-#: src/android/main_window.cpp:508 src/gui/glaxnimateui.rc:126
+#: src/android/main_window.cpp:508 src/gui/glaxnimateui.rc:127
 #: src/gui/widgets/docks/snippet_list_widget.ui:29
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:48
 #, kde-format
@@ -729,7 +729,7 @@ msgstr "उद्घाटित..."
 #: src/gui/widgets/dialogs/about_env_dialog.ui:101
 #: src/gui/widgets/dialogs/about_env_dialog.ui:129
 #: src/gui/widgets/dialogs/about_env_dialog.ui:132
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1767
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1905
 #: src/gui/widgets/dialogs/startup_dialog.ui:149
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:136
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
@@ -777,8 +777,8 @@ msgstr "तारं प्रति प्रेषयन्तु"
 #. i18n: ectx: Menu (layers)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/android/main_window.cpp:546 src/gui/glaxnimateui.rc:124
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:609
+#: src/android/main_window.cpp:546 src/gui/glaxnimateui.rc:125
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:620
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #: src/gui/widgets/docks/layers.ui:27
 #, kde-format
@@ -848,8 +848,8 @@ msgid "Remove keyframe"
 msgstr "कीफ्रेम् निष्कासयन्तु"
 
 #: src/android/main_window.cpp:1003
-#: src/gui/widgets/menus/animated_property_menu.cpp:54
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:171
+#: src/gui/widgets/menus/animated_property_menu.cpp:60
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
 #, kde-format
 msgid "Clear Animations"
 msgstr "स्पष्ट एनिमेशन"
@@ -861,7 +861,7 @@ msgstr "इमोजी"
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
 #: src/android/main_window.ui:21 src/core/glaxnimate/app_info.cpp:14
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:500
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:511
 #, kde-format
 msgid "Glaxnimate"
 msgstr "ग्लैक्सनिमेट"
@@ -948,13 +948,13 @@ msgid "Update %1"
 msgstr "%1 अद्यतनं कुर्वन्तु"
 
 #: src/core/glaxnimate/command/animation_commands.cpp:293
-#: src/gui/widgets/timeline/timeline_items.cpp:562
+#: src/gui/widgets/timeline/timeline_items.cpp:552
 #, kde-format
 msgid "Update keyframe transition"
 msgstr "कीफ्रेम संक्रमणं अद्यतनं कुर्वन्तु"
 
 #: src/core/glaxnimate/command/animation_commands.cpp:343
-#: src/core/glaxnimate/model/animation/animatable_base.cpp:48
+#: src/core/glaxnimate/model/animation/animatable_base.cpp:53
 #, kde-format
 msgid "Move keyframe"
 msgstr "कीफ्रेम् चालयन्तु"
@@ -973,6 +973,14 @@ msgstr "एनिमेशन मार्ग अद्यतन करें"
 #, kde-format
 msgid "Stretch Time"
 msgstr "खिंचाव समय"
+
+#: src/core/glaxnimate/command/clipboard.cpp:142
+#, fuzzy, kde-format
+#| msgid "Paste Keyframe"
+msgid "Paste keyframe"
+msgid_plural "Paste keyframes"
+msgstr[0] "कीफ्रेम पेस्ट करें"
+msgstr[1] "कीफ्रेम पेस्ट करें"
 
 #: src/core/glaxnimate/command/object_list_commands.hpp:26
 #, kde-format
@@ -1952,7 +1960,9 @@ msgstr "नोड्स् निष्कासयन्तु"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/core/glaxnimate/model/animation/animatable.cpp:382
-#: src/gui/widgets/menus/animated_property_menu.cpp:58
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:725
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:777
+#: src/gui/widgets/menus/animated_property_menu.cpp:64
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:194
 #, kde-format
 msgid "Add Keyframe"
@@ -1970,7 +1980,7 @@ msgstr "आकारं विस्तारयतु"
 msgid "Set keyframe transition"
 msgstr "कीफ्रेम संक्रमणं अद्यतनं कुर्वन्तु"
 
-#: src/core/glaxnimate/model/animation/meta_animatable.cpp:138
+#: src/core/glaxnimate/model/animation/meta_animatable.cpp:137
 #, fuzzy, kde-format
 #| msgid "Move keyframe"
 msgid "Move Keyframe"
@@ -2043,7 +2053,7 @@ msgstr "बिटमैप"
 
 #. i18n: ectx: Menu (new_comp_layer_menu)
 #: src/core/glaxnimate/model/assets/composition.cpp:24
-#: src/gui/glaxnimateui.rc:128
+#: src/gui/glaxnimateui.rc:129
 #, kde-format
 msgid "Composition"
 msgstr "रचना"
@@ -2142,8 +2152,8 @@ msgstr "अज्ञात वस्तु"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/glaxnimate/model/shapes/composable/group.hpp:36
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:628
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:665
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:639
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:676
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
 #, kde-format
 msgid "Group"
@@ -2157,7 +2167,7 @@ msgstr "छवि"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/glaxnimate/model/shapes/composable/layer.hpp:81
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:625
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:636
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
 #, kde-format
 msgid "Layer"
@@ -2207,9 +2217,9 @@ msgstr "दीर्घवृत्तम्"
 #. i18n: ectx: Menu (path)
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/glaxnimate/model/shapes/shapes/path.hpp:38
-#: src/gui/glaxnimateui.rc:178
+#: src/gui/glaxnimateui.rc:190
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:718
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:853
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
@@ -2233,7 +2243,7 @@ msgstr "Font परिवर्तनं कुर्वन्तु"
 
 #. i18n: ectx: Menu (text)
 #: src/core/glaxnimate/model/shapes/shapes/text.cpp:474
-#: src/gui/glaxnimateui.rc:204 src/gui/widgets/dialogs/gw_impl_ui.cpp:131
+#: src/gui/glaxnimateui.rc:216 src/gui/widgets/dialogs/gw_impl_ui.cpp:135
 #, kde-format
 msgid "Text"
 msgstr "पाठ"
@@ -2245,7 +2255,7 @@ msgstr "पाठ"
 #: src/core/glaxnimate/model/shapes/style/fill.hpp:48
 #: src/gui/tools/draw_tool_base.cpp:114 src/gui/tools/fill_tool.cpp:25
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:771
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:631
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:642
 #: src/gui/widgets/docks/colors.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:197
 #: src/gui/widgets/tools/color_picker_widget.ui:24
@@ -2262,7 +2272,7 @@ msgstr "पूरण"
 #: src/core/glaxnimate/model/shapes/style/stroke.hpp:68
 #: src/gui/tools/draw_tool_base.cpp:126
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:766
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:634
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:645
 #: src/gui/widgets/docks/stroke.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:111
 #: src/gui/widgets/tools/color_picker_widget.ui:37
@@ -2569,7 +2579,7 @@ msgstr "इमोजी सेट"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:248
 #: src/gui/widgets/dialogs/about_env_dialog.ui:289
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:109
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:341
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:348
 #: src/gui/widgets/dialogs/startup_dialog.ui:48
 #: src/gui/widgets/settings/plugin_settings_widget.ui:168
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:391
@@ -2697,14 +2707,14 @@ msgid "CPython"
 msgstr "सीपायथन्"
 
 #. i18n: ectx: Menu (file_new_from_template)
-#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1419
+#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1557
 #, kde-format
 msgid "New from Template"
 msgstr "टेम्पलेट् इत्यस्मात् नवीनम्"
 
 #. i18n: ectx: Menu (edit_tools)
-#: src/gui/glaxnimateui.rc:51 src/gui/widgets/dialogs/gw_impl_ui.cpp:412
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:808
+#: src/gui/glaxnimateui.rc:51 src/gui/widgets/dialogs/gw_impl_ui.cpp:419
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:943
 #, kde-format
 msgid "Tools"
 msgstr "उपकरणाः"
@@ -2722,19 +2732,19 @@ msgid "Layout"
 msgstr "प्रारूपं"
 
 #. i18n: ectx: Menu (document)
-#: src/gui/glaxnimateui.rc:89 src/gui/widgets/dialogs/gw_impl_ui.cpp:493
+#: src/gui/glaxnimateui.rc:90 src/gui/widgets/dialogs/gw_impl_ui.cpp:504
 #, kde-format
 msgid "Document"
 msgstr "प्रलेख"
 
 #. i18n: ectx: Menu (render_frame_menu)
-#: src/gui/glaxnimateui.rc:91
+#: src/gui/glaxnimateui.rc:92
 #, kde-format
 msgid "Render Single Frame"
 msgstr "एकल फ्रेम प्रस्तुत करें"
 
 #. i18n: ectx: Menu (web_preview_menu)
-#: src/gui/glaxnimateui.rc:96 src/gui/widgets/dialogs/gw_impl_document.cpp:531
+#: src/gui/glaxnimateui.rc:97 src/gui/widgets/dialogs/gw_impl_document.cpp:531
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:553
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:559
 #, kde-format
@@ -2742,44 +2752,51 @@ msgid "Web Preview"
 msgstr "जालपूर्वावलोकनम्"
 
 #. i18n: ectx: Menu (playback)
-#: src/gui/glaxnimateui.rc:113 src/gui/widgets/dialogs/gw_impl_ui.cpp:540
+#: src/gui/glaxnimateui.rc:114 src/gui/widgets/dialogs/gw_impl_ui.cpp:551
 #, kde-format
 msgid "Playback"
 msgstr "प्लेबैक"
 
 #. i18n: ectx: Menu (object)
-#: src/gui/glaxnimateui.rc:147 src/gui/widgets/dialogs/gw_impl_ui.cpp:648
+#: src/gui/glaxnimateui.rc:148 src/gui/widgets/dialogs/gw_impl_ui.cpp:659
 #, kde-format
 msgid "Object"
 msgstr "वस्तु"
 
 #. i18n: ectx: Menu (align_menu)
-#: src/gui/glaxnimateui.rc:158
+#: src/gui/glaxnimateui.rc:159
 #, kde-format
 msgid "Align and Distribute"
 msgstr "संरेखणं वितरणं च कुर्वन्तु"
 
+#. i18n: ectx: Menu (menu_keyframe_type)
+#: src/gui/glaxnimateui.rc:180
+#, fuzzy, kde-format
+#| msgid "Update keyframe transition"
+msgid "Keyframe Transition"
+msgstr "कीफ्रेम संक्रमणं अद्यतनं कुर्वन्तु"
+
 #. i18n: ectx: Menu (plugins)
-#: src/gui/glaxnimateui.rc:209 src/gui/settings/plugin_settings_group.hpp:23
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1660
+#: src/gui/glaxnimateui.rc:221 src/gui/settings/plugin_settings_group.hpp:23
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1798
 #, kde-format
 msgid "Plugins"
 msgstr "प्लगिन्स्"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: src/gui/glaxnimateui.rc:223
+#: src/gui/glaxnimateui.rc:235
 #, kde-format
 msgid "Main Toolbar"
 msgstr "मुख्य साधनपट्टी"
 
 #. i18n: ectx: ToolBar (toolsToolBar)
-#: src/gui/glaxnimateui.rc:246
+#: src/gui/glaxnimateui.rc:258
 #, kde-format
 msgid "Tools Toolbar"
 msgstr "साधनानि साधनपट्टिका"
 
 #. i18n: ectx: ToolBar (nodeToolBar)
-#: src/gui/glaxnimateui.rc:262
+#: src/gui/glaxnimateui.rc:274
 #, kde-format
 msgid "Node Toolbar"
 msgstr "नोड टूलबार"
@@ -2861,7 +2878,7 @@ msgstr "# # ."
 msgid "Number of users"
 msgstr "उपयोक्तृणां संख्या"
 
-#: src/gui/item_models/property_model_base.cpp:244
+#: src/gui/item_models/property_model_base.cpp:245
 #, kde-format
 msgid "Toggle Keyframe"
 msgstr "कीफ्रेम टॉगल करें"
@@ -3043,12 +3060,12 @@ msgstr "बेजियर आकर्षयन्तु"
 msgid "Drag nodes"
 msgstr "नोड्स कर्षन्तु"
 
-#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:752
+#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:887
 #, kde-format
 msgid "Cusp"
 msgstr "Cusp"
 
-#: src/gui/tools/edit_tool.cpp:284 src/gui/widgets/dialogs/gw_impl_ui.cpp:753
+#: src/gui/tools/edit_tool.cpp:284 src/gui/widgets/dialogs/gw_impl_ui.cpp:888
 #, kde-format
 msgid "Smooth"
 msgstr "मसृणः"
@@ -3106,12 +3123,12 @@ msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "Stop इति निष्कासयतु"
 
-#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:757
+#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:892
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr "Dissolve Nodes"
 
-#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:744
+#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:879
 #, kde-format
 msgid "Delete Nodes"
 msgstr "Nodes विलोपयन्तु"
@@ -3131,7 +3148,7 @@ msgstr "खण्डान् सीधां कुर्वन्तु"
 msgid "Curve segments"
 msgstr "वक्रखण्डाः"
 
-#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:366
+#: src/gui/tools/edit_tool.hpp:27 src/gui/widgets/dialogs/gw_impl_ui.cpp:373
 #, kde-format
 msgid "Edit"
 msgstr "सम्पादन"
@@ -3182,19 +3199,19 @@ msgstr "विचि"
 msgid "Drag"
 msgstr "आकर्षति"
 
-#: src/gui/tools/select_tool.cpp:400 src/gui/widgets/dialogs/gw_impl_ui.cpp:371
+#: src/gui/tools/select_tool.cpp:400 src/gui/widgets/dialogs/gw_impl_ui.cpp:378
 #, kde-format
 msgid "Undo %1"
 msgstr "%1 पूर्ववतं कुर्वन्तु"
 
-#: src/gui/tools/select_tool.cpp:405 src/gui/widgets/dialogs/gw_impl_ui.cpp:377
+#: src/gui/tools/select_tool.cpp:405 src/gui/widgets/dialogs/gw_impl_ui.cpp:384
 #, kde-format
 msgid "Redo %1"
 msgstr "पुनः %1"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 #. i18n: ectx: property (text), widget (QPushButton, button_delete)
-#: src/gui/tools/select_tool.cpp:418 src/gui/widgets/dialogs/gw_impl_ui.cpp:392
+#: src/gui/tools/select_tool.cpp:418 src/gui/widgets/dialogs/gw_impl_ui.cpp:399
 #: src/gui/widgets/dialogs/selection_manager.cpp:90
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:46
 #: src/gui/widgets/docks/snippet_list_widget.ui:57
@@ -3225,7 +3242,7 @@ msgstr "पाठं आकर्षयतु"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::AboutEnvironmentDialog)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:20
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:158
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:162
 #, kde-format
 msgid "About Environment"
 msgstr "पर्यावरणस्य विषये"
@@ -3587,7 +3604,7 @@ msgstr "कीवर्ड"
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #. i18n: ectx: attribute (title), widget (QWidget, tab_custom)
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:84
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:448
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:455
 #: src/gui/widgets/font/font_style_dialog.ui:77
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:58
 #, kde-format
@@ -3690,7 +3707,7 @@ msgstr "मार्ग अनुसरण करें"
 #: src/gui/widgets/dialogs/startup_dialog.ui:68
 #: src/gui/widgets/dialogs/startup_dialog.ui:82
 #: src/gui/widgets/dialogs/timing_dialog.ui:52
-#: src/gui/widgets/settings/settings_dialog.cpp:249
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 #, kde-format
 msgid "Duration"
 msgstr "अवधि"
@@ -3745,40 +3762,48 @@ msgstr "चिनोतु..."
 msgid "Start Time"
 msgstr "प्रारम्भ समय"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:28
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:36
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:31
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:39
 #, kde-format
 msgid "New Animation"
 msgstr "नवीन एनिमेशन"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:42
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:50
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:45
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:53
 #, kde-format
 msgid "File saved"
 msgstr "सञ्चिका रक्षिता"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:44
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:52
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:47
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:55
 #, kde-format
 msgid "Could not save file"
 msgstr "सञ्चिकां रक्षितुं न शक्तवान्"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:58
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:66
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:61
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:69
 #, kde-format
 msgid "File exported"
 msgstr "सञ्चिका निर्यातिता"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:60
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:68
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:63
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:71
 #, kde-format
 msgid "Could not export file"
 msgstr "सञ्चिकां निर्यातयितुं न शक्तवान्"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:170
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:173
 #, kde-format
 msgid "Warning"
 msgstr "चेतवानी"
+
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:302
+#, fuzzy, kde-format
+#| msgid "Remove keyframe"
+msgid "Delete keyframe"
+msgid_plural "Delete keyframes"
+msgstr[0] "कीफ्रेम् निष्कासयन्तु"
+msgstr[1] "कीफ्रेम् निष्कासयन्तु"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:139
 #, kde-format
@@ -3890,7 +3915,7 @@ msgid "Scalable Vector Graphics (*.svg)"
 msgstr "स्केलेबल सदिश ग्राफिक्स (*.svg)"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:647
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:518
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:529
 #, kde-format
 msgid "Validate Discord Sticker"
 msgstr "असहमति स्टिकरं मान्यं कुर्वन्तु"
@@ -3908,7 +3933,7 @@ msgid "Some issues detected"
 msgstr "केचन मुद्दायाः ज्ञापिताः"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:657
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:515
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:526
 #, kde-format
 msgid "Validate Telegram Sticker"
 msgstr "तार स्टिकरं मान्यं कुर्वन्तु"
@@ -4021,76 +4046,76 @@ msgstr "पाठं मार्गे स्थापयतु"
 msgid "Remove text from path"
 msgstr "मार्गात् पाठं निष्कासयन्तु"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:133
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:137
 #, kde-format
 msgid "Put on Path"
 msgstr "पथं स्थापयतु"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:136
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:140
 #: src/gui/widgets/menus/node_menu.cpp:476
 #, kde-format
 msgid "Remove from Path"
 msgstr "पथात् निष्कासयतु"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:154
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:158
 #, kde-format
 msgid "Copy Debug Information"
 msgstr "त्रुटिनिवारणसूचना प्रतिलिपिं कुर्वन्तु"
 
 #. i18n("Clear"), QIcon::fromTheme("edit-select-symbolic"), {}, Qt::CTRL | Qt::Key_L)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:299
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:306
 #, kde-format
 msgid "File"
 msgstr "सञ्चिका"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:304
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:311
 #, kde-format
 msgid "Add Image…"
 msgstr "चित्रं योजयतु…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:307
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:314
 #, kde-format
 msgid "Import…"
 msgstr "आयात…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:310
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:317
 #, kde-format
 msgid "Import from LottieFiles…"
 msgstr "LottieFiles तः आयातम्…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:313
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:320
 #, kde-format
 msgid "Open Most Recent"
 msgstr "Open Most Recent इति"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:336
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:341
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:347
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:343
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:348
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:354
 #, kde-format
 msgid "Save as Template"
 msgstr "टेम्पलेट् इत्यस्य रूपेण रक्षतु"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:347
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:354
 #, kde-format
 msgid "Could not save template"
 msgstr "टेम्पलेट् रक्षितुम् न शक्तवान्"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:351
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:358
 #, kde-format
 msgid "Export…"
 msgstr "निर्यात…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:354
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:361
 #, kde-format
 msgid "Export As…"
 msgstr "निर्यात यथा…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:357
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:364
 #, kde-format
 msgid "Export as Image Sequence…"
 msgstr "चित्रक्रमरूपेण निर्यातं कुर्वन्तु…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:384
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:391
 #, kde-format
 msgid "Paste as Composition"
 msgstr "रचनारूपेण चिनोतु"
@@ -4098,7 +4123,7 @@ msgstr "रचनारूपेण चिनोतु"
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_duplicate)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:387
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:394
 #: src/gui/widgets/docks/layers.ui:84 src/gui/widgets/docks/layers.ui:87
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:486
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:58
@@ -4107,44 +4132,44 @@ msgstr "रचनारूपेण चिनोतु"
 msgid "Duplicate"
 msgstr "डुप्लिकेट्"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:404
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:411
 #, kde-format
 msgid "Grid"
 msgstr ""
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:443
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:450
 #, kde-format
 msgid "View"
 msgstr "दृश्यं"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:454
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:461
 #, kde-format
 msgid "Automatic"
 msgstr "स्वतः"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:459
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:466
 #, kde-format
 msgid "Wide"
 msgstr "विस्तृतः"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:464
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:471
 #, kde-format
 msgid "Medium"
 msgstr "मध्यम"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:469
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:476
 #, kde-format
 msgid "Compact"
 msgstr "संकुचित"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:474
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:481
 #, kde-format
 msgid "Mobile"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_angle_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_angle_reset)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:485
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:492
 #: src/gui/widgets/view_transform_widget.ui:150
 #: src/gui/widgets/view_transform_widget.ui:153
 #, kde-format
@@ -4153,186 +4178,192 @@ msgstr "Rotation पुनः सेट् कुर्वन्तु"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_flip_view)
 #. i18n: ectx: property (text), widget (QToolButton, btn_flip_view)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:487
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:494
 #: src/gui/widgets/view_transform_widget.ui:164
 #: src/gui/widgets/view_transform_widget.ui:167
 #, kde-format
 msgid "Flip View"
 msgstr "Flip View इति"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:495
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
+#, fuzzy, kde-format
+#| msgid "k-Modes"
+msgid "Focus Mode"
+msgstr "k-गुणाः"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
 #, kde-format
 msgid "Raster…"
 msgstr "रास्टर…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:508
 #, kde-format
 msgid "SVG…"
 msgstr "एसवीजी…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:503
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:514
 #, kde-format
 msgid "Lottie (SVG)"
 msgstr "लोट्टी (SVG)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:517
 #, kde-format
 msgid "Lottie (canvas)"
 msgstr "लोट्टी (कैनवास)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:509
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:520
 #, kde-format
 msgid "SVG (SMIL)"
 msgstr "एसवीजी (SMILE)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:523
 #, kde-format
 msgid "RIVE (canvas)"
 msgstr "RIVE (कैनवास)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:521
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:532
 #, kde-format
 msgid "Resize…"
 msgstr "आकारं परिवर्तयतु…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:524
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:535
 #, kde-format
 msgid "Cleanup"
 msgstr "सफाई"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:527
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:538
 #, kde-format
 msgid "Timing…"
 msgstr "समयः…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:532
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:543
 #, kde-format
 msgid "Metadata…"
 msgstr "मेटाडाटा…"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:543
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:567
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:554
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:578
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
 #, kde-format
 msgid "Play"
 msgstr "क्रीडतु"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_loop)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:545
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:556
 #: src/gui/widgets/timeline/frame_controls_widget.ui:63
 #, kde-format
 msgid "Loop"
 msgstr "परिक्रम"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:547
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:558
 #, kde-format
 msgid "Record Keyframes"
 msgstr "कीफ्रेम्स अभिलेख करें"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:549
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:560
 #, kde-format
 msgid "Jump to Start"
 msgstr "आरम्भं प्रति कूदन्तु"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:551
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:562
 #, kde-format
 msgid "Jump to End"
 msgstr "अन्त्यपर्यन्तं कूदतु"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:553
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:564
 #, kde-format
 msgid "Next Frame"
 msgstr "अग्रिमः फ्रेमः"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:555
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:566
 #, kde-format
 msgid "Previous Frame"
 msgstr "पूर्व फ्रेम"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:563
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:574
 #, kde-format
 msgid "Pause"
 msgstr "विराम"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:618
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:629
 #, kde-format
 msgid "Precompose Selection"
 msgstr "पूर्वरचना चयनम्"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:622
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:633
 #, kde-format
 msgid "New Composition"
 msgstr "नवीन रचना"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:637
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:648
 #, kde-format
 msgid "Emoji…"
 msgstr "इमोजी…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:650
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:661
 #, kde-format
 msgid "Raise to Top"
 msgstr "शीर्षं प्रति उत्थापयन्तु"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:659
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
 #, kde-format
 msgid "Lower to Bottom"
 msgstr "अधः अधः यावत्"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:662
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:673
 #, kde-format
 msgid "Move to…"
 msgstr "गच्छतु…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:668
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:679
 #, kde-format
 msgid "Ungroup"
 msgstr "असमूहः"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:671
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:682
 #: src/gui/widgets/docks/aligndock.cpp:46
 #, kde-format
 msgid "Align"
 msgstr "संरेखणं कुर्वन्तु"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:673
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:684
 #, kde-format
 msgid "Selection"
 msgstr "चयनम्"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:675
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
 #, kde-format
 msgid "Canvas"
 msgstr "कैनवासः"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:677
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
 #, kde-format
 msgid "Canvas (as Group)"
 msgstr "कैनवास (समूहरूपेण)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:680
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:691
 #, kde-format
 msgid "Left"
 msgstr "वामः"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:683
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:694
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:703
 #, kde-format
 msgid "Center"
 msgstr "केंद्र"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:697
 #, kde-format
 msgid "Right"
 msgstr "दक्षिणः"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:689
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:700
 #, kde-format
 msgid "Top"
 msgstr "उपरितन"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:695
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:706
 #, kde-format
 msgid "Bottom"
 msgstr "अधः"
@@ -4340,148 +4371,160 @@ msgstr "अधः"
 #. i18n("Relative To"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_horizontal"), i18n("Horizontal"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_vertical"), i18n("Vertical"), QStringLiteral(""));
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:702
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:713
 #, kde-format
 msgid "Outside Left"
 msgstr "बहिः वाम"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:705
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:716
 #, kde-format
 msgid "Outside Right"
 msgstr "बहिः दक्षिणतः"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:708
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:719
 #, kde-format
 msgid "Outside Top"
 msgstr "बहिः Top"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:711
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:722
 #, kde-format
 msgid "Outside Bottom"
 msgstr "बहिः तलम्"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:720
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:739
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:119
+#, kde-format
+msgid "Custom..."
+msgstr "आचारः..."
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
+#, fuzzy, kde-format
+#| msgid "Update keyframe transition"
+msgid "Apply %1 keyframe transition"
+msgstr "कीफ्रेम संक्रमणं अद्यतनं कुर्वन्तु"
+
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:855
 #, kde-format
 msgid "Object to Path"
 msgstr "पथं प्रति आक्षेपः"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:723
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:858
 #, kde-format
 msgid "Trace Bitmap…"
 msgstr "ट्रेस बिटमैप…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:728
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:863
 #, kde-format
 msgid "Union"
 msgstr "संघ"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:731
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:866
 #: src/gui/widgets/enum_combo.cpp:145
 #, kde-format
 msgid "Difference"
 msgstr "अंतरण"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:734
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:869
 #, kde-format
 msgid "Intersect"
 msgstr "प्रतिच्छेदनम्"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:737
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:872
 #: src/gui/widgets/enum_combo.cpp:147
 #, kde-format
 msgid "Exclusion"
 msgstr "बहिष्कारः"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:741
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:876
 #, kde-format
 msgid "Reverse"
 msgstr "विपरीत"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:745
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:880
 #, kde-format
 msgid "Add Node…"
 msgstr "नोड् योजयतु…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:747
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:882
 #, kde-format
 msgid "Join Nodes"
 msgstr "Nodes सम्मिलितं कुर्वन्तु"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:749
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:884
 #, kde-format
 msgid "Split Nodes"
 msgstr "विभक्त नोड्स"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:754
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:889
 #, kde-format
 msgid "Symmetric"
 msgstr "सममित"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:755
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:890
 #, kde-format
 msgid "Make segments straight"
 msgstr "खण्डान् सीधां कुर्वन्तु"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:756
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:891
 #, kde-format
 msgid "Make segments curved"
 msgstr "खण्डान् वक्रान् कुर्वन्तु"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:899
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1037
 #, kde-format
 msgid "Recording Keyframes"
 msgstr "कीफ्रेम्स् अभिलेखनम्"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1419
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1557
 #, kde-format
 msgid "Could not load template"
 msgstr "टेम्पलेट् लोड् कर्तुं न शक्तम्"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1616
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1625
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1632
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1754
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1763
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1770
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
 msgstr "ट्रेस बिटमैप"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1616
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1754
 #, kde-format
 msgid "Only select one image"
 msgstr "केवलं एकं चित्रं चिनोतु"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1625
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1763
 #, kde-format
 msgid "You need to select an image to trace"
 msgstr "भवद्भिः अनुसन्धानार्थं चित्रं चिन्वितुं आवश्यकम्"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1632
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1770
 #, kde-format
 msgid "You selected an image with no data"
 msgstr "भवता एकं चित्रं चिनोति यत्र दत्तांशः नास्ति"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1719
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1857
 #, kde-format
 msgid "X: %1 Y: %2"
 msgstr "X: %1 Y: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1738
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1876
 #, kde-format
 msgid "Drop File"
 msgstr "सञ्चिकां पातयन्तु"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1749
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1887
 #, kde-format
 msgid "Add to current file?"
 msgstr "वर्तमानसञ्चिकायां योजयतु?"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1755
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1893
 #, kde-format
 msgid "Add as Object"
 msgstr "Object इति योजयतु"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1761
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1899
 #, kde-format
 msgid "Add as Composition"
 msgstr "रचना इति योजयतु"
@@ -4538,6 +4581,12 @@ msgstr "/मार्गः/भवतः/सञ्चिका/अत्र.अ�
 #, kde-format
 msgid "Issues"
 msgstr "विषयाः"
+
+#: src/gui/widgets/dialogs/keyframe_editor_dialog.hpp:24
+#, fuzzy, kde-format
+#| msgid "Transition To Next"
+msgid "Transition Editor"
+msgstr "Transition To Next इति"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ResizeDialog)
 #: src/gui/widgets/dialogs/resize_dialog.cpp:28
@@ -4690,7 +4739,7 @@ msgstr "Animation Properties परिवर्तनं कुर्वन्�
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
-#: src/gui/widgets/settings/settings_dialog.cpp:248
+#: src/gui/widgets/settings/settings_dialog.cpp:254
 #, kde-format
 msgid "FPS"
 msgstr "FPS"
@@ -5637,27 +5686,38 @@ msgstr "टिप्पणियाँ"
 msgid "View on LottieFiles..."
 msgstr "LottieFiles इत्यत्र पश्यन्तु..."
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:55
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:174
+#: src/gui/widgets/menus/animated_property_menu.cpp:51
+#, kde-format
+msgid "Repeat until composition ends"
+msgstr ""
+
+#: src/gui/widgets/menus/animated_property_menu.cpp:61
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
 #, kde-format
 msgid "Paste Keyframe"
 msgstr "कीफ्रेम पेस्ट करें"
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:56
+#: src/gui/widgets/menus/animated_property_menu.cpp:62
 #, kde-format
-msgid "Loop Animation"
-msgstr "पाश एनिमेशन"
+msgid "Perfect Loop"
+msgstr ""
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:57
+#: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
 msgid "Follow Path..."
 msgstr "अनुसरण पथ..."
 
-#: src/gui/widgets/menus/animated_property_menu.cpp:59
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:170
+#: src/gui/widgets/menus/animated_property_menu.cpp:65
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:172
 #, kde-format
 msgid "Remove Keyframe"
 msgstr "कीफ्रेम् निष्कासयन्तु"
+
+#: src/gui/widgets/menus/animated_property_menu.cpp:131
+#, fuzzy, kde-format
+#| msgid "Loop"
+msgid "Loop %1"
+msgstr "परिक्रम"
 
 #: src/gui/widgets/menus/node_menu.cpp:60
 #: src/gui/widgets/menus/node_menu.cpp:285
@@ -5795,57 +5855,50 @@ msgstr "तालाबद्धः"
 
 #: src/gui/widgets/menus/node_menu.cpp:514
 #, fuzzy, kde-format
-#| msgid "Edit"
-msgctxt "@action:inmenu"
-msgid "Edit"
-msgstr "सम्पादन"
-
-#: src/gui/widgets/menus/node_menu.cpp:516
-#, fuzzy, kde-format
 #| msgid "Cut"
 msgctxt "@action:inmenu"
 msgid "Cut"
 msgstr "छिन्न"
 
-#: src/gui/widgets/menus/node_menu.cpp:523
+#: src/gui/widgets/menus/node_menu.cpp:521
 #, fuzzy, kde-format
 #| msgid "Copy"
 msgctxt "@action:inmenu"
 msgid "Copy"
 msgstr "प्रतिलिपि"
 
-#: src/gui/widgets/menus/node_menu.cpp:530
+#: src/gui/widgets/menus/node_menu.cpp:528
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Delete"
 msgstr "लुप्"
 
-#: src/gui/widgets/menus/node_menu.cpp:534
+#: src/gui/widgets/menus/node_menu.cpp:532
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Duplicate"
 msgstr "डुप्लिकेट्"
 
-#: src/gui/widgets/menus/node_menu.cpp:540
+#: src/gui/widgets/menus/node_menu.cpp:538
 #, fuzzy, kde-format
 #| msgid "Move"
 msgctxt "@action:inmenu"
 msgid "Move"
 msgstr "चलनम्"
 
-#: src/gui/widgets/menus/node_menu.cpp:547
+#: src/gui/widgets/menus/node_menu.cpp:545
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Move to..."
 msgstr "गच्छतु..."
 
-#: src/gui/widgets/menus/node_menu.cpp:575
+#: src/gui/widgets/menus/node_menu.cpp:573
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Convert to Path"
 msgstr "मार्गे परिवर्तनं कुर्वन्तु"
 
-#: src/gui/widgets/menus/node_menu.cpp:598
+#: src/gui/widgets/menus/node_menu.cpp:596
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Change speed"
@@ -5932,20 +5985,30 @@ msgstr "संस्करण"
 msgid "Services"
 msgstr "सेवाएँ"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:229
+#: src/gui/widgets/settings/settings_dialog.cpp:231
+#, kde-format
+msgid "Best Quality"
+msgstr ""
+
+#: src/gui/widgets/settings/settings_dialog.cpp:232
+#, kde-format
+msgid "Reduced Size (Performance)"
+msgstr ""
+
+#: src/gui/widgets/settings/settings_dialog.cpp:234
 msgctxt "Settings"
 msgid "User Interface"
 msgstr "उपयोक्तृ-अन्तरफलकम्"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:230
+#: src/gui/widgets/settings/settings_dialog.cpp:235
 msgid "Show startup dialog"
 msgstr "प्रारम्भसंवादं दर्शयतु"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:233
+#: src/gui/widgets/settings/settings_dialog.cpp:238
 msgid "Horizontal Timeline Scroll"
 msgstr "क्षैतिज समयरेखा स्क्रॉल"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:234
+#: src/gui/widgets/settings/settings_dialog.cpp:239
 msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
@@ -5953,60 +6016,68 @@ msgstr ""
 "यदि सक्षमं भवति तर्हि समयरेखा पूर्वनिर्धारितरूपेण क्षैतिजरूपेण तथा Shift अथवा Alt इत्यनेन "
 "सह लम्बवत् स्क्रॉल करिष्यति"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:237
+#: src/gui/widgets/settings/settings_dialog.cpp:241
+msgid "Canvas Render Quality"
+msgstr ""
+
+#: src/gui/widgets/settings/settings_dialog.cpp:241
+msgid "Display quality within the app, does not affect exports"
+msgstr ""
+
+#: src/gui/widgets/settings/settings_dialog.cpp:243
 msgid "Icon Theme"
 msgstr "चिह्न विषयः"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:237
+#: src/gui/widgets/settings/settings_dialog.cpp:243
 msgid "Icon theme for the application"
 msgstr "अनुप्रयोगस्य कृते चिह्नविषयः"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:243
+#: src/gui/widgets/settings/settings_dialog.cpp:249
 #, kde-format
 msgctxt "Seconds suffix"
 msgid "s"
 msgstr "स"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:245
+#: src/gui/widgets/settings/settings_dialog.cpp:251
 msgctxt "Settings"
 msgid "New Animation Defaults"
 msgstr "नवीन एनिमेशन पूर्वनिर्धारित"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:246
+#: src/gui/widgets/settings/settings_dialog.cpp:252
 msgid "Canvas Width"
 msgstr "कैनवास चौड़ाई"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:247
+#: src/gui/widgets/settings/settings_dialog.cpp:253
 msgid "Canvas Height"
 msgstr "कैनवास ऊर्ध्वता"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:248
+#: src/gui/widgets/settings/settings_dialog.cpp:254
 msgid "Frames per seconds"
 msgstr "प्रति सेकण्ड् फ्रेम्स"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:249
+#: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Duration in seconds"
 msgstr "अवधिः सेकण्डेषु"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:253
+#: src/gui/widgets/settings/settings_dialog.cpp:259
 msgctxt "Settings"
 msgid "Open / Save"
 msgstr "उद्घाटयतु / रक्षतु"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:254
+#: src/gui/widgets/settings/settings_dialog.cpp:260
 msgid "Max Recent Files"
 msgstr "अधिकतमं हाले सञ्चिकाः"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:254
-#: src/gui/widgets/settings/settings_dialog.cpp:255
+#: src/gui/widgets/settings/settings_dialog.cpp:260
+#: src/gui/widgets/settings/settings_dialog.cpp:261
 msgid "Number of items to show in the recent files menu"
 msgstr "अद्यतनसञ्चिकानां मेन्यू मध्ये दर्शयितुं द्रव्याणां संख्या"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:255
+#: src/gui/widgets/settings/settings_dialog.cpp:261
 msgid "Backup Frequency"
 msgstr "बैकअप आवृत्ति"
 
-#: src/gui/widgets/settings/settings_dialog.cpp:256
+#: src/gui/widgets/settings/settings_dialog.cpp:262
 msgid "Use system file dialog"
 msgstr "प्रणालीसञ्चिकासंवादस्य उपयोगं कुर्वन्तु"
 
@@ -6472,22 +6543,17 @@ msgstr "रचना का नाम बदलें"
 msgid "Delete Composition"
 msgstr "रचनां विलोपयतु"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:152
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:169
 #, kde-format
 msgid "Transition From Previous"
 msgstr "पूर्वतः संक्रमणम्"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:153
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:170
 #, kde-format
 msgid "Transition To Next"
 msgstr "Transition To Next इति"
 
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:160
-#, kde-format
-msgid "Custom..."
-msgstr "आचारः..."
-
-#: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
+#: src/gui/widgets/timeline/compound_timeline_widget.cpp:175
 #, kde-format
 msgid "Copy Keyframe"
 msgstr "कीफ्रेम प्रतिलिपि कुर्वन्तु"
@@ -6626,7 +6692,7 @@ msgstr "आयासं"
 msgid "Overshoot"
 msgstr "अतिक्रमणम्"
 
-#: src/gui/widgets/timeline/timeline_items.cpp:148
+#: src/gui/widgets/timeline/timeline_items.cpp:140
 #, kde-format
 msgid "Drag Keyframes"
 msgstr "कीफ्रेम्स् खींचें"
@@ -6707,6 +6773,15 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "अनुसन्धानं %1"
+
+#~ msgid "Loop Animation"
+#~ msgstr "पाश एनिमेशन"
+
+#, fuzzy
+#~| msgid "Edit"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Edit"
+#~ msgstr "सम्पादन"
 
 #, fuzzy
 #~| msgid "Group Color"
