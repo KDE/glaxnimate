@@ -21,6 +21,7 @@ glaxnimate/io/lottie/cbor_write_json.cpp
 glaxnimate/io/lottie/lottie_format.cpp
 glaxnimate/io/lottie/lottie_html_format.cpp
 glaxnimate/io/lottie/validation.cpp
+glaxnimate/io/lottie/tgs_format.cpp
 glaxnimate/io/mime/mime_serializer.cpp
 glaxnimate/io/raster/raster_format.cpp
 glaxnimate/io/raster/spritesheet_format.cpp
@@ -166,7 +167,7 @@ configure_file(
 # KDE provides gzip support
 if ( GLAXNIMATE_CORE_KDE )
     list(APPEND SOURCES
-        glaxnimate/io/lottie/tgs_format.cpp
+        glaxnimate/utils/gzip-kde.cpp
     )
     target_compile_definitions(GlaxnimateCore PUBLIC -DGLAXNIMATE_CORE_KDE)
 
@@ -178,6 +179,12 @@ if ( GLAXNIMATE_CORE_KDE )
     )
 else()
     message(STATUS "Building Glaxnimate core without KDE")
+
+    list(APPEND SOURCES
+        glaxnimate/utils/gzip-zlib.cpp
+    )
+    find_package(ZLIB REQUIRED)
+    target_link_libraries(GlaxnimateCore PUBLIC ZLIB::ZLIB)
 endif()
 
 # Renderer

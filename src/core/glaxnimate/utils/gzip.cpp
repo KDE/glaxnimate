@@ -6,39 +6,9 @@
 
 #include "glaxnimate/utils/gzip.hpp"
 
-#include <array>
-#include <cstring>
-
 #include <QFile>
-#include <QBuffer>
-#include "glaxnimate/utils/i18n.hpp"
-
 
 using namespace glaxnimate;
-
-#ifdef GLAXNIMATE_CORE_KDE
-bool utils::gzip::decompress(QIODevice& input, QByteArray& output, const utils::gzip::ErrorFunc& on_error)
-{
-    KCompressionDevice compressed(&input, false, KCompressionDevice::GZip);
-    compressed.open(QIODevice::ReadOnly);
-    output = compressed.readAll();
-
-    if ( compressed.error() )
-    {
-        on_error(i18n("Could not decompress data"));
-        return false;
-    }
-
-    return true;
-}
-
-
-bool utils::gzip::decompress(const QByteArray& input, QByteArray& output, const utils::gzip::ErrorFunc& on_error)
-{
-    QBuffer buf(const_cast<QByteArray*>(&input));
-    return decompress(buf, output, on_error);
-}
-#endif
 
 bool utils::gzip::is_compressed(QIODevice& input)
 {

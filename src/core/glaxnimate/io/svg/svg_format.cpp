@@ -13,6 +13,8 @@
 #include "glaxnimate/io/svg/parse_error.hpp"
 #include "glaxnimate/io/svg/svg_renderer.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
+#include "glaxnimate/utils/gzip.hpp"
+
 
 bool glaxnimate::io::svg::SvgFormat::on_open(QIODevice& file, const QString& filename, model::Document* document, const QVariantMap& options)
 {
@@ -27,15 +29,13 @@ bool glaxnimate::io::svg::SvgFormat::on_open(QIODevice& file, const QString& fil
 
         auto default_asset_path = QFileInfo(filename).dir();
 
-#ifdef GLAXNIMATE_CORE_KDE
         if ( utils::gzip::is_compressed(file) )
         {
-            KCompressionDevice decompressed(&file, false, KCompressionDevice::GZip);
+            utils::gzip::GzipStream decompressed(&file, on_error);
             decompressed.open(QIODevice::ReadOnly);
             SvgParser(&decompressed, mode, document, on_error, this, forced_size, default_time, default_asset_path).parse_to_document();
             return true;
         }
-#endif
 
         SvgParser(&file, mode, document, on_error, this, forced_size, default_time, default_asset_path).parse_to_document();
         return true;
@@ -81,19 +81,14 @@ bool glaxnimate::io::svg::SvgFormat::on_save(QIODevice& file, const QString& fil
     SvgRenderer rend(SMIL, CssFontType(options["font_type"].toInt()));
     rend.write_main(comp, comp->document()->current_time());
 
-#ifdef GLAXNIMATE_CORE_KDE
     if ( filename.endsWith(".svgz") || options.value("compressed", false).toBool() )
     {
-        KCompressionDevice compressed(&file, false, KCompressionDevice::GZip);
+        auto on_error = [this](const QString& s){warning(s);};
+        utils::gzip::GzipStream compressed(&file, on_error);
         compressed.open(QIODevice::WriteOnly);
         rend.write(&compressed, false);
-        compressed.close();
-
-        if ( compressed.error() )
-            warning(i18n("Could not write to file"));
     }
     else
-#endif
     {
         rend.write(&file, true);
     }
@@ -104,9 +99,5 @@ bool glaxnimate::io::svg::SvgFormat::on_save(QIODevice& file, const QString& fil
 
 QStringList glaxnimate::io::svg::SvgFormat::extensions() const
 {
-#ifdef GLAXNIMATE_CORE_KDE
     return {"svg", "svgz"};
-#else
-    return {"svg"};
-#endif
 }
