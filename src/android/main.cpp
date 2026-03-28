@@ -15,7 +15,7 @@
 #include "glaxnimate/app_info.hpp"
 #include "android_style.hpp"
 #include "android_intent_handler.hpp"
-#include "glaxnimate/init.hpp"
+#include "glaxnimate/module/module.hpp"
 
 // #include "android_file_picker.hpp"
 // #include <QDebug>
@@ -30,9 +30,7 @@ int main(int argc, char *argv[])
 
     gui::GlaxnimateApp app(argc, argv);
 
-    gui::GlaxnimateApp::init_qapplication();
-
-    glaxnimate::init();
+    glaxnimate::module::initialize();
 
     app.setStyle(new AndroidStyle);
     app.setStyleSheet(R"(

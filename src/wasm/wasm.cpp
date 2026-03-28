@@ -10,7 +10,7 @@
 
 #include "glaxnimate/io/io_registry.hpp"
 #include "glaxnimate/renderer/renderer.hpp"
-#include "glaxnimate/init.hpp"
+#include "glaxnimate/module/module.hpp"
 #include "glaxnimate/command/animation_commands.hpp"
 #include "glaxnimate/model/animation/meta_animatable.hpp"
 
@@ -225,7 +225,7 @@ void initialize()
     static int argc = 0;
     static char* argv[0] = {};
     static QCoreApplication app(argc, argv);
-    glaxnimate::init();
+    glaxnimate::module::initialize();
 }
 
 
