@@ -300,8 +300,8 @@ public:
         {
             cairo_set_source_rgb(canvas, 1, 1, 1);
             cairo_paint(canvas);
-            cairo_push_group(canvas);
         }
+        cairo_push_group(canvas);
     }
 
     void mask_end() override
@@ -309,9 +309,9 @@ public:
         if ( layer_data.back().mask_flags & MaskFlags::MaskInverted )
         {
             cairo_set_operator(canvas, CAIRO_OPERATOR_CLEAR);
-            cairo_pop_group_to_source(canvas);
-            cairo_paint(canvas);
         }
+        cairo_pop_group_to_source(canvas);
+        cairo_paint(canvas);
         // cairo_surface_flush(surface);
         std::swap(canvas, layer_data.back().mask_canvas);
         std::swap(surface, layer_data.back().mask_surface);

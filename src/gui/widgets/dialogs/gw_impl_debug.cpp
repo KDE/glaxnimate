@@ -369,11 +369,12 @@ void GlaxnimateWindow::Private::init_debug()
     QMenu* menu_renderer = menu_debug->addMenu("Renderer");
     for ( const auto& p : renderer::Renderer::factory_registry() )
         menu_renderer->addAction(p.first, [this, &p]{
-            render_widget.set_renderer(p.second(10));
+            render_widget.set_renderer(p.second(GlaxnimateSettings::render_quality()));
         });
     menu_renderer->addSection("Quality");
     for ( int i = 0; i <= 10; i++ )
         menu_renderer->addAction(QString::number(i), [this, i]{
+            GlaxnimateSettings::setRender_quality(i);
             render_widget.set_quality(i);
         });
 
