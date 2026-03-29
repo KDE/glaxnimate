@@ -195,7 +195,10 @@ macro(glaxnimate_module NAME DESCRIPTION DEFAULT)
     endif()
 endmacro()
 
-set(CACHE EXTRA_DEFAULT OFF)
+if ( NOT DEFINED EXTRA_DEFAULT )
+    set(EXTRA_DEFAULT OFF)
+endif()
+
 glaxnimate_module("Video" "Support for video format I/O" ${EXTRA_DEFAULT})
 glaxnimate_module("Cairo" "Support for format I/O using cairo" OFF)
 
