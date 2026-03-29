@@ -4,7 +4,6 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "glaxnimate/module/cairo/cairo_renderer.hpp"
 #include "glaxnimate_window_p.hpp"
 
 #include <QShortcut>
@@ -22,6 +21,7 @@
 #include "glaxnimate/io/lottie/lottie_format.hpp"
 #include "glaxnimate/utils/gzip.hpp"
 #include "glaxnimate/model/custom_font.hpp"
+#include "glaxnimate/renderer/renderer.hpp"
 
 #include "widgets/timeline/timeline_widget.hpp"
 #include "widgets/dialogs/clipboard_inspector.hpp"
@@ -367,9 +367,10 @@ void GlaxnimateWindow::Private::init_debug()
 
     // Rendering
     QMenu* menu_renderer = menu_debug->addMenu("Renderer");
-    menu_renderer->addAction("Cairo", [this]{
-        render_widget.set_renderer(std::make_unique<cairo::CairoRenderer>());
-    });
+    for ( const auto& p : renderer::Renderer::factory_registry() )
+        menu_renderer->addAction(p.first, [this, &p]{
+            render_widget.set_renderer(p.second(10));
+        });
     menu_renderer->addSection("Quality");
     for ( int i = 0; i <= 10; i++ )
         menu_renderer->addAction(QString::number(i), [this, i]{

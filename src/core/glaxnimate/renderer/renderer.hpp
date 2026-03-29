@@ -76,6 +76,12 @@ public:
     Renderer& operator=(const Renderer&) = delete;
     virtual ~Renderer() noexcept = default;
 
+// Registry
+    using FactoryFunction = std::function<std::unique_ptr<Renderer>(int)>;
+    static std::unique_ptr<Renderer> factory_build(const QString& id, int quality);
+    static void register_factory(const QString& id, FactoryFunction func);
+    static const std::map<QString, FactoryFunction>& factory_registry();
+
 // Query
     virtual int supported_surfaces() const = 0;
 
@@ -175,6 +181,9 @@ public:
     virtual void scale(qreal x, qreal y) = 0;
     virtual void translate(qreal x, qreal y) = 0;
     virtual void transform(const QTransform& matrix) = 0;
+
+private:
+    static std::map<QString, FactoryFunction>& factory();
 };
 
 /**

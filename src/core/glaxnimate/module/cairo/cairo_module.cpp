@@ -10,6 +10,7 @@
 
 #include "postscript_format.hpp"
 #include "pdf_format.hpp"
+#include "cairo_renderer.hpp"
 
 std::vector<glaxnimate::module::ExternalComponent> glaxnimate::cairo::Module::components() const
 {
@@ -21,4 +22,5 @@ std::vector<glaxnimate::module::ExternalComponent> glaxnimate::cairo::Module::co
 void glaxnimate::cairo::Module::initialize()
 {
     register_io_classes<PostScriptFormat, PdfFormat>();
+    renderer::Renderer::register_factory(QStringLiteral("Cairo"), [](int q){ return std::make_unique<CairoRenderer>(q); });
 }

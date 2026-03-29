@@ -180,8 +180,4 @@ set_property(TARGET GlaxnimateCore APPEND PROPERTY AUTOMOC_MACRO_NAMES "GLAXNIMA
 target_include_directories(GlaxnimateCore PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 
 
-if ( NOT GLAXNIMATE_CORE_MINIMAL )
-    target_link_libraries(GlaxnimateCore PUBLIC)
-endif ()
-
 target_sources(GlaxnimateCore PRIVATE ${SOURCES})

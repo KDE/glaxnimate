@@ -8,6 +8,7 @@
 
 #include "glaxnimate/math/bezier/meta.hpp"
 #include "glaxnimate/app_info.hpp"
+#include "glaxnimate/renderer/thorvg_renderer.hpp"
 
 // Core formats
 #include "glaxnimate/io/glaxnimate/glaxnimate_format.hpp"
@@ -90,6 +91,8 @@ protected:
             raster::RasterMime,
             raster::SpritesheetFormat
         >();
+
+        renderer::Renderer::register_factory(QStringLiteral("ThorVG"), [](int q){ return std::make_unique<renderer::ThorvgRenderer>(q); });
     }
 };
 
