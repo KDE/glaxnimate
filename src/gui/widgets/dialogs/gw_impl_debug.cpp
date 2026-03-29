@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+#include "glaxnimate/module/cairo/cairo_renderer.hpp"
 #include "glaxnimate_window_p.hpp"
 
 #include <QShortcut>
@@ -363,6 +364,17 @@ void GlaxnimateWindow::Private::init_debug()
         io::rive::RiveFormat().save(buffer, "", comp, {});
         json_to_pretty_temp(io::rive::RiveFormat().to_json(buffer.data()));
     });
+
+    // Rendering
+    QMenu* menu_renderer = menu_debug->addMenu("Renderer");
+    menu_renderer->addAction("Cairo", [this]{
+        render_widget.set_renderer(std::make_unique<cairo::CairoRenderer>());
+    });
+    menu_renderer->addSection("Quality");
+    for ( int i = 0; i <= 10; i++ )
+        menu_renderer->addAction(QString::number(i), [this, i]{
+            render_widget.set_quality(i);
+        });
 
     // Misc
     menu_debug->addAction("Inspect Clipboard", []{

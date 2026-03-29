@@ -302,8 +302,23 @@ void glaxnimate::gui::RenderWidget::set_grid(const SnappingGrid* grid)
 
 void gui::RenderWidget::update_from_settings()
 {
-    int quality = GlaxnimateSettings::render_quality();
+    set_quality(GlaxnimateSettings::render_quality());
+}
+
+void gui::RenderWidget::set_renderer(std::unique_ptr<renderer::Renderer> renderer)
+{
+    if ( renderer )
+    {
+        d->renderer = std::move(renderer);
+        d->widget->update();
+    }
+}
+
+void gui::RenderWidget::set_quality(int quality)
+{
+
     d->renderer->set_quality(quality);
     d->global_scale = quality < 5 ? 0.5 : 1;
+    d->widget->update();
 }
 

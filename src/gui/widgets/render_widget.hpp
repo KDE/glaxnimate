@@ -31,6 +31,8 @@ public:
     void clear_background();
     void set_grid(const SnappingGrid* grid);
     void update_from_settings();
+    void set_renderer(std::unique_ptr<renderer::Renderer> renderer);
+    void set_quality(int quality);
 
     class Private;
 private:
