@@ -133,8 +133,7 @@ if ( GLAXNIMATE_CORE_MINIMAL )
 endif()
 
 
-add_library(GlaxnimateCore STATIC
-)
+add_library(GlaxnimateCore STATIC)
 add_library(Glaxnimate::Core ALIAS GlaxnimateCore)
 
 configure_file(
@@ -181,3 +180,42 @@ target_include_directories(GlaxnimateCore PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRE
 
 
 target_sources(GlaxnimateCore PRIVATE ${SOURCES})
+
+# Modules
+set(GLAXNIMATE_MODULES_)
+
+macro(glaxnimate_module NAME DESCRIPTION DEFAULT)
+    string(TOUPPER ${NAME} MODULE_UPPER)
+    string(TOLOWER ${NAME} MODULE_LOWER)
+    option(GLAXNIMATE_${MODULE_UPPER}_ENABLED ${DESCRIPTION} ${EXTRA_DEFAULT})
+
+    if ( GLAXNIMATE_${MODULE_UPPER}_ENABLED )
+        add_subdirectory(glaxnimate/module/${MODULE_LOWER})
+        list(APPEND GLAXNIMATE_MODULES_ ${NAME})
+    endif()
+endmacro()
+
+set(CACHE EXTRA_DEFAULT OFF)
+glaxnimate_module("Video" "Support for video format I/O" ${EXTRA_DEFAULT})
+glaxnimate_module("Cairo" "Support for format I/O using cairo" ${EXTRA_DEFAULT})
+
+message(STATUS "Core Modules Enabled:")
+set(GLAXNIMATE_MODULES_INCLUDES)
+set(GLAXNIMATE_MODULES_REGISTER)
+foreach(MODULE ${GLAXNIMATE_MODULES_})
+    message(STATUS "    ${MODULE}")
+    string(TOLOWER ${MODULE} MODULE_LOWER)
+    string(CONCAT GLAXNIMATE_MODULES_INCLUDES ${GLAXNIMATE_MODULES_INCLUDES} "#include \"glaxnimate/module/${MODULE_LOWER}/${MODULE_LOWER}_module.hpp\"\n")
+    string(CONCAT GLAXNIMATE_MODULES_REGISTER "${GLAXNIMATE_MODULES_REGISTER}registry.install<glaxnimate::${MODULE_LOWER}::Module>();\n")
+    target_link_libraries(Glaxnimate${MODULE} PUBLIC
+        Qt${QT_MAJOR_VERSION}::Core
+        Qt${QT_MAJOR_VERSION}::Gui
+    )
+    target_link_libraries(GlaxnimateCore PUBLIC Glaxnimate${MODULE})
+endforeach()
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/glaxnimate/module/module_autoregister.in.cpp
+    ${CMAKE_CURRENT_BINARY_DIR}/module_autoregister.cpp
+)
+target_sources(GlaxnimateCore PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/module_autoregister.cpp)
+

@@ -98,11 +98,10 @@ protected:
 
 } // namespace
 
-
-
 glaxnimate::module::Registry::Registry()
 {
     install<CoreModule>();
+    register_loaded_modules(*this);
 }
 
 module::Module::Module(const QString &name, const QString &version)

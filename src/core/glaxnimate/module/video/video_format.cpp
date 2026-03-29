@@ -879,13 +879,3 @@ std::unique_ptr<glaxnimate::settings::SettingsGroup> glaxnimate::video::VideoFor
         glaxnimate::settings::Setting{"verbose",       i18n("Verbose"),    i18n("Show verbose information on the conversion"), false},
     });
 }
-
-QString glaxnimate::video::VideoFormat::library_version()
-{
-    return QStringList{
-        LIBAVUTIL_IDENT,
-        LIBAVFORMAT_IDENT,
-        LIBAVCODEC_IDENT,
-        LIBSWSCALE_IDENT
-    }.join(", ");
-}

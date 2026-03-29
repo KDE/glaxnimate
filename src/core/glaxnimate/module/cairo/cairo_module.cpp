@@ -15,7 +15,7 @@
 std::vector<glaxnimate::module::ExternalComponent> glaxnimate::cairo::Module::components() const
 {
     return {
-        {i18n("cairo"), cairo_version_string(), {}, QStringLiteral("https://www.cairographics.org/"), "LGPL"}
+        {i18n("cairo"), {}, cairo_version_string(), QStringLiteral("https://www.cairographics.org/"), "LGPL"}
     };
 }
 

@@ -5,8 +5,6 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/core/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/gui/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-add_subdirectory(core)
-add_subdirectory(trace)
 if ( ANDROID )
     set(EXTRA_DEFAULT OFF)
 else()
@@ -16,22 +14,8 @@ endif()
 option(GLAXNIMATE_PYTHON_ENABLED "Enable Python scripting" ${EXTRA_DEFAULT})
 add_subdirectory(plugin)
 
-
-# modules
-set(GLAXNIMATE_MODULES)
-
-option(GLAXNIMATE_VIDEO_ENABLED "Toggles support for video format I/O" ${EXTRA_DEFAULT})
-if ( GLAXNIMATE_VIDEO_ENABLED )
-    add_subdirectory(core/glaxnimate/module/video)
-    list(APPEND GLAXNIMATE_MODULES "Video")
-endif()
-
-# Video
-option(GLAXNIMATE_CAIRO_ENABLED "Toggles support for format I/O using cairo" ${EXTRA_DEFAULT})
-if ( GLAXNIMATE_CAIRO_ENABLED )
-    add_subdirectory(core/glaxnimate/module/cairo)
-    list(APPEND GLAXNIMATE_MODULES "Cairo")
-endif()
+add_subdirectory(core)
+add_subdirectory(trace)
 
 add_subdirectory(gui)
 

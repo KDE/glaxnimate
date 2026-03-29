@@ -23,8 +23,8 @@ namespace glaxnimate::module {
 struct ExternalComponent
 {
     QString name;
-    QString version;
     QString description;
+    QString version;
     QString website;
     const char* license;
 };
@@ -99,6 +99,7 @@ public:
 
 private:
     Registry();
+    static void register_loaded_modules(Registry& reg);
 
     container modules;
 };
@@ -113,5 +114,6 @@ Registry& registry();
  * @brief Initializes the default modules
  */
 void initialize();
+
 
 } // namespace glaxnimate::module

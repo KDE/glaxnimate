@@ -26,15 +26,10 @@
 #include "cli_utils/env.hpp"
 #include "glaxnimate/log/log.hpp"
 #include "glaxnimate/module/module.hpp"
-#include "glaxnimate/module/video/video_module.hpp"
 #include "glaxnimate/utils/data_paths.hpp"
 
 #include "widgets/dialogs/glaxnimate_window.hpp"
 #include "settings/icon_settings.hpp"
-
-#ifdef GLAXNIMATE_CAIRO_ENABLED
-#   include "glaxnimate/module/cairo/cairo_module.hpp"
-#endif
 
 using namespace glaxnimate;
 
@@ -42,12 +37,6 @@ void glaxnimate::gui::initialize_core()
 {
     // This loads the build-in modules
     glaxnimate::module::initialize();
-#ifdef GLAXNIMATE_VIDEO_ENABLED
-    glaxnimate::module::registry().install<glaxnimate::video::Module>();
-#endif
-#ifdef GLAXNIMATE_CAIRO_ENABLED
-    glaxnimate::module::registry().install<glaxnimate::cairo::Module>();
-#endif
 }
 
 int main(int argc, char *argv[])

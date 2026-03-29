@@ -36,21 +36,7 @@ You can create packages to port Glaxnimate to a specific system,
 setting up an automatable process to create said package so it can be
 integrated with continuous integration.
 
-
-### Packages that need help
-
-* Android: Needs setting up a build pipeline and be ported to a modern version of Qt
-* Mac DMG: Needs to include dependencies as framework
-* Windows: Needs reducing the shipped zip size and fixing platform-specific issues
-
-### Existing Packages
-
-* AppImage
-* Snap
-* Deb
-* AUR
-* PyPI
-* Flatpak
+Currently all the supported packages are built using KDE Craft.
 
 ### More packages
 
@@ -115,6 +101,59 @@ Glaxnimate core is resposible for the object model, undo commands, file formats,
 * Object model: `src/core/glaxnimate/model/`
 * Static properties for the object model: `src/core/glaxnimate/model/property`
 * Animations for the object model: `src/core/glaxnimate/model/animation`
+
+#### Core Modules
+
+The core contains optional modules, that might be excluded from a build
+for smaller package size or to avoid extra dependencies.
+
+To define a new module called `MyModule` you need the following steps:
+
+Register in the core CMakeLists.txt:
+
+```cmake
+glaxnimate_module("MyModule" "Description" ON/OFF)
+```
+
+Create at least the file `src/core/glaxnimate/module/mymodule/mymodule_module.hpp`.
+
+With contents similar to these:
+
+```c++
+#include "glaxnimate/module/module.hpp"
+
+namespace glaxnimate::mymodule {
+
+class Module : public module::Module
+{
+public:
+    Module() : module::Module(i18n("Description")) {}
+    std::vector<module::ExternalComponent> components() const override;
+
+protected:
+    void initialize() override;
+};
+
+} // namespace glaxnimate::mymodule
+```
+
+`Module::initialize()` should register any class that needs registering (file formats, renderers, etc).
+`Module::components()` should return info about any external libraries used by the module to display
+them in the GUI.
+
+And the cmake file for the module `src/core/glaxnimate/module/mymodule/CMakeLists.txt`:
+
+```cmake
+set(SOURCES
+    # ...
+)
+
+add_library(GlaxnimateMyModule OBJECT ${SOURCES})
+kde_target_enable_exceptions(GlaxnimateMyModule PUBLIC)
+```
+
+it's important namings are kept as in these examples as the modules are loaded automatically.
+
 
 #### GUI
 

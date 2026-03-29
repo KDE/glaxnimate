@@ -24,8 +24,6 @@ public:
     std::unique_ptr<settings::SettingsGroup> save_settings(model::Composition*) const override;
     int priority() const override { return -100; }
 
-    static QString library_version();
-
 protected:
     bool on_save(QIODevice& dev, const QString&, model::Composition* comp, const QVariantMap&) override;
 

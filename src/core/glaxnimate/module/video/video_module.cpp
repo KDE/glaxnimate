@@ -7,10 +7,19 @@
 #include "video_module.hpp"
 #include "video_format.hpp"
 
+#include <libavutil/version.h>
+#include <libavformat/version.h>
+#include <libavcodec/version.h>
+#include <libswscale/version.h>
+
 std::vector<glaxnimate::module::ExternalComponent> glaxnimate::video::Module::components() const
 {
     return {
-        {i18n("libav"), {}, video::VideoFormat::library_version(), QStringLiteral("https://libav.org/"), "LGPL"}
+        {i18n("avutil"), {}, LIBAVUTIL_IDENT, QStringLiteral("https://libav.org/"), "LGPL"},
+        {i18n("avformat"), {}, LIBAVFORMAT_IDENT, QStringLiteral("https://libav.org/"), "LGPL"},
+        {i18n("avcodec"), {}, LIBAVCODEC_IDENT, QStringLiteral("https://libav.org/"), "LGPL"},
+        {i18n("swscale"), {}, LIBSWSCALE_IDENT, QStringLiteral("https://libav.org/"), "LGPL"},
+
     };
 }
 
