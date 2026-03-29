@@ -197,7 +197,7 @@ endmacro()
 
 set(CACHE EXTRA_DEFAULT OFF)
 glaxnimate_module("Video" "Support for video format I/O" ${EXTRA_DEFAULT})
-glaxnimate_module("Cairo" "Support for format I/O using cairo" ${EXTRA_DEFAULT})
+glaxnimate_module("Cairo" "Support for format I/O using cairo" OFF)
 
 message(STATUS "Core Modules Enabled:")
 set(GLAXNIMATE_MODULES_INCLUDES)
