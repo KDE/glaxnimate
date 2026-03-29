@@ -28,13 +28,13 @@ private:
     cairo_surface_t* surface = nullptr;
     cairo_t* canvas = nullptr;
 
-    cairo_surface_t* mask_surface = nullptr;
-    cairo_t* mask_canvas = nullptr;
-
     struct LayerData
     {
         qreal alpha = 1;
         cairo_operator_t blend_mode = CAIRO_OPERATOR_OVER;
+
+        cairo_surface_t* mask_surface = nullptr;
+        cairo_t* mask_canvas = nullptr;
     };
 
     std::vector<LayerData> layer_data;
@@ -103,12 +103,47 @@ private:
                     before.tan_out.x(), before.tan_out.y(),
                     after.tan_in.x(), after.tan_in.y(),
                     after.pos.x(), after.pos.y()
-                    );
+                );
             }
 
-            if ( bez.closed() )
+            if ( bez.closed() && bez.size() > 1 )
+            {
+                const auto& before = bez.back();
+                const auto& after = bez[0];
+                cairo_curve_to(
+                    canvas,
+                    before.tan_out.x(), before.tan_out.y(),
+                    after.tan_in.x(), after.tan_in.y(),
+                    after.pos.x(), after.pos.y()
+                );
                 cairo_close_path(canvas);
+            }
         }
+    }
+
+    cairo_operator_t convert_blend_mode(BlendMode mode) const
+    {
+        switch ( mode )
+        {
+            case renderer::BlendMode::Normal: return CAIRO_OPERATOR_OVER;
+            case renderer::BlendMode::Add: return CAIRO_OPERATOR_ADD;
+            case renderer::BlendMode::Color: return CAIRO_OPERATOR_HSL_COLOR;
+            case renderer::BlendMode::ColorBurn: return CAIRO_OPERATOR_COLOR_BURN;
+            case renderer::BlendMode::ColorDodge: return CAIRO_OPERATOR_COLOR_DODGE;
+            case renderer::BlendMode::Darken: return CAIRO_OPERATOR_DARKEN;
+            case renderer::BlendMode::Difference: return CAIRO_OPERATOR_DIFFERENCE;
+            case renderer::BlendMode::Exclusion: return CAIRO_OPERATOR_EXCLUSION;
+            case renderer::BlendMode::HardLight: return CAIRO_OPERATOR_HARD_LIGHT;
+            case renderer::BlendMode::Hue: return CAIRO_OPERATOR_HSL_HUE;
+            case renderer::BlendMode::Luminosity: return CAIRO_OPERATOR_HSL_LUMINOSITY;
+            case renderer::BlendMode::Lighten: return CAIRO_OPERATOR_LIGHTEN;
+            case renderer::BlendMode::Multiply: return CAIRO_OPERATOR_MULTIPLY;
+            case renderer::BlendMode::Overlay: return CAIRO_OPERATOR_OVERLAY;
+            case renderer::BlendMode::Saturation: return CAIRO_OPERATOR_HSL_SATURATION;
+            case renderer::BlendMode::Screen: return CAIRO_OPERATOR_SCREEN;
+            case renderer::BlendMode::SoftLight: return CAIRO_OPERATOR_SOFT_LIGHT;
+        }
+        return CAIRO_OPERATOR_OVER;
     }
 
 public:
@@ -234,34 +269,17 @@ public:
     {
         auto data = layer_data.back();
         layer_data.pop_back();
+
         cairo_pop_group_to_source(canvas);
         cairo_set_operator(canvas, data.blend_mode);
         cairo_paint_with_alpha(canvas, data.alpha);
-    }
 
-    cairo_operator_t convert_blend_mode(BlendMode mode) const
-    {
-        switch ( mode )
+        if ( data.mask_surface )
         {
-            case renderer::BlendMode::Normal: return CAIRO_OPERATOR_OVER;
-            case renderer::BlendMode::Add: return CAIRO_OPERATOR_ADD;
-            case renderer::BlendMode::Color: return CAIRO_OPERATOR_HSL_COLOR;
-            case renderer::BlendMode::ColorBurn: return CAIRO_OPERATOR_COLOR_BURN;
-            case renderer::BlendMode::ColorDodge: return CAIRO_OPERATOR_COLOR_DODGE;
-            case renderer::BlendMode::Darken: return CAIRO_OPERATOR_DARKEN;
-            case renderer::BlendMode::Difference: return CAIRO_OPERATOR_DIFFERENCE;
-            case renderer::BlendMode::Exclusion: return CAIRO_OPERATOR_EXCLUSION;
-            case renderer::BlendMode::HardLight: return CAIRO_OPERATOR_HARD_LIGHT;
-            case renderer::BlendMode::Hue: return CAIRO_OPERATOR_HSL_HUE;
-            case renderer::BlendMode::Luminosity: return CAIRO_OPERATOR_HSL_LUMINOSITY;
-            case renderer::BlendMode::Lighten: return CAIRO_OPERATOR_LIGHTEN;
-            case renderer::BlendMode::Multiply: return CAIRO_OPERATOR_MULTIPLY;
-            case renderer::BlendMode::Overlay: return CAIRO_OPERATOR_OVERLAY;
-            case renderer::BlendMode::Saturation: return CAIRO_OPERATOR_HSL_SATURATION;
-            case renderer::BlendMode::Screen: return CAIRO_OPERATOR_SCREEN;
-            case renderer::BlendMode::SoftLight: return CAIRO_OPERATOR_SOFT_LIGHT;
+            cairo_mask_surface(canvas, data.mask_surface, 0, 0);
+            cairo_destroy(data.mask_canvas);
+            cairo_surface_destroy(data.mask_surface);
         }
-        return CAIRO_OPERATOR_OVER;
     }
 
     void set_blend_mode(BlendMode mode) override
@@ -271,24 +289,17 @@ public:
 
     void mask_start(int) override
     {
-        mask_surface = surface;
-        mask_canvas = canvas;
+        layer_data.back().mask_surface = surface;
+        layer_data.back().mask_canvas = canvas;
         surface = cairo_surface_create_similar(surface, CAIRO_CONTENT_COLOR_ALPHA, width, height);
         canvas = cairo_create(surface);
     }
 
     void mask_end() override
     {
-        cairo_surface_flush(surface);
-        cairo_mask_surface(mask_canvas, surface, 0, 0);
-
-        cairo_destroy(canvas);
-        canvas = mask_canvas;
-        mask_canvas = nullptr;
-
-        cairo_surface_destroy(surface);
-        surface = mask_surface;
-        mask_surface = nullptr;
+        // cairo_surface_flush(surface);
+        std::swap(canvas, layer_data.back().mask_canvas);
+        std::swap(surface, layer_data.back().mask_surface);
     }
 
     void set_opacity(qreal opacity) override
