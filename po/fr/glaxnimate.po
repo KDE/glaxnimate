@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-28 00:41+0000\n"
-"PO-Revision-Date: 2026-03-19 09:41+0100\n"
+"POT-Creation-Date: 2026-03-29 00:41+0000\n"
+"PO-Revision-Date: 2026-03-27 08:30+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -1798,166 +1798,6 @@ msgstr "SVG"
 msgid "SVG Preview"
 msgstr "Aperçu « SVG »"
 
-#: src/core/glaxnimate/io/video/video_format.cpp:73
-#, kde-format
-msgid "Could not find encoder for '%1'"
-msgstr "Impossible de trouver un encodeur pour « %1 »"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:77
-#, kde-format
-msgid "Could not allocate stream"
-msgstr "Impossible d'allouer le flux"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:82
-#, kde-format
-msgid "Could not alloc an encoding context"
-msgstr "Impossible d'allouer un contexte d'encodage"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:110
-#, kde-format
-msgid "Error encoding a frame: %1"
-msgstr "Erreur d'encodage à l'image : %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:120
-#, kde-format
-msgid "Error while writing output packet: %1"
-msgstr "Erreur pendant l'écriture du paquet de sortie : %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:131
-#, kde-format
-msgid "Error sending a frame to the encoder: %1"
-msgstr "Erreur d'envoi d'une image à l'encoder : %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:187
-#: src/core/glaxnimate/io/video/video_format.cpp:201
-#, kde-format
-msgid "Could not set dict key `%1`: %2"
-msgstr "Impossible de définir la clé de dictionnaire « %1 » : %2"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:246
-#, kde-format
-msgid "Could not erase dict key `%1`: %2"
-msgstr "Impossible d'effacer la clé de dictionnaire « %1 » : %2"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:267
-#, kde-format
-msgid "Could not copy dict: %1"
-msgstr "Impossible de copier le dictionnaire : %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:280
-#, kde-format
-msgid "Could not copy dict `%1`: %2"
-msgstr "Impossible de copier le dictionnaire « %1 » : %2"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:318
-#, kde-format
-msgid "Could not allocate frame data."
-msgstr "Impossible d'allouer des données de l'image"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:413
-#: src/core/glaxnimate/io/video/video_format.cpp:796
-#, kde-format
-msgid "No video codec"
-msgstr "Aucun codec vidéo"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:448
-#, kde-format
-msgid "Could not determine pixel format"
-msgstr "Impossible de déterminer le format de pixel"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:462
-#, kde-format
-msgid "Could not open video codec: %1"
-msgstr "Impossible d'ouvrir le codec vidéo : %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:467
-#, kde-format
-msgid "Could not allocate video frame"
-msgstr "Impossible d'allouer l'image vidéo"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:474
-#, kde-format
-msgid "Could not copy the stream parameters"
-msgstr "Impossible de copier les paramètres de flux"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:494
-#, kde-format
-msgid "Error while creating video frame"
-msgstr "Erreur pendant la création d'une image vidéo"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:518
-#, kde-format
-msgid "Could not initialize the conversion context"
-msgstr "Impossible d'initialiser le contexte de conversion"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:524
-#, kde-format
-msgid "Could not allocate temporary picture"
-msgstr "Impossible d'allouer l'image temporaire"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:764
-#, kde-format
-msgid "Could not deduce output format from file extension: using MPEG."
-msgstr ""
-"Impossible de déduire le format de sortie à partir de l'extension de "
-"fichier : utilisation du format » MPEG »."
-
-#: src/core/glaxnimate/io/video/video_format.cpp:768
-#, kde-format
-msgid "Could not find output format"
-msgstr "Ne peut pas trouver le format de sortie"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:841
-#, kde-format
-msgid "Error occurred when opening output file: %1"
-msgstr "Une erreur est survenue lors de l'ouverture du fichier de sortie : %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:876
-#, kde-format
-msgid "Background"
-msgstr "Fond"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:876
-#, kde-format
-msgid "Background color"
-msgstr "Couleur de fond"
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: src/core/glaxnimate/io/video/video_format.cpp:877
-#: src/gui/widgets/dialogs/resize_dialog.ui:56
-#: src/gui/widgets/shape_style/stroke_style_widget.ui:46
-#, kde-format
-msgid "Width"
-msgstr "Largeur"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:877
-#: src/core/glaxnimate/io/video/video_format.cpp:878
-#, kde-format
-msgid "If not 0, it will overwrite the size"
-msgstr "Si différent de 0, la taille sera écrasée"
-
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/core/glaxnimate/io/video/video_format.cpp:878
-#: src/gui/widgets/dialogs/resize_dialog.ui:33
-#, kde-format
-msgid "Height"
-msgstr "Hauteur"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:879
-#, kde-format
-msgid "Verbose"
-msgstr "Verbeux"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:879
-#, kde-format
-msgid "Show verbose information on the conversion"
-msgstr "Affiche des informations verbeuses sur la conversion"
-
-#: src/core/glaxnimate/io/video/video_format.hpp:21
-#, kde-format
-msgid "Video"
-msgstr "Vidéo"
-
 #: src/core/glaxnimate/model/animation/animatable.cpp:213
 #: src/core/glaxnimate/model/animation/animatable_path.cpp:30
 #, kde-format
@@ -1987,16 +1827,14 @@ msgstr "Étendre la forme"
 
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:101
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:118
-#, fuzzy, kde-format
-#| msgid "Update keyframe transition"
+#, kde-format
 msgid "Set keyframe transition"
-msgstr "Mettre à jour la transition de trame clé"
+msgstr "Définir la transition de trames clé"
 
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:137
-#, fuzzy, kde-format
-#| msgid "Move keyframe"
+#, kde-format
 msgid "Move Keyframe"
-msgstr "Déplacer une image clé"
+msgstr "Déplacer une trame clé"
 
 #: src/core/glaxnimate/model/animation_container.cpp:54
 #, kde-format
@@ -2306,6 +2144,182 @@ msgstr "Chronologie"
 #, kde-format
 msgid "Transform"
 msgstr "Transformer"
+
+#: src/core/glaxnimate/module/module.cpp:50
+#, fuzzy, kde-format
+#| msgid "Glaxnimate"
+msgid "Glaxnimate Core"
+msgstr "Glaxnimate"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:73
+#, kde-format
+msgid "Could not find encoder for '%1'"
+msgstr "Impossible de trouver un encodeur pour « %1 »"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:77
+#, kde-format
+msgid "Could not allocate stream"
+msgstr "Impossible d'allouer le flux"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:82
+#, kde-format
+msgid "Could not alloc an encoding context"
+msgstr "Impossible d'allouer un contexte d'encodage"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:110
+#, kde-format
+msgid "Error encoding a frame: %1"
+msgstr "Erreur d'encodage à l'image : %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:120
+#, kde-format
+msgid "Error while writing output packet: %1"
+msgstr "Erreur pendant l'écriture du paquet de sortie : %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:131
+#, kde-format
+msgid "Error sending a frame to the encoder: %1"
+msgstr "Erreur d'envoi d'une image à l'encoder : %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:187
+#: src/core/glaxnimate/module/video/video_format.cpp:201
+#, kde-format
+msgid "Could not set dict key `%1`: %2"
+msgstr "Impossible de définir la clé de dictionnaire « %1 » : %2"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:246
+#, kde-format
+msgid "Could not erase dict key `%1`: %2"
+msgstr "Impossible d'effacer la clé de dictionnaire « %1 » : %2"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:267
+#, kde-format
+msgid "Could not copy dict: %1"
+msgstr "Impossible de copier le dictionnaire : %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:280
+#, kde-format
+msgid "Could not copy dict `%1`: %2"
+msgstr "Impossible de copier le dictionnaire « %1 » : %2"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:318
+#, kde-format
+msgid "Could not allocate frame data."
+msgstr "Impossible d'allouer des données de l'image"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:413
+#: src/core/glaxnimate/module/video/video_format.cpp:796
+#, kde-format
+msgid "No video codec"
+msgstr "Aucun codec vidéo"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:448
+#, kde-format
+msgid "Could not determine pixel format"
+msgstr "Impossible de déterminer le format de pixel"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:462
+#, kde-format
+msgid "Could not open video codec: %1"
+msgstr "Impossible d'ouvrir le codec vidéo : %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:467
+#, kde-format
+msgid "Could not allocate video frame"
+msgstr "Impossible d'allouer l'image vidéo"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:474
+#, kde-format
+msgid "Could not copy the stream parameters"
+msgstr "Impossible de copier les paramètres de flux"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:494
+#, kde-format
+msgid "Error while creating video frame"
+msgstr "Erreur pendant la création d'une image vidéo"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:518
+#, kde-format
+msgid "Could not initialize the conversion context"
+msgstr "Impossible d'initialiser le contexte de conversion"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:524
+#, kde-format
+msgid "Could not allocate temporary picture"
+msgstr "Impossible d'allouer l'image temporaire"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:764
+#, kde-format
+msgid "Could not deduce output format from file extension: using MPEG."
+msgstr ""
+"Impossible de déduire le format de sortie à partir de l'extension de "
+"fichier : utilisation du format » MPEG »."
+
+#: src/core/glaxnimate/module/video/video_format.cpp:768
+#, kde-format
+msgid "Could not find output format"
+msgstr "Ne peut pas trouver le format de sortie"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:841
+#, kde-format
+msgid "Error occurred when opening output file: %1"
+msgstr "Une erreur est survenue lors de l'ouverture du fichier de sortie : %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:876
+#, kde-format
+msgid "Background"
+msgstr "Fond"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:876
+#, kde-format
+msgid "Background color"
+msgstr "Couleur de fond"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: src/core/glaxnimate/module/video/video_format.cpp:877
+#: src/gui/widgets/dialogs/resize_dialog.ui:56
+#: src/gui/widgets/shape_style/stroke_style_widget.ui:46
+#, kde-format
+msgid "Width"
+msgstr "Largeur"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:877
+#: src/core/glaxnimate/module/video/video_format.cpp:878
+#, kde-format
+msgid "If not 0, it will overwrite the size"
+msgstr "Si différent de 0, la taille sera écrasée"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: src/core/glaxnimate/module/video/video_format.cpp:878
+#: src/gui/widgets/dialogs/resize_dialog.ui:33
+#, kde-format
+msgid "Height"
+msgstr "Hauteur"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:879
+#, kde-format
+msgid "Verbose"
+msgstr "Verbeux"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:879
+#, kde-format
+msgid "Show verbose information on the conversion"
+msgstr "Affiche des informations verbeuses sur la conversion"
+
+#: src/core/glaxnimate/module/video/video_format.hpp:20
+#, kde-format
+msgid "Video"
+msgstr "Vidéo"
+
+#: src/core/glaxnimate/module/video/video_module.cpp:13
+#, kde-format
+msgid "libav"
+msgstr "libav"
+
+#: src/core/glaxnimate/module/video/video_module.hpp:16
+#, kde-format
+msgid "Video Format Support"
+msgstr ""
 
 #: src/core/glaxnimate/script/register_impl.hpp:234
 #, kde-format
@@ -2666,67 +2680,62 @@ msgstr "Ajouter une émoticône..."
 msgid "Close"
 msgstr "Fermer"
 
-#: src/gui/glaxnimate_app.cpp:200
+#: src/gui/glaxnimate_app.cpp:201
 #, kde-format
 msgid "OpenGL"
 msgstr "OpenGL"
 
-#: src/gui/glaxnimate_app.cpp:201
+#: src/gui/glaxnimate_app.cpp:202
 #, kde-format
 msgid "Hardware-accelerated graphics."
 msgstr "Accélération graphique matérielle."
 
-#: src/gui/glaxnimate_app.cpp:207
+#: src/gui/glaxnimate_app.cpp:208
 #, kde-format
 msgid "OpenGL Renderer"
 msgstr "Moteur de rendu OpenGL"
 
-#: src/gui/glaxnimate_app.cpp:234
+#: src/gui/glaxnimate_app.cpp:231
 #, kde-format
 msgid "Copyright © 2019-2026"
-msgstr ""
+msgstr "Copyright © 2019 - 2026"
 
-#: src/gui/glaxnimate_app.cpp:243
+#: src/gui/glaxnimate_app.cpp:240
 #, kde-format
 msgid "Mattia \"Glax\" Basaglia"
 msgstr "Mattia « Glax » Basaglia"
 
-#: src/gui/glaxnimate_app.cpp:243
+#: src/gui/glaxnimate_app.cpp:240
 #, kde-format
 msgid "Maintainer"
 msgstr "Mainteneur"
 
-#: src/gui/glaxnimate_app.cpp:247
-#, kde-format
-msgid "libav"
-msgstr "libav"
-
-#: src/gui/glaxnimate_app.cpp:250
+#: src/gui/glaxnimate_app.cpp:257
 #, kde-format
 msgid "potrace"
 msgstr "potrace"
 
-#: src/gui/glaxnimate_app.cpp:250
+#: src/gui/glaxnimate_app.cpp:257
 #, kde-format
 msgid "Used by the bitmap tracing feature."
 msgstr "Utilisé par la fonction de traçage matriciel."
 
-#: src/gui/glaxnimate_app.cpp:253
+#: src/gui/glaxnimate_app.cpp:259
 #, kde-format
 msgid "Inkscape"
 msgstr "Inkscape"
 
-#: src/gui/glaxnimate_app.cpp:256
+#: src/gui/glaxnimate_app.cpp:263
 #, kde-format
 msgid "pybind11"
 msgstr "pybind11"
 
-#: src/gui/glaxnimate_app.cpp:256 src/gui/glaxnimate_app.cpp:257
+#: src/gui/glaxnimate_app.cpp:263 src/gui/glaxnimate_app.cpp:264
 #, kde-format
 msgid "Used by the plugin system."
 msgstr "Utilisé par le système de modules externes."
 
-#: src/gui/glaxnimate_app.cpp:257
+#: src/gui/glaxnimate_app.cpp:264
 #, kde-format
 msgid "CPython"
 msgstr "CPython"

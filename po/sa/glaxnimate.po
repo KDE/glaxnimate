@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-28 00:41+0000\n"
+"POT-Creation-Date: 2026-03-29 00:41+0000\n"
 "PO-Revision-Date: 2024-12-25 19:37+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -1788,164 +1788,6 @@ msgstr "एसवीजी"
 msgid "SVG Preview"
 msgstr "एसवीजी पूर्वावलोकन"
 
-#: src/core/glaxnimate/io/video/video_format.cpp:73
-#, kde-format
-msgid "Could not find encoder for '%1'"
-msgstr "'%1' कृते एन्कोडरं न लब्धम् ।"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:77
-#, kde-format
-msgid "Could not allocate stream"
-msgstr "धारा आवंटनं कर्तुं न शक्तवान्"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:82
-#, kde-format
-msgid "Could not alloc an encoding context"
-msgstr "एन्कोडिंग् सन्दर्भं आवंटयितुं न शक्तवान्"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:110
-#, kde-format
-msgid "Error encoding a frame: %1"
-msgstr "एकं फ्रेमं एन्कोड् करणं त्रुटिः: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:120
-#, kde-format
-msgid "Error while writing output packet: %1"
-msgstr "आउटपुट् पैकेटं लिखन् त्रुटिः: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:131
-#, kde-format
-msgid "Error sending a frame to the encoder: %1"
-msgstr "एन्कोडरं प्रति फ्रेम प्रेषयितुं त्रुटिः: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:187
-#: src/core/glaxnimate/io/video/video_format.cpp:201
-#, kde-format
-msgid "Could not set dict key `%1`: %2"
-msgstr "dict कीलं `%1`: %2 सेट् कर्तुं न शक्यते"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:246
-#, kde-format
-msgid "Could not erase dict key `%1`: %2"
-msgstr "dict कीलम् `%1`: %2 मेटयितुं न शक्तम्"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:267
-#, kde-format
-msgid "Could not copy dict: %1"
-msgstr "dict प्रतिलिपिं कर्तुं न शक्तम्: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:280
-#, kde-format
-msgid "Could not copy dict `%1`: %2"
-msgstr "dict `%1`: %2 प्रतिलिखितुं न शक्तवान्"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:318
-#, kde-format
-msgid "Could not allocate frame data."
-msgstr "फ्रेमदत्तांशं आवंटयितुं न शक्तवान् ।"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:413
-#: src/core/glaxnimate/io/video/video_format.cpp:796
-#, kde-format
-msgid "No video codec"
-msgstr "न विडियो कोडेक"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:448
-#, kde-format
-msgid "Could not determine pixel format"
-msgstr "पिक्सेलस्वरूपं निर्धारयितुं न शक्तवान्"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:462
-#, kde-format
-msgid "Could not open video codec: %1"
-msgstr "विडियो कोडेक उद्घाटयितुं न शक्तम्: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:467
-#, kde-format
-msgid "Could not allocate video frame"
-msgstr "विडियो फ्रेम आवंटनं कर्तुं न शक्तवान्"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:474
-#, kde-format
-msgid "Could not copy the stream parameters"
-msgstr "धारामापदण्डानां प्रतिलिपिं कर्तुं न शक्तवान्"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:494
-#, kde-format
-msgid "Error while creating video frame"
-msgstr "विडियो फ्रेम निर्माय त्रुटिः"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:518
-#, kde-format
-msgid "Could not initialize the conversion context"
-msgstr "रूपान्तरणसन्दर्भस्य आरम्भं कर्तुं न शक्तवान्"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:524
-#, kde-format
-msgid "Could not allocate temporary picture"
-msgstr "अस्थायी चित्रं आवंटयितुं न शक्तवान्"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:764
-#, kde-format
-msgid "Could not deduce output format from file extension: using MPEG."
-msgstr "सञ्चिकाविस्तारात् निर्गमस्वरूपं निष्कर्षयितुं न शक्तवान्: MPEG इत्यस्य उपयोगेन ।"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:768
-#, kde-format
-msgid "Could not find output format"
-msgstr "आउटपुट् प्रारूपं न ज्ञातवान्"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:841
-#, kde-format
-msgid "Error occurred when opening output file: %1"
-msgstr "आउटपुट् सञ्चिकां उद्घाटयन् त्रुटिः अभवत्: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:876
-#, kde-format
-msgid "Background"
-msgstr "पृष्ठभूमि"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:876
-#, kde-format
-msgid "Background color"
-msgstr "पृष्ठभूमि रंग"
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: src/core/glaxnimate/io/video/video_format.cpp:877
-#: src/gui/widgets/dialogs/resize_dialog.ui:56
-#: src/gui/widgets/shape_style/stroke_style_widget.ui:46
-#, kde-format
-msgid "Width"
-msgstr "विस्तार"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:877
-#: src/core/glaxnimate/io/video/video_format.cpp:878
-#, kde-format
-msgid "If not 0, it will overwrite the size"
-msgstr "यदि 0 न तर्हि आकारं अधिलेखयिष्यति"
-
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/core/glaxnimate/io/video/video_format.cpp:878
-#: src/gui/widgets/dialogs/resize_dialog.ui:33
-#, kde-format
-msgid "Height"
-msgstr "औनत्यम्‌"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:879
-#, kde-format
-msgid "Verbose"
-msgstr "वाच्यम्"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:879
-#, kde-format
-msgid "Show verbose information on the conversion"
-msgstr "परिवर्तनस्य विषये वाचिकसूचनाः दर्शयन्तु"
-
-#: src/core/glaxnimate/io/video/video_format.hpp:21
-#, kde-format
-msgid "Video"
-msgstr "विडिओ"
-
 #: src/core/glaxnimate/model/animation/animatable.cpp:213
 #: src/core/glaxnimate/model/animation/animatable_path.cpp:30
 #, kde-format
@@ -2295,6 +2137,180 @@ msgstr "समयः"
 msgid "Transform"
 msgstr "परिवर्तनं कुरुत"
 
+#: src/core/glaxnimate/module/module.cpp:50
+#, fuzzy, kde-format
+#| msgid "Glaxnimate"
+msgid "Glaxnimate Core"
+msgstr "ग्लैक्सनिमेट"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:73
+#, kde-format
+msgid "Could not find encoder for '%1'"
+msgstr "'%1' कृते एन्कोडरं न लब्धम् ।"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:77
+#, kde-format
+msgid "Could not allocate stream"
+msgstr "धारा आवंटनं कर्तुं न शक्तवान्"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:82
+#, kde-format
+msgid "Could not alloc an encoding context"
+msgstr "एन्कोडिंग् सन्दर्भं आवंटयितुं न शक्तवान्"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:110
+#, kde-format
+msgid "Error encoding a frame: %1"
+msgstr "एकं फ्रेमं एन्कोड् करणं त्रुटिः: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:120
+#, kde-format
+msgid "Error while writing output packet: %1"
+msgstr "आउटपुट् पैकेटं लिखन् त्रुटिः: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:131
+#, kde-format
+msgid "Error sending a frame to the encoder: %1"
+msgstr "एन्कोडरं प्रति फ्रेम प्रेषयितुं त्रुटिः: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:187
+#: src/core/glaxnimate/module/video/video_format.cpp:201
+#, kde-format
+msgid "Could not set dict key `%1`: %2"
+msgstr "dict कीलं `%1`: %2 सेट् कर्तुं न शक्यते"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:246
+#, kde-format
+msgid "Could not erase dict key `%1`: %2"
+msgstr "dict कीलम् `%1`: %2 मेटयितुं न शक्तम्"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:267
+#, kde-format
+msgid "Could not copy dict: %1"
+msgstr "dict प्रतिलिपिं कर्तुं न शक्तम्: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:280
+#, kde-format
+msgid "Could not copy dict `%1`: %2"
+msgstr "dict `%1`: %2 प्रतिलिखितुं न शक्तवान्"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:318
+#, kde-format
+msgid "Could not allocate frame data."
+msgstr "फ्रेमदत्तांशं आवंटयितुं न शक्तवान् ।"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:413
+#: src/core/glaxnimate/module/video/video_format.cpp:796
+#, kde-format
+msgid "No video codec"
+msgstr "न विडियो कोडेक"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:448
+#, kde-format
+msgid "Could not determine pixel format"
+msgstr "पिक्सेलस्वरूपं निर्धारयितुं न शक्तवान्"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:462
+#, kde-format
+msgid "Could not open video codec: %1"
+msgstr "विडियो कोडेक उद्घाटयितुं न शक्तम्: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:467
+#, kde-format
+msgid "Could not allocate video frame"
+msgstr "विडियो फ्रेम आवंटनं कर्तुं न शक्तवान्"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:474
+#, kde-format
+msgid "Could not copy the stream parameters"
+msgstr "धारामापदण्डानां प्रतिलिपिं कर्तुं न शक्तवान्"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:494
+#, kde-format
+msgid "Error while creating video frame"
+msgstr "विडियो फ्रेम निर्माय त्रुटिः"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:518
+#, kde-format
+msgid "Could not initialize the conversion context"
+msgstr "रूपान्तरणसन्दर्भस्य आरम्भं कर्तुं न शक्तवान्"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:524
+#, kde-format
+msgid "Could not allocate temporary picture"
+msgstr "अस्थायी चित्रं आवंटयितुं न शक्तवान्"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:764
+#, kde-format
+msgid "Could not deduce output format from file extension: using MPEG."
+msgstr "सञ्चिकाविस्तारात् निर्गमस्वरूपं निष्कर्षयितुं न शक्तवान्: MPEG इत्यस्य उपयोगेन ।"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:768
+#, kde-format
+msgid "Could not find output format"
+msgstr "आउटपुट् प्रारूपं न ज्ञातवान्"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:841
+#, kde-format
+msgid "Error occurred when opening output file: %1"
+msgstr "आउटपुट् सञ्चिकां उद्घाटयन् त्रुटिः अभवत्: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:876
+#, kde-format
+msgid "Background"
+msgstr "पृष्ठभूमि"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:876
+#, kde-format
+msgid "Background color"
+msgstr "पृष्ठभूमि रंग"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: src/core/glaxnimate/module/video/video_format.cpp:877
+#: src/gui/widgets/dialogs/resize_dialog.ui:56
+#: src/gui/widgets/shape_style/stroke_style_widget.ui:46
+#, kde-format
+msgid "Width"
+msgstr "विस्तार"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:877
+#: src/core/glaxnimate/module/video/video_format.cpp:878
+#, kde-format
+msgid "If not 0, it will overwrite the size"
+msgstr "यदि 0 न तर्हि आकारं अधिलेखयिष्यति"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: src/core/glaxnimate/module/video/video_format.cpp:878
+#: src/gui/widgets/dialogs/resize_dialog.ui:33
+#, kde-format
+msgid "Height"
+msgstr "औनत्यम्‌"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:879
+#, kde-format
+msgid "Verbose"
+msgstr "वाच्यम्"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:879
+#, kde-format
+msgid "Show verbose information on the conversion"
+msgstr "परिवर्तनस्य विषये वाचिकसूचनाः दर्शयन्तु"
+
+#: src/core/glaxnimate/module/video/video_format.hpp:20
+#, kde-format
+msgid "Video"
+msgstr "विडिओ"
+
+#: src/core/glaxnimate/module/video/video_module.cpp:13
+#, kde-format
+msgid "libav"
+msgstr "निःशुल्कः"
+
+#: src/core/glaxnimate/module/video/video_module.hpp:16
+#, kde-format
+msgid "Video Format Support"
+msgstr ""
+
 #: src/core/glaxnimate/script/register_impl.hpp:234
 #, fuzzy, kde-format
 #| msgid "Could not allocate frame data."
@@ -2640,68 +2656,63 @@ msgstr "इमोजी योजयतु..."
 msgid "Close"
 msgstr "पिधानं करोतु"
 
-#: src/gui/glaxnimate_app.cpp:200
+#: src/gui/glaxnimate_app.cpp:201
 #, fuzzy, kde-format
 #| msgid "Open"
 msgid "OpenGL"
 msgstr "उद्घाटित"
 
-#: src/gui/glaxnimate_app.cpp:201
+#: src/gui/glaxnimate_app.cpp:202
 #, kde-format
 msgid "Hardware-accelerated graphics."
 msgstr ""
 
-#: src/gui/glaxnimate_app.cpp:207
+#: src/gui/glaxnimate_app.cpp:208
 #, kde-format
 msgid "OpenGL Renderer"
 msgstr ""
 
-#: src/gui/glaxnimate_app.cpp:234
+#: src/gui/glaxnimate_app.cpp:231
 #, kde-format
 msgid "Copyright © 2019-2026"
 msgstr ""
 
-#: src/gui/glaxnimate_app.cpp:243
+#: src/gui/glaxnimate_app.cpp:240
 #, kde-format
 msgid "Mattia \"Glax\" Basaglia"
 msgstr "मट्टिया \"ग्लैक्स\" बासाग्लिया"
 
-#: src/gui/glaxnimate_app.cpp:243
+#: src/gui/glaxnimate_app.cpp:240
 #, kde-format
 msgid "Maintainer"
 msgstr "परिपालकः"
 
-#: src/gui/glaxnimate_app.cpp:247
-#, kde-format
-msgid "libav"
-msgstr "निःशुल्कः"
-
-#: src/gui/glaxnimate_app.cpp:250
+#: src/gui/glaxnimate_app.cpp:257
 #, kde-format
 msgid "potrace"
 msgstr "व्ययीकरोतु"
 
-#: src/gui/glaxnimate_app.cpp:250
+#: src/gui/glaxnimate_app.cpp:257
 #, kde-format
 msgid "Used by the bitmap tracing feature."
 msgstr "बिटमैप् ट्रेसिंग् फीचर् द्वारा उपयुज्यते ।"
 
-#: src/gui/glaxnimate_app.cpp:253
+#: src/gui/glaxnimate_app.cpp:259
 #, kde-format
 msgid "Inkscape"
 msgstr "मसिदृश्यम्"
 
-#: src/gui/glaxnimate_app.cpp:256
+#: src/gui/glaxnimate_app.cpp:263
 #, kde-format
 msgid "pybind11"
 msgstr "प्यबिन्द११"
 
-#: src/gui/glaxnimate_app.cpp:256 src/gui/glaxnimate_app.cpp:257
+#: src/gui/glaxnimate_app.cpp:263 src/gui/glaxnimate_app.cpp:264
 #, kde-format
 msgid "Used by the plugin system."
 msgstr "प्लगिन् प्रणाल्याः उपयोगः भवति ।"
 
-#: src/gui/glaxnimate_app.cpp:257
+#: src/gui/glaxnimate_app.cpp:264
 #, kde-format
 msgid "CPython"
 msgstr "सीपायथन्"

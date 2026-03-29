@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-28 00:41+0000\n"
-"PO-Revision-Date: 2026-03-26 13:29+0100\n"
+"POT-Creation-Date: 2026-03-29 00:41+0000\n"
+"PO-Revision-Date: 2026-03-28 15:45+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -983,12 +983,11 @@ msgid "Stretch Time"
 msgstr "Uitrektijd"
 
 #: src/core/glaxnimate/command/clipboard.cpp:142
-#, fuzzy, kde-format
-#| msgid "Paste Keyframe"
+#, kde-format
 msgid "Paste keyframe"
 msgid_plural "Paste keyframes"
 msgstr[0] "Keyframe plakken"
-msgstr[1] "Keyframe plakken"
+msgstr[1] "Keyframes plakken"
 
 #: src/core/glaxnimate/command/object_list_commands.hpp:26
 #, kde-format
@@ -1799,165 +1798,6 @@ msgstr "SVG"
 msgid "SVG Preview"
 msgstr "SVG-voorbeeld"
 
-#: src/core/glaxnimate/io/video/video_format.cpp:73
-#, kde-format
-msgid "Could not find encoder for '%1'"
-msgstr "Kon codeerder voor '%1' niet vinden"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:77
-#, kde-format
-msgid "Could not allocate stream"
-msgstr "Kon stream niet toewijzen"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:82
-#, kde-format
-msgid "Could not alloc an encoding context"
-msgstr "Kon geen coderingscontext toewijzen"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:110
-#, kde-format
-msgid "Error encoding a frame: %1"
-msgstr "Fout bij coderen van een frame: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:120
-#, kde-format
-msgid "Error while writing output packet: %1"
-msgstr "Fout bij schrijven van uitvoerpakket: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:131
-#, kde-format
-msgid "Error sending a frame to the encoder: %1"
-msgstr "Fout bij verzenden van een frame naar de codeerder: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:187
-#: src/core/glaxnimate/io/video/video_format.cpp:201
-#, kde-format
-msgid "Could not set dict key `%1`: %2"
-msgstr "Kon dict-sleutel `%1` niet instellen: %2"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:246
-#, kde-format
-msgid "Could not erase dict key `%1`: %2"
-msgstr "Kon dict-sleutel `%1` niet wissen: %2"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:267
-#, kde-format
-msgid "Could not copy dict: %1"
-msgstr "Kon dict niet kopiëren: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:280
-#, kde-format
-msgid "Could not copy dict `%1`: %2"
-msgstr "Kon dict `%1` niet kopiëren: %2"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:318
-#, kde-format
-msgid "Could not allocate frame data."
-msgstr "Kon framegegevens niet toewijzen."
-
-#: src/core/glaxnimate/io/video/video_format.cpp:413
-#: src/core/glaxnimate/io/video/video_format.cpp:796
-#, kde-format
-msgid "No video codec"
-msgstr "Geen video-codec"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:448
-#, kde-format
-msgid "Could not determine pixel format"
-msgstr "Kon pixelformaat niet bepalen"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:462
-#, kde-format
-msgid "Could not open video codec: %1"
-msgstr "Kon video-codec niet openen: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:467
-#, kde-format
-msgid "Could not allocate video frame"
-msgstr "Kon videoframe niet toewijzen"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:474
-#, kde-format
-msgid "Could not copy the stream parameters"
-msgstr "Kon de streamparameters niet kopiëren"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:494
-#, kde-format
-msgid "Error while creating video frame"
-msgstr "Fout bij aanmaken van videoframe"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:518
-#, kde-format
-msgid "Could not initialize the conversion context"
-msgstr "Kon de conversiecontext niet initialiseren"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:524
-#, kde-format
-msgid "Could not allocate temporary picture"
-msgstr "Kon tijdelijk plaatje niet toewijzen"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:764
-#, kde-format
-msgid "Could not deduce output format from file extension: using MPEG."
-msgstr ""
-"Kon uitvoerformaat niet opmaken uit bestandsextensie: MPEG wordt gebruikt."
-
-#: src/core/glaxnimate/io/video/video_format.cpp:768
-#, kde-format
-msgid "Could not find output format"
-msgstr "Kon uitvoerformaat niet vinden"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:841
-#, kde-format
-msgid "Error occurred when opening output file: %1"
-msgstr "Er deed zich een fout voor bij openen van uitvoerbestand: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:876
-#, kde-format
-msgid "Background"
-msgstr "Achtergrond"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:876
-#, kde-format
-msgid "Background color"
-msgstr "Achtergrondkleur"
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: src/core/glaxnimate/io/video/video_format.cpp:877
-#: src/gui/widgets/dialogs/resize_dialog.ui:56
-#: src/gui/widgets/shape_style/stroke_style_widget.ui:46
-#, kde-format
-msgid "Width"
-msgstr "Breedte"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:877
-#: src/core/glaxnimate/io/video/video_format.cpp:878
-#, kde-format
-msgid "If not 0, it will overwrite the size"
-msgstr "Indien niet 0, zal het de grootte overschrijven"
-
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/core/glaxnimate/io/video/video_format.cpp:878
-#: src/gui/widgets/dialogs/resize_dialog.ui:33
-#, kde-format
-msgid "Height"
-msgstr "Hoogte"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:879
-#, kde-format
-msgid "Verbose"
-msgstr "Uitvoerig"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:879
-#, kde-format
-msgid "Show verbose information on the conversion"
-msgstr "Uitgebreide informatie tonen van de conversatie"
-
-#: src/core/glaxnimate/io/video/video_format.hpp:21
-#, kde-format
-msgid "Video"
-msgstr "Video"
-
 #: src/core/glaxnimate/model/animation/animatable.cpp:213
 #: src/core/glaxnimate/model/animation/animatable_path.cpp:30
 #, kde-format
@@ -2304,6 +2144,181 @@ msgstr "Timing"
 #, kde-format
 msgid "Transform"
 msgstr "Transformeren"
+
+#: src/core/glaxnimate/module/module.cpp:50
+#, fuzzy, kde-format
+#| msgid "Glaxnimate"
+msgid "Glaxnimate Core"
+msgstr "Glaxnimate"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:73
+#, kde-format
+msgid "Could not find encoder for '%1'"
+msgstr "Kon codeerder voor '%1' niet vinden"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:77
+#, kde-format
+msgid "Could not allocate stream"
+msgstr "Kon stream niet toewijzen"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:82
+#, kde-format
+msgid "Could not alloc an encoding context"
+msgstr "Kon geen coderingscontext toewijzen"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:110
+#, kde-format
+msgid "Error encoding a frame: %1"
+msgstr "Fout bij coderen van een frame: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:120
+#, kde-format
+msgid "Error while writing output packet: %1"
+msgstr "Fout bij schrijven van uitvoerpakket: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:131
+#, kde-format
+msgid "Error sending a frame to the encoder: %1"
+msgstr "Fout bij verzenden van een frame naar de codeerder: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:187
+#: src/core/glaxnimate/module/video/video_format.cpp:201
+#, kde-format
+msgid "Could not set dict key `%1`: %2"
+msgstr "Kon dict-sleutel `%1` niet instellen: %2"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:246
+#, kde-format
+msgid "Could not erase dict key `%1`: %2"
+msgstr "Kon dict-sleutel `%1` niet wissen: %2"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:267
+#, kde-format
+msgid "Could not copy dict: %1"
+msgstr "Kon dict niet kopiëren: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:280
+#, kde-format
+msgid "Could not copy dict `%1`: %2"
+msgstr "Kon dict `%1` niet kopiëren: %2"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:318
+#, kde-format
+msgid "Could not allocate frame data."
+msgstr "Kon framegegevens niet toewijzen."
+
+#: src/core/glaxnimate/module/video/video_format.cpp:413
+#: src/core/glaxnimate/module/video/video_format.cpp:796
+#, kde-format
+msgid "No video codec"
+msgstr "Geen video-codec"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:448
+#, kde-format
+msgid "Could not determine pixel format"
+msgstr "Kon pixelformaat niet bepalen"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:462
+#, kde-format
+msgid "Could not open video codec: %1"
+msgstr "Kon video-codec niet openen: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:467
+#, kde-format
+msgid "Could not allocate video frame"
+msgstr "Kon videoframe niet toewijzen"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:474
+#, kde-format
+msgid "Could not copy the stream parameters"
+msgstr "Kon de streamparameters niet kopiëren"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:494
+#, kde-format
+msgid "Error while creating video frame"
+msgstr "Fout bij aanmaken van videoframe"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:518
+#, kde-format
+msgid "Could not initialize the conversion context"
+msgstr "Kon de conversiecontext niet initialiseren"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:524
+#, kde-format
+msgid "Could not allocate temporary picture"
+msgstr "Kon tijdelijk plaatje niet toewijzen"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:764
+#, kde-format
+msgid "Could not deduce output format from file extension: using MPEG."
+msgstr ""
+"Kon uitvoerformaat niet opmaken uit bestandsextensie: MPEG wordt gebruikt."
+
+#: src/core/glaxnimate/module/video/video_format.cpp:768
+#, kde-format
+msgid "Could not find output format"
+msgstr "Kon uitvoerformaat niet vinden"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:841
+#, kde-format
+msgid "Error occurred when opening output file: %1"
+msgstr "Er deed zich een fout voor bij openen van uitvoerbestand: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:876
+#, kde-format
+msgid "Background"
+msgstr "Achtergrond"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:876
+#, kde-format
+msgid "Background color"
+msgstr "Achtergrondkleur"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: src/core/glaxnimate/module/video/video_format.cpp:877
+#: src/gui/widgets/dialogs/resize_dialog.ui:56
+#: src/gui/widgets/shape_style/stroke_style_widget.ui:46
+#, kde-format
+msgid "Width"
+msgstr "Breedte"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:877
+#: src/core/glaxnimate/module/video/video_format.cpp:878
+#, kde-format
+msgid "If not 0, it will overwrite the size"
+msgstr "Indien niet 0, zal het de grootte overschrijven"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: src/core/glaxnimate/module/video/video_format.cpp:878
+#: src/gui/widgets/dialogs/resize_dialog.ui:33
+#, kde-format
+msgid "Height"
+msgstr "Hoogte"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:879
+#, kde-format
+msgid "Verbose"
+msgstr "Uitvoerig"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:879
+#, kde-format
+msgid "Show verbose information on the conversion"
+msgstr "Uitgebreide informatie tonen van de conversatie"
+
+#: src/core/glaxnimate/module/video/video_format.hpp:20
+#, kde-format
+msgid "Video"
+msgstr "Video"
+
+#: src/core/glaxnimate/module/video/video_module.cpp:13
+#, kde-format
+msgid "libav"
+msgstr "libav"
+
+#: src/core/glaxnimate/module/video/video_module.hpp:16
+#, kde-format
+msgid "Video Format Support"
+msgstr ""
 
 #: src/core/glaxnimate/script/register_impl.hpp:234
 #, kde-format
@@ -2658,67 +2673,62 @@ msgstr "Emoji toevoegen..."
 msgid "Close"
 msgstr "Sluiten"
 
-#: src/gui/glaxnimate_app.cpp:200
+#: src/gui/glaxnimate_app.cpp:201
 #, kde-format
 msgid "OpenGL"
 msgstr "OpenGL"
 
-#: src/gui/glaxnimate_app.cpp:201
+#: src/gui/glaxnimate_app.cpp:202
 #, kde-format
 msgid "Hardware-accelerated graphics."
 msgstr "Hardware versnelde grafiek."
 
-#: src/gui/glaxnimate_app.cpp:207
+#: src/gui/glaxnimate_app.cpp:208
 #, kde-format
 msgid "OpenGL Renderer"
 msgstr "OpenGL-renderer"
 
-#: src/gui/glaxnimate_app.cpp:234
+#: src/gui/glaxnimate_app.cpp:231
 #, kde-format
 msgid "Copyright © 2019-2026"
 msgstr "Copyright © 2019-2026"
 
-#: src/gui/glaxnimate_app.cpp:243
+#: src/gui/glaxnimate_app.cpp:240
 #, kde-format
 msgid "Mattia \"Glax\" Basaglia"
 msgstr "Mattia \"Glax\" Basaglia"
 
-#: src/gui/glaxnimate_app.cpp:243
+#: src/gui/glaxnimate_app.cpp:240
 #, kde-format
 msgid "Maintainer"
 msgstr "Onderhouder"
 
-#: src/gui/glaxnimate_app.cpp:247
-#, kde-format
-msgid "libav"
-msgstr "libav"
-
-#: src/gui/glaxnimate_app.cpp:250
+#: src/gui/glaxnimate_app.cpp:257
 #, kde-format
 msgid "potrace"
 msgstr "potrace"
 
-#: src/gui/glaxnimate_app.cpp:250
+#: src/gui/glaxnimate_app.cpp:257
 #, kde-format
 msgid "Used by the bitmap tracing feature."
 msgstr "Gebruikt door de functie bitmap volgen."
 
-#: src/gui/glaxnimate_app.cpp:253
+#: src/gui/glaxnimate_app.cpp:259
 #, kde-format
 msgid "Inkscape"
 msgstr "Inkscape"
 
-#: src/gui/glaxnimate_app.cpp:256
+#: src/gui/glaxnimate_app.cpp:263
 #, kde-format
 msgid "pybind11"
 msgstr "pybind11"
 
-#: src/gui/glaxnimate_app.cpp:256 src/gui/glaxnimate_app.cpp:257
+#: src/gui/glaxnimate_app.cpp:263 src/gui/glaxnimate_app.cpp:264
 #, kde-format
 msgid "Used by the plugin system."
 msgstr "Gebruikt door het plug-in-systeem."
 
-#: src/gui/glaxnimate_app.cpp:257
+#: src/gui/glaxnimate_app.cpp:264
 #, kde-format
 msgid "CPython"
 msgstr "CPython"
@@ -2788,10 +2798,9 @@ msgstr "Uitlijnen en verdelen"
 
 #. i18n: ectx: Menu (menu_keyframe_type)
 #: src/gui/glaxnimateui.rc:180
-#, fuzzy, kde-format
-#| msgid "Set keyframe transition"
+#, kde-format
 msgid "Keyframe Transition"
-msgstr "Overgang van keyframe instellen"
+msgstr "Overgang van keyframe"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:221 src/gui/settings/plugin_settings_group.hpp:23
@@ -3826,12 +3835,11 @@ msgid "Warning"
 msgstr "Waarschuwing"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:302
-#, fuzzy, kde-format
-#| msgid "Remove keyframe"
+#, kde-format
 msgid "Delete keyframe"
 msgid_plural "Delete keyframes"
 msgstr[0] "Keyframe verwijderen"
-msgstr[1] "Keyframe verwijderen"
+msgstr[1] "Keyframes verwijderen"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:139
 #, kde-format
@@ -4214,10 +4222,9 @@ msgid "Flip View"
 msgstr "Beeld omklappen"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
-#, fuzzy, kde-format
-#| msgid "Mask Mode"
+#, kde-format
 msgid "Focus Mode"
-msgstr "Modus Masker"
+msgstr "Focusmodus"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
 #, kde-format
@@ -4426,10 +4433,9 @@ msgid "Custom..."
 msgstr "Aangepast..."
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
-#, fuzzy, kde-format
-#| msgid "Set keyframe transition"
+#, kde-format
 msgid "Apply %1 keyframe transition"
-msgstr "Overgang van keyframe instellen"
+msgstr "Overgang van keyframe %1 toepassen"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:855
 #, kde-format
@@ -4611,10 +4617,9 @@ msgid "Issues"
 msgstr "Problemen"
 
 #: src/gui/widgets/dialogs/keyframe_editor_dialog.hpp:24
-#, fuzzy, kde-format
-#| msgid "Transition To Next"
+#, kde-format
 msgid "Transition Editor"
-msgstr "Overgang naar volgende"
+msgstr "Bewerker van overgang"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ResizeDialog)
 #: src/gui/widgets/dialogs/resize_dialog.cpp:28
@@ -5719,7 +5724,7 @@ msgstr "Zicht op Lottie-bestanden..."
 #: src/gui/widgets/menus/animated_property_menu.cpp:51
 #, kde-format
 msgid "Repeat until composition ends"
-msgstr ""
+msgstr "Herhalen tot compositie eindigt"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:61
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
@@ -5730,7 +5735,7 @@ msgstr "Keyframe plakken"
 #: src/gui/widgets/menus/animated_property_menu.cpp:62
 #, kde-format
 msgid "Perfect Loop"
-msgstr ""
+msgstr "Perfecte lus"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
@@ -5744,10 +5749,9 @@ msgid "Remove Keyframe"
 msgstr "Keyframe verwijderen"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:131
-#, fuzzy, kde-format
-#| msgid "Loop"
+#, kde-format
 msgid "Loop %1"
-msgstr "Lus"
+msgstr "Lus %1"
 
 #: src/gui/widgets/menus/node_menu.cpp:60
 #: src/gui/widgets/menus/node_menu.cpp:285
@@ -6014,12 +6018,12 @@ msgstr "Services"
 #: src/gui/widgets/settings/settings_dialog.cpp:231
 #, kde-format
 msgid "Best Quality"
-msgstr ""
+msgstr "Beste kwaliteit"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:232
 #, kde-format
 msgid "Reduced Size (Performance)"
-msgstr ""
+msgstr "Verminderde grootte (prestatie)"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:234
 msgctxt "Settings"
@@ -6044,11 +6048,11 @@ msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Canvas Render Quality"
-msgstr ""
+msgstr "Kwaliteit van weergave van werkveld"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Display quality within the app, does not affect exports"
-msgstr ""
+msgstr "Toon kwaliteit binnen de toepassing, heeft geen invloed op exporteren"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 msgid "Icon Theme"

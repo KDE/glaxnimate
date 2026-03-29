@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-28 00:41+0000\n"
-"PO-Revision-Date: 2026-03-26 06:28+0100\n"
+"POT-Creation-Date: 2026-03-29 00:41+0000\n"
+"PO-Revision-Date: 2026-03-28 06:56+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -984,14 +984,13 @@ msgid "Stretch Time"
 msgstr "Raztegni čas"
 
 #: src/core/glaxnimate/command/clipboard.cpp:142
-#, fuzzy, kde-format
-#| msgid "Paste Keyframe"
+#, kde-format
 msgid "Paste keyframe"
 msgid_plural "Paste keyframes"
-msgstr[0] "Prilepi ključno sličico"
+msgstr[0] "Prilepi ključne sličice"
 msgstr[1] "Prilepi ključno sličico"
-msgstr[2] "Prilepi ključno sličico"
-msgstr[3] "Prilepi ključno sličico"
+msgstr[2] "Prilepi ključni sličici"
+msgstr[3] "Prilepi ključne sličice"
 
 #: src/core/glaxnimate/command/object_list_commands.hpp:26
 #, kde-format
@@ -1797,166 +1796,6 @@ msgstr "SVG"
 msgid "SVG Preview"
 msgstr "Predogled SVG"
 
-#: src/core/glaxnimate/io/video/video_format.cpp:73
-#, kde-format
-msgid "Could not find encoder for '%1'"
-msgstr "Ni bilo mogoče najti kodirnika za »%1«"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:77
-#, kde-format
-msgid "Could not allocate stream"
-msgstr "Ni bilo mogoče dodeliti toka"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:82
-#, kde-format
-msgid "Could not alloc an encoding context"
-msgstr "Ni bilo mogoče dodeliti konteksta kodiranja"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:110
-#, kde-format
-msgid "Error encoding a frame: %1"
-msgstr "Napaka pri kodiranju sličice: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:120
-#, kde-format
-msgid "Error while writing output packet: %1"
-msgstr "Napaka pri pisanju izhodnega paketa: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:131
-#, kde-format
-msgid "Error sending a frame to the encoder: %1"
-msgstr "Napaka pri pošiljanju sličice v kodirnik: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:187
-#: src/core/glaxnimate/io/video/video_format.cpp:201
-#, kde-format
-msgid "Could not set dict key `%1`: %2"
-msgstr "Ni bilo mogoče nastaviti ključa slovarja dict »%1«: %2"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:246
-#, kde-format
-msgid "Could not erase dict key `%1`: %2"
-msgstr "Ni bilo mogoče izbrisati ključa dict »%1«: %2"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:267
-#, kde-format
-msgid "Could not copy dict: %1"
-msgstr "Ni bilo mogoče kopirati slovarja dict: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:280
-#, kde-format
-msgid "Could not copy dict `%1`: %2"
-msgstr "Slovarja dict »%1« ni bilo mogoče kopirati: %2"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:318
-#, kde-format
-msgid "Could not allocate frame data."
-msgstr "Ni bilo mogoče dodeliti podatkov sličice."
-
-#: src/core/glaxnimate/io/video/video_format.cpp:413
-#: src/core/glaxnimate/io/video/video_format.cpp:796
-#, kde-format
-msgid "No video codec"
-msgstr "Ni video kodeka"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:448
-#, kde-format
-msgid "Could not determine pixel format"
-msgstr "Formata slikovnih točk ni bilo mogoče določiti"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:462
-#, kde-format
-msgid "Could not open video codec: %1"
-msgstr "Video kodeka ni bilo mogoče odpreti: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:467
-#, kde-format
-msgid "Could not allocate video frame"
-msgstr "Video sličice ni bilo mogoče dodeliti"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:474
-#, kde-format
-msgid "Could not copy the stream parameters"
-msgstr "Ni bilo mogoče kopirati parametrov toka"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:494
-#, kde-format
-msgid "Error while creating video frame"
-msgstr "Napaka pri ustvarjanju sličice videoposnetka"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:518
-#, kde-format
-msgid "Could not initialize the conversion context"
-msgstr "Ni bilo mogoče inicializirati konteksta pretvorbe"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:524
-#, kde-format
-msgid "Could not allocate temporary picture"
-msgstr "Začasne slike ni bilo mogoče dodeliti"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:764
-#, kde-format
-msgid "Could not deduce output format from file extension: using MPEG."
-msgstr ""
-"Iz končnice datoteke ni bilo mogoče razbrati izhodne oblike: uporabljen bo "
-"MPEG."
-
-#: src/core/glaxnimate/io/video/video_format.cpp:768
-#, kde-format
-msgid "Could not find output format"
-msgstr "Izhodne oblike ni bilo mogoče najti"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:841
-#, kde-format
-msgid "Error occurred when opening output file: %1"
-msgstr "Pri odpiranju izhodne datoteke je prišlo do napake: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:876
-#, kde-format
-msgid "Background"
-msgstr "Ozadje"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:876
-#, kde-format
-msgid "Background color"
-msgstr "Barva ozadja"
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: src/core/glaxnimate/io/video/video_format.cpp:877
-#: src/gui/widgets/dialogs/resize_dialog.ui:56
-#: src/gui/widgets/shape_style/stroke_style_widget.ui:46
-#, kde-format
-msgid "Width"
-msgstr "Širina"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:877
-#: src/core/glaxnimate/io/video/video_format.cpp:878
-#, kde-format
-msgid "If not 0, it will overwrite the size"
-msgstr "Če ni 0, prepiše velikst"
-
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/core/glaxnimate/io/video/video_format.cpp:878
-#: src/gui/widgets/dialogs/resize_dialog.ui:33
-#, kde-format
-msgid "Height"
-msgstr "Višina"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:879
-#, kde-format
-msgid "Verbose"
-msgstr "Podrobni izpis"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:879
-#, kde-format
-msgid "Show verbose information on the conversion"
-msgstr "Pokaži podrobne informacije o pretvorbi"
-
-#: src/core/glaxnimate/io/video/video_format.hpp:21
-#, kde-format
-msgid "Video"
-msgstr "Video"
-
 #: src/core/glaxnimate/model/animation/animatable.cpp:213
 #: src/core/glaxnimate/model/animation/animatable_path.cpp:30
 #, kde-format
@@ -2303,6 +2142,182 @@ msgstr "Časovna usklajenost"
 #, kde-format
 msgid "Transform"
 msgstr "Preoblikuj"
+
+#: src/core/glaxnimate/module/module.cpp:50
+#, fuzzy, kde-format
+#| msgid "Glaxnimate"
+msgid "Glaxnimate Core"
+msgstr "Glaxnimate"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:73
+#, kde-format
+msgid "Could not find encoder for '%1'"
+msgstr "Ni bilo mogoče najti kodirnika za »%1«"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:77
+#, kde-format
+msgid "Could not allocate stream"
+msgstr "Ni bilo mogoče dodeliti toka"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:82
+#, kde-format
+msgid "Could not alloc an encoding context"
+msgstr "Ni bilo mogoče dodeliti konteksta kodiranja"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:110
+#, kde-format
+msgid "Error encoding a frame: %1"
+msgstr "Napaka pri kodiranju sličice: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:120
+#, kde-format
+msgid "Error while writing output packet: %1"
+msgstr "Napaka pri pisanju izhodnega paketa: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:131
+#, kde-format
+msgid "Error sending a frame to the encoder: %1"
+msgstr "Napaka pri pošiljanju sličice v kodirnik: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:187
+#: src/core/glaxnimate/module/video/video_format.cpp:201
+#, kde-format
+msgid "Could not set dict key `%1`: %2"
+msgstr "Ni bilo mogoče nastaviti ključa slovarja dict »%1«: %2"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:246
+#, kde-format
+msgid "Could not erase dict key `%1`: %2"
+msgstr "Ni bilo mogoče izbrisati ključa dict »%1«: %2"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:267
+#, kde-format
+msgid "Could not copy dict: %1"
+msgstr "Ni bilo mogoče kopirati slovarja dict: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:280
+#, kde-format
+msgid "Could not copy dict `%1`: %2"
+msgstr "Slovarja dict »%1« ni bilo mogoče kopirati: %2"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:318
+#, kde-format
+msgid "Could not allocate frame data."
+msgstr "Ni bilo mogoče dodeliti podatkov sličice."
+
+#: src/core/glaxnimate/module/video/video_format.cpp:413
+#: src/core/glaxnimate/module/video/video_format.cpp:796
+#, kde-format
+msgid "No video codec"
+msgstr "Ni video kodeka"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:448
+#, kde-format
+msgid "Could not determine pixel format"
+msgstr "Formata slikovnih točk ni bilo mogoče določiti"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:462
+#, kde-format
+msgid "Could not open video codec: %1"
+msgstr "Video kodeka ni bilo mogoče odpreti: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:467
+#, kde-format
+msgid "Could not allocate video frame"
+msgstr "Video sličice ni bilo mogoče dodeliti"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:474
+#, kde-format
+msgid "Could not copy the stream parameters"
+msgstr "Ni bilo mogoče kopirati parametrov toka"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:494
+#, kde-format
+msgid "Error while creating video frame"
+msgstr "Napaka pri ustvarjanju sličice videoposnetka"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:518
+#, kde-format
+msgid "Could not initialize the conversion context"
+msgstr "Ni bilo mogoče inicializirati konteksta pretvorbe"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:524
+#, kde-format
+msgid "Could not allocate temporary picture"
+msgstr "Začasne slike ni bilo mogoče dodeliti"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:764
+#, kde-format
+msgid "Could not deduce output format from file extension: using MPEG."
+msgstr ""
+"Iz končnice datoteke ni bilo mogoče razbrati izhodne oblike: uporabljen bo "
+"MPEG."
+
+#: src/core/glaxnimate/module/video/video_format.cpp:768
+#, kde-format
+msgid "Could not find output format"
+msgstr "Izhodne oblike ni bilo mogoče najti"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:841
+#, kde-format
+msgid "Error occurred when opening output file: %1"
+msgstr "Pri odpiranju izhodne datoteke je prišlo do napake: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:876
+#, kde-format
+msgid "Background"
+msgstr "Ozadje"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:876
+#, kde-format
+msgid "Background color"
+msgstr "Barva ozadja"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: src/core/glaxnimate/module/video/video_format.cpp:877
+#: src/gui/widgets/dialogs/resize_dialog.ui:56
+#: src/gui/widgets/shape_style/stroke_style_widget.ui:46
+#, kde-format
+msgid "Width"
+msgstr "Širina"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:877
+#: src/core/glaxnimate/module/video/video_format.cpp:878
+#, kde-format
+msgid "If not 0, it will overwrite the size"
+msgstr "Če ni 0, prepiše velikst"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: src/core/glaxnimate/module/video/video_format.cpp:878
+#: src/gui/widgets/dialogs/resize_dialog.ui:33
+#, kde-format
+msgid "Height"
+msgstr "Višina"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:879
+#, kde-format
+msgid "Verbose"
+msgstr "Podrobni izpis"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:879
+#, kde-format
+msgid "Show verbose information on the conversion"
+msgstr "Pokaži podrobne informacije o pretvorbi"
+
+#: src/core/glaxnimate/module/video/video_format.hpp:20
+#, kde-format
+msgid "Video"
+msgstr "Video"
+
+#: src/core/glaxnimate/module/video/video_module.cpp:13
+#, kde-format
+msgid "libav"
+msgstr "libav"
+
+#: src/core/glaxnimate/module/video/video_module.hpp:16
+#, kde-format
+msgid "Video Format Support"
+msgstr ""
 
 #: src/core/glaxnimate/script/register_impl.hpp:234
 #, kde-format
@@ -2652,67 +2667,62 @@ msgstr "Dodaj emotikone ..."
 msgid "Close"
 msgstr "Zapri"
 
-#: src/gui/glaxnimate_app.cpp:200
+#: src/gui/glaxnimate_app.cpp:201
 #, kde-format
 msgid "OpenGL"
 msgstr "OpenGL"
 
-#: src/gui/glaxnimate_app.cpp:201
+#: src/gui/glaxnimate_app.cpp:202
 #, kde-format
 msgid "Hardware-accelerated graphics."
 msgstr "Strojno-pospešena grafika."
 
-#: src/gui/glaxnimate_app.cpp:207
+#: src/gui/glaxnimate_app.cpp:208
 #, kde-format
 msgid "OpenGL Renderer"
 msgstr "Upodobilnik OpenGL"
 
-#: src/gui/glaxnimate_app.cpp:234
+#: src/gui/glaxnimate_app.cpp:231
 #, kde-format
 msgid "Copyright © 2019-2026"
 msgstr "Copyright © 2019-2026"
 
-#: src/gui/glaxnimate_app.cpp:243
+#: src/gui/glaxnimate_app.cpp:240
 #, kde-format
 msgid "Mattia \"Glax\" Basaglia"
 msgstr "Mattia \"Glax\" Basaglia"
 
-#: src/gui/glaxnimate_app.cpp:243
+#: src/gui/glaxnimate_app.cpp:240
 #, kde-format
 msgid "Maintainer"
 msgstr "Vzdrževalec"
 
-#: src/gui/glaxnimate_app.cpp:247
-#, kde-format
-msgid "libav"
-msgstr "libav"
-
-#: src/gui/glaxnimate_app.cpp:250
+#: src/gui/glaxnimate_app.cpp:257
 #, kde-format
 msgid "potrace"
 msgstr "potrace"
 
-#: src/gui/glaxnimate_app.cpp:250
+#: src/gui/glaxnimate_app.cpp:257
 #, kde-format
 msgid "Used by the bitmap tracing feature."
 msgstr "Uporablja ga zmožnost sledenja bitne slike."
 
-#: src/gui/glaxnimate_app.cpp:253
+#: src/gui/glaxnimate_app.cpp:259
 #, kde-format
 msgid "Inkscape"
 msgstr "Inkscape"
 
-#: src/gui/glaxnimate_app.cpp:256
+#: src/gui/glaxnimate_app.cpp:263
 #, kde-format
 msgid "pybind11"
 msgstr "pybind11"
 
-#: src/gui/glaxnimate_app.cpp:256 src/gui/glaxnimate_app.cpp:257
+#: src/gui/glaxnimate_app.cpp:263 src/gui/glaxnimate_app.cpp:264
 #, kde-format
 msgid "Used by the plugin system."
 msgstr "Uporablja ga sistem vtičnikov."
 
-#: src/gui/glaxnimate_app.cpp:257
+#: src/gui/glaxnimate_app.cpp:264
 #, kde-format
 msgid "CPython"
 msgstr "CPython"
@@ -2782,10 +2792,9 @@ msgstr "Poravnaj in razporedi"
 
 #. i18n: ectx: Menu (menu_keyframe_type)
 #: src/gui/glaxnimateui.rc:180
-#, fuzzy, kde-format
-#| msgid "Set keyframe transition"
+#, kde-format
 msgid "Keyframe Transition"
-msgstr "Naszavi prehod med ključnimi sličicami"
+msgstr "Prehod med ključnimi sličicami"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:221 src/gui/settings/plugin_settings_group.hpp:23
@@ -3816,14 +3825,13 @@ msgid "Warning"
 msgstr "Opozorilo"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:302
-#, fuzzy, kde-format
-#| msgid "Remove keyframe"
+#, kde-format
 msgid "Delete keyframe"
 msgid_plural "Delete keyframes"
-msgstr[0] "Odstrani ključno sličico"
+msgstr[0] "Odstrani ključne sličice"
 msgstr[1] "Odstrani ključno sličico"
-msgstr[2] "Odstrani ključno sličico"
-msgstr[3] "Odstrani ključno sličico"
+msgstr[2] "Odstrani ključni sličici"
+msgstr[3] "Odstrani ključne sličice"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:139
 #, kde-format
@@ -4207,10 +4215,9 @@ msgid "Flip View"
 msgstr "Zrcali pogled"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
-#, fuzzy, kde-format
-#| msgid "Mask Mode"
+#, kde-format
 msgid "Focus Mode"
-msgstr "Maskirni način"
+msgstr "Fokusni način"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
 #, kde-format
@@ -4416,13 +4423,12 @@ msgstr "Zunaj spodaj"
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:119
 #, kde-format
 msgid "Custom..."
-msgstr "Po meri …"
+msgstr "Po meri..."
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
-#, fuzzy, kde-format
-#| msgid "Set keyframe transition"
+#, kde-format
 msgid "Apply %1 keyframe transition"
-msgstr "Naszavi prehod med ključnimi sličicami"
+msgstr "Uveljavi %1 prehod med ključnimi sličicami"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:855
 #, kde-format
@@ -4604,10 +4610,9 @@ msgid "Issues"
 msgstr "Težave"
 
 #: src/gui/widgets/dialogs/keyframe_editor_dialog.hpp:24
-#, fuzzy, kde-format
-#| msgid "Transition To Next"
+#, kde-format
 msgid "Transition Editor"
-msgstr "Prehod na naslednjo"
+msgstr "Urejevalnik prehoda"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ResizeDialog)
 #: src/gui/widgets/dialogs/resize_dialog.cpp:28
@@ -5710,7 +5715,7 @@ msgstr "Pokaži na LottieFiles …"
 #: src/gui/widgets/menus/animated_property_menu.cpp:51
 #, kde-format
 msgid "Repeat until composition ends"
-msgstr ""
+msgstr "Ponavljaj dokler ne zmanjka kompozicije"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:61
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
@@ -5721,7 +5726,7 @@ msgstr "Prilepi ključno sličico"
 #: src/gui/widgets/menus/animated_property_menu.cpp:62
 #, kde-format
 msgid "Perfect Loop"
-msgstr ""
+msgstr "Perfektna zanka"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
@@ -5735,10 +5740,9 @@ msgid "Remove Keyframe"
 msgstr "Odstrani ključno sličico"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:131
-#, fuzzy, kde-format
-#| msgid "Loop"
+#, kde-format
 msgid "Loop %1"
-msgstr "Zankaj"
+msgstr "Zankaj %1"
 
 #: src/gui/widgets/menus/node_menu.cpp:60
 #: src/gui/widgets/menus/node_menu.cpp:285
@@ -6005,12 +6009,12 @@ msgstr "Storitve"
 #: src/gui/widgets/settings/settings_dialog.cpp:231
 #, kde-format
 msgid "Best Quality"
-msgstr ""
+msgstr "Najboljša kakovost"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:232
 #, kde-format
 msgid "Reduced Size (Performance)"
-msgstr ""
+msgstr "Zmanjšana velikost (zmogljivost)"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:234
 msgctxt "Settings"
@@ -6035,11 +6039,11 @@ msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Canvas Render Quality"
-msgstr ""
+msgstr "Kakovost upodabljanja platna"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Display quality within the app, does not affect exports"
-msgstr ""
+msgstr "Kakovost prikaza v aplikaciji ne vpliva na izvoze"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 msgid "Icon Theme"

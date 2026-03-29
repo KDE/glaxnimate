@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-28 00:41+0000\n"
-"PO-Revision-Date: 2026-03-26 08:06+0100\n"
+"POT-Creation-Date: 2026-03-29 00:41+0000\n"
+"PO-Revision-Date: 2026-03-28 04:58+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -982,12 +982,11 @@ msgid "Stretch Time"
 msgstr "დროის გაწელვა"
 
 #: src/core/glaxnimate/command/clipboard.cpp:142
-#, fuzzy, kde-format
-#| msgid "Paste Keyframe"
+#, kde-format
 msgid "Paste keyframe"
 msgid_plural "Paste keyframes"
 msgstr[0] "ძირითადი კადრის ჩასმა"
-msgstr[1] "ძირითადი კადრის ჩასმა"
+msgstr[1] "ძირითადი კადრების ჩასმა"
 
 #: src/core/glaxnimate/command/object_list_commands.hpp:26
 #, kde-format
@@ -1793,165 +1792,6 @@ msgstr "SVG"
 msgid "SVG Preview"
 msgstr "SVG მინიატურა"
 
-#: src/core/glaxnimate/io/video/video_format.cpp:73
-#, kde-format
-msgid "Could not find encoder for '%1'"
-msgstr "ვერ ვიპოვე ენკოდერი '%1'-სთვის"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:77
-#, kde-format
-msgid "Could not allocate stream"
-msgstr "ნაკადის გამოყოფა შეუძლებელია"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:82
-#, kde-format
-msgid "Could not alloc an encoding context"
-msgstr "კოდირების კონტექსტის გამოყოფა შეუძლებელია"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:110
-#, kde-format
-msgid "Error encoding a frame: %1"
-msgstr "კოდირების შეცდომა კადრში: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:120
-#, kde-format
-msgid "Error while writing output packet: %1"
-msgstr "შეცდომა გამოტანის პაკეტის ჩაწერისას: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:131
-#, kde-format
-msgid "Error sending a frame to the encoder: %1"
-msgstr "შეცდომა კადრის ენკოდერთან გაგზავნისას: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:187
-#: src/core/glaxnimate/io/video/video_format.cpp:201
-#, kde-format
-msgid "Could not set dict key `%1`: %2"
-msgstr "ვერ დავაყენე ლექსიკონის გასაღები '%1': %2"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:246
-#, kde-format
-msgid "Could not erase dict key `%1`: %2"
-msgstr "ვერ წავშალე ლექსიკონის გასაღები '%1': %2"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:267
-#, kde-format
-msgid "Could not copy dict: %1"
-msgstr "ვერ დავაკოპირე ლექსიკონი %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:280
-#, kde-format
-msgid "Could not copy dict `%1`: %2"
-msgstr "ვერ დავაკოპირე ლექსიკონი '%1': %2"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:318
-#, kde-format
-msgid "Could not allocate frame data."
-msgstr "კადრის მონაცემების გამოყოფის შეცდომა."
-
-#: src/core/glaxnimate/io/video/video_format.cpp:413
-#: src/core/glaxnimate/io/video/video_format.cpp:796
-#, kde-format
-msgid "No video codec"
-msgstr "ვიდეოკოდეკის გარეშე"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:448
-#, kde-format
-msgid "Could not determine pixel format"
-msgstr "პიქსელის ფორმატის დადგენა შეუძლებელია"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:462
-#, kde-format
-msgid "Could not open video codec: %1"
-msgstr "ვერ გავხსენი ვიდეოკოდეკი: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:467
-#, kde-format
-msgid "Could not allocate video frame"
-msgstr "ვიდეოს კადრის გამოყოფა შეუძლებელია"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:474
-#, kde-format
-msgid "Could not copy the stream parameters"
-msgstr "ნაკადის პარამეტრების კოპირება შეუძლებელია"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:494
-#, kde-format
-msgid "Error while creating video frame"
-msgstr "შეცდომა ვიდეოს კადრის შექმნისას"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:518
-#, kde-format
-msgid "Could not initialize the conversion context"
-msgstr "გადაყვანის კონტექსტის ინიციალიზაცია შეუძლებელია"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:524
-#, kde-format
-msgid "Could not allocate temporary picture"
-msgstr "დროებითი სურათის გამოყოფა შეუძლბელია"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:764
-#, kde-format
-msgid "Could not deduce output format from file extension: using MPEG."
-msgstr ""
-"ფაილის გაფართოებიდან გამოტანის ფორმატის დადგენა შეუძლებელია: ვიყენებ MPEG-ს."
-
-#: src/core/glaxnimate/io/video/video_format.cpp:768
-#, kde-format
-msgid "Could not find output format"
-msgstr "ვერ ვიპოვე გამოტანის ფორმატი"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:841
-#, kde-format
-msgid "Error occurred when opening output file: %1"
-msgstr "შეცდომა გამოტანის ფაილის გახსნისას: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:876
-#, kde-format
-msgid "Background"
-msgstr "ფონი"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:876
-#, kde-format
-msgid "Background color"
-msgstr "ფონის ფერი"
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: src/core/glaxnimate/io/video/video_format.cpp:877
-#: src/gui/widgets/dialogs/resize_dialog.ui:56
-#: src/gui/widgets/shape_style/stroke_style_widget.ui:46
-#, kde-format
-msgid "Width"
-msgstr "სიგანე"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:877
-#: src/core/glaxnimate/io/video/video_format.cpp:878
-#, kde-format
-msgid "If not 0, it will overwrite the size"
-msgstr "თუ 0 არაა, ზომას თავზე გადააწერს"
-
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/core/glaxnimate/io/video/video_format.cpp:878
-#: src/gui/widgets/dialogs/resize_dialog.ui:33
-#, kde-format
-msgid "Height"
-msgstr "სიმაღლე"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:879
-#, kde-format
-msgid "Verbose"
-msgstr "დამატებითი შეტყობინებები"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:879
-#, kde-format
-msgid "Show verbose information on the conversion"
-msgstr "დამატებითი შეტყობინებების ჩვენება გადაყვანისას"
-
-#: src/core/glaxnimate/io/video/video_format.hpp:21
-#, kde-format
-msgid "Video"
-msgstr "ვიდეო"
-
 #: src/core/glaxnimate/model/animation/animatable.cpp:213
 #: src/core/glaxnimate/model/animation/animatable_path.cpp:30
 #, kde-format
@@ -2298,6 +2138,181 @@ msgstr "ქრონომეტრაჟი"
 #, kde-format
 msgid "Transform"
 msgstr "ტრასფორმირება"
+
+#: src/core/glaxnimate/module/module.cpp:50
+#, fuzzy, kde-format
+#| msgid "Glaxnimate"
+msgid "Glaxnimate Core"
+msgstr "Glaxnimate"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:73
+#, kde-format
+msgid "Could not find encoder for '%1'"
+msgstr "ვერ ვიპოვე ენკოდერი '%1'-სთვის"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:77
+#, kde-format
+msgid "Could not allocate stream"
+msgstr "ნაკადის გამოყოფა შეუძლებელია"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:82
+#, kde-format
+msgid "Could not alloc an encoding context"
+msgstr "კოდირების კონტექსტის გამოყოფა შეუძლებელია"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:110
+#, kde-format
+msgid "Error encoding a frame: %1"
+msgstr "კოდირების შეცდომა კადრში: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:120
+#, kde-format
+msgid "Error while writing output packet: %1"
+msgstr "შეცდომა გამოტანის პაკეტის ჩაწერისას: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:131
+#, kde-format
+msgid "Error sending a frame to the encoder: %1"
+msgstr "შეცდომა კადრის ენკოდერთან გაგზავნისას: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:187
+#: src/core/glaxnimate/module/video/video_format.cpp:201
+#, kde-format
+msgid "Could not set dict key `%1`: %2"
+msgstr "ვერ დავაყენე ლექსიკონის გასაღები '%1': %2"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:246
+#, kde-format
+msgid "Could not erase dict key `%1`: %2"
+msgstr "ვერ წავშალე ლექსიკონის გასაღები '%1': %2"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:267
+#, kde-format
+msgid "Could not copy dict: %1"
+msgstr "ვერ დავაკოპირე ლექსიკონი %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:280
+#, kde-format
+msgid "Could not copy dict `%1`: %2"
+msgstr "ვერ დავაკოპირე ლექსიკონი '%1': %2"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:318
+#, kde-format
+msgid "Could not allocate frame data."
+msgstr "კადრის მონაცემების გამოყოფის შეცდომა."
+
+#: src/core/glaxnimate/module/video/video_format.cpp:413
+#: src/core/glaxnimate/module/video/video_format.cpp:796
+#, kde-format
+msgid "No video codec"
+msgstr "ვიდეოკოდეკის გარეშე"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:448
+#, kde-format
+msgid "Could not determine pixel format"
+msgstr "პიქსელის ფორმატის დადგენა შეუძლებელია"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:462
+#, kde-format
+msgid "Could not open video codec: %1"
+msgstr "ვერ გავხსენი ვიდეოკოდეკი: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:467
+#, kde-format
+msgid "Could not allocate video frame"
+msgstr "ვიდეოს კადრის გამოყოფა შეუძლებელია"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:474
+#, kde-format
+msgid "Could not copy the stream parameters"
+msgstr "ნაკადის პარამეტრების კოპირება შეუძლებელია"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:494
+#, kde-format
+msgid "Error while creating video frame"
+msgstr "შეცდომა ვიდეოს კადრის შექმნისას"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:518
+#, kde-format
+msgid "Could not initialize the conversion context"
+msgstr "გადაყვანის კონტექსტის ინიციალიზაცია შეუძლებელია"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:524
+#, kde-format
+msgid "Could not allocate temporary picture"
+msgstr "დროებითი სურათის გამოყოფა შეუძლბელია"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:764
+#, kde-format
+msgid "Could not deduce output format from file extension: using MPEG."
+msgstr ""
+"ფაილის გაფართოებიდან გამოტანის ფორმატის დადგენა შეუძლებელია: ვიყენებ MPEG-ს."
+
+#: src/core/glaxnimate/module/video/video_format.cpp:768
+#, kde-format
+msgid "Could not find output format"
+msgstr "ვერ ვიპოვე გამოტანის ფორმატი"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:841
+#, kde-format
+msgid "Error occurred when opening output file: %1"
+msgstr "შეცდომა გამოტანის ფაილის გახსნისას: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:876
+#, kde-format
+msgid "Background"
+msgstr "ფონი"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:876
+#, kde-format
+msgid "Background color"
+msgstr "ფონის ფერი"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: src/core/glaxnimate/module/video/video_format.cpp:877
+#: src/gui/widgets/dialogs/resize_dialog.ui:56
+#: src/gui/widgets/shape_style/stroke_style_widget.ui:46
+#, kde-format
+msgid "Width"
+msgstr "სიგანე"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:877
+#: src/core/glaxnimate/module/video/video_format.cpp:878
+#, kde-format
+msgid "If not 0, it will overwrite the size"
+msgstr "თუ 0 არაა, ზომას თავზე გადააწერს"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: src/core/glaxnimate/module/video/video_format.cpp:878
+#: src/gui/widgets/dialogs/resize_dialog.ui:33
+#, kde-format
+msgid "Height"
+msgstr "სიმაღლე"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:879
+#, kde-format
+msgid "Verbose"
+msgstr "დამატებითი შეტყობინებები"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:879
+#, kde-format
+msgid "Show verbose information on the conversion"
+msgstr "დამატებითი შეტყობინებების ჩვენება გადაყვანისას"
+
+#: src/core/glaxnimate/module/video/video_format.hpp:20
+#, kde-format
+msgid "Video"
+msgstr "ვიდეო"
+
+#: src/core/glaxnimate/module/video/video_module.cpp:13
+#, kde-format
+msgid "libav"
+msgstr "libav"
+
+#: src/core/glaxnimate/module/video/video_module.hpp:16
+#, kde-format
+msgid "Video Format Support"
+msgstr ""
 
 #: src/core/glaxnimate/script/register_impl.hpp:234
 #, kde-format
@@ -2651,67 +2666,62 @@ msgstr "ემოჯის დამატება…"
 msgid "Close"
 msgstr "დახურვა"
 
-#: src/gui/glaxnimate_app.cpp:200
+#: src/gui/glaxnimate_app.cpp:201
 #, kde-format
 msgid "OpenGL"
 msgstr "OpenGL"
 
-#: src/gui/glaxnimate_app.cpp:201
+#: src/gui/glaxnimate_app.cpp:202
 #, kde-format
 msgid "Hardware-accelerated graphics."
 msgstr "აპარატურით დაჩქარებული გრაფიკა."
 
-#: src/gui/glaxnimate_app.cpp:207
+#: src/gui/glaxnimate_app.cpp:208
 #, kde-format
 msgid "OpenGL Renderer"
 msgstr "OpenGL-ის რენდერები"
 
-#: src/gui/glaxnimate_app.cpp:234
+#: src/gui/glaxnimate_app.cpp:231
 #, kde-format
 msgid "Copyright © 2019-2026"
 msgstr "საავტორო უფლებები დაცულია © 2019-2026"
 
-#: src/gui/glaxnimate_app.cpp:243
+#: src/gui/glaxnimate_app.cpp:240
 #, kde-format
 msgid "Mattia \"Glax\" Basaglia"
 msgstr "Mattia \"Glax\" Basaglia"
 
-#: src/gui/glaxnimate_app.cpp:243
+#: src/gui/glaxnimate_app.cpp:240
 #, kde-format
 msgid "Maintainer"
 msgstr "წამყვანი პროგრამისტი"
 
-#: src/gui/glaxnimate_app.cpp:247
-#, kde-format
-msgid "libav"
-msgstr "libav"
-
-#: src/gui/glaxnimate_app.cpp:250
+#: src/gui/glaxnimate_app.cpp:257
 #, kde-format
 msgid "potrace"
 msgstr "potrace"
 
-#: src/gui/glaxnimate_app.cpp:250
+#: src/gui/glaxnimate_app.cpp:257
 #, kde-format
 msgid "Used by the bitmap tracing feature."
 msgstr "გამოიყენება ბიტური რუკის ტრასირების ფუნქციის მიერ."
 
-#: src/gui/glaxnimate_app.cpp:253
+#: src/gui/glaxnimate_app.cpp:259
 #, kde-format
 msgid "Inkscape"
 msgstr "Inkscape"
 
-#: src/gui/glaxnimate_app.cpp:256
+#: src/gui/glaxnimate_app.cpp:263
 #, kde-format
 msgid "pybind11"
 msgstr "pybind11"
 
-#: src/gui/glaxnimate_app.cpp:256 src/gui/glaxnimate_app.cpp:257
+#: src/gui/glaxnimate_app.cpp:263 src/gui/glaxnimate_app.cpp:264
 #, kde-format
 msgid "Used by the plugin system."
 msgstr "გამოიყენება დამატებების სისტემის მიერ."
 
-#: src/gui/glaxnimate_app.cpp:257
+#: src/gui/glaxnimate_app.cpp:264
 #, kde-format
 msgid "CPython"
 msgstr "CPython"
@@ -2781,10 +2791,9 @@ msgstr "სწორება და განაწილება"
 
 #. i18n: ectx: Menu (menu_keyframe_type)
 #: src/gui/glaxnimateui.rc:180
-#, fuzzy, kde-format
-#| msgid "Set keyframe transition"
+#, kde-format
 msgid "Keyframe Transition"
-msgstr "საკვანძო კადრის გადასვლის დაყენება"
+msgstr "საკვანძო კადრის გადასვლა"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:221 src/gui/settings/plugin_settings_group.hpp:23
@@ -3818,12 +3827,11 @@ msgid "Warning"
 msgstr "გაფთხილება"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:302
-#, fuzzy, kde-format
-#| msgid "Remove keyframe"
+#, kde-format
 msgid "Delete keyframe"
 msgid_plural "Delete keyframes"
 msgstr[0] "ძირითადი კადრის წაშლა"
-msgstr[1] "ძირითადი კადრის წაშლა"
+msgstr[1] "ძირითადი კადრების წაშლა"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:139
 #, kde-format
@@ -4206,10 +4214,9 @@ msgid "Flip View"
 msgstr "ხედის გადაბრუნება"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
-#, fuzzy, kde-format
-#| msgid "Mask Mode"
+#, kde-format
 msgid "Focus Mode"
-msgstr "ნიღბის რეჟიმი"
+msgstr "ფოკუსის რეჟიმი"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
 #, kde-format
@@ -4418,10 +4425,9 @@ msgid "Custom..."
 msgstr "ხელით..."
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
-#, fuzzy, kde-format
-#| msgid "Set keyframe transition"
+#, kde-format
 msgid "Apply %1 keyframe transition"
-msgstr "საკვანძო კადრის გადასვლის დაყენება"
+msgstr "%1 საკვანძო კადრის გადასვლის გადატარება"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:855
 #, kde-format
@@ -4603,10 +4609,9 @@ msgid "Issues"
 msgstr "საკითხები"
 
 #: src/gui/widgets/dialogs/keyframe_editor_dialog.hpp:24
-#, fuzzy, kde-format
-#| msgid "Transition To Next"
+#, kde-format
 msgid "Transition Editor"
-msgstr "გადასვლა შემდეგზე"
+msgstr "გადასვლის რედაქტორი"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ResizeDialog)
 #: src/gui/widgets/dialogs/resize_dialog.cpp:28
@@ -5710,7 +5715,7 @@ msgstr "ნახვა LottieFiles-ზე..."
 #: src/gui/widgets/menus/animated_property_menu.cpp:51
 #, kde-format
 msgid "Repeat until composition ends"
-msgstr ""
+msgstr "გამეორება, სანამ შედგენა არ დასრულდება"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:61
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
@@ -5721,7 +5726,7 @@ msgstr "ძირითადი კადრის ჩასმა"
 #: src/gui/widgets/menus/animated_property_menu.cpp:62
 #, kde-format
 msgid "Perfect Loop"
-msgstr ""
+msgstr "იდეალური მარყუჟი"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
@@ -5735,10 +5740,9 @@ msgid "Remove Keyframe"
 msgstr "ძირითადი კადრის წაშლა"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:131
-#, fuzzy, kde-format
-#| msgid "Loop"
+#, kde-format
 msgid "Loop %1"
-msgstr "მარყუჟი"
+msgstr "მარყუჟი %1"
 
 #: src/gui/widgets/menus/node_menu.cpp:60
 #: src/gui/widgets/menus/node_menu.cpp:285
@@ -6006,12 +6010,12 @@ msgstr "სერვისები"
 #: src/gui/widgets/settings/settings_dialog.cpp:231
 #, kde-format
 msgid "Best Quality"
-msgstr ""
+msgstr "საუკეთესო ხარისხი"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:232
 #, kde-format
 msgid "Reduced Size (Performance)"
-msgstr ""
+msgstr "შემცირებული ზომა (წარმადობა)"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:234
 msgctxt "Settings"
@@ -6036,11 +6040,11 @@ msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Canvas Render Quality"
-msgstr ""
+msgstr "ტილოს რენდერის ხარისხი"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Display quality within the app, does not affect exports"
-msgstr ""
+msgstr "ჩვენების ხარისხი აპში. არ ეხება გატანას"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 msgid "Icon Theme"

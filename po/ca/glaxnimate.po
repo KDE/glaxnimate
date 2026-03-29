@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-28 00:41+0000\n"
-"PO-Revision-Date: 2026-03-26 11:21+0100\n"
+"POT-Creation-Date: 2026-03-29 00:41+0000\n"
+"PO-Revision-Date: 2026-03-28 08:24+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -989,12 +989,11 @@ msgid "Stretch Time"
 msgstr "Temps d'estirament"
 
 #: src/core/glaxnimate/command/clipboard.cpp:142
-#, fuzzy, kde-format
-#| msgid "Paste Keyframe"
+#, kde-format
 msgid "Paste keyframe"
 msgid_plural "Paste keyframes"
 msgstr[0] "Enganxa un fotograma clau"
-msgstr[1] "Enganxa un fotograma clau"
+msgstr[1] "Enganxa fotogrames clau"
 
 #: src/core/glaxnimate/command/object_list_commands.hpp:26
 #, kde-format
@@ -1807,169 +1806,6 @@ msgstr "SVG"
 msgid "SVG Preview"
 msgstr "Vista prèvia de SVG"
 
-#: src/core/glaxnimate/io/video/video_format.cpp:73
-#, kde-format
-msgid "Could not find encoder for '%1'"
-msgstr "No s'ha pogut trobar el codificador per a «%1»"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:77
-#, kde-format
-msgid "Could not allocate stream"
-msgstr "No s'ha pogut assignar el flux"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:82
-#, kde-format
-msgid "Could not alloc an encoding context"
-msgstr "No s'ha pogut assignar un context de codificació"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:110
-#, kde-format
-msgid "Error encoding a frame: %1"
-msgstr "Error en codificar un fotograma: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:120
-#, kde-format
-msgid "Error while writing output packet: %1"
-msgstr "Error en escriure el paquet de sortida: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:131
-#, kde-format
-msgid "Error sending a frame to the encoder: %1"
-msgstr "Error en enviar un fotograma al codificador: %1"
-
-# skip-rule: t-acc_obe
-#: src/core/glaxnimate/io/video/video_format.cpp:187
-#: src/core/glaxnimate/io/video/video_format.cpp:201
-#, kde-format
-msgid "Could not set dict key `%1`: %2"
-msgstr "No s'ha pogut establir la clau del diccionari `%1`: %2"
-
-# skip-rule: t-acc_obe
-#: src/core/glaxnimate/io/video/video_format.cpp:246
-#, kde-format
-msgid "Could not erase dict key `%1`: %2"
-msgstr "No s'ha pogut esborrar la clau del diccionari `%1`: %2"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:267
-#, kde-format
-msgid "Could not copy dict: %1"
-msgstr "No s'ha pogut copiar el diccionari: %1"
-
-# skip-rule: t-acc_obe
-#: src/core/glaxnimate/io/video/video_format.cpp:280
-#, kde-format
-msgid "Could not copy dict `%1`: %2"
-msgstr "No s'ha pogut copiar el diccionari `%1`: %2"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:318
-#, kde-format
-msgid "Could not allocate frame data."
-msgstr "No s'han pogut assignar les dades del fotograma."
-
-#: src/core/glaxnimate/io/video/video_format.cpp:413
-#: src/core/glaxnimate/io/video/video_format.cpp:796
-#, kde-format
-msgid "No video codec"
-msgstr "Sense còdec de vídeo"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:448
-#, kde-format
-msgid "Could not determine pixel format"
-msgstr "No s'ha pogut determinar el format dels píxels"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:462
-#, kde-format
-msgid "Could not open video codec: %1"
-msgstr "No s'ha pogut obrir el còdec de vídeo: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:467
-#, kde-format
-msgid "Could not allocate video frame"
-msgstr "No s'ha pogut assignar el fotograma de vídeo"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:474
-#, kde-format
-msgid "Could not copy the stream parameters"
-msgstr "No s'han pogut copiar els paràmetres del flux"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:494
-#, kde-format
-msgid "Error while creating video frame"
-msgstr "S'ha produït un error en crear el fotograma de vídeo"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:518
-#, kde-format
-msgid "Could not initialize the conversion context"
-msgstr "No s'ha pogut inicialitzar el context de conversió"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:524
-#, kde-format
-msgid "Could not allocate temporary picture"
-msgstr "No s'ha pogut assignar la imatge temporal"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:764
-#, kde-format
-msgid "Could not deduce output format from file extension: using MPEG."
-msgstr ""
-"No s'ha pogut deduir el format de sortida a partir de l'extensió de fitxer: "
-"s'utilitza MPEG."
-
-#: src/core/glaxnimate/io/video/video_format.cpp:768
-#, kde-format
-msgid "Could not find output format"
-msgstr "No s'ha pogut trobar el format de sortida"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:841
-#, kde-format
-msgid "Error occurred when opening output file: %1"
-msgstr "S'ha produït un error en obrir el fitxer de sortida: %1"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:876
-#, kde-format
-msgid "Background"
-msgstr "Fons"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:876
-#, kde-format
-msgid "Background color"
-msgstr "Color de fons"
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: src/core/glaxnimate/io/video/video_format.cpp:877
-#: src/gui/widgets/dialogs/resize_dialog.ui:56
-#: src/gui/widgets/shape_style/stroke_style_widget.ui:46
-#, kde-format
-msgid "Width"
-msgstr "Amplada"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:877
-#: src/core/glaxnimate/io/video/video_format.cpp:878
-#, kde-format
-msgid "If not 0, it will overwrite the size"
-msgstr "Si no és 0, sobreescriurà la mida"
-
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/core/glaxnimate/io/video/video_format.cpp:878
-#: src/gui/widgets/dialogs/resize_dialog.ui:33
-#, kde-format
-msgid "Height"
-msgstr "Alçada"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:879
-#, kde-format
-msgid "Verbose"
-msgstr "Sortida detallada"
-
-#: src/core/glaxnimate/io/video/video_format.cpp:879
-#, kde-format
-msgid "Show verbose information on the conversion"
-msgstr "Mostra informació detallada sobre la conversió"
-
-#: src/core/glaxnimate/io/video/video_format.hpp:21
-#, kde-format
-msgid "Video"
-msgstr "Vídeo"
-
 #: src/core/glaxnimate/model/animation/animatable.cpp:213
 #: src/core/glaxnimate/model/animation/animatable_path.cpp:30
 #, kde-format
@@ -2316,6 +2152,185 @@ msgstr "Temporització"
 #, kde-format
 msgid "Transform"
 msgstr "Transforma"
+
+#: src/core/glaxnimate/module/module.cpp:50
+#, fuzzy, kde-format
+#| msgid "Glaxnimate"
+msgid "Glaxnimate Core"
+msgstr "Glaxnimate"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:73
+#, kde-format
+msgid "Could not find encoder for '%1'"
+msgstr "No s'ha pogut trobar el codificador per a «%1»"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:77
+#, kde-format
+msgid "Could not allocate stream"
+msgstr "No s'ha pogut assignar el flux"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:82
+#, kde-format
+msgid "Could not alloc an encoding context"
+msgstr "No s'ha pogut assignar un context de codificació"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:110
+#, kde-format
+msgid "Error encoding a frame: %1"
+msgstr "Error en codificar un fotograma: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:120
+#, kde-format
+msgid "Error while writing output packet: %1"
+msgstr "Error en escriure el paquet de sortida: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:131
+#, kde-format
+msgid "Error sending a frame to the encoder: %1"
+msgstr "Error en enviar un fotograma al codificador: %1"
+
+# skip-rule: t-acc_obe
+#: src/core/glaxnimate/module/video/video_format.cpp:187
+#: src/core/glaxnimate/module/video/video_format.cpp:201
+#, kde-format
+msgid "Could not set dict key `%1`: %2"
+msgstr "No s'ha pogut establir la clau del diccionari `%1`: %2"
+
+# skip-rule: t-acc_obe
+#: src/core/glaxnimate/module/video/video_format.cpp:246
+#, kde-format
+msgid "Could not erase dict key `%1`: %2"
+msgstr "No s'ha pogut esborrar la clau del diccionari `%1`: %2"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:267
+#, kde-format
+msgid "Could not copy dict: %1"
+msgstr "No s'ha pogut copiar el diccionari: %1"
+
+# skip-rule: t-acc_obe
+#: src/core/glaxnimate/module/video/video_format.cpp:280
+#, kde-format
+msgid "Could not copy dict `%1`: %2"
+msgstr "No s'ha pogut copiar el diccionari `%1`: %2"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:318
+#, kde-format
+msgid "Could not allocate frame data."
+msgstr "No s'han pogut assignar les dades del fotograma."
+
+#: src/core/glaxnimate/module/video/video_format.cpp:413
+#: src/core/glaxnimate/module/video/video_format.cpp:796
+#, kde-format
+msgid "No video codec"
+msgstr "Sense còdec de vídeo"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:448
+#, kde-format
+msgid "Could not determine pixel format"
+msgstr "No s'ha pogut determinar el format dels píxels"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:462
+#, kde-format
+msgid "Could not open video codec: %1"
+msgstr "No s'ha pogut obrir el còdec de vídeo: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:467
+#, kde-format
+msgid "Could not allocate video frame"
+msgstr "No s'ha pogut assignar el fotograma de vídeo"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:474
+#, kde-format
+msgid "Could not copy the stream parameters"
+msgstr "No s'han pogut copiar els paràmetres del flux"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:494
+#, kde-format
+msgid "Error while creating video frame"
+msgstr "S'ha produït un error en crear el fotograma de vídeo"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:518
+#, kde-format
+msgid "Could not initialize the conversion context"
+msgstr "No s'ha pogut inicialitzar el context de conversió"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:524
+#, kde-format
+msgid "Could not allocate temporary picture"
+msgstr "No s'ha pogut assignar la imatge temporal"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:764
+#, kde-format
+msgid "Could not deduce output format from file extension: using MPEG."
+msgstr ""
+"No s'ha pogut deduir el format de sortida a partir de l'extensió de fitxer: "
+"s'utilitza MPEG."
+
+#: src/core/glaxnimate/module/video/video_format.cpp:768
+#, kde-format
+msgid "Could not find output format"
+msgstr "No s'ha pogut trobar el format de sortida"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:841
+#, kde-format
+msgid "Error occurred when opening output file: %1"
+msgstr "S'ha produït un error en obrir el fitxer de sortida: %1"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:876
+#, kde-format
+msgid "Background"
+msgstr "Fons"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:876
+#, kde-format
+msgid "Background color"
+msgstr "Color de fons"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: src/core/glaxnimate/module/video/video_format.cpp:877
+#: src/gui/widgets/dialogs/resize_dialog.ui:56
+#: src/gui/widgets/shape_style/stroke_style_widget.ui:46
+#, kde-format
+msgid "Width"
+msgstr "Amplada"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:877
+#: src/core/glaxnimate/module/video/video_format.cpp:878
+#, kde-format
+msgid "If not 0, it will overwrite the size"
+msgstr "Si no és 0, sobreescriurà la mida"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: src/core/glaxnimate/module/video/video_format.cpp:878
+#: src/gui/widgets/dialogs/resize_dialog.ui:33
+#, kde-format
+msgid "Height"
+msgstr "Alçada"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:879
+#, kde-format
+msgid "Verbose"
+msgstr "Sortida detallada"
+
+#: src/core/glaxnimate/module/video/video_format.cpp:879
+#, kde-format
+msgid "Show verbose information on the conversion"
+msgstr "Mostra informació detallada sobre la conversió"
+
+#: src/core/glaxnimate/module/video/video_format.hpp:20
+#, kde-format
+msgid "Video"
+msgstr "Vídeo"
+
+#: src/core/glaxnimate/module/video/video_module.cpp:13
+#, kde-format
+msgid "libav"
+msgstr "libav"
+
+#: src/core/glaxnimate/module/video/video_module.hpp:16
+#, kde-format
+msgid "Video Format Support"
+msgstr ""
 
 #: src/core/glaxnimate/script/register_impl.hpp:234
 #, kde-format
@@ -2670,67 +2685,62 @@ msgstr "Afegeix un emoji..."
 msgid "Close"
 msgstr "Tanca"
 
-#: src/gui/glaxnimate_app.cpp:200
+#: src/gui/glaxnimate_app.cpp:201
 #, kde-format
 msgid "OpenGL"
 msgstr "OpenGL"
 
-#: src/gui/glaxnimate_app.cpp:201
+#: src/gui/glaxnimate_app.cpp:202
 #, kde-format
 msgid "Hardware-accelerated graphics."
 msgstr "Gràfics accelerats per maquinari."
 
-#: src/gui/glaxnimate_app.cpp:207
+#: src/gui/glaxnimate_app.cpp:208
 #, kde-format
 msgid "OpenGL Renderer"
 msgstr "Renderitzador OpenGL"
 
-#: src/gui/glaxnimate_app.cpp:234
+#: src/gui/glaxnimate_app.cpp:231
 #, kde-format
 msgid "Copyright © 2019-2026"
 msgstr "Copyright © 2019-2026"
 
-#: src/gui/glaxnimate_app.cpp:243
+#: src/gui/glaxnimate_app.cpp:240
 #, kde-format
 msgid "Mattia \"Glax\" Basaglia"
 msgstr "Mattia \"Glax\" Basaglia"
 
-#: src/gui/glaxnimate_app.cpp:243
+#: src/gui/glaxnimate_app.cpp:240
 #, kde-format
 msgid "Maintainer"
 msgstr "Mantenidor"
 
-#: src/gui/glaxnimate_app.cpp:247
-#, kde-format
-msgid "libav"
-msgstr "libav"
-
-#: src/gui/glaxnimate_app.cpp:250
+#: src/gui/glaxnimate_app.cpp:257
 #, kde-format
 msgid "potrace"
 msgstr "potrace"
 
-#: src/gui/glaxnimate_app.cpp:250
+#: src/gui/glaxnimate_app.cpp:257
 #, kde-format
 msgid "Used by the bitmap tracing feature."
 msgstr "Utilitzada per la característica de traçat de mapes de bits."
 
-#: src/gui/glaxnimate_app.cpp:253
+#: src/gui/glaxnimate_app.cpp:259
 #, kde-format
 msgid "Inkscape"
 msgstr "Inkscape"
 
-#: src/gui/glaxnimate_app.cpp:256
+#: src/gui/glaxnimate_app.cpp:263
 #, kde-format
 msgid "pybind11"
 msgstr "pybind11"
 
-#: src/gui/glaxnimate_app.cpp:256 src/gui/glaxnimate_app.cpp:257
+#: src/gui/glaxnimate_app.cpp:263 src/gui/glaxnimate_app.cpp:264
 #, kde-format
 msgid "Used by the plugin system."
 msgstr "Utilitzada pel sistema de connectors."
 
-#: src/gui/glaxnimate_app.cpp:257
+#: src/gui/glaxnimate_app.cpp:264
 #, kde-format
 msgid "CPython"
 msgstr "CPython"
@@ -2800,10 +2810,9 @@ msgstr "Alinea i distribueix"
 
 #. i18n: ectx: Menu (menu_keyframe_type)
 #: src/gui/glaxnimateui.rc:180
-#, fuzzy, kde-format
-#| msgid "Set keyframe transition"
+#, kde-format
 msgid "Keyframe Transition"
-msgstr "Estableix la transició dels fotogrames clau"
+msgstr "Transició de fotogrames clau"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:221 src/gui/settings/plugin_settings_group.hpp:23
@@ -3838,12 +3847,11 @@ msgid "Warning"
 msgstr "Avís"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:302
-#, fuzzy, kde-format
-#| msgid "Remove keyframe"
+#, kde-format
 msgid "Delete keyframe"
 msgid_plural "Delete keyframes"
-msgstr[0] "Elimina el fotograma clau"
-msgstr[1] "Elimina el fotograma clau"
+msgstr[0] "Suprimeix el fotograma clau"
+msgstr[1] "Suprimeix els fotogrames clau"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:139
 #, kde-format
@@ -4226,10 +4234,9 @@ msgid "Flip View"
 msgstr "Capgira la vista"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
-#, fuzzy, kde-format
-#| msgid "Mask Mode"
+#, kde-format
 msgid "Focus Mode"
-msgstr "Mode de màscara"
+msgstr "Mode del focus"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
 #, kde-format
@@ -4438,10 +4445,9 @@ msgid "Custom..."
 msgstr "Personalitzat..."
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
-#, fuzzy, kde-format
-#| msgid "Set keyframe transition"
+#, kde-format
 msgid "Apply %1 keyframe transition"
-msgstr "Estableix la transició dels fotogrames clau"
+msgstr "Aplica la transició %1 dels fotogrames clau"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:855
 #, kde-format
@@ -4623,10 +4629,9 @@ msgid "Issues"
 msgstr "Problemes"
 
 #: src/gui/widgets/dialogs/keyframe_editor_dialog.hpp:24
-#, fuzzy, kde-format
-#| msgid "Transition To Next"
+#, kde-format
 msgid "Transition Editor"
-msgstr "Transició al següent"
+msgstr "Editor de transicions"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ResizeDialog)
 #: src/gui/widgets/dialogs/resize_dialog.cpp:28
@@ -5731,7 +5736,7 @@ msgstr "Visualitza a LottieFiles..."
 #: src/gui/widgets/menus/animated_property_menu.cpp:51
 #, kde-format
 msgid "Repeat until composition ends"
-msgstr ""
+msgstr "Repeteix fins a que acabi la composició"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:61
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
@@ -5742,7 +5747,7 @@ msgstr "Enganxa un fotograma clau"
 #: src/gui/widgets/menus/animated_property_menu.cpp:62
 #, kde-format
 msgid "Perfect Loop"
-msgstr ""
+msgstr "Bucle perfecte"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
@@ -5756,10 +5761,9 @@ msgid "Remove Keyframe"
 msgstr "Elimina el fotograma clau"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:131
-#, fuzzy, kde-format
-#| msgid "Loop"
+#, kde-format
 msgid "Loop %1"
-msgstr "Bucle"
+msgstr "Bucle %1"
 
 #: src/gui/widgets/menus/node_menu.cpp:60
 #: src/gui/widgets/menus/node_menu.cpp:285
@@ -6027,12 +6031,12 @@ msgstr "Serveis"
 #: src/gui/widgets/settings/settings_dialog.cpp:231
 #, kde-format
 msgid "Best Quality"
-msgstr ""
+msgstr "Millor qualitat"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:232
 #, kde-format
 msgid "Reduced Size (Performance)"
-msgstr ""
+msgstr "Mida reduïda (Rendiment)"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:234
 msgctxt "Settings"
@@ -6057,11 +6061,11 @@ msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Canvas Render Quality"
-msgstr ""
+msgstr "Qualitat de renderització del llenç"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Display quality within the app, does not affect exports"
-msgstr ""
+msgstr "Qualitat de visualització en l'aplicació, no afecta l'exportació"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 msgid "Icon Theme"
