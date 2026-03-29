@@ -35,6 +35,7 @@ private:
 
         cairo_surface_t* mask_surface = nullptr;
         cairo_t* mask_canvas = nullptr;
+        int mask_flags = 0;
     };
 
     std::vector<LayerData> layer_data;
@@ -287,16 +288,29 @@ public:
         layer_data.back().blend_mode = convert_blend_mode(mode);
     }
 
-    void mask_start(int) override
+    void mask_start(int mask_flags) override
     {
         layer_data.back().mask_surface = surface;
         layer_data.back().mask_canvas = canvas;
+        layer_data.back().mask_flags = mask_flags;
         surface = cairo_surface_create_similar(surface, CAIRO_CONTENT_COLOR_ALPHA, width, height);
         canvas = cairo_create(surface);
+
+        if ( mask_flags & MaskFlags::MaskInverted )
+        {
+            cairo_set_source_rgb(canvas, 1, 1, 1);
+            cairo_paint(canvas);
+        }
+        cairo_push_group(canvas);
     }
 
     void mask_end() override
     {
+        if ( layer_data.back().mask_flags & MaskFlags::MaskInverted )
+            cairo_set_operator(canvas, CAIRO_OPERATOR_CLEAR);
+
+        cairo_pop_group_to_source(canvas);
+        cairo_paint(canvas);
         // cairo_surface_flush(surface);
         std::swap(canvas, layer_data.back().mask_canvas);
         std::swap(surface, layer_data.back().mask_surface);
