@@ -11,8 +11,13 @@ set(SOURCES
 
 add_library(GlaxnimateGzip OBJECT ${SOURCES})
 
-find_package(ZLIB REQUIRED)
-target_link_libraries(GlaxnimateGzip PUBLIC ZLIB::ZLIB)
+if ( EMSCRIPTEN )
+    target_compile_options(GlaxnimateGzip PUBLIC "-sUSE_ZLIB=1")
+    target_link_options(GlaxnimateGzip PUBLIC "-sUSE_ZLIB=1")
+else()
+    find_package(ZLIB REQUIRED)
+    target_link_libraries(GlaxnimateGzip PUBLIC ZLIB::ZLIB)
+endif()
 
-kde_target_enable_exceptions(GlaxnimateGzip PUBLIC)
+glaxnimate_enable_exceptions(GlaxnimateGzip PUBLIC)
 

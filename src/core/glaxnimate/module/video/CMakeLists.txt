@@ -19,4 +19,4 @@ find_package(Libav COMPONENTS codec util format swscale REQUIRED)
 include_directories(${Libav_INCLUDE_DIRS})
 target_link_libraries(GlaxnimateVideo PUBLIC ${Libav_LIBRARIES} )
 
-kde_target_enable_exceptions(GlaxnimateVideo PUBLIC)
+glaxnimate_enable_exceptions(GlaxnimateVideo PUBLIC)

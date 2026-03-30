@@ -40,7 +40,7 @@ set(SOURCES
 )
 
 add_library(Glaxnimate%(name_title)s OBJECT ${SOURCES})
-kde_target_enable_exceptions(Glaxnimate%(name_title)s PUBLIC)
+glaxnimate_enable_exceptions(Glaxnimate%(name_title)s PUBLIC)
 """.strip() % locals())
 
 

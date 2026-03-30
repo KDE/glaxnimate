@@ -149,7 +149,7 @@ set(SOURCES
 )
 
 add_library(GlaxnimateMyModule OBJECT ${SOURCES})
-kde_target_enable_exceptions(GlaxnimateMyModule PUBLIC)
+glaxnimate_enable_exceptions(GlaxnimateMyModule PUBLIC)
 ```
 
 it's important namings are kept as in these examples as the modules are loaded automatically.

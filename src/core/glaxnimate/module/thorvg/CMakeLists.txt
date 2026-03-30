@@ -6,4 +6,7 @@ set(SOURCES
 )
 
 add_library(GlaxnimateThorVG OBJECT ${SOURCES})
-kde_target_enable_exceptions(GlaxnimateThorVG PUBLIC)
+glaxnimate_enable_exceptions(GlaxnimateThorVG PUBLIC)
+
+add_subdirectory(../../../../../external/thorvg/ ${CMAKE_CURRENT_BINARY_DIR}/thorvg EXCLUDE_FROM_ALL)
+target_link_libraries(GlaxnimateThorVG PUBLIC thorvg)

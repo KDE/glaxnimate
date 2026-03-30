@@ -115,10 +115,14 @@ set(GLAXNIMATE_CORE_KDE ON)
 
 if ( GLAXNIMATE_CORE_MINIMAL )
     set(GLAXNIMATE_CORE_KDE OFF)
-
-    set(RENDERER_LIBRARIES thorvg)
 endif()
 
+
+function(glaxnimate_enable_exceptions TARGET)
+    if ( COMMAND KDE_TARGET_ENABLE_EXCEPTIONS )
+        kde_target_enable_exceptions(${TARGET} ${ARGN})
+    endif()
+endfunction()
 
 add_library(GlaxnimateCore STATIC)
 add_library(Glaxnimate::Core ALIAS GlaxnimateCore)
@@ -135,20 +139,16 @@ configure_file(
 if ( GLAXNIMATE_CORE_KDE )
     target_compile_definitions(GlaxnimateCoreBase PUBLIC -DGLAXNIMATE_CORE_KDE)
 
-    kde_target_enable_exceptions(GlaxnimateCoreBase PUBLIC)
     target_link_libraries(GlaxnimateCoreBase PUBLIC
         KF${KF_MAJOR}::CoreAddons
-        KF${KF_MAJOR}::Archive
         KF${KF_MAJOR}::I18n
     )
 else()
     message(STATUS "Building Glaxnimate core without KDE")
 endif()
 
-# Renderer
-add_subdirectory(../../external/thorvg/ ${CMAKE_CURRENT_BINARY_DIR}/thorvg EXCLUDE_FROM_ALL)
-set(RENDERER_LIBRARIES thorvg)
-target_link_libraries(GlaxnimateCoreBase PUBLIC ${RENDERER_LIBRARIES})
+glaxnimate_enable_exceptions(GlaxnimateCoreBase PUBLIC)
+
 
 # Common
 

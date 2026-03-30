@@ -278,6 +278,7 @@ target_link_libraries(
     KF${KF_MAJOR}::Completion
     KF${KF_MAJOR}::IconThemes
     KF${KF_MAJOR}::ConfigCore
+    KF${KF_MAJOR}::Archive
 )
 
 if(TARGET KF6::BreezeIcons)

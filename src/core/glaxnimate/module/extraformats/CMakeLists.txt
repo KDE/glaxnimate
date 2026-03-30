@@ -22,4 +22,4 @@ set(SOURCES
 )
 
 add_library(GlaxnimateExtraFormats OBJECT ${SOURCES})
-kde_target_enable_exceptions(GlaxnimateExtraFormats PUBLIC)
+glaxnimate_enable_exceptions(GlaxnimateExtraFormats PUBLIC)

@@ -19,7 +19,6 @@ set(GLAXNIMATE_CORE_MINIMAL ON)
 add_subdirectory(../core  ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 # Defining the target
-
 add_executable(glaxnimate_wasm wasm.cpp)
 target_link_libraries(glaxnimate_wasm Glaxnimate::Core)
 target_link_options(glaxnimate_wasm PRIVATE

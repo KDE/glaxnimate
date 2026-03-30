@@ -14,4 +14,4 @@ pkg_check_modules(CAIRO REQUIRED cairo)
 
 target_link_libraries(GlaxnimateCairo PUBLIC ${CAIRO_LIBRARIES})
 
-kde_target_enable_exceptions(GlaxnimateCairo PUBLIC)
+glaxnimate_enable_exceptions(GlaxnimateCairo PUBLIC)
