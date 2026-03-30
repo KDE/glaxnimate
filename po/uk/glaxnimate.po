@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-29 00:41+0000\n"
-"PO-Revision-Date: 2026-03-26 12:57+0200\n"
+"PO-Revision-Date: 2026-03-29 13:37+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -982,8 +982,7 @@ msgid "Stretch Time"
 msgstr "Розтягнути за часом"
 
 #: src/core/glaxnimate/command/clipboard.cpp:142
-#, fuzzy, kde-format
-#| msgid "Paste Keyframe"
+#, kde-format
 msgid "Paste keyframe"
 msgid_plural "Paste keyframes"
 msgstr[0] "Вставити ключовий кадр"
@@ -2151,10 +2150,9 @@ msgid "Transform"
 msgstr "Перетворення"
 
 #: src/core/glaxnimate/module/module.cpp:50
-#, fuzzy, kde-format
-#| msgid "Glaxnimate"
+#, kde-format
 msgid "Glaxnimate Core"
-msgstr "Glaxnimate"
+msgstr "Ядро Glaxnimate"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:73
 #, kde-format
@@ -2324,7 +2322,7 @@ msgstr "libav"
 #: src/core/glaxnimate/module/video/video_module.hpp:16
 #, kde-format
 msgid "Video Format Support"
-msgstr ""
+msgstr "Підтримка форматів відео"
 
 #: src/core/glaxnimate/script/register_impl.hpp:234
 #, kde-format
@@ -2806,10 +2804,9 @@ msgstr "Вирівняти і розподілити"
 
 #. i18n: ectx: Menu (menu_keyframe_type)
 #: src/gui/glaxnimateui.rc:180
-#, fuzzy, kde-format
-#| msgid "Set keyframe transition"
+#, kde-format
 msgid "Keyframe Transition"
-msgstr "Встановити перехід між ключовими кадрами"
+msgstr "Перехід між ключовими кадрами"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:221 src/gui/settings/plugin_settings_group.hpp:23
@@ -3845,8 +3842,7 @@ msgid "Warning"
 msgstr "Попередження"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:302
-#, fuzzy, kde-format
-#| msgid "Remove keyframe"
+#, kde-format
 msgid "Delete keyframe"
 msgid_plural "Delete keyframes"
 msgstr[0] "Вилучити ключовий кадр"
@@ -4237,10 +4233,9 @@ msgid "Flip View"
 msgstr "Перевернути перегляд"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
-#, fuzzy, kde-format
-#| msgid "Mask Mode"
+#, kde-format
 msgid "Focus Mode"
-msgstr "Режим маскування"
+msgstr "Режим фокусування"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
 #, kde-format
@@ -4449,10 +4444,9 @@ msgid "Custom..."
 msgstr "Нетиповий…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
-#, fuzzy, kde-format
-#| msgid "Set keyframe transition"
+#, kde-format
 msgid "Apply %1 keyframe transition"
-msgstr "Встановити перехід між ключовими кадрами"
+msgstr "Застосувати перехід між ключовими кадрами %1"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:855
 #, kde-format
@@ -4634,10 +4628,9 @@ msgid "Issues"
 msgstr "Вади"
 
 #: src/gui/widgets/dialogs/keyframe_editor_dialog.hpp:24
-#, fuzzy, kde-format
-#| msgid "Transition To Next"
+#, kde-format
 msgid "Transition Editor"
-msgstr "Перехід до наступного"
+msgstr "Редактор переходів"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ResizeDialog)
 #: src/gui/widgets/dialogs/resize_dialog.cpp:28
@@ -5742,7 +5735,7 @@ msgstr "Переглянути у LottieFiles…"
 #: src/gui/widgets/menus/animated_property_menu.cpp:51
 #, kde-format
 msgid "Repeat until composition ends"
-msgstr ""
+msgstr "Повторювати після завершення композиції"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:61
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
@@ -5753,7 +5746,7 @@ msgstr "Вставити ключовий кадр"
 #: src/gui/widgets/menus/animated_property_menu.cpp:62
 #, kde-format
 msgid "Perfect Loop"
-msgstr ""
+msgstr "Ідеальний цикл"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
@@ -5767,10 +5760,9 @@ msgid "Remove Keyframe"
 msgstr "Вилучити ключовий кадр"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:131
-#, fuzzy, kde-format
-#| msgid "Loop"
+#, kde-format
 msgid "Loop %1"
-msgstr "Цикл"
+msgstr "Цикл %1"
 
 #: src/gui/widgets/menus/node_menu.cpp:60
 #: src/gui/widgets/menus/node_menu.cpp:285
@@ -6037,12 +6029,12 @@ msgstr "Служби"
 #: src/gui/widgets/settings/settings_dialog.cpp:231
 #, kde-format
 msgid "Best Quality"
-msgstr ""
+msgstr "Найвища якість"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:232
 #, kde-format
 msgid "Reduced Size (Performance)"
-msgstr ""
+msgstr "Зменшений розмір (швидкодія)"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:234
 msgctxt "Settings"
@@ -6067,11 +6059,11 @@ msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Canvas Render Quality"
-msgstr ""
+msgstr "Якість обробки полотна"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Display quality within the app, does not affect exports"
-msgstr ""
+msgstr "Показувати якість у програмі — не впливає на експортовані дані"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 msgid "Icon Theme"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-29 00:41+0000\n"
-"PO-Revision-Date: 2026-03-26 11:21+0100\n"
+"PO-Revision-Date: 2026-03-29 08:45+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -987,12 +987,11 @@ msgid "Stretch Time"
 msgstr "Temps d'estirament"
 
 #: src/core/glaxnimate/command/clipboard.cpp:142
-#, fuzzy, kde-format
-#| msgid "Paste Keyframe"
+#, kde-format
 msgid "Paste keyframe"
 msgid_plural "Paste keyframes"
 msgstr[0] "Apega un fotograma clau"
-msgstr[1] "Apega un fotograma clau"
+msgstr[1] "Apega fotogrames clau"
 
 #: src/core/glaxnimate/command/object_list_commands.hpp:26
 #, kde-format
@@ -2154,10 +2153,9 @@ msgid "Transform"
 msgstr "Transforma"
 
 #: src/core/glaxnimate/module/module.cpp:50
-#, fuzzy, kde-format
-#| msgid "Glaxnimate"
+#, kde-format
 msgid "Glaxnimate Core"
-msgstr "Glaxnimate"
+msgstr "Nucli de Glaxnimate"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:73
 #, kde-format
@@ -2330,7 +2328,7 @@ msgstr "libav"
 #: src/core/glaxnimate/module/video/video_module.hpp:16
 #, kde-format
 msgid "Video Format Support"
-msgstr ""
+msgstr "Implementació de formats de vídeo"
 
 #: src/core/glaxnimate/script/register_impl.hpp:234
 #, kde-format
@@ -2810,10 +2808,9 @@ msgstr "Alinea i distribuïx"
 
 #. i18n: ectx: Menu (menu_keyframe_type)
 #: src/gui/glaxnimateui.rc:180
-#, fuzzy, kde-format
-#| msgid "Set keyframe transition"
+#, kde-format
 msgid "Keyframe Transition"
-msgstr "Establix la transició dels fotogrames clau"
+msgstr "Transició de fotogrames clau"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:221 src/gui/settings/plugin_settings_group.hpp:23
@@ -3848,12 +3845,11 @@ msgid "Warning"
 msgstr "Avís"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:302
-#, fuzzy, kde-format
-#| msgid "Remove keyframe"
+#, kde-format
 msgid "Delete keyframe"
 msgid_plural "Delete keyframes"
-msgstr[0] "Elimina el fotograma clau"
-msgstr[1] "Elimina el fotograma clau"
+msgstr[0] "Suprimix el fotograma clau"
+msgstr[1] "Suprimix els fotogrames clau"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:139
 #, kde-format
@@ -4236,10 +4232,9 @@ msgid "Flip View"
 msgstr "Capgira la vista"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
-#, fuzzy, kde-format
-#| msgid "Mask Mode"
+#, kde-format
 msgid "Focus Mode"
-msgstr "Mode de màscara"
+msgstr "Mode del focus"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
 #, kde-format
@@ -4448,10 +4443,9 @@ msgid "Custom..."
 msgstr "Personalitzat…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
-#, fuzzy, kde-format
-#| msgid "Set keyframe transition"
+#, kde-format
 msgid "Apply %1 keyframe transition"
-msgstr "Establix la transició dels fotogrames clau"
+msgstr "Aplica la transició %1 dels fotogrames clau"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:855
 #, kde-format
@@ -4633,10 +4627,9 @@ msgid "Issues"
 msgstr "Problemes"
 
 #: src/gui/widgets/dialogs/keyframe_editor_dialog.hpp:24
-#, fuzzy, kde-format
-#| msgid "Transition To Next"
+#, kde-format
 msgid "Transition Editor"
-msgstr "Transició al següent"
+msgstr "Editor de transicions"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ResizeDialog)
 #: src/gui/widgets/dialogs/resize_dialog.cpp:28
@@ -5741,7 +5734,7 @@ msgstr "Visualitza en LottieFiles…"
 #: src/gui/widgets/menus/animated_property_menu.cpp:51
 #, kde-format
 msgid "Repeat until composition ends"
-msgstr ""
+msgstr "Repetix fins a que acabe la composició"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:61
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
@@ -5752,7 +5745,7 @@ msgstr "Apega un fotograma clau"
 #: src/gui/widgets/menus/animated_property_menu.cpp:62
 #, kde-format
 msgid "Perfect Loop"
-msgstr ""
+msgstr "Bucle perfecte"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
@@ -5766,10 +5759,9 @@ msgid "Remove Keyframe"
 msgstr "Elimina el fotograma clau"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:131
-#, fuzzy, kde-format
-#| msgid "Loop"
+#, kde-format
 msgid "Loop %1"
-msgstr "Bucle"
+msgstr "Bucle %1"
 
 #: src/gui/widgets/menus/node_menu.cpp:60
 #: src/gui/widgets/menus/node_menu.cpp:285
@@ -6036,12 +6028,12 @@ msgstr "Serveis"
 #: src/gui/widgets/settings/settings_dialog.cpp:231
 #, kde-format
 msgid "Best Quality"
-msgstr ""
+msgstr "Millor qualitat"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:232
 #, kde-format
 msgid "Reduced Size (Performance)"
-msgstr ""
+msgstr "Mida reduïda (Rendiment)"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:234
 msgctxt "Settings"
@@ -6066,11 +6058,11 @@ msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Canvas Render Quality"
-msgstr ""
+msgstr "Qualitat de renderització del llenç"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Display quality within the app, does not affect exports"
-msgstr ""
+msgstr "Qualitat de visualització en l'aplicació, no afecta l'exportació"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 msgid "Icon Theme"
@@ -6822,10 +6814,3 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "Traçat %1"
-
-#~ msgid "Loop Animation"
-#~ msgstr "Animació en bucle"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Edit"
-#~ msgstr "Edita"
