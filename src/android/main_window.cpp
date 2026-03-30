@@ -20,7 +20,7 @@
 #include "glaxnimate/model/shapes/composable/precomp_layer.hpp"
 
 #include "glaxnimate/io/glaxnimate/glaxnimate_format.hpp"
-#include "glaxnimate/io/lottie/tgs_format.hpp"
+#include "glaxnimate/module/gzip/tgs_format.hpp"
 
 #include "glaxnimate/command/undo_macro_guard.hpp"
 #include "glaxnimate/command/structure_commands.hpp"
