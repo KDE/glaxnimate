@@ -15,7 +15,7 @@
 #include <QStandardPaths>
 #include <QPointer>
 
-#include "glaxnimate/io/lottie/tgs_format.hpp"
+#include "glaxnimate/module/gzip/tgs_format.hpp"
 #include "glaxnimate/io/glaxnimate/glaxnimate_format.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
 
