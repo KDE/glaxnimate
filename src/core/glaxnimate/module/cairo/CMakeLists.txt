@@ -8,13 +8,6 @@ set(SOURCES
 )
 
 add_library(GlaxnimateCairo OBJECT ${SOURCES})
-add_library(Glaxnimate::Cairo ALIAS GlaxnimateCairo)
-
-
-# target_link_libraries(
-#     GlaxnimateCairo PUBLIC
-#     Glaxnimate::Core
-# )
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(CAIRO REQUIRED cairo)

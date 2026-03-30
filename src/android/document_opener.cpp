@@ -9,7 +9,7 @@
 #include <QMessageBox>
 
 #include "glaxnimate/io/glaxnimate/glaxnimate_format.hpp"
-#include "glaxnimate/utils/gzip.hpp"
+#include "glaxnimate/module/gzip/gzip.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
 #include "glaxnimate/model/shapes/composable/image.hpp"
 
@@ -145,11 +145,11 @@ std::unique_ptr<glaxnimate::model::Document> glaxnimate::android::DocumentOpener
     bool zipped = false;
     if ( !options.format )
     {
-        zipped = utils::gzip::is_compressed(data);
+        zipped = gzip::is_compressed(data);
         if ( zipped )
         {
             QByteArray out;
-            if ( !utils::gzip::decompress(data, out, {}) )
+            if ( !gzip::decompress(data, out, {}) )
             {
                 QMessageBox::warning(d->widget_parent, i18n("Open File"), i18n("Could not unzip the file"));
                 return {};

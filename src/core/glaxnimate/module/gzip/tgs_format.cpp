@@ -4,11 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "glaxnimate/io/lottie/tgs_format.hpp"
-
-#include <set>
-
-#include <KCompressionDevice>
+#include "tgs_format.hpp"
 
 #include "glaxnimate/io/lottie/cbor_write_json.hpp"
 #include "glaxnimate/model/shapes/shapes/polystar.hpp"
@@ -19,6 +15,7 @@
 #include "glaxnimate/model/shapes/modifiers/offset_path.hpp"
 #include "glaxnimate/model/shapes/modifiers/zig_zag.hpp"
 #include "glaxnimate/io/lottie/validation.hpp"
+#include "glaxnimate/module/gzip/gzip.hpp"
 
 
 using namespace glaxnimate;
@@ -26,7 +23,7 @@ using namespace glaxnimate::io::lottie;
 
 namespace {
 
-class TgsVisitor : public ValidationVisitor
+class TgsVisitor : public glaxnimate::io::lottie::ValidationVisitor
 {
 
 public:
@@ -58,7 +55,7 @@ private:
         else if ( auto layer = qobject_cast<model::Layer*>(node) )
         {
             if ( layer->mask->has_mask() )
-                show_error(node, i18n("Masks are not supported"), log::Error);
+                show_error(node, i18n("Masks are not officially supported"), log::Error);
         }
         else if ( qobject_cast<model::Repeater*>(node) )
         {
@@ -83,27 +80,26 @@ private:
 
 bool glaxnimate::io::lottie::TgsFormat::on_open(QIODevice& file, const QString&, model::Document* document, const QVariantMap&)
 {
-    KCompressionDevice compressed(&file, false, KCompressionDevice::GZip);
-    compressed.open(QIODevice::ReadOnly);
-    QByteArray json = compressed.readAll();
+    QByteArray json;
+    if ( !gzip::decompress(file, json, [this](const QString& s){ error(s); }) )
+        return false;
     return load_json(json, document);
 }
 
 bool glaxnimate::io::lottie::TgsFormat::on_save(QIODevice& file, const QString&, model::Composition* comp, const QVariantMap&)
 {
+    QVariantMap settings;
+    settings[QStringLiteral("duplicate_masks")] = true;
+
     validate(comp->document(), comp);
 
-    QCborMap json = LottieFormat::to_json(comp, true, true);
+    QCborMap json = LottieFormat::to_json(comp, true, true, settings);
     json[QLatin1String("tgs")] = 1;
     QByteArray data = cbor_write_json(json, true);
 
-    {
-        KCompressionDevice compressed(&file, false, KCompressionDevice::GZip);
-        compressed.open(QIODevice::WriteOnly);
-        compressed.write(data);
-    }
-
-    quint32 compressed_size = file.pos();
+    quint32 compressed_size = 0;
+    if ( !gzip::compress(data, file, [this](const QString& s){ error(s); }, 9, &compressed_size) )
+        return false;
 
     qreal size_k = compressed_size / 1024.0;
     if ( size_k > 64 )

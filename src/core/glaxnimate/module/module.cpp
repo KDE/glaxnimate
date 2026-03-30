@@ -16,10 +16,6 @@
 #include "glaxnimate/io/mime/json_mime.hpp"
 #include "glaxnimate/io/lottie/lottie_format.hpp"
 
-#ifdef GLAXNIMATE_CORE_KDE
-#   include "glaxnimate/io/lottie/tgs_format.hpp"
-#endif
-
 // Raster
 #include "glaxnimate/io/raster/raster_format.hpp"
 #include "glaxnimate/io/raster/raster_mime.hpp"
@@ -78,12 +74,6 @@ protected:
             svg::SvgFormat,
             svg::SvgMime
         >();
-
-#ifdef GLAXNIMATE_CORE_KDE
-        register_io_classes<
-            lottie::TgsFormat
-        >();
-#endif
 
         // Raster after video for precedence
         register_io_classes<

@@ -118,7 +118,7 @@ glaxnimate/renderer/renderer.cpp
 
 glaxnimate/settings/settings_group.cpp
 
-glaxnimate/utils/gzip.cpp
+
 glaxnimate/utils/data_paths.cpp
 glaxnimate/module/module.cpp
 )
@@ -136,6 +136,9 @@ endif()
 add_library(GlaxnimateCore STATIC)
 add_library(Glaxnimate::Core ALIAS GlaxnimateCore)
 
+add_library(GlaxnimateCoreBase OBJECT)
+target_link_libraries(GlaxnimateCore PUBLIC GlaxnimateCoreBase)
+
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/glaxnimate/application_info_generated.in.hpp
     ${CMAKE_CURRENT_BINARY_DIR}/glaxnimate/application_info_generated.hpp
@@ -143,13 +146,10 @@ configure_file(
 
 # KDE provides gzip support
 if ( GLAXNIMATE_CORE_KDE )
-    list(APPEND SOURCES
-        glaxnimate/io/lottie/tgs_format.cpp
-    )
-    target_compile_definitions(GlaxnimateCore PUBLIC -DGLAXNIMATE_CORE_KDE)
+    target_compile_definitions(GlaxnimateCoreBase PUBLIC -DGLAXNIMATE_CORE_KDE)
 
-    kde_target_enable_exceptions(GlaxnimateCore PUBLIC)
-    target_link_libraries(GlaxnimateCore PUBLIC
+    kde_target_enable_exceptions(GlaxnimateCoreBase PUBLIC)
+    target_link_libraries(GlaxnimateCoreBase PUBLIC
         KF${KF_MAJOR}::CoreAddons
         KF${KF_MAJOR}::Archive
         KF${KF_MAJOR}::I18n
@@ -161,37 +161,43 @@ endif()
 # Renderer
 add_subdirectory(../../external/thorvg/ ${CMAKE_CURRENT_BINARY_DIR}/thorvg EXCLUDE_FROM_ALL)
 set(RENDERER_LIBRARIES thorvg)
-target_link_libraries(GlaxnimateCore PUBLIC ${RENDERER_LIBRARIES})
+target_link_libraries(GlaxnimateCoreBase PUBLIC ${RENDERER_LIBRARIES})
 
 # Common
 
-target_include_directories(GlaxnimateCore PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_include_directories(GlaxnimateCore PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(GlaxnimateCoreBase PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(GlaxnimateCoreBase PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 
-target_link_libraries(GlaxnimateCore PUBLIC
+target_link_libraries(GlaxnimateCoreBase PUBLIC
     Qt${QT_MAJOR_VERSION}::Core
     Qt${QT_MAJOR_VERSION}::Gui # Needed for QColor / QUndoCommand
     Qt${QT_MAJOR_VERSION}::Xml
     Qt${QT_MAJOR_VERSION}::Network
     ${Potrace_LIBRARIES}
 )
-set_property(TARGET GlaxnimateCore APPEND PROPERTY AUTOMOC_MACRO_NAMES "GLAXNIMATE_OBJECT")
-target_include_directories(GlaxnimateCore PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
+set_property(TARGET GlaxnimateCoreBase APPEND PROPERTY AUTOMOC_MACRO_NAMES "GLAXNIMATE_OBJECT")
+target_include_directories(GlaxnimateCoreBase PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 
 
-target_sources(GlaxnimateCore PRIVATE ${SOURCES})
+target_sources(GlaxnimateCoreBase PRIVATE ${SOURCES})
 
 # Modules
 set(GLAXNIMATE_MODULES_)
 
-macro(glaxnimate_module NAME DESCRIPTION DEFAULT)
-    string(TOUPPER ${NAME} MODULE_UPPER)
-    string(TOLOWER ${NAME} MODULE_LOWER)
+macro(glaxnimate_module MODULE DESCRIPTION DEFAULT)
+    string(TOUPPER ${MODULE} MODULE_UPPER)
+    string(TOLOWER ${MODULE} MODULE_LOWER)
     option(GLAXNIMATE_${MODULE_UPPER}_ENABLED ${DESCRIPTION} ${EXTRA_DEFAULT})
 
     if ( GLAXNIMATE_${MODULE_UPPER}_ENABLED )
         add_subdirectory(glaxnimate/module/${MODULE_LOWER})
-        list(APPEND GLAXNIMATE_MODULES_ ${NAME})
+        target_link_libraries(Glaxnimate${MODULE} PUBLIC
+            Qt${QT_MAJOR_VERSION}::Core
+            Qt${QT_MAJOR_VERSION}::Gui
+            Qt${QT_MAJOR_VERSION}::Network
+            GlaxnimateCoreBase
+        )
+        list(APPEND GLAXNIMATE_MODULES_ ${MODULE})
     endif()
 endmacro()
 
@@ -199,9 +205,11 @@ if ( NOT DEFINED EXTRA_DEFAULT )
     set(EXTRA_DEFAULT OFF)
 endif()
 
+glaxnimate_module("Gzip" "Support for gzip-compressed formats" ON)
 glaxnimate_module("Video" "Support for video format I/O" ${EXTRA_DEFAULT})
 glaxnimate_module("Cairo" "Support for format I/O using cairo" OFF)
 
+set(GLAXNIMATE_MODULES ${GLAXNIMATE_MODULES_} PARENT_SCOPE)
 message(STATUS "Core Modules Enabled:")
 set(GLAXNIMATE_MODULES_INCLUDES)
 set(GLAXNIMATE_MODULES_REGISTER)
@@ -210,10 +218,6 @@ foreach(MODULE ${GLAXNIMATE_MODULES_})
     string(TOLOWER ${MODULE} MODULE_LOWER)
     string(CONCAT GLAXNIMATE_MODULES_INCLUDES ${GLAXNIMATE_MODULES_INCLUDES} "#include \"glaxnimate/module/${MODULE_LOWER}/${MODULE_LOWER}_module.hpp\"\n")
     string(CONCAT GLAXNIMATE_MODULES_REGISTER "${GLAXNIMATE_MODULES_REGISTER}registry.install<glaxnimate::${MODULE_LOWER}::Module>();\n")
-    target_link_libraries(Glaxnimate${MODULE} PUBLIC
-        Qt${QT_MAJOR_VERSION}::Core
-        Qt${QT_MAJOR_VERSION}::Gui
-    )
     target_link_libraries(GlaxnimateCore PUBLIC Glaxnimate${MODULE})
 endforeach()
 configure_file(

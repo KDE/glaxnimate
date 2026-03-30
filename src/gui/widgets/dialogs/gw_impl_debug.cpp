@@ -19,7 +19,7 @@
 #include "glaxnimate/io/glaxnimate/glaxnimate_format.hpp"
 #include "glaxnimate/io/rive/rive_format.hpp"
 #include "glaxnimate/io/lottie/lottie_format.hpp"
-#include "glaxnimate/utils/gzip.hpp"
+#include "glaxnimate/module/gzip/gzip.hpp"
 #include "glaxnimate/model/custom_font.hpp"
 #include "glaxnimate/renderer/renderer.hpp"
 
@@ -327,18 +327,22 @@ void GlaxnimateWindow::Private::init_debug()
         else if ( fmt->slug() == "tgs" )
         {
             QByteArray decomp;
-            utils::gzip::decompress(data, decomp, {});
+            gzip::decompress(data, decomp, {});
             open_file(pretty_json(decomp));
         }
-        else if ( fmt->slug() == "svg" )
+        else if ( fmt->slug() == "svgz" )
         {
-            if ( utils::gzip::is_compressed(data) )
+            if ( gzip::is_compressed(data) )
             {
                 QByteArray decomp;
-                utils::gzip::decompress(data, decomp, {});
+                gzip::decompress(data, decomp, {});
                 data = std::move(decomp);
             }
 
+            open_file(pretty_xml(data));
+        }
+        else if ( fmt->slug() == "svg" || fmt->slug() == "avd" )
+        {
             open_file(pretty_xml(data));
         }
         else if ( fmt->slug() == "rive" )

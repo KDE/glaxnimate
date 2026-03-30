@@ -171,6 +171,8 @@ class BaseProperty
 
 public:
     BaseProperty(Object* object, const utils::LazyLocalizedString& name, PropertyTraits traits);
+    BaseProperty(const BaseProperty&) = delete;
+    BaseProperty& operator=(const BaseProperty&) = delete;
 
     virtual ~BaseProperty() = default;
 
