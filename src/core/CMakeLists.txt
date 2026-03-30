@@ -140,7 +140,6 @@ if ( GLAXNIMATE_CORE_KDE )
     target_compile_definitions(GlaxnimateCoreBase PUBLIC -DGLAXNIMATE_CORE_KDE)
 
     target_link_libraries(GlaxnimateCoreBase PUBLIC
-        KF${KF_MAJOR}::CoreAddons
         KF${KF_MAJOR}::I18n
     )
 else()
@@ -179,9 +178,6 @@ macro(glaxnimate_module MODULE DESCRIPTION DEFAULT)
     if ( GLAXNIMATE_${MODULE_UPPER}_ENABLED )
         add_subdirectory(glaxnimate/module/${MODULE_LOWER})
         target_link_libraries(Glaxnimate${MODULE} PUBLIC
-            Qt${QT_MAJOR_VERSION}::Core
-            Qt${QT_MAJOR_VERSION}::Gui
-            Qt${QT_MAJOR_VERSION}::Network
             GlaxnimateCoreBase
         )
         list(APPEND GLAXNIMATE_MODULES_ ${MODULE})
