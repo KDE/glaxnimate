@@ -72,7 +72,7 @@ QImage glaxnimate::model::Composition::render_image(float time, QSize image_size
     else
         image.fill(background);
 
-    auto renderer = renderer::default_renderer(10);
+    auto renderer = renderer::RendererRegistry::instance().default_renderer(10);
     renderer->set_image_surface(&image);
     renderer->render_start();
     renderer->scale(

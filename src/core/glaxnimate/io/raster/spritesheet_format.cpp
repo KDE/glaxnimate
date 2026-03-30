@@ -59,7 +59,7 @@ bool glaxnimate::io::raster::SpritesheetFormat::on_save(QIODevice& file, const Q
     QImage bmp(frame_w * columns, frame_h * rows, QImage::Format_ARGB32);
     bmp.fill(Qt::transparent);
 
-    auto renderer = renderer::default_renderer(10);
+    auto renderer = renderer::RendererRegistry::instance().default_renderer(10);
     renderer->set_image_surface(&bmp);
     renderer->render_start();
     for ( int i = first_frame; i <= last_frame; i += frame_step )

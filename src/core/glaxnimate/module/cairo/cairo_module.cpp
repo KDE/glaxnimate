@@ -15,12 +15,12 @@
 std::vector<glaxnimate::module::ExternalComponent> glaxnimate::cairo::Module::components() const
 {
     return {
-        {i18n("cairo"), {}, cairo_version_string(), QStringLiteral("https://www.cairographics.org/"), "LGPL"}
+        {QStringLiteral("cairo"), {}, cairo_version_string(), QStringLiteral("https://www.cairographics.org/"), "LGPL"}
     };
 }
 
 void glaxnimate::cairo::Module::initialize()
 {
     register_io_classes<PostScriptFormat, PdfFormat>();
-    renderer::Renderer::register_factory(QStringLiteral("Cairo"), [](int q){ return std::make_unique<CairoRenderer>(q); });
+    renderer::RendererRegistry::instance().register_factory(QStringLiteral("Cairo"), [](int q){ return std::make_unique<CairoRenderer>(q); });
 }

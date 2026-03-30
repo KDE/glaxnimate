@@ -15,10 +15,10 @@
 std::vector<glaxnimate::module::ExternalComponent> glaxnimate::video::Module::components() const
 {
     return {
-        {i18n("avutil"), {}, LIBAVUTIL_IDENT, QStringLiteral("https://libav.org/"), "LGPL"},
-        {i18n("avformat"), {}, LIBAVFORMAT_IDENT, QStringLiteral("https://libav.org/"), "LGPL"},
-        {i18n("avcodec"), {}, LIBAVCODEC_IDENT, QStringLiteral("https://libav.org/"), "LGPL"},
-        {i18n("swscale"), {}, LIBSWSCALE_IDENT, QStringLiteral("https://libav.org/"), "LGPL"},
+        {QStringLiteral("avutil"), {}, LIBAVUTIL_IDENT, QStringLiteral("https://libav.org/"), "LGPL"},
+        {QStringLiteral("avformat"), {}, LIBAVFORMAT_IDENT, QStringLiteral("https://libav.org/"), "LGPL"},
+        {QStringLiteral("avcodec"), {}, LIBAVCODEC_IDENT, QStringLiteral("https://libav.org/"), "LGPL"},
+        {QStringLiteral("swscale"), {}, LIBSWSCALE_IDENT, QStringLiteral("https://libav.org/"), "LGPL"},
 
     };
 }

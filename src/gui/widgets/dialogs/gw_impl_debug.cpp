@@ -371,7 +371,7 @@ void GlaxnimateWindow::Private::init_debug()
 
     // Rendering
     QMenu* menu_renderer = menu_debug->addMenu("Renderer");
-    for ( const auto& p : renderer::Renderer::factory_registry() )
+    for ( const auto& p : renderer::RendererRegistry::instance().factories() )
         menu_renderer->addAction(p.first, [this, &p]{
             render_widget.set_renderer(p.second(GlaxnimateSettings::render_quality()));
         });

@@ -12,7 +12,7 @@
 
 std::vector<glaxnimate::module::ExternalComponent> glaxnimate::gzip::Module::components() const
 {
-    return {{i18n("zlib"), {}, ZLIB_VERSION, QStringLiteral("https://zlib.net/"), "Custom"}};
+    return {{QStringLiteral("zlib"), {}, ZLIB_VERSION, QStringLiteral("https://zlib.net/"), "Custom"}};
 }
 
 void glaxnimate::gzip::Module::initialize()

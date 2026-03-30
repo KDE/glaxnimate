@@ -11,20 +11,20 @@
 #include "glaxnimate/renderer/renderer.hpp"
 
 
-namespace glaxnimate::renderer {
+namespace glaxnimate::thorvg {
 
 /**
  * \brief Renderer that uses ThorVG
  */
-class ThorvgRenderer : public Renderer
+class ThorvgRenderer : public renderer::Renderer
 {
 private:
-    Fill fill;
-    Stroke stroke;
-    int mode = ShapeMode::NothingMode;
+    renderer::Fill fill;
+    renderer::Stroke stroke;
+    int mode = renderer::ShapeMode::NothingMode;
     int mask_flags = 0;
     int effect_quality;
-    BlendMode blend_mode = BlendMode::Normal;
+    // BlendMode blend_mode = BlendMode::Normal;
 
     std::unique_ptr<tvg::Canvas> canvas;
     std::vector<tvg::Scene*> layers;
@@ -183,7 +183,7 @@ public:
 
     int supported_surfaces() const override
     {
-        return SurfaceType::OpenGL;
+        return renderer::SurfaceType::OpenGL;
     }
 
     void set_image_surface(QImage * destination) override
@@ -236,16 +236,16 @@ public:
         mask_flags = 0;
     }
 
-    void set_fill(const Fill & fill) override
+    void set_fill(const renderer::Fill & fill) override
     {
         this->fill = fill;
-        mode |= FillMode;
+        mode |= renderer::FillMode;
     }
 
-    void set_stroke(const Stroke & stroke) override
+    void set_stroke(const renderer::Stroke & stroke) override
     {
         this->stroke = stroke;
-        mode |= StrokeMode;
+        mode |= renderer::StrokeMode;
     }
 
     void fill_rect(const QRectF & rect, const QBrush & brush) override
@@ -274,7 +274,7 @@ public:
         auto shape = tvg::Shape::gen();
         draw_path(path, shape);
 
-        if ( mode & FillMode )
+        if ( mode & renderer::FillMode )
         {
             if ( auto tfill = make_fill(fill.brush, fill.opacity) )
             {
@@ -293,7 +293,7 @@ public:
             shape->fillRule(fill.rule == Qt::OddEvenFill ? tvg::FillRule::EvenOdd : tvg::FillRule::NonZero);
         }
 
-        if ( mode & StrokeMode )
+        if ( mode & renderer::StrokeMode )
         {
             if ( auto tfill = make_fill(stroke.pen.brush(), stroke.opacity) )
             {
@@ -336,7 +336,7 @@ public:
         {
             // Bit of a hack and very slow but should be fine for now
             auto rect = path.bounding_box();
-            if ( mode & StrokeMode )
+            if ( mode & renderer::StrokeMode )
             {
                 auto margin = stroke.pen.width() / 2;
                 rect.adjust(-margin, -margin, margin, margin);
@@ -364,7 +364,7 @@ public:
             layers.back()->add(shape);
         }
 
-        mode = NothingMode;
+        mode = renderer::NothingMode;
     }
 
 
@@ -454,8 +454,8 @@ public:
         if ( !mask_flags )
             return;
         tvg::MaskMethod method = tvg::MaskMethod::None;
-        bool inverted = mask_flags & MaskFlags::MaskInverted;
-        if ( mask_flags & MaskFlags::MaskSourceLuma )
+        bool inverted = mask_flags & renderer::MaskFlags::MaskInverted;
+        if ( mask_flags & renderer::MaskFlags::MaskSourceLuma )
             method = inverted ? tvg::MaskMethod::InvLuma : tvg::MaskMethod::Luma;
         else
             method = inverted ? tvg::MaskMethod::InvAlpha : tvg::MaskMethod::Alpha;
@@ -463,7 +463,7 @@ public:
         mask_flags = 0;
     }
 
-    void set_blend_mode(BlendMode mode) override
+    void set_blend_mode(renderer::BlendMode mode) override
     {
         layers.back()->blend(tvg::BlendMethod(mode));
     }

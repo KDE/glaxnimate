@@ -227,7 +227,7 @@ using OpenGlRenderWidget = BasicRenderWidget;
 void glaxnimate::gui::RenderWidget::Private::init_renderer(QWidget* parent)
 {
     // TODO setting for the render quality
-    renderer = renderer::default_renderer(GlaxnimateSettings::render_quality());
+    renderer = renderer::RendererRegistry::instance().default_renderer(GlaxnimateSettings::render_quality());
 
     if ( renderer->supports_surface(renderer::OpenGL) )
     {

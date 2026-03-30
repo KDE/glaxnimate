@@ -62,7 +62,7 @@ public:
         QImage image(box.size().toSize(), QImage::Format_ARGB32);
         image.fill(Qt::transparent);
 
-        auto renderer = renderer::default_renderer(10);
+        auto renderer = renderer::RendererRegistry::instance().default_renderer(10);
         renderer->set_image_surface(&image);
         renderer->render_start();
         renderer->translate(-box.left(), -box.top());
@@ -81,7 +81,7 @@ public:
 
         QImage image(node->local_bounding_rect(time).size().toSize(), QImage::Format_ARGB32);
         image.fill(Qt::transparent);
-        auto renderer = renderer::default_renderer(10);
+        auto renderer = renderer::RendererRegistry::instance().default_renderer(10);
         renderer->set_image_surface(&image);
         renderer->render_start();
         node->paint(renderer.get(), time, model::VisualNode::Render);

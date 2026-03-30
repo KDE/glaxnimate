@@ -205,6 +205,7 @@ if ( NOT DEFINED EXTRA_DEFAULT )
     set(EXTRA_DEFAULT OFF)
 endif()
 
+glaxnimate_module("ThorVG" "Default renderer" ON)
 glaxnimate_module("Gzip" "Support for gzip-compressed formats" ON)
 glaxnimate_module("Video" "Support for video format I/O" ${EXTRA_DEFAULT})
 glaxnimate_module("Cairo" "Support for format I/O using cairo" OFF)
