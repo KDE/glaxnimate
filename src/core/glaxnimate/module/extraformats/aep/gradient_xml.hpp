@@ -8,8 +8,8 @@
 #include <QDomDocument>
 #include <QGradientStops>
 
-#include "glaxnimate/io/aep/cos.hpp"
-#include "glaxnimate/io/aep/ae_project.hpp"
+#include "glaxnimate/module/extraformats/aep/cos.hpp"
+#include "glaxnimate/module/extraformats/aep/ae_project.hpp"
 
 namespace glaxnimate::io::aep {
 

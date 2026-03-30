@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "glaxnimate/io/rive/rive_loader.hpp"
+#include "glaxnimate/module/extraformats/rive/rive_loader.hpp"
 
 #include "glaxnimate/io/animated_properties.hpp"
 #include "glaxnimate/model/assets/assets.hpp"

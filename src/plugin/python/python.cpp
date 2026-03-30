@@ -17,7 +17,7 @@
 #include "glaxnimate/io/raster/raster_mime.hpp"
 #include "glaxnimate/io/svg/svg_format.hpp"
 #include "glaxnimate/io/svg/svg_renderer.hpp"
-#include "glaxnimate/io/rive/rive_format.hpp"
+#include "glaxnimate/module/extraformats/rive/rive_format.hpp"
 
 #include "glaxnimate/script/glaxnimate_model.hpp"
 

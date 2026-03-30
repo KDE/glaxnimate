@@ -5,7 +5,7 @@
  */
 #pragma once
 
-#include "glaxnimate/io/aep/riff.hpp"
+#include "glaxnimate/module/extraformats/aep/riff.hpp"
 
 namespace glaxnimate::io::aep {
 

@@ -3,10 +3,10 @@
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
-#include "glaxnimate/io/aep/aep_format.hpp"
-#include "glaxnimate/io/aep/aep_parser.hpp"
-#include "glaxnimate/io/aep/aep_loader.hpp"
-#include "glaxnimate/io/aep/aepx.hpp"
+#include "glaxnimate/module/extraformats/aep/aep_format.hpp"
+#include "glaxnimate/module/extraformats/aep/aep_parser.hpp"
+#include "glaxnimate/module/extraformats/aep/aep_loader.hpp"
+#include "glaxnimate/module/extraformats/aep/aepx.hpp"
 
 bool glaxnimate::io::aep::AepFormat::riff_to_document(const RiffChunk& chunk, model::Document* document, const QString& filename)
 {

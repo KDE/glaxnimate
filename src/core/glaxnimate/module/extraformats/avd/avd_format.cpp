@@ -4,11 +4,11 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "glaxnimate/io/avd/avd_format.hpp"
+#include "glaxnimate/module/extraformats/avd/avd_format.hpp"
 
-#include "glaxnimate/io/avd/avd_parser.hpp"
+#include "glaxnimate/module/extraformats/avd/avd_parser.hpp"
 #include "glaxnimate/io/svg/parse_error.hpp"
-#include "glaxnimate/io/avd/avd_renderer.hpp"
+#include "glaxnimate/module/extraformats/avd/avd_renderer.hpp"
 
 
 bool glaxnimate::io::avd::AvdFormat::on_open(QIODevice& file, const QString& filename, model::Document* document, const QVariantMap& options)

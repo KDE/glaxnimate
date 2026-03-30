@@ -28,7 +28,7 @@
 #include "glaxnimate/io/raster/raster_mime.hpp"
 #include "glaxnimate/module/gzip/tgs_format.hpp"
 #include "glaxnimate/io/lottie/validation.hpp"
-#include "glaxnimate/io/rive/rive_html_format.hpp"
+#include "glaxnimate/module/extraformats/rive/rive_html_format.hpp"
 #include "glaxnimate/io/glaxnimate/glaxnimate_html_format.hpp"
 #include "plugin/io.hpp"
 

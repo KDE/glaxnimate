@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "glaxnimate/io/rive/rive_serializer.hpp"
+#include "glaxnimate/module/extraformats/rive/rive_serializer.hpp"
 #include <QColor>
 
 glaxnimate::io::rive::RiveSerializer::RiveSerializer(QIODevice* file)

@@ -5,9 +5,9 @@
  */
 #pragma once
 
-#include "glaxnimate/io/aep/ae_project.hpp"
+#include "glaxnimate/module/extraformats/aep/ae_project.hpp"
 #include "glaxnimate/model/document.hpp"
-#include "glaxnimate/io/aep/aep_format.hpp"
+#include "glaxnimate/module/extraformats/aep/aep_format.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
 
 namespace glaxnimate::io::aep {

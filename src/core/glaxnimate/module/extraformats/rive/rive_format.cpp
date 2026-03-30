@@ -4,14 +4,14 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "glaxnimate/io/rive/rive_format.hpp"
+#include "glaxnimate/module/extraformats/rive/rive_format.hpp"
 
 #include <QJsonArray>
 #include <QJsonObject>
 
 
-#include "glaxnimate/io/rive/rive_loader.hpp"
-#include "glaxnimate/io/rive/rive_exporter.hpp"
+#include "glaxnimate/module/extraformats/rive/rive_loader.hpp"
+#include "glaxnimate/module/extraformats/rive/rive_exporter.hpp"
 
 
 bool glaxnimate::io::rive::RiveFormat::on_open(QIODevice& file, const QString&, model::Document* document, const QVariantMap&)

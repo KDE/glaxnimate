@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
-#include "glaxnimate/io/aep/aep_loader.hpp"
+#include "glaxnimate/module/extraformats/aep/aep_loader.hpp"
 
 #include "glaxnimate/model/shapes/shapes/rect.hpp"
 #include "glaxnimate/model/shapes/shapes/ellipse.hpp"

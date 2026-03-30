@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "glaxnimate/io/avd/avd_renderer.hpp"
+#include "glaxnimate/module/extraformats/avd/avd_renderer.hpp"
 
 #include "glaxnimate/io/svg/detail.hpp"
 #include "glaxnimate/io/svg/svg_renderer.hpp"

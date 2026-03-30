@@ -14,7 +14,7 @@
 #include <QByteArray>
 #include <QString>
 
-#include "glaxnimate/io/aep/string_decoder.hpp"
+#include "glaxnimate/module/extraformats/aep/string_decoder.hpp"
 
 namespace glaxnimate::io::aep {
 

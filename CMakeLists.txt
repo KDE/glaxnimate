@@ -30,7 +30,7 @@ set(PROJECT_MANINTAINER_EMAIL "glanimate@mattbas.org")
 set(PROJECT_MANINTAINER "${PROJECT_MANINTAINER_NAME} <${PROJECT_MANINTAINER_EMAIL}>")
 set(PROJECT_COPYYEARS "2019-2026")
 
-option(MOBILE_UI "Build the mobile user interface" OFF)
+option(MOBILE_UI "Build the mobile user interface on desktop" OFF)
 
 add_definitions(-DTRANSLATION_DOMAIN=\"glaxnimate\")
 

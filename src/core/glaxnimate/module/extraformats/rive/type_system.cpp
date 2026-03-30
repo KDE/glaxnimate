@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "glaxnimate/io/rive/type_system.hpp"
+#include "glaxnimate/module/extraformats/rive/type_system.hpp"
 
 
 const glaxnimate::io::rive::ObjectDefinition * glaxnimate::io::rive::TypeSystem::get_definition(glaxnimate::io::rive::TypeId type_id)

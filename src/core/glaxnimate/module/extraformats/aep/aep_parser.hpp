@@ -8,11 +8,11 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
-#include "glaxnimate/io/aep/aep_riff.hpp"
-#include "glaxnimate/io/aep/ae_project.hpp"
-#include "glaxnimate/io/aep/cos.hpp"
-#include "glaxnimate/io/aep/gradient_xml.hpp"
-#include "glaxnimate/io/aep/aep_format.hpp"
+#include "glaxnimate/module/extraformats/aep/aep_riff.hpp"
+#include "glaxnimate/module/extraformats/aep/ae_project.hpp"
+#include "glaxnimate/module/extraformats/aep/cos.hpp"
+#include "glaxnimate/module/extraformats/aep/gradient_xml.hpp"
+#include "glaxnimate/module/extraformats/aep/aep_format.hpp"
 
 namespace glaxnimate::io::aep {
 

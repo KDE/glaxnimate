@@ -20,12 +20,7 @@
 #include "glaxnimate/io/raster/raster_mime.hpp"
 #include "glaxnimate/io/raster/spritesheet_format.hpp"
 
-// External formats, mostly experimental
-#include "glaxnimate/io/aep/aep_format.hpp"
-#include "glaxnimate/io/rive/rive_format.hpp"
-
 // SVG-like
-#include "glaxnimate/io/avd/avd_format.hpp"
 #include "glaxnimate/io/svg/svg_format.hpp"
 #include "glaxnimate/io/svg/svg_mime.hpp"
 
@@ -63,19 +58,11 @@ protected:
         default_format = io::IoRegistry::instance().register_class<io::glaxnimate::GlaxnimateFormat>();
 
         register_io_classes<
-            aep::AepFormat,
-            aep::AepxFormat,
-            avd::AvdFormat,
             io::glaxnimate::GlaxnimateMime,
             mime::JsonMime,
             lottie::LottieFormat,
-            rive::RiveFormat,
             svg::SvgFormat,
-            svg::SvgMime
-        >();
-
-        // Raster after video for precedence
-        register_io_classes<
+            svg::SvgMime,
             raster::RasterFormat,
             raster::RasterMime,
             raster::SpritesheetFormat

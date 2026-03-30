@@ -8,8 +8,8 @@
 
 #include "glaxnimate/io/binary_stream.hpp"
 
-#include "glaxnimate/io/rive/type_system.hpp"
-#include "glaxnimate/io/rive/rive_format.hpp"
+#include "glaxnimate/module/extraformats/rive/type_system.hpp"
+#include "glaxnimate/module/extraformats/rive/rive_format.hpp"
 
 namespace glaxnimate::io::rive {
 

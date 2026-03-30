@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "glaxnimate/io/rive/rive_html_format.hpp"
-#include "glaxnimate/io/rive/rive_exporter.hpp"
+#include "glaxnimate/module/extraformats/rive/rive_html_format.hpp"
+#include "glaxnimate/module/extraformats/rive/rive_exporter.hpp"
 #include "glaxnimate/io/lottie/lottie_html_format.hpp"
 
 

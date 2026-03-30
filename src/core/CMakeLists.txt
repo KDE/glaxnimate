@@ -24,23 +24,10 @@ glaxnimate/io/lottie/validation.cpp
 glaxnimate/io/mime/mime_serializer.cpp
 glaxnimate/io/raster/raster_format.cpp
 glaxnimate/io/raster/spritesheet_format.cpp
-glaxnimate/io/rive/rive_format.cpp
-glaxnimate/io/rive/rive_html_format.cpp
-glaxnimate/io/rive/rive_loader.cpp
-glaxnimate/io/rive/rive_serializer.cpp
-glaxnimate/io/rive/type_def.cpp
-glaxnimate/io/rive/type_system.cpp
 glaxnimate/io/svg/detail.cpp
 glaxnimate/io/svg/svg_format.cpp
 glaxnimate/io/svg/svg_parser.cpp
 glaxnimate/io/svg/svg_renderer.cpp
-glaxnimate/io/avd/avd_parser.cpp
-glaxnimate/io/avd/avd_format.cpp
-glaxnimate/io/avd/avd_renderer.cpp
-glaxnimate/io/aep/aep_format.cpp
-glaxnimate/io/aep/aep_loader.cpp
-glaxnimate/io/aep/string_decoder.cpp
-glaxnimate/io/aep/gradient_xml.cpp
 
 
 glaxnimate/log/logger.cpp
@@ -207,6 +194,7 @@ endif()
 
 glaxnimate_module("ThorVG" "Default renderer" ON)
 glaxnimate_module("Gzip" "Support for gzip-compressed formats" ON)
+glaxnimate_module("ExtraFormats" "Experimental file format support" ON)
 glaxnimate_module("Video" "Support for video format I/O" ${EXTRA_DEFAULT})
 glaxnimate_module("Cairo" "Support for format I/O using cairo" OFF)
 
@@ -226,4 +214,3 @@ configure_file(
     ${CMAKE_CURRENT_BINARY_DIR}/module_autoregister.cpp
 )
 target_sources(GlaxnimateCore PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/module_autoregister.cpp)
-

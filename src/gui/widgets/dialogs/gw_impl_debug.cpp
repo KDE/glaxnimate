@@ -17,7 +17,7 @@
 
 #include "glaxnimate/io/base.hpp"
 #include "glaxnimate/io/glaxnimate/glaxnimate_format.hpp"
-#include "glaxnimate/io/rive/rive_format.hpp"
+#include "glaxnimate/module/extraformats/rive/rive_format.hpp"
 #include "glaxnimate/io/lottie/lottie_format.hpp"
 #include "glaxnimate/module/gzip/gzip.hpp"
 #include "glaxnimate/model/custom_font.hpp"

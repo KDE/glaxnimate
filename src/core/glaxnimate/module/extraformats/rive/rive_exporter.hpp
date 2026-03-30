@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "glaxnimate/io/rive/rive_serializer.hpp"
+#include "glaxnimate/module/extraformats/rive/rive_serializer.hpp"
 
 #include "glaxnimate/model/document.hpp"
 #include "glaxnimate/model/assets/assets.hpp"
@@ -18,7 +18,7 @@
 #include "glaxnimate/model/shapes/shapes/path.hpp"
 #include "glaxnimate/model/shapes/style/fill.hpp"
 #include "glaxnimate/model/shapes/style/stroke.hpp"
-#include "glaxnimate/io/rive/rive_format.hpp"
+#include "glaxnimate/module/extraformats/rive/rive_format.hpp"
 
 namespace glaxnimate::io::rive {
 

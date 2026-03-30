@@ -8,7 +8,7 @@
 
 #include <vector>
 #include <cstring>
-#include "glaxnimate/io/aep/cos.hpp"
+#include "glaxnimate/module/extraformats/aep/cos.hpp"
 
 using namespace glaxnimate::io::aep;
 

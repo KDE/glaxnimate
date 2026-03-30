@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
-#include "glaxnimate/io/aep/gradient_xml.hpp"
+#include "glaxnimate/module/extraformats/aep/gradient_xml.hpp"
 
 #include "glaxnimate/io/svg/detail.hpp"
 

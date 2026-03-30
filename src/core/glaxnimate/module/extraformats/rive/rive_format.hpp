@@ -8,7 +8,6 @@
 
 #include <QJsonDocument>
 #include "glaxnimate/io/base.hpp"
-#include "glaxnimate/io/io_registry.hpp"
 
 namespace glaxnimate::io::rive {
 

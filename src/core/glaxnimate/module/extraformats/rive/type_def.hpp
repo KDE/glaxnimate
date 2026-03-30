@@ -11,7 +11,7 @@
 #include <QString>
 #include <QVariant>
 
-#include "glaxnimate/io/rive/type_ids.hpp"
+#include "glaxnimate/module/extraformats/rive/type_ids.hpp"
 #include "glaxnimate/io/binary_types.hpp"
 
 namespace glaxnimate::io::rive {

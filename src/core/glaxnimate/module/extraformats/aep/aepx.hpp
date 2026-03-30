@@ -6,7 +6,7 @@
 #pragma once
 
 #include <QDomDocument>
-#include "glaxnimate/io/aep/aep_riff.hpp"
+#include "glaxnimate/module/extraformats/aep/aep_riff.hpp"
 #include "glaxnimate/io/svg/detail.hpp"
 
 namespace glaxnimate::io::aep {

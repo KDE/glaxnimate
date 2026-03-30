@@ -5,7 +5,7 @@
  */
 #include <QtGlobal>
 
-#include "glaxnimate/io/aep/string_decoder.hpp"
+#include "glaxnimate/module/extraformats/aep/string_decoder.hpp"
 
 #include <QStringConverter>
 QString glaxnimate::io::aep::decode_string(const QByteArray& data)

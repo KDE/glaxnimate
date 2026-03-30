@@ -20,7 +20,7 @@ with open(core / "CMakeLists.txt", "r+") as cmake:
     all = cmake.read()
     insert = all.find("\n", all.rfind("glaxnimate_module"))
 
-    new_row = '\nglaxnimate_module("%s" "" OFF)' % name_title
+    new_row = '\nglaxnimate_module("%s" "" ON)' % name_title
 
     new_all = all[:insert] + new_row + all[insert:]
     cmake.seek(0)

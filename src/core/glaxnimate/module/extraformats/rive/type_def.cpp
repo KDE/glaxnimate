@@ -11,7 +11,7 @@
  */
 
 
-#include "glaxnimate/io/rive/type_def.hpp"
+#include "glaxnimate/module/extraformats/rive/type_def.hpp"
 
 using namespace glaxnimate::io::rive;
 
