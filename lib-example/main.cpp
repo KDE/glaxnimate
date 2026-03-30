@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
     QImage bmp(comp->width.get(), comp->height.get(), QImage::Format_ARGB32);
     bmp.fill(Qt::transparent);
 
-    auto renderer = renderer::default_renderer(10);
+    auto renderer = renderer::RendererRegistry::instance().default_renderer(10);
     renderer->set_image_surface(&bmp);
     renderer->render_start();
     comp->paint(renderer.get(), frame, model::VisualNode::Render);
