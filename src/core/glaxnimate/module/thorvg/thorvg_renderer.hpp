@@ -393,6 +393,7 @@ public:
     void clip_rect(const QRectF & rect) override
     {
         auto shape = tvg::Shape::gen();
+        shape->transform(layers.back()->transform());
         shape->appendRect(rect.left(), rect.top(), rect.width(), rect.height(), 0, 0);
         layers.back()->clip(shape);
     }
