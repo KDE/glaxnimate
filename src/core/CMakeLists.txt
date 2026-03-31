@@ -110,6 +110,17 @@ glaxnimate/utils/data_paths.cpp
 glaxnimate/module/module.cpp
 )
 
+# Qt
+find_package(Qt6 COMPONENTS Core Gui Xml Network REQUIRED)
+set(CMAKE_AUTOMOC ON)
+
+set(CORE_DEPS
+    Qt${QT_MAJOR_VERSION}::Core
+    Qt${QT_MAJOR_VERSION}::Gui # Needed for QColor / QUndoCommand
+    Qt${QT_MAJOR_VERSION}::Xml
+    Qt${QT_MAJOR_VERSION}::Network
+)
+
 # Basic target setup
 
 add_library(GlaxnimateCore STATIC)
@@ -128,18 +139,9 @@ target_include_directories(GlaxnimateCoreBase PUBLIC ${CMAKE_CURRENT_BINARY_DIR}
 target_include_directories(GlaxnimateCoreBase PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 target_sources(GlaxnimateCoreBase PRIVATE ${SOURCES})
 
-# Qt
+# Qt - cont'd
 
-find_package(Qt6 COMPONENTS Core Gui Xml Network REQUIRED)
-set(CMAKE_AUTOMOC ON)
-
-target_link_libraries(GlaxnimateCoreBase PUBLIC
-    Qt${QT_MAJOR_VERSION}::Core
-    Qt${QT_MAJOR_VERSION}::Gui # Needed for QColor / QUndoCommand
-    Qt${QT_MAJOR_VERSION}::Xml
-    Qt${QT_MAJOR_VERSION}::Network
-    ${Potrace_LIBRARIES}
-)
+target_link_libraries(GlaxnimateCoreBase PUBLIC ${CORE_DEPS})
 set_property(TARGET GlaxnimateCoreBase APPEND PROPERTY AUTOMOC_MACRO_NAMES "GLAXNIMATE_OBJECT")
 
 # (Optional) KDE stuff
@@ -195,7 +197,7 @@ glaxnimate_module("Cairo" "Support for format I/O using cairo" OFF)
 
 # Process modules and generate auto-registration file for the enabled modules
 set(GLAXNIMATE_MODULES ${GLAXNIMATE_MODULES_} PARENT_SCOPE)
-message(STATUS "Core Modules Enabled:")
+message(STATUS "Glaxnimate Modules Enabled:")
 set(GLAXNIMATE_MODULES_INCLUDES)
 set(GLAXNIMATE_MODULES_REGISTER)
 foreach(MODULE ${GLAXNIMATE_MODULES_})
