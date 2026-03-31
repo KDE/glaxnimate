@@ -110,19 +110,7 @@ glaxnimate/utils/data_paths.cpp
 glaxnimate/module/module.cpp
 )
 
-
-set(GLAXNIMATE_CORE_KDE ON)
-
-if ( GLAXNIMATE_CORE_MINIMAL )
-    set(GLAXNIMATE_CORE_KDE OFF)
-endif()
-
-
-function(glaxnimate_enable_exceptions TARGET)
-    if ( COMMAND KDE_TARGET_ENABLE_EXCEPTIONS )
-        kde_target_enable_exceptions(${TARGET} ${ARGN})
-    endif()
-endfunction()
+# Basic target setup
 
 add_library(GlaxnimateCore STATIC)
 add_library(Glaxnimate::Core ALIAS GlaxnimateCore)
@@ -135,7 +123,35 @@ configure_file(
     ${CMAKE_CURRENT_BINARY_DIR}/glaxnimate/application_info_generated.hpp
 )
 
-# KDE provides gzip support
+target_include_directories(GlaxnimateCoreBase PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(GlaxnimateCoreBase PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(GlaxnimateCoreBase PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
+target_sources(GlaxnimateCoreBase PRIVATE ${SOURCES})
+
+# Qt
+
+find_package(Qt6 COMPONENTS Core Gui Xml Network REQUIRED)
+set(CMAKE_AUTOMOC ON)
+
+target_link_libraries(GlaxnimateCoreBase PUBLIC
+    Qt${QT_MAJOR_VERSION}::Core
+    Qt${QT_MAJOR_VERSION}::Gui # Needed for QColor / QUndoCommand
+    Qt${QT_MAJOR_VERSION}::Xml
+    Qt${QT_MAJOR_VERSION}::Network
+    ${Potrace_LIBRARIES}
+)
+set_property(TARGET GlaxnimateCoreBase APPEND PROPERTY AUTOMOC_MACRO_NAMES "GLAXNIMATE_OBJECT")
+
+# (Optional) KDE stuff
+
+set(GLAXNIMATE_CORE_KDE ${KF${KF_MAJOR}_FOUND})
+
+function(glaxnimate_enable_exceptions TARGET)
+    if ( COMMAND KDE_TARGET_ENABLE_EXCEPTIONS )
+        kde_target_enable_exceptions(${TARGET} ${ARGN})
+    endif()
+endfunction()
+
 if ( GLAXNIMATE_CORE_KDE )
     target_compile_definitions(GlaxnimateCoreBase PUBLIC -DGLAXNIMATE_CORE_KDE)
 
@@ -149,25 +165,8 @@ endif()
 glaxnimate_enable_exceptions(GlaxnimateCoreBase PUBLIC)
 
 
-# Common
-
-target_include_directories(GlaxnimateCoreBase PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_include_directories(GlaxnimateCoreBase PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
-
-target_link_libraries(GlaxnimateCoreBase PUBLIC
-    Qt${QT_MAJOR_VERSION}::Core
-    Qt${QT_MAJOR_VERSION}::Gui # Needed for QColor / QUndoCommand
-    Qt${QT_MAJOR_VERSION}::Xml
-    Qt${QT_MAJOR_VERSION}::Network
-    ${Potrace_LIBRARIES}
-)
-set_property(TARGET GlaxnimateCoreBase APPEND PROPERTY AUTOMOC_MACRO_NAMES "GLAXNIMATE_OBJECT")
-target_include_directories(GlaxnimateCoreBase PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
-
-
-target_sources(GlaxnimateCoreBase PRIVATE ${SOURCES})
-
 # Modules
+
 set(GLAXNIMATE_MODULES_)
 
 macro(glaxnimate_module MODULE DESCRIPTION DEFAULT)
@@ -194,6 +193,7 @@ glaxnimate_module("ExtraFormats" "Experimental file format support" ON)
 glaxnimate_module("Video" "Support for video format I/O" ${EXTRA_DEFAULT})
 glaxnimate_module("Cairo" "Support for format I/O using cairo" OFF)
 
+# Process modules and generate auto-registration file for the enabled modules
 set(GLAXNIMATE_MODULES ${GLAXNIMATE_MODULES_} PARENT_SCOPE)
 message(STATUS "Core Modules Enabled:")
 set(GLAXNIMATE_MODULES_INCLUDES)

@@ -13,12 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_BUILD_TYPE "Debug")
 
-# Qt
-find_package(Qt6 COMPONENTS Core Gui Xml Network REQUIRED)
-set(CMAKE_AUTOMOC ON)
-
 # Glaxnimate lib minimal options
-set(GLAXNIMATE_CORE_MINIMAL ON)
 add_subdirectory(../src/core  ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 # Defining the target
