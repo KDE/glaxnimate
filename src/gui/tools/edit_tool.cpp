@@ -502,9 +502,10 @@ public:
             if ( bez.closed() || (index > 0 && index < bez.size() - 1) )
             {
                 auto old_point = bez[index];
+                auto prev_index = index > 0 ? index - 1 : bez.segment_count() - 1;
                 old_point.set_point_type(math::bezier::Smooth);
-                auto segment = new_bez.segment(index-1);
-                qreal d1 = math::length(new_bez[index-1].pos - old_point.pos);
+                auto segment = new_bez.segment(prev_index);
+                qreal d1 = math::length(new_bez[prev_index].pos - old_point.pos);
                 qreal d2 = math::length(new_bez[index].pos - old_point.pos);
                 qreal t = d1 / (d1 + d2);
 
@@ -518,7 +519,7 @@ public:
                     }
                 );
 
-                new_bez.set_segment(index-1, approx);
+                new_bez.set_segment(prev_index, approx);
             }
             item->set_bezier(new_bez);
         }
