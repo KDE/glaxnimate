@@ -60,6 +60,7 @@
     * Fixed some menu actions that got removed or broken during the KDE transition
     * Fixed Alt-clicking on keyframes being inconsisent for the first keyframe
     * Fixed keyframe multi-select not deselecting keyframes
+    * Fixed deleting bezier nodes on closed paths
 
 
 ## 0.6.0
