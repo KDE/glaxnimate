@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-29 00:41+0000\n"
-"PO-Revision-Date: 2026-03-27 00:45+0300\n"
+"PO-Revision-Date: 2026-03-30 19:54+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -979,12 +979,11 @@ msgid "Stretch Time"
 msgstr "Zamanı Ger"
 
 #: src/core/glaxnimate/command/clipboard.cpp:142
-#, fuzzy, kde-format
-#| msgid "Paste Keyframe"
+#, kde-format
 msgid "Paste keyframe"
 msgid_plural "Paste keyframes"
-msgstr[0] "Anahtar Kare Yapıştır"
-msgstr[1] "Anahtar Kare Yapıştır"
+msgstr[0] "Anahtar Kareyi Yapıştır"
+msgstr[1] "Anahtar Kareleri Yapıştır"
 
 #: src/core/glaxnimate/command/object_list_commands.hpp:26
 #, kde-format
@@ -2137,10 +2136,9 @@ msgid "Transform"
 msgstr "Dönüşüm"
 
 #: src/core/glaxnimate/module/module.cpp:50
-#, fuzzy, kde-format
-#| msgid "Glaxnimate"
+#, kde-format
 msgid "Glaxnimate Core"
-msgstr "Glaxnimate"
+msgstr "Glaxnimate Core"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:73
 #, kde-format
@@ -2308,7 +2306,7 @@ msgstr "libav"
 #: src/core/glaxnimate/module/video/video_module.hpp:16
 #, kde-format
 msgid "Video Format Support"
-msgstr ""
+msgstr "Video Biçimi Desteği"
 
 #: src/core/glaxnimate/script/register_impl.hpp:234
 #, kde-format
@@ -2783,10 +2781,9 @@ msgstr "Hizala ve Dağıt"
 
 #. i18n: ectx: Menu (menu_keyframe_type)
 #: src/gui/glaxnimateui.rc:180
-#, fuzzy, kde-format
-#| msgid "Set keyframe transition"
+#, kde-format
 msgid "Keyframe Transition"
-msgstr "Anahtar kare geçişini ayarla"
+msgstr "Anahtar Kare Geçişi"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:221 src/gui/settings/plugin_settings_group.hpp:23
@@ -3819,12 +3816,11 @@ msgid "Warning"
 msgstr "Uyarı"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:302
-#, fuzzy, kde-format
-#| msgid "Remove keyframe"
+#, kde-format
 msgid "Delete keyframe"
 msgid_plural "Delete keyframes"
-msgstr[0] "Anahtar Kareyi Kaldır"
-msgstr[1] "Anahtar Kareyi Kaldır"
+msgstr[0] "Anahtar Kareyi Sil"
+msgstr[1] "Anahtar Kareleri Sil"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:139
 #, kde-format
@@ -4207,10 +4203,9 @@ msgid "Flip View"
 msgstr "Görünümü ters çevir"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
-#, fuzzy, kde-format
-#| msgid "Mask Mode"
+#, kde-format
 msgid "Focus Mode"
-msgstr "Maske Kipi"
+msgstr "Odak Kipi"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
 #, kde-format
@@ -4419,10 +4414,9 @@ msgid "Custom..."
 msgstr "Özel…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
-#, fuzzy, kde-format
-#| msgid "Set keyframe transition"
+#, kde-format
 msgid "Apply %1 keyframe transition"
-msgstr "Anahtar kare geçişini ayarla"
+msgstr "%1 Anahtar Kare Geçişini Uygula"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:855
 #, kde-format
@@ -4604,10 +4598,9 @@ msgid "Issues"
 msgstr "Sorunlar"
 
 #: src/gui/widgets/dialogs/keyframe_editor_dialog.hpp:24
-#, fuzzy, kde-format
-#| msgid "Transition To Next"
+#, kde-format
 msgid "Transition Editor"
-msgstr "Sonrakine Geçiş"
+msgstr "Geçiş Düzenleyicisi"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ResizeDialog)
 #: src/gui/widgets/dialogs/resize_dialog.cpp:28
@@ -5709,7 +5702,7 @@ msgstr "LottieFiles’da Görüntüle…"
 #: src/gui/widgets/menus/animated_property_menu.cpp:51
 #, kde-format
 msgid "Repeat until composition ends"
-msgstr ""
+msgstr "Kompozisyon bitene kadar yinele"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:61
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
@@ -5720,7 +5713,7 @@ msgstr "Anahtar Kare Yapıştır"
 #: src/gui/widgets/menus/animated_property_menu.cpp:62
 #, kde-format
 msgid "Perfect Loop"
-msgstr ""
+msgstr "Mükemmel Döngü"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
@@ -5734,10 +5727,9 @@ msgid "Remove Keyframe"
 msgstr "Anahtar Kareyi Kaldır"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:131
-#, fuzzy, kde-format
-#| msgid "Loop"
+#, kde-format
 msgid "Loop %1"
-msgstr "Döngü"
+msgstr "Döngü %1"
 
 #: src/gui/widgets/menus/node_menu.cpp:60
 #: src/gui/widgets/menus/node_menu.cpp:285
@@ -6003,12 +5995,12 @@ msgstr "Hizmetler"
 #: src/gui/widgets/settings/settings_dialog.cpp:231
 #, kde-format
 msgid "Best Quality"
-msgstr ""
+msgstr "En İyi Kalite"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:232
 #, kde-format
 msgid "Reduced Size (Performance)"
-msgstr ""
+msgstr "Azaltılmış Boyut (Başarım)"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:234
 msgctxt "Settings"
@@ -6033,11 +6025,11 @@ msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Canvas Render Quality"
-msgstr ""
+msgstr "Tuval Sunma Kalitesi"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Display quality within the app, does not affect exports"
-msgstr ""
+msgstr "Uygulama içindeki görüntüleme kalitesi, dışa aktarmayı etkilemez"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 msgid "Icon Theme"
