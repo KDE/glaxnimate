@@ -587,7 +587,7 @@ void GlaxnimateWindow::Private::save_frame()
 {
     model::FrameTime frame = current_document->current_time();
     io::Options options {
-        io::IoRegistry::instance().from_slug("svg"),
+        io::IoRegistry::instance().from_slug("svg", io::ImportExport::Export),
         GlaxnimateSettings::render_path(),
         i18n("Frame%1.svg", frame),
         {}

@@ -163,11 +163,11 @@ std::unique_ptr<glaxnimate::model::Document> glaxnimate::android::DocumentOpener
             if ( data.contains("\"__type__\"") )
                 options.format = io::glaxnimate::GlaxnimateFormat::instance();
             else
-                options.format = io::IoRegistry::instance().from_slug("lottie");
+                options.format = io::IoRegistry::instance().from_slug("lottie", io::ImportExport::Import);
         }
         else if ( data.contains("<svg") || data.contains("http://www.w3.org/2000/svg") )
         {
-            options.format = io::IoRegistry::instance().from_slug("svg");
+            options.format = io::IoRegistry::instance().from_slug("svg", io::ImportExport::Import);
             options.settings["compressed"] = zipped;
         }
         else if ( data.startsWith("\x89PNG") )
@@ -203,7 +203,7 @@ std::unique_ptr<glaxnimate::model::Document> glaxnimate::android::DocumentOpener
     }
 
     if ( zipped && options.format->slug() == "lottie" )
-        options.format = io::IoRegistry::instance().from_slug("tgs");
+        options.format = io::IoRegistry::instance().from_slug("tgs", io::ImportExport::Import);
 
     current_document->set_io_options(options);
     return current_document;

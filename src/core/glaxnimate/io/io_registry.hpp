@@ -93,11 +93,11 @@ public:
     {
         int top_priority = std::numeric_limits<int>::min();
         ImportExport* best = nullptr;
-        for ( const auto& p : object_list )
+        for ( const auto& p : handlers(direction) )
         {
             if ( p->can_handle_extension(extension, direction) && p->priority() > top_priority )
             {
-                best = p.get();
+                best = p;
                 top_priority = p->priority();
             }
         }
@@ -110,11 +110,11 @@ public:
         int top_priority = std::numeric_limits<int>::min();
         ImportExport* best = nullptr;
 
-        for ( const auto& p : object_list )
+        for ( const auto& p : handlers(direction) )
         {
             if ( p->can_handle_filename(filename, direction) && p->priority() > top_priority )
             {
-                best = p.get();
+                best = p;
                 top_priority = p->priority();
             }
         }
@@ -122,11 +122,11 @@ public:
         return best;
     }
 
-    ImportExport* from_slug(const QString& slug) const
+    ImportExport* from_slug(const QString& slug, ImportExport::Direction direction) const
     {
-        for ( const auto& p : object_list )
+        for ( const auto& p : handlers(direction) )
             if ( p->slug() == slug )
-                return p.get();
+                return p;
 
         return nullptr;
     }

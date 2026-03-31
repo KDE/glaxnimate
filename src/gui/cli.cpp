@@ -266,7 +266,7 @@ bool cli_export(const glaxnimate::cli::ParsedArguments& args)
     QString output_filename = args.value("export").toString();
 
     if ( !format.isEmpty() )
-        exporter = io::IoRegistry::instance().from_slug(format);
+        exporter = io::IoRegistry::instance().from_slug(format, io::ImportExport::Export);
     else
         exporter = io::IoRegistry::instance().from_filename(output_filename, io::ImportExport::Export);
 
@@ -335,7 +335,7 @@ bool cli_render(const glaxnimate::cli::ParsedArguments& args)
     io::ImportExport* exporter = nullptr;
     if ( !format.isEmpty() )
     {
-        exporter = io::IoRegistry::instance().from_slug(format);
+        exporter = io::IoRegistry::instance().from_slug(format, io::ImportExport::FrameExport);
         if ( !exporter )
             exporter = io::IoRegistry::instance().from_extension(format, glaxnimate::io::ImportExport::FrameExport);
 

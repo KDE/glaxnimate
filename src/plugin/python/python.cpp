@@ -95,7 +95,7 @@ void define_io(py::module& m)
         .def("from_extension", &Fac::from_extension, no_own)
         .def("from_filename", &Fac::from_filename, no_own)
         .def("from_slug", &Fac::from_slug, no_own)
-        .def("__getitem__", &Fac::from_slug, no_own)
+        // .def("__getitem__", &Fac::from_slug, no_own)
         .def("serializers", &Fac::serializers, no_own)
         .def("serializer_from_slug", &Fac::serializer_from_slug, no_own)
     ;

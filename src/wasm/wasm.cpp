@@ -108,7 +108,7 @@ public:
 
         if ( !options["format"].isUndefined() && !options["format"].isNull() )
         {
-            importer = io::IoRegistry::instance().from_slug(options["format"].as<QString>());
+            importer = io::IoRegistry::instance().from_slug(options["format"].as<QString>(), io::ImportExport::Import);
         }
         else if ( !options["filename"].isUndefined() )
         {
