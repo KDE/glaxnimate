@@ -622,7 +622,7 @@ public:
             if ( !opts.filename.isEmpty() )
                 suggestion = opts.filename;
             else
-                suggestion = i18n("Animation.%1", opts.format ? opts.format->extensions()[0] : "rawr");
+                suggestion = i18n("Animation.%1", opts.format ? opts.format->extensions(io::ImportExport::Direction::Export)[0] : "rawr");
 
             if ( file_picker.select_save(suggestion, export_opts) )
             {
