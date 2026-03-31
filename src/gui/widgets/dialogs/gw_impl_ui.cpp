@@ -1213,51 +1213,93 @@ void GlaxnimateWindow::Private::layout_update()
         layout_auto();
 }
 
+static void set_dock_area(QMainWindow* window, Qt::DockWidgetArea area, std::vector<QDockWidget*> docks, std::set<QDockWidget*> hidden)
+{
+    QDockWidget* prev = nullptr;
+    for ( std::size_t i = 0; i < docks.size(); i++ )
+    {
+        if ( !prev )
+            window->addDockWidget(area, docks[i]);
+        else
+            window->tabifyDockWidget(prev, docks[i]);
+
+        docks[i]->setFloating(false);
+        prev = docks[i];
+    }
+    docks[0]->raise();
+
+    for ( std::size_t i = 0; i < docks.size(); i++ )
+        docks[i]->setVisible(hidden.count(docks[i]) == 0);
+}
+
 void GlaxnimateWindow::Private::layout_medium()
 {
+    parent->setCorner(Qt::BottomRightCorner, Qt::RightDockWidgetArea);
+
     // Bottom
-    parent->addDockWidget(Qt::BottomDockWidgetArea, timeline_dock);
-    parent->tabifyDockWidget(timeline_dock, scriptconsole_dock);
-    parent->tabifyDockWidget(scriptconsole_dock, logs_dock);
-    parent->tabifyDockWidget(logs_dock, time_slider_dock);
-    timeline_dock->raise();
-    time_slider_dock->setVisible(false);
-    timeline_dock->setVisible(true);
+    set_dock_area(
+        parent,
+        Qt::BottomDockWidgetArea,
+        {
+            timeline_dock,
+            scriptconsole_dock,
+            logs_dock,
+            time_slider_dock
+        },
+        {
+            scriptconsole_dock,
+            logs_dock,
+            time_slider_dock
+        }
+    );
 
-    parent->addDockWidget(Qt::BottomDockWidgetArea, snippets_dock);
-
-    // Bottom Right
-    parent->addDockWidget(Qt::BottomDockWidgetArea, layers_dock);
-    parent->tabifyDockWidget(layers_dock, gradients_dock);
-    parent->tabifyDockWidget(gradients_dock, swatches_dock);
-    parent->tabifyDockWidget(swatches_dock, assets_dock);
-    parent->tabifyDockWidget(assets_dock, grid_dock);
-    gradients_dock->raise();
-    gradients_dock->setVisible(true);
-    assets_dock->setVisible(false);
-    swatches_dock->setVisible(false);
-    layers_dock->setVisible(true);
-    grid_dock->setVisible(false);
 
     // Right
-    parent->addDockWidget(Qt::RightDockWidgetArea, colors_dock);
-    parent->tabifyDockWidget(colors_dock, stroke_dock);
-    parent->tabifyDockWidget(stroke_dock, undo_dock);
-    parent->tabifyDockWidget(undo_dock, properties_dock);
-    colors_dock->raise();
-    colors_dock->setVisible(true);
-    stroke_dock->setVisible(true);
-    undo_dock->setVisible(true);
-    properties_dock->setVisible(true);
+    set_dock_area(
+        parent,
+        Qt::RightDockWidgetArea,
+        {
+            properties_dock,
+            undo_dock,
+            assets_dock,
+            grid_dock,
+            snippets_dock
+        },
+        {
+            assets_dock,
+            grid_dock,
+            snippets_dock
+        }
+    );
+
+    // Bottom Right
+    set_dock_area(
+        parent,
+        Qt::RightDockWidgetArea,
+        {
+            colors_dock,
+            stroke_dock,
+            layers_dock,
+            gradients_dock,
+            swatches_dock
+        },
+        {
+            swatches_dock,
+        }
+    );
 
     // Left
     parent->addDockWidget(Qt::LeftDockWidgetArea, tools_dock);
+    tools_dock->setFloating(false);
+    tools_dock->setVisible(false);
 
     parent->addDockWidget(Qt::LeftDockWidgetArea, tool_options_dock);
     parent->tabifyDockWidget(tool_options_dock, align_dock);
     tool_options_dock->raise();
+    tool_options_dock->setFloating(false);
     tool_options_dock->setVisible(true);
     align_dock->setVisible(true);
+    align_dock->setFloating(false);
 
     // Toolbars
     KToolBar* toolbar_tools = parent->toolBar(QStringLiteral("toolsToolBar"));
@@ -1265,15 +1307,13 @@ void GlaxnimateWindow::Private::layout_medium()
     toolbar_tools->setVisible(true);
 
     // Resize
-    parent->resizeDocks({snippets_dock}, {1}, Qt::Horizontal);
-    parent->resizeDocks({layers_dock}, {1}, Qt::Horizontal);
+
+    parent->resizeDocks({properties_dock}, {350}, Qt::Horizontal);
+    parent->resizeDocks({properties_dock, colors_dock}, {4000, 1}, Qt::Vertical);
     parent->resizeDocks({tools_dock}, {200}, Qt::Horizontal);
     parent->resizeDocks({tool_options_dock, align_dock, tools_dock}, {1, 1, 4000}, Qt::Vertical);
     parent->resizeDocks({timeline_dock}, {300}, Qt::Vertical);
     scriptconsole_dock->setVisible(false);
-    logs_dock->setVisible(false);
-    tools_dock->setVisible(false);
-    snippets_dock->setVisible(false);
 
     // Resize parent to have a reasonable default size
     parent->resize(1440, 900);
@@ -1285,67 +1325,82 @@ void GlaxnimateWindow::Private::layout_medium()
 
 void GlaxnimateWindow::Private::layout_wide()
 {
+    parent->setCorner(Qt::BottomRightCorner, Qt::RightDockWidgetArea);
+
     // Bottom
-    parent->addDockWidget(Qt::BottomDockWidgetArea, timeline_dock);
-    parent->tabifyDockWidget(timeline_dock, properties_dock);
-    parent->tabifyDockWidget(properties_dock, scriptconsole_dock);
-    parent->tabifyDockWidget(scriptconsole_dock, logs_dock);
-    parent->tabifyDockWidget(logs_dock, time_slider_dock);
-    timeline_dock->raise();
-    time_slider_dock->setVisible(false);
-    timeline_dock->setVisible(true);
-    properties_dock->setVisible(true);
-
-    parent->addDockWidget(Qt::BottomDockWidgetArea, snippets_dock);
-
-    // Bottom Right
-    parent->addDockWidget(Qt::BottomDockWidgetArea, layers_dock);
-    parent->tabifyDockWidget(layers_dock, gradients_dock);
-    parent->tabifyDockWidget(gradients_dock, swatches_dock);
-    parent->tabifyDockWidget(swatches_dock, assets_dock);
-    parent->tabifyDockWidget(assets_dock, grid_dock);
-    gradients_dock->raise();
-    gradients_dock->setVisible(true);
-    assets_dock->setVisible(false);
-    swatches_dock->setVisible(false);
-    layers_dock->setVisible(true);
-    grid_dock->setVisible(false);
-
+    set_dock_area(
+        parent,
+        Qt::BottomDockWidgetArea,
+        {
+            timeline_dock,
+            scriptconsole_dock,
+            logs_dock,
+            time_slider_dock
+        },
+        {
+            scriptconsole_dock,
+            logs_dock,
+            time_slider_dock
+        }
+    );
 
     // Right
-    parent->addDockWidget(Qt::RightDockWidgetArea, colors_dock);
-    parent->tabifyDockWidget(colors_dock, stroke_dock);
-    parent->tabifyDockWidget(stroke_dock, undo_dock);
-    parent->tabifyDockWidget(undo_dock, properties_dock);
-    colors_dock->raise();
-    colors_dock->setVisible(true);
-    stroke_dock->setVisible(true);
-    undo_dock->setVisible(true);
-    properties_dock->setVisible(true);
+    set_dock_area(
+        parent,
+        Qt::RightDockWidgetArea,
+        {
+            properties_dock,
+            undo_dock,
+            assets_dock,
+            grid_dock,
+            snippets_dock
+        },
+        {
+            assets_dock,
+            grid_dock,
+            snippets_dock
+        }
+    );
+
+    // Bottom Right
+    set_dock_area(
+        parent,
+        Qt::RightDockWidgetArea,
+        {
+            colors_dock,
+            stroke_dock,
+            layers_dock,
+            gradients_dock,
+            swatches_dock
+        },
+        {
+            swatches_dock,
+        }
+    );
 
     // Left
     parent->addDockWidget(Qt::LeftDockWidgetArea, tools_dock);
+    tools_dock->setFloating(false);
+    tools_dock->setVisible(false);
 
     parent->addDockWidget(Qt::LeftDockWidgetArea, tool_options_dock);
-    parent->addDockWidget(Qt::LeftDockWidgetArea, align_dock);
+    tool_options_dock->setFloating(false);
     tool_options_dock->setVisible(true);
-    align_dock->setVisible(true);
 
+    parent->addDockWidget(Qt::LeftDockWidgetArea, align_dock);
+    align_dock->setFloating(false);
+    align_dock->setVisible(true);
     // Toolbars
     KToolBar* toolbar_tools = parent->toolBar(QStringLiteral("toolsToolBar"));
     parent->addToolBar(Qt::LeftToolBarArea, toolbar_tools);
     toolbar_tools->setVisible(true);
 
     // Resize
-    parent->resizeDocks({snippets_dock}, {1}, Qt::Horizontal);
-    parent->resizeDocks({layers_dock}, {1}, Qt::Horizontal);
-    parent->resizeDocks({tools_dock}, {200}, Qt::Horizontal);
+    parent->resizeDocks({properties_dock}, {400}, Qt::Horizontal);
+    parent->resizeDocks({properties_dock, colors_dock}, {4000, 420}, Qt::Vertical);
+    parent->resizeDocks({tool_options_dock}, {200}, Qt::Horizontal);
     parent->resizeDocks({tool_options_dock, align_dock, tools_dock}, {1, 1, 4000}, Qt::Vertical);
     parent->resizeDocks({timeline_dock}, {1080/3}, Qt::Vertical);
-    scriptconsole_dock->setVisible(false);
-    logs_dock->setVisible(false);
-    tools_dock->setVisible(false);
-    snippets_dock->setVisible(false);
 
     // Resize parent to have a reasonable default size
     parent->resize(1920, 1080);
@@ -1357,47 +1412,64 @@ void GlaxnimateWindow::Private::layout_wide()
 
 void GlaxnimateWindow::Private::layout_compact()
 {
-    // Bottom
-    parent->addDockWidget(Qt::BottomDockWidgetArea, time_slider_dock);
-    parent->tabifyDockWidget(time_slider_dock, timeline_dock);
-    parent->tabifyDockWidget(timeline_dock, scriptconsole_dock);
-    parent->tabifyDockWidget(scriptconsole_dock, logs_dock);
-    time_slider_dock->raise();
-    time_slider_dock->setVisible(true);
-    timeline_dock->setVisible(false);
-    logs_dock->setVisible(false);
+    parent->setCorner(Qt::BottomRightCorner, Qt::BottomDockWidgetArea);
 
-    parent->addDockWidget(Qt::BottomDockWidgetArea, snippets_dock);
+    // Bottom
+    set_dock_area(
+        parent,
+        Qt::BottomDockWidgetArea,
+        {
+            time_slider_dock,
+            timeline_dock,
+            scriptconsole_dock,
+            logs_dock,
+        },
+        {
+            scriptconsole_dock,
+            logs_dock,
+            timeline_dock
+        }
+    );
+
 
     // Right
-    parent->addDockWidget(Qt::RightDockWidgetArea, colors_dock);
-    parent->tabifyDockWidget(colors_dock, stroke_dock);
-    parent->tabifyDockWidget(stroke_dock, layers_dock);
-    parent->tabifyDockWidget(layers_dock, properties_dock);
-    parent->tabifyDockWidget(properties_dock, undo_dock);
-    parent->tabifyDockWidget(undo_dock, gradients_dock);
-    parent->tabifyDockWidget(gradients_dock, swatches_dock);
-    parent->tabifyDockWidget(swatches_dock, assets_dock);
-    parent->tabifyDockWidget(assets_dock, grid_dock);
-    colors_dock->raise();
-    colors_dock->setVisible(true);
-    stroke_dock->setVisible(true);
-    gradients_dock->setVisible(false);
-    assets_dock->setVisible(false);
-    swatches_dock->setVisible(false);
-    undo_dock->setVisible(false);
-    properties_dock->setVisible(true);
-    layers_dock->setVisible(true);
-    grid_dock->setVisible(false);
+    set_dock_area(
+        parent,
+        Qt::RightDockWidgetArea,
+        {
+            properties_dock,
+            colors_dock,
+            stroke_dock,
+            layers_dock,
+            undo_dock,
+            gradients_dock,
+            swatches_dock,
+            assets_dock,
+            grid_dock,
+            snippets_dock,
+        },
+        {
+            undo_dock,
+            gradients_dock,
+            swatches_dock,
+            assets_dock,
+            grid_dock,
+            snippets_dock,
+        }
+    );
 
     // Left
     parent->addDockWidget(Qt::LeftDockWidgetArea, tools_dock);
+    tools_dock->setFloating(false);
+    tools_dock->setVisible(false);
 
     parent->addDockWidget(Qt::LeftDockWidgetArea, tool_options_dock);
     parent->tabifyDockWidget(tool_options_dock, align_dock);
     tool_options_dock->raise();
     tool_options_dock->setVisible(true);
+    tool_options_dock->setFloating(false);
     align_dock->setVisible(true);
+    align_dock->setFloating(false);
 
     // Toolbars
     KToolBar* toolbar_tools = parent->toolBar(QStringLiteral("toolsToolBar"));
@@ -1407,10 +1479,6 @@ void GlaxnimateWindow::Private::layout_compact()
     // Resize
     parent->resizeDocks({tool_options_dock, align_dock, tools_dock}, {1, 1, 4000}, Qt::Vertical);
     parent->resizeDocks({time_slider_dock}, {64}, Qt::Vertical);
-    scriptconsole_dock->setVisible(false);
-    logs_dock->setVisible(false);
-    tools_dock->setVisible(false);
-    snippets_dock->setVisible(false);
 
     // Resize parent to have a reasonable default size
     parent->resize(1366, 768);
@@ -1423,45 +1491,54 @@ void GlaxnimateWindow::Private::layout_compact()
 
 void GlaxnimateWindow::Private::layout_mobile()
 {
-    // Bottom
-    parent->addDockWidget(Qt::BottomDockWidgetArea, time_slider_dock);
-    parent->tabifyDockWidget(time_slider_dock, timeline_dock);
-    parent->tabifyDockWidget(timeline_dock, scriptconsole_dock);
-    parent->tabifyDockWidget(scriptconsole_dock, logs_dock);
-    time_slider_dock->raise();
-    time_slider_dock->setVisible(true);
-    timeline_dock->setVisible(false);
-    logs_dock->setVisible(false);
+    parent->setCorner(Qt::BottomRightCorner, Qt::BottomDockWidgetArea);
 
-    parent->addDockWidget(Qt::BottomDockWidgetArea, snippets_dock);
+    // Bottom
+    set_dock_area(
+        parent,
+        Qt::BottomDockWidgetArea,
+        {
+            time_slider_dock,
+            timeline_dock,
+            scriptconsole_dock,
+            logs_dock,
+        },
+        {
+            scriptconsole_dock,
+            logs_dock,
+            timeline_dock
+        }
+    );
+
 
     // Right
-    parent->addDockWidget(Qt::RightDockWidgetArea, colors_dock);
-    parent->tabifyDockWidget(colors_dock, stroke_dock);
-    parent->tabifyDockWidget(stroke_dock, layers_dock);
-    parent->tabifyDockWidget(layers_dock, properties_dock);
-    parent->tabifyDockWidget(properties_dock, undo_dock);
-    parent->tabifyDockWidget(undo_dock, gradients_dock);
-    parent->tabifyDockWidget(gradients_dock, swatches_dock);
-    parent->tabifyDockWidget(swatches_dock, assets_dock);
-    parent->tabifyDockWidget(assets_dock, grid_dock);
-    parent->tabifyDockWidget(grid_dock, tools_dock);
-    parent->tabifyDockWidget(tools_dock, tool_options_dock);
-    parent->tabifyDockWidget(tool_options_dock, align_dock);
-
-    colors_dock->raise();
-    colors_dock->setVisible(true);
-    stroke_dock->setVisible(true);
-    gradients_dock->setVisible(false);
-    assets_dock->setVisible(false);
-    swatches_dock->setVisible(false);
-    undo_dock->setVisible(false);
-    properties_dock->setVisible(true);
-    layers_dock->setVisible(true);
-    grid_dock->setVisible(false);
-    tools_dock->setVisible(false);
-    align_dock->setVisible(false);
-    tool_options_dock->setVisible(false);
+    set_dock_area(
+        parent,
+        Qt::RightDockWidgetArea,
+        {
+            properties_dock,
+            colors_dock,
+            stroke_dock,
+            layers_dock,
+            undo_dock,
+            align_dock,
+            tool_options_dock,
+            gradients_dock,
+            swatches_dock,
+            assets_dock,
+            grid_dock,
+            snippets_dock,
+        },
+        {
+            undo_dock,
+            gradients_dock,
+            swatches_dock,
+            assets_dock,
+            grid_dock,
+            snippets_dock,
+            tool_options_dock,
+        }
+    );
 
     // Toolbars
     KToolBar* toolbar_tools = parent->toolBar(QStringLiteral("toolsToolBar"));
@@ -1470,11 +1547,8 @@ void GlaxnimateWindow::Private::layout_mobile()
 
     // Resize
     // parent->resizeDocks({tool_options_dock, align_dock, tools_dock}, {1, 1, 4000}, Qt::Vertical);
-    parent->resizeDocks({colors_dock, stroke_dock, layers_dock, properties_dock}, {64}, Qt::Horizontal);
+    parent->resizeDocks({properties_dock}, {1}, Qt::Horizontal);
     parent->resizeDocks({time_slider_dock}, {64}, Qt::Vertical);
-    scriptconsole_dock->setVisible(false);
-    logs_dock->setVisible(false);
-    snippets_dock->setVisible(false);
 
     // Resize parent to have a reasonable default size
     parent->resize(400, 900);

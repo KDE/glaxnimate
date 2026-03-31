@@ -28,6 +28,7 @@
     * KDE Find Action...
     * Menu actions to set the transition of selected keyframes
     * Added the ability to copy/paste multiple keyframes at once
+    * Reworked default layouts
 * I/O:
     * Improved matte import and export for lottie
     * Improved mask properties import for lottie

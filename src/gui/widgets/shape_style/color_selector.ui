@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
-
-SPDX-License-Identifier: GPL-3.0-or-later
--->
-
 <ui version="4.0">
- <class>glaxnimate::gui::ColorSelector</class>
+ <author>
+SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia &gt;dev@dragon.best&lt;
+SPDX-License-Identifier: GPL-3.0-or-later
+ </author>
+ <class>ColorSelector</class>
  <widget class="QWidget" name="ColorSelector">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>345</width>
-    <height>447</height>
+    <height>301</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -29,6 +26,11 @@ SPDX-License-Identifier: GPL-3.0-or-later
      <property name="toolTip">
       <string>Color Mode</string>
      </property>
+     <item>
+      <property name="text">
+       <string>Wheel</string>
+      </property>
+     </item>
      <item>
       <property name="text">
        <string>HSV</string>
@@ -66,6 +68,50 @@ SPDX-License-Identifier: GPL-3.0-or-later
      <property name="currentIndex">
       <number>0</number>
      </property>
+     <widget class="QWidget" name="page_2">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="color_widgets::ColorWheel" name="color_hsv" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>128</width>
+           <height>128</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>230</height>
+          </size>
+         </property>
+         <property name="selectorShape">
+          <enum>color_widgets::ColorWheel::ShapeSquare</enum>
+         </property>
+         <property name="rotatingSelector" stdset="0">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="tab_6Page1">
       <layout class="QGridLayout" name="gridLayout">
        <property name="leftMargin">
@@ -167,34 +213,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
          </property>
         </widget>
        </item>
-       <item row="0" column="0" colspan="3">
-        <widget class="color_widgets::ColorWheel" name="color_hsv">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>128</width>
-           <height>128</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>230</height>
-          </size>
-         </property>
-         <property name="selectorShape">
-          <enum>color_widgets::ColorWheel::ShapeSquare</enum>
-         </property>
-         <property name="rotatingSelector">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab_6Page2">
@@ -211,7 +229,21 @@ SPDX-License-Identifier: GPL-3.0-or-later
        <property name="bottomMargin">
         <number>0</number>
        </property>
+       <item row="1" column="2">
+        <widget class="QSpinBox" name="spinBox_6">
+         <property name="maximum">
+          <number>255</number>
+         </property>
+        </widget>
+       </item>
        <item row="1" column="1">
+        <widget class="color_widgets::GradientSlider" name="slider_hsl_sat">
+         <property name="maximum">
+          <number>255</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
         <widget class="color_widgets::HueSlider" name="slider_hsl_hue">
          <property name="toolTip">
           <string>Hue</string>
@@ -219,6 +251,27 @@ SPDX-License-Identifier: GPL-3.0-or-later
         </widget>
        </item>
        <item row="1" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>S</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>L</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QSpinBox" name="spinBox_7">
+         <property name="maximum">
+          <number>255</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
         <widget class="QLabel" name="label_5">
          <property name="toolTip">
           <string>Hue</string>
@@ -228,80 +281,20 @@ SPDX-License-Identifier: GPL-3.0-or-later
          </property>
         </widget>
        </item>
-       <item row="2" column="2">
-        <widget class="QSpinBox" name="spinBox_6">
-         <property name="maximum">
-          <number>255</number>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QSpinBox" name="spinBox_5">
-         <property name="toolTip">
-          <string>Hue</string>
-         </property>
-         <property name="maximum">
-          <number>359</number>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="3">
-        <widget class="color_widgets::ColorWheel" name="color_hsl">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>128</width>
-           <height>128</height>
-          </size>
-         </property>
-         <property name="selectorShape">
-          <enum>color_widgets::ColorWheel::ShapeSquare</enum>
-         </property>
-         <property name="rotatingSelector">
-          <bool>false</bool>
-         </property>
-         <property name="colorSpace">
-          <enum>color_widgets::ColorWheel::ColorHSL</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2">
-        <widget class="QSpinBox" name="spinBox_7">
-         <property name="maximum">
-          <number>255</number>
-         </property>
-        </widget>
-       </item>
        <item row="2" column="1">
-        <widget class="color_widgets::GradientSlider" name="slider_hsl_sat">
-         <property name="maximum">
-          <number>255</number>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
         <widget class="color_widgets::GradientSlider" name="slider_hsl_light">
          <property name="maximum">
           <number>255</number>
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>S</string>
+       <item row="0" column="2">
+        <widget class="QSpinBox" name="spinBox_5">
+         <property name="toolTip">
+          <string>Hue</string>
          </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_7">
-         <property name="text">
-          <string>L</string>
+         <property name="maximum">
+          <number>359</number>
          </property>
         </widget>
        </item>
@@ -558,7 +551,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <number>0</number>
        </property>
        <item>
-        <widget class="color_widgets::ColorPaletteWidget" name="palette_widget"/>
+        <widget class="color_widgets::ColorPaletteWidget" name="palette_widget" native="true"/>
        </item>
       </layout>
      </widget>
@@ -604,10 +597,10 @@ SPDX-License-Identifier: GPL-3.0-or-later
      <item>
       <widget class="QFrame" name="frame">
        <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
+        <enum>QFrame::Shape::StyledPanel</enum>
        </property>
        <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
+        <enum>QFrame::Shadow::Raised</enum>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <property name="spacing">
@@ -626,7 +619,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
          <number>0</number>
         </property>
         <item>
-         <widget class="color_widgets::ColorSelector" name="color_preview">
+         <widget class="color_widgets::ColorSelector" name="color_preview" native="true">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -636,16 +629,13 @@ SPDX-License-Identifier: GPL-3.0-or-later
           <property name="toolTip">
            <string>Primary Color</string>
           </property>
-          <property name="display_mode" stdset="0">
-           <enum>color_widgets::ColorPreview::AllAlpha</enum>
-          </property>
-          <property name="drawFrame">
+          <property name="drawFrame" stdset="0">
            <bool>false</bool>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="color_widgets::ColorSelector" name="color_preview_secondary">
+         <widget class="color_widgets::ColorSelector" name="color_preview_secondary" native="true">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -655,17 +645,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
           <property name="toolTip">
            <string>Secondary Color</string>
           </property>
-          <property name="color">
+          <property name="color" stdset="0">
            <color>
             <red>0</red>
             <green>0</green>
             <blue>0</blue>
            </color>
           </property>
-          <property name="display_mode" stdset="0">
-           <enum>color_widgets::ColorPreview::AllAlpha</enum>
-          </property>
-          <property name="drawFrame">
+          <property name="drawFrame" stdset="0">
            <bool>false</bool>
           </property>
          </widget>
@@ -716,7 +703,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
          <family>Monospace</family>
         </font>
        </property>
-       <property name="showAlpha">
+       <property name="showAlpha" stdset="0">
         <bool>true</bool>
        </property>
       </widget>
@@ -1114,22 +1101,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <hint type="destinationlabel">
      <x>242</x>
      <y>446</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>color_hsl</sender>
-   <signal>colorSelected(QColor)</signal>
-   <receiver>ColorSelector</receiver>
-   <slot>color_update_noalpha(QColor)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>133</x>
-     <y>171</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>242</x>
-     <y>226</y>
     </hint>
    </hints>
   </connection>

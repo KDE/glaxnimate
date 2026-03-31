@@ -178,8 +178,6 @@ void ColorSelector::Private::update_color(const QColor& c, bool alpha, QObject* 
     update_color_slider(ui.slider_hsv_value, col, color_hsv_v, col.value());
 
     // HSL
-    if ( source != ui.color_hsl )
-        ui.color_hsl->setColor(col);
     update_color_hue_slider(ui.slider_hsl_hue, col, hue);
     update_color_slider(ui.slider_hsl_sat, col, color_hsl_s, col.hslSaturation());
     update_color_slider(ui.slider_hsl_light, col, color_hsl_l, col.lightness());
