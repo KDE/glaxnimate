@@ -1,4 +1,4 @@
-## 0.6.70
+## 0.7.0
 
 * Editing:
     * Added luma mask mode
