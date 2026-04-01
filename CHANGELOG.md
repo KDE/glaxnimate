@@ -29,6 +29,7 @@
     * Menu actions to set the transition of selected keyframes
     * Added the ability to copy/paste multiple keyframes at once
     * Reworked default layouts
+    * Added spinbox to the timeline to change the end time of the current composition
 * I/O:
     * Improved matte import and export for lottie
     * Improved mask properties import for lottie
@@ -48,6 +49,7 @@
     * Unbounded precomp layers
     * Canvas render quality setting
     * Frame export for PDF and PostScript
+    * Dragging a compositions start/end time in the timeline will properly trim layers to fit
 * Scripting
     * Improved bindings for various objects, especially properties and keyframes
 * Bug Fixes:

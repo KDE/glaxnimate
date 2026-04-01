@@ -611,6 +611,8 @@ void GlaxnimateWindow::Private::connect_playback_actions()
     connect(timeline_dock->playControls(), &FrameControlsWidget::min_changed, time_slider_dock->timeSlider(), &QSlider::setMinimum);
     connect(timeline_dock->playControls(), &FrameControlsWidget::max_changed, time_slider_dock->timeSlider(), &QSlider::setMaximum);
     connect(timeline_dock->playControls(), &FrameControlsWidget::frame_selected, time_slider_dock->timeSlider(), &QSlider::setValue);
+    connect(timeline_dock->playControls(), &FrameControlsWidget::end_frame_selected, parent, [this](int max){command::trim_end_time(comp, max);});
+    connect(time_slider_dock->playControls(), &FrameControlsWidget::end_frame_selected, parent, [this](int max){command::trim_end_time(comp, max);});
 }
 
 void GlaxnimateWindow::Private::setup_layers_actions()

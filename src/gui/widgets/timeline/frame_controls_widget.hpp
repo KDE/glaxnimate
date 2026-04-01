@@ -53,6 +53,7 @@ Q_SIGNALS:
     void min_changed(int min);
     void max_changed(int max);
     void fps_changed(qreal fps);
+    void end_frame_selected(int frame);
 
 private Q_SLOTS:
     void play_toggled(bool play);

@@ -5,6 +5,7 @@
  */
 
 #include "timing_dialog.hpp"
+#include "glaxnimate/command/shape_commands.hpp"
 #include "ui_timing_dialog.h"
 
 #include <limits>
@@ -86,10 +87,7 @@ void TimingDialog::btn_clicked(QAbstractButton* button)
 
             if ( d->ui.check_layer_trim->isChecked() )
             {
-                model::simple_visit<model::Layer>(d->comp, true, [last_frame](model::Layer* layer){
-                    if ( layer->animation->last_frame.get() > last_frame )
-                        layer->animation->last_frame.set(last_frame);
-                });
+                command::trim_end_time(d->comp, last_frame);
             }
         }
 

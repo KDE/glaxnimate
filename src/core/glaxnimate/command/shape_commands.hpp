@@ -70,7 +70,7 @@ AddShape* duplicate_shape(model::ShapeElement* shape);
 void convert_to_path(const std::vector<model::ShapeElement*>& shapes, std::vector<model::ShapeElement*>* out = nullptr);
 
 /**
- * \brief Recursively traverses the node and reverses the path direction of any shape
+ * \brief Recursively traverses the node and reverses the path direction of any shape as a single command
  */
 void recursive_reverse_path(model::DocumentNode* node);
 
@@ -91,5 +91,11 @@ model::PreCompLayer* precompose(
     model::ObjectListProperty<model::ShapeElement>* layer_parent,
     int layer_index
 );
+
+/**
+ * @brief Changes the end time of a composition or layer and adjusted affected layers
+ */
+void trim_end_time(model::VisualNode* node, model::FrameTime end_time);
+void trim_start_time(model::VisualNode* node, model::FrameTime start_time);
 
 } // namespace glaxnimate::command

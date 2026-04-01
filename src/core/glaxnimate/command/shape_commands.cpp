@@ -11,6 +11,7 @@
 #include "glaxnimate/model/assets/assets.hpp"
 #include "glaxnimate/model/document.hpp"
 #include "glaxnimate/command/undo_macro_guard.hpp"
+#include "glaxnimate/model/simple_visitor.hpp"
 
 using namespace glaxnimate;
 
@@ -294,4 +295,77 @@ model::PreCompLayer* command::precompose(
     auto pcl_ptr = pcl.get();
     doc->push_command(new command::AddShape(layer_parent, std::move(pcl), layer_index));
     return pcl_ptr;
+}
+
+void command::trim_end_time(model::VisualNode *node, model::FrameTime last_frame)
+{
+    if ( auto comp = node->cast<model::Composition>() )
+    {
+        auto comp_last = comp->animation->last_frame.get();
+        if ( last_frame == comp_last )
+            return;
+
+        command::UndoMacroGuard guard(i18n("Set End Time"), comp->document());
+        comp->animation->last_frame.set_undoable(last_frame);
+
+        if ( last_frame < comp_last )
+        {
+            // Trim
+            model::simple_visit<model::Layer>(comp, true, [last_frame](model::Layer* layer){
+                if ( layer->animation->last_frame.get() >= last_frame )
+                    layer->animation->last_frame.set_undoable(last_frame);
+            });
+        }
+        else
+        {
+            // Expand
+            model::simple_visit<model::Layer>(comp, true, [last_frame, comp_last](model::Layer* layer){
+                if ( layer->animation->last_frame.get() >= comp_last )
+                    layer->animation->last_frame.set_undoable(last_frame);
+            });
+        }
+
+    }
+    else if ( auto layer = node->cast<model::Layer>() )
+    {
+        if ( last_frame == layer->animation->last_frame.get() )
+            return;
+        layer->animation->last_frame.set_undoable(last_frame);
+    }
+}
+
+void command::trim_start_time(model::VisualNode *node, model::FrameTime start_time)
+{
+    if ( auto comp = node->cast<model::Composition>() )
+    {
+        auto comp_first = comp->animation->first_frame.get();
+        if ( comp_first == start_time )
+            return;
+
+        command::UndoMacroGuard guard(i18n("Set Start Time"), comp->document());
+        comp->animation->first_frame.set_undoable(start_time);
+
+        if ( start_time > comp_first )
+        {
+            // Trim
+            model::simple_visit<model::Layer>(comp, true, [start_time](model::Layer* layer){
+                if ( layer->animation->first_frame.get() <= start_time )
+                    layer->animation->first_frame.set_undoable(start_time);
+            });
+        }
+        else
+        {
+            // Expand
+            model::simple_visit<model::Layer>(comp, true, [start_time, comp_first](model::Layer* layer){
+                if ( layer->animation->first_frame.get() <= comp_first )
+                    layer->animation->first_frame.set_undoable(start_time);
+            });
+        }
+    }
+    else if ( auto layer = node->cast<model::Layer>() )
+    {
+        if ( start_time == layer->animation->first_frame.get() )
+            return;
+        layer->animation->first_frame.set_undoable(start_time);
+    }
 }

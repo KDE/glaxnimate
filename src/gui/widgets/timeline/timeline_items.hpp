@@ -13,6 +13,7 @@
 #include <QGraphicsSceneMouseEvent>
 
 #include "glaxnimate/command/animation_commands.hpp"
+#include "glaxnimate/command/shape_commands.hpp"
 #include "glaxnimate/model/document.hpp"
 #include "glaxnimate/model/shapes/composable/precomp_layer.hpp"
 
@@ -34,6 +35,9 @@ enum class ItemTypes
     ReferencePropertyLineItem,
 };
 
+/**
+ * @brief Base class for a row in the timeline
+ */
 class LineItem : public QGraphicsObject
 {
     Q_OBJECT
@@ -123,6 +127,9 @@ private:
 
 class AnimatableItem;
 
+/**
+ * @brief "Split" keyframe item, shows the boundary of two keyframes
+ */
 class KeyframeSplitItem : public QGraphicsObject
 {
     Q_OBJECT
@@ -196,6 +203,9 @@ private:
     model::FrameTime keyframe_time_;
 };
 
+/**
+ * @brief Line item for an AnimatableBase
+ */
 class AnimatableItem : public LineItem
 {
     Q_OBJECT
@@ -245,6 +255,9 @@ private:
     friend KeyframeSplitItem;
 };
 
+/**
+ * @brief Dummy item for objects
+ */
 class ObjectLineItem : public AnimatableItem
 {
     Q_OBJECT
@@ -259,7 +272,9 @@ public:
     }
 };
 
-
+/**
+ * @brief Line item showing a rect in the object's color
+ */
 class TimeRectItem : public QGraphicsObject
 {
 public:
@@ -295,21 +310,25 @@ protected:
     qreal radius;
 };
 
+/**
+ * @brief Line item for layers and comps showing the frame rang
+ */
 class AnimationContainerItem : public TimeRectItem
 {
 public:
     AnimationContainerItem(model::VisualNode* node, model::AnimationContainer* animation,
                            qreal height, QGraphicsItem* parent)
     : TimeRectItem(node, height, parent),
-      animation(animation)
+      animation(animation),
+      node(node)
 
     {
         handle_ip.set_radius(radius);
         handle_op.set_radius(radius);
         handle_ip.setPos(animation->first_frame.get(), 0);
         handle_op.setPos(animation->last_frame.get(), 0);
-        connect(&handle_ip, &graphics::MoveHandle::dragged_x, this, &AnimationContainerItem::drag_ip);
-        connect(&handle_op, &graphics::MoveHandle::dragged_x, this, &AnimationContainerItem::drag_op);
+        // connect(&handle_ip, &graphics::MoveHandle::dragged_x, this, &AnimationContainerItem::drag_ip);
+        // connect(&handle_op, &graphics::MoveHandle::dragged_x, this, &AnimationContainerItem::drag_op);
         connect(animation, &model::AnimationContainer::first_frame_changed, this, &AnimationContainerItem::update_ip);
         connect(animation, &model::AnimationContainer::last_frame_changed, this, &AnimationContainerItem::update_op);
         connect(&handle_ip, &graphics::MoveHandle::drag_finished, this, &AnimationContainerItem::commit_ip);
@@ -325,7 +344,7 @@ public:
     }
 
 private:
-    void drag_ip(qreal x)
+    /*void drag_ip(qreal x)
     {
         x = qRound(x);
         if ( x >= animation->last_frame.get() )
@@ -339,7 +358,7 @@ private:
         if ( x <= animation->first_frame.get() )
             x = animation->first_frame.get() + 1;
         animation->last_frame.set_undoable(x, false);
-    }
+    }*/
 
     void update_ip(qreal x)
     {
@@ -357,18 +376,25 @@ private:
 
     void commit_ip()
     {
-        animation->first_frame.set_undoable(animation->first_frame.get(), true);
+        qreal x = qRound(handle_ip.pos().x());
+        if ( x >= animation->last_frame.get() )
+            x = animation->last_frame.get() - 1;
+        command::trim_start_time(node, x);
     }
 
     void commit_op()
     {
-        animation->last_frame.set_undoable(animation->last_frame.get(), true);
+        qreal x = qRound(handle_op.pos().x());
+        if ( x <= animation->first_frame.get() )
+            x = animation->first_frame.get() + 1;
+        command::trim_end_time(node, x);
     }
 
 private:
-    graphics::MoveHandle handle_ip{this, graphics::MoveHandle::Horizontal, graphics::MoveHandle::None, 1, true};
-    graphics::MoveHandle handle_op{this, graphics::MoveHandle::Horizontal, graphics::MoveHandle::None, 1, true};
+    graphics::MoveHandle handle_ip{this, graphics::MoveHandle::Horizontal, graphics::MoveHandle::None, 1, false};
+    graphics::MoveHandle handle_op{this, graphics::MoveHandle::Horizontal, graphics::MoveHandle::None, 1, false};
     model::AnimationContainer* animation;
+    model::VisualNode* node;
 };
 
 

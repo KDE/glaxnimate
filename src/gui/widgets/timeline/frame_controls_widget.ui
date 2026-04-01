@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-SPDX-FileCopyrightText: 2019-2023 Mattia Basaglia <dev@dragon.best>
-
-SPDX-License-Identifier: GPL-3.0-or-later
--->
-
 <ui version="4.0">
+ <author>
+SPDX-FileCopyrightText: 2019-2026 Mattia Basaglia &lt;dev@dragon.best&gt;
+SPDX-License-Identifier: GPL-3.0-or-later
+ </author>
  <class>glaxnimate::gui::FrameControlsWidget</class>
  <widget class="QWidget" name="FrameControlsWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>383</width>
-    <height>45</height>
+    <width>645</width>
+    <height>48</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,7 +30,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <string>Frame number</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
      </property>
      <property name="suffix">
       <string> f</string>
@@ -46,8 +43,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <string>Play</string>
      </property>
      <property name="icon">
-      <iconset theme="media-playback-start">
-       <normaloff>.</normaloff>.</iconset>
+      <iconset theme="media-playback-start"/>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -63,8 +59,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <string>Loop</string>
      </property>
      <property name="icon">
-      <iconset theme="media-playlist-repeat">
-       <normaloff>.</normaloff>.</iconset>
+      <iconset theme="media-playlist-repeat"/>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -83,8 +78,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <string>Go To First Frame</string>
      </property>
      <property name="icon">
-      <iconset theme="go-first">
-       <normaloff>.</normaloff>.</iconset>
+      <iconset theme="go-first"/>
      </property>
     </widget>
    </item>
@@ -100,8 +94,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <string>Go To Previous Keyframe</string>
      </property>
      <property name="icon">
-      <iconset theme="go-previous-skip">
-       <normaloff>.</normaloff>.</iconset>
+      <iconset theme="go-previous-skip"/>
      </property>
     </widget>
    </item>
@@ -114,8 +107,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <string>Go To Previous Frame</string>
      </property>
      <property name="icon">
-      <iconset theme="go-previous">
-       <normaloff>.</normaloff>.</iconset>
+      <iconset theme="go-previous"/>
      </property>
     </widget>
    </item>
@@ -128,8 +120,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <string>Go To Next Frame</string>
      </property>
      <property name="icon">
-      <iconset theme="go-next">
-       <normaloff>.</normaloff>.</iconset>
+      <iconset theme="go-next"/>
      </property>
     </widget>
    </item>
@@ -145,8 +136,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <string>Go To Next Keyframe</string>
      </property>
      <property name="icon">
-      <iconset theme="go-next-skip">
-       <normaloff>.</normaloff>.</iconset>
+      <iconset theme="go-next-skip"/>
      </property>
     </widget>
    </item>
@@ -159,8 +149,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <string>Go To Last Frame</string>
      </property>
      <property name="icon">
-      <iconset theme="go-last">
-       <normaloff>.</normaloff>.</iconset>
+      <iconset theme="go-last"/>
      </property>
     </widget>
    </item>
@@ -173,8 +162,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <string>Record</string>
      </property>
      <property name="icon">
-      <iconset theme="media-record">
-       <normaloff>.</normaloff>.</iconset>
+      <iconset theme="media-record"/>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -184,7 +172,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
    <item>
     <spacer name="horizontalSpacer">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
@@ -193,6 +181,16 @@ SPDX-License-Identifier: GPL-3.0-or-later
       </size>
      </property>
     </spacer>
+   </item>
+   <item>
+    <widget class="QSpinBox" name="spin_end_frame">
+     <property name="suffix">
+      <string>f</string>
+     </property>
+     <property name="maximum">
+      <number>9999</number>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

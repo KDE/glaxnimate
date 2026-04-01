@@ -30,6 +30,9 @@ FrameControlsWidget::FrameControlsWidget(QWidget* parent)
     d->button_prev_kf->setVisible(false);
     connect(d->button_record, &QAbstractButton::clicked, this, &FrameControlsWidget::record_toggled);
     connect(d->button_loop, &QAbstractButton::clicked, this, &FrameControlsWidget::loop_changed);
+    connect(d->spin_end_frame, &QSpinBox::editingFinished, this, [this]{
+        Q_EMIT FrameControlsWidget::end_frame_selected(d->spin_end_frame->value());
+    });
 }
 
 FrameControlsWidget::~FrameControlsWidget() = default;
@@ -51,15 +54,21 @@ void FrameControlsWidget::set_min(int min)
 void FrameControlsWidget::set_max(int max)
 {
     d->spin_frame->setMaximum(max-1);
-    Q_EMIT max_changed(max-1);
+    if ( max > d->spin_end_frame->maximum() )
+        d->spin_end_frame->setMaximum(max);
+    d->spin_end_frame->setValue(max);
+    Q_EMIT max_changed(max);
 }
 
 void FrameControlsWidget::set_range(int min, int max)
 {
     d->spin_frame->setRange(min, max-1);
     d->spin_frame->setValue(min);
+    if ( max > d->spin_end_frame->maximum() )
+        d->spin_end_frame->setMaximum(max);
+    d->spin_end_frame->setValue(max);
     Q_EMIT min_changed(min);
-    Q_EMIT max_changed(max-1);
+    Q_EMIT max_changed(max);
 }
 
 void FrameControlsWidget::set_fps(qreal fps)
