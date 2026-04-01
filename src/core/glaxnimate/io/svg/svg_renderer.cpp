@@ -220,7 +220,7 @@ public:
 
     QString unlerp_time(model::FrameTime time) const
     {
-        return QString::number(math::unlerp(ip, op, time), 'f');
+        return format_float(math::unlerp(ip, op, time));
     }
 
     struct AnimationData
@@ -245,11 +245,11 @@ public:
 
         QString key_spline(const model::KeyframeTransition& trans)
         {
-            return QString("%1 %2 %3 %4")
-                .arg(trans.before().x(), 0, 'f')
-                .arg(trans.before().y(), 0, 'f')
-                .arg(trans.after().x(), 0, 'f')
-                .arg(trans.after().y(), 0, 'f')
+            return QStringLiteral("%1 %2 %3 %4")
+                .arg(parent->format_float(trans.before().x()))
+                .arg(parent->format_float(trans.before().y()))
+                .arg(parent->format_float(trans.after().x()))
+                .arg(parent->format_float(trans.after().y()))
             ;
         }
 
@@ -257,6 +257,34 @@ public:
         {
             for ( std::size_t i = 0; i != attributes.size(); i++ )
                 attributes[i].values.push_back(vals[i]);
+        }
+
+        void add_motion_keyframe(model::FrameTime time, qreal lengthpc, const model::KeyframeTransition& trans)
+        {
+            if ( time < parent->ip || time > parent->op )
+                return;
+
+            if ( key_times.empty() && time > parent->ip )
+            {
+                key_times.push_back("0");
+                key_splines.push_back("0 0 1 1");
+                key_points.push_back("0");
+            }
+            else if ( hold && last + 1 < time )
+            {
+
+                key_times.push_back(parent->unlerp_time(time - 1));
+                key_splines.push_back("0 0 1 1");
+                key_points.push_back(key_points.back());
+
+            }
+
+            key_times.push_back(parent->unlerp_time(time));
+            key_splines.push_back(key_spline(trans));
+            key_points.push_back(parent->format_float(lengthpc));
+
+            last = time;
+            hold = trans.hold();
         }
 
         void add_keyframe(model::FrameTime time, const std::vector<QString>& vals,
@@ -284,8 +312,7 @@ public:
             key_times.push_back(parent->unlerp_time(time));
             key_splines.push_back(key_spline(trans));
 
-            for ( std::size_t i = 0; i != attributes.size(); i++ )
-                attributes[i].values.push_back(vals[i]);
+            add_values(vals);
 
             last = time;
             hold = trans.hold();
@@ -322,6 +349,7 @@ public:
                 if ( !path.isEmpty() )
                 {
                     animation.setAttribute("path", path);
+                    animation.setAttribute("keyPoints", key_points.join("; "));
                     if ( auto_orient )
                         animation.setAttribute("rotate", "auto");
                 }
@@ -330,7 +358,8 @@ public:
                 animation.setAttribute("repeatCount", "indefinite");
                 if ( !type.isEmpty() )
                     animation.setAttribute("type", type);
-                animation.setAttribute("values", data.values.join("; "));
+                if ( !data.values.isEmpty() )
+                    animation.setAttribute("values", data.values.join("; "));
             }
         }
 
@@ -338,6 +367,7 @@ public:
         std::vector<Attribute> attributes;
         QStringList key_times = {};
         QStringList key_splines = {};
+        QStringList key_points = {};
         model::FrameTime last = 0;
         bool hold = false;
         qreal time_stretch = 1;
@@ -427,21 +457,21 @@ public:
         auto e = element(parent, "rect");
         write_style(e, style);
         write_properties(e, t, {&rect->position, &rect->size}, {"x", "y"},
-            [](const std::vector<QVariant>& values){
+            [this](const std::vector<QVariant>& values){
                 QPointF c = values[0].toPointF();
                 QSizeF s = values[1].toSizeF();
                 return std::vector<QString>{
-                    QString::number(c.x() - s.width()/2),
-                    QString::number(c.y() - s.height()/2)
+                    format_float(c.x() - s.width()/2),
+                    format_float(c.y() - s.height()/2)
                 };
             }
         );
         write_properties(e, t, {&rect->size}, {"width", "height"},
-            [](const std::vector<QVariant>& values){
+            [this](const std::vector<QVariant>& values){
                 QSizeF s = values[0].toSizeF();
                 return std::vector<QString>{
-                    QString::number(s.width()),
-                    QString::number(s.height())
+                    format_float(s.width()),
+                    format_float(s.height())
                 };
             }
         );
@@ -454,11 +484,11 @@ public:
         write_style(e, style);
         write_properties(e, t, {&ellipse->position}, {"cx", "cy"}, &Private::callback_point);
         write_properties(e, t, {&ellipse->size}, {"rx", "ry"},
-            [](const std::vector<QVariant>& values){
+            [this](const std::vector<QVariant>& values){
                 QSizeF s = values[0].toSizeF();
                 return std::vector<QString>{
-                    QString::number(s.width() / 2),
-                    QString::number(s.height() / 2)
+                    format_float(s.width() / 2),
+                    format_float(s.height() / 2)
                 };
             }
         );
@@ -596,8 +626,8 @@ public:
         if ( !animated )
         {
             style["stroke"] = styler_to_css(stroke);
-            style["stroke-opacity"] = QString::number(stroke->opacity.get());
-            style["stroke-width"] = QString::number(stroke->width.get());
+            style["stroke-opacity"] = format_float(stroke->opacity.get());
+            style["stroke-width"] = format_float(stroke->width.get());
         }
         switch ( stroke->cap.get() )
         {
@@ -622,7 +652,7 @@ public:
                 break;
             case model::Stroke::Join::MiterJoin:
                 style["stroke-linejoin"] = "miter";
-                style["stroke-miterlimit"] = QString::number(stroke->miter_limit.get());
+                style["stroke-miterlimit"] = format_float(stroke->miter_limit.get());
                 break;
         }
         style["stroke-dasharray"] = "none";
@@ -640,7 +670,7 @@ public:
         if ( !animated )
         {
             style["fill"] = styler_to_css(fill);
-            style["fill-opacity"] = QString::number(fill->opacity.get());
+            style["fill-opacity"] = format_float(fill->opacity.get());
         }
         style["stroke"] = "none";
         QDomElement g = write_styler_shapes(parent, fill, style, t);
@@ -718,7 +748,7 @@ public:
                 {
                     anim_opacity.add_keyframe(
                         time_to_global(keyframe.time),
-                        {QString::number(opacity.combine_value_at<float, float>(keyframe.time, opacity_func))},
+                        {format_float(opacity.combine_value_at<float, float>(keyframe.time, opacity_func))},
                         keyframe.transition()
                     );
                 }
@@ -947,7 +977,7 @@ public:
     template<class PropT, class Callback>
     QDomElement transform_property(
         QDomElement& e, model::FrameTime t, const char* name, PropT* prop, const Callback& callback,
-        const QString& path = {}, bool auto_orient = false
+        const math::bezier::Bezier& path = {}, bool auto_orient = false
     )
     {
         model::JoinAnimatables j({prop}, model::JoinAnimatables::NoValues);
@@ -962,11 +992,24 @@ public:
         {
             AnimationData data(this, {"transform"}, j.keyframes().size(), time_stretch, time_start);
 
-            if ( !path.isEmpty() )
+            if ( !path.empty() )
             {
+                if ( j.keyframes()[0].time > ip )
+                    data.add_motion_keyframe(time_to_global(ip), 0, {});
+
+                math::bezier::LengthData bezlen(path, 12);
+                int lenid = 0;
+
                 for ( const auto& kf : j )
-                    data.add_keyframe(time_to_global(kf.time), {""}, kf.transition());
-                data.add_dom(g, "animateMotion", "", path, auto_orient);
+                    data.add_motion_keyframe(time_to_global(kf.time), bezlen.child_start(lenid++) / bezlen.length(), kf.transition());
+
+                if ( j.keyframes().back().time < op )
+                {
+                    data.add_motion_keyframe(time_to_global(op), 1, model::KeyframeTransition::Special::Hold);
+                }
+
+
+                data.add_dom(g, "animateMotion", "", path_data(path).first, auto_orient);
                 return g;
             }
             else
@@ -999,17 +1042,16 @@ public:
                 });
 
             if ( transf->rotation.animated() || transf->rotation.get() != 0 )
-                subject = transform_property(subject, t, "rotate", &transf->rotation, [](qreal val){
-                    return QString::number(val);
+                subject = transform_property(subject, t, "rotate", &transf->rotation, [this](qreal val){
+                    return format_float(val);
                 });
 
             if ( transf->position.animated() || transf->position.get() != QPointF() )
             {
-                math::bezier::MultiBezier mb;
-                mb.beziers().push_back(transf->position.bezier());
+                math::bezier::Bezier mb = transf->position.bezier();
                 subject = transform_property(subject, t, "translate", &transf->position, [](const QPointF& val){
                     return QString("%1 %2").arg(val.x()).arg(val.y());
-                }, path_data(mb).first, transf->auto_orient.get());
+                }, mb, transf->auto_orient.get());
             }
         }
         else
@@ -1163,7 +1205,7 @@ public:
                     auto stop = kf.get()[i];
                     data.add_keyframe(
                         time_to_global(kf.time()),
-                        {QString::number(stop.first), stop.second.name()},
+                        {format_float(stop.first), stop.second.name()},
                         kf.transition()
                     );
                 }
@@ -1197,8 +1239,8 @@ public:
             write_properties(e, t, {&gradient->highlight}, {"fx", "fy"}, &Private::callback_point);
 
             write_properties(e, t, {&gradient->start_point, &gradient->end_point}, {"r"},
-                [](const std::vector<QVariant>& values) -> std::vector<QString> {
-                    return { QString::number(
+                [this](const std::vector<QVariant>& values) -> std::vector<QString> {
+                    return { format_float(
                         math::length(values[1].toPointF() - values[0].toPointF())
                     )};
             });
@@ -1222,7 +1264,14 @@ public:
 
     QString clock(model::FrameTime time)
     {
-        return QString::number(time / fps, 'f');
+        return format_float(time / fps);
+    }
+
+    QString format_float(double val) const
+    {
+        if ( qFuzzyIsNull(math::fmod(val, 1.)) )
+            return QString::number(int(val));
+        return QString::number(val, 'f', 3);
     }
 
     std::vector<model::StretchableTime*> timing;
