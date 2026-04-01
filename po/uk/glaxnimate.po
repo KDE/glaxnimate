@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-29 00:41+0000\n"
+"POT-Creation-Date: 2026-04-01 00:42+0000\n"
 "PO-Revision-Date: 2026-03-29 13:37+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -343,9 +343,10 @@ msgstr "Замінити"
 #: src/android/document_opener.cpp:35 src/android/document_opener.cpp:128
 #: src/android/document_opener.cpp:154 src/android/document_opener.cpp:193
 #: src/android/document_opener.cpp:201
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:450
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:455
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:449
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:454
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:210
+#: src/gui/widgets/dialogs/import_export_dialog.hpp:82
 #: src/gui/widgets/font/external_font_widget.cpp:126
 #, kde-format
 msgid "Open File"
@@ -358,6 +359,7 @@ msgstr "Растрові зображення, які слід трасуват�
 
 #: src/android/document_opener.cpp:106
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:211
+#: src/gui/widgets/dialogs/import_export_dialog.hpp:40
 #, kde-format
 msgid "Save File"
 msgstr "Зберегти файл"
@@ -649,13 +651,13 @@ msgstr "Стиль заповнення"
 msgid "Stroke Style"
 msgstr "Стиль штриха"
 
-#: src/android/main_window.cpp:454 src/gui/widgets/dialogs/gw_impl_ui.cpp:664
+#: src/android/main_window.cpp:454 src/gui/widgets/dialogs/gw_impl_ui.cpp:662
 #: src/gui/widgets/menus/node_menu.cpp:116
 #, kde-format
 msgid "Raise"
 msgstr "Підняти"
 
-#: src/android/main_window.cpp:459 src/gui/widgets/dialogs/gw_impl_ui.cpp:667
+#: src/android/main_window.cpp:459 src/gui/widgets/dialogs/gw_impl_ui.cpp:665
 #: src/gui/widgets/menus/node_menu.cpp:120
 #, kde-format
 msgid "Lower"
@@ -707,7 +709,7 @@ msgstr "Повторити"
 #. i18n: ectx: Menu (new_layer_menu)
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #. i18n: ectx: property (text), widget (QToolButton, btn_new)
-#: src/android/main_window.cpp:508 src/gui/glaxnimateui.rc:127
+#: src/android/main_window.cpp:508 src/gui/glaxnimateui.rc:123
 #: src/gui/widgets/docks/snippet_list_widget.ui:29
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:48
 #, kde-format
@@ -730,13 +732,13 @@ msgstr "Відкрити…"
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #. i18n: ectx: property (text), widget (QPushButton, button_open)
 #: src/android/main_window.cpp:513
-#: src/gui/widgets/dialogs/about_env_dialog.ui:67
-#: src/gui/widgets/dialogs/about_env_dialog.ui:70
-#: src/gui/widgets/dialogs/about_env_dialog.ui:98
-#: src/gui/widgets/dialogs/about_env_dialog.ui:101
-#: src/gui/widgets/dialogs/about_env_dialog.ui:129
-#: src/gui/widgets/dialogs/about_env_dialog.ui:132
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1905
+#: src/gui/widgets/dialogs/about_env_dialog.ui:66
+#: src/gui/widgets/dialogs/about_env_dialog.ui:69
+#: src/gui/widgets/dialogs/about_env_dialog.ui:97
+#: src/gui/widgets/dialogs/about_env_dialog.ui:100
+#: src/gui/widgets/dialogs/about_env_dialog.ui:128
+#: src/gui/widgets/dialogs/about_env_dialog.ui:131
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1903
 #: src/gui/widgets/dialogs/startup_dialog.ui:149
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:136
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
@@ -784,8 +786,8 @@ msgstr "Надіслати до Telegram"
 #. i18n: ectx: Menu (layers)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/android/main_window.cpp:546 src/gui/glaxnimateui.rc:125
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:620
+#: src/android/main_window.cpp:546 src/gui/glaxnimateui.rc:121
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:618
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #: src/gui/widgets/docks/layers.ui:27
 #, kde-format
@@ -808,13 +810,13 @@ msgid "Animation.%1"
 msgstr "Анімація.%1"
 
 #: src/android/main_window.cpp:667
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:294
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:293
 #, kde-format
 msgid "Closing Animation"
 msgstr "Закриття анімації"
 
 #: src/android/main_window.cpp:668
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:295
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:294
 #, kde-format
 msgid ""
 "The animation has unsaved changes.\n"
@@ -825,11 +827,11 @@ msgstr ""
 
 #: src/android/main_window.cpp:752 src/android/main_window.cpp:756
 #: src/android/main_window.cpp:891
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:509
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:513
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:859
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:864
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:876
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:508
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:512
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:828
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:833
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:845
 #, kde-format
 msgid "Import File"
 msgstr "Імпортувати файл"
@@ -868,7 +870,7 @@ msgstr "Емоційка"
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
 #: src/android/main_window.ui:21 src/core/glaxnimate/app_info.cpp:14
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:511
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:509
 #, kde-format
 msgid "Glaxnimate"
 msgstr "Glaxnimate"
@@ -1050,206 +1052,6 @@ msgstr "Попередньо скомпонувати"
 msgid "Move %1"
 msgstr "Пересунути %1"
 
-#: src/core/glaxnimate/io/aep/aep_format.cpp:32
-#, kde-format
-msgid "Could not load file: %1"
-msgstr "Не вдалося завантажити файл: %1"
-
-#: src/core/glaxnimate/io/aep/aep_format.hpp:21
-#, kde-format
-msgid "Adobe After Effects Project"
-msgstr "Проєкт Adobe After Effects"
-
-#: src/core/glaxnimate/io/aep/aep_format.hpp:39
-#, kde-format
-msgid "Adobe After Effects Project XML"
-msgstr "XML проєкту Adobe After Effects"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:147
-#, kde-format
-msgid "External asset not found: %1"
-msgstr "Зовнішнього ресурсу не знайдено: %1"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:189
-#, kde-format
-msgid "Unknown property \"%1\" of \"%2\""
-msgstr "Неочікувана властивість «%1» «%2»"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:221
-#, kde-format
-msgid "Layer #%1"
-msgstr "Шар %1"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:279
-#, kde-format
-msgid "Parent #%1 of layer %2 could not be found"
-msgstr "Не вдалося знайти батьківський елемент %1 шару %2"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:292
-#, kde-format
-msgid "Mask parent #%1 of layer %2 could not be found"
-msgstr "Не вдалося знайти батьківський елемент маски %1 шару %2"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:581
-#, kde-format
-msgid "Expected property for %1"
-msgstr "Очікувана властивість для %1"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:588
-#, kde-format
-msgid "Could convert %1"
-msgstr "Можна перетворити %1"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:592
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1101
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1123
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1130
-#, kde-format
-msgid "Invalid value for %1"
-msgstr "Некоректне значення %1"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:693
-#, kde-format
-msgid "Expected property group for transform"
-msgstr "Неочікувана група властивостей для перетворення"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:742
-#, kde-format
-msgid "Unknown property \"%1\""
-msgstr "Невідома властивість «%1»"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:1299
-#, kde-format
-msgid "Unknown shape %1"
-msgstr "Невідома форма %1"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:1357
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:534
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:634
-#, kde-format
-msgid "Clip"
-msgstr "Кліп"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:1500
-#, kde-format
-msgid "Unknown asset type for %1"
-msgstr "Невідомий тип ресурсу для %1"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:49
-#, kde-format
-msgid "Not an AEP file"
-msgstr "Не є файлом AEP"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:123
-#, kde-format
-msgid "Unknown Item type %s"
-msgstr "Невідомий тип запису %s"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:137
-#, kde-format
-msgid "Missing composition data"
-msgstr "Пропущено дані композиції"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:209
-#, kde-format
-msgid "Unknown encoding for %1"
-msgstr "Невідоме кодування для %1"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:225
-#, kde-format
-msgid "Missing asset data"
-msgstr "Пропущено дані ресурсу"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:287
-#, kde-format
-msgid "Missing layer data"
-msgstr "Пропущено дані шару"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:372
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:377
-#, kde-format
-msgid "Missing mask properties"
-msgstr "Пропущено властивості маски"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:424
-#, kde-format
-msgid "Unknown property type: %1"
-msgstr "Невідомий тип властивості: %1"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:654
-#, kde-format
-msgid "Missing list data"
-msgstr "Пропущено дані у списку"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:666
-#, kde-format
-msgid "Not enough data in list"
-msgstr "Недостатньо даних у списку"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:800
-#, kde-format
-msgid "Invalid text document: %1"
-msgstr "Некоректний текстовий документ: %1"
-
-#: src/core/glaxnimate/io/aep/riff.hpp:221
-#: src/core/glaxnimate/io/aep/riff.hpp:234
-#: src/core/glaxnimate/io/aep/riff.hpp:255
-#: src/core/glaxnimate/io/aep/riff.hpp:303
-#, kde-format
-msgid "Not enough data"
-msgstr "Недостатньо даних"
-
-#: src/core/glaxnimate/io/aep/riff.hpp:539
-#, kde-format
-msgid "Unknown format %1"
-msgstr "Невідомий формат %1"
-
-#: src/core/glaxnimate/io/avd/avd_format.hpp:21
-#, kde-format
-msgid "Android Vector Drawable"
-msgstr "Векторний рисунок Android"
-
-#: src/core/glaxnimate/io/avd/avd_parser.cpp:223
-#, kde-format
-msgid "Unknown interpolator %s"
-msgstr "Невідомий інтерполятор %s"
-
-#: src/core/glaxnimate/io/avd/avd_parser.cpp:650
-#, kde-format
-msgid "Unknown resource id %1"
-msgstr "Невідомий ідентифікатор ресурсу %1"
-
-#: src/core/glaxnimate/io/avd/avd_parser.cpp:658
-#, kde-format
-msgid "Could not read file %1"
-msgstr "Не вдалося прочитати файл %1"
-
-#: src/core/glaxnimate/io/avd/avd_parser.cpp:659
-#: src/core/glaxnimate/io/avd/avd_parser.cpp:677
-#, kde-format
-msgid "Could not load resource %1"
-msgstr "Не вдалося завантажити ресурс %1"
-
-#: src/core/glaxnimate/io/avd/avd_renderer.cpp:159
-#, kde-format
-msgid "%s should be in a group"
-msgstr "%s має бути у групі"
-
-#: src/core/glaxnimate/io/avd/avd_renderer.cpp:163
-#, kde-format
-msgid "%s is not supported"
-msgstr "Підтримки %s не передбачено"
-
-#: src/core/glaxnimate/io/avd/avd_renderer.cpp:252
-#, kde-format
-msgid "%s are not supported"
-msgstr "Підтримки %s не передбачено"
-
-#: src/core/glaxnimate/io/avd/avd_renderer.cpp:518
-#, kde-format
-msgid "%s cannot be a clip path"
-msgstr "%s не може бути контуром обрізання"
-
 #: src/core/glaxnimate/io/base.cpp:22
 #: src/core/glaxnimate/io/svg/svg_renderer.cpp:837 src/gui/tools/base.cpp:161
 #, kde-format
@@ -1352,19 +1154,19 @@ msgstr "Не вдалося додати ключовий кадр"
 msgid "Unknown object of type '%1'"
 msgstr "Невідомий об'єкт типу «%1»"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:693
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:732
 #, kde-format
 msgid "%1 is an unsupported shape of type %2"
 msgstr "%1 є непідтримуваною формою типу %2"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:713
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:757
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
 "Зображення не можна групувати з іншими формами, вони мають бути всередині "
 "шару"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:715
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:759
 #, kde-format
 msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
@@ -1438,6 +1240,13 @@ msgstr "Пропущено тип для шару %1"
 msgid "Unsupported layer of type %1"
 msgstr "Непідтримуваний шар типу %1"
 
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:534
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:634
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:1357
+#, kde-format
+msgid "Clip"
+msgstr "Кліп"
+
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:678
 #, kde-format
 msgid "Missing shape type"
@@ -1458,6 +1267,14 @@ msgstr "Невідоме поле %2%1"
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
 msgstr "Некоректна точка Безьє %1 у %2"
+
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1101
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1123
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1130
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:592
+#, kde-format
+msgid "Invalid value for %1"
+msgstr "Некоректне значення %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1138
 #, kde-format
@@ -1490,57 +1307,6 @@ msgstr "Дублювання ідентифікатора растрового �
 msgid "Duplicate Composition ID: %1"
 msgstr "Дублювання ідентифікатора композиції: %1"
 
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:47
-#, kde-format
-msgid "Star Shapes are not officially supported"
-msgstr "Офіційної підтримки форм зірок не передбачено"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:51
-#: src/core/glaxnimate/io/lottie/validation.cpp:71
-#, kde-format
-msgid "Images are not supported"
-msgstr "Підтримки зображень не передбачено"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:56
-#, kde-format
-msgid "Gradient strokes are not officially supported"
-msgstr "Офіційної підтримки штрихів градієнта не передбачено"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:61
-#, kde-format
-msgid "Masks are not supported"
-msgstr "Підтримки масок не передбачено"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:65
-#, kde-format
-msgid "Repeaters are not officially supported"
-msgstr "Офіційної підтримки повторювачів не передбачено"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:69
-#, kde-format
-msgid "Inflate/Deflate is not supported"
-msgstr "Підтримки збільшення/зменшення не передбачено"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:73
-#, kde-format
-msgid "Offset Path is not supported"
-msgstr "Підтримки розтягування контуру не передбачено"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:77
-#, kde-format
-msgid "ZigZag is not supported"
-msgstr "Підтримки ZigZag не передбачено"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:110
-#, kde-format
-msgid "File too large: %1k, should be under 64k"
-msgstr "Файл є надто великим: %1кБ, має бути меншим за 64кБ"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.hpp:19
-#, kde-format
-msgid "Telegram Animated Sticker"
-msgstr "Анімована наліпка Telegram"
-
 #: src/core/glaxnimate/io/lottie/validation.cpp:25
 #, kde-format
 msgid "Invalid width: %1, should be %2"
@@ -1561,6 +1327,12 @@ msgstr "Некоректна частота кадрів: %1, має бути %2
 msgid "Too many frames: %1, should be less than %2"
 msgstr "Забагато кадрів: %1, має бути менше за %2"
 
+#: src/core/glaxnimate/io/lottie/validation.cpp:71
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:48
+#, kde-format
+msgid "Images are not supported"
+msgstr "Підтримки зображень не передбачено"
+
 #: src/core/glaxnimate/io/lottie/validation.hpp:22
 #, kde-format
 msgid "%1: %2"
@@ -1571,7 +1343,7 @@ msgstr "%1: %2"
 msgid "JSON"
 msgstr "JSON"
 
-#: src/core/glaxnimate/io/raster/raster_format.hpp:25
+#: src/core/glaxnimate/io/raster/raster_format.hpp:22
 #: src/core/glaxnimate/io/raster/raster_mime.hpp:26
 #, kde-format
 msgid "Raster Image"
@@ -1622,170 +1394,36 @@ msgstr "Наскільки кожний оброблений кадр має з�
 msgid "Sprite Sheet"
 msgstr "Таблиця спрайтів"
 
-#: src/core/glaxnimate/io/rive/rive_exporter.hpp:359
-#, kde-format
-msgid "Bezier has mismatching number of points"
-msgstr "Крива Безьє має невідповідну кількість точок"
-
-#: src/core/glaxnimate/io/rive/rive_exporter.hpp:422
-#, kde-format
-msgid "Unknown property %1 of %2 (%3, %4)"
-msgstr "Невідома властивість %1 %2 (%3, %4)"
-
-#: src/core/glaxnimate/io/rive/rive_exporter.hpp:457
-#, kde-format
-msgid "Unknown keyframe type for property %1 of %2 (%3, %4)"
-msgstr "Невідомий тип ключового кадру для властивості %1 %2 (%3, %4)"
-
-#: src/core/glaxnimate/io/rive/rive_format.cpp:22
-#, kde-format
-msgid "Unsupported format"
-msgstr "Непідтримуваний формат"
-
-#: src/core/glaxnimate/io/rive/rive_format.cpp:32
-#, kde-format
-msgid "Could not read header"
-msgstr "Не вдалось прочитати заголовок"
-
-#: src/core/glaxnimate/io/rive/rive_format.cpp:38
-#, kde-format
-msgid ""
-"Loading unsupported rive file version %1.%2, the only supported version is %3"
-msgstr ""
-"Завантаження непідтримуваної версії файла RIVE %1.%2, єдиною підтримуваною "
-"версією є %3"
-
-#: src/core/glaxnimate/io/rive/rive_format.cpp:44
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:750
-#, kde-format
-msgid "Could not read property table"
-msgstr "Не вдалося прочитати таблицю властивостей"
-
-#: src/core/glaxnimate/io/rive/rive_format.hpp:24
-#, kde-format
-msgid "Rive Animation"
-msgstr "Анімація Rive"
-
-#: src/core/glaxnimate/io/rive/rive_html_format.hpp:20
-#, kde-format
-msgid "RIVE HTML Preview"
-msgstr "Попередній перегляд HTML RIVE"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:179
-#, kde-format
-msgid "Unexpected Keyed Object"
-msgstr "Неочікуваний прив'язаний до ключових кадрів об'єкт"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:187
-#, kde-format
-msgid "Invalid Keyed Object id %1"
-msgstr "Некоректний ідентифікатор прив'язаного до ключових кадрів об'єкта %1"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:195
-#, kde-format
-msgid "Unexpected Keyed Property"
-msgstr "Неочікувана прив'язана до ключових кадрів властивостей"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:204
-#, kde-format
-msgid "Unknown Keyed Property id %1"
-msgstr "Невідомий ідентифікатор прив'язаної до ключових кадрів властивості %1"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:215
-#, kde-format
-msgid "Unexpected Animation"
-msgstr "Неочікувана анімація"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:231
-#, kde-format
-msgid "Unexpected Asset Contents"
-msgstr "Неочікуваний вміст ресурсу"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:242
-#, kde-format
-msgid "Invalid Image Data"
-msgstr "Некоректні дані зображення"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:253
-#, kde-format
-msgid "Unexpected Keyframe"
-msgstr "Неочікуваний ключовий кадр"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:268
-#, kde-format
-msgid "Could not find parent with id %1"
-msgstr "Не вдалося знайти батьківський елемент з ідентифікатором %1"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:318
-#, kde-format
-msgid "Parent circular reference detected"
-msgstr "Виявлено циклічне посилання на батьківський об'єкт"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:746
-#, kde-format
-msgid "Unknown object of type %1"
-msgstr "Невідомий об'єкт типу %1"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:791
-#, kde-format
-msgid "Could not load object type ID"
-msgstr "Не вдалося завантажити ідентифікатор типу об'єкта"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:806
-#, kde-format
-msgid "Could not load property ID in %1 (%2)"
-msgstr "Не вдалося завантажити ідентифікатор властивості у %1 (%2)"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:823
-#, kde-format
-msgid "Unknown property %1 of %2 (%3)"
-msgstr "Невідома властивість %1 %2 (%3)"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:833
-#, kde-format
-msgid "Skipping unknown property %1 of %2 (%3)"
-msgstr "Пропускаємо невідому властивість %1 %2 (%3)"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:846
-#, kde-format
-msgid "Error loading property %1 (%2) of %3 (%4)"
-msgstr "Помилка під час спроби завантаження властивості %1 (%2) %3 (%4)"
-
-#: src/core/glaxnimate/io/svg/svg_format.cpp:66
+#: src/core/glaxnimate/io/svg/svg_format.cpp:55
 #, kde-format
 msgid "External Stylesheet"
 msgstr "Зовнішня таблиця стилів"
 
-#: src/core/glaxnimate/io/svg/svg_format.cpp:68
+#: src/core/glaxnimate/io/svg/svg_format.cpp:57
 #, kde-format
 msgid "Font face with external url"
 msgstr "Гарнітура шрифту із зовнішньою адресою"
 
-#: src/core/glaxnimate/io/svg/svg_format.cpp:70
+#: src/core/glaxnimate/io/svg/svg_format.cpp:59
 #, kde-format
 msgid "Embedded data"
 msgstr "Вбудовані дані"
 
-#: src/core/glaxnimate/io/svg/svg_format.cpp:71
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:967
+#: src/core/glaxnimate/io/svg/svg_format.cpp:60
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:936
 #, kde-format
 msgid "Ignore"
 msgstr "Ігнорувати"
 
-#: src/core/glaxnimate/io/svg/svg_format.cpp:74
+#: src/core/glaxnimate/io/svg/svg_format.cpp:63
 #, kde-format
 msgid "External Fonts"
 msgstr "Зовнішні шрифти"
 
-#: src/core/glaxnimate/io/svg/svg_format.cpp:74
+#: src/core/glaxnimate/io/svg/svg_format.cpp:63
 #, kde-format
 msgid "How to include external font"
 msgstr "Як включити зовнішній шрифт"
-
-#: src/core/glaxnimate/io/svg/svg_format.cpp:93
-#, kde-format
-msgid "Could not write to file"
-msgstr "Не вдалося записати дані до файла"
 
 #: src/core/glaxnimate/io/svg/svg_format.hpp:21
 #: src/core/glaxnimate/io/svg/svg_mime.hpp:20
@@ -1814,8 +1452,8 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/core/glaxnimate/model/animation/animatable.cpp:382
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:725
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:777
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:723
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:775
 #: src/gui/widgets/menus/animated_property_menu.cpp:64
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:194
 #, kde-format
@@ -1907,7 +1545,7 @@ msgstr "Растрове зображення"
 
 #. i18n: ectx: Menu (new_comp_layer_menu)
 #: src/core/glaxnimate/model/assets/composition.cpp:24
-#: src/gui/glaxnimateui.rc:129
+#: src/gui/glaxnimateui.rc:125
 #, kde-format
 msgid "Composition"
 msgstr "Композиція"
@@ -2006,8 +1644,8 @@ msgstr "Невідомий об’єкт"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/glaxnimate/model/shapes/composable/group.hpp:36
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:639
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:676
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:637
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:674
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
 #, kde-format
 msgid "Group"
@@ -2021,7 +1659,7 @@ msgstr "Зображення"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/glaxnimate/model/shapes/composable/layer.hpp:81
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:636
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:634
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
 #, kde-format
 msgid "Layer"
@@ -2071,9 +1709,9 @@ msgstr "Еліпс"
 #. i18n: ectx: Menu (path)
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/glaxnimate/model/shapes/shapes/path.hpp:38
-#: src/gui/glaxnimateui.rc:190
+#: src/gui/glaxnimateui.rc:186
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:853
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:851
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
@@ -2097,7 +1735,7 @@ msgstr "Змінити шрифт"
 
 #. i18n: ectx: Menu (text)
 #: src/core/glaxnimate/model/shapes/shapes/text.cpp:474
-#: src/gui/glaxnimateui.rc:216 src/gui/widgets/dialogs/gw_impl_ui.cpp:135
+#: src/gui/glaxnimateui.rc:212 src/gui/widgets/dialogs/gw_impl_ui.cpp:135
 #, kde-format
 msgid "Text"
 msgstr "Текст"
@@ -2108,8 +1746,8 @@ msgstr "Текст"
 #. i18n: ectx: property (text), widget (QRadioButton, check_fill)
 #: src/core/glaxnimate/model/shapes/style/fill.hpp:48
 #: src/gui/tools/draw_tool_base.cpp:114 src/gui/tools/fill_tool.cpp:25
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:771
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:642
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:740
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:640
 #: src/gui/widgets/docks/colors.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:197
 #: src/gui/widgets/tools/color_picker_widget.ui:24
@@ -2125,8 +1763,8 @@ msgstr "Заповнення"
 #. i18n: ectx: property (text), widget (QRadioButton, check_stroke)
 #: src/core/glaxnimate/model/shapes/style/stroke.hpp:68
 #: src/gui/tools/draw_tool_base.cpp:126
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:766
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:645
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:735
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:643
 #: src/gui/widgets/docks/stroke.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:111
 #: src/gui/widgets/tools/color_picker_widget.ui:37
@@ -2149,10 +1787,438 @@ msgstr "Час"
 msgid "Transform"
 msgstr "Перетворення"
 
-#: src/core/glaxnimate/module/module.cpp:50
+#: src/core/glaxnimate/module/cairo/cairo_module.hpp:16
+#, fuzzy, kde-format
+#| msgid "OpenGL Renderer"
+msgid "Cairo Renderer"
+msgstr "Обробка OpenGL"
+
+#: src/core/glaxnimate/module/cairo/pdf_format.cpp:40
+#, fuzzy, kde-format
+#| msgid "Could not create snippet: `%1`"
+msgid "Could not create PDF surface: %1"
+msgstr "Не вдалося створити фрагмент: «%1»"
+
+#: src/core/glaxnimate/module/cairo/pdf_format.hpp:20
+#, fuzzy, kde-format
+#| msgid "Gather Document Swatch"
+msgid "Portable Document Format"
+msgstr "Плашка збирання документів"
+
+#: src/core/glaxnimate/module/cairo/postscript_format.cpp:38
+#, fuzzy, kde-format
+#| msgid "Could not create snippet: `%1`"
+msgid "Could not create PostScript surface: %1"
+msgstr "Не вдалося створити фрагмент: «%1»"
+
+#: src/core/glaxnimate/module/cairo/postscript_format.hpp:20
+#, fuzzy, kde-format
+#| msgctxt "@title settings group"
+#| msgid "Scripting"
+msgid "PostScript"
+msgstr "Скрипти"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_format.cpp:32
+#, kde-format
+msgid "Could not load file: %1"
+msgstr "Не вдалося завантажити файл: %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_format.hpp:21
+#, kde-format
+msgid "Adobe After Effects Project"
+msgstr "Проєкт Adobe After Effects"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_format.hpp:39
+#, kde-format
+msgid "Adobe After Effects Project XML"
+msgstr "XML проєкту Adobe After Effects"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:147
+#, kde-format
+msgid "External asset not found: %1"
+msgstr "Зовнішнього ресурсу не знайдено: %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:189
+#, kde-format
+msgid "Unknown property \"%1\" of \"%2\""
+msgstr "Неочікувана властивість «%1» «%2»"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:221
+#, kde-format
+msgid "Layer #%1"
+msgstr "Шар %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:279
+#, kde-format
+msgid "Parent #%1 of layer %2 could not be found"
+msgstr "Не вдалося знайти батьківський елемент %1 шару %2"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:292
+#, kde-format
+msgid "Mask parent #%1 of layer %2 could not be found"
+msgstr "Не вдалося знайти батьківський елемент маски %1 шару %2"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:581
+#, kde-format
+msgid "Expected property for %1"
+msgstr "Очікувана властивість для %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:588
+#, kde-format
+msgid "Could convert %1"
+msgstr "Можна перетворити %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:693
+#, kde-format
+msgid "Expected property group for transform"
+msgstr "Неочікувана група властивостей для перетворення"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:742
+#, kde-format
+msgid "Unknown property \"%1\""
+msgstr "Невідома властивість «%1»"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:1299
+#, kde-format
+msgid "Unknown shape %1"
+msgstr "Невідома форма %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:1500
+#, kde-format
+msgid "Unknown asset type for %1"
+msgstr "Невідомий тип ресурсу для %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:49
+#, kde-format
+msgid "Not an AEP file"
+msgstr "Не є файлом AEP"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:123
+#, kde-format
+msgid "Unknown Item type %s"
+msgstr "Невідомий тип запису %s"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:137
+#, kde-format
+msgid "Missing composition data"
+msgstr "Пропущено дані композиції"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:209
+#, kde-format
+msgid "Unknown encoding for %1"
+msgstr "Невідоме кодування для %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:225
+#, kde-format
+msgid "Missing asset data"
+msgstr "Пропущено дані ресурсу"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:287
+#, kde-format
+msgid "Missing layer data"
+msgstr "Пропущено дані шару"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:372
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:377
+#, kde-format
+msgid "Missing mask properties"
+msgstr "Пропущено властивості маски"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:424
+#, kde-format
+msgid "Unknown property type: %1"
+msgstr "Невідомий тип властивості: %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:654
+#, kde-format
+msgid "Missing list data"
+msgstr "Пропущено дані у списку"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:666
+#, kde-format
+msgid "Not enough data in list"
+msgstr "Недостатньо даних у списку"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:800
+#, kde-format
+msgid "Invalid text document: %1"
+msgstr "Некоректний текстовий документ: %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/riff.hpp:221
+#: src/core/glaxnimate/module/extraformats/aep/riff.hpp:234
+#: src/core/glaxnimate/module/extraformats/aep/riff.hpp:255
+#: src/core/glaxnimate/module/extraformats/aep/riff.hpp:303
+#, kde-format
+msgid "Not enough data"
+msgstr "Недостатньо даних"
+
+#: src/core/glaxnimate/module/extraformats/aep/riff.hpp:539
+#, kde-format
+msgid "Unknown format %1"
+msgstr "Невідомий формат %1"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_format.hpp:21
+#, kde-format
+msgid "Android Vector Drawable"
+msgstr "Векторний рисунок Android"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:223
+#, kde-format
+msgid "Unknown interpolator %s"
+msgstr "Невідомий інтерполятор %s"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:650
+#, kde-format
+msgid "Unknown resource id %1"
+msgstr "Невідомий ідентифікатор ресурсу %1"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:658
+#, kde-format
+msgid "Could not read file %1"
+msgstr "Не вдалося прочитати файл %1"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:659
+#: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:677
+#, kde-format
+msgid "Could not load resource %1"
+msgstr "Не вдалося завантажити ресурс %1"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_renderer.cpp:159
+#, kde-format
+msgid "%s should be in a group"
+msgstr "%s має бути у групі"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_renderer.cpp:163
+#, kde-format
+msgid "%s is not supported"
+msgstr "Підтримки %s не передбачено"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_renderer.cpp:252
+#, kde-format
+msgid "%s are not supported"
+msgstr "Підтримки %s не передбачено"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_renderer.cpp:518
+#, kde-format
+msgid "%s cannot be a clip path"
+msgstr "%s не може бути контуром обрізання"
+
+#: src/core/glaxnimate/module/extraformats/extraformats_module.hpp:16
+#, fuzzy, kde-format
+#| msgid "Formats"
+msgid "Extra Formats"
+msgstr "Формати"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:359
+#, kde-format
+msgid "Bezier has mismatching number of points"
+msgstr "Крива Безьє має невідповідну кількість точок"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:422
+#, kde-format
+msgid "Unknown property %1 of %2 (%3, %4)"
+msgstr "Невідома властивість %1 %2 (%3, %4)"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:457
+#, kde-format
+msgid "Unknown keyframe type for property %1 of %2 (%3, %4)"
+msgstr "Невідомий тип ключового кадру для властивості %1 %2 (%3, %4)"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_format.cpp:22
+#, kde-format
+msgid "Unsupported format"
+msgstr "Непідтримуваний формат"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_format.cpp:32
+#, kde-format
+msgid "Could not read header"
+msgstr "Не вдалось прочитати заголовок"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_format.cpp:38
+#, kde-format
+msgid ""
+"Loading unsupported rive file version %1.%2, the only supported version is %3"
+msgstr ""
+"Завантаження непідтримуваної версії файла RIVE %1.%2, єдиною підтримуваною "
+"версією є %3"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_format.cpp:44
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:750
+#, kde-format
+msgid "Could not read property table"
+msgstr "Не вдалося прочитати таблицю властивостей"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_format.hpp:23
+#, kde-format
+msgid "Rive Animation"
+msgstr "Анімація Rive"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_html_format.hpp:20
+#, kde-format
+msgid "RIVE HTML Preview"
+msgstr "Попередній перегляд HTML RIVE"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:179
+#, kde-format
+msgid "Unexpected Keyed Object"
+msgstr "Неочікуваний прив'язаний до ключових кадрів об'єкт"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:187
+#, kde-format
+msgid "Invalid Keyed Object id %1"
+msgstr "Некоректний ідентифікатор прив'язаного до ключових кадрів об'єкта %1"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:195
+#, kde-format
+msgid "Unexpected Keyed Property"
+msgstr "Неочікувана прив'язана до ключових кадрів властивостей"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:204
+#, kde-format
+msgid "Unknown Keyed Property id %1"
+msgstr "Невідомий ідентифікатор прив'язаної до ключових кадрів властивості %1"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:215
+#, kde-format
+msgid "Unexpected Animation"
+msgstr "Неочікувана анімація"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:231
+#, kde-format
+msgid "Unexpected Asset Contents"
+msgstr "Неочікуваний вміст ресурсу"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:242
+#, kde-format
+msgid "Invalid Image Data"
+msgstr "Некоректні дані зображення"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:253
+#, kde-format
+msgid "Unexpected Keyframe"
+msgstr "Неочікуваний ключовий кадр"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:268
+#, kde-format
+msgid "Could not find parent with id %1"
+msgstr "Не вдалося знайти батьківський елемент з ідентифікатором %1"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:318
+#, kde-format
+msgid "Parent circular reference detected"
+msgstr "Виявлено циклічне посилання на батьківський об'єкт"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:746
+#, kde-format
+msgid "Unknown object of type %1"
+msgstr "Невідомий об'єкт типу %1"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:791
+#, kde-format
+msgid "Could not load object type ID"
+msgstr "Не вдалося завантажити ідентифікатор типу об'єкта"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:806
+#, kde-format
+msgid "Could not load property ID in %1 (%2)"
+msgstr "Не вдалося завантажити ідентифікатор властивості у %1 (%2)"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:823
+#, kde-format
+msgid "Unknown property %1 of %2 (%3)"
+msgstr "Невідома властивість %1 %2 (%3)"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:833
+#, kde-format
+msgid "Skipping unknown property %1 of %2 (%3)"
+msgstr "Пропускаємо невідому властивість %1 %2 (%3)"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:846
+#, kde-format
+msgid "Error loading property %1 (%2) of %3 (%4)"
+msgstr "Помилка під час спроби завантаження властивості %1 (%2) %3 (%4)"
+
+#: src/core/glaxnimate/module/gzip/gzip-kde.cpp:25
+#, kde-format
+msgid "Could not decompress data"
+msgstr "Не вдалося розпакувати дані"
+
+#: src/core/glaxnimate/module/gzip/gzip-kde.cpp:84
+#, kde-format
+msgid "Gzip stream already open"
+msgstr ""
+
+#: src/core/glaxnimate/module/gzip/gzip-zlib.cpp:99
+#, kde-format
+msgid "ZLib %1%2 returned %3"
+msgstr ""
+
+#: src/core/glaxnimate/module/gzip/gzip_module.hpp:16
+#, kde-format
+msgid "Gzip Compression"
+msgstr ""
+
+#: src/core/glaxnimate/module/gzip/svgz_format.hpp:22
+#, kde-format
+msgid "Compressed SVG"
+msgstr ""
+
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:44
+#, kde-format
+msgid "Star Shapes are not officially supported"
+msgstr "Офіційної підтримки форм зірок не передбачено"
+
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:53
+#, kde-format
+msgid "Gradient strokes are not officially supported"
+msgstr "Офіційної підтримки штрихів градієнта не передбачено"
+
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:58
+#, fuzzy, kde-format
+#| msgid "Repeaters are not officially supported"
+msgid "Masks are not officially supported"
+msgstr "Офіційної підтримки повторювачів не передбачено"
+
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:62
+#, kde-format
+msgid "Repeaters are not officially supported"
+msgstr "Офіційної підтримки повторювачів не передбачено"
+
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:66
+#, kde-format
+msgid "Inflate/Deflate is not supported"
+msgstr "Підтримки збільшення/зменшення не передбачено"
+
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:70
+#, kde-format
+msgid "Offset Path is not supported"
+msgstr "Підтримки розтягування контуру не передбачено"
+
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:74
+#, kde-format
+msgid "ZigZag is not supported"
+msgstr "Підтримки ZigZag не передбачено"
+
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:106
+#, kde-format
+msgid "File too large: %1k, should be under 64k"
+msgstr "Файл є надто великим: %1кБ, має бути меншим за 64кБ"
+
+#: src/core/glaxnimate/module/gzip/tgs_format.hpp:19
+#, kde-format
+msgid "Telegram Animated Sticker"
+msgstr "Анімована наліпка Telegram"
+
+#: src/core/glaxnimate/module/module.cpp:41
 #, kde-format
 msgid "Glaxnimate Core"
 msgstr "Ядро Glaxnimate"
+
+#: src/core/glaxnimate/module/thorvg/thorvg_module.hpp:16
+#, fuzzy, kde-format
+#| msgid "OpenGL Renderer"
+msgid "ThorVG Renderer"
+msgstr "Обробка OpenGL"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:73
 #, kde-format
@@ -2314,11 +2380,6 @@ msgstr "Показати докладні відомості щодо перет
 msgid "Video"
 msgstr "Відео"
 
-#: src/core/glaxnimate/module/video/video_module.cpp:13
-#, kde-format
-msgid "libav"
-msgstr "libav"
-
 #: src/core/glaxnimate/module/video/video_module.hpp:16
 #, kde-format
 msgid "Video Format Support"
@@ -2333,11 +2394,6 @@ msgstr "Не вдалося розмістити аргумент у пам'ят
 #, kde-format
 msgid "Cannot allocate return value"
 msgstr "Не вдалося розмістити повернуте значення у пам'яті"
-
-#: src/core/glaxnimate/utils/gzip.cpp:28
-#, kde-format
-msgid "Could not decompress data"
-msgstr "Не вдалося розпакувати дані"
 
 #: src/gui/cli.cpp:27
 #, kde-format
@@ -2543,13 +2599,13 @@ msgctxt "@info:shell"
 msgid "Error converting to the output format"
 msgstr "Помилка під час спроби перетворення до формату виведення даних"
 
-#: src/gui/cli.cpp:315 src/gui/cli.cpp:334
+#: src/gui/cli.cpp:314
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not save to %1"
 msgstr "Не вдалося зберегти дані до %1"
 
-#: src/gui/cli.cpp:343
+#: src/gui/cli.cpp:327
 #, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to render"
@@ -2607,6 +2663,7 @@ msgstr "Набір емоційок"
 #. i18n: ectx: property (text), widget (QTableWidget, emoji_set_view)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_output)
+#. i18n: ectx: property (text), widget (QTableWidget, table_formats_output_static)
 #. i18n: ectx: property (text), widget (QTableWidget, table_widget)
 #. i18n: ectx: property (text), widget (QTableWidget, view_presets)
 #. i18n: ectx: property (text), widget (QTableWidget, list_services)
@@ -2615,8 +2672,9 @@ msgstr "Набір емоційок"
 #: src/gui/item_models/gradient_list_model.cpp:171
 #: src/gui/item_models/property_model_full.cpp:448
 #: src/gui/item_models/property_model_single.cpp:158
-#: src/gui/widgets/dialogs/about_env_dialog.ui:248
-#: src/gui/widgets/dialogs/about_env_dialog.ui:289
+#: src/gui/widgets/dialogs/about_env_dialog.ui:247
+#: src/gui/widgets/dialogs/about_env_dialog.ui:288
+#: src/gui/widgets/dialogs/about_env_dialog.ui:329
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:109
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:348
 #: src/gui/widgets/dialogs/startup_dialog.ui:48
@@ -2740,14 +2798,14 @@ msgid "CPython"
 msgstr "CPython"
 
 #. i18n: ectx: Menu (file_new_from_template)
-#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1557
+#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1555
 #, kde-format
 msgid "New from Template"
 msgstr "Створити з шаблона"
 
 #. i18n: ectx: Menu (edit_tools)
 #: src/gui/glaxnimateui.rc:51 src/gui/widgets/dialogs/gw_impl_ui.cpp:419
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:943
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:941
 #, kde-format
 msgid "Tools"
 msgstr "Інструменти"
@@ -2770,65 +2828,59 @@ msgstr "Компонування"
 msgid "Document"
 msgstr "Документ"
 
-#. i18n: ectx: Menu (render_frame_menu)
-#: src/gui/glaxnimateui.rc:92
-#, kde-format
-msgid "Render Single Frame"
-msgstr "Обробити один кадр"
-
 #. i18n: ectx: Menu (web_preview_menu)
-#: src/gui/glaxnimateui.rc:97 src/gui/widgets/dialogs/gw_impl_document.cpp:531
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:553
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:559
+#: src/gui/glaxnimateui.rc:93 src/gui/widgets/dialogs/gw_impl_document.cpp:530
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:552
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:558
 #, kde-format
 msgid "Web Preview"
 msgstr "Інтернет-перегляд"
 
 #. i18n: ectx: Menu (playback)
-#: src/gui/glaxnimateui.rc:114 src/gui/widgets/dialogs/gw_impl_ui.cpp:551
+#: src/gui/glaxnimateui.rc:110 src/gui/widgets/dialogs/gw_impl_ui.cpp:549
 #, kde-format
 msgid "Playback"
 msgstr "Відтворення"
 
 #. i18n: ectx: Menu (object)
-#: src/gui/glaxnimateui.rc:148 src/gui/widgets/dialogs/gw_impl_ui.cpp:659
+#: src/gui/glaxnimateui.rc:144 src/gui/widgets/dialogs/gw_impl_ui.cpp:657
 #, kde-format
 msgid "Object"
 msgstr "Об'єкт"
 
 #. i18n: ectx: Menu (align_menu)
-#: src/gui/glaxnimateui.rc:159
+#: src/gui/glaxnimateui.rc:155
 #, kde-format
 msgid "Align and Distribute"
 msgstr "Вирівняти і розподілити"
 
 #. i18n: ectx: Menu (menu_keyframe_type)
-#: src/gui/glaxnimateui.rc:180
+#: src/gui/glaxnimateui.rc:176
 #, kde-format
 msgid "Keyframe Transition"
 msgstr "Перехід між ключовими кадрами"
 
 #. i18n: ectx: Menu (plugins)
-#: src/gui/glaxnimateui.rc:221 src/gui/settings/plugin_settings_group.hpp:23
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1798
+#: src/gui/glaxnimateui.rc:217 src/gui/settings/plugin_settings_group.hpp:23
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1796
 #, kde-format
 msgid "Plugins"
 msgstr "Додатки"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: src/gui/glaxnimateui.rc:235
+#: src/gui/glaxnimateui.rc:231
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Головна панель"
 
 #. i18n: ectx: ToolBar (toolsToolBar)
-#: src/gui/glaxnimateui.rc:258
+#: src/gui/glaxnimateui.rc:254
 #, kde-format
 msgid "Tools Toolbar"
 msgstr "Панель інструментів"
 
 #. i18n: ectx: ToolBar (nodeToolBar)
-#: src/gui/glaxnimateui.rc:274
+#: src/gui/glaxnimateui.rc:270
 #, kde-format
 msgid "Node Toolbar"
 msgstr "Панель інструментів вузла"
@@ -3087,12 +3139,12 @@ msgstr "Намалювати криву Безьє"
 msgid "Drag nodes"
 msgstr "Перетягнути вузли"
 
-#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:887
+#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:885
 #, kde-format
 msgid "Cusp"
 msgstr "Гострий"
 
-#: src/gui/tools/edit_tool.cpp:284 src/gui/widgets/dialogs/gw_impl_ui.cpp:888
+#: src/gui/tools/edit_tool.cpp:284 src/gui/widgets/dialogs/gw_impl_ui.cpp:886
 #, kde-format
 msgid "Smooth"
 msgstr "Гладкий"
@@ -3150,12 +3202,12 @@ msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "Вилучити опорну точку"
 
-#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:892
+#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:890
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr "Розчинити вузли"
 
-#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:879
+#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:877
 #, kde-format
 msgid "Delete Nodes"
 msgstr "Вилучити вузли"
@@ -3268,80 +3320,91 @@ msgid "Draw Text"
 msgstr "Додати текст"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::AboutEnvironmentDialog)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:20
+#: src/gui/widgets/dialogs/about_env_dialog.ui:19
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:162
 #, kde-format
 msgid "About Environment"
 msgstr "Про середовище"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:30
+#: src/gui/widgets/dialogs/about_env_dialog.ui:29
 #, kde-format
 msgid "Paths"
 msgstr "Шляхи"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:51
+#: src/gui/widgets/dialogs/about_env_dialog.ui:50
 #, kde-format
 msgid "User Data Directory:"
 msgstr "Каталог даних користувача:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:82
+#: src/gui/widgets/dialogs/about_env_dialog.ui:81
 #, kde-format
 msgid "Settings File:"
 msgstr "Файл параметрів:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:113
+#: src/gui/widgets/dialogs/about_env_dialog.ui:112
 #, kde-format
 msgid "Backup Directory:"
 msgstr "Каталог резервних копій:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:144
+#: src/gui/widgets/dialogs/about_env_dialog.ui:143
 #, kde-format
 msgid "Data Directories:"
 msgstr "Каталоги даних:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:164
+#: src/gui/widgets/dialogs/about_env_dialog.ui:163
 #, kde-format
 msgid "Icon Theme Paths:"
 msgstr "Шляхи до теми піктограм:"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_4)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:189
+#: src/gui/widgets/dialogs/about_env_dialog.ui:188
 #, kde-format
 msgid "Formats"
 msgstr "Формати"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:225
+#: src/gui/widgets/dialogs/about_env_dialog.ui:224
 #, kde-format
 msgid "Input Formats"
 msgstr "Формати вхідних даних"
 
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_output)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:253
-#: src/gui/widgets/dialogs/about_env_dialog.ui:294
+#. i18n: ectx: property (text), widget (QTableWidget, table_formats_output_static)
+#: src/gui/widgets/dialogs/about_env_dialog.ui:252
+#: src/gui/widgets/dialogs/about_env_dialog.ui:293
+#: src/gui/widgets/dialogs/about_env_dialog.ui:334
 #, kde-format
 msgid "ID"
 msgstr "Ід."
 
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_output)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:258
-#: src/gui/widgets/dialogs/about_env_dialog.ui:299
+#. i18n: ectx: property (text), widget (QTableWidget, table_formats_output_static)
+#: src/gui/widgets/dialogs/about_env_dialog.ui:257
+#: src/gui/widgets/dialogs/about_env_dialog.ui:298
+#: src/gui/widgets/dialogs/about_env_dialog.ui:339
 #, kde-format
 msgid "Extensions"
 msgstr "Розширення"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:266
+#: src/gui/widgets/dialogs/about_env_dialog.ui:265
 #, kde-format
 msgid "Output Formats "
+msgstr "Формати виведення"
+
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: src/gui/widgets/dialogs/about_env_dialog.ui:306
+#, fuzzy, kde-format
+#| msgid "Output Formats "
+msgid "Single Frame Output Formats "
 msgstr "Формати виведення"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
@@ -3841,7 +3904,7 @@ msgstr "Не вдалось експортувати файл"
 msgid "Warning"
 msgstr "Попередження"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:302
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:292
 #, kde-format
 msgid "Delete keyframe"
 msgid_plural "Delete keyframes"
@@ -3850,17 +3913,17 @@ msgstr[1] "Вилучити ключовий кадр"
 msgstr[2] "Вилучити ключовий кадр"
 msgstr[3] "Вилучити ключовий кадр"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:139
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:138
 #, kde-format
 msgid "Export..."
 msgstr "Експортувати…"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:151
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:150
 #, kde-format
 msgid "Unsaved Animation"
 msgstr "Незбережена анімація"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:233
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:232
 #, kde-format
 msgid ""
 "Looks like this file is being edited by another Glaxnimate instance or it "
@@ -3870,28 +3933,28 @@ msgstr ""
 "або його редагування виконувалося, коли програма Glaxnimate аварійно "
 "завершила роботу."
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:239
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:238
 #, kde-format
 msgid "Close Document"
 msgstr "Закрити документ"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:246
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:701
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:245
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:670
 #, kde-format
 msgid "Load Backup"
 msgstr "Завантажити резервну копію"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:398
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:397
 #, kde-format
 msgid "Export to %1"
 msgstr "Експортувати до %1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:450
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:449
 #, kde-format
 msgid "No importer found for %1"
 msgstr "Не знайдено засобу імпортування для %1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:455
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:454
 #, kde-format
 msgid ""
 "The file might have been moved or deleted\n"
@@ -3900,138 +3963,115 @@ msgstr ""
 "Файл, можливо, пересунуто або вилучено\n"
 "%1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:509
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:859
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:876
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:508
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:828
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:845
 #, kde-format
 msgid "Could not import %1"
 msgstr "Не вдалося імпортувати %1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:520
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:519
 #, kde-format
 msgid "No file to reload from"
 msgstr "Немає файла для перезавантаження"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:553
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:552
 #, kde-format
 msgid "Could not create file"
 msgstr "Не вдалося створити файл"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:559
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:558
 #, kde-format
 msgid "Could not open browser"
 msgstr "Не вдалося відкрити програму для перегляду інтернету"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:590
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:617
-#, kde-format
-msgid "Save Frame Image"
-msgstr "Збереження зображення кадру"
-
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:593
-#, kde-format
-msgid "Frame%1.png"
-msgstr "Кадр%1.png"
-
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:601
-#, kde-format
-msgid "Image files (%1)"
-msgstr "файли зображень (%1)"
-
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:610
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:634
-#, kde-format
-msgid "Render Frame"
-msgstr "Обробити кадр"
-
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:610
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:634
-#, kde-format
-msgid "Could not save image"
-msgstr "Не вдалося зберегти зображення"
-
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:620
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:592
 #, kde-format
 msgid "Frame%1.svg"
 msgstr "Кадр%1.svg"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:623
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:608
 #, kde-format
-msgid "Scalable Vector Graphics (*.svg)"
-msgstr "масштабована векторна графіка (*.svg)"
+msgid "Render Frame"
+msgstr "Обробити кадр"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:647
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:529
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:608
+#, kde-format
+msgid "Could not save image"
+msgstr "Не вдалося зберегти зображення"
+
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:616
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:527
 #, kde-format
 msgid "Validate Discord Sticker"
 msgstr "Перевірити наліпку Discord"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:649
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:659
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:618
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:628
 #, kde-format
 msgid "No issues found"
 msgstr "Проблем не виявлено"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:649
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:659
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:618
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:628
 #, kde-format
 msgid "Some issues detected"
 msgstr "Виявлено певні проблеми"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:657
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:526
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:626
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:524
 #, kde-format
 msgid "Validate Telegram Sticker"
 msgstr "Перевірити наліпку Telegram"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:701
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:670
 #, kde-format
 msgid "Could not open the backup file"
 msgstr "Не вдалося відкрити файл резервної копії"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:780
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:749
 #, kde-format
 msgid "Unlink %1 Color"
 msgstr "Скасувати прив'язку кольору %1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:790
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:759
 #, kde-format
 msgid "Link %1 Color"
 msgstr "Пов'язати колір %1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:900
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:869
 #, kde-format
 msgid "Download fonts"
 msgstr "Отримати шрифти"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:938
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:907
 #, kde-format
 msgid "HTTP Error %1 %2"
 msgstr "Помилка HTTP %1 %2"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:942
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:911
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.cpp:213
 #, kde-format
 msgid "Network Error"
 msgstr "Помилка у мережі"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:945
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:914
 #, kde-format
 msgid "Load URL"
 msgstr "Завантажити адресу"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:945
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:914
 #, kde-format
 msgid "Could not load %1: %2"
 msgstr "Не вдалося завантажити %1: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:963
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:932
 #, kde-format
 msgid "There are %1 auto-save files that can be restored."
 msgstr ""
 "Існують файли автоматичного збереження %1, дані з яких можна відновити."
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:971
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:940
 #, kde-format
 msgid "Load Backup..."
 msgstr "Завантажити резервну копію…"
@@ -4238,178 +4278,174 @@ msgid "Focus Mode"
 msgstr "Режим фокусування"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
-#, kde-format
-msgid "Raster…"
-msgstr "Растр…"
+#, fuzzy, kde-format
+#| msgid "Render Single Frame"
+msgid "Render Single Frame…"
+msgstr "Обробити один кадр"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:508
-#, kde-format
-msgid "SVG…"
-msgstr "SVG…"
-
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:514
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
 #, kde-format
 msgid "Lottie (SVG)"
 msgstr "Lottie (SVG)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:517
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:515
 #, kde-format
 msgid "Lottie (canvas)"
 msgstr "Lottie (полотно)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:520
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:518
 #, kde-format
 msgid "SVG (SMIL)"
 msgstr "SVG (SMIL)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:523
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:521
 #, kde-format
 msgid "RIVE (canvas)"
 msgstr "RIVE (полотно)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:532
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:530
 #, kde-format
 msgid "Resize…"
 msgstr "Змінити розмір…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:535
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:533
 #, kde-format
 msgid "Cleanup"
 msgstr "Очищення"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:538
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:536
 #, kde-format
 msgid "Timing…"
 msgstr "Час…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:543
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:541
 #, kde-format
 msgid "Metadata…"
 msgstr "Метадані…"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:554
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:578
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:552
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:576
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
 #, kde-format
 msgid "Play"
 msgstr "Пуск"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_loop)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:556
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:554
 #: src/gui/widgets/timeline/frame_controls_widget.ui:63
 #, kde-format
 msgid "Loop"
 msgstr "Цикл"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:558
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:556
 #, kde-format
 msgid "Record Keyframes"
 msgstr "Записати ключові кадри"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:560
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:558
 #, kde-format
 msgid "Jump to Start"
 msgstr "Перейти до початку"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:562
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:560
 #, kde-format
 msgid "Jump to End"
 msgstr "Перейти до кінця"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:564
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:562
 #, kde-format
 msgid "Next Frame"
 msgstr "Наступний кадр"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:566
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:564
 #, kde-format
 msgid "Previous Frame"
 msgstr "Попередній кадр"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:574
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:572
 #, kde-format
 msgid "Pause"
 msgstr "Пауза"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:629
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:627
 #, kde-format
 msgid "Precompose Selection"
 msgstr "Попередньо скомпонувати позначене"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:633
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:631
 #, kde-format
 msgid "New Composition"
 msgstr "Створити композицію"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:648
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:646
 #, kde-format
 msgid "Emoji…"
 msgstr "Емоційка…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:661
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:659
 #, kde-format
 msgid "Raise to Top"
 msgstr "Підняти на передній план"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:668
 #, kde-format
 msgid "Lower to Bottom"
 msgstr "Опустити на задній план"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:673
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:671
 #, kde-format
 msgid "Move to…"
 msgstr "Перемістити до…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:679
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:677
 #, kde-format
 msgid "Ungroup"
 msgstr "Розгрупувати"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:682
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:680
 #: src/gui/widgets/docks/aligndock.cpp:46
 #, kde-format
 msgid "Align"
 msgstr "Вирівняти"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:684
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:682
 #, kde-format
 msgid "Selection"
 msgstr "Позначення"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:684
 #, kde-format
 msgid "Canvas"
 msgstr "Полотно"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
 #, kde-format
 msgid "Canvas (as Group)"
 msgstr "Полотно (як група)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:691
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:689
 #, kde-format
 msgid "Left"
 msgstr "Ліворуч"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:694
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:703
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:701
 #, kde-format
 msgid "Center"
 msgstr "За центром"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:697
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:695
 #, kde-format
 msgid "Right"
 msgstr "Праворуч"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:700
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:698
 #, kde-format
 msgid "Top"
 msgstr "Вгорі"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:706
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:704
 #, kde-format
 msgid "Bottom"
 msgstr "Внизу"
@@ -4417,167 +4453,167 @@ msgstr "Внизу"
 #. i18n("Relative To"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_horizontal"), i18n("Horizontal"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_vertical"), i18n("Vertical"), QStringLiteral(""));
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:713
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:711
 #, kde-format
 msgid "Outside Left"
 msgstr "Ззовні ліворуч"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:716
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:714
 #, kde-format
 msgid "Outside Right"
 msgstr "Ззовні праворуч"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:719
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:717
 #, kde-format
 msgid "Outside Top"
 msgstr "Ззовні згори"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:722
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:720
 #, kde-format
 msgid "Outside Bottom"
 msgstr "Ззовні внизу"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:739
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:737
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:119
 #, kde-format
 msgid "Custom..."
 msgstr "Нетиповий…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:798
 #, kde-format
 msgid "Apply %1 keyframe transition"
 msgstr "Застосувати перехід між ключовими кадрами %1"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:855
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:853
 #, kde-format
 msgid "Object to Path"
 msgstr "Об'єкт у контур"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:858
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:856
 #, kde-format
 msgid "Trace Bitmap…"
 msgstr "Векторизація растрового зображення…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:863
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:861
 #, kde-format
 msgid "Union"
 msgstr "Об'єднання"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:866
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:864
 #: src/gui/widgets/enum_combo.cpp:145
 #, kde-format
 msgid "Difference"
 msgstr "Різниця"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:869
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:867
 #, kde-format
 msgid "Intersect"
 msgstr "Перетин"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:872
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:870
 #: src/gui/widgets/enum_combo.cpp:147
 #, kde-format
 msgid "Exclusion"
 msgstr "Виключення"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:876
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:874
 #, kde-format
 msgid "Reverse"
 msgstr "Обернути"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:880
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:878
 #, kde-format
 msgid "Add Node…"
 msgstr "Додати вузол…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:882
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:880
 #, kde-format
 msgid "Join Nodes"
 msgstr "З'єднати вузли"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:884
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:882
 #, kde-format
 msgid "Split Nodes"
 msgstr "Розділити вузли"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:889
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:887
 #, kde-format
 msgid "Symmetric"
 msgstr "Симетрично"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:890
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:888
 #, kde-format
 msgid "Make segments straight"
 msgstr "Зробити сегменти прямими"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:891
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:889
 #, kde-format
 msgid "Make segments curved"
 msgstr "Зробити сегменти кривими"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1037
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1035
 #, kde-format
 msgid "Recording Keyframes"
 msgstr "Записування ключових кадрів"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1557
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1555
 #, kde-format
 msgid "Could not load template"
 msgstr "Не вдалося завантажити шаблон"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1754
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1763
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1770
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1752
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1761
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1768
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
 msgstr "Векторизація растрового зображення"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1754
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1752
 #, kde-format
 msgid "Only select one image"
 msgstr "Позначте лише одне зображення"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1763
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1761
 #, kde-format
 msgid "You need to select an image to trace"
 msgstr "Вам слід позначити зображення для векторизації"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1770
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1768
 #, kde-format
 msgid "You selected an image with no data"
 msgstr "Вами позначено зображення, яке не містить даних"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1857
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1855
 #, kde-format
 msgid "X: %1 Y: %2"
 msgstr "X: %1 Y: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1876
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1874
 #, kde-format
 msgid "Drop File"
 msgstr "Скиньте файл"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1887
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1885
 #, kde-format
 msgid "Add to current file?"
 msgstr "Додати до поточного файла?"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1893
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1891
 #, kde-format
 msgid "Add as Object"
 msgstr "Додати як об'єкт"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1899
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1897
 #, kde-format
 msgid "Add as Composition"
 msgstr "Додати як композицію"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:40
 #, kde-format
-msgid "Save file"
-msgstr "Зберегти файл"
+msgid "Save Frame Image"
+msgstr "Збереження зображення кадру"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:60
 #, kde-format
@@ -4588,11 +4624,6 @@ msgstr "Перезаписати файл?"
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "Файл з назвою «%1» вже існує. Бажаєте його перезаписати?"
-
-#: src/gui/widgets/dialogs/import_export_dialog.hpp:82
-#, kde-format
-msgid "Open file"
-msgstr "Відкрити файл"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:101
 #, kde-format
@@ -6815,6 +6846,36 @@ msgstr ""
 msgid "Traced %1"
 msgstr "Трасування %1"
 
+#~ msgid "Masks are not supported"
+#~ msgstr "Підтримки масок не передбачено"
+
+#~ msgid "Could not write to file"
+#~ msgstr "Не вдалося записати дані до файла"
+
+#~ msgid "libav"
+#~ msgstr "libav"
+
+#~ msgid "Frame%1.png"
+#~ msgstr "Кадр%1.png"
+
+#~ msgid "Image files (%1)"
+#~ msgstr "файли зображень (%1)"
+
+#~ msgid "Scalable Vector Graphics (*.svg)"
+#~ msgstr "масштабована векторна графіка (*.svg)"
+
+#~ msgid "Raster…"
+#~ msgstr "Растр…"
+
+#~ msgid "SVG…"
+#~ msgstr "SVG…"
+
+#~ msgid "Save file"
+#~ msgstr "Зберегти файл"
+
+#~ msgid "Open file"
+#~ msgstr "Відкрити файл"
+
 #~ msgid "Loop Animation"
 #~ msgstr "Зациклити анімацію"
 
@@ -6908,10 +6969,6 @@ msgstr "Трасування %1"
 #~ msgctxt "@info:tooltip"
 #~ msgid "How often to save a backup copy (in minutes)"
 #~ msgstr "Наскільки часто слід зберігати резервні копії (у хвилинах)"
-
-#~ msgctxt "@title settings group"
-#~ msgid "Scripting"
-#~ msgstr "Скрипти"
 
 #~ msgctxt "@title settings group"
 #~ msgid "Tools"

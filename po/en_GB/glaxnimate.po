@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-29 00:41+0000\n"
+"POT-Creation-Date: 2026-04-01 00:42+0000\n"
 "PO-Revision-Date: 2024-09-07 12:23+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -341,9 +341,10 @@ msgstr "Replace"
 #: src/android/document_opener.cpp:35 src/android/document_opener.cpp:128
 #: src/android/document_opener.cpp:154 src/android/document_opener.cpp:193
 #: src/android/document_opener.cpp:201
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:450
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:455
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:449
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:454
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:210
+#: src/gui/widgets/dialogs/import_export_dialog.hpp:82
 #: src/gui/widgets/font/external_font_widget.cpp:126
 #, kde-format
 msgid "Open File"
@@ -356,6 +357,7 @@ msgstr "Raster images need to be traced into vectors"
 
 #: src/android/document_opener.cpp:106
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:211
+#: src/gui/widgets/dialogs/import_export_dialog.hpp:40
 #, kde-format
 msgid "Save File"
 msgstr "Save File"
@@ -642,13 +644,13 @@ msgstr "Fill Style"
 msgid "Stroke Style"
 msgstr "Stroke Style"
 
-#: src/android/main_window.cpp:454 src/gui/widgets/dialogs/gw_impl_ui.cpp:664
+#: src/android/main_window.cpp:454 src/gui/widgets/dialogs/gw_impl_ui.cpp:662
 #: src/gui/widgets/menus/node_menu.cpp:116
 #, kde-format
 msgid "Raise"
 msgstr "Raise"
 
-#: src/android/main_window.cpp:459 src/gui/widgets/dialogs/gw_impl_ui.cpp:667
+#: src/android/main_window.cpp:459 src/gui/widgets/dialogs/gw_impl_ui.cpp:665
 #: src/gui/widgets/menus/node_menu.cpp:120
 #, kde-format
 msgid "Lower"
@@ -700,7 +702,7 @@ msgstr "Redo"
 #. i18n: ectx: Menu (new_layer_menu)
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #. i18n: ectx: property (text), widget (QToolButton, btn_new)
-#: src/android/main_window.cpp:508 src/gui/glaxnimateui.rc:127
+#: src/android/main_window.cpp:508 src/gui/glaxnimateui.rc:123
 #: src/gui/widgets/docks/snippet_list_widget.ui:29
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:48
 #, kde-format
@@ -723,13 +725,13 @@ msgstr "Open..."
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #. i18n: ectx: property (text), widget (QPushButton, button_open)
 #: src/android/main_window.cpp:513
-#: src/gui/widgets/dialogs/about_env_dialog.ui:67
-#: src/gui/widgets/dialogs/about_env_dialog.ui:70
-#: src/gui/widgets/dialogs/about_env_dialog.ui:98
-#: src/gui/widgets/dialogs/about_env_dialog.ui:101
-#: src/gui/widgets/dialogs/about_env_dialog.ui:129
-#: src/gui/widgets/dialogs/about_env_dialog.ui:132
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1905
+#: src/gui/widgets/dialogs/about_env_dialog.ui:66
+#: src/gui/widgets/dialogs/about_env_dialog.ui:69
+#: src/gui/widgets/dialogs/about_env_dialog.ui:97
+#: src/gui/widgets/dialogs/about_env_dialog.ui:100
+#: src/gui/widgets/dialogs/about_env_dialog.ui:128
+#: src/gui/widgets/dialogs/about_env_dialog.ui:131
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1903
 #: src/gui/widgets/dialogs/startup_dialog.ui:149
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:136
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
@@ -777,8 +779,8 @@ msgstr "Send to Telegram"
 #. i18n: ectx: Menu (layers)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/android/main_window.cpp:546 src/gui/glaxnimateui.rc:125
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:620
+#: src/android/main_window.cpp:546 src/gui/glaxnimateui.rc:121
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:618
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #: src/gui/widgets/docks/layers.ui:27
 #, kde-format
@@ -801,13 +803,13 @@ msgid "Animation.%1"
 msgstr "Animation.%1"
 
 #: src/android/main_window.cpp:667
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:294
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:293
 #, kde-format
 msgid "Closing Animation"
 msgstr "Closing Animation"
 
 #: src/android/main_window.cpp:668
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:295
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:294
 #, kde-format
 msgid ""
 "The animation has unsaved changes.\n"
@@ -818,11 +820,11 @@ msgstr ""
 
 #: src/android/main_window.cpp:752 src/android/main_window.cpp:756
 #: src/android/main_window.cpp:891
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:509
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:513
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:859
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:864
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:876
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:508
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:512
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:828
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:833
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:845
 #, kde-format
 msgid "Import File"
 msgstr "Import File"
@@ -861,7 +863,7 @@ msgstr "Emoji"
 
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, glaxnimate::android::MainWindow)
 #: src/android/main_window.ui:21 src/core/glaxnimate/app_info.cpp:14
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:511
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:509
 #, kde-format
 msgid "Glaxnimate"
 msgstr "Glaxnimate"
@@ -1043,207 +1045,6 @@ msgstr "Precompose"
 msgid "Move %1"
 msgstr "Move %1"
 
-#: src/core/glaxnimate/io/aep/aep_format.cpp:32
-#, kde-format
-msgid "Could not load file: %1"
-msgstr "Could not load file: %1"
-
-#: src/core/glaxnimate/io/aep/aep_format.hpp:21
-#, kde-format
-msgid "Adobe After Effects Project"
-msgstr "Adobe After Effects Project"
-
-#: src/core/glaxnimate/io/aep/aep_format.hpp:39
-#, kde-format
-msgid "Adobe After Effects Project XML"
-msgstr "Adobe After Effects Project XML"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:147
-#, kde-format
-msgid "External asset not found: %1"
-msgstr "External asset not found: %1"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:189
-#, kde-format
-msgid "Unknown property \"%1\" of \"%2\""
-msgstr "Unknown property \"%1\" of \"%2\""
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:221
-#, fuzzy, kde-format
-#| msgid "Layer"
-msgid "Layer #%1"
-msgstr "Layer"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:279
-#, kde-format
-msgid "Parent #%1 of layer %2 could not be found"
-msgstr ""
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:292
-#, kde-format
-msgid "Mask parent #%1 of layer %2 could not be found"
-msgstr ""
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:581
-#, kde-format
-msgid "Expected property for %1"
-msgstr "Expected property for %1"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:588
-#, kde-format
-msgid "Could convert %1"
-msgstr "Could convert %1"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:592
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1101
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1123
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1130
-#, kde-format
-msgid "Invalid value for %1"
-msgstr "Invalid value for %1"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:693
-#, kde-format
-msgid "Expected property group for transform"
-msgstr "Expected property group for transform"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:742
-#, kde-format
-msgid "Unknown property \"%1\""
-msgstr "Unknown property \"%1\""
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:1299
-#, kde-format
-msgid "Unknown shape %1"
-msgstr "Unknown shape %1"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:1357
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:534
-#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:634
-#, kde-format
-msgid "Clip"
-msgstr "Clip"
-
-#: src/core/glaxnimate/io/aep/aep_loader.cpp:1500
-#, kde-format
-msgid "Unknown asset type for %1"
-msgstr "Unknown asset type for %1"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:49
-#, kde-format
-msgid "Not an AEP file"
-msgstr "Not an AEP file"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:123
-#, kde-format
-msgid "Unknown Item type %s"
-msgstr "Unknown Item type %s"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:137
-#, kde-format
-msgid "Missing composition data"
-msgstr "Missing composition data"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:209
-#, kde-format
-msgid "Unknown encoding for %1"
-msgstr "Unknown encoding for %1"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:225
-#, kde-format
-msgid "Missing asset data"
-msgstr "Missing asset data"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:287
-#, kde-format
-msgid "Missing layer data"
-msgstr "Missing layer data"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:372
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:377
-#, kde-format
-msgid "Missing mask properties"
-msgstr "Missing mask properties"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:424
-#, kde-format
-msgid "Unknown property type: %1"
-msgstr "Unknown property type: %1"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:654
-#, kde-format
-msgid "Missing list data"
-msgstr "Missing list data"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:666
-#, kde-format
-msgid "Not enough data in list"
-msgstr "Not enough data in list"
-
-#: src/core/glaxnimate/io/aep/aep_parser.hpp:800
-#, kde-format
-msgid "Invalid text document: %1"
-msgstr "Invalid text document: %1"
-
-#: src/core/glaxnimate/io/aep/riff.hpp:221
-#: src/core/glaxnimate/io/aep/riff.hpp:234
-#: src/core/glaxnimate/io/aep/riff.hpp:255
-#: src/core/glaxnimate/io/aep/riff.hpp:303
-#, kde-format
-msgid "Not enough data"
-msgstr "Not enough data"
-
-#: src/core/glaxnimate/io/aep/riff.hpp:539
-#, kde-format
-msgid "Unknown format %1"
-msgstr "Unknown format %1"
-
-#: src/core/glaxnimate/io/avd/avd_format.hpp:21
-#, kde-format
-msgid "Android Vector Drawable"
-msgstr "Android Vector Drawable"
-
-#: src/core/glaxnimate/io/avd/avd_parser.cpp:223
-#, kde-format
-msgid "Unknown interpolator %s"
-msgstr "Unknown interpolator %s"
-
-#: src/core/glaxnimate/io/avd/avd_parser.cpp:650
-#, kde-format
-msgid "Unknown resource id %1"
-msgstr "Unknown resource id %1"
-
-#: src/core/glaxnimate/io/avd/avd_parser.cpp:658
-#, kde-format
-msgid "Could not read file %1"
-msgstr "Could not read file %1"
-
-#: src/core/glaxnimate/io/avd/avd_parser.cpp:659
-#: src/core/glaxnimate/io/avd/avd_parser.cpp:677
-#, kde-format
-msgid "Could not load resource %1"
-msgstr "Could not load resource %1"
-
-#: src/core/glaxnimate/io/avd/avd_renderer.cpp:159
-#, kde-format
-msgid "%s should be in a group"
-msgstr "%s should be in a group"
-
-#: src/core/glaxnimate/io/avd/avd_renderer.cpp:163
-#, kde-format
-msgid "%s is not supported"
-msgstr "%s is not supported"
-
-#: src/core/glaxnimate/io/avd/avd_renderer.cpp:252
-#, kde-format
-msgid "%s are not supported"
-msgstr "%s are not supported"
-
-#: src/core/glaxnimate/io/avd/avd_renderer.cpp:518
-#, kde-format
-msgid "%s cannot be a clip path"
-msgstr "%s cannot be a clip path"
-
 #: src/core/glaxnimate/io/base.cpp:22
 #: src/core/glaxnimate/io/svg/svg_renderer.cpp:837 src/gui/tools/base.cpp:161
 #, kde-format
@@ -1346,19 +1147,19 @@ msgstr "Could not add keyframe"
 msgid "Unknown object of type '%1'"
 msgstr "Unknown object of type '%1'"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:693
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:732
 #, fuzzy, kde-format
 #| msgid "Unsupported shape type %1"
 msgid "%1 is an unsupported shape of type %2"
 msgstr "Unsupported shape type %1"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:713
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:757
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
 "Images cannot be grouped with other shapes, they must be inside a layer"
 
-#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:715
+#: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:759
 #, kde-format
 msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
@@ -1433,6 +1234,13 @@ msgstr "Missing layer type for %1"
 msgid "Unsupported layer of type %1"
 msgstr "Unsupported layer of type %1"
 
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:534
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:634
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:1357
+#, kde-format
+msgid "Clip"
+msgstr "Clip"
+
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:678
 #, kde-format
 msgid "Missing shape type"
@@ -1453,6 +1261,14 @@ msgstr "Unknown field %2%1"
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
 msgstr "Invalid bezier point %1 in %2"
+
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1101
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1123
+#: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1130
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:592
+#, kde-format
+msgid "Invalid value for %1"
+msgstr "Invalid value for %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1138
 #, kde-format
@@ -1484,57 +1300,6 @@ msgstr "Duplicate Bitmap ID: %1"
 msgid "Duplicate Composition ID: %1"
 msgstr "Duplicate Composition ID: %1"
 
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:47
-#, kde-format
-msgid "Star Shapes are not officially supported"
-msgstr "Star Shapes are not officially supported"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:51
-#: src/core/glaxnimate/io/lottie/validation.cpp:71
-#, kde-format
-msgid "Images are not supported"
-msgstr "Images are not supported"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:56
-#, kde-format
-msgid "Gradient strokes are not officially supported"
-msgstr "Gradient strokes are not officially supported"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:61
-#, kde-format
-msgid "Masks are not supported"
-msgstr "Masks are not supported"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:65
-#, kde-format
-msgid "Repeaters are not officially supported"
-msgstr "Repeaters are not officially supported"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:69
-#, kde-format
-msgid "Inflate/Deflate is not supported"
-msgstr "Inflate/Deflate is not supported"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:73
-#, kde-format
-msgid "Offset Path is not supported"
-msgstr "Offset Path is not supported"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:77
-#, kde-format
-msgid "ZigZag is not supported"
-msgstr "ZigZag is not supported"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.cpp:110
-#, kde-format
-msgid "File too large: %1k, should be under 64k"
-msgstr "File too large: %1k, should be under 64k"
-
-#: src/core/glaxnimate/io/lottie/tgs_format.hpp:19
-#, kde-format
-msgid "Telegram Animated Sticker"
-msgstr "Telegram Animated Sticker"
-
 #: src/core/glaxnimate/io/lottie/validation.cpp:25
 #, kde-format
 msgid "Invalid width: %1, should be %2"
@@ -1555,6 +1320,12 @@ msgstr "Invalid fps: %1, should be %2"
 msgid "Too many frames: %1, should be less than %2"
 msgstr "Too many frames: %1, should be less than %2"
 
+#: src/core/glaxnimate/io/lottie/validation.cpp:71
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:48
+#, kde-format
+msgid "Images are not supported"
+msgstr "Images are not supported"
+
 #: src/core/glaxnimate/io/lottie/validation.hpp:22
 #, kde-format
 msgid "%1: %2"
@@ -1565,7 +1336,7 @@ msgstr "%1: %2"
 msgid "JSON"
 msgstr "JSON"
 
-#: src/core/glaxnimate/io/raster/raster_format.hpp:25
+#: src/core/glaxnimate/io/raster/raster_format.hpp:22
 #: src/core/glaxnimate/io/raster/raster_mime.hpp:26
 #, kde-format
 msgid "Raster Image"
@@ -1616,169 +1387,36 @@ msgstr "By how much each rendered frame should increase time (in frames)"
 msgid "Sprite Sheet"
 msgstr "Sprite Sheet"
 
-#: src/core/glaxnimate/io/rive/rive_exporter.hpp:359
-#, kde-format
-msgid "Bezier has mismatching number of points"
-msgstr "Bezier has mismatching number of points"
-
-#: src/core/glaxnimate/io/rive/rive_exporter.hpp:422
-#, kde-format
-msgid "Unknown property %1 of %2 (%3, %4)"
-msgstr "Unknown property %1 of %2 (%3, %4)"
-
-#: src/core/glaxnimate/io/rive/rive_exporter.hpp:457
-#, kde-format
-msgid "Unknown keyframe type for property %1 of %2 (%3, %4)"
-msgstr "Unknown keyframe type for property %1 of %2 (%3, %4)"
-
-#: src/core/glaxnimate/io/rive/rive_format.cpp:22
-#, kde-format
-msgid "Unsupported format"
-msgstr "Unsupported format"
-
-#: src/core/glaxnimate/io/rive/rive_format.cpp:32
-#, kde-format
-msgid "Could not read header"
-msgstr "Could not read header"
-
-#: src/core/glaxnimate/io/rive/rive_format.cpp:38
-#, kde-format
-msgid ""
-"Loading unsupported rive file version %1.%2, the only supported version is %3"
-msgstr ""
-"Loading unsupported rive file version %1.%2, the only supported version is %3"
-
-#: src/core/glaxnimate/io/rive/rive_format.cpp:44
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:750
-#, kde-format
-msgid "Could not read property table"
-msgstr "Could not read property table"
-
-#: src/core/glaxnimate/io/rive/rive_format.hpp:24
-#, kde-format
-msgid "Rive Animation"
-msgstr "Rive Animation"
-
-#: src/core/glaxnimate/io/rive/rive_html_format.hpp:20
-#, kde-format
-msgid "RIVE HTML Preview"
-msgstr "RIVE HTML Preview"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:179
-#, kde-format
-msgid "Unexpected Keyed Object"
-msgstr "Unexpected Keyed Object"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:187
-#, kde-format
-msgid "Invalid Keyed Object id %1"
-msgstr "Invalid Keyed Object id %1"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:195
-#, kde-format
-msgid "Unexpected Keyed Property"
-msgstr "Unexpected Keyed Property"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:204
-#, kde-format
-msgid "Unknown Keyed Property id %1"
-msgstr "Unknown Keyed Property id %1"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:215
-#, kde-format
-msgid "Unexpected Animation"
-msgstr "Unexpected Animation"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:231
-#, kde-format
-msgid "Unexpected Asset Contents"
-msgstr "Unexpected Asset Contents"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:242
-#, kde-format
-msgid "Invalid Image Data"
-msgstr "Invalid Image Data"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:253
-#, kde-format
-msgid "Unexpected Keyframe"
-msgstr "Unexpected Keyframe"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:268
-#, kde-format
-msgid "Could not find parent with id %1"
-msgstr "Could not find parent with id %1"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:318
-#, kde-format
-msgid "Parent circular reference detected"
-msgstr "Parent circular reference detected"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:746
-#, kde-format
-msgid "Unknown object of type %1"
-msgstr "Unknown object of type %1"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:791
-#, kde-format
-msgid "Could not load object type ID"
-msgstr "Could not load object type ID"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:806
-#, kde-format
-msgid "Could not load property ID in %1 (%2)"
-msgstr "Could not load property ID in %1 (%2)"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:823
-#, kde-format
-msgid "Unknown property %1 of %2 (%3)"
-msgstr "Unknown property %1 of %2 (%3)"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:833
-#, kde-format
-msgid "Skipping unknown property %1 of %2 (%3)"
-msgstr "Skipping unknown property %1 of %2 (%3)"
-
-#: src/core/glaxnimate/io/rive/rive_loader.cpp:846
-#, kde-format
-msgid "Error loading property %1 (%2) of %3 (%4)"
-msgstr "Error loading property %1 (%2) of %3 (%4)"
-
-#: src/core/glaxnimate/io/svg/svg_format.cpp:66
+#: src/core/glaxnimate/io/svg/svg_format.cpp:55
 #, kde-format
 msgid "External Stylesheet"
 msgstr "External Stylesheet"
 
-#: src/core/glaxnimate/io/svg/svg_format.cpp:68
+#: src/core/glaxnimate/io/svg/svg_format.cpp:57
 #, kde-format
 msgid "Font face with external url"
 msgstr "Font face with external url"
 
-#: src/core/glaxnimate/io/svg/svg_format.cpp:70
+#: src/core/glaxnimate/io/svg/svg_format.cpp:59
 #, kde-format
 msgid "Embedded data"
 msgstr "Embedded data"
 
-#: src/core/glaxnimate/io/svg/svg_format.cpp:71
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:967
+#: src/core/glaxnimate/io/svg/svg_format.cpp:60
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:936
 #, kde-format
 msgid "Ignore"
 msgstr "Ignore"
 
-#: src/core/glaxnimate/io/svg/svg_format.cpp:74
+#: src/core/glaxnimate/io/svg/svg_format.cpp:63
 #, kde-format
 msgid "External Fonts"
 msgstr "External Fonts"
 
-#: src/core/glaxnimate/io/svg/svg_format.cpp:74
+#: src/core/glaxnimate/io/svg/svg_format.cpp:63
 #, kde-format
 msgid "How to include external font"
 msgstr "How to include external font"
-
-#: src/core/glaxnimate/io/svg/svg_format.cpp:93
-#, kde-format
-msgid "Could not write to file"
-msgstr "Could not write to file"
 
 #: src/core/glaxnimate/io/svg/svg_format.hpp:21
 #: src/core/glaxnimate/io/svg/svg_mime.hpp:20
@@ -1805,8 +1443,8 @@ msgstr "Remove Nodes"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/core/glaxnimate/model/animation/animatable.cpp:382
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:725
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:777
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:723
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:775
 #: src/gui/widgets/menus/animated_property_menu.cpp:64
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:194
 #, kde-format
@@ -1898,7 +1536,7 @@ msgstr "Bitmap"
 
 #. i18n: ectx: Menu (new_comp_layer_menu)
 #: src/core/glaxnimate/model/assets/composition.cpp:24
-#: src/gui/glaxnimateui.rc:129
+#: src/gui/glaxnimateui.rc:125
 #, kde-format
 msgid "Composition"
 msgstr "Composition"
@@ -1997,8 +1635,8 @@ msgstr "Unknown Object"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/glaxnimate/model/shapes/composable/group.hpp:36
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:639
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:676
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:637
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:674
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
 #, kde-format
 msgid "Group"
@@ -2012,7 +1650,7 @@ msgstr "Image"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/glaxnimate/model/shapes/composable/layer.hpp:81
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:636
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:634
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
 #, kde-format
 msgid "Layer"
@@ -2062,9 +1700,9 @@ msgstr "Ellipse"
 #. i18n: ectx: Menu (path)
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/core/glaxnimate/model/shapes/shapes/path.hpp:38
-#: src/gui/glaxnimateui.rc:190
+#: src/gui/glaxnimateui.rc:186
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:853
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:851
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
@@ -2088,7 +1726,7 @@ msgstr "Change Font"
 
 #. i18n: ectx: Menu (text)
 #: src/core/glaxnimate/model/shapes/shapes/text.cpp:474
-#: src/gui/glaxnimateui.rc:216 src/gui/widgets/dialogs/gw_impl_ui.cpp:135
+#: src/gui/glaxnimateui.rc:212 src/gui/widgets/dialogs/gw_impl_ui.cpp:135
 #, kde-format
 msgid "Text"
 msgstr "Text"
@@ -2099,8 +1737,8 @@ msgstr "Text"
 #. i18n: ectx: property (text), widget (QRadioButton, check_fill)
 #: src/core/glaxnimate/model/shapes/style/fill.hpp:48
 #: src/gui/tools/draw_tool_base.cpp:114 src/gui/tools/fill_tool.cpp:25
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:771
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:642
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:740
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:640
 #: src/gui/widgets/docks/colors.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:197
 #: src/gui/widgets/tools/color_picker_widget.ui:24
@@ -2116,8 +1754,8 @@ msgstr "Fill"
 #. i18n: ectx: property (text), widget (QRadioButton, check_stroke)
 #: src/core/glaxnimate/model/shapes/style/stroke.hpp:68
 #: src/gui/tools/draw_tool_base.cpp:126
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:766
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:645
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:735
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:643
 #: src/gui/widgets/docks/stroke.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:111
 #: src/gui/widgets/tools/color_picker_widget.ui:37
@@ -2140,11 +1778,437 @@ msgstr "Timing"
 msgid "Transform"
 msgstr "Transform"
 
-#: src/core/glaxnimate/module/module.cpp:50
+#: src/core/glaxnimate/module/cairo/cairo_module.hpp:16
+#, kde-format
+msgid "Cairo Renderer"
+msgstr ""
+
+#: src/core/glaxnimate/module/cairo/pdf_format.cpp:40
+#, fuzzy, kde-format
+#| msgid "Could not create snippet: `%1`"
+msgid "Could not create PDF surface: %1"
+msgstr "Could not create snippet: `%1`"
+
+#: src/core/glaxnimate/module/cairo/pdf_format.hpp:20
+#, fuzzy, kde-format
+#| msgid "Gather Document Swatch"
+msgid "Portable Document Format"
+msgstr "Gather Document Swatch"
+
+#: src/core/glaxnimate/module/cairo/postscript_format.cpp:38
+#, fuzzy, kde-format
+#| msgid "Could not create snippet: `%1`"
+msgid "Could not create PostScript surface: %1"
+msgstr "Could not create snippet: `%1`"
+
+#: src/core/glaxnimate/module/cairo/postscript_format.hpp:20
+#, fuzzy, kde-format
+#| msgctxt "@title settings group"
+#| msgid "Scripting"
+msgid "PostScript"
+msgstr "Scripting"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_format.cpp:32
+#, kde-format
+msgid "Could not load file: %1"
+msgstr "Could not load file: %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_format.hpp:21
+#, kde-format
+msgid "Adobe After Effects Project"
+msgstr "Adobe After Effects Project"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_format.hpp:39
+#, kde-format
+msgid "Adobe After Effects Project XML"
+msgstr "Adobe After Effects Project XML"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:147
+#, kde-format
+msgid "External asset not found: %1"
+msgstr "External asset not found: %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:189
+#, kde-format
+msgid "Unknown property \"%1\" of \"%2\""
+msgstr "Unknown property \"%1\" of \"%2\""
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:221
+#, fuzzy, kde-format
+#| msgid "Layer"
+msgid "Layer #%1"
+msgstr "Layer"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:279
+#, kde-format
+msgid "Parent #%1 of layer %2 could not be found"
+msgstr ""
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:292
+#, kde-format
+msgid "Mask parent #%1 of layer %2 could not be found"
+msgstr ""
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:581
+#, kde-format
+msgid "Expected property for %1"
+msgstr "Expected property for %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:588
+#, kde-format
+msgid "Could convert %1"
+msgstr "Could convert %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:693
+#, kde-format
+msgid "Expected property group for transform"
+msgstr "Expected property group for transform"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:742
+#, kde-format
+msgid "Unknown property \"%1\""
+msgstr "Unknown property \"%1\""
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:1299
+#, kde-format
+msgid "Unknown shape %1"
+msgstr "Unknown shape %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:1500
+#, kde-format
+msgid "Unknown asset type for %1"
+msgstr "Unknown asset type for %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:49
+#, kde-format
+msgid "Not an AEP file"
+msgstr "Not an AEP file"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:123
+#, kde-format
+msgid "Unknown Item type %s"
+msgstr "Unknown Item type %s"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:137
+#, kde-format
+msgid "Missing composition data"
+msgstr "Missing composition data"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:209
+#, kde-format
+msgid "Unknown encoding for %1"
+msgstr "Unknown encoding for %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:225
+#, kde-format
+msgid "Missing asset data"
+msgstr "Missing asset data"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:287
+#, kde-format
+msgid "Missing layer data"
+msgstr "Missing layer data"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:372
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:377
+#, kde-format
+msgid "Missing mask properties"
+msgstr "Missing mask properties"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:424
+#, kde-format
+msgid "Unknown property type: %1"
+msgstr "Unknown property type: %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:654
+#, kde-format
+msgid "Missing list data"
+msgstr "Missing list data"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:666
+#, kde-format
+msgid "Not enough data in list"
+msgstr "Not enough data in list"
+
+#: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:800
+#, kde-format
+msgid "Invalid text document: %1"
+msgstr "Invalid text document: %1"
+
+#: src/core/glaxnimate/module/extraformats/aep/riff.hpp:221
+#: src/core/glaxnimate/module/extraformats/aep/riff.hpp:234
+#: src/core/glaxnimate/module/extraformats/aep/riff.hpp:255
+#: src/core/glaxnimate/module/extraformats/aep/riff.hpp:303
+#, kde-format
+msgid "Not enough data"
+msgstr "Not enough data"
+
+#: src/core/glaxnimate/module/extraformats/aep/riff.hpp:539
+#, kde-format
+msgid "Unknown format %1"
+msgstr "Unknown format %1"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_format.hpp:21
+#, kde-format
+msgid "Android Vector Drawable"
+msgstr "Android Vector Drawable"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:223
+#, kde-format
+msgid "Unknown interpolator %s"
+msgstr "Unknown interpolator %s"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:650
+#, kde-format
+msgid "Unknown resource id %1"
+msgstr "Unknown resource id %1"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:658
+#, kde-format
+msgid "Could not read file %1"
+msgstr "Could not read file %1"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:659
+#: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:677
+#, kde-format
+msgid "Could not load resource %1"
+msgstr "Could not load resource %1"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_renderer.cpp:159
+#, kde-format
+msgid "%s should be in a group"
+msgstr "%s should be in a group"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_renderer.cpp:163
+#, kde-format
+msgid "%s is not supported"
+msgstr "%s is not supported"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_renderer.cpp:252
+#, kde-format
+msgid "%s are not supported"
+msgstr "%s are not supported"
+
+#: src/core/glaxnimate/module/extraformats/avd/avd_renderer.cpp:518
+#, kde-format
+msgid "%s cannot be a clip path"
+msgstr "%s cannot be a clip path"
+
+#: src/core/glaxnimate/module/extraformats/extraformats_module.hpp:16
+#, fuzzy, kde-format
+#| msgid "Formats"
+msgid "Extra Formats"
+msgstr "Formats"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:359
+#, kde-format
+msgid "Bezier has mismatching number of points"
+msgstr "Bezier has mismatching number of points"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:422
+#, kde-format
+msgid "Unknown property %1 of %2 (%3, %4)"
+msgstr "Unknown property %1 of %2 (%3, %4)"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:457
+#, kde-format
+msgid "Unknown keyframe type for property %1 of %2 (%3, %4)"
+msgstr "Unknown keyframe type for property %1 of %2 (%3, %4)"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_format.cpp:22
+#, kde-format
+msgid "Unsupported format"
+msgstr "Unsupported format"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_format.cpp:32
+#, kde-format
+msgid "Could not read header"
+msgstr "Could not read header"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_format.cpp:38
+#, kde-format
+msgid ""
+"Loading unsupported rive file version %1.%2, the only supported version is %3"
+msgstr ""
+"Loading unsupported rive file version %1.%2, the only supported version is %3"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_format.cpp:44
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:750
+#, kde-format
+msgid "Could not read property table"
+msgstr "Could not read property table"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_format.hpp:23
+#, kde-format
+msgid "Rive Animation"
+msgstr "Rive Animation"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_html_format.hpp:20
+#, kde-format
+msgid "RIVE HTML Preview"
+msgstr "RIVE HTML Preview"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:179
+#, kde-format
+msgid "Unexpected Keyed Object"
+msgstr "Unexpected Keyed Object"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:187
+#, kde-format
+msgid "Invalid Keyed Object id %1"
+msgstr "Invalid Keyed Object id %1"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:195
+#, kde-format
+msgid "Unexpected Keyed Property"
+msgstr "Unexpected Keyed Property"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:204
+#, kde-format
+msgid "Unknown Keyed Property id %1"
+msgstr "Unknown Keyed Property id %1"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:215
+#, kde-format
+msgid "Unexpected Animation"
+msgstr "Unexpected Animation"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:231
+#, kde-format
+msgid "Unexpected Asset Contents"
+msgstr "Unexpected Asset Contents"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:242
+#, kde-format
+msgid "Invalid Image Data"
+msgstr "Invalid Image Data"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:253
+#, kde-format
+msgid "Unexpected Keyframe"
+msgstr "Unexpected Keyframe"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:268
+#, kde-format
+msgid "Could not find parent with id %1"
+msgstr "Could not find parent with id %1"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:318
+#, kde-format
+msgid "Parent circular reference detected"
+msgstr "Parent circular reference detected"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:746
+#, kde-format
+msgid "Unknown object of type %1"
+msgstr "Unknown object of type %1"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:791
+#, kde-format
+msgid "Could not load object type ID"
+msgstr "Could not load object type ID"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:806
+#, kde-format
+msgid "Could not load property ID in %1 (%2)"
+msgstr "Could not load property ID in %1 (%2)"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:823
+#, kde-format
+msgid "Unknown property %1 of %2 (%3)"
+msgstr "Unknown property %1 of %2 (%3)"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:833
+#, kde-format
+msgid "Skipping unknown property %1 of %2 (%3)"
+msgstr "Skipping unknown property %1 of %2 (%3)"
+
+#: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:846
+#, kde-format
+msgid "Error loading property %1 (%2) of %3 (%4)"
+msgstr "Error loading property %1 (%2) of %3 (%4)"
+
+#: src/core/glaxnimate/module/gzip/gzip-kde.cpp:25
+#, kde-format
+msgid "Could not decompress data"
+msgstr "Could not decompress data"
+
+#: src/core/glaxnimate/module/gzip/gzip-kde.cpp:84
+#, kde-format
+msgid "Gzip stream already open"
+msgstr ""
+
+#: src/core/glaxnimate/module/gzip/gzip-zlib.cpp:99
+#, kde-format
+msgid "ZLib %1%2 returned %3"
+msgstr "Zlib %1%2 returned %3"
+
+#: src/core/glaxnimate/module/gzip/gzip_module.hpp:16
+#, kde-format
+msgid "Gzip Compression"
+msgstr ""
+
+#: src/core/glaxnimate/module/gzip/svgz_format.hpp:22
+#, kde-format
+msgid "Compressed SVG"
+msgstr ""
+
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:44
+#, kde-format
+msgid "Star Shapes are not officially supported"
+msgstr "Star Shapes are not officially supported"
+
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:53
+#, kde-format
+msgid "Gradient strokes are not officially supported"
+msgstr "Gradient strokes are not officially supported"
+
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:58
+#, fuzzy, kde-format
+#| msgid "Repeaters are not officially supported"
+msgid "Masks are not officially supported"
+msgstr "Repeaters are not officially supported"
+
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:62
+#, kde-format
+msgid "Repeaters are not officially supported"
+msgstr "Repeaters are not officially supported"
+
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:66
+#, kde-format
+msgid "Inflate/Deflate is not supported"
+msgstr "Inflate/Deflate is not supported"
+
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:70
+#, kde-format
+msgid "Offset Path is not supported"
+msgstr "Offset Path is not supported"
+
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:74
+#, kde-format
+msgid "ZigZag is not supported"
+msgstr "ZigZag is not supported"
+
+#: src/core/glaxnimate/module/gzip/tgs_format.cpp:106
+#, kde-format
+msgid "File too large: %1k, should be under 64k"
+msgstr "File too large: %1k, should be under 64k"
+
+#: src/core/glaxnimate/module/gzip/tgs_format.hpp:19
+#, kde-format
+msgid "Telegram Animated Sticker"
+msgstr "Telegram Animated Sticker"
+
+#: src/core/glaxnimate/module/module.cpp:41
 #, fuzzy, kde-format
 #| msgid "Glaxnimate"
 msgid "Glaxnimate Core"
 msgstr "Glaxnimate"
+
+#: src/core/glaxnimate/module/thorvg/thorvg_module.hpp:16
+#, kde-format
+msgid "ThorVG Renderer"
+msgstr ""
 
 #: src/core/glaxnimate/module/video/video_format.cpp:73
 #, kde-format
@@ -2304,11 +2368,6 @@ msgstr "Show verbose information on the conversion"
 msgid "Video"
 msgstr "Video"
 
-#: src/core/glaxnimate/module/video/video_module.cpp:13
-#, kde-format
-msgid "libav"
-msgstr "libav"
-
 #: src/core/glaxnimate/module/video/video_module.hpp:16
 #, kde-format
 msgid "Video Format Support"
@@ -2325,11 +2384,6 @@ msgstr "Could not allocate frame data."
 #| msgid "Could not allocate stream"
 msgid "Cannot allocate return value"
 msgstr "Could not allocate stream"
-
-#: src/core/glaxnimate/utils/gzip.cpp:28
-#, kde-format
-msgid "Could not decompress data"
-msgstr "Could not decompress data"
 
 #: src/gui/cli.cpp:27
 #, kde-format
@@ -2527,13 +2581,13 @@ msgctxt "@info:shell"
 msgid "Error converting to the output format"
 msgstr "Error converting to the output format"
 
-#: src/gui/cli.cpp:315 src/gui/cli.cpp:334
+#: src/gui/cli.cpp:314
 #, kde-format
 msgctxt "@info:shell"
 msgid "Could not save to %1"
 msgstr "Could not save to %1"
 
-#: src/gui/cli.cpp:343
+#: src/gui/cli.cpp:327
 #, kde-format
 msgctxt "@info:shell"
 msgid "You need to specify a file to render"
@@ -2591,6 +2645,7 @@ msgstr "Emoji Set"
 #. i18n: ectx: property (text), widget (QTableWidget, emoji_set_view)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_output)
+#. i18n: ectx: property (text), widget (QTableWidget, table_formats_output_static)
 #. i18n: ectx: property (text), widget (QTableWidget, table_widget)
 #. i18n: ectx: property (text), widget (QTableWidget, view_presets)
 #. i18n: ectx: property (text), widget (QTableWidget, list_services)
@@ -2599,8 +2654,9 @@ msgstr "Emoji Set"
 #: src/gui/item_models/gradient_list_model.cpp:171
 #: src/gui/item_models/property_model_full.cpp:448
 #: src/gui/item_models/property_model_single.cpp:158
-#: src/gui/widgets/dialogs/about_env_dialog.ui:248
-#: src/gui/widgets/dialogs/about_env_dialog.ui:289
+#: src/gui/widgets/dialogs/about_env_dialog.ui:247
+#: src/gui/widgets/dialogs/about_env_dialog.ui:288
+#: src/gui/widgets/dialogs/about_env_dialog.ui:329
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:109
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:348
 #: src/gui/widgets/dialogs/startup_dialog.ui:48
@@ -2725,14 +2781,14 @@ msgid "CPython"
 msgstr "CPython"
 
 #. i18n: ectx: Menu (file_new_from_template)
-#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1557
+#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1555
 #, kde-format
 msgid "New from Template"
 msgstr "New from Template"
 
 #. i18n: ectx: Menu (edit_tools)
 #: src/gui/glaxnimateui.rc:51 src/gui/widgets/dialogs/gw_impl_ui.cpp:419
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:943
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:941
 #, kde-format
 msgid "Tools"
 msgstr "Tools"
@@ -2755,66 +2811,60 @@ msgstr "Layout"
 msgid "Document"
 msgstr "Document"
 
-#. i18n: ectx: Menu (render_frame_menu)
-#: src/gui/glaxnimateui.rc:92
-#, kde-format
-msgid "Render Single Frame"
-msgstr "Render Single Frame"
-
 #. i18n: ectx: Menu (web_preview_menu)
-#: src/gui/glaxnimateui.rc:97 src/gui/widgets/dialogs/gw_impl_document.cpp:531
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:553
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:559
+#: src/gui/glaxnimateui.rc:93 src/gui/widgets/dialogs/gw_impl_document.cpp:530
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:552
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:558
 #, kde-format
 msgid "Web Preview"
 msgstr "Web Preview"
 
 #. i18n: ectx: Menu (playback)
-#: src/gui/glaxnimateui.rc:114 src/gui/widgets/dialogs/gw_impl_ui.cpp:551
+#: src/gui/glaxnimateui.rc:110 src/gui/widgets/dialogs/gw_impl_ui.cpp:549
 #, kde-format
 msgid "Playback"
 msgstr "Playback"
 
 #. i18n: ectx: Menu (object)
-#: src/gui/glaxnimateui.rc:148 src/gui/widgets/dialogs/gw_impl_ui.cpp:659
+#: src/gui/glaxnimateui.rc:144 src/gui/widgets/dialogs/gw_impl_ui.cpp:657
 #, kde-format
 msgid "Object"
 msgstr "Object"
 
 #. i18n: ectx: Menu (align_menu)
-#: src/gui/glaxnimateui.rc:159
+#: src/gui/glaxnimateui.rc:155
 #, kde-format
 msgid "Align and Distribute"
 msgstr "Align and Distribute"
 
 #. i18n: ectx: Menu (menu_keyframe_type)
-#: src/gui/glaxnimateui.rc:180
+#: src/gui/glaxnimateui.rc:176
 #, fuzzy, kde-format
 #| msgid "Update keyframe transition"
 msgid "Keyframe Transition"
 msgstr "Update keyframe transition"
 
 #. i18n: ectx: Menu (plugins)
-#: src/gui/glaxnimateui.rc:221 src/gui/settings/plugin_settings_group.hpp:23
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1798
+#: src/gui/glaxnimateui.rc:217 src/gui/settings/plugin_settings_group.hpp:23
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1796
 #, kde-format
 msgid "Plugins"
 msgstr "Plugins"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: src/gui/glaxnimateui.rc:235
+#: src/gui/glaxnimateui.rc:231
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Main Toolbar"
 
 #. i18n: ectx: ToolBar (toolsToolBar)
-#: src/gui/glaxnimateui.rc:258
+#: src/gui/glaxnimateui.rc:254
 #, kde-format
 msgid "Tools Toolbar"
 msgstr "Tools Toolbar"
 
 #. i18n: ectx: ToolBar (nodeToolBar)
-#: src/gui/glaxnimateui.rc:274
+#: src/gui/glaxnimateui.rc:270
 #, kde-format
 msgid "Node Toolbar"
 msgstr "Node Toolbar"
@@ -3079,12 +3129,12 @@ msgstr "Draw Bezier"
 msgid "Drag nodes"
 msgstr "Drag nodes"
 
-#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:887
+#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:885
 #, kde-format
 msgid "Cusp"
 msgstr "Cusp"
 
-#: src/gui/tools/edit_tool.cpp:284 src/gui/widgets/dialogs/gw_impl_ui.cpp:888
+#: src/gui/tools/edit_tool.cpp:284 src/gui/widgets/dialogs/gw_impl_ui.cpp:886
 #, kde-format
 msgid "Smooth"
 msgstr "Smooth"
@@ -3142,12 +3192,12 @@ msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "Remove Stop"
 
-#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:892
+#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:890
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr "Dissolve Nodes"
 
-#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:879
+#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:877
 #, kde-format
 msgid "Delete Nodes"
 msgstr "Delete Nodes"
@@ -3260,80 +3310,91 @@ msgid "Draw Text"
 msgstr "Draw Text"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::AboutEnvironmentDialog)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:20
+#: src/gui/widgets/dialogs/about_env_dialog.ui:19
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:162
 #, kde-format
 msgid "About Environment"
 msgstr "About Environment"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:30
+#: src/gui/widgets/dialogs/about_env_dialog.ui:29
 #, kde-format
 msgid "Paths"
 msgstr "Paths"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:51
+#: src/gui/widgets/dialogs/about_env_dialog.ui:50
 #, kde-format
 msgid "User Data Directory:"
 msgstr "User Data Directory:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:82
+#: src/gui/widgets/dialogs/about_env_dialog.ui:81
 #, kde-format
 msgid "Settings File:"
 msgstr "Settings File:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:113
+#: src/gui/widgets/dialogs/about_env_dialog.ui:112
 #, kde-format
 msgid "Backup Directory:"
 msgstr "Backup Directory:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:144
+#: src/gui/widgets/dialogs/about_env_dialog.ui:143
 #, kde-format
 msgid "Data Directories:"
 msgstr "Data Directories:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:164
+#: src/gui/widgets/dialogs/about_env_dialog.ui:163
 #, kde-format
 msgid "Icon Theme Paths:"
 msgstr "Icon Theme Paths:"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_4)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:189
+#: src/gui/widgets/dialogs/about_env_dialog.ui:188
 #, kde-format
 msgid "Formats"
 msgstr "Formats"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:225
+#: src/gui/widgets/dialogs/about_env_dialog.ui:224
 #, kde-format
 msgid "Input Formats"
 msgstr "Input Formats"
 
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_output)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:253
-#: src/gui/widgets/dialogs/about_env_dialog.ui:294
+#. i18n: ectx: property (text), widget (QTableWidget, table_formats_output_static)
+#: src/gui/widgets/dialogs/about_env_dialog.ui:252
+#: src/gui/widgets/dialogs/about_env_dialog.ui:293
+#: src/gui/widgets/dialogs/about_env_dialog.ui:334
 #, kde-format
 msgid "ID"
 msgstr "ID"
 
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_input)
 #. i18n: ectx: property (text), widget (QTableWidget, table_formats_output)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:258
-#: src/gui/widgets/dialogs/about_env_dialog.ui:299
+#. i18n: ectx: property (text), widget (QTableWidget, table_formats_output_static)
+#: src/gui/widgets/dialogs/about_env_dialog.ui:257
+#: src/gui/widgets/dialogs/about_env_dialog.ui:298
+#: src/gui/widgets/dialogs/about_env_dialog.ui:339
 #, kde-format
 msgid "Extensions"
 msgstr "Extensions"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
-#: src/gui/widgets/dialogs/about_env_dialog.ui:266
+#: src/gui/widgets/dialogs/about_env_dialog.ui:265
 #, kde-format
 msgid "Output Formats "
+msgstr "Output Formats "
+
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: src/gui/widgets/dialogs/about_env_dialog.ui:306
+#, fuzzy, kde-format
+#| msgid "Output Formats "
+msgid "Single Frame Output Formats "
 msgstr "Output Formats "
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
@@ -3829,7 +3890,7 @@ msgstr "Could not export file"
 msgid "Warning"
 msgstr "Warning"
 
-#: src/gui/widgets/dialogs/glaxnimate_window.cpp:302
+#: src/gui/widgets/dialogs/glaxnimate_window.cpp:292
 #, fuzzy, kde-format
 #| msgid "Remove keyframe"
 msgid "Delete keyframe"
@@ -3837,17 +3898,17 @@ msgid_plural "Delete keyframes"
 msgstr[0] "Remove keyframe"
 msgstr[1] "Remove keyframe"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:139
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:138
 #, kde-format
 msgid "Export..."
 msgstr "Export..."
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:151
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:150
 #, kde-format
 msgid "Unsaved Animation"
 msgstr "Unsaved Animation"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:233
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:232
 #, kde-format
 msgid ""
 "Looks like this file is being edited by another Glaxnimate instance or it "
@@ -3856,28 +3917,28 @@ msgstr ""
 "Looks like this file is being edited by another Glaxnimate instance or it "
 "was being edited when Glaxnimate crashed."
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:239
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:238
 #, kde-format
 msgid "Close Document"
 msgstr "Close Document"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:246
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:701
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:245
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:670
 #, kde-format
 msgid "Load Backup"
 msgstr "Load Backup"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:398
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:397
 #, kde-format
 msgid "Export to %1"
 msgstr "Export to %1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:450
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:449
 #, kde-format
 msgid "No importer found for %1"
 msgstr "No importer found for %1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:455
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:454
 #, kde-format
 msgid ""
 "The file might have been moved or deleted\n"
@@ -3886,137 +3947,114 @@ msgstr ""
 "The file might have been moved or deleted\n"
 "%1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:509
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:859
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:876
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:508
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:828
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:845
 #, kde-format
 msgid "Could not import %1"
 msgstr "Could not import %1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:520
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:519
 #, kde-format
 msgid "No file to reload from"
 msgstr "No file to reload from"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:553
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:552
 #, kde-format
 msgid "Could not create file"
 msgstr "Could not create file"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:559
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:558
 #, kde-format
 msgid "Could not open browser"
 msgstr "Could not open browser"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:590
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:617
-#, kde-format
-msgid "Save Frame Image"
-msgstr "Save Frame Image"
-
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:593
-#, kde-format
-msgid "Frame%1.png"
-msgstr "Frame%1.png"
-
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:601
-#, kde-format
-msgid "Image files (%1)"
-msgstr "Image files (%1)"
-
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:610
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:634
-#, kde-format
-msgid "Render Frame"
-msgstr "Render Frame"
-
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:610
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:634
-#, kde-format
-msgid "Could not save image"
-msgstr "Could not save image"
-
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:620
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:592
 #, kde-format
 msgid "Frame%1.svg"
 msgstr "Frame%1.svg"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:623
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:608
 #, kde-format
-msgid "Scalable Vector Graphics (*.svg)"
-msgstr "Scalable Vector Graphics (*.svg)"
+msgid "Render Frame"
+msgstr "Render Frame"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:647
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:529
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:608
+#, kde-format
+msgid "Could not save image"
+msgstr "Could not save image"
+
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:616
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:527
 #, kde-format
 msgid "Validate Discord Sticker"
 msgstr "Validate Discord Sticker"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:649
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:659
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:618
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:628
 #, kde-format
 msgid "No issues found"
 msgstr "No issues found"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:649
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:659
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:618
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:628
 #, kde-format
 msgid "Some issues detected"
 msgstr "Some issues detected"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:657
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:526
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:626
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:524
 #, kde-format
 msgid "Validate Telegram Sticker"
 msgstr "Validate Telegram Sticker"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:701
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:670
 #, kde-format
 msgid "Could not open the backup file"
 msgstr "Could not open the backup file"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:780
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:749
 #, kde-format
 msgid "Unlink %1 Color"
 msgstr "Unlink %1 Colour"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:790
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:759
 #, kde-format
 msgid "Link %1 Color"
 msgstr "Link %1 Colour"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:900
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:869
 #, kde-format
 msgid "Download fonts"
 msgstr "Download fonts"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:938
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:907
 #, kde-format
 msgid "HTTP Error %1 %2"
 msgstr "HTTP Error %1 %2"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:942
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:911
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.cpp:213
 #, kde-format
 msgid "Network Error"
 msgstr "Network Error"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:945
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:914
 #, kde-format
 msgid "Load URL"
 msgstr "Load URL"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:945
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:914
 #, kde-format
 msgid "Could not load %1: %2"
 msgstr "Could not load %1: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:963
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:932
 #, kde-format
 msgid "There are %1 auto-save files that can be restored."
 msgstr "There are %1 auto-save files that can be restored."
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:971
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:940
 #, kde-format
 msgid "Load Backup..."
 msgstr "Load Backup..."
@@ -4224,178 +4262,174 @@ msgid "Focus Mode"
 msgstr "k-Modes"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
-#, kde-format
-msgid "Raster…"
-msgstr "Raster…"
+#, fuzzy, kde-format
+#| msgid "Render Single Frame"
+msgid "Render Single Frame…"
+msgstr "Render Single Frame"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:508
-#, kde-format
-msgid "SVG…"
-msgstr "SVG…"
-
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:514
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
 #, kde-format
 msgid "Lottie (SVG)"
 msgstr "Lottie (SVG)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:517
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:515
 #, kde-format
 msgid "Lottie (canvas)"
 msgstr "Lottie (canvas)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:520
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:518
 #, kde-format
 msgid "SVG (SMIL)"
 msgstr "SVG (SMIL)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:523
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:521
 #, kde-format
 msgid "RIVE (canvas)"
 msgstr "RIVE (canvas)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:532
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:530
 #, kde-format
 msgid "Resize…"
 msgstr "Resize…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:535
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:533
 #, kde-format
 msgid "Cleanup"
 msgstr "Cleanup"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:538
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:536
 #, kde-format
 msgid "Timing…"
 msgstr "Timing…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:543
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:541
 #, kde-format
 msgid "Metadata…"
 msgstr "Metadata…"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:554
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:578
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:552
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:576
 #: src/gui/widgets/timeline/frame_controls_widget.ui:46
 #, kde-format
 msgid "Play"
 msgstr "Play"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_loop)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:556
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:554
 #: src/gui/widgets/timeline/frame_controls_widget.ui:63
 #, kde-format
 msgid "Loop"
 msgstr "Loop"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:558
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:556
 #, kde-format
 msgid "Record Keyframes"
 msgstr "Record Keyframes"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:560
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:558
 #, kde-format
 msgid "Jump to Start"
 msgstr "Jump to Start"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:562
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:560
 #, kde-format
 msgid "Jump to End"
 msgstr "Jump to End"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:564
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:562
 #, kde-format
 msgid "Next Frame"
 msgstr "Next Frame"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:566
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:564
 #, kde-format
 msgid "Previous Frame"
 msgstr "Previous Frame"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:574
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:572
 #, kde-format
 msgid "Pause"
 msgstr "Pause"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:629
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:627
 #, kde-format
 msgid "Precompose Selection"
 msgstr "Precompose Selection"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:633
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:631
 #, kde-format
 msgid "New Composition"
 msgstr "New Composition"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:648
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:646
 #, kde-format
 msgid "Emoji…"
 msgstr "Emoji…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:661
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:659
 #, kde-format
 msgid "Raise to Top"
 msgstr "Raise to Top"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:668
 #, kde-format
 msgid "Lower to Bottom"
 msgstr "Lower to Bottom"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:673
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:671
 #, kde-format
 msgid "Move to…"
 msgstr "Move to…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:679
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:677
 #, kde-format
 msgid "Ungroup"
 msgstr "Ungroup"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:682
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:680
 #: src/gui/widgets/docks/aligndock.cpp:46
 #, kde-format
 msgid "Align"
 msgstr "Align"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:684
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:682
 #, kde-format
 msgid "Selection"
 msgstr "Selection"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:684
 #, kde-format
 msgid "Canvas"
 msgstr "Canvas"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
 #, kde-format
 msgid "Canvas (as Group)"
 msgstr "Canvas (as Group)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:691
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:689
 #, kde-format
 msgid "Left"
 msgstr "Left"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:694
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:703
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:701
 #, kde-format
 msgid "Center"
 msgstr "Centre"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:697
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:695
 #, kde-format
 msgid "Right"
 msgstr "Right"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:700
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:698
 #, kde-format
 msgid "Top"
 msgstr "Top"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:706
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:704
 #, kde-format
 msgid "Bottom"
 msgstr "Bottom"
@@ -4403,168 +4437,168 @@ msgstr "Bottom"
 #. i18n("Relative To"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_horizontal"), i18n("Horizontal"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_vertical"), i18n("Vertical"), QStringLiteral(""));
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:713
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:711
 #, kde-format
 msgid "Outside Left"
 msgstr "Outside Left"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:716
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:714
 #, kde-format
 msgid "Outside Right"
 msgstr "Outside Right"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:719
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:717
 #, kde-format
 msgid "Outside Top"
 msgstr "Outside Top"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:722
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:720
 #, kde-format
 msgid "Outside Bottom"
 msgstr "Outside Bottom"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:739
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:737
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:119
 #, kde-format
 msgid "Custom..."
 msgstr "Custom..."
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:798
 #, fuzzy, kde-format
 #| msgid "Update keyframe transition"
 msgid "Apply %1 keyframe transition"
 msgstr "Update keyframe transition"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:855
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:853
 #, kde-format
 msgid "Object to Path"
 msgstr "Object to Path"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:858
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:856
 #, kde-format
 msgid "Trace Bitmap…"
 msgstr "Trace Bitmap…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:863
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:861
 #, kde-format
 msgid "Union"
 msgstr "Union"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:866
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:864
 #: src/gui/widgets/enum_combo.cpp:145
 #, kde-format
 msgid "Difference"
 msgstr "Difference"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:869
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:867
 #, kde-format
 msgid "Intersect"
 msgstr "Intersect"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:872
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:870
 #: src/gui/widgets/enum_combo.cpp:147
 #, kde-format
 msgid "Exclusion"
 msgstr "Exclusion"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:876
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:874
 #, kde-format
 msgid "Reverse"
 msgstr "Reverse"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:880
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:878
 #, kde-format
 msgid "Add Node…"
 msgstr "Add Node…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:882
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:880
 #, kde-format
 msgid "Join Nodes"
 msgstr "Join Nodes"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:884
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:882
 #, kde-format
 msgid "Split Nodes"
 msgstr "Split Nodes"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:889
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:887
 #, kde-format
 msgid "Symmetric"
 msgstr "Symmetric"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:890
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:888
 #, kde-format
 msgid "Make segments straight"
 msgstr "Make segments straight"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:891
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:889
 #, kde-format
 msgid "Make segments curved"
 msgstr "Make segments curved"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1037
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1035
 #, kde-format
 msgid "Recording Keyframes"
 msgstr "Recording Keyframes"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1557
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1555
 #, kde-format
 msgid "Could not load template"
 msgstr "Could not load template"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1754
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1763
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1770
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1752
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1761
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1768
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
 msgstr "Trace Bitmap"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1754
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1752
 #, kde-format
 msgid "Only select one image"
 msgstr "Only select one image"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1763
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1761
 #, kde-format
 msgid "You need to select an image to trace"
 msgstr "You need to select an image to trace"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1770
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1768
 #, kde-format
 msgid "You selected an image with no data"
 msgstr "You selected an image with no data"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1857
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1855
 #, kde-format
 msgid "X: %1 Y: %2"
 msgstr "X: %1 Y: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1876
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1874
 #, kde-format
 msgid "Drop File"
 msgstr "Drop File"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1887
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1885
 #, kde-format
 msgid "Add to current file?"
 msgstr "Add to current file?"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1893
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1891
 #, kde-format
 msgid "Add as Object"
 msgstr "Add as Object"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1899
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1897
 #, kde-format
 msgid "Add as Composition"
 msgstr "Add as Composition"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:40
 #, kde-format
-msgid "Save file"
-msgstr "Save file"
+msgid "Save Frame Image"
+msgstr "Save Frame Image"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:60
 #, kde-format
@@ -4575,11 +4609,6 @@ msgstr "Overwrite File?"
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "The file \"%1\" already exists. Do you wish to overwrite it?"
-
-#: src/gui/widgets/dialogs/import_export_dialog.hpp:82
-#, kde-format
-msgid "Open file"
-msgstr "Open file"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:101
 #, kde-format
@@ -6821,6 +6850,36 @@ msgstr ""
 msgid "Traced %1"
 msgstr "Traced %1"
 
+#~ msgid "Masks are not supported"
+#~ msgstr "Masks are not supported"
+
+#~ msgid "Could not write to file"
+#~ msgstr "Could not write to file"
+
+#~ msgid "libav"
+#~ msgstr "libav"
+
+#~ msgid "Frame%1.png"
+#~ msgstr "Frame%1.png"
+
+#~ msgid "Image files (%1)"
+#~ msgstr "Image files (%1)"
+
+#~ msgid "Scalable Vector Graphics (*.svg)"
+#~ msgstr "Scalable Vector Graphics (*.svg)"
+
+#~ msgid "Raster…"
+#~ msgstr "Raster…"
+
+#~ msgid "SVG…"
+#~ msgstr "SVG…"
+
+#~ msgid "Save file"
+#~ msgstr "Save file"
+
+#~ msgid "Open file"
+#~ msgstr "Open file"
+
 #~ msgid "Loop Animation"
 #~ msgstr "Loop Animation"
 
@@ -6921,10 +6980,6 @@ msgstr "Traced %1"
 #~ msgctxt "@info:tooltip"
 #~ msgid "How often to save a backup copy (in minutes)"
 #~ msgstr "How often to save a backup copy (in minutes)"
-
-#~ msgctxt "@title settings group"
-#~ msgid "Scripting"
-#~ msgstr "Scripting"
 
 #~ msgctxt "@title settings group"
 #~ msgid "Tools"
@@ -7310,9 +7365,6 @@ msgstr "Traced %1"
 #~ "If present, instead of starting the GUI export the input file to the given"
 #~ msgstr ""
 #~ "If present, instead of starting the GUI export the input file to the given"
-
-#~ msgid "ZLib %1%2 returned %3"
-#~ msgstr "Zlib %1%2 returned %3"
 
 #~ msgid "%2 is not a valid value for %1"
 #~ msgstr "%2 is not a valid value for %1"
