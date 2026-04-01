@@ -321,6 +321,8 @@ void GlaxnimateWindow::Private::switch_composition(model::Composition* new_comp,
         tab_bar->setCurrentIndex(i);
     }
 
+    model::FrameTime time = 0;
+
     if ( comp )
     {
         int old_i = current_document->assets()->compositions->values.index_of(static_cast<model::Composition*>(comp));
@@ -330,6 +332,7 @@ void GlaxnimateWindow::Private::switch_composition(model::Composition* new_comp,
         else
             comp_selections[old_i].current = comp;
 
+        time = current_document->current_time();
         QObject::disconnect(comp->animation.get(), &model::AnimationContainer::first_frame_changed, timeline_dock->playControls(), nullptr);
         QObject::disconnect(comp, &model::Composition::fps_changed, timeline_dock->playControls(), &FrameControlsWidget::set_fps);
     }
@@ -338,8 +341,10 @@ void GlaxnimateWindow::Private::switch_composition(model::Composition* new_comp,
 
     timeline_dock->playControls()->set_range(comp->animation->first_frame.get(), comp->animation->last_frame.get());
     timeline_dock->playControls()->set_fps(comp->fps.get());
+    timeline_dock->playControls()->set_frame(time);
     time_slider_dock->playControls()->set_range(comp->animation->first_frame.get(), comp->animation->last_frame.get());
     time_slider_dock->playControls()->set_fps(comp->fps.get());
+    time_slider_dock->playControls()->set_frame(time);
 
     QObject::connect(comp->animation.get(), &model::AnimationContainer::first_frame_changed, timeline_dock->playControls(), [this](float frame){timeline_dock->playControls()->set_min(frame);});
     QObject::connect(comp->animation.get(), &model::AnimationContainer::last_frame_changed, timeline_dock->playControls(), [this](float frame){timeline_dock->playControls()->set_max(frame);});
