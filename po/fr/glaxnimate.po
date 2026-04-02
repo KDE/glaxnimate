@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-01 00:42+0000\n"
-"PO-Revision-Date: 2026-03-29 10:36+0200\n"
+"PO-Revision-Date: 2026-03-31 07:19+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -2144,7 +2144,8 @@ msgid "Gzip stream already open"
 msgstr ""
 
 #: src/core/glaxnimate/module/gzip/gzip-zlib.cpp:99
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "ZLib %1%2 returned %3"
 msgid "ZLib %1%2 returned %3"
 msgstr "ZLib %1%2 a retourné %3"
 
@@ -2205,10 +2206,9 @@ msgid "Telegram Animated Sticker"
 msgstr "Autocollant animé Telegram"
 
 #: src/core/glaxnimate/module/module.cpp:41
-#, fuzzy, kde-format
-#| msgid "Glaxnimate"
+#, kde-format
 msgid "Glaxnimate Core"
-msgstr "Glaxnimate"
+msgstr "Cœur de Glaxnimate"
 
 #: src/core/glaxnimate/module/thorvg/thorvg_module.hpp:16
 #, fuzzy, kde-format
@@ -2379,7 +2379,7 @@ msgstr "Vidéo"
 #: src/core/glaxnimate/module/video/video_module.hpp:16
 #, kde-format
 msgid "Video Format Support"
-msgstr ""
+msgstr "Prise en charge de formats vidéos"
 
 #: src/core/glaxnimate/script/register_impl.hpp:234
 #, kde-format

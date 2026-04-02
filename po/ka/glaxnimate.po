@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-01 00:42+0000\n"
-"PO-Revision-Date: 2026-03-29 14:35+0200\n"
+"PO-Revision-Date: 2026-04-01 04:18+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1778,33 +1778,29 @@ msgid "Transform"
 msgstr "ტრასფორმირება"
 
 #: src/core/glaxnimate/module/cairo/cairo_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "OpenGL Renderer"
+#, kde-format
 msgid "Cairo Renderer"
-msgstr "OpenGL-ის რენდერები"
+msgstr "Cairo-ის რენდერერი"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.cpp:40
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PDF surface: %1"
-msgstr "ფრაგმენტის შექმნის შეცდომა: '%1'"
+msgstr "PDF-ის ზედაპირის შექმნა შეუძლებელია: %1"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.hpp:20
-#, fuzzy, kde-format
-#| msgid "Gather Document Swatch"
+#, kde-format
 msgid "Portable Document Format"
-msgstr "დოკუმენტის ნიმუშების შეგროვება"
+msgstr "გადატანადი დოკუმენტის ფორმატი"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.cpp:38
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PostScript surface: %1"
-msgstr "ფრაგმენტის შექმნის შეცდომა: '%1'"
+msgstr "PostScript-ის ზედაპირის შექმნა შეუძლებელია: %1"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.hpp:20
 #, kde-format
 msgid "PostScript"
-msgstr ""
+msgstr "PostScript"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_format.cpp:32
 #, kde-format
@@ -1992,10 +1988,9 @@ msgid "%s cannot be a clip path"
 msgstr "%s კლიპის ბილიკი ვერ იქნება"
 
 #: src/core/glaxnimate/module/extraformats/extraformats_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "Formats"
+#, kde-format
 msgid "Extra Formats"
-msgstr "ფორმატები"
+msgstr "დამატებითი ფორმატები"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:359
 #, kde-format
@@ -2134,22 +2129,22 @@ msgstr "მონაცემების გაშლის შეცდომ�
 #: src/core/glaxnimate/module/gzip/gzip-kde.cpp:84
 #, kde-format
 msgid "Gzip stream already open"
-msgstr ""
+msgstr "Gzip-ის ნაკადი უკვე ღიაა"
 
 #: src/core/glaxnimate/module/gzip/gzip-zlib.cpp:99
 #, kde-format
 msgid "ZLib %1%2 returned %3"
-msgstr ""
+msgstr "ZLib %1%2-მა დააბრუნა %3"
 
 #: src/core/glaxnimate/module/gzip/gzip_module.hpp:16
 #, kde-format
 msgid "Gzip Compression"
-msgstr ""
+msgstr "Gzip-ით შეკუმშვა"
 
 #: src/core/glaxnimate/module/gzip/svgz_format.hpp:22
 #, kde-format
 msgid "Compressed SVG"
-msgstr ""
+msgstr "შეკუმშული SVG"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:44
 #, kde-format
@@ -2162,10 +2157,9 @@ msgid "Gradient strokes are not officially supported"
 msgstr "გრადიენტის შტრიხები ოფიციალურად მხარდაჭერილი არაა"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:58
-#, fuzzy, kde-format
-#| msgid "Repeaters are not officially supported"
+#, kde-format
 msgid "Masks are not officially supported"
-msgstr "გამმეორებლები ოფიციალურად მხარდაჭერილი არაა"
+msgstr "ნიღბები ოფიციალურად მხარდაჭერილი არაა"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:62
 #, kde-format
@@ -2203,10 +2197,9 @@ msgid "Glaxnimate Core"
 msgstr "Glaxnimate-ის ბირთვი"
 
 #: src/core/glaxnimate/module/thorvg/thorvg_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "OpenGL Renderer"
+#, kde-format
 msgid "ThorVG Renderer"
-msgstr "OpenGL-ის რენდერები"
+msgstr "ThorVG-ის რენდერერი"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:73
 #, kde-format
@@ -2734,7 +2727,7 @@ msgstr "აპარატურით დაჩქარებული გრ�
 #: src/gui/glaxnimate_app.cpp:208
 #, kde-format
 msgid "OpenGL Renderer"
-msgstr "OpenGL-ის რენდერები"
+msgstr "OpenGL-ის რენდერერი"
 
 #: src/gui/glaxnimate_app.cpp:231
 #, kde-format
@@ -3386,10 +3379,9 @@ msgstr "გამოტანის ფორმატები "
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:306
-#, fuzzy, kde-format
-#| msgid "Output Formats "
+#, kde-format
 msgid "Single Frame Output Formats "
-msgstr "გამოტანის ფორმატები "
+msgstr "ერთკადრიანი გამოტანის ფორმატები "
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:21
@@ -4256,10 +4248,9 @@ msgid "Focus Mode"
 msgstr "ფოკუსის რეჟიმი"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
-#, fuzzy, kde-format
-#| msgid "Render Single Frame"
+#, kde-format
 msgid "Render Single Frame…"
-msgstr "ერთი კადრის რენდერი"
+msgstr "ერთი კადრის რენდერი…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-01 00:42+0000\n"
-"PO-Revision-Date: 2026-03-29 08:03-0300\n"
+"PO-Revision-Date: 2026-04-01 09:48-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -1780,33 +1780,29 @@ msgid "Transform"
 msgstr "Transformar"
 
 #: src/core/glaxnimate/module/cairo/cairo_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "OpenGL Renderer"
+#, kde-format
 msgid "Cairo Renderer"
-msgstr "Renderizador OpenGL"
+msgstr "Renderizador Cairo"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.cpp:40
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PDF surface: %1"
-msgstr "Não foi possível criar o trecho: `%1`"
+msgstr "Não foi possível criar superfície PDF: %1"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.hpp:20
-#, fuzzy, kde-format
-#| msgid "Gather Document Swatch"
+#, kde-format
 msgid "Portable Document Format"
-msgstr "Obter amostras do documento"
+msgstr "Formato de Documento Portável"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.cpp:38
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PostScript surface: %1"
-msgstr "Não foi possível criar o trecho: `%1`"
+msgstr "Não foi possível criar superfície PostScript: %1"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.hpp:20
 #, kde-format
 msgid "PostScript"
-msgstr ""
+msgstr "PostScript"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_format.cpp:32
 #, kde-format
@@ -1994,10 +1990,9 @@ msgid "%s cannot be a clip path"
 msgstr "%s não pode ser o caminho de um clipe"
 
 #: src/core/glaxnimate/module/extraformats/extraformats_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "Formats"
+#, kde-format
 msgid "Extra Formats"
-msgstr "Formatos"
+msgstr "Formatos adicionais"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:359
 #, kde-format
@@ -2136,22 +2131,22 @@ msgstr "Não foi possível descomprimir dados"
 #: src/core/glaxnimate/module/gzip/gzip-kde.cpp:84
 #, kde-format
 msgid "Gzip stream already open"
-msgstr ""
+msgstr "O fluxo Gzip já está aberto"
 
 #: src/core/glaxnimate/module/gzip/gzip-zlib.cpp:99
 #, kde-format
 msgid "ZLib %1%2 returned %3"
-msgstr ""
+msgstr "ZLib %1%2 retornou %3"
 
 #: src/core/glaxnimate/module/gzip/gzip_module.hpp:16
 #, kde-format
 msgid "Gzip Compression"
-msgstr ""
+msgstr "Compressão Gzip"
 
 #: src/core/glaxnimate/module/gzip/svgz_format.hpp:22
 #, kde-format
 msgid "Compressed SVG"
-msgstr ""
+msgstr "SVG comprimido"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:44
 #, kde-format
@@ -2164,10 +2159,9 @@ msgid "Gradient strokes are not officially supported"
 msgstr "Traços de gradiente não são oficialmente suportados"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:58
-#, fuzzy, kde-format
-#| msgid "Repeaters are not officially supported"
+#, kde-format
 msgid "Masks are not officially supported"
-msgstr "Repetidores não são oficialmente suportados"
+msgstr "Máscaras não são oficialmente suportadas"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:62
 #, kde-format
@@ -2205,10 +2199,9 @@ msgid "Glaxnimate Core"
 msgstr "Núcleo do Glaxnimate"
 
 #: src/core/glaxnimate/module/thorvg/thorvg_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "OpenGL Renderer"
+#, kde-format
 msgid "ThorVG Renderer"
-msgstr "Renderizador OpenGL"
+msgstr "Renderizador ThorVG"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:73
 #, kde-format
@@ -3391,10 +3384,9 @@ msgstr "Formatos de saída"
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:306
-#, fuzzy, kde-format
-#| msgid "Output Formats "
+#, kde-format
 msgid "Single Frame Output Formats "
-msgstr "Formatos de saída"
+msgstr "Formatos de saída de quadro único "
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:21
@@ -4261,10 +4253,9 @@ msgid "Focus Mode"
 msgstr "Modo de foco"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
-#, fuzzy, kde-format
-#| msgid "Render Single Frame"
+#, kde-format
 msgid "Render Single Frame…"
-msgstr "Renderizar apenas um quadro"
+msgstr "Renderizar apenas um quadro…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
 #, kde-format

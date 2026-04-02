@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-01 00:42+0000\n"
-"PO-Revision-Date: 2026-03-28 18:06+0400\n"
+"PO-Revision-Date: 2026-04-01 19:25+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -972,16 +972,15 @@ msgid "Stretch Time"
 msgstr "تمديد الوقت"
 
 #: src/core/glaxnimate/command/clipboard.cpp:142
-#, fuzzy, kde-format
-#| msgid "Paste Keyframe"
+#, kde-format
 msgid "Paste keyframe"
 msgid_plural "Paste keyframes"
 msgstr[0] "ألصق الإطار الرئيس"
 msgstr[1] "ألصق الإطار الرئيس"
-msgstr[2] "ألصق الإطار الرئيس"
-msgstr[3] "ألصق الإطار الرئيس"
-msgstr[4] "ألصق الإطار الرئيس"
-msgstr[5] "ألصق الإطار الرئيس"
+msgstr[2] "ألصق الإطارين الرئيسين"
+msgstr[3] "ألصق الإطارات الرئيسة"
+msgstr[4] "ألصق الإطارات الرئيسة"
+msgstr[5] "ألصق الإطارات الرئيسة"
 
 #: src/core/glaxnimate/command/object_list_commands.hpp:26
 #, kde-format
@@ -1769,33 +1768,29 @@ msgid "Transform"
 msgstr "التّحويل"
 
 #: src/core/glaxnimate/module/cairo/cairo_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "OpenGL Renderer"
+#, kde-format
 msgid "Cairo Renderer"
-msgstr "عارض أوبن‌جي‌إل"
+msgstr "عارض كايرو"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.cpp:40
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PDF surface: %1"
-msgstr "لا أستطيع إنشاء مقتطف: `%1`"
+msgstr "تعذر إنشاء سطح بي دي اف: %1"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.hpp:20
-#, fuzzy, kde-format
-#| msgid "Gather Document Swatch"
+#, kde-format
 msgid "Portable Document Format"
-msgstr "اجمع عينة المستند"
+msgstr "نسق المستندات المنقولة (PDF)"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.cpp:38
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PostScript surface: %1"
-msgstr "لا أستطيع إنشاء مقتطف: `%1`"
+msgstr "تعذر إنشاء سطح بوست‌سكربت: %1"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.hpp:20
 #, kde-format
 msgid "PostScript"
-msgstr ""
+msgstr "بوست سكريبت"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_format.cpp:32
 #, kde-format
@@ -1983,10 +1978,9 @@ msgid "%s cannot be a clip path"
 msgstr "%s لا يمكن أن يكون مسار قص"
 
 #: src/core/glaxnimate/module/extraformats/extraformats_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "Formats"
+#, kde-format
 msgid "Extra Formats"
-msgstr "الأنساق"
+msgstr "أنساق إضافية"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:359
 #, kde-format
@@ -2123,22 +2117,22 @@ msgstr "لا يمكن فك ضغط البيانات"
 #: src/core/glaxnimate/module/gzip/gzip-kde.cpp:84
 #, kde-format
 msgid "Gzip stream already open"
-msgstr ""
+msgstr "دفق Gzip مفتوح فعلًا"
 
 #: src/core/glaxnimate/module/gzip/gzip-zlib.cpp:99
 #, kde-format
 msgid "ZLib %1%2 returned %3"
-msgstr ""
+msgstr "أرجع ZLib %1%2 القيمة %3"
 
 #: src/core/glaxnimate/module/gzip/gzip_module.hpp:16
 #, kde-format
 msgid "Gzip Compression"
-msgstr ""
+msgstr "ضغط Gzip"
 
 #: src/core/glaxnimate/module/gzip/svgz_format.hpp:22
 #, kde-format
 msgid "Compressed SVG"
-msgstr ""
+msgstr "SVG مضغوط"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:44
 #, kde-format
@@ -2151,10 +2145,9 @@ msgid "Gradient strokes are not officially supported"
 msgstr "الحدود المتدرجة غير متاحة رسميًا"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:58
-#, fuzzy, kde-format
-#| msgid "Repeaters are not officially supported"
+#, kde-format
 msgid "Masks are not officially supported"
-msgstr "المكررات غير متاحة رسميًا"
+msgstr "الأقنعة غير مدعومة رسميًا"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:62
 #, kde-format
@@ -2187,16 +2180,14 @@ msgid "Telegram Animated Sticker"
 msgstr "ملصق تلغرام متحرك"
 
 #: src/core/glaxnimate/module/module.cpp:41
-#, fuzzy, kde-format
-#| msgid "Glaxnimate"
+#, kde-format
 msgid "Glaxnimate Core"
-msgstr "غلاكسنيمَيْت"
+msgstr "نواة غلاكسنيمَيْت"
 
 #: src/core/glaxnimate/module/thorvg/thorvg_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "OpenGL Renderer"
+#, kde-format
 msgid "ThorVG Renderer"
-msgstr "عارض أوبن‌جي‌إل"
+msgstr "عارض ThorVG"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:73
 #, kde-format
@@ -2359,7 +2350,7 @@ msgstr "فيديو"
 #: src/core/glaxnimate/module/video/video_module.hpp:16
 #, kde-format
 msgid "Video Format Support"
-msgstr ""
+msgstr "دعم أنساق الفيديو"
 
 #: src/core/glaxnimate/script/register_impl.hpp:234
 #, kde-format
@@ -2820,10 +2811,9 @@ msgstr "محاذاة وتوزيع"
 
 #. i18n: ectx: Menu (menu_keyframe_type)
 #: src/gui/glaxnimateui.rc:176
-#, fuzzy, kde-format
-#| msgid "Update keyframe transition"
+#, kde-format
 msgid "Keyframe Transition"
-msgstr "حدّث انتقال الإطار الرئيس"
+msgstr "انتقال الإطار الرئيس"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:217 src/gui/settings/plugin_settings_group.hpp:23
@@ -3367,10 +3357,9 @@ msgstr "صيغ الخرج "
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:306
-#, fuzzy, kde-format
-#| msgid "Output Formats "
+#, kde-format
 msgid "Single Frame Output Formats "
-msgstr "صيغ الخرج "
+msgstr "أنساق خرج الإطار الواحد "
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:21
@@ -3865,16 +3854,15 @@ msgid "Warning"
 msgstr "تحذير"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:292
-#, fuzzy, kde-format
-#| msgid "Remove keyframe"
+#, kde-format
 msgid "Delete keyframe"
 msgid_plural "Delete keyframes"
-msgstr[0] "أزل الإطار الرئيس"
-msgstr[1] "أزل الإطار الرئيس"
-msgstr[2] "أزل الإطار الرئيس"
-msgstr[3] "أزل الإطار الرئيس"
-msgstr[4] "أزل الإطار الرئيس"
-msgstr[5] "أزل الإطار الرئيس"
+msgstr[0] "احذف الإطار الرئيس"
+msgstr[1] "احذف الإطار الرئيس"
+msgstr[2] "احذف الإطارين الرئيسين"
+msgstr[3] "احذف الإطارات الرئيسة"
+msgstr[4] "احذف الإطارات الرئيسة"
+msgstr[5] "احذف الإطارات الرئيسة"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:138
 #, kde-format
@@ -4234,16 +4222,14 @@ msgid "Flip View"
 msgstr "اقلب العرض"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
-#, fuzzy, kde-format
-#| msgid "Mask Mode"
+#, kde-format
 msgid "Focus Mode"
-msgstr "نمط القناع"
+msgstr "وضع التركيز"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
-#, fuzzy, kde-format
-#| msgid "Render Single Frame"
+#, kde-format
 msgid "Render Single Frame…"
-msgstr "اعرض إطارًا واحدًا"
+msgstr "اعرض إطارًا واحدًا…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
 #, kde-format
@@ -4442,10 +4428,9 @@ msgid "Custom..."
 msgstr "مخصّص..."
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:798
-#, fuzzy, kde-format
-#| msgid "Update keyframe transition"
+#, kde-format
 msgid "Apply %1 keyframe transition"
-msgstr "حدّث انتقال الإطار الرئيس"
+msgstr "طبّق انتقال الإطار الرئيس %1"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:853
 #, kde-format
@@ -4622,10 +4607,9 @@ msgid "Issues"
 msgstr "المشاكل"
 
 #: src/gui/widgets/dialogs/keyframe_editor_dialog.hpp:24
-#, fuzzy, kde-format
-#| msgid "Transition To Next"
+#, kde-format
 msgid "Transition Editor"
-msgstr "انتقال إلى التالي"
+msgstr "محرر الانتقالات"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ResizeDialog)
 #: src/gui/widgets/dialogs/resize_dialog.cpp:28
@@ -5725,7 +5709,7 @@ msgstr "اعرض على LottieFiles..."
 #: src/gui/widgets/menus/animated_property_menu.cpp:51
 #, kde-format
 msgid "Repeat until composition ends"
-msgstr ""
+msgstr "كرر حتى نهاية التكوين"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:61
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
@@ -5736,7 +5720,7 @@ msgstr "ألصق الإطار الرئيس"
 #: src/gui/widgets/menus/animated_property_menu.cpp:62
 #, kde-format
 msgid "Perfect Loop"
-msgstr ""
+msgstr "حلقة مثالية"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
@@ -5750,10 +5734,9 @@ msgid "Remove Keyframe"
 msgstr "أزل الإطار الرئيس"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:131
-#, fuzzy, kde-format
-#| msgid "Loop"
+#, kde-format
 msgid "Loop %1"
-msgstr "حلقة"
+msgstr "كرر %1 حلقيًا"
 
 #: src/gui/widgets/menus/node_menu.cpp:60
 #: src/gui/widgets/menus/node_menu.cpp:285
@@ -6019,12 +6002,12 @@ msgstr "الخدمات"
 #: src/gui/widgets/settings/settings_dialog.cpp:231
 #, kde-format
 msgid "Best Quality"
-msgstr ""
+msgstr "أفضل جودة"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:232
 #, kde-format
 msgid "Reduced Size (Performance)"
-msgstr ""
+msgstr "حجم مخفض (للأداء)"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:234
 msgctxt "Settings"
@@ -6049,11 +6032,11 @@ msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Canvas Render Quality"
-msgstr ""
+msgstr "جودة عرض الرقّ"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Display quality within the app, does not affect exports"
-msgstr ""
+msgstr "جودة العرض داخل التطبيق، لا تؤثر على المصدرات"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 msgid "Icon Theme"

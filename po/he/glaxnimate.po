@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-01 00:42+0000\n"
-"PO-Revision-Date: 2026-03-29 09:24+0300\n"
+"PO-Revision-Date: 2026-04-01 09:43+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1765,33 +1765,29 @@ msgid "Transform"
 msgstr "התמרה"
 
 #: src/core/glaxnimate/module/cairo/cairo_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "OpenGL Renderer"
+#, kde-format
 msgid "Cairo Renderer"
-msgstr "מתצג OpenGL"
+msgstr "מתצג Cairo"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.cpp:40
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PDF surface: %1"
-msgstr "לא ניתן ליצור קטע: `%1`"
+msgstr "לא ניתן ליצור משטח PDF‏: %1"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.hpp:20
-#, fuzzy, kde-format
-#| msgid "Gather Document Swatch"
+#, kde-format
 msgid "Portable Document Format"
-msgstr "איסוף מקבצי הצבע של המסמך"
+msgstr "תצורת מסמך ניידת - PDF"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.cpp:38
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PostScript surface: %1"
-msgstr "לא ניתן ליצור קטע: `%1`"
+msgstr "לא ניתן ליצור משטח PostScript‏: %1"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.hpp:20
 #, kde-format
 msgid "PostScript"
-msgstr ""
+msgstr "PostScript"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_format.cpp:32
 #, kde-format
@@ -1979,10 +1975,9 @@ msgid "%s cannot be a clip path"
 msgstr "%s לא יכול להיות נתיב חיתוך"
 
 #: src/core/glaxnimate/module/extraformats/extraformats_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "Formats"
+#, kde-format
 msgid "Extra Formats"
-msgstr "תסדירים"
+msgstr "תסדירים נוספים"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:359
 #, kde-format
@@ -2119,22 +2114,22 @@ msgstr "לא ניתן לחלץ נתונים"
 #: src/core/glaxnimate/module/gzip/gzip-kde.cpp:84
 #, kde-format
 msgid "Gzip stream already open"
-msgstr ""
+msgstr "תזרים ה־GZip כבר פתוח"
 
 #: src/core/glaxnimate/module/gzip/gzip-zlib.cpp:99
 #, kde-format
 msgid "ZLib %1%2 returned %3"
-msgstr ""
+msgstr "ZLib %1%2 החזירה %3"
 
 #: src/core/glaxnimate/module/gzip/gzip_module.hpp:16
 #, kde-format
 msgid "Gzip Compression"
-msgstr ""
+msgstr "דחיסת Gzip"
 
 #: src/core/glaxnimate/module/gzip/svgz_format.hpp:22
 #, kde-format
 msgid "Compressed SVG"
-msgstr ""
+msgstr "SVG דחוס"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:44
 #, kde-format
@@ -2147,10 +2142,9 @@ msgid "Gradient strokes are not officially supported"
 msgstr "אין תמיכה רשמית בקווי מתאר צבועים במדרג"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:58
-#, fuzzy, kde-format
-#| msgid "Repeaters are not officially supported"
+#, kde-format
 msgid "Masks are not officially supported"
-msgstr "אין תמיכה רשמית במחזירים"
+msgstr "אין תמיכה רשימת במסכות"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:62
 #, kde-format
@@ -2188,10 +2182,9 @@ msgid "Glaxnimate Core"
 msgstr "ליבת Glaxnimate"
 
 #: src/core/glaxnimate/module/thorvg/thorvg_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "OpenGL Renderer"
+#, kde-format
 msgid "ThorVG Renderer"
-msgstr "מתצג OpenGL"
+msgstr "מתצג ThorVG"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:73
 #, kde-format
@@ -3362,10 +3355,9 @@ msgstr "תסדירי קלט"
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:306
-#, fuzzy, kde-format
-#| msgid "Output Formats "
+#, kde-format
 msgid "Single Frame Output Formats "
-msgstr "תסדירי קלט"
+msgstr "תסדירי פלט לתמונית בודדת "
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:21
@@ -4233,10 +4225,9 @@ msgid "Focus Mode"
 msgstr "מצב מיקוד"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
-#, fuzzy, kde-format
-#| msgid "Render Single Frame"
+#, kde-format
 msgid "Render Single Frame…"
-msgstr "תיצוג תמונית בודדה"
+msgstr "תיצוג תמונית בודדה…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
 #, kde-format

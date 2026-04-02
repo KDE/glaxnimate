@@ -1756,22 +1756,19 @@ msgid "Cairo Renderer"
 msgstr ""
 
 #: src/core/glaxnimate/module/cairo/pdf_format.cpp:40
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PDF surface: %1"
-msgstr "无法创建代码段:“%1”"
+msgstr ""
 
 #: src/core/glaxnimate/module/cairo/pdf_format.hpp:20
-#, fuzzy, kde-format
-#| msgid "Gather Document Swatch"
+#, kde-format
 msgid "Portable Document Format"
-msgstr "收集文档色板"
+msgstr ""
 
 #: src/core/glaxnimate/module/cairo/postscript_format.cpp:38
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PostScript surface: %1"
-msgstr "无法创建代码段:“%1”"
+msgstr ""
 
 #: src/core/glaxnimate/module/cairo/postscript_format.hpp:20
 #, kde-format
@@ -1964,10 +1961,9 @@ msgid "%s cannot be a clip path"
 msgstr ""
 
 #: src/core/glaxnimate/module/extraformats/extraformats_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "Formats"
+#, kde-format
 msgid "Extra Formats"
-msgstr "格式"
+msgstr ""
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:359
 #, kde-format
@@ -2132,10 +2128,9 @@ msgid "Gradient strokes are not officially supported"
 msgstr "渐变描边并非官方支持"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:58
-#, fuzzy, kde-format
-#| msgid "Repeaters are not officially supported"
+#, kde-format
 msgid "Masks are not officially supported"
-msgstr "中继器并非官方支持"
+msgstr ""
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:62
 #, kde-format
@@ -4123,10 +4118,9 @@ msgid "Focus Mode"
 msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
-#, fuzzy, kde-format
-#| msgid "Render Frame"
+#, kde-format
 msgid "Render Single Frame…"
-msgstr "渲染帧"
+msgstr ""
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
 #, kde-format
@@ -6613,21 +6607,3 @@ msgstr "#文档参见https://glaxnimate.mattbas.org/contributing/scripting/"
 #, kde-format
 msgid "Traced %1"
 msgstr ""
-
-#~ msgid "Masks are not supported"
-#~ msgstr "蒙版不支持"
-
-#~ msgid "Frame%1.png"
-#~ msgstr "Frame%1.png"
-
-#~ msgid "Image files (%1)"
-#~ msgstr "图像文件(%1)"
-
-#~ msgid "Scalable Vector Graphics (*.svg)"
-#~ msgstr "可缩放矢量图形(* .)"
-
-#~ msgid "Save file"
-#~ msgstr "保存文件"
-
-#~ msgid "Open file"
-#~ msgstr "打开文件"

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-01 00:42+0000\n"
-"PO-Revision-Date: 2026-03-29 08:33+0200\n"
+"PO-Revision-Date: 2026-04-01 07:02+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1782,35 +1782,29 @@ msgid "Transform"
 msgstr "Preoblikuj"
 
 #: src/core/glaxnimate/module/cairo/cairo_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "OpenGL Renderer"
+#, kde-format
 msgid "Cairo Renderer"
-msgstr "Upodobilnik OpenGL"
+msgstr "Upodobilnik Cairo"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.cpp:40
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PDF surface: %1"
-msgstr "Ni bilo mogoče ustvariti delčka: »%1«"
+msgstr "Ni bilo mogoče ustvariti ploskve PDF: %1"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.hpp:20
-#, fuzzy, kde-format
-#| msgid "Gather Document Swatch"
+#, kde-format
 msgid "Portable Document Format"
-msgstr "Zberi barvni vzorec dokumenta"
+msgstr "Prenosni dokumentni format"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.cpp:38
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PostScript surface: %1"
-msgstr "Ni bilo mogoče ustvariti delčka: »%1«"
+msgstr "Ni bilo mogoče ustvariti ploskve Postscripta: %1"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.hpp:20
-#, fuzzy, kde-format
-#| msgctxt "@title settings group"
-#| msgid "Scripting"
+#, kde-format
 msgid "PostScript"
-msgstr "Skriptanje"
+msgstr "PostScript"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_format.cpp:32
 #, kde-format
@@ -1835,7 +1829,7 @@ msgstr "Zunanjega sredstva ni mogoče najti: %1"
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:189
 #, kde-format
 msgid "Unknown property \"%1\" of \"%2\""
-msgstr "Neznana lastnost »%1« za »%2«"
+msgstr "Neznana lastnost \"%1\" od \"%2\""
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:221
 #, kde-format
@@ -1998,10 +1992,9 @@ msgid "%s cannot be a clip path"
 msgstr "%s ne more biti pot posnetka"
 
 #: src/core/glaxnimate/module/extraformats/extraformats_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "Formats"
+#, kde-format
 msgid "Extra Formats"
-msgstr "Vrste datotek"
+msgstr "Posebni formati"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:359
 #, kde-format
@@ -2140,22 +2133,22 @@ msgstr "Podatkov ni bilo mogoče razpakirati"
 #: src/core/glaxnimate/module/gzip/gzip-kde.cpp:84
 #, kde-format
 msgid "Gzip stream already open"
-msgstr ""
+msgstr "Tok gzip je že odprt"
 
 #: src/core/glaxnimate/module/gzip/gzip-zlib.cpp:99
 #, kde-format
 msgid "ZLib %1%2 returned %3"
-msgstr ""
+msgstr "ZLib %1%2 je vrnil %3"
 
 #: src/core/glaxnimate/module/gzip/gzip_module.hpp:16
 #, kde-format
 msgid "Gzip Compression"
-msgstr ""
+msgstr "Kompresija gzip"
 
 #: src/core/glaxnimate/module/gzip/svgz_format.hpp:22
 #, kde-format
 msgid "Compressed SVG"
-msgstr ""
+msgstr "Stisnjeni SVG"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:44
 #, kde-format
@@ -2168,10 +2161,9 @@ msgid "Gradient strokes are not officially supported"
 msgstr "Poteze s prelivi niso uradno podprte"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:58
-#, fuzzy, kde-format
-#| msgid "Repeaters are not officially supported"
+#, kde-format
 msgid "Masks are not officially supported"
-msgstr "Repetitorji niso uradno podprti"
+msgstr "Maske niso uradno podprte"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:62
 #, kde-format
@@ -2209,10 +2201,9 @@ msgid "Glaxnimate Core"
 msgstr "Glaxnimate Core"
 
 #: src/core/glaxnimate/module/thorvg/thorvg_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "OpenGL Renderer"
+#, kde-format
 msgid "ThorVG Renderer"
-msgstr "Upodobilnik OpenGL"
+msgstr "Upodobilnik ThorVG"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:73
 #, kde-format
@@ -3389,10 +3380,9 @@ msgstr "Izhodni formati "
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:306
-#, fuzzy, kde-format
-#| msgid "Output Formats "
+#, kde-format
 msgid "Single Frame Output Formats "
-msgstr "Izhodni formati "
+msgstr "Izhodni formati ene sličice "
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:21
@@ -4259,10 +4249,9 @@ msgid "Focus Mode"
 msgstr "Fokusni način"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
-#, fuzzy, kde-format
-#| msgid "Render Single Frame"
+#, kde-format
 msgid "Render Single Frame…"
-msgstr "Izriši posamezno sličico"
+msgstr "Upodobi posamezno sličico…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
 #, kde-format
