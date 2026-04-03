@@ -38,7 +38,7 @@ target_include_directories(
     ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/thorvg/src/loaders/raw
 )
-target_compile_definitions(thorvg PUBLIC -DTVG_STATIC)
+target_compile_definitions(thorvg PUBLIC TVG_STATIC NOMINMAX)
 
 if ( OPENGL_ENABLED )
     find_package(OpenGL REQUIRED)
