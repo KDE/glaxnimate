@@ -69,9 +69,6 @@ public:
         ui.color_hsv->setMaximumHeight(4000);
         ui.color_hsv->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         ui.color_hsv->setWheelWidth(50);
-        ui.color_hsl->setMaximumHeight(4000);
-        ui.color_hsl->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        ui.color_hsl->setWheelWidth(50);
 
         for ( auto slider : parent->findChildren<QSlider*>() )
             slider->setMinimumHeight(50);
