@@ -192,6 +192,7 @@ endif()
 glaxnimate_module("ThorVG" "Default renderer" ON)
 glaxnimate_module("Gzip" "Support for gzip-compressed formats" ON)
 glaxnimate_module("ExtraFormats" "Experimental file format support" ON)
+glaxnimate_module("PostScript" "PostScript interpereter" ON)
 glaxnimate_module("Video" "Support for video format I/O" ${EXTRA_DEFAULT})
 glaxnimate_module("Cairo" "Support for format I/O using cairo" OFF)
 

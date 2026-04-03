@@ -49,6 +49,12 @@ ecm_add_test(
     LINK_LIBRARIES ${TESTS_LINK_LIBS}
 )
 
+ecm_add_test(
+    test_ps_parser.cpp
+    TEST_NAME test_ps_parser
+    LINK_LIBRARIES ${TESTS_LINK_LIBS}
+)
+
 if ( NOT ANDROID )
     ecm_add_test(
         test_trace.cpp
