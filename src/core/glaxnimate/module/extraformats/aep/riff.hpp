@@ -405,7 +405,7 @@ struct RiffChunk
     struct RangeIterator
     {
     public:
-        constexpr RangeIterator(const iterator& internal, const char* name, const RiffChunk* chunk)
+        RangeIterator(const iterator& internal, const char* name, const RiffChunk* chunk)
             : internal(internal), name(name), chunk(chunk)
         {}
 
