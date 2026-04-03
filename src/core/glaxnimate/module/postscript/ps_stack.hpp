@@ -11,17 +11,22 @@
 
 namespace glaxnimate::ps {
 
+/**
+ * @brief PostScript stack
+ * @note Values are accessed from the top of the stack (first item is at the top)
+ */
 class Stack
 {
 public:
     using container = std::deque<Value>;
-    using iterator = container::iterator;
-    using const_iterator = container::const_iterator;
+    using iterator = container::reverse_iterator;
+    using const_iterator = container::const_reverse_iterator;
     using value_type = container::value_type;
     using reference = container::const_reference;
 
     bool empty() const { return stack.empty(); }
     int size() const { return stack.size(); }
+    void clear() { stack.clear(); }
 
     void push(Value v)
     {
@@ -35,6 +40,11 @@ public:
         return v;
     }
 
+    Value top()
+    {
+        return stack.back();
+    }
+
     bool has(Value::Type type)
     {
         return !empty() && stack.back().type() == type;
@@ -44,6 +54,17 @@ public:
     bool can_convert() const
     {
         return !empty() && stack.back().can_convert<Tp>();
+    }
+
+    iterator begin() { return stack.rbegin(); }
+    iterator end() { return stack.rend(); }
+
+    auto rbegin() { return stack.begin(); }
+    auto rend() { return stack.end(); }
+
+    Value& operator[](int i)
+    {
+        return *(begin() + i);
     }
 
 private:

@@ -43,6 +43,16 @@ constexpr qreal deg2rad(qreal rad) noexcept
     return rad * pi / 180;
 }
 
+constexpr float rad2deg(float rad) noexcept
+{
+    return rad / pi * 180;
+}
+
+constexpr float deg2rad(float rad) noexcept
+{
+    return rad * pi / 180;
+}
+
 template<class Numeric>
 Numeric fmod(Numeric x, Numeric y)
 {

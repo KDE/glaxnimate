@@ -13,6 +13,13 @@
 
 namespace glaxnimate::ps {
 
+using namespace Qt::StringLiterals;
+
+/**
+ * @brief formats a string into a postscript string
+ */
+QString format_string(const QString& value);
+
 class Value
 {
 public:
@@ -45,7 +52,7 @@ public:
     template<Type Tp>
     static Value from(typename type_for<Tp>::type val)
     {
-        return Value(Tp, std::move(val));
+        return Value(Tp, QVariant::fromValue(std::move(val)));
     }
     template<Type Tp> static Value from();
 
@@ -53,12 +60,39 @@ public:
 
     const QVariant& value() const { return value_; }
 
-    QString to_string() const { return value_.toString(); }
+    QString to_string() const
+    {
+        return value_.toString();
+    }
+
+    QString to_pretty_string() const;
 
     template<Type Tp>
     bool can_convert() const
     {
         return value_.canConvert(type_for<Tp>::meta_type());
+    }
+
+    bool can_convert(Type tp) const
+    {
+        switch ( tp )
+        {
+#define CASE(x) case x: return can_convert<x>();
+            CASE(Integer)
+            CASE(Real)
+            CASE(Boolean)
+            CASE(Array)
+            // CASE(PackedArray)
+            CASE(String)
+            CASE(Dictionary)
+            CASE(File)
+            CASE(Mark)
+            CASE(Null)
+            CASE(Save)
+            CASE(Procedure)
+#undef CASE
+        }
+        return false;
     }
 
     template<class T>
@@ -100,29 +134,31 @@ Q_DECLARE_METATYPE(glaxnimate::ps::ValueDict)
 Q_DECLARE_METATYPE(glaxnimate::ps::Procedure)
 namespace glaxnimate::ps {
 
-#define VALUE_TYPE_BIN(Tp, Type, meta) \
+#define VALUE_TYPE_BIN(Tp, Type) \
 template<> struct Value::type_for<Tp> { \
     using type = Type; \
-    static constexpr int meta_type() noexcept { return meta; } \
+    static constexpr QMetaType meta_type() noexcept { return QMetaType::fromType<Type>(); } \
 };
 #define VALUE_TYPE_FOR(Tp, Type) \
 template<> struct Value::type_for<Tp> { \
         using type = Type; \
-        static constexpr int meta_type() noexcept { return qMetaTypeId<Type>(); } \
+        static constexpr QMetaType meta_type() noexcept { return QMetaType::fromType<Type>(); } \
 };
 #define VALUE_TYPE_NUL(Tp) \
-template<>Value Value::from<Tp>() { return Value(Tp, {}); } \
-VALUE_TYPE_BIN(Tp, void, QMetaType::UnknownType)
+template<>inline Value Value::from<Tp>() { return Value(Tp, {}); } \
+VALUE_TYPE_BIN(Tp, void)
 
-VALUE_TYPE_BIN(Value::Integer, int, QMetaType::Int)
-VALUE_TYPE_BIN(Value::Real, float, QMetaType::Float)
-VALUE_TYPE_BIN(Value::Boolean, bool, QMetaType::Bool)
+VALUE_TYPE_BIN(Value::Integer, int)
+VALUE_TYPE_BIN(Value::Real, float)
+VALUE_TYPE_BIN(Value::Boolean, bool)
 VALUE_TYPE_FOR(Value::Array, ValueArray)
-VALUE_TYPE_BIN(Value::String, QString, QMetaType::QString)
+VALUE_TYPE_BIN(Value::String, QString)
 VALUE_TYPE_FOR(Value::Dictionary, ValueDict)
 VALUE_TYPE_FOR(Value::Procedure, ps::Procedure)
 VALUE_TYPE_NUL(Value::Mark)
 VALUE_TYPE_NUL(Value::Null)
+VALUE_TYPE_NUL(Value::File)
+VALUE_TYPE_NUL(Value::Save)
 
 #undef VALUE_TYPE_FOR
 #undef VALUE_TYPE_BIN
