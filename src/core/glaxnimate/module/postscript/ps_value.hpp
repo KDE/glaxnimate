@@ -36,7 +36,14 @@ public:
         Mark,
         Null,
         Save,
-        Procedure,
+    };
+
+    enum Attribute
+    {
+        None = 0,
+        Execute = 1,
+        Write = 2,
+        Read = 4
     };
 
     template<Type Tp> struct type_for;
@@ -89,7 +96,6 @@ public:
             CASE(Mark)
             CASE(Null)
             CASE(Save)
-            CASE(Procedure)
 #undef CASE
         }
         return false;
@@ -101,37 +107,37 @@ public:
         return qvariant_cast<T>(value_);
     }
 
+    int attributes() const
+    {
+        return attributes_;
+    }
+
+    bool has_attribute(int attr) const
+    {
+        return (attributes_ & attr) == attr;
+    }
+
+    void set_attribute(int attr, bool on)
+    {
+        attributes_ = on ? attributes_ | attr : attributes_ & ~attr;
+    }
+
 private:
     Value(Type type, QVariant value) : type_(type), value_(std::move(value)) {}
 
     Type type_;
     QVariant value_;
-};
-
-struct Token
-{
-    enum Type
-    {
-        Eof,
-        Literal,
-        Comment,
-        Operator,
-        Unrecoverable
-    };
-
-    Type type;
-    Value value;
+    int attributes_ = None;
 };
 
 using ValueArray = std::vector<glaxnimate::ps::Value>;
 using ValueDict = std::map<QString, glaxnimate::ps::Value>;
-using Procedure = std::vector<Token>;
 
 } // namespace glaxnimate::ps
 Q_DECLARE_METATYPE(glaxnimate::ps::Value)
 Q_DECLARE_METATYPE(glaxnimate::ps::ValueArray)
 Q_DECLARE_METATYPE(glaxnimate::ps::ValueDict)
-Q_DECLARE_METATYPE(glaxnimate::ps::Procedure)
+
 namespace glaxnimate::ps {
 
 #define VALUE_TYPE_BIN(Tp, Type) \
@@ -154,7 +160,6 @@ VALUE_TYPE_BIN(Value::Boolean, bool)
 VALUE_TYPE_FOR(Value::Array, ValueArray)
 VALUE_TYPE_BIN(Value::String, QString)
 VALUE_TYPE_FOR(Value::Dictionary, ValueDict)
-VALUE_TYPE_FOR(Value::Procedure, ps::Procedure)
 VALUE_TYPE_NUL(Value::Mark)
 VALUE_TYPE_NUL(Value::Null)
 VALUE_TYPE_NUL(Value::File)

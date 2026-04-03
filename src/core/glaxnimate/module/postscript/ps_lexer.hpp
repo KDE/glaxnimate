@@ -14,6 +14,28 @@ namespace glaxnimate::ps {
 
 using namespace Qt::StringLiterals;
 
+struct Token
+{
+    enum Type
+    {
+        Eof,
+        Literal,
+        Comment,
+        Operator,
+        Unrecoverable
+    };
+
+    static Token make_operator(QString val)
+    {
+        Token op{Operator, val};
+        op.value.set_attribute(Value::Execute, true);
+        return op;
+    }
+
+    Type type;
+    Value value;
+};
+
 class Lexer
 {
 public:
@@ -95,19 +117,22 @@ private:
         if ( next == '>' && peek() == next )
         {
             get_char();
-            return {Token::Operator, u">>"_s};
+            return Token::make_operator(u">>"_s);
         }
 
         QString op = QChar(next);
-        while ( true )
+        if ( !is_delimiter(next) )
         {
-            int ch = get_char();
-            if ( token_end(ch) )
-                break;
-            op += char(ch);
+            while ( true )
+            {
+                int ch = get_char();
+                if ( token_end(ch) )
+                    break;
+                op += char(ch);
+            }
         }
 
-        return {Token::Operator, op};
+        return Token::make_operator(op);
     }
 
     Token lex_number(char start)

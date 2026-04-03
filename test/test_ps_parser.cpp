@@ -28,11 +28,12 @@ public:
     QBuffer buf;
 };
 
+
 class TestInterpreter : public Interpreter
 {
 public:
 
-    std::vector<QVariant> exec_string(const char* text)
+    QVariantList exec_string(const char* text)
     {
         QByteArray arr(text);
         QBuffer buf(&arr);
@@ -52,9 +53,9 @@ public:
     QString last_error;
     QString last_comment;
 
-    std::vector<QVariant> stack_values()
+    QVariantList stack_values()
     {
-        std::vector<QVariant> vals;
+        QVariantList vals;
         vals.reserve(memory().operand_stack.size());
         for ( const auto& v : memory().operand_stack )
             vals.push_back(v.value());
@@ -79,11 +80,19 @@ protected:
     }
 };
 
-using StackVals = std::vector<QVariant>;
 template<class... T>
-StackVals stack_vals(T... args)
+QVariantList stack_vals(T... args)
 {
     return {args...};
+}
+
+QVariantList array_to_vals(const ValueArray& arr)
+{
+    QVariantList vals;
+    vals.reserve(arr.size());
+    for ( const auto& v : arr )
+        vals.push_back(v.value());
+    return vals;
 }
 
 #define COMPARE_VALUE(val, typenum, expect) \
@@ -341,6 +350,19 @@ private Q_SLOTS:
         COMPARE_PARSE("2 -2 atan", 135);
         QCOMPARE(TestInterpreter().exec_string("90 cos")[0].toFloat(), 0.f);
         COMPARE_PARSE("90 sin", 1);
+    }
+
+    void test_exec()
+    {
+        TestInterpreter interp;
+        interp.exec_string("1 2 {3 add}");
+        QCOMPARE(interp.stack()[2].value(), 1);
+        QCOMPARE(interp.stack()[1].value(), 2);
+        QCOMPARE(interp.stack()[0].type(), Value::Array);
+        QCOMPARE(interp.stack()[0].attributes(), Value::Execute);
+        QCOMPARE(array_to_vals(interp.stack()[0].cast<ValueArray>()), stack_vals(3, u"add"_s));
+        interp.exec_string("exec");
+        QCOMPARE(interp.stack_values(), stack_vals(1, 5));
     }
 };
 

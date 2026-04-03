@@ -39,7 +39,7 @@ public:
     Stack& stack() { return memory_.operand_stack; }
 
     void execute(QIODevice* device);
-    void execute(const Procedure& proc);
+    void execute(const Value& proc);
 
     void print(const QString& text);
     void error(const QString& error, bool critical);
@@ -53,11 +53,12 @@ protected:
     virtual void on_comment(const QString& text) = 0;
 
 private:
-    void run(const QString& name);
+    void execute_command(const QString& name);
+    Value procedure_value();
 
     Lexer lexer;
     ExecutionMemory memory_;
-    bool has_failed = false;
+    bool halted = false;
     QString current_command;
 };
 

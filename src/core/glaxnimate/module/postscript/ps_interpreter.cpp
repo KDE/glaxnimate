@@ -10,10 +10,11 @@
 using namespace glaxnimate::ps;
 using namespace glaxnimate;
 
-void glaxnimate::ps::Interpreter::execute(QIODevice *device)
+Value Interpreter::procedure_value()
 {
-    lexer.set_device(device);
-    while ( !has_failed )
+    ValueArray proc;
+    bool finished = false;
+    while ( !finished && !halted )
     {
         auto token = lexer.next_token();
         switch ( token.type )
@@ -21,11 +22,54 @@ void glaxnimate::ps::Interpreter::execute(QIODevice *device)
             case Token::Operator:
                 if ( token.value.value() == u"{"_s )
                 {
-                    // TODO procedure
+                    proc.push_back(procedure_value());
+                }
+                else if ( token.value.value() == u"}"_s )
+                {
+                    finished = true;
+                    break;
                 }
                 else
                 {
-                    run(token.value.to_string());
+                    proc.emplace_back(std::move(token.value));
+                }
+                break;
+            case Token::Literal:
+                proc.emplace_back(std::move(token.value));
+                break;
+            case Token::Eof:
+                finished = true;
+                break;
+            case Token::Unrecoverable:
+                error(u"Unkown token (maybe unterminated string?)"_s, true);
+                finished = true;
+                break;
+            case Token::Comment:
+                break;
+        }
+    }
+
+    Value procval = Value::from<Value::Array>(std::move(proc));
+    procval.set_attribute(Value::Execute, true);
+    return procval;
+}
+
+void glaxnimate::ps::Interpreter::execute(QIODevice *device)
+{
+    lexer.set_device(device);
+    while ( !halted )
+    {
+        auto token = lexer.next_token();
+        switch ( token.type )
+        {
+            case Token::Operator:
+                if ( token.value.value() == u"{"_s )
+                {
+                    stack().push(procedure_value());
+                }
+                else
+                {
+                    execute(token.value);
                 }
                 break;
             case Token::Literal:
@@ -43,6 +87,35 @@ void glaxnimate::ps::Interpreter::execute(QIODevice *device)
     }
 }
 
+void Interpreter::execute(const Value &proc)
+{
+    if ( !proc.has_attribute(Value::Execute) )
+    {
+        // error(u"Value is not executable"_s, false);
+        stack().push(proc);
+        return;
+    }
+
+    if ( proc.type() == Value::Array )
+    {
+        for ( const auto& v : proc.cast<ValueArray>() )
+        {
+            execute(v);
+            if ( halted )
+                break;
+        }
+    }
+    else if ( proc.type() == Value::String )
+    {
+        execute_command(proc.to_string());
+    }
+    else
+    {
+        stack().push(proc);
+    }
+
+}
+
 void glaxnimate::ps::Interpreter::print(const QString &text)
 {
     on_print(text);
@@ -51,11 +124,11 @@ void glaxnimate::ps::Interpreter::print(const QString &text)
 void glaxnimate::ps::Interpreter::error(const QString &error, bool critical)
 {
     if ( critical )
-        has_failed = true;
+        halted = true;
     on_error(error);
 }
 
-void glaxnimate::ps::Interpreter::run(const QString &name)
+void glaxnimate::ps::Interpreter::execute_command(const QString &name)
 {
     auto cmd = command_from_name(name);
     if ( !cmd )
@@ -340,6 +413,10 @@ static std::unordered_map<QString, glaxnimate::ps::Command> builtins = {
     {u"pstack"_s, {{}, [](ValueArray, Interpreter& interpreter){
         for ( const auto& v : interpreter.stack() )
             interpreter.print(v.to_pretty_string() + '\n');
+    }}},
+// Control
+    {u"exec"_s, {{Value::Null}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.execute(args[0]);
     }}},
 };
 
