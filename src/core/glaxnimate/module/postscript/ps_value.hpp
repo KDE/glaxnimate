@@ -13,6 +13,7 @@
 
 namespace glaxnimate::ps {
 
+
 using namespace Qt::StringLiterals;
 
 /**
@@ -20,8 +21,12 @@ using namespace Qt::StringLiterals;
  */
 QString format_string(const QString& value);
 
+class ValueArray;
+
 class Value
 {
+    Q_GADGET
+
 public:
     enum Type
     {
@@ -31,12 +36,14 @@ public:
         Array,
         PackedArray = Array,
         String,
-        Dictionary,
+        Dict,
         File, // TODO
         Mark,
         Null,
         Save,
     };
+
+    Q_ENUM(Type)
 
     enum Attribute
     {
@@ -54,7 +61,13 @@ public:
     Value(const QString& str) : Value(String, str) {}
     Value(int num) : Value(Integer, num) {}
     Value(float num) : Value(Real, num) {}
+    Value(double num) : Value(Real, num) {}
     Value(bool num) : Value(Boolean, num) {}
+    Value(ValueArray v);
+    Value(const Value&) = default;
+    Value(Value&&) = default;
+    Value& operator=(const Value&) = default;
+    Value& operator=(Value&&) = default;
 
     template<Type Tp>
     static Value from(typename type_for<Tp>::type val)
@@ -91,7 +104,7 @@ public:
             CASE(Array)
             // CASE(PackedArray)
             CASE(String)
-            CASE(Dictionary)
+            CASE(Dict)
             CASE(File)
             CASE(Mark)
             CASE(Null)
@@ -122,6 +135,20 @@ public:
         attributes_ = on ? attributes_ | attr : attributes_ & ~attr;
     }
 
+    bool operator==(const Value& oth) const
+    {
+        return value_ == oth.value_;
+    }
+
+    bool operator!=(const Value& oth) const
+    {
+        return value_ != oth.value_;
+    }
+
+    friend QDebug& operator<<(QDebug& dbg, const Value& v) { return dbg << v.to_pretty_string(); }
+
+    static QString type_name(Type t);
+
 private:
     Value(Type type, QVariant value) : type_(type), value_(std::move(value)) {}
 
@@ -130,8 +157,78 @@ private:
     int attributes_ = None;
 };
 
-using ValueArray = std::vector<glaxnimate::ps::Value>;
+/**
+ * @brief Arrays share data hence this wrapper around a shared pointer to vector
+ */
+class ValueArray
+{
+public:
+    using container = std::vector<Value>;
+    using value_type = container::value_type;
+    using iterator = container::iterator;
+    using const_iterator = container::const_iterator;
+    using reference = container::reference;
+    using const_reference = container::const_reference;
+    using size_type = int;
+
+    /*template<class... Args>
+    ValueArray(Args&&... args)
+        : data(std::make_shared<container>(std::forward<Args>(args)...))
+    {}*/
+
+    ValueArray(std::initializer_list<Value> init)
+        : data(std::make_shared<container>(std::move(init)))
+    {}
+
+    ValueArray() : data(std::make_shared<container>()) {}
+    ValueArray(const ValueArray&) = default;
+    ValueArray(ValueArray&&) = default;
+    ValueArray& operator=(const ValueArray&) = default;
+    ValueArray& operator=(ValueArray&&) = default;
+
+    void resize(size_type sz) { data->resize(sz); }
+    void reserve(size_type sz) { data->reserve(sz); }
+    size_type size() const { return data->size(); }
+    bool empty() const { return data->empty(); }
+
+    reference operator[](size_type index) { return (*data)[index]; }
+    const_reference operator[](size_type index) const { return (*data)[index]; }
+    template<class... Args>
+    void emplace_back(Args&&... args)
+    {
+        data->emplace_back(std::forward<Args>(args)...);
+    }
+
+    iterator begin() { return data->begin(); }
+    iterator end() { return data->end(); }
+    iterator begin() const { return data->begin(); }
+    iterator end() const { return data->end(); }
+
+    QString to_pretty_string() const;
+    friend QDebug operator<<(QDebug dbg, const ValueArray& arr) { return dbg << arr.to_pretty_string(); }
+
+
+    bool operator==(const ValueArray& oth) const
+    {
+        if ( size() != oth.size() )
+            return false;
+        for ( int i = 0; i < size(); i++ )
+            if ( (*data)[i] != oth[i] )
+                return false;
+        return true;
+    }
+
+    bool operator!=(const ValueArray& oth) const
+    {
+        return !(*this == oth);
+    }
+
+private:
+    std::shared_ptr<container> data;
+};
+
 using ValueDict = std::map<QString, glaxnimate::ps::Value>;
+using ValueType = Value;
 
 } // namespace glaxnimate::ps
 Q_DECLARE_METATYPE(glaxnimate::ps::Value)
@@ -159,7 +256,7 @@ VALUE_TYPE_BIN(Value::Real, float)
 VALUE_TYPE_BIN(Value::Boolean, bool)
 VALUE_TYPE_FOR(Value::Array, ValueArray)
 VALUE_TYPE_BIN(Value::String, QString)
-VALUE_TYPE_FOR(Value::Dictionary, ValueDict)
+VALUE_TYPE_FOR(Value::Dict, ValueDict)
 VALUE_TYPE_NUL(Value::Mark)
 VALUE_TYPE_NUL(Value::Null)
 VALUE_TYPE_NUL(Value::File)

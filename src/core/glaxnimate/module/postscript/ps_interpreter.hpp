@@ -64,10 +64,29 @@ inline bool level_is_compatible(Level allowed, Level to_check)
     return (int(allowed) & int(to_check)) == int(to_check);
 }
 
+struct ArgumentType
+{
+    ArgumentType() {}
+    ArgumentType(Value::Type t) : overloads{t} {}
+    ArgumentType(std::initializer_list<Value::Type> t) : overloads(t) {}
+
+    static ArgumentType any() { return {}; }
+    static ArgumentType number() { return {Value::Integer, Value::Real}; }
+
+    bool matches(Value::Type t) const
+    {
+        return overloads.empty() || std::find(overloads.begin(), overloads.end(), t) != overloads.end();
+    }
+
+    QString to_string() const;
+
+    std::vector<Value::Type> overloads;
+};
+
 struct Command
 {
     Level level;
-    std::vector<Value::Type> args;
+    std::vector<ArgumentType> args;
     std::function<void(ValueArray, Interpreter&)> func;
 };
 

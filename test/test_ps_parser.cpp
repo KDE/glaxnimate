@@ -33,7 +33,7 @@ class TestInterpreter : public Interpreter
 {
 public:
 
-    QVariantList exec_string(const char* text)
+    auto exec_string(const char* text)
     {
         QByteArray arr(text);
         QBuffer buf(&arr);
@@ -53,12 +53,12 @@ public:
     QString last_error;
     QString last_comment;
 
-    QVariantList stack_values()
+    std::vector<Value> stack_values()
     {
-        QVariantList vals;
+        std::vector<Value> vals;
         vals.reserve(memory().operand_stack.size());
         for ( const auto& v : memory().operand_stack )
-            vals.push_back(v.value());
+            vals.push_back(v);
         std::reverse(vals.begin(), vals.end());
         return vals;
     }
@@ -80,10 +80,13 @@ protected:
     }
 };
 
+template<class T> Value stack_val(T arg) { return Value(arg); }
+Value stack_val(const char* arg) { return QString::fromLatin1(arg); }
+
 template<class... T>
-QVariantList stack_vals(T... args)
+std::vector<Value> stack_vals(T... args)
 {
-    return {args...};
+    return {stack_val(args)...};
 }
 
 QVariantList array_to_vals(const ValueArray& arr)
@@ -127,6 +130,18 @@ class TestCase: public QObject
     }
 
 private Q_SLOTS:
+    void initTestCase()
+    {
+        qRegisterMetaType<Value>();
+        qRegisterMetaType<ValueArray>();
+
+        /*QMetaType::registerConverter<glaxnimate::ps::ValueArray, QString>(
+                [](const glaxnimate::ps::ValueArray& arr) {
+                return arr.to_pretty_string();
+            }
+        );*/
+    }
+
     void test_lex_comment()
     {
         auto token = lex("% foo bar\nbaz");
@@ -333,11 +348,11 @@ private Q_SLOTS:
     {
         TestInterpreter interp;
         interp.exec_string("1 2 3 mark 4 5 6");
-        QCOMPARE(interp.stack_values(), stack_vals(1, 2, 3, QVariant(), 4, 5, 6));
+        QCOMPARE(interp.stack_values(), stack_vals(1, 2, 3, Value(), 4, 5, 6));
         QCOMPARE(interp.stack()[3].type(), Value::Mark);
 
         interp.exec_string("counttomark");
-        QCOMPARE(interp.stack_values(), stack_vals(1, 2, 3, QVariant(), 4, 5, 6, 3));
+        QCOMPARE(interp.stack_values(), stack_vals(1, 2, 3, Value(), 4, 5, 6, 3));
 
         interp.exec_string("cleartomark");
         QCOMPARE(interp.stack_values(), stack_vals(1, 2, 3));
@@ -357,7 +372,7 @@ private Q_SLOTS:
     void test_parse_trig()
     {
         COMPARE_PARSE("2 -2 atan", 135);
-        QCOMPARE(TestInterpreter().exec_string("90 cos")[0].toFloat(), 0.f);
+        QCOMPARE(TestInterpreter().exec_string("90 cos")[0].cast<float>(), 0.f);
         COMPARE_PARSE("90 sin", 1);
     }
 
@@ -369,7 +384,7 @@ private Q_SLOTS:
         QCOMPARE(interp.stack()[1].value(), 2);
         QCOMPARE(interp.stack()[0].type(), Value::Array);
         QCOMPARE(interp.stack()[0].attributes(), Value::Execute);
-        QCOMPARE(array_to_vals(interp.stack()[0].cast<ValueArray>()), stack_vals(3, u"add"_s));
+        QCOMPARE(interp.stack()[0].cast<ValueArray>(), ValueArray({3, u"add"_s}));
         interp.exec_string("exec");
         QCOMPARE(interp.stack_values(), stack_vals(1, 5));
     }
@@ -416,6 +431,23 @@ private Q_SLOTS:
         QCOMPARE(interp.page_metadata(), page);
         QCOMPARE(interp.level(), Level::PS2);
 
+    }
+
+    void test_type_name()
+    {
+        QCOMPARE(Value::type_name(Value::Integer), "integertype");
+        QCOMPARE(Value::type_name(Value::Array), "arraytype");
+    }
+
+    void test_array()
+    {
+        COMPARE_PARSE("[1 2 3]", ValueArray({1, 2, 3}));
+        COMPARE_PARSE("3 array", ValueArray({Value(), Value(), Value()}));
+        COMPARE_PARSE("[1 2 3] length", 3);
+        COMPARE_PARSE("[10 20 30] 1 get", 20);
+        COMPARE_PARSE("[1 2 3] length", 3);
+        COMPARE_PARSE("[1 2 3] dup 1 99 put", ValueArray({1, 99, 3}));
+        COMPARE_PARSE("[9 8 7 6 5] 1 3 getinterval", ValueArray({8, 7, 6}));
     }
 };
 

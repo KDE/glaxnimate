@@ -6,6 +6,8 @@
 
 #include "ps_value.hpp"
 
+#include <QMetaEnum>
+
 
 QString glaxnimate::ps::format_string(const QString &value)
 {
@@ -60,22 +62,20 @@ QString glaxnimate::ps::format_string(const QString &value)
     return result + ')';
 }
 
+glaxnimate::ps::Value::Value(ValueArray v)
+    : Value(Value::Array, QVariant::fromValue(std::move(v)))
+{}
+
 QString glaxnimate::ps::Value::to_pretty_string() const
 {
     if ( type_ == Mark )
         return u"mark"_s;
     else if ( type_ == Null )
         return u"null"_s;
-    else if ( type_ == Dictionary )
+    else if ( type_ == Dict )
         return u"-dict-"_s;
-
-    if ( type_ == Array )
-    {
-        QString str = QChar('[');
-        for ( const auto& v : cast<std::vector<Value>>() )
-            str += v.to_pretty_string() + ' ';
-        return str.trimmed() + ']';
-    }
+    else if ( type_ == Array )
+        return cast<ValueArray>().to_pretty_string();
 
     if ( type_ == String )
     {
@@ -83,4 +83,17 @@ QString glaxnimate::ps::Value::to_pretty_string() const
     }
 
     return to_string();
+}
+
+QString glaxnimate::ps::Value::type_name(Type t)
+{
+    return QString::fromLatin1(QMetaEnum::fromType<Type>().valueToKey(t)).toLower() + "type"_L1;
+}
+
+QString glaxnimate::ps::ValueArray::to_pretty_string() const
+{
+    QString str = QChar('[');
+    for ( const auto& v : *data )
+        str += v.to_pretty_string() + ' ';
+    return str.trimmed() + ']';
 }

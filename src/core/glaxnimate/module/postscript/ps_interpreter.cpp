@@ -10,6 +10,18 @@
 using namespace glaxnimate::ps;
 using namespace glaxnimate;
 
+
+QString ArgumentType::to_string() const
+{
+    if ( overloads.empty() )
+        return u"any"_s;
+    QStringList str;
+    for ( auto t : overloads )
+        str.push_back(Value::type_name(t));
+    return str.join(u" or "_s);
+}
+
+
 class Interpreter::Private
 {
 public:
@@ -116,7 +128,7 @@ Value Interpreter::procedure_value()
             case Token::Operator:
                 if ( token.value.value() == u"{"_s )
                 {
-                    proc.push_back(procedure_value());
+                    proc.emplace_back(procedure_value());
                 }
                 else if ( token.value.value() == u"}"_s )
                 {
@@ -280,10 +292,12 @@ void glaxnimate::ps::Interpreter::execute_command(const QString &name)
         for ( int i = cmd->args.size() - 1; i >= 0; i-- )
         {
             args[i] = d->memory.operand_stack.pop();
-            auto expected_type = cmd->args[cmd->args.size() - 1 - i];
-            if ( expected_type != Value::Null && !args[i].can_convert(expected_type) )
+            const auto& expected_type = cmd->args[i];
+
+            if ( !expected_type.matches(args[i].type()) )
             {
-                error(u"Wrong value %1 passed to command '%2'"_s.arg(args[i].to_string(), name), false);
+                error(u"Argument %4 command '%2' has an invalid value of %1 (Expected %3)"_s
+                    .arg(args[i].to_pretty_string(), name, expected_type.to_string(), QString::number(i)), false);
                 return;
             }
         }
@@ -330,10 +344,11 @@ static QString to_ugly_string(const Value& val)
     return string;
 }
 
+using Arg = ArgumentType;
 static std::unordered_map<QString, glaxnimate::ps::Command> builtins = {
 // Stack ops
-    {u"pop"_s, {Level::EPS1, {Value::Null}, [](ValueArray, Interpreter&){}}},
-    {u"exch"_s, {Level::EPS1, {Value::Null, Value::Null}, [](ValueArray args, Interpreter& interpreter){
+    {u"pop"_s, {Level::EPS1, {Arg::any()}, [](ValueArray, Interpreter&){}}},
+    {u"exch"_s, {Level::EPS1, {Arg::any(), Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.stack().push(std::move(args[1]));
         interpreter.stack().push(std::move(args[0]));
     }}},
@@ -360,7 +375,7 @@ static std::unordered_map<QString, glaxnimate::ps::Command> builtins = {
         ValueArray copies;
         copies.reserve(count);
         for ( auto it = interpreter.stack().rend() - count; it != interpreter.stack().rend(); ++it )
-            copies.push_back(*it);
+            copies.emplace_back(*it);
         for ( auto& v : copies )
             interpreter.stack().push(std::move(v));
     }}},
@@ -408,9 +423,6 @@ static std::unordered_map<QString, glaxnimate::ps::Command> builtins = {
     {u"mark"_s, {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(Value::from<Value::Mark>());
     }}},
-    {u"["_s, {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
-        interpreter.stack().push(Value::from<Value::Mark>());
-    }}},
     {u"<<"_s, {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(Value::from<Value::Mark>());
     }}},
@@ -438,13 +450,13 @@ static std::unordered_map<QString, glaxnimate::ps::Command> builtins = {
         interpreter.stack().push(count);
     }}},
 // Math functions
-    {u"add"_s, {Level::EPS1, {Value::Real, Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"add"_s, {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer && args[1].type() == args[0].type() )
             interpreter.stack().push(args[0].cast<int>() + args[1].cast<int>());
         else
             interpreter.stack().push(args[0].cast<float>() + args[1].cast<float>());
     }}},
-    {u"div"_s, {Level::EPS1, {Value::Real, Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"div"_s, {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         auto num = args[0].cast<float>();
         auto den = args[1].cast<float>();
         if ( den == 0 )
@@ -477,49 +489,49 @@ static std::unordered_map<QString, glaxnimate::ps::Command> builtins = {
 
         interpreter.stack().push(num % den);
     }}},
-    {u"mul"_s, {Level::EPS1, {Value::Real, Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"mul"_s, {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer && args[1].type() == args[0].type() )
             interpreter.stack().push(args[0].cast<int>() * args[1].cast<int>());
         else
             interpreter.stack().push(args[0].cast<float>() * args[1].cast<float>());
     }}},
-    {u"sub"_s, {Level::EPS1, {Value::Real, Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"sub"_s, {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer && args[1].type() == args[0].type() )
             interpreter.stack().push(args[0].cast<int>() - args[1].cast<int>());
         else
             interpreter.stack().push(args[0].cast<float>() - args[1].cast<float>());
     }}},
-    {u"abs"_s, {Level::EPS1, {Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"abs"_s, {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer )
             interpreter.stack().push(math::abs(args[0].cast<int>()));
         else
             interpreter.stack().push(math::abs(args[0].cast<float>()));
     }}},
-    {u"neg"_s, {Level::EPS1, {Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"neg"_s, {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer )
             interpreter.stack().push(-args[0].cast<int>());
         else
             interpreter.stack().push(-args[0].cast<float>());
     }}},
-    {u"ceiling"_s, {Level::EPS1, {Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"ceiling"_s, {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer )
             interpreter.stack().push(args[0]);
         else
             interpreter.stack().push(qCeil(args[0].cast<float>()));
     }}},
-    {u"round"_s, {Level::EPS1, {Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"round"_s, {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer )
             interpreter.stack().push(args[0]);
         else
             interpreter.stack().push(qRound(args[0].cast<float>()));
     }}},
-    {u"floor"_s, {Level::EPS1, {Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"floor"_s, {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer )
             interpreter.stack().push(args[0]);
         else
             interpreter.stack().push(qFloor(args[0].cast<float>()));
     }}},
-    {u"truncate"_s, {Level::EPS1, {Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"truncate"_s, {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer )
         {
             interpreter.stack().push(args[0]);
@@ -530,30 +542,30 @@ static std::unordered_map<QString, glaxnimate::ps::Command> builtins = {
             interpreter.stack().push(val < 0 ? qCeil(val) : qFloor(val));
         }
     }}},
-    {u"sqrt"_s, {Level::EPS1, {Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"sqrt"_s, {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.stack().push(math::sqrt(args[0].cast<float>()));
     }}},
-    {u"atan"_s, {Level::EPS1, {Value::Real, Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"atan"_s, {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         auto num = args[0].cast<float>();
         auto den = args[1].cast<float>();
         interpreter.stack().push(float(math::rad2deg(math::atan2(num, den))));
     }}},
-    {u"cos"_s, {Level::EPS1, {Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"cos"_s, {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.stack().push(float(math::cos(math::deg2rad(args[0].cast<float>()))));
     }}},
-    {u"sin"_s, {Level::EPS1, {Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"sin"_s, {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.stack().push(float(math::sin(math::deg2rad(args[0].cast<float>()))));
     }}},
-    {u"exp"_s, {Level::EPS1, {Value::Real, Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"exp"_s, {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         auto base = args[0].cast<float>();
         auto exp = args[1].cast<float>();
         interpreter.stack().push(std::pow(base, exp));
     }}},
-    {u"ln"_s, {Level::EPS1, {Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"ln"_s, {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         auto val = args[0].cast<float>();
         interpreter.stack().push(std::log(val));
     }}},
-    {u"log"_s, {Level::EPS1, {Value::Real}, [](ValueArray args, Interpreter& interpreter){
+    {u"log"_s, {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         auto val = args[0].cast<float>();
         interpreter.stack().push(std::log10(val));
     }}},
@@ -569,10 +581,10 @@ static std::unordered_map<QString, glaxnimate::ps::Command> builtins = {
         interpreter.stack().push(int(seed));
     }}},
 // Interactive
-    {u"="_s, {Level::EPS1, {Value::Null}, [](ValueArray args, Interpreter& interpreter){
+    {u"="_s, {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.print(to_ugly_string(args[0])+ '\n');
     }}},
-    {u"=="_s, {Level::EPS1, {Value::Null}, [](ValueArray args, Interpreter& interpreter){
+    {u"=="_s, {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.print(args[0].to_pretty_string() + '\n');
     }}},
     {u"stack"_s, {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
@@ -584,9 +596,119 @@ static std::unordered_map<QString, glaxnimate::ps::Command> builtins = {
             interpreter.print(v.to_pretty_string() + '\n');
     }}},
 // Control
-    {u"exec"_s, {Level::EPS1, {Value::Null}, [](ValueArray args, Interpreter& interpreter){
+    {u"exec"_s, {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.execute(args[0]);
     }}},
+// Array
+    {u"["_s, {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(Value::from<Value::Mark>());
+    }}},
+    {u"]"_s, {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter) {
+        bool mark_found = false;
+        ValueArray arr;
+        while ( !interpreter.stack().empty() )
+        {
+            auto item = interpreter.stack().pop();
+            if ( item.type() == Value::Mark )
+            {
+                mark_found = true;
+                break;
+            }
+            arr.emplace_back(std::move(item));
+        }
+
+        if ( !mark_found )
+            interpreter.error(u"No mark found"_s, false);
+
+        std::reverse(arr.begin(), arr.end());
+        interpreter.stack().push(Value::from<Value::Array>(std::move(arr)));
+    }}},
+    {u"array"_s, {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        int count = args[0].cast<int>();
+        if ( count < 0 )
+        {
+            interpreter.error(u"Negative size"_s, false);
+            return;
+        }
+        ValueArray arr;
+        arr.resize(count);
+        interpreter.stack().push(Value::from<Value::Array>(std::move(arr)));
+    }}},
+    {u"length"_s, {Level::EPS1, {Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        auto arr = args[0].cast<ValueArray>();
+        interpreter.stack().push(arr.size());
+    }}},
+    {u"get"_s, {Level::EPS1, {Value::Array, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        auto arr = args[0].cast<ValueArray>();
+        int index = args[1].cast<int>();
+        if ( index < 0 || index >= arr.size() )
+        {
+            interpreter.error(u"Index out of range"_s, false);
+            return;
+        }
+        interpreter.stack().push(std::move(arr[index]));
+    }}},
+    {u"put"_s, {Level::EPS1, {Arg::any(), Arg::any(), Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        if ( args[0].type() == Value::Array )
+        {
+            auto arr = args[0].cast<ValueArray>();
+            int index = args[1].cast<int>();
+            if ( index < 0 || index >= arr.size() )
+            {
+                interpreter.error(u"Index out of range"_s, false);
+                return;
+            }
+            arr[index] = std::move(args[2]);
+        }
+        else
+        {
+            interpreter.error(u"Invalid argument"_s, false);
+            return;
+        }
+    }}},
+    {u"getinterval"_s, {Level::EPS1, {Arg{Value::Array, Value::String}, Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        int index = args[1].cast<int>();
+        int count = args[2].cast<int>();
+
+        if ( args[0].type() == glaxnimate::ps::Value::Array )
+        {
+            auto arr = args[0].cast<ValueArray>();
+            if ( index < 0 || index >= arr.size() )
+            {
+                interpreter.error(u"Index out of range"_s, false);
+                return;
+            }
+            if ( count < 0 || index + count >= arr.size() )
+            {
+                interpreter.error(u"Index out of range"_s, false);
+                return;
+            }
+
+            ValueArray result;
+            result.reserve(count);
+            for ( int i = 0; i < count; i++ )
+                result.emplace_back(std::move(arr[i + index]));
+            interpreter.stack().push(std::move(result));
+        }
+        else if ( args[0].type() == glaxnimate::ps::Value::String )
+        {
+            auto arr = args[0].cast<QString>();
+            if ( index < 0 || index >= arr.size() )
+            {
+                interpreter.error(u"Index out of range"_s, false);
+                return;
+            }
+            if ( count < 0 || index + count >= arr.size() )
+            {
+                interpreter.error(u"Index out of range"_s, false);
+                return;
+            }
+
+            interpreter.stack().push(arr.sliced(index, count));
+        }
+
+    }}},
+
 };
 
 
