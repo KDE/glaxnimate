@@ -10,13 +10,23 @@
 using namespace glaxnimate::ps;
 using namespace glaxnimate;
 
+class Interpreter::Private
+{
+public:
+    Lexer lexer{nullptr};
+    ExecutionMemory memory;
+    bool halted = false;
+    Level level = Level::PS3;
+    QString current_command;
+};
+
 Value Interpreter::procedure_value()
 {
     ValueArray proc;
     bool finished = false;
-    while ( !finished && !halted )
+    while ( !finished && !d->halted )
     {
-        auto token = lexer.next_token();
+        auto token = d->lexer.next_token();
         switch ( token.type )
         {
             case Token::Operator:
@@ -54,12 +64,28 @@ Value Interpreter::procedure_value()
     return procval;
 }
 
+Interpreter::Interpreter() : d(std::make_unique<Private>())
+{
+
+}
+
+Interpreter::~Interpreter() = default;
+
+glaxnimate::ps::ExecutionMemory &glaxnimate::ps::Interpreter::memory()
+{
+    return d->memory;
+}
+glaxnimate::ps::Stack &glaxnimate::ps::Interpreter::stack()
+{
+    return d->memory.operand_stack;
+}
+
 void glaxnimate::ps::Interpreter::execute(QIODevice *device)
 {
-    lexer.set_device(device);
-    while ( !halted )
+    d->lexer.set_device(device);
+    while ( !d->halted )
     {
-        auto token = lexer.next_token();
+        auto token = d->lexer.next_token();
         switch ( token.type )
         {
             case Token::Operator:
@@ -73,7 +99,7 @@ void glaxnimate::ps::Interpreter::execute(QIODevice *device)
                 }
                 break;
             case Token::Literal:
-                memory_.operand_stack.push(token.value);
+                d->memory.operand_stack.push(token.value);
                 break;
             case Token::Eof:
                 return;
@@ -101,7 +127,7 @@ void Interpreter::execute(const Value &proc)
         for ( const auto& v : proc.cast<ValueArray>() )
         {
             execute(v);
-            if ( halted )
+            if ( d->halted )
                 break;
         }
     }
@@ -124,7 +150,7 @@ void glaxnimate::ps::Interpreter::print(const QString &text)
 void glaxnimate::ps::Interpreter::error(const QString &error, bool critical)
 {
     if ( critical )
-        halted = true;
+        d->halted = true;
     on_error(error);
 }
 
@@ -135,13 +161,13 @@ void glaxnimate::ps::Interpreter::execute_command(const QString &name)
     {
         error(u"Unknown command '%1'"_s.arg(name), false);
     }
-    else if ( !level_is_compatible(level_, cmd->level) )
+    else if ( !level_is_compatible(d->level, cmd->level) )
     {
         error(u"Command '%1' requires %2"_s.arg(name).arg(level_string(cmd->level)), true);
     }
     else
     {
-        if ( int(cmd->args.size()) > memory_.operand_stack.size() )
+        if ( int(cmd->args.size()) > d->memory.operand_stack.size() )
         {
             error(u"Command '%1' requires %2 arguments on the stack"_s.arg(name, cmd->args.size()), false);
         }
@@ -150,7 +176,7 @@ void glaxnimate::ps::Interpreter::execute_command(const QString &name)
         args.resize(cmd->args.size());
         for ( int i = cmd->args.size() - 1; i >= 0; i-- )
         {
-            args[i] = memory_.operand_stack.pop();
+            args[i] = d->memory.operand_stack.pop();
             auto expected_type = cmd->args[cmd->args.size() - 1 - i];
             if ( expected_type != Value::Null && !args[i].can_convert(expected_type) )
             {
@@ -165,7 +191,12 @@ void glaxnimate::ps::Interpreter::execute_command(const QString &name)
 
 Level Interpreter::level() const
 {
-    return level_;
+    return d->level;
+}
+
+void Interpreter::set_level(Level level)
+{
+    d->level = level;
 }
 
 QString glaxnimate::ps::level_string(Level level)

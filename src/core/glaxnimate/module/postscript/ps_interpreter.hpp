@@ -71,11 +71,11 @@ struct Command
 class Interpreter
 {
 public:
-    Interpreter() : lexer(nullptr) {}
-    virtual ~Interpreter() = default;
+    Interpreter();
+    virtual ~Interpreter();
 
-    ExecutionMemory& memory() { return memory_; }
-    Stack& stack() { return memory_.operand_stack; }
+    ExecutionMemory &memory();
+    Stack &stack();
 
     void execute(QIODevice* device);
     void execute(const Value& proc);
@@ -87,6 +87,7 @@ public:
     static Command* command_from_name(const QString& name);
 
     Level level() const;
+    void set_level(Level level);
 
 protected:
     virtual void on_print(const QString& text) = 0;
@@ -97,11 +98,8 @@ private:
     void execute_command(const QString& name);
     Value procedure_value();
 
-    Lexer lexer;
-    ExecutionMemory memory_;
-    bool halted = false;
-    Level level_ = Level::PS3;
-    QString current_command;
+    class Private;
+    std::unique_ptr<Private> d;
 };
 
 } // namespace glaxnimate::ps
