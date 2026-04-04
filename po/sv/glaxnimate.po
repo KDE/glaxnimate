@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-01 00:42+0000\n"
+"POT-Creation-Date: 2026-04-04 00:42+0000\n"
 "PO-Revision-Date: 2024-09-02 18:12+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -652,13 +652,13 @@ msgstr "Fyllstil"
 msgid "Stroke Style"
 msgstr "Streckstil"
 
-#: src/android/main_window.cpp:454 src/gui/widgets/dialogs/gw_impl_ui.cpp:662
+#: src/android/main_window.cpp:454 src/gui/widgets/dialogs/gw_impl_ui.cpp:664
 #: src/gui/widgets/menus/node_menu.cpp:116
 #, kde-format
 msgid "Raise"
 msgstr "Höj"
 
-#: src/android/main_window.cpp:459 src/gui/widgets/dialogs/gw_impl_ui.cpp:665
+#: src/android/main_window.cpp:459 src/gui/widgets/dialogs/gw_impl_ui.cpp:667
 #: src/gui/widgets/menus/node_menu.cpp:120
 #, kde-format
 msgid "Lower"
@@ -739,7 +739,7 @@ msgstr "Öppna..."
 #: src/gui/widgets/dialogs/about_env_dialog.ui:100
 #: src/gui/widgets/dialogs/about_env_dialog.ui:128
 #: src/gui/widgets/dialogs/about_env_dialog.ui:131
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1903
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1979
 #: src/gui/widgets/dialogs/startup_dialog.ui:149
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:136
 #: src/gui/widgets/lottiefiles/search_result.cpp:74
@@ -788,7 +788,7 @@ msgstr "Skicka till Telegram"
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/android/main_window.cpp:546 src/gui/glaxnimateui.rc:121
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:618
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:620
 #: src/gui/widgets/dialogs/timing_dialog.ui:91
 #: src/gui/widgets/docks/layers.ui:27
 #, kde-format
@@ -914,7 +914,7 @@ msgstr "Öppna klistermärke"
 #. i18n: ectx: property (text), widget (QPushButton, button_clear)
 #: src/android/sticker_pack_builder_dialog.ui:135
 #: src/gui/widgets/docks/script_console.ui:61
-#: src/gui/widgets/shape_style/color_selector.ui:693
+#: src/gui/widgets/shape_style/color_selector.ui:680
 #, kde-format
 msgid "Clear"
 msgstr "Rensa"
@@ -1008,45 +1008,57 @@ msgstr "Ta bort %1"
 msgid "Move Object"
 msgstr "Flytta objekt"
 
-#: src/core/glaxnimate/command/shape_commands.cpp:123
+#: src/core/glaxnimate/command/shape_commands.cpp:124
 #: src/gui/tools/select_tool.cpp:423
 #, kde-format
 msgid "Group Shapes"
 msgstr "Gruppera former"
 
-#: src/core/glaxnimate/command/shape_commands.cpp:156
+#: src/core/glaxnimate/command/shape_commands.cpp:157
 #: src/gui/tools/select_tool.cpp:426
 #, kde-format
 msgid "Ungroup Shapes"
 msgstr "Dela upp former"
 
-#: src/core/glaxnimate/command/shape_commands.cpp:181
+#: src/core/glaxnimate/command/shape_commands.cpp:182
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:82
 #, kde-format
 msgid "Duplicate %1"
 msgstr "Du&plicera %1"
 
-#: src/core/glaxnimate/command/shape_commands.cpp:192
+#: src/core/glaxnimate/command/shape_commands.cpp:193
 #, kde-format
 msgid "Convert to path"
 msgstr "Konvertera till kontur"
 
-#: src/core/glaxnimate/command/shape_commands.cpp:194
+#: src/core/glaxnimate/command/shape_commands.cpp:195
 #, kde-format
 msgid "Convert %1 to path"
 msgstr "Konvertera %1 till kontur"
 
-#: src/core/glaxnimate/command/shape_commands.cpp:241
+#: src/core/glaxnimate/command/shape_commands.cpp:242
 #, fuzzy, kde-format
 #| msgid "Reverse"
 msgid "Reverse path"
 msgstr "Vänd"
 
-#: src/core/glaxnimate/command/shape_commands.cpp:266
+#: src/core/glaxnimate/command/shape_commands.cpp:267
 #: src/gui/widgets/menus/node_menu.cpp:363
 #, kde-format
 msgid "Precompose"
 msgstr "Försammansätt"
+
+#: src/core/glaxnimate/command/shape_commands.cpp:308
+#, fuzzy, kde-format
+#| msgid "End Time"
+msgid "Set End Time"
+msgstr "Sluttid"
+
+#: src/core/glaxnimate/command/shape_commands.cpp:345
+#, fuzzy, kde-format
+#| msgid "Start Time"
+msgid "Set Start Time"
+msgstr "Starttid"
 
 #: src/core/glaxnimate/command/structure_commands.cpp:73
 #, kde-format
@@ -1054,7 +1066,7 @@ msgid "Move %1"
 msgstr "Flytta %1"
 
 #: src/core/glaxnimate/io/base.cpp:22
-#: src/core/glaxnimate/io/svg/svg_renderer.cpp:837 src/gui/tools/base.cpp:161
+#: src/core/glaxnimate/io/svg/svg_renderer.cpp:867 src/gui/tools/base.cpp:161
 #, kde-format
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
@@ -1452,8 +1464,8 @@ msgstr "Ta bort noder"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/core/glaxnimate/model/animation/animatable.cpp:382
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:723
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:775
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:725
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:777
 #: src/gui/widgets/menus/animated_property_menu.cpp:64
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:194
 #, kde-format
@@ -1644,8 +1656,8 @@ msgstr "Okänt objekt"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/glaxnimate/model/shapes/composable/group.hpp:36
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:637
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:674
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:639
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:676
 #: src/gui/widgets/tools/shape_tool_widget.ui:41
 #, kde-format
 msgid "Group"
@@ -1659,7 +1671,7 @@ msgstr "Bild"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer)
 #: src/core/glaxnimate/model/shapes/composable/layer.hpp:81
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:634
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:636
 #: src/gui/widgets/tools/shape_tool_widget.ui:55
 #, kde-format
 msgid "Layer"
@@ -1711,7 +1723,7 @@ msgstr "Ellips"
 #: src/core/glaxnimate/model/shapes/shapes/path.hpp:38
 #: src/gui/glaxnimateui.rc:186
 #: src/gui/widgets/dialogs/export_image_sequence_dialog.ui:122
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:851
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:853
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
@@ -1747,7 +1759,7 @@ msgstr "Text"
 #: src/core/glaxnimate/model/shapes/style/fill.hpp:48
 #: src/gui/tools/draw_tool_base.cpp:114 src/gui/tools/fill_tool.cpp:25
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:740
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:640
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:642
 #: src/gui/widgets/docks/colors.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:197
 #: src/gui/widgets/tools/color_picker_widget.ui:24
@@ -1764,7 +1776,7 @@ msgstr "Fyll"
 #: src/core/glaxnimate/model/shapes/style/stroke.hpp:68
 #: src/gui/tools/draw_tool_base.cpp:126
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:735
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:643
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:645
 #: src/gui/widgets/docks/stroke.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:111
 #: src/gui/widgets/tools/color_picker_widget.ui:37
@@ -2796,14 +2808,14 @@ msgid "CPython"
 msgstr "CPython"
 
 #. i18n: ectx: Menu (file_new_from_template)
-#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1555
+#: src/gui/glaxnimateui.rc:13 src/gui/widgets/dialogs/gw_impl_ui.cpp:1631
 #, kde-format
 msgid "New from Template"
 msgstr "Ny från mall"
 
 #. i18n: ectx: Menu (edit_tools)
 #: src/gui/glaxnimateui.rc:51 src/gui/widgets/dialogs/gw_impl_ui.cpp:419
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:941
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:943
 #, kde-format
 msgid "Tools"
 msgstr "Verktyg"
@@ -2841,7 +2853,7 @@ msgid "Playback"
 msgstr "Uppspelning"
 
 #. i18n: ectx: Menu (object)
-#: src/gui/glaxnimateui.rc:144 src/gui/widgets/dialogs/gw_impl_ui.cpp:657
+#: src/gui/glaxnimateui.rc:144 src/gui/widgets/dialogs/gw_impl_ui.cpp:659
 #, kde-format
 msgid "Object"
 msgstr "Objekt"
@@ -2861,7 +2873,7 @@ msgstr "Uppdatera nyckelbildsövergång"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:217 src/gui/settings/plugin_settings_group.hpp:23
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1796
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1872
 #, kde-format
 msgid "Plugins"
 msgstr "Insticksprogram"
@@ -3008,9 +3020,9 @@ msgstr "(Inget överliggande)"
 #: src/gui/item_models/property_model_full.cpp:452
 #: src/gui/item_models/property_model_single.cpp:162
 #: src/gui/widgets/dialogs/document_metadata_dialog.ui:114
-#: src/gui/widgets/shape_style/color_selector.ui:96
-#: src/gui/widgets/shape_style/color_selector.ui:113
-#: src/gui/widgets/shape_style/color_selector.ui:153
+#: src/gui/widgets/shape_style/color_selector.ui:142
+#: src/gui/widgets/shape_style/color_selector.ui:159
+#: src/gui/widgets/shape_style/color_selector.ui:199
 #, kde-format
 msgid "Value"
 msgstr "Värde"
@@ -3143,12 +3155,12 @@ msgstr "Rita Bezierkurva"
 msgid "Drag nodes"
 msgstr "Dra noder"
 
-#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:885
+#: src/gui/tools/edit_tool.cpp:280 src/gui/widgets/dialogs/gw_impl_ui.cpp:887
 #, kde-format
 msgid "Cusp"
 msgstr "Topp"
 
-#: src/gui/tools/edit_tool.cpp:284 src/gui/widgets/dialogs/gw_impl_ui.cpp:886
+#: src/gui/tools/edit_tool.cpp:284 src/gui/widgets/dialogs/gw_impl_ui.cpp:888
 #, kde-format
 msgid "Smooth"
 msgstr "Jämn"
@@ -3206,27 +3218,27 @@ msgctxt "@action:inmenu"
 msgid "Remove Stop"
 msgstr "Ta bort stopp"
 
-#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:890
+#: src/gui/tools/edit_tool.cpp:536 src/gui/widgets/dialogs/gw_impl_ui.cpp:892
 #, kde-format
 msgid "Dissolve Nodes"
 msgstr "Lös upp noder"
 
-#: src/gui/tools/edit_tool.cpp:535 src/gui/widgets/dialogs/gw_impl_ui.cpp:877
+#: src/gui/tools/edit_tool.cpp:536 src/gui/widgets/dialogs/gw_impl_ui.cpp:879
 #, kde-format
 msgid "Delete Nodes"
 msgstr "Ta bort noder"
 
-#: src/gui/tools/edit_tool.cpp:894
+#: src/gui/tools/edit_tool.cpp:895
 #, kde-format
 msgid "Set node type"
 msgstr "Ange nodtyp"
 
-#: src/gui/tools/edit_tool.cpp:922
+#: src/gui/tools/edit_tool.cpp:923
 #, kde-format
 msgid "Straighten segments"
 msgstr "Räta ut segment"
 
-#: src/gui/tools/edit_tool.cpp:970
+#: src/gui/tools/edit_tool.cpp:971
 #, kde-format
 msgid "Curve segments"
 msgstr "Böj segment"
@@ -3463,7 +3475,7 @@ msgstr "Maximalt antal iterationer"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_means_match)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:107
 #: src/gui/widgets/menus/node_menu.cpp:88
-#: src/gui/widgets/shape_style/color_selector.ui:59
+#: src/gui/widgets/shape_style/color_selector.ui:61
 #, kde-format
 msgid "None"
 msgstr "Ingen"
@@ -3788,7 +3800,9 @@ msgstr "Från bildruta"
 msgid "Select..."
 msgstr "Välj..."
 
+#. i18n: ectx: property (suffix), widget (QSpinBox, spin_end_frame)
 #: src/gui/widgets/dialogs/follow_path_dialog.cpp:40
+#: src/gui/widgets/timeline/frame_controls_widget.ui:188
 #, kde-format
 msgid "f"
 msgstr "f"
@@ -4110,22 +4124,22 @@ msgstr "Rensa dokument"
 msgid "Removed %1 assets"
 msgstr "Tog bort %1 tillgångar"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:547
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:552
 #, kde-format
 msgid "Align Selection"
 msgstr "Justera markering"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:589
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:594
 #, kde-format
 msgid "Drop"
 msgstr "Hoppa över"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:685
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:690
 #, kde-format
 msgid "Put text on path"
 msgstr "Lägg till text i kontur"
 
-#: src/gui/widgets/dialogs/gw_impl_model.cpp:707
+#: src/gui/widgets/dialogs/gw_impl_model.cpp:712
 #, kde-format
 msgid "Remove text from path"
 msgstr "Ta bort text från kontur"
@@ -4324,14 +4338,14 @@ msgstr "Metadata…"
 #. i18n: ectx: property (text), widget (QToolButton, button_play)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:552
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:576
-#: src/gui/widgets/timeline/frame_controls_widget.ui:46
+#: src/gui/widgets/timeline/frame_controls_widget.ui:43
 #, kde-format
 msgid "Play"
 msgstr "Spela"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_loop)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:554
-#: src/gui/widgets/timeline/frame_controls_widget.ui:63
+#: src/gui/widgets/timeline/frame_controls_widget.ui:59
 #, kde-format
 msgid "Loop"
 msgstr "Upprepa"
@@ -4366,84 +4380,84 @@ msgstr "Föregående bildruta"
 msgid "Pause"
 msgstr "Paus"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:627
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:629
 #, kde-format
 msgid "Precompose Selection"
 msgstr "Försammansätt markering"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:631
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:633
 #, kde-format
 msgid "New Composition"
 msgstr "Ny sammansättning"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:646
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:648
 #, kde-format
 msgid "Emoji…"
 msgstr "Emoji…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:659
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:661
 #, kde-format
 msgid "Raise to Top"
 msgstr "Flytta längst upp"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:668
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:670
 #, kde-format
 msgid "Lower to Bottom"
 msgstr "Flytta längst ner"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:671
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:673
 #, kde-format
 msgid "Move to…"
 msgstr "Flytta till…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:677
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:679
 #, kde-format
 msgid "Ungroup"
 msgstr "Dela upp grupp"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:680
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:682
 #: src/gui/widgets/docks/aligndock.cpp:46
 #, kde-format
 msgid "Align"
 msgstr "Justera"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:682
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:684
 #, kde-format
 msgid "Selection"
 msgstr "Markering"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:684
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
 #, kde-format
 msgid "Canvas"
 msgstr "Duk"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:686
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:688
 #, kde-format
 msgid "Canvas (as Group)"
 msgstr "Duk (som grupp)"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:689
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:691
 #, kde-format
 msgid "Left"
 msgstr "Vänster"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:701
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:694
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:703
 #, kde-format
 msgid "Center"
 msgstr "Centrum"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:695
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:697
 #, kde-format
 msgid "Right"
 msgstr "Höger"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:698
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:700
 #, kde-format
 msgid "Top"
 msgstr "Längst upp"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:704
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:706
 #, kde-format
 msgid "Bottom"
 msgstr "Längst ner"
@@ -4451,160 +4465,160 @@ msgstr "Längst ner"
 #. i18n("Relative To"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_horizontal"), i18n("Horizontal"), QStringLiteral(""));
 #. addAction(QStringLiteral("separator_align_vertical"), i18n("Vertical"), QStringLiteral(""));
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:711
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:713
 #, kde-format
 msgid "Outside Left"
 msgstr "Utanför till vänster"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:714
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:716
 #, kde-format
 msgid "Outside Right"
 msgstr "Utanför till höger"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:717
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:719
 #, kde-format
 msgid "Outside Top"
 msgstr "Utanför längst upp"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:720
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:722
 #, kde-format
 msgid "Outside Bottom"
 msgstr "Utanför längst ner"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:737
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:739
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:119
 #, kde-format
 msgid "Custom..."
 msgstr "Egen..."
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:798
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
 #, fuzzy, kde-format
 #| msgid "Update keyframe transition"
 msgid "Apply %1 keyframe transition"
 msgstr "Uppdatera nyckelbildsövergång"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:853
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:855
 #, kde-format
 msgid "Object to Path"
 msgstr "Objekt till kontur"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:856
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:858
 #, kde-format
 msgid "Trace Bitmap…"
 msgstr "Omvandla bitavbildning…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:861
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:863
 #, kde-format
 msgid "Union"
 msgstr "Union"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:864
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:866
 #: src/gui/widgets/enum_combo.cpp:145
 #, kde-format
 msgid "Difference"
 msgstr "Skillnad"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:867
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:869
 #, kde-format
 msgid "Intersect"
 msgstr "Snitt"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:870
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:872
 #: src/gui/widgets/enum_combo.cpp:147
 #, kde-format
 msgid "Exclusion"
 msgstr "Undantag"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:874
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:876
 #, kde-format
 msgid "Reverse"
 msgstr "Vänd"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:878
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:880
 #, kde-format
 msgid "Add Node…"
 msgstr "Lägg till nod…"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:880
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:882
 #, kde-format
 msgid "Join Nodes"
 msgstr "Sammanfoga noder"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:882
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:884
 #, kde-format
 msgid "Split Nodes"
 msgstr "Dela noder"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:887
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:889
 #, kde-format
 msgid "Symmetric"
 msgstr "Symmetrisk"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:888
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:890
 #, kde-format
 msgid "Make segments straight"
 msgstr "Räta ut segment"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:889
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:891
 #, kde-format
 msgid "Make segments curved"
 msgstr "Gör segment krökta"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1035
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1037
 #, kde-format
 msgid "Recording Keyframes"
 msgstr "Spelar in nyckelbilder"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1555
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1631
 #, kde-format
 msgid "Could not load template"
 msgstr "Kunde inte läsa in mall"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1752
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1761
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1768
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1828
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1837
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1844
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
 msgstr "Omvandla bitavbildning"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1752
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1828
 #, kde-format
 msgid "Only select one image"
 msgstr "Välj bara en bild"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1761
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1837
 #, kde-format
 msgid "You need to select an image to trace"
 msgstr "Du måste välja en bild att omvandla"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1768
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1844
 #, kde-format
 msgid "You selected an image with no data"
 msgstr "Du valde en bild utan data"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1855
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1931
 #, kde-format
 msgid "X: %1 Y: %2"
 msgstr "X: %1 Y: %2"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1874
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1950
 #, kde-format
 msgid "Drop File"
 msgstr "Hoppa över fil"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1885
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1961
 #, kde-format
 msgid "Add to current file?"
 msgstr "Lägg till i nuvarande fil?"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1891
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1967
 #, kde-format
 msgid "Add as Object"
 msgstr "Lägg till som objekt"
 
-#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1897
+#: src/gui/widgets/dialogs/gw_impl_ui.cpp:1973
 #, kde-format
 msgid "Add as Composition"
 msgstr "Lägg till som sammansättning"
@@ -4807,7 +4821,7 @@ msgstr "Bläddra..."
 msgid "Show at startup"
 msgstr "Visa vid start"
 
-#: src/gui/widgets/dialogs/timing_dialog.cpp:73
+#: src/gui/widgets/dialogs/timing_dialog.cpp:74
 #, kde-format
 msgid "Change Animation Properties"
 msgstr "Ändra animeringsegenskaper"
@@ -5257,7 +5271,7 @@ msgstr "Vinkel"
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: ectx: property (text), widget (QLabel, label_12)
 #: src/gui/widgets/docks/dock_grid.ui:176
-#: src/gui/widgets/shape_style/color_selector.ui:496
+#: src/gui/widgets/shape_style/color_selector.ui:489
 #, kde-format
 msgid "Y"
 msgstr "Y"
@@ -5561,12 +5575,12 @@ msgstr ""
 #. i18n: ectx: property (toolTip), widget (QLabel, label_5)
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_5)
 #: src/gui/widgets/enum_combo.cpp:149
-#: src/gui/widgets/shape_style/color_selector.ui:106
-#: src/gui/widgets/shape_style/color_selector.ui:133
-#: src/gui/widgets/shape_style/color_selector.ui:143
-#: src/gui/widgets/shape_style/color_selector.ui:217
-#: src/gui/widgets/shape_style/color_selector.ui:224
-#: src/gui/widgets/shape_style/color_selector.ui:241
+#: src/gui/widgets/shape_style/color_selector.ui:152
+#: src/gui/widgets/shape_style/color_selector.ui:179
+#: src/gui/widgets/shape_style/color_selector.ui:189
+#: src/gui/widgets/shape_style/color_selector.ui:249
+#: src/gui/widgets/shape_style/color_selector.ui:277
+#: src/gui/widgets/shape_style/color_selector.ui:294
 #, kde-format
 msgid "Hue"
 msgstr "Färgton"
@@ -5575,9 +5589,9 @@ msgstr "Färgton"
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_2)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_hsv_sat)
 #: src/gui/widgets/enum_combo.cpp:151
-#: src/gui/widgets/shape_style/color_selector.ui:86
-#: src/gui/widgets/shape_style/color_selector.ui:123
-#: src/gui/widgets/shape_style/color_selector.ui:163
+#: src/gui/widgets/shape_style/color_selector.ui:132
+#: src/gui/widgets/shape_style/color_selector.ui:169
+#: src/gui/widgets/shape_style/color_selector.ui:209
 #, kde-format
 msgid "Saturation"
 msgstr "Färgmättnad"
@@ -6169,37 +6183,43 @@ msgid "Use system file dialog"
 msgstr "Använd systemets fildialogruta"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, combo_box)
-#: src/gui/widgets/shape_style/color_selector.ui:30
+#: src/gui/widgets/shape_style/color_selector.ui:27
 #, kde-format
 msgid "Color Mode"
 msgstr "Färgläge"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
-#: src/gui/widgets/shape_style/color_selector.ui:34
+#: src/gui/widgets/shape_style/color_selector.ui:31
+#, kde-format
+msgid "Wheel"
+msgstr ""
+
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
+#: src/gui/widgets/shape_style/color_selector.ui:36
 #, kde-format
 msgid "HSV"
 msgstr "HSV"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
-#: src/gui/widgets/shape_style/color_selector.ui:39
+#: src/gui/widgets/shape_style/color_selector.ui:41
 #, kde-format
 msgid "HSL"
 msgstr "HSL"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
-#: src/gui/widgets/shape_style/color_selector.ui:44
+#: src/gui/widgets/shape_style/color_selector.ui:46
 #, kde-format
 msgid "RGB"
 msgstr "RGB"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
-#: src/gui/widgets/shape_style/color_selector.ui:49
+#: src/gui/widgets/shape_style/color_selector.ui:51
 #, kde-format
 msgid "CMYK"
 msgstr "CMYK"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
-#: src/gui/widgets/shape_style/color_selector.ui:54
+#: src/gui/widgets/shape_style/color_selector.ui:56
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:381
 #, kde-format
 msgid "Palette"
@@ -6207,28 +6227,28 @@ msgstr "Palett"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: src/gui/widgets/shape_style/color_selector.ui:89
-#: src/gui/widgets/shape_style/color_selector.ui:297
+#: src/gui/widgets/shape_style/color_selector.ui:135
+#: src/gui/widgets/shape_style/color_selector.ui:256
 #, kde-format
 msgid "S"
 msgstr "S"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: src/gui/widgets/shape_style/color_selector.ui:136
-#: src/gui/widgets/shape_style/color_selector.ui:227
+#: src/gui/widgets/shape_style/color_selector.ui:182
+#: src/gui/widgets/shape_style/color_selector.ui:280
 #, kde-format
 msgid "H"
 msgstr "H"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: src/gui/widgets/shape_style/color_selector.ui:156
+#: src/gui/widgets/shape_style/color_selector.ui:202
 #, kde-format
 msgid "V"
 msgstr "V"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#: src/gui/widgets/shape_style/color_selector.ui:304
+#: src/gui/widgets/shape_style/color_selector.ui:263
 #, kde-format
 msgid "L"
 msgstr "L"
@@ -6236,15 +6256,15 @@ msgstr "L"
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_rgb_b)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_10)
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_10)
-#: src/gui/widgets/shape_style/color_selector.ui:327
-#: src/gui/widgets/shape_style/color_selector.ui:337
-#: src/gui/widgets/shape_style/color_selector.ui:407
+#: src/gui/widgets/shape_style/color_selector.ui:320
+#: src/gui/widgets/shape_style/color_selector.ui:330
+#: src/gui/widgets/shape_style/color_selector.ui:400
 #, kde-format
 msgid "Blue"
 msgstr "Blå"
 
 #. i18n: ectx: property (text), widget (QLabel, label_10)
-#: src/gui/widgets/shape_style/color_selector.ui:340
+#: src/gui/widgets/shape_style/color_selector.ui:333
 #, kde-format
 msgid "B"
 msgstr "B"
@@ -6252,9 +6272,9 @@ msgstr "B"
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_rgb_g)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_9)
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_9)
-#: src/gui/widgets/shape_style/color_selector.ui:347
-#: src/gui/widgets/shape_style/color_selector.ui:367
-#: src/gui/widgets/shape_style/color_selector.ui:397
+#: src/gui/widgets/shape_style/color_selector.ui:340
+#: src/gui/widgets/shape_style/color_selector.ui:360
+#: src/gui/widgets/shape_style/color_selector.ui:390
 #, kde-format
 msgid "Green"
 msgstr "Grön"
@@ -6262,21 +6282,21 @@ msgstr "Grön"
 #. i18n: ectx: property (toolTip), widget (QLabel, label_8)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_rgb_r)
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_8)
-#: src/gui/widgets/shape_style/color_selector.ui:357
-#: src/gui/widgets/shape_style/color_selector.ui:377
-#: src/gui/widgets/shape_style/color_selector.ui:387
+#: src/gui/widgets/shape_style/color_selector.ui:350
+#: src/gui/widgets/shape_style/color_selector.ui:370
+#: src/gui/widgets/shape_style/color_selector.ui:380
 #, kde-format
 msgid "Red"
 msgstr "Röd"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
-#: src/gui/widgets/shape_style/color_selector.ui:360
+#: src/gui/widgets/shape_style/color_selector.ui:353
 #, kde-format
 msgid "R"
 msgstr "R"
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
-#: src/gui/widgets/shape_style/color_selector.ui:370
+#: src/gui/widgets/shape_style/color_selector.ui:363
 #, kde-format
 msgid "G"
 msgstr "G"
@@ -6284,15 +6304,15 @@ msgstr "G"
 #. i18n: ectx: property (toolTip), widget (QLabel, label_11)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_c)
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_11)
-#: src/gui/widgets/shape_style/color_selector.ui:433
-#: src/gui/widgets/shape_style/color_selector.ui:443
-#: src/gui/widgets/shape_style/color_selector.ui:453
+#: src/gui/widgets/shape_style/color_selector.ui:426
+#: src/gui/widgets/shape_style/color_selector.ui:436
+#: src/gui/widgets/shape_style/color_selector.ui:446
 #, kde-format
 msgid "Cyan"
 msgstr "Cyan"
 
 #. i18n: ectx: property (text), widget (QLabel, label_11)
-#: src/gui/widgets/shape_style/color_selector.ui:436
+#: src/gui/widgets/shape_style/color_selector.ui:429
 #, kde-format
 msgid "C"
 msgstr "C"
@@ -6300,15 +6320,15 @@ msgstr "C"
 #. i18n: ectx: property (toolTip), widget (QLabel, label_13)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_m)
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_13)
-#: src/gui/widgets/shape_style/color_selector.ui:463
-#: src/gui/widgets/shape_style/color_selector.ui:473
-#: src/gui/widgets/shape_style/color_selector.ui:483
+#: src/gui/widgets/shape_style/color_selector.ui:456
+#: src/gui/widgets/shape_style/color_selector.ui:466
+#: src/gui/widgets/shape_style/color_selector.ui:476
 #, kde-format
 msgid "Magenta"
 msgstr "Magenta"
 
 #. i18n: ectx: property (text), widget (QLabel, label_13)
-#: src/gui/widgets/shape_style/color_selector.ui:466
+#: src/gui/widgets/shape_style/color_selector.ui:459
 #, kde-format
 msgid "M"
 msgstr "M"
@@ -6316,9 +6336,9 @@ msgstr "M"
 #. i18n: ectx: property (toolTip), widget (QLabel, label_12)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_y)
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_12)
-#: src/gui/widgets/shape_style/color_selector.ui:493
-#: src/gui/widgets/shape_style/color_selector.ui:503
-#: src/gui/widgets/shape_style/color_selector.ui:513
+#: src/gui/widgets/shape_style/color_selector.ui:486
+#: src/gui/widgets/shape_style/color_selector.ui:496
+#: src/gui/widgets/shape_style/color_selector.ui:506
 #, kde-format
 msgid "Yellow"
 msgstr "Gul"
@@ -6326,15 +6346,15 @@ msgstr "Gul"
 #. i18n: ectx: property (toolTip), widget (QLabel, label_14)
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_cmyk_k)
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_14)
-#: src/gui/widgets/shape_style/color_selector.ui:523
-#: src/gui/widgets/shape_style/color_selector.ui:533
-#: src/gui/widgets/shape_style/color_selector.ui:543
+#: src/gui/widgets/shape_style/color_selector.ui:516
+#: src/gui/widgets/shape_style/color_selector.ui:526
+#: src/gui/widgets/shape_style/color_selector.ui:536
 #, kde-format
 msgid "Black"
 msgstr "Svart"
 
 #. i18n: ectx: property (text), widget (QLabel, label_14)
-#: src/gui/widgets/shape_style/color_selector.ui:526
+#: src/gui/widgets/shape_style/color_selector.ui:519
 #, kde-format
 msgid "K"
 msgstr "K"
@@ -6342,35 +6362,35 @@ msgstr "K"
 #. i18n: ectx: property (toolTip), widget (color_widgets::GradientSlider, slider_alpha)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_4)
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spinBox_4)
-#: src/gui/widgets/shape_style/color_selector.ui:573
-#: src/gui/widgets/shape_style/color_selector.ui:583
-#: src/gui/widgets/shape_style/color_selector.ui:593
+#: src/gui/widgets/shape_style/color_selector.ui:566
+#: src/gui/widgets/shape_style/color_selector.ui:576
+#: src/gui/widgets/shape_style/color_selector.ui:586
 #, kde-format
 msgid "Alpha (Transparency)"
 msgstr "Alfa (genomskinlighet)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: src/gui/widgets/shape_style/color_selector.ui:586
+#: src/gui/widgets/shape_style/color_selector.ui:579
 #, kde-format
 msgid "A"
 msgstr "A"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::ColorSelector, color_preview)
-#: src/gui/widgets/shape_style/color_selector.ui:637
+#: src/gui/widgets/shape_style/color_selector.ui:630
 #, kde-format
 msgid "Primary Color"
 msgstr "Grundfärg"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::ColorSelector, color_preview_secondary)
-#: src/gui/widgets/shape_style/color_selector.ui:656
+#: src/gui/widgets/shape_style/color_selector.ui:646
 #, kde-format
 msgid "Secondary Color"
 msgstr "Sekundär färg"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, color_swap)
 #. i18n: ectx: property (text), widget (QToolButton, color_swap)
-#: src/gui/widgets/shape_style/color_selector.ui:679
-#: src/gui/widgets/shape_style/color_selector.ui:682
+#: src/gui/widgets/shape_style/color_selector.ui:666
+#: src/gui/widgets/shape_style/color_selector.ui:669
 #, kde-format
 msgid "Swap"
 msgstr "Byt"
@@ -6652,75 +6672,75 @@ msgid "&Clear Animations"
 msgstr "&Rensa animeringar"
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spin_frame)
-#: src/gui/widgets/timeline/frame_controls_widget.ui:33
+#: src/gui/widgets/timeline/frame_controls_widget.ui:30
 #, kde-format
 msgid "Frame number"
 msgstr "Bildnummer"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spin_frame)
-#: src/gui/widgets/timeline/frame_controls_widget.ui:39
+#: src/gui/widgets/timeline/frame_controls_widget.ui:36
 #, kde-format
 msgid " f"
 msgstr " b"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_loop)
-#: src/gui/widgets/timeline/frame_controls_widget.ui:60
+#: src/gui/widgets/timeline/frame_controls_widget.ui:56
 #, kde-format
 msgid "Loop animation"
 msgstr "Upprepa animering"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_first)
 #. i18n: ectx: property (text), widget (QToolButton, button_first)
-#: src/gui/widgets/timeline/frame_controls_widget.ui:80
-#: src/gui/widgets/timeline/frame_controls_widget.ui:83
+#: src/gui/widgets/timeline/frame_controls_widget.ui:75
+#: src/gui/widgets/timeline/frame_controls_widget.ui:78
 #, kde-format
 msgid "Go To First Frame"
 msgstr "Gå till första bildrutan"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_prev_kf)
 #. i18n: ectx: property (text), widget (QToolButton, button_prev_kf)
-#: src/gui/widgets/timeline/frame_controls_widget.ui:97
-#: src/gui/widgets/timeline/frame_controls_widget.ui:100
+#: src/gui/widgets/timeline/frame_controls_widget.ui:91
+#: src/gui/widgets/timeline/frame_controls_widget.ui:94
 #, kde-format
 msgid "Go To Previous Keyframe"
 msgstr "Gå till föregående nyckelbild"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_prev)
 #. i18n: ectx: property (text), widget (QToolButton, button_prev)
-#: src/gui/widgets/timeline/frame_controls_widget.ui:111
-#: src/gui/widgets/timeline/frame_controls_widget.ui:114
+#: src/gui/widgets/timeline/frame_controls_widget.ui:104
+#: src/gui/widgets/timeline/frame_controls_widget.ui:107
 #, kde-format
 msgid "Go To Previous Frame"
 msgstr "Gå till föregående bildruta"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_next)
 #. i18n: ectx: property (text), widget (QToolButton, button_next)
-#: src/gui/widgets/timeline/frame_controls_widget.ui:125
-#: src/gui/widgets/timeline/frame_controls_widget.ui:128
+#: src/gui/widgets/timeline/frame_controls_widget.ui:117
+#: src/gui/widgets/timeline/frame_controls_widget.ui:120
 #, kde-format
 msgid "Go To Next Frame"
 msgstr "Gå till nästa bildruta"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_next_kf)
 #. i18n: ectx: property (text), widget (QToolButton, button_next_kf)
-#: src/gui/widgets/timeline/frame_controls_widget.ui:142
-#: src/gui/widgets/timeline/frame_controls_widget.ui:145
+#: src/gui/widgets/timeline/frame_controls_widget.ui:133
+#: src/gui/widgets/timeline/frame_controls_widget.ui:136
 #, kde-format
 msgid "Go To Next Keyframe"
 msgstr "Gå till nästa nyckelbild"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_last)
 #. i18n: ectx: property (text), widget (QToolButton, button_last)
-#: src/gui/widgets/timeline/frame_controls_widget.ui:156
-#: src/gui/widgets/timeline/frame_controls_widget.ui:159
+#: src/gui/widgets/timeline/frame_controls_widget.ui:146
+#: src/gui/widgets/timeline/frame_controls_widget.ui:149
 #, kde-format
 msgid "Go To Last Frame"
 msgstr "Gå till sista bildrutan"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_record)
 #. i18n: ectx: property (text), widget (QToolButton, button_record)
-#: src/gui/widgets/timeline/frame_controls_widget.ui:170
-#: src/gui/widgets/timeline/frame_controls_widget.ui:173
+#: src/gui/widgets/timeline/frame_controls_widget.ui:159
+#: src/gui/widgets/timeline/frame_controls_widget.ui:162
 #, kde-format
 msgid "Record"
 msgstr "Spela in"
