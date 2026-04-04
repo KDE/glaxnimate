@@ -373,6 +373,50 @@ private Q_SLOTS:
         interp.exec_string("exec");
         QCOMPARE(interp.stack_values(), stack_vals(1, 5));
     }
+
+    void test_comments()
+    {
+        TestInterpreter interp;
+        interp.set_level_autodetect(true);
+        interp.exec_string(R"(%!PS-Adobe-3.0
+%%Creator: Creator Value
+%%CreationDate: Sat Apr  4 08:10:50 2026
+%%Pages: 1
+%%DocumentData: Clean7Bit
+%%LanguageLevel: 2
+%%BoundingBox: 112 199 212 279
+%%EndComments
+%%BeginProlog
+%%EndProlog
+%%BeginSetup
+%%EndSetup
+%%NotAHeader: foobar
+%%Page: 1 1
+%%BeginPageSetup
+%%PageBoundingBox: 112 199 212 279
+%%EndPageSetup
+
+%%Trailer
+%%EOF
+)");
+        using MetaMap = std::map<QString, QString>;
+        MetaMap docs = {
+            {u"Creator"_s, u"Creator Value"_s},
+            {u"CreationDate"_s, u"Sat Apr  4 08:10:50 2026"_s},
+            {u"Pages"_s, u"1"_s},
+            {u"DocumentData"_s, u"Clean7Bit"_s},
+            {u"LanguageLevel"_s, u"2"_s},
+            {u"BoundingBox"_s, u"112 199 212 279"_s},
+        };
+        QCOMPARE(interp.document_metadata(), docs);
+        MetaMap page = {
+            {u"Page"_s, u"1 1"_s},
+            {u"PageBoundingBox"_s, u"112 199 212 279"_s},
+        };
+        QCOMPARE(interp.page_metadata(), page);
+        QCOMPARE(interp.level(), Level::PS2);
+
+    }
 };
 
 QTEST_GUILESS_MAIN(TestCase)

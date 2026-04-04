@@ -24,7 +24,7 @@ struct ExecutionMemory
 class Interpreter;
 
 
-enum class Level
+enum LevelBits
 {
 // Bit manipulation stuff
     Level1 = 1,
@@ -35,7 +35,10 @@ enum class Level
     Encapsulated = 0x00,
     NotEncapsulated = 0x10,
     EncapsulatedMask = 0xf0,
+};
 
+enum class Level
+{
 // Actual levels
     PS1 = Level1|NotEncapsulated,
     PS2 = Level2|NotEncapsulated,
@@ -47,7 +50,7 @@ enum class Level
 };
 
 inline constexpr int level_number(Level level) { return (int(level) & 0xf) / 3 + 1; }
-inline constexpr bool level_is_encapsulated(Level level) { return int(level) & int(Level::Encapsulated); }
+inline constexpr bool level_is_encapsulated(Level level) { return int(level) & LevelBits::Encapsulated; }
 QString level_string(Level level);
 
 /**
@@ -88,6 +91,10 @@ public:
 
     Level level() const;
     void set_level(Level level);
+    void set_level_autodetect(bool enable);
+
+    std::map<QString, QString>& document_metadata();
+    std::map<QString, QString>& page_metadata();
 
 protected:
     virtual void on_print(const QString& text) = 0;

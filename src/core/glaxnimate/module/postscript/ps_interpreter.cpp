@@ -13,11 +13,95 @@ using namespace glaxnimate;
 class Interpreter::Private
 {
 public:
+    enum MetaSection
+    {
+        Initial,
+        Document,
+        Page,
+        Other
+    };
+
     Lexer lexer{nullptr};
     ExecutionMemory memory;
     bool halted = false;
     Level level = Level::PS3;
     QString current_command;
+    MetaSection meta_section = Initial;
+    std::map<QString, QString> document_metadata;
+    std::map<QString, QString> page_metadata;
+    bool auto_level = false;
+    int auto_level_status = 0;
+    int partial_level = 0;
+
+    void handle_meta(QStringView comment)
+    {
+        // skip %
+        comment.slice(1);
+
+        if ( comment.startsWith("Page:"_L1) )
+        {
+            meta_section = Page;
+        }
+        else if ( comment.startsWith("EndComments"_L1) )
+        {
+            if ( auto_level && auto_level_status != 2 )
+                auto_level_status = -1;
+            meta_section = Other;
+        }
+        else if ( comment.startsWith("EndPageSetup"_L1) )
+        {
+            meta_section = Other;
+        }
+
+        if ( meta_section == Other )
+            return;
+
+        auto colon = comment.indexOf(':');
+        if ( colon != -1 )
+        {
+            auto name = comment.left(colon);
+            auto value = comment.sliced(colon+1).trimmed();
+            std::map<QString, QString>* meta = meta_section == Page ? &page_metadata : &document_metadata;
+            (*meta)[name.toString()] = value.toString();
+            if ( auto_level_status == 1 && name == "LanguageLevel"_L1 )
+            {
+                bool ok = false;
+                int language_level = value.toInt(&ok);
+
+                if ( !ok )
+                {
+                    auto_level_status = -1;
+                    return;
+                }
+
+                partial_level |= (1 << language_level) - 1;
+
+                this->level = Level(partial_level);
+                auto_level_status = 2;
+            }
+        }
+    }
+
+    void handle_intro(QStringView comment)
+    {
+        if ( !auto_level )
+            return;
+
+        auto version = comment.indexOf("PS-Adobe-3.0"_L1);
+        if ( version == -1 )
+        {
+            // doesn't follow document structuring specs
+            auto_level_status = -1;
+            return;
+        }
+
+        auto_level_status = 1;
+
+        if ( comment.contains("EPSF-"_L1) )
+            partial_level = LevelBits::Encapsulated;
+        else
+            partial_level = LevelBits::NotEncapsulated;
+    }
 };
 
 Value Interpreter::procedure_value()
@@ -107,8 +191,27 @@ void glaxnimate::ps::Interpreter::execute(QIODevice *device)
                 error(u"Unkown token (maybe unterminated string?)"_s, true);
                 break;
             case Token::Comment:
-                on_comment(token.value.to_string());
+            {
+                auto comment = token.value.to_string();
+                if ( d->meta_section == Private::Initial )
+                {
+                    if ( comment.startsWith('!') )
+                    {
+                        d->handle_intro(comment);
+                        d->meta_section = Private::Document;
+                    }
+                    else
+                    {
+                        d->meta_section = Private::Other;
+                    }
+                }
+                if ( comment.startsWith('%') )
+                    d->handle_meta(comment);
+                on_comment(comment);
+                if ( d->auto_level_status < 0 )
+                    error(u"Could not determine language level"_s, false);
                 break;
+            }
         }
     }
 }
@@ -199,11 +302,24 @@ void Interpreter::set_level(Level level)
     d->level = level;
 }
 
+void Interpreter::set_level_autodetect(bool enable)
+{
+    d->auto_level = enable;
+}
+
+std::map<QString, QString> &Interpreter::document_metadata()
+{
+    return d->document_metadata;
+}
+
+std::map<QString, QString> &Interpreter::page_metadata()
+{
+    return d->page_metadata;
+}
+
 QString glaxnimate::ps::level_string(Level level)
 {
-    if ( level_is_encapsulated(level) )
-        return level_string(Level(int(level) & int(Level::LevelMask))) + u" EPSF-%1.0"_s.arg(level_number(level));
-    return u"PS-Adobe-%1.0"_s.arg(level_number(level));
+    return u"%1 %2"_s.arg(level_is_encapsulated(level) ? "EPS" : "PS").arg(level_number(level));
 }
 
 static QString to_ugly_string(const Value& val)
