@@ -78,7 +78,7 @@ public:
             return lex_name();
 
         if ( ch == '[' )
-            return {Token::Literal, Value::from<Value::Mark>()};
+            return Token::make_operator(u"["_s);
 
         return lex_operator(ch);
     }
@@ -340,7 +340,7 @@ private:
         if ( next == '<' )
         {
             get_char();
-            return {Token::Literal, Value::from<Value::Mark>()};
+            return Token::make_operator(u"<<"_s);
         }
 
         return lex_hex_string();

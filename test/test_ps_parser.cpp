@@ -105,8 +105,17 @@ QVariantList array_to_vals(const ValueArray& arr)
     COMPARE_VALUE(token_.value, typenum, expect); \
     } while(false)
 
+#define COMPARE_CUSTOM(actual, expected, act_txt, exp_txt) \
+    if (!QTest::qCompare(actual, expected, #act_txt, #exp_txt, __FILE__, __LINE__)) \
+        QTEST_FAIL_ACTION;
+
 #define COMPARE_PARSE(code, ...) \
-    QCOMPARE(TestInterpreter().exec_string(code), stack_vals(__VA_ARGS__))
+    do { \
+        TestInterpreter interp_; \
+        interp_.exec_string(code); \
+        QCOMPARE(interp_.last_error, QString()); \
+        COMPARE_CUSTOM(interp_.stack_values(), stack_vals(__VA_ARGS__), code, (__VA_ARGS__)); \
+    } while (false)
 
 class TestCase: public QObject
 {
@@ -181,7 +190,7 @@ private Q_SLOTS:
     void test_lex_double_angle()
     {
         StringLexer lexer("<< >>");
-        QCOMPARE(lexer.next_token().value.type(), Value::Mark);
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u"<<"_s);
         COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u">>"_s);
     }
 
@@ -218,12 +227,12 @@ private Q_SLOTS:
     void test_lex_mark()
     {
         StringLexer lexer("[123 /abc]<</1 2>>");
-        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::Mark, QVariant());
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u"["_s);
         COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::Integer, u"123"_s);
         COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, u"abc"_s);
         COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u"]"_s);
 
-        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::Mark, QVariant());
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u"<<"_s);
         COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, u"1"_s);
         COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::Integer, u"2"_s);
         COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u">>"_s);
