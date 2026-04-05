@@ -86,8 +86,23 @@ struct ArgumentType
 struct Command
 {
     Level level;
-    std::vector<ArgumentType> args;
+    std::vector<ArgumentType> arg_types;
     std::function<void(ValueArray, Interpreter&)> func;
+
+    bool collect_arguments(Stack& stack, std::vector<std::pair<int, int>>& errors, ValueArray& args) const;
+};
+
+class CommandSet
+{
+public:
+    void def(QByteArray key, Command cmd);
+    static const CommandSet& builtins();
+
+    auto find(const QByteArray& key) const { return commands.equal_range(key); }
+
+private:
+    static void populate_builtins(CommandSet& builtins);
+    std::unordered_multimap<QByteArray, glaxnimate::ps::Command> commands;
 };
 
 class Interpreter
@@ -106,7 +121,6 @@ public:
     void error(const QString& error, bool critical);
 
     Value pop(Value::Type type);
-    static Command* command_from_name(const QByteArray& name);
 
     Level level() const;
     void set_level(Level level);

@@ -276,40 +276,74 @@ void glaxnimate::ps::Interpreter::error(const QString &error, bool critical)
     on_error(error);
 }
 
+bool Command::collect_arguments(Stack &stack, std::vector<std::pair<int, int>> &errors, ValueArray& args) const
+{
+    int count = arg_types.size();
+    errors.clear();
+    for ( int i = 0; i < count; i++ )
+    {
+        int stack_ind = count - 1 - i;
+        if ( !arg_types[i].matches(stack[stack_ind].type()) )
+        {
+            errors.push_back({i, stack_ind});
+        }
+    }
+
+    if ( !errors.empty() )
+        return false;
+
+    args.resize(count);
+    for ( int i = count - 1; i >= 0; i-- )
+    {
+        args[i] = stack.pop();
+    }
+    return true;
+}
+
 void glaxnimate::ps::Interpreter::execute_command(const QByteArray &name)
 {
-    auto cmd = command_from_name(name);
-    if ( !cmd )
+    auto cmdrange = CommandSet::builtins().find(name);
+
+    if ( cmdrange.first == cmdrange.second )
     {
         error(u"Unknown command '%1'"_s.arg(name), false);
+        return;
     }
-    else if ( !level_is_compatible(d->level, cmd->level) )
+
+
+    ValueArray args;
+    const Command* best = nullptr;
+    std::vector<std::pair<int, int>> errors;
+
+    for ( auto it = cmdrange.first; it != cmdrange.second; ++it )
     {
-        error(u"Command '%1' requires %2"_s.arg(name).arg(level_string(cmd->level)), true);
-    }
-    else
-    {
-        if ( int(cmd->args.size()) > d->memory.operand_stack.size() )
+        const Command* cmd = &it->second;
+        if ( int(cmd->arg_types.size()) > d->memory.operand_stack.size() )
         {
-            error(u"Command '%1' requires %2 arguments on the stack"_s.arg(name, cmd->args.size()), false);
+            error(u"Command '%1' requires %2 arguments on the stack"_s.arg(name, cmd->arg_types.size()), false);
         }
 
-        ValueArray args;
-        args.resize(cmd->args.size());
-        for ( int i = cmd->args.size() - 1; i >= 0; i-- )
+        std::vector<std::pair<int, int>> cmderr;
+        if ( cmd->collect_arguments(stack(), cmderr, args) )
         {
-            args[i] = d->memory.operand_stack.pop();
-            const auto& expected_type = cmd->args[i];
-
-            if ( !expected_type.matches(args[i].type()) )
-            {
-                error(u"Argument %4 command '%2' has an invalid value of %1 (Expected %3)"_s
-                    .arg(args[i].to_pretty_string(), name, expected_type.to_string(), QString::number(i)), false);
-                return;
-            }
+            cmd->func(std::move(args), *this);
+            return;
         }
+        if ( !best || cmderr.size() < errors.size() )
+        {
+            errors = std::move(cmderr);
+            best = cmd;
+        }
+    }
 
-        cmd->func(std::move(args), *this);
+    for ( auto p : errors )
+    {
+        error(u"Argument %1 of command '%2' has an invalid value of %3 (Expected %4)"_s.arg(
+            QString::number(p.first),
+            name,
+            stack()[p.second].to_pretty_string(),
+            best->arg_types[p.first].to_string()
+        ), true);
     }
 }
 
@@ -588,21 +622,36 @@ Trapping
     settrapzone
 */
 
-using Arg = ArgumentType;
-static std::unordered_map<QByteArray, glaxnimate::ps::Command> builtins = {
+void CommandSet::def(QByteArray key, Command cmd)
+{
+    commands.emplace(std::move(key), std::move(cmd));
+}
+
+const CommandSet &CommandSet::builtins()
+{
+    static CommandSet builtins;
+    if ( builtins.commands.empty() )
+        populate_builtins(builtins);
+    return builtins;
+}
+
+void CommandSet::populate_builtins(CommandSet& builtins)
+{
+    using Arg = ArgumentType;
+
 // Stack ops
-    {"pop", {Level::EPS1, {Arg::any()}, [](ValueArray, Interpreter&){}}},
-    {"exch", {Level::EPS1, {Arg::any(), Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+    builtins.def("pop", {Level::EPS1, {Arg::any()}, [](ValueArray, Interpreter&){}});
+    builtins.def("exch", {Level::EPS1, {Arg::any(), Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.stack().push(std::move(args[1]));
         interpreter.stack().push(std::move(args[0]));
-    }}},
-    {"dup", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+    }});
+    builtins.def("dup", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         if ( interpreter.stack().empty() )
             interpreter.error(u"Empty stack"_s, false);
         else
             interpreter.stack().push(interpreter.stack().top());
-    }}},
-    {"copy", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("copy", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         int count = args[0].cast<int>();
         if ( count ==  0 )
             return;
@@ -622,8 +671,8 @@ static std::unordered_map<QByteArray, glaxnimate::ps::Command> builtins = {
             copies.emplace_back(*it);
         for ( auto& v : copies )
             interpreter.stack().push(std::move(v));
-    }}},
-    {"index", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("index", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         int index = args[0].cast<int>();
         if ( index < 0 )
         {
@@ -636,8 +685,8 @@ static std::unordered_map<QByteArray, glaxnimate::ps::Command> builtins = {
             return;
         }
         interpreter.stack().push(interpreter.stack()[index]);
-    }}},
-    {"roll", {Level::EPS1, {Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("roll", {Level::EPS1, {Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         int count = args[0].cast<int>();
         int roll = args[1].cast<int>();
         if ( count < 0 )
@@ -660,17 +709,17 @@ static std::unordered_map<QByteArray, glaxnimate::ps::Command> builtins = {
         auto end = interpreter.stack().rend();
         auto middle = roll >= 0 ? end - roll : begin - roll;
         std::rotate(begin, middle, end);
-    }}},
-    {"clear", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+    }});
+    builtins.def("clear", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().clear();
-    }}},
-    {"mark", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+    }});
+    builtins.def("mark", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(Value::from<Value::Mark>());
-    }}},
-    {"<<", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
+    }});
+    builtins.def("<<", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(Value::from<Value::Mark>());
-    }}},
-    {"cleartomark", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+    }});
+    builtins.def("cleartomark", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         while ( !interpreter.stack().empty() )
         {
             if ( interpreter.stack().pop().type() == Value::Mark )
@@ -678,8 +727,8 @@ static std::unordered_map<QByteArray, glaxnimate::ps::Command> builtins = {
         }
 
         interpreter.error(u"No mark found"_s, false);
-    }}},
-    {"counttomark", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+    }});
+    builtins.def("counttomark", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         int count = 0;
         for ( const auto& v : interpreter.stack() )
         {
@@ -692,15 +741,15 @@ static std::unordered_map<QByteArray, glaxnimate::ps::Command> builtins = {
         }
         interpreter.error(u"No mark found"_s, false);
         interpreter.stack().push(count);
-    }}},
+    }});
 // Math functions
-    {"add", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    builtins.def("add", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer && args[1].type() == args[0].type() )
             interpreter.stack().push(args[0].cast<int>() + args[1].cast<int>());
         else
             interpreter.stack().push(args[0].cast<float>() + args[1].cast<float>());
-    }}},
-    {"div", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("div", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         auto num = args[0].cast<float>();
         auto den = args[1].cast<float>();
         if ( den == 0 )
@@ -710,8 +759,8 @@ static std::unordered_map<QByteArray, glaxnimate::ps::Command> builtins = {
         }
 
         interpreter.stack().push(num / den);
-    }}},
-    {"idiv", {Level::EPS1, {Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("idiv", {Level::EPS1, {Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         auto num = args[0].cast<int>();
         auto den = args[1].cast<int>();
         if ( den == 0 )
@@ -721,8 +770,8 @@ static std::unordered_map<QByteArray, glaxnimate::ps::Command> builtins = {
         }
 
         interpreter.stack().push(num / den);
-    }}},
-    {"mod", {Level::EPS1, {Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("mod", {Level::EPS1, {Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         auto num = args[0].cast<int>();
         auto den = args[1].cast<int>();
         if ( den == 0 )
@@ -732,50 +781,50 @@ static std::unordered_map<QByteArray, glaxnimate::ps::Command> builtins = {
         }
 
         interpreter.stack().push(num % den);
-    }}},
-    {"mul", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("mul", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer && args[1].type() == args[0].type() )
             interpreter.stack().push(args[0].cast<int>() * args[1].cast<int>());
         else
             interpreter.stack().push(args[0].cast<float>() * args[1].cast<float>());
-    }}},
-    {"sub", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("sub", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer && args[1].type() == args[0].type() )
             interpreter.stack().push(args[0].cast<int>() - args[1].cast<int>());
         else
             interpreter.stack().push(args[0].cast<float>() - args[1].cast<float>());
-    }}},
-    {"abs", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("abs", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer )
             interpreter.stack().push(math::abs(args[0].cast<int>()));
         else
             interpreter.stack().push(math::abs(args[0].cast<float>()));
-    }}},
-    {"neg", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("neg", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer )
             interpreter.stack().push(-args[0].cast<int>());
         else
             interpreter.stack().push(-args[0].cast<float>());
-    }}},
-    {"ceiling", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("ceiling", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer )
             interpreter.stack().push(args[0]);
         else
             interpreter.stack().push(qCeil(args[0].cast<float>()));
-    }}},
-    {"round", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("round", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer )
             interpreter.stack().push(args[0]);
         else
             interpreter.stack().push(qRound(args[0].cast<float>()));
-    }}},
-    {"floor", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("floor", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer )
             interpreter.stack().push(args[0]);
         else
             interpreter.stack().push(qFloor(args[0].cast<float>()));
-    }}},
-    {"truncate", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("truncate", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer )
         {
             interpreter.stack().push(args[0]);
@@ -785,69 +834,69 @@ static std::unordered_map<QByteArray, glaxnimate::ps::Command> builtins = {
             auto val = args[0].cast<float>();
             interpreter.stack().push(val < 0 ? qCeil(val) : qFloor(val));
         }
-    }}},
-    {"sqrt", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("sqrt", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.stack().push(math::sqrt(args[0].cast<float>()));
-    }}},
-    {"atan", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("atan", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         auto num = args[0].cast<float>();
         auto den = args[1].cast<float>();
         interpreter.stack().push(float(math::rad2deg(math::atan2(num, den))));
-    }}},
-    {"cos", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("cos", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.stack().push(float(math::cos(math::deg2rad(args[0].cast<float>()))));
-    }}},
-    {"sin", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("sin", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.stack().push(float(math::sin(math::deg2rad(args[0].cast<float>()))));
-    }}},
-    {"exp", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("exp", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         auto base = args[0].cast<float>();
         auto exp = args[1].cast<float>();
         interpreter.stack().push(std::pow(base, exp));
-    }}},
-    {"ln", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("ln", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         auto val = args[0].cast<float>();
         interpreter.stack().push(std::log(val));
-    }}},
-    {"log", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("log", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         auto val = args[0].cast<float>();
         interpreter.stack().push(std::log10(val));
-    }}},
-    {"rand", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+    }});
+    builtins.def("rand", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(int(interpreter.memory().prng()));
-    }}},
-    {"srand", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("srand", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         interpreter.memory().prng.seed(args[0].cast<int>());
-    }}},
-    {"rrand", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+    }});
+    builtins.def("rrand", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         auto seed = interpreter.memory().prng();
         interpreter.memory().prng.seed(seed);
         interpreter.stack().push(int(seed));
-    }}},
+    }});
 // Interactive
-    {"=", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+    builtins.def("=", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.print(to_ugly_string(args[0])+ '\n');
-    }}},
-    {"==", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("==", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.print(args[0].to_pretty_string() + '\n');
-    }}},
-    {"stack", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+    }});
+    builtins.def("stack", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         for ( const auto& v : interpreter.stack() )
             interpreter.print(to_ugly_string(v) + '\n');
-    }}},
-    {"pstack", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+    }});
+    builtins.def("pstack", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         for ( const auto& v : interpreter.stack() )
             interpreter.print(v.to_pretty_string() + '\n');
-    }}},
+    }});
 // Control
-    {"exec", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+    builtins.def("exec", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.execute(args[0]);
-    }}},
+    }});
 // Array
-    {"[", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+    builtins.def("[", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(Value::from<Value::Mark>());
-    }}},
-    {"]", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter) {
+    }});
+    builtins.def("]", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter) {
         bool mark_found = false;
         ValueArray arr;
         while ( !interpreter.stack().empty() )
@@ -866,8 +915,8 @@ static std::unordered_map<QByteArray, glaxnimate::ps::Command> builtins = {
 
         std::reverse(arr.begin(), arr.end());
         interpreter.stack().push(Value::from<Value::Array>(std::move(arr)));
-    }}},
-    {"array", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("array", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         int count = args[0].cast<int>();
         if ( count < 0 )
         {
@@ -877,36 +926,22 @@ static std::unordered_map<QByteArray, glaxnimate::ps::Command> builtins = {
         ValueArray arr;
         arr.resize(count);
         interpreter.stack().push(Value::from<Value::Array>(std::move(arr)));
-    }}},
-    {"length", {Level::EPS1, {Value::Array}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("length", {Level::EPS1, {Value::Array}, [](ValueArray args, Interpreter& interpreter){
         auto arr = args[0].cast<ValueArray>();
         interpreter.stack().push(arr.size());
-    }}},
-    {"get", {Level::EPS1, {Arg{Value::Array, Value::String}, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
-        if ( args[0].type() == Value::Array )
+    }});
+    builtins.def("get", {Level::EPS1, {Value::Array, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        auto arr = args[0].cast<ValueArray>();
+        int index = args[1].cast<int>();
+        if ( index < 0 || index >= arr.size() )
         {
-            auto arr = args[0].cast<ValueArray>();
-            int index = args[1].cast<int>();
-            if ( index < 0 || index >= arr.size() )
-            {
-                interpreter.error(u"Index out of range"_s, false);
-                return;
-            }
-            interpreter.stack().push(std::move(arr[index]));
+            interpreter.error(u"Index out of range"_s, false);
+            return;
         }
-        else if ( args[0].type() == Value::String )
-        {
-            auto arr = args[0].cast<String>();
-            int index = args[1].cast<int>();
-            if ( index < 0 || index >= arr.size() )
-            {
-                interpreter.error(u"Index out of range"_s, false);
-                return;
-            }
-            interpreter.stack().push(int(arr[index]));
-        }
-    }}},
-    {"put", {Level::EPS1, {Arg{Value::Array, Value::String, Value::Dict}, Arg::any(), Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(std::move(arr[index]));
+    }});
+    builtins.def("put", {Level::EPS1, {Value::Array, Value::Integer, Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Array )
         {
             if ( args[1].type() != Value::Integer )
@@ -944,97 +979,48 @@ static std::unordered_map<QByteArray, glaxnimate::ps::Command> builtins = {
             interpreter.error(u"Invalid argument"_s, false);
             return;
         }
-    }}},
-    {"getinterval", {Level::EPS1, {Arg{Value::Array, Value::String}, Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+    }});
+    builtins.def("getinterval", {Level::EPS1, {Value::Array, Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        auto arr = args[0].cast<ValueArray>();
         int index = args[1].cast<int>();
         int count = args[2].cast<int>();
-
-        if ( args[0].type() == glaxnimate::ps::Value::Array )
+        if ( index < 0 || index >= arr.size() )
         {
-            auto arr = args[0].cast<ValueArray>();
-            if ( index < 0 || index >= arr.size() )
-            {
-                interpreter.error(u"Index out of range"_s, false);
-                return;
-            }
-            if ( count < 0 || index + count >= arr.size() )
-            {
-                interpreter.error(u"Index out of range"_s, false);
-                return;
-            }
-
-            ValueArray result;
-            result.reserve(count);
-            for ( int i = 0; i < count; i++ )
-                result.emplace_back(std::move(arr[i + index]));
-            interpreter.stack().push(std::move(result));
+            interpreter.error(u"Index out of range"_s, false);
+            return;
         }
-        else if ( args[0].type() == glaxnimate::ps::Value::String )
+        if ( count < 0 || index + count >= arr.size() )
         {
-            auto arr = args[0].cast<String>();
-            if ( index < 0 || index >= arr.size() )
-            {
-                interpreter.error(u"Index out of range"_s, false);
-                return;
-            }
-            if ( count < 0 || index + count >= arr.size() )
-            {
-                interpreter.error(u"Index out of range"_s, false);
-                return;
-            }
-
-            interpreter.stack().push(arr.bytes().sliced(index, count));
-        }
-
-    }}},
-    {"putinterval", {Level::EPS1, {Arg{Value::Array, Value::String}, Value::Integer, Arg{Value::Array, Value::String}}, [](ValueArray args, Interpreter& interpreter){
-        int index = args[1].cast<int>();
-        if ( args[0].type() != args[2].type() )
-        {
-            interpreter.error(u"Invalid types"_s, false);
+            interpreter.error(u"Index out of range"_s, false);
             return;
         }
 
-        if ( args[0].type() == glaxnimate::ps::Value::Array )
+        ValueArray result;
+        result.reserve(count);
+        for ( int i = 0; i < count; i++ )
+            result.emplace_back(std::move(arr[i + index]));
+        interpreter.stack().push(std::move(result));
+    }});
+    builtins.def("putinterval", {Level::EPS1, {Value::Array, Value::Integer, Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        int index = args[1].cast<int>();
+        auto arr = args[0].cast<ValueArray>();
+        auto interval = args[2].cast<ValueArray>();
+        if ( index < 0 || index >= arr.size() )
         {
-            auto arr = args[0].cast<ValueArray>();
-            auto interval = args[2].cast<ValueArray>();
-            if ( index < 0 || index >= arr.size() )
-            {
-                interpreter.error(u"Index out of range"_s, false);
-                return;
-            }
-            if ( index + interval.size() >= arr.size() )
-            {
-                interpreter.error(u"Index out of range"_s, false);
-                return;
-            }
-
-            for ( int i = 0; i < interval.size(); i++ )
-                arr[index + i] = interval[i];
+            interpreter.error(u"Index out of range"_s, false);
+            return;
         }
-        else if ( args[0].type() == glaxnimate::ps::Value::String )
+        if ( index + interval.size() >= arr.size() )
         {
-            auto arr = args[0].cast<String>();
-            auto interval = args[2].cast<String>();
-            if ( index < 0 || index >= arr.size() )
-            {
-                interpreter.error(u"Index out of range"_s, false);
-                return;
-            }
-            if ( index + interval.size() >= arr.size() )
-            {
-                interpreter.error(u"Index out of range"_s, false);
-                return;
-            }
-
-            for ( int i = 0; i < interval.size(); i++ )
-                arr[index + i] = interval[i];
+            interpreter.error(u"Index out of range"_s, false);
+            return;
         }
 
-    }}},
+        for ( int i = 0; i < interval.size(); i++ )
+            arr[index + i] = interval[i];
+    }});
 // String
-    {"string", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+    builtins.def("string", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         int count = args[0].cast<int>();
         if ( count < 0 )
         {
@@ -1042,15 +1028,89 @@ static std::unordered_map<QByteArray, glaxnimate::ps::Command> builtins = {
             return;
         }
         interpreter.stack().push(String(QByteArray(count, 0)));
-    }}},
+    }});
+    builtins.def("get", {Level::EPS1, {Value::String, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        auto arr = args[0].cast<String>();
+        int index = args[1].cast<int>();
+        if ( index < 0 || index >= arr.size() )
+        {
+            interpreter.error(u"Index out of range"_s, false);
+            return;
+        }
+        interpreter.stack().push(int(arr[index]));
+    }});
+    builtins.def("put", {Level::EPS1, {Value::String, Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        if ( args[0].type() == Value::Array )
+        {
+            if ( args[1].type() != Value::Integer )
+            {
+                interpreter.error(u"Invalid argument"_s, false);
+                return;
+            }
+            auto arr = args[0].cast<ValueArray>();
+            int index = args[1].cast<int>();
+            if ( index < 0 || index >= arr.size() )
+            {
+                interpreter.error(u"Index out of range"_s, false);
+                return;
+            }
+            arr[index] = std::move(args[2]);
+        }
+        else if ( args[0].type() == Value::String )
+        {
+            if ( args[1].type() != Value::Integer || args[2].type() != Value::Integer )
+            {
+                interpreter.error(u"Invalid argument"_s, false);
+                return;
+            }
+            auto arr = args[0].cast<String>();
+            int index = args[1].cast<int>();
+            if ( index < 0 || index >= arr.size() )
+            {
+                interpreter.error(u"Index out of range"_s, false);
+                return;
+            }
+            arr[index] = args[2].cast<int>();
+        }
+        else
+        {
+            interpreter.error(u"Invalid argument"_s, false);
+            return;
+        }
+    }});
+    builtins.def("getinterval", {Level::EPS1, {Value::String, Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        int index = args[1].cast<int>();
+        int count = args[2].cast<int>();
+        auto arr = args[0].cast<String>();
+        if ( index < 0 || index >= arr.size() )
+        {
+            interpreter.error(u"Index out of range"_s, false);
+            return;
+        }
+        if ( count < 0 || index + count >= arr.size() )
+        {
+            interpreter.error(u"Index out of range"_s, false);
+            return;
+        }
 
-};
+        interpreter.stack().push(arr.bytes().sliced(index, count));
+    }});
+    builtins.def("putinterval", {Level::EPS1, {Value::String, Value::Integer, Value::String}, [](ValueArray args, Interpreter& interpreter){
+        auto arr = args[0].cast<String>();
+        int index = args[1].cast<int>();
+        auto interval = args[2].cast<String>();
+        if ( index < 0 || index >= arr.size() )
+        {
+            interpreter.error(u"Index out of range"_s, false);
+            return;
+        }
+        if ( index + interval.size() >= arr.size() )
+        {
+            interpreter.error(u"Index out of range"_s, false);
+            return;
+        }
 
-
-Command* Interpreter::command_from_name(const QByteArray &name)
-{
-    auto it = builtins.find(name);
-    if ( it == builtins.end() )
-        return nullptr;
-    return &it->second;
+        for ( int i = 0; i < interval.size(); i++ )
+            arr[index + i] = interval[i];
+    }});
 }
