@@ -13,15 +13,67 @@
 
 namespace glaxnimate::ps {
 
-
-using namespace Qt::StringLiterals;
-
-/**
- * @brief formats a string into a postscript string
- */
-QString format_string(const QString& value);
-
 class ValueArray;
+
+
+class String
+{
+public:
+    using container = QByteArray;
+    using value_type = container::value_type;
+    using iterator = container::iterator;
+    using const_iterator = container::const_iterator;
+    using reference = container::reference;
+    using const_reference = container::const_reference;
+    using size_type = int;
+
+    String(const char* data)
+        : data(std::make_shared<container>(data))
+    {}
+    String(const QByteArray& data)
+        : data(std::make_shared<container>(data))
+    {}
+
+    String() : data(std::make_shared<container>()) {}
+    String(const String&) = default;
+    String(String&&) = default;
+    String& operator=(const String&) = default;
+    String& operator=(String&&) = default;
+
+    size_type size() const { return data->size(); }
+    bool empty() const { return data->isEmpty(); }
+
+    reference operator[](size_type index) { return (*data)[index]; }
+    const_reference operator[](size_type index) const { return (*data)[index]; }
+
+    iterator begin() { return data->begin(); }
+    iterator end() { return data->end(); }
+    iterator begin() const { return data->begin(); }
+    iterator end() const { return data->end(); }
+
+    QString to_string() const;
+    /**
+     * @brief formats a string into a postscript string
+     */
+    QByteArray to_string_literal() const;
+    friend QDebug operator<<(QDebug dbg, const String& arr) { return dbg << *arr.data; }
+
+
+    bool operator==(const String& oth) const
+    {
+        return *data == *oth.data;
+    }
+
+    bool operator!=(const String& oth) const
+    {
+        return !(*this == oth);
+    }
+
+    const QByteArray& bytes() const { return *data; }
+
+private:
+    std::shared_ptr<container> data;
+};
 
 class Value
 {
@@ -57,13 +109,14 @@ public:
 
     Value() : Value(Null, {}) {}
 
-    Value(const QByteArray& str) : Value(String, str) {}
-    Value(const QString& str) : Value(String, str) {}
     Value(int num) : Value(Integer, num) {}
     Value(float num) : Value(Real, num) {}
     Value(double num) : Value(Real, num) {}
     Value(bool num) : Value(Boolean, num) {}
     Value(ValueArray v);
+    Value(const char* str);
+    Value(class String v);
+    Value(const QByteArray &v);
     Value(const Value&) = default;
     Value(Value&&) = default;
     Value& operator=(const Value&) = default;
@@ -82,6 +135,9 @@ public:
 
     QString to_string() const
     {
+        if ( type_ == String )
+            return cast<ps::String>().to_string();
+
         return value_.toString();
     }
 
@@ -233,6 +289,7 @@ using ValueType = Value;
 } // namespace glaxnimate::ps
 Q_DECLARE_METATYPE(glaxnimate::ps::Value)
 Q_DECLARE_METATYPE(glaxnimate::ps::ValueArray)
+Q_DECLARE_METATYPE(glaxnimate::ps::String)
 Q_DECLARE_METATYPE(glaxnimate::ps::ValueDict)
 
 namespace glaxnimate::ps {
@@ -255,7 +312,7 @@ VALUE_TYPE_BIN(Value::Integer, int)
 VALUE_TYPE_BIN(Value::Real, float)
 VALUE_TYPE_BIN(Value::Boolean, bool)
 VALUE_TYPE_FOR(Value::Array, ValueArray)
-VALUE_TYPE_BIN(Value::String, QString)
+VALUE_TYPE_BIN(Value::String, ps::String)
 VALUE_TYPE_FOR(Value::Dict, ValueDict)
 VALUE_TYPE_NUL(Value::Mark)
 VALUE_TYPE_NUL(Value::Null)

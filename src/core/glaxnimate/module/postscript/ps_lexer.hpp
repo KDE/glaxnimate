@@ -25,7 +25,7 @@ struct Token
         Unrecoverable
     };
 
-    static Token make_operator(QString val)
+    static Token make_operator(String val)
     {
         Token op{Operator, val};
         op.value.set_attribute(Value::Execute, true);
@@ -66,7 +66,7 @@ public:
             return lex_number(ch);
 
         if ( ch == '.' )
-            return lex_float(u"."_s, true);
+            return lex_float(".", true);
 
         if ( ch == '(' )
             return lex_string();
@@ -78,7 +78,7 @@ public:
             return lex_name();
 
         if ( ch == '[' )
-            return Token::make_operator(u"["_s);
+            return Token::make_operator("[");
 
         return lex_operator(ch);
     }
@@ -86,7 +86,7 @@ public:
 private:
     Token lex_comment()
     {
-        QString comment;
+        QByteArray comment;
 
         while ( true )
         {
@@ -98,7 +98,7 @@ private:
         return {Token::Comment, comment};
     }
 
-    Token lex_unknown(QString head, char next)
+    Token lex_unknown(QByteArray head, char next)
     {
         head += next;
         while ( true )
@@ -117,10 +117,10 @@ private:
         if ( next == '>' && peek() == next )
         {
             get_char();
-            return Token::make_operator(u">>"_s);
+            return Token::make_operator(">>");
         }
 
-        QString op = QChar(next);
+        QByteArray op(1, next);
         if ( !is_delimiter(next) )
         {
             while ( true )
@@ -137,7 +137,7 @@ private:
 
     Token lex_number(char start)
     {
-        QString numstr;
+        QByteArray numstr;
         numstr += start;
         while ( true )
         {
@@ -165,9 +165,9 @@ private:
         return {Token::Literal, Value(numstr.toInt())};
     }
 
-    Token lex_num_radix(const QString& prefix, int base)
+    Token lex_num_radix(const QByteArray& prefix, int base)
     {
-        QString numstr;
+        QByteArray numstr;
         while ( true )
         {
             int ch = get_char();
@@ -191,7 +191,7 @@ private:
         return {Token::Literal, numstr.toInt(nullptr, base)};
     }
 
-    Token lex_float(QString numstr, bool before_exp)
+    Token lex_float(QByteArray numstr, bool before_exp)
     {
         bool has_exp = true;
         if ( before_exp )
@@ -247,7 +247,7 @@ private:
 
     Token lex_string()
     {
-        QString str;
+        QByteArray str;
         int paren_count = 0;
 
         while ( true )
@@ -280,27 +280,27 @@ private:
         return {Token::Literal, str};
     }
 
-    QString lex_escape()
+    QByteArray lex_escape()
     {
         int ch = get_char();
         switch ( ch )
         {
             case -1: return {};
-            case 'n': return u"\n"_s;
-            case 'r': return u"\r"_s;
-            case 'b': return u"\b"_s;
-            case 't': return u"\t"_s;
-            case 'f': return u"\f"_s;
-            case '\\': return u"\\"_s;
-            case '(': return u"("_s;
-            case ')': return u")"_s;
+            case 'n': return "\n";
+            case 'r': return "\r";
+            case 'b': return "\b";
+            case 't': return "\t";
+            case 'f': return "\f";
+            case '\\': return "\\";
+            case '(': return "(";
+            case ')': return ")";
             case '\n': return {};
         }
 
         // \ddd
         if ( std::isdigit(ch) && ch < '8' )
         {
-            QString num = QChar(ch);
+            QByteArray num(1, ch);
             for ( int i = 1; i < 3; i++ )
             {
                 ch = get_char();
@@ -313,7 +313,7 @@ private:
                 }
                 num += char(ch);
             }
-            return QChar(num.toInt(nullptr, 8));
+            return QByteArray(1, num.toInt(nullptr, 8));
         }
 
         // ignore \r and \r\n
@@ -325,7 +325,7 @@ private:
             return {};
         }
 
-        return QChar(ch);
+        return QByteArray(1, ch);
     }
 
     Token lex_lt()
@@ -340,7 +340,7 @@ private:
         if ( next == '<' )
         {
             get_char();
-            return Token::make_operator(u"<<"_s);
+            return Token::make_operator("<<");
         }
 
         return lex_hex_string();
@@ -375,7 +375,7 @@ private:
 
     Token lex_name()
     {
-        QString name;
+        QByteArray name;
         while ( true )
         {
             int ch = get_char();

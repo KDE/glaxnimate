@@ -81,7 +81,6 @@ protected:
 };
 
 template<class T> Value stack_val(T arg) { return Value(arg); }
-Value stack_val(const char* arg) { return QString::fromLatin1(arg); }
 
 template<class... T>
 std::vector<Value> stack_vals(T... args)
@@ -100,7 +99,7 @@ QVariantList array_to_vals(const ValueArray& arr)
 
 #define COMPARE_VALUE(val, typenum, expect) \
     QCOMPARE(val.type(), typenum); \
-    QCOMPARE(val.value(), QVariant::fromValue(expect))
+    QCOMPARE(val, Value(expect))
 
 #define COMPARE_TOKEN(val, toktype, typenum, expect) \
     do { auto token_ = val; \
@@ -145,7 +144,7 @@ private Q_SLOTS:
     void test_lex_comment()
     {
         auto token = lex("% foo bar\nbaz");
-        COMPARE_TOKEN(token, Token::Comment, Value::String, QVariant(u" foo bar"_s));
+        COMPARE_TOKEN(token, Token::Comment, Value::String, " foo bar");
     }
 
     void test_lex_int()
@@ -156,8 +155,8 @@ private Q_SLOTS:
         COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::Integer, 43445);
         COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::Integer, 0);
         COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::Integer, 17);
-        COMPARE_TOKEN(lex("10z"), Token::Operator, Value::String, u"10z"_s);
-        COMPARE_TOKEN(lex("++10"), Token::Operator, Value::String, u"++10"_s);
+        COMPARE_TOKEN(lex("10z"), Token::Operator, Value::String, "10z");
+        COMPARE_TOKEN(lex("++10"), Token::Operator, Value::String, "++10");
     }
 
     void test_lex_radix()
@@ -168,8 +167,8 @@ private Q_SLOTS:
         COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::Integer, 0b1000);
         COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::Integer, 774105);
 
-        COMPARE_TOKEN(lex("2#102"), Token::Operator, Value::String, u"2#102"_s);
-        COMPARE_TOKEN(lex("2#10~"), Token::Operator, Value::String, u"2#10~"_s);
+        COMPARE_TOKEN(lex("2#102"), Token::Operator, Value::String, "2#102");
+        COMPARE_TOKEN(lex("2#10~"), Token::Operator, Value::String, "2#10~");
     }
 
     void test_lex_float()
@@ -179,19 +178,19 @@ private Q_SLOTS:
         COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::Real, 34.5);
         COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::Real, -23.6e4);
 
-        COMPARE_TOKEN(lex("0.2.3"), Token::Operator, Value::String, u"0.2.3"_s);
-        COMPARE_TOKEN(lex("0.45f"), Token::Operator, Value::String, u"0.45f"_s);
-        COMPARE_TOKEN(lex("e6"), Token::Operator, Value::String, u"e6"_s);
+        COMPARE_TOKEN(lex("0.2.3"), Token::Operator, Value::String, "0.2.3");
+        COMPARE_TOKEN(lex("0.45f"), Token::Operator, Value::String, "0.45f");
+        COMPARE_TOKEN(lex("e6"), Token::Operator, Value::String, "e6");
     }
 
     void test_lex_string()
     {
         StringLexer lexer("(Hello World) (Hello (World)) (Hello\nWorld) (Hello\\nWorld) (Hello\\\nWorld)");
-        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, u"Hello World"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, u"Hello (World)"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, u"Hello\nWorld"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, u"Hello\nWorld"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, u"HelloWorld"_s);
+        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "Hello World");
+        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "Hello (World)");
+        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "Hello\nWorld");
+        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "Hello\nWorld");
+        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "HelloWorld");
     }
 
     void test_lex_hex_string()
@@ -205,8 +204,8 @@ private Q_SLOTS:
     void test_lex_double_angle()
     {
         StringLexer lexer("<< >>");
-        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u"<<"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u">>"_s);
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, "<<");
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, ">>");
     }
 
     void test_lex_base85()
@@ -221,41 +220,41 @@ private Q_SLOTS:
     void test_lex_operators()
     {
         StringLexer lexer("abc Offset $$ 23A 13-456 a.b $MyDict @pattern");
-        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u"abc"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u"Offset"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u"$$"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u"23A"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u"13-456"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u"a.b"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u"$MyDict"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u"@pattern"_s);
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, "abc");
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, "Offset");
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, "$$");
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, "23A");
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, "13-456");
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, "a.b");
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, "$MyDict");
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, "@pattern");
     }
 
     void test_lex_name()
     {
         StringLexer lexer("/foo /bar/baz");
-        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, u"foo"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, u"bar"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, u"baz"_s);
+        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "foo");
+        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "bar");
+        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "baz");
     }
 
     void test_lex_mark()
     {
         StringLexer lexer("[123 /abc]<</1 2>>");
-        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u"["_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::Integer, u"123"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, u"abc"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u"]"_s);
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, "[");
+        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::Integer, 123);
+        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "abc");
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, "]");
 
-        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u"<<"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, u"1"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::Integer, u"2"_s);
-        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, u">>"_s);
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, "<<");
+        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "1");
+        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::Integer, 2);
+        COMPARE_TOKEN(lexer.next_token(), Token::Operator, Value::String, ">>");
     }
 
     void test_parse_vals()
     {
-        COMPARE_PARSE("1 /123 2", 1, u"123"_s, 2);
+        COMPARE_PARSE("1 /123 2", 1, "123", 2);
     }
 
     void test_parse_stack_ops()
@@ -313,17 +312,17 @@ private Q_SLOTS:
     void test_value_to_string()
     {
         QCOMPARE(Value(1).to_string(), "1");
-        QCOMPARE(Value(u"abc"_s).to_string(), "abc");
+        QCOMPARE(Value("abc").to_string(), "abc");
         QCOMPARE(Value(2.5f).to_string(), "2.5");
         QCOMPARE(Value("abc"_ba).to_string(), "abc");
         QCOMPARE(Value::from<Value::Mark>().to_string(), "");
         QCOMPARE(Value::from<Value::Null>().to_string(), "");
-        QCOMPARE(Value::from<Value::Array>({1, 2, u"abc"_s}).to_string(), "");
+        QCOMPARE(Value::from<Value::Array>({1, 2, "abc"}).to_string(), "");
 
         QCOMPARE(Value(2.5f).to_pretty_string(), "2.5");
         QCOMPARE(Value::from<Value::Mark>().to_pretty_string(), "mark");
         QCOMPARE(Value::from<Value::Null>().to_pretty_string(), "null");
-        QCOMPARE(Value::from<Value::Array>({1, 2, u"abc"_s}).to_pretty_string(), "[1 2 (abc)]");
+        QCOMPARE(Value::from<Value::Array>({1, 2, "abc"}).to_pretty_string(), "[1 2 (abc)]");
     }
 
     void test_parse_interactive()
@@ -384,7 +383,7 @@ private Q_SLOTS:
         QCOMPARE(interp.stack()[1].value(), 2);
         QCOMPARE(interp.stack()[0].type(), Value::Array);
         QCOMPARE(interp.stack()[0].attributes(), Value::Execute);
-        QCOMPARE(interp.stack()[0].cast<ValueArray>(), ValueArray({3, u"add"_s}));
+        QCOMPARE(interp.stack()[0].cast<ValueArray>(), ValueArray({3, "add"}));
         interp.exec_string("exec");
         QCOMPARE(interp.stack_values(), stack_vals(1, 5));
     }
@@ -439,6 +438,16 @@ private Q_SLOTS:
         QCOMPARE(Value::type_name(Value::Array), "arraytype");
     }
 
+    void test_string()
+    {
+        COMPARE_PARSE("(Rawr)", "Rawr");
+        COMPARE_PARSE("3 string", "\0\0\0"_ba);
+        COMPARE_PARSE("(Hello) 1 get", 101);
+        COMPARE_PARSE("(Hello) dup 1 97 put", "Hallo");
+        COMPARE_PARSE("(Hello) 1 3 getinterval", "ell");
+        COMPARE_PARSE("(Hello) dup 2 (ww) putinterval", "Hewwo");
+    }
+
     void test_array()
     {
         COMPARE_PARSE("[1 2 3]", ValueArray({1, 2, 3}));
@@ -448,6 +457,8 @@ private Q_SLOTS:
         COMPARE_PARSE("[1 2 3] length", 3);
         COMPARE_PARSE("[1 2 3] dup 1 99 put", ValueArray({1, 99, 3}));
         COMPARE_PARSE("[9 8 7 6 5] 1 3 getinterval", ValueArray({8, 7, 6}));
+
+        COMPARE_PARSE("[1 2 3 4 5 6 7] dup 2 [(a) (b) (c)] putinterval", ValueArray({1, 2, "a", "b", "c", 6, 7}));
     }
 };
 

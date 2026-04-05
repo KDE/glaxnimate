@@ -8,63 +8,25 @@
 
 #include <QMetaEnum>
 
-
-QString glaxnimate::ps::format_string(const QString &value)
-{
-    QString result = QChar('(');
-    for ( auto qch : value )
-    {
-        quint32 ch = qch.unicode();
-        if ( ch > 255 )
-        {
-            // TODO?
-            result += qch;
-            continue;
-        }
-
-        switch ( ch )
-        {
-            case '\\':
-            case '(':
-            case ')':
-                result += '\\';
-                result += qch;
-                continue;
-            case '\n':
-                result += u"\\n"_s;
-                continue;
-            case '\t':
-                result += u"\\t"_s;
-                continue;
-            case '\r':
-                result += u"\\r"_s;
-                continue;
-            case '\b':
-                result += u"\\b"_s;
-                continue;
-            case '\v':
-                result += u"\\v"_s;
-                continue;
-            case '\f':
-                result += u"\\f"_s;
-                continue;
-        }
-
-        if ( ch < ' ' || ch > 126 )
-        {
-            result += '\\' + QString::number(ch, 8);
-            continue;
-        }
-
-        result += qch;
-    }
-
-    return result + ')';
-}
+using namespace Qt::StringLiterals;
 
 glaxnimate::ps::Value::Value(ValueArray v)
     : Value(Value::Array, QVariant::fromValue(std::move(v)))
 {}
+
+glaxnimate::ps::Value::Value(const char *str)
+    : Value(Value::String, QVariant::fromValue(ps::String(str)))
+{}
+
+glaxnimate::ps::Value::Value(ps::String v)
+    : Value(Value::String, QVariant::fromValue(std::move(v)))
+{}
+
+glaxnimate::ps::Value::Value(const QByteArray& v)
+    : Value(Value::String, QVariant::fromValue(ps::String(v)))
+{
+
+}
 
 QString glaxnimate::ps::Value::to_pretty_string() const
 {
@@ -76,11 +38,8 @@ QString glaxnimate::ps::Value::to_pretty_string() const
         return u"-dict-"_s;
     else if ( type_ == Array )
         return cast<ValueArray>().to_pretty_string();
-
-    if ( type_ == String )
-    {
-        return format_string(to_string());
-    }
+    else if ( type_ == String )
+        return cast<ps::String>().to_string_literal();
 
     return to_string();
 }
@@ -96,4 +55,54 @@ QString glaxnimate::ps::ValueArray::to_pretty_string() const
     for ( const auto& v : *data )
         str += v.to_pretty_string() + ' ';
     return str.trimmed() + ']';
+}
+
+QString glaxnimate::ps::String::to_string() const
+{
+    return QString::fromUtf8(*data);
+}
+
+QByteArray glaxnimate::ps::String::to_string_literal() const
+{
+    QByteArray result(1, '(');
+    for ( auto ch : *data )
+    {
+        switch ( ch )
+        {
+            case '\\':
+            case '(':
+            case ')':
+                result += '\\';
+                result += ch;
+                continue;
+            case '\n':
+                result += "\\n";
+                continue;
+            case '\t':
+                result += "\\t";
+                continue;
+            case '\r':
+                result += "\\r";
+                continue;
+            case '\b':
+                result += "\\b";
+                continue;
+            case '\v':
+                result += "\\v";
+                continue;
+            case '\f':
+                result += "\\f";
+                continue;
+        }
+
+        if ( ch < ' ' || ch > 126 )
+        {
+            result += '\\' + QByteArray::number(ch, 8);
+            continue;
+        }
+
+        result += ch;
+    }
+
+    return result + ')';
 }

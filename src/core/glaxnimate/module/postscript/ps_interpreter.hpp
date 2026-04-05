@@ -106,7 +106,7 @@ public:
     void error(const QString& error, bool critical);
 
     Value pop(Value::Type type);
-    static Command* command_from_name(const QString& name);
+    static Command* command_from_name(const QByteArray& name);
 
     Level level() const;
     void set_level(Level level);
@@ -121,7 +121,7 @@ protected:
     virtual void on_comment(const QString& text) = 0;
 
 private:
-    void execute_command(const QString& name);
+    void execute_command(const QByteArray &name);
     Value procedure_value();
 
     class Private;
