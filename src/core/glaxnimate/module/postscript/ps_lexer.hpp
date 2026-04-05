@@ -41,9 +41,13 @@ class Lexer
 public:
     Lexer(QIODevice* device) : device(device) {}
 
-    void set_device(QIODevice* device)
+    void set_device(QIODevice* device, bool reset_row=false)
     {
         this->device = device;
+        if ( reset_row )
+            file_row = 0;
+        file_row++;
+        file_column = 1;
     }
 
     Token next_token()
@@ -82,6 +86,9 @@ public:
 
         return lex_operator(ch);
     }
+
+    int row() const { return file_row; }
+    int column() const { return file_column; }
 
 private:
     Token lex_comment()
@@ -450,12 +457,24 @@ private:
         char ch;
         if ( !device->getChar(&ch) )
             return -1;
+
+        if ( ch == '\n' )
+        {
+            file_row++;
+            file_column = 0;
+        }
+        else
+        {
+            file_column++;
+        }
+
         return ch;
     }
 
     void unget(char ch)
     {
         device->ungetChar(ch);
+        file_column--;
     }
 
     int peek()
@@ -490,6 +509,8 @@ private:
     }
 
     QIODevice* device;
+    int file_row = 1;
+    int file_column = 0;
 };
 
 } // namespace glaxnimate::ps

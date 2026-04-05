@@ -20,7 +20,7 @@ class String
 {
 public:
     using container = QByteArray;
-    using value_type = container::value_type;
+    using value_type = quint8;
     using iterator = container::iterator;
     using const_iterator = container::const_iterator;
     using reference = container::reference;
@@ -201,7 +201,10 @@ public:
         return value_ != oth.value_;
     }
 
-    friend QDebug& operator<<(QDebug& dbg, const Value& v) { return dbg << v.to_pretty_string(); }
+    friend QDebug& operator<<(QDebug& debug, const Value& v) {
+        QDebugStateSaver saver(debug);
+        return debug.noquote() << v.to_pretty_string();
+    }
 
     static QString type_name(Type t);
 

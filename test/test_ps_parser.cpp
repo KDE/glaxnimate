@@ -7,6 +7,7 @@
 #include <QTest>
 #include <QBuffer>
 
+#include "glaxnimate/module/postscript/ps_lexer.hpp"
 #include "glaxnimate/module/postscript/ps_interpreter.hpp"
 
 using namespace glaxnimate::ps;
@@ -70,6 +71,11 @@ protected:
     }
 
     void on_error(const QString &text) override
+    {
+        last_error = text;
+    }
+
+    void on_warning(const QString &text) override
     {
         last_error = text;
     }
@@ -446,6 +452,12 @@ private Q_SLOTS:
         COMPARE_PARSE("(Hello) dup 1 97 put", "Hallo");
         COMPARE_PARSE("(Hello) 1 3 getinterval", "ell");
         COMPARE_PARSE("(Hello) dup 2 (ww) putinterval", "Hewwo");
+        COMPARE_PARSE("(hello world) dup (foo) exch copy pstack", "foolo world", "foo");
+    }
+
+    void test_bool()
+    {
+        COMPARE_PARSE("true false", true, false);
     }
 
     void test_array()
@@ -459,6 +471,27 @@ private Q_SLOTS:
         COMPARE_PARSE("[9 8 7 6 5] 1 3 getinterval", ValueArray({8, 7, 6}));
 
         COMPARE_PARSE("[1 2 3 4 5 6 7] dup 2 [(a) (b) (c)] putinterval", ValueArray({1, 2, "a", "b", "c", 6, 7}));
+        COMPARE_PARSE("1 [2 3 4] aload", 1, 2, 3, 4, ValueArray({2, 3, 4}));
+        COMPARE_PARSE("[1 2 3 4 5 6 7] dup [(a) (b) (c)] exch copy", ValueArray({"a", "b", "c", 4, 5, 6, 7}), ValueArray({"a", "b", "c"}));
+
+        COMPARE_PARSE("1 2 3 3 packedarray", ValueArray({1, 2, 3}));
+        COMPARE_PARSE("true setpacking");
+        COMPARE_PARSE("currentpacking", false);
+    }
+
+    void test_forall()
+    {
+        TestInterpreter interp;
+        interp.exec_string("(Hello) {=} forall");
+        QCOMPARE(interp.last_error, "");
+        QCOMPARE(interp.stack().size(), 0);
+        QCOMPARE(interp.consume_output(), "72\n101\n108\n108\n111\n");
+
+
+        interp.exec_string("[1 2 3 4] {=} forall");
+        QCOMPARE(interp.last_error, "");
+        QCOMPARE(interp.stack().size(), 0);
+        QCOMPARE(interp.consume_output(), "1\n2\n3\n4\n");
     }
 };
 

@@ -8,7 +8,6 @@
 
 #include <random>
 
-#include "ps_lexer.hpp"
 #include "ps_stack.hpp"
 
 namespace glaxnimate::ps {
@@ -96,6 +95,13 @@ class CommandSet
 {
 public:
     void def(QByteArray key, Command cmd);
+    /**
+     * @brief Creates an alias
+     * @param key New command
+     * @param other Existing command
+     */
+    void alias(QByteArray key, QByteArray other);
+
     static const CommandSet& builtins();
 
     auto find(const QByteArray& key) const { return commands.equal_range(key); }
@@ -114,11 +120,11 @@ public:
     ExecutionMemory &memory();
     Stack &stack();
 
-    void execute(QIODevice* device);
+    void execute(QIODevice* device, bool reset_pos=false);
     void execute(const Value& proc);
 
     void print(const QString& text);
-    void error(const QString& error, bool critical);
+    void error(const QString& error);
 
     Value pop(Value::Type type);
 
@@ -129,9 +135,17 @@ public:
     std::map<QString, QString>& document_metadata();
     std::map<QString, QString>& page_metadata();
 
+    bool is_halted() const;
+
+
+    int file_row() const;
+    int file_column() const;
+    const QByteArray& current_command();
+
 protected:
     virtual void on_print(const QString& text) = 0;
     virtual void on_error(const QString& text) = 0;
+    virtual void on_warning(const QString& text) = 0;
     virtual void on_comment(const QString& text) = 0;
 
 private:
@@ -143,3 +157,4 @@ private:
 };
 
 } // namespace glaxnimate::ps
+QDebug operator<<(QDebug d, glaxnimate::ps::Interpreter& interp);

@@ -7,6 +7,8 @@
 #include "ps_interpreter.hpp"
 #include "glaxnimate/math/math.hpp"
 
+#include "ps_lexer.hpp"
+
 using namespace glaxnimate::ps;
 using namespace glaxnimate;
 using namespace Qt::StringLiterals;
@@ -38,7 +40,7 @@ public:
     ExecutionMemory memory;
     bool halted = false;
     Level level = Level::PS3;
-    QString current_command;
+    QByteArray current_command;
     MetaSection meta_section = Initial;
     std::map<QString, QString> document_metadata;
     std::map<QString, QString> page_metadata;
@@ -151,7 +153,7 @@ Value Interpreter::procedure_value()
                 finished = true;
                 break;
             case Token::Unrecoverable:
-                error(u"Unkown token (maybe unterminated string?)"_s, true);
+                error(u"Unkown token (maybe unterminated string?)"_s);
                 finished = true;
                 break;
             case Token::Comment:
@@ -180,9 +182,9 @@ glaxnimate::ps::Stack &glaxnimate::ps::Interpreter::stack()
     return d->memory.operand_stack;
 }
 
-void glaxnimate::ps::Interpreter::execute(QIODevice *device)
+void glaxnimate::ps::Interpreter::execute(QIODevice *device, bool reset_pos)
 {
-    d->lexer.set_device(device);
+    d->lexer.set_device(device, reset_pos);
     while ( !d->halted )
     {
         auto token = d->lexer.next_token();
@@ -207,7 +209,7 @@ void glaxnimate::ps::Interpreter::execute(QIODevice *device)
             case Token::Eof:
                 return;
             case Token::Unrecoverable:
-                error(u"Unkown token (maybe unterminated string?)"_s, true);
+                error(u"Unkown token (maybe unterminated string?)"_s);
                 break;
             case Token::Comment:
             {
@@ -228,7 +230,7 @@ void glaxnimate::ps::Interpreter::execute(QIODevice *device)
                     d->handle_meta(comment);
                 on_comment(comment);
                 if ( d->auto_level_status < 0 )
-                    error(u"Could not determine language level"_s, false);
+                    on_warning(u"Could not determine language level"_s);
                 break;
             }
         }
@@ -239,7 +241,7 @@ void Interpreter::execute(const Value &proc)
 {
     if ( !proc.has_attribute(Value::Execute) )
     {
-        // error(u"Value is not executable"_s, false);
+        // error(u"Value is not executable"_s);
         stack().push(proc);
         return;
     }
@@ -269,10 +271,9 @@ void glaxnimate::ps::Interpreter::print(const QString &text)
     on_print(text);
 }
 
-void glaxnimate::ps::Interpreter::error(const QString &error, bool critical)
+void glaxnimate::ps::Interpreter::error(const QString &error)
 {
-    if ( critical )
-        d->halted = true;
+    d->halted = true;
     on_error(error);
 }
 
@@ -280,6 +281,10 @@ bool Command::collect_arguments(Stack &stack, std::vector<std::pair<int, int>> &
 {
     int count = arg_types.size();
     errors.clear();
+
+    if ( stack.size() < count )
+        return false;
+
     for ( int i = 0; i < count; i++ )
     {
         int stack_ind = count - 1 - i;
@@ -302,11 +307,12 @@ bool Command::collect_arguments(Stack &stack, std::vector<std::pair<int, int>> &
 
 void glaxnimate::ps::Interpreter::execute_command(const QByteArray &name)
 {
+    d->current_command = name;
     auto cmdrange = CommandSet::builtins().find(name);
 
     if ( cmdrange.first == cmdrange.second )
     {
-        error(u"Unknown command '%1'"_s.arg(name), false);
+        error(u"Unknown command '%1'"_s.arg(name));
         return;
     }
 
@@ -318,15 +324,11 @@ void glaxnimate::ps::Interpreter::execute_command(const QByteArray &name)
     for ( auto it = cmdrange.first; it != cmdrange.second; ++it )
     {
         const Command* cmd = &it->second;
-        if ( int(cmd->arg_types.size()) > d->memory.operand_stack.size() )
-        {
-            error(u"Command '%1' requires %2 arguments on the stack"_s.arg(name, cmd->arg_types.size()), false);
-        }
-
         std::vector<std::pair<int, int>> cmderr;
         if ( cmd->collect_arguments(stack(), cmderr, args) )
         {
             cmd->func(std::move(args), *this);
+            d->current_command.clear();
             return;
         }
         if ( !best || cmderr.size() < errors.size() )
@@ -336,15 +338,24 @@ void glaxnimate::ps::Interpreter::execute_command(const QByteArray &name)
         }
     }
 
-    for ( auto p : errors )
+    if ( errors.empty() )
     {
-        error(u"Argument %1 of command '%2' has an invalid value of %3 (Expected %4)"_s.arg(
-            QString::number(p.first),
-            name,
-            stack()[p.second].to_pretty_string(),
-            best->arg_types[p.first].to_string()
-        ), true);
+        error(u"Not enough arguments on the stack for '%1'"_s.arg(name));
     }
+    else
+    {
+        for ( auto p : errors )
+        {
+            error(u"Argument %1 of command '%2' has an invalid value of %3 (Expected %4)"_s.arg(
+                QString::number(p.first),
+                name,
+                stack()[p.second].to_pretty_string(),
+                best->arg_types[p.first].to_string()
+            ));
+        }
+    }
+
+    d->current_command.clear();
 }
 
 Level Interpreter::level() const
@@ -372,6 +383,26 @@ std::map<QString, QString> &Interpreter::page_metadata()
     return d->page_metadata;
 }
 
+bool Interpreter::is_halted() const
+{
+    return d->halted;
+}
+
+int Interpreter::file_row() const
+{
+    return d->lexer.row();
+}
+
+int Interpreter::file_column() const
+{
+    return d->lexer.column();
+}
+
+const QByteArray &Interpreter::current_command()
+{
+    return d->current_command;
+}
+
 QString glaxnimate::ps::level_string(Level level)
 {
     return u"%1 %2"_s.arg(level_is_encapsulated(level) ? "EPS" : "PS").arg(level_number(level));
@@ -385,6 +416,21 @@ static QString to_ugly_string(const Value& val)
     return string;
 }
 
+QDebug operator<<(QDebug d, Interpreter &interp)
+{
+    d << "Operand stack:\n";
+    for ( const auto& v : interp.stack() )
+    {
+        d << "    " << v.to_pretty_string() << "\n";
+    }
+
+    if ( !interp.current_command().isEmpty() )
+        d << "Last command: " << interp.current_command() << "\n";
+
+    d << "At " << interp.file_row() << ":" << interp.file_column() << "\n";
+
+    return d;
+}
 
 /*
 
@@ -627,6 +673,14 @@ void CommandSet::def(QByteArray key, Command cmd)
     commands.emplace(std::move(key), std::move(cmd));
 }
 
+void CommandSet::alias(QByteArray key, QByteArray other)
+{
+    auto range = find(other);
+    assert(range.first != range.second);
+    for ( auto it = range.first; it != range.second; ++it )
+        commands.emplace(key, it->second);
+}
+
 const CommandSet &CommandSet::builtins()
 {
     static CommandSet builtins;
@@ -647,7 +701,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     }});
     builtins.def("dup", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         if ( interpreter.stack().empty() )
-            interpreter.error(u"Empty stack"_s, false);
+            interpreter.error(u"Empty stack"_s);
         else
             interpreter.stack().push(interpreter.stack().top());
     }});
@@ -657,12 +711,12 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             return;
         if ( count < 0 )
         {
-            interpreter.error(u"Negative index"_s, false);
+            interpreter.error(u"Negative index"_s);
             return;
         }
         if ( interpreter.stack().size() < count )
         {
-            interpreter.error(u"Not enough elements on the stack"_s, false);
+            interpreter.error(u"Not enough elements on the stack"_s);
             return;
         }
         ValueArray copies;
@@ -676,12 +730,12 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         int index = args[0].cast<int>();
         if ( index < 0 )
         {
-            interpreter.error(u"Negative index"_s, false);
+            interpreter.error(u"Negative index"_s);
             return;
         }
         if ( interpreter.stack().size() < index )
         {
-            interpreter.error(u"Not enough elements on the stack"_s, false);
+            interpreter.error(u"Not enough elements on the stack"_s);
             return;
         }
         interpreter.stack().push(interpreter.stack()[index]);
@@ -691,13 +745,13 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         int roll = args[1].cast<int>();
         if ( count < 0 )
         {
-            interpreter.error(u"Rolling by a negative amount"_s, false);
+            interpreter.error(u"Rolling by a negative amount"_s);
             return;
         }
 
         if ( count > interpreter.stack().size() )
         {
-            interpreter.error(u"Not enough items in the stack"_s, false);
+            interpreter.error(u"Not enough items in the stack"_s);
             return;
         }
         if ( std::abs(roll) >= count )
@@ -716,9 +770,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("mark", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(Value::from<Value::Mark>());
     }});
-    builtins.def("<<", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
-        interpreter.stack().push(Value::from<Value::Mark>());
-    }});
+    builtins.alias("<<", "mark");
     builtins.def("cleartomark", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         while ( !interpreter.stack().empty() )
         {
@@ -726,7 +778,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
                 return;
         }
 
-        interpreter.error(u"No mark found"_s, false);
+        interpreter.error(u"No mark found"_s);
     }});
     builtins.def("counttomark", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         int count = 0;
@@ -739,7 +791,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             }
             count++;
         }
-        interpreter.error(u"No mark found"_s, false);
+        interpreter.error(u"No mark found"_s);
         interpreter.stack().push(count);
     }});
 // Math functions
@@ -754,7 +806,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         auto den = args[1].cast<float>();
         if ( den == 0 )
         {
-            interpreter.error(u"Division by 0"_s, false);
+            interpreter.error(u"Division by 0"_s);
             return;
         }
 
@@ -765,7 +817,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         auto den = args[1].cast<int>();
         if ( den == 0 )
         {
-            interpreter.error(u"Division by 0"_s, false);
+            interpreter.error(u"Division by 0"_s);
             return;
         }
 
@@ -776,7 +828,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         auto den = args[1].cast<int>();
         if ( den == 0 )
         {
-            interpreter.error(u"Division by 0"_s, false);
+            interpreter.error(u"Division by 0"_s);
             return;
         }
 
@@ -893,9 +945,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.execute(args[0]);
     }});
 // Array
-    builtins.def("[", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
-        interpreter.stack().push(Value::from<Value::Mark>());
-    }});
+    builtins.alias("[", "mark");
     builtins.def("]", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter) {
         bool mark_found = false;
         ValueArray arr;
@@ -911,7 +961,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         }
 
         if ( !mark_found )
-            interpreter.error(u"No mark found"_s, false);
+            interpreter.error(u"No mark found"_s);
 
         std::reverse(arr.begin(), arr.end());
         interpreter.stack().push(Value::from<Value::Array>(std::move(arr)));
@@ -920,7 +970,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         int count = args[0].cast<int>();
         if ( count < 0 )
         {
-            interpreter.error(u"Negative size"_s, false);
+            interpreter.error(u"Negative size"_s);
             return;
         }
         ValueArray arr;
@@ -936,49 +986,20 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         int index = args[1].cast<int>();
         if ( index < 0 || index >= arr.size() )
         {
-            interpreter.error(u"Index out of range"_s, false);
+            interpreter.error(u"Index out of range"_s);
             return;
         }
         interpreter.stack().push(std::move(arr[index]));
     }});
     builtins.def("put", {Level::EPS1, {Value::Array, Value::Integer, Arg::any()}, [](ValueArray args, Interpreter& interpreter){
-        if ( args[0].type() == Value::Array )
+        auto arr = args[0].cast<ValueArray>();
+        int index = args[1].cast<int>();
+        if ( index < 0 || index >= arr.size() )
         {
-            if ( args[1].type() != Value::Integer )
-            {
-                interpreter.error(u"Invalid argument"_s, false);
-                return;
-            }
-            auto arr = args[0].cast<ValueArray>();
-            int index = args[1].cast<int>();
-            if ( index < 0 || index >= arr.size() )
-            {
-                interpreter.error(u"Index out of range"_s, false);
-                return;
-            }
-            arr[index] = std::move(args[2]);
-        }
-        else if ( args[0].type() == Value::String )
-        {
-            if ( args[1].type() != Value::Integer || args[2].type() != Value::Integer )
-            {
-                interpreter.error(u"Invalid argument"_s, false);
-                return;
-            }
-            auto arr = args[0].cast<String>();
-            int index = args[1].cast<int>();
-            if ( index < 0 || index >= arr.size() )
-            {
-                interpreter.error(u"Index out of range"_s, false);
-                return;
-            }
-            arr[index] = args[2].cast<int>();
-        }
-        else
-        {
-            interpreter.error(u"Invalid argument"_s, false);
+            interpreter.error(u"Index out of range"_s);
             return;
         }
+        arr[index] = std::move(args[2]);
     }});
     builtins.def("getinterval", {Level::EPS1, {Value::Array, Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         auto arr = args[0].cast<ValueArray>();
@@ -986,12 +1007,12 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         int count = args[2].cast<int>();
         if ( index < 0 || index >= arr.size() )
         {
-            interpreter.error(u"Index out of range"_s, false);
+            interpreter.error(u"Index out of range"_s);
             return;
         }
         if ( count < 0 || index + count >= arr.size() )
         {
-            interpreter.error(u"Index out of range"_s, false);
+            interpreter.error(u"Index out of range"_s);
             return;
         }
 
@@ -1007,24 +1028,100 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         auto interval = args[2].cast<ValueArray>();
         if ( index < 0 || index >= arr.size() )
         {
-            interpreter.error(u"Index out of range"_s, false);
+            interpreter.error(u"Index out of range"_s);
             return;
         }
         if ( index + interval.size() >= arr.size() )
         {
-            interpreter.error(u"Index out of range"_s, false);
+            interpreter.error(u"Index out of range"_s);
             return;
         }
 
         for ( int i = 0; i < interval.size(); i++ )
             arr[index + i] = interval[i];
     }});
+    builtins.def("astore", {Level::EPS1, {Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        auto arr = args[0].cast<ValueArray>();
+        if ( interpreter.stack().size() < arr.size() )
+        {
+            interpreter.error(u"Not enough elements on the stack"_s);
+            return;
+        }
+
+        for ( int i = 0; i < arr.size(); i++ )
+        {
+            arr[arr.size() - 1 - i] = interpreter.stack().pop();
+        }
+    }});
+    builtins.def("aload", {Level::EPS1, {Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        auto arr = args[0].cast<ValueArray>();
+
+        for ( int i = 0; i < arr.size(); i++ )
+            interpreter.stack().push(arr[i]);
+
+        interpreter.stack().push(std::move(arr));
+    }});
+    builtins.def("copy", {Level::EPS1, {Value::Array, Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        auto src = args[0].cast<ValueArray>();
+        auto dest = args[1].cast<ValueArray>();
+        if ( src.size() > dest.size() )
+        {
+            interpreter.error(u"Not enough elements on the destination array"_s);
+            return;
+        }
+
+        for ( int i = 0; i < src.size(); i++ )
+            dest[i] = src[i];
+
+        /*
+         * NOTE: The description of arr1 arr2 copy subarr2 is quite confusing
+         * I'm returning the source array becayse it's what ghostscript seems to be doing
+         */
+        interpreter.stack().push(std::move(src));
+    }});
+    builtins.def("forall", {Level::EPS1, {Value::Array, Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        if ( !args[1].has_attribute(Value::Execute) )
+            return interpreter.error(u"Not a procedure"_s);
+
+        auto arr = args[0].cast<ValueArray>();
+
+        for ( int i = 0; i < arr.size(); i++ )
+        {
+            interpreter.stack().push(std::move(arr[i]));
+            interpreter.execute(args[1]);
+            if ( interpreter.is_halted() )
+                break;
+        }
+    }});
+    // Packed array
+    builtins.alias("packedarray", "array");
+    builtins.def("packedarray", {Level::EPS2, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        auto length = args[0].cast<int>();
+        if ( length < 0 || length > interpreter.stack().size() )
+        {
+            interpreter.error(u"Invalid size"_s);
+            return;
+        }
+
+
+        ValueArray arr;
+        arr.resize(length);
+
+        for ( int i = 0; i < arr.size(); i++ )
+        {
+            arr[arr.size() - 1 - i] = interpreter.stack().pop();
+        }
+
+        interpreter.stack().push(std::move(arr));
+    }});
+    builtins.def("setpacking", {Level::EPS2, {Value::Boolean}, [](ValueArray, Interpreter&){}});
+    builtins.def("currentpacking", {Level::EPS2, {}, [](ValueArray, Interpreter& interp){ interp.stack().push(false); }});
 // String
     builtins.def("string", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         int count = args[0].cast<int>();
         if ( count < 0 )
         {
-            interpreter.error(u"Negative size"_s, false);
+            interpreter.error(u"Negative size"_s);
             return;
         }
         interpreter.stack().push(String(QByteArray(count, 0)));
@@ -1034,49 +1131,20 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         int index = args[1].cast<int>();
         if ( index < 0 || index >= arr.size() )
         {
-            interpreter.error(u"Index out of range"_s, false);
+            interpreter.error(u"Index out of range"_s);
             return;
         }
         interpreter.stack().push(int(arr[index]));
     }});
     builtins.def("put", {Level::EPS1, {Value::String, Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
-        if ( args[0].type() == Value::Array )
+        auto arr = args[0].cast<String>();
+        int index = args[1].cast<int>();
+        if ( index < 0 || index >= arr.size() )
         {
-            if ( args[1].type() != Value::Integer )
-            {
-                interpreter.error(u"Invalid argument"_s, false);
-                return;
-            }
-            auto arr = args[0].cast<ValueArray>();
-            int index = args[1].cast<int>();
-            if ( index < 0 || index >= arr.size() )
-            {
-                interpreter.error(u"Index out of range"_s, false);
-                return;
-            }
-            arr[index] = std::move(args[2]);
-        }
-        else if ( args[0].type() == Value::String )
-        {
-            if ( args[1].type() != Value::Integer || args[2].type() != Value::Integer )
-            {
-                interpreter.error(u"Invalid argument"_s, false);
-                return;
-            }
-            auto arr = args[0].cast<String>();
-            int index = args[1].cast<int>();
-            if ( index < 0 || index >= arr.size() )
-            {
-                interpreter.error(u"Index out of range"_s, false);
-                return;
-            }
-            arr[index] = args[2].cast<int>();
-        }
-        else
-        {
-            interpreter.error(u"Invalid argument"_s, false);
+            interpreter.error(u"Index out of range"_s);
             return;
         }
+        arr[index] = args[2].cast<int>();
     }});
     builtins.def("getinterval", {Level::EPS1, {Value::String, Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         int index = args[1].cast<int>();
@@ -1084,12 +1152,12 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         auto arr = args[0].cast<String>();
         if ( index < 0 || index >= arr.size() )
         {
-            interpreter.error(u"Index out of range"_s, false);
+            interpreter.error(u"Index out of range"_s);
             return;
         }
         if ( count < 0 || index + count >= arr.size() )
         {
-            interpreter.error(u"Index out of range"_s, false);
+            interpreter.error(u"Index out of range"_s);
             return;
         }
 
@@ -1101,16 +1169,51 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         auto interval = args[2].cast<String>();
         if ( index < 0 || index >= arr.size() )
         {
-            interpreter.error(u"Index out of range"_s, false);
+            interpreter.error(u"Index out of range"_s);
             return;
         }
         if ( index + interval.size() >= arr.size() )
         {
-            interpreter.error(u"Index out of range"_s, false);
+            interpreter.error(u"Index out of range"_s);
             return;
         }
 
         for ( int i = 0; i < interval.size(); i++ )
             arr[index + i] = interval[i];
+    }});
+    builtins.def("copy", {Level::EPS1, {Value::String, Value::String}, [](ValueArray args, Interpreter& interpreter){
+        auto src = args[0].cast<String>();
+        auto dest = args[1].cast<String>();
+        if ( src.size() > dest.size() )
+        {
+            interpreter.error(u"Not enough elements on the destination string"_s);
+            return;
+        }
+
+        for ( int i = 0; i < src.size(); i++ )
+            dest[i] = src[i];
+
+        interpreter.stack().push(std::move(src));
+    }});
+    builtins.def("forall", {Level::EPS1, {Value::String, Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        if ( !args[1].has_attribute(Value::Execute) )
+            return interpreter.error(u"Not a procedure"_s);
+
+        auto arr = args[0].cast<String>();
+
+        for ( int i = 0; i < arr.size(); i++ )
+        {
+            interpreter.stack().push(int(arr[i]));
+            interpreter.execute(args[1]);
+            if ( interpreter.is_halted() )
+                break;
+        }
+    }});
+// Boolean
+    builtins.def("true", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(true);
+    }});
+    builtins.def("false", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(false);
     }});
 }
