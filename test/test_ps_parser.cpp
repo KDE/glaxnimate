@@ -481,10 +481,35 @@ private Q_SLOTS:
 
     void test_dict()
     {
+        // basic
         COMPARE_PARSE("<<(foo) 1 (bar) 2>>", ValueDict({{"foo", 1}, {"bar", 2}}));
         COMPARE_PARSE("5 dict", ValueDict());
         COMPARE_PARSE("<<(foo) 1 (bar) 2>> length", 2);
         COMPARE_PARSE("<<(foo) 1 (bar) 2>> maxlength", 2);
+        COMPARE_PARSE("<<(foo) 1 (bar) 2>> (bar) get", 2);
+        COMPARE_PARSE("<</foo 1>> dup /foo known exch /bar known", true, false);
+
+        // modify
+        COMPARE_PARSE("<<>> dup /foo 123 put", ValueDict({{"foo", 123}}));
+        COMPARE_PARSE("<</bar 3>> dup /foo undef", ValueDict({{"bar", 3}}));
+        COMPARE_PARSE("<</foo 1 /bar 3>> dup /foo undef", ValueDict({{"bar", 3}}));
+
+        // def
+        COMPARE_PARSE("/foo 123 def /foo load", 123);
+        COMPARE_PARSE("/foo 123 def foo", 123);
+        COMPARE_PARSE("/foo 123 def foo", 123);
+        COMPARE_PARSE("/foo {1 2 add} def foo", 3);
+
+        // begin / end
+        COMPARE_PARSE("<<>> dup begin /foo 123 def",  ValueDict({{"foo", 123}}));
+        COMPARE_PARSE("<<>> dup begin /foo 123 def end /bar 456 def",  ValueDict({{"foo", 123}}));
+        COMPARE_PARSE("<</foo 123>> begin /foo load", 123);
+
+        // store
+        COMPARE_PARSE("<<>> dup begin <<>> dup begin /foo 123 def", ValueDict(), ValueDict({{"foo", 123}}));
+        COMPARE_PARSE("<<>> dup begin <<>> dup begin /foo 123 store", ValueDict(), ValueDict({{"foo", 123}}));
+        COMPARE_PARSE("<</foo 4>> dup begin <<>> dup begin /foo 123 def", ValueDict({{"foo", 4}}), ValueDict({{"foo", 123}}));
+        COMPARE_PARSE("<</foo 4>> dup begin <<>> dup begin /foo 123 store", ValueDict({{"foo", 123}}), ValueDict());
     }
 
     void test_forall()

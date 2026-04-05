@@ -168,7 +168,7 @@ Value Interpreter::procedure_value()
 
 Interpreter::Interpreter() : d(std::make_unique<Private>())
 {
-
+    d->memory.builtins = &CommandSet::builtins();
 }
 
 Interpreter::~Interpreter() = default;
@@ -199,7 +199,7 @@ void glaxnimate::ps::Interpreter::execute(QIODevice *device, bool reset_pos)
                 }
                 else
                 {
-                    execute_command(op);
+                    execute_command(token.value);
                 }
                 break;
             }
@@ -257,7 +257,7 @@ void Interpreter::execute(const Value &proc)
     }
     else if ( proc.type() == Value::String )
     {
-        execute_command(proc.cast<String>().bytes());
+        execute_command(proc);
     }
     else
     {
@@ -305,9 +305,21 @@ bool Command::collect_arguments(Stack &stack, std::vector<std::pair<int, int>> &
     return true;
 }
 
-void glaxnimate::ps::Interpreter::execute_command(const QByteArray &name)
+void glaxnimate::ps::Interpreter::execute_command(const Value& nameval)
 {
+    Value cmdval;
+    if ( d->memory.load(nameval, cmdval, false) )
+    {
+        if ( cmdval == nameval )
+            error(u"Command executing itself"_s);
+        else
+            execute(cmdval);
+        return;
+    }
+
+    QByteArray name = nameval.cast<String>().bytes();
     d->current_command = name;
+
     auto cmdrange = CommandSet::builtins().find(name);
 
     if ( cmdrange.first == cmdrange.second )
@@ -430,6 +442,52 @@ QDebug operator<<(QDebug d, Interpreter &interp)
     d << "At " << interp.file_row() << ":" << interp.file_column() << "\n";
 
     return d;
+}
+
+const ValueDict &ExecutionMemory::loaded_systemdict() const
+{
+    if ( systemdict.empty() )
+    {
+        builtins->populate_dict(systemdict);
+    }
+
+    return systemdict;
+}
+
+bool ExecutionMemory::load(const Value &key, Value &out, bool search_system) const
+{
+    for ( auto dit = dict_stack.rbegin(); dit != dict_stack.rend(); ++dit )
+    {
+        if ( dit->load_into(key, out) )
+            return true;
+    }
+
+    if ( userdict.load_into(key, out) || globaldict.load_into(key, out) )
+        return true;
+
+    if ( search_system )
+        return loaded_systemdict().load_into(key, out);
+
+    return false;
+}
+
+bool ExecutionMemory::store(const Value &key, const Value &val)
+{
+
+    for ( auto dit = dict_stack.rbegin(); dit != dict_stack.rend(); ++dit )
+    {
+        if ( dit->store(key, val) )
+            return true;
+    }
+
+    if ( userdict.store(key, val) || globaldict.store(key, val) )
+        return true;
+
+    if ( loaded_systemdict().contains(key) )
+        return false;
+
+    (*current_dict())[key] = val;
+    return true;
 }
 
 /*
@@ -687,6 +745,17 @@ const CommandSet &CommandSet::builtins()
     if ( builtins.commands.empty() )
         populate_builtins(builtins);
     return builtins;
+}
+
+void CommandSet::populate_dict(ValueDict &value) const
+{
+    for ( const auto& p : commands )
+    {
+        Value key = p.first;
+        Value val = p.first;
+        val.set_attribute(Value::Executable, true);
+        value[p.first] = val;
+    }
 }
 
 void CommandSet::populate_builtins(CommandSet& builtins)
@@ -1157,6 +1226,53 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     }});
     builtins.def("maxlength", {Level::EPS1, {Value::Dict}, [](ValueArray args, Interpreter& interpreter){
         interpreter.stack().push(args[0].cast<ValueDict>().size());
+    }});
+    builtins.def("begin", {Level::EPS1, {Value::Dict}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.memory().dict_stack.push_back(args[0].cast<ValueDict>());
+    }});
+    builtins.def("end", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        if ( interpreter.memory().dict_stack.empty() )
+        {
+            interpreter.error(u"Empty dict stack"_s);
+            return;
+        }
+        interpreter.memory().dict_stack.pop_back();
+    }});
+    builtins.def("def", {Level::EPS1, {Arg::any(), Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        (*interpreter.memory().current_dict())[args[0]] = args[1];
+    }});
+    builtins.def("load", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        Value val;
+        if ( !interpreter.memory().load(args[0], val, true) )
+            interpreter.error(u"Value %s not found in the dict stack"_s.arg(args[0].to_pretty_string()));
+        else
+            interpreter.stack().push(std::move(val));
+    }});
+    builtins.def("store", {Level::EPS1, {Arg::any(), Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        if ( !interpreter.memory().store(args[0], args[1]) )
+            interpreter.error(u"Could not store %1"_s.arg(args[0].to_pretty_string()));
+    }});
+    builtins.def("get", {Level::EPS1, {Value::Dict, Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        auto dict = args[0].cast<ValueDict>();
+        auto it = dict.find(args[1]);
+        if ( it == dict.end() )
+        {
+            interpreter.error(u"Key %1 not found"_s.arg(args[1].to_pretty_string()));
+            return;
+        }
+        interpreter.stack().push(it->second);
+    }});
+    builtins.def("put", {Level::EPS1, {Value::Dict, Arg::any(), Arg::any()}, [](ValueArray args, Interpreter&){
+        auto dict = args[0].cast<ValueDict>();
+        dict[args[1]] = std::move(args[2]);
+    }});
+    builtins.def("undef", {Level::EPS1, {Value::Dict, Arg::any()}, [](ValueArray args, Interpreter&){
+        auto dict = args[0].cast<ValueDict>();
+        dict.erase(args[1]);
+    }});
+    builtins.def("known", {Level::EPS1, {Value::Dict, Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        auto dict = args[0].cast<ValueDict>();
+        interpreter.stack().push(dict.contains(args[1]));
     }});
 // String
     builtins.def("string", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){

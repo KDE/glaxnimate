@@ -304,8 +304,15 @@ public:
 
     iterator begin() { return data->begin(); }
     iterator end() { return data->end(); }
-    iterator begin() const { return data->begin(); }
-    iterator end() const { return data->end(); }
+    const_iterator begin() const { return data->begin(); }
+    const_iterator end() const { return data->end(); }
+    iterator find(const Value& v) { return data->find(v); }
+    const_iterator find(const Value& v) const { return data->find(v); }
+
+    void erase(const key_type& key)
+    {
+        data->erase(key);
+    }
 
     QString to_pretty_string() const;
     friend QDebug operator<<(QDebug dbg, const ValueDict& arr) { return dbg << arr.to_pretty_string(); }
@@ -329,6 +336,38 @@ public:
     }
 
     std::size_t hash() const { return std::hash<void*>()(data.get()); }
+
+    /**
+     * @brief Helper for the load command
+     * @param key Key to find
+     * @param out Value to write into
+     * @return true if the value has been found
+     */
+    bool load_into(const Value &key, Value &out) const
+    {
+        auto it = data->find(key);
+        if ( it == data->end() )
+            return false;
+        out = it->second;
+        return true;
+    }
+    /**
+     * @brief Helper for the store command
+     * Sets the value at @p key if it already exists, otherwise returns false
+     */
+    bool store(const Value &key, const Value &value)
+    {
+        auto it = data->find(key);
+        if ( it == data->end() )
+            return false;
+        it->second = value;
+        return true;
+    }
+
+    bool contains(const Value& key) const
+    {
+        return data->count(key) > 0;
+    }
 
 private:
     std::shared_ptr<container> data;

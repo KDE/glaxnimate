@@ -12,27 +12,7 @@
 
 namespace glaxnimate::ps {
 
-
-struct ExecutionMemory
-{
-    Stack operand_stack;
-
-    std::minstd_rand prng;
-
-    ValueDict userdict;
-    ValueDict globaldict;
-    ValueDict systemdict;
-    std::deque<ValueDict> dict_stack;
-    ValueDict* current_dict()
-    {
-        if ( dict_stack.empty() )
-            return &userdict;
-        return &dict_stack.back();
-    }
-};
-
 class Interpreter;
-
 
 enum LevelBits
 {
@@ -117,9 +97,51 @@ public:
 
     auto find(const QByteArray& key) const { return commands.equal_range(key); }
 
+    void populate_dict(ValueDict& value) const;
+
 private:
     static void populate_builtins(CommandSet& builtins);
     std::unordered_multimap<QByteArray, glaxnimate::ps::Command> commands;
+};
+
+
+
+struct ExecutionMemory
+{
+    Stack operand_stack;
+
+    std::minstd_rand prng;
+
+    const CommandSet* builtins = nullptr;
+
+    ValueDict userdict;
+    ValueDict globaldict;
+    mutable ValueDict systemdict;
+    std::deque<ValueDict> dict_stack;
+    ValueDict* current_dict()
+    {
+        if ( dict_stack.empty() )
+            return &userdict;
+        return &dict_stack.back();
+    }
+
+    const ValueDict& loaded_systemdict() const;
+
+    /**
+     * @brief Helper for `load` operator
+     * @param key Key to search in the dicts
+     * @param out Value to be written to
+     * @return true on success
+     */
+    bool load(const Value& key, Value& out, bool search_system) const;
+
+    /**
+     * @brief Helper for `store` operator
+     * @param key Key to search in the dicts
+     * @param out New value
+     * @return true on success, will only fail if key is in systemdict
+     */
+    bool store(const Value& key, const Value& val);
 };
 
 class Interpreter
@@ -160,7 +182,7 @@ protected:
     virtual void on_comment(const QString& text) = 0;
 
 private:
-    void execute_command(const QByteArray &name);
+    void execute_command(const Value &name);
     Value procedure_value();
 
     class Private;
