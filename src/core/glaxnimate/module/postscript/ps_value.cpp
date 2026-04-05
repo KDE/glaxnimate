@@ -28,6 +28,12 @@ glaxnimate::ps::Value::Value(const QByteArray& v)
 
 }
 
+glaxnimate::ps::Value::Value(ValueDict v)
+    : Value(Value::Dict, QVariant::fromValue(std::move(v)))
+{
+
+}
+
 QString glaxnimate::ps::Value::to_pretty_string() const
 {
     if ( type_ == Mark )
@@ -35,9 +41,10 @@ QString glaxnimate::ps::Value::to_pretty_string() const
     else if ( type_ == Null )
         return u"null"_s;
     else if ( type_ == Dict )
-        return u"-dict-"_s;
+        return cast<ValueDict>().to_pretty_string();
+        //return u"-dict-"_s;
     else if ( type_ == Array )
-        return cast<ValueArray>().to_pretty_string();
+        return cast<ValueArray>().to_pretty_string(has_attribute(Executable));
     else if ( type_ == String )
         return cast<ps::String>().to_string_literal();
 
@@ -49,12 +56,38 @@ QString glaxnimate::ps::Value::type_name(Type t)
     return QString::fromLatin1(QMetaEnum::fromType<Type>().valueToKey(t)).toLower() + "type"_L1;
 }
 
-QString glaxnimate::ps::ValueArray::to_pretty_string() const
+std::size_t glaxnimate::ps::Value::hash() const
 {
-    QString str = QChar('[');
+    switch ( type_ )
+    {
+        case glaxnimate::ps::Value::Integer:
+            return std::hash<int>()(cast<int>());
+        case glaxnimate::ps::Value::Real:
+            return std::hash<float>()(cast<float>());
+        case glaxnimate::ps::Value::Boolean:
+            return std::hash<bool>()(cast<bool>());
+            // case glaxnimate::ps::Value::PackedArray:
+        case glaxnimate::ps::Value::Array:
+            return cast<ValueArray>().hash();
+        case glaxnimate::ps::Value::String:
+            return cast<ps::String>().hash();
+        case glaxnimate::ps::Value::Dict:
+            return cast<ValueDict>().hash();
+        default:
+        case glaxnimate::ps::Value::File:
+        case glaxnimate::ps::Value::Mark:
+        case glaxnimate::ps::Value::Null:
+        case glaxnimate::ps::Value::Save:
+            return 0;
+    }
+}
+
+QString glaxnimate::ps::ValueArray::to_pretty_string(bool as_executable) const
+{
+    QString str = QChar(as_executable ? '{' : '[');
     for ( const auto& v : *data )
         str += v.to_pretty_string() + ' ';
-    return str.trimmed() + ']';
+    return str.trimmed() + (as_executable ? '}' : ']');
 }
 
 QString glaxnimate::ps::String::to_string() const
@@ -105,4 +138,12 @@ QByteArray glaxnimate::ps::String::to_string_literal() const
     }
 
     return result + ')';
+}
+
+QString glaxnimate::ps::ValueDict::to_pretty_string() const
+{
+    QString str = u"<< "_s;
+    for ( const auto& p : *data )
+        str += p.first.to_pretty_string() + ' ' + p.second.to_pretty_string() + ' ';
+    return str + u">>"_s;
 }

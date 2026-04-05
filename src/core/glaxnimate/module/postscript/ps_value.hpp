@@ -14,7 +14,7 @@
 namespace glaxnimate::ps {
 
 class ValueArray;
-
+class ValueDict;
 
 class String
 {
@@ -52,6 +52,7 @@ public:
     iterator end() const { return data->end(); }
 
     QString to_string() const;
+
     /**
      * @brief formats a string into a postscript string
      */
@@ -70,6 +71,8 @@ public:
     }
 
     const QByteArray& bytes() const { return *data; }
+
+    std::size_t hash() const { return qHash(*data); }
 
 private:
     std::shared_ptr<container> data;
@@ -100,9 +103,9 @@ public:
     enum Attribute
     {
         None = 0,
-        Execute = 1,
-        Write = 2,
-        Read = 4
+        Executable = 1,
+        Writable = 2,
+        Readable = 4
     };
 
     template<Type Tp> struct type_for;
@@ -117,6 +120,7 @@ public:
     Value(const char* str);
     Value(class String v);
     Value(const QByteArray &v);
+    Value(ValueDict v);
     Value(const Value&) = default;
     Value(Value&&) = default;
     Value& operator=(const Value&) = default;
@@ -142,33 +146,6 @@ public:
     }
 
     QString to_pretty_string() const;
-
-    template<Type Tp>
-    bool can_convert() const
-    {
-        return value_.canConvert(type_for<Tp>::meta_type());
-    }
-
-    bool can_convert(Type tp) const
-    {
-        switch ( tp )
-        {
-#define CASE(x) case x: return can_convert<x>();
-            CASE(Integer)
-            CASE(Real)
-            CASE(Boolean)
-            CASE(Array)
-            // CASE(PackedArray)
-            CASE(String)
-            CASE(Dict)
-            CASE(File)
-            CASE(Mark)
-            CASE(Null)
-            CASE(Save)
-#undef CASE
-        }
-        return false;
-    }
 
     template<class T>
     T cast() const
@@ -207,6 +184,8 @@ public:
     }
 
     static QString type_name(Type t);
+
+    std::size_t hash() const;
 
 private:
     Value(Type type, QVariant value) : type_(type), value_(std::move(value)) {}
@@ -263,7 +242,7 @@ public:
     iterator begin() const { return data->begin(); }
     iterator end() const { return data->end(); }
 
-    QString to_pretty_string() const;
+    QString to_pretty_string(bool as_executable=false) const;
     friend QDebug operator<<(QDebug dbg, const ValueArray& arr) { return dbg << arr.to_pretty_string(); }
 
 
@@ -282,12 +261,78 @@ public:
         return !(*this == oth);
     }
 
+    std::size_t hash() const { return std::hash<void*>()(data.get()); }
+
 private:
     std::shared_ptr<container> data;
 };
 
-using ValueDict = std::map<QString, glaxnimate::ps::Value>;
-using ValueType = Value;
+
+struct Hasher
+{
+    size_t operator()(const Value& val) const { return val.hash(); }
+};
+
+class ValueDict
+{
+public:
+    using container = std::unordered_map<Value, Value, Hasher>;
+    using value_type = container::value_type;
+    using key_type = container::key_type;
+    using mapped_type = container::mapped_type;
+    using iterator = container::iterator;
+    using const_iterator = container::const_iterator;
+    using reference = container::reference;
+    using const_reference = container::const_reference;
+    using size_type = int;
+
+    ValueDict(std::initializer_list<value_type> init)
+        : data(std::make_shared<container>(std::move(init)))
+    {}
+
+    ValueDict() : data(std::make_shared<container>()) {}
+    ValueDict(const ValueDict&) = default;
+    ValueDict(ValueDict&&) = default;
+    ValueDict& operator=(const ValueDict&) = default;
+    ValueDict& operator=(ValueDict&&) = default;
+
+    size_type size() const { return data->size(); }
+    bool empty() const { return data->empty(); }
+
+    mapped_type& operator[](const key_type& index) { return (*data)[index]; }
+    const mapped_type& operator[](size_type index) const { return (*data)[index]; }
+
+    iterator begin() { return data->begin(); }
+    iterator end() { return data->end(); }
+    iterator begin() const { return data->begin(); }
+    iterator end() const { return data->end(); }
+
+    QString to_pretty_string() const;
+    friend QDebug operator<<(QDebug dbg, const ValueDict& arr) { return dbg << arr.to_pretty_string(); }
+
+    bool operator==(const ValueDict& oth) const
+    {
+        if ( size() != oth.size() )
+            return false;
+        for ( auto it1 = begin(); it1 != end(); ++it1 )
+        {
+            auto it2 = oth.data->find(it1->first);
+            if ( it2 == oth.end() || it1->second != it2->second )
+                return false;
+        }
+        return true;
+    }
+
+    bool operator!=(const ValueDict& oth) const
+    {
+        return !(*this == oth);
+    }
+
+    std::size_t hash() const { return std::hash<void*>()(data.get()); }
+
+private:
+    std::shared_ptr<container> data;
+};
 
 } // namespace glaxnimate::ps
 Q_DECLARE_METATYPE(glaxnimate::ps::Value)
@@ -297,25 +342,20 @@ Q_DECLARE_METATYPE(glaxnimate::ps::ValueDict)
 
 namespace glaxnimate::ps {
 
-#define VALUE_TYPE_BIN(Tp, Type) \
+#define VALUE_TYPE_FOR(Tp, Type) \
 template<> struct Value::type_for<Tp> { \
     using type = Type; \
     static constexpr QMetaType meta_type() noexcept { return QMetaType::fromType<Type>(); } \
 };
-#define VALUE_TYPE_FOR(Tp, Type) \
-template<> struct Value::type_for<Tp> { \
-        using type = Type; \
-        static constexpr QMetaType meta_type() noexcept { return QMetaType::fromType<Type>(); } \
-};
 #define VALUE_TYPE_NUL(Tp) \
 template<>inline Value Value::from<Tp>() { return Value(Tp, {}); } \
-VALUE_TYPE_BIN(Tp, void)
+VALUE_TYPE_FOR(Tp, void)
 
-VALUE_TYPE_BIN(Value::Integer, int)
-VALUE_TYPE_BIN(Value::Real, float)
-VALUE_TYPE_BIN(Value::Boolean, bool)
+VALUE_TYPE_FOR(Value::Integer, int)
+VALUE_TYPE_FOR(Value::Real, float)
+VALUE_TYPE_FOR(Value::Boolean, bool)
 VALUE_TYPE_FOR(Value::Array, ValueArray)
-VALUE_TYPE_BIN(Value::String, ps::String)
+VALUE_TYPE_FOR(Value::String, ps::String)
 VALUE_TYPE_FOR(Value::Dict, ValueDict)
 VALUE_TYPE_NUL(Value::Mark)
 VALUE_TYPE_NUL(Value::Null)
@@ -323,7 +363,6 @@ VALUE_TYPE_NUL(Value::File)
 VALUE_TYPE_NUL(Value::Save)
 
 #undef VALUE_TYPE_FOR
-#undef VALUE_TYPE_BIN
 #undef VALUE_TYPE_NUL
 
 

@@ -50,12 +50,6 @@ public:
         return !empty() && stack.back().type() == type;
     }
 
-    template<Value::Type Tp>
-    bool can_convert() const
-    {
-        return !empty() && stack.back().can_convert<Tp>();
-    }
-
     iterator begin() { return stack.rbegin(); }
     iterator end() { return stack.rend(); }
 

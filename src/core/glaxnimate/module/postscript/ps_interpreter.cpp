@@ -162,7 +162,7 @@ Value Interpreter::procedure_value()
     }
 
     Value procval = Value::from<Value::Array>(std::move(proc));
-    procval.set_attribute(Value::Execute, true);
+    procval.set_attribute(Value::Executable, true);
     return procval;
 }
 
@@ -239,7 +239,7 @@ void glaxnimate::ps::Interpreter::execute(QIODevice *device, bool reset_pos)
 
 void Interpreter::execute(const Value &proc)
 {
-    if ( !proc.has_attribute(Value::Execute) )
+    if ( !proc.has_attribute(Value::Executable) )
     {
         // error(u"Value is not executable"_s);
         stack().push(proc);
@@ -770,7 +770,6 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("mark", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(Value::from<Value::Mark>());
     }});
-    builtins.alias("<<", "mark");
     builtins.def("cleartomark", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         while ( !interpreter.stack().empty() )
         {
@@ -1080,7 +1079,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.stack().push(std::move(src));
     }});
     builtins.def("forall", {Level::EPS1, {Value::Array, Value::Array}, [](ValueArray args, Interpreter& interpreter){
-        if ( !args[1].has_attribute(Value::Execute) )
+        if ( !args[1].has_attribute(Value::Executable) )
             return interpreter.error(u"Not a procedure"_s);
 
         auto arr = args[0].cast<ValueArray>();
@@ -1116,6 +1115,49 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     }});
     builtins.def("setpacking", {Level::EPS2, {Value::Boolean}, [](ValueArray, Interpreter&){}});
     builtins.def("currentpacking", {Level::EPS2, {}, [](ValueArray, Interpreter& interp){ interp.stack().push(false); }});
+// Dictionary
+    builtins.def("dict", {Level::EPS2, {Value::Integer}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(ValueDict());
+    }});
+    builtins.alias("<<", "mark");
+    builtins.def(">>", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter) {
+        bool fail = false;
+        ValueDict out;
+        while ( !interpreter.stack().empty() )
+        {
+            auto value = interpreter.stack().pop();
+            if ( value.type() == Value::Mark )
+                break;
+
+            if ( interpreter.stack().empty() )
+            {
+                fail = true;
+                break;
+            }
+
+            auto key = interpreter.stack().pop();
+            if ( value.type() == Value::Mark )
+            {
+                fail = true;
+                break;
+            }
+            out[std::move(key)] = std::move(value);
+
+            if ( interpreter.stack().empty() )
+                fail = true;
+        }
+
+        if ( fail )
+            interpreter.error(u"Odd number of items in the dict"_s);
+
+        interpreter.stack().push(std::move(out));
+    }});
+    builtins.def("length", {Level::EPS1, {Value::Dict}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(args[0].cast<ValueDict>().size());
+    }});
+    builtins.def("maxlength", {Level::EPS1, {Value::Dict}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(args[0].cast<ValueDict>().size());
+    }});
 // String
     builtins.def("string", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         int count = args[0].cast<int>();
@@ -1196,7 +1238,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.stack().push(std::move(src));
     }});
     builtins.def("forall", {Level::EPS1, {Value::String, Value::Array}, [](ValueArray args, Interpreter& interpreter){
-        if ( !args[1].has_attribute(Value::Execute) )
+        if ( !args[1].has_attribute(Value::Executable) )
             return interpreter.error(u"Not a procedure"_s);
 
         auto arr = args[0].cast<String>();

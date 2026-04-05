@@ -18,6 +18,17 @@ struct ExecutionMemory
     Stack operand_stack;
 
     std::minstd_rand prng;
+
+    ValueDict userdict;
+    ValueDict globaldict;
+    ValueDict systemdict;
+    std::deque<ValueDict> dict_stack;
+    ValueDict* current_dict()
+    {
+        if ( dict_stack.empty() )
+            return &userdict;
+        return &dict_stack.back();
+    }
 };
 
 class Interpreter;

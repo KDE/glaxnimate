@@ -388,7 +388,7 @@ private Q_SLOTS:
         QCOMPARE(interp.stack()[2].value(), 1);
         QCOMPARE(interp.stack()[1].value(), 2);
         QCOMPARE(interp.stack()[0].type(), Value::Array);
-        QCOMPARE(interp.stack()[0].attributes(), Value::Execute);
+        QCOMPARE(interp.stack()[0].attributes(), Value::Executable);
         QCOMPARE(interp.stack()[0].cast<ValueArray>(), ValueArray({3, "add"}));
         interp.exec_string("exec");
         QCOMPARE(interp.stack_values(), stack_vals(1, 5));
@@ -475,8 +475,16 @@ private Q_SLOTS:
         COMPARE_PARSE("[1 2 3 4 5 6 7] dup [(a) (b) (c)] exch copy", ValueArray({"a", "b", "c", 4, 5, 6, 7}), ValueArray({"a", "b", "c"}));
 
         COMPARE_PARSE("1 2 3 3 packedarray", ValueArray({1, 2, 3}));
-        COMPARE_PARSE("true setpacking");
+        COMPARE_PARSE("true setpacking",);
         COMPARE_PARSE("currentpacking", false);
+    }
+
+    void test_dict()
+    {
+        COMPARE_PARSE("<<(foo) 1 (bar) 2>>", ValueDict({{"foo", 1}, {"bar", 2}}));
+        COMPARE_PARSE("5 dict", ValueDict());
+        COMPARE_PARSE("<<(foo) 1 (bar) 2>> length", 2);
+        COMPARE_PARSE("<<(foo) 1 (bar) 2>> maxlength", 2);
     }
 
     void test_forall()

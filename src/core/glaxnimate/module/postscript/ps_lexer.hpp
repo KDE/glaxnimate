@@ -28,7 +28,7 @@ struct Token
     static Token make_operator(String val)
     {
         Token op{Operator, val};
-        op.value.set_attribute(Value::Execute, true);
+        op.value.set_attribute(Value::Executable, true);
         return op;
     }
 
