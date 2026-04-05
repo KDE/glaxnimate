@@ -142,6 +142,11 @@ struct ExecutionMemory
      * @return true on success, will only fail if key is in systemdict
      */
     bool store(const Value& key, const Value& val);
+
+    /**
+     * @brief Returns the dictionary with the given key (or nullptr)
+     */
+    ValueDict* where(const Value& key);
 };
 
 class Interpreter

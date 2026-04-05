@@ -493,6 +493,7 @@ private Q_SLOTS:
         COMPARE_PARSE("<<>> dup /foo 123 put", ValueDict({{"foo", 123}}));
         COMPARE_PARSE("<</bar 3>> dup /foo undef", ValueDict({{"bar", 3}}));
         COMPARE_PARSE("<</foo 1 /bar 3>> dup /foo undef", ValueDict({{"bar", 3}}));
+        COMPARE_PARSE("<</bar 2 /baz 3>> dup <</foo 1 /baz 4>> exch copy", ValueDict({{"foo", 1}, {"bar", 2}, {"baz", 4}}), ValueDict({{"foo", 1}, {"bar", 2}, {"baz", 4}}));
 
         // def
         COMPARE_PARSE("/foo 123 def /foo load", 123);
@@ -504,6 +505,8 @@ private Q_SLOTS:
         COMPARE_PARSE("<<>> dup begin /foo 123 def",  ValueDict({{"foo", 123}}));
         COMPARE_PARSE("<<>> dup begin /foo 123 def end /bar 456 def",  ValueDict({{"foo", 123}}));
         COMPARE_PARSE("<</foo 123>> begin /foo load", 123);
+        COMPARE_PARSE("<</foo 123>> begin <</bar 123>> begin /foo where", ValueDict({{"foo", 123}}), true);
+        COMPARE_PARSE("<</food 123>> begin <</bar 123>> begin /foo where", false);
 
         // store
         COMPARE_PARSE("<<>> dup begin <<>> dup begin /foo 123 def", ValueDict(), ValueDict({{"foo", 123}}));
@@ -520,11 +523,17 @@ private Q_SLOTS:
         QCOMPARE(interp.stack().size(), 0);
         QCOMPARE(interp.consume_output(), "72\n101\n108\n108\n111\n");
 
-
         interp.exec_string("[1 2 3 4] {=} forall");
         QCOMPARE(interp.last_error, "");
         QCOMPARE(interp.stack().size(), 0);
         QCOMPARE(interp.consume_output(), "1\n2\n3\n4\n");
+
+
+        interp.exec_string("<</foo 1 /bar 2>> {= =} forall");
+        QCOMPARE(interp.last_error, "");
+        QCOMPARE(interp.stack().size(), 0);
+        QString out = interp.consume_output();
+        QVERIFY(out == "1\nfoo\n2\nbar\n" || out == "2\nbar\n1\nfoo\n");
     }
 };
 

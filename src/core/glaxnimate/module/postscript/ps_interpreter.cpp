@@ -449,6 +449,15 @@ const ValueDict &ExecutionMemory::loaded_systemdict() const
     if ( systemdict.empty() )
     {
         builtins->populate_dict(systemdict);
+
+        /*
+         * NOTE:
+         *  $error errordict not included because we don't want error handling on scripts
+         *  statusdict omitted as it is not required by the specs
+         */
+        systemdict["userdict"] = userdict;
+        systemdict["globaldict"] = globaldict;
+        systemdict["systemdict"] = systemdict;
     }
 
     return systemdict;
@@ -488,6 +497,26 @@ bool ExecutionMemory::store(const Value &key, const Value &val)
 
     (*current_dict())[key] = val;
     return true;
+}
+
+ValueDict *ExecutionMemory::where(const Value &key)
+{
+    for ( auto dit = dict_stack.rbegin(); dit != dict_stack.rend(); ++dit )
+    {
+        if ( dit->contains(key) )
+            return &*dit;
+    }
+
+    if ( userdict.contains(key) )
+        return &userdict;
+
+    if ( globaldict.contains(key) )
+        return &globaldict;
+
+    if ( loaded_systemdict().contains(key) )
+        return &systemdict;
+
+    return nullptr;
 }
 
 /*
@@ -1266,13 +1295,68 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         auto dict = args[0].cast<ValueDict>();
         dict[args[1]] = std::move(args[2]);
     }});
-    builtins.def("undef", {Level::EPS1, {Value::Dict, Arg::any()}, [](ValueArray args, Interpreter&){
+    builtins.def("undef", {Level::EPS2, {Value::Dict, Arg::any()}, [](ValueArray args, Interpreter&){
         auto dict = args[0].cast<ValueDict>();
         dict.erase(args[1]);
     }});
     builtins.def("known", {Level::EPS1, {Value::Dict, Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         auto dict = args[0].cast<ValueDict>();
         interpreter.stack().push(dict.contains(args[1]));
+    }});
+    builtins.def("where", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        auto dict = interpreter.memory().where(args[0]);
+        if ( dict )
+            interpreter.stack().push(*dict);
+        interpreter.stack().push(bool(dict));
+    }});
+    builtins.def("copy", {Level::EPS1, {Value::Dict, Value::Dict}, [](ValueArray args, Interpreter& interpreter){
+        auto src = args[0].cast<ValueDict>();
+        auto dest = args[1].cast<ValueDict>();
+        for ( auto& p : src )
+            dest[p.first] = std::move(p.second);
+        interpreter.stack().push(std::move(dest));
+    }});
+    builtins.def("forall", {Level::EPS1, {Value::Dict, Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        if ( !args[1].has_attribute(Value::Executable) )
+            return interpreter.error(u"Not a procedure"_s);
+
+        auto val = args[0].cast<ValueDict>();
+
+        for ( auto& p : val )
+        {
+            interpreter.stack().push(p.first);
+            interpreter.stack().push(p.second);
+            interpreter.execute(args[1]);
+            if ( interpreter.is_halted() )
+                break;
+        }
+    }});
+    builtins.def("dictstack", {Level::EPS1, {Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        auto dest = args[0].cast<ValueArray>();
+        if ( int(interpreter.memory().dict_stack.size() + 3) > dest.size() )
+        {
+            interpreter.error(u"Not enough elements on the destination array"_s);
+            return;
+        }
+
+        dest[0] = interpreter.memory().loaded_systemdict();
+        dest[1] = interpreter.memory().globaldict;
+        dest[2] = interpreter.memory().userdict;
+        int i = 3;
+        for ( const auto& dict : interpreter.memory().dict_stack )
+            dest[i++] = dict;
+
+        interpreter.stack().push(std::move(dest));
+    }});
+    builtins.def("countdictstack", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        // Include the 3 standard ones
+        interpreter.stack().push(int(interpreter.memory().dict_stack.size() + 3));
+    }});
+    builtins.def("currentdict", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(*interpreter.memory().current_dict());
+    }});
+    builtins.def("cleardictstack", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.memory().dict_stack.clear();
     }});
 // String
     builtins.def("string", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
