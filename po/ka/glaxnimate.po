@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-04 00:42+0000\n"
-"PO-Revision-Date: 2026-04-01 04:18+0200\n"
+"PO-Revision-Date: 2026-04-04 05:14+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1046,16 +1046,14 @@ msgid "Precompose"
 msgstr "პრეკომპოზიცია"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:308
-#, fuzzy, kde-format
-#| msgid "End Time"
+#, kde-format
 msgid "Set End Time"
-msgstr "დასასრულის თარიღი"
+msgstr "დასრულების დროის დაყენება"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:345
-#, fuzzy, kde-format
-#| msgid "Start Time"
+#, kde-format
 msgid "Set Start Time"
-msgstr "დაწყების თარიღი"
+msgstr "დაწყების დროის დაყენება"
 
 #: src/core/glaxnimate/command/structure_commands.cpp:73
 #, kde-format
@@ -6146,7 +6144,7 @@ msgstr "ფერის რეჟიმი"
 #: src/gui/widgets/shape_style/color_selector.ui:31
 #, kde-format
 msgid "Wheel"
-msgstr ""
+msgstr "ბორბალი"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:36

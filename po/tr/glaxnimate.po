@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-04 00:42+0000\n"
-"PO-Revision-Date: 2026-04-01 15:56+0300\n"
+"PO-Revision-Date: 2026-04-04 21:30+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1034,7 +1034,7 @@ msgstr "Şunu Yola Dönüştür: %1"
 #: src/core/glaxnimate/command/shape_commands.cpp:242
 #, kde-format
 msgid "Reverse path"
-msgstr "Yolu ters çevir"
+msgstr "Yolu Ters Çevir"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:267
 #: src/gui/widgets/menus/node_menu.cpp:363
@@ -1043,16 +1043,14 @@ msgid "Precompose"
 msgstr "Önden Bileşikleştir"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:308
-#, fuzzy, kde-format
-#| msgid "End Time"
+#, kde-format
 msgid "Set End Time"
-msgstr "Bitiş Zamanı"
+msgstr "Bitiş Zamanını Ayarla"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:345
-#, fuzzy, kde-format
-#| msgid "Start Time"
+#, kde-format
 msgid "Set Start Time"
-msgstr "Başlangıç Zamanı"
+msgstr "Başlangıç Zamanını Ayarla"
 
 #: src/core/glaxnimate/command/structure_commands.cpp:73
 #, kde-format
@@ -6132,7 +6130,7 @@ msgstr "Renk kipi"
 #: src/gui/widgets/shape_style/color_selector.ui:31
 #, kde-format
 msgid "Wheel"
-msgstr ""
+msgstr "Tekerlek"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:36
