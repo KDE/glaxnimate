@@ -134,6 +134,14 @@ class TestCase: public QObject
         return StringLexer(text).next_token();
     }
 
+
+    GraphicsState exec_gstate(const char* text)
+    {
+        TestInterpreter interp;
+        interp.exec_string(text);
+        return interp.memory().gstate;
+    }
+
 private Q_SLOTS:
     void initTestCase()
     {
@@ -389,7 +397,7 @@ private Q_SLOTS:
         QCOMPARE(interp.stack()[2].value(), 1);
         QCOMPARE(interp.stack()[1].value(), 2);
         QCOMPARE(interp.stack()[0].type(), Value::Array);
-        QCOMPARE(interp.stack()[0].attributes(), Value::Executable);
+        QCOMPARE(interp.stack()[0].attributes(), Value::Executable|Value::Writable|Value::Readable);
         QCOMPARE(interp.stack()[0].cast<ValueArray>(), ValueArray({3, "add"}));
         interp.exec_string("exec");
         QCOMPARE(interp.stack_values(), stack_vals(1, 5));
@@ -836,6 +844,23 @@ private Q_SLOTS:
         COMPARE_PARSE(" 123   16 10 string cvrs", "7B");
         COMPARE_PARSE("-123   16 10 string cvrs", "FFFFFF85");
         COMPARE_PARSE(" 123.4 16 10 string cvrs", "7B");
+    }
+
+    void test_gstate_basics()
+    {
+        QCOMPARE(exec_gstate("").line_width, 1);
+        QCOMPARE(exec_gstate("20 setlinewidth").line_width, 20);
+        COMPARE_PARSE("currentlinewidth 20 setlinewidth currentlinewidth", 1, 20);
+
+        QCOMPARE(exec_gstate("").line_cap, glaxnimate::model::Stroke::ButtCap);
+        QCOMPARE(exec_gstate("1 setlinecap").line_cap, glaxnimate::model::Stroke::RoundCap);
+        QCOMPARE(exec_gstate("2 setlinecap").line_cap, glaxnimate::model::Stroke::SquareCap);
+        COMPARE_PARSE("currentlinecap 2 setlinecap currentlinecap", 0, 2);
+
+        QCOMPARE(exec_gstate("20 setlinewidth gsave").line_width, 20);
+        QCOMPARE(exec_gstate("20 setlinewidth gsave 10 setlinewidth").line_width, 10);
+        QCOMPARE(exec_gstate("20 setlinewidth gsave 10 setlinewidth grestore").line_width, 20);
+
     }
 };
 

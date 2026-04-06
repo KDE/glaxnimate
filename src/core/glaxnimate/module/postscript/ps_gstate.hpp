@@ -157,22 +157,46 @@ struct GraphicsState
 
     static model::Stroke::Cap convert_cap(int ps_val)
     {
-        return model::Stroke::Cap(ps_val);
+        switch ( ps_val )
+        {
+            default:
+            case 0: return model::Stroke::ButtCap;
+            case 1: return model::Stroke::RoundCap;
+            case 2: return model::Stroke::SquareCap;
+        }
     }
 
     static int convert_cap(model::Stroke::Cap cap)
     {
-        return int(cap);
+        switch ( cap )
+        {
+            case model::Stroke::ButtCap: return 0;
+            case model::Stroke::RoundCap: return 1;
+            case model::Stroke::SquareCap: return 2;
+        }
+        return 0;
     }
 
     static model::Stroke::Join convert_join(int ps_val)
     {
-        return model::Stroke::Join(ps_val);
+        switch ( ps_val )
+        {
+            default:
+            case 0: return model::Stroke::MiterJoin;
+            case 1: return model::Stroke::RoundJoin;
+            case 2: return model::Stroke::BevelJoin;
+        }
     }
 
     static int convert_join(model::Stroke::Join join)
     {
-        return int(join);
+        switch ( join )
+        {
+            case model::Stroke::MiterJoin: return 0;
+            case model::Stroke::RoundJoin: return 1;
+            case model::Stroke::BevelJoin: return 2;
+        }
+        return 0;
     }
 
 };
