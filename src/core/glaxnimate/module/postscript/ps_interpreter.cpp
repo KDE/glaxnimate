@@ -41,6 +41,11 @@ public:
     Lexer lexer{nullptr};
     ExecutionMemory memory;
     bool halted = false;
+    bool break_loop = false;
+    int max_loop_iter = 1000;
+    bool stopped = false;
+    int exec_stack_size = 0;
+
     Level level = Level::PS3;
     QByteArray current_command;
     MetaSection meta_section = Initial;
@@ -49,8 +54,6 @@ public:
     bool auto_level = false;
     int auto_level_status = 0;
     int partial_level = 0;
-    bool break_loop = false;
-    int max_loop_iter = 1000;
 
     void handle_meta(QStringView comment)
     {
@@ -142,13 +145,15 @@ glaxnimate::ps::Stack &glaxnimate::ps::Interpreter::stack()
 void glaxnimate::ps::Interpreter::execute(QIODevice *device, bool reset_pos)
 {
     d->lexer.set_device(device, reset_pos);
-    while ( !d->halted )
+    while ( !d->halted && !d->stopped )
     {
         auto token = d->lexer.next_token();
         switch ( token.type )
         {
             case Token::Literal:
                 execute(token.value, true);
+                if ( d->break_loop )
+                    error(u"Invalid exit"_s);
                 break;
             case Token::Eof:
                 return;
@@ -194,7 +199,7 @@ void Interpreter::execute(const Value &proc, bool defer)
         for ( const auto& v : proc.cast<ValueArray>() )
         {
             execute(v, true);
-            if ( d->halted || d->break_loop )
+            if ( procedure_must_exit() )
                 break;
         }
     }
@@ -216,7 +221,7 @@ void glaxnimate::ps::Interpreter::print(const QString &text)
 
 void glaxnimate::ps::Interpreter::error(const QString &error)
 {
-    d->halted = true;
+    d->stopped = true;
     on_error(error);
 }
 
@@ -348,9 +353,29 @@ bool Interpreter::is_halted() const
     return d->halted;
 }
 
+void Interpreter::halt()
+{
+    d->halted = true;
+}
+
+bool Interpreter::is_stopped() const
+{
+    return d->stopped;
+}
+
+void Interpreter::set_stopped(bool stopped)
+{
+    d->stopped = stopped;
+}
+
+bool Interpreter::procedure_must_exit() const
+{
+    return d->halted || d->stopped || d->break_loop;
+}
+
 bool Interpreter::loop_must_exit(int count)
 {
-    if ( d->halted )
+    if ( d->halted || d->stopped )
         return true;
 
     auto broken = d->break_loop;
@@ -497,7 +522,7 @@ Not encapsulated:
     setshared
   - clear
     framedevice
-    quit
+  - quit
     startjob
     cleardictstack
     grestoreall
@@ -1182,8 +1207,6 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         {
             interpreter.stack().push(std::move(arr[i]));
             interpreter.execute(args[1]);
-            if ( interpreter.is_halted() )
-                break;
         }
     }});
     // Packed array
@@ -1444,8 +1467,6 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         {
             interpreter.stack().push(int(arr[i]));
             interpreter.execute(args[1]);
-            if ( interpreter.is_halted() )
-                break;
         }
     }});
     builtins.def("anchorsearch", {Level::EPS1, {Value::String, Value::String}, [](ValueArray args, Interpreter& interpreter){
@@ -1597,7 +1618,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             interpreter.warning(u"Negative loop count"_s);
         }
 
-        for ( int i = 0; i < count; i++ )
+        for ( int i = 0; i < count && !interpreter.loop_must_exit(i); i++ )
             interpreter.execute(args[1]);
     }});
     builtins.def("for", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::proc()}, [](ValueArray args, Interpreter& interpreter){
@@ -1613,4 +1634,24 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         for ( int i = 0; !interpreter.loop_must_exit(i); i++ )
             interpreter.execute(args[0]);
     }});
+    builtins.def("stop", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.set_stopped(true);
+    }});
+    builtins.def("stopped", {Level::EPS1, {Arg::proc()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.execute(args[0]);
+        interpreter.stack().push(interpreter.is_stopped());
+        interpreter.set_stopped(false);
+    }});
+    builtins.def("start", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.set_stopped(true);
+    }});
+    builtins.def("quit", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.halt();
+    }});
+
+    /*
+        Unimplemented:
+            countexecstack
+            execstack
+    */
 }

@@ -696,8 +696,15 @@ private Q_SLOTS:
         COMPARE_PARSE("[1 2 3 4 5] { dup 3 eq {exit} if (a) } forall", 1, "a", 2, "a", 3);
         COMPARE_PARSE("1 100 {1 add dup 10 eq {exit} if} repeat", 10);
         COMPARE_PARSE("1 {1 add dup 10 eq {exit} if} loop", 10);
+    }
 
+    void test_stop()
+    {
+        COMPARE_PARSE("{1 2 stop 3} stopped (a)", 1, 2, true, "a");
+        COMPARE_PARSE("{1 2 3} stopped (a)", 1, 2, 3, false, "a");
+        QCOMPARE(TestInterpreter().exec_string("{1 2 get 3} stopped (a)"), stack_vals(1, 2, true, "a"));
 
+        COMPARE_PARSE("{1 2 quit 3} stopped (a)", 1, 2, false);
     }
 };
 

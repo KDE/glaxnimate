@@ -179,9 +179,19 @@ public:
     std::map<QString, QString>& page_metadata();
 
     /**
-     * @brief Whether execution is halted
+     * @brief Whether execution is halted (globally)
      */
     bool is_halted() const;
+    void halt();
+    /**
+     * @brief Whether a procedure has been stopped
+     */
+    bool is_stopped() const;
+    void set_stopped(bool stopped);
+    /**
+     * @brief Whether a procedure must stop execution
+     */
+    bool procedure_must_exit() const;
     /**
      * @brief Whether a loop operation must exit
      * @param count Current iteration to impose a max limit on iterations
