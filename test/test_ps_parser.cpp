@@ -676,6 +676,11 @@ private Q_SLOTS:
     {
         COMPARE_PARSE("4 {123} repeat", 123, 123, 123, 123);
         COMPARE_PARSE("0 {123} repeat",);
+
+        COMPARE_PARSE("0 1 4 {} for", 0, 1, 2, 3, 4);
+        COMPARE_PARSE("1 2 6 {} for", 1, 3, 5);
+        COMPARE_PARSE("100 1 1 4 {add} for", 110);
+        COMPARE_PARSE("3 -.5 1 {} for", 3.0, 2.5, 2.0, 1.5, 1.0);
     }
 };
 

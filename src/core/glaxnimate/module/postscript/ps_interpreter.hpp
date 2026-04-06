@@ -179,7 +179,7 @@ public:
     std::map<QString, QString>& page_metadata();
 
     bool is_halted() const;
-
+    bool break_loop(int count) const;
 
     int file_row() const;
     int file_column() const;

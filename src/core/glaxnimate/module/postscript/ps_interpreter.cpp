@@ -49,6 +49,8 @@ public:
     bool auto_level = false;
     int auto_level_status = 0;
     int partial_level = 0;
+    bool break_loop = false;
+    int max_loop_iter = 1000;
 
     void handle_meta(QStringView comment)
     {
@@ -347,6 +349,18 @@ std::map<QString, QString> &Interpreter::page_metadata()
 bool Interpreter::is_halted() const
 {
     return d->halted;
+}
+
+bool Interpreter::break_loop(int count) const
+{
+    if ( d->halted )
+        return true;
+
+    auto broken = d->break_loop;
+    d->break_loop = false;
+    if ( count > d->max_loop_iter )
+        return true;
+    return broken;
 }
 
 int Interpreter::file_row() const
@@ -735,6 +749,35 @@ void CommandSet::populate_dict(ValueDict &value) const
         value[p.first] = val;
     }
 }
+
+namespace {
+
+template<class NumT>
+void for_impl(ValueArray args, Interpreter& interpreter)
+{
+    auto counter = args[0].cast<NumT>();
+    auto increment = args[1].cast<NumT>();
+    auto limit = args[2].cast<NumT>();
+
+    if ( increment < 0 )
+    {
+        for ( int i = 0; counter >= limit && !interpreter.break_loop(i++); counter += increment )
+        {
+            interpreter.stack().push(counter);
+            interpreter.execute(args[3]);
+        }
+    }
+    else
+    {
+        for ( int i = 0; counter <= limit && !interpreter.break_loop(i++); counter += increment )
+        {
+            interpreter.stack().push(counter);
+            interpreter.execute(args[3]);
+        }
+    }
+}
+
+} // namespace
 
 void CommandSet::populate_builtins(CommandSet& builtins)
 {
@@ -1547,5 +1590,11 @@ void CommandSet::populate_builtins(CommandSet& builtins)
 
         for ( int i = 0; i < count; i++ )
             interpreter.execute(args[1]);
+    }});
+    builtins.def("for", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::proc()}, [](ValueArray args, Interpreter& interpreter){
+        if ( args[0].type() == Value::Integer && args[1].type() == Value::Integer && args[2].type() == Value::Integer )
+            for_impl<int>(args, interpreter);
+        else
+            for_impl<float>(args, interpreter);
     }});
 }
