@@ -452,7 +452,14 @@ private Q_SLOTS:
         COMPARE_PARSE("(Hello) dup 1 97 put", "Hallo");
         COMPARE_PARSE("(Hello) 1 3 getinterval", "ell");
         COMPARE_PARSE("(Hello) dup 2 (ww) putinterval", "Hewwo");
-        COMPARE_PARSE("(hello world) dup (foo) exch copy pstack", "foolo world", "foo");
+        COMPARE_PARSE("(hello world) dup (foo) exch copy", "foolo world", "foo");
+
+        COMPARE_PARSE("(Hello) (Hell) anchorsearch", "o", "Hell", true);
+        COMPARE_PARSE("(Hello) (ell) anchorsearch", "Hello", false);
+        COMPARE_PARSE("(Hello) (ell) search", "o", "ell", "H", true);
+        COMPARE_PARSE("(Hello) (Hell) search", "o", "Hell", "", true);
+        COMPARE_PARSE("(Hello) (llo) search", "", "llo", "He", true);
+        COMPARE_PARSE("(Hello) (foo) search", "Hello", false);
     }
 
     void test_bool()

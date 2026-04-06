@@ -1451,6 +1451,40 @@ void CommandSet::populate_builtins(CommandSet& builtins)
                 break;
         }
     }});
+    builtins.def("anchorsearch", {Level::EPS1, {Value::String, Value::String}, [](ValueArray args, Interpreter& interpreter){
+        auto string = args[0].cast<String>();
+        auto seek = args[1].cast<String>();
+
+        if ( string.starts_with(seek) )
+        {
+            interpreter.stack().push(string.bytes().sliced(seek.size()));
+            interpreter.stack().push(seek);
+            interpreter.stack().push(true);
+        }
+        else
+        {
+            interpreter.stack().push(string);
+            interpreter.stack().push(false);
+        }
+    }});
+    builtins.def("search", {Level::EPS1, {Value::String, Value::String}, [](ValueArray args, Interpreter& interpreter){
+        auto string = args[0].cast<String>();
+        auto seek = args[1].cast<String>();
+        int pos = string.bytes().indexOf(seek.bytes());
+
+        if ( pos != -1 )
+        {
+            interpreter.stack().push(string.bytes().sliced(pos + seek.size()));
+            interpreter.stack().push(seek);
+            interpreter.stack().push(string.bytes().sliced(0, pos));
+            interpreter.stack().push(true);
+        }
+        else
+        {
+            interpreter.stack().push(string);
+            interpreter.stack().push(false);
+        }
+    }});
 // Boolean
     builtins.def("true", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(true);

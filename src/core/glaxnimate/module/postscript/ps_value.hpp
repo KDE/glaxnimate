@@ -74,6 +74,11 @@ public:
 
     std::size_t hash() const { return qHash(*data); }
 
+    bool starts_with(const String& prefix) const
+    {
+        return data->startsWith(*prefix.data);
+    }
+
 private:
     std::shared_ptr<container> data;
 };
