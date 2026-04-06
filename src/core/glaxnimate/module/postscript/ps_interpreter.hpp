@@ -57,20 +57,24 @@ inline bool level_is_compatible(Level allowed, Level to_check)
 struct ArgumentType
 {
     ArgumentType() {}
-    ArgumentType(Value::Type t) : overloads{t} {}
+    ArgumentType(Value::Type t, int attrs = 0) : overloads{t}, attrs(attrs) {}
     ArgumentType(std::initializer_list<Value::Type> t) : overloads(t) {}
 
+    static ArgumentType proc() { return ArgumentType(Value::Array, Value::Executable); }
     static ArgumentType any() { return {}; }
     static ArgumentType number() { return {Value::Integer, Value::Real}; }
 
-    bool matches(Value::Type t) const
+    bool matches(const Value& val) const
     {
-        return overloads.empty() || std::find(overloads.begin(), overloads.end(), t) != overloads.end();
+        if ( !val.has_attribute(attrs) )
+            return false;
+        return overloads.empty() || std::find(overloads.begin(), overloads.end(), val.type()) != overloads.end();
     }
 
     QString to_string() const;
 
     std::vector<Value::Type> overloads;
+    int attrs = 0;
 };
 
 struct Command
@@ -163,6 +167,7 @@ public:
 
     void print(const QString& text);
     void error(const QString& error);
+    void warning(const QString& error);
 
     Value pop(Value::Type type);
 

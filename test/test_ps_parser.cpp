@@ -663,6 +663,20 @@ private Q_SLOTS:
         COMPARE_PARSE("2#11010 3 bitshift", 0b11010000);
         COMPARE_PARSE("2#11010 -3 bitshift", 0b11);
     }
+
+    void test_if()
+    {
+        COMPARE_PARSE("false {123} if",);
+        COMPARE_PARSE("true {123} if", 123);
+        COMPARE_PARSE("false {123} {456} ifelse", 456);
+        COMPARE_PARSE("true {123} {456} ifelse", 123);
+    }
+
+    void test_loop()
+    {
+        COMPARE_PARSE("4 {123} repeat", 123, 123, 123, 123);
+        COMPARE_PARSE("0 {123} repeat",);
+    }
 };
 
 QTEST_GUILESS_MAIN(TestCase)

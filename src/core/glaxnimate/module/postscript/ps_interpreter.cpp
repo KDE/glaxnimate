@@ -221,6 +221,11 @@ void glaxnimate::ps::Interpreter::error(const QString &error)
     on_error(error);
 }
 
+void Interpreter::warning(const QString &error)
+{
+    on_warning(error);
+}
+
 bool Command::collect_arguments(Stack &stack, std::vector<std::pair<int, int>> &errors, ValueArray& args) const
 {
     int count = arg_types.size();
@@ -232,7 +237,7 @@ bool Command::collect_arguments(Stack &stack, std::vector<std::pair<int, int>> &
     for ( int i = 0; i < count; i++ )
     {
         int stack_ind = count - 1 - i;
-        if ( !arg_types[i].matches(stack[stack_ind].type()) )
+        if ( !arg_types[i].matches(stack[stack_ind]) )
         {
             errors.push_back({i, stack_ind});
         }
@@ -981,10 +986,6 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         for ( const auto& v : interpreter.stack() )
             interpreter.print(v.to_pretty_string() + '\n');
     }});
-// Control
-    builtins.def("exec", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
-        interpreter.execute(args[0]);
-    }});
 // Array
     builtins.alias("[", "mark");
     builtins.def("]", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter) {
@@ -1519,5 +1520,32 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         auto num = args[0].cast<int>();
         auto shift = args[1].cast<int>();
         interpreter.stack().push(shift < 0 ? num >> -shift : num << shift);
+    }});
+
+    // Control
+    builtins.def("exec", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.execute(args[0]);
+    }});
+    builtins.def("if", {Level::EPS1, {Value::Boolean, Arg::proc()}, [](ValueArray args, Interpreter& interpreter){
+        bool cond = args[0].cast<bool>();
+        if ( cond )
+            interpreter.execute(args[1]);
+    }});
+    builtins.def("ifelse", {Level::EPS1, {Value::Boolean, Arg::proc(), Arg::proc()}, [](ValueArray args, Interpreter& interpreter){
+        bool cond = args[0].cast<bool>();
+        if ( cond )
+            interpreter.execute(args[1]);
+        else
+            interpreter.execute(args[2]);
+    }});
+    builtins.def("repeat", {Level::EPS1, {Value::Integer, Arg::proc()}, [](ValueArray args, Interpreter& interpreter){
+        int count = args[0].cast<int>();
+        if ( count < 0 )
+        {
+            interpreter.warning(u"Negative loop count"_s);
+        }
+
+        for ( int i = 0; i < count; i++ )
+            interpreter.execute(args[1]);
     }});
 }
