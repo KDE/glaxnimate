@@ -462,6 +462,21 @@ private Q_SLOTS:
         COMPARE_PARSE("(Hello) (foo) search", "Hello", false);
     }
 
+    void test_token()
+    {
+        COMPARE_PARSE("(123) token", "", 123, true);
+        COMPARE_PARSE("(123 foo) token", "foo", 123, true);
+        COMPARE_PARSE("(%foo 123) token", false);
+        COMPARE_PARSE("(%foo\n123) token", "", 123, true);
+        COMPARE_PARSE("({123) token", false);
+
+        TestInterpreter interp;
+        interp.exec_string("({ 123 }345) token");
+        QCOMPARE(interp.last_error, "");
+        QCOMPARE(interp.stack_values(), stack_vals("345", ValueArray({123}), true));
+        QVERIFY(interp.stack()[1].has_attribute(Value::Executable));
+    }
+
     void test_bool()
     {
         COMPARE_PARSE("true false", true, false);

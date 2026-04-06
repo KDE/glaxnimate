@@ -5,8 +5,10 @@
  */
 
 #include "ps_interpreter.hpp"
-#include "glaxnimate/math/math.hpp"
 
+#include <QBuffer>
+
+#include "glaxnimate/math/math.hpp"
 #include "ps_lexer.hpp"
 
 using namespace glaxnimate::ps;
@@ -147,7 +149,7 @@ void glaxnimate::ps::Interpreter::execute(QIODevice *device, bool reset_pos)
                 execute_command(token.value);
                 break;
             case Token::Literal:
-                d->memory.operand_stack.push(token.value);
+                stack().push(token.value);
                 break;
             case Token::Eof:
                 return;
@@ -184,7 +186,6 @@ void Interpreter::execute(const Value &proc)
 {
     if ( !proc.has_attribute(Value::Executable) )
     {
-        // error(u"Value is not executable"_s);
         stack().push(proc);
         return;
     }
@@ -1426,6 +1427,31 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         {
             interpreter.stack().push(string);
             interpreter.stack().push(false);
+        }
+    }});
+    builtins.def("token", {Level::EPS1, {Value::String}, [](ValueArray args, Interpreter& interpreter){
+        auto string = args[0].cast<String>();
+        QBuffer buf(const_cast<QByteArray*>(&string.bytes()));
+        buf.open(QIODeviceBase::ReadOnly);
+        auto tok = Lexer(&buf).next_token();
+        while ( true )
+        {
+            if ( tok.type == Token::Operator || tok.type == Token::Literal )
+            {
+                interpreter.stack().push(buf.readAll());
+                interpreter.stack().push(tok.value);
+                interpreter.stack().push(true);
+                break;
+            }
+            else if ( tok.type == Token::Comment )
+            {
+                continue;
+            }
+            else
+            {
+                interpreter.stack().push(false);
+                break;
+            }
         }
     }});
 // Boolean
