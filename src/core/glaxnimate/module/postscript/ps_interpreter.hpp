@@ -9,6 +9,7 @@
 #include <random>
 
 #include "ps_stack.hpp"
+#include "ps_gstate.hpp"
 
 namespace glaxnimate::ps {
 
@@ -120,8 +121,12 @@ struct ExecutionMemory
 
     ValueDict userdict;
     ValueDict globaldict;
-    mutable ValueDict systemdict;
+    ValueDict systemdict;
     std::deque<ValueDict> dict_stack;
+
+    GraphicsState gstate;
+    std::deque<GraphicsState> gstate_stack;
+
     ValueDict* current_dict()
     {
         if ( dict_stack.empty() )
@@ -129,7 +134,7 @@ struct ExecutionMemory
         return &dict_stack.back();
     }
 
-    const ValueDict& loaded_systemdict() const;
+    ValueDict& loaded_systemdict();
 
     /**
      * @brief Helper for `load` operator
@@ -137,7 +142,7 @@ struct ExecutionMemory
      * @param out Value to be written to
      * @return true on success
      */
-    bool load(const Value& key, Value& out, bool search_system) const;
+    bool load(const Value& key, Value& out, bool search_system);
 
     /**
      * @brief Helper for `store` operator

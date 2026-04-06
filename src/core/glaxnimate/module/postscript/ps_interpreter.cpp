@@ -439,7 +439,7 @@ QDebug operator<<(QDebug d, Interpreter &interp)
     return d;
 }
 
-const ValueDict &ExecutionMemory::loaded_systemdict() const
+ValueDict &ExecutionMemory::loaded_systemdict()
 {
     if ( systemdict.empty() )
     {
@@ -453,12 +453,14 @@ const ValueDict &ExecutionMemory::loaded_systemdict() const
         systemdict["userdict"] = userdict;
         systemdict["globaldict"] = globaldict;
         systemdict["systemdict"] = systemdict;
+
+        systemdict["currentstrokeadjust"] = false;
     }
 
     return systemdict;
 }
 
-bool ExecutionMemory::load(const Value &key, Value &out, bool search_system) const
+bool ExecutionMemory::load(const Value &key, Value &out, bool search_system)
 {
     for ( auto dit = dict_stack.rbegin(); dit != dict_stack.rend(); ++dit )
     {
@@ -526,7 +528,7 @@ Not encapsulated:
     framedevice
   - quit
     startjob
-    cleardictstack
+  - cleardictstack
     grestoreall
     renderbands
     copypage
@@ -785,7 +787,7 @@ void CommandSet::populate_dict(ValueDict &value) const
 namespace {
 
 template<class NumT>
-void for_impl(ValueArray args, Interpreter& interpreter)
+void for_impl(const ValueArray& args, Interpreter& interpreter)
 {
     auto counter = args[0].cast<NumT>();
     auto increment = args[1].cast<NumT>();
@@ -809,6 +811,55 @@ void for_impl(ValueArray args, Interpreter& interpreter)
     }
 }
 
+bool to_float_array(const ValueArray& vals, std::vector<float>& out, bool allow_negative)
+{
+    out.reserve(vals.size());
+    for ( const auto& v : vals )
+    {
+        if ( v.type() == Value::Real || v.type() == Value::Integer )
+        {
+            auto d = v.cast<float>();
+            if ( allow_negative || d >= 0 )
+            {
+                out.push_back(d);
+                continue;
+            }
+        }
+
+        return false;
+    }
+
+    return true;
+}
+
+void current_color_impl(ColorSpaceType type, Interpreter& interpreter)
+{
+    std::vector<float> comps;
+    if ( interpreter.memory().gstate.color_space.type() == type )
+        comps = interpreter.memory().gstate.color_space.components(interpreter.memory().gstate.color);
+    else
+        comps = ColorSpace(type).components(interpreter.memory().gstate.color);
+
+    for ( float comp : comps )
+        interpreter.stack().push(comp);
+}
+
+void set_color_impl(ColorSpaceType type, const ValueArray& args, Interpreter& interpreter)
+{
+    interpreter.memory().gstate.color_space = type;
+    std::vector<float> comps;
+    if ( !to_float_array(args, comps, false) )
+    {
+        interpreter.error(u"Invalid component"_s);
+        return;
+    }
+
+    if ( !interpreter.memory().gstate.color_space.make_color(comps, &interpreter.memory().gstate.color) )
+    {
+        interpreter.error(u"Invalid color"_s);
+    }
+}
+
 } // namespace
 
 void CommandSet::populate_builtins(CommandSet& builtins)
@@ -816,6 +867,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     using Arg = ArgumentType;
 
 // Stack ops
+{
     builtins.def("pop", {Level::EPS1, {Arg::any()}, [](ValueArray, Interpreter&){}});
     builtins.def("exch", {Level::EPS1, {Arg::any(), Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.stack().push(std::move(args[1]));
@@ -918,7 +970,9 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("count", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(interpreter.stack().size());
     }});
+}
 // Math functions
+{
     builtins.def("add", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         if ( args[0].type() == Value::Integer && args[1].type() == args[0].type() )
             interpreter.stack().push(args[0].cast<int>() + args[1].cast<int>());
@@ -1049,7 +1103,9 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.memory().prng.seed(seed);
         interpreter.stack().push(int(seed));
     }});
+}
 // Interactive
+{
     builtins.def("=", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.print(to_ugly_string(args[0])+ '\n');
     }});
@@ -1064,7 +1120,9 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         for ( const auto& v : interpreter.stack() )
             interpreter.print(v.to_pretty_string() + '\n');
     }});
+}
 // Array
+{
     builtins.alias("[", "mark");
     builtins.def("]", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter) {
         bool mark_found = false;
@@ -1211,7 +1269,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             interpreter.execute(args[1]);
         }
     }});
-    // Packed array
+// Packed array
     builtins.alias("packedarray", "array");
     builtins.def("packedarray", {Level::EPS2, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         auto length = args[0].cast<int>();
@@ -1234,7 +1292,9 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     }});
     builtins.def("setpacking", {Level::EPS2, {Value::Boolean}, [](ValueArray, Interpreter&){}});
     builtins.def("currentpacking", {Level::EPS2, {}, [](ValueArray, Interpreter& interp){ interp.stack().push(false); }});
+}
 // Dictionary
+{
     builtins.def("dict", {Level::EPS2, {Value::Integer}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(ValueDict());
     }});
@@ -1380,7 +1440,9 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("cleardictstack", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.memory().dict_stack.clear();
     }});
+}
 // String
+{
     builtins.def("string", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         int count = args[0].cast<int>();
         if ( count < 0 )
@@ -1521,7 +1583,9 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             interpreter.stack().push(false);
         }
     }});
+}
 // Boolean
+{
     builtins.def("true", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(true);
     }});
@@ -1583,8 +1647,9 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         auto shift = args[1].cast<int>();
         interpreter.stack().push(shift < 0 ? num >> -shift : num << shift);
     }});
-
-    // Control
+}
+// Control
+{
     builtins.def("exec", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.execute(args[0]);
     }});
@@ -1637,7 +1702,9 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("quit", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.halt();
     }});
+}
 // Type etc
+{
     builtins.def("type", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.stack().push(args[0].value_type_name());
     }});
@@ -1790,7 +1857,9 @@ void CommandSet::populate_builtins(CommandSet& builtins)
 
         interpreter.stack().push(src);
     }});
+}
 // Misc
+{
     builtins.def("version", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(AppInfo::instance().version().toLatin1());
     }});
@@ -1811,6 +1880,9 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.stack().push(Value());
     }});
 
+    builtins.def("bind", {Level::EPS1, {Arg::proc()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(std::move(args[0]));
+    }});
 
     builtins.def("realtime", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(0);
@@ -1818,16 +1890,177 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("usertime", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(0);
     }});
+}
+// Graphics
+{
+    builtins.def("gsave", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.memory().gstate_stack.push_back(interpreter.memory().gstate);
+        interpreter.memory().gstate.clip_stack.clear();
+    }});
+    builtins.def("grestore", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        if ( !interpreter.memory().gstate_stack.empty() )
+        {
+            interpreter.memory().gstate = interpreter.memory().gstate_stack.back();
+            interpreter.memory().gstate_stack.pop_back();
+        }
+    }});
+    builtins.def("grestoreall", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+        if ( !interpreter.memory().gstate_stack.empty() )
+        {
+            interpreter.memory().gstate = interpreter.memory().gstate_stack.front();
+            interpreter.memory().gstate_stack.clear();
+        }
+    }});
+    builtins.def("initgraphics", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.memory().gstate = {};
+    }});
+    builtins.def("clipsave", {Level::EPS3, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.memory().gstate.clip_stack.push_back(interpreter.memory().gstate.clip);
+    }});
+    builtins.def("cliprestore", {Level::EPS3, {}, [](ValueArray, Interpreter& interpreter){
+
+        if ( !interpreter.memory().gstate.clip_stack.empty() )
+        {
+            interpreter.memory().gstate.clip = interpreter.memory().gstate.clip_stack.back();
+            interpreter.memory().gstate.clip_stack.pop_back();
+        }
+    }});
+    builtins.def("setlinewidth", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.memory().gstate.line_width = math::max(0.f, args[0].cast<float>());
+    }});
+    builtins.def("currentlinewidth", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(interpreter.memory().gstate.line_width);
+    }});
+    builtins.def("setlinecap", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.memory().gstate.line_cap = GraphicsState::convert_cap(args[0].cast<int>());
+    }});
+    builtins.def("currentlinecap", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(GraphicsState::convert_cap(interpreter.memory().gstate.line_cap));
+    }});
+    builtins.def("setlinejoin", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.memory().gstate.line_join = GraphicsState::convert_join(args[0].cast<int>());
+    }});
+    builtins.def("currentlinejoin", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(GraphicsState::convert_join(interpreter.memory().gstate.line_join));
+    }});
+    builtins.def("setlinemiterlimit", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.memory().gstate.miter_limit = args[0].cast<float>();
+    }});
+    builtins.def("currentmiterlimit", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(interpreter.memory().gstate.miter_limit);
+    }});
+    builtins.def("setstrokeadjust", {Level::EPS2, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.memory().loaded_systemdict()[Value("currentstrokeadjust")] = args[0].cast<bool>();
+    }});
+    builtins.def("setdash", {Level::EPS1, {Value::Array, Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        std::vector<float> dashes;
+        float offset = args[1].cast<float>();
+        auto argdashes = args[0].cast<ValueArray>();
+        if ( !to_float_array(argdashes, dashes, false) )
+        {
+            interpreter.error(u"Invalid dash length"_s);
+            return;
+        }
+
+        interpreter.memory().gstate.dash_pattern = std::move(dashes);
+        interpreter.memory().gstate.dash_offset = offset;
+
+    }});
+    builtins.def("currentsetdash", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        ValueArray dashes;
+        dashes.reserve(interpreter.memory().gstate.dash_pattern.size());
+        for ( auto d : interpreter.memory().gstate.dash_pattern )
+            dashes.emplace_back(d);
+        interpreter.stack().push(std::move(dashes));
+        interpreter.stack().push(interpreter.memory().gstate.dash_offset);
+    }});
+    builtins.def("setcolorspace", {Level::EPS2, {Arg{Value::String, Value::Array}}, [](ValueArray args, Interpreter& interpreter){
+        ValueArray params;
+        if ( args[0].type() == Value::String )
+            params.emplace_back(std::move(args[0]));
+        else
+            params = args[0].cast<ValueArray>();
+
+        if ( params.empty() || params[0].type() != Value::String )
+        {
+            interpreter.error(u"Missing color space"_s);
+            return;
+        }
+
+        auto space_name = params[0].cast<String>();
+        if ( !interpreter.memory().gstate.color_space.from_name(space_name.bytes()) )
+        {
+            interpreter.error(u"Unknown color space %1"_s.arg(space_name.bytes()));
+        }
+    }});
+    builtins.def("currentcolorspace", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(ValueArray{interpreter.memory().gstate.color_space.name()});
+    }});
+    builtins.def("setcolor", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
+        int comp_count = interpreter.memory().gstate.color_space.component_count();
+        if ( interpreter.stack().size() < comp_count )
+        {
+            interpreter.error(u"Not enough components"_s);
+            return;
+        }
+
+        std::vector<float> comps;
+        comps.resize(comp_count);
+        for ( int i = comp_count - 1; i >= 0; --i )
+        {
+            auto v = interpreter.stack().pop();
+            if ( v.type() != Value::Real && v.type() != Value::Integer )
+            {
+                interpreter.error(u"Invalid component type"_s);
+                return;
+            }
+            comps[i] = v.cast<float>();
+        }
+
+        if ( !interpreter.memory().gstate.color_space.make_color(comps, &interpreter.memory().gstate.color) )
+            interpreter.error(u"Invalid color"_s);
+    }});
+    builtins.def("currentcolor", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        current_color_impl(interpreter.memory().gstate.color_space.type(), interpreter);
+    }});
+    builtins.def("setgray", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        set_color_impl(ColorSpaceType::DeviceGrey, args, interpreter);
+    }});
+    builtins.def("currentgray", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        current_color_impl(ColorSpaceType::DeviceGrey, interpreter);
+    }});
+    builtins.def("setrgbcolor", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        set_color_impl(ColorSpaceType::DeviceRGB, args, interpreter);
+    }});
+    builtins.def("currentrgbcolor", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        current_color_impl(ColorSpaceType::DeviceRGB, interpreter);
+    }});
+    builtins.def("setcymkcolor", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        set_color_impl(ColorSpaceType::DeviceRGB, args, interpreter);
+    }});
+    builtins.def("currentcymkcolor", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        current_color_impl(ColorSpaceType::DeviceRGB, interpreter);
+    }});
+    builtins.def("sethsbcolor", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        set_color_impl(ColorSpaceType::CustomHSV, args, interpreter);
+        interpreter.memory().gstate.color_space = ColorSpaceType::DeviceRGB;
+    }});
+    builtins.def("currenthsbcolor", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        current_color_impl(ColorSpaceType::CustomHSV, interpreter);
+    }});
+}
 
     /*
         Unimplemented:
             countexecstack
             execstack
+            gstate / setgstate / currentgstate
+            file / resource operators
 
-        access control changes don't apply to the shared value for dicts
-        access control not checked for put/get etc
-
-        file / resource operators
+        Not compliant
+            access control changes don't apply to the shared value for dicts
+            access control not checked for put/get etc
+            bind is a noop
 
         Not defined (allowed by the specs):
             executive / echo / prompt
