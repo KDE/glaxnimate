@@ -111,17 +111,18 @@ public:
         Executable = 1,
         Writable = 2,
         Readable = 4,
-        Deferred = 8
+        Deferred = 8,
+        Name = 16
     };
 
     template<Type Tp> struct type_for;
 
-    Value() : Value(Null, {}) {}
+    Value() : Value(Null, {}, 0) {}
 
-    Value(int num) : Value(Integer, num) {}
-    Value(float num) : Value(Real, num) {}
-    Value(double num) : Value(Real, num) {}
-    Value(bool num) : Value(Boolean, num) {}
+    Value(int num) : Value(Integer, num, 0) {}
+    Value(float num) : Value(Real, num, 0) {}
+    Value(double num) : Value(Real, num, 0) {}
+    Value(bool num) : Value(Boolean, num, 0) {}
     Value(ValueArray v);
     Value(const char* str);
     Value(class String v);
@@ -133,9 +134,9 @@ public:
     Value& operator=(Value&&) = default;
 
     template<Type Tp>
-    static Value from(typename type_for<Tp>::type val)
+    static Value from(typename type_for<Tp>::type val, int attributes = None)
     {
-        return Value(Tp, QVariant::fromValue(std::move(val)));
+        return Value(Tp, QVariant::fromValue(std::move(val)), attributes);
     }
     template<Type Tp> static Value from();
 
@@ -160,6 +161,11 @@ public:
     }
 
     bool can_convert(Type t) const;
+
+    void set_attributes(int attributes)
+    {
+        attributes_ = attributes;
+    }
 
     int attributes() const
     {
@@ -194,12 +200,13 @@ public:
         return debug.noquote() << v.to_pretty_string();
     }
 
-    static QString type_name(Type t);
+    static QByteArray type_name(Type t);
+    QByteArray value_type_name() const;
 
     std::size_t hash() const;
 
 private:
-    Value(Type type, QVariant value) : type_(type), value_(std::move(value)) {}
+    Value(Type type, QVariant value, int attributes) : type_(type), value_(std::move(value)), attributes_(attributes) {}
 
     Type type_;
     QVariant value_;
@@ -395,10 +402,9 @@ namespace glaxnimate::ps {
 #define VALUE_TYPE_FOR(Tp, Type) \
 template<> struct Value::type_for<Tp> { \
     using type = Type; \
-    static constexpr QMetaType meta_type() noexcept { return QMetaType::fromType<Type>(); } \
 };
 #define VALUE_TYPE_NUL(Tp) \
-template<>inline Value Value::from<Tp>() { return Value(Tp, {}); } \
+template<>inline Value Value::from<Tp>() { return Value(Tp, {}, 0); } \
 VALUE_TYPE_FOR(Tp, void)
 
 VALUE_TYPE_FOR(Value::Integer, int)

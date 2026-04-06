@@ -27,7 +27,7 @@ struct Token
     static Token make_operator(String val)
     {
         Token op{Literal, val};
-        op.value.set_attribute(Value::Executable, true);
+        op.value.set_attributes(Value::Executable|Value::Readable|Value::Name);
         return op;
     }
 
@@ -47,6 +47,16 @@ public:
             file_row = 0;
         file_row++;
         file_column = 1;
+    }
+
+    Token next_token_nocomment()
+    {
+        while ( true )
+        {
+           Token t = next_token();
+            if ( t.type != Token::Comment )
+               return t;
+        }
     }
 
     Token next_token()
@@ -102,7 +112,7 @@ private:
         if ( !parse_procedure_value(proc) )
             return {Token::Unrecoverable, {}};
 
-        Value procval = Value::from<Value::Array>(std::move(proc));
+        Value procval = std::move(proc);
         procval.set_attribute(Value::Executable, true);
         procval.set_attribute(Value::Deferred, true);
         return {Token::Literal, procval};
@@ -436,7 +446,11 @@ private:
             name += char(ch);
         }
 
-        return {Token::Literal, name};
+        Value nval = name;
+        nval.set_attribute(Value::Name, true);
+        nval.set_attribute(Value::Writable, false);
+
+        return {Token::Literal, std::move(nval)};
     }
 
     Token lex_base85()

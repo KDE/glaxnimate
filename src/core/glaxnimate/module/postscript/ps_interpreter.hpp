@@ -163,7 +163,7 @@ public:
     Stack &stack();
 
     void execute(QIODevice* device, bool reset_pos = false);
-    void execute(const Value& proc, bool defer = false);
+    void execute(Value proc);
 
     void print(const QString& text);
     void error(const QString& error);

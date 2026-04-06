@@ -151,7 +151,7 @@ void glaxnimate::ps::Interpreter::execute(QIODevice *device, bool reset_pos)
         switch ( token.type )
         {
             case Token::Literal:
-                execute(token.value, true);
+                execute(std::move(token.value));
                 if ( d->break_loop )
                     error(u"Invalid exit"_s);
                 break;
@@ -186,11 +186,12 @@ void glaxnimate::ps::Interpreter::execute(QIODevice *device, bool reset_pos)
     }
 }
 
-void Interpreter::execute(const Value &proc, bool defer)
+void Interpreter::execute(Value proc)
 {
-    if ( !proc.has_attribute(Value::Executable) || (proc.has_attribute(Value::Deferred) && defer) )
+    if ( !proc.has_attribute(Value::Executable) || proc.has_attribute(Value::Deferred) )
     {
-        stack().push(proc);
+        proc.set_attribute(Value::Deferred, false);
+        stack().push(std::move(proc));
         return;
     }
 
@@ -198,7 +199,7 @@ void Interpreter::execute(const Value &proc, bool defer)
     {
         for ( const auto& v : proc.cast<ValueArray>() )
         {
-            execute(v, true);
+            execute(v);
             if ( procedure_must_exit() )
                 break;
         }
@@ -209,7 +210,7 @@ void Interpreter::execute(const Value &proc, bool defer)
     }
     else
     {
-        stack().push(proc);
+        stack().push(std::move(proc));
     }
 
 }
@@ -1082,7 +1083,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             interpreter.error(u"No mark found"_s);
 
         std::reverse(arr.begin(), arr.end());
-        interpreter.stack().push(Value::from<Value::Array>(std::move(arr)));
+        interpreter.stack().push(Value(std::move(arr)));
     }});
     builtins.def("array", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         int count = args[0].cast<int>();
@@ -1093,7 +1094,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         }
         ValueArray arr;
         arr.resize(count);
-        interpreter.stack().push(Value::from<Value::Array>(std::move(arr)));
+        interpreter.stack().push(Value(std::move(arr)));
     }});
     builtins.def("length", {Level::EPS1, {Value::Array}, [](ValueArray args, Interpreter& interpreter){
         auto arr = args[0].cast<ValueArray>();
@@ -1507,26 +1508,16 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         auto string = args[0].cast<String>();
         QBuffer buf(const_cast<QByteArray*>(&string.bytes()));
         buf.open(QIODeviceBase::ReadOnly);
-        Lexer lex(&buf);
-        while ( true )
+        auto tok = Lexer(&buf).next_token_nocomment();
+        if ( tok.type == Token::Literal )
         {
-            auto tok = lex.next_token();
-            if ( tok.type == Token::Literal )
-            {
-                interpreter.stack().push(buf.readAll());
-                interpreter.stack().push(tok.value);
-                interpreter.stack().push(true);
-                break;
-            }
-            else if ( tok.type == Token::Comment )
-            {
-                continue;
-            }
-            else
-            {
-                interpreter.stack().push(false);
-                break;
-            }
+            interpreter.stack().push(buf.readAll());
+            interpreter.stack().push(tok.value);
+            interpreter.stack().push(true);
+        }
+        else
+        {
+            interpreter.stack().push(false);
         }
     }});
 // Boolean
@@ -1648,10 +1639,165 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("quit", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.halt();
     }});
+// Type etc
+    builtins.def("type", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(args[0].value_type_name());
+    }});
+    builtins.def("cvlit", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        args[0].set_attribute(Value::Executable, false);
+        interpreter.stack().push(std::move(args[0]));
+    }});
+    builtins.def("cvx", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        args[0].set_attribute(Value::Executable, true);
+        interpreter.stack().push(std::move(args[0]));
+    }});
+    builtins.def("xcheck", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(args[0].has_attribute(Value::Executable));
+    }});
+    builtins.def("rcheck", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(args[0].has_attribute(Value::Readable));
+    }});
+    builtins.def("wcheck", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(args[0].has_attribute(Value::Writable));
+    }});
+    Arg mutable_type{Value::Array, Value::Dict, Value::File, Value::String};
+    builtins.def("executeonly", {Level::EPS1, {mutable_type}, [](ValueArray args, Interpreter& interpreter){
+        args[0].set_attributes(Value::Executable);
+        interpreter.stack().push(std::move(args[0]));
+    }});
+    builtins.def("noaccess", {Level::EPS1, {mutable_type}, [](ValueArray args, Interpreter& interpreter){
+        args[0].set_attributes(0);
+        interpreter.stack().push(std::move(args[0]));
+    }});
+    builtins.def("readonly", {Level::EPS1, {mutable_type}, [](ValueArray args, Interpreter& interpreter){
+        args[0].set_attribute(Value::Writable, false);
+        interpreter.stack().push(std::move(args[0]));
+    }});
+    builtins.def("cvi", {Level::EPS1, {Arg{Value::String,Value::Real,Value::Integer}}, [](ValueArray args, Interpreter& interpreter){
+        Value val = std::move(args[0]);
+        if ( val.type() == Value::String )
+        {
+            auto string = val.cast<String>();
+            QBuffer buf(const_cast<QByteArray*>(&string.bytes()));
+            buf.open(QIODeviceBase::ReadOnly);
+            auto tok = Lexer(&buf).next_token_nocomment();
+            if ( tok.type != Token::Literal || (tok.value.type() != Value::Integer && tok.value.type() != Value::Real) )
+            {
+                interpreter.error(u"Invalid integer"_s);
+                return;
+            }
+            val = std::move(tok.value);
+        }
 
+        if ( val.type() == Value::Integer )
+            interpreter.stack().push(std::move(val));
+        else
+            interpreter.stack().push(int(val.cast<float>()));
+    }});
+    builtins.def("cvr", {Level::EPS1, {Arg{Value::String,Value::Real,Value::Integer}}, [](ValueArray args, Interpreter& interpreter){
+        Value val = std::move(args[0]);
+        if ( val.type() == Value::String )
+        {
+            auto string = val.cast<String>();
+            QBuffer buf(const_cast<QByteArray*>(&string.bytes()));
+            buf.open(QIODeviceBase::ReadOnly);
+            auto tok = Lexer(&buf).next_token_nocomment();
+            if ( tok.type != Token::Literal || (tok.value.type() != Value::Integer && tok.value.type() != Value::Real) )
+            {
+                interpreter.error(u"Invalid real"_s);
+                return;
+            }
+            val = std::move(tok.value);
+        }
+
+        if ( val.type() == Value::Real )
+            interpreter.stack().push(std::move(val));
+        else
+            interpreter.stack().push(float(val.cast<int>()));
+    }});
+    builtins.def("cvn", {Level::EPS1, {Value::String}, [](ValueArray args, Interpreter& interpreter){
+        args[0].set_attribute(Value::Name, true);
+        interpreter.stack().push(std::move(args[0]));
+    }});
+    builtins.def("cvs", {Level::EPS1, {Arg::any(), Value::String}, [](ValueArray args, Interpreter& interpreter){
+        String dest = args[1].cast<String>();
+        QByteArray src;
+        switch ( args[0].type() )
+        {
+            case Value::Integer:
+                src = QByteArray::number(args[0].cast<int>());
+                break;
+            case Value::Real:
+                src = QByteArray::number(args[0].cast<float>());
+                break;
+            case Value::Boolean:
+                src = args[0].cast<bool>() ? "true" : "false";
+                break;
+            case Value::String:
+                src = args[0].cast<String>().bytes();
+                break;
+            case Value::Array:
+            case Value::Dict:
+            case Value::File:
+            case Value::Mark:
+            case Value::Null:
+            case Value::Save:
+                src = "--nostringval--";
+                break;
+        }
+
+        if ( src.size() > dest.size() )
+        {
+            interpreter.error(u"Destination string too small"_s);
+            return;
+        }
+        for ( int i = 0; i < src.size(); i++ )
+            dest[i] = src[i];
+
+        interpreter.stack().push(src);
+    }});
+
+    builtins.def("cvrs", {Level::EPS1, {Arg::number(), Value::Integer, Value::String}, [](ValueArray args, Interpreter& interpreter){
+        int radix = args[1].cast<int>();
+        if ( radix < 2 || radix > 36 )
+        {
+            interpreter.error(u"Invalid radix"_s);
+            return;
+        }
+
+        String dest = args[2].cast<String>();
+        QByteArray src;
+
+        if ( radix == 10 )
+        {
+            if ( args[0].type() == Value::Integer )
+                src = QByteArray::number(args[0].cast<int>());
+            else
+                src = QByteArray::number(args[0].cast<float>());
+        }
+        else
+        {
+            int val = args[0].cast<int>();
+            src = QByteArray::number((unsigned int)(val), radix).toUpper();
+        }
+
+        if ( src.size() > dest.size() )
+        {
+            interpreter.error(u"Destination string too small"_s);
+            return;
+        }
+
+        for ( int i = 0; i < src.size(); i++ )
+            dest[i] = src[i];
+
+        interpreter.stack().push(src);
+    }});
     /*
         Unimplemented:
             countexecstack
             execstack
+
+        access control changes don't apply to the shared value for dicts
+        access control not checked for put/get etc
     */
 }

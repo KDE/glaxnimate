@@ -11,25 +11,25 @@
 using namespace Qt::StringLiterals;
 
 glaxnimate::ps::Value::Value(ValueArray v)
-    : Value(Value::Array, QVariant::fromValue(std::move(v)))
+    : Value(Value::Array, QVariant::fromValue(std::move(v)), Readable|Writable)
 {}
 
 glaxnimate::ps::Value::Value(const char *str)
-    : Value(Value::String, QVariant::fromValue(ps::String(str)))
+    : Value(Value::String, QVariant::fromValue(ps::String(str)), Readable|Writable)
 {}
 
 glaxnimate::ps::Value::Value(ps::String v)
-    : Value(Value::String, QVariant::fromValue(std::move(v)))
+    : Value(Value::String, QVariant::fromValue(std::move(v)), Readable|Writable)
 {}
 
 glaxnimate::ps::Value::Value(const QByteArray& v)
-    : Value(Value::String, QVariant::fromValue(ps::String(v)))
+    : Value(Value::String, QVariant::fromValue(ps::String(v)), Readable|Writable)
 {
 
 }
 
 glaxnimate::ps::Value::Value(ValueDict v)
-    : Value(Value::Dict, QVariant::fromValue(std::move(v)))
+    : Value(Value::Dict, QVariant::fromValue(std::move(v)), Readable|Writable)
 {
 
 }
@@ -45,8 +45,17 @@ QString glaxnimate::ps::Value::to_pretty_string() const
         //return u"-dict-"_s;
     else if ( type_ == Array )
         return cast<ValueArray>().to_pretty_string(has_attribute(Executable));
-    else if ( type_ == String )
+
+    if ( type_ == String )
+    {
+        if ( has_attribute(Name) )
+        {
+            if ( has_attribute(Executable) )
+                return cast<ps::String>().to_string();
+            return '/' + cast<ps::String>().to_string();
+        }
         return cast<ps::String>().to_string_literal();
+    }
 
     return to_string();
 }
@@ -86,9 +95,16 @@ bool glaxnimate::ps::Value::shallow_equal(const Value &oth) const
     }
 }
 
-QString glaxnimate::ps::Value::type_name(Type t)
+QByteArray glaxnimate::ps::Value::type_name(Type t)
 {
-    return QString::fromLatin1(QMetaEnum::fromType<Type>().valueToKey(t)).toLower() + "type"_L1;
+    return QByteArray(QMetaEnum::fromType<Type>().valueToKey(t)).toLower() + "type"_ba;
+}
+
+QByteArray glaxnimate::ps::Value::value_type_name() const
+{
+    if ( type_ == String && (attributes_ & Name) )
+        return "nametype";
+    return type_name(type_);
 }
 
 std::size_t glaxnimate::ps::Value::hash() const

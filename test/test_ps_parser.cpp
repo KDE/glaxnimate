@@ -706,6 +706,137 @@ private Q_SLOTS:
 
         COMPARE_PARSE("{1 2 quit 3} stopped (a)", 1, 2, false);
     }
+
+    void test_attributes()
+    {
+        COMPARE_PARSE("[1] type", "arraytype");
+        COMPARE_PARSE("{1} type", "arraytype");
+        COMPARE_PARSE("true type", "booleantype");
+        COMPARE_PARSE("<</foo 1>> type", "dicttype");
+        COMPARE_PARSE("1 type", "integertype");
+        COMPARE_PARSE("[ type", "marktype");
+        COMPARE_PARSE("/foo type", "nametype");
+        COMPARE_PARSE("null type", "nulltype");
+        COMPARE_PARSE("1.0 type", "realtype");
+        COMPARE_PARSE("(foo) type", "stringtype");
+
+        QCOMPARE(TestInterpreter().exec_string("1")[0].attributes(), Value::None);
+        QCOMPARE(TestInterpreter().exec_string("1 cvx")[0].attributes(), Value::Executable);
+        QCOMPARE(TestInterpreter().exec_string("1 cvx cvlit")[0].attributes(), Value::None);
+        COMPARE_PARSE("1 xcheck", false);
+        COMPARE_PARSE("1 cvx xcheck", true);
+
+        QCOMPARE(TestInterpreter().exec_string("1 array")[0].attributes(), Value::Readable|Value::Writable);
+        QCOMPARE(TestInterpreter().exec_string("1 array cvx")[0].attributes(), Value::Readable|Value::Writable|Value::Executable);
+        QCOMPARE(TestInterpreter().exec_string("1 array cvx cvlit")[0].attributes(), Value::Readable|Value::Writable);
+        QCOMPARE(TestInterpreter().exec_string("1 array executeonly")[0].attributes(), Value::Executable);
+        QCOMPARE(TestInterpreter().exec_string("1 array readonly")[0].attributes(), Value::Readable);
+        QCOMPARE(TestInterpreter().exec_string("1 array noaccess")[0].attributes(), 0);
+        COMPARE_PARSE("1 array xcheck", false);
+        COMPARE_PARSE("1 array wcheck", true);
+        COMPARE_PARSE("1 array rcheck", true);
+
+        QCOMPARE(TestInterpreter().exec_string("[]")[0].attributes(), Value::Readable|Value::Writable);
+        QCOMPARE(TestInterpreter().exec_string("[] cvx")[0].attributes(), Value::Readable|Value::Writable|Value::Executable);
+        QCOMPARE(TestInterpreter().exec_string("[] cvx cvlit")[0].attributes(), Value::Readable|Value::Writable);
+        QCOMPARE(TestInterpreter().exec_string("[] executeonly")[0].attributes(), Value::Executable);
+        QCOMPARE(TestInterpreter().exec_string("[] readonly")[0].attributes(), Value::Readable);
+        QCOMPARE(TestInterpreter().exec_string("[] noaccess")[0].attributes(), 0);
+        COMPARE_PARSE("[] xcheck", false);
+        COMPARE_PARSE("[] wcheck", true);
+        COMPARE_PARSE("[] rcheck", true);
+
+        QCOMPARE(TestInterpreter().exec_string("{}")[0].attributes(), Value::Readable|Value::Writable|Value::Executable);
+        QCOMPARE(TestInterpreter().exec_string("{} cvx")[0].attributes(), Value::Readable|Value::Writable|Value::Executable);
+        QCOMPARE(TestInterpreter().exec_string("{} cvlit")[0].attributes(), Value::Readable|Value::Writable);
+        QCOMPARE(TestInterpreter().exec_string("{} executeonly")[0].attributes(), Value::Executable);
+        QCOMPARE(TestInterpreter().exec_string("{} readonly")[0].attributes(), Value::Readable|Value::Executable);
+        QCOMPARE(TestInterpreter().exec_string("{} noaccess")[0].attributes(), 0);
+        COMPARE_PARSE("{} xcheck", true);
+        COMPARE_PARSE("{} wcheck", true);
+        COMPARE_PARSE("{} rcheck", true);
+
+        QCOMPARE(TestInterpreter().exec_string("(a)")[0].attributes(), Value::Readable|Value::Writable);
+        QCOMPARE(TestInterpreter().exec_string("(a) cvx")[0].attributes(), Value::Readable|Value::Writable|Value::Executable);
+        QCOMPARE(TestInterpreter().exec_string("(a) cvx cvlit")[0].attributes(), Value::Readable|Value::Writable);
+        QCOMPARE(TestInterpreter().exec_string("(a) executeonly")[0].attributes(), Value::Executable);
+        QCOMPARE(TestInterpreter().exec_string("(a) readonly")[0].attributes(), Value::Readable);
+        QCOMPARE(TestInterpreter().exec_string("(a) noaccess")[0].attributes(), 0);
+        COMPARE_PARSE("(a) xcheck", false);
+        COMPARE_PARSE("(a) wcheck", true);
+        COMPARE_PARSE("(a) rcheck", true);
+
+
+        QCOMPARE(TestInterpreter().exec_string("1 dict")[0].attributes(), Value::Readable|Value::Writable);
+        QCOMPARE(TestInterpreter().exec_string("1 dict cvx")[0].attributes(), Value::Readable|Value::Writable|Value::Executable);
+        QCOMPARE(TestInterpreter().exec_string("1 dict cvx cvlit")[0].attributes(), Value::Readable|Value::Writable);
+        QCOMPARE(TestInterpreter().exec_string("1 dict executeonly")[0].attributes(), Value::Executable);
+        QCOMPARE(TestInterpreter().exec_string("1 dict readonly")[0].attributes(), Value::Readable);
+        QCOMPARE(TestInterpreter().exec_string("1 dict noaccess")[0].attributes(), 0);
+        COMPARE_PARSE("1 dict xcheck", false);
+        COMPARE_PARSE("1 dict wcheck", true);
+        COMPARE_PARSE("1 dict rcheck", true);
+
+        QCOMPARE(TestInterpreter().exec_string("/foo")[0].attributes(), Value::Readable|Value::Name);
+        QCOMPARE(TestInterpreter().exec_string("/foo cvx")[0].attributes(), Value::Readable|Value::Executable|Value::Name);
+        QCOMPARE(TestInterpreter().exec_string("/foo cvx cvlit")[0].attributes(), Value::Readable|Value::Name);
+        QCOMPARE(TestInterpreter().exec_string("/foo executeonly")[0].attributes(), Value::Executable);
+        QCOMPARE(TestInterpreter().exec_string("/foo readonly")[0].attributes(), Value::Readable|Value::Name);
+        QCOMPARE(TestInterpreter().exec_string("/foo noaccess")[0].attributes(), 0);
+        COMPARE_PARSE("/foo xcheck", false);
+        COMPARE_PARSE("/foo wcheck", false);
+        COMPARE_PARSE("/foo rcheck", true);
+
+        QCOMPARE(TestInterpreter().exec_string("{foo} 0 get")[0].attributes(), Value::Readable|Value::Executable|Value::Name);
+        QCOMPARE(TestInterpreter().exec_string("{foo} 0 get cvx")[0].attributes(), Value::Readable|Value::Executable|Value::Name);
+        QCOMPARE(TestInterpreter().exec_string("{foo} 0 get cvlit")[0].attributes(), Value::Readable|Value::Name);
+        QCOMPARE(TestInterpreter().exec_string("{foo} 0 get executeonly")[0].attributes(), Value::Executable);
+        QCOMPARE(TestInterpreter().exec_string("{foo} 0 get readonly")[0].attributes(), Value::Readable|Value::Executable|Value::Name);
+        QCOMPARE(TestInterpreter().exec_string("{foo} 0 get noaccess")[0].attributes(), 0);
+        COMPARE_PARSE("{foo} 0 get xcheck", true);
+        COMPARE_PARSE("{foo} 0 get wcheck", false);
+        COMPARE_PARSE("{foo} 0 get rcheck", true);
+    }
+
+    void test_conversions()
+    {
+        COMPARE_PARSE("1 cvi", 1);
+        COMPARE_PARSE("10.9 cvi", 10);
+        COMPARE_PARSE("-10.9 cvi", -10);
+        COMPARE_PARSE("(10.9) cvi", 10);
+        COMPARE_PARSE("(10) cvi", 10);
+        COMPARE_PARSE("(2#100) cvi", 4);
+
+
+        COMPARE_PARSE("(string) cvn", "string");
+        QCOMPARE(TestInterpreter().exec_string("(string) cvn")[0].attributes(), Value::Readable|Value::Writable|Value::Name);
+
+        COMPARE_PARSE("1 cvr", 1.0);
+        COMPARE_PARSE("10.5 cvr", 10.5);
+        COMPARE_PARSE("(10.5) cvr", 10.5);
+        COMPARE_PARSE("(2#100) cvr", 4.0);
+
+        COMPARE_PARSE("1  10 string cvs", "1");
+        COMPARE_PARSE("10.5 10 string cvs", "10.5");
+        COMPARE_PARSE("true 10 string cvs", "true");
+        COMPARE_PARSE("false 10 string cvs", "false");
+        COMPARE_PARSE("(foo) 10 string cvs", "foo");
+        COMPARE_PARSE("/foo 10 string cvs", "foo");
+        COMPARE_PARSE("[] 16 string cvs", "--nostringval--");
+        COMPARE_PARSE("<<>> 16 string cvs", "--nostringval--");
+        COMPARE_PARSE("mark 16 string cvs", "--nostringval--");
+        COMPARE_PARSE("null 16 string cvs", "--nostringval--");
+
+
+        COMPARE_PARSE("  10   10 10 string cvrs", "10");
+        COMPARE_PARSE("  10.5 10 10 string cvrs", "10.5");
+        COMPARE_PARSE(" 123   10 10 string cvrs", "123");
+        COMPARE_PARSE("-123   10 10 string cvrs", "-123");
+        COMPARE_PARSE(" 123.4 10 10 string cvrs", "123.4");
+        COMPARE_PARSE(" 123   16 10 string cvrs", "7B");
+        COMPARE_PARSE("-123   16 10 string cvrs", "FFFFFF85");
+        COMPARE_PARSE(" 123.4 16 10 string cvrs", "7B");
+    }
 };
 
 QTEST_GUILESS_MAIN(TestCase)
