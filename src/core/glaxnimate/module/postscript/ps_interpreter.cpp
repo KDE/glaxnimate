@@ -147,11 +147,8 @@ void glaxnimate::ps::Interpreter::execute(QIODevice *device, bool reset_pos)
         auto token = d->lexer.next_token();
         switch ( token.type )
         {
-            case Token::Operator:
-                execute_command(token.value);
-                break;
             case Token::Literal:
-                stack().push(token.value);
+                execute(token.value, true);
                 break;
             case Token::Eof:
                 return;
@@ -184,9 +181,9 @@ void glaxnimate::ps::Interpreter::execute(QIODevice *device, bool reset_pos)
     }
 }
 
-void Interpreter::execute(const Value &proc)
+void Interpreter::execute(const Value &proc, bool defer)
 {
-    if ( !proc.has_attribute(Value::Executable) )
+    if ( !proc.has_attribute(Value::Executable) || (proc.has_attribute(Value::Deferred) && defer) )
     {
         stack().push(proc);
         return;
@@ -196,8 +193,8 @@ void Interpreter::execute(const Value &proc)
     {
         for ( const auto& v : proc.cast<ValueArray>() )
         {
-            execute(v);
-            if ( d->halted )
+            execute(v, true);
+            if ( d->halted || d->break_loop )
                 break;
         }
     }
@@ -351,7 +348,7 @@ bool Interpreter::is_halted() const
     return d->halted;
 }
 
-bool Interpreter::break_loop(int count) const
+bool Interpreter::loop_must_exit(int count)
 {
     if ( d->halted )
         return true;
@@ -359,8 +356,16 @@ bool Interpreter::break_loop(int count) const
     auto broken = d->break_loop;
     d->break_loop = false;
     if ( count > d->max_loop_iter )
+    {
+        error(u"Runaway loop"_s);
         return true;
+    }
     return broken;
+}
+
+void Interpreter::loop_exit()
+{
+    d->break_loop = true;
 }
 
 int Interpreter::file_row() const
@@ -761,7 +766,7 @@ void for_impl(ValueArray args, Interpreter& interpreter)
 
     if ( increment < 0 )
     {
-        for ( int i = 0; counter >= limit && !interpreter.break_loop(i++); counter += increment )
+        for ( int i = 0; counter >= limit && !interpreter.loop_must_exit(i++); counter += increment )
         {
             interpreter.stack().push(counter);
             interpreter.execute(args[3]);
@@ -769,7 +774,7 @@ void for_impl(ValueArray args, Interpreter& interpreter)
     }
     else
     {
-        for ( int i = 0; counter <= limit && !interpreter.break_loop(i++); counter += increment )
+        for ( int i = 0; counter <= limit && !interpreter.loop_must_exit(i++); counter += increment )
         {
             interpreter.stack().push(counter);
             interpreter.execute(args[3]);
@@ -882,6 +887,9 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         }
         interpreter.error(u"No mark found"_s);
         interpreter.stack().push(count);
+    }});
+    builtins.def("count", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(interpreter.stack().size());
     }});
 // Math functions
     builtins.def("add", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
@@ -1170,7 +1178,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
 
         auto arr = args[0].cast<ValueArray>();
 
-        for ( int i = 0; i < arr.size(); i++ )
+        for ( int i = 0; i < arr.size() && !interpreter.loop_must_exit(i); i++ )
         {
             interpreter.stack().push(std::move(arr[i]));
             interpreter.execute(args[1]);
@@ -1310,13 +1318,14 @@ void CommandSet::populate_builtins(CommandSet& builtins)
 
         auto val = args[0].cast<ValueDict>();
 
+        int i = 0;
         for ( auto& p : val )
         {
+            if ( interpreter.loop_must_exit(i++) )
+                break;
             interpreter.stack().push(p.first);
             interpreter.stack().push(p.second);
             interpreter.execute(args[1]);
-            if ( interpreter.is_halted() )
-                break;
         }
     }});
     builtins.def("dictstack", {Level::EPS1, {Value::Array}, [](ValueArray args, Interpreter& interpreter){
@@ -1431,7 +1440,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
 
         auto arr = args[0].cast<String>();
 
-        for ( int i = 0; i < arr.size(); i++ )
+        for ( int i = 0; i < arr.size() && !interpreter.loop_must_exit(i); i++ )
         {
             interpreter.stack().push(int(arr[i]));
             interpreter.execute(args[1]);
@@ -1481,7 +1490,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         while ( true )
         {
             auto tok = lex.next_token();
-            if ( tok.type == Token::Operator || tok.type == Token::Literal )
+            if ( tok.type == Token::Literal )
             {
                 interpreter.stack().push(buf.readAll());
                 interpreter.stack().push(tok.value);
@@ -1596,5 +1605,12 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             for_impl<int>(args, interpreter);
         else
             for_impl<float>(args, interpreter);
+    }});
+    builtins.def("exit", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.loop_exit();
+    }});
+    builtins.def("loop", {Level::EPS1, {Arg::proc()}, [](ValueArray args, Interpreter& interpreter){
+        for ( int i = 0; !interpreter.loop_must_exit(i); i++ )
+            interpreter.execute(args[0]);
     }});
 }

@@ -110,7 +110,8 @@ public:
         None = 0,
         Executable = 1,
         Writable = 2,
-        Readable = 4
+        Readable = 4,
+        Deferred = 8
     };
 
     template<Type Tp> struct type_for;

@@ -21,13 +21,12 @@ struct Token
         Eof,
         Literal,
         Comment,
-        Operator,
         Unrecoverable
     };
 
     static Token make_operator(String val)
     {
-        Token op{Operator, val};
+        Token op{Literal, val};
         op.value.set_attribute(Value::Executable, true);
         return op;
     }
@@ -105,6 +104,7 @@ private:
 
         Value procval = Value::from<Value::Array>(std::move(proc));
         procval.set_attribute(Value::Executable, true);
+        procval.set_attribute(Value::Deferred, true);
         return {Token::Literal, procval};
     }
 
@@ -115,20 +115,15 @@ private:
             auto token = next_token();
             switch ( token.type )
             {
-                case Token::Operator:
+                case Token::Literal:
+                    if ( token.value.type() == Value::String )
                     {
                         auto op = token.value.cast<String>().bytes();
                         if ( op == "}" )
                         {
                             return true;
                         }
-                        else
-                        {
-                            proc.emplace_back(std::move(token.value));
-                        }
-                        break;
                     }
-                case Token::Literal:
                     proc.emplace_back(std::move(token.value));
                     break;
                 case Token::Eof:
@@ -166,7 +161,7 @@ private:
             head += char(ch);
         }
 
-        return {Token::Operator, head};
+        return Token::make_operator(head);
     }
 
     Token lex_operator(char next)

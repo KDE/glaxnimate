@@ -162,8 +162,8 @@ public:
     ExecutionMemory &memory();
     Stack &stack();
 
-    void execute(QIODevice* device, bool reset_pos=false);
-    void execute(const Value& proc);
+    void execute(QIODevice* device, bool reset_pos = false);
+    void execute(const Value& proc, bool defer = false);
 
     void print(const QString& text);
     void error(const QString& error);
@@ -178,8 +178,21 @@ public:
     std::map<QString, QString>& document_metadata();
     std::map<QString, QString>& page_metadata();
 
+    /**
+     * @brief Whether execution is halted
+     */
     bool is_halted() const;
-    bool break_loop(int count) const;
+    /**
+     * @brief Whether a loop operation must exit
+     * @param count Current iteration to impose a max limit on iterations
+     */
+    bool loop_must_exit(int count);
+    /**
+     * @brief Signals the interpreter the current loop must exit
+     * @post loop_must_exit() == true
+     */
+    void loop_exit();
+
 
     int file_row() const;
     int file_column() const;
