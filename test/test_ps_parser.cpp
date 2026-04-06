@@ -632,6 +632,37 @@ private Q_SLOTS:
         COMPARE_PARSE("(abc) (abc) ge", true);
         COMPARE_PARSE("1 2 ge", false);
     }
+
+    void test_boolops()
+    {
+        COMPARE_PARSE("true true and", true);
+        COMPARE_PARSE("true false and", false);
+        COMPARE_PARSE("false true and", false);
+        COMPARE_PARSE("false false and", false);
+
+        COMPARE_PARSE("true true or", true);
+        COMPARE_PARSE("true false or", true);
+        COMPARE_PARSE("false true or", true);
+        COMPARE_PARSE("false false or", false);
+
+        COMPARE_PARSE("true true xor", false);
+        COMPARE_PARSE("true false xor", true);
+        COMPARE_PARSE("false true xor", true);
+        COMPARE_PARSE("false false xor", false);
+
+        COMPARE_PARSE("true not", false);
+        COMPARE_PARSE("false not", true);
+    }
+
+    void test_bitops()
+    {
+        COMPARE_PARSE("2#1100 2#1010 and", 0b1000);
+        COMPARE_PARSE("2#1100 2#1010 or",  0b1110);
+        COMPARE_PARSE("2#1100 2#1010 xor", 0b0110);
+        COMPARE_PARSE("52 not", -53);
+        COMPARE_PARSE("2#11010 3 bitshift", 0b11010000);
+        COMPARE_PARSE("2#11010 -3 bitshift", 0b11);
+    }
 };
 
 QTEST_GUILESS_MAIN(TestCase)

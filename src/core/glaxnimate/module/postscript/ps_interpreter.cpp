@@ -1488,4 +1488,36 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     CMPOP("le", <=)
     CMPOP("lt", <)
 #undef CMPOP
+
+    builtins.def("and", {Level::EPS1, {Value::Boolean, Value::Boolean}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(args[0].cast<bool>() && args[1].cast<bool>());
+    }});
+    builtins.def("or", {Level::EPS1, {Value::Boolean, Value::Boolean}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(args[0].cast<bool>() || args[1].cast<bool>());
+    }});
+    builtins.def("xor", {Level::EPS1, {Value::Boolean, Value::Boolean}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(args[0].cast<bool>() ^ args[1].cast<bool>());
+    }});
+    builtins.def("not", {Level::EPS1, {Value::Boolean}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(!args[0].cast<bool>());
+    }});
+
+
+    builtins.def("and", {Level::EPS1, {Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(args[0].cast<int>() & args[1].cast<int>());
+    }});
+    builtins.def("or", {Level::EPS1, {Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(args[0].cast<int>() | args[1].cast<int>());
+    }});
+    builtins.def("xor", {Level::EPS1, {Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(args[0].cast<int>() ^ args[1].cast<int>());
+    }});
+    builtins.def("not", {Level::EPS1, {Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(~args[0].cast<int>());
+    }});
+    builtins.def("bitshift", {Level::EPS1, {Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        auto num = args[0].cast<int>();
+        auto shift = args[1].cast<int>();
+        interpreter.stack().push(shift < 0 ? num >> -shift : num << shift);
+    }});
 }
