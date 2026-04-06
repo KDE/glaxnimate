@@ -8,6 +8,7 @@
 
 #include <QBuffer>
 
+#include "glaxnimate/app_info.hpp"
 #include "glaxnimate/math/math.hpp"
 #include "ps_lexer.hpp"
 
@@ -776,7 +777,7 @@ void CommandSet::populate_dict(ValueDict &value) const
     {
         Value key = p.first;
         Value val = p.first;
-        val.set_attribute(Value::Executable, true);
+        val.set_attributes(Value::Executable|Value::Name|Value::Readable);
         value[p.first] = val;
     }
 }
@@ -1527,9 +1528,6 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("false", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(false);
     }});
-    builtins.def("null", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
-        interpreter.stack().push(Value());
-    }});
 
 
     builtins.def("eq", {Level::EPS1, {Arg::any(), Arg::any()}, [](ValueArray args, Interpreter& interpreter){
@@ -1792,6 +1790,35 @@ void CommandSet::populate_builtins(CommandSet& builtins)
 
         interpreter.stack().push(src);
     }});
+// Misc
+    builtins.def("version", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(AppInfo::instance().version().toLatin1());
+    }});
+    builtins.def("product", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(AppInfo::instance().name().toUtf8());
+    }});
+    builtins.def("revision", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(0);
+    }});
+    builtins.def("serialnumber", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(0);
+    }});
+    builtins.def("languagelevel", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(level_number(interpreter.level()));
+    }});
+
+    builtins.def("null", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(Value());
+    }});
+
+
+    builtins.def("realtime", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(0);
+    }});
+    builtins.def("usertime", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(0);
+    }});
+
     /*
         Unimplemented:
             countexecstack
@@ -1799,5 +1826,10 @@ void CommandSet::populate_builtins(CommandSet& builtins)
 
         access control changes don't apply to the shared value for dicts
         access control not checked for put/get etc
+
+        file / resource operators
+
+        Not defined (allowed by the specs):
+            executive / echo / prompt
     */
 }
