@@ -188,7 +188,6 @@ protected:
 
 private:
     void execute_command(const Value &name);
-    Value procedure_value();
 
     class Private;
     std::unique_ptr<Private> d;

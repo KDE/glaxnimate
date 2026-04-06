@@ -119,53 +119,6 @@ public:
     }
 };
 
-Value Interpreter::procedure_value()
-{
-    ValueArray proc;
-    bool finished = false;
-    while ( !finished && !d->halted )
-    {
-        auto token = d->lexer.next_token();
-        switch ( token.type )
-        {
-            case Token::Operator:
-            {
-                auto op = token.value.cast<String>().bytes();
-                if ( op == "{" )
-                {
-                    proc.emplace_back(procedure_value());
-                }
-                else if ( op == "}" )
-                {
-                    finished = true;
-                    break;
-                }
-                else
-                {
-                    proc.emplace_back(std::move(token.value));
-                }
-                break;
-            }
-            case Token::Literal:
-                proc.emplace_back(std::move(token.value));
-                break;
-            case Token::Eof:
-                finished = true;
-                break;
-            case Token::Unrecoverable:
-                error(u"Unkown token (maybe unterminated string?)"_s);
-                finished = true;
-                break;
-            case Token::Comment:
-                break;
-        }
-    }
-
-    Value procval = Value::from<Value::Array>(std::move(proc));
-    procval.set_attribute(Value::Executable, true);
-    return procval;
-}
-
 Interpreter::Interpreter() : d(std::make_unique<Private>())
 {
     d->memory.builtins = &CommandSet::builtins();
@@ -191,18 +144,8 @@ void glaxnimate::ps::Interpreter::execute(QIODevice *device, bool reset_pos)
         switch ( token.type )
         {
             case Token::Operator:
-            {
-                auto op = token.value.cast<String>().bytes();
-                if ( op == "{" )
-                {
-                    stack().push(procedure_value());
-                }
-                else
-                {
-                    execute_command(token.value);
-                }
+                execute_command(token.value);
                 break;
-            }
             case Token::Literal:
                 d->memory.operand_stack.push(token.value);
                 break;

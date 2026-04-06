@@ -84,6 +84,9 @@ public:
         if ( ch == '[' )
             return Token::make_operator("[");
 
+        if ( ch == '{' )
+            return parse_procedure();
+
         return lex_operator(ch);
     }
 
@@ -91,6 +94,53 @@ public:
     int column() const { return file_column; }
 
 private:
+    /*
+     * This goes beyond the scope of a normal lexer but the specs treat procedures as a single token
+     */
+    Token parse_procedure()
+    {
+        ValueArray proc;
+        if ( !parse_procedure_value(proc) )
+            return {Token::Unrecoverable, {}};
+
+        Value procval = Value::from<Value::Array>(std::move(proc));
+        procval.set_attribute(Value::Executable, true);
+        return {Token::Literal, procval};
+    }
+
+    bool parse_procedure_value(ValueArray& proc)
+    {
+        while ( true )
+        {
+            auto token = next_token();
+            switch ( token.type )
+            {
+                case Token::Operator:
+                    {
+                        auto op = token.value.cast<String>().bytes();
+                        if ( op == "}" )
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            proc.emplace_back(std::move(token.value));
+                        }
+                        break;
+                    }
+                case Token::Literal:
+                    proc.emplace_back(std::move(token.value));
+                    break;
+                case Token::Eof:
+                    return false;
+                case Token::Unrecoverable:
+                    return false;
+                case Token::Comment:
+                    break;
+            }
+        }
+    }
+
     Token lex_comment()
     {
         QByteArray comment;
