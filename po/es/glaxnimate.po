@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-04 00:42+0000\n"
-"PO-Revision-Date: 2026-03-29 01:45+0100\n"
+"PO-Revision-Date: 2026-04-05 12:31+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1047,16 +1047,14 @@ msgid "Precompose"
 msgstr "Precomponer"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:308
-#, fuzzy, kde-format
-#| msgid "End Time"
+#, kde-format
 msgid "Set End Time"
-msgstr "Tiempo final"
+msgstr "Establecer tiempo final"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:345
-#, fuzzy, kde-format
-#| msgid "Start Time"
+#, kde-format
 msgid "Set Start Time"
-msgstr "Tiempo inicial"
+msgstr "Establecer tiempo inicial"
 
 #: src/core/glaxnimate/command/structure_commands.cpp:73
 #, kde-format
@@ -1795,33 +1793,29 @@ msgid "Transform"
 msgstr "Transformar"
 
 #: src/core/glaxnimate/module/cairo/cairo_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "OpenGL Renderer"
+#, kde-format
 msgid "Cairo Renderer"
-msgstr "Procesador OpenGL"
+msgstr "Procesador Cairo"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.cpp:40
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PDF surface: %1"
-msgstr "No se pudo crear fragmento de código: `%1`"
+msgstr "No se pudo crear la superficie PDF: %1"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.hpp:20
-#, fuzzy, kde-format
-#| msgid "Gather Document Swatch"
+#, kde-format
 msgid "Portable Document Format"
-msgstr "Recolectar Muestra de Color del Documento"
+msgstr "Formato de documentos portátil"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.cpp:38
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PostScript surface: %1"
-msgstr "No se pudo crear fragmento de código: `%1`"
+msgstr "No se pudo crear superficie PostScript: %1"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.hpp:20
 #, kde-format
 msgid "PostScript"
-msgstr ""
+msgstr "PostScript"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_format.cpp:32
 #, kde-format
@@ -2009,10 +2003,9 @@ msgid "%s cannot be a clip path"
 msgstr "%s no puede ser una ruta de clip"
 
 #: src/core/glaxnimate/module/extraformats/extraformats_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "Formats"
+#, kde-format
 msgid "Extra Formats"
-msgstr "Formatos"
+msgstr "Formatos extra"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:359
 #, kde-format
@@ -2152,22 +2145,22 @@ msgstr "No se pudo descomprimir los datos"
 #: src/core/glaxnimate/module/gzip/gzip-kde.cpp:84
 #, kde-format
 msgid "Gzip stream already open"
-msgstr ""
+msgstr "El flojo Gzip ya estaba abierto"
 
 #: src/core/glaxnimate/module/gzip/gzip-zlib.cpp:99
 #, kde-format
 msgid "ZLib %1%2 returned %3"
-msgstr ""
+msgstr "ZLib %1 %2 devolvió %3"
 
 #: src/core/glaxnimate/module/gzip/gzip_module.hpp:16
 #, kde-format
 msgid "Gzip Compression"
-msgstr ""
+msgstr "Compresión Gzip"
 
 #: src/core/glaxnimate/module/gzip/svgz_format.hpp:22
 #, kde-format
 msgid "Compressed SVG"
-msgstr ""
+msgstr "SVG comprimido"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:44
 #, kde-format
@@ -2180,10 +2173,9 @@ msgid "Gradient strokes are not officially supported"
 msgstr "Trazos con gradientes no están oficialmente soportadas"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:58
-#, fuzzy, kde-format
-#| msgid "Repeaters are not officially supported"
+#, kde-format
 msgid "Masks are not officially supported"
-msgstr "Repetidores no son soportados oficialmente"
+msgstr "Las máscaras no son soportadas oficialmente"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:62
 #, kde-format
@@ -2216,16 +2208,14 @@ msgid "Telegram Animated Sticker"
 msgstr "Pegatina animada de Telegram"
 
 #: src/core/glaxnimate/module/module.cpp:41
-#, fuzzy, kde-format
-#| msgid "Glaxnimate"
+#, kde-format
 msgid "Glaxnimate Core"
-msgstr "Glaxnimate"
+msgstr "Núcleo de Glaxnimate"
 
 #: src/core/glaxnimate/module/thorvg/thorvg_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "OpenGL Renderer"
+#, kde-format
 msgid "ThorVG Renderer"
-msgstr "Procesador OpenGL"
+msgstr "Procesador ThorVG"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:73
 #, kde-format
@@ -2389,7 +2379,7 @@ msgstr "Video"
 #: src/core/glaxnimate/module/video/video_module.hpp:16
 #, kde-format
 msgid "Video Format Support"
-msgstr ""
+msgstr "Soporte para formatos de vídeo"
 
 #: src/core/glaxnimate/script/register_impl.hpp:234
 #, kde-format
@@ -3409,10 +3399,9 @@ msgstr "Formatos de Salida "
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:306
-#, fuzzy, kde-format
-#| msgid "Output Formats "
+#, kde-format
 msgid "Single Frame Output Formats "
-msgstr "Formatos de Salida "
+msgstr "Formatos de salida de marco único"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:21
@@ -4285,10 +4274,9 @@ msgid "Focus Mode"
 msgstr "Modo de enfoque"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
-#, fuzzy, kde-format
-#| msgid "Render Single Frame"
+#, kde-format
 msgid "Render Single Frame…"
-msgstr "Reproducir fotograma único"
+msgstr "Reproducir fotograma único…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
 #, kde-format
@@ -6174,7 +6162,7 @@ msgstr "Modo de Color"
 #: src/gui/widgets/shape_style/color_selector.ui:31
 #, kde-format
 msgid "Wheel"
-msgstr ""
+msgstr "Rueda"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:36
@@ -6862,33 +6850,3 @@ msgstr ""
 #, kde-format
 msgid "Traced %1"
 msgstr "Trazado %1"
-
-#~ msgid "Masks are not supported"
-#~ msgstr "Máscaras no son soportadas"
-
-#~ msgid "Could not write to file"
-#~ msgstr "No se pudo escribir al archivo"
-
-#~ msgid "libav"
-#~ msgstr "libav"
-
-#~ msgid "Frame%1.png"
-#~ msgstr "Fotograma%1.png"
-
-#~ msgid "Image files (%1)"
-#~ msgstr "Archivos de imagen (%1)"
-
-#~ msgid "Scalable Vector Graphics (*.svg)"
-#~ msgstr "Gráficos de Vectores Escalables (*.svg)"
-
-#~ msgid "Raster…"
-#~ msgstr "Ráster…"
-
-#~ msgid "SVG…"
-#~ msgstr "SVG…"
-
-#~ msgid "Save file"
-#~ msgstr "Guardar archivo"
-
-#~ msgid "Open file"
-#~ msgstr "Abrir archivo"
