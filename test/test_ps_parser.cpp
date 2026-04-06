@@ -265,7 +265,7 @@ private Q_SLOTS:
 
     void test_parse_stack_ops()
     {
-        COMPARE_PARSE("2 3 /4 clear");
+        COMPARE_PARSE("2 3 /4 clear",);
         COMPARE_PARSE("1 2 3 dup", 1, 2, 3, 3);
         COMPARE_PARSE("1 2 3 exch", 1, 3, 2);
         COMPARE_PARSE("1 2 3 pop", 1, 2);
@@ -557,8 +557,82 @@ private Q_SLOTS:
         QString out = interp.consume_output();
         QVERIFY(out == "1\nfoo\n2\nbar\n" || out == "2\nbar\n1\nfoo\n");
     }
+
+    void test_cmp()
+    {
+        COMPARE_PARSE("1 1 eq", true);
+        COMPARE_PARSE("1 1.0 eq", true);
+        COMPARE_PARSE("1 (1) eq", false);
+        COMPARE_PARSE("1 2 eq", false);
+        COMPARE_PARSE("[ << eq", true);
+        COMPARE_PARSE("null null eq", true);
+        COMPARE_PARSE("[ null eq", false);
+        COMPARE_PARSE("0 false eq", false);
+        COMPARE_PARSE("0 false eq", false);
+        COMPARE_PARSE("(foo) (foo) eq", true);
+        COMPARE_PARSE("(foo) (food) eq", false);
+        COMPARE_PARSE("[1] [1] eq", false);
+        COMPARE_PARSE("[1] dup eq", true);
+        COMPARE_PARSE("<</foo 1>> <</foo 1>> eq", false);
+        COMPARE_PARSE("<</foo 1>> dup eq", true);
+
+        COMPARE_PARSE("1 1 ne", false);
+        COMPARE_PARSE("1 1.0 ne", false);
+        COMPARE_PARSE("1 (1) ne", true);
+        COMPARE_PARSE("1 2 ne", true);
+        COMPARE_PARSE("[ << ne", false);
+        COMPARE_PARSE("null null ne", false);
+        COMPARE_PARSE("[ null ne", true);
+        COMPARE_PARSE("0 false ne", true);
+        COMPARE_PARSE("0 false ne", true);
+        COMPARE_PARSE("(foo) (foo) ne", false);
+        COMPARE_PARSE("(foo) (food) ne", true);
+        COMPARE_PARSE("[1] [1] ne", true);
+        COMPARE_PARSE("[1] dup ne", false);
+        COMPARE_PARSE("<</foo 1>> <</foo 1>> ne", true);
+        COMPARE_PARSE("<</foo 1>> dup ne", false);
+
+        COMPARE_PARSE("1 2 lt", true);
+        COMPARE_PARSE("1 2.3 lt", true);
+        COMPARE_PARSE("1.2 2 lt", true);
+        COMPARE_PARSE("1.2 2.3 lt", true);
+        COMPARE_PARSE("(abc) (abcd) lt", true);
+        COMPARE_PARSE("(abc) (zzz) lt", true);
+        COMPARE_PARSE("1 1 lt", false);
+        COMPARE_PARSE("(abc) (abc) lt", false);
+        COMPARE_PARSE("2 1 lt", false);
+
+        COMPARE_PARSE("1 2 le", true);
+        COMPARE_PARSE("1 2.3 le", true);
+        COMPARE_PARSE("1.2 2 le", true);
+        COMPARE_PARSE("1.2 2.3 le", true);
+        COMPARE_PARSE("(abc) (abcd) le", true);
+        COMPARE_PARSE("(abc) (zzz) le", true);
+        COMPARE_PARSE("1 1 le", true);
+        COMPARE_PARSE("(abc) (abc) le", true);
+        COMPARE_PARSE("2 1 le", false);
+
+        COMPARE_PARSE("2 1 gt", true);
+        COMPARE_PARSE("2 1.3 gt", true);
+        COMPARE_PARSE("2.2 1 gt", true);
+        COMPARE_PARSE("2.2 1.3 gt", true);
+        COMPARE_PARSE("(abcd) (abc) gt", true);
+        COMPARE_PARSE("(zab) (fab) gt", true);
+        COMPARE_PARSE("1 1 gt", false);
+        COMPARE_PARSE("(abc) (abc) gt", false);
+        COMPARE_PARSE("1 2 gt", false);
+
+        COMPARE_PARSE("2 1 ge", true);
+        COMPARE_PARSE("2 1.3 ge", true);
+        COMPARE_PARSE("2.2 1 ge", true);
+        COMPARE_PARSE("2.2 1.3 ge", true);
+        COMPARE_PARSE("(abcd) (abc) ge", true);
+        COMPARE_PARSE("(zab) (fab) ge", true);
+        COMPARE_PARSE("1 1 ge", true);
+        COMPARE_PARSE("(abc) (abc) ge", true);
+        COMPARE_PARSE("1 2 ge", false);
+    }
 };
 
 QTEST_GUILESS_MAIN(TestCase)
 #include "test_ps_parser.moc"
-

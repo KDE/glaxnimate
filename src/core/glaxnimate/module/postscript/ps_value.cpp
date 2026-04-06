@@ -51,6 +51,41 @@ QString glaxnimate::ps::Value::to_pretty_string() const
     return to_string();
 }
 
+bool glaxnimate::ps::Value::can_convert(Type t) const
+{
+    if ( t == type_ )
+        return true;
+
+    return (t == Real && type_ == Integer) || (type_ == Real && t == Integer);
+}
+
+bool glaxnimate::ps::Value::shallow_equal(const Value &oth) const
+{
+    if ( !can_convert(oth.type_) )
+        return false;
+
+    switch ( type_ )
+    {
+        case Integer:
+        case Real:
+        case Boolean:
+        case String:
+            return *this == oth;
+        case Array:
+            return cast<ValueArray>().shallow_equal(oth.cast<ValueArray>());
+        case Dict:
+            return cast<ValueDict>().shallow_equal(oth.cast<ValueDict>());
+        case Mark:
+        case Null:
+            return true;
+        // TODO
+        case File:
+        case Save:
+        default:
+            return false;
+    }
+}
+
 QString glaxnimate::ps::Value::type_name(Type t)
 {
     return QString::fromLatin1(QMetaEnum::fromType<Type>().valueToKey(t)).toLower() + "type"_L1;

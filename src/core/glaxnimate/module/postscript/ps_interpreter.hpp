@@ -62,6 +62,7 @@ struct ArgumentType
 
     static ArgumentType any() { return {}; }
     static ArgumentType number() { return {Value::Integer, Value::Real}; }
+    static ArgumentType boolish() { return {Value::Integer, Value::Boolean}; }
 
     bool matches(Value::Type t) const
     {

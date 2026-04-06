@@ -1433,9 +1433,10 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         auto string = args[0].cast<String>();
         QBuffer buf(const_cast<QByteArray*>(&string.bytes()));
         buf.open(QIODeviceBase::ReadOnly);
-        auto tok = Lexer(&buf).next_token();
+        Lexer lex(&buf);
         while ( true )
         {
+            auto tok = lex.next_token();
             if ( tok.type == Token::Operator || tok.type == Token::Literal )
             {
                 interpreter.stack().push(buf.readAll());
@@ -1461,4 +1462,30 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("false", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(false);
     }});
+    builtins.def("null", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(Value());
+    }});
+
+
+    builtins.def("eq", {Level::EPS1, {Arg::any(), Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(args[0].shallow_equal(args[1]));
+    }});
+    builtins.def("ne", {Level::EPS1, {Arg::any(), Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(!args[0].shallow_equal(args[1]));
+    }});
+#define CMPOP(name, op) \
+    builtins.def(name, {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){ \
+        if ( args[0].type() == Value::Integer && args[1].type() == args[0].type() ) \
+            interpreter.stack().push(args[0].cast<int>() op args[1].cast<int>()); \
+        else \
+            interpreter.stack().push(args[0].cast<float>() op args[1].cast<float>()); \
+    }}); \
+    builtins.def(name, {Level::EPS1, {Value::String, Value::String}, [](ValueArray args, Interpreter& interpreter){ \
+        interpreter.stack().push(args[0].cast<String>().bytes() op args[1].cast<String>().bytes()); \
+    }});
+    CMPOP("ge", >=)
+    CMPOP("gt", >)
+    CMPOP("le", <=)
+    CMPOP("lt", <)
+#undef CMPOP
 }

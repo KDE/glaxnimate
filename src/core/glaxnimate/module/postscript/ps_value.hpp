@@ -158,6 +158,8 @@ public:
         return qvariant_cast<T>(value_);
     }
 
+    bool can_convert(Type t) const;
+
     int attributes() const
     {
         return attributes_;
@@ -183,7 +185,10 @@ public:
         return value_ != oth.value_;
     }
 
-    friend QDebug& operator<<(QDebug& debug, const Value& v) {
+    bool shallow_equal(const Value& oth) const;
+
+    friend QDebug& operator<<(QDebug& debug, const Value& v)
+    {
         QDebugStateSaver saver(debug);
         return debug.noquote() << v.to_pretty_string();
     }
@@ -213,11 +218,6 @@ public:
     using reference = container::reference;
     using const_reference = container::const_reference;
     using size_type = int;
-
-    /*template<class... Args>
-    ValueArray(Args&&... args)
-        : data(std::make_shared<container>(std::forward<Args>(args)...))
-    {}*/
 
     ValueArray(std::initializer_list<Value> init)
         : data(std::make_shared<container>(std::move(init)))
@@ -267,6 +267,8 @@ public:
     }
 
     std::size_t hash() const { return std::hash<void*>()(data.get()); }
+
+    bool shallow_equal(const ValueArray& oth) const { return data == oth.data; }
 
 private:
     std::shared_ptr<container> data;
@@ -356,6 +358,7 @@ public:
         out = it->second;
         return true;
     }
+
     /**
      * @brief Helper for the store command
      * Sets the value at @p key if it already exists, otherwise returns false
@@ -373,6 +376,8 @@ public:
     {
         return data->count(key) > 0;
     }
+
+    bool shallow_equal(const ValueDict& oth) const { return data == oth.data; }
 
 private:
     std::shared_ptr<container> data;
