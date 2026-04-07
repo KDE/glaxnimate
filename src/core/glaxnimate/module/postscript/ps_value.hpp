@@ -184,12 +184,16 @@ public:
 
     bool operator==(const Value& oth) const
     {
+        if ( !can_convert(oth.type_) )
+            return false;
+        if ( type_ == Real || oth.type_ == Real )
+            return qFuzzyCompare(cast<float>(), oth.cast<float>());
         return value_ == oth.value_;
     }
 
     bool operator!=(const Value& oth) const
     {
-        return value_ != oth.value_;
+        return !(*this == oth);
     }
 
     bool shallow_equal(const Value& oth) const;

@@ -362,11 +362,11 @@ private Q_SLOTS:
     {
         TestInterpreter interp;
         interp.exec_string("1 2 3 mark 4 5 6");
-        QCOMPARE(interp.stack_values(), stack_vals(1, 2, 3, Value(), 4, 5, 6));
+        QCOMPARE(interp.stack_values(), stack_vals(1, 2, 3, Value::from<Value::Mark>(), 4, 5, 6));
         QCOMPARE(interp.stack()[3].type(), Value::Mark);
 
         interp.exec_string("counttomark");
-        QCOMPARE(interp.stack_values(), stack_vals(1, 2, 3, Value(), 4, 5, 6, 3));
+        QCOMPARE(interp.stack_values(), stack_vals(1, 2, 3, Value::from<Value::Mark>(), 4, 5, 6, 3));
 
         interp.exec_string("cleartomark");
         QCOMPARE(interp.stack_values(), stack_vals(1, 2, 3));
@@ -857,10 +857,32 @@ private Q_SLOTS:
         QCOMPARE(exec_gstate("2 setlinecap").line_cap, glaxnimate::model::Stroke::SquareCap);
         COMPARE_PARSE("currentlinecap 2 setlinecap currentlinecap", 0, 2);
 
+        QCOMPARE(exec_gstate("").line_join, glaxnimate::model::Stroke::MiterJoin);
+        QCOMPARE(exec_gstate("1 setlinejoin").line_join, glaxnimate::model::Stroke::RoundJoin);
+        QCOMPARE(exec_gstate("2 setlinejoin").line_join, glaxnimate::model::Stroke::BevelJoin);
+        COMPARE_PARSE("currentlinejoin 2 setlinejoin currentlinejoin", 0, 2);
+
+        QCOMPARE(exec_gstate("").miter_limit, 10);
+        QCOMPARE(exec_gstate("1 setmiterlimit").miter_limit, 1);
+        COMPARE_PARSE("currentmiterlimit 2 setmiterlimit currentmiterlimit", 10, 2);
+
         QCOMPARE(exec_gstate("20 setlinewidth gsave").line_width, 20);
         QCOMPARE(exec_gstate("20 setlinewidth gsave 10 setlinewidth").line_width, 10);
         QCOMPARE(exec_gstate("20 setlinewidth gsave 10 setlinewidth grestore").line_width, 20);
 
+    }
+
+    void test_gstate_colors()
+    {
+        QCOMPARE(exec_gstate(".5 setgray").color, QColor::fromRgbF(0.5, 0.5, 0.5));
+        QCOMPARE(exec_gstate("1 .5 0.25 setrgbcolor").color, QColor::fromRgbF(1, 0.5, 0.25));
+        QCOMPARE(exec_gstate("1 .5 0.25 sethsbcolor").color, QColor::fromHsvF(1, 0.5, 0.25));
+        QCOMPARE(exec_gstate("1 .5 0.25 0.125 setcmykcolor").color, QColor::fromCmykF(1, 0.5, 0.25, 0.125));
+        QCOMPARE(exec_gstate("/DeviceRGB setcolorspace 1 .5 0.25 setcolor").color, QColor::fromRgbF(1, 0.5, 0.25));
+
+        COMPARE_PARSE("currentgray .5 setgray currentgray", 0, 0.5);
+        COMPARE_PARSE("1 .5 0.25 setrgbcolor currentrgbcolor", 1, .5, 0.25);
+        COMPARE_PARSE("1 .5 0.25 sethsbcolor currenthsbcolor", 1, .5, 0.25);
     }
 };
 

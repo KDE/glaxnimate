@@ -106,13 +106,13 @@ public:
         switch ( type_ )
         {
             case ColorSpaceType::DeviceGrey:
-                return {col.greenF()};
+                return stabilize_components({col.greenF()});
             case ColorSpaceType::DeviceRGB:
-                return {col.redF(), col.greenF(), col.blackF()};
+                return stabilize_components({col.redF(), col.greenF(), col.blueF()});
             case ColorSpaceType::DeviceCYMK:
-                return {col.cyanF(), col.yellowF(), col.magentaF(), col.blackF()};
+                return stabilize_components({col.cyanF(), col.yellowF(), col.magentaF(), col.blackF()});
             case ColorSpaceType::CustomHSV:
-                return {col.hueF(), col.saturationF(), col.valueF()};
+                return stabilize_components({col.hueF(), col.saturationF(), col.valueF()});
         }
 
         return {};
@@ -123,6 +123,16 @@ public:
     ColorSpaceType type() const { return type_; }
 
 private:
+    static std::vector<float> stabilize_components(std::vector<float>&& vec)
+    {
+        for ( float& v : vec )
+        {
+            v = qRound(v * 8192) / 8192.f;
+        }
+
+        return vec;
+    }
+
     ColorSpaceType type_ = ColorSpaceType::DeviceGrey;
     int component_count_ = 1;
 };

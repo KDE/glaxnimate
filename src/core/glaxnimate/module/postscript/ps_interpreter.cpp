@@ -1623,7 +1623,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.stack().push(args[0].cast<bool>() || args[1].cast<bool>());
     }});
     builtins.def("xor", {Level::EPS1, {Value::Boolean, Value::Boolean}, [](ValueArray args, Interpreter& interpreter){
-        interpreter.stack().push(args[0].cast<bool>() ^ args[1].cast<bool>());
+        interpreter.stack().push(bool(args[0].cast<bool>() ^ args[1].cast<bool>()));
     }});
     builtins.def("not", {Level::EPS1, {Value::Boolean}, [](ValueArray args, Interpreter& interpreter){
         interpreter.stack().push(!args[0].cast<bool>());
@@ -1943,7 +1943,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("currentlinejoin", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(GraphicsState::convert_join(interpreter.memory().gstate.line_join));
     }});
-    builtins.def("setlinemiterlimit", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    builtins.def("setmiterlimit", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.memory().gstate.miter_limit = args[0].cast<float>();
     }});
     builtins.def("currentmiterlimit", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
@@ -2035,13 +2035,13 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("currentrgbcolor", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         current_color_impl(ColorSpaceType::DeviceRGB, interpreter);
     }});
-    builtins.def("setcymkcolor", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
-        set_color_impl(ColorSpaceType::DeviceRGB, args, interpreter);
+    builtins.def("setcmykcolor", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        set_color_impl(ColorSpaceType::DeviceCYMK, args, interpreter);
     }});
-    builtins.def("currentcymkcolor", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+    builtins.def("currentcmykcolor", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         current_color_impl(ColorSpaceType::DeviceRGB, interpreter);
     }});
-    builtins.def("sethsbcolor", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    builtins.def("sethsbcolor", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         set_color_impl(ColorSpaceType::CustomHSV, args, interpreter);
         interpreter.memory().gstate.color_space = ColorSpaceType::DeviceRGB;
     }});
