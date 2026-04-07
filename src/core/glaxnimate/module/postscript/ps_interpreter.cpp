@@ -889,13 +889,14 @@ void matrix_op(CommandSet& builtins, const char* name, std::vector<ArgumentType>
 
     builtins.def(name, {Level::EPS1, argt, [func](ValueArray args, Interpreter& interpreter){
         ValueArray arr = args.back().cast<ValueArray>();
-        QTransform tf;
-        if ( !to_matrix(arr, tf) )
+        if ( arr.size() < 6 )
         {
             interpreter.error(u"Not a matrix"_s);
             return;
         }
 
+        // Very weird, instead of applying the transform ps sets the array to the transform matrix
+        QTransform tf;
         func(args, tf);
         set_matrix(arr, tf, interpreter);
     }});
@@ -2148,8 +2149,9 @@ void CommandSet::populate_builtins(CommandSet& builtins)
 // Matrix
 {
     builtins.def("matrix", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
-        for ( float e : matrix_elements(QTransform()) )
-            interpreter.stack().push(e);
+        ValueArray mat;
+        mat.resize(6);
+        set_matrix(mat, QTransform(), interpreter);
     }});
     builtins.def("initmatrix", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.memory().gstate.transform = QTransform();
@@ -2221,7 +2223,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     matrix_transform(builtins, "dtransform", true, false);
     matrix_transform(builtins, "itransform", false, true);
     matrix_transform(builtins, "idtransform", true, true);
-    builtins.def("invertmatrix", {Level::EPS1, {Value::Array, Value::Array, Value::Array}, [](ValueArray args, Interpreter& interpreter){
+    builtins.def("invertmatrix", {Level::EPS1, {Value::Array, Value::Array}, [](ValueArray args, Interpreter& interpreter){
         ValueArray arr0 = args[0].cast<ValueArray>();
         ValueArray arr1 = args[1].cast<ValueArray>();
         QTransform tf0;

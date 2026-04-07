@@ -864,6 +864,62 @@ private Q_SLOTS:
         COMPARE_PARSE("1 .5 0.25 setrgbcolor currentrgbcolor", 1, .5, 0.25);
         COMPARE_PARSE("1 .5 0.25 sethsbcolor currenthsbcolor", 1, .5, 0.25);
     }
+
+    void test_matrix_stack()
+    {
+        COMPARE_PARSE("matrix", ValueArray({1, 0, 0, 1, 0, 0}));
+        COMPARE_PARSE("matrix 10 20 2 index translate", ValueArray({1, 0, 0, 1, 10, 20}), ValueArray({1, 0, 0, 1, 10, 20}));
+        COMPARE_PARSE("matrix 10 20 2 index translate identmatrix", ValueArray({1, 0, 0, 1, 0, 0}), ValueArray({1, 0, 0, 1, 0, 0}));
+        COMPARE_PARSE("10 20 matrix scale", ValueArray({10, 0, 0, 20, 0, 0}));
+        COMPARE_PARSE("90 matrix rotate", ValueArray({0, 1, -1, 0, 0, 0}));
+        COMPARE_PARSE("180 matrix rotate", ValueArray({-1, 0, 0, -1, 0, 0}));
+        COMPARE_PARSE("10 20 matrix translate 2 3 matrix scale matrix concatmatrix 90 matrix rotate matrix concatmatrix",
+            ValueArray({0, 2, -3, 0, -60, 20}));
+        COMPARE_PARSE("[0.0 2.0 -3.0 0.0 -60.0 20.0] matrix matrix concatmatrix",
+            ValueArray({0, 2, -3, 0, -60, 20}));
+        COMPARE_PARSE("12 34 [0.0 2.0 -3.0 0.0 -60.0 20.0] transform", -162, 44);
+        COMPARE_PARSE("12 34 [0.0 2.0 -3.0 0.0 -60.0 20.0] itransform", 7, -24);
+        COMPARE_PARSE("12 34 [0.0 2.0 -3.0 0.0 -60.0 20.0] dtransform", -102, 24);
+        COMPARE_PARSE("12 34 [0.0 2.0 -3.0 0.0 -60.0 20.0] idtransform", 17, -4);
+        COMPARE_PARSE("[0.0 2.0 -3.0 0.0 -60.0 20.0] matrix invertmatrix", ValueArray({0, -1./3., .5, 0, -10, -20}));
+    }
+
+    void test_matrix_gstate()
+    {
+        TestInterpreter interp;
+        QTransform default_tf = interp.memory().gstate.transform;
+        auto dtfe = matrix_elements(default_tf);
+        ValueArray default_matrix;
+        for ( float e : dtfe )
+            default_matrix.emplace_back(e);
+
+        QCOMPARE(default_matrix, ValueArray({1, 0, 0, 1, 0, 0}));
+        COMPARE_PARSE("matrix currentmatrix", default_matrix);
+        COMPARE_PARSE("matrix defaultmatrix", default_matrix);
+        COMPARE_PARSE("10 20 translate matrix currentmatrix", ValueArray({1, 0, 0, 1, 10, 20}));
+        COMPARE_PARSE("10 20 scale matrix currentmatrix", ValueArray({10, 0, 0, 20, 0, 0}));
+        COMPARE_PARSE("90 rotate matrix currentmatrix", ValueArray({0, 1, -1, 0, 0, 0}));
+        COMPARE_PARSE("90 rotate 2 3 scale 10 20 translate matrix currentmatrix",
+            ValueArray({0, 2, -3, 0, -60, 20}));
+
+        interp.exec_string("90 rotate 2 3 scale 10 20 translate matrix currentmatrix");
+        QCOMPARE(interp.memory().gstate.transform, matrix_from_elements({0, 2, -3, 0, -60, 20}));
+        interp.exec_string("[1 2 3 4 5 6] setmatrix");
+        QCOMPARE(interp.memory().gstate.transform, matrix_from_elements({1, 2, 3, 4, 5, 6}));
+        interp.exec_string("initmatrix");
+        QCOMPARE(interp.memory().gstate.transform, default_tf);
+
+        interp.stack().clear();
+        interp.exec_string("[0.0 2.0 -3.0 0.0 -60.0 20.0] setmatrix");
+        QCOMPARE(interp.exec_string("12 34 transform"), stack_vals(-162, 44));
+        interp.stack().clear();
+        QCOMPARE(interp.exec_string("12 34 itransform"), stack_vals(7, -24));
+        interp.stack().clear();
+        QCOMPARE(interp.exec_string("12 34 dtransform"), stack_vals(-102, 24));
+        interp.stack().clear();
+        QCOMPARE(interp.exec_string("12 34 idtransform"), stack_vals(17, -4));
+        interp.stack().clear();
+    }
 };
 
 QTEST_GUILESS_MAIN(TestCase)
