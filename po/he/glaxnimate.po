@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-04 00:42+0000\n"
-"PO-Revision-Date: 2026-04-01 09:43+0300\n"
+"PO-Revision-Date: 2026-04-05 08:41+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1035,16 +1035,14 @@ msgid "Precompose"
 msgstr "הרכבה מראש"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:308
-#, fuzzy, kde-format
-#| msgid "End Time"
+#, kde-format
 msgid "Set End Time"
-msgstr "זמן סיום"
+msgstr "הגדרת זמן סיום"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:345
-#, fuzzy, kde-format
-#| msgid "Start Time"
+#, kde-format
 msgid "Set Start Time"
-msgstr "זמן התחלה"
+msgstr "הגדרת זמן התחלה"
 
 #: src/core/glaxnimate/command/structure_commands.cpp:73
 #, kde-format
@@ -6120,7 +6118,7 @@ msgstr "מצב צבע"
 #: src/gui/widgets/shape_style/color_selector.ui:31
 #, kde-format
 msgid "Wheel"
-msgstr ""
+msgstr "גלגל"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:36
