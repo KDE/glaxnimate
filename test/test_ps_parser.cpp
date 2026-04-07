@@ -297,7 +297,7 @@ private Q_SLOTS:
 
     void test_parse_round()
     {
-        COMPARE_PARSE("2.2 ceiling -2.2 ceiling 2.8 ceiling -2.8 ceiling", 3, -2, 3, -28);
+        COMPARE_PARSE("2.2 ceiling -2.2 ceiling 2.8 ceiling -2.8 ceiling", 3, -2, 3, -2);
         COMPARE_PARSE("2.2 floor -2.2 floor 2.8 floor -2.8 floor", 2, -3, 2, -3);
         COMPARE_PARSE("2.2 round -2.2 round 2.8 round -2.8 round", 2, -2, 3, -3);
         COMPARE_PARSE("2.2 truncate -2.2 truncate 2.8 truncate -2.8 truncate", 2, -2, 2, -2);

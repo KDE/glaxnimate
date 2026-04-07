@@ -118,6 +118,7 @@ public:
     {
         data->emplace_back(std::forward<Args>(args)...);
     }
+    reference back() { return data->back(); }
 
     iterator begin() { return data->begin(); }
     iterator end() { return data->end(); }

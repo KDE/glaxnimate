@@ -137,6 +137,24 @@ private:
     int component_count_ = 1;
 };
 
+
+inline std::vector<float> matrix_elements(const QTransform& transform)
+{
+    return {
+        float(transform.m11()),
+        float(transform.m12()),
+        float(transform.m21()),
+        float(transform.m22()),
+        float(transform.m31()),
+        float(transform.m32()),
+    };
+}
+
+inline QTransform matrix_from_elements(const std::vector<float>& elems)
+{
+    return QTransform(elems[0], elems[1], elems[2], elems[3], elems[4], elems[5]);
+}
+
 struct GraphicsState
 {
     QTransform transform;
@@ -152,8 +170,6 @@ struct GraphicsState
     float miter_limit = 10;
     std::vector<float> dash_pattern;
     float dash_offset = 0;
-
-
 
     bool position_is_defined() const
     {

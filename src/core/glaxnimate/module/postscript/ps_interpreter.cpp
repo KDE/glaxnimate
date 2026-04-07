@@ -442,11 +442,6 @@ ValueDict &ExecutionMemory::loaded_systemdict()
     {
         builtins->populate_dict(systemdict);
 
-        /*
-         * NOTE:
-         *  $error errordict not included because we don't want error handling on scripts
-         *  statusdict omitted as it is not required by the specs
-         */
         systemdict["userdict"] = userdict;
         systemdict["globaldict"] = globaldict;
         systemdict["systemdict"] = systemdict;
@@ -829,6 +824,32 @@ bool to_float_array(const ValueArray& vals, std::vector<float>& out, bool allow_
     return true;
 }
 
+bool to_matrix(const ValueArray& vals, QTransform& out)
+{
+    if ( vals.size() != 6 )
+        return false;
+
+    std::vector<float> floats;
+    if ( !to_float_array(vals, floats, true) )
+        return false;
+
+    out = matrix_from_elements(floats);
+    return true;
+}
+
+/**
+ * @pre vals.size() >= 6
+ * @post arr is modified and pushed onto the stack
+ */
+void set_matrix(ValueArray& arr, const QTransform& tf, Interpreter& interpreter)
+{
+    auto elems = matrix_elements(tf);
+    for ( int i = 0; i < int(elems.size()); i++ )
+        arr[i] = elems[i];
+
+    interpreter.stack().push(arr);
+}
+
 void current_color_impl(ColorSpaceType type, Interpreter& interpreter)
 {
     std::vector<float> comps;
@@ -855,6 +876,80 @@ void set_color_impl(ColorSpaceType type, const ValueArray& args, Interpreter& in
     {
         interpreter.error(u"Invalid color"_s);
     }
+}
+
+template<class T>
+void matrix_op(CommandSet& builtins, const char* name, std::vector<ArgumentType> argt, T func)
+{
+    builtins.def(name, {Level::EPS1, argt, [func](ValueArray args, Interpreter& interpreter){
+        func(args, interpreter.memory().gstate.transform);
+    }});
+
+    argt.push_back(Value::Array);
+
+    builtins.def(name, {Level::EPS1, argt, [func](ValueArray args, Interpreter& interpreter){
+        ValueArray arr = args.back().cast<ValueArray>();
+        QTransform tf;
+        if ( !to_matrix(arr, tf) )
+        {
+            interpreter.error(u"Not a matrix"_s);
+            return;
+        }
+
+        func(args, tf);
+        set_matrix(arr, tf, interpreter);
+    }});
+}
+
+void matrix_transform_impl(bool delta, bool inverse, float x, float y, QTransform tf, Interpreter& interpreter)
+{
+    if ( delta )
+    {
+        tf.setMatrix(
+            tf.m11(), tf.m12(), tf.m13(),
+            tf.m21(), tf.m22(), tf.m23(),
+            0, 0, tf.m33()
+        );
+    }
+
+    if ( inverse )
+    {
+        bool ok = false;
+        tf = tf.inverted(&ok);
+        if ( !ok )
+        {
+            interpreter.error(u"Matrix not invertible"_s);
+            return;
+        }
+    }
+
+    qreal x1, y1;
+    tf.map(x, y, &x1, &y1);
+    interpreter.stack().push(float(x1));
+    interpreter.stack().push(float(y1));
+}
+
+void matrix_transform(CommandSet& builtins, const char* name, bool delta, bool inverse)
+{
+    builtins.def(name, {Level::EPS1, {ArgumentType::number(), ArgumentType::number()},
+    [delta, inverse](ValueArray args, Interpreter& interpreter){
+        float x = args[0].cast<float>();
+        float y = args[1].cast<float>();
+        matrix_transform_impl(delta, inverse, x, y, interpreter.memory().gstate.transform, interpreter);
+    }});
+    builtins.def(name, {Level::EPS1, {ArgumentType::number(), ArgumentType::number(), Value::Array},
+                           [delta, inverse](ValueArray args, Interpreter& interpreter){
+        float x = args[0].cast<float>();
+        float y = args[1].cast<float>();
+        auto arr = args[2].cast<ValueArray>();
+        QTransform tf;
+        if ( !to_matrix(arr, tf) )
+        {
+            interpreter.error(u"Not a matrix"_s);
+            return;
+        }
+        matrix_transform_impl(delta, inverse, x, y, tf, interpreter);
+    }});
 }
 
 } // namespace
@@ -914,6 +1009,10 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("roll", {Level::EPS1, {Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         int count = args[0].cast<int>();
         int roll = args[1].cast<int>();
+
+        if ( count == 0 )
+            return;
+
         if ( count < 0 )
         {
             interpreter.error(u"Rolling by a negative amount"_s);
@@ -2046,20 +2145,123 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         current_color_impl(ColorSpaceType::CustomHSV, interpreter);
     }});
 }
+// Matrix
+{
+    builtins.def("matrix", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        for ( float e : matrix_elements(QTransform()) )
+            interpreter.stack().push(e);
+    }});
+    builtins.def("initmatrix", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.memory().gstate.transform = QTransform();
+    }});
+    builtins.def("identmatrix", {Level::EPS1, {Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        ValueArray arr = args[0].cast<ValueArray>();
+        if ( arr.size() < 6 )
+        {
+            interpreter.error(u"Not a matrix"_s);
+            return;
+        }
+
+        set_matrix(arr, QTransform(), interpreter);
+    }});
+    builtins.alias("defaultmatrix", "identmatrix");
+    builtins.def("currentmatrix", {Level::EPS1, {Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        ValueArray arr = args[0].cast<ValueArray>();
+        if ( arr.size() < 6 )
+        {
+            interpreter.error(u"Not a matrix"_s);
+            return;
+        }
+
+        set_matrix(arr, interpreter.memory().gstate.transform, interpreter);
+    }});
+    builtins.def("setmatrix", {Level::EPS1, {Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        ValueArray arr = args[0].cast<ValueArray>();
+        QTransform tf;
+        if ( !to_matrix(arr, tf) )
+        {
+            interpreter.error(u"Not a matrix"_s);
+            return;
+        }
+        interpreter.memory().gstate.transform = tf;
+    }});
+    matrix_op(builtins, "translate", {Arg::number(), Arg::number()}, [](ValueArray& args, QTransform& tf){
+        tf.translate(args[0].cast<float>(), args[1].cast<float>());
+    });
+    matrix_op(builtins, "scale", {Arg::number(), Arg::number()}, [](ValueArray& args, QTransform& tf){
+        tf.scale(args[0].cast<float>(), args[1].cast<float>());
+    });
+    matrix_op(builtins, "rotate", {Arg::number()}, [](ValueArray& args, QTransform& tf){
+        tf.rotate(args[0].cast<float>());
+    });
+    builtins.def("concat", {Level::EPS1, {Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        ValueArray arr = args[0].cast<ValueArray>();
+        QTransform tf;
+        if ( !to_matrix(arr, tf) )
+        {
+            interpreter.error(u"Not a matrix"_s);
+            return;
+        }
+        interpreter.memory().gstate.transform *= tf;
+    }});
+    builtins.def("concatmatrix", {Level::EPS1, {Value::Array, Value::Array, Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        ValueArray arr0 = args[0].cast<ValueArray>();
+        ValueArray arr1 = args[1].cast<ValueArray>();
+        ValueArray arr2 = args[2].cast<ValueArray>();
+        QTransform tf0, tf1;
+        if ( !to_matrix(arr0, tf0) || !to_matrix(arr1, tf1) || arr2.size() < 6 )
+        {
+            interpreter.error(u"Not a matrix"_s);
+            return;
+        }
+
+        set_matrix(arr2, tf0 * tf1, interpreter);
+    }});
+    matrix_transform(builtins, "transform", false, false);
+    matrix_transform(builtins, "dtransform", true, false);
+    matrix_transform(builtins, "itransform", false, true);
+    matrix_transform(builtins, "idtransform", true, true);
+    builtins.def("invertmatrix", {Level::EPS1, {Value::Array, Value::Array, Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        ValueArray arr0 = args[0].cast<ValueArray>();
+        ValueArray arr1 = args[1].cast<ValueArray>();
+        QTransform tf0;
+        if ( !to_matrix(arr0, tf0) || arr1.size() < 6 )
+        {
+            interpreter.error(u"Not a matrix"_s);
+            return;
+        }
+
+        bool ok = false;
+        tf0 = tf0.inverted(&ok);
+        if ( !ok )
+        {
+            interpreter.error(u"Matrix not invertible"_s);
+            return;
+        }
+
+        set_matrix(arr1, tf0, interpreter);
+    }});
+
+
+}
 
     /*
         Unimplemented:
-            countexecstack
-            execstack
-            gstate / setgstate / currentgstate
-            file / resource operators
+            * countexecstack
+            * execstack
+            * gstate / setgstate / currentgstate
+            * file / resource operators
+            * $error / errordict not included because we don't want error handling on scripts
+            * device dependent graphic state
+
 
         Not compliant
-            access control changes don't apply to the shared value for dicts
-            access control not checked for put/get etc
-            bind is a noop
+            * access control changes don't apply to the shared value for dicts
+            * access control not checked for put/get etc
+            * bind is a noop
 
         Not defined (allowed by the specs):
-            executive / echo / prompt
+            * executive / echo / prompt
+            * statusdict
     */
 }
