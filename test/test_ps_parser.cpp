@@ -94,14 +94,6 @@ std::vector<Value> stack_vals(T... args)
     return {stack_val(args)...};
 }
 
-QVariantList array_to_vals(const ValueArray& arr)
-{
-    QVariantList vals;
-    vals.reserve(arr.size());
-    for ( const auto& v : arr )
-        vals.push_back(v.value());
-    return vals;
-}
 
 #define COMPARE_VALUE(val, typenum, expect) \
     QCOMPARE(val.type(), typenum); \
@@ -143,18 +135,6 @@ class TestCase: public QObject
     }
 
 private Q_SLOTS:
-    void initTestCase()
-    {
-        qRegisterMetaType<Value>();
-        qRegisterMetaType<ValueArray>();
-
-        /*QMetaType::registerConverter<glaxnimate::ps::ValueArray, QString>(
-                [](const glaxnimate::ps::ValueArray& arr) {
-                return arr.to_pretty_string();
-            }
-        );*/
-    }
-
     void test_lex_comment()
     {
         auto token = lex("% foo bar\nbaz");
@@ -317,7 +297,7 @@ private Q_SLOTS:
 
     void test_parse_round()
     {
-        COMPARE_PARSE("2.2 ceiling -2.2 ceiling 2.8 ceiling -2.8 ceiling", 3, -2, 3, -2);
+        COMPARE_PARSE("2.2 ceiling -2.2 ceiling 2.8 ceiling -2.8 ceiling", 3, -2, 3, -28);
         COMPARE_PARSE("2.2 floor -2.2 floor 2.8 floor -2.8 floor", 2, -3, 2, -3);
         COMPARE_PARSE("2.2 round -2.2 round 2.8 round -2.8 round", 2, -2, 3, -3);
         COMPARE_PARSE("2.2 truncate -2.2 truncate 2.8 truncate -2.8 truncate", 2, -2, 2, -2);
@@ -330,9 +310,9 @@ private Q_SLOTS:
         QCOMPARE(Value("abc").to_string(), "abc");
         QCOMPARE(Value(2.5f).to_string(), "2.5");
         QCOMPARE(Value("abc"_ba).to_string(), "abc");
-        QCOMPARE(Value::from<Value::Mark>().to_string(), "");
-        QCOMPARE(Value::from<Value::Null>().to_string(), "");
-        QCOMPARE(Value::from<Value::Array>({1, 2, "abc"}).to_string(), "");
+        QCOMPARE(Value::from<Value::Mark>().to_string(), "--nostringval--");
+        QCOMPARE(Value::from<Value::Null>().to_string(), "--nostringval--");
+        QCOMPARE(Value::from<Value::Array>({1, 2, "abc"}).to_string(), "--nostringval--");
 
         QCOMPARE(Value(2.5f).to_pretty_string(), "2.5");
         QCOMPARE(Value::from<Value::Mark>().to_pretty_string(), "mark");
@@ -394,8 +374,8 @@ private Q_SLOTS:
     {
         TestInterpreter interp;
         interp.exec_string("1 2 {3 add}");
-        QCOMPARE(interp.stack()[2].value(), 1);
-        QCOMPARE(interp.stack()[1].value(), 2);
+        QCOMPARE(interp.stack()[2], Value(1));
+        QCOMPARE(interp.stack()[1], Value(2));
         QCOMPARE(interp.stack()[0].type(), Value::Array);
         QCOMPARE(interp.stack()[0].attributes(), Value::Executable|Value::Writable|Value::Readable);
         QCOMPARE(interp.stack()[0].cast<ValueArray>(), ValueArray({3, "add"}));

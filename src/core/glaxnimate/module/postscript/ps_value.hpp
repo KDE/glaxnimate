@@ -232,6 +232,16 @@ class Value
 {
     Q_GADGET
 
+private:
+    using Variant = std::variant<
+        int,
+        float,
+        bool,
+        ValueArray,
+        ps::String,
+        ps::ValueDict
+    >;
+
 public:
     enum Type
     {
@@ -261,12 +271,25 @@ public:
     };
 
     template<Type Tp> struct type_for;
+    template<class Ty> struct index_for;
+    template <class To, Type Tp> struct disabled_converter
+    {
+        static constexpr const bool enabled = false;
+        static To convert(const Variant&) { return {}; }
+    };
+    template <class To, Type Tp> struct enabled_converter
+    {
+        static constexpr const bool enabled = true;
+        static To convert(const Variant& v) { return std::get<typename type_for<Tp>::type>(v); }
+    };
+    template <class To, Type Tp> struct converter : disabled_converter<To, Tp> {};
+
 
     Value() : Value(Null, {}, 0) {}
 
     Value(int num) : Value(Integer, num, 0) {}
     Value(float num) : Value(Real, num, 0) {}
-    Value(double num) : Value(Real, num, 0) {}
+    Value(double num) : Value(Real, float(num), 0) {}
     Value(bool num) : Value(Boolean, num, 0) {}
     Value(ValueArray v);
     Value(const char* str);
@@ -281,28 +304,28 @@ public:
     template<Type Tp>
     static Value from(typename type_for<Tp>::type val, int attributes = None)
     {
-        return Value(Tp, QVariant::fromValue(std::move(val)), attributes);
+        return Value(Tp, std::move(val), attributes);
     }
     template<Type Tp> static Value from();
 
     Type type() const noexcept { return type_; }
 
-    const QVariant& value() const { return value_; }
+    // const QVariant& value() const { return value_; }
 
-    QString to_string() const
-    {
-        if ( type_ == String )
-            return cast<ps::String>().to_string();
-
-        return value_.toString();
-    }
+    QString to_string() const;
 
     QString to_pretty_string() const;
 
     template<class T>
     T cast() const
     {
-        return qvariant_cast<T>(value_);
+        if ( value_.index() == index_for<T>::index )
+            return std::get<T>(value_);
+        if ( type_ == Real && converter<T, Real>::enabled )
+            return converter<T, Real>::convert(value_);
+        if ( type_ == Integer && converter<T, Integer>::enabled )
+            return converter<T, Integer>::convert(value_);
+        return {};
     }
 
     bool can_convert(Type t) const;
@@ -355,28 +378,27 @@ public:
     QByteArray hash_key() const;
 
 private:
-    Value(Type type, QVariant value, int attributes) : type_(type), value_(std::move(value)), attributes_(attributes) {}
+    Value(Type type, Variant value, int attributes) : type_(type), value_(std::move(value)), attributes_(attributes) {}
 
     Type type_;
-    QVariant value_;
+    Variant value_;
     int attributes_ = None;
 };
 
-} // namespace glaxnimate::ps
-Q_DECLARE_METATYPE(glaxnimate::ps::Value)
-Q_DECLARE_METATYPE(glaxnimate::ps::ValueArray)
-Q_DECLARE_METATYPE(glaxnimate::ps::String)
-Q_DECLARE_METATYPE(glaxnimate::ps::ValueDict)
-
-namespace glaxnimate::ps {
+#define VALUE_TYPE_FOR_IMPL(Tp, Type) \
+    template<> struct Value::type_for<Tp> { \
+        using type = Type; \
+    };
 
 #define VALUE_TYPE_FOR(Tp, Type) \
-template<> struct Value::type_for<Tp> { \
-    using type = Type; \
-};
+    VALUE_TYPE_FOR_IMPL(Tp, Type) \
+    template<> struct Value::index_for<Type> { \
+        static constexpr const int index = int(Tp); \
+    };
+
 #define VALUE_TYPE_NUL(Tp) \
 template<>inline Value Value::from<Tp>() { return Value(Tp, {}, 0); } \
-VALUE_TYPE_FOR(Tp, void)
+VALUE_TYPE_FOR_IMPL(Tp, void)
 
 VALUE_TYPE_FOR(Value::Integer, int)
 VALUE_TYPE_FOR(Value::Real, float)
@@ -392,5 +414,8 @@ VALUE_TYPE_NUL(Value::Save)
 #undef VALUE_TYPE_FOR
 #undef VALUE_TYPE_NUL
 
+template<> struct Value::converter<int, Value::Real> : Value::enabled_converter<int, Value::Real> {};
+template<> struct Value::converter<float, Value::Integer> : Value::enabled_converter<float, Value::Integer> {};
 
 } // namespace glaxnimate::ps
+

@@ -417,10 +417,7 @@ QString glaxnimate::ps::level_string(Level level)
 
 static QString to_ugly_string(const Value& val)
 {
-    QString string = val.to_string();
-    if ( string.isEmpty() && val.type() != Value::String )
-        return u"-nostring-"_s;
-    return string;
+    return val.to_string();
 }
 
 QDebug operator<<(QDebug d, Interpreter &interp)

@@ -11,53 +11,60 @@
 using namespace Qt::StringLiterals;
 
 glaxnimate::ps::Value::Value(ValueArray v)
-    : Value(Value::Array, QVariant::fromValue(std::move(v)), Readable|Writable)
+    : Value(Value::Array, std::move(v), Readable|Writable)
 {}
 
 glaxnimate::ps::Value::Value(const char *str)
-    : Value(Value::String, QVariant::fromValue(ps::String(str)), Readable|Writable)
+    : Value(Value::String, ps::String(str), Readable|Writable)
 {}
 
 glaxnimate::ps::Value::Value(ps::String v)
-    : Value(Value::String, QVariant::fromValue(std::move(v)), Readable|Writable)
+    : Value(Value::String, std::move(v), Readable|Writable)
 {}
 
 glaxnimate::ps::Value::Value(const QByteArray& v)
-    : Value(Value::String, QVariant::fromValue(ps::String(v)), Readable|Writable)
+    : Value(Value::String, ps::String(v), Readable|Writable)
 {
 
 }
 
 glaxnimate::ps::Value::Value(ValueDict v)
-    : Value(Value::Dict, QVariant::fromValue(std::move(v)), Readable|Writable)
+    : Value(Value::Dict, std::move(v), Readable|Writable)
 {
 
 }
 
 QString glaxnimate::ps::Value::to_pretty_string() const
 {
-    if ( type_ == Mark )
-        return u"mark"_s;
-    else if ( type_ == Null )
-        return u"null"_s;
-    else if ( type_ == Dict )
-        return cast<ValueDict>().to_pretty_string();
-        //return u"-dict-"_s;
-    else if ( type_ == Array )
-        return cast<ValueArray>().to_pretty_string(has_attribute(Executable));
 
-    if ( type_ == String )
+    switch ( type_ )
     {
-        if ( has_attribute(Name) )
-        {
-            if ( has_attribute(Executable) )
-                return cast<ps::String>().to_string();
-            return '/' + cast<ps::String>().to_string();
-        }
-        return cast<ps::String>().to_string_literal();
+        case Integer:
+        case Real:
+        case Boolean:
+            return to_string();
+        case String:
+            if ( attributes_ & Name )
+                return u"/"_s + cast<ps::String>().to_string();
+            return cast<ps::String>().to_string_literal();
+        case Array:
+            return cast<ValueArray>().to_pretty_string(has_attribute(Executable));
+        case Dict:
+            return cast<ValueDict>().to_pretty_string();
+        case Mark:
+            return u"mark"_s;
+        case Null:
+            return u"null"_s;
+        // TODO
+        case File:
+        case Save:
+            break;
     }
 
-    return to_string();
+    return QString::fromLatin1(
+        "-" + QByteArray(QMetaEnum::fromType<Type>().valueToKey(type_)).toLower() + "-"
+    );
+
 }
 
 bool glaxnimate::ps::Value::can_convert(Type t) const
@@ -257,4 +264,28 @@ bool glaxnimate::ps::ValueDict::store(const key_type &key, const Value &value)
 bool glaxnimate::ps::ValueDict::shallow_equal(const ValueDict &oth) const
 {
     return data == oth.data;
+}
+
+QString glaxnimate::ps::Value::to_string() const
+{
+    switch ( type_ )
+    {
+        case Integer:
+            return QString::number(cast<int>());
+        case Real:
+            return QString::number(cast<float>());
+        case Boolean:
+            return cast<bool>() ? u"true"_s : u"false"_s;
+        case String:
+            return cast<ps::String>().to_string();
+        case Array:
+        case Dict:
+        case File:
+        case Mark:
+        case Null:
+        case Save:
+            break;
+    }
+
+    return u"--nostringval--"_s;
 }
