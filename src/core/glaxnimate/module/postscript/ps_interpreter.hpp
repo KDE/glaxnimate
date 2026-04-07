@@ -142,7 +142,7 @@ struct ExecutionMemory
      * @param out Value to be written to
      * @return true on success
      */
-    bool load(const Value& key, Value& out, bool search_system);
+    bool load(const ValueDict::key_type &key, Value& out, bool search_system);
 
     /**
      * @brief Helper for `store` operator
@@ -150,12 +150,12 @@ struct ExecutionMemory
      * @param out New value
      * @return true on success, will only fail if key is in systemdict
      */
-    bool store(const Value& key, const Value& val);
+    bool store(const ValueDict::key_type &key, const Value& val);
 
     /**
      * @brief Returns the dictionary with the given key (or nullptr)
      */
-    ValueDict* where(const Value& key);
+    ValueDict* where(const ValueDict::key_type& key);
 };
 
 class Interpreter

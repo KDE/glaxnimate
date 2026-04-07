@@ -13,8 +13,7 @@
 
 namespace glaxnimate::ps {
 
-class ValueArray;
-class ValueDict;
+class Value;
 
 class String
 {
@@ -82,6 +81,152 @@ public:
 private:
     std::shared_ptr<container> data;
 };
+
+/**
+ * @brief Arrays share data hence this wrapper around a shared pointer to vector
+ */
+class ValueArray
+{
+public:
+    using container = std::vector<Value>;
+    using value_type = container::value_type;
+    using iterator = container::iterator;
+    using const_iterator = container::const_iterator;
+    using reference = container::reference;
+    using const_reference = container::const_reference;
+    using size_type = int;
+
+    ValueArray(std::initializer_list<Value> init)
+        : data(std::make_shared<container>(std::move(init)))
+    {}
+
+    ValueArray() : data(std::make_shared<container>()) {}
+    ValueArray(const ValueArray&) = default;
+    ValueArray(ValueArray&&) = default;
+    ValueArray& operator=(const ValueArray&) = default;
+    ValueArray& operator=(ValueArray&&) = default;
+
+    void resize(size_type sz) { data->resize(sz); }
+    void reserve(size_type sz) { data->reserve(sz); }
+    size_type size() const { return data->size(); }
+    bool empty() const { return data->empty(); }
+
+    reference operator[](size_type index) { return (*data)[index]; }
+    const_reference operator[](size_type index) const { return (*data)[index]; }
+    template<class... Args>
+    void emplace_back(Args&&... args)
+    {
+        data->emplace_back(std::forward<Args>(args)...);
+    }
+
+    iterator begin() { return data->begin(); }
+    iterator end() { return data->end(); }
+    iterator begin() const { return data->begin(); }
+    iterator end() const { return data->end(); }
+
+    QString to_pretty_string(bool as_executable=false) const;
+    friend QDebug operator<<(QDebug dbg, const ValueArray& arr) { return dbg << arr.to_pretty_string(); }
+
+
+    bool operator==(const ValueArray& oth) const;
+
+    bool operator!=(const ValueArray& oth) const
+    {
+        return !(*this == oth);
+    }
+
+    QByteArray hash_key() const { return "ARRAY_KEY " + QByteArray::number(reinterpret_cast<std::uintptr_t>(data.get())); }
+
+    bool shallow_equal(const ValueArray& oth) const { return data == oth.data; }
+
+private:
+    std::shared_ptr<container> data;
+};
+
+
+class ValueDict
+{
+public:
+    using container = std::unordered_map<QByteArray, Value>;
+    using value_type = container::value_type;
+    using key_type = container::key_type;
+    using mapped_type = container::mapped_type;
+    using iterator = container::iterator;
+    using const_iterator = container::const_iterator;
+    using reference = container::reference;
+    using const_reference = container::const_reference;
+    using size_type = int;
+
+    ValueDict(std::initializer_list<value_type> init)
+        : data(std::make_shared<container>(std::move(init)))
+    {}
+
+    ValueDict() : data(std::make_shared<container>()) {}
+    ValueDict(const ValueDict&) = default;
+    ValueDict(ValueDict&&) = default;
+    ValueDict& operator=(const ValueDict&) = default;
+    ValueDict& operator=(ValueDict&&) = default;
+
+    size_type size() const { return data->size(); }
+    bool empty() const { return data->empty(); }
+
+    mapped_type& operator[](const key_type& index);
+    const mapped_type& operator[](const key_type& index) const;
+
+    void put(const key_type& key, Value val);
+
+    iterator begin() { return data->begin(); }
+    iterator end() { return data->end(); }
+    const_iterator begin() const { return data->begin(); }
+    const_iterator end() const { return data->end(); }
+    iterator find(const key_type& v) { return data->find(v); }
+    const_iterator find(const key_type& v) const { return data->find(v); }
+
+    void erase(const key_type& key)
+    {
+        data->erase(key);
+    }
+
+    QString to_pretty_string() const;
+    friend QDebug operator<<(QDebug dbg, const ValueDict& arr) { return dbg << arr.to_pretty_string(); }
+
+    bool operator==(const ValueDict& oth) const;
+
+    bool operator!=(const ValueDict& oth) const
+    {
+        return !(*this == oth);
+    }
+
+    std::size_t hash() const { return std::hash<void*>()(data.get()); }
+
+    /**
+     * @brief Helper for the load command
+     * @param key Key to find
+     * @param out Value to write into
+     * @return true if the value has been found
+     */
+    bool load_into(const key_type &key, Value &out) const;
+
+    /**
+     * @brief Helper for the store command
+     * Sets the value at @p key if it already exists, otherwise returns false
+     */
+    bool store(const key_type &key, const Value &value);
+
+    bool contains(const key_type& key) const
+    {
+        return data->count(key) > 0;
+    }
+
+    bool shallow_equal(const ValueDict& oth) const;
+
+
+    QByteArray hash_key() const { return "DICT_KEY " + QByteArray::number(reinterpret_cast<std::uintptr_t>(data.get())); }
+
+private:
+    std::shared_ptr<container> data;
+};
+
 
 class Value
 {
@@ -207,7 +352,7 @@ public:
     static QByteArray type_name(Type t);
     QByteArray value_type_name() const;
 
-    std::size_t hash() const;
+    QByteArray hash_key() const;
 
 private:
     Value(Type type, QVariant value, int attributes) : type_(type), value_(std::move(value)), attributes_(attributes) {}
@@ -215,184 +360,6 @@ private:
     Type type_;
     QVariant value_;
     int attributes_ = None;
-};
-
-/**
- * @brief Arrays share data hence this wrapper around a shared pointer to vector
- */
-class ValueArray
-{
-public:
-    using container = std::vector<Value>;
-    using value_type = container::value_type;
-    using iterator = container::iterator;
-    using const_iterator = container::const_iterator;
-    using reference = container::reference;
-    using const_reference = container::const_reference;
-    using size_type = int;
-
-    ValueArray(std::initializer_list<Value> init)
-        : data(std::make_shared<container>(std::move(init)))
-    {}
-
-    ValueArray() : data(std::make_shared<container>()) {}
-    ValueArray(const ValueArray&) = default;
-    ValueArray(ValueArray&&) = default;
-    ValueArray& operator=(const ValueArray&) = default;
-    ValueArray& operator=(ValueArray&&) = default;
-
-    void resize(size_type sz) { data->resize(sz); }
-    void reserve(size_type sz) { data->reserve(sz); }
-    size_type size() const { return data->size(); }
-    bool empty() const { return data->empty(); }
-
-    reference operator[](size_type index) { return (*data)[index]; }
-    const_reference operator[](size_type index) const { return (*data)[index]; }
-    template<class... Args>
-    void emplace_back(Args&&... args)
-    {
-        data->emplace_back(std::forward<Args>(args)...);
-    }
-
-    iterator begin() { return data->begin(); }
-    iterator end() { return data->end(); }
-    iterator begin() const { return data->begin(); }
-    iterator end() const { return data->end(); }
-
-    QString to_pretty_string(bool as_executable=false) const;
-    friend QDebug operator<<(QDebug dbg, const ValueArray& arr) { return dbg << arr.to_pretty_string(); }
-
-
-    bool operator==(const ValueArray& oth) const
-    {
-        if ( size() != oth.size() )
-            return false;
-        for ( int i = 0; i < size(); i++ )
-            if ( (*data)[i] != oth[i] )
-                return false;
-        return true;
-    }
-
-    bool operator!=(const ValueArray& oth) const
-    {
-        return !(*this == oth);
-    }
-
-    std::size_t hash() const { return std::hash<void*>()(data.get()); }
-
-    bool shallow_equal(const ValueArray& oth) const { return data == oth.data; }
-
-private:
-    std::shared_ptr<container> data;
-};
-
-
-struct Hasher
-{
-    size_t operator()(const Value& val) const { return val.hash(); }
-};
-
-class ValueDict
-{
-public:
-    using container = std::unordered_map<Value, Value, Hasher>;
-    using value_type = container::value_type;
-    using key_type = container::key_type;
-    using mapped_type = container::mapped_type;
-    using iterator = container::iterator;
-    using const_iterator = container::const_iterator;
-    using reference = container::reference;
-    using const_reference = container::const_reference;
-    using size_type = int;
-
-    ValueDict(std::initializer_list<value_type> init)
-        : data(std::make_shared<container>(std::move(init)))
-    {}
-
-    ValueDict() : data(std::make_shared<container>()) {}
-    ValueDict(const ValueDict&) = default;
-    ValueDict(ValueDict&&) = default;
-    ValueDict& operator=(const ValueDict&) = default;
-    ValueDict& operator=(ValueDict&&) = default;
-
-    size_type size() const { return data->size(); }
-    bool empty() const { return data->empty(); }
-
-    mapped_type& operator[](const key_type& index) { return (*data)[index]; }
-    const mapped_type& operator[](size_type index) const { return (*data)[index]; }
-
-    iterator begin() { return data->begin(); }
-    iterator end() { return data->end(); }
-    const_iterator begin() const { return data->begin(); }
-    const_iterator end() const { return data->end(); }
-    iterator find(const Value& v) { return data->find(v); }
-    const_iterator find(const Value& v) const { return data->find(v); }
-
-    void erase(const key_type& key)
-    {
-        data->erase(key);
-    }
-
-    QString to_pretty_string() const;
-    friend QDebug operator<<(QDebug dbg, const ValueDict& arr) { return dbg << arr.to_pretty_string(); }
-
-    bool operator==(const ValueDict& oth) const
-    {
-        if ( size() != oth.size() )
-            return false;
-        for ( auto it1 = begin(); it1 != end(); ++it1 )
-        {
-            auto it2 = oth.data->find(it1->first);
-            if ( it2 == oth.end() || it1->second != it2->second )
-                return false;
-        }
-        return true;
-    }
-
-    bool operator!=(const ValueDict& oth) const
-    {
-        return !(*this == oth);
-    }
-
-    std::size_t hash() const { return std::hash<void*>()(data.get()); }
-
-    /**
-     * @brief Helper for the load command
-     * @param key Key to find
-     * @param out Value to write into
-     * @return true if the value has been found
-     */
-    bool load_into(const Value &key, Value &out) const
-    {
-        auto it = data->find(key);
-        if ( it == data->end() )
-            return false;
-        out = it->second;
-        return true;
-    }
-
-    /**
-     * @brief Helper for the store command
-     * Sets the value at @p key if it already exists, otherwise returns false
-     */
-    bool store(const Value &key, const Value &value)
-    {
-        auto it = data->find(key);
-        if ( it == data->end() )
-            return false;
-        it->second = value;
-        return true;
-    }
-
-    bool contains(const Value& key) const
-    {
-        return data->count(key) > 0;
-    }
-
-    bool shallow_equal(const ValueDict& oth) const { return data == oth.data; }
-
-private:
-    std::shared_ptr<container> data;
 };
 
 } // namespace glaxnimate::ps

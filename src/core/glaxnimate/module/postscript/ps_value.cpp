@@ -107,31 +107,30 @@ QByteArray glaxnimate::ps::Value::value_type_name() const
     return type_name(type_);
 }
 
-std::size_t glaxnimate::ps::Value::hash() const
+QByteArray glaxnimate::ps::Value::hash_key() const
 {
     switch ( type_ )
     {
         case glaxnimate::ps::Value::Integer:
-            return std::hash<int>()(cast<int>());
         case glaxnimate::ps::Value::Real:
-            return std::hash<float>()(cast<float>());
         case glaxnimate::ps::Value::Boolean:
-            return std::hash<bool>()(cast<bool>());
+            return "VALUE_KEY " + to_string().toLatin1();
             // case glaxnimate::ps::Value::PackedArray:
         case glaxnimate::ps::Value::Array:
-            return cast<ValueArray>().hash();
+            return cast<ValueArray>().hash_key();
         case glaxnimate::ps::Value::String:
-            return cast<ps::String>().hash();
+            return cast<ps::String>().bytes();
         case glaxnimate::ps::Value::Dict:
-            return cast<ValueDict>().hash();
+            return cast<ValueDict>().hash_key();
         default:
         case glaxnimate::ps::Value::File:
         case glaxnimate::ps::Value::Mark:
         case glaxnimate::ps::Value::Null:
         case glaxnimate::ps::Value::Save:
-            return 0;
+            return "VALUE_KEY " + value_type_name();
     }
 }
+
 
 QString glaxnimate::ps::ValueArray::to_pretty_string(bool as_executable) const
 {
@@ -139,6 +138,16 @@ QString glaxnimate::ps::ValueArray::to_pretty_string(bool as_executable) const
     for ( const auto& v : *data )
         str += v.to_pretty_string() + ' ';
     return str.trimmed() + (as_executable ? '}' : ']');
+}
+
+bool glaxnimate::ps::ValueArray::operator==(const ValueArray &oth) const
+{
+    if ( size() != oth.size() )
+        return false;
+    for ( int i = 0; i < size(); i++ )
+        if ( (*data)[i] != oth[i] )
+            return false;
+    return true;
 }
 
 QString glaxnimate::ps::String::to_string() const
@@ -191,10 +200,61 @@ QByteArray glaxnimate::ps::String::to_string_literal() const
     return result + ')';
 }
 
+glaxnimate::ps::ValueDict::mapped_type &glaxnimate::ps::ValueDict::operator[](const key_type &index)
+{
+    return (*data)[index];
+}
+
+const glaxnimate::ps::ValueDict::mapped_type &glaxnimate::ps::ValueDict::operator[](const key_type &index) const
+{
+    return (*data)[index];
+}
+
+void glaxnimate::ps::ValueDict::put(const key_type &key, Value val)
+{
+    (*data)[key] = std::move(val);
+}
+
 QString glaxnimate::ps::ValueDict::to_pretty_string() const
 {
     QString str = u"<< "_s;
     for ( const auto& p : *data )
-        str += p.first.to_pretty_string() + ' ' + p.second.to_pretty_string() + ' ';
+        str += String(p.first).to_string_literal() + ' ' + p.second.to_pretty_string() + ' ';
     return str + u">>"_s;
+}
+
+bool glaxnimate::ps::ValueDict::operator==(const ValueDict &oth) const
+{
+    if ( size() != oth.size() )
+        return false;
+    for ( auto it1 = begin(); it1 != end(); ++it1 )
+    {
+        auto it2 = oth.data->find(it1->first);
+        if ( it2 == oth.end() || it1->second != it2->second )
+            return false;
+    }
+    return true;
+}
+
+bool glaxnimate::ps::ValueDict::load_into(const key_type &key, Value &out) const
+{
+    auto it = data->find(key);
+    if ( it == data->end() )
+        return false;
+    out = it->second;
+    return true;
+}
+
+bool glaxnimate::ps::ValueDict::store(const key_type &key, const Value &value)
+{
+    auto it = data->find(key);
+    if ( it == data->end() )
+        return false;
+    it->second = value;
+    return true;
+}
+
+bool glaxnimate::ps::ValueDict::shallow_equal(const ValueDict &oth) const
+{
+    return data == oth.data;
 }

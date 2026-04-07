@@ -263,7 +263,7 @@ bool Command::collect_arguments(Stack &stack, std::vector<std::pair<int, int>> &
 void glaxnimate::ps::Interpreter::execute_command(const Value& nameval)
 {
     Value cmdval;
-    if ( d->memory.load(nameval, cmdval, false) )
+    if ( d->memory.load(nameval.hash_key(), cmdval, false) )
     {
         if ( cmdval == nameval )
             error(u"Command executing itself"_s);
@@ -460,7 +460,7 @@ ValueDict &ExecutionMemory::loaded_systemdict()
     return systemdict;
 }
 
-bool ExecutionMemory::load(const Value &key, Value &out, bool search_system)
+bool ExecutionMemory::load(const ValueDict::key_type &key, Value &out, bool search_system)
 {
     for ( auto dit = dict_stack.rbegin(); dit != dict_stack.rend(); ++dit )
     {
@@ -477,7 +477,7 @@ bool ExecutionMemory::load(const Value &key, Value &out, bool search_system)
     return false;
 }
 
-bool ExecutionMemory::store(const Value &key, const Value &val)
+bool ExecutionMemory::store(const ValueDict::key_type &key, const Value &val)
 {
 
     for ( auto dit = dict_stack.rbegin(); dit != dict_stack.rend(); ++dit )
@@ -496,7 +496,7 @@ bool ExecutionMemory::store(const Value &key, const Value &val)
     return true;
 }
 
-ValueDict *ExecutionMemory::where(const Value &key)
+ValueDict *ExecutionMemory::where(const ValueDict::key_type &key)
 {
     for ( auto dit = dict_stack.rbegin(); dit != dict_stack.rend(); ++dit )
     {
@@ -1320,7 +1320,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
                 fail = true;
                 break;
             }
-            out[std::move(key)] = std::move(value);
+            out[key.hash_key()] = std::move(value);
 
             if ( interpreter.stack().empty() )
                 fail = true;
@@ -1349,22 +1349,22 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.memory().dict_stack.pop_back();
     }});
     builtins.def("def", {Level::EPS1, {Arg::any(), Arg::any()}, [](ValueArray args, Interpreter& interpreter){
-        (*interpreter.memory().current_dict())[args[0]] = args[1];
+        (*interpreter.memory().current_dict()).put(args[0].hash_key(), args[1]);
     }});
     builtins.def("load", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         Value val;
-        if ( !interpreter.memory().load(args[0], val, true) )
+        if ( !interpreter.memory().load(args[0].hash_key(), val, true) )
             interpreter.error(u"Value %s not found in the dict stack"_s.arg(args[0].to_pretty_string()));
         else
             interpreter.stack().push(std::move(val));
     }});
     builtins.def("store", {Level::EPS1, {Arg::any(), Arg::any()}, [](ValueArray args, Interpreter& interpreter){
-        if ( !interpreter.memory().store(args[0], args[1]) )
+        if ( !interpreter.memory().store(args[0].hash_key(), args[1]) )
             interpreter.error(u"Could not store %1"_s.arg(args[0].to_pretty_string()));
     }});
     builtins.def("get", {Level::EPS1, {Value::Dict, Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         auto dict = args[0].cast<ValueDict>();
-        auto it = dict.find(args[1]);
+        auto it = dict.find(args[1].hash_key());
         if ( it == dict.end() )
         {
             interpreter.error(u"Key %1 not found"_s.arg(args[1].to_pretty_string()));
@@ -1374,18 +1374,18 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     }});
     builtins.def("put", {Level::EPS1, {Value::Dict, Arg::any(), Arg::any()}, [](ValueArray args, Interpreter&){
         auto dict = args[0].cast<ValueDict>();
-        dict[args[1]] = std::move(args[2]);
+        dict[args[1].hash_key()] = std::move(args[2]);
     }});
     builtins.def("undef", {Level::EPS2, {Value::Dict, Arg::any()}, [](ValueArray args, Interpreter&){
         auto dict = args[0].cast<ValueDict>();
-        dict.erase(args[1]);
+        dict.erase(args[1].hash_key());
     }});
     builtins.def("known", {Level::EPS1, {Value::Dict, Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         auto dict = args[0].cast<ValueDict>();
-        interpreter.stack().push(dict.contains(args[1]));
+        interpreter.stack().push(dict.contains(args[1].hash_key()));
     }});
     builtins.def("where", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
-        auto dict = interpreter.memory().where(args[0]);
+        auto dict = interpreter.memory().where(args[0].hash_key());
         if ( dict )
             interpreter.stack().push(*dict);
         interpreter.stack().push(bool(dict));
@@ -1950,7 +1950,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.stack().push(interpreter.memory().gstate.miter_limit);
     }});
     builtins.def("setstrokeadjust", {Level::EPS2, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
-        interpreter.memory().loaded_systemdict()[Value("currentstrokeadjust")] = args[0].cast<bool>();
+        interpreter.memory().loaded_systemdict().put("currentstrokeadjust", args[0].cast<bool>());
     }});
     builtins.def("setdash", {Level::EPS1, {Value::Array, Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         std::vector<float> dashes;
