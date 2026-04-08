@@ -83,6 +83,7 @@ struct Command
     Level level;
     std::vector<ArgumentType> arg_types;
     std::function<void(ValueArray, Interpreter&)> func;
+    bool needs_point = false;
 
     bool collect_arguments(Stack& stack, std::vector<std::pair<int, int>>& errors, ValueArray& args) const;
 };

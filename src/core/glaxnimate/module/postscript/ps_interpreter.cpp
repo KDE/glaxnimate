@@ -9,6 +9,7 @@
 #include <QBuffer>
 
 #include "glaxnimate/app_info.hpp"
+#include "glaxnimate/math/ellipse_solver.hpp"
 #include "glaxnimate/math/math.hpp"
 #include "ps_lexer.hpp"
 
@@ -294,10 +295,18 @@ void glaxnimate::ps::Interpreter::execute_command(const Value& nameval)
         std::vector<std::pair<int, int>> cmderr;
         if ( cmd->collect_arguments(stack(), cmderr, args) )
         {
+
+            if ( cmd->needs_point && !d->memory.gstate.position_is_defined() )
+            {
+                error(u"No current point"_s);
+                return;
+            }
+
             cmd->func(std::move(args), *this);
             d->current_command.clear();
             return;
         }
+
         if ( !best || cmderr.size() < errors.size() )
         {
             errors = std::move(cmderr);
@@ -409,6 +418,7 @@ const QByteArray &Interpreter::current_command()
 {
     return d->current_command;
 }
+
 
 QString glaxnimate::ps::level_string(Level level)
 {
@@ -1988,7 +1998,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.stack().push(0);
     }});
 }
-// Graphics
+// Graphics - Independent
 {
     builtins.def("gsave", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.memory().gstate_stack.push_back(interpreter.memory().gstate);
@@ -2146,6 +2156,15 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         current_color_impl(ColorSpaceType::CustomHSV, interpreter);
     }});
 }
+// Graphics - Dependent
+{
+    builtins.def("setflat", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.memory().gstate.flatness = math::bound(0.2f, args[0].cast<float>(), 100.f);
+    }});
+    builtins.def("currentflat", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(interpreter.memory().gstate.flatness);
+    }});
+}
 // Matrix
 {
     builtins.def("matrix", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
@@ -2243,6 +2262,194 @@ void CommandSet::populate_builtins(CommandSet& builtins)
 
         set_matrix(arr1, tf0, interpreter);
     }});
+}
+// Path
+{
+    builtins.def("newpath", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.memory().gstate.path = {};
+    }});
+    builtins.def("currentpoint", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        // Needs to be in user coords
+        QPointF p = interpreter.memory().gstate.position();
+        interpreter.stack().push(p.x());
+        interpreter.stack().push(p.y());
+    }, true});
+    builtins.def("moveto", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        QPointF p(args[0].cast<float>(), args[1].cast<float>());
+        QPointF mapped = interpreter.memory().gstate.transform.map(p);
+        interpreter.memory().gstate.path.move_to(mapped);
+    }});
+    builtins.def("rmoveto", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        QPointF p(args[0].cast<float>(), args[1].cast<float>());
+        p += interpreter.memory().gstate.position();
+        QPointF mapped = interpreter.memory().gstate.transform.map(p);
+        interpreter.memory().gstate.path.move_to(mapped);
+    }, true});
+    builtins.def("lineto", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        QPointF p(args[0].cast<float>(), args[1].cast<float>());
+        QPointF mapped = interpreter.memory().gstate.transform.map(p);
+        interpreter.memory().gstate.path.line_to(mapped);
+    }, true});
+    builtins.def("rlineto", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        QPointF p(args[0].cast<float>(), args[1].cast<float>());
+        p += interpreter.memory().gstate.position();
+        QPointF mapped = interpreter.memory().gstate.transform.map(p);
+        interpreter.memory().gstate.path.line_to(mapped);
+    }, true});
+    // counter
+    builtins.def("arc", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        QPointF center(args[0].cast<float>(), args[1].cast<float>());
+        float radius = args[2].cast<float>();
+        float angle_start = args[3].cast<float>();
+        float angle_end = args[4].cast<float>();
+        while ( angle_end < angle_start )
+            angle_end += 360;
+        math::EllipseSolver solver(center, {radius, radius}, 0);
+        auto userbez = solver.to_bezier(math::deg2rad(angle_start), math::deg2rad(angle_end - angle_start));
+        auto devicebez = userbez.transformed(interpreter.memory().gstate.transform);
+
+        if ( interpreter.memory().gstate.path.empty() )
+            interpreter.memory().gstate.path.append(devicebez);
+    }});
+    // clockwise
+    builtins.def("arcn", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        QPointF center(args[0].cast<float>(), args[1].cast<float>());
+        float radius = args[2].cast<float>();
+        float angle_start = args[3].cast<float>();
+        float angle_end = args[4].cast<float>();
+        while ( angle_end > angle_start )
+            angle_end -= 360;
+        math::EllipseSolver solver(center, {radius, radius}, 0);
+        auto userbez = solver.to_bezier(-math::deg2rad(angle_start), -math::deg2rad(angle_end - angle_start));
+        auto devicebez = userbez.transformed(interpreter.memory().gstate.transform);
+
+        if ( interpreter.memory().gstate.path.empty() )
+            interpreter.memory().gstate.path.append(devicebez);
+    }});
+    // TODO arct arcto
+    builtins.def("curveto", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        QPointF t1(args[0].cast<float>(), args[1].cast<float>());
+        QPointF t2(args[2].cast<float>(), args[3].cast<float>());
+        QPointF end(args[4].cast<float>(), args[5].cast<float>());
+        interpreter.memory().gstate.path.cubic_to(
+            interpreter.memory().gstate.transform.map(t1),
+            interpreter.memory().gstate.transform.map(t2),
+            interpreter.memory().gstate.transform.map(end)
+        );
+    }});
+    builtins.def("rlineto", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        QPointF start = interpreter.memory().gstate.position();
+        QPointF t1 = start + QPointF(args[0].cast<float>(), args[1].cast<float>());
+        QPointF t2 = start + QPointF(args[2].cast<float>(), args[3].cast<float>());
+        QPointF end = start + QPointF(args[4].cast<float>(), args[5].cast<float>());
+        interpreter.memory().gstate.path.cubic_to(
+            interpreter.memory().gstate.transform.map(t1),
+            interpreter.memory().gstate.transform.map(t2),
+            interpreter.memory().gstate.transform.map(end)
+        );
+    }});
+    builtins.def("closepath", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.memory().gstate.path.close();
+    }});
+    builtins.def("flattenpath", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.memory().gstate.flatten_path();
+    }});
+    builtins.def("reversepath", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.memory().gstate.path.reverse();
+    }});
+    builtins.def("strokepath", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.memory().gstate.path = interpreter.memory().gstate.path.stroked(
+            interpreter.memory().gstate.to_pen()
+        );
+    }});
+    builtins.def("clippath", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.memory().gstate.clip = interpreter.memory().gstate.path;
+    }});
+    builtins.def("setbbox", {Level::EPS2, {Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray, Interpreter&){
+    }});
+    builtins.def("pathbbox", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        auto path = interpreter.memory().gstate.path.transformed(interpreter.memory().gstate.inverse_transform());
+        if ( level_number(interpreter.level()) > 1 )
+        {
+            if ( path.size() > 0 && path.back().size() < 2 )
+                path.beziers().pop_back();
+        }
+        auto box = path.bounding_box();
+        float left = box.left();
+        float bottom = box.top(); // coords are flipped
+        float right = box.right();
+        float top = box.bottom();
+
+        interpreter.stack().push(left);
+        interpreter.stack().push(bottom);
+        interpreter.stack().push(right);
+        interpreter.stack().push(top);
+    }, true});
+    builtins.def("pathforall", {Level::EPS1, {Arg::proc(), Arg::proc(), Arg::proc(), Arg::proc()}, [](ValueArray args, Interpreter& interpreter){
+        auto moveto = args[0].cast<ValueArray>();
+        // auto lineto = args[1].cast<ValueArray>();
+        auto curveto = args[2].cast<ValueArray>();
+        auto closepath = args[3].cast<ValueArray>();
+
+        auto path = interpreter.memory().gstate.path.transformed(interpreter.memory().gstate.inverse_transform());
+        int j = 0;
+        for ( const auto& bez : path )
+        {
+            if ( bez.empty() )
+                continue;
+
+            interpreter.stack().push(bez[0].pos.x());
+            interpreter.stack().push(bez[0].pos.y());
+            interpreter.execute(moveto);
+
+            if ( interpreter.loop_must_exit(j++) )
+                break;
+
+            for ( int i = 1; i < bez.size(); i++ )
+            {
+                if ( interpreter.loop_must_exit(j + i) )
+                    break;
+                // TODO determine if linear
+                interpreter.stack().push(bez[i-1].tan_out.x());
+                interpreter.stack().push(bez[i-1].tan_out.y());
+
+                interpreter.stack().push(bez[i].tan_in.x());
+                interpreter.stack().push(bez[i].tan_in.y());
+
+                interpreter.stack().push(bez[i].pos.x());
+                interpreter.stack().push(bez[i].pos.y());
+
+                interpreter.execute(curveto);
+            }
+
+            if ( bez.closed() )
+                interpreter.execute(closepath);
+
+        }
+    }});
+    builtins.def("initclip", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.memory().gstate.clip = GraphicsState().clip;
+    }});
+    builtins.def("clip", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.memory().gstate.apply_clip(false);
+    }});
+    builtins.def("eoclip", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.memory().gstate.apply_clip(true);
+    }});
+    builtins.def("rectclip", {Level::EPS2, {Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        float x = args[0].cast<float>();
+        float y = args[1].cast<float>();
+        float w = args[2].cast<float>();
+        float h = args[3].cast<float>();
+        math::bezier::MultiBezier rect;
+        rect.move_to({x, y});
+        rect.line_to({x+w, y});
+        rect.line_to({x+w, y+h});
+        rect.line_to({x, y+h});
+        rect.close();
+        interpreter.memory().gstate.apply_clip(false, rect);
+    }});
+    builtins.def("ucache", {Level::EPS2, {}, [](ValueArray, Interpreter&){}});
 
 
 }
@@ -2255,12 +2462,17 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             * file / resource operators
             * $error / errordict not included because we don't want error handling on scripts
             * device dependent graphic state
+            * userpath stuff (I don't understand it)
+            * charpath
 
 
         Not compliant
             * access control changes don't apply to the shared value for dicts
             * access control not checked for put/get etc
-            * bind is a noop
+        Noops:
+            * bind
+            * flattenpath
+            * setbbox
 
         Not defined (allowed by the specs):
             * executive / echo / prompt

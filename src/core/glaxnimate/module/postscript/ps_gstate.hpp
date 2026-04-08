@@ -158,6 +158,7 @@ inline QTransform matrix_from_elements(const std::vector<float>& elems)
 struct GraphicsState
 {
     QTransform transform;
+
     math::bezier::MultiBezier path;
     math::bezier::MultiBezier clip;
     std::deque<math::bezier::MultiBezier> clip_stack;
@@ -171,14 +172,46 @@ struct GraphicsState
     std::vector<float> dash_pattern;
     float dash_offset = 0;
 
-    bool position_is_defined() const
+    // Device dependent
+    float flatness = 10;
+
+
+    enum InverseTransformState
     {
-        return !path.empty() && !path.back().empty();
+        Clean, Dirty, Invalid,
+    };
+    QTransform inverse_transform_matrix;
+    InverseTransformState inverse_transform_state = Clean;
+
+
+    bool position_is_defined()
+    {
+        if ( path.empty() || !path.back().empty() )
+            return false;
+
+        inverse_transform();
+        return inverse_transform_state == Clean;
     }
 
     QPointF position()
     {
-        return path.back().back().pos;
+        return inverse_transform().map(path.back().back().pos);
+    }
+
+    void mark_transform_changed()
+    {
+        inverse_transform_state = Dirty;
+    }
+
+    const QTransform& inverse_transform()
+    {
+        if ( inverse_transform_state == Dirty )
+        {
+            bool ok = false;
+            inverse_transform_matrix = transform.inverted(&ok);
+            inverse_transform_state = ok ? Clean : Invalid;
+        }
+        return inverse_transform_matrix;
     }
 
     static model::Stroke::Cap convert_cap(int ps_val)
@@ -223,6 +256,47 @@ struct GraphicsState
             case model::Stroke::BevelJoin: return 2;
         }
         return 0;
+    }
+
+    void flatten_path()
+    {
+        // TODO
+    }
+
+    QBrush to_brush() const
+    {
+        return color;
+    }
+
+    QPen to_pen()
+    {
+        QPen pen(to_brush(), line_width, Qt::SolidLine, Qt::PenCapStyle(line_cap), Qt::PenJoinStyle(line_join));
+        pen.setMiterLimit(miter_limit);
+        return pen;
+    }
+
+
+    void apply_clip(bool evenodd)
+    {
+        apply_clip(evenodd, clip);
+    }
+
+    void apply_clip(bool evenodd, const math::bezier::MultiBezier& clip)
+    {
+        QPainterPath shape = path.painter_path();
+        QPainterPath clip_path = clip.painter_path();
+        if ( evenodd )
+        {
+            shape.setFillRule(Qt::OddEvenFill);
+            clip_path.setFillRule(Qt::OddEvenFill);
+        }
+        else
+        {
+            shape.setFillRule(Qt::WindingFill);
+            clip_path.setFillRule(Qt::WindingFill);
+        }
+
+        path = shape;
     }
 
 };

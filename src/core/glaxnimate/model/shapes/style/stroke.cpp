@@ -9,11 +9,7 @@ GLAXNIMATE_OBJECT_IMPL(glaxnimate::model::Stroke)
 
 void glaxnimate::model::Stroke::on_paint(renderer::Renderer* p, glaxnimate::model::FrameTime t, glaxnimate::model::VisualNode::PaintMode, glaxnimate::model::Modifier* modifier) const
 {
-    QPen pen(brush(t), width.get_at(t));
-    pen.setCapStyle(Qt::PenCapStyle(cap.get()));
-    pen.setJoinStyle(Qt::PenJoinStyle(join.get()));
-    pen.setMiterLimit(miter_limit.get());
-    p->set_stroke({pen, opacity.get_at(t)});
+    p->set_stroke({to_pen_style(t), opacity.get_at(t)});
 
     math::bezier::MultiBezier bez;
     if ( modifier )
@@ -42,14 +38,16 @@ void glaxnimate::model::Stroke::set_pen_style_undoable(const QPen& pen_style)
     miter_limit.set_undoable(pen_style.miterLimit());
 }
 
+QPen glaxnimate::model::Stroke::to_pen_style(FrameTime t) const
+{
+    QPen pen(brush(t), width.get_at(t));
+    pen.setCapStyle(Qt::PenCapStyle(cap.get()));
+    pen.setJoinStyle(Qt::PenJoinStyle(join.get()));
+    pen.setMiterLimit(miter_limit.get());
+    return pen;
+}
+
 glaxnimate::math::bezier::MultiBezier glaxnimate::model::Stroke::to_painter_path_impl(glaxnimate::model::FrameTime t) const
 {
-    QPainterPathStroker s;
-    s.setWidth(width.get_at(t));
-    s.setCapStyle(Qt::PenCapStyle(cap.get()));
-    s.setJoinStyle(Qt::PenJoinStyle(join.get()));
-    s.setMiterLimit(miter_limit.get());
-    glaxnimate::math::bezier::MultiBezier bez;
-    bez.append(s.createStroke(collect_shapes(t, {}).painter_path()));
-    return bez;
+    return collect_shapes(t, {}).stroked(to_pen_style(t));
 }

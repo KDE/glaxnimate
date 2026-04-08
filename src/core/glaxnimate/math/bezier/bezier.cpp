@@ -6,6 +6,8 @@
 
 #include "glaxnimate/math/bezier/bezier.hpp"
 
+#include <QPen>
+
 using namespace glaxnimate;
 
 QRectF math::bezier::Bezier::bounding_box() const
@@ -354,6 +356,20 @@ glaxnimate::math::bezier::MultiBezier glaxnimate::math::bezier::MultiBezier::rev
     auto copy = *this;
     copy.reverse();
     return copy;
+}
+
+math::bezier::MultiBezier math::bezier::MultiBezier::stroked(const QPen &pen) const
+{
+    if ( empty() )
+        return {};
+    QPainterPathStroker s;
+    s.setWidth(pen.width());
+    s.setCapStyle(pen.capStyle());
+    s.setJoinStyle(pen.joinStyle());
+    s.setMiterLimit(pen.miterLimit());
+    glaxnimate::math::bezier::MultiBezier bez;
+    bez.append(s.createStroke(painter_path()));
+    return bez;
 }
 
 

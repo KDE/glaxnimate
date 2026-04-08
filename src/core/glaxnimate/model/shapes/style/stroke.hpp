@@ -70,6 +70,7 @@ public:
 
     void set_pen_style(const QPen& p);
     void set_pen_style_undoable(const QPen& p);
+    QPen to_pen_style(FrameTime t) const;
 
 
 protected:

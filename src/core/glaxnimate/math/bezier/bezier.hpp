@@ -337,6 +337,8 @@ public:
     void reverse();
     glaxnimate::math::bezier::MultiBezier reversed() const;
 
+    glaxnimate::math::bezier::MultiBezier stroked(const QPen& pen) const;
+
 private:
     void handle_end()
     {

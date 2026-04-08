@@ -902,7 +902,7 @@ private Q_SLOTS:
         COMPARE_PARSE("90 rotate 2 3 scale 10 20 translate matrix currentmatrix",
             ValueArray({0, 2, -3, 0, -60, 20}));
 
-        interp.exec_string("90 rotate 2 3 scale 10 20 translate matrix currentmatrix");
+        interp.exec_string("90 rotate 2 3 scale 10 20 translate");
         QCOMPARE(interp.memory().gstate.transform, matrix_from_elements({0, 2, -3, 0, -60, 20}));
         interp.exec_string("[1 2 3 4 5 6] setmatrix");
         QCOMPARE(interp.memory().gstate.transform, matrix_from_elements({1, 2, 3, 4, 5, 6}));
