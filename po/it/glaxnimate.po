@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-04 00:42+0000\n"
-"PO-Revision-Date: 2026-03-18 20:21+0100\n"
+"PO-Revision-Date: 2026-04-05 01:17+0200\n"
 "Last-Translator: Valter Mura <valtermura@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #, kde-format
@@ -992,12 +992,11 @@ msgid "Stretch Time"
 msgstr "Tempo allungamento"
 
 #: src/core/glaxnimate/command/clipboard.cpp:142
-#, fuzzy, kde-format
-#| msgid "Paste Keyframe"
+#, kde-format
 msgid "Paste keyframe"
 msgid_plural "Paste keyframes"
 msgstr[0] "Incolla fotogramma chiave"
-msgstr[1] "Incolla fotogramma chiave"
+msgstr[1] "Incolla fotogrammi chiave"
 
 #: src/core/glaxnimate/command/object_list_commands.hpp:26
 #, kde-format
@@ -1055,16 +1054,14 @@ msgid "Precompose"
 msgstr "Precomponi"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:308
-#, fuzzy, kde-format
-#| msgid "End Time"
+#, kde-format
 msgid "Set End Time"
-msgstr "Ora di fine"
+msgstr "Imposta ora di fine"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:345
-#, fuzzy, kde-format
-#| msgid "Start Time"
+#, kde-format
 msgid "Set Start Time"
-msgstr "Ora di inizio"
+msgstr "Imposta ora di inizio"
 
 #: src/core/glaxnimate/command/structure_commands.cpp:73
 #, kde-format
@@ -1485,14 +1482,12 @@ msgstr "Estendi forma"
 
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:101
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:118
-#, fuzzy, kde-format
-#| msgid "Update keyframe transition"
+#, kde-format
 msgid "Set keyframe transition"
-msgstr "Aggiorna transizione fotogramma chiave"
+msgstr "Imposta transizione fotogramma chiave"
 
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:137
-#, fuzzy, kde-format
-#| msgid "Move keyframe"
+#, kde-format
 msgid "Move Keyframe"
 msgstr "Sposta fotogramma chiave"
 
@@ -1806,35 +1801,29 @@ msgid "Transform"
 msgstr "Trasformazione"
 
 #: src/core/glaxnimate/module/cairo/cairo_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "OpenGL Renderer"
+#, kde-format
 msgid "Cairo Renderer"
-msgstr "OpenGL Renderer"
+msgstr "Cairo Renderer"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.cpp:40
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PDF surface: %1"
-msgstr "Impossibile creare il frammento : `%1`"
+msgstr "Impossibile creare la superficie PDF: %1"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.hpp:20
-#, fuzzy, kde-format
-#| msgid "Gather Document Swatch"
+#, kde-format
 msgid "Portable Document Format"
-msgstr "Raccogli campioni documento"
+msgstr "Portable Document Format"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.cpp:38
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PostScript surface: %1"
-msgstr "Impossibile creare il frammento : `%1`"
+msgstr "Impossibile creare la superficie PostScript: %1"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.hpp:20
-#, fuzzy, kde-format
-#| msgctxt "@title settings group"
-#| msgid "Scripting"
+#, kde-format
 msgid "PostScript"
-msgstr "Script"
+msgstr "PostScript"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_format.cpp:32
 #, kde-format
@@ -2023,10 +2012,9 @@ msgid "%s cannot be a clip path"
 msgstr "%s non può essere un percorso di una clip"
 
 #: src/core/glaxnimate/module/extraformats/extraformats_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "Formats"
+#, kde-format
 msgid "Extra Formats"
-msgstr "Formati"
+msgstr "Formati aggiuntivi"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:359
 #, kde-format
@@ -2166,22 +2154,22 @@ msgstr "Impossibile decomprimere i dati"
 #: src/core/glaxnimate/module/gzip/gzip-kde.cpp:84
 #, kde-format
 msgid "Gzip stream already open"
-msgstr ""
+msgstr "Flusso Gzip già aperto"
 
 #: src/core/glaxnimate/module/gzip/gzip-zlib.cpp:99
 #, kde-format
 msgid "ZLib %1%2 returned %3"
-msgstr "Zlib %1%2 ha dato %3"
+msgstr "Zlib %1%2 ha restituito %3"
 
 #: src/core/glaxnimate/module/gzip/gzip_module.hpp:16
 #, kde-format
 msgid "Gzip Compression"
-msgstr ""
+msgstr "Compressione Gzip"
 
 #: src/core/glaxnimate/module/gzip/svgz_format.hpp:22
 #, kde-format
 msgid "Compressed SVG"
-msgstr ""
+msgstr "SVG compresso"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:44
 #, kde-format
@@ -2194,10 +2182,9 @@ msgid "Gradient strokes are not officially supported"
 msgstr "I tratteggi di sfumatura non sono supportati ufficialmente"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:58
-#, fuzzy, kde-format
-#| msgid "Repeaters are not officially supported"
+#, kde-format
 msgid "Masks are not officially supported"
-msgstr "I ripetitori non sono supportati ufficialmente"
+msgstr "Le maschere non sono supportate ufficialmente"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:62
 #, kde-format
@@ -2230,16 +2217,14 @@ msgid "Telegram Animated Sticker"
 msgstr "Adesivo animato per Telegram"
 
 #: src/core/glaxnimate/module/module.cpp:41
-#, fuzzy, kde-format
-#| msgid "Glaxnimate"
+#, kde-format
 msgid "Glaxnimate Core"
-msgstr "Glaxnimate"
+msgstr "Glaxnimate Core"
 
 #: src/core/glaxnimate/module/thorvg/thorvg_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "OpenGL Renderer"
+#, kde-format
 msgid "ThorVG Renderer"
-msgstr "OpenGL Renderer"
+msgstr "ThorVG Renderer"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:73
 #, kde-format
@@ -2404,7 +2389,7 @@ msgstr "Video"
 #: src/core/glaxnimate/module/video/video_module.hpp:16
 #, kde-format
 msgid "Video Format Support"
-msgstr ""
+msgstr "Supporto formati video"
 
 #: src/core/glaxnimate/script/register_impl.hpp:234
 #, kde-format
@@ -2775,7 +2760,7 @@ msgstr "OpenGL Renderer"
 #: src/gui/glaxnimate_app.cpp:231
 #, kde-format
 msgid "Copyright © 2019-2026"
-msgstr ""
+msgstr "Copyright © 2019-2026"
 
 #: src/gui/glaxnimate_app.cpp:240
 #, kde-format
@@ -2876,10 +2861,9 @@ msgstr "Allinea e distribuisci"
 
 #. i18n: ectx: Menu (menu_keyframe_type)
 #: src/gui/glaxnimateui.rc:176
-#, fuzzy, kde-format
-#| msgid "Update keyframe transition"
+#, kde-format
 msgid "Keyframe Transition"
-msgstr "Aggiorna transizione fotogramma chiave"
+msgstr "Transizione fotogramma chiave"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:217 src/gui/settings/plugin_settings_group.hpp:23
@@ -3424,10 +3408,9 @@ msgstr "Formati di output"
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:306
-#, fuzzy, kde-format
-#| msgid "Output Formats "
+#, kde-format
 msgid "Single Frame Output Formats "
-msgstr "Formati di output"
+msgstr "Formati di output a fotogramma singolo "
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:21
@@ -3926,12 +3909,11 @@ msgid "Warning"
 msgstr "Attenzione"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:292
-#, fuzzy, kde-format
-#| msgid "Remove keyframe"
+#, kde-format
 msgid "Delete keyframe"
 msgid_plural "Delete keyframes"
-msgstr[0] "Rimuovi fotogramma chiave"
-msgstr[1] "Rimuovi fotogramma chiave"
+msgstr[0] "Elimina fotogramma chiave"
+msgstr[1] "Elimina fotogrammi chiave"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:138
 #, kde-format
@@ -4293,16 +4275,14 @@ msgid "Flip View"
 msgstr "Capovolgi vista"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
-#, fuzzy, kde-format
-#| msgid "Mask Mode"
+#, kde-format
 msgid "Focus Mode"
-msgstr "Modalità maschera"
+msgstr "Modalità fuoco"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
-#, fuzzy, kde-format
-#| msgid "Render Single Frame"
+#, kde-format
 msgid "Render Single Frame…"
-msgstr "Resa fotogramma singolo"
+msgstr "Resa fotogramma singolo…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
 #, kde-format
@@ -4357,7 +4337,7 @@ msgstr "Riproduci"
 #: src/gui/widgets/timeline/frame_controls_widget.ui:59
 #, kde-format
 msgid "Loop"
-msgstr "Cicla"
+msgstr "Ripetizione continua"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:556
 #, kde-format
@@ -4501,10 +4481,9 @@ msgid "Custom..."
 msgstr "Personalizzato..."
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
-#, fuzzy, kde-format
-#| msgid "Update keyframe transition"
+#, kde-format
 msgid "Apply %1 keyframe transition"
-msgstr "Aggiorna transizione fotogramma chiave"
+msgstr "Applica transizione fotogramma chiave %1"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:855
 #, kde-format
@@ -4681,10 +4660,9 @@ msgid "Issues"
 msgstr "Problemi"
 
 #: src/gui/widgets/dialogs/keyframe_editor_dialog.hpp:24
-#, fuzzy, kde-format
-#| msgid "Transition To Next"
+#, kde-format
 msgid "Transition Editor"
-msgstr "Transizione al prossimo"
+msgstr "Editor delle transizioni"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ResizeDialog)
 #: src/gui/widgets/dialogs/resize_dialog.cpp:28
@@ -5788,7 +5766,7 @@ msgstr "Vedi su LottieFiles..."
 #: src/gui/widgets/menus/animated_property_menu.cpp:51
 #, kde-format
 msgid "Repeat until composition ends"
-msgstr ""
+msgstr "Ripeti fino alla fine della composizione"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:61
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
@@ -5799,7 +5777,7 @@ msgstr "Incolla fotogramma chiave"
 #: src/gui/widgets/menus/animated_property_menu.cpp:62
 #, kde-format
 msgid "Perfect Loop"
-msgstr ""
+msgstr "In ciclo perfetto"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
@@ -5813,10 +5791,9 @@ msgid "Remove Keyframe"
 msgstr "Rimuovi fotogramma chiave"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:131
-#, fuzzy, kde-format
-#| msgid "Loop"
+#, kde-format
 msgid "Loop %1"
-msgstr "Cicla"
+msgstr "Ripetizione continua di %1"
 
 #: src/gui/widgets/menus/node_menu.cpp:60
 #: src/gui/widgets/menus/node_menu.cpp:285
@@ -6084,12 +6061,12 @@ msgstr "Servizi"
 #: src/gui/widgets/settings/settings_dialog.cpp:231
 #, kde-format
 msgid "Best Quality"
-msgstr ""
+msgstr "Qualità migliore"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:232
 #, kde-format
 msgid "Reduced Size (Performance)"
-msgstr ""
+msgstr "Dimensione ridotta (prestazioni)"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:234
 msgctxt "Settings"
@@ -6114,11 +6091,13 @@ msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Canvas Render Quality"
-msgstr ""
+msgstr "Qualità resa della tela"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Display quality within the app, does not affect exports"
 msgstr ""
+"Qualità di visualizzazione all'interno dell'applicazione, non influenza le "
+"esportazioni"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 msgid "Icon Theme"
@@ -6187,7 +6166,7 @@ msgstr "Modalità colore"
 #: src/gui/widgets/shape_style/color_selector.ui:31
 #, kde-format
 msgid "Wheel"
-msgstr ""
+msgstr "Ruota"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:36
