@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-04 00:42+0000\n"
-"PO-Revision-Date: 2026-04-01 19:25+0400\n"
+"PO-Revision-Date: 2026-04-09 11:13+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1038,16 +1038,14 @@ msgid "Precompose"
 msgstr "جهّز التركيبة"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:308
-#, fuzzy, kde-format
-#| msgid "End Time"
+#, kde-format
 msgid "Set End Time"
-msgstr "وقت النهاية"
+msgstr "عين وقت النهاية"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:345
-#, fuzzy, kde-format
-#| msgid "Start Time"
+#, kde-format
 msgid "Set Start Time"
-msgstr "وقت البدأ"
+msgstr "عين وقت البدء"
 
 #: src/core/glaxnimate/command/structure_commands.cpp:73
 #, kde-format
@@ -3830,7 +3828,7 @@ msgstr "اختر..."
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:97
 #, kde-format
 msgid "Start Time"
-msgstr "وقت البدأ"
+msgstr "وقت البدء"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:31
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:39
@@ -6119,7 +6117,7 @@ msgstr "نمط الألوان"
 #: src/gui/widgets/shape_style/color_selector.ui:31
 #, kde-format
 msgid "Wheel"
-msgstr ""
+msgstr "العجلة"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:36

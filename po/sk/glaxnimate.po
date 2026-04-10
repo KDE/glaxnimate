@@ -1157,7 +1157,7 @@ msgstr "Unknown object of type '%1'"
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:732
 #, kde-format
 msgid "%1 is an unsupported shape of type %2"
-msgstr ""
+msgstr "%1 je nepodporovaný tvar typu %2"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:757
 #, kde-format
@@ -1214,12 +1214,12 @@ msgstr "HTML náhľad Lottie"
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:190
 #, kde-format
 msgid "Mask parent %1 of layer %2 could not be found"
-msgstr ""
+msgstr "Nadradená maska %1 vrstvy %2 nebola nájdená"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:200
 #, kde-format
 msgid "Mask parent of layer %1 could not be found"
-msgstr ""
+msgstr "Nadradená maska vrstvy %1 nebola nájdená"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:219
 #, kde-format
@@ -1229,7 +1229,7 @@ msgstr "Neplatná nadradená vrstva %1"
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:316
 #, kde-format
 msgid "Missing type for layer %1"
-msgstr ""
+msgstr "Chýbajúci typ pre vrstvu %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:390
 #, kde-format
@@ -1462,7 +1462,7 @@ msgstr "Rozšíriť tvar"
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:118
 #, kde-format
 msgid "Set keyframe transition"
-msgstr ""
+msgstr "Nastaviť prechod kľúčovej snímky"
 
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:137
 #, kde-format
@@ -1831,17 +1831,17 @@ msgstr "Unknown property \"%1\" of \"%2\""
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:221
 #, kde-format
 msgid "Layer #%1"
-msgstr ""
+msgstr "Vrstva č. %1"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:279
 #, kde-format
 msgid "Parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Nadradená vrstva č. %1 vrstvy %2 nebola nájdená"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:292
 #, kde-format
 msgid "Mask parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Nadradená maska č. %1 vrstvy %2 nebola nájdená"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:581
 #, kde-format
@@ -2130,12 +2130,12 @@ msgstr "Nepodarilo sa dekomprimovať údaje"
 #: src/core/glaxnimate/module/gzip/gzip-kde.cpp:84
 #, kde-format
 msgid "Gzip stream already open"
-msgstr ""
+msgstr "Gzip prúd je už otvorený"
 
 #: src/core/glaxnimate/module/gzip/gzip-zlib.cpp:99
 #, kde-format
 msgid "ZLib %1%2 returned %3"
-msgstr ""
+msgstr "ZLib %1%2 vrátila %3"
 
 #: src/core/glaxnimate/module/gzip/gzip_module.hpp:16
 #, kde-format
@@ -2145,7 +2145,7 @@ msgstr "Gzip Compression"
 #: src/core/glaxnimate/module/gzip/svgz_format.hpp:22
 #, kde-format
 msgid "Compressed SVG"
-msgstr ""
+msgstr "Komprimované SVG"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:44
 #, kde-format
@@ -2160,7 +2160,7 @@ msgstr "Gradientové ťahy nie sú oficiálne podporované"
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:58
 #, kde-format
 msgid "Masks are not officially supported"
-msgstr ""
+msgstr "Masky nie sú oficiálne podporované"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:62
 #, kde-format
@@ -2200,7 +2200,7 @@ msgstr "Glaxnimate"
 #: src/core/glaxnimate/module/thorvg/thorvg_module.hpp:16
 #, kde-format
 msgid "ThorVG Renderer"
-msgstr ""
+msgstr "Vykresľovač ThorVG"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:73
 #, kde-format
@@ -2629,7 +2629,7 @@ msgstr "Nestiahli sa žiadne súbory"
 #, kde-format
 msgctxt "Package install status"
 msgid "Some files failed to extract"
-msgstr ""
+msgstr "Niektoré súbory sa nepodarilo extrahovať"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, EmojiSetDialog)
 #: src/gui/emoji/emoji_set_dialog.ui:21
@@ -2722,12 +2722,12 @@ msgstr "OpenGL"
 #: src/gui/glaxnimate_app.cpp:202
 #, kde-format
 msgid "Hardware-accelerated graphics."
-msgstr ""
+msgstr "Hardvérovo akcelerovaná grafika."
 
 #: src/gui/glaxnimate_app.cpp:208
 #, kde-format
 msgid "OpenGL Renderer"
-msgstr ""
+msgstr "Vykresľovač OpenGL"
 
 #: src/gui/glaxnimate_app.cpp:231
 #, kde-format
@@ -3039,7 +3039,7 @@ msgctxt ""
 "%5 is the file name, %1 × %2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
 msgid "%5 — %1 × %2 %3 %4 fps"
-msgstr ""
+msgstr "%5 — %1 × %2 %3 %4 fps"
 
 #: src/gui/settings/document_templates.cpp:178
 #, kde-format
@@ -3059,7 +3059,7 @@ msgstr "Predvolené systému"
 #: src/gui/style/property_delegate.cpp:52
 #, kde-format
 msgid "%1% × %2%"
-msgstr ""
+msgstr "%1% × %2%"
 
 #: src/gui/style/property_delegate.cpp:72
 #, kde-format
@@ -3381,7 +3381,7 @@ msgstr "Výstupné formáty "
 #: src/gui/widgets/dialogs/about_env_dialog.ui:306
 #, kde-format
 msgid "Single Frame Output Formats "
-msgstr ""
+msgstr "Výstupné formáty jednej snímky "
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:21
@@ -4253,7 +4253,7 @@ msgstr "Maska"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
 #, kde-format
 msgid "Render Single Frame…"
-msgstr ""
+msgstr "Vykresliť jednu snímku…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
 #, kde-format
@@ -4454,7 +4454,7 @@ msgstr "Vlastné..."
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
 #, kde-format
 msgid "Apply %1 keyframe transition"
-msgstr ""
+msgstr "Použiť prechod kľúčovej snímky %1"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:855
 #, kde-format
@@ -5738,7 +5738,7 @@ msgstr "Zobraziť na LottieFiles..."
 #: src/gui/widgets/menus/animated_property_menu.cpp:51
 #, kde-format
 msgid "Repeat until composition ends"
-msgstr ""
+msgstr "Opakovať do konca kompozície"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:61
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
@@ -5765,7 +5765,7 @@ msgstr "Vymazať kľúčovú snímku"
 #: src/gui/widgets/menus/animated_property_menu.cpp:131
 #, kde-format
 msgid "Loop %1"
-msgstr ""
+msgstr "Slučka %1"
 
 #: src/gui/widgets/menus/node_menu.cpp:60
 #: src/gui/widgets/menus/node_menu.cpp:285
@@ -5792,7 +5792,7 @@ msgstr "Previesť %1 na %2"
 #: src/gui/widgets/menus/node_menu.cpp:300
 #, kde-format
 msgid "Anchor Point to Center"
-msgstr ""
+msgstr "Kotviaci bod do stredu"
 
 #: src/gui/widgets/menus/node_menu.cpp:313
 #, kde-format
@@ -6036,7 +6036,7 @@ msgstr "Best Quality"
 #: src/gui/widgets/settings/settings_dialog.cpp:232
 #, kde-format
 msgid "Reduced Size (Performance)"
-msgstr ""
+msgstr "Zmenšená veľkosť (výkon)"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:234
 msgctxt "Settings"
@@ -6065,7 +6065,7 @@ msgstr "Canvas Render Quality"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Display quality within the app, does not affect exports"
-msgstr ""
+msgstr "Kvalita zobrazenia v aplikácii, neovplyvňuje exporty"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 msgid "Icon Theme"
