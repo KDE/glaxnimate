@@ -920,6 +920,13 @@ private Q_SLOTS:
         QCOMPARE(interp.exec_string("12 34 idtransform"), stack_vals(17, -4));
         interp.stack().clear();
     }
+
+    void test_path()
+    {
+        COMPARE_PARSE("10 20 moveto currentpoint", 10, 20);
+        COMPARE_PARSE("10 20 moveto 30 40 lineto currentpoint", 30, 40);
+        COMPARE_PARSE("10 20 moveto 30 40 rlineto currentpoint", 40, 60);
+    }
 };
 
 QTEST_GUILESS_MAIN(TestCase)

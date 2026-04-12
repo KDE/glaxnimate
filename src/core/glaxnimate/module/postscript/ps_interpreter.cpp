@@ -2337,7 +2337,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             interpreter.memory().gstate.transform.map(end)
         );
     }});
-    builtins.def("rlineto", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    builtins.def("rcurveto", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         QPointF start = interpreter.memory().gstate.position();
         QPointF t1 = start + QPointF(args[0].cast<float>(), args[1].cast<float>());
         QPointF t2 = start + QPointF(args[2].cast<float>(), args[3].cast<float>());

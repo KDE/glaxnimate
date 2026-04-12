@@ -186,16 +186,21 @@ struct GraphicsState
 
     bool position_is_defined()
     {
-        if ( path.empty() || !path.back().empty() )
+        if ( path.empty() || path.back().empty() )
             return false;
 
         inverse_transform();
         return inverse_transform_state == Clean;
     }
 
+    QPointF device_position()
+    {
+        return path.back().back().pos;
+    }
+
     QPointF position()
     {
-        return inverse_transform().map(path.back().back().pos);
+        return inverse_transform().map(device_position());
     }
 
     void mark_transform_changed()
