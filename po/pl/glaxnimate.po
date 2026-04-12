@@ -1,21 +1,22 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the glaxnimate package.
+# SPDX-FileCopyrightText: 2023, 2024, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 #
-# SPDX-FileCopyrightText: 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-01 02:43+0000\n"
-"PO-Revision-Date: 2024-09-07 11:24+0200\n"
+"PO-Revision-Date: 2026-04-11 09:58+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
-"Language-Team: Polish <kde-i18n-doc@kde.org>\n"
+"Language-Team: pl\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -33,7 +34,7 @@ msgstr "lukasz.wojnilowicz@gmail.com"
 #. i18n: Property name
 #, kde-format
 msgid "transform"
-msgstr "przekształć"
+msgstr "przekształcenie"
 
 #. i18n: file: src/core/model/shapes/repeater.hpp
 #. i18n: Property name
@@ -173,7 +174,7 @@ msgstr "ilość"
 #. i18n: Property name
 #, kde-format
 msgid "join"
-msgstr "połącz"
+msgstr "łączenie"
 
 #. i18n: file: src/core/model/shapes/layer.hpp
 #. i18n: Property name
@@ -747,7 +748,7 @@ msgstr "Otwórz"
 #: src/android/main_window.cpp:514
 #, kde-format
 msgid "Import as Composition"
-msgstr "Zaimportuj jako złożenie"
+msgstr "Zaimportuj jako skład"
 
 #: src/android/main_window.cpp:517
 #, kde-format
@@ -927,10 +928,9 @@ msgid "Could not start activity, is Telegram installed?"
 msgstr "Nie udało rozpocząć aktywności. Czy Telegram jest wgrany?"
 
 #: src/core/app_info.cpp:57
-#, fuzzy, kde-format
-#| msgid "(c) 2019-2023"
+#, kde-format
 msgid "(c) 2019-2026"
-msgstr "(c) 2019-2023"
+msgstr "(c) 2019-2026"
 
 #: src/core/app_info.cpp:66
 #, kde-format
@@ -1095,7 +1095,7 @@ msgstr "Projekt Adobe After Effects"
 #: src/core/io/aep/aep_format.hpp:42
 #, kde-format
 msgid "Adobe After Effects Project XML"
-msgstr "Projekt XML Adobe After Effects"
+msgstr "Plik XML projektu Adobe After Effects"
 
 #: src/core/io/aep/aep_loader.cpp:75
 #, kde-format
@@ -2062,7 +2062,7 @@ msgstr "Bitmapa"
 #: src/core/model/assets/composition.cpp:24 src/gui/glaxnimateui.rc:124
 #, kde-format
 msgid "Composition"
-msgstr "Złożenie"
+msgstr "Skład"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -2172,7 +2172,7 @@ msgstr "Elipsa"
 #: src/gui/widgets/tools/shape_tool_widget.ui:66
 #, kde-format
 msgid "Fill"
-msgstr "Wypełnij"
+msgstr "Wypełnienie"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/model/shapes/group.hpp:42
@@ -3971,7 +3971,7 @@ msgstr "Przekształć %1 na ścieżkę"
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:492
 #, kde-format
 msgid "New Composition from Selection"
-msgstr "Nowe złożenie z zaznaczenia"
+msgstr "Nowy skład z zaznaczenia"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:681
 #, kde-format
@@ -4065,7 +4065,7 @@ msgstr "Wyeksportuj jako ciąg obrazów…"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:384
 #, kde-format
 msgid "Paste as Composition"
-msgstr "Wklej jako złożenie"
+msgstr "Wklej jako skład"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_duplicate)
@@ -4223,7 +4223,7 @@ msgstr "Wstępnie złóż zaznaczenie"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:609
 #, kde-format
 msgid "New Composition"
-msgstr "Nowe złożenie"
+msgstr "Nowy skład"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:624
 #, kde-format
@@ -4238,7 +4238,7 @@ msgstr "Podnieś na wierzch"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:646
 #, kde-format
 msgid "Lower to Bottom"
-msgstr "Niższy do dołu"
+msgstr "Obniż na spód"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:649
 #, kde-format
@@ -4386,10 +4386,9 @@ msgid "Make segments curved"
 msgstr "Uczyń odcinki zakrzywionymi"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:799
-#, fuzzy, kde-format
-#| msgid "Reverse"
+#, kde-format
 msgid "Reverse path"
-msgstr "Odwróć"
+msgstr "Odwróć ścieżkę"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:897
 #, kde-format
@@ -4448,7 +4447,7 @@ msgstr "Dodaj jako obiekt"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1634
 #, kde-format
 msgid "Add as Composition"
-msgstr "Dodaj jako złożenie"
+msgstr "Dodaj jako skład"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:40
 #, kde-format
@@ -5458,7 +5457,7 @@ msgstr "Zapętlij animację"
 #: src/gui/widgets/menus/animated_property_menu.cpp:58
 #, kde-format
 msgid "Follow Path..."
-msgstr "Ścieżka podążania..."
+msgstr "Ścieżka podążania…"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
@@ -5513,7 +5512,7 @@ msgstr "Przekształć na grupę"
 #: src/gui/widgets/menus/node_menu.cpp:279
 #, kde-format
 msgid "Precompose"
-msgstr "Przedzłożenie"
+msgstr "Skład wstępny"
 
 #: src/gui/widgets/menus/node_menu.cpp:285
 #: src/gui/widgets/menus/node_menu.cpp:304
@@ -5617,7 +5616,7 @@ msgstr "Powiel"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Move to..."
-msgstr "Przenieś do..."
+msgstr "Przenieś do…"
 
 #: src/gui/widgets/menus/node_menu.cpp:479
 #, kde-format
@@ -5668,7 +5667,7 @@ msgstr "Wgraj z pliku"
 #: src/gui/widgets/settings/plugin_settings_widget.ui:61
 #, kde-format
 msgid "Install..."
-msgstr "Wgraj..."
+msgstr "Wgraj…"
 
 #. i18n: ectx: property (text), widget (QLineEdit, line_version)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:90
@@ -6243,13 +6242,13 @@ msgstr "Grubość kreski"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:69
 #, kde-format
 msgid "Cap"
-msgstr "Ograniczenie"
+msgstr "Zakończenia"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:157
 #, kde-format
 msgid "Join"
-msgstr "Połącz"
+msgstr "Łączenia"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_miter)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:263
@@ -6271,17 +6270,17 @@ msgstr "Zachowaj kształt"
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:86
 #, kde-format
 msgid "Rename"
-msgstr "Przemianuj"
+msgstr "Zmień nazwę"
 
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:89
 #, kde-format
 msgid "Rename Composition"
-msgstr "Przemianuj złożenie"
+msgstr "Zmień nazwę składu"
 
 #: src/gui/widgets/tab_bar/tab_bar_close_button.cpp:60
 #, kde-format
 msgid "Delete Composition"
-msgstr "Usuń złożenie"
+msgstr "Usuń skład"
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:155
 #, kde-format
