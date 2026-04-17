@@ -54,6 +54,20 @@ fill.color.value = {red: 255, green: 0, blue: 255, alpha: 255};
 </script>
 ```
 
+Can also be used as a drop-in replacement for lottie-web:
+
+```html
+<script>
+let player = new Glaxnimate.loadAnimation({
+    container: document.getElementById("container"),
+    // Only one between animationData / path is needed
+    animationData: { /* data */ },
+    path: "your-animation.json" 
+});
+</script>
+```
+
+
 Supported Formats
 -----------------
 

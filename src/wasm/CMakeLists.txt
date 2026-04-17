@@ -3,7 +3,7 @@
 
 cmake_minimum_required (VERSION 3.16 FATAL_ERROR)
 
-project(GlaxnimateWasm VERSION 0.6.56 LANGUAGES CXX)
+project(GlaxnimateWasm VERSION 0.6.57 LANGUAGES CXX)
 
 # C++
 set(CMAKE_CXX_STANDARD 17)

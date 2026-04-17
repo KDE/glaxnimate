@@ -37,6 +37,7 @@
             this._start_time = -1;
             this._frames_offset = 0
             this._animation_frame = null;
+            this._opts.loop = this._opts.loop ?? true;
             Glaxnimate.load_action(() => this.load());
         }
 
@@ -53,7 +54,7 @@
             this._update_opts(opts);
             fetch(url)
             .then(r => r.bytes())
-            .then(data => player.load({
+            .then(data => this.load({
                 data,
                 filename: url
             }));
@@ -127,13 +128,26 @@
             this._animation_frame = requestAnimationFrame(this._render_tick.bind(this));
         }
 
+        _at_end()
+        {
+        }
+
         _render_tick(time)
         {
             this._animation_frame = null;
             if ( this._start_time < 0 )
                 this._start_time = time;
 
-            let time_frames = ((time - this._start_time) / 1000 * this.renderer.fps + this._frames_offset) % this.renderer.last_frame;
+            let time_frames = ((time - this._start_time) / 1000 * this.renderer.fps + this._frames_offset);
+            if ( time_frames  >= this.renderer.last_frame )
+            {
+                if ( this._opts.loop )
+                    time_frames = time_frames % this.renderer.last_frame;
+                else
+                    this.pause();
+
+                this._at_end();
+            }
 
             this.render_frame(time_frames);
 
@@ -152,5 +166,93 @@
         }
     }
 
+    class LottiePlayer extends Player
+    {
+        constructor(options)
+        {
+            let canvas = document.createElement("canvas");
+            options.canvas = canvas;
+            options.container.appendChild(canvas);
+
+            if ( options.animationData )
+                options.data = JSON.stringify(options.animationData);
+
+            super(options);
+
+            if ( options.path )
+                this.fetch(options.path);
+
+            this.event_target = new EventTarget();
+        }
+
+        static loadAnimation(options)
+        {
+            return new LottiePlayer(options);
+        }
+
+        get currentFrame()
+        {
+            return this.renderer.current_time;
+        }
+
+        set currentFrame(t)
+        {
+            this.renderer.current_time = t;
+        }
+
+        goToAndPlay(frame, ignored)
+        {
+            this.renderer.current_time = frame;
+            this.play();
+        }
+
+        goToAndStop(frame, ignored)
+        {
+            this.render_frame(frame);
+            this.wrapped.pause();
+        }
+
+        destroy()
+        {
+            this.event_target.dispatchEvent(new CustomEvent("destroy", {}));
+            this.opts_.container.removeChild(this.canvas);
+            this.canvas = null;
+        }
+
+        addEventListener(ev, listener)
+        {
+            this.event_target.addEventListener(ev, listener);
+        }
+
+        render_frame(time_frames)
+        {
+            this.event_target.dispatchEvent(new CustomEvent("enterFrame", {}));
+            super.render_frame(time_frames);
+            this.event_target.dispatchEvent(new CustomEvent("drawnFrame", {}));
+        }
+
+        _at_end()
+        {
+            if ( this._opts.loop )
+                this.event_target.dispatchEvent(new CustomEvent("loopComplete", {}));
+            else
+                this.event_target.dispatchEvent(new CustomEvent("complete", {}));
+
+        }
+
+        load(opts=undefined)
+        {
+            if ( super.load(opts) )
+            {
+                this.event_target.dispatchEvent(new CustomEvent("config_ready", {}));
+                this.event_target.dispatchEvent(new CustomEvent("data_ready", {}));
+                this.event_target.dispatchEvent(new CustomEvent("loaded_images", {}));
+                this.event_target.dispatchEvent(new CustomEvent("DOMLoaded", {}));
+            }
+        }
+    }
+
     Glaxnimate.Player = Player;
+    Glaxnimate.LottiePlayer = LottiePlayer;
+    Glaxnimate.loadAnimation = LottiePlayer.loadAnimation;
 })();
