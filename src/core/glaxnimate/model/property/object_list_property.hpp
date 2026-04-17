@@ -170,6 +170,12 @@ public:
         return ptr;
     }
 
+    template<class T>
+    T* create(int position = -1)
+    {
+        return static_cast<T*>(insert(std::make_unique<T>(object()->document()), position));
+    }
+
     bool valid_index(int index)
     {
         return index >= 0 && index < int(objects.size());

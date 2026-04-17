@@ -5,6 +5,7 @@
  */
 
 #include "postscript_module.hpp"
+#include "ps_format.hpp"
 
 using namespace glaxnimate::postscript;
 
@@ -16,4 +17,5 @@ std::vector<glaxnimate::module::ExternalComponent> glaxnimate::postscript::Modul
 
 void glaxnimate::postscript::Module::initialize()
 {
+    register_io_classes<ps::PostScriptFormat>();
 }

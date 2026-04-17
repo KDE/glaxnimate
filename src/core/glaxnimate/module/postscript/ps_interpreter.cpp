@@ -419,6 +419,12 @@ const QByteArray &Interpreter::current_command()
     return d->current_command;
 }
 
+void Interpreter::fill()
+{
+    on_fill(d->memory.gstate);
+    d->memory.gstate.path = {};
+}
+
 
 QString glaxnimate::ps::level_string(Level level)
 {
@@ -2450,7 +2456,12 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.memory().gstate.apply_clip(false, rect);
     }});
     builtins.def("ucache", {Level::EPS2, {}, [](ValueArray, Interpreter&){}});
-
+// Drawing
+{
+    builtins.def("fill", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.fill();
+    }});
+}
 
 }
 
