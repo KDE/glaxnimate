@@ -175,14 +175,15 @@
             options.container.appendChild(canvas);
 
             if ( options.animationData )
+            {
                 options.data = JSON.stringify(options.animationData);
+                options.format = "lottie";
+            }
 
             super(options);
 
             if ( options.path )
                 this.fetch(options.path);
-
-            this.event_target = new EventTarget();
         }
 
         static loadAnimation(options)
@@ -209,13 +210,14 @@
         goToAndStop(frame, ignored)
         {
             this.render_frame(frame);
-            this.wrapped.pause();
+            this.pause();
         }
 
         destroy()
         {
             this.event_target.dispatchEvent(new CustomEvent("destroy", {}));
-            this.opts_.container.removeChild(this.canvas);
+            this._opts.container.removeChild(this.canvas);
+            this.pause();
             this.canvas = null;
         }
 
@@ -237,11 +239,12 @@
                 this.event_target.dispatchEvent(new CustomEvent("loopComplete", {}));
             else
                 this.event_target.dispatchEvent(new CustomEvent("complete", {}));
-
         }
 
         load(opts=undefined)
         {
+            this.event_target = new EventTarget();
+
             if ( super.load(opts) )
             {
                 this.event_target.dispatchEvent(new CustomEvent("config_ready", {}));
