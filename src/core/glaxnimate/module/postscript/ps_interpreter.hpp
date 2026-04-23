@@ -181,8 +181,8 @@ public:
     void set_level(Level level);
     void set_level_autodetect(bool enable);
 
-    std::map<QString, QString>& document_metadata();
-    std::map<QString, QString>& page_metadata();
+    const ValueDict& document_metadata() const;
+    const ValueDict& page_metadata() const;
 
     /**
      * @brief Whether execution is halted (globally)
@@ -215,6 +215,8 @@ public:
     const QByteArray& current_command();
 
     void fill();
+
+    void new_page();
 
 protected:
     virtual void on_print(const QString& text) = 0;

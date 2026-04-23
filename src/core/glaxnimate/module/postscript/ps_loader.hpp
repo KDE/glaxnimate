@@ -19,6 +19,8 @@ public:
 
     bool success() const;
 
+    void apply_metadata() const;
+
 protected:
     void on_print(const QString &text) override;
     void on_warning(const QString &text) override;
@@ -30,6 +32,9 @@ private:
     QPointF convert(const QPointF& p) const;
     math::bezier::Point convert(const math::bezier::Point& p) const;
     math::bezier::Bezier convert(const math::bezier::Bezier& p) const;
+    void apply_page_metadata() const;
+    QRectF parse_bounding_box(QStringView box) const;
+    std::optional<QString> get_page_meta(const QByteArray& page, const QByteArray& doc) const;
 
     io::ImportExport* importer;
     model::Document* document;

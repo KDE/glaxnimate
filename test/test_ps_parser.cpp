@@ -415,19 +415,19 @@ private Q_SLOTS:
 %%Trailer
 %%EOF
 )");
-        using MetaMap = std::map<QString, QString>;
-        MetaMap docs = {
-            {u"Creator"_s, u"Creator Value"_s},
-            {u"CreationDate"_s, u"Sat Apr  4 08:10:50 2026"_s},
-            {u"Pages"_s, u"1"_s},
-            {u"DocumentData"_s, u"Clean7Bit"_s},
-            {u"LanguageLevel"_s, u"2"_s},
-            {u"BoundingBox"_s, u"112 199 212 279"_s},
+        ValueDict docs = {
+            {"Creator"_ba, "Creator Value"_ba},
+            {"CreationDate"_ba, "Sat Apr  4 08:10:50 2026"_ba},
+            {"Pages"_ba, "1"_ba},
+            {"DocumentData"_ba, "Clean7Bit"_ba},
+            {"LanguageLevel"_ba, "2"_ba},
+            {"BoundingBox"_ba, "112 199 212 279"_ba},
         };
         QCOMPARE(interp.document_metadata(), docs);
-        MetaMap page = {
-            {u"Page"_s, u"1 1"_s},
-            {u"PageBoundingBox"_s, u"112 199 212 279"_s},
+        ValueDict page = {
+            {"Page"_ba, "1 1"_ba},
+            {"PageBoundingBox"_ba, "112 199 212 279"_ba},
+            {"PageSize"_ba, ValueArray({595, 841})},
         };
         QCOMPARE(interp.page_metadata(), page);
         QCOMPARE(interp.level(), Level::PS2);

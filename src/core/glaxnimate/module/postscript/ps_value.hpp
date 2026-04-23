@@ -176,6 +176,8 @@ public:
 
     void put(const key_type& key, Value val);
 
+    Value get(const key_type& key) const;
+
     iterator begin() { return data->begin(); }
     iterator end() { return data->end(); }
     const_iterator begin() const { return data->begin(); }

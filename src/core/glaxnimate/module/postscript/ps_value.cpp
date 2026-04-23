@@ -222,6 +222,14 @@ void glaxnimate::ps::ValueDict::put(const key_type &key, Value val)
     (*data)[key] = std::move(val);
 }
 
+glaxnimate::ps::Value glaxnimate::ps::ValueDict::get(const key_type &key) const
+{
+    auto it = find(key);
+    if ( it != end() )
+        return it->second;
+    return Value();
+}
+
 QString glaxnimate::ps::ValueDict::to_pretty_string() const
 {
     QString str = u"<< "_s;

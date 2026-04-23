@@ -51,8 +51,8 @@ public:
     Level level = Level::PS3;
     QByteArray current_command;
     MetaSection meta_section = Initial;
-    std::map<QString, QString> document_metadata;
-    std::map<QString, QString> page_metadata;
+    ValueDict document_metadata;
+    ValueDict page_metadata;
     bool auto_level = false;
     int auto_level_status = 0;
     int partial_level = 0;
@@ -85,8 +85,8 @@ public:
         {
             auto name = comment.left(colon);
             auto value = comment.sliced(colon+1).trimmed();
-            std::map<QString, QString>* meta = meta_section == Page ? &page_metadata : &document_metadata;
-            (*meta)[name.toString()] = value.toString();
+            ValueDict* meta = meta_section == Page ? &page_metadata : &document_metadata;
+            (*meta)[name.toUtf8()] = Value(value.toUtf8());
             if ( auto_level_status == 1 && name == "LanguageLevel"_L1 )
             {
                 bool ok = false;
@@ -131,6 +131,7 @@ public:
 Interpreter::Interpreter() : d(std::make_unique<Private>())
 {
     d->memory.builtins = &CommandSet::builtins();
+    new_page();
 }
 
 Interpreter::~Interpreter() = default;
@@ -349,12 +350,12 @@ void Interpreter::set_level_autodetect(bool enable)
     d->auto_level = enable;
 }
 
-std::map<QString, QString> &Interpreter::document_metadata()
+const ValueDict &Interpreter::document_metadata() const
 {
     return d->document_metadata;
 }
 
-std::map<QString, QString> &Interpreter::page_metadata()
+const ValueDict &Interpreter::page_metadata() const
 {
     return d->page_metadata;
 }
@@ -423,6 +424,14 @@ void Interpreter::fill()
 {
     on_fill(d->memory.gstate);
     d->memory.gstate.path = {};
+}
+
+void Interpreter::new_page()
+{
+    d->page_metadata = {
+        // A4
+        {"PageSize", ValueArray({Value(595), Value(841)})}
+    };
 }
 
 
