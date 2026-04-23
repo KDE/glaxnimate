@@ -17,6 +17,11 @@ Loader::Loader(io::ImportExport *importer, model::Document *document, const QVar
     comp = document->assets()->add_comp_no_undo();
 }
 
+bool Loader::success() const
+{
+    return !has_error;
+}
+
 void Loader::on_print(const QString& text)
 {
     importer->information(text);
@@ -30,6 +35,7 @@ void Loader::on_warning(const QString &text)
 void Loader::on_error(const QString &text)
 {
     importer->error(text);
+    has_error = true;
 }
 
 void Loader::on_comment(const QString &)
@@ -50,7 +56,7 @@ void Loader::on_fill(const GraphicsState &gstate)
     fill->color.set(gstate.color);
 }
 
-QPointF Loader::convert_coord(const QPointF &p) const
+QPointF Loader::convert(const QPointF &p) const
 {
     return QPointF(p.x(), comp->height.get() - p.y());
 }
@@ -58,9 +64,9 @@ QPointF Loader::convert_coord(const QPointF &p) const
 glaxnimate::math::bezier::Point Loader::convert(const math::bezier::Point &pt) const
 {
     return glaxnimate::math::bezier::Point(
-        pt.pos,
-        pt.tan_in,
-        pt.tan_out
+        convert(pt.pos),
+        convert(pt.tan_in),
+        convert(pt.tan_out)
     );
 }
 

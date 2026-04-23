@@ -17,6 +17,8 @@ class Loader : public Interpreter
 public:
     Loader(io::ImportExport* importer, model::Document* document, const QVariantMap &settings);
 
+    bool success() const;
+
 protected:
     void on_print(const QString &text) override;
     void on_warning(const QString &text) override;
@@ -25,11 +27,14 @@ protected:
     void on_fill(const GraphicsState &gstate) override;
 
 private:
-    QPointF convert_coord(const QPointF& p) const;
+    QPointF convert(const QPointF& p) const;
+    math::bezier::Point convert(const math::bezier::Point& p) const;
+    math::bezier::Bezier convert(const math::bezier::Bezier& p) const;
 
     io::ImportExport* importer;
     model::Document* document;
     model::Composition* comp = nullptr;
+    bool has_error = false;
 };
 
 } // namespace glaxnimate::ps

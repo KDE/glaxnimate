@@ -53,6 +53,8 @@ public:
     QString output;
     QString last_error;
     QString last_comment;
+    GraphicsState last_fill;
+    GraphicsState last_stroke;
 
     std::vector<Value> stack_values()
     {
@@ -83,6 +85,11 @@ protected:
     void on_comment(const QString &text) override
     {
         last_comment = text;
+    }
+
+    void on_fill(const GraphicsState &gstate) override
+    {
+        last_fill = gstate;
     }
 };
 

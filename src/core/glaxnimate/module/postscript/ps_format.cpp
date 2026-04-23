@@ -5,6 +5,7 @@
  */
 
 #include "glaxnimate/module/postscript/ps_format.hpp"
+#include "ps_loader.hpp"
 
 using namespace glaxnimate;
 
@@ -14,7 +15,9 @@ QStringList ps::PostScriptFormat::extensions(Direction) const
 
 }
 
-bool ps::PostScriptFormat::on_open(QIODevice &file, const QString &filename, model::Document *document, const QVariantMap &setting_values)
+bool ps::PostScriptFormat::on_open(QIODevice& file, const QString&, model::Document* document, const QVariantMap &setting_values)
 {
-
+    Loader loader(this, document, setting_values);
+    loader.execute(&file);
+    return loader.success();
 }

@@ -6,6 +6,8 @@ set(SOURCES
     ps_interpreter.cpp
     ps_value.cpp
     ps_gstate.cpp
+    ps_loader.cpp
+    ps_format.cpp
 )
 
 add_library(GlaxnimatePostScript OBJECT ${SOURCES})
