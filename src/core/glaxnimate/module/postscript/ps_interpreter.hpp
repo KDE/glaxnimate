@@ -222,7 +222,8 @@ protected:
     virtual void on_print(const QString& text) = 0;
     virtual void on_error(const QString& text) = 0;
     virtual void on_warning(const QString& text) = 0;
-    virtual void on_comment(const QString& text) = 0;
+    virtual void on_comment(const QByteArray& text) = 0;
+    virtual void on_meta_comment(const QByteArray& key, const QByteArray& value) = 0;
     virtual void on_fill(const GraphicsState& gstate) = 0;
 
 private:

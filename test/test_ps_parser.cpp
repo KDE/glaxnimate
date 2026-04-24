@@ -52,7 +52,7 @@ public:
 
     QString output;
     QString last_error;
-    QString last_comment;
+    QByteArray last_comment;
     GraphicsState last_fill;
     GraphicsState last_stroke;
 
@@ -82,9 +82,13 @@ protected:
         last_error = text;
     }
 
-    void on_comment(const QString &text) override
+    void on_comment(const QByteArray &text) override
     {
         last_comment = text;
+    }
+
+    void on_meta_comment(const QByteArray &, const QByteArray &) override
+    {
     }
 
     void on_fill(const GraphicsState &gstate) override

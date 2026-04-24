@@ -19,5 +19,6 @@ bool ps::PostScriptFormat::on_open(QIODevice& file, const QString&, model::Docum
 {
     Loader loader(this, document, setting_values);
     loader.execute(&file);
+    loader.apply_metadata();
     return loader.success();
 }

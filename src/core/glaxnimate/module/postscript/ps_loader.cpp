@@ -6,16 +6,15 @@
 
 #include "glaxnimate/module/postscript/ps_loader.hpp"
 #include "glaxnimate/model/shapes/shapes/path.hpp"
+#include "glaxnimate/model/shapes/style/fill.hpp"
 
-#include <glaxnimate/model/shapes/style/fill.hpp>
 
 using namespace glaxnimate::ps;
 
 Loader::Loader(io::ImportExport *importer, model::Document *document, const QVariantMap &)
     : importer(importer), document(document)
 {
-    comp = document->assets()->add_comp_no_undo();
-    comp->name.set({});
+    new_comp();
 }
 
 bool Loader::success() const
@@ -25,7 +24,8 @@ bool Loader::success() const
 
 void Loader::apply_metadata() const
 {
-    apply_page_metadata();
+    if ( !last_comp_used && document->assets()->compositions->values.size() > 1 )
+        document->assets()->compositions->values.remove(document->assets()->compositions->values.index_of(comp));
 }
 
 void Loader::on_print(const QString& text)
@@ -44,22 +44,36 @@ void Loader::on_error(const QString &text)
     has_error = true;
 }
 
-void Loader::on_comment(const QString &)
+void Loader::on_comment(const QByteArray &text)
 {
+    if ( text == "%EndPageSetup" )
+        use_page();
+}
+
+void Loader::on_meta_comment(const QByteArray& key, const QByteArray& value)
+{
+    if ( key == "GlaxnimateObjectName" )
+    {
+        object_name = QString::fromUtf8(value);
+    }
 }
 
 void Loader::on_fill(const GraphicsState &gstate)
 {
+    use_page();
+
     auto group = comp->shapes.create<model::Group>();
+    if ( !object_name.isEmpty() )
+        group->name.set(object_name);
+
+    auto fill = group->shapes.create<model::Fill>();
+    fill->color.set(gstate.color);
 
     for ( const auto& bez : gstate.path )
     {
         auto shape = group->shapes.create<model::Path>();
         shape->shape.set(convert(bez));
     }
-
-    auto fill = group->shapes.create<model::Fill>();
-    fill->color.set(gstate.color);
 }
 
 QPointF Loader::convert(const QPointF &p) const
@@ -136,6 +150,22 @@ std::optional<QString> Loader::get_page_meta(const QByteArray &page, const QByte
         return it->second.cast<String>().bytes();
 
     return {};
+}
+
+void Loader::new_comp()
+{
+    comp = document->assets()->add_comp_no_undo();
+    comp->animation->last_frame.set(180);
+    last_comp_used = false;
+}
+
+void Loader::use_page()
+{
+    if ( !last_comp_used )
+    {
+        last_comp_used = true;
+        apply_page_metadata();
+    }
 }
 
 glaxnimate::math::bezier::Point Loader::convert(const math::bezier::Point &pt) const

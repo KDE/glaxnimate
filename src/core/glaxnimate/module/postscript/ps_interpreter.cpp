@@ -57,22 +57,22 @@ public:
     int auto_level_status = 0;
     int partial_level = 0;
 
-    void handle_meta(QStringView comment)
+    void handle_meta(QByteArrayView comment, Interpreter* parent)
     {
         // skip %
         comment.slice(1);
 
-        if ( comment.startsWith("Page:"_L1) )
+        if ( comment.startsWith("Page:") )
         {
             meta_section = Page;
         }
-        else if ( comment.startsWith("EndComments"_L1) )
+        else if ( comment.startsWith("EndComments") )
         {
             if ( auto_level && auto_level_status != 2 )
                 auto_level_status = -1;
             meta_section = Other;
         }
-        else if ( comment.startsWith("EndPageSetup"_L1) )
+        else if ( comment.startsWith("EndPageSetup") )
         {
             meta_section = Other;
         }
@@ -83,11 +83,11 @@ public:
         auto colon = comment.indexOf(':');
         if ( colon != -1 )
         {
-            auto name = comment.left(colon);
-            auto value = comment.sliced(colon+1).trimmed();
+            auto name = comment.left(colon).toByteArray();
+            auto value = comment.sliced(colon+1).trimmed().toByteArray();
             ValueDict* meta = meta_section == Page ? &page_metadata : &document_metadata;
-            (*meta)[name.toUtf8()] = Value(value.toUtf8());
-            if ( auto_level_status == 1 && name == "LanguageLevel"_L1 )
+            (*meta)[name] = Value(value);
+            if ( auto_level_status == 1 && name == "LanguageLevel" )
             {
                 bool ok = false;
                 int language_level = value.toInt(&ok);
@@ -103,15 +103,17 @@ public:
                 this->level = Level(partial_level);
                 auto_level_status = 2;
             }
+
+            parent->on_meta_comment(name, value);
         }
     }
 
-    void handle_intro(QStringView comment)
+    void handle_intro(QByteArrayView comment)
     {
         if ( !auto_level )
             return;
 
-        auto version = comment.indexOf("PS-Adobe-3.0"_L1);
+        auto version = comment.indexOf("PS-Adobe-3.0");
         if ( version == -1 )
         {
             // doesn't follow document structuring specs
@@ -121,7 +123,7 @@ public:
 
         auto_level_status = 1;
 
-        if ( comment.contains("EPSF-"_L1) )
+        if ( comment.contains("EPSF-") )
             partial_level = LevelBits::Encapsulated;
         else
             partial_level = LevelBits::NotEncapsulated;
@@ -165,7 +167,7 @@ void glaxnimate::ps::Interpreter::execute(QIODevice *device, bool reset_pos)
                 break;
             case Token::Comment:
             {
-                auto comment = token.value.to_string();
+                auto comment = token.value.cast<String>().bytes();
                 if ( d->meta_section == Private::Initial )
                 {
                     if ( comment.startsWith('!') )
@@ -179,7 +181,7 @@ void glaxnimate::ps::Interpreter::execute(QIODevice *device, bool reset_pos)
                     }
                 }
                 if ( comment.startsWith('%') )
-                    d->handle_meta(comment);
+                    d->handle_meta(comment, this);
                 on_comment(comment);
                 if ( d->auto_level_status < 0 )
                     on_warning(u"Could not determine language level"_s);
