@@ -212,6 +212,13 @@ void glaxnimate::math::bezier::Bezier::add_close_point()
     }
 }
 
+void math::bezier::Bezier::append(const Bezier &path)
+{
+    points_.reserve(points_.size() + path.points_.size());
+    for ( const auto& p : path.points_ )
+        points_.push_back(p);
+}
+
 glaxnimate::math::bezier::Point glaxnimate::math::bezier::Bezier::point_with_type(int index, PointType point_type) const
 {
     auto point = points_[index];

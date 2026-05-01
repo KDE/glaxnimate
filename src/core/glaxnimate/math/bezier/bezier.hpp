@@ -204,6 +204,12 @@ public:
      */
     Point point_with_type(int index, math::bezier::PointType point_type) const;
 
+
+    /**
+     * @brief Appends all points from @p path to this bezier
+     */
+    void append(const Bezier& path);
+
 private:
     /**
      * \brief Solver for the point \p p to the point \p p + 1

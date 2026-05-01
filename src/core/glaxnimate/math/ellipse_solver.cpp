@@ -75,6 +75,22 @@ math::bezier::Bezier math::EllipseSolver::to_bezier(qreal anglestart, qreal angl
     }
     while ( angle_left > tolerance );
 
+    // Add partial step, adjusting the previous point tangent
+    if ( angle_left > 0.001 )
+    {
+        qreal lstep = angle_left;
+        qreal step_sign = lstep * sign;
+        qreal angle2 = anglestart + angle_delta;
+        alpha = _alpha(step_sign);
+        QPointF p2 = point(angle2);
+        QPointF q2 = derivative(angle2) * alpha;
+
+        QPointF prev_tan = derivative(angle1) * alpha;
+        points.back().tan_out = points.back().pos + prev_tan;
+
+        points.push_back(bezier::Point::from_relative(p2, -q2, q2, math::bezier::Symmetrical));
+    }
+
     if ( points.size() > 1 && qFuzzyCompare(angle_delta, math::tau)  )
     {
         points.close();

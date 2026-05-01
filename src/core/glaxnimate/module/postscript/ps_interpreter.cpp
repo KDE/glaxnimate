@@ -2313,35 +2313,43 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         QPointF mapped = interpreter.memory().gstate.transform.map(p);
         interpreter.memory().gstate.path.line_to(mapped);
     }, true});
-    // counter
-    builtins.def("arc", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    // counter                          cx              cy              radius      angle1          angle2
+    builtins.def("arc", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         QPointF center(args[0].cast<float>(), args[1].cast<float>());
         float radius = args[2].cast<float>();
         float angle_start = args[3].cast<float>();
         float angle_end = args[4].cast<float>();
         while ( angle_end < angle_start )
             angle_end += 360;
+
         math::EllipseSolver solver(center, {radius, radius}, 0);
         auto userbez = solver.to_bezier(math::deg2rad(angle_start), math::deg2rad(angle_end - angle_start));
+        userbez.back().tan_out = userbez.back().pos;
         auto devicebez = userbez.transformed(interpreter.memory().gstate.transform);
 
         if ( interpreter.memory().gstate.path.empty() )
             interpreter.memory().gstate.path.append(devicebez);
+        else
+            interpreter.memory().gstate.path.back().append(devicebez);
     }});
-    // clockwise
-    builtins.def("arcn", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    // clockwise                          cx              cy              radius      angle1          angle2
+    builtins.def("arcn", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         QPointF center(args[0].cast<float>(), args[1].cast<float>());
         float radius = args[2].cast<float>();
         float angle_start = args[3].cast<float>();
         float angle_end = args[4].cast<float>();
         while ( angle_end > angle_start )
             angle_end -= 360;
+
         math::EllipseSolver solver(center, {radius, radius}, 0);
-        auto userbez = solver.to_bezier(-math::deg2rad(angle_start), -math::deg2rad(angle_end - angle_start));
+        auto userbez = solver.to_bezier(math::deg2rad(angle_start), math::deg2rad(angle_end - angle_start));
+        userbez.back().tan_out = userbez.back().pos;
         auto devicebez = userbez.transformed(interpreter.memory().gstate.transform);
 
         if ( interpreter.memory().gstate.path.empty() )
             interpreter.memory().gstate.path.append(devicebez);
+        else
+            interpreter.memory().gstate.path.back().append(devicebez);
     }});
     // TODO arct arcto
     builtins.def("curveto", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
