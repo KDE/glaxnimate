@@ -73,3 +73,17 @@ std::optional<QPointF> math::line_intersection(const QPointF& start1, const QPoi
 
     return QPointF(cp[0] / cp[2], cp[1] / cp[2]);
 }
+
+qreal math::angle_from_points(const QPointF &cusp, const QPointF &p1, const QPointF &p2)
+{
+    QPointF a = cusp - p1;
+    QPointF b = cusp - p2;
+    auto lena = math::length(a);
+    auto lenb = math::length(b);
+
+    if ( qFuzzyIsNull(lena) || qFuzzyIsNull(lenb) )
+        return 0;
+
+    auto cosine = QPointF::dotProduct(a, b) / (lena * lenb);
+    return qAcos(cosine);
+}

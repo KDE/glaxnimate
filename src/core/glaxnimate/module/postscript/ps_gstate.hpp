@@ -304,6 +304,9 @@ struct GraphicsState
         path = shape;
     }
 
+    void add_arc(const QPointF center, float radius, float angle_start, float angle_end);
+    void add_arc_radians(const QPointF center, float radius, float angle_start, float angle_end);
+
 };
 
 

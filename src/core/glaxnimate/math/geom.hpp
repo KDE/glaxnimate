@@ -32,4 +32,13 @@ QPointF circle_center(const QPointF& p1, const QPointF& p2, const QPointF& p3);
  */
 std::optional<QPointF> line_intersection(const QPointF& start1, const QPointF& end1, const QPointF& start2, const QPointF& end2);
 
+/**
+ * @brief Angle between 3 points
+ * @param cusp Point at which to find the angle
+ * @param p1
+ * @param p2
+ * @return Angle at @p cusp in [0, pi]
+ */
+qreal angle_from_points(const QPointF& cusp, const QPointF& p1, const QPointF& p2);
+
 } // namespace glaxnimate::math

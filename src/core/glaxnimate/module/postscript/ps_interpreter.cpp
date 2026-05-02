@@ -10,6 +10,7 @@
 
 #include "glaxnimate/app_info.hpp"
 #include "glaxnimate/math/ellipse_solver.hpp"
+#include "glaxnimate/math/geom.hpp"
 #include "glaxnimate/math/math.hpp"
 #include "ps_lexer.hpp"
 
@@ -978,6 +979,73 @@ void matrix_transform(CommandSet& builtins, const char* name, bool delta, bool i
         }
         matrix_transform_impl(delta, inverse, x, y, tf, interpreter);
     }});
+}
+
+std::pair<QPointF, QPointF> arct_impl(const ValueArray& args, Interpreter& interpreter)
+{
+    /*
+         *             . p2
+         *              \
+         *               \
+         *                \
+         *                 \ t2
+         *        radius  / \
+         *               /   \
+         *      center->o     \
+         *              |      \
+         *              |      a\   a = inner_angle
+         *      +-------+--------+
+         *      p0      t1      corner
+         */
+
+    QPointF p0 = interpreter.memory().gstate.position();
+    QPointF corner(args[0].cast<float>(), args[1].cast<float>());
+    QPointF p2(args[2].cast<float>(), args[3].cast<float>());
+    float radius = args[4].cast<float>();
+
+    // Vectors between corner and the tangent points
+    math::PolarVector vec0(p0 - corner);
+    math::PolarVector vec2(p2 - corner);
+
+    float inner_angle = math::angle_from_points(corner, p0, p2);
+
+    if (
+        // Degenerate case
+        qFuzzyIsNull(vec0.length) || qFuzzyIsNull(vec2.length) || qFuzzyIsNull(radius) ||
+        // Colinear
+        qFuzzyCompare(inner_angle, float(math::pi)) || qFuzzyIsNull(inner_angle)
+        )
+    {
+        QPointF mapped = interpreter.memory().gstate.transform.map(corner);
+        interpreter.memory().gstate.path.line_to(mapped);
+        return {corner, corner};
+    }
+
+    // Normalize
+    vec0.length = 1;
+    vec2.length = 1;
+
+    QPointF bisector_dir = vec0.to_cartesian() + vec2.to_cartesian();
+
+    float half_angle = inner_angle / 2;
+
+    // distance from corner at which the circle start
+    // corner - t1 == corner - t2
+    float tanc = radius / math::tan(half_angle);
+
+    // distance from corner to center
+    float cdist = math::hypot(tanc, radius);
+
+    QPointF center = corner + math::from_polar<QPointF>(cdist, math::angle(bisector_dir));
+
+    QPointF t1 = corner + math::from_polar<QPointF>(tanc, vec0.angle);
+    QPointF t2 = corner + math::from_polar<QPointF>(tanc, vec2.angle);
+
+    float angle_start = math::angle(t1 - center);
+    float angle_end = math::angle(t2 - center);
+
+    interpreter.memory().gstate.add_arc_radians(center, radius, angle_start, angle_end);
+    return {t1, t2};
 }
 
 } // namespace
@@ -2321,16 +2389,8 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         float angle_end = args[4].cast<float>();
         while ( angle_end < angle_start )
             angle_end += 360;
+        interpreter.memory().gstate.add_arc(center, radius, angle_start, angle_end);
 
-        math::EllipseSolver solver(center, {radius, radius}, 0);
-        auto userbez = solver.to_bezier(math::deg2rad(angle_start), math::deg2rad(angle_end - angle_start));
-        userbez.back().tan_out = userbez.back().pos;
-        auto devicebez = userbez.transformed(interpreter.memory().gstate.transform);
-
-        if ( interpreter.memory().gstate.path.empty() )
-            interpreter.memory().gstate.path.append(devicebez);
-        else
-            interpreter.memory().gstate.path.back().append(devicebez);
     }});
     // clockwise                          cx              cy              radius      angle1          angle2
     builtins.def("arcn", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
@@ -2341,17 +2401,21 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         while ( angle_end > angle_start )
             angle_end -= 360;
 
-        math::EllipseSolver solver(center, {radius, radius}, 0);
-        auto userbez = solver.to_bezier(math::deg2rad(angle_start), math::deg2rad(angle_end - angle_start));
-        userbez.back().tan_out = userbez.back().pos;
-        auto devicebez = userbez.transformed(interpreter.memory().gstate.transform);
-
-        if ( interpreter.memory().gstate.path.empty() )
-            interpreter.memory().gstate.path.append(devicebez);
-        else
-            interpreter.memory().gstate.path.back().append(devicebez);
+        interpreter.memory().gstate.add_arc(center, radius, angle_start, angle_end);
     }});
-    // TODO arct arcto
+    //                                      x1              y1              x2          y2          radius
+    builtins.def("arct", {Level::EPS2, {Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        arct_impl(args, interpreter);
+    }, true});
+    //                                      x1              y1              x2          y2          radius
+    builtins.def("arcto", {Level::EPS2, {Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        auto ts = arct_impl(args, interpreter);
+        interpreter.stack().push(ts.first.x());
+        interpreter.stack().push(ts.first.y());
+        interpreter.stack().push(ts.second.x());
+        interpreter.stack().push(ts.second.y());
+    }, true});
+    // TODO arcto
     builtins.def("curveto", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         QPointF t1(args[0].cast<float>(), args[1].cast<float>());
         QPointF t2(args[2].cast<float>(), args[3].cast<float>());
