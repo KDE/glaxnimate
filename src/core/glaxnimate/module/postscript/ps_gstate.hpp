@@ -174,6 +174,7 @@ struct GraphicsState
 
     // Device dependent
     float flatness = 10;
+    bool null_device = false;
 
 
     enum InverseTransformState

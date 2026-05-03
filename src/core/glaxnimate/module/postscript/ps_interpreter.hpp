@@ -175,14 +175,14 @@ public:
     void error(const QString& error);
     void warning(const QString& error);
 
-    Value pop(Value::Type type);
-
     Level level() const;
     void set_level(Level level);
     void set_level_autodetect(bool enable);
 
     const ValueDict& document_metadata() const;
     const ValueDict& page_metadata() const;
+    const ValueDict& page_device() const;
+    ValueDict& page_device();
 
     /**
      * @brief Whether execution is halted (globally)
@@ -209,14 +209,18 @@ public:
      */
     void loop_exit();
 
-
     int file_row() const;
     int file_column() const;
     const QByteArray& current_command();
 
-    void fill();
+    void fill(bool evenodd);
+    void stroke();
+    void rect(const QRectF& rect, bool stroke);
+    void rect(float x, float y, float width, float height, bool stroke);
 
     void new_page();
+    int page_count() const;
+    void show_page(bool copy);
 
 protected:
     virtual void on_print(const QString& text) = 0;
@@ -224,7 +228,9 @@ protected:
     virtual void on_warning(const QString& text) = 0;
     virtual void on_comment(const QByteArray& text) = 0;
     virtual void on_meta_comment(const QByteArray& key, const QByteArray& value) = 0;
-    virtual void on_fill(const GraphicsState& gstate) = 0;
+    virtual void on_fill(const GraphicsState& gstate, bool evenodd) = 0;
+    virtual void on_stroke(const GraphicsState& gstate) = 0;
+    virtual void on_show_page(bool copy) = 0;
 
 private:
     void execute_command(const Value &name);

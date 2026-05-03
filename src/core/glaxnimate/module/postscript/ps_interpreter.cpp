@@ -9,7 +9,6 @@
 #include <QBuffer>
 
 #include "glaxnimate/app_info.hpp"
-#include "glaxnimate/math/ellipse_solver.hpp"
 #include "glaxnimate/math/geom.hpp"
 #include "glaxnimate/math/math.hpp"
 #include "ps_lexer.hpp"
@@ -54,6 +53,8 @@ public:
     MetaSection meta_section = Initial;
     ValueDict document_metadata;
     ValueDict page_metadata;
+    ValueDict page_device;
+    int page_count = 0;
     bool auto_level = false;
     int auto_level_status = 0;
     int partial_level = 0;
@@ -134,6 +135,10 @@ public:
 Interpreter::Interpreter() : d(std::make_unique<Private>())
 {
     d->memory.builtins = &CommandSet::builtins();
+    d->page_device = {
+        // A4
+        {"PageSize", ValueArray({Value(595), Value(841)})}
+    };
     new_page();
 }
 
@@ -363,6 +368,16 @@ const ValueDict &Interpreter::page_metadata() const
     return d->page_metadata;
 }
 
+const ValueDict &Interpreter::page_device() const
+{
+    return d->page_device;
+}
+
+ValueDict &Interpreter::page_device()
+{
+    return d->page_device;
+}
+
 bool Interpreter::is_halted() const
 {
     return d->halted;
@@ -423,18 +438,104 @@ const QByteArray &Interpreter::current_command()
     return d->current_command;
 }
 
-void Interpreter::fill()
+void Interpreter::fill(bool evenodd)
 {
-    on_fill(d->memory.gstate);
+    if ( !d->memory.gstate.null_device )
+        on_fill(d->memory.gstate, evenodd);
     d->memory.gstate.path = {};
+}
+
+void Interpreter::stroke()
+{
+    if ( !d->memory.gstate.null_device )
+        on_stroke(d->memory.gstate);
+    d->memory.gstate.path = {};
+}
+
+void Interpreter::rect(const QRectF &rect, bool stroke)
+{
+    if ( d->memory.gstate.null_device )
+        return;
+
+    auto gstate = d->memory.gstate;
+
+    gstate.path = {};
+    gstate.path.move_to(rect.topLeft());
+    gstate.path.line_to(rect.topRight());
+    gstate.path.line_to(rect.bottomRight());
+    gstate.path.line_to(rect.bottomLeft());
+    gstate.path.close();
+
+    if ( stroke )
+        on_stroke(gstate);
+    else
+        on_fill(gstate, false);
+}
+
+void Interpreter::rect(float x, float y, float width, float height, bool stroke)
+{
+    rect(QRectF(x, y, width, height), stroke);
 }
 
 void Interpreter::new_page()
 {
-    d->page_metadata = {
-        // A4
-        {"PageSize", ValueArray({Value(595), Value(841)})}
-    };
+    d->page_metadata = {};
+}
+
+int Interpreter::page_count() const
+{
+    return d->page_count;
+}
+
+void Interpreter::show_page(bool copy)
+{
+    auto endp = d->page_metadata.find("EndPage");
+    int level = level_number(d->level);
+
+    // if level 1 or 2 copypage should not clear the page but it should on level 3
+    // We are ignoring all that
+
+    if ( endp != d->page_metadata.end() )
+    {
+        if ( !endp->second.has_attribute(Value::Executable) || endp->second.type() != Value::Array )
+        {
+            error(u"EndPage is not a procedure"_s);
+            return;
+        }
+
+        stack().push(d->page_count);
+        stack().push(level == 3 ? 0 : 1);
+        execute(endp->second);
+
+
+        if ( stack().empty() )
+            error("Stack underflow");
+        Value endret = stack().pop();
+        if ( endret.cast<bool>() )
+            on_show_page(copy);
+    }
+    else
+    {
+        on_show_page(copy);
+    }
+
+    if ( !copy )
+        d->memory.gstate = {};
+    d->page_count++;
+    new_page();
+
+
+    auto beginp = d->page_metadata.find("BeginPage");
+    if ( beginp != d->page_metadata.end() )
+    {
+        if ( !beginp->second.has_attribute(Value::Executable) || beginp->second.type() != Value::Array )
+        {
+            error(u"BeginPage is not a procedure"_s);
+            return;
+        }
+        stack().push(d->page_count);
+        execute(beginp->second);
+    }
 }
 
 
@@ -2538,11 +2639,55 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.memory().gstate.apply_clip(false, rect);
     }});
     builtins.def("ucache", {Level::EPS2, {}, [](ValueArray, Interpreter&){}});
-// Drawing
+// Painting
 {
-    builtins.def("fill", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
-        interpreter.fill();
+    builtins.def("erasepage", {Level::PS1, {}, [](ValueArray, Interpreter&){
     }});
+    builtins.def("stroke", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stroke();
+    }});
+    builtins.def("fill", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.fill(false);
+    }});
+    builtins.def("eofill", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.fill(true);
+    }});
+    builtins.def("rectfill", {Level::PS2, {Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        float x = args[0].cast<float>();
+        float y = args[1].cast<float>();
+        float w = args[2].cast<float>();
+        float h = args[3].cast<float>();
+        interpreter.rect(x, y, w, h, false);
+    }});
+    builtins.def("rectstroke", {Level::PS2, {Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        float x = args[0].cast<float>();
+        float y = args[1].cast<float>();
+        float w = args[2].cast<float>();
+        float h = args[3].cast<float>();
+        interpreter.rect(x, y, w, h, true);
+    }});
+    builtins.def("shfill", {Level::PS1, {Value::Dict}, [](ValueArray, Interpreter& interpreter){
+        interpreter.fill(false);
+    }});
+}
+// Device setup
+{
+    builtins.def("showpage", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.show_page(false);
+    }});
+    builtins.def("copypage", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.show_page(true);
+    }});
+    builtins.def("setpagedevice", {Level::PS2, {Value::Dict}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.page_device() = args[0].cast<ValueDict>();
+    }});
+    builtins.def("currentpagedevice", {Level::PS2, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(interpreter.page_device());
+    }});
+    builtins.def("nulldevice", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.memory().gstate.null_device = true;
+    }});
+
 }
 
 }
@@ -2557,15 +2702,20 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             * device dependent graphic state
             * userpath stuff (I don't understand it)
             * charpath
+            * array based rectfill / rectstroke
+            * insideness testing operators
+            * from pattern operators
 
 
         Not compliant
             * access control changes don't apply to the shared value for dicts
             * access control not checked for put/get etc
+            * shfill (just does fill)
         Noops:
             * bind
             * flattenpath
             * setbbox
+            * erasepage
 
         Not defined (allowed by the specs):
             * executive / echo / prompt

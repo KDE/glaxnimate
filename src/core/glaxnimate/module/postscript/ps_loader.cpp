@@ -58,7 +58,7 @@ void Loader::on_meta_comment(const QByteArray& key, const QByteArray& value)
     }
 }
 
-void Loader::on_fill(const GraphicsState &gstate)
+void Loader::on_fill(const GraphicsState &gstate, bool evenodd)
 {
     use_page();
 
@@ -68,11 +68,49 @@ void Loader::on_fill(const GraphicsState &gstate)
 
     auto fill = group->shapes.create<model::Fill>();
     fill->color.set(gstate.color);
+    fill->fill_rule.set(evenodd ? model::Fill::EvenOdd : model::Fill::NonZero);
 
     for ( const auto& bez : gstate.path )
     {
         auto shape = group->shapes.create<model::Path>();
         shape->shape.set(convert(bez));
+    }
+}
+
+void Loader::on_stroke(const GraphicsState &gstate)
+{
+    use_page();
+
+    auto group = comp->shapes.create<model::Group>();
+    if ( !object_name.isEmpty() )
+        group->name.set(object_name);
+
+    auto stroke = group->shapes.create<model::Stroke>();
+    stroke->color.set(gstate.color);
+    stroke->width.set(gstate.line_width);
+    stroke->cap.set(gstate.line_cap);
+    stroke->join.set(gstate.line_join);
+    stroke->miter_limit.set(gstate.miter_limit);
+
+    for ( const auto& bez : gstate.path )
+    {
+        auto shape = group->shapes.create<model::Path>();
+        shape->shape.set(convert(bez));
+    }
+}
+
+void Loader::on_show_page(bool copy)
+{
+    if ( copy )
+    {
+        auto comp_clone = comp->clone_covariant();
+        comp = comp_clone.get();
+        last_comp_used = false;
+        document->assets()->compositions->values.insert(std::move(comp_clone));
+    }
+    else
+    {
+        new_comp();
     }
 }
 
@@ -95,7 +133,7 @@ void Loader::apply_page_metadata() const
     }
     else
     {
-        auto sizev = page_metadata().get("PageSize");
+        auto sizev = page_device().get("PageSize");
         if ( sizev.type() == Value::Array )
         {
             auto size = sizev.cast<ValueArray>();

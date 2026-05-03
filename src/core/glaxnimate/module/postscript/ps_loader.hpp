@@ -27,7 +27,9 @@ protected:
     void on_error(const QString &text) override;
     void on_comment(const QByteArray &text) override;
     void on_meta_comment(const QByteArray& key, const QByteArray& value) override;
-    void on_fill(const GraphicsState &gstate) override;
+    void on_fill(const GraphicsState &gstate, bool evenodd) override;
+    void on_stroke(const GraphicsState& gstate) override;
+    void on_show_page(bool copy) override;
 
 private:
     QPointF convert(const QPointF& p) const;

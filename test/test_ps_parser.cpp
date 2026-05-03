@@ -93,9 +93,19 @@ protected:
     {
     }
 
-    void on_fill(const GraphicsState &gstate) override
+    void on_fill(const GraphicsState &gstate, bool evenodd) override
     {
+        Q_UNUSED(evenodd);
         last_fill = gstate;
+    }
+
+    void on_stroke(const GraphicsState& gstate) override
+    {
+        last_stroke = gstate;
+    }
+
+    void on_show_page(bool) override
+    {
     }
 };
 
