@@ -78,8 +78,8 @@ void Loader::on_fill(const GraphicsState &gstate)
 
 QPointF Loader::convert(const QPointF &p) const
 {
-    return p;
-    //return QPointF(p.x(), comp->height.get() - p.y());
+    // return p;
+    return QPointF(p.x(), comp->height.get() - p.y());
 }
 
 void Loader::apply_page_metadata() const

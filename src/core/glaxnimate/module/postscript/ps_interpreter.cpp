@@ -61,7 +61,7 @@ public:
     void handle_meta(QByteArrayView comment, Interpreter* parent)
     {
         // skip %
-        comment.slice(1);
+        comment = comment.sliced(1);
 
         if ( comment.startsWith("Page:") )
         {
@@ -2415,7 +2415,6 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.stack().push(ts.second.x());
         interpreter.stack().push(ts.second.y());
     }, true});
-    // TODO arcto
     builtins.def("curveto", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         QPointF t1(args[0].cast<float>(), args[1].cast<float>());
         QPointF t2(args[2].cast<float>(), args[3].cast<float>());
@@ -2426,7 +2425,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             interpreter.memory().gstate.transform.map(end)
         );
     }});
-    builtins.def("rcurveto", {Level::EPS1, {Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    builtins.def("rcurveto", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         QPointF start = interpreter.memory().gstate.position();
         QPointF t1 = start + QPointF(args[0].cast<float>(), args[1].cast<float>());
         QPointF t2 = start + QPointF(args[2].cast<float>(), args[3].cast<float>());
