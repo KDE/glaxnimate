@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+#include "glaxnimate/model/shapes/shapes/path.hpp"
 #include "glaxnimate_window_p.hpp"
 
 #include <QShortcut>
@@ -14,6 +15,7 @@
 #include <QMenu>
 #include <QToolBar>
 #include <QDesktopServices>
+#include <QStringLiteral>
 
 #include "glaxnimate/io/base.hpp"
 #include "glaxnimate/io/glaxnimate/glaxnimate_format.hpp"
@@ -194,6 +196,26 @@ inline void connect_debug(QAbstractItemModel* model, const QString& prefix)
     QObject::connect(model, &QAbstractItemModel::rowsInserted,              model, DebugSlot{prefix, "rowsInserted"});
     QObject::connect(model, &QAbstractItemModel::rowsMoved,                 model, DebugSlot{prefix, "rowsMoved"});
     QObject::connect(model, &QAbstractItemModel::rowsRemoved,               model, DebugSlot{prefix, "rowsRemoved"});
+}
+
+model::Path* find_path(model::ShapeElement* shape)
+{
+    if ( !shape )
+        return nullptr;
+
+    model::Path* path = shape->cast<model::Path>();
+    if ( path )
+        return path;
+
+    model::Group* group = shape->cast<model::Group>();
+    if ( !group )
+        return nullptr;
+
+    for ( const auto& shape : group->shapes )
+        if ( auto path = find_path(shape.get()) )
+            return path;
+
+    return nullptr;
 }
 
 } // namespace
@@ -414,6 +436,32 @@ void GlaxnimateWindow::Private::init_debug()
 
     menu_debug->addAction("Inspect undo command", [this]{
         debug_cmd(current_document->undo_stack().command(current_document->undo_stack().index() - 1), "");
+    });
+    menu_debug->addAction("Copy Bezier", [this]{
+        model::Path* path = find_path(parent->current_shape());
+        if ( !path )
+            return;
+
+        using namespace Qt::StringLiterals;
+
+        auto bez = path->shape.get();
+        QString path_init = u"math::bezier::Bezier(%1, {\n"_s.arg(bez.closed() ? "true" : "false");
+        for ( const auto& p : bez )
+        {
+            path_init += u"    {{%1, %2}, {%3, %4}, {%5, %6}},\n"_s
+                .arg(p.pos.x())
+                .arg(p.pos.y())
+                .arg(p.tan_in.x())
+                .arg(p.tan_in.y())
+                .arg(p.tan_out.x())
+                .arg(p.tan_out.y())
+            ;
+        }
+        path_init += "})";
+
+        QMimeData* data = new QMimeData;
+        data->setText(path_init);
+        GlaxnimateApp::instance()->set_clipboard_data(data);
     });
     //menu_debug->addAction("Crash", []{volatile int* np = nullptr;*np = 123;});
 }

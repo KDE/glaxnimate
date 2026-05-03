@@ -7,10 +7,12 @@
 #include <QTest>
 #include <QBuffer>
 
+#include "bezier_test.hpp"
 #include "glaxnimate/module/postscript/ps_lexer.hpp"
 #include "glaxnimate/module/postscript/ps_interpreter.hpp"
 
 using namespace glaxnimate::ps;
+using namespace glaxnimate;
 
 
 class StringLexer : public Lexer
@@ -128,7 +130,15 @@ std::vector<Value> stack_vals(T... args)
         COMPARE_CUSTOM(interp_.stack_values(), stack_vals(__VA_ARGS__), code, (__VA_ARGS__)); \
     } while (false)
 
-class TestCase: public QObject
+#define COMPARE_SHAPE(code, bez) \
+    do { \
+            TestInterpreter interp_; \
+            interp_.exec_string(code); \
+            QCOMPARE(interp_.last_error, QString()); \
+            COMPARE_MULTIBEZIER(interp_.memory().gstate.path, bez); \
+    } while (false)
+
+class TestCase: public QObject, public BezierTestBase
 {
     Q_OBJECT
 
@@ -937,6 +947,97 @@ private Q_SLOTS:
         COMPARE_PARSE("10 20 moveto currentpoint", 10, 20);
         COMPARE_PARSE("10 20 moveto 30 40 lineto currentpoint", 30, 40);
         COMPARE_PARSE("10 20 moveto 30 40 rlineto currentpoint", 40, 60);
+
+        COMPARE_SHAPE(R"(
+            100 200 moveto
+            200 300 lineto
+            -100 0 rlineto
+            )",
+            math::bezier::Bezier(false, {
+                {{100, 200}, {100, 200}, {100, 200}},
+                {{200, 300}, {200, 300}, {200, 300}},
+                {{100, 300}, {100, 300}, {100, 300}},
+            })
+        );
+        COMPARE_SHAPE(R"(
+            100 200 moveto
+            100 0 rlineto
+            0 -200 rlineto
+            -100 0 rlineto
+            closepath
+            )",
+            math::bezier::Bezier(true, {
+                {{100, 200}, {100, 200}, {100, 200}},
+                {{200, 200}, {200, 200}, {200, 200}},
+                {{200, 0}, {200, 0}, {200, 0}},
+                {{100, 0}, {100, 0}, {100, 0}},
+            })
+        );
+        COMPARE_SHAPE(R"(
+            200 200 moveto
+            100 0 rlineto
+            0 100 rlineto
+            )",
+            math::bezier::Bezier(false, {
+                {{200, 200}, {200, 200}, {200, 200}},
+                {{300, 200}, {300, 200}, {300, 200}},
+                {{300, 300}, {300, 300}, {300, 300}},
+            })
+        );
+        COMPARE_SHAPE(R"(
+            100 200 moveto
+            100 200 100 0 45 arc
+            closepath
+            )",
+            math::bezier::Bezier(true, {
+               {{100, 200}, {100, 200}, {100, 200}},
+               {{200, 200}, {200, 200}, {200, 226.511}},
+               {{170.711, 270.711}, {189.457, 251.964}, {170.711, 270.711}},
+            })
+        );
+        COMPARE_SHAPE(R"(
+            300 600 moveto
+            300 600 100 0 45 arcn
+            closepath
+            )",
+            math::bezier::Bezier(true, {
+               {{300, 600}, {300, 600}, {300, 600}},
+               {{400, 600}, {400, 600}, {400, 545.142}},
+               {{300, 500}, {354.858, 500}, {245.142, 500}},
+               {{200, 600}, {200, 545.142}, {200, 654.858}},
+               {{300, 700}, {245.142, 700}, {326.511, 700}},
+               {{370.711, 670.711}, {351.964, 689.457}, {370.711, 670.711}},
+           })
+            );
+        COMPARE_SHAPE(R"(
+            300 100 moveto
+            300 200 400 100 20 arct
+            400 100 lineto
+            )",
+            math::bezier::Bezier(false, {
+                {{300, 100}, {300, 100}, {300, 100}},
+                {{300, 151.716}, {300, 151.716}, {300, 162.687}},
+                {{320, 171.716}, {309.028, 171.716}, {325.302, 171.716}},
+                {{334.142, 165.858}, {330.393, 169.607}, {334.142, 165.858}},
+                {{400, 100}, {400, 100}, {400, 100}},
+            })
+            );
+        COMPARE_SHAPE(R"(
+            400 100 moveto
+            400 200 500 100 20 arcto
+            pop pop lineto
+            )",
+            math::bezier::Bezier(false, {
+                {{400, 100}, {400, 100}, {400, 100}},
+                {{400, 151.716}, {400, 151.716}, {400, 162.687}},
+                {{420, 171.716}, {409.028, 171.716}, {425.302, 171.716}},
+                {{434.142, 165.858}, {430.393, 169.607}, {434.142, 165.858}},
+                {{400, 151.716}, {400, 151.716}, {400, 151.716}},
+            })
+        );
+        /*COMPARE_SHAPE(R"(
+            )",
+        );*/
     }
 };
 

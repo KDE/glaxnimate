@@ -130,6 +130,12 @@ math::bezier::Bezier math::bezier::Bezier::lerp(const math::bezier::Bezier& othe
     return lerped;
 }
 
+math::bezier::Bezier::Bezier(bool closed, std::vector<Point> points)
+    : points_(std::move(points)), closed_(closed)
+{
+
+}
+
 void math::bezier::Bezier::reverse()
 {
     std::reverse(points_.begin(), points_.end());

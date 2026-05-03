@@ -29,6 +29,7 @@ public:
     explicit Bezier(const QPointF& initial_point)
         : points_(1, initial_point)
     {}
+    explicit Bezier(bool closed, std::vector<Point> points);
 
     const std::vector<Point>& points() const { return points_; }
     std::vector<Point>& points() { return points_; }
