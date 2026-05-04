@@ -226,6 +226,20 @@ void Interpreter::execute(Value proc)
 
 }
 
+void Interpreter::execute_subfile(QIODevice *device)
+{
+    if ( device == d->lexer.get_device() )
+        return;
+    auto lexer = d->lexer;
+    execute(device, true);
+    d->lexer = lexer;
+}
+
+QIODevice *Interpreter::device() const
+{
+    return d->lexer.get_device();
+}
+
 void glaxnimate::ps::Interpreter::print(const QString &text)
 {
     on_print(text);
@@ -538,6 +552,45 @@ void Interpreter::show_page(bool copy)
     }
 }
 
+QIODevice* Interpreter::open_file(const String &name, const String &mode_str)
+{
+    QIODeviceBase::OpenMode mode = QIODeviceBase::ReadOnly;
+    const QByteArray& mode_ba = mode_str.bytes();
+    if ( mode_ba == "r" )
+        mode = QIODeviceBase::ReadOnly;
+    else if ( mode_ba == "w" )
+        mode = QIODeviceBase::WriteOnly;
+    else if ( mode_ba == "a" )
+        mode = QIODeviceBase::Append;
+    else if ( mode_ba == "r+" )
+        mode = QIODeviceBase::ReadWrite | QIODeviceBase::ExistingOnly;
+    else if ( mode_ba == "w+" )
+        mode = QIODeviceBase::ReadWrite;
+    else if ( mode_ba == "a+" )
+        mode = QIODeviceBase::ReadWrite | QIODeviceBase::Append;
+
+    auto dev = on_open_file(name.bytes(), mode);
+    if ( !dev )
+        error(u"Could not open file %1"_s.arg(name.bytes()));
+    return dev;
+}
+
+void Interpreter::close_file(QIODevice *device)
+{
+    on_close_file(device);
+}
+
+QIODevice *Interpreter::on_open_file(const QByteArray &, QIODeviceBase::OpenMode)
+{
+    return nullptr;
+}
+
+void Interpreter::on_close_file(QIODevice *device)
+{
+    if ( device && device->isOpen() )
+        device->close();
+}
+
 
 QString glaxnimate::ps::level_string(Level level)
 {
@@ -650,14 +703,14 @@ Not encapsulated:
   - quit
     startjob
   - cleardictstack
-    grestoreall
+  - grestoreall
     renderbands
-    copypage
-    initclip
+  - copypage
+  - initclip
     setglobal
-    erasepage
-    initgraphics
-    setpagedevice
+  - erasepage
+  - initgraphics
+  - setpagedevice
 
 Level 2
 
@@ -2151,6 +2204,156 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.stack().push(src);
     }});
 }
+// File
+{
+    builtins.def("file", {Level::EPS1, {Value::String, Value::String}, [](ValueArray args, Interpreter& interpreter){
+        auto dev = interpreter.open_file(args[0].cast<String>(), args[1].cast<String>());
+        if ( dev )
+        {
+            interpreter.stack().push(File(dev));
+        }
+    }});
+    // TODO filter
+    builtins.def("closefile", {Level::EPS1, {Value::File}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.close_file(args[0].cast<File>().device());
+    }});
+    builtins.def("read", {Level::EPS1, {Arg::file_read()}, [](ValueArray args, Interpreter& interpreter){
+        File file = args[0].cast<File>();
+
+        char ch;
+        if ( file.device()->getChar(&ch) )
+        {
+            interpreter.stack().push(int(ch));
+            interpreter.stack().push(true);
+        }
+        else
+        {
+            interpreter.stack().push(false);
+        }
+    }});
+    builtins.def("write", {Level::EPS1, {Arg::file_write(), Value::Integer}, [](ValueArray args, Interpreter&){
+        File file = args[0].cast<File>();
+        char ch = args[1].cast<int>() % 256;
+        file.device()->putChar(ch);
+    }});
+    builtins.def("readhexstring", {Level::EPS1, {Arg::file_read(), Value::String}, [](ValueArray args, Interpreter& interpreter){
+        File file = args[0].cast<File>();
+        String target = args[1].cast<String>();
+        int size = target.size();
+        target.assign(QByteArray::fromHex(file.device()->read(size * 2)));
+        interpreter.stack().push(target);
+        interpreter.stack().push(size == target.size());
+    }});
+    builtins.def("writehexstring", {Level::EPS1, {Arg::file_write(), Value::String}, [](ValueArray args, Interpreter&){
+        File file = args[0].cast<File>();
+        String data = args[1].cast<String>();
+        file.device()->write(data.bytes().toHex());
+    }});
+    builtins.def("readstring", {Level::EPS1, {Arg::file_read(), Value::String}, [](ValueArray args, Interpreter& interpreter){
+        File file = args[0].cast<File>();
+        String target = args[1].cast<String>();
+        int size = target.size();
+        target.assign(file.device()->read(size));
+        interpreter.stack().push(target);
+        interpreter.stack().push(size == target.size());
+    }});
+    builtins.def("writestring", {Level::EPS1, {Arg::file_write(), Value::String}, [](ValueArray args, Interpreter&){
+        File file = args[0].cast<File>();
+        String data = args[1].cast<String>();
+        file.device()->write(data.bytes());
+    }});
+    builtins.def("readline", {Level::EPS1, {Arg::file_read(), Value::String}, [](ValueArray args, Interpreter& interpreter){
+        File file = args[0].cast<File>();
+        String target = args[1].cast<String>();
+        int size = target.size();
+        auto line = file.read_line();
+        if ( line.size() > size )
+        {
+            interpreter.error(u"String is too short for line"_s);
+            return;
+        }
+        target.assign(line);
+        interpreter.stack().push(target);
+        interpreter.stack().push(size == target.size());
+    }});
+    builtins.def("token", {Level::EPS1, {Arg::file_read()}, [](ValueArray args, Interpreter& interpreter){
+        File file = args[0].cast<File>();
+        auto token = Lexer(file.device()).next_token();
+        if ( token.type != Token::Eof )
+        {
+            interpreter.stack().push(token.value);
+            interpreter.stack().push(true);
+        }
+        else
+        {
+            interpreter.stack().push(false);
+        }
+    }});
+    builtins.def("bytesavailable", {Level::EPS1, {Value::File}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(-1);
+    }});
+    builtins.def("flush", {Level::EPS1, {}, [](ValueArray, Interpreter&){
+    }});
+    builtins.def("flushfile", {Level::EPS1, {Value::File}, [](ValueArray, Interpreter&){
+    }});
+    builtins.def("resetfile", {Level::EPS1, {Value::File}, [](ValueArray, Interpreter&){
+    }});
+    builtins.def("status", {Level::EPS1, {Value::File}, [](ValueArray args, Interpreter& interpreter){
+        File file = args[0].cast<File>();
+        interpreter.stack().push(file.is_open());
+    }});
+    builtins.def("status", {Level::EPS1, {Value::String}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(false);
+    }});
+    builtins.def("run", {Level::EPS1, {Value::String}, [](ValueArray args, Interpreter& interpreter){
+        auto name = args[0].cast<String>();
+        auto dev = interpreter.open_file(name, "r");
+        if ( dev )
+        {
+            interpreter.execute_subfile(dev);
+        }
+    }});
+    builtins.def("currentfile", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(File(interpreter.device()));
+    }});
+    builtins.def("deletefile", {Level::EPS2, {Value::String}, [](ValueArray, Interpreter& interpreter){
+        interpreter.error(u"Invalid access"_s);
+    }});
+    builtins.def("renamefile", {Level::EPS2, {Value::String, Value::String}, [](ValueArray, Interpreter& interpreter){
+        interpreter.error(u"Invalid access"_s);
+    }});
+    builtins.def("filenameforall", {Level::EPS2, {Value::String, Arg::proc(), Value::String}, [](ValueArray, Interpreter&){
+    }});
+    builtins.def("setfileposition", {Level::EPS2, {Value::File, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        File file = args[0].cast<File>();
+        if ( !file.is_open() )
+        {
+            interpreter.error(u"File not open"_s);
+            return;
+        }
+
+        if ( !file.device()->seek(args[1].cast<int>()) )
+        {
+            interpreter.error(u"Could not set file position"_s);
+            return;
+        }
+
+    }});
+    builtins.def("fileposition", {Level::EPS2, {Value::File}, [](ValueArray args, Interpreter& interpreter){
+        File file = args[0].cast<File>();
+        if ( !file.is_open() )
+        {
+            interpreter.error(u"File not open"_s);
+            return;
+        }
+
+        interpreter.stack().push(int(file.device()->pos() ));
+
+    }});
+    builtins.def("print", {Level::EPS1, {Value::String}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.print(args[0].cast<String>().bytes());
+    }});
+}
 // Misc
 {
     builtins.def("version", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
@@ -2639,40 +2842,41 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.memory().gstate.apply_clip(false, rect);
     }});
     builtins.def("ucache", {Level::EPS2, {}, [](ValueArray, Interpreter&){}});
+}
 // Painting
 {
     builtins.def("erasepage", {Level::PS1, {}, [](ValueArray, Interpreter&){
     }});
-    builtins.def("stroke", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+    builtins.def("stroke", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stroke();
     }});
-    builtins.def("fill", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+    builtins.def("fill", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.fill(false);
     }});
-    builtins.def("eofill", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+    builtins.def("eofill", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.fill(true);
     }});
-    builtins.def("rectfill", {Level::PS2, {Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    builtins.def("rectfill", {Level::EPS2, {Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         float x = args[0].cast<float>();
         float y = args[1].cast<float>();
         float w = args[2].cast<float>();
         float h = args[3].cast<float>();
         interpreter.rect(x, y, w, h, false);
     }});
-    builtins.def("rectstroke", {Level::PS2, {Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+    builtins.def("rectstroke", {Level::EPS2, {Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         float x = args[0].cast<float>();
         float y = args[1].cast<float>();
         float w = args[2].cast<float>();
         float h = args[3].cast<float>();
         interpreter.rect(x, y, w, h, true);
     }});
-    builtins.def("shfill", {Level::PS1, {Value::Dict}, [](ValueArray, Interpreter& interpreter){
+    builtins.def("shfill", {Level::EPS1, {Value::Dict}, [](ValueArray, Interpreter& interpreter){
         interpreter.fill(false);
     }});
 }
 // Device setup
 {
-    builtins.def("showpage", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+    builtins.def("showpage", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.show_page(false);
     }});
     builtins.def("copypage", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
@@ -2681,16 +2885,15 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("setpagedevice", {Level::PS2, {Value::Dict}, [](ValueArray args, Interpreter& interpreter){
         interpreter.page_device() = args[0].cast<ValueDict>();
     }});
-    builtins.def("currentpagedevice", {Level::PS2, {}, [](ValueArray, Interpreter& interpreter){
+    builtins.def("currentpagedevice", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(interpreter.page_device());
     }});
-    builtins.def("nulldevice", {Level::PS1, {}, [](ValueArray, Interpreter& interpreter){
+    builtins.def("nulldevice", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.memory().gstate.null_device = true;
     }});
 
 }
 
-}
 
     /*
         Unimplemented:
@@ -2716,9 +2919,15 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             * flattenpath
             * setbbox
             * erasepage
+            * flush
+            * flushfile
+            * resetfile
+            * filenameforall
 
         Not defined (allowed by the specs):
             * executive / echo / prompt
             * statusdict
+        Not useful (allowed by the specs):
+            * bytesavailable always -1
     */
 }

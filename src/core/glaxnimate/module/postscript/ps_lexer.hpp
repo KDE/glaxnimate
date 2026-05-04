@@ -49,6 +49,11 @@ public:
         file_column = 1;
     }
 
+    QIODevice* get_device() const
+    {
+        return device;
+    }
+
     Token next_token_nocomment()
     {
         while ( true )

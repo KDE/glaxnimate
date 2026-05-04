@@ -7,6 +7,7 @@
 #include "ps_value.hpp"
 
 #include <QMetaEnum>
+#include <QIODevice>
 
 using namespace Qt::StringLiterals;
 
@@ -30,6 +31,12 @@ glaxnimate::ps::Value::Value(const QByteArray& v)
 
 glaxnimate::ps::Value::Value(ValueDict v)
     : Value(Value::Dict, std::move(v), Readable|Writable)
+{
+
+}
+
+glaxnimate::ps::Value::Value(ps::File v)
+    : Value(Value::File, v, (v.readable() ? Readable : 0)|(v.writable() ? Writable : 0))
 {
 
 }
@@ -94,8 +101,8 @@ bool glaxnimate::ps::Value::shallow_equal(const Value &oth) const
         case Mark:
         case Null:
             return true;
-        // TODO
         case File:
+            return cast<ps::File>() == oth.cast<ps::File>();
         case Save:
         default:
             return false;
@@ -129,8 +136,9 @@ QByteArray glaxnimate::ps::Value::hash_key() const
             return cast<ps::String>().bytes();
         case glaxnimate::ps::Value::Dict:
             return cast<ValueDict>().hash_key();
-        default:
         case glaxnimate::ps::Value::File:
+            return "VALUE_KEY FILE " + QByteArray::number(std::uintptr_t(cast<ps::File>().device()));
+        default:
         case glaxnimate::ps::Value::Mark:
         case glaxnimate::ps::Value::Null:
         case glaxnimate::ps::Value::Save:
@@ -296,4 +304,58 @@ QString glaxnimate::ps::Value::to_string() const
     }
 
     return u"--nostringval--"_s;
+}
+
+glaxnimate::ps::File::File(QIODevice *device)
+    : device_(device)
+{
+
+}
+
+bool glaxnimate::ps::File::readable() const
+{
+    return device_ && device_->isReadable();
+}
+
+bool glaxnimate::ps::File::writable() const
+{
+    return device_ && device_->isWritable();
+}
+
+bool glaxnimate::ps::File::is_open() const
+{
+    return device_ && device_->isOpen();
+}
+
+QIODevice *glaxnimate::ps::File::device() const
+{
+    return device_;
+}
+
+QByteArray glaxnimate::ps::File::read_line()
+{
+    QByteArray line;
+    while ( true )
+    {
+        char ch;
+        if ( !device_->getChar(&ch) || ch == '\n' )
+            break;
+
+        if ( ch == '\r' )
+        {
+            if ( !device_->getChar(&ch) || ch == '\n' )
+                break;
+            device_->ungetChar(ch);
+            break;
+        }
+
+        line.push_back(ch);
+    }
+
+    return line;
+}
+
+bool glaxnimate::ps::File::operator==(const File &o) const
+{
+    return device_ == o.device_;
 }

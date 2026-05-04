@@ -7,7 +7,6 @@
 #pragma once
 
 #include <vector>
-#include <map>
 
 #include <QVariant>
 
@@ -52,6 +51,11 @@ public:
 
     QString to_string() const;
 
+    void assign(const QByteArray& bytes)
+    {
+        *data = bytes;
+    }
+
     /**
      * @brief formats a string into a postscript string
      */
@@ -70,6 +74,7 @@ public:
     }
 
     const QByteArray& bytes() const { return *data; }
+
 
     std::size_t hash() const { return qHash(*data); }
 
@@ -230,6 +235,22 @@ private:
     std::shared_ptr<container> data;
 };
 
+class File
+{
+public:
+    File(QIODevice* device = nullptr);
+    bool readable() const;
+    bool writable() const;
+    bool is_open() const;
+    QIODevice* device() const;
+    QByteArray read_line();
+
+    bool operator==(const File& o) const;
+
+private:
+    QIODevice* device_;
+};
+
 
 class Value
 {
@@ -242,7 +263,8 @@ private:
         bool,
         ValueArray,
         ps::String,
-        ps::ValueDict
+        ps::ValueDict,
+        ps::File
     >;
 
 public:
@@ -255,7 +277,7 @@ public:
         PackedArray = Array,
         String,
         Dict,
-        File, // TODO
+        File,
         Mark,
         Null,
         Save,
@@ -299,6 +321,7 @@ public:
     Value(class String v);
     Value(const QByteArray &v);
     Value(ValueDict v);
+    Value(ps::File v);
     Value(const Value&) = default;
     Value(Value&&) = default;
     Value& operator=(const Value&) = default;
@@ -411,7 +434,7 @@ VALUE_TYPE_FOR(Value::String, ps::String)
 VALUE_TYPE_FOR(Value::Dict, ValueDict)
 VALUE_TYPE_NUL(Value::Mark)
 VALUE_TYPE_NUL(Value::Null)
-VALUE_TYPE_NUL(Value::File)
+VALUE_TYPE_FOR(Value::File, ps::File)
 VALUE_TYPE_NUL(Value::Save)
 
 #undef VALUE_TYPE_FOR

@@ -57,6 +57,7 @@ public:
     QByteArray last_comment;
     GraphicsState last_fill;
     GraphicsState last_stroke;
+    std::map<QByteArray, QBuffer> files;
 
     std::vector<Value> stack_values()
     {
@@ -106,6 +107,13 @@ protected:
 
     void on_show_page(bool) override
     {
+    }
+
+    QIODevice *on_open_file(const QByteArray &name, QIODeviceBase::OpenMode mode) override
+    {
+        auto buf = &files[name];
+        buf->open(mode);
+        return buf;
     }
 };
 
@@ -451,9 +459,12 @@ private Q_SLOTS:
         ValueDict page = {
             {"Page"_ba, "1 1"_ba},
             {"PageBoundingBox"_ba, "112 199 212 279"_ba},
-            {"PageSize"_ba, ValueArray({595, 841})},
         };
         QCOMPARE(interp.page_metadata(), page);
+        ValueDict page_dev = {
+            {"PageSize"_ba, ValueArray({595, 841})},
+        };
+        QCOMPARE(interp.page_device(), page_dev);
         QCOMPARE(interp.level(), Level::PS2);
 
     }
@@ -1070,7 +1081,129 @@ private Q_SLOTS:
                 {{500, 400}, {450, 300}, {500, 400}},
                 {{500, 200}, {500, 200}, {500, 200}},
             })
-            );
+        );
+    }
+
+    void test_file_read()
+    {
+        TestInterpreter interp;
+        interp.files["foo"].setData("Hello");
+        interp.exec_string("(foo) (r) file");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals(File(&interp.files["foo"])));
+        interp.exec_string("read");
+        QCOMPARE(interp.stack_values(), stack_vals(72, true));
+        interp.stack().clear();
+
+        interp.stack().push(File(&interp.files["foo"]));
+        interp.exec_string("read");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals(101, true));
+        interp.stack().clear();
+
+        interp.stack().push(File(&interp.files["foo"]));
+        interp.exec_string("read");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals(108, true));
+        interp.stack().clear();
+
+        interp.stack().push(File(&interp.files["foo"]));
+        interp.exec_string("read");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals(108, true));
+        interp.stack().clear();
+
+        interp.stack().push(File(&interp.files["foo"]));
+        interp.exec_string("read");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals(111, true));
+        interp.stack().clear();
+
+        interp.stack().push(File(&interp.files["foo"]));
+        interp.exec_string("read");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals(false));
+        interp.stack().clear();
+    }
+
+    void test_file_read_string()
+    {
+        TestInterpreter interp;
+        interp.files["foo"].setData("Hello");
+        interp.exec_string("(foo) (r) file 5 string readstring");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals("Hello", true));
+        interp.stack().clear();
+
+        interp.exec_string("(foo) (r) file 10 string readstring");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals("Hello", false));
+        interp.stack().clear();
+
+        interp.files["foo"].close();
+        interp.files["foo"].setData("Hello\nWorld");
+        interp.exec_string("(foo) (r) file 10 string readline");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals("Hello", false));
+        interp.stack().clear();
+
+        interp.exec_string("(foo) (r) file dup 10 string readline pop exch dup fileposition exch 5 string readstring");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals("Hello", 6, "World", true));
+        interp.stack().clear();
+
+        interp.exec_string("(foo) (r) file dup 10 string readline pop exch dup 0 setfileposition 5 string readstring");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals("Hello", "Hello", true));
+        interp.stack().clear();
+
+        interp.files["bar"].setData("123  ");
+        interp.exec_string("(bar) (r) file dup token 3 -1 roll token");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals(123, true, false));
+
+    }
+
+    void test_file_hexstring()
+    {
+        TestInterpreter interp;
+        interp.files["foo"].setData("48656C6c6f");
+        interp.exec_string("(foo) (r) file 5 string readhexstring");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals("Hello", true));
+        interp.stack().clear();
+
+        interp.files["foo"].seek(0);
+        interp.exec_string("(foo) (r) file 10 string readhexstring");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals("Hello", false));
+        interp.stack().clear();
+
+        interp.exec_string("(foo) (a) file (foo) writehexstring");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.files["foo"].data(), "48656C6c6f666f6f");
+    }
+
+    void test_file_write()
+    {
+        TestInterpreter interp;
+        interp.exec_string("(foo) (w) file 67 write");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.files["foo"].data(), "C");
+
+        interp.exec_string("(foo) (w) file (Hello) writestring");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.files["foo"].data(), "Hello");
+    }
+
+    void test_file_misc()
+    {
+        COMPARE_PARSE("currentfile 100 string readline stop hello", "stop hello", false);
+
+        TestInterpreter interp;
+        interp.exec_string("(foo) print");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.output, u"foo"_s);
     }
 };
 

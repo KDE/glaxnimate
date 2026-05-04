@@ -64,6 +64,8 @@ struct ArgumentType
     static ArgumentType proc() { return ArgumentType(Value::Array, Value::Executable); }
     static ArgumentType any() { return {}; }
     static ArgumentType number() { return {Value::Integer, Value::Real}; }
+    static ArgumentType file_read() { return ArgumentType(Value::File, Value::Readable); }
+    static ArgumentType file_write() { return ArgumentType(Value::File, Value::Writable); }
 
     bool matches(const Value& val) const
     {
@@ -170,6 +172,8 @@ public:
 
     void execute(QIODevice* device, bool reset_pos = false);
     void execute(Value proc);
+    void execute_subfile(QIODevice* device);
+    QIODevice* device() const;
 
     void print(const QString& text);
     void error(const QString& error);
@@ -221,6 +225,8 @@ public:
     void new_page();
     int page_count() const;
     void show_page(bool copy);
+    QIODevice *open_file(const String& name, const String& mode);
+    void close_file(QIODevice* device);
 
 protected:
     virtual void on_print(const QString& text) = 0;
@@ -231,6 +237,8 @@ protected:
     virtual void on_fill(const GraphicsState& gstate, bool evenodd) = 0;
     virtual void on_stroke(const GraphicsState& gstate) = 0;
     virtual void on_show_page(bool copy) = 0;
+    virtual QIODevice* on_open_file(const QByteArray& name, QIODevice::OpenMode mode);
+    virtual void on_close_file(QIODevice* device);
 
 private:
     void execute_command(const Value &name);
