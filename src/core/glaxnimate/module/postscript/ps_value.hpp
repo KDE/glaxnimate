@@ -297,48 +297,6 @@ private:
     QIODevice* device_;
 };
 
-class FilteredFile : public FileInterface
-{
-public:
-    FilteredFile(std::shared_ptr<FileInterface> inner);
-
-    bool readable() const override;
-    bool writable() const override;
-    bool is_open() const override;
-    bool eof() const override;
-    bool is_filtered() const override;
-    bool is_seekable() const override;
-    bool seek(int pos) override;
-    int tell() const override;
-    void flush() override;
-    void reset() override;
-    void close() override;
-    std::optional<char> get_char() override;
-    void unget_char(char c) override;
-    void put_char(char c) override;
-    QByteArray read(int count) override;
-    void write(const QByteArray &data) override;
-    QIODevice* get_device() const override;
-
-    bool operator==(const FilteredFile& o) const;
-
-protected:
-    virtual bool skip(char ch) const;
-    virtual bool needs_more(const QByteArray& data) const = 0;
-    virtual QByteArray convert(const QByteArray& data) const = 0;
-    virtual int buffer_size_hint() const = 0;
-    virtual void on_close();
-    virtual bool marks_end(char ch);
-    virtual std::uintptr_t filter_type_id() const = 0;
-
-    void filter_write(const QByteArray& data);
-
-    std::shared_ptr<FileInterface> inner;
-    bool end_reached = false;
-    QByteArray read_buffer;
-    QByteArray write_buffer;
-};
-
 class File
 {
 public:
@@ -382,7 +340,7 @@ private:
 class FileDevice : public QIODevice
 {
 public:
-    FileDevice(FilteredFile* inner);
+    FileDevice(FileInterface* inner);
 
     bool isSequential() const override;
     void close() override;

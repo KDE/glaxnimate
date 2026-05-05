@@ -2315,7 +2315,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         Token token;
         if ( file.is_filtered() )
         {
-            FileDevice device(static_cast<FilteredFile*>(file.inner_file()));
+            FileDevice device(file.inner_file());
             token = Lexer(&device).next_token();
         }
         else

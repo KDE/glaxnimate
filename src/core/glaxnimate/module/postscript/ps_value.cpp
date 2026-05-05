@@ -5,6 +5,7 @@
  */
 
 #include "ps_value.hpp"
+#include "ps_filters.hpp"
 
 #include <QMetaEnum>
 #include <QIODevice>
@@ -37,9 +38,7 @@ glaxnimate::ps::Value::Value(ValueDict v)
 
 glaxnimate::ps::Value::Value(ps::File v)
     : Value(Value::File, v, (v.readable() ? Readable : 0)|(v.writable() ? Writable : 0))
-{
-
-}
+{}
 
 QString glaxnimate::ps::Value::to_pretty_string() const
 {
@@ -409,185 +408,6 @@ bool glaxnimate::ps::PhysicalFile::operator==(const PhysicalFile &o) const
     return device_ == o.device_;
 }
 
-
-glaxnimate::ps::FilteredFile::FilteredFile(std::shared_ptr<FileInterface> inner)
-    : inner(std::move(inner))
-{
-
-}
-
-bool glaxnimate::ps::FilteredFile::readable() const
-{
-    return inner->readable();
-}
-
-bool glaxnimate::ps::FilteredFile::writable() const
-{
-    return inner->writable();
-}
-
-bool glaxnimate::ps::FilteredFile::is_open() const
-{
-    return inner->is_open();
-}
-
-bool glaxnimate::ps::FilteredFile::eof() const
-{
-    return (end_reached && read_buffer.isEmpty()) || inner->eof();
-}
-
-bool glaxnimate::ps::FilteredFile::is_filtered() const
-{
-    return true;
-}
-
-bool glaxnimate::ps::FilteredFile::is_seekable() const
-{
-    return false;
-}
-
-bool glaxnimate::ps::FilteredFile::seek(int)
-{
-    return false;
-}
-
-int glaxnimate::ps::FilteredFile::tell() const
-{
-    return -1;
-}
-
-void glaxnimate::ps::FilteredFile::flush()
-{
-    if ( !write_buffer.isEmpty() )
-    {
-        filter_write(write_buffer);
-        write_buffer.clear();
-    }
-
-    read_buffer.clear();
-}
-
-void glaxnimate::ps::FilteredFile::reset()
-{
-    read_buffer.clear();
-    write_buffer.clear();
-}
-
-void glaxnimate::ps::FilteredFile::close()
-{
-    flush();
-    on_close();
-    inner->close();
-}
-
-
-std::optional<char> glaxnimate::ps::FilteredFile::get_char()
-{
-    if ( read_buffer.isEmpty() )
-    {
-        if ( end_reached )
-            return {};
-
-        QByteArray raw;
-        raw.reserve(buffer_size_hint());
-
-        do
-        {
-            auto byte = inner->get_char();
-            if ( !byte )
-                break;
-
-            if ( skip(*byte) )
-                continue;
-
-            if ( marks_end(*byte) )
-            {
-                end_reached = true;
-                break;
-            }
-
-            raw.push_back(*byte);
-        }
-        while ( needs_more(raw) );
-
-        read_buffer = convert(raw);
-        if ( read_buffer.isEmpty() )
-            return {};
-
-        std::reverse(read_buffer.begin(), read_buffer.end());
-    }
-
-
-    char ch = read_buffer.back();
-    read_buffer.erase(read_buffer.end() - 1);
-    return ch;
-}
-
-void glaxnimate::ps::FilteredFile::unget_char(char c)
-{
-    read_buffer.push_back(c);
-}
-
-void glaxnimate::ps::FilteredFile::put_char(char c)
-{
-    write_buffer.push_back(c);
-    if ( !needs_more(write_buffer) )
-    {
-        filter_write(write_buffer);
-        write_buffer.clear();
-    }
-}
-
-QByteArray glaxnimate::ps::FilteredFile::read(int count)
-{
-    QByteArray out;
-    out.reserve(count);
-    for ( int i = 0; i < count; i++ )
-    {
-        if ( auto ch = get_char() )
-            out.push_back(*ch);
-        else
-            break;
-    }
-    return out;
-}
-
-void glaxnimate::ps::FilteredFile::write(const QByteArray &data)
-{
-    for ( char ch : data )
-        put_char(ch);
-}
-
-QIODevice *glaxnimate::ps::FilteredFile::get_device() const
-{
-    return inner->get_device();
-}
-
-bool glaxnimate::ps::FilteredFile::operator==(const FilteredFile &o) const
-{
-    return inner == o.inner && filter_type_id() == o.filter_type_id();
-}
-
-bool glaxnimate::ps::FilteredFile::skip(char ch) const
-{
-    return std::isspace(ch) || ch == '\0';
-}
-
-void glaxnimate::ps::FilteredFile::on_close()
-{
-
-}
-
-bool glaxnimate::ps::FilteredFile::marks_end(char)
-{
-    return false;
-}
-
-void glaxnimate::ps::FilteredFile::filter_write(const QByteArray &data)
-{
-    inner->write(convert(data));
-}
-
 glaxnimate::ps::File::File(QIODevice *device)
     : inner(std::make_shared<PhysicalFile>(device))
 {}
@@ -733,7 +553,7 @@ glaxnimate::ps::FileInterface *glaxnimate::ps::File::inner_file()
     return inner.get();
 }
 
-glaxnimate::ps::FileDevice::FileDevice(FilteredFile *inner)
+glaxnimate::ps::FileDevice::FileDevice(FileInterface *inner)
     : inner(inner)
 {
 }
