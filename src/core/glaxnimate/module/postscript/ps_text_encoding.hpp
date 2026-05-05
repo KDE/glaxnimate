@@ -25,5 +25,20 @@ private:
     int count = 0;
 };
 
+class Base85Encoder
+{
+public:
+    bool add_char(char ch);
+    void finish();
+
+    const QByteArray& encoded() const { return data; }
+
+    static QByteArray encode(const QByteArray& input);
+
+private:
+    QByteArray data;
+    quint32 accum = 0;
+    int count = 0;
+};
 
 } // namespace glaxnimate::ps

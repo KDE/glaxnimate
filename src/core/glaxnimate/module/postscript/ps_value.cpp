@@ -433,7 +433,7 @@ bool glaxnimate::ps::FilteredFile::is_open() const
 
 bool glaxnimate::ps::FilteredFile::eof() const
 {
-    return end_reached || inner->eof();
+    return (end_reached && read_buffer.isEmpty()) || inner->eof();
 }
 
 bool glaxnimate::ps::FilteredFile::is_filtered() const
@@ -486,6 +486,9 @@ std::optional<char> glaxnimate::ps::FilteredFile::get_char()
 {
     if ( read_buffer.isEmpty() )
     {
+        if ( end_reached )
+            return {};
+
         QByteArray raw;
         raw.reserve(filter.input_size);
 

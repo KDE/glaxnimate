@@ -2231,6 +2231,16 @@ void CommandSet::populate_builtins(CommandSet& builtins)
                 &FilteredFile::hex_encode,
                 1, 2, -1, "", ">"
             }));
+        else if ( filter_name == "ASCII85Decode" )
+            interpreter.stack().push(file.filtered({
+                &Base85Decoder::decode,
+                5, 4, '~', ">", ""
+            }));
+        else if ( filter_name == "ASCII85Encode" )
+            interpreter.stack().push(file.filtered({
+                &Base85Encoder::encode,
+                4, 5, -1, "", "~>"
+            }));
         else
             interpreter.error(u"Unknown filter %1"_s.arg(filter_name));
 

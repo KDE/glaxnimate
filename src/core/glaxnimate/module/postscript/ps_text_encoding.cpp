@@ -73,3 +73,67 @@ QByteArray Base85Decoder::decode(const QByteArray &input)
     return decoder.decoded();
 }
 
+
+bool Base85Encoder::add_char(char ch)
+{
+    accum <<= 8;
+    accum |= quint8(ch);
+    count += 1;
+
+    if ( count == 4 )
+    {
+        if ( accum == 0 )
+        {
+            data.push_back('z');
+        }
+        else
+        {
+            char bytes[5];
+            for ( int i = 0; i < 5; i++ )
+            {
+                bytes[4 - i] = (accum % 85) + '!';
+                accum /= 85;
+            }
+            data.append(bytes, 5);
+        }
+        count = 0;
+        accum = 0;
+    }
+
+    return true;
+}
+
+void Base85Encoder::finish()
+{
+    if ( count > 0 )
+    {
+        int to_flush = count + 1;
+
+        while ( count < 4 )
+        {
+            accum <<= 8;
+            count++;
+        }
+
+        char bytes[5];
+        for ( int i = 0; i < 5; i++ )
+        {
+            bytes[4 - i] = (accum % 85) + '!';
+            accum /= 85;
+        }
+
+        data.append(bytes, to_flush);
+        count = 0;
+        accum = 0;
+    }
+}
+
+QByteArray Base85Encoder::encode(const QByteArray &input)
+{
+    Base85Encoder encoder;
+    encoder.data.reserve(input.size() * 5 / 4);
+    for ( char c : input )
+        encoder.add_char(c);
+    encoder.finish();
+    return encoder.encoded();
+}

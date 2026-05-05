@@ -1260,7 +1260,59 @@ private Q_SLOTS:
         QCOMPARE(Base85Decoder::decode("87cURDc^jtCh+["), "HelloWorld!");
         QCOMPARE(Base85Decoder::decode("6=FqHz3&L"), "Base\0\0\0\085"_ba);
         QCOMPARE(Base85Decoder::decode("/c"), ".");
+
+        QCOMPARE(Base85Encoder::encode("Hello-World!"), "87cURD_5%/Ebo80");
+        QCOMPARE(Base85Encoder::encode("HelloWorld"), "87cURDc^jtCh*");
+        QCOMPARE(Base85Encoder::encode("HelloWorld!"), "87cURDc^jtCh+[");
+        QCOMPARE(Base85Encoder::encode("HelloWorld!"), "87cURDc^jtCh+[");
+        QCOMPARE(Base85Encoder::encode("Base\0\0\0\085"_ba), "6=FqHz3&L");
+        QCOMPARE(Base85Encoder::encode("."), "/c");
     }
+
+    void test_file_filter_85()
+    {
+        TestInterpreter interp;
+        interp.exec_string(R"(
+            /b85filew (files/b85.txt) (w) file /ASCII85Encode filter def
+
+            b85filew (Hello) writestring
+            b85filew (World) writestring
+            b85filew closefile
+        )");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.files["files/b85.txt"].data(), "87cURDc^jtCh*~>");
+        QCOMPARE(interp.stack_values(), stack_vals());
+
+        interp.exec_string(R"(
+            /textfilew (files/b85.txt) (a) file def
+            textfilew (Foo) writestring
+            textfilew closefile
+        )");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.files["files/b85.txt"].data(), "87cURDc^jtCh*~>Foo");
+        QCOMPARE(interp.stack_values(), stack_vals());
+
+
+        interp.exec_string(R"(
+            /textfiler (files/b85.txt) (r) file def
+            /b85filer textfiler /ASCII85Decode filter def
+            b85filer 3 string readstring pop
+            b85filer read pop
+            b85filer 100 string readstring pop
+            textfiler 100 string readstring pop
+        )");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals("Hel", 108, "oWorld", "Foo"));
+
+
+        interp.stack().clear();
+        interp.exec_string(R"(
+            (files/b85.txt) (r) file 100 string readstring pop
+        )");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals("87cURDc^jtCh*~>Foo"));
+    }
+
 };
 
 QTEST_GUILESS_MAIN(TestCase)
