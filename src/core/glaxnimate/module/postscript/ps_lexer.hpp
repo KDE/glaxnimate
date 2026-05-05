@@ -8,6 +8,7 @@
 
 #include <QIODevice>
 
+#include "glaxnimate/module/postscript/ps_text_encoding.hpp"
 #include "ps_value.hpp"
 
 namespace glaxnimate::ps {
@@ -460,9 +461,7 @@ private:
 
     Token lex_base85()
     {
-        QByteArray data;
-        quint32 accum = 0;
-        int count = 0;
+        Base85Decoder decoder;
 
         while ( true )
         {
@@ -472,45 +471,17 @@ private:
             if ( std::isspace(ch) )
                 continue;
 
-            if ( ch == 'z' )
-            {
-                data.append(4, 0);
-                continue;
-            }
-
-            if ( ch < '!' || ch > 'u' )
+            if ( !decoder.add_char(ch) )
                 return {Token::Unrecoverable, {}};
 
-            accum *= 85;
-            accum += ch - '!';
-            count++;
-            if ( count == 5 )
-            {
-                data.push_back((accum >> 24) & 0xff);
-                data.push_back((accum >> 16) & 0xff);
-                data.push_back((accum >> 8) & 0xff);
-                data.push_back(accum & 0xff);
-                count = 0;
-            }
         }
 
-        if ( count )
-        {
-            for( ; count % 5; count++ )
-            {
-                accum *= 85;
-                accum += 84;
-            }
-            data.push_back((accum >> 24) & 0xff);
-            data.push_back((accum >> 16) & 0xff);
-            data.push_back((accum >> 8) & 0xff);
-            data.push_back(accum & 0xff);
-        }
+        decoder.finish();
 
         if ( get_char() != '>' )
             return {Token::Unrecoverable, {}};
 
-        return {Token::Literal, data};
+        return {Token::Literal, decoder.decoded()};
     }
 
     int get_char()

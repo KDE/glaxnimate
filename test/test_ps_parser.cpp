@@ -247,7 +247,7 @@ private Q_SLOTS:
         COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "Man "_ba);
         COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "Man "_ba);
         COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "\0\0\0\0\0\0\0\0"_ba);
-        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "\56\3\31\264"_ba);
+        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, ".");
     }
 
     void test_lex_operators()
@@ -1250,6 +1250,16 @@ private Q_SLOTS:
         )");
         QCOMPARE(interp.last_error, QString());
         QCOMPARE(interp.stack_values(), stack_vals("48656c6c6f576f726c64>Foo"));
+    }
+
+    void test_base85()
+    {
+        QCOMPARE(Base85Decoder::decode("87cURD_5%/Ebo80"), "Hello-World!");
+        QCOMPARE(Base85Decoder::decode("87cURDc^jtCh*"), "HelloWorld");
+        QCOMPARE(Base85Decoder::decode("87cURDc^jtCh+["), "HelloWorld!");
+        QCOMPARE(Base85Decoder::decode("87cURDc^jtCh+["), "HelloWorld!");
+        QCOMPARE(Base85Decoder::decode("6=FqHz3&L"), "Base\0\0\0\085"_ba);
+        QCOMPARE(Base85Decoder::decode("/c"), ".");
     }
 };
 
