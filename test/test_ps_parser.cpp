@@ -1200,10 +1200,56 @@ private Q_SLOTS:
     {
         COMPARE_PARSE("currentfile 100 string readline stop hello", "stop hello", false);
 
+        COMPARE_PARSE("currentfile 100 string readline hello\n 123", "hello", false, 123);
+
         TestInterpreter interp;
         interp.exec_string("(foo) print");
         QCOMPARE(interp.last_error, QString());
         QCOMPARE(interp.output, u"foo"_s);
+    }
+
+    void test_file_filter_hex()
+    {
+        TestInterpreter interp;
+        interp.exec_string(R"(
+            /hexfilew (files/hex.txt) (w) file /ASCIIHexEncode filter def
+
+            hexfilew (Hello) writestring
+            hexfilew (World) writestring
+            hexfilew closefile
+        )");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.files["files/hex.txt"].data(), "48656c6c6f576f726c64>");
+        QCOMPARE(interp.stack_values(), stack_vals());
+
+        interp.exec_string(R"(
+            /textfilew (files/hex.txt) (a) file def
+            textfilew (Foo) writestring
+            textfilew closefile
+        )");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.files["files/hex.txt"].data(), "48656c6c6f576f726c64>Foo");
+        QCOMPARE(interp.stack_values(), stack_vals());
+
+
+        interp.exec_string(R"(
+            /textfiler (files/hex.txt) (r) file def
+            /hexfiler textfiler /ASCIIHexDecode filter def
+            hexfiler 3 string readstring pop
+            hexfiler read pop
+            hexfiler 100 string readstring pop
+            textfiler 100 string readstring pop
+        )");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals("Hel", 108, "oWorld", "Foo"));
+
+
+        interp.stack().clear();
+        interp.exec_string(R"(
+            (files/hex.txt) (r) file 100 string readstring pop
+        )");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals("48656c6c6f576f726c64>Foo"));
     }
 };
 

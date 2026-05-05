@@ -8,6 +8,7 @@
 
 #include <vector>
 
+#include <QIODevice>
 #include <QVariant>
 
 namespace glaxnimate::ps {
@@ -235,20 +236,170 @@ private:
     std::shared_ptr<container> data;
 };
 
+
+class FileInterface
+{
+public:
+    virtual ~FileInterface() = default;
+
+    virtual bool readable() const = 0;
+    virtual bool writable() const = 0;
+    virtual bool is_open() const = 0;
+    virtual bool eof() const = 0;
+    virtual bool is_filtered() const = 0;
+    virtual bool is_seekable() const = 0;
+    virtual bool seek(int pos) = 0;
+    virtual int tell() const = 0;
+    virtual void flush() = 0;
+    virtual void reset() = 0;
+    virtual void close() = 0;
+
+    virtual std::optional<char> get_char() = 0;
+    virtual void unget_char(char c) = 0;
+    virtual void put_char(char c) = 0;
+
+    virtual QByteArray read(int count) = 0;
+    virtual void write(const QByteArray& data) = 0;
+
+    virtual QIODevice* get_device() const = 0;
+};
+
+class PhysicalFile : public FileInterface
+{
+public:
+    PhysicalFile(QIODevice* device);
+
+    QIODevice* device() const;
+    QIODevice* get_device() const override;
+
+    bool readable() const override;
+    bool writable() const override;
+    bool is_open() const override;
+    bool is_filtered() const override;
+    bool eof() const override;
+    bool is_seekable() const override;
+    bool seek(int pos) override;
+    int tell() const override;
+    void flush() override;
+    void reset() override;
+    void close() override;
+    std::optional<char> get_char() override;
+    void unget_char(char c) override;
+    void put_char(char c) override;
+    QByteArray read(int count) override;
+    void write(const QByteArray &data) override;
+
+    bool operator==(const PhysicalFile& o) const;
+
+private:
+    QIODevice* device_;
+};
+
+class FilteredFile : public FileInterface
+{
+public:
+    using FilterFunc = QByteArray (*)(const QByteArray&);
+
+    struct FilterData
+    {
+        FilterFunc convert;
+        int input_size;
+        int output_size;
+        int end_marker;
+        QByteArray post_end_marker;
+        QByteArray close_marker;
+        QByteArray skip = " \t\r\n\f";
+    };
+
+    FilteredFile(
+        std::shared_ptr<FileInterface> inner,
+        FilterData filter
+    );
+
+    bool readable() const override;
+    bool writable() const override;
+    bool is_open() const override;
+    bool eof() const override;
+    bool is_filtered() const override;
+    bool is_seekable() const override;
+    bool seek(int pos) override;
+    int tell() const override;
+    void flush() override;
+    void reset() override;
+    void close() override;
+    std::optional<char> get_char() override;
+    void unget_char(char c) override;
+    void put_char(char c) override;
+    QByteArray read(int count) override;
+    void write(const QByteArray &data) override;
+    QIODevice* get_device() const override;
+
+    bool operator==(const FilteredFile& o) const;
+
+
+    static QByteArray hex_decode(const QByteArray& data);
+    static QByteArray hex_encode(const QByteArray& data);
+
+private:
+    void filter_write(const QByteArray& data);
+
+    std::shared_ptr<FileInterface> inner;
+    FilterData filter;
+    bool end_reached = false;
+    QByteArray read_buffer;
+    QByteArray write_buffer;
+};
+
 class File
 {
 public:
     File(QIODevice* device = nullptr);
+    File(std::shared_ptr<FileInterface> inner);
+
     bool readable() const;
     bool writable() const;
     bool is_open() const;
-    QIODevice* device() const;
-    QByteArray read_line();
+    bool is_filtered() const;
+    bool eof() const;
+    bool is_seekable() const;
+    bool seek(int pos);
+    int tell() const;
+    void flush();
+    void reset();
+    void close();
+    std::optional<char> get_char();
+    void unget_char(char c);
+    void put_char(char c);
+    QByteArray read(int count);
+    void write(const QByteArray &data);
+    QIODevice* get_device() const;
 
     bool operator==(const File& o) const;
 
+    File filtered(FilteredFile::FilterData filter);
+    QByteArray read_line();
+
+    FileInterface* inner_file();
+
 private:
-    QIODevice* device_;
+    std::shared_ptr<FileInterface> inner;
+};
+
+class FileDevice : public QIODevice
+{
+public:
+    FileDevice(FilteredFile* inner);
+
+    bool isSequential() const override;
+    void close() override;
+    bool atEnd() const override;
+
+protected:
+    qint64 readData(char *data, qint64 maxlen) override;
+    qint64 writeData(const char *data, qint64 len) override;
+
+private:
+    FileInterface* inner;
 };
 
 

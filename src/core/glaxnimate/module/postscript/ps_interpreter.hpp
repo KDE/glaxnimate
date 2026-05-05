@@ -226,7 +226,7 @@ public:
     int page_count() const;
     void show_page(bool copy);
     QIODevice *open_file(const String& name, const String& mode);
-    void close_file(QIODevice* device);
+    void close_file(File &file);
 
 protected:
     virtual void on_print(const QString& text) = 0;

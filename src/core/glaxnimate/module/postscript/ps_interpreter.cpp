@@ -575,9 +575,11 @@ QIODevice* Interpreter::open_file(const String &name, const String &mode_str)
     return dev;
 }
 
-void Interpreter::close_file(QIODevice *device)
+void Interpreter::close_file(File& file)
 {
-    on_close_file(device);
+    file.close();
+    if ( file.is_open() )
+        on_close_file(file.get_device());
 }
 
 QIODevice *Interpreter::on_open_file(const QByteArray &, QIODeviceBase::OpenMode)
@@ -2213,17 +2215,36 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             interpreter.stack().push(File(dev));
         }
     }});
-    // TODO filter
+    builtins.def("filter", {Level::EPS1, {Value::File, Value::String}, [](ValueArray args, Interpreter& interpreter){
+        File file = args[0].cast<File>();
+        auto filter_name = args[1].cast<String>().bytes();
+
+        if ( filter_name == "NullEncode" )
+            interpreter.stack().push(file);
+        else if ( filter_name == "ASCIIHexDecode" )
+            interpreter.stack().push(file.filtered({
+                &FilteredFile::hex_decode,
+                2, 1, '>', "", ""
+            }));
+        else if ( filter_name == "ASCIIHexEncode" )
+            interpreter.stack().push(file.filtered({
+                &FilteredFile::hex_encode,
+                1, 2, -1, "", ">"
+            }));
+        else
+            interpreter.error(u"Unknown filter %1"_s.arg(filter_name));
+
+    }});
     builtins.def("closefile", {Level::EPS1, {Value::File}, [](ValueArray args, Interpreter& interpreter){
-        interpreter.close_file(args[0].cast<File>().device());
+        File file = args[0].cast<File>();
+        interpreter.close_file(file);
     }});
     builtins.def("read", {Level::EPS1, {Arg::file_read()}, [](ValueArray args, Interpreter& interpreter){
         File file = args[0].cast<File>();
 
-        char ch;
-        if ( file.device()->getChar(&ch) )
+        if ( auto ch = file.get_char() )
         {
-            interpreter.stack().push(int(ch));
+            interpreter.stack().push(int(*ch));
             interpreter.stack().push(true);
         }
         else
@@ -2234,33 +2255,33 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("write", {Level::EPS1, {Arg::file_write(), Value::Integer}, [](ValueArray args, Interpreter&){
         File file = args[0].cast<File>();
         char ch = args[1].cast<int>() % 256;
-        file.device()->putChar(ch);
+        file.put_char(ch);
     }});
     builtins.def("readhexstring", {Level::EPS1, {Arg::file_read(), Value::String}, [](ValueArray args, Interpreter& interpreter){
         File file = args[0].cast<File>();
         String target = args[1].cast<String>();
         int size = target.size();
-        target.assign(QByteArray::fromHex(file.device()->read(size * 2)));
+        target.assign(QByteArray::fromHex(file.read(size * 2)));
         interpreter.stack().push(target);
         interpreter.stack().push(size == target.size());
     }});
     builtins.def("writehexstring", {Level::EPS1, {Arg::file_write(), Value::String}, [](ValueArray args, Interpreter&){
         File file = args[0].cast<File>();
         String data = args[1].cast<String>();
-        file.device()->write(data.bytes().toHex());
+        file.write(data.bytes().toHex());
     }});
     builtins.def("readstring", {Level::EPS1, {Arg::file_read(), Value::String}, [](ValueArray args, Interpreter& interpreter){
         File file = args[0].cast<File>();
         String target = args[1].cast<String>();
         int size = target.size();
-        target.assign(file.device()->read(size));
+        target.assign(file.read(size));
         interpreter.stack().push(target);
         interpreter.stack().push(size == target.size());
     }});
     builtins.def("writestring", {Level::EPS1, {Arg::file_write(), Value::String}, [](ValueArray args, Interpreter&){
         File file = args[0].cast<File>();
         String data = args[1].cast<String>();
-        file.device()->write(data.bytes());
+        file.write(data.bytes());
     }});
     builtins.def("readline", {Level::EPS1, {Arg::file_read(), Value::String}, [](ValueArray args, Interpreter& interpreter){
         File file = args[0].cast<File>();
@@ -2278,7 +2299,17 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     }});
     builtins.def("token", {Level::EPS1, {Arg::file_read()}, [](ValueArray args, Interpreter& interpreter){
         File file = args[0].cast<File>();
-        auto token = Lexer(file.device()).next_token();
+        Token token;
+        if ( file.is_filtered() )
+        {
+            FileDevice device(static_cast<FilteredFile*>(file.inner_file()));
+            token = Lexer(&device).next_token();
+        }
+        else
+        {
+            token = Lexer(static_cast<PhysicalFile*>(file.inner_file())->device()).next_token();
+        }
+
         if ( token.type != Token::Eof )
         {
             interpreter.stack().push(token.value);
@@ -2294,9 +2325,11 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     }});
     builtins.def("flush", {Level::EPS1, {}, [](ValueArray, Interpreter&){
     }});
-    builtins.def("flushfile", {Level::EPS1, {Value::File}, [](ValueArray, Interpreter&){
+    builtins.def("flushfile", {Level::EPS1, {Value::File}, [](ValueArray args, Interpreter&){
+        args[0].cast<File>().flush();
     }});
-    builtins.def("resetfile", {Level::EPS1, {Value::File}, [](ValueArray, Interpreter&){
+    builtins.def("resetfile", {Level::EPS1, {Value::File}, [](ValueArray args, Interpreter&){
+        args[0].cast<File>().reset();
     }});
     builtins.def("status", {Level::EPS1, {Value::File}, [](ValueArray args, Interpreter& interpreter){
         File file = args[0].cast<File>();
@@ -2332,7 +2365,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             return;
         }
 
-        if ( !file.device()->seek(args[1].cast<int>()) )
+        if ( !file.is_seekable() || !file.seek(args[1].cast<int>()) )
         {
             interpreter.error(u"Could not set file position"_s);
             return;
@@ -2341,13 +2374,13 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     }});
     builtins.def("fileposition", {Level::EPS2, {Value::File}, [](ValueArray args, Interpreter& interpreter){
         File file = args[0].cast<File>();
-        if ( !file.is_open() )
+        if ( !file.is_seekable() )
         {
-            interpreter.error(u"File not open"_s);
+            interpreter.error(u"File does not have a position"_s);
             return;
         }
 
-        interpreter.stack().push(int(file.device()->pos() ));
+        interpreter.stack().push(int(file.tell() ));
 
     }});
     builtins.def("print", {Level::EPS1, {Value::String}, [](ValueArray args, Interpreter& interpreter){
@@ -2920,8 +2953,6 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             * setbbox
             * erasepage
             * flush
-            * flushfile
-            * resetfile
             * filenameforall
 
         Not defined (allowed by the specs):
