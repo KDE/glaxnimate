@@ -184,6 +184,9 @@ public:
 
     Value get(const key_type& key) const;
 
+    template<class T>
+    T get_default(const key_type& key, T default_value = T()) const;
+
     iterator begin() { return data->begin(); }
     iterator end() { return data->end(); }
     const_iterator begin() const { return data->begin(); }
@@ -235,7 +238,6 @@ public:
 private:
     std::shared_ptr<container> data;
 };
-
 
 class FileInterface
 {
@@ -298,7 +300,7 @@ private:
 class FilteredFile : public FileInterface
 {
 public:
-    FilteredFile(std::shared_ptr<FileInterface> inner, ValueDict options);
+    FilteredFile(std::shared_ptr<FileInterface> inner);
 
     bool readable() const override;
     bool writable() const override;
@@ -335,7 +337,6 @@ protected:
     bool end_reached = false;
     QByteArray read_buffer;
     QByteArray write_buffer;
-    ValueDict options;
 };
 
 class File
@@ -554,6 +555,17 @@ private:
     Variant value_;
     int attributes_ = None;
 };
+
+
+
+template<class T>
+inline T ValueDict::get_default(const key_type &key, T default_value) const
+{
+    auto it = find(key);
+    if ( it == end() || !it->second.can_convert(Value::Type(Value::index_for<T>::index)) )
+        return default_value;
+    return it->second.cast<T>();
+}
 
 #define VALUE_TYPE_FOR_IMPL(Tp, Type) \
     template<> struct Value::type_for<Tp> { \

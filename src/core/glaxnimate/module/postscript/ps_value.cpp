@@ -410,8 +410,8 @@ bool glaxnimate::ps::PhysicalFile::operator==(const PhysicalFile &o) const
 }
 
 
-glaxnimate::ps::FilteredFile::FilteredFile(std::shared_ptr<FileInterface> inner, ValueDict options)
-    : inner(std::move(inner)), options(std::move(options))
+glaxnimate::ps::FilteredFile::FilteredFile(std::shared_ptr<FileInterface> inner)
+    : inner(std::move(inner))
 {
 
 }
@@ -565,7 +565,7 @@ QIODevice *glaxnimate::ps::FilteredFile::get_device() const
 
 bool glaxnimate::ps::FilteredFile::operator==(const FilteredFile &o) const
 {
-    return inner == o.inner && options == o.options && filter_type_id() == o.filter_type_id();
+    return inner == o.inner && filter_type_id() == o.filter_type_id();
 }
 
 bool glaxnimate::ps::FilteredFile::skip(char ch) const

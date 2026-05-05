@@ -1217,6 +1217,10 @@ void make_filter(File file, const QByteArray& filter_name, ValueDict options, In
         interpreter.stack().push(file.filtered<ASCII85Decode>(std::move(options)));
     else if ( filter_name == "ASCII85Encode" )
         interpreter.stack().push(file.filtered<ASCII85Encode>(std::move(options)));
+    else if ( filter_name == "LZWEncode" )
+        interpreter.stack().push(file.filtered<LZWEncode>(std::move(options)));
+    else if ( filter_name == "LZWDecode" )
+        interpreter.stack().push(file.filtered<LZWDecode>(std::move(options)));
     else
         interpreter.error(u"Unknown filter %1"_s.arg(filter_name));
 }

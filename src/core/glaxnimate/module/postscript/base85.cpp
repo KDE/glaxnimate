@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#include "ps_text_encoding.hpp"
+#include "base85.hpp"
 
 using namespace glaxnimate::ps;
 

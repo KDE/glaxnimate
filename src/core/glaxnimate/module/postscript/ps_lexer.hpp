@@ -8,7 +8,7 @@
 
 #include <QIODevice>
 
-#include "glaxnimate/module/postscript/ps_text_encoding.hpp"
+#include "base85.hpp"
 #include "ps_value.hpp"
 
 namespace glaxnimate::ps {

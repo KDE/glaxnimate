@@ -8,7 +8,7 @@ set(SOURCES
     ps_gstate.cpp
     ps_loader.cpp
     ps_format.cpp
-    ps_text_encoding.cpp
+    base85.cpp
 )
 
 add_library(GlaxnimatePostScript OBJECT ${SOURCES})

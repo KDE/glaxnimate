@@ -1313,6 +1313,53 @@ private Q_SLOTS:
         QCOMPARE(interp.stack_values(), stack_vals("87cURDc^jtCh*~>Foo"));
     }
 
+
+    void test_file_filter_lzw()
+    {
+        TestInterpreter interp;
+        interp.exec_string(R"(
+            /lzwfilew (files/lzw.txt) (w) file /ASCIIHexEncode filter /LZWEncode filter def
+
+            lzwfilew (Hello) writestring
+            lzwfilew (World) writestring
+            lzwfilew closefile
+        )");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.files["files/lzw.txt"].data(), "80120ca6c361bcae6f391b0c9010>");
+        QCOMPARE(interp.stack_values(), stack_vals());
+
+        interp.exec_string(R"(
+            /textfilew (files/lzw.txt) (a) file def
+            textfilew (Foo) writestring
+            textfilew closefile
+        )");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.files["files/lzw.txt"].data(), "80120ca6c361bcae6f391b0c9010>Foo");
+        QCOMPARE(interp.stack_values(), stack_vals());
+
+
+        interp.exec_string(R"(
+            /textfiler (files/lzw.txt) (r) file def
+            /hexfiler textfiler /ASCIIHexDecode filter def
+            /lzwfiler hexfiler /LZWDecode filter def
+            lzwfiler 3 string readstring pop
+            lzwfiler read pop
+            lzwfiler 100 string readstring pop
+            hexfiler 100 string readstring pop
+            textfiler 100 string readstring pop
+        )");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals("Hel", 108, "oWorld", "", "Foo"));
+
+
+        interp.stack().clear();
+        interp.exec_string(R"(
+            (files/lzw.txt) (r) file 100 string readstring pop
+        )");
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals("80120ca6c361bcae6f391b0c9010>Foo"));
+    }
+
 };
 
 QTEST_GUILESS_MAIN(TestCase)
