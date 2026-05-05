@@ -1311,6 +1311,8 @@ private Q_SLOTS:
         )");
         QCOMPARE(interp.last_error, QString());
         QCOMPARE(interp.stack_values(), stack_vals("87cURDc^jtCh*~>Foo"));
+
+        COMPARE_PARSE("currentfile /ASCII85Decode filter 100 string readstring 6=FqHz3&L~>", "Base\0\0\0\085"_ba, false);
     }
 
 

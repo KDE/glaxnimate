@@ -120,6 +120,13 @@ protected:
 
         return true;
     }
+
+    bool needs_more(const QByteArray& data) const override
+    {
+        if ( data.startsWith('z') )
+            return false;
+        return data.size() % input_size != 0;
+    }
 };
 
 class ASCII85Encode : public SizedFileFilter
