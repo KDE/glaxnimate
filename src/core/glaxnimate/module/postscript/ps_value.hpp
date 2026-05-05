@@ -298,23 +298,7 @@ private:
 class FilteredFile : public FileInterface
 {
 public:
-    using FilterFunc = QByteArray (*)(const QByteArray&);
-
-    struct FilterData
-    {
-        FilterFunc convert;
-        int input_size;
-        int output_size;
-        int end_marker;
-        QByteArray post_end_marker;
-        QByteArray close_marker;
-        QByteArray skip = " \t\r\n\f";
-    };
-
-    FilteredFile(
-        std::shared_ptr<FileInterface> inner,
-        FilterData filter
-    );
+    FilteredFile(std::shared_ptr<FileInterface> inner, ValueDict options);
 
     bool readable() const override;
     bool writable() const override;
@@ -336,18 +320,22 @@ public:
 
     bool operator==(const FilteredFile& o) const;
 
+protected:
+    virtual bool skip(char ch) const;
+    virtual bool needs_more(const QByteArray& data) const = 0;
+    virtual QByteArray convert(const QByteArray& data) const = 0;
+    virtual int buffer_size_hint() const = 0;
+    virtual void on_close();
+    virtual bool marks_end(char ch);
+    virtual std::uintptr_t filter_type_id() const = 0;
 
-    static QByteArray hex_decode(const QByteArray& data);
-    static QByteArray hex_encode(const QByteArray& data);
-
-private:
     void filter_write(const QByteArray& data);
 
     std::shared_ptr<FileInterface> inner;
-    FilterData filter;
     bool end_reached = false;
     QByteArray read_buffer;
     QByteArray write_buffer;
+    ValueDict options;
 };
 
 class File
@@ -376,7 +364,12 @@ public:
 
     bool operator==(const File& o) const;
 
-    File filtered(FilteredFile::FilterData filter);
+    template<class FilterClass>
+    File filtered(ValueDict options)
+    {
+        return File(std::make_shared<FilterClass>(inner, std::move(options)));
+    }
+
     QByteArray read_line();
 
     FileInterface* inner_file();

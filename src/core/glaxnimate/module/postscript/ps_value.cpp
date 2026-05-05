@@ -410,8 +410,8 @@ bool glaxnimate::ps::PhysicalFile::operator==(const PhysicalFile &o) const
 }
 
 
-glaxnimate::ps::FilteredFile::FilteredFile(std::shared_ptr<FileInterface> inner, FilterData filter)
-    : inner(std::move(inner)), filter(std::move(filter))
+glaxnimate::ps::FilteredFile::FilteredFile(std::shared_ptr<FileInterface> inner, ValueDict options)
+    : inner(std::move(inner)), options(std::move(options))
 {
 
 }
@@ -476,8 +476,7 @@ void glaxnimate::ps::FilteredFile::reset()
 void glaxnimate::ps::FilteredFile::close()
 {
     flush();
-    if ( !filter.close_marker.isEmpty() )
-        inner->write(filter.close_marker);
+    on_close();
     inner->close();
 }
 
@@ -490,33 +489,28 @@ std::optional<char> glaxnimate::ps::FilteredFile::get_char()
             return {};
 
         QByteArray raw;
-        raw.reserve(filter.input_size);
+        raw.reserve(buffer_size_hint());
 
-        while ( raw.size() < filter.input_size )
+        do
         {
             auto byte = inner->get_char();
             if ( !byte )
                 break;
 
-            if ( filter.skip.contains(*byte) )
+            if ( skip(*byte) )
                 continue;
 
-            if ( *byte == filter.end_marker )
+            if ( marks_end(*byte) )
             {
                 end_reached = true;
-                for ( char c : filter.post_end_marker )
-                {
-                    if ( auto d = inner->get_char() )
-                        if ( !d || *d != c )
-                            break;
-                }
                 break;
             }
 
             raw.push_back(*byte);
         }
+        while ( needs_more(raw) );
 
-        read_buffer = filter.convert(raw);
+        read_buffer = convert(raw);
         if ( read_buffer.isEmpty() )
             return {};
 
@@ -537,7 +531,7 @@ void glaxnimate::ps::FilteredFile::unget_char(char c)
 void glaxnimate::ps::FilteredFile::put_char(char c)
 {
     write_buffer.push_back(c);
-    if ( write_buffer.size() == filter.input_size )
+    if ( !needs_more(write_buffer) )
     {
         filter_write(write_buffer);
         write_buffer.clear();
@@ -571,22 +565,27 @@ QIODevice *glaxnimate::ps::FilteredFile::get_device() const
 
 bool glaxnimate::ps::FilteredFile::operator==(const FilteredFile &o) const
 {
-    return inner == o.inner && filter.convert == o.filter.convert;
+    return inner == o.inner && options == o.options && filter_type_id() == o.filter_type_id();
 }
 
-QByteArray glaxnimate::ps::FilteredFile::hex_decode(const QByteArray &data)
+bool glaxnimate::ps::FilteredFile::skip(char ch) const
 {
-    return QByteArray::fromHex(data);
+    return std::isspace(ch) || ch == '\0';
 }
 
-QByteArray glaxnimate::ps::FilteredFile::hex_encode(const QByteArray &data)
+void glaxnimate::ps::FilteredFile::on_close()
 {
-    return data.toHex();
+
+}
+
+bool glaxnimate::ps::FilteredFile::marks_end(char)
+{
+    return false;
 }
 
 void glaxnimate::ps::FilteredFile::filter_write(const QByteArray &data)
 {
-    inner->write(filter.convert(data));
+    inner->write(convert(data));
 }
 
 glaxnimate::ps::File::File(QIODevice *device)
@@ -698,11 +697,6 @@ bool glaxnimate::ps::File::operator==(const File &o) const
     }
 
     return *static_cast<PhysicalFile*>(inner.get()) == *static_cast<PhysicalFile*>(o.inner.get());
-}
-
-glaxnimate::ps::File glaxnimate::ps::File::filtered(FilteredFile::FilterData filter)
-{
-    return File(std::make_shared<FilteredFile>(inner, filter));
 }
 
 QByteArray glaxnimate::ps::File::read_line()

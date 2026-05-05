@@ -5,6 +5,7 @@
  */
 
 #include "ps_interpreter.hpp"
+#include "ps_filters.hpp"
 
 #include <QBuffer>
 
@@ -1204,6 +1205,22 @@ std::pair<QPointF, QPointF> arct_impl(const ValueArray& args, Interpreter& inter
     return {t1, t2};
 }
 
+void make_filter(File file, const QByteArray& filter_name, ValueDict options, Interpreter& interpreter)
+{
+    if ( filter_name == "NullEncode" )
+        interpreter.stack().push(file);
+    else if ( filter_name == "ASCIIHexDecode" )
+        interpreter.stack().push(file.filtered<ASCIIHexDecode>(std::move(options)));
+    else if ( filter_name == "ASCIIHexEncode" )
+        interpreter.stack().push(file.filtered<ASCIIHexEncode>(std::move(options)));
+    else if ( filter_name == "ASCII85Decode" )
+        interpreter.stack().push(file.filtered<ASCII85Decode>(std::move(options)));
+    else if ( filter_name == "ASCII85Encode" )
+        interpreter.stack().push(file.filtered<ASCII85Encode>(std::move(options)));
+    else
+        interpreter.error(u"Unknown filter %1"_s.arg(filter_name));
+}
+
 } // namespace
 
 void CommandSet::populate_builtins(CommandSet& builtins)
@@ -2215,34 +2232,16 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             interpreter.stack().push(File(dev));
         }
     }});
+    builtins.def("filter", {Level::EPS1, {Value::File, Value::Dict, Value::String}, [](ValueArray args, Interpreter& interpreter){
+        File file = args[0].cast<File>();
+        auto filter_name = args[2].cast<String>().bytes();
+        make_filter(file, filter_name, args[1].cast<ValueDict>(), interpreter);
+
+    }});
     builtins.def("filter", {Level::EPS1, {Value::File, Value::String}, [](ValueArray args, Interpreter& interpreter){
         File file = args[0].cast<File>();
         auto filter_name = args[1].cast<String>().bytes();
-
-        if ( filter_name == "NullEncode" )
-            interpreter.stack().push(file);
-        else if ( filter_name == "ASCIIHexDecode" )
-            interpreter.stack().push(file.filtered({
-                &FilteredFile::hex_decode,
-                2, 1, '>', "", ""
-            }));
-        else if ( filter_name == "ASCIIHexEncode" )
-            interpreter.stack().push(file.filtered({
-                &FilteredFile::hex_encode,
-                1, 2, -1, "", ">"
-            }));
-        else if ( filter_name == "ASCII85Decode" )
-            interpreter.stack().push(file.filtered({
-                &Base85Decoder::decode,
-                5, 4, '~', ">", ""
-            }));
-        else if ( filter_name == "ASCII85Encode" )
-            interpreter.stack().push(file.filtered({
-                &Base85Encoder::encode,
-                4, 5, -1, "", "~>"
-            }));
-        else
-            interpreter.error(u"Unknown filter %1"_s.arg(filter_name));
+        make_filter(file, filter_name, {}, interpreter);
 
     }});
     builtins.def("closefile", {Level::EPS1, {Value::File}, [](ValueArray args, Interpreter& interpreter){
