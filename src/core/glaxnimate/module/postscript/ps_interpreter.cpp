@@ -12,6 +12,7 @@
 #include "glaxnimate/app_info.hpp"
 #include "glaxnimate/math/geom.hpp"
 #include "glaxnimate/math/math.hpp"
+#include "ps_image.hpp"
 #include "ps_lexer.hpp"
 
 using namespace glaxnimate::ps;
@@ -583,6 +584,11 @@ void Interpreter::close_file(File& file)
         on_close_file(file.get_device());
 }
 
+void Interpreter::draw_image(const ImageData &image)
+{
+    on_image(image, d->memory.gstate);
+}
+
 QIODevice *Interpreter::on_open_file(const QByteArray &, QIODeviceBase::OpenMode)
 {
     return nullptr;
@@ -988,40 +994,6 @@ void for_impl(const ValueArray& args, Interpreter& interpreter)
     }
 }
 
-bool to_float_array(const ValueArray& vals, std::vector<float>& out, bool allow_negative)
-{
-    out.reserve(vals.size());
-    for ( const auto& v : vals )
-    {
-        if ( v.type() == Value::Real || v.type() == Value::Integer )
-        {
-            auto d = v.cast<float>();
-            if ( allow_negative || d >= 0 )
-            {
-                out.push_back(d);
-                continue;
-            }
-        }
-
-        return false;
-    }
-
-    return true;
-}
-
-bool to_matrix(const ValueArray& vals, QTransform& out)
-{
-    if ( vals.size() != 6 )
-        return false;
-
-    std::vector<float> floats;
-    if ( !to_float_array(vals, floats, true) )
-        return false;
-
-    out = matrix_from_elements(floats);
-    return true;
-}
-
 /**
  * @pre vals.size() >= 6
  * @post arr is modified and pushed onto the stack
@@ -1221,6 +1193,8 @@ void make_filter(File file, const QByteArray& filter_name, ValueDict options, In
         interpreter.stack().push(file.filtered<LZWEncode>(std::move(options)));
     else if ( filter_name == "LZWDecode" )
         interpreter.stack().push(file.filtered<LZWDecode>(std::move(options)));
+    else if ( filter_name == "DCTDecode" )
+        interpreter.stack().push(file.filtered<DCTDecode>(std::move(options)));
     else
         interpreter.error(u"Unknown filter %1"_s.arg(filter_name));
 }
@@ -1599,6 +1573,8 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         {
             arr[arr.size() - 1 - i] = interpreter.stack().pop();
         }
+
+        interpreter.stack().push(arr);
     }});
     builtins.def("aload", {Level::EPS1, {Value::Array}, [](ValueArray args, Interpreter& interpreter){
         auto arr = args[0].cast<ValueArray>();
@@ -2566,10 +2542,10 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         current_color_impl(interpreter.memory().gstate.color_space.type(), interpreter);
     }});
     builtins.def("setgray", {Level::EPS1, {Arg::number()}, [](ValueArray args, Interpreter& interpreter){
-        set_color_impl(ColorSpaceType::DeviceGrey, args, interpreter);
+        set_color_impl(ColorSpaceType::DeviceGray, args, interpreter);
     }});
     builtins.def("currentgray", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
-        current_color_impl(ColorSpaceType::DeviceGrey, interpreter);
+        current_color_impl(ColorSpaceType::DeviceGray, interpreter);
     }});
     builtins.def("setrgbcolor", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         set_color_impl(ColorSpaceType::DeviceRGB, args, interpreter);
@@ -2578,7 +2554,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         current_color_impl(ColorSpaceType::DeviceRGB, interpreter);
     }});
     builtins.def("setcmykcolor", {Level::EPS1, {Arg::number(), Arg::number(), Arg::number(), Arg::number()}, [](ValueArray args, Interpreter& interpreter){
-        set_color_impl(ColorSpaceType::DeviceCYMK, args, interpreter);
+        set_color_impl(ColorSpaceType::DeviceCMYK, args, interpreter);
     }});
     builtins.def("currentcmykcolor", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         current_color_impl(ColorSpaceType::DeviceRGB, interpreter);
@@ -2918,6 +2894,37 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     }});
     builtins.def("shfill", {Level::EPS1, {Value::Dict}, [](ValueArray, Interpreter& interpreter){
         interpreter.fill(false);
+    }});
+    builtins.def("image", {Level::EPS1,
+    //      width           height          bits            matrix      data source
+        {Value::Integer, Value::Integer, Value::Integer, Value::Array, Arg::any()},
+        [](ValueArray args, Interpreter& interpreter)
+    {
+        auto image = ImageLoader::from_args(args, interpreter);
+        if ( !image )
+        {
+            interpreter.error(u"Invalid Image"_s);
+            return;
+        }
+        interpreter.draw_image(image->load());
+    }});
+    builtins.def("image", {Level::EPS2, {Value::Dict}, [](ValueArray args, Interpreter& interpreter){
+        auto image = ImageLoader::from_dict(args[0].cast<ValueDict>(), interpreter);
+        if ( !image )
+        {
+            interpreter.error(u"Invalid Image"_s);
+            return;
+        }
+        interpreter.draw_image(image->load());
+    }});
+    builtins.def("colorimage", {Level::EPS2, {Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+        auto image = ImageLoader::from_args_colorimage(args, interpreter);
+        if ( !image )
+        {
+            interpreter.error(u"Invalid Image"_s);
+            return;
+        }
+        interpreter.draw_image(image->load());
     }});
 }
 // Device setup

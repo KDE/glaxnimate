@@ -255,6 +255,8 @@ public:
     virtual void flush() = 0;
     virtual void reset() = 0;
     virtual void close() = 0;
+    virtual bool is_image_source() const { return false; }
+    virtual bool read_into_image(QImage&) { return false; }
 
     virtual std::optional<char> get_char() = 0;
     virtual void unget_char(char c) = 0;
@@ -262,8 +264,11 @@ public:
 
     virtual QByteArray read(int count) = 0;
     virtual void write(const QByteArray& data) = 0;
+    virtual QByteArray read_all();
 
     virtual QIODevice* get_device() const = 0;
+
+    virtual std::vector<std::uintptr_t> comparator() const { return {}; }
 };
 
 class PhysicalFile : public FileInterface
@@ -290,8 +295,7 @@ public:
     void put_char(char c) override;
     QByteArray read(int count) override;
     void write(const QByteArray &data) override;
-
-    bool operator==(const PhysicalFile& o) const;
+    std::vector<std::uintptr_t> comparator() const override;
 
 private:
     QIODevice* device_;
@@ -332,6 +336,9 @@ public:
     QByteArray read_line();
 
     FileInterface* inner_file();
+
+    bool is_image_source() const;
+    bool read_into_image(QImage&out);
 
 private:
     std::shared_ptr<FileInterface> inner;

@@ -227,6 +227,7 @@ public:
     void show_page(bool copy);
     QIODevice *open_file(const String& name, const String& mode);
     void close_file(File &file);
+    void draw_image(const ImageData& image);
 
 protected:
     virtual void on_print(const QString& text) = 0;
@@ -239,6 +240,7 @@ protected:
     virtual void on_show_page(bool copy) = 0;
     virtual QIODevice* on_open_file(const QByteArray& name, QIODevice::OpenMode mode);
     virtual void on_close_file(QIODevice* device);
+    virtual void on_image(const ImageData& image, const GraphicsState& gstate) = 0;
 
 private:
     void execute_command(const Value &name);

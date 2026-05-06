@@ -393,6 +393,11 @@ void glaxnimate::ps::PhysicalFile::write(const QByteArray &data)
     device_->write(data);
 }
 
+std::vector<uintptr_t> glaxnimate::ps::PhysicalFile::comparator() const
+{
+    return {std::uintptr_t(device_)};
+}
+
 QIODevice *glaxnimate::ps::PhysicalFile::device() const
 {
     return device_;
@@ -401,11 +406,6 @@ QIODevice *glaxnimate::ps::PhysicalFile::device() const
 QIODevice *glaxnimate::ps::PhysicalFile::get_device() const
 {
     return device_;
-}
-
-bool glaxnimate::ps::PhysicalFile::operator==(const PhysicalFile &o) const
-{
-    return device_ == o.device_;
 }
 
 glaxnimate::ps::File::File(QIODevice *device)
@@ -510,13 +510,10 @@ bool glaxnimate::ps::File::operator==(const File &o) const
 {
     if ( inner->is_filtered() != o.inner->is_filtered() )
         return false;
-
-    if  ( inner->is_filtered() )
-    {
-        return *static_cast<FilteredFile*>(inner.get()) == *static_cast<FilteredFile*>(o.inner.get());
-    }
-
-    return *static_cast<PhysicalFile*>(inner.get()) == *static_cast<PhysicalFile*>(o.inner.get());
+    auto comp = inner->comparator();
+    if ( comp.empty() )
+        return {};
+    return comp == o.inner->comparator();
 }
 
 QByteArray glaxnimate::ps::File::read_line()
@@ -546,6 +543,16 @@ QByteArray glaxnimate::ps::File::read_line()
     }
 
     return line;
+}
+
+bool glaxnimate::ps::File::is_image_source() const
+{
+    return inner->is_image_source();
+}
+
+bool glaxnimate::ps::File::read_into_image(QImage& out)
+{
+    return inner->read_into_image(out);
 }
 
 glaxnimate::ps::FileInterface *glaxnimate::ps::File::inner_file()
@@ -586,4 +593,14 @@ qint64 glaxnimate::ps::FileDevice::readData(char *data, qint64 maxlen)
 qint64 glaxnimate::ps::FileDevice::writeData(const char *, qint64)
 {
     return 0;
+}
+
+QByteArray glaxnimate::ps::FileInterface::read_all()
+{
+    QByteArray data;
+    while ( !eof() )
+    {
+        data += read(1024);
+    }
+    return data;
 }

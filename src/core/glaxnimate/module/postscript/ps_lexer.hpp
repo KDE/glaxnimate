@@ -424,8 +424,8 @@ private:
             if ( ch == '>' )
                 break;
 
-            if ( token_end(ch) )
-                break;
+            if ( std::isspace(ch) )
+                continue;
 
             if ( !std::isxdigit(ch) )
             {

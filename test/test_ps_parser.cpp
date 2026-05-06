@@ -57,6 +57,7 @@ public:
     QByteArray last_comment;
     GraphicsState last_fill;
     GraphicsState last_stroke;
+    ImageData last_image;
     std::map<QByteArray, QBuffer> files;
 
     std::vector<Value> stack_values()
@@ -114,6 +115,11 @@ protected:
         auto buf = &files[name];
         buf->open(mode);
         return buf;
+    }
+
+    void on_image(const ImageData &image, const GraphicsState &) override
+    {
+        last_image = image;
     }
 };
 
@@ -228,9 +234,10 @@ private Q_SLOTS:
 
     void test_lex_hex_string()
     {
-        StringLexer lexer("<48656c6c6f> <48656c7>");
+        StringLexer lexer("<48656c6c6f> <48656c7> <\n48 656\tc6c6f>");
         COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "Hello"_ba);
         COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "Help"_ba);
+        COMPARE_TOKEN(lexer.next_token(), Token::Literal, Value::String, "Hello"_ba);
         QCOMPARE(lex("<48656z7>").type, Token::Unrecoverable);
     }
 

@@ -7,6 +7,7 @@
 #include "glaxnimate/module/postscript/ps_loader.hpp"
 #include "glaxnimate/model/shapes/shapes/path.hpp"
 #include "glaxnimate/model/shapes/style/fill.hpp"
+#include "glaxnimate/model/shapes/composable/image.hpp"
 
 
 using namespace glaxnimate::ps;
@@ -112,6 +113,17 @@ void Loader::on_show_page(bool copy)
     {
         new_comp();
     }
+}
+
+void Loader::on_image(const ImageData &image, const GraphicsState &gstate)
+{
+    Q_UNUSED(gstate); // TODO transform
+    auto bitmap = std::make_unique<glaxnimate::model::Bitmap>(document);
+    bitmap->set_pixmap(image.image, "png");
+    auto asset = bitmap.get();
+    document->assets()->images->values.insert(std::move(bitmap));
+    auto shape = comp->shapes.create<model::Image>();
+    shape->image.set(asset);
 }
 
 QPointF Loader::convert(const QPointF &p) const

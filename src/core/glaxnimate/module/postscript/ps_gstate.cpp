@@ -6,6 +6,7 @@
 
 #include "ps_gstate.hpp"
 #include "glaxnimate/math/ellipse_solver.hpp"
+#include "ps_value.hpp"
 
 void glaxnimate::ps::GraphicsState::add_arc(const QPointF center, float radius, float angle_start, float angle_end)
 {
@@ -24,4 +25,38 @@ void glaxnimate::ps::GraphicsState::add_arc_radians(const QPointF center, float 
     else
         path.back().append(devicebez);
 
+}
+
+bool glaxnimate::ps::to_float_array(const ValueArray &vals, std::vector<float> &out, bool allow_negative)
+{
+    out.reserve(vals.size());
+    for ( const auto& v : vals )
+    {
+        if ( v.type() == Value::Real || v.type() == Value::Integer )
+        {
+            auto d = v.cast<float>();
+            if ( allow_negative || d >= 0 )
+            {
+                out.push_back(d);
+                continue;
+            }
+        }
+
+        return false;
+    }
+
+    return true;
+}
+
+bool glaxnimate::ps::to_matrix(const ValueArray &vals, QTransform &out)
+{
+    if ( vals.size() != 6 )
+        return false;
+
+    std::vector<float> floats;
+    if ( !to_float_array(vals, floats, true) )
+        return false;
+
+    out = matrix_from_elements(floats);
+    return true;
 }

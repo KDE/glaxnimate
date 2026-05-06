@@ -5,6 +5,7 @@
  */
 
 #include "ps_filters.hpp"
+#include <QImageReader>
 
 using namespace glaxnimate::ps;
 
@@ -99,11 +100,14 @@ std::optional<char> glaxnimate::ps::SimpleFileFilter::get_char()
         QByteArray raw;
         raw.reserve(input_size);
 
-        do
+        while ( raw.isEmpty() || needs_more(raw) )
         {
             auto byte = inner->get_char();
             if ( !byte )
+            {
+                end_reached = true;
                 break;
+            }
 
             if ( skip(*byte) )
                 continue;
@@ -116,7 +120,6 @@ std::optional<char> glaxnimate::ps::SimpleFileFilter::get_char()
 
             raw.push_back(*byte);
         }
-        while ( needs_more(raw) );
 
         read_buffer = convert(raw);
         if ( read_buffer.isEmpty() )
@@ -124,7 +127,6 @@ std::optional<char> glaxnimate::ps::SimpleFileFilter::get_char()
 
         std::reverse(read_buffer.begin(), read_buffer.end());
     }
-
 
     char ch = read_buffer.back();
     read_buffer.erase(read_buffer.end() - 1);
@@ -139,6 +141,11 @@ void glaxnimate::ps::SimpleFileFilter::put_char(char c)
         filter_write(write_buffer);
         write_buffer.clear();
     }
+}
+
+std::vector<uintptr_t> SimpleFileFilter::comparator() const
+{
+    return {std::uintptr_t(inner.get()), std::uintptr_t(convert_func)};
 }
 
 QByteArray glaxnimate::ps::FilteredFile::read(int count)
@@ -164,11 +171,6 @@ void glaxnimate::ps::FilteredFile::write(const QByteArray &data)
 QIODevice *glaxnimate::ps::FilteredFile::get_device() const
 {
     return inner->get_device();
-}
-
-bool glaxnimate::ps::FilteredFile::operator==(const FilteredFile &o) const
-{
-    return inner == o.inner && filter_type_id() == o.filter_type_id();
 }
 
 void glaxnimate::ps::FilteredFile::on_close()
@@ -351,4 +353,22 @@ void LZWDecode::reset_dict()
     next_code  = options.first_entry;
     first_code = true;
     prev.clear();
+}
+
+bool DCTDecode::read_into_image(QImage &out)
+{
+    FileDevice device(inner.get());
+    QImageReader reader(&device, "jpeg");
+    return reader.read(&out);
+}
+
+QByteArray DCTDecode::process_file(FileInterface *inner)
+{
+    QImage image;
+    FileDevice device(inner);
+    QImageReader reader(&device, "jpeg");
+    if ( reader.read(&image) )
+        return {};
+
+    return QByteArray((const char*)image.constBits(), image.sizeInBytes());
 }

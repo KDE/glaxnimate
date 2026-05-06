@@ -30,6 +30,7 @@ protected:
     void on_fill(const GraphicsState &gstate, bool evenodd) override;
     void on_stroke(const GraphicsState& gstate) override;
     void on_show_page(bool copy) override;
+    void on_image(const ImageData &image, const GraphicsState &gstate) override;
 
 private:
     QPointF convert(const QPointF& p) const;
@@ -47,6 +48,7 @@ private:
     bool has_error = false;
     bool last_comp_used = false;
     QString object_name;
+
 };
 
 } // namespace glaxnimate::ps

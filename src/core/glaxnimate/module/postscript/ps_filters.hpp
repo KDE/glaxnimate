@@ -34,11 +34,8 @@ public:
     QIODevice* get_device() const override;
     void unget_char(char c) override;
 
-    bool operator==(const FilteredFile& o) const;
-
 protected:
     virtual void on_close();
-    virtual std::uintptr_t filter_type_id() const = 0;
 
     std::shared_ptr<FileInterface> inner;
     bool end_reached = false;
@@ -65,6 +62,7 @@ public:
     void flush() override;
     std::optional<char> get_char() override;
     void put_char(char c) override;
+    std::vector<std::uintptr_t> comparator() const override;
 
 protected:
     virtual bool skip(char ch) const;
@@ -80,11 +78,6 @@ protected:
     QByteArray convert(const QByteArray& data) const
     {
         return convert_func(data);
-    }
-
-    std::uintptr_t filter_type_id() const override
-    {
-        return std::uintptr_t(convert_func);
     }
 
     FilterFunc convert_func;
@@ -230,7 +223,7 @@ struct LZWOptions
 class LZWEncode : public FilteredFile
 {
 public:
-    LZWEncode(std::shared_ptr<FileInterface> inner, ValueDict optdict)
+    LZWEncode(std::shared_ptr<FileInterface> inner, const ValueDict& optdict)
         : FilteredFile(std::move(inner)),
           options(LZWOptions::from_dict(optdict)),
           code_length(options.unit_length + 1),
@@ -242,9 +235,10 @@ public:
     void put_char(char ch) override;
 
 protected:
-    std::uintptr_t filter_type_id() const override
+    std::vector<std::uintptr_t> comparator() const override
     {
-        return -1;
+        static int marker;
+        return {std::uintptr_t(inner.get()), std::uintptr_t(&marker)};
     }
 
     void on_close() override
@@ -272,7 +266,7 @@ protected:
 class LZWDecode : public FilteredFile
 {
 public:
-    LZWDecode(std::shared_ptr<FileInterface> inner, ValueDict optdict)
+    LZWDecode(std::shared_ptr<FileInterface> inner, const ValueDict& optdict)
         : FilteredFile(std::move(inner)),
           options(LZWOptions::from_dict(optdict)),
           code_length(options.unit_length + 1),
@@ -286,9 +280,10 @@ public:
 protected:
     void fill_buffer();
 
-    std::uintptr_t filter_type_id() const override
+    std::vector<std::uintptr_t> comparator() const override
     {
-        return -2;
+        static int marker;
+        return {std::uintptr_t(inner.get()), std::uintptr_t(&marker)};
     }
 
     void on_close() override
@@ -305,6 +300,145 @@ protected:
     int bit_count = 0;
     bool first_code = true;
     QByteArray prev;
+};
+
+class GlobalFilter : public FileInterface
+{
+public:
+    GlobalFilter(std::shared_ptr<FileInterface> inner, const ValueDict&)
+        : inner(std::move(inner))
+    {}
+
+    bool is_open() const override
+    {
+        return inner->is_open();
+    }
+
+    bool eof() const override
+    {
+        return processed && pos >= data.size();
+    }
+
+    bool is_filtered() const override
+    {
+        return true;
+    }
+
+    bool is_seekable() const override
+    {
+        return true;
+    }
+
+    bool seek(int pos) override
+    {
+        this->pos = pos;
+        return true;
+    }
+
+    int tell() const override
+    {
+        return pos;
+    }
+
+    void flush() override
+    {
+        if ( writable() )
+            inner->write(process(data));
+    }
+
+    void reset() override
+    {
+        data = {};
+    }
+
+    void close() override
+    {
+        flush();
+        inner->close();
+    }
+
+    std::optional<char> get_char() override
+    {
+        processed_read_data();
+        if ( pos >= data.size() )
+            return {};
+        return data[pos++];
+    }
+
+    void unget_char(char) override
+    {
+        pos--;
+    }
+
+    void put_char(char c) override
+    {
+        data.push_back(c);
+    }
+
+    QByteArray read(int count) override
+    {
+        auto chunk = data.slice(pos, count);
+        pos += count;
+        return chunk;
+    }
+
+    void write(const QByteArray &data) override
+    {
+        this->data = data;
+    }
+
+    QByteArray read_all() override
+    {
+        return data;
+    }
+
+    QIODevice *get_device() const override
+    {
+        return inner->get_device();
+    }
+
+protected:
+    virtual QByteArray process(const QByteArray& source) = 0;
+    virtual QByteArray process_file(FileInterface* inner)
+    {
+        return process(inner->read_all());
+    }
+
+    const QByteArray& processed_read_data()
+    {
+        if ( !processed )
+        {
+            processed = true;
+            data = process_file(inner.get());
+        }
+
+        return data;
+    }
+
+    QByteArray data;
+    int pos = 0;
+    bool processed = false;
+    std::shared_ptr<FileInterface> inner;
+};
+
+class DCTDecode : public GlobalFilter
+{
+public:
+    DCTDecode(std::shared_ptr<FileInterface> inner, const ValueDict& opts)
+        : GlobalFilter(std::move(inner), opts)
+    {}
+
+    bool readable() const override { return true; }
+    bool writable() const override { return false; }
+
+    bool is_image_source() const override { return true; }
+    bool read_into_image(QImage& out)  override;
+
+protected:
+    void extracted() const;
+    QByteArray process(const QByteArray &) override { return {}; }
+    QByteArray process_file(FileInterface* inner) override;
+
 };
 
 } // namespace glaxnimate::ps

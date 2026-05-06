@@ -19,9 +19,9 @@ Q_NAMESPACE
 enum class ColorSpaceType
 {
     // Level 2
-    DeviceGrey,
+    DeviceGray,
     DeviceRGB,
-    DeviceCYMK,
+    DeviceCMYK,
     /*CIEBasedABC,
     CIEBasedA,
     Pattern,
@@ -68,11 +68,11 @@ public:
     {
         switch ( t )
         {
-            case glaxnimate::ps::ColorSpaceType::DeviceGrey: return 1;
+            case glaxnimate::ps::ColorSpaceType::DeviceGray: return 1;
             case glaxnimate::ps::ColorSpaceType::CustomHSV:
             case glaxnimate::ps::ColorSpaceType::DeviceRGB:
                 return 3;
-            case glaxnimate::ps::ColorSpaceType::DeviceCYMK: return 4;
+            case glaxnimate::ps::ColorSpaceType::DeviceCMYK: return 4;
         }
         return 0;
     }
@@ -84,13 +84,13 @@ public:
 
         switch ( type_ )
         {
-            case ColorSpaceType::DeviceGrey:
+            case ColorSpaceType::DeviceGray:
                 *out = QColor::fromRgbF(comps[0], comps[0], comps[0]);
                 return true;
             case ColorSpaceType::DeviceRGB:
                 *out = QColor::fromRgbF(comps[0], comps[1], comps[2]);
                 return true;
-            case ColorSpaceType::DeviceCYMK:
+            case ColorSpaceType::DeviceCMYK:
                 *out = QColor::fromCmykF(comps[0], comps[1], comps[2], comps[3]);
                 return true;
             case ColorSpaceType::CustomHSV:
@@ -105,11 +105,11 @@ public:
     {
         switch ( type_ )
         {
-            case ColorSpaceType::DeviceGrey:
+            case ColorSpaceType::DeviceGray:
                 return stabilize_components({col.greenF()});
             case ColorSpaceType::DeviceRGB:
                 return stabilize_components({col.redF(), col.greenF(), col.blueF()});
-            case ColorSpaceType::DeviceCYMK:
+            case ColorSpaceType::DeviceCMYK:
                 return stabilize_components({col.cyanF(), col.yellowF(), col.magentaF(), col.blackF()});
             case ColorSpaceType::CustomHSV:
                 return stabilize_components({col.hueF(), col.saturationF(), col.valueF()});
@@ -133,7 +133,7 @@ private:
         return vec;
     }
 
-    ColorSpaceType type_ = ColorSpaceType::DeviceGrey;
+    ColorSpaceType type_ = ColorSpaceType::DeviceGray;
     int component_count_ = 1;
 };
 
@@ -155,6 +155,18 @@ inline QTransform matrix_from_elements(const std::vector<float>& elems)
     return QTransform(elems[0], elems[1], elems[2], elems[3], elems[4], elems[5]);
 }
 
+class ValueArray;
+bool to_float_array(const ValueArray& vals, std::vector<float>& out, bool allow_negative);
+
+bool to_matrix(const ValueArray& vals, QTransform& out);
+
+struct ImageData
+{
+    QImage image;
+    QTransform matrix;
+    bool interpolate = true;
+};
+
 struct GraphicsState
 {
     QTransform transform;
@@ -162,7 +174,7 @@ struct GraphicsState
     math::bezier::MultiBezier path;
     math::bezier::MultiBezier clip;
     std::deque<math::bezier::MultiBezier> clip_stack;
-    ColorSpace color_space = ColorSpaceType::DeviceGrey;
+    ColorSpace color_space = ColorSpaceType::DeviceGray;
     QColor color = Qt::black;
     // todo font
     float line_width = 1;
