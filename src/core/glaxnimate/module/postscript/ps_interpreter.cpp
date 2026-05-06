@@ -2917,7 +2917,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         }
         interpreter.draw_image(image->load());
     }});
-    builtins.def("colorimage", {Level::EPS2, {Value::Integer, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
+    builtins.def("colorimage", {Level::EPS2, {Value::Boolean, Value::Integer}, [](ValueArray args, Interpreter& interpreter){
         auto image = ImageLoader::from_args_colorimage(args, interpreter);
         if ( !image )
         {

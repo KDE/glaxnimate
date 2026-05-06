@@ -1322,7 +1322,6 @@ private Q_SLOTS:
         COMPARE_PARSE("currentfile /ASCII85Decode filter 100 string readstring 6=FqHz3&L~>", "Base\0\0\0\085"_ba, false);
     }
 
-
     void test_file_filter_lzw()
     {
         TestInterpreter interp;
@@ -1369,6 +1368,252 @@ private Q_SLOTS:
         QCOMPARE(interp.stack_values(), stack_vals("80120ca6c361bcae6f391b0c9010>Foo"));
     }
 
+    QByteArray hex(quint32 val, int size = 4)
+    {
+        QByteArray hex(size, 0);
+        for ( int i = 0; i < size; i++ )
+        {
+            hex[size - i - 1] = val & 0xff;
+            val >>= 8;
+        }
+
+        return hex.toHex();
+    }
+
+    void test_image_gray_dict()
+    {
+        TestInterpreter interp;
+        interp.exec_string(R"(
+            /DeviceGray setcolorspace
+            /data <
+            00 44 88 cc ff
+            00 ff 88 00 00
+            00 ff 88 ff 00
+            00 00 88 ff 00
+            > def
+
+            [ 500 0 0 400 0 0 ] concat
+            <<
+                /ImageType 1
+                /Width 5
+                /Height 4
+                /Interpolate false
+                /BitsPerComponent 8
+                /Decode [ 0 1 ]
+                /DataSource data
+                /ImageMatrix [ 5 0 0 -4 0 4 ]
+            >> image
+        )");
+
+
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals());
+        QCOMPARE(interp.last_image.image.width(), 5);
+        QCOMPARE(interp.last_image.image.height(), 4);
+        QCOMPARE(hex(interp.last_image.image.pixel(0, 0)), hex(0xff000000));
+        QCOMPARE(hex(interp.last_image.image.pixel(1, 0)), hex(0xff444444));
+        QCOMPARE(hex(interp.last_image.image.pixel(2, 0)), hex(0xff888888));
+        QCOMPARE(hex(interp.last_image.image.pixel(3, 0)), hex(0xffcccccc));
+        QCOMPARE(hex(interp.last_image.image.pixel(4, 0)), hex(0xffffffff));
+
+        QCOMPARE(hex(interp.last_image.image.pixel(3, 2)), hex(0xffffffff));
+    }
+
+
+    void test_image_gray_args()
+    {
+        TestInterpreter interp;
+        interp.exec_string(R"(
+            /data <
+            00 44 88 cc ff
+            00 ff 88 00 00
+            00 ff 88 ff 00
+            00 00 88 ff 00
+            > def
+
+            [ 500 0 0 400 0 0 ] concat
+            5 4 8 [ 5 0 0 -4 0 4 ] data image
+        )");
+
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals());
+        QCOMPARE(interp.last_image.image.width(), 5);
+        QCOMPARE(interp.last_image.image.height(), 4);
+        QCOMPARE(hex(interp.last_image.image.pixel(0, 0)), hex(0xff000000));
+        QCOMPARE(hex(interp.last_image.image.pixel(1, 0)), hex(0xff444444));
+        QCOMPARE(hex(interp.last_image.image.pixel(2, 0)), hex(0xff888888));
+        QCOMPARE(hex(interp.last_image.image.pixel(3, 0)), hex(0xffcccccc));
+        QCOMPARE(hex(interp.last_image.image.pixel(4, 0)), hex(0xffffffff));
+
+        QCOMPARE(hex(interp.last_image.image.pixel(3, 2)), hex(0xffffffff));
+    }
+
+    void test_image_rgb_dict()
+    {
+        TestInterpreter interp;
+        interp.exec_string(R"(
+
+            /DeviceRGB setcolorspace
+            /data <
+            000000 440000 880000 cc0000 ff0000
+            000000 004400 008800 00cc00 00ff00
+            000000 000044 000088 0000cc 0000ff
+            000000 888800 880088 008888 ffffff
+            > def
+
+            [ 500 0 0 400 0 0 ] concat
+            <<
+                /ImageType 1
+                /Width 5
+                /Height 4
+                /Interpolate false
+                /BitsPerComponent 8
+                /Decode [ 0 1 0 1 0 1]
+                /DataSource data
+                /ImageMatrix [ 5 0 0 -4 0 4 ]
+            >> image
+        )");
+
+
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals());
+        QCOMPARE(interp.last_image.image.width(), 5);
+        QCOMPARE(interp.last_image.image.height(), 4);
+
+        QCOMPARE(hex(interp.last_image.image.pixel(0, 0)), hex(0xff000000));
+        QCOMPARE(hex(interp.last_image.image.pixel(1, 0)), hex(0xff440000));
+        QCOMPARE(hex(interp.last_image.image.pixel(2, 0)), hex(0xff880000));
+        QCOMPARE(hex(interp.last_image.image.pixel(3, 0)), hex(0xffcc0000));
+        QCOMPARE(hex(interp.last_image.image.pixel(4, 0)), hex(0xffff0000));
+
+        QCOMPARE(hex(interp.last_image.image.pixel(0, 1)), hex(0xff000000));
+        QCOMPARE(hex(interp.last_image.image.pixel(1, 1)), hex(0xff004400));
+        QCOMPARE(hex(interp.last_image.image.pixel(2, 1)), hex(0xff008800));
+        QCOMPARE(hex(interp.last_image.image.pixel(3, 1)), hex(0xff00cc00));
+        QCOMPARE(hex(interp.last_image.image.pixel(4, 1)), hex(0xff00ff00));
+
+        QCOMPARE(hex(interp.last_image.image.pixel(0, 2)), hex(0xff000000));
+        QCOMPARE(hex(interp.last_image.image.pixel(1, 2)), hex(0xff000044));
+        QCOMPARE(hex(interp.last_image.image.pixel(2, 2)), hex(0xff000088));
+        QCOMPARE(hex(interp.last_image.image.pixel(3, 2)), hex(0xff0000cc));
+        QCOMPARE(hex(interp.last_image.image.pixel(4, 2)), hex(0xff0000ff));
+
+        QCOMPARE(hex(interp.last_image.image.pixel(0, 3)), hex(0xff000000));
+        QCOMPARE(hex(interp.last_image.image.pixel(1, 3)), hex(0xff888800));
+        QCOMPARE(hex(interp.last_image.image.pixel(2, 3)), hex(0xff880088));
+        QCOMPARE(hex(interp.last_image.image.pixel(3, 3)), hex(0xff008888));
+        QCOMPARE(hex(interp.last_image.image.pixel(4, 3)), hex(0xffffffff));
+    }
+
+    void test_colorimage_rgb_single()
+    {
+        TestInterpreter interp;
+        interp.exec_string(R"(
+
+            /data <
+            000000 440000 880000 cc0000 ff0000
+            000000 004400 008800 00cc00 00ff00
+            000000 000044 000088 0000cc 0000ff
+            000000 888800 880088 008888 ffffff
+            > def
+
+            [ 500 0 0 400 0 0 ] concat
+            5 4 8 [ 5 0 0 -4 0 4 ] data false 3 colorimage
+        )");
+
+
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals());
+        QCOMPARE(interp.last_image.image.width(), 5);
+        QCOMPARE(interp.last_image.image.height(), 4);
+
+        QCOMPARE(hex(interp.last_image.image.pixel(0, 0)), hex(0xff000000));
+        QCOMPARE(hex(interp.last_image.image.pixel(1, 0)), hex(0xff440000));
+        QCOMPARE(hex(interp.last_image.image.pixel(2, 0)), hex(0xff880000));
+        QCOMPARE(hex(interp.last_image.image.pixel(3, 0)), hex(0xffcc0000));
+        QCOMPARE(hex(interp.last_image.image.pixel(4, 0)), hex(0xffff0000));
+
+        QCOMPARE(hex(interp.last_image.image.pixel(0, 1)), hex(0xff000000));
+        QCOMPARE(hex(interp.last_image.image.pixel(1, 1)), hex(0xff004400));
+        QCOMPARE(hex(interp.last_image.image.pixel(2, 1)), hex(0xff008800));
+        QCOMPARE(hex(interp.last_image.image.pixel(3, 1)), hex(0xff00cc00));
+        QCOMPARE(hex(interp.last_image.image.pixel(4, 1)), hex(0xff00ff00));
+
+        QCOMPARE(hex(interp.last_image.image.pixel(0, 2)), hex(0xff000000));
+        QCOMPARE(hex(interp.last_image.image.pixel(1, 2)), hex(0xff000044));
+        QCOMPARE(hex(interp.last_image.image.pixel(2, 2)), hex(0xff000088));
+        QCOMPARE(hex(interp.last_image.image.pixel(3, 2)), hex(0xff0000cc));
+        QCOMPARE(hex(interp.last_image.image.pixel(4, 2)), hex(0xff0000ff));
+
+        QCOMPARE(hex(interp.last_image.image.pixel(0, 3)), hex(0xff000000));
+        QCOMPARE(hex(interp.last_image.image.pixel(1, 3)), hex(0xff888800));
+        QCOMPARE(hex(interp.last_image.image.pixel(2, 3)), hex(0xff880088));
+        QCOMPARE(hex(interp.last_image.image.pixel(3, 3)), hex(0xff008888));
+        QCOMPARE(hex(interp.last_image.image.pixel(4, 3)), hex(0xffffffff));
+
+    }
+
+    void test_colorimage_rgb_multi()
+    {
+        TestInterpreter interp;
+        interp.exec_string(R"(
+
+            /data_r <
+            00 44 88 cc ff
+            00 00 00 00 00
+            00 00 00 00 00
+            00 88 88 00 ff
+            > def
+
+            /data_g <
+            00 00 00 00 00
+            00 44 88 cc ff
+            00 00 00 00 00
+            00 88 00 88 ff
+            > def
+
+            /data_b <
+            00 00 00 00 00
+            00 00 00 00 00
+            00 44 88 cc ff
+            00 00 88 88 ff
+            > def
+
+            [ 500 0 0 400 0 0 ] concat
+            5 4 8 [ 5 0 0 -4 0 4 ] data_r data_g data_b true 3 colorimage
+        )");
+
+
+        QCOMPARE(interp.last_error, QString());
+        QCOMPARE(interp.stack_values(), stack_vals());
+        QCOMPARE(interp.last_image.image.width(), 5);
+        QCOMPARE(interp.last_image.image.height(), 4);
+
+        QCOMPARE(hex(interp.last_image.image.pixel(0, 0)), hex(0xff000000));
+        QCOMPARE(hex(interp.last_image.image.pixel(1, 0)), hex(0xff440000));
+        QCOMPARE(hex(interp.last_image.image.pixel(2, 0)), hex(0xff880000));
+        QCOMPARE(hex(interp.last_image.image.pixel(3, 0)), hex(0xffcc0000));
+        QCOMPARE(hex(interp.last_image.image.pixel(4, 0)), hex(0xffff0000));
+
+        QCOMPARE(hex(interp.last_image.image.pixel(0, 1)), hex(0xff000000));
+        QCOMPARE(hex(interp.last_image.image.pixel(1, 1)), hex(0xff004400));
+        QCOMPARE(hex(interp.last_image.image.pixel(2, 1)), hex(0xff008800));
+        QCOMPARE(hex(interp.last_image.image.pixel(3, 1)), hex(0xff00cc00));
+        QCOMPARE(hex(interp.last_image.image.pixel(4, 1)), hex(0xff00ff00));
+
+        QCOMPARE(hex(interp.last_image.image.pixel(0, 2)), hex(0xff000000));
+        QCOMPARE(hex(interp.last_image.image.pixel(1, 2)), hex(0xff000044));
+        QCOMPARE(hex(interp.last_image.image.pixel(2, 2)), hex(0xff000088));
+        QCOMPARE(hex(interp.last_image.image.pixel(3, 2)), hex(0xff0000cc));
+        QCOMPARE(hex(interp.last_image.image.pixel(4, 2)), hex(0xff0000ff));
+
+        QCOMPARE(hex(interp.last_image.image.pixel(0, 3)), hex(0xff000000));
+        QCOMPARE(hex(interp.last_image.image.pixel(1, 3)), hex(0xff888800));
+        QCOMPARE(hex(interp.last_image.image.pixel(2, 3)), hex(0xff880088));
+        QCOMPARE(hex(interp.last_image.image.pixel(3, 3)), hex(0xff008888));
+        QCOMPARE(hex(interp.last_image.image.pixel(4, 3)), hex(0xffffffff));
+
+    }
 };
 
 QTEST_GUILESS_MAIN(TestCase)
