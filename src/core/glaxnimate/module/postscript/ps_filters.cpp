@@ -75,9 +75,13 @@ void glaxnimate::ps::FilteredFile::reset()
 
 void glaxnimate::ps::FilteredFile::close()
 {
-    flush();
-    on_close();
-    inner->close();
+    if ( is_open() )
+    {
+        flush();
+        on_close();
+        inner->close();
+        end_reached = true;
+    }
 }
 
 void SimpleFileFilter::flush()
@@ -288,58 +292,103 @@ std::optional<char> LZWDecode::get_char()
 
 }
 
+
+quint16 LZWDecode::next_code()
+{
+    while ( bit_count < code_length )
+    {
+        auto ch = inner->get_char();
+        if ( !ch )
+            return options.eod_marker;
+
+        if ( options.low_bit_first )
+        {
+            accum |= quint32(*ch) << bit_count;
+        }
+        else
+        {
+            accum = (accum << 8) | quint8(*ch);
+        }
+        bit_count += 8;
+    }
+
+    quint16 code;
+    quint16 mask = (1u << code_length) - 1;
+    if ( options.low_bit_first )
+    {
+        code = accum & mask;
+        accum >>= code_length;
+    }
+    else
+    {
+        code = (accum >> (bit_count - code_length)) & mask;
+    }
+
+    bit_count -= code_length;
+    return code;
+}
+
 void LZWDecode::fill_buffer()
 {
     if ( dict.empty() )
         reset_dict();
 
+
     while ( read_buffer.isEmpty() )
     {
-        auto ch = inner->get_char();
-        if ( !ch )
-            return;
+        quint16 code = next_code();
 
-        accum = (accum << 8) | quint8(*ch);
-        bit_count += 8;
-
-        while ( bit_count >= code_length )
+        if ( code == options.eod_marker )
         {
-            bit_count -= code_length;
-            quint16 code = quint16((accum >> bit_count) & ((1u << code_length) - 1));
+            end_reached = true;
+            break;
+        }
 
+        if ( code == options.clear_table_marker )
+        {
+            reset_dict();
+            first_code = true;
+            continue;
+        }
 
-            if ( code == options.clear_table_marker )
-            {
-                reset_dict();
-                break;
-            }
-
-            if ( code == options.eod_marker )
-            {
-                end_reached = true;
-                return;
-            }
-
-            QByteArray entry;
-            if ( code < next_code )
-                entry = dict[code];
-            else if ( !first_code && code == next_code )
-                entry = prev + prev[0];
-            else
-                break; // invalid code
-
-            read_buffer = entry;
-
-            if ( !first_code && next_code < options.max_code )
-            {
-                dict.push_back(prev + entry[0]);
-                next_code++;
-                if ( next_code >= quint16(1u << code_length) - options.early_change && code_length < options.max_bits )
-                    code_length++;
-            }
-
-            prev = entry;
+        if ( first_code )
+        {
+            prev = dict[code];
+            read_buffer += prev;
             first_code = false;
+            continue;
+        }
+
+        QByteArray entry;
+        if ( code < dict.size() )
+        {
+            entry = dict[code];
+        }
+        else if ( code == dict.size() )
+        {
+            entry = prev + prev[0];
+        }
+        else
+        {
+            // invalid code
+            end_reached = true;
+            break;
+        }
+
+        read_buffer += entry;
+
+        if ( dict.size() < LZWOptions::max_code )
+        {
+            dict.push_back(prev + entry[0]);
+        }
+
+        prev = entry;
+
+        quint16 threshold = (1u << code_length) - options.early_change;
+
+        if ( dict.size() >= threshold && code_length < LZWOptions::max_bits )
+        {
+            code_length++;
         }
     }
 }
@@ -350,7 +399,6 @@ void LZWDecode::reset_dict()
     for ( int i = 0; i < 256; i++ )
         dict[i] = QByteArray(1, char(i));
     code_length = options.unit_length + 1;
-    next_code  = options.first_entry;
     first_code = true;
     prev.clear();
 }

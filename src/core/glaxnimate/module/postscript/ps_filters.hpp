@@ -269,8 +269,7 @@ public:
     LZWDecode(std::shared_ptr<FileInterface> inner, const ValueDict& optdict)
         : FilteredFile(std::move(inner)),
           options(LZWOptions::from_dict(optdict)),
-          code_length(options.unit_length + 1),
-          next_code(options.first_entry)
+          code_length(options.unit_length + 1)
     {}
 
     std::optional<char> get_char() override;
@@ -278,6 +277,7 @@ public:
     void put_char(char) override {}
 
 protected:
+    quint16 next_code();
     void fill_buffer();
 
     std::vector<std::uintptr_t> comparator() const override
@@ -294,7 +294,6 @@ protected:
 
     LZWOptions options;
     quint16 code_length;
-    quint16 next_code;
     std::vector<QByteArray> dict;
     quint32 accum = 0;
     int bit_count = 0;
