@@ -120,8 +120,7 @@ private:
 template<class Reg>
 void register_top_level(const typename Reg::module& model)
 {
-    // TODO define Document, Object, DocumentNode, Composition
-    register_from_meta<Reg, model::VisualNode, model::DocumentNode>(model);
+    // TODO define Document, Object, DocumentNode, VisualNode, Composition
     register_from_meta<Reg, model::AnimationContainer, model::Object>(model);
     register_from_meta<Reg, model::StretchableTime, model::Object>(model);
     register_from_meta<Reg, model::Transform, model::Object>(model);

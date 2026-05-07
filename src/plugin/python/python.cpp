@@ -264,6 +264,9 @@ void register_py_module(py::module& glaxnimate_module)
     register_from_meta<Reg, model::DocumentNode, model::Object>(model)
         .def_property_readonly("users", &model::DocumentNode::users, "List of properties pointing to this object")
     ;
+    register_from_meta<Reg, model::VisualNode, model::DocumentNode>(model)
+        .def("local_bounding_rect", &model::VisualNode::local_bounding_rect, "Bounding rect in local coordinates", py::arg("frame"))
+    ;
 
     auto document = register_from_meta<Reg, model::Document, QObject>(model)
         .def(py::init<QString>())

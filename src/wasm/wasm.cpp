@@ -309,6 +309,9 @@ EMSCRIPTEN_BINDINGS(glaxnimate_wasm)
         .property("grouped_animations", &model::Object::grouped_animations_ptr, emscripten::return_value_policy::reference())
     ;
     register_from_meta<Reg, model::DocumentNode, model::Object>(model);
+    register_from_meta<Reg, model::VisualNode, model::DocumentNode>(model)
+        .function("local_bounding_rect", &model::VisualNode::local_bounding_rect)
+    ;
     register_top_level<Reg>(model);
 
 
