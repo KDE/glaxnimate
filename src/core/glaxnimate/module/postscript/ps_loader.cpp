@@ -117,13 +117,22 @@ void Loader::on_show_page(bool copy)
 
 void Loader::on_image(const ImageData &image, const GraphicsState &gstate)
 {
-    Q_UNUSED(gstate); // TODO transform
+    use_page();
+
     auto bitmap = std::make_unique<glaxnimate::model::Bitmap>(document);
     bitmap->set_pixmap(image.image, "png");
     auto asset = bitmap.get();
     document->assets()->images->values.insert(std::move(bitmap));
     auto shape = comp->shapes.create<model::Image>();
     shape->image.set(asset);
+
+    // postscript coordinates
+    // TODO apply to the whole comp instead of converting coords?
+    QTransform device_tf;
+    device_tf.scale(1, -1);
+    device_tf.translate(0, -comp->height.get());
+
+    shape->transform->set_transform_matrix(image.matrix.inverted() * gstate.transform * device_tf);
 }
 
 QPointF Loader::convert(const QPointF &p) const
