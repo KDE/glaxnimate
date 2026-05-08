@@ -235,6 +235,11 @@ public:
 
     QByteArray hash_key() const { return "DICT_KEY " + QByteArray::number(reinterpret_cast<std::uintptr_t>(data.get())); }
 
+    /**
+     * @brief Copies all values into a new dict, that does not share references to this one
+     */
+    ValueDict shallow_copy() const;
+
 private:
     std::shared_ptr<container> data;
 };

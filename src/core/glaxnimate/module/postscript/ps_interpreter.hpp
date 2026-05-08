@@ -130,6 +130,8 @@ struct ExecutionMemory
     GraphicsState gstate;
     std::deque<GraphicsState> gstate_stack;
 
+    std::map<QByteArray, ValueDict> fonts;
+
     ValueDict* current_dict()
     {
         if ( dict_stack.empty() )
@@ -228,6 +230,7 @@ public:
     QIODevice *open_file(const String& name, const String& mode);
     void close_file(File &file);
     void draw_image(const ImageData& image);
+    ValueDict find_font(const QByteArray& name);
 
 protected:
     virtual void on_print(const QString& text) = 0;
@@ -241,6 +244,7 @@ protected:
     virtual QIODevice* on_open_file(const QByteArray& name, QIODevice::OpenMode mode);
     virtual void on_close_file(QIODevice* device);
     virtual void on_image(const ImageData& image, const GraphicsState& gstate) = 0;
+    virtual ValueDict on_find_font(const QByteArray& name);
 
 private:
     void execute_command(const Value &name);

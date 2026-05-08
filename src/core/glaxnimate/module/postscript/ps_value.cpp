@@ -281,6 +281,13 @@ bool glaxnimate::ps::ValueDict::shallow_equal(const ValueDict &oth) const
     return data == oth.data;
 }
 
+glaxnimate::ps::ValueDict glaxnimate::ps::ValueDict::shallow_copy() const
+{
+    ValueDict copy;
+    *copy.data = *data;
+    return copy;
+}
+
 QString glaxnimate::ps::Value::to_string() const
 {
     switch ( type_ )

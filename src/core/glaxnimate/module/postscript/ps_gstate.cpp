@@ -60,3 +60,25 @@ bool glaxnimate::ps::to_matrix(const ValueArray &vals, QTransform &out)
     out = matrix_from_elements(floats);
     return true;
 }
+
+QTransform glaxnimate::ps::to_matrix(const ValueArray &vals)
+{
+    QTransform tf;
+    to_matrix(vals, tf);
+    return tf;
+}
+
+glaxnimate::ps::ValueArray glaxnimate::ps::matrix_to_array(const QTransform &tf)
+{
+    ValueArray out;
+    matrix_to_array(tf, out);
+    return out;
+
+}
+
+void glaxnimate::ps::matrix_to_array(const QTransform &tf, ValueArray &arr)
+{
+    auto elems = matrix_elements(tf);
+    for ( int i = 0; i < int(elems.size()); i++ )
+        arr[i] = elems[i];
+}

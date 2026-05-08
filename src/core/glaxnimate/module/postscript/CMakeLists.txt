@@ -11,6 +11,7 @@ set(SOURCES
     base85.cpp
     ps_filters.cpp
     ps_image.cpp
+    ps_font.cpp
 )
 
 add_library(GlaxnimatePostScript OBJECT ${SOURCES})

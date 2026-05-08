@@ -11,6 +11,7 @@
 #include <QMetaEnum>
 #include "glaxnimate/math/bezier/bezier.hpp"
 #include "glaxnimate/model/shapes/style/stroke.hpp"
+#include "ps_value.hpp"
 
 namespace glaxnimate::ps {
 
@@ -155,10 +156,13 @@ inline QTransform matrix_from_elements(const std::vector<float>& elems)
     return QTransform(elems[0], elems[1], elems[2], elems[3], elems[4], elems[5]);
 }
 
-class ValueArray;
 bool to_float_array(const ValueArray& vals, std::vector<float>& out, bool allow_negative);
 
 bool to_matrix(const ValueArray& vals, QTransform& out);
+QTransform to_matrix(const ValueArray& vals);
+ValueArray matrix_to_array(const QTransform& tf);
+void matrix_to_array(const QTransform& tf, ValueArray& out);
+
 
 struct ImageData
 {
@@ -176,13 +180,13 @@ struct GraphicsState
     std::deque<math::bezier::MultiBezier> clip_stack;
     ColorSpace color_space = ColorSpaceType::DeviceGray;
     QColor color = Qt::black;
-    // todo font
     float line_width = 1;
     model::Stroke::Cap line_cap = model::Stroke::ButtCap;
     model::Stroke::Join line_join = model::Stroke::MiterJoin;
     float miter_limit = 10;
     std::vector<float> dash_pattern;
     float dash_offset = 0;
+    ValueDict font;
 
     // Device dependent
     float flatness = 10;

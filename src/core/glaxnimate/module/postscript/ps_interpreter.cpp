@@ -12,6 +12,7 @@
 #include "glaxnimate/app_info.hpp"
 #include "glaxnimate/math/geom.hpp"
 #include "glaxnimate/math/math.hpp"
+#include "ps_font.hpp"
 #include "ps_image.hpp"
 #include "ps_lexer.hpp"
 
@@ -589,6 +590,15 @@ void Interpreter::draw_image(const ImageData &image)
     on_image(image, d->memory.gstate);
 }
 
+ValueDict Interpreter::find_font(const QByteArray &name)
+{
+    auto it = d->memory.fonts.find(name);
+    if ( it != d->memory.fonts.end() )
+        return it->second;
+    auto val = on_find_font(name);
+    return d->memory.fonts.emplace(name, std::move(val)).first->second;
+}
+
 QIODevice *Interpreter::on_open_file(const QByteArray &, QIODeviceBase::OpenMode)
 {
     return nullptr;
@@ -598,6 +608,12 @@ void Interpreter::on_close_file(QIODevice *device)
 {
     if ( device && device->isOpen() )
         device->close();
+}
+
+
+ValueDict Interpreter::on_find_font(const QByteArray &name)
+{
+    return font_from_database(name);
 }
 
 
@@ -1000,10 +1016,7 @@ void for_impl(const ValueArray& args, Interpreter& interpreter)
  */
 void set_matrix(ValueArray& arr, const QTransform& tf, Interpreter& interpreter)
 {
-    auto elems = matrix_elements(tf);
-    for ( int i = 0; i < int(elems.size()); i++ )
-        arr[i] = elems[i];
-
+    matrix_to_array(tf, arr);
     interpreter.stack().push(arr);
 }
 
@@ -2944,7 +2957,84 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("nulldevice", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.memory().gstate.null_device = true;
     }});
+}
+// Text
+{
+    builtins.def("definefont", {Level::EPS1, {Value::String, Value::Dict}, [](ValueArray args, Interpreter& interpreter){
+        auto font = args[1].cast<ValueDict>();
+        if ( !is_font(font) )
+        {
+            interpreter.error(u"Not a font"_s);
+            return;
+        }
+        interpreter.memory().fonts.emplace(args[0].cast<String>().bytes(), font);
+    }});
+    builtins.def("findfont", {Level::EPS1, {Value::String}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.stack().push(interpreter.find_font(args[0].cast<String>().bytes()));
+    }});
+    builtins.def("undefinefont", {Level::EPS1, {Value::String}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.memory().fonts.erase(args[0].cast<String>().bytes());
+    }});
+    builtins.def("scalefont", {Level::EPS1, {Value::Dict, Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        auto font = args[0].cast<ValueDict>();
+        if ( !is_font(font) )
+        {
+            interpreter.error(u"Not a font"_s);
+            return;
+        }
+        auto scale = args[1].cast<float>();
 
+        interpreter.stack().push(scale_font(font, scale));
+    }});
+    builtins.def("makefont", {Level::EPS1, {Value::Dict, Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        auto font = args[0].cast<ValueDict>();
+        if ( !is_font(font) )
+        {
+            interpreter.error(u"Not a font"_s);
+            return;
+        }
+
+        QTransform tf;
+        if ( !to_matrix(args[1].cast<ValueArray>(), tf) )
+        {
+            interpreter.error(u"Not a matrix"_s);
+            return;
+        }
+
+        interpreter.stack().push(transform_font(font, tf));
+    }});
+    builtins.def("setfont", {Level::EPS1, {Value::Dict}, [](ValueArray args, Interpreter& interpreter){
+        auto font = args[0].cast<ValueDict>();
+        if ( !is_font(font) )
+        {
+            interpreter.error(u"Not a font"_s);
+            return;
+        }
+
+        interpreter.memory().gstate.font = font;
+    }});
+    builtins.def("currentfont", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(interpreter.memory().gstate.font);
+    }});
+    builtins.def("rootfont", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
+        interpreter.stack().push(interpreter.memory().gstate.font);
+    }});
+    builtins.def("selectfont", {Level::EPS2, {Value::String, Arg::number()}, [](ValueArray args, Interpreter& interpreter){
+        QByteArray name = args[0].cast<String>().bytes();
+        auto scale = args[1].cast<float>();
+        interpreter.memory().gstate.font = scale_font(interpreter.find_font(name), scale);
+    }});
+    builtins.def("selectfont", {Level::EPS2, {Value::String, Value::Array}, [](ValueArray args, Interpreter& interpreter){
+        QByteArray name = args[0].cast<String>().bytes();
+        QTransform tf;
+        if ( !to_matrix(args[1].cast<ValueArray>(), tf) )
+        {
+            interpreter.error(u"Not a matrix"_s);
+            return;
+        }
+        interpreter.memory().gstate.font = transform_font(interpreter.find_font(name), tf);
+    }});
+    // TODO composefont
 }
 
 
@@ -2953,7 +3043,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             * countexecstack
             * execstack
             * gstate / setgstate / currentgstate
-            * file / resource operators
+            * resource operators
             * $error / errordict not included because we don't want error handling on scripts
             * device dependent graphic state
             * userpath stuff (I don't understand it)
@@ -2972,13 +3062,11 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             * flattenpath
             * setbbox
             * erasepage
-            * flush
             * filenameforall
+            * bytesavailable always -1
 
         Not defined (allowed by the specs):
             * executive / echo / prompt
             * statusdict
-        Not useful (allowed by the specs):
-            * bytesavailable always -1
     */
 }
