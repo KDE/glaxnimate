@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the glaxnimate package.
-# SPDX-FileCopyrightText: 2023, 2024, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# SPDX-FileCopyrightText: 2023-2024, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-01 02:43+0000\n"
-"PO-Revision-Date: 2026-04-11 09:58+0200\n"
+"PO-Revision-Date: 2026-05-09 16:50+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 25.08.2\n"
+"X-Generator: Lokalize 26.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -124,7 +124,7 @@ msgstr "ścieżka"
 #. i18n: Property name
 #, kde-format
 msgid "fill_rule"
-msgstr "zasada_wypełnienia"
+msgstr "sposób_wypełnienia"
 
 #. i18n: file: src/core/model/shapes/polystar.hpp
 #. i18n: Property name
@@ -2698,7 +2698,7 @@ msgstr "Wyświetl pojedynczą klatkę"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:557
 #, kde-format
 msgid "Web Preview"
-msgstr "Podgląd sieciowy"
+msgstr "Sprawdź jak będzie wyglądał w sieci"
 
 #. i18n: ectx: Menu (playback)
 #: src/gui/glaxnimateui.rc:109 src/gui/widgets/dialogs/gw_impl_ui.cpp:527
@@ -2979,7 +2979,7 @@ msgstr "Dodaj punkt krzywej"
 #: src/gui/tools/draw_tool.hpp:25
 #, kde-format
 msgid "Draw Bezier"
-msgstr "Narysuj krzywa Beziera"
+msgstr "Narysuj krzywą Beziera"
 
 #: src/gui/tools/edit_tool.cpp:169
 #, kde-format
@@ -3850,7 +3850,7 @@ msgstr "Skalowalna grafika wektorowa (*.svg)"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:505
 #, kde-format
 msgid "Validate Discord Sticker"
-msgstr "Sprawdź naklejkę Telegramu"
+msgstr "Sprawdź czy naklejka nadaje się na Discorda"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:641
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:651
@@ -3868,7 +3868,7 @@ msgstr "Napotkano pewne kłopoty"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:502
 #, kde-format
 msgid "Validate Telegram Sticker"
-msgstr "Sprawdź naklejkę Telegramu"
+msgstr "Sprawdź czy naklejka nadaje się na Telegrama"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:693
 #, kde-format
@@ -4163,7 +4163,7 @@ msgstr "Wyczyść"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:514
 #, kde-format
 msgid "Timing…"
-msgstr "Planowanie czasu…"
+msgstr "Zaplanuj czas…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:519
 #, kde-format
