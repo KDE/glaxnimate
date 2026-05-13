@@ -2067,6 +2067,24 @@ private Q_SLOTS:
 
         QCOMPARE(interp.stack_values(), stack_vals(123));
     }
+
+    void test_page_device()
+    {
+        TestInterpreter interp;
+        interp.exec_string("<< /PageSize [ 10 20 ] >> setpagedevice");
+        QCOMPARE(interp.page_device(), ValueDict({{"PageSize", ValueArray({10, 20})}}));
+        interp.exec_string("<< /PageSize1 [ 1 2 ] >> setpagedevice");
+        QCOMPARE(interp.page_device(), ValueDict({
+            {"PageSize", ValueArray({10, 20})},
+            {"PageSize1", ValueArray({1, 2})}
+        }));
+        interp.exec_string("currentpagedevice");
+        QCOMPARE(interp.stack_values(), stack_vals(ValueDict({
+            {"PageSize", ValueArray({10, 20})},
+            {"PageSize1", ValueArray({1, 2})}
+        })));
+        COMPARE_PARSE("/setpagedevice where exch pop", true);
+    }
 };
 
 QTEST_GUILESS_MAIN(TestCase)

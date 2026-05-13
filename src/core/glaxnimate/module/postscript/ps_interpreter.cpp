@@ -2955,7 +2955,8 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.show_page(true);
     }});
     builtins.def("setpagedevice", {Level::PS2, {Value::Dict}, [](ValueArray args, Interpreter& interpreter){
-        interpreter.page_device() = args[0].cast<ValueDict>();
+        for ( const auto& entry : args[0].cast<ValueDict>() )
+            interpreter.page_device()[entry.first] = entry.second;
     }});
     builtins.def("currentpagedevice", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
         interpreter.stack().push(interpreter.page_device());
