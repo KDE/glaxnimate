@@ -31,11 +31,13 @@ protected:
     void on_stroke(const GraphicsState& gstate) override;
     void on_show_page(bool copy) override;
     void on_image(const ImageData &image, const GraphicsState &gstate) override;
+    void on_draw_text(const TextDrawOptions &options, const GraphicsState &gstate) override;
 
 private:
     QPointF convert(const QPointF& p) const;
     math::bezier::Point convert(const math::bezier::Point& p) const;
     math::bezier::Bezier convert(const math::bezier::Bezier& p) const;
+    QTransform convert(const QTransform& tf) const;
     void apply_page_metadata() const;
     QRectF parse_bounding_box(QStringView box) const;
     std::optional<QString> get_page_meta(const QByteArray& page, const QByteArray& doc) const;
@@ -48,7 +50,6 @@ private:
     bool has_error = false;
     bool last_comp_used = false;
     QString object_name;
-
 };
 
 } // namespace glaxnimate::ps

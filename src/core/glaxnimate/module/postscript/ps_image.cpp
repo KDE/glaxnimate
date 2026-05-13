@@ -25,8 +25,8 @@ ImageLoader::DataSource ImageLoader::data_source(const Value &datasrc, Interpret
 
 std::optional<ImageLoader> ImageLoader::from_args(const ValueArray &args, Interpreter &interpreter)
 {
-    QTransform matrix;
-    if ( !to_matrix(args[3].cast<ValueArray>(), matrix) )
+    auto matrix =  array_to_matrix(args[3].cast<ValueArray>());
+    if ( !matrix )
         return {};
 
     return ImageLoader(
@@ -34,7 +34,7 @@ std::optional<ImageLoader> ImageLoader::from_args(const ValueArray &args, Interp
         args[0].cast<int>(),
         args[1].cast<int>(),
         args[2].cast<int>(),
-        matrix,
+        *matrix,
         {0, 1},
         {data_source(args[4], interpreter)},
         true
@@ -66,8 +66,8 @@ std::optional<ImageLoader> ImageLoader::from_args_colorimage(const ValueArray &a
     for ( int i = 0; i < source_count; i++ )
         data_sources[source_count - i - 1] = data_source(interpreter.stack().pop(), interpreter);
 
-    QTransform matrix;
-    if ( !to_matrix(interpreter.stack().pop().cast<ValueArray>(), matrix) )
+    auto matrix = array_to_matrix(interpreter.stack().pop().cast<ValueArray>());
+    if ( !matrix )
         return {};
 
     int bits = interpreter.stack().pop().cast<int>();
@@ -82,11 +82,11 @@ std::optional<ImageLoader> ImageLoader::from_args_colorimage(const ValueArray &a
         w,
         h,
         bits,
-        std::move(matrix),
+        std::move(*matrix),
         std::move(decode),
         std::move(data_sources),
         true
-        );
+    );
 }
 
 std::optional<ImageLoader> ImageLoader::from_dict(const ValueDict &dict, Interpreter &interpreter)
@@ -134,8 +134,8 @@ std::optional<ImageLoader> ImageLoader::from_dict(const ValueDict &dict, Interpr
     for ( int i = 0; i < component_count * 2; i++ )
         decode[i] = decode_v[i].cast<float>();
 
-    QTransform tf;
-    if ( !to_matrix(dict.get_default("ImageMatrix", ValueArray{}), tf) )
+    auto tf = array_to_matrix(dict.get_default("ImageMatrix", ValueArray{}));
+    if ( !tf )
         return {};
 
     return ImageLoader(
@@ -143,11 +143,11 @@ std::optional<ImageLoader> ImageLoader::from_dict(const ValueDict &dict, Interpr
         w,
         h,
         dict.get_default("BitsPerComponent", 1),
-        std::move(tf),
+        std::move(*tf),
         std::move(decode),
         std::move(data_sources),
         dict.get_default("Interpolate", true)
-        );
+    );
 }
 
 const ImageData &ImageLoader::load()

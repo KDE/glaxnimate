@@ -11,7 +11,7 @@
 #include <QMetaEnum>
 #include "glaxnimate/math/bezier/bezier.hpp"
 #include "glaxnimate/model/shapes/style/stroke.hpp"
-#include "ps_value.hpp"
+#include "ps_font.hpp"
 
 namespace glaxnimate::ps {
 
@@ -158,8 +158,7 @@ inline QTransform matrix_from_elements(const std::vector<float>& elems)
 
 bool to_float_array(const ValueArray& vals, std::vector<float>& out, bool allow_negative);
 
-bool to_matrix(const ValueArray& vals, QTransform& out);
-QTransform to_matrix(const ValueArray& vals);
+std::optional<QTransform> array_to_matrix(const ValueArray& vals);
 ValueArray matrix_to_array(const QTransform& tf);
 void matrix_to_array(const QTransform& tf, ValueArray& out);
 
@@ -169,6 +168,21 @@ struct ImageData
     QImage image;
     QTransform matrix;
     bool interpolate = true;
+};
+
+
+struct TextDrawOptions
+{
+    QString text;
+
+    // ashow
+    bool add_width = false;
+    QSizeF width = {};
+
+    //widthshow
+    bool add_char_width = false;
+    QChar ch = {};
+    QSizeF char_width = {};
 };
 
 struct GraphicsState
@@ -186,7 +200,7 @@ struct GraphicsState
     float miter_limit = 10;
     std::vector<float> dash_pattern;
     float dash_offset = 0;
-    ValueDict font;
+    FontWrapper font = FontWrapper::default_font();
 
     // Device dependent
     float flatness = 10;
@@ -197,11 +211,11 @@ struct GraphicsState
     {
         Clean, Dirty, Invalid,
     };
-    QTransform inverse_transform_matrix;
-    InverseTransformState inverse_transform_state = Clean;
+    mutable QTransform inverse_transform_matrix;
+    mutable InverseTransformState inverse_transform_state = Clean;
 
 
-    bool position_is_defined()
+    bool position_is_defined() const
     {
         if ( path.empty() || path.back().empty() )
             return false;
@@ -210,12 +224,12 @@ struct GraphicsState
         return inverse_transform_state == Clean;
     }
 
-    QPointF device_position()
+    QPointF device_position() const
     {
         return path.back().back().pos;
     }
 
-    QPointF position()
+    QPointF position() const
     {
         return inverse_transform().map(device_position());
     }
@@ -225,7 +239,7 @@ struct GraphicsState
         inverse_transform_state = Dirty;
     }
 
-    const QTransform& inverse_transform()
+    const QTransform& inverse_transform() const
     {
         if ( inverse_transform_state == Dirty )
         {

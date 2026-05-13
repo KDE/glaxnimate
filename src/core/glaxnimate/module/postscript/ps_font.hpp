@@ -9,15 +9,32 @@
 
 namespace glaxnimate::ps {
 
-constexpr const int CustomFontType = 50;
 
-bool is_font(const ValueDict& dict);
+struct FontWrapper
+{
+    static constexpr const int CustomFontType = 50;
 
-ValueDict font_from_database(const QByteArray &name);
+    FontWrapper(ValueDict font) : font(std::move(font)) {}
 
-ValueDict scale_font(const ValueDict& font, float scale);
+    bool is_font() const;
 
-ValueDict transform_font(const ValueDict& font, const QTransform& tf);
+    static ValueDict font_from_database(const QByteArray &name);
+    static ValueDict font_from_qfont(const QFont& font);
+    static FontWrapper default_font();
 
+    ValueDict scaled(float scale) const;
+
+    ValueDict transformed(const QTransform& tf) const;
+
+    std::optional<QString> decode_text(const QByteArray& text) const;
+
+    QString family() const;
+    float size() const;
+    int weight() const;
+    QString style() const;
+    QTransform transform() const;
+
+    ValueDict font;
+};
 
 } // namespace glaxnimate::ps

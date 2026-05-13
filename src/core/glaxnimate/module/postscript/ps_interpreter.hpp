@@ -231,6 +231,7 @@ public:
     void close_file(File &file);
     void draw_image(const ImageData& image);
     ValueDict find_font(const QByteArray& name);
+    void draw_text(const TextDrawOptions& options);
 
 protected:
     virtual void on_print(const QString& text) = 0;
@@ -245,6 +246,7 @@ protected:
     virtual void on_close_file(QIODevice* device);
     virtual void on_image(const ImageData& image, const GraphicsState& gstate) = 0;
     virtual ValueDict on_find_font(const QByteArray& name);
+    virtual void on_draw_text(const TextDrawOptions& options, const GraphicsState& gstate) = 0;
 
 private:
     void execute_command(const Value &name);

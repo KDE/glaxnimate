@@ -59,6 +59,7 @@ public:
     GraphicsState last_stroke;
     ImageData last_image;
     std::map<QByteArray, QBuffer> files;
+    TextDrawOptions last_text;
 
     std::vector<Value> stack_values()
     {
@@ -120,6 +121,11 @@ protected:
     void on_image(const ImageData &image, const GraphicsState &) override
     {
         last_image = image;
+    }
+
+    void on_draw_text(const TextDrawOptions &options, const GraphicsState &) override
+    {
+        last_text = options;
     }
 };
 

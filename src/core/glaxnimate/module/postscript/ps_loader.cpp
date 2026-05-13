@@ -6,6 +6,7 @@
 
 #include "glaxnimate/module/postscript/ps_loader.hpp"
 #include "glaxnimate/model/shapes/shapes/path.hpp"
+#include "glaxnimate/model/shapes/shapes/text.hpp"
 #include "glaxnimate/model/shapes/style/fill.hpp"
 #include "glaxnimate/model/shapes/composable/image.hpp"
 
@@ -132,13 +133,44 @@ void Loader::on_image(const ImageData &image, const GraphicsState &gstate)
     device_tf.scale(1, -1);
     device_tf.translate(0, -comp->height.get());
 
-    shape->transform->set_transform_matrix(image.matrix.inverted() * gstate.transform * device_tf);
+    shape->transform->set_transform_matrix(convert(image.matrix.inverted() * gstate.transform));
+}
+
+void Loader::on_draw_text(const TextDrawOptions &options, const GraphicsState &gstate)
+{
+    use_page();
+
+    auto group = comp->shapes.create<model::Group>();
+    if ( !object_name.isEmpty() )
+        group->name.set(object_name);
+
+    auto fill = group->shapes.create<model::Fill>();
+    fill->color.set(gstate.color);
+
+    auto text = group->shapes.create<model::TextShape>();
+    text->text.set(options.text);
+    text->position.set(convert(gstate.position()));
+    text->font->family.set(gstate.font.family());
+    text->font->size.set(gstate.font.size());
+    text->font->style.set(gstate.font.style());
+
+    group->transform->set_transform_matrix(convert(gstate.font.transform()));
 }
 
 QPointF Loader::convert(const QPointF &p) const
 {
     // return p;
     return QPointF(p.x(), comp->height.get() - p.y());
+}
+
+QTransform Loader::convert(const QTransform &tf) const
+{
+    // postscript coordinates
+    // TODO apply to the whole comp instead of converting coords?
+    QTransform device_tf;
+    device_tf.scale(1, -1);
+    device_tf.translate(0, -comp->height.get());
+    return tf * device_tf;
 }
 
 void Loader::apply_page_metadata() const

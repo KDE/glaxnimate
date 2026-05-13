@@ -599,6 +599,11 @@ ValueDict Interpreter::find_font(const QByteArray &name)
     return d->memory.fonts.emplace(name, std::move(val)).first->second;
 }
 
+void Interpreter::draw_text(const TextDrawOptions &options)
+{
+    on_draw_text(options, d->memory.gstate);
+}
+
 QIODevice *Interpreter::on_open_file(const QByteArray &, QIODeviceBase::OpenMode)
 {
     return nullptr;
@@ -613,7 +618,7 @@ void Interpreter::on_close_file(QIODevice *device)
 
 ValueDict Interpreter::on_find_font(const QByteArray &name)
 {
-    return font_from_database(name);
+    return FontWrapper::font_from_database(name);
 }
 
 
@@ -1113,13 +1118,10 @@ void matrix_transform(CommandSet& builtins, const char* name, bool delta, bool i
         float x = args[0].cast<float>();
         float y = args[1].cast<float>();
         auto arr = args[2].cast<ValueArray>();
-        QTransform tf;
-        if ( !to_matrix(arr, tf) )
-        {
+        if ( auto tf = array_to_matrix(arr) )
+            matrix_transform_impl(delta, inverse, x, y, *tf, interpreter);
+        else
             interpreter.error(u"Not a matrix"_s);
-            return;
-        }
-        matrix_transform_impl(delta, inverse, x, y, tf, interpreter);
     }});
 }
 
@@ -2622,13 +2624,13 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     }});
     builtins.def("setmatrix", {Level::EPS1, {Value::Array}, [](ValueArray args, Interpreter& interpreter){
         ValueArray arr = args[0].cast<ValueArray>();
-        QTransform tf;
-        if ( !to_matrix(arr, tf) )
+        auto tf = array_to_matrix(arr);
+        if ( !tf )
         {
             interpreter.error(u"Not a matrix"_s);
             return;
         }
-        interpreter.memory().gstate.transform = tf;
+        interpreter.memory().gstate.transform = *tf;
     }});
     matrix_op(builtins, "translate", {Arg::number(), Arg::number()}, [](ValueArray& args, QTransform& tf){
         tf.translate(args[0].cast<float>(), args[1].cast<float>());
@@ -2641,26 +2643,27 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     });
     builtins.def("concat", {Level::EPS1, {Value::Array}, [](ValueArray args, Interpreter& interpreter){
         ValueArray arr = args[0].cast<ValueArray>();
-        QTransform tf;
-        if ( !to_matrix(arr, tf) )
+        auto tf = array_to_matrix(arr);
+        if ( !tf )
         {
             interpreter.error(u"Not a matrix"_s);
             return;
         }
-        interpreter.memory().gstate.transform *= tf;
+        interpreter.memory().gstate.transform *= *tf;
     }});
     builtins.def("concatmatrix", {Level::EPS1, {Value::Array, Value::Array, Value::Array}, [](ValueArray args, Interpreter& interpreter){
         ValueArray arr0 = args[0].cast<ValueArray>();
         ValueArray arr1 = args[1].cast<ValueArray>();
         ValueArray arr2 = args[2].cast<ValueArray>();
-        QTransform tf0, tf1;
-        if ( !to_matrix(arr0, tf0) || !to_matrix(arr1, tf1) || arr2.size() < 6 )
+        auto tf0 = array_to_matrix(arr0);
+        auto tf1 = array_to_matrix(arr1);
+        if ( !tf0 || !tf1 || arr2.size() < 6 )
         {
             interpreter.error(u"Not a matrix"_s);
             return;
         }
 
-        set_matrix(arr2, tf0 * tf1, interpreter);
+        set_matrix(arr2, *tf0 * *tf1, interpreter);
     }});
     matrix_transform(builtins, "transform", false, false);
     matrix_transform(builtins, "dtransform", true, false);
@@ -2669,22 +2672,22 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("invertmatrix", {Level::EPS1, {Value::Array, Value::Array}, [](ValueArray args, Interpreter& interpreter){
         ValueArray arr0 = args[0].cast<ValueArray>();
         ValueArray arr1 = args[1].cast<ValueArray>();
-        QTransform tf0;
-        if ( !to_matrix(arr0, tf0) || arr1.size() < 6 )
+        auto tf0 = array_to_matrix(arr0);
+        if ( !tf0 || arr1.size() < 6 )
         {
             interpreter.error(u"Not a matrix"_s);
             return;
         }
 
         bool ok = false;
-        tf0 = tf0.inverted(&ok);
+        tf0 = tf0->inverted(&ok);
         if ( !ok )
         {
             interpreter.error(u"Matrix not invertible"_s);
             return;
         }
 
-        set_matrix(arr1, tf0, interpreter);
+        set_matrix(arr1, *tf0, interpreter);
     }});
 }
 // Path
@@ -2958,16 +2961,16 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.memory().gstate.null_device = true;
     }});
 }
-// Text
+// Font
 {
     builtins.def("definefont", {Level::EPS1, {Value::String, Value::Dict}, [](ValueArray args, Interpreter& interpreter){
-        auto font = args[1].cast<ValueDict>();
-        if ( !is_font(font) )
+        auto font = FontWrapper(args[1].cast<ValueDict>());
+        if ( !font.is_font() )
         {
             interpreter.error(u"Not a font"_s);
             return;
         }
-        interpreter.memory().fonts.emplace(args[0].cast<String>().bytes(), font);
+        interpreter.memory().fonts.emplace(args[0].cast<String>().bytes(), font.font);
     }});
     builtins.def("findfont", {Level::EPS1, {Value::String}, [](ValueArray args, Interpreter& interpreter){
         interpreter.stack().push(interpreter.find_font(args[0].cast<String>().bytes()));
@@ -2976,36 +2979,36 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.memory().fonts.erase(args[0].cast<String>().bytes());
     }});
     builtins.def("scalefont", {Level::EPS1, {Value::Dict, Arg::number()}, [](ValueArray args, Interpreter& interpreter){
-        auto font = args[0].cast<ValueDict>();
-        if ( !is_font(font) )
+        auto font = FontWrapper(args[0].cast<ValueDict>());
+        if ( !font.is_font() )
         {
             interpreter.error(u"Not a font"_s);
             return;
         }
         auto scale = args[1].cast<float>();
 
-        interpreter.stack().push(scale_font(font, scale));
+        interpreter.stack().push(font.scaled(scale));
     }});
     builtins.def("makefont", {Level::EPS1, {Value::Dict, Value::Array}, [](ValueArray args, Interpreter& interpreter){
-        auto font = args[0].cast<ValueDict>();
-        if ( !is_font(font) )
+        auto font = FontWrapper(args[0].cast<ValueDict>());
+        if ( !font.is_font() )
         {
             interpreter.error(u"Not a font"_s);
             return;
         }
 
-        QTransform tf;
-        if ( !to_matrix(args[1].cast<ValueArray>(), tf) )
+        auto tf = array_to_matrix(args[1].cast<ValueArray>());
+        if ( !tf )
         {
             interpreter.error(u"Not a matrix"_s);
             return;
         }
 
-        interpreter.stack().push(transform_font(font, tf));
+        interpreter.stack().push(font.transformed(*tf));
     }});
     builtins.def("setfont", {Level::EPS1, {Value::Dict}, [](ValueArray args, Interpreter& interpreter){
-        auto font = args[0].cast<ValueDict>();
-        if ( !is_font(font) )
+        auto font = FontWrapper(args[0].cast<ValueDict>());
+        if ( !font.is_font() )
         {
             interpreter.error(u"Not a font"_s);
             return;
@@ -3014,27 +3017,44 @@ void CommandSet::populate_builtins(CommandSet& builtins)
         interpreter.memory().gstate.font = font;
     }});
     builtins.def("currentfont", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
-        interpreter.stack().push(interpreter.memory().gstate.font);
+        interpreter.stack().push(interpreter.memory().gstate.font.font);
     }});
     builtins.def("rootfont", {Level::EPS2, {}, [](ValueArray, Interpreter& interpreter){
-        interpreter.stack().push(interpreter.memory().gstate.font);
+        interpreter.stack().push(interpreter.memory().gstate.font.font);
     }});
     builtins.def("selectfont", {Level::EPS2, {Value::String, Arg::number()}, [](ValueArray args, Interpreter& interpreter){
         QByteArray name = args[0].cast<String>().bytes();
         auto scale = args[1].cast<float>();
-        interpreter.memory().gstate.font = scale_font(interpreter.find_font(name), scale);
+        interpreter.memory().gstate.font = FontWrapper(interpreter.find_font(name)).scaled(scale);
     }});
     builtins.def("selectfont", {Level::EPS2, {Value::String, Value::Array}, [](ValueArray args, Interpreter& interpreter){
         QByteArray name = args[0].cast<String>().bytes();
-        QTransform tf;
-        if ( !to_matrix(args[1].cast<ValueArray>(), tf) )
+        auto tf = array_to_matrix(args[1].cast<ValueArray>());
+        if ( !tf )
         {
             interpreter.error(u"Not a matrix"_s);
             return;
         }
-        interpreter.memory().gstate.font = transform_font(interpreter.find_font(name), tf);
+        interpreter.memory().gstate.font = FontWrapper(interpreter.find_font(name)).transformed(*tf);
     }});
     // TODO composefont
+}
+// Text Drawing
+{
+    builtins.def("show", {Level::EPS1, {Value::String}, [](ValueArray args, Interpreter& interpreter){
+        QByteArray encoded_text = args[0].cast<String>().bytes();
+        if ( auto text = interpreter.memory().gstate.font.decode_text(encoded_text) )
+        {
+            TextDrawOptions opts;
+            opts.text = *text;
+            interpreter.draw_text(opts);
+        }
+        else
+        {
+            interpreter.error(u"Could not decode font"_s);
+        }
+    }});
+
 }
 
 

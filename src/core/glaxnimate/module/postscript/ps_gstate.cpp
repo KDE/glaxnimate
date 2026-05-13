@@ -48,24 +48,16 @@ bool glaxnimate::ps::to_float_array(const ValueArray &vals, std::vector<float> &
     return true;
 }
 
-bool glaxnimate::ps::to_matrix(const ValueArray &vals, QTransform &out)
+std::optional<QTransform> glaxnimate::ps::array_to_matrix(const ValueArray &vals)
 {
     if ( vals.size() != 6 )
-        return false;
+        return {};
 
     std::vector<float> floats;
     if ( !to_float_array(vals, floats, true) )
-        return false;
+        return {};
 
-    out = matrix_from_elements(floats);
-    return true;
-}
-
-QTransform glaxnimate::ps::to_matrix(const ValueArray &vals)
-{
-    QTransform tf;
-    to_matrix(vals, tf);
-    return tf;
+    return matrix_from_elements(floats);
 }
 
 glaxnimate::ps::ValueArray glaxnimate::ps::matrix_to_array(const QTransform &tf)
@@ -82,3 +74,4 @@ void glaxnimate::ps::matrix_to_array(const QTransform &tf, ValueArray &arr)
     for ( int i = 0; i < int(elems.size()); i++ )
         arr[i] = elems[i];
 }
+
