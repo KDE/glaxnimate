@@ -29,7 +29,7 @@ public:
             QString warning = "\n";
             build_warning_multi(warning, actual_name, actual);
             build_warning_multi(warning, expected_name, expected);
-            qWarning() << warning;
+            QTest::qFail(warning.toStdString().c_str(), file, line);
             return false;
         }
 
@@ -125,7 +125,7 @@ public:
             QString warning = "\n";
             build_warning(warning, actual_name, actual);
             build_warning(warning, expected_name, expected);
-            qWarning() << warning;
+            QTest::qFail(warning.toStdString().c_str(), file, line);
         }
 
         return ret;

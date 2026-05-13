@@ -230,7 +230,7 @@ class MultiBezier
 public:
     MultiBezier() {}
     MultiBezier(const QPainterPath& path) { append(path); }
-    MultiBezier(const Bezier& path) { append(path); }
+    MultiBezier(const Bezier& path) { beziers_.push_back(path); }
     const std::vector<Bezier>& beziers() const { return beziers_; }
     std::vector<Bezier>& beziers() { return beziers_; }
 

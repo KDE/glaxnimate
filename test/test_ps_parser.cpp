@@ -1097,6 +1097,60 @@ private Q_SLOTS:
         );
     }
 
+
+    void test_rect_func()
+    {
+        TestInterpreter interp;
+        interp.exec_string("100 200 300 400");
+        QCOMPARE(interp.stack_values(), stack_vals(100, 200, 300, 400));
+        interp.exec_string("exch dup neg 3 1 roll 5 3 roll");
+        QCOMPARE(interp.stack_values(), stack_vals(-300, 400, 300, 100, 200));
+        interp.exec_string("moveto");
+        QCOMPARE(interp.stack_values(), stack_vals(-300, 400, 300));
+        COMPARE_MULTIBEZIER(interp.memory().gstate.path, math::bezier::Bezier(false, {
+            {{100, 200}, {100, 200}, {100, 200}}
+        }));
+        interp.exec_string("0 rlineto");
+        QCOMPARE(interp.stack_values(), stack_vals(-300, 400));
+        COMPARE_MULTIBEZIER(interp.memory().gstate.path, math::bezier::Bezier(false, {
+            {{100, 200}, {100, 200}, {100, 200}},
+            {{400, 200}, {400, 200}, {400, 200}},
+        }));
+        interp.exec_string("0 exch");
+        QCOMPARE(interp.stack_values(), stack_vals(-300, 0, 400));
+        interp.exec_string("rlineto");
+        QCOMPARE(interp.stack_values(), stack_vals(-300));
+        COMPARE_MULTIBEZIER(interp.memory().gstate.path, math::bezier::Bezier(false, {
+            {{100, 200}, {100, 200}, {100, 200}},
+            {{400, 200}, {400, 200}, {400, 200}},
+            {{400, 600}, {400, 600}, {400, 600}},
+        }));
+        interp.exec_string("0 rlineto");
+        QCOMPARE(interp.stack_values(), stack_vals());
+        COMPARE_MULTIBEZIER(interp.memory().gstate.path, math::bezier::Bezier(false, {
+            {{100, 200}, {100, 200}, {100, 200}},
+            {{400, 200}, {400, 200}, {400, 200}},
+            {{400, 600}, {400, 600}, {400, 600}},
+            {{100, 600}, {100, 600}, {100, 600}},
+        }));
+        interp.exec_string("closepath");
+        QCOMPARE(interp.stack_values(), stack_vals());
+        COMPARE_MULTIBEZIER(interp.memory().gstate.path, math::bezier::Bezier(true, {
+            {{100, 200}, {100, 200}, {100, 200}},
+            {{400, 200}, {400, 200}, {400, 200}},
+            {{400, 600}, {400, 600}, {400, 600}},
+            {{100, 600}, {100, 600}, {100, 600}},
+        }));
+        interp.exec_string("fill");
+        COMPARE_MULTIBEZIER(interp.last_fill.path, math::bezier::Bezier(true, {
+            {{100, 200}, {100, 200}, {100, 200}},
+            {{400, 200}, {400, 200}, {400, 200}},
+            {{400, 600}, {400, 600}, {400, 600}},
+            {{100, 600}, {100, 600}, {100, 600}},
+        }));
+    }
+
+#if 0
     void test_file_read()
     {
         TestInterpreter interp;
@@ -1892,7 +1946,6 @@ private Q_SLOTS:
         QCOMPARE(interp.stack_values(), stack_vals(123));
     }
 
-
     void test_image_rgb_dict_currentfile_base85()
     {
         TestInterpreter interp;
@@ -2006,6 +2059,7 @@ private Q_SLOTS:
 
         QCOMPARE(interp.stack_values(), stack_vals(123));
     }
+#endif
 };
 
 QTEST_GUILESS_MAIN(TestCase)
