@@ -186,6 +186,7 @@ class TestCase: public QObject, public BezierTestBase
     }
 
 private Q_SLOTS:
+
     void test_lex_comment()
     {
         auto token = lex("% foo bar\nbaz");
@@ -1150,7 +1151,14 @@ private Q_SLOTS:
         }));
     }
 
-#if 0
+    void test_matrix_graphics()
+    {
+        COMPARE_PARSE("10 20 moveto currentpoint", 10, 20);
+        COMPARE_PARSE("[ 1 0 0 2 0 0 ] concat 10 20 moveto currentpoint", 10, 20);
+        COMPARE_PARSE(" 10 20 moveto [ 1 0 0 2 0 0 ] concat currentpoint", 10, 10);
+
+    }
+
     void test_file_read()
     {
         TestInterpreter interp;
@@ -2059,7 +2067,6 @@ private Q_SLOTS:
 
         QCOMPARE(interp.stack_values(), stack_vals(123));
     }
-#endif
 };
 
 QTEST_GUILESS_MAIN(TestCase)

@@ -1058,6 +1058,7 @@ void matrix_op(CommandSet& builtins, const char* name, std::vector<ArgumentType>
 {
     builtins.def(name, {Level::EPS1, argt, [func](ValueArray args, Interpreter& interpreter){
         func(args, interpreter.memory().gstate.transform);
+        interpreter.memory().gstate.mark_transform_changed();
     }});
 
     argt.push_back(Value::Array);
@@ -2631,6 +2632,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             return;
         }
         interpreter.memory().gstate.transform = *tf;
+        interpreter.memory().gstate.mark_transform_changed();
     }});
     matrix_op(builtins, "translate", {Arg::number(), Arg::number()}, [](ValueArray& args, QTransform& tf){
         tf.translate(args[0].cast<float>(), args[1].cast<float>());
@@ -2650,6 +2652,7 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             return;
         }
         interpreter.memory().gstate.transform *= *tf;
+        interpreter.memory().gstate.mark_transform_changed();
     }});
     builtins.def("concatmatrix", {Level::EPS1, {Value::Array, Value::Array, Value::Array}, [](ValueArray args, Interpreter& interpreter){
         ValueArray arr0 = args[0].cast<ValueArray>();
