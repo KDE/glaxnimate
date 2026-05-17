@@ -1215,6 +1215,18 @@ void make_filter(File file, const QByteArray& filter_name, ValueDict options, In
         interpreter.error(u"Unknown filter %1"_s.arg(filter_name));
 }
 
+void debug_print(const Value& val, Interpreter& interpreter)
+{
+    QString attrs;
+    attrs.reserve(3);
+    attrs.push_back(val.has_attribute(Value::Readable) ? 'r' : '-');
+    attrs.push_back(val.has_attribute(Value::Writable) ? 'w' : '-');
+    attrs.push_back(val.has_attribute(Value::Executable) ? 'x' : '-');
+    interpreter.print(u"Attrs %1\n"_s.arg(attrs));
+    interpreter.print(u"Type  %1\n"_s.arg(val.value_type_name()));
+    interpreter.print(u"Value %1\n"_s.arg(val.to_pretty_string()));
+}
+
 } // namespace
 
 void CommandSet::populate_builtins(CommandSet& builtins)
@@ -1471,10 +1483,6 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("==", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.print(args[0].to_pretty_string() + '\n');
     }});
-    // gs extension but it's quite useful
-    builtins.def("==only", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
-        interpreter.print(args[0].to_pretty_string());
-    }});
     builtins.def("stack", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         for ( const auto& v : interpreter.stack() )
             interpreter.print(to_ugly_string(v) + '\n');
@@ -1482,6 +1490,21 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("pstack", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         for ( const auto& v : interpreter.stack() )
             interpreter.print(v.to_pretty_string() + '\n');
+    }});
+    // gs extension but it's quite useful
+    builtins.def("==only", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.print(args[0].to_pretty_string());
+    }});
+    // custom extension
+    builtins.def("==debug", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        debug_print(args[0], interpreter);
+    }});
+    builtins.def("debugstack", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
+        for ( const auto& v : interpreter.stack() )
+        {
+            debug_print(v, interpreter);
+            interpreter.print(u"\n"_s);
+        }
     }});
 }
 // Array
