@@ -13,46 +13,32 @@
 
 using namespace glaxnimate::ps;
 
-Loader::Loader(io::ImportExport *importer, model::Document *document, const QVariantMap &)
-    : importer(importer), document(document)
+
+PsToGlaxnimate::PsToGlaxnimate(model::Document *document)
+    : document(document)
 {
     new_comp();
 }
 
-bool Loader::success() const
-{
-    return !has_error;
-}
-
-void Loader::apply_metadata() const
+void PsToGlaxnimate::apply_metadata() const
 {
     if ( !last_comp_used && document->assets()->compositions->values.size() > 1 )
         document->assets()->compositions->values.remove(document->assets()->compositions->values.index_of(comp));
 }
 
-void Loader::on_print(const QString& text)
+glaxnimate::model::Composition *PsToGlaxnimate::current_page()
 {
-    importer->information(text);
+    use_page();
+    return comp;
 }
 
-void Loader::on_warning(const QString &text)
-{
-    importer->warning(text);
-}
-
-void Loader::on_error(const QString &text)
-{
-    importer->error(text);
-    has_error = true;
-}
-
-void Loader::on_comment(const QByteArray &text)
+void PsToGlaxnimate::on_comment(const QByteArray &text)
 {
     if ( text == "%EndPageSetup" )
         use_page();
 }
 
-void Loader::on_meta_comment(const QByteArray& key, const QByteArray& value)
+void PsToGlaxnimate::on_meta_comment(const QByteArray& key, const QByteArray& value)
 {
     if ( key == "GlaxnimateObjectName" )
     {
@@ -60,7 +46,7 @@ void Loader::on_meta_comment(const QByteArray& key, const QByteArray& value)
     }
 }
 
-void Loader::on_fill(const GraphicsState &gstate, bool evenodd)
+void PsToGlaxnimate::on_fill(const GraphicsState &gstate, bool evenodd)
 {
     use_page();
 
@@ -79,7 +65,7 @@ void Loader::on_fill(const GraphicsState &gstate, bool evenodd)
     }
 }
 
-void Loader::on_stroke(const GraphicsState &gstate)
+void PsToGlaxnimate::on_stroke(const GraphicsState &gstate)
 {
     use_page();
 
@@ -101,22 +87,31 @@ void Loader::on_stroke(const GraphicsState &gstate)
     }
 }
 
-void Loader::on_show_page(bool copy)
+void PsToGlaxnimate::on_show_page(bool copy)
 {
     if ( copy )
     {
+        use_page();
         auto comp_clone = comp->clone_covariant();
+        on_comp_finished(comp);
         comp = comp_clone.get();
         last_comp_used = false;
         document->assets()->compositions->values.insert(std::move(comp_clone));
     }
     else
     {
+        use_page();
+        on_comp_finished(comp);
         new_comp();
     }
 }
 
-void Loader::on_image(const ImageData &image, const GraphicsState &gstate)
+void PsToGlaxnimate::on_comp_finished(model::Composition *)
+{
+
+}
+
+void PsToGlaxnimate::on_image(const ImageData &image, const GraphicsState &gstate)
 {
     use_page();
 
@@ -136,7 +131,7 @@ void Loader::on_image(const ImageData &image, const GraphicsState &gstate)
     shape->transform->set_transform_matrix(convert(image.matrix.inverted() * gstate.transform));
 }
 
-void Loader::on_draw_text(const TextDrawOptions &options, const GraphicsState &gstate)
+void PsToGlaxnimate::on_draw_text(const TextDrawOptions &options, const GraphicsState &gstate)
 {
     use_page();
 
@@ -157,13 +152,13 @@ void Loader::on_draw_text(const TextDrawOptions &options, const GraphicsState &g
     group->transform->set_transform_matrix(convert(gstate.font.transform()));
 }
 
-QPointF Loader::convert(const QPointF &p) const
+QPointF PsToGlaxnimate::convert(const QPointF &p) const
 {
     // return p;
     return QPointF(p.x(), comp->height.get() - p.y());
 }
 
-QTransform Loader::convert(const QTransform &tf) const
+QTransform PsToGlaxnimate::convert(const QTransform &tf) const
 {
     // postscript coordinates
     // TODO apply to the whole comp instead of converting coords?
@@ -173,7 +168,7 @@ QTransform Loader::convert(const QTransform &tf) const
     return tf * device_tf;
 }
 
-void Loader::apply_page_metadata() const
+void PsToGlaxnimate::apply_page_metadata() const
 {
     if ( auto bbstr = get_page_meta("PageBoundingBox", "BoundingBox") )
     {
@@ -206,7 +201,7 @@ void Loader::apply_page_metadata() const
 
 }
 
-QRectF Loader::parse_bounding_box(QStringView box) const
+QRectF PsToGlaxnimate::parse_bounding_box(QStringView box) const
 {
     auto chunks = box.split(' ');
     if ( chunks.size() != 4 )
@@ -231,7 +226,7 @@ QRectF Loader::parse_bounding_box(QStringView box) const
     return QRectF(QPointF(coords[left], coords[top]), QPointF(coords[right], coords[bottom]));
 }
 
-std::optional<QString> Loader::get_page_meta(const QByteArray &page, const QByteArray &doc) const
+std::optional<QString> PsToGlaxnimate::get_page_meta(const QByteArray &page, const QByteArray &doc) const
 {
     auto it = page_metadata().find(page);
     if ( it != page_metadata().end() )
@@ -244,14 +239,14 @@ std::optional<QString> Loader::get_page_meta(const QByteArray &page, const QByte
     return {};
 }
 
-void Loader::new_comp()
+void PsToGlaxnimate::new_comp()
 {
     comp = document->assets()->add_comp_no_undo();
     comp->animation->last_frame.set(180);
     last_comp_used = false;
 }
 
-void Loader::use_page()
+void PsToGlaxnimate::use_page()
 {
     if ( !last_comp_used )
     {
@@ -260,7 +255,7 @@ void Loader::use_page()
     }
 }
 
-glaxnimate::math::bezier::Point Loader::convert(const math::bezier::Point &pt) const
+glaxnimate::math::bezier::Point PsToGlaxnimate::convert(const math::bezier::Point &pt) const
 {
     return glaxnimate::math::bezier::Point(
         convert(pt.pos),
@@ -269,7 +264,7 @@ glaxnimate::math::bezier::Point Loader::convert(const math::bezier::Point &pt) c
     );
 }
 
-glaxnimate::math::bezier::Bezier Loader::convert(const math::bezier::Bezier &bez) const
+glaxnimate::math::bezier::Bezier PsToGlaxnimate::convert(const math::bezier::Bezier &bez) const
 {
     auto copy = bez;
     for ( auto& pt : copy )
@@ -277,4 +272,29 @@ glaxnimate::math::bezier::Bezier Loader::convert(const math::bezier::Bezier &bez
     return copy;
 }
 
+Loader::Loader(io::ImportExport *importer, model::Document *document, const QVariantMap &)
+    : PsToGlaxnimate(document), importer(importer)
+{
 
+}
+
+bool Loader::success() const
+{
+    return !has_error;
+}
+
+void Loader::on_print(const QString& text)
+{
+    importer->information(text);
+}
+
+void Loader::on_warning(const QString &text)
+{
+    importer->warning(text);
+}
+
+void Loader::on_error(const QString &text)
+{
+    importer->error(text);
+    has_error = true;
+}

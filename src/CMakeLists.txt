@@ -18,6 +18,7 @@ add_subdirectory(core)
 add_subdirectory(trace)
 
 add_subdirectory(gui)
+add_subdirectory(extras EXCLUDE_FROM_ALL)
 
 if ( MOBILE_UI )
     add_subdirectory(android)

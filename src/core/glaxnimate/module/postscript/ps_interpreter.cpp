@@ -1471,6 +1471,10 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     builtins.def("==", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
         interpreter.print(args[0].to_pretty_string() + '\n');
     }});
+    // gs extension but it's quite useful
+    builtins.def("==only", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.print(args[0].to_pretty_string());
+    }});
     builtins.def("stack", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         for ( const auto& v : interpreter.stack() )
             interpreter.print(to_ugly_string(v) + '\n');
