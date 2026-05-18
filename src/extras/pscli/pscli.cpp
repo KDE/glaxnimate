@@ -7,8 +7,13 @@
 #include <QApplication>
 #include <QDialog>
 #include <QSocketNotifier>
-#include <readline/readline.h>
-#include <readline/history.h>
+
+#ifdef WITH_READLINE
+#   include <readline/readline.h>
+#   include <readline/history.h>
+#else
+#   include <iostream>
+#endif
 
 
 #include "glaxnimate/module/module.hpp"
@@ -84,7 +89,7 @@ public:
     {
         if ( !line )
         {
-            rl_callback_handler_remove();
+            finalize();
             app->quit();
             return;
         }
@@ -94,9 +99,15 @@ public:
 
         if ( interp.is_halted() )
         {
-            rl_callback_handler_remove();
+            finalize();
             app->quit();
         }
+    }
+
+#ifdef WITH_READLINE
+    static void finalize()
+    {
+        rl_callback_handler_remove();
     }
 
     static void static_on_line(char* line)
@@ -115,10 +126,39 @@ public:
     {
         LineHandler::instance = new LineHandler(&app);
 
-        rl_callback_handler_install("glps> ", &LineHandler::static_on_line);
+        rl_callback_handler_install("glps> ", &LineHandler::static_on_line);        
+    }
+#else
+    static void finalize()
+    {
     }
 
+    static void read_char()
+    {
+        std::string line;
+        std::getline(std::cin, line);
+
+        if ( std::cin.eof() )
+        {
+            instance->on_line(nullptr);
+            return;
+        }
+
+        instance->on_line(line.c_str());
+        fputs("glps> ", stdout);
+        fflush(stdout);
+    }
+
+    static void init(QApplication& app)
+    {
+        LineHandler::instance = new LineHandler(&app);
+        fputs("glps> ", stdout);
+        fflush(stdout);
+    }
+#endif
+
 };
+
 LineHandler* LineHandler::instance;
 
 int main(int argc, char* argv[])

@@ -9,6 +9,20 @@
 
 namespace glaxnimate::ps {
 
+class FontDatabase
+{
+public:
+    FontDatabase(const QStringList& families);
+    FontDatabase();
+
+    static QString normalized_typeface_name(const QString& family);
+
+    QString get_family_name(const QByteArrayView& family) const;
+    std::pair<QString, QString> family_and_style(const QByteArrayView& name) const;
+
+private:
+    std::map<QString, QString> families;
+};
 
 struct FontWrapper
 {

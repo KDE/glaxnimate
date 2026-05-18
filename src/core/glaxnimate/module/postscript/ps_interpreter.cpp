@@ -1224,7 +1224,7 @@ void debug_print(const Value& val, Interpreter& interpreter)
     attrs.push_back(val.has_attribute(Value::Executable) ? 'x' : '-');
     interpreter.print(u"Attrs %1\n"_s.arg(attrs));
     interpreter.print(u"Type  %1\n"_s.arg(val.value_type_name()));
-    interpreter.print(u"Value %1\n"_s.arg(val.to_pretty_string()));
+    interpreter.print(u"Value %1\n"_s.arg(val.pretty_print(false)));
 }
 
 } // namespace
@@ -1505,6 +1505,9 @@ void CommandSet::populate_builtins(CommandSet& builtins)
             debug_print(v, interpreter);
             interpreter.print(u"\n"_s);
         }
+    }});
+    builtins.def("==pretty", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
+        interpreter.print(args[0].pretty_print(true));
     }});
 }
 // Array

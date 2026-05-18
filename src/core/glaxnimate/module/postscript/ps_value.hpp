@@ -88,6 +88,59 @@ private:
     std::shared_ptr<container> data;
 };
 
+struct PrettyPrinter
+{
+    void down()
+    {
+        depth++;
+    }
+
+    void up()
+    {
+        depth++;
+    }
+
+    void add_line(const QString& line)
+    {
+        add_partial_line(line);
+        end_line();
+    }
+
+    void add_partial_line(const QString& line)
+    {
+        if ( indent && !partial )
+            out += QString(depth * 4, ' ');
+        out += line;
+        partial = true;
+    }
+
+    void end_line()
+    {
+        if ( !indent )
+            out += ' ';
+        else if ( partial )
+            out += '\n';
+
+        partial = false;
+    }
+
+    void add_visited()
+    {
+        add_line(QStringLiteral("-recursion-"));
+    }
+
+    bool mark(void* val)
+    {
+        return visited.insert(val).second;
+    }
+
+    bool indent = false;
+    int depth = 0;
+    bool partial = false;
+    QString out = {};
+    std::set<void*> visited = {};
+};
+
 /**
  * @brief Arrays share data hence this wrapper around a shared pointer to vector
  */
@@ -146,10 +199,11 @@ public:
 
     bool shallow_equal(const ValueArray& oth) const { return data == oth.data; }
 
+    void pretty_print(PrettyPrinter& printer, bool as_executable) const;
+
 private:
     std::shared_ptr<container> data;
 };
-
 
 class ValueDict
 {
@@ -240,6 +294,7 @@ public:
      */
     ValueDict shallow_copy() const;
 
+    void pretty_print(PrettyPrinter& printer) const;
 private:
     std::shared_ptr<container> data;
 };
@@ -510,13 +565,16 @@ public:
     friend QDebug& operator<<(QDebug& debug, const Value& v)
     {
         QDebugStateSaver saver(debug);
-        return debug.noquote() << v.to_pretty_string();
+        return debug.noquote() << v.pretty_print(false);
     }
 
     static QByteArray type_name(Type t);
     QByteArray value_type_name() const;
 
     QByteArray hash_key() const;
+
+    QString pretty_print(bool indent) const;
+    void pretty_print(PrettyPrinter& printer) const;
 
 private:
     Value(Type type, Variant value, int attributes) : type_(type), value_(std::move(value)), attributes_(attributes) {}

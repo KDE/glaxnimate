@@ -5,7 +5,6 @@
  */
 
 #include "ps_value.hpp"
-#include "ps_filters.hpp"
 
 #include <QMetaEnum>
 #include <QIODevice>
@@ -55,14 +54,12 @@ QString glaxnimate::ps::Value::to_pretty_string() const
             return cast<ps::String>().to_string_literal();
         case Array:
             return cast<ValueArray>().to_pretty_string(has_attribute(Executable));
-        case Dict:
-            return cast<ValueDict>().to_pretty_string();
         case Mark:
             return u"mark"_s;
         case Null:
             return u"null"_s;
-        // TODO
         case File:
+        case Dict:
         case Save:
             break;
     }
@@ -145,13 +142,36 @@ QByteArray glaxnimate::ps::Value::hash_key() const
     }
 }
 
+QString glaxnimate::ps::Value::pretty_print(bool indent) const
+{
+    PrettyPrinter pp;
+    pp.indent = indent;
+    pretty_print(pp);
+    return pp.out;
+}
+
+void glaxnimate::ps::Value::pretty_print(PrettyPrinter &printer) const
+{
+    switch ( type_ )
+    {
+        case glaxnimate::ps::Value::Array:
+            cast<ValueArray>().pretty_print(printer, has_attribute(Executable));
+            break;
+        case glaxnimate::ps::Value::Dict:
+            cast<ValueDict>().pretty_print(printer);
+            break;
+        default:
+            printer.add_line(to_pretty_string());
+            break;
+    }
+}
+
 
 QString glaxnimate::ps::ValueArray::to_pretty_string(bool as_executable) const
 {
-    QString str = QChar(as_executable ? '{' : '[');
-    for ( const auto& v : *data )
-        str += v.to_pretty_string() + ' ';
-    return str.trimmed() + (as_executable ? '}' : ']');
+    PrettyPrinter pp{false};
+    pretty_print(pp, as_executable);
+    return pp.out;
 }
 
 bool glaxnimate::ps::ValueArray::operator==(const ValueArray &oth) const
@@ -162,6 +182,22 @@ bool glaxnimate::ps::ValueArray::operator==(const ValueArray &oth) const
         if ( (*data)[i] != oth[i] )
             return false;
     return true;
+}
+
+void glaxnimate::ps::ValueArray::pretty_print(PrettyPrinter &printer, bool as_executable) const
+{
+    if ( !printer.mark(data.get()) )
+    {
+        printer.add_visited();
+        return;
+    }
+
+    printer.add_line(QChar(as_executable ? '{' : '['));
+    printer.down();
+    for ( const auto& v : *data )
+        v.pretty_print(printer);
+    printer.up();
+    printer.add_line(QChar(as_executable ? '}' : ']'));
 }
 
 QString glaxnimate::ps::String::to_string() const
@@ -229,6 +265,13 @@ void glaxnimate::ps::ValueDict::put(const key_type &key, Value val)
     (*data)[key] = std::move(val);
 }
 
+QString glaxnimate::ps::ValueDict::to_pretty_string() const
+{
+    PrettyPrinter pp{false};
+    pretty_print(pp);
+    return pp.out;
+}
+
 glaxnimate::ps::Value glaxnimate::ps::ValueDict::get(const key_type &key) const
 {
     auto it = find(key);
@@ -237,12 +280,25 @@ glaxnimate::ps::Value glaxnimate::ps::ValueDict::get(const key_type &key) const
     return Value();
 }
 
-QString glaxnimate::ps::ValueDict::to_pretty_string() const
+void glaxnimate::ps::ValueDict::pretty_print(PrettyPrinter &printer) const
 {
-    QString str = u"<< "_s;
+    if ( !printer.mark(data.get()) )
+    {
+        printer.add_visited();
+        return;
+    }
+
+    printer.add_line(u"<< "_s);
+    printer.down();
     for ( const auto& p : *data )
-        str += String(p.first).to_string_literal() + ' ' + p.second.to_pretty_string() + ' ';
-    return str + u">>"_s;
+    {
+        printer.add_partial_line(QString::fromLatin1(String(p.first).to_string_literal()) + ' ');
+        p.second.pretty_print(printer);
+        printer.end_line();
+    }
+    printer.up();
+    printer.add_line(u">>"_s);
+
 }
 
 bool glaxnimate::ps::ValueDict::operator==(const ValueDict &oth) const
@@ -280,6 +336,7 @@ bool glaxnimate::ps::ValueDict::shallow_equal(const ValueDict &oth) const
 {
     return data == oth.data;
 }
+
 
 glaxnimate::ps::ValueDict glaxnimate::ps::ValueDict::shallow_copy() const
 {

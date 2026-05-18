@@ -17,6 +17,66 @@
 using namespace glaxnimate;
 using namespace glaxnimate::ps;
 
+FontDatabase::FontDatabase(const QStringList &families)
+{
+    for ( const auto& fam : families )
+        this->families[normalized_typeface_name(fam)] = fam;
+}
+
+FontDatabase::FontDatabase() : FontDatabase(QFontDatabase::families())
+{}
+
+QString FontDatabase::normalized_typeface_name(const QString& family)
+{
+    return family.toLower().remove(' ');
+}
+
+QString FontDatabase::get_family_name(const QByteArrayView &family) const
+{
+    auto it = families.find(normalized_typeface_name(QString::fromLatin1(family)));
+    if ( it == families.end() )
+        return {};
+    return it->second;
+}
+
+std::pair<QString, QString> FontDatabase::family_and_style(const QByteArrayView &name) const
+{
+    int style_index = name.indexOf('-');
+    QByteArrayView family;
+    QByteArrayView style;
+    if ( style_index == -1 )
+    {
+        family = name;
+    }
+    else
+    {
+        family = name.first(style_index);
+        style = name.sliced(style_index + 1);
+    }
+
+    QString norm_fam = get_family_name(family);
+    QString norm_style;
+    for ( char c : style )
+    {
+        if ( std::isupper(c) )
+            norm_style.push_back(' ');
+        norm_style.push_back(c);
+    }
+
+    if ( !norm_fam.isEmpty() )
+    {
+        QStringList styles = QFontDatabase::styles(norm_fam);
+        if ( !styles.contains(norm_style) )
+        {
+            norm_style = QStringLiteral("Regular");
+            if ( !styles.contains(norm_style) && !styles.empty() )
+                norm_style = styles[0];
+        }
+    }
+
+    return {norm_fam, norm_style};
+}
+
 bool FontWrapper::is_font() const
 {
     return font.contains("FontType") && font.contains("FontMatrix");
@@ -24,8 +84,9 @@ bool FontWrapper::is_font() const
 
 ValueDict FontWrapper::font_from_database(const QByteArray &name)
 {
-    auto styles = QFontDatabase::styles(name);
-    return font_from_qfont(QFontDatabase::font(name, styles.empty() ? QStringLiteral("Regular") : styles[0], 1));
+    static FontDatabase db;
+    auto famsty = db.family_and_style(name);
+    return font_from_qfont(QFontDatabase::font(famsty.first, famsty.second, 1));
 }
 
 
@@ -88,7 +149,12 @@ ValueDict FontWrapper::font_from_qfont(const QFont &font)
     // Custom font type
     font_dict["FontType"] = CustomFontType;
     font_dict["FontMatrix"] = ValueArray{1, 0, 0, 1, 0, 0};
-    font_dict["FontName"] = Value::from<Value::String>(full_name.replace(' ', '-'), Value::Name);
+    font_dict["FontName"] = Value::from<Value::String>(
+        QStringLiteral("%1-%2").arg(
+            QString(f_family).remove(' '),
+            QString(f_style).remove(' ')
+        ).toLatin1(),
+    Value::Name);
     font_dict["FontInfo"] = std::move(font_info);
 
     // Custom Stuff
