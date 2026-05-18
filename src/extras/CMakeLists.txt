@@ -2,5 +2,5 @@
 # SPDX-License-Identifier: BSD-2-Clause
 
 if ( GLAXNIMATE_POSTSCRIPT_ENABLED )
-    add_subdirectory(pscli)
+    add_subdirectory(glps)
 endif()

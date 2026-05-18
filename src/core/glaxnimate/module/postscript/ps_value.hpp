@@ -97,7 +97,7 @@ struct PrettyPrinter
 
     void up()
     {
-        depth++;
+        depth--;
     }
 
     void add_line(const QString& line)

@@ -1215,7 +1215,7 @@ void make_filter(File file, const QByteArray& filter_name, ValueDict options, In
         interpreter.error(u"Unknown filter %1"_s.arg(filter_name));
 }
 
-void debug_print(const Value& val, Interpreter& interpreter)
+void debug_print(const Value& val, Interpreter& interpreter, bool indent)
 {
     QString attrs;
     attrs.reserve(3);
@@ -1224,7 +1224,7 @@ void debug_print(const Value& val, Interpreter& interpreter)
     attrs.push_back(val.has_attribute(Value::Executable) ? 'x' : '-');
     interpreter.print(u"Attrs %1\n"_s.arg(attrs));
     interpreter.print(u"Type  %1\n"_s.arg(val.value_type_name()));
-    interpreter.print(u"Value %1\n"_s.arg(val.pretty_print(false)));
+    interpreter.print(u"Value %1\n"_s.arg(val.pretty_print(indent)));
 }
 
 } // namespace
@@ -1497,12 +1497,12 @@ void CommandSet::populate_builtins(CommandSet& builtins)
     }});
     // custom extension
     builtins.def("==debug", {Level::EPS1, {Arg::any()}, [](ValueArray args, Interpreter& interpreter){
-        debug_print(args[0], interpreter);
+        debug_print(args[0], interpreter, true);
     }});
     builtins.def("debugstack", {Level::EPS1, {}, [](ValueArray, Interpreter& interpreter){
         for ( const auto& v : interpreter.stack() )
         {
-            debug_print(v, interpreter);
+            debug_print(v, interpreter, false);
             interpreter.print(u"\n"_s);
         }
     }});
