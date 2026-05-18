@@ -120,15 +120,20 @@ public:
 #ifdef WITH_READLINE
     static void finalize()
     {
+        QFileInfo(history_file()).dir().mkpath(QStringLiteral("."));
+        std::string fname = history_file().toStdString();
+        write_history(fname.c_str());
         rl_callback_handler_remove();
-        write_history(history_file().toStdString().c_str());
     }
 
     static void static_on_line(char* line)
     {
-        add_history(line);
         instance->on_line(line);
-        free(line);
+        if ( line )
+        {
+            add_history(line);
+            free(line);
+        }
     }
 
     static void read_char()
