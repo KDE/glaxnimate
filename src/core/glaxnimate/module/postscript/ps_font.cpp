@@ -58,7 +58,7 @@ std::pair<QString, QString> FontDatabase::family_and_style(const QByteArrayView 
     QString norm_style;
     for ( char c : style )
     {
-        if ( std::isupper(c) )
+        if ( std::isupper(c) && !norm_style.isEmpty() )
             norm_style.push_back(' ');
         norm_style.push_back(c);
     }
