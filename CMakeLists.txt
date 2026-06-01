@@ -111,6 +111,10 @@ set(QT_VERSION_MAJOR ${QT_MAJOR_VERSION})
 find_package(Qt${QT_MAJOR_VERSION} COMPONENTS Core Widgets Xml UiTools Concurrent Network Svg REQUIRED)
 message(STATUS "Using Qt ${QT_MAJOR_VERSION}")
 
+if (ANDROID AND Qt6_VERSION VERSION_GREATER_EQUAL "6.10.0")
+    find_package(Qt6CorePrivate REQUIRED)
+endif()
+
 # KF
 set(KF_DEP_VERSION "6.3.0")
 find_package(ECM ${KF_DEP_VERSION} REQUIRED CONFIG)
