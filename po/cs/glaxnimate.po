@@ -1,38 +1,38 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the glaxnimate package.
 # SPDX-FileCopyrightText: 2024, 2026 Vit Pelcak <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2026 Libor Filípek <libor.filipek@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-04 00:42+0000\n"
-"PO-Revision-Date: 2026-02-27 21:21+0100\n"
-"Last-Translator:  Vít Pelčák <vit@pelcak.org>\n"
+"PO-Revision-Date: 2026-06-22 15:54+0200\n"
+"Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Vít Pelčák"
+msgstr "Vít Pelčák,Libor Filípek"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "vit@pelcak.org"
+msgstr "vit@pelcak.org,libor.filipek@gmail.com"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/shape.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Reverse"
+#, kde-format
 msgid "reversed"
-msgstr "Obrátit směr"
+msgstr "obrácené"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/shapes/rect.hpp
 #. i18n: Property name
@@ -70,7 +70,7 @@ msgstr "typ"
 #. i18n: Property name
 #, kde-format
 msgid "outer_radius"
-msgstr ""
+msgstr "vnější_poloměr"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/shapes/polystar.hpp
 #. i18n: Property name
@@ -84,7 +84,7 @@ msgstr "úhel"
 #. i18n: Property name
 #, kde-format
 msgid "outer_roundness"
-msgstr ""
+msgstr "vnější_zaoblení"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/modifiers/repeater.hpp
 #. i18n: Property name
@@ -94,10 +94,9 @@ msgstr "převést"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/modifiers/repeater.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "opacity"
+#, kde-format
 msgid "start_opacity"
-msgstr "krytí"
+msgstr "počáteční_průhlednost"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/modifiers/trim.hpp
 #. i18n: Property name
@@ -173,19 +172,19 @@ msgstr "obrázek"
 #. i18n: Property name
 #, kde-format
 msgid "cap"
-msgstr ""
+msgstr "clona"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/style/stroke.hpp
 #. i18n: Property name
 #, kde-format
 msgid "miter_limit"
-msgstr ""
+msgstr "úhlový_limit"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/style/fill.hpp
 #. i18n: Property name
 #, kde-format
 msgid "fill_rule"
-msgstr ""
+msgstr "pravidlo_vyplnění"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/style/styler.hpp
 #. i18n: Property name
@@ -201,10 +200,9 @@ msgstr "použít"
 
 #. i18n: file: src/core/glaxnimate/model/transform.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Duration"
+#, kde-format
 msgid "rotation"
-msgstr "Trvání"
+msgstr "rotace"
 
 #. i18n: file: src/core/glaxnimate/model/assets/composition.hpp
 #. i18n: Property name
@@ -236,7 +234,7 @@ msgstr "šířka"
 #. i18n: Property name
 #, kde-format
 msgid "css_url"
-msgstr ""
+msgstr "css_url"
 
 #. i18n: file: src/core/glaxnimate/model/assets/gradient.hpp
 #. i18n: Property name
@@ -250,14 +248,13 @@ msgstr "barvy"
 #. i18n: Property name
 #, kde-format
 msgid "start_point"
-msgstr ""
+msgstr "počáteční_bod"
 
 #. i18n: file: src/core/glaxnimate/model/assets/assets.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Gradient Colors"
+#, kde-format
 msgid "gradient_colors"
-msgstr "Barvy přechodu"
+msgstr "barevný_přechod"
 
 #. i18n: file: src/core/glaxnimate/model/assets/assets.hpp
 #. i18n: Property name
@@ -269,7 +266,7 @@ msgstr "kompozice"
 #. i18n: Property name
 #, kde-format
 msgid "first_frame"
-msgstr ""
+msgstr "první_snímek"
 
 #. i18n: file: src/core/glaxnimate/model/property/option_list_property.hpp
 #. i18n: Property name
@@ -289,7 +286,7 @@ msgstr "roztáhnout"
 #: data/plugins/FrameByFrame/create_frames.ui:18
 #, kde-format
 msgid "Create frame layers"
-msgstr ""
+msgstr "Vytvořit vrstvy snímků"
 
 #. i18n: ectx: property (plainText), widget (QPlainTextEdit, plainTextEdit)
 #: data/plugins/FrameByFrame/create_frames.ui:34
@@ -303,6 +300,14 @@ msgid ""
 "Then layers are created that appear in and out at uniform time intervals. "
 "You can use these layers for frame-by-frame animation."
 msgstr ""
+"Toto dialogové okno slouží k vytvoření vrstvy, která usnadňuje tvorbu "
+"animace snímku po snímku.\n"
+"\n"
+"Zadáte časový úsek, který chcete rozdělit na jednotlivé snímky, a požadovaný "
+"počet snímků.\n"
+"\n"
+"Následně se vytvoří vrstvy, které se objevují a mizí v pravidelných časových "
+"intervalech. Tyto vrstvy můžete použít pro animaci snímku po snímku."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: data/plugins/FrameByFrame/create_frames.ui:43
@@ -320,7 +325,7 @@ msgstr "Konec"
 #: data/plugins/FrameByFrame/create_frames.ui:77
 #, kde-format
 msgid "Number of frames"
-msgstr "Počet rámců"
+msgstr "Počet snímků"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QPushButton, pushButton_4)
@@ -351,7 +356,7 @@ msgstr "Otevřít soubor"
 #: src/android/document_opener.cpp:36
 #, kde-format
 msgid "Raster images need to be traced into vectors"
-msgstr ""
+msgstr "Rastrové obrázky je třeba převést na vektorové"
 
 #: src/android/document_opener.cpp:106
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:211
@@ -363,7 +368,7 @@ msgstr "Uložit soubor"
 #: src/android/document_opener.cpp:106
 #, kde-format
 msgid "Could not save the file"
-msgstr ""
+msgstr "Soubor se nepodařilo uložit"
 
 #: src/android/document_opener.cpp:128
 #, kde-format
@@ -373,7 +378,7 @@ msgstr "Neznámý typ souboru"
 #: src/android/document_opener.cpp:154
 #, kde-format
 msgid "Could not unzip the file"
-msgstr ""
+msgstr "Soubor se nepodařilo rozbalit"
 
 #: src/android/document_opener.cpp:193
 #, kde-format
@@ -381,6 +386,8 @@ msgid ""
 "Unknown file type. Supported files:\n"
 "%1"
 msgstr ""
+"Neznámý typ souboru. Podporované soubory:\n"
+"%1"
 
 #: src/android/document_opener.cpp:201
 #, kde-format
@@ -390,7 +397,7 @@ msgstr "Chyba při načítání %1 souboru"
 #: src/android/help_dialog.cpp:54
 #, kde-format
 msgid "Clears the current document and creates a new empty one"
-msgstr ""
+msgstr "Vymaže aktuální dokument a vytvoří nový prázdný dokument"
 
 #: src/android/help_dialog.cpp:58
 #, kde-format
@@ -399,6 +406,9 @@ msgid ""
 "Currently the following formats are supported:\n"
 "%1"
 msgstr ""
+"Vyzve uživatele k výběru dokumentu, který se má otevřít.\n"
+"V současné době jsou podporovány následující formáty:\n"
+"%1"
 
 #: src/android/help_dialog.cpp:62
 #, kde-format
@@ -406,16 +416,20 @@ msgid ""
 "Prompts the user to select a document to append as an object to the current "
 "one."
 msgstr ""
+"Vyzve uživatele, aby vybral dokument, který se má připojit jako objekt k "
+"aktuálnímu dokumentu."
 
 #: src/android/help_dialog.cpp:66
 #, kde-format
 msgid "Save the current document, prompting to select a file for new documents"
 msgstr ""
+"Uložit aktuální dokument; při vytváření nových dokumentů se zobrazí výzva k "
+"výběru souboru"
 
 #: src/android/help_dialog.cpp:70
 #, kde-format
 msgid "Save the current document, always prompting to select a file."
-msgstr ""
+msgstr "Uložit aktuální dokument a vždy zobrazit výzvu k výběru souboru."
 
 #: src/android/help_dialog.cpp:74
 #, kde-format
@@ -424,11 +438,14 @@ msgid ""
 "Currently the following formats are supported:\n"
 "%1"
 msgstr ""
+"Uložit kopii aktuálního dokumentu s výzvou k výběru formátu a souboru.\n"
+"V současné době jsou podporovány následující formáty:\n"
+"%1"
 
 #: src/android/help_dialog.cpp:78
 #, kde-format
 msgid "Saves the current frame as a still image"
-msgstr ""
+msgstr "Uloží aktuální snímek jako statický obrázek"
 
 #: src/android/help_dialog.cpp:82
 #, kde-format
@@ -438,36 +455,41 @@ msgid ""
 "If your Telegram version is too old, you can Export the file to TGS and "
 "upload that on Telegram."
 msgstr ""
+"Vytvoří balíček samolepek k exportu do aplikace Telegram.\n"
+"Upozorňujeme, že tuto funkci podporují pouze nejnovější verze aplikace "
+"Telegram.\n"
+"Pokud máte příliš starou verzi aplikace Telegram, můžete soubor exportovat "
+"do formátu TGS a ten pak nahrát do aplikace Telegram."
 
 #: src/android/help_dialog.cpp:86
 #, kde-format
 msgid "Cuts the selection into the clipboard."
-msgstr ""
+msgstr "Vyjme výběr a vloží jej do schránky."
 
 #: src/android/help_dialog.cpp:90
 #, kde-format
 msgid "Copies the selection into the clipboard."
-msgstr ""
+msgstr "Zkopíruje výběr do schránky."
 
 #: src/android/help_dialog.cpp:94
 #, kde-format
 msgid "Pastes from the clipboard into the current document."
-msgstr ""
+msgstr "Vloží obsah schránky do aktuálního dokumentu."
 
 #: src/android/help_dialog.cpp:98
 #, kde-format
 msgid "Removes the selected item."
-msgstr ""
+msgstr "Odstraní vybranou položku."
 
 #: src/android/help_dialog.cpp:102
 #, kde-format
 msgid "Undoes the last action."
-msgstr ""
+msgstr "Zruší poslední akci."
 
 #: src/android/help_dialog.cpp:106
 #, kde-format
 msgid "Redoes the last undone action."
-msgstr ""
+msgstr "Zopakuje poslední zrušenou akci."
 
 #: src/android/help_dialog.cpp:110
 #, kde-format
@@ -475,32 +497,36 @@ msgid ""
 "Opens the side pane used to change the advanced properties for the selected "
 "object."
 msgstr ""
+"Otevře boční panel, který slouží ke změně pokročilých vlastností vybraného "
+"objektu."
 
 #: src/android/help_dialog.cpp:114
 #, kde-format
 msgid "Shows the timeline and playback controls."
-msgstr ""
+msgstr "Zobrazí časovou osu a ovládací prvky přehrávání."
 
 #: src/android/help_dialog.cpp:118
 #, kde-format
 msgid "Opens the side pane used to select the fill color."
-msgstr ""
+msgstr "Otevře boční panel, který slouží k výběru barvy výplně."
 
 #: src/android/help_dialog.cpp:122
 #, kde-format
 msgid "Opens the side pane used to select the stroke color and style."
-msgstr ""
+msgstr "Otevře boční panel, který slouží k výběru barvy a stylu obrysu."
 
 #: src/android/help_dialog.cpp:126
 #, kde-format
 msgid "Shows this help."
-msgstr ""
+msgstr "Zobrazí tuto nápovědu."
 
 #: src/android/help_dialog.cpp:130
 #, kde-format
 msgid ""
 "Select tool, you can use it to select objects and change their transform."
 msgstr ""
+"Nástroj pro výběr. Můžete jej použít k výběru objektů a změně jejich "
+"transformace."
 
 #: src/android/help_dialog.cpp:134
 #, kde-format
@@ -508,36 +534,39 @@ msgid ""
 "Edit tool, used to edit existing items (eg: moving, bezier nodes, setting "
 "rounded corners on a rectangle, etc.)"
 msgstr ""
+"Nástroj pro úpravy, který slouží k úpravám stávajících prvků (např. "
+"přesouvání, úpravy Bézierových uzlů, nastavení zaoblených rohů obdélníku "
+"atd.)"
 
 #: src/android/help_dialog.cpp:138
 #, kde-format
 msgid "Shows a tray with the curve drawing tools."
-msgstr ""
+msgstr "Zobrazí panel s nástroji pro kreslení křivek."
 
 #: src/android/help_dialog.cpp:142
 #, kde-format
 msgid "Create Bezier curves using nodes and handles."
-msgstr ""
+msgstr "Vytvoří Bézierovy křivky pomocí uzlů a úchytů."
 
 #: src/android/help_dialog.cpp:146
 #, kde-format
 msgid "Draw curves freehand."
-msgstr ""
+msgstr "Kreslení křivek volnou rukou."
 
 #: src/android/help_dialog.cpp:150
 #, kde-format
 msgid "Shows a tray with the shape drawing tools."
-msgstr ""
+msgstr "Zobrazí panel s nástroji pro kreslení tvarů."
 
 #: src/android/help_dialog.cpp:154
 #, kde-format
 msgid "Draws rectangles."
-msgstr ""
+msgstr "Kreslí obdélníky."
 
 #: src/android/help_dialog.cpp:158
 #, kde-format
 msgid "Draws ellipses."
-msgstr ""
+msgstr "Kreslí elipsy."
 
 #: src/android/help_dialog.cpp:162
 #, kde-format
@@ -545,46 +574,48 @@ msgid ""
 "Draws a star, after it's been created you can change it into a regular "
 "polygon and change the number of sides from the properties pane."
 msgstr ""
+"Nakreslí hvězdu; po jejím vytvoření ji můžete v panelu vlastností změnit na "
+"pravidelný mnohoúhelník a upravit počet stran."
 
 #: src/android/help_dialog.cpp:166
 #, kde-format
 msgid "Create and edit text shapes."
-msgstr ""
+msgstr "Vytváření a úprava textových tvarů."
 
 #: src/android/help_dialog.cpp:170
 #, kde-format
 msgid "Toggles the menu showing non-drawing buttons."
-msgstr ""
+msgstr "Zapíná/vypíná zobrazení tlačítek v nabídce, která neslouží k kreslení."
 
 #: src/android/help_dialog.cpp:174
 #, kde-format
 msgid "Starts playback."
-msgstr ""
+msgstr "Spustí přehrávání."
 
 #: src/android/help_dialog.cpp:178
 #, kde-format
 msgid "Toggles looping for the playback (on by default)."
-msgstr ""
+msgstr "Zapíná/vypíná opakované přehrávání (ve výchozím nastavení zapnuto)."
 
 #: src/android/help_dialog.cpp:182
 #, kde-format
 msgid "Jumps to the first frame."
-msgstr ""
+msgstr "Přejde na první snímek."
 
 #: src/android/help_dialog.cpp:186
 #, kde-format
 msgid "Goes to the previous frame."
-msgstr ""
+msgstr "Přejde na předchozí snímek."
 
 #: src/android/help_dialog.cpp:190
 #, kde-format
 msgid "Goes to the next frame."
-msgstr ""
+msgstr "Přejde na další snímek."
 
 #: src/android/help_dialog.cpp:194
 #, kde-format
 msgid "Jumps to the last frame."
-msgstr ""
+msgstr "Přejde na poslední snímek."
 
 #: src/android/help_dialog.cpp:198
 #, kde-format
@@ -592,16 +623,18 @@ msgid ""
 "When enabled (which is the default) whenever you change an object property, "
 "a new keyframe is added for that property."
 msgstr ""
+"Je-li tato funkce zapnutá (což je výchozí nastavení), při každé změně "
+"vlastnosti objektu se pro danou vlastnost přidá nový klíčový snímek."
 
 #: src/android/help_dialog.cpp:202
 #, kde-format
 msgid "Push the selection further back."
-msgstr ""
+msgstr "Posune výběr ještě více dozadu."
 
 #: src/android/help_dialog.cpp:206
 #, kde-format
 msgid "Brings the selection further to the front."
-msgstr ""
+msgstr "Posune výběr ještě více dopředu."
 
 #: src/android/main_window.cpp:414
 #, kde-format
@@ -611,12 +644,12 @@ msgstr "Časová osa"
 #: src/android/main_window.cpp:419
 #, kde-format
 msgid "Fill Style"
-msgstr ""
+msgstr "Styl vyplnění"
 
 #: src/android/main_window.cpp:424
 #, kde-format
 msgid "Stroke Style"
-msgstr ""
+msgstr "Styl tahu"
 
 #: src/android/main_window.cpp:454 src/gui/widgets/dialogs/gw_impl_ui.cpp:664
 #: src/gui/widgets/menus/node_menu.cpp:116
@@ -656,12 +689,12 @@ msgstr "Smazat vybrané"
 #: src/android/main_window.cpp:484
 #, kde-format
 msgid "Raise Above"
-msgstr ""
+msgstr "Přenést výše"
 
 #: src/android/main_window.cpp:488
 #, kde-format
 msgid "Lower Below"
-msgstr ""
+msgstr "Přenést níže"
 
 #: src/android/main_window.cpp:492
 #, kde-format
@@ -716,7 +749,7 @@ msgstr "Otevřít"
 #: src/android/main_window.cpp:516
 #, kde-format
 msgid "Import as Composition"
-msgstr ""
+msgstr "Importovat jako kompozici"
 
 #: src/android/main_window.cpp:519
 #, kde-format
@@ -743,12 +776,12 @@ msgstr "Exportovat"
 #: src/android/main_window.cpp:530
 #, kde-format
 msgid "Save Frame as PNG"
-msgstr ""
+msgstr "Uložit snímek jako PNG"
 
 #: src/android/main_window.cpp:534
 #, kde-format
 msgid "Send to Telegram"
-msgstr ""
+msgstr "Odeslat do Telegramu"
 
 #. i18n: ectx: Menu (layers)
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_layers)
@@ -780,7 +813,7 @@ msgstr "Animace.%1"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:293
 #, kde-format
 msgid "Closing Animation"
-msgstr ""
+msgstr "Ukončení animace"
 
 #: src/android/main_window.cpp:668
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:294
@@ -789,6 +822,8 @@ msgid ""
 "The animation has unsaved changes.\n"
 "Do you want to save your changes?"
 msgstr ""
+"Animace obsahuje neuložené změny.\n"
+"Chcete změny uložit?"
 
 #: src/android/main_window.cpp:752 src/android/main_window.cpp:756
 #: src/android/main_window.cpp:891
@@ -949,13 +984,12 @@ msgid "Stretch Time"
 msgstr ""
 
 #: src/core/glaxnimate/command/clipboard.cpp:142
-#, fuzzy, kde-format
-#| msgid "Paste Keyframe"
+#, kde-format
 msgid "Paste keyframe"
 msgid_plural "Paste keyframes"
 msgstr[0] "Vložit klíčový snímek"
-msgstr[1] "Vložit klíčový snímek"
-msgstr[2] "Vložit klíčový snímek"
+msgstr[1] "Vložit klíčové snímky"
+msgstr[2] "Vložit klíčové snímky"
 
 #: src/core/glaxnimate/command/object_list_commands.hpp:26
 #, kde-format
@@ -1324,7 +1358,7 @@ msgstr ""
 #: src/core/glaxnimate/io/raster/spritesheet_format.cpp:32
 #, kde-format
 msgid "Frame Width"
-msgstr "Šířka rámečku"
+msgstr "Šířka snímku"
 
 #: src/core/glaxnimate/io/raster/spritesheet_format.cpp:32
 #, kde-format
@@ -1808,10 +1842,9 @@ msgid "Unknown property \"%1\" of \"%2\""
 msgstr ""
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:221
-#, fuzzy, kde-format
-#| msgid "Layer"
+#, kde-format
 msgid "Layer #%1"
-msgstr "Vrstva"
+msgstr "Vrstva #%1"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:279
 #, kde-format
@@ -2242,7 +2275,7 @@ msgstr ""
 #: src/core/glaxnimate/module/video/video_format.cpp:796
 #, kde-format
 msgid "No video codec"
-msgstr ""
+msgstr "Žádný video kodek"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:448
 #, kde-format
@@ -2658,7 +2691,7 @@ msgstr "Obnovit"
 #: src/gui/emoji/emoji_set_dialog.ui:121
 #, kde-format
 msgid "View Website"
-msgstr ""
+msgstr "Zobrazit webové stránky"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_download)
 #: src/gui/emoji/emoji_set_dialog.ui:135
@@ -2694,12 +2727,12 @@ msgstr ""
 #: src/gui/glaxnimate_app.cpp:208
 #, kde-format
 msgid "OpenGL Renderer"
-msgstr ""
+msgstr "Vykreslení OpenGL"
 
 #: src/gui/glaxnimate_app.cpp:231
 #, kde-format
 msgid "Copyright © 2019-2026"
-msgstr ""
+msgstr "Autorská práva © 2019-2026"
 
 #: src/gui/glaxnimate_app.cpp:240
 #, kde-format
@@ -2969,7 +3002,7 @@ msgstr "Maska"
 #: src/gui/item_models/python_snippet_model.hpp:36
 #, kde-format
 msgid "New Snippet %1"
-msgstr ""
+msgstr "Nový ústřižek %1"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_google)
 #: src/gui/settings/api_credentials.cpp:28
@@ -3007,7 +3040,7 @@ msgctxt ""
 "%5 is the file name, %1 × %2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
 msgid "%5 — %1 × %2 %3 %4 fps"
-msgstr ""
+msgstr "%5 — %1 × %2 %3 %4 fps"
 
 #: src/gui/settings/document_templates.cpp:178
 #, kde-format
@@ -3027,7 +3060,7 @@ msgstr "Výchozí systémový"
 #: src/gui/style/property_delegate.cpp:52
 #, kde-format
 msgid "%1% × %2%"
-msgstr ""
+msgstr "%1% × %2%"
 
 #: src/gui/style/property_delegate.cpp:72
 #, kde-format
@@ -3133,7 +3166,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Stop Color..."
-msgstr ""
+msgstr "Zastavit barvu..."
 
 #: src/gui/tools/edit_tool.cpp:385
 #, kde-format
@@ -3705,7 +3738,7 @@ msgstr "Čas ukončení"
 #: src/gui/widgets/dialogs/timing_dialog.ui:72
 #, kde-format
 msgid "Frames"
-msgstr "Rámce"
+msgstr "Snímky"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_units)
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_time_units)
@@ -3763,13 +3796,12 @@ msgid "Warning"
 msgstr "Varování"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:292
-#, fuzzy, kde-format
-#| msgid "Remove keyframe"
+#, kde-format
 msgid "Delete keyframe"
 msgid_plural "Delete keyframes"
-msgstr[0] "Odstranit klíčový snímek"
-msgstr[1] "Odstranit klíčový snímek"
-msgstr[2] "Odstranit klíčový snímek"
+msgstr[0] "Smazat klíčový snímek"
+msgstr[1] "Smazat klíčové snímky"
+msgstr[2] "Smazat klíčové snímky"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:138
 #, kde-format
@@ -3936,7 +3968,7 @@ msgstr "Smazat %1"
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:181
 #, kde-format
 msgid "Move Shapes"
-msgstr ""
+msgstr "Přesunout tvary"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:205
 #, kde-format
@@ -4207,12 +4239,12 @@ msgstr ""
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:562
 #, kde-format
 msgid "Next Frame"
-msgstr "Následující rámec"
+msgstr "Následující snímek"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:564
 #, kde-format
 msgid "Previous Frame"
-msgstr "Předchozí rámec"
+msgstr "Předchozí snímek"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:572
 #, kde-format
@@ -4365,7 +4397,7 @@ msgstr "Průnik"
 #: src/gui/widgets/enum_combo.cpp:147
 #, kde-format
 msgid "Exclusion"
-msgstr ""
+msgstr "Vyloučení"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:876
 #, kde-format
@@ -4703,7 +4735,7 @@ msgstr "Ploché"
 #: src/gui/widgets/dialogs/trace_dialog.ui:99
 #, kde-format
 msgid "Pixel Art"
-msgstr ""
+msgstr "Pixelované umění"
 
 #. i18n: ectx: property (html), widget (QTextBrowser, textBrowser)
 #: src/gui/widgets/dialogs/trace_dialog.ui:151
@@ -4861,7 +4893,7 @@ msgstr "Barvy"
 #: src/gui/widgets/dialogs/trace_dialog.ui:394
 #, kde-format
 msgid "Add Color"
-msgstr ""
+msgstr "Přidat barvu"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_add)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_add)
@@ -5310,27 +5342,24 @@ msgid "Lighten"
 msgstr "Zesvětlit"
 
 #: src/gui/widgets/enum_combo.cpp:137
-#, fuzzy, kde-format
-#| msgid "Color Mode"
+#, kde-format
 msgid "Color Dodge"
-msgstr "Barevný režim"
+msgstr "Zesvětlení barvy"
 
 #: src/gui/widgets/enum_combo.cpp:139
-#, fuzzy, kde-format
-#| msgid "Color"
+#, kde-format
 msgid "Color Burn"
-msgstr "Barva"
+msgstr "Vypálení barvy"
 
 #: src/gui/widgets/enum_combo.cpp:141
-#, fuzzy, kde-format
-#| msgid "Height"
+#, kde-format
 msgid "Hard Light"
-msgstr "Výška"
+msgstr "Ostré zesvětlení"
 
 #: src/gui/widgets/enum_combo.cpp:143
 #, kde-format
 msgid "Soft Light"
-msgstr ""
+msgstr "Měkké zesvětlení"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::HueSlider, slider_hsv_hue)
 #. i18n: ectx: property (toolTip), widget (QLabel, label)
@@ -5537,7 +5566,7 @@ msgstr "od %1"
 #: src/gui/widgets/lottiefiles/search_result.cpp:49
 #, kde-format
 msgid "Likes"
-msgstr ""
+msgstr "Líbí se"
 
 #: src/gui/widgets/lottiefiles/search_result.cpp:58
 #, kde-format
@@ -5577,10 +5606,9 @@ msgid "Remove Keyframe"
 msgstr "Odstranit klíčový snímek"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:131
-#, fuzzy, kde-format
-#| msgid "Loop"
+#, kde-format
 msgid "Loop %1"
-msgstr "Smyčka"
+msgstr "Smyčka %1"
 
 #: src/gui/widgets/menus/node_menu.cpp:60
 #: src/gui/widgets/menus/node_menu.cpp:285
@@ -5700,7 +5728,7 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:491
 #, kde-format
 msgid "Speed Multiplier"
-msgstr ""
+msgstr "Násobek rychlosti"
 
 #: src/gui/widgets/menus/node_menu.cpp:508
 #, kde-format
@@ -5739,8 +5767,7 @@ msgid "Duplicate"
 msgstr "Duplikovat"
 
 #: src/gui/widgets/menus/node_menu.cpp:538
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Move"
 msgstr "Přesunout"
@@ -5847,12 +5874,12 @@ msgstr "Služby"
 #: src/gui/widgets/settings/settings_dialog.cpp:231
 #, kde-format
 msgid "Best Quality"
-msgstr ""
+msgstr "Nejlepší kvalita"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:232
 #, kde-format
 msgid "Reduced Size (Performance)"
-msgstr ""
+msgstr "Redukovaná velikost (výkon)"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:234
 msgctxt "Settings"
@@ -5893,7 +5920,7 @@ msgstr "Motiv ikon aplikace"
 #, kde-format
 msgctxt "Seconds suffix"
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:251
 msgctxt "Settings"
@@ -6326,7 +6353,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:225
 #, kde-format
 msgid "Set Line Cap"
-msgstr ""
+msgstr "Nastavení clony"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:240
 #, kde-format
@@ -6365,7 +6392,7 @@ msgstr "Šířka tahu"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:69
 #, kde-format
 msgid "Cap"
-msgstr ""
+msgstr "Clona"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:157
@@ -6377,7 +6404,7 @@ msgstr "Připojit"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:263
 #, kde-format
 msgid "Miter Limit"
-msgstr ""
+msgstr "Omezení úhlu"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:338
@@ -6430,13 +6457,13 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:30
 #, kde-format
 msgid "Frame number"
-msgstr "Číslo rámce"
+msgstr "Číslo snímku"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spin_frame)
 #: src/gui/widgets/timeline/frame_controls_widget.ui:36
 #, kde-format
 msgid " f"
-msgstr ""
+msgstr " f"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_loop)
 #: src/gui/widgets/timeline/frame_controls_widget.ui:56
@@ -6458,7 +6485,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:94
 #, kde-format
 msgid "Go To Previous Keyframe"
-msgstr "Jít na předchozí klíčový rámec"
+msgstr "Jít na předchozí klíčový snímek"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_prev)
 #. i18n: ectx: property (text), widget (QToolButton, button_prev)
@@ -6482,7 +6509,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:136
 #, kde-format
 msgid "Go To Next Keyframe"
-msgstr "Jít na následující klíčový rámec"
+msgstr "Jít na následující klíčový snímek"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_last)
 #. i18n: ectx: property (text), widget (QToolButton, button_last)
