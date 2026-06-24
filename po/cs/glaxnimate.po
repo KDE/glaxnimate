@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-01 02:43+0000\n"
-"PO-Revision-Date: 2026-06-22 15:54+0200\n"
+"PO-Revision-Date: 2026-06-23 20:25+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 26.04.2\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -840,12 +840,12 @@ msgstr "Importovat soubor"
 #: src/android/main_window.cpp:750
 #, kde-format
 msgid "Could not import file"
-msgstr ""
+msgstr "Nelze importovat soubor"
 
 #: src/android/main_window.cpp:789
 #, kde-format
 msgid "Frame %1.png"
-msgstr ""
+msgstr "Snímek %1.png"
 
 #: src/android/main_window.cpp:980
 #, kde-format
@@ -862,7 +862,7 @@ msgstr "Odstranit klíčový snímek"
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:174
 #, kde-format
 msgid "Clear Animations"
-msgstr ""
+msgstr "Vymazat animace"
 
 #: src/android/main_window.cpp:1069
 #, kde-format
@@ -878,7 +878,7 @@ msgstr "Glaxnimate"
 #: src/android/sticker_pack_builder_dialog.cpp:156
 #, kde-format
 msgid "Too many stickers"
-msgstr ""
+msgstr "Příliš mnoho samolepek"
 
 #: src/android/sticker_pack_builder_dialog.cpp:162
 #: src/android/sticker_pack_builder_dialog.cpp:171
@@ -889,24 +889,24 @@ msgstr "Nelze otevřít soubor"
 #: src/android/sticker_pack_builder_dialog.cpp:222
 #, kde-format
 msgid "Cannot save as TGS"
-msgstr ""
+msgstr "Nelze uložit jako TGS"
 
 #: src/android/sticker_pack_builder_dialog.cpp:263
 #, kde-format
 msgid "Are you sure you want to remove all stickers from the pack?"
-msgstr ""
+msgstr "Opravdu chcete odstranit všechny samolepky z balíčku?"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, StickerPackBuilderDialog)
 #: src/android/sticker_pack_builder_dialog.ui:21
 #, kde-format
 msgid "Export Stickers"
-msgstr ""
+msgstr "Exportovat samolepky"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_add)
 #: src/android/sticker_pack_builder_dialog.ui:116
 #, kde-format
 msgid "Open Sticker"
-msgstr ""
+msgstr "Otevřít samolepku"
 
 #. i18n: ectx: property (text), widget (QToolButton, btn_clear_console)
 #. i18n: ectx: property (text), widget (QToolButton, btn_clear)
@@ -916,18 +916,18 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:693
 #, kde-format
 msgid "Clear"
-msgstr "Vyprázdnit"
+msgstr "Vymazat"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_add_current)
 #: src/android/sticker_pack_builder_dialog.ui:173
 #, kde-format
 msgid "Add Current"
-msgstr ""
+msgstr "Přidat současný"
 
 #: src/android/telegram_intent.cpp:45
 #, kde-format
 msgid "Could not start activity, is Telegram installed?"
-msgstr ""
+msgstr "Nelze spustit aktivitu. Je nainstalována aplikace Telegram?"
 
 #: src/core/app_info.cpp:57
 #, kde-format
@@ -992,27 +992,27 @@ msgstr ""
 #: src/core/command/animation_commands.cpp:17
 #, kde-format
 msgid "Update %1 keyframe at %2"
-msgstr ""
+msgstr "Aktualizovat klíčový snímek %1 v %2"
 
 #: src/core/command/animation_commands.cpp:86
 #, kde-format
 msgid "Remove %1 keyframe at %2"
-msgstr ""
+msgstr "Odstranit klíčový snímek %1 v %2"
 
 #: src/core/command/animation_commands.cpp:117
 #, kde-format
 msgid "Remove %1 keyframe %2"
-msgstr "Odstranit %1 klíčový snímek %2"
+msgstr "Odstranit klíčový snímek %1 %2"
 
 #: src/core/command/animation_commands.cpp:289
 #, kde-format
 msgid "Add keyframe for %1 at %2"
-msgstr ""
+msgstr "Přidat klíčový snímek pro %1 v %2"
 
 #: src/core/command/animation_commands.cpp:292
 #, kde-format
 msgid "Update %1 at %2"
-msgstr ""
+msgstr "Aktualizovat %1 v %2"
 
 #: src/core/command/animation_commands.cpp:294
 #: src/core/command/property_commands.hpp:24
@@ -1025,7 +1025,7 @@ msgstr "Aktualizovat %1"
 #: src/gui/widgets/timeline/timeline_items.cpp:541
 #, kde-format
 msgid "Update keyframe transition"
-msgstr ""
+msgstr "Aktualizovat přechod klíčového snímku"
 
 #: src/core/command/animation_commands.cpp:358
 #, kde-format
@@ -1035,17 +1035,17 @@ msgstr "Posunout klíčový snímek"
 #: src/core/command/animation_commands.cpp:381
 #, kde-format
 msgid "Remove animations from %1"
-msgstr ""
+msgstr "Odstranit animace z %1"
 
 #: src/core/command/animation_commands.cpp:432
 #, kde-format
 msgid "Update animation path"
-msgstr ""
+msgstr "Aktualizovat dráhu animace"
 
 #: src/core/command/animation_commands.hpp:242
 #, kde-format
 msgid "Stretch Time"
-msgstr ""
+msgstr "Časový rozsah"
 
 #: src/core/command/object_list_commands.hpp:26
 #, kde-format
@@ -1125,7 +1125,7 @@ msgstr ""
 #: src/core/io/lottie/lottie_importer.hpp:929
 #, kde-format
 msgid "Invalid value for %1"
-msgstr ""
+msgstr "Neplatná hodnota pro %1"
 
 #: src/core/io/aep/aep_loader.cpp:510
 #, kde-format
@@ -1275,91 +1275,91 @@ msgstr "%1 (%2)"
 #: src/core/io/glaxnimate/glaxnimate_mime.hpp:21
 #, kde-format
 msgid "Glaxnimate Animation"
-msgstr ""
+msgstr "Animace Glaxnimate"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:21
 #: src/core/io/glaxnimate/glaxnimate_mime.cpp:88
 #: src/core/io/lottie/lottie_format.cpp:34
 #, kde-format
 msgid "Could not parse JSON: %1"
-msgstr ""
+msgstr "Nepodařilo se zpracovat JSON: %1"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:27
 #: src/core/io/glaxnimate/glaxnimate_mime.cpp:94
 #: src/core/io/lottie/lottie_format.cpp:40
 #, kde-format
 msgid "No JSON object found"
-msgstr ""
+msgstr "Nebyl nalezen žádný objekt JSON"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:35
 #, kde-format
 msgid "Opening a file from a newer version of Glaxnimate"
-msgstr ""
+msgstr "Otevření souboru z novější verze programu Glaxnimate"
 
 #: src/core/io/glaxnimate/glaxnimate_importer.cpp:43
 #, kde-format
 msgid "Missing composition"
-msgstr ""
+msgstr "Chybějící kompozice"
 
 #: src/core/io/glaxnimate/import_state.hpp:108
 #, kde-format
 msgid "Property %1 of %2 refers to unexisting object %3"
-msgstr ""
+msgstr "Vlastnost %1 z %2 odkazuje na neexistující objekt %3"
 
 #: src/core/io/glaxnimate/import_state.hpp:117
 #, kde-format
 msgid "Could not load %1 for %2: uuid refers to an unacceptable object"
-msgstr ""
+msgstr "Nelze načíst %1 pro %2: uuid odkazuje na nepřípustný objekt"
 
 #: src/core/io/glaxnimate/import_state.hpp:128
 #, kde-format
 msgid "Object %1 is invalid"
-msgstr ""
+msgstr "Objekt %1 je neplatný"
 
 #: src/core/io/glaxnimate/import_state.hpp:328
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
-msgstr ""
+msgstr "Nesprávný typ objektu: očekáván '%1', ale nalezen '%2'"
 
 #: src/core/io/glaxnimate/import_state.hpp:334
 #, kde-format
 msgid "Could not load %1 for %2"
-msgstr ""
+msgstr "Nelze načíst %1 pro %2"
 
 #: src/core/io/glaxnimate/import_state.hpp:343
 #, kde-format
 msgid "Could not set property %1"
-msgstr ""
+msgstr "Nelze nastavit vlastnost %1"
 
 #: src/core/io/glaxnimate/import_state.hpp:369
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
-msgstr ""
+msgstr "Položka %1 pro %2 v %3 není objekt"
 
 #: src/core/io/glaxnimate/import_state.hpp:381
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
-msgstr ""
+msgstr "Položka %1 za %2 v %3 není přípustná"
 
 #: src/core/io/glaxnimate/import_state.hpp:420
 #, kde-format
 msgid "Keyframe must specify a time"
-msgstr ""
+msgstr "Klíčový snímek musí obsahovat časový údaj"
 
 #: src/core/io/glaxnimate/import_state.hpp:425
 #, kde-format
 msgid "Keyframe must specify a value"
-msgstr ""
+msgstr "Klíčový snímek musí obsahovat hodnotu"
 
 #: src/core/io/glaxnimate/import_state.hpp:435
 #, kde-format
 msgid "Could not add keyframe"
-msgstr ""
+msgstr "Nepodařilo se přidat klíčový snímek"
 
 #: src/core/io/glaxnimate/import_state.hpp:619
 #, kde-format
 msgid "Unknown object of type '%1'"
-msgstr ""
+msgstr "Neznámý objekt typu '%1'"
 
 #: src/core/io/lottie/lottie_exporter.hpp:559
 #, kde-format
@@ -1375,6 +1375,7 @@ msgstr ""
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
+"Obrázky nelze seskupovat s jinými tvary, musí být umístěny uvnitř vrstvy"
 
 #: src/core/io/lottie/lottie_exporter.hpp:612
 #, kde-format
@@ -1382,16 +1383,18 @@ msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
 "a layer"
 msgstr ""
+"Kompoziční vrstvy nelze seskupovat s jinými tvary, musí být umístěny uvnitř "
+"vrstvy"
 
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
 msgid "Pretty"
-msgstr "Pěkný"
+msgstr "Přehledný"
 
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
 msgid "Pretty print the JSON"
-msgstr ""
+msgstr "Zobrazit JSON v přehledném formátu"
 
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
@@ -1401,7 +1404,7 @@ msgstr "Odstranit"
 #: src/core/io/lottie/lottie_format.cpp:60
 #, kde-format
 msgid "Strip unused properties"
-msgstr ""
+msgstr "Odstranit nepoužívané vlastnosti"
 
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
@@ -1411,58 +1414,58 @@ msgstr "Vložit obrázky"
 #: src/core/io/lottie/lottie_format.cpp:61
 #, kde-format
 msgid "Automatically embed non-embedded images"
-msgstr ""
+msgstr "Automaticky vložit dosud nevložené obrázky"
 
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
 msgid "Legacy Keyframes"
-msgstr ""
+msgstr "Starší klíčové snímky"
 
 #: src/core/io/lottie/lottie_format.cpp:62
 #, kde-format
 msgid "Compatibility with lottie-web versions prior to 5.0.0"
-msgstr ""
+msgstr "Kompatibilita s verzemi lottie-web staršími než 5.0.0"
 
 #: src/core/io/lottie/lottie_format.hpp:22
 #, kde-format
 msgid "Lottie Animation"
-msgstr ""
+msgstr "Animace Lottie"
 
 #: src/core/io/lottie/lottie_html_format.hpp:20
 #, kde-format
 msgid "Lottie HTML Preview"
-msgstr ""
+msgstr "Náhled HTML Lottie"
 
 #: src/core/io/lottie/lottie_importer.hpp:185
 #, kde-format
 msgid "Missing layer type for %1"
-msgstr ""
+msgstr "Chybí typ vrstvy pro %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:322
 #, kde-format
 msgid "Cannot use %1 as parent as it couldn't be loaded"
-msgstr ""
+msgstr "Nelze použít %1 jako nadřazený prvek, protože se jej nepodařilo načíst"
 
 #: src/core/io/lottie/lottie_importer.hpp:332
 #, kde-format
 msgid "Invalid parent layer %1"
-msgstr ""
+msgstr "Neplatná nadřazená vrstva %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:457
 #, kde-format
 msgid "Unsupported layer of type %1"
-msgstr ""
+msgstr "Nepodporovaná vrstva typu %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:482
 #, kde-format
 msgid "Missing shape type"
-msgstr ""
+msgstr "Chybějící typ tvaru"
 
 #: src/core/io/lottie/lottie_importer.hpp:495
 #: src/core/io/lottie/lottie_importer.hpp:505
 #, kde-format
 msgid "Unsupported shape type %1"
-msgstr ""
+msgstr "Nepodporovaný typ tvaru %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:528
 #, kde-format
@@ -1472,12 +1475,12 @@ msgstr "Neznámé pole %2%1"
 #: src/core/io/lottie/lottie_importer.hpp:855
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
-msgstr ""
+msgstr "Neplatný Bézierův bod %1 v %2"
 
 #: src/core/io/lottie/lottie_importer.hpp:937
 #, kde-format
 msgid "Invalid keyframes for %1"
-msgstr ""
+msgstr "Neplatné klíčové snímky pro %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:987
 #, kde-format
@@ -1492,17 +1495,17 @@ msgstr "(prázdný)"
 #: src/core/io/lottie/lottie_importer.hpp:1002
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
-msgstr ""
+msgstr "Nelze načíst klíčový snímek v %1 pro %2 s hodnotou %3"
 
 #: src/core/io/lottie/lottie_importer.hpp:1056
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
-msgstr ""
+msgstr "Duplicitní ID bitmapy: %1"
 
 #: src/core/io/lottie/lottie_importer.hpp:1088
 #, kde-format
 msgid "Duplicate Composition ID: %1"
-msgstr ""
+msgstr "Duplicitní ID kompozice: %1"
 
 #: src/core/io/lottie/tgs_format.cpp:47
 #, kde-format
@@ -1512,7 +1515,7 @@ msgstr ""
 #: src/core/io/lottie/tgs_format.cpp:51 src/core/io/lottie/validation.cpp:71
 #, kde-format
 msgid "Images are not supported"
-msgstr ""
+msgstr "Obrázky nejsou podporovány"
 
 #: src/core/io/lottie/tgs_format.cpp:56
 #, kde-format
@@ -1557,22 +1560,22 @@ msgstr ""
 #: src/core/io/lottie/validation.cpp:25
 #, kde-format
 msgid "Invalid width: %1, should be %2"
-msgstr ""
+msgstr "Neplatná šířka: %1, měla by být %2"
 
 #: src/core/io/lottie/validation.cpp:29
 #, kde-format
 msgid "Invalid height: %1, should be %2"
-msgstr ""
+msgstr "Neplatná výška: %1, měla by být %2"
 
 #: src/core/io/lottie/validation.cpp:41
 #, kde-format
 msgid "Invalid fps: %1, should be %2"
-msgstr ""
+msgstr "Neplatná hodnota fps: %1, měla by být %2"
 
 #: src/core/io/lottie/validation.cpp:49
 #, kde-format
 msgid "Too many frames: %1, should be less than %2"
-msgstr ""
+msgstr "Příliš mnoho snímků: %1, mělo by to být méně než %2"
 
 #: src/core/io/lottie/validation.hpp:22
 #, kde-format
@@ -1588,7 +1591,7 @@ msgstr "JSON"
 #: src/core/io/raster/raster_mime.hpp:25
 #, kde-format
 msgid "Raster Image"
-msgstr ""
+msgstr "Rastrový obrázek"
 
 #: src/core/io/raster/spritesheet_format.cpp:32
 #, kde-format
@@ -1598,17 +1601,17 @@ msgstr "Šířka snímku"
 #: src/core/io/raster/spritesheet_format.cpp:32
 #, kde-format
 msgid "Width of each frame"
-msgstr ""
+msgstr "Šířka každého snímku"
 
 #: src/core/io/raster/spritesheet_format.cpp:33
 #, kde-format
 msgid "Frame Height"
-msgstr ""
+msgstr "Výška snímku"
 
 #: src/core/io/raster/spritesheet_format.cpp:33
 #, kde-format
 msgid "Height of each frame"
-msgstr ""
+msgstr "Výška každého snímku"
 
 #: src/core/io/raster/spritesheet_format.cpp:34
 #, kde-format
@@ -1618,7 +1621,7 @@ msgstr "Sloupce"
 #: src/core/io/raster/spritesheet_format.cpp:34
 #, kde-format
 msgid "Number of columns in the sheet"
-msgstr ""
+msgstr "Počet sloupců v listu"
 
 #: src/core/io/raster/spritesheet_format.cpp:35
 #, kde-format
@@ -1628,12 +1631,12 @@ msgstr "Časový krok"
 #: src/core/io/raster/spritesheet_format.cpp:35
 #, kde-format
 msgid "By how much each rendered frame should increase time (in frames)"
-msgstr ""
+msgstr "O kolik by měl každý vykreslený snímek prodloužit čas (ve snímcích)"
 
 #: src/core/io/raster/spritesheet_format.hpp:23
 #, kde-format
 msgid "Sprite Sheet"
-msgstr ""
+msgstr "Sprite list"
 
 #: src/core/io/rive/rive_exporter.hpp:359
 #, kde-format
@@ -1764,12 +1767,12 @@ msgstr ""
 #: src/core/io/svg/svg_format.cpp:67
 #, kde-format
 msgid "External Stylesheet"
-msgstr ""
+msgstr "Externí stylový list"
 
 #: src/core/io/svg/svg_format.cpp:69
 #, kde-format
 msgid "Font face with external url"
-msgstr ""
+msgstr "Písmo s externí URL adresou"
 
 #: src/core/io/svg/svg_format.cpp:71
 #, kde-format
@@ -1785,12 +1788,12 @@ msgstr "Ignorovat"
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
 msgid "External Fonts"
-msgstr ""
+msgstr "Externí písma"
 
 #: src/core/io/svg/svg_format.cpp:75
 #, kde-format
 msgid "How to include external font"
-msgstr ""
+msgstr "Jak začlenit externí písmo"
 
 #: src/core/io/svg/svg_format.cpp:92
 #, kde-format
@@ -2793,7 +2796,7 @@ msgstr "#"
 #: src/gui/item_models/gradient_list_model.cpp:181
 #, kde-format
 msgid "Number of users"
-msgstr "Počet uživatelů "
+msgstr "Počet uživatelů"
 
 #: src/gui/item_models/property_model_base.cpp:247
 #, kde-format
@@ -3619,7 +3622,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:67
 #, kde-format
 msgid "Could not export file"
-msgstr "Nelze exportovat soubor."
+msgstr "Nelze exportovat soubor"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:169
 #, kde-format
@@ -4905,7 +4908,7 @@ msgstr "Konzole skriptu"
 #: src/gui/widgets/docks/script_console.ui:58
 #, kde-format
 msgid "Clear Output"
-msgstr "Vyprázdnit výstup"
+msgstr "Vymazat výstup"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, check_persist)
 #: src/gui/widgets/docks/script_console.ui:71
@@ -5326,7 +5329,7 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:279
 #, kde-format
 msgid "Precompose"
-msgstr ""
+msgstr "Předkompozice"
 
 #: src/gui/widgets/menus/node_menu.cpp:285
 #: src/gui/widgets/menus/node_menu.cpp:304
