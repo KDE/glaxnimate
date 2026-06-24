@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-04 00:42+0000\n"
-"PO-Revision-Date: 2026-06-22 15:54+0200\n"
+"PO-Revision-Date: 2026-06-23 20:25+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 26.04.2\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -839,12 +839,12 @@ msgstr "Importovat soubor"
 #: src/android/main_window.cpp:752
 #, kde-format
 msgid "Could not import file"
-msgstr ""
+msgstr "Nelze importovat soubor"
 
 #: src/android/main_window.cpp:791
 #, kde-format
 msgid "Frame %1.png"
-msgstr ""
+msgstr "Snímek %1.png"
 
 #: src/android/main_window.cpp:977
 #, kde-format
@@ -861,7 +861,7 @@ msgstr "Odstranit klíčový snímek"
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
 #, kde-format
 msgid "Clear Animations"
-msgstr ""
+msgstr "Vymazat animace"
 
 #: src/android/main_window.cpp:1070
 #, kde-format
@@ -878,7 +878,7 @@ msgstr "Glaxnimate"
 #: src/android/sticker_pack_builder_dialog.cpp:152
 #, kde-format
 msgid "Too many stickers"
-msgstr ""
+msgstr "Příliš mnoho samolepek"
 
 #: src/android/sticker_pack_builder_dialog.cpp:158
 #: src/android/sticker_pack_builder_dialog.cpp:167
@@ -889,24 +889,24 @@ msgstr "Nelze otevřít soubor"
 #: src/android/sticker_pack_builder_dialog.cpp:218
 #, kde-format
 msgid "Cannot save as TGS"
-msgstr ""
+msgstr "Nelze uložit jako TGS"
 
 #: src/android/sticker_pack_builder_dialog.cpp:259
 #, kde-format
 msgid "Are you sure you want to remove all stickers from the pack?"
-msgstr ""
+msgstr "Opravdu chcete odstranit všechny samolepky z balíčku?"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, StickerPackBuilderDialog)
 #: src/android/sticker_pack_builder_dialog.ui:21
 #, kde-format
 msgid "Export Stickers"
-msgstr ""
+msgstr "Exportovat samolepky"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_add)
 #: src/android/sticker_pack_builder_dialog.ui:116
 #, kde-format
 msgid "Open Sticker"
-msgstr ""
+msgstr "Otevřít samolepku"
 
 #. i18n: ectx: property (text), widget (QToolButton, btn_clear_console)
 #. i18n: ectx: property (text), widget (QToolButton, btn_clear)
@@ -916,38 +916,38 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:680
 #, kde-format
 msgid "Clear"
-msgstr "Vyprázdnit"
+msgstr "Vymazat"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_add_current)
 #: src/android/sticker_pack_builder_dialog.ui:173
 #, kde-format
 msgid "Add Current"
-msgstr ""
+msgstr "Přidat současný"
 
 #: src/android/telegram_intent.cpp:45
 #, kde-format
 msgid "Could not start activity, is Telegram installed?"
-msgstr ""
+msgstr "Nelze spustit aktivitu. Je nainstalována aplikace Telegram?"
 
 #: src/core/glaxnimate/command/animation_commands.cpp:28
 #, kde-format
 msgid "Update %1 keyframe at %2"
-msgstr ""
+msgstr "Aktualizovat klíčový snímek %1 v %2"
 
 #: src/core/glaxnimate/command/animation_commands.cpp:110
 #, kde-format
 msgid "Remove %1 keyframe at %2"
-msgstr ""
+msgstr "Odstranit klíčový snímek %1 v %2"
 
 #: src/core/glaxnimate/command/animation_commands.cpp:274
 #, kde-format
 msgid "Add keyframe for %1 at %2"
-msgstr ""
+msgstr "Přidat klíčový snímek pro %1 v %2"
 
 #: src/core/glaxnimate/command/animation_commands.cpp:277
 #, kde-format
 msgid "Update %1 at %2"
-msgstr ""
+msgstr "Aktualizovat %1 v %2"
 
 #: src/core/glaxnimate/command/animation_commands.cpp:279
 #: src/core/glaxnimate/command/property_commands.hpp:24
@@ -960,7 +960,7 @@ msgstr "Aktualizovat %1"
 #: src/gui/widgets/timeline/timeline_items.cpp:552
 #, kde-format
 msgid "Update keyframe transition"
-msgstr ""
+msgstr "Aktualizovat přechod klíčového snímku"
 
 #: src/core/glaxnimate/command/animation_commands.cpp:343
 #: src/core/glaxnimate/model/animation/animatable_base.cpp:53
@@ -971,17 +971,17 @@ msgstr "Posunout klíčový snímek"
 #: src/core/glaxnimate/command/animation_commands.cpp:380
 #, kde-format
 msgid "Remove animations from %1"
-msgstr ""
+msgstr "Odstranit animace z %1"
 
 #: src/core/glaxnimate/command/animation_commands.cpp:416
 #, kde-format
 msgid "Update animation path"
-msgstr ""
+msgstr "Aktualizovat dráhu animace"
 
 #: src/core/glaxnimate/command/animation_commands.hpp:223
 #, kde-format
 msgid "Stretch Time"
-msgstr ""
+msgstr "Časový rozsah"
 
 #: src/core/glaxnimate/command/clipboard.cpp:142
 #, kde-format
@@ -1044,19 +1044,17 @@ msgstr "Obrátit cestu"
 #: src/gui/widgets/menus/node_menu.cpp:363
 #, kde-format
 msgid "Precompose"
-msgstr ""
+msgstr "Předkompozice"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:308
-#, fuzzy, kde-format
-#| msgid "End Time"
+#, kde-format
 msgid "Set End Time"
-msgstr "Čas ukončení"
+msgstr "Nastavit čas ukončení"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:345
-#, fuzzy, kde-format
-#| msgid "Start Time"
+#, kde-format
 msgid "Set Start Time"
-msgstr "Čas zahájení"
+msgstr "Nastavit čas spuštění"
 
 #: src/core/glaxnimate/command/structure_commands.cpp:73
 #, kde-format
@@ -1073,107 +1071,107 @@ msgstr "%1 (%2)"
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_mime.hpp:21
 #, kde-format
 msgid "Glaxnimate Animation"
-msgstr ""
+msgstr "Animace Glaxnimate"
 
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_html_format.hpp:20
-#, fuzzy, kde-format
-#| msgid "Glaxnimate"
+#, kde-format
 msgid "Glaxnimate HTML Preview"
-msgstr "Glaxnimate"
+msgstr "Náhled HTML v Glaxnimate"
 
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_importer.cpp:21
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_mime.cpp:86
 #: src/core/glaxnimate/io/lottie/lottie_format.cpp:32
 #, kde-format
 msgid "Could not parse JSON: %1"
-msgstr ""
+msgstr "Nepodařilo se zpracovat JSON: %1"
 
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_importer.cpp:27
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_mime.cpp:92
 #: src/core/glaxnimate/io/lottie/lottie_format.cpp:38
 #, kde-format
 msgid "No JSON object found"
-msgstr ""
+msgstr "Nebyl nalezen žádný objekt JSON"
 
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_importer.cpp:35
 #, kde-format
 msgid "Opening a file from a newer version of Glaxnimate"
-msgstr ""
+msgstr "Otevření souboru z novější verze programu Glaxnimate"
 
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_importer.cpp:43
 #, kde-format
 msgid "Missing composition"
-msgstr ""
+msgstr "Chybějící kompozice"
 
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:108
 #, kde-format
 msgid "Property %1 of %2 refers to unexisting object %3"
-msgstr ""
+msgstr "Vlastnost %1 z %2 odkazuje na neexistující objekt %3"
 
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:117
 #, kde-format
 msgid "Could not load %1 for %2: uuid refers to an unacceptable object"
-msgstr ""
+msgstr "Nelze načíst %1 pro %2: uuid odkazuje na nepřípustný objekt"
 
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:128
 #, kde-format
 msgid "Object %1 is invalid"
-msgstr ""
+msgstr "Objekt %1 je neplatný"
 
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:342
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
-msgstr ""
+msgstr "Nesprávný typ objektu: očekáván '%1', ale nalezen '%2'"
 
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:348
 #, kde-format
 msgid "Could not load %1 for %2"
-msgstr ""
+msgstr "Nelze načíst %1 pro %2"
 
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:357
 #, kde-format
 msgid "Could not set property %1"
-msgstr ""
+msgstr "Nelze nastavit vlastnost %1"
 
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:383
 #, kde-format
 msgid "Item %1 for %2 in %3 isn't an object"
-msgstr ""
+msgstr "Položka %1 pro %2 v %3 není objekt"
 
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:395
 #, kde-format
 msgid "Item %1 for %2 in %3 is not acceptable"
-msgstr ""
+msgstr "Položka %1 za %2 v %3 není přípustná"
 
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:434
 #, kde-format
 msgid "Keyframe must specify a time"
-msgstr ""
+msgstr "Klíčový snímek musí obsahovat časový údaj"
 
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:439
 #, kde-format
 msgid "Keyframe must specify a value"
-msgstr ""
+msgstr "Klíčový snímek musí obsahovat hodnotu"
 
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:449
 #, kde-format
 msgid "Could not add keyframe"
-msgstr ""
+msgstr "Nepodařilo se přidat klíčový snímek"
 
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:633
 #, kde-format
 msgid "Unknown object of type '%1'"
-msgstr ""
+msgstr "Neznámý objekt typu '%1'"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:732
 #, kde-format
 msgid "%1 is an unsupported shape of type %2"
-msgstr ""
+msgstr "%1 je nepodporovaný tvar typu %2"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:757
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
+"Obrázky nelze seskupovat s jinými tvary, musí být umístěny uvnitř vrstvy"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:759
 #, kde-format
@@ -1181,16 +1179,18 @@ msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
 "a layer"
 msgstr ""
+"Kompoziční vrstvy nelze seskupovat s jinými tvary, musí být umístěny uvnitř "
+"vrstvy"
 
 #: src/core/glaxnimate/io/lottie/lottie_format.cpp:57
 #, kde-format
 msgid "Pretty"
-msgstr "Pěkný"
+msgstr "Přehledný"
 
 #: src/core/glaxnimate/io/lottie/lottie_format.cpp:57
 #, kde-format
 msgid "Pretty print the JSON"
-msgstr ""
+msgstr "Zobrazit JSON v přehledném formátu"
 
 #: src/core/glaxnimate/io/lottie/lottie_format.cpp:58
 #, kde-format
@@ -1200,7 +1200,7 @@ msgstr "Odstranit"
 #: src/core/glaxnimate/io/lottie/lottie_format.cpp:58
 #, kde-format
 msgid "Strip unused properties"
-msgstr ""
+msgstr "Odstranit nepoužívané vlastnosti"
 
 #: src/core/glaxnimate/io/lottie/lottie_format.cpp:59
 #, kde-format
@@ -1210,42 +1210,42 @@ msgstr "Vložit obrázky"
 #: src/core/glaxnimate/io/lottie/lottie_format.cpp:59
 #, kde-format
 msgid "Automatically embed non-embedded images"
-msgstr ""
+msgstr "Automaticky vložit dosud nevložené obrázky"
 
 #: src/core/glaxnimate/io/lottie/lottie_format.hpp:22
 #, kde-format
 msgid "Lottie Animation"
-msgstr ""
+msgstr "Animace Lottie"
 
 #: src/core/glaxnimate/io/lottie/lottie_html_format.hpp:20
 #, kde-format
 msgid "Lottie HTML Preview"
-msgstr ""
+msgstr "Náhled HTML Lottie"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:190
 #, kde-format
 msgid "Mask parent %1 of layer %2 could not be found"
-msgstr ""
+msgstr "Nebylo možné najít nadřazenou masku %1 vrstvy %2"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:200
 #, kde-format
 msgid "Mask parent of layer %1 could not be found"
-msgstr ""
+msgstr "Nebylo možné najít nadřazenou masku vrstvy %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:219
 #, kde-format
 msgid "Invalid parent layer %1"
-msgstr ""
+msgstr "Neplatná nadřazená vrstva %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:316
 #, kde-format
 msgid "Missing type for layer %1"
-msgstr ""
+msgstr "Chybí typ pro vrstvu %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:390
 #, kde-format
 msgid "Unsupported layer of type %1"
-msgstr ""
+msgstr "Nepodporovaná vrstva typu %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:534
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:634
@@ -1257,13 +1257,13 @@ msgstr "Klip"
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:678
 #, kde-format
 msgid "Missing shape type"
-msgstr ""
+msgstr "Chybějící typ tvaru"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:691
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:701
 #, kde-format
 msgid "Unsupported shape type %1"
-msgstr ""
+msgstr "Nepodporovaný typ tvaru %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:724
 #, kde-format
@@ -1273,7 +1273,7 @@ msgstr "Neznámé pole %2%1"
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1056
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
-msgstr ""
+msgstr "Neplatný Bézierův bod %1 v %2"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1101
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1123
@@ -1281,12 +1281,12 @@ msgstr ""
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:592
 #, kde-format
 msgid "Invalid value for %1"
-msgstr ""
+msgstr "Neplatná hodnota pro %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1138
 #, kde-format
 msgid "Invalid keyframes for %1"
-msgstr ""
+msgstr "Neplatné klíčové snímky pro %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1188
 #, kde-format
@@ -1301,43 +1301,43 @@ msgstr "(prázdný)"
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1199
 #, kde-format
 msgid "Cannot load keyframe at %1 for %2 with value %3"
-msgstr ""
+msgstr "Nelze načíst klíčový snímek v %1 pro %2 s hodnotou %3"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1253
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
-msgstr ""
+msgstr "Duplicitní ID bitmapy: %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1285
 #, kde-format
 msgid "Duplicate Composition ID: %1"
-msgstr ""
+msgstr "Duplicitní ID kompozice: %1"
 
 #: src/core/glaxnimate/io/lottie/validation.cpp:25
 #, kde-format
 msgid "Invalid width: %1, should be %2"
-msgstr ""
+msgstr "Neplatná šířka: %1, měla by být %2"
 
 #: src/core/glaxnimate/io/lottie/validation.cpp:29
 #, kde-format
 msgid "Invalid height: %1, should be %2"
-msgstr ""
+msgstr "Neplatná výška: %1, měla by být %2"
 
 #: src/core/glaxnimate/io/lottie/validation.cpp:41
 #, kde-format
 msgid "Invalid fps: %1, should be %2"
-msgstr ""
+msgstr "Neplatná hodnota fps: %1, měla by být %2"
 
 #: src/core/glaxnimate/io/lottie/validation.cpp:49
 #, kde-format
 msgid "Too many frames: %1, should be less than %2"
-msgstr ""
+msgstr "Příliš mnoho snímků: %1, mělo by to být méně než %2"
 
 #: src/core/glaxnimate/io/lottie/validation.cpp:71
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:48
 #, kde-format
 msgid "Images are not supported"
-msgstr ""
+msgstr "Obrázky nejsou podporovány"
 
 #: src/core/glaxnimate/io/lottie/validation.hpp:22
 #, kde-format
@@ -1353,7 +1353,7 @@ msgstr "JSON"
 #: src/core/glaxnimate/io/raster/raster_mime.hpp:26
 #, kde-format
 msgid "Raster Image"
-msgstr ""
+msgstr "Rastrový obrázek"
 
 #: src/core/glaxnimate/io/raster/spritesheet_format.cpp:32
 #, kde-format
@@ -1363,17 +1363,17 @@ msgstr "Šířka snímku"
 #: src/core/glaxnimate/io/raster/spritesheet_format.cpp:32
 #, kde-format
 msgid "Width of each frame"
-msgstr ""
+msgstr "Šířka každého snímku"
 
 #: src/core/glaxnimate/io/raster/spritesheet_format.cpp:33
 #, kde-format
 msgid "Frame Height"
-msgstr ""
+msgstr "Výška snímku"
 
 #: src/core/glaxnimate/io/raster/spritesheet_format.cpp:33
 #, kde-format
 msgid "Height of each frame"
-msgstr ""
+msgstr "Výška každého snímku"
 
 #: src/core/glaxnimate/io/raster/spritesheet_format.cpp:34
 #, kde-format
@@ -1383,7 +1383,7 @@ msgstr "Sloupce"
 #: src/core/glaxnimate/io/raster/spritesheet_format.cpp:34
 #, kde-format
 msgid "Number of columns in the sheet"
-msgstr ""
+msgstr "Počet sloupců v listu"
 
 #: src/core/glaxnimate/io/raster/spritesheet_format.cpp:35
 #, kde-format
@@ -1393,22 +1393,22 @@ msgstr "Časový krok"
 #: src/core/glaxnimate/io/raster/spritesheet_format.cpp:35
 #, kde-format
 msgid "By how much each rendered frame should increase time (in frames)"
-msgstr ""
+msgstr "O kolik by měl každý vykreslený snímek prodloužit čas (ve snímcích)"
 
 #: src/core/glaxnimate/io/raster/spritesheet_format.hpp:23
 #, kde-format
 msgid "Sprite Sheet"
-msgstr ""
+msgstr "Sprite list"
 
 #: src/core/glaxnimate/io/svg/svg_format.cpp:55
 #, kde-format
 msgid "External Stylesheet"
-msgstr ""
+msgstr "Externí stylový list"
 
 #: src/core/glaxnimate/io/svg/svg_format.cpp:57
 #, kde-format
 msgid "Font face with external url"
-msgstr ""
+msgstr "Písmo s externí URL adresou"
 
 #: src/core/glaxnimate/io/svg/svg_format.cpp:59
 #, kde-format
@@ -1424,12 +1424,12 @@ msgstr "Ignorovat"
 #: src/core/glaxnimate/io/svg/svg_format.cpp:63
 #, kde-format
 msgid "External Fonts"
-msgstr ""
+msgstr "Externí písma"
 
 #: src/core/glaxnimate/io/svg/svg_format.cpp:63
 #, kde-format
 msgid "How to include external font"
-msgstr ""
+msgstr "Jak začlenit externí písmo"
 
 #: src/core/glaxnimate/io/svg/svg_format.hpp:21
 #: src/core/glaxnimate/io/svg/svg_mime.hpp:20
@@ -2937,7 +2937,7 @@ msgstr "#"
 #: src/gui/item_models/gradient_list_model.cpp:181
 #, kde-format
 msgid "Number of users"
-msgstr "Počet uživatelů "
+msgstr "Počet uživatelů"
 
 #: src/gui/item_models/property_model_base.cpp:245
 #, kde-format
@@ -3788,7 +3788,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:71
 #, kde-format
 msgid "Could not export file"
-msgstr "Nelze exportovat soubor."
+msgstr "Nelze exportovat soubor"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:173
 #, kde-format
@@ -5135,7 +5135,7 @@ msgstr "Konzole skriptu"
 #: src/gui/widgets/docks/script_console.ui:58
 #, kde-format
 msgid "Clear Output"
-msgstr "Vyprázdnit výstup"
+msgstr "Vymazat výstup"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, check_persist)
 #: src/gui/widgets/docks/script_console.ui:71
