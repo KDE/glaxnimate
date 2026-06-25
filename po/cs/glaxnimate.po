@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-04 00:42+0000\n"
-"PO-Revision-Date: 2026-06-23 20:25+0200\n"
+"PO-Revision-Date: 2026-06-24 23:27+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1440,7 +1440,7 @@ msgstr "SVG"
 #: src/core/glaxnimate/io/svg/svg_html_format.hpp:18
 #, kde-format
 msgid "SVG Preview"
-msgstr ""
+msgstr "Náhled SVG"
 
 #: src/core/glaxnimate/model/animation/animatable.cpp:213
 #: src/core/glaxnimate/model/animation/animatable_path.cpp:30
@@ -1452,7 +1452,7 @@ msgstr "Rozdělit segment"
 #: src/core/glaxnimate/model/animation/animatable_path.cpp:62
 #, kde-format
 msgid "Remove Nodes"
-msgstr ""
+msgstr "Odstranit uzly"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/core/glaxnimate/model/animation/animatable.cpp:382
@@ -1467,13 +1467,13 @@ msgstr "Přidat klíčový snímek"
 #: src/core/glaxnimate/model/animation/animatable_path.cpp:141
 #, kde-format
 msgid "Extend Shape"
-msgstr ""
+msgstr "Natáhnout tvar"
 
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:101
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:118
 #, kde-format
 msgid "Set keyframe transition"
-msgstr ""
+msgstr "Nastavit přechod klíčového snímku"
 
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:137
 #, kde-format
@@ -1483,7 +1483,7 @@ msgstr "Posunout klíčový snímek"
 #: src/core/glaxnimate/model/animation_container.cpp:54
 #, kde-format
 msgid "Animation Timing"
-msgstr ""
+msgstr "Časování animace"
 
 #: src/core/glaxnimate/model/assets/assets.hpp:34
 msgid "values"
@@ -1498,7 +1498,7 @@ msgstr "hodnoty"
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:48
 #, kde-format
 msgid "Swatch"
-msgstr ""
+msgstr "Vzorek"
 
 #: src/core/glaxnimate/model/assets/assets.hpp:117
 #, kde-format
@@ -1538,7 +1538,7 @@ msgstr "Aktiva"
 #: src/core/glaxnimate/model/assets/bitmap.cpp:206
 #, kde-format
 msgid "Embedded image"
-msgstr ""
+msgstr "Vložený obrázek"
 
 #: src/core/glaxnimate/model/assets/bitmap.hpp:41
 #, kde-format
@@ -1573,12 +1573,12 @@ msgstr "Přechod"
 #: src/core/glaxnimate/model/assets/gradient.cpp:129
 #, kde-format
 msgid "Add color to %1"
-msgstr ""
+msgstr "Přidat barvu k %1"
 
 #: src/core/glaxnimate/model/assets/gradient.cpp:148
 #, kde-format
 msgid "Remove color from %1"
-msgstr ""
+msgstr "Odstranit barvu z %1"
 
 #: src/core/glaxnimate/model/assets/gradient.cpp:207
 #, kde-format
@@ -1631,7 +1631,7 @@ msgstr "Kónický"
 #: src/core/glaxnimate/model/assets/named_color.cpp:17
 #, kde-format
 msgid "Unnamed Color"
-msgstr ""
+msgstr "Nepojmenovaná barva"
 
 #: src/core/glaxnimate/model/mask_settings.cpp:13
 #: src/gui/widgets/menus/node_menu.cpp:367
@@ -1642,7 +1642,7 @@ msgstr "Maska"
 #: src/core/glaxnimate/model/object.hpp:95
 #, kde-format
 msgid "Unknown Object"
-msgstr ""
+msgstr "Neznámý objekt"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_group)
 #: src/core/glaxnimate/model/shapes/composable/group.hpp:36
@@ -1670,17 +1670,17 @@ msgstr "Vrstva"
 #: src/core/glaxnimate/model/shapes/composable/precomp_layer.cpp:25
 #, kde-format
 msgid "Composition Layer"
-msgstr ""
+msgstr "Kompoziční vrstva"
 
 #: src/core/glaxnimate/model/shapes/modifiers/inflate_deflate.cpp:18
 #, kde-format
 msgid "Inflate and Deflate"
-msgstr ""
+msgstr "Nafouknutí a vyfouknutí"
 
 #: src/core/glaxnimate/model/shapes/modifiers/offset_path.cpp:342
 #, kde-format
 msgid "Offset Path"
-msgstr ""
+msgstr "Posunutí dráhy"
 
 #: src/core/glaxnimate/model/shapes/modifiers/repeater.cpp:25
 #, kde-format
@@ -1695,7 +1695,7 @@ msgstr "Kulaté rohy"
 #: src/core/glaxnimate/model/shapes/modifiers/trim.cpp:24
 #, kde-format
 msgid "Trim Path"
-msgstr ""
+msgstr "Vyříznutí dráhy"
 
 #: src/core/glaxnimate/model/shapes/modifiers/zig_zag.cpp:139
 #, kde-format
@@ -1722,7 +1722,7 @@ msgstr "Cesta"
 #: src/core/glaxnimate/model/shapes/shapes/polystar.hpp:48
 #, kde-format
 msgid "PolyStar"
-msgstr ""
+msgstr "Hvězda"
 
 #: src/core/glaxnimate/model/shapes/shapes/rect.hpp:31
 #: src/gui/tools/rectangle_tool.hpp:20
@@ -1792,24 +1792,22 @@ msgstr "Transformovat"
 #: src/core/glaxnimate/module/cairo/cairo_module.hpp:16
 #, kde-format
 msgid "Cairo Renderer"
-msgstr ""
+msgstr "Vykreslení Cairo"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.cpp:40
-#, fuzzy, kde-format
-#| msgid "Could not create file"
+#, kde-format
 msgid "Could not create PDF surface: %1"
-msgstr "Nelze vytvořit soubor"
+msgstr "Nelze vytvořit povrch PDF: %1"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.hpp:20
 #, kde-format
 msgid "Portable Document Format"
-msgstr ""
+msgstr "Portable Document Format"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.cpp:38
-#, fuzzy, kde-format
-#| msgid "Could not create file"
+#, kde-format
 msgid "Could not create PostScript surface: %1"
-msgstr "Nelze vytvořit soubor"
+msgstr "Nelze vytvořit povrch PostScriptu: %1"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.hpp:20
 #, kde-format
@@ -1824,22 +1822,22 @@ msgstr "Nelze načíst soubor: %1"
 #: src/core/glaxnimate/module/extraformats/aep/aep_format.hpp:21
 #, kde-format
 msgid "Adobe After Effects Project"
-msgstr ""
+msgstr "Projekt Adobe After Effects"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_format.hpp:39
 #, kde-format
 msgid "Adobe After Effects Project XML"
-msgstr ""
+msgstr "XML projekt Adobe After Effects"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:147
 #, kde-format
 msgid "External asset not found: %1"
-msgstr ""
+msgstr "Externí zdroj nebyl nalezen: %1"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:189
 #, kde-format
 msgid "Unknown property \"%1\" of \"%2\""
-msgstr ""
+msgstr "Neznámá vlastnost \"%1\" objektu \"%2\""
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:221
 #, kde-format
@@ -1849,98 +1847,98 @@ msgstr "Vrstva #%1"
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:279
 #, kde-format
 msgid "Parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Nebylo možné najít nadřazený prvek #%1 vrstvy %2"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:292
 #, kde-format
 msgid "Mask parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Nebylo možné najít nadřazenou masku %1 vrstvy %2"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:581
 #, kde-format
 msgid "Expected property for %1"
-msgstr ""
+msgstr "Očekávaná hodnota pro %1"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:588
 #, kde-format
 msgid "Could convert %1"
-msgstr ""
+msgstr "Mohlo by se převést %1"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:693
 #, kde-format
 msgid "Expected property group for transform"
-msgstr ""
+msgstr "Očekávaná skupina vlastností pro transformaci"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:742
 #, kde-format
 msgid "Unknown property \"%1\""
-msgstr ""
+msgstr "Neznámá vlastnost \"%1\""
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:1299
 #, kde-format
 msgid "Unknown shape %1"
-msgstr ""
+msgstr "Neznámý tvar %1"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:1500
 #, kde-format
 msgid "Unknown asset type for %1"
-msgstr ""
+msgstr "Neznámý typ zdroje pro %1"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:49
 #, kde-format
 msgid "Not an AEP file"
-msgstr ""
+msgstr "Není to soubor AEP"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:123
 #, kde-format
 msgid "Unknown Item type %s"
-msgstr ""
+msgstr "Neznámý typ položky %s"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:137
 #, kde-format
 msgid "Missing composition data"
-msgstr ""
+msgstr "Chybějící data o kompozici"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:209
 #, kde-format
 msgid "Unknown encoding for %1"
-msgstr ""
+msgstr "Neznámé kódování pro %1"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:225
 #, kde-format
 msgid "Missing asset data"
-msgstr ""
+msgstr "Chybějící data o zdroji"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:287
 #, kde-format
 msgid "Missing layer data"
-msgstr ""
+msgstr "Chybějící data o vrstvě"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:372
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:377
 #, kde-format
 msgid "Missing mask properties"
-msgstr ""
+msgstr "Chybějící vlastnosti masky"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:424
 #, kde-format
 msgid "Unknown property type: %1"
-msgstr ""
+msgstr "Neznámý typ vlastnosti: %1"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:654
 #, kde-format
 msgid "Missing list data"
-msgstr ""
+msgstr "Chybějící data v seznamu"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:666
 #, kde-format
 msgid "Not enough data in list"
-msgstr ""
+msgstr "V seznamu není dostatek dat"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:800
 #, kde-format
 msgid "Invalid text document: %1"
-msgstr ""
+msgstr "Neplatný textový dokument: %1"
 
 #: src/core/glaxnimate/module/extraformats/aep/riff.hpp:221
 #: src/core/glaxnimate/module/extraformats/aep/riff.hpp:234
@@ -1948,7 +1946,7 @@ msgstr ""
 #: src/core/glaxnimate/module/extraformats/aep/riff.hpp:303
 #, kde-format
 msgid "Not enough data"
-msgstr ""
+msgstr "Nedostatek dat"
 
 #: src/core/glaxnimate/module/extraformats/aep/riff.hpp:539
 #, kde-format
@@ -1958,17 +1956,17 @@ msgstr "Neznámý formát %1"
 #: src/core/glaxnimate/module/extraformats/avd/avd_format.hpp:21
 #, kde-format
 msgid "Android Vector Drawable"
-msgstr ""
+msgstr "Android Vector Drawable"
 
 #: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:223
 #, kde-format
 msgid "Unknown interpolator %s"
-msgstr ""
+msgstr "Neznámý interpolátor %s"
 
 #: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:650
 #, kde-format
 msgid "Unknown resource id %1"
-msgstr ""
+msgstr "Neznámé ID zdroje %1"
 
 #: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:658
 #, kde-format
@@ -1979,48 +1977,47 @@ msgstr "Nelze přečíst soubor '%1"
 #: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:677
 #, kde-format
 msgid "Could not load resource %1"
-msgstr ""
+msgstr "Nelze načíst zdroj %1"
 
 #: src/core/glaxnimate/module/extraformats/avd/avd_renderer.cpp:159
 #, kde-format
 msgid "%s should be in a group"
-msgstr ""
+msgstr "%s by měl být ve skupině"
 
 #: src/core/glaxnimate/module/extraformats/avd/avd_renderer.cpp:163
 #, kde-format
 msgid "%s is not supported"
-msgstr ""
+msgstr "%s není podporováno"
 
 #: src/core/glaxnimate/module/extraformats/avd/avd_renderer.cpp:252
 #, kde-format
 msgid "%s are not supported"
-msgstr ""
+msgstr "%s nejsou podporovány"
 
 #: src/core/glaxnimate/module/extraformats/avd/avd_renderer.cpp:518
 #, kde-format
 msgid "%s cannot be a clip path"
-msgstr ""
+msgstr "%s nemůže být dráhou výřezu"
 
 #: src/core/glaxnimate/module/extraformats/extraformats_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "Formats"
+#, kde-format
 msgid "Extra Formats"
-msgstr "Formáty"
+msgstr "Další formáty"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:359
 #, kde-format
 msgid "Bezier has mismatching number of points"
-msgstr ""
+msgstr "Bézierova křivka má nesoulad v počtu bodů"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:422
 #, kde-format
 msgid "Unknown property %1 of %2 (%3, %4)"
-msgstr ""
+msgstr "Neznámá vlastnost %1 z %2 (%3, %4)"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:457
 #, kde-format
 msgid "Unknown keyframe type for property %1 of %2 (%3, %4)"
-msgstr ""
+msgstr "Neznámý typ klíčového snímku pro vlastnost %1 z %2 (%3, %4)"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_format.cpp:22
 #, kde-format
@@ -2030,246 +2027,247 @@ msgstr "Nepodporovaný formát"
 #: src/core/glaxnimate/module/extraformats/rive/rive_format.cpp:32
 #, kde-format
 msgid "Could not read header"
-msgstr ""
+msgstr "Nepodařilo se načíst hlavičku"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_format.cpp:38
 #, kde-format
 msgid ""
 "Loading unsupported rive file version %1.%2, the only supported version is %3"
 msgstr ""
+"Načítá se nepodporovaná verze souboru rive %1.%2, jediná podporovaná verze "
+"je %3"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_format.cpp:44
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:750
 #, kde-format
 msgid "Could not read property table"
-msgstr ""
+msgstr "Nepodařilo se načíst tabulku vlastností"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_format.hpp:23
 #, kde-format
 msgid "Rive Animation"
-msgstr ""
+msgstr "Rive animace"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_html_format.hpp:20
 #, kde-format
 msgid "RIVE HTML Preview"
-msgstr ""
+msgstr "Náhled RIVE HTML"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:179
 #, kde-format
 msgid "Unexpected Keyed Object"
-msgstr ""
+msgstr "Neočekávaný klíčový objekt"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:187
 #, kde-format
 msgid "Invalid Keyed Object id %1"
-msgstr ""
+msgstr "Neplatné ID klíčového objektu %1"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:195
 #, kde-format
 msgid "Unexpected Keyed Property"
-msgstr ""
+msgstr "Neočekávaná klíčová vlastnost"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:204
 #, kde-format
 msgid "Unknown Keyed Property id %1"
-msgstr ""
+msgstr "Neznámé ID klíčové vlastnosti %1"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:215
 #, kde-format
 msgid "Unexpected Animation"
-msgstr ""
+msgstr "Neočekávaná animace"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:231
 #, kde-format
 msgid "Unexpected Asset Contents"
-msgstr ""
+msgstr "Neočekávaný obsah zdroje"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:242
 #, kde-format
 msgid "Invalid Image Data"
-msgstr ""
+msgstr "Neplatná data obrázku"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:253
 #, kde-format
 msgid "Unexpected Keyframe"
-msgstr ""
+msgstr "Neočekávaný klíčový snímek"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:268
 #, kde-format
 msgid "Could not find parent with id %1"
-msgstr ""
+msgstr "Nelze najít nadřazený prvek s ID %1"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:318
 #, kde-format
 msgid "Parent circular reference detected"
-msgstr ""
+msgstr "Zjištěna kruhová reference nadřazeného prvku"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:746
 #, kde-format
 msgid "Unknown object of type %1"
-msgstr ""
+msgstr "Neznámý objekt typu %1"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:791
 #, kde-format
 msgid "Could not load object type ID"
-msgstr ""
+msgstr "Nelze načíst ID typu objektu"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:806
 #, kde-format
 msgid "Could not load property ID in %1 (%2)"
-msgstr ""
+msgstr "Nelze načíst ID vlastnosti v %1 (%2)"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:823
 #, kde-format
 msgid "Unknown property %1 of %2 (%3)"
-msgstr ""
+msgstr "Neznámá vlastnost %1 z %2 (%3)"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:833
 #, kde-format
 msgid "Skipping unknown property %1 of %2 (%3)"
-msgstr ""
+msgstr "Přeskočení neznámé vlastnosti %1 z %2 (%3)"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:846
 #, kde-format
 msgid "Error loading property %1 (%2) of %3 (%4)"
-msgstr ""
+msgstr "Chyba při načítání vlastnosti %1 (%2) z %3 (%4)"
 
 #: src/core/glaxnimate/module/gzip/gzip-kde.cpp:25
 #, kde-format
 msgid "Could not decompress data"
-msgstr ""
+msgstr "Nelze rozbalit data"
 
 #: src/core/glaxnimate/module/gzip/gzip-kde.cpp:84
 #, kde-format
 msgid "Gzip stream already open"
-msgstr ""
+msgstr "Datový proud Gzip je již otevřený"
 
 #: src/core/glaxnimate/module/gzip/gzip-zlib.cpp:99
 #, kde-format
 msgid "ZLib %1%2 returned %3"
-msgstr ""
+msgstr "ZLib %1%2 vrátila %3"
 
 #: src/core/glaxnimate/module/gzip/gzip_module.hpp:16
 #, kde-format
 msgid "Gzip Compression"
-msgstr ""
+msgstr "Komprese Gzip"
 
 #: src/core/glaxnimate/module/gzip/svgz_format.hpp:22
 #, kde-format
 msgid "Compressed SVG"
-msgstr ""
+msgstr "Komprimované SVG"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:44
 #, kde-format
 msgid "Star Shapes are not officially supported"
-msgstr ""
+msgstr "Tvary hvězd nejsou oficiálně podporovány"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:53
 #, kde-format
 msgid "Gradient strokes are not officially supported"
-msgstr ""
+msgstr "Přechodové tahy nejsou oficiálně podporovány"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:58
 #, kde-format
 msgid "Masks are not officially supported"
-msgstr ""
+msgstr "Masky nejsou oficiálně podporovány"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:62
 #, kde-format
 msgid "Repeaters are not officially supported"
-msgstr ""
+msgstr "Opakovače nejsou oficiálně podporovány"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:66
 #, kde-format
 msgid "Inflate/Deflate is not supported"
-msgstr ""
+msgstr "Funkce nafouknutí/vyfouknutí není podporována"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:70
 #, kde-format
 msgid "Offset Path is not supported"
-msgstr ""
+msgstr "Posunutí dráhy není podporováno"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:74
 #, kde-format
 msgid "ZigZag is not supported"
-msgstr ""
+msgstr "ZigZag není podporováno"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:106
 #, kde-format
 msgid "File too large: %1k, should be under 64k"
-msgstr ""
+msgstr "Soubor je příliš velký: %1k, měl by mít velikost menší než 64k"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.hpp:19
 #, kde-format
 msgid "Telegram Animated Sticker"
-msgstr ""
+msgstr "Animovaná samolepka Telegramu"
 
 #: src/core/glaxnimate/module/module.cpp:41
-#, fuzzy, kde-format
-#| msgid "Glaxnimate"
+#, kde-format
 msgid "Glaxnimate Core"
-msgstr "Glaxnimate"
+msgstr "Jádro Glaxnimate"
 
 #: src/core/glaxnimate/module/thorvg/thorvg_module.hpp:16
 #, kde-format
 msgid "ThorVG Renderer"
-msgstr ""
+msgstr "Vykreslení ThorVG"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:73
 #, kde-format
 msgid "Could not find encoder for '%1'"
-msgstr ""
+msgstr "Nelze najít enkodér pro '%1'"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:77
 #, kde-format
 msgid "Could not allocate stream"
-msgstr ""
+msgstr "Nelze přidělit datový proud"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:82
 #, kde-format
 msgid "Could not alloc an encoding context"
-msgstr ""
+msgstr "Nelze přidělit kontext kódování"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:110
 #, kde-format
 msgid "Error encoding a frame: %1"
-msgstr ""
+msgstr "Chyba při kódování snímku: %1"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:120
 #, kde-format
 msgid "Error while writing output packet: %1"
-msgstr ""
+msgstr "Chyba při zápisu výstupního paketu: %1"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:131
 #, kde-format
 msgid "Error sending a frame to the encoder: %1"
-msgstr ""
+msgstr "Chyba při odesílání snímku do enkodéru: %1"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:187
 #: src/core/glaxnimate/module/video/video_format.cpp:201
 #, kde-format
 msgid "Could not set dict key `%1`: %2"
-msgstr ""
+msgstr "Nelze nastavit klíč slovníku `%1`: %2"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:246
 #, kde-format
 msgid "Could not erase dict key `%1`: %2"
-msgstr ""
+msgstr "Nelze vymazat klíč slovníku `%1`: %2"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:267
 #, kde-format
 msgid "Could not copy dict: %1"
-msgstr ""
+msgstr "Nelze zkopírovat slovník: %1"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:280
 #, kde-format
 msgid "Could not copy dict `%1`: %2"
-msgstr ""
+msgstr "Nelze zkopírovat slovník `%1`: %2"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:318
 #, kde-format
 msgid "Could not allocate frame data."
-msgstr ""
+msgstr "Nedařilo se přidělit data snímku."
 
 #: src/core/glaxnimate/module/video/video_format.cpp:413
 #: src/core/glaxnimate/module/video/video_format.cpp:796
@@ -2280,52 +2278,52 @@ msgstr "Žádný video kodek"
 #: src/core/glaxnimate/module/video/video_format.cpp:448
 #, kde-format
 msgid "Could not determine pixel format"
-msgstr ""
+msgstr "Nelze určit formát pixelů"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:462
 #, kde-format
 msgid "Could not open video codec: %1"
-msgstr ""
+msgstr "Nelze otevřít video kodek: %1"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:467
 #, kde-format
 msgid "Could not allocate video frame"
-msgstr ""
+msgstr "Nepodařilo se přidělit video snímek"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:474
 #, kde-format
 msgid "Could not copy the stream parameters"
-msgstr ""
+msgstr "Nepodařilo se zkopírovat parametry datového proudu"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:494
 #, kde-format
 msgid "Error while creating video frame"
-msgstr ""
+msgstr "Chyba při vytváření snímku videa"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:518
 #, kde-format
 msgid "Could not initialize the conversion context"
-msgstr ""
+msgstr "Nepodařilo se inicializovat konverzní kontext"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:524
 #, kde-format
 msgid "Could not allocate temporary picture"
-msgstr ""
+msgstr "Nepodařilo se přidělit dočasný obrázek"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:764
 #, kde-format
 msgid "Could not deduce output format from file extension: using MPEG."
-msgstr ""
+msgstr "Z přípony souboru nebylo možné určit výstupní formát: použije se MPEG."
 
 #: src/core/glaxnimate/module/video/video_format.cpp:768
 #, kde-format
 msgid "Could not find output format"
-msgstr ""
+msgstr "Nelze najít výstupní formát"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:841
 #, kde-format
 msgid "Error occurred when opening output file: %1"
-msgstr ""
+msgstr "Při otevírání výstupního souboru došlo k chybě: %1"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:876
 #, kde-format
@@ -2349,7 +2347,7 @@ msgstr "Šířka"
 #: src/core/glaxnimate/module/video/video_format.cpp:878
 #, kde-format
 msgid "If not 0, it will overwrite the size"
-msgstr ""
+msgstr "Pokud není hodnota 0, přepíše se velikost"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/core/glaxnimate/module/video/video_format.cpp:878
@@ -2361,12 +2359,12 @@ msgstr "Výška"
 #: src/core/glaxnimate/module/video/video_format.cpp:879
 #, kde-format
 msgid "Verbose"
-msgstr "Podrobný"
+msgstr "Podrobně"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:879
 #, kde-format
 msgid "Show verbose information on the conversion"
-msgstr ""
+msgstr "Zobrazit podrobné informace o převodu"
 
 #: src/core/glaxnimate/module/video/video_format.hpp:20
 #, kde-format
@@ -5723,7 +5721,7 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:490
 #, kde-format
 msgid "Stretch time"
-msgstr ""
+msgstr "Časový rozsah"
 
 #: src/gui/widgets/menus/node_menu.cpp:491
 #, kde-format
@@ -6451,7 +6449,7 @@ msgstr ""
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:199
 #, kde-format
 msgid "&Clear Animations"
-msgstr ""
+msgstr "&Vymazat animace"
 
 #. i18n: ectx: property (toolTip), widget (QSpinBox, spin_frame)
 #: src/gui/widgets/timeline/frame_controls_widget.ui:30
