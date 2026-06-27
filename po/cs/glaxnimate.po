@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-01 02:43+0000\n"
-"PO-Revision-Date: 2026-06-25 23:32+0200\n"
+"PO-Revision-Date: 2026-06-26 23:07+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -2212,7 +2212,7 @@ msgstr "Posunutí dráhy"
 #: src/gui/widgets/settings/plugin_settings_widget.ui:176
 #, kde-format
 msgid "Path"
-msgstr "Cesta"
+msgstr "Dráha"
 
 #: src/core/model/shapes/polystar.hpp:48
 #, kde-format
@@ -3175,7 +3175,7 @@ msgstr "O prostředí"
 #: src/gui/widgets/dialogs/about_env_dialog.ui:30
 #, kde-format
 msgid "Paths"
-msgstr "Cesty"
+msgstr "Dráhy"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:51
@@ -3809,7 +3809,7 @@ msgstr "Nepodařilo se otevřít prohlížeč"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:609
 #, kde-format
 msgid "Save Frame Image"
-msgstr ""
+msgstr "Uložit obrázek snímku"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:585
 #, kde-format
@@ -3875,7 +3875,7 @@ msgstr "Nelze otevřít záložní soubor"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:772
 #, kde-format
 msgid "Unlink %1 Color"
-msgstr ""
+msgstr "Odpojit barvu %1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:782
 #, kde-format
@@ -3885,7 +3885,7 @@ msgstr "Připojit barvu %1"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:894
 #, kde-format
 msgid "Download fonts"
-msgstr ""
+msgstr "Stáhnout písma"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:932
 #, kde-format
@@ -3901,22 +3901,22 @@ msgstr "Chyba sítě"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:939
 #, kde-format
 msgid "Load URL"
-msgstr ""
+msgstr "Načíst URL"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:939
 #, kde-format
 msgid "Could not load %1: %2"
-msgstr ""
+msgstr "Nelze načíst %1: %2"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:957
 #, kde-format
 msgid "There are %1 auto-save files that can be restored."
-msgstr ""
+msgstr "K dispozici je %1 automaticky uložených souborů, které lze obnovit."
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:965
 #, kde-format
 msgid "Load Backup..."
-msgstr ""
+msgstr "Načítání zálohy..."
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:89
 #, kde-format
@@ -3943,37 +3943,37 @@ msgstr "Importovat obrázek"
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:255
 #, kde-format
 msgid "Could not import image"
-msgstr ""
+msgstr "Nepodařilo se načíst obrázek"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:292
 #, kde-format
 msgid "Cleanup Document"
-msgstr ""
+msgstr "Vymazat dokument"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:300
 #, kde-format
 msgid "Removed %1 assets"
-msgstr ""
+msgstr "Odstraněno %1 zdrojů"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:308
 #, kde-format
 msgid "Convert to path"
-msgstr "Převést na cestu"
+msgstr "Převést na dráhu"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:310
 #, kde-format
 msgid "Convert %1 to path"
-msgstr "Převést %1 na cestu"
+msgstr "Převést %1 na dráhu"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:492
 #, kde-format
 msgid "New Composition from Selection"
-msgstr ""
+msgstr "Nová kompozice z výběru"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:681
 #, kde-format
 msgid "Align Selection"
-msgstr ""
+msgstr "Zarovnat výběr"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:723
 #, kde-format
@@ -3983,23 +3983,23 @@ msgstr "Pustit"
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:819
 #, kde-format
 msgid "Put text on path"
-msgstr ""
+msgstr "Umístit text na dráhu"
 
 #: src/gui/widgets/dialogs/gw_impl_model.cpp:841
 #, kde-format
 msgid "Remove text from path"
-msgstr ""
+msgstr "Odstranit text z dráhy"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:130
 #, kde-format
 msgid "Put on Path"
-msgstr ""
+msgstr "Umístit na dráhu"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:133
 #: src/gui/widgets/menus/node_menu.cpp:396
 #, kde-format
 msgid "Remove from Path"
-msgstr ""
+msgstr "Odstranit z dráhy"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:151
 #, kde-format
@@ -4025,12 +4025,12 @@ msgstr "Importovat…"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:304
 #, kde-format
 msgid "Import from LottieFiles…"
-msgstr ""
+msgstr "Importovat z LottieFiles…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:307
 #, kde-format
 msgid "Open Most Recent"
-msgstr ""
+msgstr "Otevřít nejnovější"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:336
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:341
@@ -4042,7 +4042,7 @@ msgstr "Uložit jako šablonu"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:347
 #, kde-format
 msgid "Could not save template"
-msgstr ""
+msgstr "Šablonu se nepodařilo uložit"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:351
 #, kde-format
@@ -4062,7 +4062,7 @@ msgstr "Exportovat jako sekvenci obrázků…"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:384
 #, kde-format
 msgid "Paste as Composition"
-msgstr ""
+msgstr "Vložit jako kompozici"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_duplicate)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_duplicate)
@@ -4135,17 +4135,17 @@ msgstr "Lottie (SVG)"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:493
 #, kde-format
 msgid "Lottie (canvas)"
-msgstr ""
+msgstr "Lottie (plátno)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:496
 #, kde-format
 msgid "SVG (SMIL)"
-msgstr ""
+msgstr "SVG (SMIL)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:499
 #, kde-format
 msgid "RIVE (canvas)"
-msgstr ""
+msgstr "RIVE (plátno)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:508
 #, kde-format
@@ -4185,17 +4185,17 @@ msgstr "Smyčka"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:534
 #, kde-format
 msgid "Record Keyframes"
-msgstr ""
+msgstr "Nahrát klíčové snímky"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:536
 #, kde-format
 msgid "Jump to Start"
-msgstr ""
+msgstr "Přejít na začátek"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:538
 #, kde-format
 msgid "Jump to End"
-msgstr ""
+msgstr "Přejít na konec"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:540
 #, kde-format
@@ -4215,7 +4215,7 @@ msgstr "Pozastavit"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:605
 #, kde-format
 msgid "Precompose Selection"
-msgstr ""
+msgstr "Předkompozice výběru"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:609
 #, kde-format
@@ -4230,12 +4230,12 @@ msgstr "Emotikon…"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:637
 #, kde-format
 msgid "Raise to Top"
-msgstr ""
+msgstr "Přesunout do popředí"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:646
 #, kde-format
 msgid "Lower to Bottom"
-msgstr ""
+msgstr "Odsunout do pozadí"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:649
 #, kde-format
@@ -4266,7 +4266,7 @@ msgstr "Plátno"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:664
 #, kde-format
 msgid "Canvas (as Group)"
-msgstr ""
+msgstr "Plátno (jako skupina)"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:667
 #, kde-format
@@ -4300,32 +4300,32 @@ msgstr "Dole"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:689
 #, kde-format
 msgid "Outside Left"
-msgstr ""
+msgstr "Vlevo ven"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:692
 #, kde-format
 msgid "Outside Right"
-msgstr ""
+msgstr "Vpravo ven"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:695
 #, kde-format
 msgid "Outside Top"
-msgstr ""
+msgstr "Nahoru ven"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:698
 #, kde-format
 msgid "Outside Bottom"
-msgstr ""
+msgstr "Dolů ven"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:717
 #, kde-format
 msgid "Object to Path"
-msgstr ""
+msgstr "Objekt na dráhu"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:720
 #, kde-format
 msgid "Trace Bitmap…"
-msgstr ""
+msgstr "Vykreslit bitmapu…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:725
 #, kde-format
@@ -4355,47 +4355,47 @@ msgstr "Obrátit směr"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:742
 #, kde-format
 msgid "Add Node…"
-msgstr ""
+msgstr "Přidat uzel…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:744
 #, kde-format
 msgid "Join Nodes"
-msgstr ""
+msgstr "Join Nodes"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:746
 #, kde-format
 msgid "Split Nodes"
-msgstr ""
+msgstr "Rozdělit uzly"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:751
 #, kde-format
 msgid "Symmetric"
-msgstr "Symetrické"
+msgstr "Symetricky"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:752
 #, kde-format
 msgid "Make segments straight"
-msgstr ""
+msgstr "Vyrovnat segmenty"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:753
 #, kde-format
 msgid "Make segments curved"
-msgstr ""
+msgstr "Zakřivit segmenty"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:799
 #, kde-format
 msgid "Reverse path"
-msgstr "Obrátit cestu"
+msgstr "Obrátit dráhu"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:897
 #, kde-format
 msgid "Recording Keyframes"
-msgstr ""
+msgstr "Záznam klíčových snímků"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1311
 #, kde-format
 msgid "Could not load template"
-msgstr ""
+msgstr "Šablonu se nepodařilo načíst"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, TraceDialog)
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1506
@@ -4404,22 +4404,22 @@ msgstr ""
 #: src/gui/widgets/dialogs/trace_dialog.ui:21
 #, kde-format
 msgid "Trace Bitmap"
-msgstr ""
+msgstr "Vykreslit bitmapu"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1506
 #, kde-format
 msgid "Only select one image"
-msgstr ""
+msgstr "Vyberte pouze jeden obrázek"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1515
 #, kde-format
 msgid "You need to select an image to trace"
-msgstr ""
+msgstr "Musíte vybrat obrázek, který chcete vykreslit"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1522
 #, kde-format
 msgid "You selected an image with no data"
-msgstr ""
+msgstr "Vybrali jste obrázek bez dat"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1592
 #, kde-format
@@ -4429,22 +4429,22 @@ msgstr "X: %1 Y: %2"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1611
 #, kde-format
 msgid "Drop File"
-msgstr ""
+msgstr "Přetáhnout soubor"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1622
 #, kde-format
 msgid "Add to current file?"
-msgstr ""
+msgstr "Přidat do aktuálního souboru?"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1628
 #, kde-format
 msgid "Add as Object"
-msgstr ""
+msgstr "Přidat jako objekt"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:1634
 #, kde-format
 msgid "Add as Composition"
-msgstr ""
+msgstr "Přidat jako kompozici"
 
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:40
 #, kde-format
@@ -4485,13 +4485,13 @@ msgstr "Operace selhala"
 #: src/gui/widgets/dialogs/io_status_dialog.ui:21
 #, kde-format
 msgid "IoStatusDialog"
-msgstr ""
+msgstr "IoStatusDialog"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/io_status_dialog.ui:50
 #, kde-format
 msgid "/path/to/your/file/in.here"
-msgstr ""
+msgstr "/path/to/your/file/in.here"
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_box)
 #: src/gui/widgets/dialogs/io_status_dialog.ui:84
@@ -4522,19 +4522,19 @@ msgstr "Uzamknout poměr stran"
 #: src/gui/widgets/dialogs/resize_dialog.ui:93
 #, kde-format
 msgid "Scale Layers"
-msgstr ""
+msgstr "Měřítko vrstev"
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_layer_ratio)
 #: src/gui/widgets/dialogs/resize_dialog.ui:103
 #, kde-format
 msgid "Preserve Layer Aspect Ratio"
-msgstr ""
+msgstr "Zachovat poměr stran vrstvy"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::SelectShapeDialog)
 #: src/gui/widgets/dialogs/select_shape_dialog.ui:21
 #, kde-format
 msgid "Select Shape"
-msgstr ""
+msgstr "Vyberte tvar"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShapeParentDialog)
 #: src/gui/widgets/dialogs/shape_parent_dialog.ui:21
@@ -4558,7 +4558,7 @@ msgstr "Přesunout"
 #: src/gui/widgets/dialogs/stalefiles_dialog.ui:18
 #, kde-format
 msgid "Autosave Files"
-msgstr ""
+msgstr "Automaticky uložené soubory"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_open)
 #. i18n: ectx: property (text), widget (QPushButton, button_load)
@@ -4634,12 +4634,12 @@ msgstr "Procházet..."
 #: src/gui/widgets/dialogs/startup_dialog.ui:176
 #, kde-format
 msgid "Show at startup"
-msgstr ""
+msgstr "Zobrazit při spuštění"
 
 #: src/gui/widgets/dialogs/timing_dialog.cpp:73
 #, kde-format
 msgid "Change Animation Properties"
-msgstr ""
+msgstr "Změnit vlastnosti animace"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/timing_dialog.ui:29
@@ -4652,19 +4652,19 @@ msgstr "FPS"
 #: src/gui/widgets/dialogs/timing_dialog.ui:97
 #, kde-format
 msgid "Keep Initial Timing"
-msgstr ""
+msgstr "Zachovat původní časování"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer_trim)
 #: src/gui/widgets/dialogs/timing_dialog.ui:104
 #, kde-format
 msgid "Trim Extra Frames"
-msgstr ""
+msgstr "Oříznout přebytečné snímky"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_layer_scale)
 #: src/gui/widgets/dialogs/timing_dialog.ui:114
 #, kde-format
 msgid "Scale Timing"
-msgstr ""
+msgstr "Časování měřítka"
 
 #. i18n: ectx: property (text), item, widget (QListWidget, list_presets)
 #: src/gui/widgets/dialogs/trace_dialog.ui:89
@@ -4717,12 +4717,40 @@ msgid ""
 "\"https://linktr.ee/FellFallow\"><span style=\" text-decoration: underline; "
 "color:#2980b9;\">FellFallow</span></a>)</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap;}, { ... }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Tato možnost je "
+"nejvhodnější pro fotografie, obrazy a detailní ilustrace.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Počet barev je snížen na "
+"základě <span style=\" font-weight:600;\">úrovně posterizace</span> níže.</"
+"p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Upozorňujeme, že při "
+"převodu tohoto typu obrázků na vektorovou grafiku dochází k výraznému "
+"snížení kvality obrazu.</p>\n"
+"<p style=\" margin-top:37px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">(Obrázek od <a href="
+"\"https://linktr.ee/FellFallow\"><span style=\" text-decoration: underline; "
+"color:#2980b9;\">FellFallow</span></a>)</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: src/gui/widgets/dialogs/trace_dialog.ui:164
 #, kde-format
 msgid "Posterization Level"
-msgstr ""
+msgstr "Úroveň posterizace"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_2)
 #: src/gui/widgets/dialogs/trace_dialog.ui:198
@@ -4752,6 +4780,30 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">Very small details might "
 "get lost in the process.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap;}, { ... }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Tato možnost je "
+"nejvhodnější pro digitální obrázky, samolepky a kreslené postavičky s "
+"plochým stínováním.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Počet barev bude "
+"automaticky snížen a budou vybrány nejběžnější barvy ve zdrojovém obrázku.</"
+"p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Během procesu se mohou "
+"ztratit i velmi malé detaily.</p></body></html>"
 
 #. i18n: ectx: property (html), widget (QTextEdit, textEdit_3)
 #: src/gui/widgets/dialogs/trace_dialog.ui:233
@@ -4775,6 +4827,23 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">This is only suitable for "
 "fairly small images with a low number of colors.</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Toto je vhodné pro pixel "
+"art. Trasovaný vektor si zachová všechny barvy z původního obrázku i "
+"pixelované okraje.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+"\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Toto je vhodné pouze pro "
+"poměrně malé obrázky s nízkým počtem barev.</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/dialogs/trace_dialog.ui:254
@@ -4792,13 +4861,13 @@ msgstr "Průhlednost"
 #: src/gui/widgets/dialogs/trace_dialog.ui:267
 #, kde-format
 msgid "Closest Color"
-msgstr ""
+msgstr "Nejbližší barva"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_mode)
 #: src/gui/widgets/dialogs/trace_dialog.ui:272
 #, kde-format
 msgid "Extract Colors"
-msgstr ""
+msgstr "Extrahovat barvy"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_mode)
 #: src/gui/widgets/dialogs/trace_dialog.ui:277
@@ -4816,7 +4885,7 @@ msgstr "Volby obrázku"
 #: src/gui/widgets/dialogs/trace_dialog.ui:307
 #, kde-format
 msgid "Output Color"
-msgstr ""
+msgstr "Výstupní barva"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/widgets/dialogs/trace_dialog.ui:331
@@ -4857,7 +4926,7 @@ msgstr "Přidat"
 #: src/gui/widgets/dialogs/trace_dialog.ui:421
 #, kde-format
 msgid "Remove Color"
-msgstr ""
+msgstr "Odstranit barvu"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_remove)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_remove)
@@ -4888,13 +4957,13 @@ msgstr "Obrys"
 #: src/gui/widgets/dialogs/trace_dialog.ui:483
 #, kde-format
 msgid "Detect Colors"
-msgstr ""
+msgstr "Rozpoznávání barev"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_quantize_options)
 #: src/gui/widgets/dialogs/trace_dialog.ui:490
 #, kde-format
 msgid "Configure Color Detection"
-msgstr ""
+msgstr "Nastavení rozpoznávání barev"
 
 #. i18n: ectx: property (text), widget (QToolButton, button_quantize_options)
 #: src/gui/widgets/dialogs/trace_dialog.ui:493
@@ -4906,7 +4975,7 @@ msgstr "Nastavit..."
 #: src/gui/widgets/dialogs/trace_dialog.ui:514
 #, kde-format
 msgid "Curve Options"
-msgstr ""
+msgstr "Možnosti křivky"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/widgets/dialogs/trace_dialog.ui:520
@@ -4918,7 +4987,7 @@ msgstr "Hladkost"
 #: src/gui/widgets/dialogs/trace_dialog.ui:559
 #, kde-format
 msgid "Minimum Area"
-msgstr ""
+msgstr "Minimální plocha"
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_preview)
 #: src/gui/widgets/dialogs/trace_dialog.ui:573
@@ -4950,7 +5019,7 @@ msgstr "Nápověda..."
 #: src/gui/widgets/dialogs/trace_dialog.ui:681
 #, kde-format
 msgid "Revert to Defaults"
-msgstr ""
+msgstr "Vrátit na výchozí nastavení"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_advanced)
 #: src/gui/widgets/dialogs/trace_dialog.ui:692
@@ -4995,17 +5064,17 @@ msgstr "Záznamy"
 #: src/gui/widgets/docks/script_console.cpp:61
 #, kde-format
 msgid "Could not run the plugin"
-msgstr ""
+msgstr "Modul se nepodařilo spustit"
 
 #: src/gui/widgets/docks/script_console.cpp:64
 #, kde-format
 msgid "Plugin raised an exception"
-msgstr ""
+msgstr "Modul vyvolal výjimku"
 
 #: src/gui/widgets/docks/script_console.cpp:72
 #, kde-format
 msgid "Could not find an interpreter"
-msgstr ""
+msgstr "Interpreta se nepodařilo najít"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, ScriptConsole)
 #: src/gui/widgets/docks/script_console.ui:22
@@ -5023,24 +5092,24 @@ msgstr "Vymazat výstup"
 #: src/gui/widgets/docks/script_console.ui:71
 #, kde-format
 msgid "Persist Logs"
-msgstr ""
+msgstr "Trvalé protokoly"
 
 #. i18n: ectx: property (text), widget (QToolButton, check_persist)
 #: src/gui/widgets/docks/script_console.ui:74
 #, kde-format
 msgid "Persist"
-msgstr ""
+msgstr "Trvalé"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_reload)
 #: src/gui/widgets/docks/script_console.ui:88
 #, kde-format
 msgid "Reload Script Modules"
-msgstr ""
+msgstr "Obnovit skriptové moduly"
 
 #: src/gui/widgets/docks/snippet_list_widget.cpp:50
 #, kde-format
 msgid "Snippets need a name"
-msgstr ""
+msgstr "Ústřižky musí mít název"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_snippets)
 #: src/gui/widgets/docks/snippet_list_widget.cpp:50
@@ -5053,7 +5122,7 @@ msgstr "Ústřižky"
 #: src/gui/widgets/docks/snippet_list_widget.cpp:56
 #, kde-format
 msgid "Could not create snippet: `%1`"
-msgstr ""
+msgstr "Nelze vytvořit ústřižek: `%1`"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 #: src/gui/widgets/docks/snippet_list_widget.ui:26
@@ -5065,7 +5134,7 @@ msgstr "Nový ústřižek"
 #: src/gui/widgets/docks/snippet_list_widget.ui:40
 #, kde-format
 msgid "Edit the selected snippet"
-msgstr ""
+msgstr "Upravit vybraný ústřižek"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/docks/snippet_list_widget.ui:43
@@ -5077,13 +5146,13 @@ msgstr "Upravit..."
 #: src/gui/widgets/docks/snippet_list_widget.ui:54
 #, kde-format
 msgid "Delete selected snippet"
-msgstr ""
+msgstr "Smazat vybraný ústřižek"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_4)
 #: src/gui/widgets/docks/snippet_list_widget.ui:68
 #, kde-format
 msgid "Run selected snippet"
-msgstr ""
+msgstr "Spustit vybraný ústřižek"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_4)
 #: src/gui/widgets/docks/snippet_list_widget.ui:71
@@ -5095,13 +5164,13 @@ msgstr "Spustit"
 #: src/gui/widgets/docks/snippet_list_widget.ui:95
 #, kde-format
 msgid "Reload snippets"
-msgstr ""
+msgstr "Znovu načíst ústřižky"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_time_slider)
 #: src/gui/widgets/docks/time_slider.ui:22
 #, kde-format
 msgid "Compact Timeline"
-msgstr ""
+msgstr "Kompaktní časová osa"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, dock_timeline)
 #: src/gui/widgets/docks/timeline.ui:22
@@ -5124,12 +5193,12 @@ msgstr "Historie činností"
 #: src/gui/widgets/enum_combo.cpp:56
 #, kde-format
 msgid "NonZero"
-msgstr ""
+msgstr "Nenulové"
 
 #: src/gui/widgets/enum_combo.cpp:58
 #, kde-format
 msgid "Even Odd"
-msgstr ""
+msgstr "Sudé a Liché"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_cap_butt)
 #. i18n: ectx: property (text), widget (QToolButton, button_cap_butt)
@@ -5169,7 +5238,7 @@ msgstr "Čtverec"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:229
 #, kde-format
 msgid "Miter"
-msgstr ""
+msgstr "Úhloměr"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_join_bevel)
 #. i18n: ectx: property (text), widget (QToolButton, button_join_bevel)
@@ -5178,7 +5247,7 @@ msgstr ""
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:169
 #, kde-format
 msgid "Bevel"
-msgstr ""
+msgstr "Zkosení"
 
 #: src/gui/widgets/enum_combo.cpp:92
 #, kde-format
@@ -5191,12 +5260,14 @@ msgid ""
 "All supported files (*.ttf, *.otf, *.css); CSS files (*.css); Font files (*."
 "ttf, *.otf); All files (*)"
 msgstr ""
+"Všechny podporované soubory (*.ttf, *.otf, *.css); Soubory CSS (*.css); "
+"Soubory písem (*.ttf, *.otf); Všechny soubory (*)"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/font/external_font_widget.ui:26
 #, kde-format
 msgid "File/URL"
-msgstr ""
+msgstr "Soubor/URL"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (windowTitle), widget (QDialog, glaxnimate::gui::font::FontStyleDialog)
@@ -5216,12 +5287,12 @@ msgstr "Nelze otevřít soubor %1"
 #: src/gui/widgets/font/font_loader.cpp:58
 #, kde-format
 msgid "Invalid data URL"
-msgstr ""
+msgstr "Neplatná URL s daty"
 
 #: src/gui/widgets/font/font_loader.cpp:138
 #, kde-format
 msgid "Font format not supported for %1"
-msgstr ""
+msgstr "Formát písma %1 není podporován"
 
 #: src/gui/widgets/font/font_preview_widget.cpp:25
 #, kde-format
@@ -5232,7 +5303,7 @@ msgstr "Šíleně žluťoučký kůň úpěl ďábelské ódy"
 #: src/gui/widgets/font/font_preview_widget.ui:42
 #, kde-format
 msgid "Preview Scale"
-msgstr ""
+msgstr "Měřítko náhledu"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_system)
 #: src/gui/widgets/font/font_style_dialog.ui:35
@@ -5270,7 +5341,7 @@ msgstr "Proporcionální"
 #: src/gui/widgets/font/google_fonts_model.cpp:180
 #, kde-format
 msgid "Could not add font"
-msgstr ""
+msgstr "Písmo se nepodařilo přidat"
 
 #: src/gui/widgets/font/google_fonts_model.cpp:274
 #, kde-format
@@ -5317,7 +5388,7 @@ msgstr "Zobrazení"
 #: src/gui/widgets/font/google_fonts_model.cpp:400
 #, kde-format
 msgid "Handwriting"
-msgstr ""
+msgstr "Ručně psané"
 
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.cpp:207
 #, kde-format
@@ -5328,7 +5399,7 @@ msgstr "Chyba HTTP %1: %2"
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:21
 #, kde-format
 msgid "Import From LottieFiles"
-msgstr ""
+msgstr "Importovat z LottieFiles"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_previous)
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.ui:98
@@ -5367,7 +5438,7 @@ msgstr "Komentáře"
 #: src/gui/widgets/lottiefiles/search_result.cpp:67
 #, kde-format
 msgid "View on LottieFiles..."
-msgstr ""
+msgstr "Zobrazit na LottieFiles..."
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:56
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:177
@@ -5378,12 +5449,12 @@ msgstr "Vložit klíčový snímek"
 #: src/gui/widgets/menus/animated_property_menu.cpp:57
 #, kde-format
 msgid "Loop Animation"
-msgstr ""
+msgstr "Animace ve smyčce"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:58
 #, kde-format
 msgid "Follow Path..."
-msgstr ""
+msgstr "Sledovat dráhu..."
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:60
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:173
@@ -5397,7 +5468,7 @@ msgstr "Odstranit klíčový snímek"
 #: src/gui/widgets/menus/node_menu.cpp:363
 #, kde-format
 msgid "Reset Transform"
-msgstr ""
+msgstr "Obnovit transformaci"
 
 #: src/gui/widgets/menus/node_menu.cpp:101
 #, kde-format
@@ -5417,23 +5488,23 @@ msgstr "Převést %1 do %2"
 #: src/gui/widgets/menus/node_menu.cpp:257
 #, kde-format
 msgid "Auto Orient"
-msgstr ""
+msgstr "Automatická orientace"
 
 #: src/gui/widgets/menus/node_menu.cpp:266
 #: src/gui/widgets/menus/node_menu.cpp:267
 #, kde-format
 msgid "Span All Frames"
-msgstr ""
+msgstr "Zahrnout všechny snímky"
 
 #: src/gui/widgets/menus/node_menu.cpp:277
 #, kde-format
 msgid "Parent"
-msgstr "Rodič"
+msgstr "Nadřazené"
 
 #: src/gui/widgets/menus/node_menu.cpp:278
 #, kde-format
 msgid "Convert to Group"
-msgstr ""
+msgstr "Převést na skupinu"
 
 #: src/gui/widgets/menus/node_menu.cpp:279
 #, kde-format
@@ -5444,37 +5515,37 @@ msgstr "Předkompozice"
 #: src/gui/widgets/menus/node_menu.cpp:304
 #, kde-format
 msgid "Convert to Mask"
-msgstr ""
+msgstr "Převést na masku"
 
 #: src/gui/widgets/menus/node_menu.cpp:291
 #, kde-format
 msgid "Remove Mask"
-msgstr ""
+msgstr "Odstranit masku"
 
 #: src/gui/widgets/menus/node_menu.cpp:300
 #, kde-format
 msgid "Convert to Layer"
-msgstr ""
+msgstr "Převést na vrstvu"
 
 #: src/gui/widgets/menus/node_menu.cpp:309
 #, kde-format
 msgid "Convert to Path"
-msgstr "Převést na cestu"
+msgstr "Převést na dráhu"
 
 #: src/gui/widgets/menus/node_menu.cpp:314
 #, kde-format
 msgid "Embed"
-msgstr ""
+msgstr "Vložit"
 
 #: src/gui/widgets/menus/node_menu.cpp:318
 #, kde-format
 msgid "Open with External Application"
-msgstr ""
+msgstr "Otevřít v externí aplikaci"
 
 #: src/gui/widgets/menus/node_menu.cpp:320
 #, kde-format
 msgid "Could not find suitable application, check your system settings."
-msgstr ""
+msgstr "Nenašla se vhodná aplikace, zkontrolujte nastavení systému."
 
 #: src/gui/widgets/menus/node_menu.cpp:324
 #, kde-format
@@ -5485,23 +5556,23 @@ msgstr "Ze souboru..."
 #: src/gui/widgets/menus/node_menu.cpp:329
 #, kde-format
 msgid "Update Image"
-msgstr ""
+msgstr "Aktualizovat obrázek"
 
 #: src/gui/widgets/menus/node_menu.cpp:356
 #, kde-format
 msgid "Trace Bitmap..."
-msgstr ""
+msgstr "Vykreslit bitmapu..."
 
 #: src/gui/widgets/menus/node_menu.cpp:367
 #, kde-format
 msgid "Rename from Composition"
-msgstr ""
+msgstr "Přejmenovat z kompozice"
 
 #: src/gui/widgets/menus/node_menu.cpp:371
 #: src/gui/widgets/menus/node_menu.cpp:372
 #, kde-format
 msgid "Decompose"
-msgstr ""
+msgstr "Rozložit"
 
 #: src/gui/widgets/menus/node_menu.cpp:410
 #, kde-format
@@ -5547,13 +5618,13 @@ msgstr "Přesunout do..."
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Convert to Path"
-msgstr "Převést na cestu"
+msgstr "Převést na dráhu"
 
 #: src/gui/widgets/menus/node_menu.cpp:496
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Change speed"
-msgstr ""
+msgstr "Změnit rychlost"
 
 #: src/gui/widgets/settings/plugin_settings_widget.cpp:62
 #, kde-format
@@ -5563,7 +5634,7 @@ msgstr "Neznámý"
 #: src/gui/widgets/settings/plugin_settings_widget.cpp:64
 #, kde-format
 msgid "Menu Action"
-msgstr ""
+msgstr "Nabídka činností"
 
 #: src/gui/widgets/settings/plugin_settings_widget.cpp:66
 #, kde-format
@@ -5574,7 +5645,7 @@ msgstr "Formát souboru"
 #: src/gui/widgets/settings/plugin_settings_widget.ui:31
 #, kde-format
 msgid "Reload Plugins"
-msgstr "Obnovit zásuvné moduly"
+msgstr "Obnovit moduly"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 #: src/gui/widgets/settings/plugin_settings_widget.ui:34
