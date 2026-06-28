@@ -417,7 +417,7 @@ msgid ""
 "Prompts the user to select a document to append as an object to the current "
 "one."
 msgstr ""
-"Demana a l'usuari que seleccione un document a afegir com un objecte a "
+"Demana a l'usuari que seleccione un document que s'annexarà com un objecte a "
 "l'actual."
 
 #: src/android/help_dialog.cpp:66
@@ -2458,8 +2458,8 @@ msgid ""
 "Specify the name of the local socket/named pipe to connect to a host "
 "application."
 msgstr ""
-"Especifiqueu el nom del sòcol local/canonada amb nom per a connectar-vos a "
-"una aplicació pare."
+"Especifiqueu el nom del sòcol local/canonada amb nom per a connectar-vos amb "
+"una aplicació amfitriona."
 
 #: src/gui/cli.cpp:46
 #, kde-format
@@ -3564,7 +3564,7 @@ msgstr ""
 "margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
 "text-indent:0px;\"><span style=\" font-weight:600;\">Cap</span>: No realitza "
 "cap postprocessament i retorna les mitjanes (cal tindre en compte que açò "
-"pot donar com a resultat colors no presents a la imatge original)</li>\n"
+"pot donar com a resultat colors no presents en la imatge original)</li>\n"
 "<li style=\"\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
 "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
 "weight:600;\">>Més proper</span>: Troba el color en la imatge original que "
@@ -3623,7 +3623,7 @@ msgstr ""
 "<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-"
 "right:0px; -qt-block-indent:0; text-indent:0px;\">Dona colors més precisos "
 "per a imatges complexes, però pot donar com a resultat colors que no estan "
-"presents a la imatge original.</p></body></html>"
+"presents en la imatge original.</p></body></html>"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:189
@@ -5314,7 +5314,7 @@ msgstr "No s'ha trobat cap intèrpret"
 #: src/gui/widgets/docks/script_console.ui:22
 #, kde-format
 msgid "Script Console"
-msgstr "Consola de script"
+msgstr "Consola de scripts"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_clear_console)
 #: src/gui/widgets/docks/script_console.ui:58
@@ -6514,7 +6514,7 @@ msgstr "Elimina el degradat"
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:402
 #, kde-format
 msgid "Gradient Presets"
-msgstr "Predefinits amb degradats"
+msgstr "Ajustaments predefinits amb degradats"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_new)
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:45
@@ -6720,7 +6720,7 @@ msgstr "Grava"
 #: src/gui/widgets/timeline/keyframe_editor_widget.ui:37
 #, kde-format
 msgid "Presets"
-msgstr "Valors predefinits"
+msgstr "Ajustaments predefinits"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/timeline/keyframe_editor_widget.ui:43
