@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-01 02:43+0000\n"
-"PO-Revision-Date: 2026-06-26 23:07+0200\n"
+"PO-Revision-Date: 2026-06-27 11:49+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -1364,12 +1364,13 @@ msgstr "Neznámý objekt typu '%1'"
 #: src/core/io/lottie/lottie_exporter.hpp:559
 #, kde-format
 msgid "Lottie only supports layers in the top level"
-msgstr ""
+msgstr "Lottie podporuje vrstvy pouze na nejvyšší úrovni"
 
 #: src/core/io/lottie/lottie_exporter.hpp:561
 #, kde-format
 msgid "Lottie only supports auto-orient layers in the top level"
 msgstr ""
+"Lottie podporuje automatickou orientaci vrstev pouze na nejvyšší úrovni"
 
 #: src/core/io/lottie/lottie_exporter.hpp:610
 #, kde-format
@@ -2292,7 +2293,7 @@ msgstr "Transformovat"
 #: src/core/plugin/snippet.hpp:93
 #, kde-format
 msgid "# Glaxnimate snippet"
-msgstr ""
+msgstr "# Glaxnimate ústřižek"
 
 #: src/core/plugin/snippet.hpp:95
 #, kde-format
@@ -2300,6 +2301,8 @@ msgid ""
 "# You have access to the `window` and `document` global variables and the "
 "`glaxnimate` module"
 msgstr ""
+"# Máte přístup ke globálním proměnným `window` a `document` a k modulu "
+"`glaxnimate`"
 
 #: src/core/plugin/snippet.hpp:97
 #, kde-format
@@ -2307,6 +2310,8 @@ msgid ""
 "# For documentation see https://glaxnimate.mattbas.org/contributing/"
 "scripting/"
 msgstr ""
+"# Dokumentaci najdete na adrese https://glaxnimate.mattbas.org/contributing/"
+"scripting/"
 
 #: src/core/utils/gzip.cpp:30
 #, kde-format
@@ -2316,7 +2321,7 @@ msgstr "Nelze rozbalit data"
 #: src/core/utils/trace_wrapper.cpp:160
 #, kde-format
 msgid "Traced %1"
-msgstr ""
+msgstr "Vykresleno %1"
 
 #: src/gui/cli.cpp:27
 #, kde-format
@@ -5714,17 +5719,19 @@ msgstr "Uživatelské rozhraní"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:230
 msgid "Show startup dialog"
-msgstr ""
+msgstr "Zobrazit dialogové okno při spuštění"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:233
 msgid "Horizontal Timeline Scroll"
-msgstr ""
+msgstr "Posouvání horizontální časové osy"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:234
 msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
 msgstr ""
+"Je-li tato funkce zapnutá, časová osa se ve výchozím nastavení posouvá "
+"vodorovně a svisle pomocí kláves Shift nebo Alt"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:237
 msgid "Icon Theme"
@@ -5743,23 +5750,23 @@ msgstr "s"
 #: src/gui/widgets/settings/settings_dialog.cpp:245
 msgctxt "Settings"
 msgid "New Animation Defaults"
-msgstr ""
+msgstr "Výchozí nastavení nových animací"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:246
 msgid "Canvas Width"
-msgstr ""
+msgstr "Šířka plátna"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:247
 msgid "Canvas Height"
-msgstr ""
+msgstr "Výška plátna"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:248
 msgid "Frames per seconds"
-msgstr ""
+msgstr "Snímků za sekundu"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:249
 msgid "Duration in seconds"
-msgstr ""
+msgstr "Doba trvání v sekundách"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:253
 msgctxt "Settings"
@@ -5768,12 +5775,12 @@ msgstr "Otevřít/Uložit"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:254
 msgid "Max Recent Files"
-msgstr ""
+msgstr "Maximální počet posledních souborů"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:254
 #: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Number of items to show in the recent files menu"
-msgstr ""
+msgstr "Počet položek, které se mají zobrazit v nabídce posledních souborů"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:255
 msgid "Backup Frequency"
@@ -5781,7 +5788,7 @@ msgstr "Frekvence zálohování"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:256
 msgid "Use system file dialog"
-msgstr ""
+msgstr "Použít systémové dialogové okno pro výběr souboru"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:30
@@ -5994,7 +6001,7 @@ msgstr "K"
 #: src/gui/widgets/shape_style/color_selector.ui:593
 #, kde-format
 msgid "Alpha (Transparency)"
-msgstr ""
+msgstr "Alfa (průhlednost)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/widgets/shape_style/color_selector.ui:586
@@ -6006,13 +6013,13 @@ msgstr "A"
 #: src/gui/widgets/shape_style/color_selector.ui:637
 #, kde-format
 msgid "Primary Color"
-msgstr ""
+msgstr "Základní barva"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::ColorSelector, color_preview_secondary)
 #: src/gui/widgets/shape_style/color_selector.ui:656
 #, kde-format
 msgid "Secondary Color"
-msgstr ""
+msgstr "Doplňková barva"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, color_swap)
 #. i18n: ectx: property (text), widget (QToolButton, color_swap)
@@ -6020,53 +6027,53 @@ msgstr ""
 #: src/gui/widgets/shape_style/color_selector.ui:682
 #, kde-format
 msgid "Swap"
-msgstr "Prohodit"
+msgstr "Odkládací prostor"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:49
 #, kde-format
 msgid "Gather Document Swatch"
-msgstr ""
+msgstr "Shromáždit vzorky dokumentů"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:121
 #, kde-format
 msgid "Link Shapes to Swatch"
-msgstr ""
+msgstr "Propojit tvary se vzorníkem"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:236
 #, kde-format
 msgid "Modify Palette Color"
-msgstr ""
+msgstr "Upravit barvu palety"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:315
 #, kde-format
 msgid "Load from Palette"
-msgstr ""
+msgstr "Načíst z palety"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:316
 #, kde-format
 msgid "No palettes are installed"
-msgstr ""
+msgstr "Nejsou nainstalovány žádné palety"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:322
 #, kde-format
 msgid "Swatch from Palette"
-msgstr ""
+msgstr "Vzorek z palety"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:331
 #, kde-format
 msgid "Overwrite on save"
-msgstr ""
+msgstr "Přepsat při uložení"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:335
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:522
 #, kde-format
 msgid "Link shapes with matching colors"
-msgstr ""
+msgstr "Propojit tvary se stejnými barvami"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:340
 #, kde-format
 msgid "Remove existing colors"
-msgstr ""
+msgstr "Odstranit stávající barvy"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:359
 #, kde-format
@@ -6083,17 +6090,17 @@ msgstr "Uložit paletu"
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:420
 #, kde-format
 msgid "Unlink Color"
-msgstr ""
+msgstr "Odpojit barvu"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:424
 #, kde-format
 msgid "Unlink fill"
-msgstr ""
+msgstr "Odpojit výplň"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:433
 #, kde-format
 msgid "Unlink stroke"
-msgstr ""
+msgstr "Odpojit tah"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:447
 #, kde-format
@@ -6103,22 +6110,22 @@ msgstr "Přejmenovat..."
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:451
 #, kde-format
 msgid "Rename Swatch Color"
-msgstr ""
+msgstr "Přejmenovat barvu vzorku"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:459
 #, kde-format
 msgid "Edit Color..."
-msgstr ""
+msgstr "Upravit barvu..."
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:502
 #, kde-format
 msgid "Set as fill"
-msgstr ""
+msgstr "Nastavit jako výplň"
 
 #: src/gui/widgets/shape_style/document_swatch_widget.cpp:511
 #, kde-format
 msgid "Set as stroke"
-msgstr ""
+msgstr "Nastavit jako tah"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:72
@@ -6136,89 +6143,89 @@ msgstr "Vygenerovat"
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:106
 #, kde-format
 msgid "Generate Swatch from the open Document"
-msgstr ""
+msgstr "Vytvořit vzorník z otevřeného dokumentu"
 
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_2)
 #: src/gui/widgets/shape_style/document_swatch_widget.ui:124
 #, kde-format
 msgid "From Palette..."
-msgstr ""
+msgstr "Z palety..."
 
 #: src/gui/widgets/shape_style/fill_style_widget.cpp:102
 #, kde-format
 msgid "Update Fill Color"
-msgstr ""
+msgstr "Aktualizovat barvu výplně"
 
 #: src/gui/widgets/shape_style/fill_style_widget.cpp:120
 #, kde-format
 msgid "Clear Fill Color"
-msgstr ""
+msgstr "Vymazat barvu výplně"
 
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:133
 #, kde-format
 msgid "Set %1 Gradient"
-msgstr ""
+msgstr "Nastavit %1 přechod"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_remove)
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:212
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:83
 #, kde-format
 msgid "Remove Gradient"
-msgstr ""
+msgstr "Odstranit přechod"
 
 #: src/gui/widgets/shape_style/gradient_list_widget.cpp:388
 #, kde-format
 msgid "Gradient Presets"
-msgstr ""
+msgstr "Předvolby přechodů"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_new)
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:42
 #, kde-format
 msgid "Add Gradient"
-msgstr ""
+msgstr "Přidat přechod"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_preset)
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:56
 #, kde-format
 msgid "Add from Preset"
-msgstr ""
+msgstr "Přidat z předvolby"
 
 #. i18n: ectx: property (text), widget (QToolButton, btn_preset)
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:59
 #, kde-format
 msgid "Preset"
-msgstr "Přednastavení"
+msgstr "Předvolby"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:139
 #, kde-format
 msgid "Update Stroke Color"
-msgstr ""
+msgstr "Změnit barvu tahu"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:225
 #, kde-format
 msgid "Set Line Cap"
-msgstr "Nastavení clony"
+msgstr "Nastavit clonu čáry"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:240
 #, kde-format
 msgid "Set Line Join"
-msgstr ""
+msgstr "Nastavit spojení čar"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:332
 #, kde-format
 msgid "Set Miter Limit"
-msgstr ""
+msgstr "Nastavit omezení úhlu"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:340
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:355
 #, kde-format
 msgid "Set Line Width"
-msgstr ""
+msgstr "Nastavit šířku čáry"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:387
 #, kde-format
 msgid "Clear Line Color"
-msgstr ""
+msgstr "Vymazat barvu čáry"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:40
@@ -6254,12 +6261,12 @@ msgstr "Omezení úhlu"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:338
 #, kde-format
 msgid "Dashes"
-msgstr ""
+msgstr "Pomlčky"
 
 #: src/gui/widgets/spin2d.cpp:46
 #, kde-format
 msgid "Lock Ratio"
-msgstr ""
+msgstr "Uzamknout poměr stran"
 
 #: src/gui/widgets/tab_bar/composition_tab_bar.cpp:86
 #, kde-format
@@ -6279,12 +6286,12 @@ msgstr "Smazat kompozici"
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:155
 #, kde-format
 msgid "Transition From Previous"
-msgstr ""
+msgstr "Přechod z předchozího"
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:156
 #, kde-format
 msgid "Transition To Next"
-msgstr ""
+msgstr "Přechod na další"
 
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:163
 #, kde-format
@@ -6294,7 +6301,7 @@ msgstr "Vlastní..."
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
 #, kde-format
 msgid "Copy Keyframe"
-msgstr ""
+msgstr "Kopírovat klíčový snímek"
 
 #. i18n: ectx: property (text), widget (QScrollBar, scrollbar)
 #: src/gui/widgets/timeline/compound_timeline_widget.ui:199
@@ -6318,7 +6325,7 @@ msgstr " f"
 #: src/gui/widgets/timeline/frame_controls_widget.ui:60
 #, kde-format
 msgid "Loop animation"
-msgstr ""
+msgstr "Animace ve smyčce"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_first)
 #. i18n: ectx: property (text), widget (QToolButton, button_first)
@@ -6326,7 +6333,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:83
 #, kde-format
 msgid "Go To First Frame"
-msgstr ""
+msgstr "Přejít na první snímek"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_prev_kf)
 #. i18n: ectx: property (text), widget (QToolButton, button_prev_kf)
@@ -6334,7 +6341,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:100
 #, kde-format
 msgid "Go To Previous Keyframe"
-msgstr "Jít na předchozí klíčový snímek"
+msgstr "Přejít na předchozí klíčový snímek"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_prev)
 #. i18n: ectx: property (text), widget (QToolButton, button_prev)
@@ -6342,7 +6349,7 @@ msgstr "Jít na předchozí klíčový snímek"
 #: src/gui/widgets/timeline/frame_controls_widget.ui:114
 #, kde-format
 msgid "Go To Previous Frame"
-msgstr ""
+msgstr "Přejít na předchozí snímek"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_next)
 #. i18n: ectx: property (text), widget (QToolButton, button_next)
@@ -6350,7 +6357,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:128
 #, kde-format
 msgid "Go To Next Frame"
-msgstr ""
+msgstr "Přejít na další snímek"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_next_kf)
 #. i18n: ectx: property (text), widget (QToolButton, button_next_kf)
@@ -6358,7 +6365,7 @@ msgstr ""
 #: src/gui/widgets/timeline/frame_controls_widget.ui:145
 #, kde-format
 msgid "Go To Next Keyframe"
-msgstr "Jít na následující klíčový snímek"
+msgstr "Přejít na další klíčový snímek"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_last)
 #. i18n: ectx: property (text), widget (QToolButton, button_last)
@@ -6366,7 +6373,7 @@ msgstr "Jít na následující klíčový snímek"
 #: src/gui/widgets/timeline/frame_controls_widget.ui:159
 #, kde-format
 msgid "Go To Last Frame"
-msgstr ""
+msgstr "Přejít na poslední snímek"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_record)
 #. i18n: ectx: property (text), widget (QToolButton, button_record)
@@ -6380,7 +6387,7 @@ msgstr "Nahrávat"
 #: src/gui/widgets/timeline/keyframe_editor_widget.ui:37
 #, kde-format
 msgid "Presets"
-msgstr "Přednastavení"
+msgstr "Předvolby"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/widgets/timeline/keyframe_editor_widget.ui:43
@@ -6407,39 +6414,39 @@ msgstr "Rychle"
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:73
 #, kde-format
 msgid "Ease In"
-msgstr ""
+msgstr "Pomalý start"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:75
 #, kde-format
 msgid "Ease Out"
-msgstr ""
+msgstr "Pomalé zastavení"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:78
 #, kde-format
 msgid "Ease"
-msgstr ""
+msgstr "Pomalu"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:87
 #, kde-format
 msgid "Anticipate"
-msgstr ""
+msgstr "Předvídat"
 
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:89
 #: src/gui/widgets/timeline/keyframe_transition_data.hpp:92
 #, kde-format
 msgid "Overshoot"
-msgstr ""
+msgstr "Překročení"
 
 #: src/gui/widgets/timeline/timeline_items.cpp:146
 #, kde-format
 msgid "Drag Keyframes"
-msgstr ""
+msgstr "Přetažení klíčových snímků"
 
 #. i18n: ectx: property (text), widget (QRadioButton, check_both)
 #: src/gui/widgets/tools/fill_tool_widget.ui:49
 #, kde-format
 msgid "Fill and Stroke"
-msgstr ""
+msgstr "Výplň a obrys"
 
 #. i18n: ectx: property (title), widget (QGroupBox, group_box)
 #: src/gui/widgets/tools/shape_tool_widget.ui:24
@@ -6451,7 +6458,7 @@ msgstr "Vytvořit"
 #: src/gui/widgets/tools/shape_tool_widget.ui:30
 #, kde-format
 msgid "Raw Shape"
-msgstr ""
+msgstr "Hrubý tvar"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_view_fit)
 #. i18n: ectx: property (text), widget (QToolButton, btn_view_fit)
