@@ -11,10 +11,11 @@
 #include <QFileDialog>
 #include <QImageWriter>
 #include <QDropEvent>
-#include <QtConcurrent>
+#include <QtConcurrentRun>
 #include <QEventLoop>
 #include <QLocalSocket>
 #include <QDataStream>
+#include <QSaveFile>
 #include <QSharedMemory>
 #include <QtGlobal>
 #include <QNetworkReply>
