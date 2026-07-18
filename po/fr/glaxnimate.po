@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-04 00:42+0000\n"
+"POT-Creation-Date: 2026-07-18 00:41+0000\n"
 "PO-Revision-Date: 2026-04-05 08:46+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -342,8 +342,8 @@ msgstr "Remplacer"
 #: src/android/document_opener.cpp:35 src/android/document_opener.cpp:128
 #: src/android/document_opener.cpp:154 src/android/document_opener.cpp:193
 #: src/android/document_opener.cpp:201
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:449
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:454
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:450
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:455
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:210
 #: src/gui/widgets/dialogs/import_export_dialog.hpp:82
 #: src/gui/widgets/font/external_font_widget.cpp:126
@@ -811,13 +811,13 @@ msgid "Animation.%1"
 msgstr "Animation.%1"
 
 #: src/android/main_window.cpp:667
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:293
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:294
 #, kde-format
 msgid "Closing Animation"
 msgstr "Fermeture de l'Animation"
 
 #: src/android/main_window.cpp:668
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:294
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:295
 #, kde-format
 msgid ""
 "The animation has unsaved changes.\n"
@@ -828,11 +828,11 @@ msgstr ""
 
 #: src/android/main_window.cpp:752 src/android/main_window.cpp:756
 #: src/android/main_window.cpp:891
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:508
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:512
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:828
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:833
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:845
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:509
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:513
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:829
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:834
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:846
 #, kde-format
 msgid "Import File"
 msgstr "Importer un fichier"
@@ -1419,7 +1419,7 @@ msgid "Embedded data"
 msgstr "Données embarquées"
 
 #: src/core/glaxnimate/io/svg/svg_format.cpp:60
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:936
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:937
 #, kde-format
 msgid "Ignore"
 msgstr "Ignorer"
@@ -1751,7 +1751,7 @@ msgstr "Texte"
 #. i18n: ectx: property (text), widget (QRadioButton, check_fill)
 #: src/core/glaxnimate/model/shapes/style/fill.hpp:48
 #: src/gui/tools/draw_tool_base.cpp:114 src/gui/tools/fill_tool.cpp:25
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:740
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:741
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:642
 #: src/gui/widgets/docks/colors.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:197
@@ -1768,7 +1768,7 @@ msgstr "Remplir"
 #. i18n: ectx: property (text), widget (QRadioButton, check_stroke)
 #: src/core/glaxnimate/model/shapes/style/stroke.hpp:68
 #: src/gui/tools/draw_tool_base.cpp:126
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:735
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:736
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:645
 #: src/gui/widgets/docks/stroke.ui:22
 #: src/gui/widgets/shape_style/gradient_list_widget.ui:111
@@ -2829,9 +2829,9 @@ msgid "Document"
 msgstr "Document"
 
 #. i18n: ectx: Menu (web_preview_menu)
-#: src/gui/glaxnimateui.rc:93 src/gui/widgets/dialogs/gw_impl_document.cpp:530
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:552
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:558
+#: src/gui/glaxnimateui.rc:93 src/gui/widgets/dialogs/gw_impl_document.cpp:531
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:553
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:559
 #, kde-format
 msgid "Web Preview"
 msgstr "Aperçu Internet"
@@ -3915,17 +3915,17 @@ msgid_plural "Delete keyframes"
 msgstr[0] "Supprimer la trame clé"
 msgstr[1] "Supprimer les trames clé"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:138
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:139
 #, kde-format
 msgid "Export..."
 msgstr "Exporter..."
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:150
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:151
 #, kde-format
 msgid "Unsaved Animation"
 msgstr "Animation non enregistrée"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:232
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:233
 #, kde-format
 msgid ""
 "Looks like this file is being edited by another Glaxnimate instance or it "
@@ -3935,143 +3935,143 @@ msgstr ""
 "Glaxnimate ou bien qu'il était en cours d'édition lorsque Glaxnimate à "
 "planté."
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:238
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:239
 #, kde-format
 msgid "Close Document"
 msgstr "Fermer le document"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:245
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:670
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:246
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:671
 #, kde-format
 msgid "Load Backup"
 msgstr "Charger une copie de sauvegarde"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:397
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:398
 #, kde-format
 msgid "Export to %1"
 msgstr "Exporter vers %1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:449
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:450
 #, kde-format
 msgid "No importer found for %1"
 msgstr "Aucun module d'importation trouvé pour %1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:454
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:455
 #, kde-format
 msgid ""
 "The file might have been moved or deleted\n"
 "%1"
 msgstr "Le fichier a du être déplacé ou supprimé %1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:508
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:828
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:845
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:509
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:829
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:846
 #, kde-format
 msgid "Could not import %1"
 msgstr "Impossible d'importer %1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:519
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:520
 #, kde-format
 msgid "No file to reload from"
 msgstr "Pas de fichier depuis lequel charger"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:552
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:553
 #, kde-format
 msgid "Could not create file"
 msgstr "Impossible de créer le fichier"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:558
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:559
 #, kde-format
 msgid "Could not open browser"
 msgstr "Impossible d'ouvrir le navigateur"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:592
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:593
 #, kde-format
 msgid "Frame%1.svg"
 msgstr "Image%1.svg"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:608
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:609
 #, kde-format
 msgid "Render Frame"
 msgstr "Effectuer un rendu de l'image"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:608
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:609
 #, kde-format
 msgid "Could not save image"
 msgstr "Impossible d'enregistrer l'image"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:616
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:617
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:527
 #, kde-format
 msgid "Validate Discord Sticker"
 msgstr "Valide l'autocollant Discord"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:618
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:628
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:619
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:629
 #, kde-format
 msgid "No issues found"
 msgstr "Aucun problème n'a été trouvé"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:618
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:628
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:619
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:629
 #, kde-format
 msgid "Some issues detected"
 msgstr "Des problèmes ont été détectés"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:626
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:627
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:524
 #, kde-format
 msgid "Validate Telegram Sticker"
 msgstr "Valide l'autocollant Telegram"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:670
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:671
 #, kde-format
 msgid "Could not open the backup file"
 msgstr "Impossible d'ouvrir le fichier de sauvegarde"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:749
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:750
 #, kde-format
 msgid "Unlink %1 Color"
 msgstr "Détacher la couleur %1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:759
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:760
 #, kde-format
 msgid "Link %1 Color"
 msgstr "Lier la couleur %1"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:869
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:870
 #, kde-format
 msgid "Download fonts"
 msgstr "Télécharger des polices"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:907
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:908
 #, kde-format
 msgid "HTTP Error %1 %2"
 msgstr "Erreur « HTTP » %1 %2"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:911
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:912
 #: src/gui/widgets/lottiefiles/lottiefiles_search_dialog.cpp:213
 #, kde-format
 msgid "Network Error"
 msgstr "Erreur de réseau"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:914
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:915
 #, kde-format
 msgid "Load URL"
 msgstr "URL de chargement"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:914
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:915
 #, kde-format
 msgid "Could not load %1: %2"
 msgstr "Impossible de charger %1 : %2"
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:932
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:933
 #, kde-format
 msgid "There are %1 auto-save files that can be restored."
 msgstr ""
 "Il y a %1 fichiers d'enregistrement automatique pouvant être restaurés."
 
-#: src/gui/widgets/dialogs/gw_impl_document.cpp:940
+#: src/gui/widgets/dialogs/gw_impl_document.cpp:941
 #, kde-format
 msgid "Load Backup..."
 msgstr "Charger une copie de sauvegarde..."
