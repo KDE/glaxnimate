@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-18 00:41+0000\n"
-"PO-Revision-Date: 2026-03-03 16:24+0300\n"
+"PO-Revision-Date: 2026-09-24 19:00+0200\n"
 "Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -162,8 +162,7 @@ msgstr "непрозрачность"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/image.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Image"
+#, kde-format
 msgid "image"
 msgstr "Изображение"
 
@@ -199,10 +198,9 @@ msgstr "использование"
 
 #. i18n: file: src/core/glaxnimate/model/transform.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Duration"
+#, kde-format
 msgid "rotation"
-msgstr "Длительность"
+msgstr "Вращение"
 
 #. i18n: file: src/core/glaxnimate/model/assets/composition.hpp
 #. i18n: Property name
@@ -305,9 +303,8 @@ msgstr ""
 "Требуется указать временной диапазон для разделения на кадры и желаемое "
 "количество кадров.\n"
 "\n"
-"После этого создаются слои, которые появляются внутри и снаружи с "
-"равнымиинтервалами времени. Эти слои можно использовать для покадровой "
-"анимации.  "
+"После этого создаются слои, которые появляются и исчезают с равными "
+"интервалами времени. Эти слои можно использовать для покадровой анимации."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: data/plugins/FrameByFrame/create_frames.ui:43
@@ -982,13 +979,12 @@ msgid "Stretch Time"
 msgstr "Растянуть время"
 
 #: src/core/glaxnimate/command/clipboard.cpp:142
-#, fuzzy, kde-format
-#| msgid "Paste Keyframe"
+#, kde-format
 msgid "Paste keyframe"
 msgid_plural "Paste keyframes"
 msgstr[0] "Вставить ключевой кадр"
-msgstr[1] "Вставить ключевой кадр"
-msgstr[2] "Вставить ключевой кадр"
+msgstr[1] "Вставить ключевых кадра"
+msgstr[2] "Вставить ключевых кадров"
 msgstr[3] "Вставить ключевой кадр"
 
 #: src/core/glaxnimate/command/object_list_commands.hpp:26
@@ -1047,16 +1043,14 @@ msgid "Precompose"
 msgstr "Составить предкомпозицию"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:308
-#, fuzzy, kde-format
-#| msgid "End Time"
+#, kde-format
 msgid "Set End Time"
-msgstr "Время завершения"
+msgstr "Установить время завершения"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:345
-#, fuzzy, kde-format
-#| msgid "Start Time"
+#, kde-format
 msgid "Set Start Time"
-msgstr "Время начала"
+msgstr "Установить время начала"
 
 #: src/core/glaxnimate/command/structure_commands.cpp:73
 #, kde-format
@@ -1076,10 +1070,9 @@ msgid "Glaxnimate Animation"
 msgstr "Анимация Glaxnimate"
 
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_html_format.hpp:20
-#, fuzzy, kde-format
-#| msgid "Lottie HTML Preview"
+#, kde-format
 msgid "Glaxnimate HTML Preview"
-msgstr "Предпросмотр HTML Lottie"
+msgstr "Предпросмотр HTML Glaxnimate"
 
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_importer.cpp:21
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_mime.cpp:86
@@ -1166,10 +1159,9 @@ msgid "Unknown object of type '%1'"
 msgstr "Неизвестный объект типа «%1»"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:732
-#, fuzzy, kde-format
-#| msgid "Unsupported shape type %1"
+#, kde-format
 msgid "%1 is an unsupported shape of type %2"
-msgstr "Не поддерживается фигура типа %1"
+msgstr "Не поддерживается фигура %1 типа %2"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:757
 #, kde-format
@@ -1230,12 +1222,12 @@ msgstr "Предпросмотр HTML Lottie"
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:190
 #, kde-format
 msgid "Mask parent %1 of layer %2 could not be found"
-msgstr ""
+msgstr "Не удалось найти родителя маски %1 слоя %2"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:200
 #, kde-format
 msgid "Mask parent of layer %1 could not be found"
-msgstr ""
+msgstr "Не удалось найти родителя маски слоя %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:219
 #, kde-format
@@ -1243,10 +1235,9 @@ msgid "Invalid parent layer %1"
 msgstr "Недопустимый родительский слой %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:316
-#, fuzzy, kde-format
-#| msgid "Missing layer type for %1"
+#, kde-format
 msgid "Missing type for layer %1"
-msgstr "Отсутствует тип слоя для %1"
+msgstr "Не указан тип слоя %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:390
 #, kde-format
@@ -1477,14 +1468,12 @@ msgstr "Удлинение фигуры"
 
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:101
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:118
-#, fuzzy, kde-format
-#| msgid "Update keyframe transition"
+#, kde-format
 msgid "Set keyframe transition"
-msgstr "Обновить переход между ключевыми кадрами"
+msgstr "Задать переход между ключевыми кадрами"
 
 #: src/core/glaxnimate/model/animation/meta_animatable.cpp:137
-#, fuzzy, kde-format
-#| msgid "Move keyframe"
+#, kde-format
 msgid "Move Keyframe"
 msgstr "Переместить ключевой кадр"
 
@@ -1800,30 +1789,27 @@ msgstr "Трансформация"
 #: src/core/glaxnimate/module/cairo/cairo_module.hpp:16
 #, kde-format
 msgid "Cairo Renderer"
-msgstr ""
+msgstr "Cairo визуализация"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.cpp:40
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PDF surface: %1"
-msgstr "Не удалось создать фрагмент: «%1»"
+msgstr "Не удалось создать поверхность PDF: %1"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.hpp:20
-#, fuzzy, kde-format
-#| msgid "Gather Document Swatch"
+#, kde-format
 msgid "Portable Document Format"
-msgstr "Получение образца из документа"
+msgstr "Формат PDF"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.cpp:38
-#, fuzzy, kde-format
-#| msgid "Could not create snippet: `%1`"
+#, kde-format
 msgid "Could not create PostScript surface: %1"
-msgstr "Не удалось создать фрагмент: «%1»"
+msgstr "Не удалось создать поверхность PostScript: %1"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.hpp:20
-#, fuzzy, kde-format
+#, kde-format
 msgid "PostScript"
-msgstr "Сценарии"
+msgstr "PostScript"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_format.cpp:32
 #, kde-format
@@ -1851,20 +1837,19 @@ msgid "Unknown property \"%1\" of \"%2\""
 msgstr "Неизвестное свойство «%1» в «%2»"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:221
-#, fuzzy, kde-format
-#| msgid "Layer"
+#, kde-format
 msgid "Layer #%1"
-msgstr "Слой"
+msgstr "Слой №%1"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:279
 #, kde-format
 msgid "Parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Не удалось найти родителя #%1 для слоя %2"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:292
 #, kde-format
 msgid "Mask parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Не удалось найти родителя маски #%1 слоя %2"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:581
 #, kde-format
@@ -2012,10 +1997,9 @@ msgid "%s cannot be a clip path"
 msgstr "%s не может быть путём клипа"
 
 #: src/core/glaxnimate/module/extraformats/extraformats_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "Formats"
+#, kde-format
 msgid "Extra Formats"
-msgstr "Форматы"
+msgstr "Дополнительные форматы"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:359
 #, kde-format
@@ -2154,7 +2138,7 @@ msgstr "Не удалось распаковать сжатые данные"
 #: src/core/glaxnimate/module/gzip/gzip-kde.cpp:84
 #, kde-format
 msgid "Gzip stream already open"
-msgstr ""
+msgstr "Поток Gzip уже открыт"
 
 #: src/core/glaxnimate/module/gzip/gzip-zlib.cpp:99
 #, kde-format
@@ -2164,12 +2148,12 @@ msgstr "ZLib %1%2 вернула %3"
 #: src/core/glaxnimate/module/gzip/gzip_module.hpp:16
 #, kde-format
 msgid "Gzip Compression"
-msgstr ""
+msgstr "Сжатие Gzip"
 
 #: src/core/glaxnimate/module/gzip/svgz_format.hpp:22
 #, kde-format
 msgid "Compressed SVG"
-msgstr ""
+msgstr "Сжатый SVG"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:44
 #, kde-format
@@ -2182,10 +2166,9 @@ msgid "Gradient strokes are not officially supported"
 msgstr "Обводки градиента официально не поддерживаются"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:58
-#, fuzzy, kde-format
-#| msgid "Repeaters are not officially supported"
+#, kde-format
 msgid "Masks are not officially supported"
-msgstr "Повторители фигур официально не поддерживаются"
+msgstr "Маски официально не поддерживаются"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:62
 #, kde-format
@@ -2218,15 +2201,14 @@ msgid "Telegram Animated Sticker"
 msgstr "Анимированный стикер Telegram"
 
 #: src/core/glaxnimate/module/module.cpp:41
-#, fuzzy, kde-format
-#| msgid "Glaxnimate"
+#, kde-format
 msgid "Glaxnimate Core"
-msgstr "Glaxnimate"
+msgstr "Ядро Glaxnimate"
 
 #: src/core/glaxnimate/module/thorvg/thorvg_module.hpp:16
 #, kde-format
 msgid "ThorVG Renderer"
-msgstr ""
+msgstr "ThorVG визуализация"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:73
 #, kde-format
@@ -2390,19 +2372,17 @@ msgstr "Видео"
 #: src/core/glaxnimate/module/video/video_module.hpp:16
 #, kde-format
 msgid "Video Format Support"
-msgstr ""
+msgstr "Поддержка форматов видео"
 
 #: src/core/glaxnimate/script/register_impl.hpp:234
-#, fuzzy, kde-format
-#| msgid "Could not allocate frame data."
+#, kde-format
 msgid "Cannot allocate argument"
-msgstr "Не удалось разместить данные кадра."
+msgstr "Не удалось разместить аргумент"
 
 #: src/core/glaxnimate/script/register_impl.hpp:250
-#, fuzzy, kde-format
-#| msgid "Could not allocate stream"
+#, kde-format
 msgid "Cannot allocate return value"
-msgstr "Не удалось разместить поток"
+msgstr "Не удалось разместить возвращаемое значение"
 
 #: src/gui/cli.cpp:27
 #, kde-format
@@ -2662,7 +2642,7 @@ msgstr "Не удалось загрузить файлы"
 #, kde-format
 msgctxt "Package install status"
 msgid "Some files failed to extract"
-msgstr ""
+msgstr "Не удалось извлечь некоторые файлы"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, EmojiSetDialog)
 #: src/gui/emoji/emoji_set_dialog.ui:21
@@ -2748,25 +2728,24 @@ msgid "Close"
 msgstr "Закрыть"
 
 #: src/gui/glaxnimate_app.cpp:201
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgid "OpenGL"
-msgstr "Открыть"
+msgstr "OpenGL"
 
 #: src/gui/glaxnimate_app.cpp:202
 #, kde-format
 msgid "Hardware-accelerated graphics."
-msgstr ""
+msgstr "Аппаратное ускорение графики"
 
 #: src/gui/glaxnimate_app.cpp:208
 #, kde-format
 msgid "OpenGL Renderer"
-msgstr ""
+msgstr "OpenGL визуализация"
 
 #: src/gui/glaxnimate_app.cpp:231
 #, kde-format
 msgid "Copyright © 2019-2026"
-msgstr ""
+msgstr "Авторские права © 2019-2026"
 
 #: src/gui/glaxnimate_app.cpp:240
 #, kde-format
@@ -2867,10 +2846,9 @@ msgstr "Выравнивание и компоновка"
 
 #. i18n: ectx: Menu (menu_keyframe_type)
 #: src/gui/glaxnimateui.rc:176
-#, fuzzy, kde-format
-#| msgid "Update keyframe transition"
+#, kde-format
 msgid "Keyframe Transition"
-msgstr "Обновить переход между ключевыми кадрами"
+msgstr "Переход между ключевыми кадрами"
 
 #. i18n: ectx: Menu (plugins)
 #: src/gui/glaxnimateui.rc:217 src/gui/settings/plugin_settings_group.hpp:23
@@ -3029,10 +3007,9 @@ msgid "Value"
 msgstr "Значение"
 
 #: src/gui/item_models/property_model_full.cpp:462
-#, fuzzy, kde-format
-#| msgid "k-Modes"
+#, kde-format
 msgid "Mask Mode"
-msgstr "k-моды"
+msgstr "Режим маски"
 
 #: src/gui/item_models/python_snippet_model.hpp:36
 #, kde-format
@@ -3071,16 +3048,12 @@ msgstr "%1"
 
 # %5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the frame rate
 #: src/gui/settings/document_templates.cpp:123
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
-#| "frame rate"
-#| msgid "%5 - %1x%2 %3 %4fps"
+#, kde-format
 msgctxt ""
 "%5 is the file name, %1 × %2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
 msgid "%5 — %1 × %2 %3 %4 fps"
-msgstr "%5 — %1x%2 %3 %4 к/сек"
+msgstr "%5 — %1 × %2 %3 %4 к/сек"
 
 #: src/gui/settings/document_templates.cpp:178
 #, kde-format
@@ -3100,7 +3073,7 @@ msgstr "Системный по умолчанию"
 #: src/gui/style/property_delegate.cpp:52
 #, kde-format
 msgid "%1% × %2%"
-msgstr ""
+msgstr "%1% × %2%"
 
 #: src/gui/style/property_delegate.cpp:72
 #, kde-format
@@ -3420,10 +3393,9 @@ msgstr "Выходные форматы "
 
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: src/gui/widgets/dialogs/about_env_dialog.ui:306
-#, fuzzy, kde-format
-#| msgid "Output Formats "
+#, kde-format
 msgid "Single Frame Output Formats "
-msgstr "Выходные форматы "
+msgstr "Выходные форматы одиночного кадра"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ColorQuantizationDialog)
 #: src/gui/widgets/dialogs/color_quantization_dialog.ui:21
@@ -3926,13 +3898,12 @@ msgid "Warning"
 msgstr "Предупреждение"
 
 #: src/gui/widgets/dialogs/glaxnimate_window.cpp:292
-#, fuzzy, kde-format
-#| msgid "Remove keyframe"
+#, kde-format
 msgid "Delete keyframe"
 msgid_plural "Delete keyframes"
 msgstr[0] "Удалить ключевой кадр"
-msgstr[1] "Удалить ключевой кадр"
-msgstr[2] "Удалить ключевой кадр"
+msgstr[1] "Удалить ключевых кадра"
+msgstr[2] "Удалить ключевых кадров"
 msgstr[3] "Удалить ключевой кадр"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:139
@@ -4243,7 +4214,7 @@ msgstr "Дублировать"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:411
 #, kde-format
 msgid "Grid"
-msgstr ""
+msgstr "Сетка"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:450
 #, kde-format
@@ -4273,7 +4244,7 @@ msgstr "Компактная"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:481
 #, kde-format
 msgid "Mobile"
-msgstr ""
+msgstr "Мобильная"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_angle_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_angle_reset)
@@ -4294,16 +4265,14 @@ msgid "Flip View"
 msgstr "Отразить вид"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:497
-#, fuzzy, kde-format
-#| msgid "k-Modes"
+#, kde-format
 msgid "Focus Mode"
-msgstr "k-моды"
+msgstr "Режим фокуса"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:506
-#, fuzzy, kde-format
-#| msgid "Render Single Frame"
+#, kde-format
 msgid "Render Single Frame…"
-msgstr "Рендеринг одного кадра"
+msgstr "Рендеринг одного кадра…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:512
 #, kde-format
@@ -4502,10 +4471,9 @@ msgid "Custom..."
 msgstr "Свой вариант…"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:800
-#, fuzzy, kde-format
-#| msgid "Update keyframe transition"
+#, kde-format
 msgid "Apply %1 keyframe transition"
-msgstr "Обновить переход между ключевыми кадрами"
+msgstr "Применить переход %1 между ключевыми кадрами"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:855
 #, kde-format
@@ -4682,10 +4650,9 @@ msgid "Issues"
 msgstr "Проблемы"
 
 #: src/gui/widgets/dialogs/keyframe_editor_dialog.hpp:24
-#, fuzzy, kde-format
-#| msgid "Transition To Next"
+#, kde-format
 msgid "Transition Editor"
-msgstr "Переход к следующему"
+msgstr "Редактор переходов"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ResizeDialog)
 #: src/gui/widgets/dialogs/resize_dialog.cpp:28
@@ -4763,10 +4730,9 @@ msgid "Delete All"
 msgstr "Удалить все"
 
 #: src/gui/widgets/dialogs/startup_dialog.cpp:131
-#, fuzzy, kde-format
-#| msgid " fps"
+#, kde-format
 msgid "%1 fps"
-msgstr " к/сек"
+msgstr "%1 к/с"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, StartupDialog)
 #: src/gui/widgets/dialogs/startup_dialog.ui:18
@@ -5225,23 +5191,21 @@ msgstr "Дополнительно"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, DockGrid)
 #: src/gui/widgets/docks/dock_grid.ui:21
-#, fuzzy, kde-format
-#| msgid "Configure..."
+#, kde-format
 msgid "Configure Grid"
-msgstr "Настроить…"
+msgstr "Настройка сетки"
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_enable)
 #: src/gui/widgets/docks/dock_grid.ui:52
-#, fuzzy, kde-format
-#| msgid "Enable"
+#, kde-format
 msgid "Enable Grid"
-msgstr "Включить"
+msgstr "Включить сетку"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/docks/dock_grid.ui:77
 #, kde-format
 msgid "X"
-msgstr ""
+msgstr "X"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_shape)
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_cap_square)
@@ -5255,16 +5219,15 @@ msgstr "Прямоугольное"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_shape)
 #: src/gui/widgets/docks/dock_grid.ui:93
-#, fuzzy, kde-format
-#| msgid "angle"
+#, kde-format
 msgid "Triangle"
-msgstr "угол"
+msgstr "Треугольник"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spin_size)
 #: src/gui/widgets/docks/dock_grid.ui:124
 #, kde-format
 msgid "px"
-msgstr ""
+msgstr "пикс."
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_angle)
 #: src/gui/widgets/docks/dock_grid.ui:140
@@ -5287,7 +5250,7 @@ msgstr "Угол"
 #: src/gui/widgets/shape_style/color_selector.ui:489
 #, kde-format
 msgid "Y"
-msgstr "Ж"
+msgstr "Y"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_layer_up)
 #. i18n: ectx: property (text), widget (QToolButton, btn_layer_up)
@@ -5508,79 +5471,69 @@ msgid "Polygon"
 msgstr "Многоугольник"
 
 #: src/gui/widgets/enum_combo.cpp:113
-#, fuzzy, kde-format
-#| msgid "Mask"
+#, kde-format
 msgid "No Mask"
-msgstr "Маска"
+msgstr "Без маски"
 
 #: src/gui/widgets/enum_combo.cpp:115
-#, fuzzy, kde-format
-#| msgid "Alpha"
+#, kde-format
 msgid "Alpha Mask"
-msgstr "Альфа-канал"
+msgstr "Альфа-маска"
 
 #: src/gui/widgets/enum_combo.cpp:117
-#, fuzzy, kde-format
-#| msgid "Mask"
+#, kde-format
 msgid "Luma Mask"
-msgstr "Маска"
+msgstr "Маска яркости"
 
 #: src/gui/widgets/enum_combo.cpp:125
-#, fuzzy, kde-format
-#| msgid "Formats"
+#, kde-format
 msgid "Normal"
-msgstr "Форматы"
+msgstr "Обычный"
 
 #: src/gui/widgets/enum_combo.cpp:127
-#, fuzzy, kde-format
-#| msgid "multiple"
+#, kde-format
 msgid "Multiply"
-msgstr "несколько"
+msgstr "Умножение"
 
 #: src/gui/widgets/enum_combo.cpp:129
-#, fuzzy, kde-format
-#| msgid "Green"
+#, kde-format
 msgid "Screen"
-msgstr "Зелёный"
+msgstr "Экран"
 
 #: src/gui/widgets/enum_combo.cpp:131
 #, kde-format
 msgid "Overlay"
-msgstr ""
+msgstr "Перекрытие"
 
 #: src/gui/widgets/enum_combo.cpp:133
 #, kde-format
 msgid "Darken"
-msgstr ""
+msgstr "Затемнение"
 
 #: src/gui/widgets/enum_combo.cpp:135
-#, fuzzy, kde-format
-#| msgid "Right"
+#, kde-format
 msgid "Lighten"
-msgstr "По правому краю"
+msgstr "Осветление"
 
 #: src/gui/widgets/enum_combo.cpp:137
-#, fuzzy, kde-format
-#| msgid "Color Mode"
+#, kde-format
 msgid "Color Dodge"
-msgstr "Цветовой режим"
+msgstr "Осветление цвета"
 
 #: src/gui/widgets/enum_combo.cpp:139
-#, fuzzy, kde-format
-#| msgid "Color"
+#, kde-format
 msgid "Color Burn"
-msgstr "Цвет"
+msgstr "Затемнение цвета"
 
 #: src/gui/widgets/enum_combo.cpp:141
-#, fuzzy, kde-format
-#| msgid "Height"
+#, kde-format
 msgid "Hard Light"
-msgstr "Высота"
+msgstr "Жёсткое осветление"
 
 #: src/gui/widgets/enum_combo.cpp:143
 #, kde-format
 msgid "Soft Light"
-msgstr ""
+msgstr "Мягкое осветление"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::HueSlider, slider_hsv_hue)
 #. i18n: ectx: property (toolTip), widget (QLabel, label)
@@ -5613,7 +5566,7 @@ msgstr "Насыщенность"
 #: src/gui/widgets/enum_combo.cpp:155
 #, kde-format
 msgid "Luminosity"
-msgstr ""
+msgstr "Яркость света"
 
 #: src/gui/widgets/font/external_font_widget.cpp:127
 #, kde-format
@@ -5804,7 +5757,7 @@ msgstr "Посмотреть на LottieFiles…"
 #: src/gui/widgets/menus/animated_property_menu.cpp:51
 #, kde-format
 msgid "Repeat until composition ends"
-msgstr ""
+msgstr "Повторять до окончания композиции"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:61
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
@@ -5815,7 +5768,7 @@ msgstr "Вставить ключевой кадр"
 #: src/gui/widgets/menus/animated_property_menu.cpp:62
 #, kde-format
 msgid "Perfect Loop"
-msgstr ""
+msgstr "Идеальный цикл"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
@@ -5829,10 +5782,9 @@ msgid "Remove Keyframe"
 msgstr "Удалить ключевой кадр"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:131
-#, fuzzy, kde-format
-#| msgid "Loop"
+#, kde-format
 msgid "Loop %1"
-msgstr "Зациклить"
+msgstr "Зациклить %1"
 
 #: src/gui/widgets/menus/node_menu.cpp:60
 #: src/gui/widgets/menus/node_menu.cpp:285
@@ -5859,7 +5811,7 @@ msgstr "Преобразовать %1 в %2"
 #: src/gui/widgets/menus/node_menu.cpp:300
 #, kde-format
 msgid "Anchor Point to Center"
-msgstr ""
+msgstr "Переместить опорную точку в центр"
 
 #: src/gui/widgets/menus/node_menu.cpp:313
 #, kde-format
@@ -5867,10 +5819,9 @@ msgid "Auto Orient"
 msgstr "Автоориентация"
 
 #: src/gui/widgets/menus/node_menu.cpp:324
-#, fuzzy, kde-format
-#| msgid "Color Mode"
+#, kde-format
 msgid "Blend Mode"
-msgstr "Цветовой режим"
+msgstr "Режим смешивания"
 
 #: src/gui/widgets/menus/node_menu.cpp:350
 #: src/gui/widgets/menus/node_menu.cpp:351
@@ -5889,10 +5840,9 @@ msgid "Convert to Group"
 msgstr "Преобразовать в группу"
 
 #: src/gui/widgets/menus/node_menu.cpp:368
-#, fuzzy, kde-format
-#| msgid "inverted"
+#, kde-format
 msgid "Inverted"
-msgstr "инверсия"
+msgstr "Инверсия"
 
 #: src/gui/widgets/menus/node_menu.cpp:382
 #, kde-format
@@ -5969,15 +5919,13 @@ msgid "Locked"
 msgstr "Заблокирован"
 
 #: src/gui/widgets/menus/node_menu.cpp:514
-#, fuzzy, kde-format
-#| msgid "Cut"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Cut"
 msgstr "Вырезать"
 
 #: src/gui/widgets/menus/node_menu.cpp:521
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy"
 msgstr "Копировать"
@@ -5995,8 +5943,7 @@ msgid "Duplicate"
 msgstr "Дублировать"
 
 #: src/gui/widgets/menus/node_menu.cpp:538
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Move"
 msgstr "Переместить"
@@ -6103,12 +6050,12 @@ msgstr "Службы"
 #: src/gui/widgets/settings/settings_dialog.cpp:231
 #, kde-format
 msgid "Best Quality"
-msgstr ""
+msgstr "Наилучшее качество"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:232
 #, kde-format
 msgid "Reduced Size (Performance)"
-msgstr ""
+msgstr "Уменьшенный размер (производительность)"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:234
 msgctxt "Settings"
@@ -6133,11 +6080,11 @@ msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Canvas Render Quality"
-msgstr ""
+msgstr "Качество рендеринга холста"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Display quality within the app, does not affect exports"
-msgstr ""
+msgstr "Экранное качество в приложении не влияет на экспорт"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:243
 msgid "Icon Theme"
@@ -6206,7 +6153,7 @@ msgstr "Цветовой режим"
 #: src/gui/widgets/shape_style/color_selector.ui:31
 #, kde-format
 msgid "Wheel"
-msgstr ""
+msgstr "Цветовой круг"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:36
@@ -6644,8 +6591,7 @@ msgid "Dashes"
 msgstr "Штрихи"
 
 #: src/gui/widgets/spin2d.cpp:242
-#, fuzzy, kde-format
-#| msgid "Lock Aspect Ratio"
+#, kde-format
 msgid "Lock aspect ratio"
 msgstr "Заблокировать соотношение сторон"
 
