@@ -1,13 +1,13 @@
 # Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the glaxnimate package.
-# SPDX-FileCopyrightText: 2025 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2025, 2026 Tommi Nieminen <translator@legisign.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-18 00:41+0000\n"
-"PO-Revision-Date: 2025-10-17 11:22+0300\n"
+"PO-Revision-Date: 2026-09-27 09:43+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -42,17 +42,15 @@ msgstr "Poista teksti polulta"
 #. i18n: Property name
 #. i18n: file: src/core/glaxnimate/model/transform.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Composition"
+#, kde-format
 msgid "position"
-msgstr "Kompositio"
+msgstr "sijainti"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/shapes/rect.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Round"
+#, kde-format
 msgid "rounded"
-msgstr "Pyöreä"
+msgstr "pyöristetty"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/shapes/text.hpp
 #. i18n: Property name
@@ -134,17 +132,15 @@ msgstr "taajuus"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/precomp_layer.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Timing"
+#, kde-format
 msgid "timing"
-msgstr "Ajoitus"
+msgstr "ajoitus"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/precomp_layer.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Resize"
+#, kde-format
 msgid "size"
-msgstr "Muuta kokoa"
+msgstr "koko"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/layer.hpp
 #. i18n: Property name
@@ -166,14 +162,13 @@ msgstr "peite"
 #. i18n: Property name
 #, kde-format
 msgid "opacity"
-msgstr ""
+msgstr "peittävyys"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/composable/image.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Image"
+#, kde-format
 msgid "image"
-msgstr "Kuva"
+msgstr "kuva"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/style/stroke.hpp
 #. i18n: Property name
@@ -216,10 +211,9 @@ msgstr "Kesto"
 
 #. i18n: file: src/core/glaxnimate/model/assets/composition.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Shape"
+#, kde-format
 msgid "shapes"
-msgstr "Kuvio"
+msgstr "kuviot"
 
 #. i18n: file: src/core/glaxnimate/model/assets/bitmap.hpp
 #. i18n: Property name
@@ -290,10 +284,9 @@ msgstr "nimi"
 
 #. i18n: file: src/core/glaxnimate/model/stretchable_time.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Stretch Time"
+#, kde-format
 msgid "stretch"
-msgstr "Venytä aikaa"
+msgstr "venytä"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, Dialog)
 #: data/plugins/FrameByFrame/create_frames.ui:18
@@ -1047,16 +1040,14 @@ msgid "Precompose"
 msgstr ""
 
 #: src/core/glaxnimate/command/shape_commands.cpp:308
-#, fuzzy, kde-format
-#| msgid "End Time"
+#, kde-format
 msgid "Set End Time"
-msgstr "Loppuaika"
+msgstr "Aseta loppuaika"
 
 #: src/core/glaxnimate/command/shape_commands.cpp:345
-#, fuzzy, kde-format
-#| msgid "Start Time"
+#, kde-format
 msgid "Set Start Time"
-msgstr "Alkuaika"
+msgstr "Aseta alkuaika"
 
 #: src/core/glaxnimate/command/structure_commands.cpp:73
 #, kde-format
@@ -1076,10 +1067,9 @@ msgid "Glaxnimate Animation"
 msgstr "Glaxnimate-animaatio"
 
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_html_format.hpp:20
-#, fuzzy, kde-format
-#| msgid "Lottie HTML Preview"
+#, kde-format
 msgid "Glaxnimate HTML Preview"
-msgstr "Lottien HTML-esikatselu"
+msgstr "Glaxnimaten HTML-esikatselu"
 
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_importer.cpp:21
 #: src/core/glaxnimate/io/glaxnimate/glaxnimate_mime.cpp:86
@@ -1123,7 +1113,7 @@ msgstr "Olio %1 on virheellinen"
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:342
 #, kde-format
 msgid "Wrong object type: expected '%1' but got '%2'"
-msgstr ""
+msgstr "Väärä oliotyyppi: odotettiin ”%1”, saatiin ”%2”"
 
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:348
 #, kde-format
@@ -1133,7 +1123,7 @@ msgstr ""
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:357
 #, kde-format
 msgid "Could not set property %1"
-msgstr ""
+msgstr "Ei voitu asettaa ominaisuutta %1"
 
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:383
 #, kde-format
@@ -1166,10 +1156,9 @@ msgid "Unknown object of type '%1'"
 msgstr ""
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:732
-#, fuzzy, kde-format
-#| msgid "Unsupported layer of type %1"
+#, kde-format
 msgid "%1 is an unsupported shape of type %2"
-msgstr "Ei-tuettu tyypin %1 taso"
+msgstr "%1 on ei-tuettu tyypin %2 kuvio"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:757
 #, kde-format
@@ -1265,7 +1254,7 @@ msgstr "Kuviotyyppi puuttuu"
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:701
 #, kde-format
 msgid "Unsupported shape type %1"
-msgstr ""
+msgstr "Ei-tuettu kuviotyyppi %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:724
 #, kde-format
@@ -1275,7 +1264,7 @@ msgstr "Tuntematon kenttä %2%1"
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1056
 #, kde-format
 msgid "Invalid bezier point %1 in %2"
-msgstr ""
+msgstr "Virheellinen bézierpiste %1: %2"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1101
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1123
@@ -1308,12 +1297,12 @@ msgstr ""
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1253
 #, kde-format
 msgid "Duplicate Bitmap ID: %1"
-msgstr ""
+msgstr "Toistuva bittikarttatunniste: %1"
 
 #: src/core/glaxnimate/io/lottie/lottie_importer.hpp:1285
 #, kde-format
 msgid "Duplicate Composition ID: %1"
-msgstr ""
+msgstr "Toistuva kompositiotunniste: %1"
 
 #: src/core/glaxnimate/io/lottie/validation.cpp:25
 #, kde-format
@@ -1339,7 +1328,7 @@ msgstr "Liikaa kuvia: %1; tulisi olla alle %2"
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:48
 #, kde-format
 msgid "Images are not supported"
-msgstr ""
+msgstr "Kuvia ei tueta"
 
 #: src/core/glaxnimate/io/lottie/validation.hpp:22
 #, kde-format
@@ -1844,10 +1833,9 @@ msgid "Unknown property \"%1\" of \"%2\""
 msgstr "”%2”: tuntematon ominaisuus ”%1”"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:221
-#, fuzzy, kde-format
-#| msgid "Layer"
+#, kde-format
 msgid "Layer #%1"
-msgstr "Taso"
+msgstr "Taso %1"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:279
 #, kde-format
@@ -2005,10 +1993,9 @@ msgid "%s cannot be a clip path"
 msgstr ""
 
 #: src/core/glaxnimate/module/extraformats/extraformats_module.hpp:16
-#, fuzzy, kde-format
-#| msgid "Formats"
+#, kde-format
 msgid "Extra Formats"
-msgstr "Tiedostomuodot"
+msgstr "Lisätiedostomuodot"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:359
 #, kde-format
@@ -2135,47 +2122,47 @@ msgstr ""
 #: src/core/glaxnimate/module/extraformats/rive/rive_loader.cpp:846
 #, kde-format
 msgid "Error loading property %1 (%2) of %3 (%4)"
-msgstr ""
+msgstr "Virhe ladattaessa olion %3 (%4) ominaisuutta %1 (%2)"
 
 #: src/core/glaxnimate/module/gzip/gzip-kde.cpp:25
 #, kde-format
 msgid "Could not decompress data"
-msgstr ""
+msgstr "Tiedon pakkausta ei voitu purkaa"
 
 #: src/core/glaxnimate/module/gzip/gzip-kde.cpp:84
 #, kde-format
 msgid "Gzip stream already open"
-msgstr ""
+msgstr "Gzip-virta on jo auki"
 
 #: src/core/glaxnimate/module/gzip/gzip-zlib.cpp:99
 #, kde-format
 msgid "ZLib %1%2 returned %3"
-msgstr ""
+msgstr "Zlib %1%2 palautti %3"
 
 #: src/core/glaxnimate/module/gzip/gzip_module.hpp:16
 #, kde-format
 msgid "Gzip Compression"
-msgstr ""
+msgstr "Gzip-pakkaus"
 
 #: src/core/glaxnimate/module/gzip/svgz_format.hpp:22
 #, kde-format
 msgid "Compressed SVG"
-msgstr ""
+msgstr "Pakattu SVG"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:44
 #, kde-format
 msgid "Star Shapes are not officially supported"
-msgstr ""
+msgstr "Tähtikuvioita ei virallisesti tueta"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:53
 #, kde-format
 msgid "Gradient strokes are not officially supported"
-msgstr ""
+msgstr "Liukuvärivetoja ei virallisesti tueta"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:58
 #, kde-format
 msgid "Masks are not officially supported"
-msgstr ""
+msgstr "Peitteitä ei virallisesti tueta"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:62
 #, kde-format
@@ -2195,7 +2182,7 @@ msgstr ""
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:74
 #, kde-format
 msgid "ZigZag is not supported"
-msgstr ""
+msgstr "Siksakia ei tueta"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:106
 #, kde-format
@@ -2208,15 +2195,14 @@ msgid "Telegram Animated Sticker"
 msgstr "Telegramin animoitu tarra"
 
 #: src/core/glaxnimate/module/module.cpp:41
-#, fuzzy, kde-format
-#| msgid "Glaxnimate"
+#, kde-format
 msgid "Glaxnimate Core"
-msgstr "Glaxnimate"
+msgstr "Glaxnimate-ydin"
 
 #: src/core/glaxnimate/module/thorvg/thorvg_module.hpp:16
 #, kde-format
 msgid "ThorVG Renderer"
-msgstr ""
+msgstr "ThorVG-hahmontaja"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:73
 #, kde-format
@@ -2252,22 +2238,22 @@ msgstr "Virhe lähetettäessä kuvaa koodaimeen: %1"
 #: src/core/glaxnimate/module/video/video_format.cpp:201
 #, kde-format
 msgid "Could not set dict key `%1`: %2"
-msgstr ""
+msgstr "Ei voitu asettaa sanastoavainta `%1`: %2"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:246
 #, kde-format
 msgid "Could not erase dict key `%1`: %2"
-msgstr ""
+msgstr "Ei voitu poistaa sanastoavainta `%1`: %2"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:267
 #, kde-format
 msgid "Could not copy dict: %1"
-msgstr ""
+msgstr "Ei voitu kopioida sanastoa: %1"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:280
 #, kde-format
 msgid "Could not copy dict `%1`: %2"
-msgstr ""
+msgstr "Ei voitu kopioida sanastoa `%1`: %2"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:318
 #, kde-format
@@ -2308,12 +2294,12 @@ msgstr ""
 #: src/core/glaxnimate/module/video/video_format.cpp:518
 #, kde-format
 msgid "Could not initialize the conversion context"
-msgstr ""
+msgstr "Muunnoskontekstia ei voitu alustaa"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:524
 #, kde-format
 msgid "Could not allocate temporary picture"
-msgstr ""
+msgstr "Tilapäiskuvaa ei voitu varata"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:764
 #, kde-format
@@ -2379,7 +2365,7 @@ msgstr "Video"
 #: src/core/glaxnimate/module/video/video_module.hpp:16
 #, kde-format
 msgid "Video Format Support"
-msgstr ""
+msgstr "Videomuototuki"
 
 #: src/core/glaxnimate/script/register_impl.hpp:234
 #, fuzzy, kde-format
@@ -2397,7 +2383,7 @@ msgstr "Virtaa ei voitu osoittaa"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Informational Options"
-msgstr ""
+msgstr "Tiedotusvalinnat"
 
 #: src/gui/cli.cpp:28
 #, kde-format
@@ -2465,7 +2451,7 @@ msgstr "Tulosta ikkunatunniste"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Enables the debug menu"
-msgstr ""
+msgstr "Ottaa käyttöön virheenpaikannusvalikon"
 
 #: src/gui/cli.cpp:60
 #, kde-format
@@ -2477,7 +2463,7 @@ msgstr "Vientivalinnat"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Export the input file to the given file instead of starting the GUI"
-msgstr ""
+msgstr "Vie syötetiedosto annetuksi tiedostoksi käynnistämättä käyttöliittymää"
 
 #: src/gui/cli.cpp:70
 #, kde-format
@@ -2486,12 +2472,14 @@ msgid ""
 "Specify the format for --export. If omitted it's determined based on the "
 "file name. See --export-format-list for a list of supported formats."
 msgstr ""
+"Aseta --export-vientimuoto. Jos jätetään pois, päätellään tiedostonimestä. "
+"Tuetut tiedostomuodot saa valitsimella --export-format-list."
 
 #: src/gui/cli.cpp:77
 #, kde-format
 msgctxt "@info:shell"
 msgid "Shows possible values for --export-format"
-msgstr ""
+msgstr "Katso mahdolliset --export-format-arvot"
 
 #: src/gui/cli.cpp:81
 #, kde-format
@@ -2513,6 +2501,8 @@ msgid ""
 "Specify the format for --render. If omitted it's determined based on the "
 "file name. See --render-format-list for a list of supported formats."
 msgstr ""
+"Aseta --render-hahmonnusmuoto. Jos jätetään pois, päätellään "
+"tiedostonimestä. Tuetut muodot saa valitsimella --render-format-list."
 
 #: src/gui/cli.cpp:98
 #, kde-format
@@ -2636,7 +2626,7 @@ msgstr "Mitään tiedostoja ei ladattu"
 #, kde-format
 msgctxt "Package install status"
 msgid "Some files failed to extract"
-msgstr ""
+msgstr "Joitakin tiedostoja ei voitu purkaa"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, EmojiSetDialog)
 #: src/gui/emoji/emoji_set_dialog.ui:21
@@ -2722,25 +2712,24 @@ msgid "Close"
 msgstr "Sulje"
 
 #: src/gui/glaxnimate_app.cpp:201
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgid "OpenGL"
-msgstr "Avaa"
+msgstr "OpenGL"
 
 #: src/gui/glaxnimate_app.cpp:202
 #, kde-format
 msgid "Hardware-accelerated graphics."
-msgstr ""
+msgstr "Laitekiihdytetty grafiikka."
 
 #: src/gui/glaxnimate_app.cpp:208
 #, kde-format
 msgid "OpenGL Renderer"
-msgstr ""
+msgstr "OpenGL-hahmontaja"
 
 #: src/gui/glaxnimate_app.cpp:231
 #, kde-format
 msgid "Copyright © 2019-2026"
-msgstr ""
+msgstr "Tekijänoikeudet © 2019–2026"
 
 #: src/gui/glaxnimate_app.cpp:240
 #, kde-format
@@ -3043,11 +3032,7 @@ msgid "%1"
 msgstr "%1"
 
 #: src/gui/settings/document_templates.cpp:123
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "%5 is the file name, %1x%2 is the size, %3 is the aspect ratio, %4 is the "
-#| "frame rate"
-#| msgid "%5 - %1x%2 %3 %4fps"
+#, kde-format
 msgctxt ""
 "%5 is the file name, %1 × %2 is the size, %3 is the aspect ratio, %4 is the "
 "frame rate"
@@ -3072,7 +3057,7 @@ msgstr "Järjestelmän oletus"
 #: src/gui/style/property_delegate.cpp:52
 #, kde-format
 msgid "%1% × %2%"
-msgstr ""
+msgstr "%1 % × %2 %"
 
 #: src/gui/style/property_delegate.cpp:72
 #, kde-format
@@ -3864,6 +3849,8 @@ msgid ""
 "The file might have been moved or deleted\n"
 "%1"
 msgstr ""
+"Tiedosto on ehkä siirretty tai poistettu\n"
+"%1"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:509
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:829
@@ -3965,7 +3952,7 @@ msgstr "Lataa verkko-osoite"
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:915
 #, kde-format
 msgid "Could not load %1: %2"
-msgstr ""
+msgstr "Ei voitu ladata: %1: %2"
 
 #: src/gui/widgets/dialogs/gw_impl_document.cpp:933
 #, kde-format
@@ -4123,7 +4110,7 @@ msgstr "Monista"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:411
 #, kde-format
 msgid "Grid"
-msgstr ""
+msgstr "Ruudukko"
 
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:450
 #, kde-format
@@ -4153,7 +4140,7 @@ msgstr "Tiivis"
 #: src/gui/widgets/dialogs/gw_impl_ui.cpp:481
 #, kde-format
 msgid "Mobile"
-msgstr ""
+msgstr "Mobiili"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_angle_reset)
 #. i18n: ectx: property (text), widget (QToolButton, btn_angle_reset)
@@ -4561,10 +4548,9 @@ msgid "Issues"
 msgstr "Ongelmat"
 
 #: src/gui/widgets/dialogs/keyframe_editor_dialog.hpp:24
-#, fuzzy, kde-format
-#| msgid "Transition To Next"
+#, kde-format
 msgid "Transition Editor"
-msgstr "Siirtymä seuraavaan"
+msgstr "Siirtymämuokkain"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, ResizeDialog)
 #: src/gui/widgets/dialogs/resize_dialog.cpp:28
@@ -4642,10 +4628,9 @@ msgid "Delete All"
 msgstr "Poista kaikki"
 
 #: src/gui/widgets/dialogs/startup_dialog.cpp:131
-#, fuzzy, kde-format
-#| msgid " fps"
+#, kde-format
 msgid "%1 fps"
-msgstr " fps"
+msgstr "%1 fps"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, StartupDialog)
 #: src/gui/widgets/dialogs/startup_dialog.ui:18
@@ -5034,23 +5019,21 @@ msgstr "Lisäasetukset"
 
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, DockGrid)
 #: src/gui/widgets/docks/dock_grid.ui:21
-#, fuzzy, kde-format
-#| msgid "Configure..."
+#, kde-format
 msgid "Configure Grid"
-msgstr "Asetukset…"
+msgstr "Ruudukon asetukset"
 
 #. i18n: ectx: property (text), widget (QCheckBox, check_enable)
 #: src/gui/widgets/docks/dock_grid.ui:52
-#, fuzzy, kde-format
-#| msgid "Enable"
+#, kde-format
 msgid "Enable Grid"
-msgstr "Ota käyttöön"
+msgstr "Käytä ruudukkoa"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/widgets/docks/dock_grid.ui:77
 #, kde-format
 msgid "X"
-msgstr ""
+msgstr "X"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_shape)
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_cap_square)
@@ -5064,16 +5047,15 @@ msgstr "Nelikulmainen"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_shape)
 #: src/gui/widgets/docks/dock_grid.ui:93
-#, fuzzy, kde-format
-#| msgid "angle"
+#, kde-format
 msgid "Triangle"
-msgstr "kulma"
+msgstr "Kolmio"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, spin_size)
 #: src/gui/widgets/docks/dock_grid.ui:124
 #, kde-format
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_angle)
 #: src/gui/widgets/docks/dock_grid.ui:140
@@ -5317,54 +5299,49 @@ msgid "Polygon"
 msgstr "Monikulmio"
 
 #: src/gui/widgets/enum_combo.cpp:113
-#, fuzzy, kde-format
-#| msgid "Mask"
+#, kde-format
 msgid "No Mask"
-msgstr "Peite"
+msgstr "Ei peitettä"
 
 #: src/gui/widgets/enum_combo.cpp:115
 #, kde-format
 msgid "Alpha Mask"
-msgstr ""
+msgstr "Alfapeite"
 
 #: src/gui/widgets/enum_combo.cpp:117
-#, fuzzy, kde-format
-#| msgid "Mask"
+#, kde-format
 msgid "Luma Mask"
-msgstr "Peite"
+msgstr "Lumapeite"
 
 #: src/gui/widgets/enum_combo.cpp:125
-#, fuzzy, kde-format
-#| msgid "Formats"
+#, kde-format
 msgid "Normal"
-msgstr "Tiedostomuodot"
+msgstr "Tavallinen"
 
 #: src/gui/widgets/enum_combo.cpp:127
 #, kde-format
 msgid "Multiply"
-msgstr ""
+msgstr "Kerro"
 
 #: src/gui/widgets/enum_combo.cpp:129
-#, fuzzy, kde-format
-#| msgid "Green"
+#, kde-format
 msgid "Screen"
-msgstr "Vihreä"
+msgstr "Näyttö"
 
 #: src/gui/widgets/enum_combo.cpp:131
 #, kde-format
 msgid "Overlay"
-msgstr ""
+msgstr "Kerrostus"
 
 #: src/gui/widgets/enum_combo.cpp:133
 #, kde-format
 msgid "Darken"
-msgstr ""
+msgstr "Pimennä"
 
 #: src/gui/widgets/enum_combo.cpp:135
-#, fuzzy, kde-format
-#| msgid "Right"
+#, kde-format
 msgid "Lighten"
-msgstr "Oikealle"
+msgstr "Vaalenna"
 
 #: src/gui/widgets/enum_combo.cpp:137
 #, fuzzy, kde-format
@@ -5373,21 +5350,19 @@ msgid "Color Dodge"
 msgstr "Väritila"
 
 #: src/gui/widgets/enum_combo.cpp:139
-#, fuzzy, kde-format
-#| msgid "Color"
+#, kde-format
 msgid "Color Burn"
-msgstr "Väri"
+msgstr "Väripoltto"
 
 #: src/gui/widgets/enum_combo.cpp:141
-#, fuzzy, kde-format
-#| msgid "Height"
+#, kde-format
 msgid "Hard Light"
-msgstr "Korkeus"
+msgstr "Kova valo"
 
 #: src/gui/widgets/enum_combo.cpp:143
 #, kde-format
 msgid "Soft Light"
-msgstr ""
+msgstr "Pehmeä valo"
 
 #. i18n: ectx: property (toolTip), widget (color_widgets::HueSlider, slider_hsv_hue)
 #. i18n: ectx: property (toolTip), widget (QLabel, label)
@@ -5420,7 +5395,7 @@ msgstr "Kylläisyys"
 #: src/gui/widgets/enum_combo.cpp:155
 #, kde-format
 msgid "Luminosity"
-msgstr ""
+msgstr "Värikirkkaus"
 
 #: src/gui/widgets/font/external_font_widget.cpp:127
 #, kde-format
@@ -5611,7 +5586,7 @@ msgstr "Katsele LottieFilesissa…"
 #: src/gui/widgets/menus/animated_property_menu.cpp:51
 #, kde-format
 msgid "Repeat until composition ends"
-msgstr ""
+msgstr "Toisto komposition loppuun"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:61
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
@@ -5636,10 +5611,9 @@ msgid "Remove Keyframe"
 msgstr ""
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:131
-#, fuzzy, kde-format
-#| msgid "Loop"
+#, kde-format
 msgid "Loop %1"
-msgstr "Silmukka"
+msgstr "Silmukka %1"
 
 #: src/gui/widgets/menus/node_menu.cpp:60
 #: src/gui/widgets/menus/node_menu.cpp:285
@@ -5674,10 +5648,9 @@ msgid "Auto Orient"
 msgstr "Automaattinen suunta"
 
 #: src/gui/widgets/menus/node_menu.cpp:324
-#, fuzzy, kde-format
-#| msgid "Color Mode"
+#, kde-format
 msgid "Blend Mode"
-msgstr "Väritila"
+msgstr "Sekoitustapa"
 
 #: src/gui/widgets/menus/node_menu.cpp:350
 #: src/gui/widgets/menus/node_menu.cpp:351
@@ -5696,10 +5669,9 @@ msgid "Convert to Group"
 msgstr "Muunna ryhmäksi"
 
 #: src/gui/widgets/menus/node_menu.cpp:368
-#, fuzzy, kde-format
-#| msgid "inverted"
+#, kde-format
 msgid "Inverted"
-msgstr "käänteinen"
+msgstr "Käänteinen"
 
 #: src/gui/widgets/menus/node_menu.cpp:382
 #, kde-format
@@ -5776,15 +5748,13 @@ msgid "Locked"
 msgstr "Lukittu"
 
 #: src/gui/widgets/menus/node_menu.cpp:514
-#, fuzzy, kde-format
-#| msgid "Cut"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Cut"
 msgstr "Leikkaa"
 
 #: src/gui/widgets/menus/node_menu.cpp:521
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy"
 msgstr "Kopioi"
@@ -5802,8 +5772,7 @@ msgid "Duplicate"
 msgstr "Monista"
 
 #: src/gui/widgets/menus/node_menu.cpp:538
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Move"
 msgstr "Siirrä"
@@ -5910,12 +5879,12 @@ msgstr "Palvelut"
 #: src/gui/widgets/settings/settings_dialog.cpp:231
 #, kde-format
 msgid "Best Quality"
-msgstr ""
+msgstr "Paras laatu"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:232
 #, kde-format
 msgid "Reduced Size (Performance)"
-msgstr ""
+msgstr "Pienennetty koko (suorituskyky)"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:234
 msgctxt "Settings"
@@ -6451,8 +6420,7 @@ msgid "Dashes"
 msgstr "Katkoviivat"
 
 #: src/gui/widgets/spin2d.cpp:242
-#, fuzzy, kde-format
-#| msgid "Lock Aspect Ratio"
+#, kde-format
 msgid "Lock aspect ratio"
 msgstr "Lukitse kuvasuhde"
 
@@ -6502,13 +6470,13 @@ msgstr "Kuvan numero"
 #: src/gui/widgets/timeline/frame_controls_widget.ui:36
 #, kde-format
 msgid " f"
-msgstr ""
+msgstr " f"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_loop)
 #: src/gui/widgets/timeline/frame_controls_widget.ui:56
 #, kde-format
 msgid "Loop animation"
-msgstr ""
+msgstr "Silmukka-animaatio"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, button_first)
 #. i18n: ectx: property (text), widget (QToolButton, button_first)
