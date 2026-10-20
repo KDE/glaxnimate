@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-18 00:41+0000\n"
-"PO-Revision-Date: 2026-09-06 18:15+0200\n"
+"PO-Revision-Date: 2026-10-15 20:04+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -2183,7 +2183,7 @@ msgstr "Els traços de degradat no són admesos oficialment"
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:58
 #, kde-format
 msgid "Masks are not officially supported"
-msgstr "Les mascares no s'admeten oficialment"
+msgstr "Les màscares no s'admeten oficialment"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:62
 #, kde-format
@@ -2458,7 +2458,7 @@ msgid ""
 "Specify the name of the local socket/named pipe to connect to a host "
 "application."
 msgstr ""
-"Especifiqueu el nom del sòcol local/canonada amb nom per a connectar-vos a "
+"Especifiqueu el nom del sòcol local/canonada amb nom per a connectar-vos amb "
 "una aplicació amfitriona."
 
 #: src/gui/cli.cpp:46
@@ -2761,7 +2761,7 @@ msgstr "Renderitzador OpenGL"
 #: src/gui/glaxnimate_app.cpp:231
 #, kde-format
 msgid "Copyright © 2019-2026"
-msgstr "Copyright © 2019-2026"
+msgstr "Drets d'autoria © 2019-2026"
 
 #: src/gui/glaxnimate_app.cpp:240
 #, kde-format
@@ -3093,7 +3093,7 @@ msgstr "%1% × %2%"
 #: src/gui/style/property_delegate.cpp:72
 #, kde-format
 msgid "%1%"
-msgstr "%1%"
+msgstr "%1 %"
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_zoom)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_smoothness)
@@ -5493,7 +5493,7 @@ msgstr "Màscara d'alfa"
 #: src/gui/widgets/enum_combo.cpp:117
 #, kde-format
 msgid "Luma Mask"
-msgstr "Màscara de luma"
+msgstr "Màscara de luminància"
 
 #: src/gui/widgets/enum_combo.cpp:125
 #, kde-format
@@ -5767,7 +5767,7 @@ msgstr "Visualitza en LottieFiles…"
 #: src/gui/widgets/menus/animated_property_menu.cpp:51
 #, kde-format
 msgid "Repeat until composition ends"
-msgstr "Repetix fins a que acabe la composició"
+msgstr "Repetix fins que acabe la composició"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:61
 #: src/gui/widgets/timeline/compound_timeline_widget.cpp:176
@@ -6158,7 +6158,7 @@ msgstr "Utilitza el diàleg de fitxer del sistema"
 #: src/gui/widgets/shape_style/color_selector.ui:27
 #, kde-format
 msgid "Color Mode"
-msgstr "Mode de color"
+msgstr "Mode «Color»"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_box)
 #: src/gui/widgets/shape_style/color_selector.ui:31
