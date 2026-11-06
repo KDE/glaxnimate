@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-18 00:41+0000\n"
-"PO-Revision-Date: 2026-09-27 09:43+0300\n"
+"PO-Revision-Date: 2026-10-09 09:54+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -94,17 +94,15 @@ msgstr ""
 
 #. i18n: file: src/core/glaxnimate/model/shapes/modifiers/repeater.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "start_point"
+#, kde-format
 msgid "start_opacity"
-msgstr "alkupiste"
+msgstr "aloita_peittävyys"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/modifiers/trim.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "End"
+#, kde-format
 msgid "end"
-msgstr "Loppu"
+msgstr "loppu"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/modifiers/trim.hpp
 #. i18n: Property name
@@ -181,7 +179,7 @@ msgstr "Pääty"
 #. i18n: Property name
 #, kde-format
 msgid "miter_limit"
-msgstr ""
+msgstr "hiippaliitos"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/style/fill.hpp
 #. i18n: Property name
@@ -197,10 +195,9 @@ msgstr "väri"
 
 #. i18n: file: src/core/glaxnimate/model/shapes/style/styler.hpp
 #. i18n: Property name
-#, fuzzy, kde-format
-#| msgid "Pause"
+#, kde-format
 msgid "use"
-msgstr "Tauko"
+msgstr "käytä"
 
 #. i18n: file: src/core/glaxnimate/model/transform.hpp
 #. i18n: Property name
@@ -221,13 +218,13 @@ msgstr "kuviot"
 #. i18n: Property name
 #, kde-format
 msgid "data"
-msgstr ""
+msgstr "Data"
 
 #. i18n: file: src/core/glaxnimate/model/assets/bitmap.hpp
 #. i18n: Property name
 #, kde-format
 msgid "url"
-msgstr ""
+msgstr "osoite"
 
 #. i18n: file: src/core/glaxnimate/model/assets/bitmap.hpp
 #. i18n: Property name
@@ -239,7 +236,7 @@ msgstr "leveys"
 #. i18n: Property name
 #, kde-format
 msgid "css_url"
-msgstr ""
+msgstr "css_osoite"
 
 #. i18n: file: src/core/glaxnimate/model/assets/gradient.hpp
 #. i18n: Property name
@@ -1153,7 +1150,7 @@ msgstr ""
 #: src/core/glaxnimate/io/glaxnimate/import_state.hpp:633
 #, kde-format
 msgid "Unknown object of type '%1'"
-msgstr ""
+msgstr "Tuntematon tyypin ”%1” olio"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:732
 #, kde-format
@@ -1164,6 +1161,8 @@ msgstr "%1 on ei-tuettu tyypin %2 kuvio"
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
+"Kuvia ei voi ryhmittää muiden kuvioiden kanssa, niiden on oltava tason "
+"sisällä"
 
 #: src/core/glaxnimate/io/lottie/lottie_exporter.hpp:759
 #, kde-format
@@ -1171,6 +1170,8 @@ msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
 "a layer"
 msgstr ""
+"Kompositiotasoja ei voi ryhmittää muiden kuvioiden kanssa, niiden on oltava "
+"tason sisällä"
 
 #: src/core/glaxnimate/io/lottie/lottie_format.cpp:57
 #, kde-format
@@ -1574,7 +1575,7 @@ msgstr "Poista väri kohteesta %1"
 #: src/core/glaxnimate/model/assets/gradient.cpp:207
 #, kde-format
 msgid "%1 Gradient"
-msgstr ""
+msgstr "%1-liuku"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_fill_linear)
 #. i18n: ectx: property (text), widget (QToolButton, btn_fill_linear)
@@ -1671,7 +1672,7 @@ msgstr ""
 #: src/core/glaxnimate/model/shapes/modifiers/offset_path.cpp:342
 #, kde-format
 msgid "Offset Path"
-msgstr ""
+msgstr "Siirtymäpolku"
 
 #: src/core/glaxnimate/model/shapes/modifiers/repeater.cpp:25
 #, kde-format
@@ -1686,7 +1687,7 @@ msgstr "Pyöristä kulmat"
 #: src/core/glaxnimate/model/shapes/modifiers/trim.cpp:24
 #, kde-format
 msgid "Trim Path"
-msgstr ""
+msgstr "Rajauspolku"
 
 #: src/core/glaxnimate/model/shapes/modifiers/zig_zag.cpp:139
 #, kde-format
@@ -1783,7 +1784,7 @@ msgstr ""
 #: src/core/glaxnimate/module/cairo/cairo_module.hpp:16
 #, kde-format
 msgid "Cairo Renderer"
-msgstr ""
+msgstr "Cairo-hahmonnin"
 
 #: src/core/glaxnimate/module/cairo/pdf_format.cpp:40
 #, fuzzy, kde-format
@@ -1794,7 +1795,7 @@ msgstr "Ei voitu luoda leikettä: ”%1”"
 #: src/core/glaxnimate/module/cairo/pdf_format.hpp:20
 #, kde-format
 msgid "Portable Document Format"
-msgstr ""
+msgstr "PDF"
 
 #: src/core/glaxnimate/module/cairo/postscript_format.cpp:38
 #, fuzzy, kde-format
@@ -1805,7 +1806,7 @@ msgstr "Ei voitu luoda leikettä: ”%1”"
 #: src/core/glaxnimate/module/cairo/postscript_format.hpp:20
 #, kde-format
 msgid "PostScript"
-msgstr ""
+msgstr "PostScript"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_format.cpp:32
 #, kde-format
@@ -1840,12 +1841,12 @@ msgstr "Taso %1"
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:279
 #, kde-format
 msgid "Parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Tason %2 emoa %1 ei löytynyt"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:292
 #, kde-format
 msgid "Mask parent #%1 of layer %2 could not be found"
-msgstr ""
+msgstr "Tason %2 peite-emoa %1 ei löytynyt"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_loader.cpp:581
 #, kde-format
@@ -1890,12 +1891,12 @@ msgstr ""
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:137
 #, kde-format
 msgid "Missing composition data"
-msgstr ""
+msgstr "Kompositiotieto puuttuu"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:209
 #, kde-format
 msgid "Unknown encoding for %1"
-msgstr ""
+msgstr "%1: tuntematon koodaus"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:225
 #, kde-format
@@ -1905,13 +1906,13 @@ msgstr ""
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:287
 #, kde-format
 msgid "Missing layer data"
-msgstr ""
+msgstr "Tasotieto puuttuu"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:372
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:377
 #, kde-format
 msgid "Missing mask properties"
-msgstr ""
+msgstr "Peitteen ominaisuudet puuttuvat"
 
 #: src/core/glaxnimate/module/extraformats/aep/aep_parser.hpp:424
 #, kde-format
@@ -1949,12 +1950,12 @@ msgstr "Tuntematon muoto %1"
 #: src/core/glaxnimate/module/extraformats/avd/avd_format.hpp:21
 #, kde-format
 msgid "Android Vector Drawable"
-msgstr ""
+msgstr "Android-vektoripiirros"
 
 #: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:223
 #, kde-format
 msgid "Unknown interpolator %s"
-msgstr ""
+msgstr "Tuntematon interpoloija %s"
 
 #: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:650
 #, kde-format
@@ -1970,27 +1971,27 @@ msgstr "Ei voitu lukea tiedostoa %1"
 #: src/core/glaxnimate/module/extraformats/avd/avd_parser.cpp:677
 #, kde-format
 msgid "Could not load resource %1"
-msgstr ""
+msgstr "Resurssia %1 ei voitu ladata"
 
 #: src/core/glaxnimate/module/extraformats/avd/avd_renderer.cpp:159
 #, kde-format
 msgid "%s should be in a group"
-msgstr ""
+msgstr "%s: tulisi olla ryhmässä"
 
 #: src/core/glaxnimate/module/extraformats/avd/avd_renderer.cpp:163
 #, kde-format
 msgid "%s is not supported"
-msgstr ""
+msgstr "%s: ei tuettu"
 
 #: src/core/glaxnimate/module/extraformats/avd/avd_renderer.cpp:252
 #, kde-format
 msgid "%s are not supported"
-msgstr ""
+msgstr "%s: ei tuettu"
 
 #: src/core/glaxnimate/module/extraformats/avd/avd_renderer.cpp:518
 #, kde-format
 msgid "%s cannot be a clip path"
-msgstr ""
+msgstr "%s: ei voi olla leikkauspolku"
 
 #: src/core/glaxnimate/module/extraformats/extraformats_module.hpp:16
 #, kde-format
@@ -2000,7 +2001,7 @@ msgstr "Lisätiedostomuodot"
 #: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:359
 #, kde-format
 msgid "Bezier has mismatching number of points"
-msgstr ""
+msgstr "Bézierin pisteiden määrä ei täsmää"
 
 #: src/core/glaxnimate/module/extraformats/rive/rive_exporter.hpp:422
 #, kde-format
@@ -2177,7 +2178,7 @@ msgstr ""
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:70
 #, kde-format
 msgid "Offset Path is not supported"
-msgstr ""
+msgstr "Siirtymäpolkua ei tueta"
 
 #: src/core/glaxnimate/module/gzip/tgs_format.cpp:74
 #, kde-format
@@ -2269,12 +2270,12 @@ msgstr "Ei videokoodekkia"
 #: src/core/glaxnimate/module/video/video_format.cpp:448
 #, kde-format
 msgid "Could not determine pixel format"
-msgstr ""
+msgstr "Kuvapistemuotoa ei voitu tunnistaa"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:462
 #, kde-format
 msgid "Could not open video codec: %1"
-msgstr ""
+msgstr "Videokoodekkia ei voitu avata: %1"
 
 #: src/core/glaxnimate/module/video/video_format.cpp:467
 #, kde-format
@@ -2764,7 +2765,7 @@ msgstr "pybind11"
 #: src/gui/glaxnimate_app.cpp:263 src/gui/glaxnimate_app.cpp:264
 #, kde-format
 msgid "Used by the plugin system."
-msgstr ""
+msgstr "Liitännäisjärjestelmä käyttää."
 
 #: src/gui/glaxnimate_app.cpp:264
 #, kde-format
@@ -2991,10 +2992,9 @@ msgid "Value"
 msgstr "Arvo"
 
 #: src/gui/item_models/property_model_full.cpp:462
-#, fuzzy, kde-format
-#| msgid "Mask"
+#, kde-format
 msgid "Mask Mode"
-msgstr "Peite"
+msgstr "Peitetila"
 
 #: src/gui/item_models/python_snippet_model.hpp:36
 #, kde-format
@@ -3175,7 +3175,7 @@ msgstr "Lisää pysähdys"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Remove Stop"
-msgstr ""
+msgstr "Poista loppu"
 
 #: src/gui/tools/edit_tool.cpp:536 src/gui/widgets/dialogs/gw_impl_ui.cpp:892
 #, kde-format
@@ -3185,12 +3185,12 @@ msgstr ""
 #: src/gui/tools/edit_tool.cpp:536 src/gui/widgets/dialogs/gw_impl_ui.cpp:879
 #, kde-format
 msgid "Delete Nodes"
-msgstr ""
+msgstr "Poista solmut"
 
 #: src/gui/tools/edit_tool.cpp:895
 #, kde-format
 msgid "Set node type"
-msgstr ""
+msgstr "Aseta solmun tyyppi"
 
 #: src/gui/tools/edit_tool.cpp:923
 #, kde-format
@@ -3220,12 +3220,12 @@ msgstr "Käytä tyyliä"
 #: src/gui/tools/fill_tool.cpp:89
 #, kde-format
 msgid "%1 Fill"
-msgstr ""
+msgstr "%1-täyttö"
 
 #: src/gui/tools/fill_tool.cpp:100
 #, kde-format
 msgid "%1 Stroke"
-msgstr ""
+msgstr "%1-veto"
 
 #: src/gui/tools/freehand.cpp:18 src/gui/tools/freehand.cpp:48
 #, kde-format
@@ -3746,7 +3746,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/startup_dialog.ui:135
 #, kde-format
 msgid "Seconds"
-msgstr ""
+msgstr "Sekunnit"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:88
@@ -4741,7 +4741,7 @@ msgstr "Lattea"
 #: src/gui/widgets/dialogs/trace_dialog.ui:99
 #, kde-format
 msgid "Pixel Art"
-msgstr ""
+msgstr "Pikselitaide"
 
 #. i18n: ectx: property (html), widget (QTextBrowser, textBrowser)
 #: src/gui/widgets/dialogs/trace_dialog.ui:151
@@ -5597,7 +5597,7 @@ msgstr ""
 #: src/gui/widgets/menus/animated_property_menu.cpp:62
 #, kde-format
 msgid "Perfect Loop"
-msgstr ""
+msgstr "Täysi silmukka"
 
 #: src/gui/widgets/menus/animated_property_menu.cpp:63
 #, kde-format
@@ -5723,7 +5723,7 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:452
 #, kde-format
 msgid "Decompose"
-msgstr ""
+msgstr "Pura kompositio"
 
 #: src/gui/widgets/menus/node_menu.cpp:490
 #, kde-format
@@ -5909,7 +5909,7 @@ msgstr ""
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Canvas Render Quality"
-msgstr ""
+msgstr "Kankaan hahmonnuksen laatu"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
 msgid "Display quality within the app, does not affect exports"
@@ -6370,7 +6370,7 @@ msgstr "Aseta viivan kytkös"
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:332
 #, kde-format
 msgid "Set Miter Limit"
-msgstr ""
+msgstr "Aseta hiippaliitoksen raja"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:340
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:355
@@ -6411,7 +6411,7 @@ msgstr "Kytkös"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:263
 #, kde-format
 msgid "Miter Limit"
-msgstr ""
+msgstr "Hiippaliitoksen raja"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:338
