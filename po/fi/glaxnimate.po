@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-01 02:43+0000\n"
-"PO-Revision-Date: 2026-09-27 09:43+0300\n"
+"PO-Revision-Date: 2026-10-09 09:54+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -39,7 +39,7 @@ msgstr ""
 #. i18n: Property name
 #, kde-format
 msgid "start_opacity"
-msgstr ""
+msgstr "aloita_peittävyys"
 
 #. i18n: file: src/core/model/shapes/stroke.hpp
 #. i18n: Property name
@@ -51,7 +51,7 @@ msgstr ""
 #. i18n: Property name
 #, kde-format
 msgid "miter_limit"
-msgstr ""
+msgstr "hiippaliitos"
 
 #. i18n: file: src/core/model/shapes/shape.hpp
 #. i18n: Property name
@@ -105,7 +105,7 @@ msgstr "kuviot"
 #. i18n: Property name
 #, kde-format
 msgid "end"
-msgstr ""
+msgstr "loppu"
 
 #. i18n: file: src/core/model/shapes/trim.hpp
 #. i18n: Property name
@@ -161,7 +161,7 @@ msgstr "väri"
 #. i18n: Property name
 #, kde-format
 msgid "use"
-msgstr ""
+msgstr "käytä"
 
 #. i18n: file: src/core/model/shapes/offset_path.hpp
 #. i18n: Property name
@@ -211,13 +211,13 @@ msgstr "mittakaava"
 #. i18n: Property name
 #, kde-format
 msgid "data"
-msgstr ""
+msgstr "Data"
 
 #. i18n: file: src/core/model/assets/bitmap.hpp
 #. i18n: Property name
 #, kde-format
 msgid "url"
-msgstr ""
+msgstr "osoite"
 
 #. i18n: file: src/core/model/assets/bitmap.hpp
 #. i18n: Property name
@@ -229,7 +229,7 @@ msgstr "leveys"
 #. i18n: Property name
 #, kde-format
 msgid "css_url"
-msgstr ""
+msgstr "css_osoite"
 
 #. i18n: file: src/core/model/assets/gradient.hpp
 #. i18n: Property name
@@ -968,7 +968,7 @@ msgstr "pybind11"
 #: src/core/app_info.cpp:77 src/core/app_info.cpp:78
 #, kde-format
 msgid "Used by the plugin system."
-msgstr ""
+msgstr "Liitännäisjärjestelmä käyttää."
 
 #: src/core/app_info.cpp:78
 #, kde-format
@@ -1153,12 +1153,12 @@ msgstr ""
 #: src/core/io/aep/aep_parser.hpp:137
 #, kde-format
 msgid "Missing composition data"
-msgstr ""
+msgstr "Kompositiotieto puuttuu"
 
 #: src/core/io/aep/aep_parser.hpp:214
 #, kde-format
 msgid "Unknown encoding for %1"
-msgstr ""
+msgstr "%1: tuntematon koodaus"
 
 #: src/core/io/aep/aep_parser.hpp:230
 #, kde-format
@@ -1168,12 +1168,12 @@ msgstr ""
 #: src/core/io/aep/aep_parser.hpp:288
 #, kde-format
 msgid "Missing layer data"
-msgstr ""
+msgstr "Tasotieto puuttuu"
 
 #: src/core/io/aep/aep_parser.hpp:372 src/core/io/aep/aep_parser.hpp:377
 #, kde-format
 msgid "Missing mask properties"
-msgstr ""
+msgstr "Peitteen ominaisuudet puuttuvat"
 
 #: src/core/io/aep/aep_parser.hpp:424
 #, kde-format
@@ -1209,12 +1209,12 @@ msgstr "Tuntematon muoto %1"
 #: src/core/io/avd/avd_format.hpp:21
 #, kde-format
 msgid "Android Vector Drawable"
-msgstr ""
+msgstr "Android-vektoripiirros"
 
 #: src/core/io/avd/avd_parser.cpp:223
 #, kde-format
 msgid "Unknown interpolator %s"
-msgstr ""
+msgstr "Tuntematon interpoloija %s"
 
 #: src/core/io/avd/avd_parser.cpp:650
 #, kde-format
@@ -1229,27 +1229,27 @@ msgstr "Ei voitu lukea tiedostoa %1"
 #: src/core/io/avd/avd_parser.cpp:659 src/core/io/avd/avd_parser.cpp:677
 #, kde-format
 msgid "Could not load resource %1"
-msgstr ""
+msgstr "Resurssia %1 ei voitu ladata"
 
 #: src/core/io/avd/avd_renderer.cpp:159
 #, kde-format
 msgid "%s should be in a group"
-msgstr ""
+msgstr "%s: tulisi olla ryhmässä"
 
 #: src/core/io/avd/avd_renderer.cpp:163
 #, kde-format
 msgid "%s is not supported"
-msgstr ""
+msgstr "%s: ei tuettu"
 
 #: src/core/io/avd/avd_renderer.cpp:252
 #, kde-format
 msgid "%s are not supported"
-msgstr ""
+msgstr "%s: ei tuettu"
 
 #: src/core/io/avd/avd_renderer.cpp:518
 #, kde-format
 msgid "%s cannot be a clip path"
-msgstr ""
+msgstr "%s: ei voi olla leikkauspolku"
 
 #: src/core/io/base.cpp:22 src/core/io/svg/svg_renderer.cpp:833
 #: src/gui/tools/base.cpp:162
@@ -1345,22 +1345,24 @@ msgstr ""
 #: src/core/io/glaxnimate/import_state.hpp:619
 #, kde-format
 msgid "Unknown object of type '%1'"
-msgstr ""
+msgstr "Tuntematon tyypin ”%1” olio"
 
 #: src/core/io/lottie/lottie_exporter.hpp:559
 #, kde-format
 msgid "Lottie only supports layers in the top level"
-msgstr ""
+msgstr "Lottie tukee tasoja vain ylimmällä tasolla"
 
 #: src/core/io/lottie/lottie_exporter.hpp:561
 #, kde-format
 msgid "Lottie only supports auto-orient layers in the top level"
-msgstr ""
+msgstr "Lottie tukee automaattisesti suuntaavia tasoja vain ylimmällä tasolla"
 
 #: src/core/io/lottie/lottie_exporter.hpp:610
 #, kde-format
 msgid "Images cannot be grouped with other shapes, they must be inside a layer"
 msgstr ""
+"Kuvia ei voi ryhmittää muiden kuvioiden kanssa, niiden on oltava tason "
+"sisällä"
 
 #: src/core/io/lottie/lottie_exporter.hpp:612
 #, kde-format
@@ -1368,6 +1370,8 @@ msgid ""
 "Composition layers cannot be grouped with other shapes, they must be inside "
 "a layer"
 msgstr ""
+"Kompositiotasoja ei voi ryhmittää muiden kuvioiden kanssa, niiden on oltava "
+"tason sisällä"
 
 #: src/core/io/lottie/lottie_format.cpp:59
 #, kde-format
@@ -1523,7 +1527,7 @@ msgstr ""
 #: src/core/io/lottie/tgs_format.cpp:73
 #, kde-format
 msgid "Offset Path is not supported"
-msgstr ""
+msgstr "Siirtymäpolkua ei tueta"
 
 #: src/core/io/lottie/tgs_format.cpp:77
 #, kde-format
@@ -1624,7 +1628,7 @@ msgstr ""
 #: src/core/io/rive/rive_exporter.hpp:359
 #, kde-format
 msgid "Bezier has mismatching number of points"
-msgstr ""
+msgstr "Bézierin pisteiden määrä ei täsmää"
 
 #: src/core/io/rive/rive_exporter.hpp:422
 #, kde-format
@@ -1858,12 +1862,12 @@ msgstr "Ei videokoodekkia"
 #: src/core/io/video/video_format.cpp:438
 #, kde-format
 msgid "Could not determine pixel format"
-msgstr ""
+msgstr "Kuvapistemuotoa ei voitu tunnistaa"
 
 #: src/core/io/video/video_format.cpp:448
 #, kde-format
 msgid "Could not open video codec: %1"
-msgstr ""
+msgstr "Videokoodekkia ei voitu avata: %1"
 
 #: src/core/io/video/video_format.cpp:453
 #, kde-format
@@ -2074,7 +2078,7 @@ msgstr "Poista väri kohteesta %1"
 #: src/core/model/assets/gradient.cpp:211
 #, kde-format
 msgid "%1 Gradient"
-msgstr ""
+msgstr "%1-liuku"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, btn_fill_linear)
 #. i18n: ectx: property (text), widget (QToolButton, btn_fill_linear)
@@ -2183,7 +2187,7 @@ msgstr "Taso"
 #: src/core/model/shapes/offset_path.cpp:342
 #, kde-format
 msgid "Offset Path"
-msgstr ""
+msgstr "Siirtymäpolku"
 
 #. i18n: ectx: Menu (path)
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -2251,7 +2255,7 @@ msgstr "Teksti"
 #: src/core/model/shapes/trim.cpp:24
 #, kde-format
 msgid "Trim Path"
-msgstr ""
+msgstr "Rajauspolku"
 
 #: src/core/model/shapes/zig_zag.cpp:139
 #, kde-format
@@ -3015,7 +3019,7 @@ msgstr "Lisää pysähdys"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Remove Stop"
-msgstr ""
+msgstr "Poista loppu"
 
 #: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:754
 #, kde-format
@@ -3025,12 +3029,12 @@ msgstr ""
 #: src/gui/tools/edit_tool.cpp:527 src/gui/widgets/dialogs/gw_impl_ui.cpp:741
 #, kde-format
 msgid "Delete Nodes"
-msgstr ""
+msgstr "Poista solmut"
 
 #: src/gui/tools/edit_tool.cpp:886
 #, kde-format
 msgid "Set node type"
-msgstr ""
+msgstr "Aseta solmun tyyppi"
 
 #: src/gui/tools/edit_tool.cpp:914
 #, kde-format
@@ -3060,12 +3064,12 @@ msgstr "Käytä tyyliä"
 #: src/gui/tools/fill_tool.cpp:89
 #, kde-format
 msgid "%1 Fill"
-msgstr ""
+msgstr "%1-täyttö"
 
 #: src/gui/tools/fill_tool.cpp:100
 #, kde-format
 msgid "%1 Stroke"
-msgstr ""
+msgstr "%1-veto"
 
 #: src/gui/tools/freehand.cpp:18 src/gui/tools/freehand.cpp:48
 #, kde-format
@@ -3571,7 +3575,7 @@ msgstr ""
 #: src/gui/widgets/dialogs/startup_dialog.ui:135
 #, kde-format
 msgid "Seconds"
-msgstr ""
+msgstr "Sekunnit"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 #: src/gui/widgets/dialogs/follow_path_dialog.ui:88
@@ -4569,7 +4573,7 @@ msgstr "Lattea"
 #: src/gui/widgets/dialogs/trace_dialog.ui:99
 #, kde-format
 msgid "Pixel Art"
-msgstr ""
+msgstr "Pikselitaide"
 
 #. i18n: ectx: property (html), widget (QTextBrowser, textBrowser)
 #: src/gui/widgets/dialogs/trace_dialog.ui:151
@@ -5390,7 +5394,7 @@ msgstr ""
 #: src/gui/widgets/menus/node_menu.cpp:372
 #, kde-format
 msgid "Decompose"
-msgstr ""
+msgstr "Pura kompositio"
 
 #: src/gui/widgets/menus/node_menu.cpp:410
 #, kde-format
@@ -6027,7 +6031,7 @@ msgstr "Aseta viivan kytkös"
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:332
 #, kde-format
 msgid "Set Miter Limit"
-msgstr ""
+msgstr "Aseta hiippaliitoksen raja"
 
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:340
 #: src/gui/widgets/shape_style/stroke_style_widget.cpp:355
@@ -6068,7 +6072,7 @@ msgstr "Kytkös"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:263
 #, kde-format
 msgid "Miter Limit"
-msgstr ""
+msgstr "Hiippaliitoksen raja"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:338
