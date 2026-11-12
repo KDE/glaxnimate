@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-08 02:54+0000\n"
-"PO-Revision-Date: 2026-10-12 11:41+0300\n"
+"PO-Revision-Date: 2026-11-10 21:38+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -511,7 +511,7 @@ msgstr "Dolgu rengini seçmek için kullanılan yan paneli açar."
 #: src/android/help_dialog.cpp:122
 #, kde-format
 msgid "Opens the side pane used to select the stroke color and style."
-msgstr "Vuruş rengini ve biçemini seçmek için kullanılan yan paneli açar."
+msgstr "Vuruş rengini ve stilini seçmek için kullanılan yan paneli açar."
 
 #: src/android/help_dialog.cpp:126
 #, kde-format
@@ -641,12 +641,12 @@ msgstr "Zaman Akışı"
 #: src/android/main_window.cpp:419
 #, kde-format
 msgid "Fill Style"
-msgstr "Dolgu Biçemi"
+msgstr "Dolgu Stili"
 
 #: src/android/main_window.cpp:424
 #, kde-format
 msgid "Stroke Style"
-msgstr "Vuruş Biçemi"
+msgstr "Vuruş Stili"
 
 #: src/android/main_window.cpp:454 src/gui/widgets/dialogs/gw_impl_ui.cpp:664
 #: src/gui/widgets/menus/node_menu.cpp:116
@@ -1399,7 +1399,7 @@ msgstr "Bağımsız Şekil Sayfası"
 #: src/core/glaxnimate/io/svg/svg_format.cpp:55
 #, kde-format
 msgid "External Stylesheet"
-msgstr "Dış Biçem Sayfası"
+msgstr "Dış Stil Sayfası"
 
 #: src/core/glaxnimate/io/svg/svg_format.cpp:57
 #, kde-format
@@ -3218,7 +3218,7 @@ msgstr "Elips Çiz"
 #: src/gui/tools/fill_tool.cpp:54
 #, kde-format
 msgid "Apply Style"
-msgstr "Biçem Uygula"
+msgstr "Stil Uygula"
 
 #: src/gui/tools/fill_tool.cpp:89
 #, kde-format
@@ -5568,7 +5568,7 @@ msgstr "Dosya/URL"
 #: src/gui/widgets/font/google_fonts_widget.ui:82
 #, kde-format
 msgid "Font Style"
-msgstr "Yazıtipi Biçemi"
+msgstr "Yazıtipi Stili"
 
 #: src/gui/widgets/font/font_loader.cpp:47
 #, kde-format
@@ -6535,7 +6535,7 @@ msgstr "Çizgi Rengini Ayarla"
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:40
 #, kde-format
 msgid "Style"
-msgstr "Biçem"
+msgstr "Stil"
 
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, spin_stroke_width)
 #: src/gui/widgets/shape_style/stroke_style_widget.ui:59
