@@ -73,7 +73,7 @@ endif()
 add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/emoji
     COMMAND rm -r -f /tmp/noto-emoji-main
-    COMMAND git clone https://github.com/googlefonts/noto-emoji.git /tmp/noto-emoji-main
+    COMMAND git clone --depth 1 --branch v2.051 https://github.com/googlefonts/noto-emoji.git /tmp/noto-emoji-main
     COMMAND mkdir ${CMAKE_CURRENT_BINARY_DIR}/emoji
     COMMAND mv -T /tmp/noto-emoji-main/svg ${CMAKE_CURRENT_BINARY_DIR}/emoji/svg
     COMMAND mv -T /tmp/noto-emoji-main/png/72 ${CMAKE_CURRENT_BINARY_DIR}/emoji/png
