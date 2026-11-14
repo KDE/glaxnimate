@@ -26,6 +26,7 @@ ecm_add_tests(
     test_trim_path.cpp
     test_aep_gradient_xml.cpp
     test_animatable.cpp
+    test_svg_renderer.cpp
     LINK_LIBRARIES ${TESTS_LINK_LIBS}
 )
 

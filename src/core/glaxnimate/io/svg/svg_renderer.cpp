@@ -752,6 +752,7 @@ public:
                         keyframe.transition()
                     );
                 }
+                anim_opacity.add_dom(element);
             }
         }
     }
