@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: glaxnimate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-18 01:07+0000\n"
-"PO-Revision-Date: 2026-11-16 19:09+0300\n"
+"PO-Revision-Date: 2026-11-23 18:11+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -592,7 +592,7 @@ msgstr "Oynatmayı başlatır."
 #: src/android/help_dialog.cpp:178
 #, kde-format
 msgid "Toggles looping for the playback (on by default)."
-msgstr "Oynatmayı döngüye alır (öntanımlı olarak açık)."
+msgstr "Oynatmayı döngüye alır (varsayılan olarak açık)."
 
 #: src/android/help_dialog.cpp:182
 #, kde-format
@@ -620,7 +620,7 @@ msgid ""
 "When enabled (which is the default) whenever you change an object property, "
 "a new keyframe is added for that property."
 msgstr ""
-"Etkinleştirildiğinde (öntanımlı), bir nesne özelliğini her "
+"Etkinleştirildiğinde (varsayılan), bir nesne özelliğini her "
 "değiştirdiğinizde, o özellik için yeni bir anahtar kare eklenir."
 
 #: src/android/help_dialog.cpp:202
@@ -3055,7 +3055,7 @@ msgstr "%1 %2"
 #: src/gui/settings/icon_settings.cpp:39
 #, kde-format
 msgid "System Default"
-msgstr "Sistem Öntanımlısı"
+msgstr "Sistem Varsayılansı"
 
 #: src/gui/style/property_delegate.cpp:52
 #, kde-format
@@ -5158,7 +5158,7 @@ msgstr "Yardım…"
 #: src/gui/widgets/dialogs/trace_dialog.ui:681
 #, kde-format
 msgid "Revert to Defaults"
-msgstr "Öntanımlılara Geri Dön"
+msgstr "Varsayılanlara Geri Dön"
 
 #. i18n: ectx: property (text), widget (QPushButton, button_advanced)
 #: src/gui/widgets/dialogs/trace_dialog.ui:692
@@ -6052,7 +6052,7 @@ msgid ""
 "If enabled, the timeline will scroll horizontally by default and vertically "
 "with Shift or Alt"
 msgstr ""
-"Etkinleştirilirse zaman akışı öntanımlı olarak yatay olarak sarılır ve Üst "
+"Etkinleştirilirse zaman akışı varsayılan olarak yatay olarak sarılır ve Üst "
 "Karakter veya Seçenek ile dikeye geçiş yapılabilir"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:241
@@ -6080,7 +6080,7 @@ msgstr "sn"
 #: src/gui/widgets/settings/settings_dialog.cpp:251
 msgctxt "Settings"
 msgid "New Animation Defaults"
-msgstr "Yeni Canlandırma Öntanımlıları"
+msgstr "Yeni Canlandırma Varsayılanları"
 
 #: src/gui/widgets/settings/settings_dialog.cpp:252
 msgid "Canvas Width"
